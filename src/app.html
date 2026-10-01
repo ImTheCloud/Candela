@@ -506,7 +506,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 <script>
 const QUIZ = /*__QUIZ__*/{};
 const TEXT = /*__TEXT__*/{};
-const TITLES = ["Nașterea lui Samuel","Cântarea Anei. Fiii lui Eli","Chemarea lui Samuel","Chivotul luat de filisteni","Chivotul în Asdod","Chivotul se întoarce","Biruința de la Mițpa","Israel cere un împărat","Saul și măgărițele","Saul uns împărat","Biruința asupra lui Nahaș","Cuvântarea lui Samuel","Jertfa lui Saul la Ghilgal","Isprava lui Ionatan","Saul lepădat de Domnul","David uns de Samuel","David și Goliat","Ionatan și David","Saul îl urmărește pe David","Legământul cu Ionatan","David la Nob și la Gat","Peștera Adulam","David la Cheila și în pustie","David îl cruță pe Saul","Nabal și Abigail","A doua cruțare a lui Saul","David la Achiș","Saul la En-Dor","David trimis înapoi","Țiclagul ars","Moartea lui Saul"];
+const TITLES = ["Nașterea lui Samuel","Cântarea Anei / Fiii lui Eli","Chemarea lui Samuel","Chivotul luat de filisteni","Chivotul în Asdod","Chivotul se întoarce","Biruința de la Mițpa","Israel cere un împărat","Saul și măgărițele","Saul uns împărat","Biruința asupra lui Nahaș","Cuvântarea lui Samuel","Jertfa lui Saul la Ghilgal","Isprava lui Ionatan","Saul lepădat de Domnul","David uns de Samuel","David și Goliat","Ionatan și David","Saul îl urmărește pe David","Legământul cu Ionatan","David la Nob și la Gat","Peștera Adulam","David la Cheila și în pustie","David îl cruță pe Saul","Nabal și Abigail","A doua cruțare a lui Saul","David la Achiș","Saul la En-Dor","David trimis înapoi","Țiclagul ars","Moartea lui Saul"];
 const TYPE_LABEL = {tf:"Adevărat / Fals", one:"Variantă corectă", multi:"Alegere multiplă", match:"Asociere", fill:"Completează versetul"};
 const MODE_LABEL = {easy:"Ușor", hard:"Greu", both:"Ambele"};
 const LETTERS = "ABCDEF";
@@ -950,7 +950,7 @@ function openProfile(){
       ${kids.length ? "" : `<p class="pf-note">Adaugă-ți copiii: fiecare are rezultatele și locul lui în clasament. Pe acasă alegi cine exersează.</p>`}
       ${kids.map(k => `<div class="kid"><span class="avatar sm">${esc(initials(k.name))}</span><b>${esc(k.name)}</b><button class="link" type="button" data-kdel="${k.id}" data-kname="${esc(k.name)}">Șterge</button></div>`).join("")}
       ${adding ? `<form class="kid-form" id="kForm" novalidate>
-          <div class="field"><label for="kFirst">Prenumele copilului</label><input class="input" id="kFirst" maxlength="30" autocapitalize="words"></div>
+          <div class="field"><label for="kFirst">Prenumele copilului</label><div class="ak-row"><input class="input" id="kFirst" maxlength="30" autocapitalize="words" placeholder="Prenume"><span class="ak-last">${esc(ln)}</span></div><small class="muted kid-hint">Numele de familie se adaugă singur.</small></div>
           <p class="form-error" id="kErr" role="alert"></p>
           <div class="modal-btns"><button class="btn btn-ghost" type="button" id="kNo">Anulează</button><button class="btn btn-primary" type="submit">Adaugă</button></div></form>`
         : `<button class="btn btn-ghost btn-block" type="button" id="kAdd">Adaugă un copil</button>`}`;
@@ -1635,7 +1635,7 @@ function askChildren(last){
   const bg = document.createElement("div"); bg.className = "modal-bg";
   bg.innerHTML = `<form class="modal kids-modal" role="dialog" aria-modal="true" aria-labelledby="akH" novalidate>
     <h3 id="akH">Copiii tăi</h3>
-    <p class="muted">Scrie prenumele fiecărui copil. Fiecare va avea rezultatele și locul lui în clasament.</p>
+    <p class="muted">Scrie doar prenumele fiecărui copil; numele de familie se adaugă singur. Fiecare va avea rezultatele și locul lui în clasament.</p>
     <div class="ak-list" id="akList"></div>
     <button class="link" type="button" id="akMore">+ Încă un copil</button>
     <p class="form-error" id="akErr" role="alert"></p>
