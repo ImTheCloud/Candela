@@ -145,7 +145,7 @@ p{margin:0}
 .guest-line .link{padding:0;color:var(--ink);font-size:inherit}
 .guest-cta{display:grid;gap:8px;border-color:var(--oil-soft);background:linear-gradient(180deg,var(--surface),var(--bg))}
 .guest-cta b{font-size:17px}
-.guest-cta p{color:var(--ink-2);font-size:14px;margin:0}
+.guest-cta p{color:var(--ink);font-size:15px;font-weight:500;margin:0}
 .guest-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
 .guest-btns .btn{white-space:nowrap;padding-inline:12px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:8px}
@@ -993,7 +993,7 @@ function viewHome(){
 
   <aside class="h-config">
     <div class="panel">
-      <div class="section-h first"><h3>Câte capitole vrei să exersezi?</h3></div>
+      <div class="section-h first"><h3>Alege capitolul</h3></div>
       <div class="seg scope" role="group" aria-label="Câte capitole">
         <button data-scope="one">Un capitol</button><button data-scope="many">Mai multe</button><button data-scope="all">Toată cartea</button>
       </div>
@@ -1346,13 +1346,11 @@ async function finish(){
     <div class="stat"><b>${n - wrong.length}</b><small>corecte</small></div>
     <div class="stat"><b>${wrong.length}</b><small>de revăzut</small></div>
   </div>
-  ${p.guest && !Z.retry ? `<div class="card guest-cta"><b>Păstrează-ți rezultatul</b><p>Joci ca invitat, deci rezultatele rămân doar pe acest dispozitiv. Creează un cont ca să le salvezi și să apari în clasament.</p>
+  ${p.guest && !Z.retry ? `<div class="card guest-cta"><p>Creează un cont ca să-ți păstrezi rezultatele.</p>
     <div class="guest-btns"><button class="btn btn-primary" id="gNew" type="button">Creează cont</button><button class="btn btn-ghost" id="gIn" type="button">Am deja cont</button></div></div>` : ""}
-  <div class="card" style="display:grid;gap:18px">
-    <div><span class="eyebrow">Pe tipuri de întrebări</span></div>
-    <div class="bars">${Object.entries(byType).map(([t,v])=>`<div class="brow"><span>${TYPE_LABEL[t]}</span><div class="bar"><i style="width:0" data-w="${pct(v.s,v.n)}"></i></div><span>${pct(v.s,v.n)}%</span></div>`).join("")}</div>
-    ${Z.chs.length>1 ? `<div><span class="eyebrow">Pe capitole</span></div><div class="bars">${Object.entries(byCh).filter(([k])=>k!=="_m").map(([c,v])=>`<div class="brow"><span>Cap. ${c} · ${esc(TITLES[c-1])}</span><div class="bar"><i style="width:0" data-w="${pct(v.s,v.n)}"></i></div><span>${pct(v.s,v.n)}%</span></div>`).join("")}</div>` : ""}
-  </div>
+  ${Z.chs.length>1 ? `<div class="card" style="display:grid;gap:18px">
+    <div><span class="eyebrow">Pe capitole</span></div><div class="bars">${Object.entries(byCh).filter(([k])=>k!=="_m").map(([c,v])=>`<div class="brow"><span>Cap. ${c} · ${esc(TITLES[c-1])}</span><div class="bar"><i style="width:0" data-w="${pct(v.s,v.n)}"></i></div><span>${pct(v.s,v.n)}%</span></div>`).join("")}</div>
+  </div>` : ""}
   <div class="section-h"><h3>${wrong.length ? "De revăzut" : "Nicio greșeală"}</h3>${wrong.length?`<span class="muted" style="font-size:14px">${wrong.length} întrebări</span>`:""}</div>
   <div class="mistakes">${wrong.length ? wrong.map(mistakeHTML).join("") : `<div class="allgood">Toate răspunsurile sunt corecte.</div>`}</div>
   <div class="startbar" style="display:grid;grid-template-columns:${wrong.length?"1fr 1fr":"1fr"};gap:10px">
