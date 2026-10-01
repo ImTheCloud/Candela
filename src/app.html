@@ -1139,6 +1139,7 @@ function openOptions(chs = [...S.sel].sort((a,b)=>a-b)){
       <small class="sh-note" id="shNote"></small></div>
     <div class="opts-row"><div class="toggle col" id="shCnt"></div></div>
     <button class="btn btn-primary btn-block" id="shGo"></button>
+    ${chs.length === 1 && !$(".reader") ? `<button class="link read-link" id="shRead" type="button">Citește întâi capitolul ${chs[0]}</button>` : ""}
   </div>`;
   document.body.appendChild(bg);
   const set = (v, typing) => { n = Math.max(1, Math.min(pool, Math.round(v) || 1)); const inp = bg.querySelector("#shN"); if (!typing) inp.value = n;
@@ -1168,6 +1169,7 @@ function openOptions(chs = [...S.sel].sort((a,b)=>a-b)){
   bg.querySelectorAll("[data-m]").forEach(b => b.onclick = () => setMode(b.dataset.m));
   bg.querySelector("#shX").onclick = close;
   bg.onclick = e => { if (e.target === bg) close(); };
+  if (bg.querySelector("#shRead")) bg.querySelector("#shRead").onclick = () => { close(); viewRead(chs[0]); };
   bg.querySelector("#shGo").onclick = () => { close(); S.mode = mode; S.sel = new Set(chs); persistPrefs(); startQuiz(null, n < pool ? n : 0); };
 }
 function startQuiz(list, count = 0, o = {}){
