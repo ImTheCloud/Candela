@@ -6,38 +6,27 @@
 <style>
 /* Layout: one narrow column (max 640px) like a pocket study book; a lamp flame is the recurring mark of progress. */
 :root{
-  --bg:#ECEEE7;          /* stone */
-  --surface:#FAFBF7;
-  --surface-2:#E2E5DB;
-  --ink:#1E261D;         /* olive ink */
-  --ink-2:#56604F;
-  --line:#CDD2C3;
-  --oil:#B87A0B;         /* lamp oil / flame */
-  --oil-soft:#F3E3BE;
-  --oil-ink:#5E3E00;
+  --bg:#F6F6F1;          /* clean light stone */
+  --surface:#FFFFFF;
+  --surface-2:#EEEFE8;
+  --ink:#1F2620;         /* olive ink */
+  --ink-2:#5E665A;
+  --line:#E2E4DA;
+  --oil:#C08410;         /* lamp oil / flame */
+  --oil-soft:#FBEFD2;
+  --oil-ink:#6B4500;
   --cedar:#2D5A44;       /* cedar green */
-  --cedar-soft:#D5E6DA;
-  --ok:#2D7A4E; --ok-soft:#D6EDDD;
-  --bad:#B23A2E; --bad-soft:#F6DAD4;
-  --p1:#B87A0B; --p2:#2D6FA3; --p3:#8A4FA0; --p4:#2D7A4E; --p5:#B4534A;
-  --shadow:0 1px 2px rgb(30 38 29 / .06), 0 8px 24px -12px rgb(30 38 29 / .18);
+  --cedar-soft:#E1EEE5;
+  --ok:#2D7A4E; --ok-soft:#E0F2E6;
+  --bad:#B23A2E; --bad-soft:#FBE4DF;
+  --p1:#C08410; --p2:#2D6FA3; --p3:#8A4FA0; --p4:#2D7A4E; --p5:#B4534A;
+  --shadow:0 1px 2px rgb(31 38 32 / .04), 0 10px 30px -18px rgb(31 38 32 / .22);
   --f-display:"Gloock", "Georgia", "Times New Roman", serif;
   --f-body:"Onest", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --f-mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
   --r:14px;
+  color-scheme:light;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#11150F; --surface:#1A2018; --surface-2:#242B21; --ink:#ECEEE4; --ink-2:#A4AD9C; --line:#333C30;
-  --oil:#EBAA3C; --oil-soft:#3A2C12; --oil-ink:#F6D59A; --cedar:#86BFA0; --cedar-soft:#1F3328;
-  --ok:#6CC892; --ok-soft:#173424; --bad:#F08A7E; --bad-soft:#3B1C18;
-  --p1:#EBAA3C; --p2:#6FAEE0; --p3:#C390D6; --p4:#6CC892; --p5:#E9867C;
-  --shadow:0 1px 2px rgb(0 0 0 / .3), 0 10px 30px -14px rgb(0 0 0 / .6); color-scheme:dark;}}
-:root[data-theme="dark"]{
-  --bg:#11150F; --surface:#1A2018; --surface-2:#242B21; --ink:#ECEEE4; --ink-2:#A4AD9C; --line:#333C30;
-  --oil:#EBAA3C; --oil-soft:#3A2C12; --oil-ink:#F6D59A; --cedar:#86BFA0; --cedar-soft:#1F3328;
-  --ok:#6CC892; --ok-soft:#173424; --bad:#F08A7E; --bad-soft:#3B1C18;
-  --p1:#EBAA3C; --p2:#6FAEE0; --p3:#C390D6; --p4:#6CC892; --p5:#E9867C;
-  --shadow:0 1px 2px rgb(0 0 0 / .3), 0 10px 30px -14px rgb(0 0 0 / .6); color-scheme:dark;}
 
 *{box-sizing:border-box}
 html,body{min-height:100%}
@@ -97,8 +86,6 @@ p{margin:0}
 .who{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--ink-2);min-width:0}
 .who b{color:var(--ink);font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:14ch}
 .avatar{width:32px;height:32px;border-radius:50%;background:var(--cedar);color:var(--bg);display:grid;place-items:center;font-weight:700;font-size:14px;flex:none}
-.sync{font-size:12px;display:flex;align-items:center;gap:6px;color:var(--ink-2);white-space:nowrap}
-@media (max-width:420px){.sync span{display:none}}
 .dot{width:7px;height:7px;border-radius:50%;background:var(--ink-2)}
 .dot.on{background:var(--ok)}
 
@@ -123,8 +110,12 @@ p{margin:0}
 .tile:active{transform:scale(.94)}
 .tile svg{position:absolute;inset:5px;width:calc(100% - 10px);height:calc(100% - 10px)}
 .tile .n{font-family:var(--f-display);font-size:22px;line-height:1;position:relative}
-.tile[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
-.tile[aria-pressed="true"] .trk{stroke:color-mix(in oklab,var(--bg) 22%,transparent)}
+.tile[aria-pressed="true"]{background:var(--oil-soft);border-color:var(--oil);color:var(--oil-ink);box-shadow:0 0 0 3px color-mix(in oklab,var(--oil) 18%,transparent)}
+.tile[aria-pressed="true"] .trk{stroke:color-mix(in oklab,var(--oil) 20%,transparent)}
+.chap-pick{display:flex;align-items:center;gap:14px;margin-top:14px;padding:14px 16px;background:var(--surface);border:1px solid var(--line);border-radius:16px}
+.chap-pick .num{font-family:var(--f-display);font-size:34px;line-height:1;color:var(--oil);min-width:1.4em;text-align:center}
+.chap-pick b{display:block;font-family:var(--f-display);font-weight:400;font-size:20px;line-height:1.2}
+.chap-pick small{color:var(--ink-2);font-size:13px}
 .trk{stroke:var(--surface-2)}
 .chap-list{margin-top:12px;font-size:14px;color:var(--ink-2);min-height:21px}
 .legend{display:flex;gap:14px;font-size:12px;color:var(--ink-2);margin-top:10px}
@@ -331,7 +322,7 @@ const store = {
 /* ---------- state ---------- */
 const S = {
   player: null,
-  sel: new Set(lsGet("candela:sel", [1])),
+  sel: new Set([[].concat(lsGet("candela:sel", [1]))[0] || 1]),
   mode: lsGet("candela:mode", "easy"),
   count: lsGet("candela:count", 20),
   shuffle: lsGet("candela:shuffle", true),
@@ -374,7 +365,7 @@ function viewEntry(){
     </form>
     <div class="features">
       <div><b>31</b><small>capitole</small></div>
-      <div><b>${totalCount("both")}</b><small>întrebări</small></div>
+      <div><b>${totalCount("both").toLocaleString("ro-RO")}</b><small>întrebări</small></div>
       <div><b>5</b><small>tipuri de întrebări</small></div>
     </div>
   </section>
@@ -406,7 +397,7 @@ function tileSVG(c){
 function headerHTML(){
   const n = S.player.name;
   return `<header class="top"><div class="brand">${miniLamp()} Candela</div>
-  <div class="who"><span id="sync" class="sync"></span><b>${esc(n)}</b><span class="avatar">${esc(n.trim()[0].toUpperCase())}</span></div></header>`;
+  <div class="who"><b>${esc(n)}</b><span class="avatar">${esc(n.trim()[0].toUpperCase())}</span></div></header>`;
 }
 function renderSync(){
   const el = $("#sync"); if (!el) return;
@@ -424,7 +415,7 @@ function viewHome(){
   mount(`${headerHTML()}
   <section class="hello"><span class="eyebrow">${tests ? "Bine ai revenit" : "Să începem"}</span>
     <h2>${tests ? `Continuăm, ${esc(first)}?` : `Bun venit, ${esc(first)}.`}</h2>
-    <p class="muted">${tests ? `Ai exersat ${touched} din 31 de capitole.` : "Alege unul sau mai multe capitole și nivelul. Poți începe cu capitolul 1."}</p></section>
+    <p class="muted">${tests ? `Ai exersat ${touched} din 31 de capitole.` : "Alege un capitol și nivelul. Poți începe cu capitolul 1."}</p></section>
   <div class="stats">
     <div class="stat"><b>${tests}</b><small>teste făcute</small></div>
     <div class="stat"><b>${tests?avg+"%":"–"}</b><small>media</small></div>
@@ -437,17 +428,10 @@ function viewHome(){
   </div>
   <p class="seg-note" id="modeNote"></p>
 
-  <div class="section-h"><h3>Capitole</h3><span class="muted" style="font-size:14px" id="selCount"></span></div>
-  <div class="quick">
-    <button class="chip" data-q="all">Toate</button>
-    <button class="chip" data-q="1-7">1–7 · Samuel</button>
-    <button class="chip" data-q="8-15">8–15 · Saul</button>
-    <button class="chip" data-q="16-31">16–31 · David</button>
-    <button class="chip" data-q="none">Golește</button>
-  </div>
+  <div class="section-h"><h3>Capitol</h3></div>
   <div class="grid" id="grid">${Array.from({length:31},(_,i)=>i+1).map(c=>`<button class="tile" data-c="${c}" aria-pressed="${S.sel.has(c)}" title="${c}. ${esc(TITLES[c-1])}" aria-label="Capitolul ${c}: ${esc(TITLES[c-1])}">${tileSVG(c)}<span class="n">${c}</span></button>`).join("")}</div>
   <div class="legend"><span><i style="background:var(--cedar)"></i>scor maxim ușor</span><span><i style="background:var(--oil)"></i>scor maxim greu</span></div>
-  <p class="chap-list" id="chapList"></p>
+  <div class="chap-pick" id="chapPick"></div>
 
   <div class="section-h"><h3>Opțiuni</h3></div>
   <div class="card opts-row">
@@ -474,22 +458,16 @@ function viewHome(){
     app.querySelectorAll("[data-n]").forEach(b => b.setAttribute("aria-pressed", S.count===+b.dataset.n));
     const pool = buildPool(chs, S.mode).length;
     const n = S.count && S.count < pool ? S.count : pool;
-    $("#selCount").textContent = chs.length ? `${chs.length} selectate` : "";
-    $("#chapList").textContent = chs.length === 1 ? `${chs[0]}. ${TITLES[chs[0]-1]}` : chs.length ? chaptersLabel(chs) : "Atinge un capitol ca să-l selectezi.";
-    $("#poolNote").textContent = `${pool} întrebări disponibile în selecție.`;
+    const c = chs[0], d = QUIZ[c] || {easy:[],hard:[]};
+    $("#chapPick").innerHTML = `<span class="num">${c}</span><div style="min-width:0"><b>${esc(TITLES[c-1])}</b><small>${d.easy.length} întrebări ușoare · ${d.hard.length} grele</small></div>`;
+    $("#poolNote").textContent = `${pool} întrebări disponibile în capitolul ${c}.`;
     $("#modeNote").textContent = {easy:"Întrebări generale despre poveste și evenimente.",hard:"Detalii precise: nume, cifre, locuri, formulări exacte.",both:"Întrebări din ambele niveluri, amestecate."}[S.mode];
     const st = $("#start"); st.disabled = !pool; st.textContent = pool ? `Începe testul · ${n} întrebări` : "Alege cel puțin un capitol";
     persistPrefs();
   };
-  app.querySelectorAll(".tile").forEach(t => t.onclick = () => { const c = +t.dataset.c; S.sel.has(c) ? S.sel.delete(c) : S.sel.add(c); update(); });
+  app.querySelectorAll(".tile").forEach(t => t.onclick = () => { S.sel = new Set([+t.dataset.c]); update(); });
   app.querySelectorAll("[data-mode]").forEach(b => b.onclick = () => { S.mode = b.dataset.mode; update(); });
   app.querySelectorAll("[data-n]").forEach(b => b.onclick = () => { S.count = +b.dataset.n; update(); });
-  app.querySelectorAll("[data-q]").forEach(b => b.onclick = () => {
-    const q = b.dataset.q; S.sel.clear();
-    if (q === "all") for (let c=1;c<=31;c++) S.sel.add(c);
-    else if (q !== "none"){ const [a,z] = q.split("-").map(Number); for (let c=a;c<=z;c++) S.sel.add(c); }
-    update();
-  });
   $("#swInstant").onclick = e => { S.instant = !S.instant; e.currentTarget.setAttribute("aria-checked", S.instant); persistPrefs(); };
   $("#swShuffle").onclick = e => { S.shuffle = !S.shuffle; e.currentTarget.setAttribute("aria-checked", S.shuffle); persistPrefs(); };
   $("#start").onclick = () => startQuiz();
