@@ -152,6 +152,8 @@ p{margin:0}
 .tile{position:relative;aspect-ratio:1;max-width:100%;border:1.5px solid var(--line);background:var(--surface);border-radius:14px;display:grid;place-items:center;padding:0;transition:transform .15s, border-color .2s, background .2s}
 .tile:active{transform:scale(.94)}
 .tile svg{position:absolute;inset:5px;width:calc(100% - 10px);height:calc(100% - 10px)}
+.tile .done-mark{position:absolute;bottom:4px;right:4px;width:17px;height:17px;border-radius:50%;background:var(--cedar);color:#fff;display:grid;place-items:center}
+.tile .done-mark svg{position:static;width:11px;height:11px;margin:0}
 .tile .n{font-family:var(--f-display);font-size:22px;line-height:1;position:relative}
 .tile[aria-pressed="true"]{background:var(--oil-soft);border-color:var(--oil);color:var(--oil-ink);box-shadow:0 0 0 3px color-mix(in oklab,var(--oil) 18%,transparent)}
 .tile[aria-pressed="true"] .trk{stroke:color-mix(in oklab,var(--oil) 20%,transparent)}
@@ -383,7 +385,9 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .reader-h{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:12px}
 .reader-h h2{font-size:26px;line-height:1.1}
 .reader-text{background:var(--surface);border-radius:20px;padding:20px;box-shadow:var(--shadow);font-family:var(--f-display);font-size:18px;line-height:1.65}
-.reader-text p{margin:0 0 .45em;padding:0 4px;border-radius:6px;transition:background .3s}
+.reader-text p{margin:0 0 .45em;padding:0 4px;border-radius:6px;transition:background .3s;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.reader-text p.hl{background:#FCE98A}
+.hl-hint{font-size:13.5px;color:var(--ink-2);margin:-4px 0 0}
 .reader-text sup{font-family:var(--f-mono);font-size:11px;color:var(--oil-ink);margin-right:4px}
 .tut{max-width:380px;gap:14px;padding:26px 22px 20px}
 .tut-art{min-height:132px;display:grid;place-items:center;background:var(--bg);border-radius:18px;padding:16px}
@@ -692,7 +696,6 @@ function viewEntry(msg, tab){
       <div class="field"><label for="pw">Parolă</label><input class="input" id="pw" type="password" autocomplete="${isNew ? "new-password" : "current-password"}" minlength="6" required></div>
       ${isNew ? "" : `<button class="link forgot" id="forgot" type="button">Ai uitat parola?</button>`}
       ${isNew ? `<label class="remember"><input type="checkbox" id="parent"> Sunt părinte și vreau să-mi adaug copiii</label>` : ""}
-      <label class="remember"><input type="checkbox" id="remember" ${lsGet("candela:remember", true) ? "checked" : ""}> Rămâi conectat</label>
       <p class="form-error" id="err" role="alert">${msg ? esc(msg) : ""}</p>
       <button class="btn btn-primary btn-block" id="go" type="submit">${isNew ? "Creează contul" : "Intră"}</button>
     </form>
@@ -712,7 +715,7 @@ function viewEntry(msg, tab){
     if (isNew && !slugOf(fn)) { err.textContent = "Scrie prenumele."; first.focus(); return; }
     if (isNew ? !EMAIL_RE.test(em) : !em) { err.textContent = isNew ? "Scrie o adresă de email validă." : "Scrie emailul."; email.focus(); return; }
     if (pw.value.length < (isNew ? 6 : 1)) { err.textContent = isNew ? "Parola trebuie să aibă cel puțin 6 caractere." : "Scrie parola."; pw.focus(); return; }
-    lsSet("candela:remember", $("#remember").checked);
+    lsSet("candela:remember", true);
     const btn = $("#go"), label = btn.textContent; btn.disabled = true; btn.textContent = isNew ? "Se creează…" : "Se verifică…";
     const r = isNew ? await store.signup(fn, ln, em, pw.value) : await store.login(em, pw.value);
     if (!r.ok){
@@ -775,10 +778,8 @@ function arc(p, r, color){
   const C = 2*Math.PI*r, L = C*Math.max(p,2)/100;
   return `<circle cx="27" cy="27" r="${r}" fill="none" stroke="${color}" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="${L} ${C}" transform="rotate(-90 27 27)"/>`;
 }
-function tileSVG(c){
-  const e = chapStat(c,"easy"), h = chapStat(c,"hard");
-  return `<svg viewBox="0 0 54 54" aria-hidden="true"><circle class="trk" cx="27" cy="27" r="24" fill="none" stroke-width="2.6"/><circle class="trk" cx="27" cy="27" r="19.5" fill="none" stroke-width="2.6"/>${arc(e,24,"var(--cedar)")}${arc(h,19.5,"var(--oil)")}</svg>`;
-}
+// a chapter answered 100% at one level or more gets a small check
+const chapDone = c => chapStat(c,"easy") === 100 || chapStat(c,"hard") === 100;
 function headerHTML(){
   const n = S.player.name;
   if (S.player.guest) return `<header class="top"><div class="brand">${lampSVG(30)} Candela</div>
@@ -800,12 +801,9 @@ function openProfile(){
   const X = `<button class="icon-btn prof-x" id="pfX" aria-label="Închide"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>`;
   const show = () => {
     const h = p.history, tests = h.length, avg = tests ? Math.round(h.reduce((s,x)=>s+x.pct,0)/tests) : 0;
-    const best = tests ? Math.max(...h.map(x=>x.pct)) : 0;
     const rank = S.board ? S.board.findIndex(x => x.me) : -1;
     const okE = p.ok.filter(id => /^\d+e/.test(id)).length, okH = p.ok.filter(id => /^\d+h/.test(id)).length;
     const totE = totalCount("easy"), totH = totalCount("hard");
-    const chs = new Set(Object.keys(p.chap).map(k=>parseInt(k))).size;
-    const last = h.length ? h[h.length-1] : null;
     const pbar = (label, n, tot, color) => `<div class="pf-bar"><div class="pf-bar-h"><span>${label}</span><b>${n} / ${tot}</b></div><div class="bar"><i style="width:${Math.max(n/tot*100, n?2:0)}%;background:${color}"></i></div></div>`;
     sheet.innerHTML = `${X}
       <div class="pf-head">
@@ -814,17 +812,13 @@ function openProfile(){
         ${p.child ? `<p class="prof-mail">Profil de copil, pe contul tău</p>` : store.hasEmail() ? `<p class="prof-mail">${esc(store.email)}</p>` : `<p class="prof-mail warn">Adaugă un email: cu el intri în cont de acum înainte.</p>`}
         ${rank >= 0 ? `<span class="badge-rank">Locul ${rank+1} din ${S.board.length} în clasament</span>` : ""}
       </div>
-      <div class="kv">
+      <div class="kv two">
         <div class="stat"><b>${tests}</b><small>${tests===1?"test":"teste"}</small></div>
         <div class="stat"><b>${tests ? avg+"%" : "–"}</b><small>media</small></div>
-        <div class="stat"><b>${tests ? best+"%" : "–"}</b><small>cel mai bun</small></div>
       </div>
       <div class="pf-card">
-        <div class="pf-row"><span>Din carte stăpânit</span><b>${String(mastery(p)).replace(".",",")}%</b></div>
         ${pbar("Întrebări ușoare", okE, totE, "var(--cedar)")}
         ${pbar("Întrebări grele", okH, totH, "var(--oil)")}
-        <div class="pf-row"><span>Capitole exersate</span><b>${chs} / 31</b></div>
-        ${last ? `<div class="pf-row"><span>Ultimul test</span><b>${esc(chaptersLabel(last.chs))} · ${last.pct}%</b></div>` : ""}
       </div>
       <label class="remember pf-hide"><input type="checkbox" id="pfHide" ${p.hidden ? "" : "checked"}> ${p.child ? "Apare în clasament" : "Apar în clasament"}</label>
       ${!p.child && store.isParent ? `<div class="pf-card" id="pfKids"></div>` : ""}
@@ -982,20 +976,14 @@ const MODE_NOTE = { easy: "Întrebări generale despre poveste: cine, ce și de 
 function viewHome(){
   const p = S.player, h = p.history;
   const tests = h.length, avg = tests ? Math.round(h.reduce((s,x)=>s+x.pct,0)/tests) : 0;
-  const touched = new Set(Object.keys(p.chap).map(k=>parseInt(k))).size;
   const first = p.name.split(" ")[0];
   mount(`${headerHTML()}
   <div class="home">
   <section class="h-intro">
-    <div class="hello">${tests ? `<span class="eyebrow">Bine ai revenit</span>` : ""}
-      <h2>${p.guest ? (tests ? "Continuăm?" : "Bun venit!") : tests ? `Continuăm, ${esc(first)}?` : `Bun venit, ${esc(first)}.`}</h2>
+    <div class="hello">
+      <h2>${p.guest ? "Bun venit!" : `Bun venit, ${esc(first)}.`}</h2>
       ${familyHTML()}
-      ${p.guest ? `<p class="guest-line">Joci ca invitat. <button class="link" id="gIn" type="button">Conectează-te</button> ca să-ți păstrezi rezultatele.</p>` : ""}</div>
-    ${tests ? `<div class="stats">
-      <div class="stat"><b>${tests}</b><small>teste făcute</small></div>
-      <div class="stat"><b>${avg}%</b><small>media</small></div>
-      <div class="stat"><b>${String(mastery(p)).replace(".",",")}%</b><small>stăpânit</small></div>
-    </div>` : ""}
+</div>
     ${resumeHTML()}
   </section>
   <section class="h-verse"><div class="lamp-wrap"><div class="lamp-glow"></div>${lampSVG(46)}</div><p class="verse-quote">„Candela lui Dumnezeu nu se stinsese încă.”<span class="ref">1 Sam. 3:3</span></p></section>
@@ -1007,8 +995,7 @@ function viewHome(){
         <button data-scope="one">Un capitol</button><button data-scope="many">Mai multe</button><button data-scope="all">Toată cartea</button>
       </div>
       
-      <div class="grid" id="grid">${Array.from({length:31},(_,i)=>i+1).map(c=>`<button class="tile" data-c="${c}" aria-pressed="false" title="${c}. ${esc(TITLES[c-1])}" aria-label="Capitolul ${c}: ${esc(TITLES[c-1])}">${tileSVG(c)}<span class="n">${c}</span><i class="check" aria-hidden="true"></i></button>`).join("")}</div>
-      <div class="legend"><span><i style="background:var(--cedar)"></i>scor maxim ușor</span><span><i style="background:var(--oil)"></i>scor maxim greu</span></div>
+      <div class="grid" id="grid">${Array.from({length:31},(_,i)=>i+1).map(c=>`<button class="tile" data-c="${c}" aria-pressed="false" title="${c}. ${esc(TITLES[c-1])}" aria-label="Capitolul ${c}: ${esc(TITLES[c-1])}${chapDone(c) ? ", făcut cu 100%" : ""}"><span class="n">${c}</span><i class="check" aria-hidden="true"></i>${chapDone(c) ? `<i class="done-mark" aria-hidden="true">${CHECK}</i>` : ""}</button>`).join("")}</div>
 
       <div class="startbar"><button class="btn btn-primary btn-block" id="start"></button></div>
     </div>
@@ -1018,7 +1005,7 @@ function viewHome(){
 
   <section class="h-hist">
     <div class="section-h"><h3>Istoric</h3></div>
-    <div class="history">${h.length ? h.slice(-6).reverse().map(x=>`
+    <div class="history">${h.length ? h.slice(-3).reverse().map(x=>`
       <div class="hrow"><span class="badge ${x.mode}">${MODE_LABEL[x.mode]}</span><div style="min-width:0"><b style="font-weight:600">${esc(chaptersLabel(x.chs))}</b><small>${dateLabel(x.at)} · ${x.score}/${x.total} puncte</small></div><span class="pct">${x.pct}%</span></div>`).join("")
       : `<div class="empty">Niciun test încă.</div>`}</div>
     <p class="help-line"><button class="link" id="help" type="button">Cum funcționează?</button></p>
@@ -1221,7 +1208,7 @@ function viewQuestion(first){
   $("#qcount").textContent = `${Z.i+1}/${n}`;
   const card = document.createElement("article");
   card.className = "qcard enter";
-  card.innerHTML = `<div class="qmeta"><span class="qtype">${TYPE_LABEL[q.t]}${Z.mode==="both"?` · ${MODE_LABEL[q.mode]}`:""}</span><span class="ref">${refLabel(q.ref)}</span></div>
+  card.innerHTML = `<div class="qmeta"><span class="qtype">${q.t==="tf"||q.t==="one" ? "" : TYPE_LABEL[q.t]}${Z.mode==="both"?`${q.t==="tf"||q.t==="one" ? "" : " · "}${MODE_LABEL[q.mode]}`:""}</span><span class="ref">${refLabel(q.ref)}</span></div>
     ${q.t==="fill" ? `${fillHTML(q)}` : `<p class="qtext">${esc(q.q.replace(/\s*\(pot fi mai multe[^)]*\)/i, ""))}</p>${q.t==="multi"?`<p class="qhint">Bifează toate răspunsurile corecte. Pot fi mai multe sau niciunul.</p>`:""}${q.t==="match"?`<p class="qhint">Atinge un element din stânga, apoi perechea lui din dreapta.</p>`:""}`}
     <div class="answers" id="ans">${answersHTML(q)}</div><div id="fb"></div>
     <p class="keys">${({tf:"Taste: A adevărat · F fals · Enter verifică", one:"Taste: A, B, C… · Enter verifică", multi:"Taste: A, B, C… · Enter verifică", fill:"Enter trece la căsuța următoare", match:"Enter verifică"})[q.t]}</p>`;
@@ -1421,21 +1408,43 @@ function mistakeHTML({q, a}){
 }
 
 /* ---------- reading a chapter before the test ---------- */
+/* highlighted verses ("ch:v"): kept on the phone per player, and on the account when signed in */
+const hlKey = () => "candela:hl:" + (S.player.guest ? "guest" : store.pid);
+const hlGet = () => new Set(lsGet(hlKey(), []));
+const hlSave = set => lsSet(hlKey(), [...set]);
+async function hlSync(){
+  if (S.player.guest) return false;
+  const r = await store.rpc("my_highlights", { p_player: store.pid });
+  if (r.ok) hlSave(new Set((r.data || []).map(x => `${x.ch}:${x.v}`)));
+  return r.ok;
+}
+async function hlToggle(c, el){
+  const k = `${c}:${el.dataset.v}`, set = hlGet(), on = !set.has(k);
+  on ? set.add(k) : set.delete(k); hlSave(set); el.classList.toggle("hl", on);
+  lsSet("candela:hlhint", true); const hint = $(".hl-hint"); if (hint) hint.remove();
+  if (S.player.guest) return;
+  const r = await store.rpc("set_highlight", { p_player: store.pid, p_ch: c, p_v: +el.dataset.v, p_on: on });
+  if (!r.ok){ const back = hlGet(); on ? back.delete(k) : back.add(k); hlSave(back); el.classList.toggle("hl", !on); toast("Nu s-a putut salva. Verifică internetul."); }
+}
+
 /* the whole book can be read, one chapter at a time; the last chapter read is remembered */
 function viewRead(c){
   c = Math.min(31, Math.max(1, +c || 1)); lsSet("candela:read", c);
-  const vs = TEXT[c] || [];
+  const vs = TEXT[c] || [], hl = hlGet();
   mount(`<section class="reader">
     <div class="reader-h"><button class="icon-btn" id="rBack" type="button" aria-label="Înapoi"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3L5 8l5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       <div><span class="eyebrow">1 Samuel ${c}</span><h2>${esc(TITLES[c-1])}</h2></div></div>
     <label class="r-pick"><span>Capitolul</span><select class="input" id="rPick">${TITLES.map((t, i) => `<option value="${i+1}" ${i+1 === c ? "selected" : ""}>${i+1}. ${esc(t)}</option>`).join("")}</select></label>
-    <div class="reader-text">${vs.map((v, i) => `<p data-v="${i+1}"><sup>${i+1}</sup>${esc(v)}</p>`).join("")}</div>
+    ${lsGet("candela:hlhint", false) ? "" : `<p class="hl-hint">Atinge un verset ca să-l colorezi. Atinge-l din nou ca să-l ștergi.</p>`}
+    <div class="reader-text">${vs.map((v, i) => `<p data-v="${i+1}" class="${hl.has(`${c}:${i+1}`) ? "hl" : ""}"><sup>${i+1}</sup>${esc(v)}</p>`).join("")}</div>
     <div class="r-nav">${c > 1 ? `<button class="btn btn-ghost" id="rPrev" type="button">← Capitolul ${c-1}</button>` : "<span></span>"}${c < 31 ? `<button class="btn btn-ghost" id="rNext" type="button">Capitolul ${c+1} →</button>` : ""}</div>
     <div class="startbar"><button class="btn btn-primary btn-block" id="rGo" type="button"><span class="st-main">Fă testul pe capitolul ${c}</span></button></div>
   </section>`);
   document.body.insertAdjacentHTML("beforeend", `${c > 1 ? `<button class="r-side l" id="rSideP" type="button" aria-label="Capitolul ${c-1}" title="Capitolul ${c-1}"><svg width="18" height="18" viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3L5 8l5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>` : ""}
   ${c < 31 ? `<button class="r-side r" id="rSideN" type="button" aria-label="Capitolul ${c+1}" title="Capitolul ${c+1}"><svg width="18" height="18" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>` : ""}`);
   $("#rBack").onclick = () => viewHome();
+  $(".reader-text").onclick = e => { const el = e.target.closest("p[data-v]"); if (el && !String(getSelection())) hlToggle(c, el); };
+  hlSync().then(ok => { if (!ok || !$(".reader") || +$("#rPick").value !== c) return; const now = hlGet(); app.querySelectorAll(".reader-text p[data-v]").forEach(p => p.classList.toggle("hl", now.has(`${c}:${p.dataset.v}`))); });
   $("#rPick").onchange = e => viewRead(+e.target.value);
   if ($("#rPrev")) $("#rPrev").onclick = () => viewRead(c - 1);
   if ($("#rNext")) $("#rNext").onclick = () => viewRead(c + 1);
