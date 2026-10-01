@@ -448,6 +448,12 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 @media (max-width:340px){.who.acct .long{display:none}}
 .sh-lvl{display:grid;gap:6px}
 .start-sheet{gap:12px}
+.seg.cnt4{grid-template-columns:1fr 1fr 1fr 1.5fr}
+.seg.cnt4 button{white-space:nowrap}
+@media (max-width:360px){.seg.cnt4 button{font-size:13.5px;padding-inline:4px}}
+.sh-own{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--ink-2)}
+.sh-own .input{width:90px;text-align:center;font-size:18px;padding:8px}
+.sh-own[hidden]{display:none}
 .start-sheet .sheet-h h3{font-size:21px}
 .start-sheet .read-link{margin:0 auto}
 .start-sheet #shGo{min-height:54px;padding-block:8px}
@@ -1119,36 +1125,39 @@ const CHECK = `<svg class="done-ic" width="13" height="13" viewBox="0 0 16 16" a
 const levelDone = (chs, m) => chs.every(c => (m === "both" ? ["easy","hard"] : [m]).every(k => chapStat(c, k) === 100));
 const whatLabel = chs => chs.length === 1 ? `${chs[0]}. ${TITLES[chs[0]-1]}` : chs.length === 31 ? "Toată cartea" : chaptersLabel(chs);
 function openOptions(chs = [...S.sel].sort((a,b)=>a-b)){
-  let mode = "easy", list, pool, perQ, n;
+  // how many questions: a quarter, half, all, or a number the user types
+  let mode = "easy", list, pool, perQ, n, pick = "all", typed = 10;
   const bg = document.createElement("div"); bg.className = "sheet-bg";
   bg.innerHTML = `<div class="sheet start-sheet" role="dialog" aria-modal="true" aria-labelledby="shT">
     <div class="sheet-h"><h3 id="shT">${esc(whatLabel(chs))}</h3><button class="icon-btn" id="shX" aria-label="Închide"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
     <div class="sh-lvl"><span class="sh-l">Nivel</span>
       <div class="seg" role="group" aria-label="Nivel">${["easy","hard","both"].map(m=>`<button type="button" data-m="${m}">${MODE_LABEL[m]}${levelDone(chs, m) ? CHECK : ""}</button>`).join("")}</div>
       <small class="sh-note" id="shNote"></small></div>
-    <div class="sh-lvl"><span class="sh-l">Întrebări</span><div class="seg" role="group" aria-label="Câte întrebări" id="shCnt"></div></div>
+    <div class="sh-lvl"><span class="sh-l">Întrebări</span><div class="seg cnt4" role="group" aria-label="Câte întrebări" id="shCnt">${[["q","25%"],["h","50%"],["all","Toate"],["own","La alegere"]].map(([k,l])=>`<button type="button" data-p="${k}">${l}</button>`).join("")}</div>
+      <label class="sh-own" id="shOwn" hidden><input class="input" id="shN" type="number" inputmode="numeric" min="1" aria-label="Număr de întrebări"><span id="shOf"></span></label></div>
     <button class="btn btn-primary btn-block" id="shGo"></button>
     ${chs.length === 1 && !$(".reader") ? `<button class="link read-link" id="shRead" type="button">Citește întâi capitolul ${chs[0]}</button>` : ""}
   </div>`;
   document.body.appendChild(bg);
-  const set = v => { n = v;
-    bg.querySelectorAll("[data-n]").forEach(c => c.setAttribute("aria-pressed", +c.dataset.n === n)); bg.querySelector("#shGo").innerHTML = `<span class="st-main">Începe · ${n} întrebări</span><span class="st-sub">${MODE_LABEL[mode]} · ${durLabel(perQ * n)}</span>`; };
+  const set = () => {
+    n = pick === "q" ? Math.max(1, Math.round(pool / 4)) : pick === "h" ? Math.max(1, Math.round(pool / 2)) : pick === "own" ? Math.max(1, Math.min(pool, typed || 1)) : pool;
+    bg.querySelectorAll("[data-p]").forEach(c => c.setAttribute("aria-pressed", c.dataset.p === pick));
+    bg.querySelector("#shOwn").hidden = pick !== "own"; bg.querySelector("#shOf").textContent = `din ${pool}`; bg.querySelector("#shN").max = pool; bg.querySelector("#shGo").innerHTML = `<span class="st-main">Începe · ${n} întrebări</span><span class="st-sub">${MODE_LABEL[mode]} · ${durLabel(perQ * n)}</span>`; };
   const setMode = m => {
-    const all = !n || n >= pool; // "Toate" stays "Toate" when the level changes
     mode = m; list = buildPool(chs, mode); pool = list.length; perQ = estSecs(list) / pool;
     bg.querySelectorAll("[data-m]").forEach(b => b.setAttribute("aria-pressed", b.dataset.m === mode));
     const done = levelDone(chs, mode);
     const note = bg.querySelector("#shNote"); note.classList.toggle("ok", done);
     note.innerHTML = done ? `${CHECK} Făcut deja, cu 100%. Îl poți reface.` : esc(MODE_NOTE[mode]);
-    const opts = [10, 20, 30].filter(v => v < pool).concat(pool);
-    const keep = !all && opts.includes(n) ? n : pool;
-    const box = bg.querySelector("#shCnt"); box.style.gridTemplateColumns = `repeat(${opts.length},1fr)`;
-    box.innerHTML = opts.map(v => `<button type="button" data-n="${v}">${v === pool ? "Toate" : v}</button>`).join("");
-    box.querySelectorAll("[data-n]").forEach(c => c.onclick = () => set(+c.dataset.n));
-    set(keep);
+    set();
   };
   const close = () => bg.remove();
   setMode("easy");
+  bg.querySelectorAll("[data-p]").forEach(b => b.onclick = () => { pick = b.dataset.p; set(); if (pick === "own"){ const inp = bg.querySelector("#shN"); inp.value = Math.min(typed, pool); inp.focus(); inp.select(); } });
+  const inp = bg.querySelector("#shN");
+  inp.oninput = () => { if (inp.value !== "") { typed = Math.round(+inp.value) || 1; set(); } };
+  inp.onblur = () => { inp.value = n; };
+  inp.onkeydown = e => { if (e.key === "Enter"){ e.preventDefault(); inp.blur(); } };
   bg.querySelectorAll("[data-m]").forEach(b => b.onclick = () => setMode(b.dataset.m));
   bg.querySelector("#shX").onclick = close;
   bg.onclick = e => { if (e.target === bg) close(); };
