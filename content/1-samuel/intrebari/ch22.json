@@ -172,14 +172,18 @@
   {
    "t": "multi",
    "ref": "22:19",
-   "q": "Ce a cruțat Saul în cetatea Nob? (pot fi mai multe sau niciunul)",
+   "q": "Ce a trecut Saul prin ascuțișul sabiei în cetatea Nob? (pot fi mai multe sau niciunul)",
    "opts": [
     "Femeile",
     "Copiii",
     "Boii și oile",
-    "Pruncii"
+    "Caprele"
    ],
-   "a": []
+   "a": [
+    0,
+    1,
+    2
+   ]
   },
   {
    "t": "tf",
@@ -623,6 +627,28 @@
    "ref": "22:17",
    "q": "Saul i-a numit pe preoții de la Nob „preoții Domnului”.",
    "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "22:5",
+   "q": "După cuvântul prorocului Gad, David a plecat și a ajuns la pădurea Hachila.",
+   "a": false
+  },
+  {
+   "t": "multi",
+   "ref": "22:6-18",
+   "q": "Care dintre următoarele afirmații sunt adevărate?",
+   "opts": [
+    "Doeg a omorât în ziua aceea optzeci și cinci de oameni.",
+    "Oamenii uciși de Doeg purtau efodul de aur.",
+    "Saul ședea sub tamarisc, la Ghibea.",
+    "Ahimelec era fiul lui Abiatar.",
+    "Alergătorii lui Saul au lovit primii pe preoți."
+   ],
+   "a": [
+    0,
+    2
+   ]
   }
  ]
 }

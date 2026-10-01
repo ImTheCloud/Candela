@@ -225,12 +225,15 @@
    "ref": "6:2-9",
    "q": "Care dintre următoarele le-au cerut preoții și ghicitorii filistenilor? (pot fi mai multe sau niciunul)",
    "opts": [
-    "Să ardă chivotul",
+    "Să nu trimită chivotul cu mâna goală",
     "Să păstreze chivotul în templul lui Dagon",
-    "Să trimită chivotul pe umerii preoților lor",
+    "Să pună chivotul într-un car nou de tot",
     "Să trimită o oaste care să însoțească chivotul"
    ],
-   "a": []
+   "a": [
+    0,
+    2
+   ]
   },
   {
    "t": "tf",
@@ -604,6 +607,25 @@
     "Ale fiilor lui Anac"
    ],
    "a": 2
+  },
+  {
+   "t": "multi",
+   "ref": "6:1",
+   "q": "Cât timp a fost chivotul Domnului în țara filistenilor?",
+   "opts": [
+    "trei luni",
+    "patru luni",
+    "cinci luni",
+    "șase luni",
+    "douăzeci de luni"
+   ],
+   "a": []
+  },
+  {
+   "t": "tf",
+   "ref": "6:16",
+   "q": "După ce au văzut ce s-a întâmplat la Bet-Șemeș, cei cinci domnitori ai filistenilor s-au întors la Gat în aceeași zi.",
+   "a": false
   }
  ]
 }

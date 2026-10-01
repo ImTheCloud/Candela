@@ -1,6 +1,6 @@
 # Candela
 
-Teste biblice pentru pregătire, după traducerea Cornilescu. Prima carte: **1 Samuel** (31 de capitole, 1.411 întrebări, nivel ușor și greu, 5 tipuri de întrebări).
+Teste biblice pentru pregătire, după traducerea Cornilescu. Prima carte: **1 Samuel** (31 de capitole, 2.004 de întrebări, nivel ușor și greu, 5 tipuri de întrebări).
 
 ## Structură
 - `src/app.html` — aplicația (HTML, CSS, JS, fără framework).

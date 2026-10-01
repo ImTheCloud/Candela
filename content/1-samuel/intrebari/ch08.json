@@ -204,11 +204,13 @@
    "q": "Care dintre următoarele a spus Samuel că le va lua împăratul? (pot fi mai multe sau niciunul)",
    "opts": [
     "Casele lor",
-    "Aurul și argintul lor",
+    "Cea mai bună parte din câmpiile și viile lor",
     "Chivotul Domnului",
     "Cetățile lor întărite"
    ],
-   "a": []
+   "a": [
+    1
+   ]
   },
   {
    "t": "match",
@@ -500,6 +502,25 @@
    "t": "tf",
    "ref": "8:16",
    "q": "Samuel a spus că împăratul va lua cei mai slabi boi și măgari ai poporului.",
+   "a": false
+  },
+  {
+   "t": "multi",
+   "ref": "8:4",
+   "q": "Unde au venit bătrânii lui Israel la Samuel, ca să-i ceară un împărat?",
+   "opts": [
+    "la Beer-Șeba",
+    "la Mițpa",
+    "la Silo",
+    "la Betel",
+    "la Ghilgal"
+   ],
+   "a": []
+  },
+  {
+   "t": "tf",
+   "ref": "8:7",
+   "q": "Domnul i-a zis lui Samuel: „nu pe Mine Mă leapădă, ci pe tine te leapădă”.",
    "a": false
   }
  ]
