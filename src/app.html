@@ -92,7 +92,7 @@ p{margin:0}
 .top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px}
 .brand{display:flex;align-items:center;gap:6px;font-family:var(--f-display);font-size:28px;line-height:1}
 .brand svg{margin:-10px -6px -4px -12px}
-.who{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--ink-2);min-width:0;border:0;background:transparent;padding:4px 4px 4px 12px;border-radius:999px;transition:background .2s}
+.who{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--ink-2);min-width:0;border:0;background:transparent;padding:4px;border-radius:999px;transition:background .2s}
 .who:hover{background:var(--surface-2)}
 .prof{justify-items:center;text-align:center;position:relative;padding-top:28px}
 .prof .prof-x{position:absolute;top:14px;right:14px}
@@ -156,9 +156,9 @@ p{margin:0}
 .tile .n{font-family:var(--f-display);font-size:22px;line-height:1;position:relative}
 .tile[aria-pressed="true"]{background:var(--oil-soft);border-color:var(--oil);color:var(--oil-ink);box-shadow:0 0 0 3px color-mix(in oklab,var(--oil) 18%,transparent)}
 .tile[aria-pressed="true"] .trk{stroke:color-mix(in oklab,var(--oil) 20%,transparent)}
-#start{display:grid;gap:2px;justify-items:center;padding-block:12px;min-height:60px;line-height:1.2}
-#start .st-main{font-size:17px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-#start .st-sub{font-size:13px;font-weight:500;opacity:.78;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#start,#rGo{display:grid;gap:2px;justify-items:center;padding-block:12px;min-height:60px;line-height:1.2}
+#start .st-main,#rGo .st-main{font-size:17px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#start .st-sub,#rGo .st-sub{font-size:13px;font-weight:500;opacity:.78;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .trk{stroke:var(--surface-2)}
 .legend{display:flex;gap:14px;font-size:12px;color:var(--ink-2);margin-top:10px}
 .legend i{display:inline-block;width:10px;height:3px;border-radius:2px;margin-right:5px;vertical-align:middle}
@@ -428,10 +428,16 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .read-btn:hover{background:var(--surface-2)}
 @media (max-width:420px){.read-btn{padding:7px 11px 7px 9px;font-size:13.5px}.top-r{gap:6px}}
 @media (max-width:350px){.read-btn{padding:8px}.read-btn span{display:none}}
+@media (max-width:420px){.top-r:has(.acct) .read-btn{padding:8px}.top-r:has(.acct) .read-btn span{display:none}.who.acct{padding:8px 14px}.who.acct .avatar{display:none}}
+@media (max-width:340px){.who.acct .long{display:none}}
 .r-pick{display:grid;gap:6px;font-size:14px;font-weight:600}
 .r-pick select{font-size:16px;padding:11px 14px;appearance:auto}
 .r-nav{display:flex;justify-content:space-between;gap:10px}
 .r-nav .btn{min-height:44px;padding:10px 16px;font-size:15px}
+.r-side{position:fixed;top:50%;transform:translateY(-50%);z-index:6;width:34px;height:56px;display:grid;place-items:center;border:1px solid var(--line);background:color-mix(in srgb,var(--surface) 92%,transparent);color:var(--ink);border-radius:12px;box-shadow:var(--shadow);padding:0}
+.r-side:hover{background:var(--surface-2)}
+.r-side.l{left:2px}.r-side.r{right:2px}
+@media (min-width:760px){.r-side{width:44px;height:64px}.r-side.l{left:calc(50% - 380px)}.r-side.r{right:calc(50% - 380px)}}
 .del-link{color:var(--bad);justify-self:center;font-size:14px}
 .forgot{justify-self:end;margin-top:-8px;font-size:14px}
 @media (max-width:420px){.brow-l{gap:8px;padding:7px 8px}}
@@ -630,7 +636,7 @@ if (!S.sel.size) S.sel.add(1);
 if (S.scope === "one" && S.sel.size > 1) S.sel = new Set([[...S.sel][0]]);
 function persistPrefs(){ lsSet("candela:scope",S.scope); lsSet("candela:sel",[...S.sel]); lsSet("candela:mode",S.mode); lsSet("candela:count",S.count); }
 const app = $("#app");
-function mount(html){ app.innerHTML = `<div class="view">${html}</div>`; window.scrollTo({top:0}); }
+function mount(html){ document.querySelectorAll(".r-side").forEach(b => b.remove()); app.innerHTML = `<div class="view">${html}</div>`; window.scrollTo({top:0}); }
 
 function lampSVG(size=64){
   return `<svg width="${size*1.6}" height="${size*1.6}" viewBox="0 0 160 160" aria-hidden="true">
@@ -757,14 +763,14 @@ function tileSVG(c){
 function headerHTML(){
   const n = S.player.name;
   if (S.player.guest) return `<header class="top"><div class="brand">${lampSVG(30)} Candela</div>
-  <div class="top-r">${readBtnHTML()}<button class="who acct" id="acct" type="button"><b>Intră în cont</b><span class="avatar"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="5.5" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M2.5 14c.8-3 3-4.5 5.5-4.5s4.7 1.5 5.5 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></button></div></header>`;
+  <div class="top-r">${readBtnHTML()}<button class="who acct" id="acct" type="button" aria-label="Intră în cont"><b>Intră<span class="long"> în cont</span></b><span class="avatar"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="5.5" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M2.5 14c.8-3 3-4.5 5.5-4.5s4.7 1.5 5.5 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></button></div></header>`;
   return `<header class="top"><div class="brand">${lampSVG(30)} Candela</div>
   <div class="top-r">${readBtnHTML()}${whoHTML()}</div></header>`;
 }
 const BOOK = `<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6.5C10 5 7.5 4.5 4 4.5v13c3.5 0 6 .5 8 2 2-1.5 4.5-2 8-2v-13c-3.5 0-6 .5-8 2zM12 6.5v13" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>`;
 function readBtnHTML(){ return `<button class="read-btn" id="readBook" type="button" aria-label="Citește cartea">${BOOK}<span>Citește</span></button>`; }
 function initials(n){ const w = n.trim().split(/\s+/); return ((w[0]||"?")[0] + (w.length > 1 ? w[w.length-1][0] : "")).toUpperCase(); }
-function whoHTML(){ const n = S.player.name; return `<button class="who" id="who" type="button" aria-label="Profilul meu"><b>${esc(n)}</b><span class="avatar">${esc(initials(n))}</span></button>`; }
+function whoHTML(){ const n = S.player.name; return `<button class="who" id="who" type="button" aria-label="Profilul meu · ${esc(n)}" title="${esc(n)}"><span class="avatar">${esc(initials(n))}</span></button>`; }
 function openProfile(){
   const p = S.player; if (!p || p.guest) return;
   const bg = document.createElement("div"); bg.className = "sheet-bg";
@@ -1414,19 +1420,23 @@ function streakHTML(p){
 /* the whole book can be read, one chapter at a time; the last chapter read is remembered */
 function viewRead(c){
   c = Math.min(31, Math.max(1, +c || 1)); lsSet("candela:read", c);
-  const vs = TEXT[c] || [];
+  const vs = TEXT[c] || [], list = buildPool([c], S.mode), n = list.length;
   mount(`<section class="reader">
     <div class="reader-h"><button class="icon-btn" id="rBack" type="button" aria-label="Înapoi"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3L5 8l5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       <div><span class="eyebrow">1 Samuel ${c}</span><h2>${esc(TITLES[c-1])}</h2></div></div>
     <label class="r-pick"><span>Capitolul</span><select class="input" id="rPick">${TITLES.map((t, i) => `<option value="${i+1}" ${i+1 === c ? "selected" : ""}>${i+1}. ${esc(t)}</option>`).join("")}</select></label>
     <div class="reader-text">${vs.map((v, i) => `<p data-v="${i+1}"><sup>${i+1}</sup>${esc(v)}</p>`).join("")}</div>
     <div class="r-nav">${c > 1 ? `<button class="btn btn-ghost" id="rPrev" type="button">← Capitolul ${c-1}</button>` : "<span></span>"}${c < 31 ? `<button class="btn btn-ghost" id="rNext" type="button">Capitolul ${c+1} →</button>` : ""}</div>
-    <div class="startbar"><button class="btn btn-primary btn-block" id="rGo" type="button">Am citit · Începe testul</button></div>
+    <div class="startbar"><button class="btn btn-primary btn-block" id="rGo" type="button"><span class="st-main">Fă testul pe capitolul ${c}</span><span class="st-sub">${n} întrebări despre ce ai citit${n ? ` · ${durLabel(estSecs(list))}` : ""}</span></button></div>
   </section>`);
+  document.body.insertAdjacentHTML("beforeend", `${c > 1 ? `<button class="r-side l" id="rSideP" type="button" aria-label="Capitolul ${c-1}" title="Capitolul ${c-1}"><svg width="18" height="18" viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3L5 8l5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>` : ""}
+  ${c < 31 ? `<button class="r-side r" id="rSideN" type="button" aria-label="Capitolul ${c+1}" title="Capitolul ${c+1}"><svg width="18" height="18" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>` : ""}`);
   $("#rBack").onclick = () => viewHome();
   $("#rPick").onchange = e => viewRead(+e.target.value);
   if ($("#rPrev")) $("#rPrev").onclick = () => viewRead(c - 1);
   if ($("#rNext")) $("#rNext").onclick = () => viewRead(c + 1);
+  if ($("#rSideP")) $("#rSideP").onclick = () => viewRead(c - 1);
+  if ($("#rSideN")) $("#rSideN").onclick = () => viewRead(c + 1);
   $("#rGo").onclick = () => { S.scope = "one"; S.sel = new Set([c]); persistPrefs(); startQuiz(); };
 }
 
