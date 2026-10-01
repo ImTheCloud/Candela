@@ -36,7 +36,9 @@ button{cursor:pointer}
 :focus-visible{outline:2px solid var(--oil);outline-offset:2px}
 h1,h2,h3{font-family:var(--f-display);font-weight:400;text-wrap:balance;margin:0;letter-spacing:-.01em}
 p{margin:0}
-.wrap{max-width:640px;margin:0 auto;padding-inline:16px;padding-block:20px 48px}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:16px;padding-block:20px 48px}
+.view{max-width:640px;margin:0 auto}
+.view:has(.home), .view:has(.entry){max-width:1180px}
 .eyebrow{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
 .ref{font-family:var(--f-mono);font-size:12px;font-weight:500;letter-spacing:.02em;color:var(--oil-ink);background:var(--oil-soft);padding:3px 8px;border-radius:999px;white-space:nowrap}
 .muted{color:var(--ink-2)}
@@ -120,7 +122,8 @@ p{margin:0}
 .chap-list{margin-top:12px;font-size:14px;color:var(--ink-2);min-height:21px}
 .legend{display:flex;gap:14px;font-size:12px;color:var(--ink-2);margin-top:10px}
 .legend i{display:inline-block;width:10px;height:3px;border-radius:2px;margin-right:5px;vertical-align:middle}
-.opts-row{display:grid;gap:12px}
+.opts-row{display:grid;gap:4px;background:var(--surface);border-radius:20px;padding:6px 18px;box-shadow:var(--shadow)}
+.entry-hero{display:grid;gap:24px}
 .toggle{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
 .toggle:first-child{border-top:0}
 .toggle small{display:block;color:var(--ink-2);font-size:13px}
@@ -232,6 +235,65 @@ p{margin:0}
 .confirm{display:grid;gap:10px;margin-top:12px;padding:14px;border-radius:14px;background:var(--surface-2)}
 footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 @media (max-width:420px){.qtext{font-size:18.5px}.fill{font-size:19px}.stat b{font-size:24px}.ans div{grid-template-columns:1fr;gap:0}}
+/* v3: accounts, leaderboard, multi-chapter, desktop */
+.form-error{min-height:0;color:var(--bad);font-size:14px;font-weight:500;margin:0}
+.form-error:empty{display:none}
+.input.pin{letter-spacing:.5em;font-family:var(--f-mono);font-size:22px;text-align:center;max-width:12rem}
+.entry-form{display:grid;gap:16px}
+.boot{display:grid;place-items:center;min-height:60vh;opacity:.9}
+.boot .flame{animation:flicker 1.2s ease-in-out infinite}
+.section-h.first{margin-top:0}
+.small{font-size:13px}
+.toggle.col{display:grid;gap:10px;justify-content:stretch}
+.logout-row{display:flex;justify-content:center;margin-top:12px}
+.home{display:grid;gap:8px;grid-template-areas:"intro" "config" "board" "hist"}
+.h-intro{grid-area:intro}.h-config{grid-area:config}.h-board{grid-area:board}.h-hist{grid-area:hist}
+.panel{display:block}
+.presets{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.presets .chip b{font-weight:700}
+.chip.ghost{border-style:dashed;color:var(--ink-2)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.seg.scope{margin-top:0}
+.seg.scope button{font-size:14px;white-space:nowrap;padding-inline:4px}
+.grid{margin-top:12px}
+.tile .check{position:absolute;top:4px;right:4px;width:16px;height:16px;border-radius:50%;background:var(--oil);display:none}
+.tile .check::after{content:"";position:absolute;left:5px;top:2.5px;width:4px;height:8px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+.grid[data-scope="many"] .tile[aria-pressed="true"] .check{display:block}
+.grid[data-scope="all"] .tile[aria-pressed="true"]{box-shadow:none}
+.board{display:grid;gap:6px;background:var(--surface);border-radius:18px;padding:8px;box-shadow:var(--shadow)}
+.brow-l{display:grid;grid-template-columns:2rem auto minmax(0,1fr) 7.5rem;align-items:center;gap:10px;padding:10px 10px;border-radius:12px}
+.brow-l.me{background:var(--oil-soft)}
+.brow-l .rank{font-family:var(--f-display);font-size:20px;text-align:center;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.brow-l .rank.r1{color:var(--oil)}.brow-l .rank.r2{color:#8C9089}.brow-l .rank.r3{color:#A8693A}
+.avatar.sm{width:30px;height:30px;font-size:13px}
+.who-l{min-width:0}.who-l b{display:block;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.who-l em{font-style:normal;color:var(--oil-ink);font-weight:500}
+.who-l small{color:var(--ink-2);font-size:12.5px}
+.brow-l .m{display:grid;gap:4px;justify-items:end}
+.brow-l .m span{font-family:var(--f-mono);font-size:13px;font-variant-numeric:tabular-nums}
+.brow-l .m .bar{width:100%;height:5px}
+.board .gap{text-align:center;color:var(--ink-2);letter-spacing:.3em}
+.board .empty{border:0}
+@media (min-width:960px){
+  .wrap{padding-inline:32px;padding-block:28px 64px}
+  .entry{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);align-items:center;gap:56px;padding-top:6vh}
+  .entry-hero{display:grid;gap:22px}
+  .entry h1{text-align:left;font-size:88px}
+  .entry .verse-quote{text-align:left;margin:0}
+  .entry .lamp-wrap{justify-content:flex-start;height:170px}
+  .entry .features{text-align:left;max-width:26rem}
+  .entry-form{padding:32px}
+  .home{grid-template-columns:minmax(0,1fr) 440px;grid-template-rows:auto auto 1fr;grid-template-areas:"intro config" "board config" "hist config";column-gap:40px;align-items:start}
+  .entry .lamp-glow{left:-60px;right:auto;width:300px}
+  .h-config{position:sticky;top:20px;align-self:start}
+  .panel{background:var(--surface);border-radius:24px;padding:24px;box-shadow:var(--shadow)}
+  .panel .opts-row{background:none;box-shadow:none;padding:0}
+  .panel .startbar{position:static;background:none;padding-block:4px 0;margin-top:18px}
+  .hello h2{font-size:48px}
+  .stat b{font-size:34px}
+  .qcard{padding:30px 32px}
+  .qtext{font-size:22px}
+}
+@media (max-width:420px){.brow-l{grid-template-columns:1.6rem auto minmax(0,1fr) 4.6rem;gap:8px}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 </style>
 
@@ -275,61 +337,87 @@ function chaptersLabel(chs){
   return (s.length === 1 ? "Capitolul " : "Capitolele ") + parts.join(", ");
 }
 
-/* ---------- storage: shared db by name, local fallback ---------- */
+/* ---------- storage ----------
+   Hosted (Vercel): name + 4-digit PIN, progress merged server-side, shared leaderboard.
+   Artifact: the claude.ai db capability, keyed by name. Both keep a local copy. */
 const HOSTED = /*__HOSTED__*/false;
-const apiDb = {
-  doc(path){
-    const id = encodeURIComponent(path.split("/").pop());
-    return {
-      async get(){ const r = await fetch(`/api/player?id=${id}`, {cache:"no-store"}); if (r.status === 404) return {exists:false, data:()=>undefined}; if (!r.ok) throw {code:"unavailable"}; const d = await r.json(); return {exists:true, data:()=>d}; },
-      async set(data){ const r = await fetch(`/api/player?id=${id}`, {method:"POST", headers:{"content-type":"application/json"}, body:JSON.stringify(data)}); if (!r.ok) throw {code:"unavailable"}; }
-    };
-  }
-};
+async function api(path, body){
+  const r = await fetch(path, body ? {method:"POST", headers:{"content-type":"application/json"}, body:JSON.stringify(body)} : {cache:"no-store"});
+  let data = {}; try { data = await r.json(); } catch {}
+  return { status: r.status, ok: r.ok, data };
+}
 const store = {
-  db: null, writable: true, ready: false,
+  db: null, ready: false, session: null,
   async init(){
-    if (HOSTED) this.db = apiDb;
-    else try { if (window.claude && claude.use) this.db = await claude.use("db"); } catch { this.db = null; }
-    this.ready = true; renderSync();
+    if (!HOSTED) try { if (window.claude && claude.use) this.db = await claude.use("db"); } catch { this.db = null; }
+    this.ready = true;
   },
   blank(name){ return { name, history: [], chap: {}, updatedAt: 0 }; },
-  async load(name){
-    const slug = slugOf(name);
-    let local = lsGet("candela:p:" + slug, null);
-    let remote = null;
-    if (this.db){
-      try { const s = await this.db.doc("players/" + slug).get(); if (s.exists) remote = s.data(); } catch {}
+  norm(p, name){ p = p ? JSON.parse(JSON.stringify(p)) : this.blank(name); p.name = p.name || name; p.history = p.history || []; p.chap = p.chap || {}; return p; },
+  local(name){ return lsGet("candela:p:" + slugOf(name), null); },
+  /* returns {ok, profile} or {ok:false, error, retryAt} */
+  async login(name, pin){
+    if (HOSTED){
+      let r;
+      try { r = await api("/api/login", {name, pin}); } catch { return {ok:false, error:"network"}; }
+      if (!r.ok) return {ok:false, error:r.data.error || "server", retryAt:r.data.retryAt};
+      this.session = {name, pin}; lsSet("candela:session", this.session);
+      let p = this.norm(r.data.profile, name);
+      const pending = this.local(name);
+      if (pending && pending.pending){ const m = await this.push(p, pending); if (m) p = m; }
+      lsSet("candela:p:" + slugOf(name), p);
+      return {ok:true, profile:p, created:r.data.created};
     }
-    let p = [remote, local].filter(Boolean).sort((a,b)=>(b.updatedAt||0)-(a.updatedAt||0))[0];
-    p = p ? JSON.parse(JSON.stringify(p)) : this.blank(name);
-    p.name = p.name || name; p.history = p.history || []; p.chap = p.chap || {};
-    return p;
+    if (!this.ready) await Promise.race([this.initP, new Promise(r=>setTimeout(r,4000))]);
+    let remote = null;
+    if (this.db){ try { const d = await this.db.doc("players/" + slugOf(name)).get(); if (d.exists) remote = d.data(); } catch {} }
+    const p = [remote, this.local(name)].filter(Boolean).sort((a,b)=>(b.updatedAt||0)-(a.updatedAt||0))[0];
+    this.session = {name}; lsSet("candela:session", this.session);
+    return {ok:true, profile:this.norm(p, name)};
   },
+  async push(p, extra){
+    const profile = extra ? {history:[...p.history, ...(extra.history||[])], chap:{...(extra.chap||{}), ...p.chap}} : p;
+    try {
+      const r = await api("/api/save", {name:this.session.name, pin:this.session.pin, profile});
+      if (r.ok) return this.norm(r.data.profile, p.name);
+    } catch {}
+    return null;
+  },
+  /* saves, returns the (possibly merged) profile and whether it reached the server */
   async save(p){
     p.updatedAt = Date.now();
-    if (p.history.length > 120) p.history = p.history.slice(-120);
-    const slug = slugOf(p.name);
-    lsSet("candela:p:" + slug, p);
-    if (this.db && this.writable){
-      try { await this.db.doc("players/" + slug).set(JSON.parse(JSON.stringify(p))); return true; }
-      catch (e) { if (e && (e.code === "invalid_argument" || e.code === "not_granted" || e.code === "revoked")) { this.writable = false; renderSync(); } return false; }
+    const key = "candela:p:" + slugOf(p.name);
+    if (HOSTED){
+      const merged = await this.push(p);
+      if (merged){ lsSet(key, merged); return {saved:true, profile:merged}; }
+      lsSet(key, {...p, pending:true}); return {saved:false, profile:p};
     }
-    return false;
-  }
+    lsSet(key, p);
+    if (this.db){ try { await this.db.doc("players/" + slugOf(p.name)).set(JSON.parse(JSON.stringify(p))); return {saved:true, profile:p}; } catch {} }
+    return {saved:false, profile:p};
+  },
+  async board(){
+    if (!HOSTED) return null;
+    try { const r = await api("/api/leaderboard"); return r.ok ? r.data.players : null; } catch { return null; }
+  },
+  logout(){ this.session = null; lsSet("candela:session", null); }
 };
 
 /* ---------- state ---------- */
 const S = {
   player: null,
-  sel: new Set([[].concat(lsGet("candela:sel", [1]))[0] || 1]),
+  scope: lsGet("candela:scope", "one"),          // one | many | all
+  sel: new Set(lsGet("candela:sel", [1])),
   mode: lsGet("candela:mode", "easy"),
   count: lsGet("candela:count", 20),
   shuffle: lsGet("candela:shuffle", true),
   instant: lsGet("candela:instant", true),
   quiz: null,
+  board: null,
 };
-function persistPrefs(){ lsSet("candela:sel",[...S.sel]); lsSet("candela:mode",S.mode); lsSet("candela:count",S.count); lsSet("candela:shuffle",S.shuffle); lsSet("candela:instant",S.instant); }
+if (!S.sel.size) S.sel.add(1);
+if (S.scope === "one" && S.sel.size > 1) S.sel = new Set([[...S.sel][0]]);
+function persistPrefs(){ lsSet("candela:scope",S.scope); lsSet("candela:sel",[...S.sel]); lsSet("candela:mode",S.mode); lsSet("candela:count",S.count); lsSet("candela:shuffle",S.shuffle); lsSet("candela:instant",S.instant); }
 const app = $("#app");
 function mount(html){ app.innerHTML = `<div class="view">${html}</div>`; window.scrollTo({top:0}); }
 
@@ -347,41 +435,72 @@ function miniLamp(){ return `<svg width="22" height="22" viewBox="0 0 24 24" ari
 /* ---------- views ---------- */
 function totalCount(mode){ let n=0; for (const c in QUIZ){ if (mode!=="hard") n += (QUIZ[c].easy||[]).length; if (mode!=="easy") n += (QUIZ[c].hard||[]).length; } return n; }
 
-function viewEntry(){
-  const recent = lsGet("candela:recent", []);
+function viewEntry(msg){
+  const sess = lsGet("candela:session", null);
   mount(`
   <section class="entry">
-    <div class="lamp-wrap"><div class="lamp-glow"></div>${lampSVG(80)}</div>
-    <h1>Candela<span>Test biblic din 1 Samuel</span></h1>
-    <p class="verse-quote">„Candela lui Dumnezeu nu se stinsese încă.”<span class="ref">1 Sam. 3:3</span></p>
-    <form class="card" id="enter" autocomplete="off" style="display:grid;gap:16px">
-      <div class="field">
-        <label for="name">Cum te numești?</label>
-        <input class="input" id="name" name="name" maxlength="40" placeholder="ex. Maria" required>
-        <small class="muted">Fără parolă. Scrie același nume pe orice dispozitiv și îți regăsești progresul.</small>
+    <div class="entry-hero">
+      <div class="lamp-wrap"><div class="lamp-glow"></div>${lampSVG(80)}</div>
+      <h1>Candela<span>Test biblic din 1 Samuel</span></h1>
+      <p class="verse-quote">„Candela lui Dumnezeu nu se stinsese încă.”<span class="ref">1 Sam. 3:3</span></p>
+      <div class="features">
+        <div><b>31</b><small>capitole</small></div>
+        <div><b>${totalCount("both").toLocaleString("ro-RO")}</b><small>întrebări</small></div>
+        <div><b>5</b><small>tipuri de întrebări</small></div>
       </div>
-      ${recent.length ? `<div class="recent" aria-label="Nume folosite recent">${recent.map(n=>`<button type="button" class="chip" data-name="${esc(n)}">${esc(n)}</button>`).join("")}</div>` : ""}
+    </div>
+    <form class="card entry-form" id="enter" autocomplete="off" novalidate>
+      <div class="field">
+        <label for="name">Numele tău</label>
+        <input class="input" id="name" name="name" maxlength="40" placeholder="ex. Maria" autocomplete="nickname" required value="${esc(sess?.name || "")}">
+      </div>
+      ${HOSTED ? `<div class="field">
+        <label for="pin">Cod de 4 cifre</label>
+        <input class="input pin" id="pin" name="pin" inputmode="numeric" pattern="[0-9]*" maxlength="4" placeholder="••••" autocomplete="off" required>
+        <small class="muted">Prima dată? Alege acum un cod. Data viitoare intri cu același nume și cod, de pe orice telefon sau calculator. Nimeni altcineva nu-ți poate modifica progresul.</small>
+      </div>` : `<small class="muted">Scrie același nume ca să-ți regăsești progresul.</small>`}
+      <p class="form-error" id="err" role="alert">${msg ? esc(msg) : ""}</p>
       <button class="btn btn-primary btn-block" id="go" type="submit">Intră</button>
     </form>
-    <div class="features">
-      <div><b>31</b><small>capitole</small></div>
-      <div><b>${totalCount("both").toLocaleString("ro-RO")}</b><small>întrebări</small></div>
-      <div><b>5</b><small>tipuri de întrebări</small></div>
-    </div>
   </section>
   <footer>Text de referință: Biblia, traducerea Dumitru Cornilescu</footer>`);
-  const f = $("#enter"), inp = $("#name");
-  f.addEventListener("submit", e => { e.preventDefault(); const n = inp.value.trim().replace(/\s+/g," "); if (!slugOf(n)) { inp.focus(); toast("Scrie un nume cu cel puțin o literă."); return; } login(n); });
-  app.querySelectorAll("[data-name]").forEach(b => b.onclick = () => login(b.dataset.name));
+  const f = $("#enter"), inp = $("#name"), pin = $("#pin"), err = $("#err");
+  if (pin) pin.addEventListener("input", () => { pin.value = pin.value.replace(/\D/g,"").slice(0,4); err.textContent = ""; });
+  f.addEventListener("submit", async e => {
+    e.preventDefault();
+    const n = inp.value.trim().replace(/\s+/g," ");
+    if (!slugOf(n)) { err.textContent = "Scrie un nume cu cel puțin o literă."; inp.focus(); return; }
+    if (pin && !/^\d{4}$/.test(pin.value)) { err.textContent = "Codul are exact 4 cifre."; pin.focus(); return; }
+    const btn = $("#go"); btn.disabled = true; btn.textContent = "Se verifică…";
+    const r = await store.login(n, pin ? pin.value : null);
+    if (!r.ok){
+      btn.disabled = false; btn.textContent = "Intră";
+      err.textContent = loginError(r);
+      if (pin){ pin.value = ""; pin.focus(); f.classList.remove("shake"); void f.offsetWidth; f.classList.add("shake"); }
+      return;
+    }
+    enter(r.profile, r.created);
+  });
 }
-
-async function login(name){
-  const btn = $("#go"); if (btn){ btn.disabled = true; btn.textContent = "Se încarcă…"; }
-  if (!store.ready) await Promise.race([store.initP, new Promise(r=>setTimeout(r,4000))]);
-  S.player = await store.load(name);
-  const recent = lsGet("candela:recent", []).filter(n => slugOf(n) !== slugOf(name)); recent.unshift(name); lsSet("candela:recent", recent.slice(0,5));
-  lsSet("candela:last", name);
+function loginError(r){
+  if (r.error === "pin") return "Cod greșit pentru acest nume. Dacă numele e al altcuiva, alege alt nume.";
+  if (r.error === "locked"){ const m = Math.max(1, Math.ceil(((r.retryAt||0) - Date.now())/60000)); return `Prea multe încercări greșite. Încearcă din nou peste ${m} min.`; }
+  if (r.error === "network") return "Nu există conexiune. Verifică internetul și încearcă din nou.";
+  return "Nu am putut intra acum. Încearcă din nou peste câteva clipe.";
+}
+function enter(profile, created){
+  S.player = profile;
+  if (created) toast("Cont creat. Ține minte codul!");
   viewHome();
+}
+async function autoLogin(){
+  const sess = lsGet("candela:session", null);
+  if (!sess || !sess.name || (HOSTED && !sess.pin)) return viewEntry();
+  mount(`<div class="boot">${lampSVG(50)}</div>`);
+  const r = await store.login(sess.name, sess.pin);
+  if (r.ok) return enter(r.profile);
+  if (r.error === "network" && store.local(sess.name)){ store.session = sess; S.player = store.norm(store.local(sess.name), sess.name); return viewHome(); }
+  store.logout(); viewEntry(r.error === "pin" ? "Codul s-a schimbat. Intră din nou." : "");
 }
 
 function chapStat(c, m){ return (S.player.chap[c+m[0]]||{}).best ?? null; }
@@ -399,80 +518,136 @@ function headerHTML(){
   return `<header class="top"><div class="brand">${miniLamp()} Candela</div>
   <div class="who"><b>${esc(n)}</b><span class="avatar">${esc(n.trim()[0].toUpperCase())}</span></div></header>`;
 }
-function renderSync(){
-  const el = $("#sync"); if (!el) return;
-  const on = store.db && store.writable;
-  el.innerHTML = `<i class="dot ${on?"on":""}"></i><span>${on ? "sincronizat" : "salvat local"}</span>`;
-  el.title = on ? "Progresul se salvează sub numele tău și îl regăsești pe orice dispozitiv." : "Progresul se păstrează doar în acest browser.";
-}
+function mastery(p){ return Math.round(Object.values(p.chap||{}).reduce((s,v)=>s+(v.best||0),0) / 62); }
+const PRESETS = [["1-7","Samuel","1–7"],["8-15","Saul","8–15"],["16-31","David","16–31"]];
 
 function viewHome(){
   const p = S.player, h = p.history;
   const tests = h.length, avg = tests ? Math.round(h.reduce((s,x)=>s+x.pct,0)/tests) : 0;
-  const best = tests ? Math.max(...h.map(x=>x.pct)) : 0;
   const touched = new Set(Object.keys(p.chap).map(k=>parseInt(k))).size;
   const first = p.name.split(" ")[0];
   mount(`${headerHTML()}
-  <section class="hello"><span class="eyebrow">${tests ? "Bine ai revenit" : "Să începem"}</span>
-    <h2>${tests ? `Continuăm, ${esc(first)}?` : `Bun venit, ${esc(first)}.`}</h2>
-    <p class="muted">${tests ? `Ai exersat ${touched} din 31 de capitole.` : "Alege un capitol și nivelul. Poți începe cu capitolul 1."}</p></section>
-  <div class="stats">
-    <div class="stat"><b>${tests}</b><small>teste făcute</small></div>
-    <div class="stat"><b>${tests?avg+"%":"–"}</b><small>media</small></div>
-    <div class="stat"><b>${tests?best+"%":"–"}</b><small>cel mai bun</small></div>
+  <div class="home">
+  <section class="h-intro">
+    <div class="hello"><span class="eyebrow">${tests ? "Bine ai revenit" : "Să începem"}</span>
+      <h2>${tests ? `Continuăm, ${esc(first)}?` : `Bun venit, ${esc(first)}.`}</h2>
+      <p class="muted">${tests ? `Ai exersat ${touched} din 31 de capitole.` : "Alege un capitol și nivelul. Poți începe cu capitolul 1."}</p></div>
+    <div class="stats">
+      <div class="stat"><b>${tests}</b><small>teste făcute</small></div>
+      <div class="stat"><b>${tests?avg+"%":"–"}</b><small>media</small></div>
+      <div class="stat"><b>${mastery(p)}%</b><small>din carte stăpânită</small></div>
+    </div>
+  </section>
+
+  <aside class="h-config">
+    <div class="panel">
+      <div class="section-h first"><h3>Nivel</h3></div>
+      <div class="seg" role="group" aria-label="Nivel">
+        ${["easy","hard","both"].map(m=>`<button data-mode="${m}" aria-pressed="${S.mode===m}">${MODE_LABEL[m]}</button>`).join("")}
+      </div>
+      <p class="seg-note" id="modeNote"></p>
+
+      <div class="section-h"><h3>Ce vrei să repeți?</h3></div>
+      <div class="seg scope" role="group" aria-label="Câte capitole">
+        <button data-scope="one">Un capitol</button><button data-scope="many">Mai multe</button><button data-scope="all">Toată cartea</button>
+      </div>
+      <p class="seg-note" id="scopeNote"></p>
+      <div class="presets" id="presets">${PRESETS.map(([r,l,n])=>`<button class="chip" data-preset="${r}"><b>${l}</b> ${n}</button>`).join("")}<button class="chip ghost" data-preset="clear">Golește</button></div>
+      <div class="grid" id="grid">${Array.from({length:31},(_,i)=>i+1).map(c=>`<button class="tile" data-c="${c}" aria-pressed="false" title="${c}. ${esc(TITLES[c-1])}" aria-label="Capitolul ${c}: ${esc(TITLES[c-1])}">${tileSVG(c)}<span class="n">${c}</span><i class="check" aria-hidden="true"></i></button>`).join("")}</div>
+      <div class="legend"><span><i style="background:var(--cedar)"></i>scor maxim ușor</span><span><i style="background:var(--oil)"></i>scor maxim greu</span></div>
+      <div class="chap-pick" id="chapPick"></div>
+
+      <div class="section-h"><h3>Opțiuni</h3></div>
+      <div class="opts-row">
+        <div class="toggle col"><div>Număr de întrebări<small id="poolNote"></small></div>
+          <div class="counts" role="group" aria-label="Număr de întrebări">${[10,20,30,50,0].map(n=>`<button class="chip" data-n="${n}" aria-pressed="${S.count===n}">${n||"Toate"}</button>`).join("")}</div></div>
+        <div class="toggle"><div>Corectare imediată<small>Vezi răspunsul corect după fiecare întrebare.</small></div><button class="switch" id="swInstant" role="switch" aria-checked="${S.instant}" aria-label="Corectare imediată"></button></div>
+        <div class="toggle"><div>Amestecă întrebările<small>Altfel urmează ordinea versetelor.</small></div><button class="switch" id="swShuffle" role="switch" aria-checked="${S.shuffle}" aria-label="Amestecă întrebările"></button></div>
+      </div>
+      <div class="startbar"><button class="btn btn-primary btn-block" id="start"></button></div>
+    </div>
+  </aside>
+
+  ${HOSTED ? `<section class="h-board"><div class="section-h"><h3>Clasament</h3><span class="muted small">după cât din carte stăpânești</span></div><div id="board" class="board"><div class="empty">Se încarcă clasamentul…</div></div></section>` : ""}
+
+  <section class="h-hist">
+    <div class="section-h"><h3>Istoric</h3></div>
+    <div class="history">${h.length ? h.slice(-6).reverse().map(x=>`
+      <div class="hrow"><span class="badge ${x.mode}">${MODE_LABEL[x.mode]}</span><div style="min-width:0"><b style="font-weight:600">${esc(chaptersLabel(x.chs))}</b><small>${dateLabel(x.at)} · ${x.score}/${x.total} puncte</small></div><span class="pct">${x.pct}%</span></div>`).join("")
+      : `<div class="empty">Aici apar testele tale, cu scorul și data. Primul test durează câteva minute.</div>`}</div>
+    <div class="logout-row"><button class="link" id="logout">Ieși din cont</button></div>
+  </section>
   </div>
-
-  <div class="section-h"><h3>Nivel</h3></div>
-  <div class="seg" role="group" aria-label="Nivel">
-    ${["easy","hard","both"].map(m=>`<button data-mode="${m}" aria-pressed="${S.mode===m}">${MODE_LABEL[m]}</button>`).join("")}
-  </div>
-  <p class="seg-note" id="modeNote"></p>
-
-  <div class="section-h"><h3>Capitol</h3></div>
-  <div class="grid" id="grid">${Array.from({length:31},(_,i)=>i+1).map(c=>`<button class="tile" data-c="${c}" aria-pressed="${S.sel.has(c)}" title="${c}. ${esc(TITLES[c-1])}" aria-label="Capitolul ${c}: ${esc(TITLES[c-1])}">${tileSVG(c)}<span class="n">${c}</span></button>`).join("")}</div>
-  <div class="legend"><span><i style="background:var(--cedar)"></i>scor maxim ușor</span><span><i style="background:var(--oil)"></i>scor maxim greu</span></div>
-  <div class="chap-pick" id="chapPick"></div>
-
-  <div class="section-h"><h3>Opțiuni</h3></div>
-  <div class="card opts-row">
-    <div class="toggle" style="display:grid;gap:10px;justify-content:stretch"><div>Număr de întrebări<small id="poolNote"></small></div>
-      <div class="counts" role="group" aria-label="Număr de întrebări">${[10,20,30,50,0].map(n=>`<button class="chip" data-n="${n}" aria-pressed="${S.count===n}">${n||"Toate"}</button>`).join("")}</div></div>
-    <div class="toggle"><div>Corectare imediată<small>Vezi răspunsul corect după fiecare întrebare.</small></div><button class="switch" id="swInstant" role="switch" aria-checked="${S.instant}" aria-label="Corectare imediată"></button></div>
-    <div class="toggle"><div>Amestecă întrebările<small>Altfel urmează ordinea versetelor.</small></div><button class="switch" id="swShuffle" role="switch" aria-checked="${S.shuffle}" aria-label="Amestecă întrebările"></button></div>
-  </div>
-
-  <div class="section-h"><h3>Istoric</h3></div>
-  <div class="history">${h.length ? h.slice(-6).reverse().map(x=>`
-    <div class="hrow"><span class="badge ${x.mode}">${MODE_LABEL[x.mode]}</span><div style="min-width:0"><b style="font-weight:600">${esc(chaptersLabel(x.chs))}</b><small>${dateLabel(x.at)} · ${x.score}/${x.total} puncte</small></div><span class="pct">${x.pct}%</span></div>`).join("")
-    : `<div class="empty">Aici apar testele tale, cu scorul și data. Primul test durează câteva minute.</div>`}</div>
-
-  <div class="startbar"><button class="btn btn-primary btn-block" id="start"></button></div>
-  <div style="display:flex;justify-content:center"><button class="link" id="logout">Schimbă numele</button></div>
   <footer>Text de referință: Biblia, traducerea Dumitru Cornilescu</footer>`);
-  renderSync();
 
   const update = () => {
+    if (S.scope === "all"){ S.sel = new Set(Array.from({length:31},(_,i)=>i+1)); }
     const chs = [...S.sel].sort((a,b)=>a-b);
     app.querySelectorAll(".tile").forEach(t => t.setAttribute("aria-pressed", S.sel.has(+t.dataset.c)));
+    $("#grid").dataset.scope = S.scope;
+    app.querySelectorAll("[data-scope]").forEach(b => b.setAttribute("aria-pressed", S.scope===b.dataset.scope));
     app.querySelectorAll("[data-mode]").forEach(b => b.setAttribute("aria-pressed", S.mode===b.dataset.mode));
     app.querySelectorAll("[data-n]").forEach(b => b.setAttribute("aria-pressed", S.count===+b.dataset.n));
+    $("#presets").hidden = S.scope !== "many";
+    app.querySelectorAll("[data-preset]").forEach(b => { const r = b.dataset.preset; if (r==="clear") return; const [a,z] = r.split("-").map(Number); b.setAttribute("aria-pressed", chs.length === z-a+1 && chs[0]===a && chs[chs.length-1]===z); });
+    $("#scopeNote").textContent = {one:"Atinge un capitol.", many:"Atinge capitolele pe care le vrei, sau alege o perioadă.", all:"Întrebări din toate cele 31 de capitole."}[S.scope];
     const pool = buildPool(chs, S.mode).length;
     const n = S.count && S.count < pool ? S.count : pool;
-    const c = chs[0], d = QUIZ[c] || {easy:[],hard:[]};
-    $("#chapPick").innerHTML = `<span class="num">${c}</span><div style="min-width:0"><b>${esc(TITLES[c-1])}</b><small>${d.easy.length} întrebări ușoare · ${d.hard.length} grele</small></div>`;
-    $("#poolNote").textContent = `${pool} întrebări disponibile în capitolul ${c}.`;
+    if (!chs.length) $("#chapPick").innerHTML = `<span class="num">–</span><div><b>Niciun capitol ales</b><small>Atinge numerele din grilă.</small></div>`;
+    else if (chs.length === 1){ const c = chs[0], d = QUIZ[c] || {easy:[],hard:[]}; $("#chapPick").innerHTML = `<span class="num">${c}</span><div style="min-width:0"><b>${esc(TITLES[c-1])}</b><small>${d.easy.length} întrebări ușoare · ${d.hard.length} grele</small></div>`; }
+    else $("#chapPick").innerHTML = `<span class="num">${chs.length}</span><div style="min-width:0"><b>${chs.length===31 ? "Toată cartea" : esc(chaptersLabel(chs))}</b><small>${pool} întrebări la nivelul ales</small></div>`;
+    $("#poolNote").textContent = chs.length ? `${pool} întrebări disponibile.` : "";
     $("#modeNote").textContent = {easy:"Întrebări generale despre poveste și evenimente.",hard:"Detalii precise: nume, cifre, locuri, formulări exacte.",both:"Întrebări din ambele niveluri, amestecate."}[S.mode];
     const st = $("#start"); st.disabled = !pool; st.textContent = pool ? `Începe testul · ${n} întrebări` : "Alege cel puțin un capitol";
     persistPrefs();
   };
-  app.querySelectorAll(".tile").forEach(t => t.onclick = () => { S.sel = new Set([+t.dataset.c]); update(); });
+  app.querySelectorAll(".tile").forEach(t => t.onclick = () => {
+    const c = +t.dataset.c;
+    if (S.scope === "all") S.scope = "many";
+    if (S.scope === "one") S.sel = new Set([c]);
+    else S.sel.has(c) ? S.sel.delete(c) : S.sel.add(c);
+    update();
+  });
+  app.querySelectorAll("[data-scope]").forEach(b => b.onclick = () => {
+    const prev = S.scope; S.scope = b.dataset.scope;
+    if (S.scope === "one") S.sel = new Set([[...S.sel].sort((a,b)=>a-b)[0] || 1]);
+    if (S.scope === "many" && prev === "all") S.sel = new Set();
+    update();
+  });
+  app.querySelectorAll("[data-preset]").forEach(b => b.onclick = () => {
+    const r = b.dataset.preset; S.sel = new Set();
+    if (r !== "clear"){ const [a,z] = r.split("-").map(Number); for (let c=a;c<=z;c++) S.sel.add(c); }
+    update();
+  });
   app.querySelectorAll("[data-mode]").forEach(b => b.onclick = () => { S.mode = b.dataset.mode; update(); });
   app.querySelectorAll("[data-n]").forEach(b => b.onclick = () => { S.count = +b.dataset.n; update(); });
   $("#swInstant").onclick = e => { S.instant = !S.instant; e.currentTarget.setAttribute("aria-checked", S.instant); persistPrefs(); };
   $("#swShuffle").onclick = e => { S.shuffle = !S.shuffle; e.currentTarget.setAttribute("aria-checked", S.shuffle); persistPrefs(); };
   $("#start").onclick = () => startQuiz();
-  $("#logout").onclick = () => { S.player = null; lsSet("candela:last", null); viewEntry(); };
+  $("#logout").onclick = () => { S.player = null; store.logout(); viewEntry(); };
   update();
+  if (HOSTED) loadBoard();
+}
+
+async function loadBoard(){
+  const el = $("#board"); if (!el) return;
+  if (S.board) renderBoard(S.board);
+  const list = await store.board();
+  if (list) { S.board = list; renderBoard(list); }
+  else if (!S.board && $("#board")) $("#board").innerHTML = `<div class="empty">Clasamentul nu se poate încărca acum.</div>`;
+}
+function renderBoard(list){
+  const el = $("#board"); if (!el) return;
+  const me = slugOf(S.player.name);
+  if (!list.length){ el.innerHTML = `<div class="empty">Fă primul test și apari aici.</div>`; return; }
+  const idx = list.findIndex(x => slugOf(x.name) === me);
+  const top = list.slice(0, 10);
+  const row = (x, i) => `<div class="brow-l ${slugOf(x.name)===me?"me":""}">
+    <span class="rank ${i<3?"r"+(i+1):""}">${i+1}</span>
+    <span class="avatar sm">${esc(x.name.trim()[0].toUpperCase())}</span>
+    <div class="who-l"><b>${esc(x.name)}${slugOf(x.name)===me?" <em>(tu)</em>":""}</b><small>${x.tests} ${x.tests===1?"test":"teste"} · ${x.chapters} cap.</small></div>
+    <div class="m"><span>${x.mastery}%</span><div class="bar"><i style="width:${Math.max(x.mastery,2)}%"></i></div></div></div>`;
+  el.innerHTML = top.map(row).join("") + (idx >= 10 ? `<div class="gap">···</div>${row(list[idx], idx)}` : "");
 }
 
 /* ---------- quiz engine ---------- */
@@ -659,6 +834,7 @@ async function finish(){
     p.history.push({ at: Date.now(), chs: Z.chs, mode: Z.mode, score: sc, total: n, pct: P, secs });
   }
   const saving = Z.retry ? Promise.resolve(null) : store.save(p);
+  S.board = null;
   const wrong = Z.qs.map((q,i)=>({q, a: Z.answers[i]})).filter(x => !x.a || x.a.pts < 1);
   const verdict = P>=95 ? "Excelent!" : P>=80 ? "Foarte bine" : P>=60 ? "Bine, mai e puțin" : P>=40 ? "Ai pus bazele" : "Mai citește o dată";
   const sub = P>=80 ? "Ești pregătit pentru test la aceste capitole." : P>=60 ? "Recitește versetele de mai jos și încearcă din nou." : "Recitește capitolele, apoi reia greșelile.";
@@ -688,8 +864,7 @@ async function finish(){
     <button class="btn btn-primary" id="home">Test nou</button>
   </div>
   <p class="muted" id="saveNote" style="text-align:center;font-size:13px"></p>`);
-  renderSync();
-  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{
     const C = 2*Math.PI*52; $("#ringArc").setAttribute("stroke-dasharray", `${C*P/100} ${C}`);
     app.querySelectorAll("[data-w]").forEach(b => b.style.width = b.dataset.w + "%");
     const el = $("#pctNum"), t0 = performance.now();
@@ -701,8 +876,9 @@ async function finish(){
   }));
   if (wrong.length) $("#retry").onclick = () => startQuiz(shuffle(wrong.map(x => { const o = {...x.q}; const src = QUIZ[o.ch][o.mode][+o.id.slice(String(o.ch).length+1)]; return {...src, ch:o.ch, mode:o.mode, id:o.id}; })));
   $("#home").onclick = () => viewHome();
-  const ok = await saving;
-  const note = $("#saveNote"); if (note && !Z.retry) note.textContent = ok ? `Rezultat salvat pentru ${p.name}.` : ok===false && store.db ? "Rezultatul s-a salvat doar pe acest dispozitiv." : store.db ? "" : "Rezultatul s-a salvat în acest browser.";
+  const res = await saving;
+  if (res) S.player = res.profile;
+  const note = $("#saveNote"); if (note && res) note.textContent = res.saved ? `Rezultat salvat pentru ${p.name}.` : HOSTED ? "Fără conexiune: rezultatul e păstrat pe acest telefon și se trimite la următoarea intrare." : "Rezultatul s-a salvat în acest browser.";
 }
 function mistakeHTML({q, a}){
   a = a || {pts:0, given:null, skipped:true};
@@ -732,7 +908,5 @@ document.addEventListener("keydown", e => {
   if (!ui.checked && q.t==="tf"){ if (e.key.toLowerCase()==="a") $('.opt[data-v="1"]').click(); if (e.key.toLowerCase()==="f") $('.opt[data-v="0"]').click(); }
 });
 store.initP = store.init();
-viewEntry();
-const lastName = lsGet("candela:last", null);
-if (lastName) { const inp = $("#name"); if (inp) inp.value = lastName; }
+autoLogin();
 </script>

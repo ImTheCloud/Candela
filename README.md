@@ -6,7 +6,7 @@ Teste biblice pentru pregătire, după traducerea Cornilescu. Prima carte: **1 S
 - `src/app.html` — aplicația (HTML, CSS, JS, fără framework).
 - `content/1-samuel/intrebari/chNN.json` — întrebările pe capitole (`easy` / `hard`).
 - `content/1-samuel/text-cornilescu.json` — textul Cornilescu, verset cu verset.
-- `api/player.js` — funcție Vercel care salvează progresul pe nume în Vercel Blob (`BLOB_READ_WRITE_TOKEN`).
+- `api/login.js`, `api/save.js`, `api/leaderboard.js` + `lib/players.js` — conturi nume + cod de 4 cifre (scrypt, blocare după 5 încercări greșite), progres îmbinat pe server (nimic nu se pierde, ultimele 5 versiuni păstrate) și clasament, în Vercel Blob (`BLOB_READ_WRITE_TOKEN`).
 - `index.html` — fișierul generat care se publică.
 
 ## Lucru
