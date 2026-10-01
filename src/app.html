@@ -59,9 +59,9 @@ p{margin:0}
 
 /* Entry */
 .entry{display:flex;flex-direction:column;gap:16px;max-width:560px;margin:0 auto}
-body:has(.entry){overflow:hidden}
-.wrap:has(.entry){height:100vh;height:100dvh;padding-block:16px}
-.wrap:has(.entry) .view{height:100%}
+body:has(.entry[data-step="board"]){overflow:hidden}
+.wrap:has(.entry[data-step="board"]){height:100vh;height:100dvh;padding-block:16px}
+.wrap:has(.entry[data-step="board"]) .view{height:100%}
 .entry[data-step="board"]{height:100%}
 .entry[data-step="form"]{padding-top:6vh}
 .entry-head{display:grid;justify-items:center;gap:4px;flex:none}
@@ -69,6 +69,10 @@ body:has(.entry){overflow:hidden}
 .entry-board{flex:1;min-height:0;display:flex;flex-direction:column}
 .entry-board .section-h{margin:0 0 10px}
 .entry .back{align-self:center}
+.verse-quote{font-family:var(--f-display);font-size:17px;line-height:1.35;text-align:center;max-width:30ch;margin:6px auto 0;color:var(--ink-2)}
+.verse-quote .ref{margin-left:6px;vertical-align:2px}
+.remember{display:flex;align-items:center;gap:10px;font-weight:500;cursor:pointer;user-select:none}
+.remember input{width:20px;height:20px;accent-color:var(--cedar);margin:0}
 .board.scroll{position:relative;overflow-y:auto;overscroll-behavior:contain;align-content:start}
 .entry .board.scroll{flex:1;min-height:0}
 .h-board .board.scroll{max-height:420px}
@@ -438,7 +442,7 @@ function totalCount(mode){ let n=0; for (const c in QUIZ){ if (mode!=="hard") n 
 function viewEntry(msg, step){
   const sess = lsGet("candela:session", null);
   step = step || (HOSTED && !msg ? "board" : "form");
-  const head = `<div class="entry-head"><div class="lamp-wrap"><div class="lamp-glow"></div>${lampSVG(step==="board"?40:56)}</div><h1>Candela<span>1 Samuel</span></h1></div>`;
+  const head = `<div class="entry-head"><div class="lamp-wrap"><div class="lamp-glow"></div>${lampSVG(step==="board"?40:56)}</div><h1>Candela<span>1 Samuel</span></h1><p class="verse-quote">„Candela lui Dumnezeu nu se stinsese încă.”<span class="ref">1 Sam. 3:3</span></p></div>`;
   if (step === "board"){
     mount(`<section class="entry" data-step="board">${head}
       <div class="entry-board"><div class="section-h"><h3>Clasament</h3></div><div id="board" class="board scroll"><div class="empty">Se încarcă…</div></div></div>
@@ -458,6 +462,7 @@ function viewEntry(msg, step){
         <label for="pin">Cod de 4 cifre</label>
         <input class="input pin" id="pin" name="pin" inputmode="numeric" pattern="[0-9]*" maxlength="4" placeholder="••••" autocomplete="off" required>
       </div>` : ""}
+      <label class="remember"><input type="checkbox" id="remember" ${lsGet("candela:remember", true) ? "checked" : ""}> Rămâi conectat</label>
       <p class="form-error" id="err" role="alert">${msg ? esc(msg) : ""}</p>
       <button class="btn btn-primary btn-block" id="go" type="submit">Intră</button>
     </form>
@@ -480,6 +485,8 @@ function viewEntry(msg, step){
       if (pin){ pin.value = ""; pin.focus(); f.classList.remove("shake"); void f.offsetWidth; f.classList.add("shake"); }
       return;
     }
+    const keep = $("#remember").checked; lsSet("candela:remember", keep);
+    if (!keep) lsSet("candela:session", {name: n});
     enter(r.profile, r.created);
   });
 }
