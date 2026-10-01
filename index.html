@@ -42,7 +42,7 @@ p{margin:0}
 .eyebrow{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
 .ref{font-family:var(--f-mono);font-size:12px;font-weight:500;letter-spacing:.02em;color:var(--oil-ink);background:var(--oil-soft);padding:3px 8px;border-radius:999px;white-space:nowrap}
 .muted{color:var(--ink-2)}
-.view{animation:viewIn .45s cubic-bezier(.2,.8,.2,1) both}
+.view{animation:viewIn .45s cubic-bezier(.2,.8,.2,1) backwards}
 @keyframes viewIn{from{opacity:.0;transform:translateY(10px)}to{opacity:1;transform:none}}
 
 /* Buttons */
@@ -231,6 +231,11 @@ body:has(.entry[data-step="board"]){overflow:hidden}
 .verse sup{font-family:var(--f-mono);font-size:10px;color:var(--oil-ink);margin-right:3px}
 .qactions{display:flex;gap:10px;margin-top:16px}
 .qactions .btn{flex:1}
+@media (max-width:959px){
+  .qactions{position:fixed;left:0;right:0;bottom:0;z-index:10;margin:0 auto;max-width:640px;padding:16px 16px calc(16px + env(safe-area-inset-bottom,0px));background:linear-gradient(to top,var(--bg) 75%,transparent)}
+  .qactions:empty{display:none}
+  .view:has(.qtop){padding-bottom:96px}
+}
 .pop{animation:pop .45s cubic-bezier(.3,1.6,.5,1)}
 @keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.03)}100%{transform:scale(1)}}
 .shake{animation:shake .4s ease}
@@ -264,7 +269,11 @@ body:has(.entry[data-step="board"]){overflow:hidden}
 .allgood{text-align:center;padding:24px;background:var(--ok-soft);border-radius:18px;color:var(--ok);font-weight:600}
 .toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:999px;font-size:14px;opacity:0;transition:all .3s;pointer-events:none;z-index:20;max-width:calc(100% - 32px)}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-.confirm{display:grid;gap:10px;margin-top:12px;padding:14px;border-radius:14px;background:var(--surface-2)}
+body:has(.qactions:not(:empty)) .toast{bottom:calc(100px + env(safe-area-inset-bottom,0px))}
+.modal-bg{position:fixed;inset:0;z-index:40;display:grid;place-items:center;padding:16px;background:rgb(31 38 32 / .28);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);animation:fadeIn .2s ease both}
+.modal{width:100%;max-width:360px;background:var(--surface);border-radius:24px;padding:24px;display:grid;gap:10px;text-align:center;box-shadow:0 20px 50px -20px rgb(31 38 32 / .45);animation:sheetUp .25s cubic-bezier(.2,.8,.2,1) both}
+.modal h3{font-size:24px}
+.modal-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}
 footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 @media (max-width:420px){.qtext{font-size:18.5px}.fill{font-size:19px}.stat b{font-size:24px}.ans div{grid-template-columns:1fr;gap:0}}
 /* v3: accounts, leaderboard, multi-chapter, desktop */
@@ -612,6 +621,7 @@ function openProfile(){
 document.addEventListener("click", e => { if (e.target.closest && e.target.closest("#who")) openProfile(); });
 function mastery(p){ return Math.round((p.ok||[]).length / totalCount("both") * 1000) / 10; }
 
+const MODE_NOTE = { easy: "Întrebări generale despre poveste: cine, ce și de ce.", hard: "Detalii precise: nume, cifre, locuri și cuvinte exacte.", both: "Întrebări ușoare și grele, amestecate." };
 function viewHome(){
   const p = S.player, h = p.history;
   const tests = h.length, avg = tests ? Math.round(h.reduce((s,x)=>s+x.pct,0)/tests) : 0;
@@ -635,9 +645,10 @@ function viewHome(){
       <div class="seg" role="group" aria-label="Nivel">
         ${["easy","hard","both"].map(m=>`<button data-mode="${m}" aria-pressed="${S.mode===m}">${MODE_LABEL[m]}</button>`).join("")}
       </div>
+      <p class="seg-note" id="modeNote"></p>
       
 
-      <div class="section-h"><h3>Ce vrei să repeți?</h3></div>
+      <div class="section-h"><h3>Câte capitole vrei să exersezi?</h3></div>
       <div class="seg scope" role="group" aria-label="Câte capitole">
         <button data-scope="one">Un capitol</button><button data-scope="many">Mai multe</button><button data-scope="all">Toată cartea</button>
       </div>
@@ -672,6 +683,7 @@ function viewHome(){
     else if (chs.length === 1){ const c = chs[0], d = QUIZ[c] || {easy:[],hard:[]}; $("#chapPick").innerHTML = `<span class="num">${c}</span><div style="min-width:0"><b>${esc(TITLES[c-1])}</b><small>${d.easy.length} întrebări ușoare · ${d.hard.length} grele</small></div>`; }
     else $("#chapPick").innerHTML = `<span class="num">${chs.length}</span><div style="min-width:0"><b>${chs.length===31 ? "Toată cartea" : esc(chaptersLabel(chs))}</b><small>${pool} întrebări la nivelul ales</small></div>`;
     const st = $("#start"); st.disabled = !pool; st.textContent = !pool ? "Alege cel puțin un capitol" : chs.length === 1 ? `Începe testul · ${pool} întrebări` : "Începe testul";
+    $("#modeNote").textContent = MODE_NOTE[S.mode];
     persistPrefs();
   };
   app.querySelectorAll(".tile").forEach(t => t.onclick = () => {
@@ -786,12 +798,15 @@ function viewQuestion(first){
   if (first || !$(".qcard")) {
     mount(`<div class="qtop"><button class="icon-btn" id="quit" aria-label="Oprește testul"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
       <div class="bar" aria-hidden="true"><i id="prog" style="width:0"></i></div><span class="qcount" id="qcount"></span></div>
-      <div id="quitBox"></div><div id="qslot"></div>`);
+      <div id="qslot"></div>`);
     $("#quit").onclick = () => {
-      const box = $("#quitBox");
-      if (box.innerHTML) { box.innerHTML = ""; return; }
-      box.innerHTML = `<div class="confirm"><b>Oprești testul?</b><span class="muted" style="font-size:14px">Răspunsurile date până acum nu se salvează.</span><div style="display:flex;gap:8px"><button class="btn btn-ghost" id="qNo" style="flex:1">Continuă</button><button class="btn btn-primary" id="qYes" style="flex:1">Oprește</button></div></div>`;
-      $("#qNo").onclick = () => box.innerHTML = ""; $("#qYes").onclick = () => viewHome();
+      const bg = document.createElement("div"); bg.className = "modal-bg";
+      bg.innerHTML = `<div class="modal" role="alertdialog" aria-modal="true" aria-labelledby="qT"><h3 id="qT">Oprești testul?</h3><p class="muted">Răspunsurile date până acum nu se salvează.</p><div class="modal-btns"><button class="btn btn-ghost" id="qNo">Continuă</button><button class="btn btn-primary" id="qYes">Oprește</button></div></div>`;
+      document.body.appendChild(bg);
+      const close = () => bg.remove();
+      bg.querySelector("#qNo").onclick = close; bg.onclick = e => { if (e.target === bg) close(); };
+      bg.querySelector("#qYes").onclick = () => { close(); viewHome(); };
+      bg.querySelector("#qNo").focus();
     };
   }
   $("#prog").style.width = (Z.i/n*100) + "%";
@@ -860,8 +875,8 @@ function renderActions(){
   const last = Z.i === Z.qs.length-1;
   if (!ui.checked){
     if (q.t==="tf"){ el.innerHTML = ""; return; }
-    el.innerHTML = `<button class="btn btn-ghost" id="skip">Sari peste</button><button class="btn btn-primary" id="chk" ${ready(q)?"":"disabled"}>${S.instant?"Verifică":(last?"Termină":"Următoarea")}</button>`;
-    $("#chk").onclick = check; $("#skip").onclick = () => check(true);
+    el.innerHTML = `<button class="btn btn-primary" id="chk" ${ready(q)?"":"disabled"}>${S.instant?"Verifică":(last?"Termină":"Următoarea")}</button>`;
+    $("#chk").onclick = check;
   } else {
     el.innerHTML = `<button class="btn btn-primary" id="nx">${last?"Vezi rezultatul":"Următoarea"}</button>`;
     $("#nx").onclick = next; $("#nx").focus({preventScroll:true});
