@@ -329,16 +329,22 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .grid[data-scope="many"] .tile[aria-pressed="true"] .check{display:block}
 .grid[data-scope="all"] .tile[aria-pressed="true"]{box-shadow:none}
 .board{display:grid;gap:6px;background:var(--surface);border-radius:18px;padding:8px;box-shadow:var(--shadow)}
-.brow-l{display:grid;grid-template-columns:2rem auto minmax(0,1fr) 7.5rem;align-items:center;gap:10px;padding:10px 10px;border-radius:12px}
+.brow-l{display:grid;grid-template-columns:2rem auto minmax(0,1fr) auto;align-items:center;gap:12px;padding:12px;border-radius:14px}
 .brow-l.me{background:var(--oil-soft)}
-.brow-l .rank{font-family:var(--f-display);font-size:20px;text-align:center;color:var(--ink-2);font-variant-numeric:tabular-nums}
-.brow-l .rank.r1{color:var(--oil)}.brow-l .rank.r2{color:#9A8F84}.brow-l .rank.r3{color:#A8693A}
+.brow-l .rank{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;justify-self:center;font-family:var(--f-display);font-size:17px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.brow-l .rank.r1,.brow-l .rank.r2,.brow-l .rank.r3{color:#fff;font-size:15px}
+.brow-l .rank.r1{background:var(--oil)}.brow-l .rank.r2{background:#A99A8A}.brow-l .rank.r3{background:#A8693A}
+.brow-l .who-l{display:grid;gap:5px}
+.brow-l .nm{display:flex!important;align-items:center;gap:6px;min-width:0}
+.brow-l .nm span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.brow-l .nm em{flex:none;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;background:var(--oil);color:#fff;padding:2px 7px;border-radius:999px}
+.brow-l .who-l .bar{height:5px;max-width:260px}
+.brow-l .pts{display:grid;justify-items:end;line-height:1.1}
+.brow-l .pts b{font-family:var(--f-display);font-weight:400;font-size:24px;font-variant-numeric:tabular-nums}
+.brow-l .pts small{font-size:11.5px;color:var(--ink-2)}
 .avatar.sm{width:30px;height:30px;font-size:12px}
 .who-l{min-width:0}.who-l b{display:block;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.who-l em{font-style:normal;color:var(--oil-ink);font-weight:500}
 .who-l small{color:var(--ink-2);font-size:12.5px}
-.brow-l .m{display:grid;gap:4px;justify-items:end}
-.brow-l .m span{font-family:var(--f-mono);font-size:13px;font-variant-numeric:tabular-nums}
-.brow-l .m .bar{width:100%;height:5px}
 .board .gap{text-align:center;color:var(--ink-2);letter-spacing:.3em}
 .board .empty{border:0}
 @media (min-width:960px){
@@ -360,7 +366,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
   .qcard{padding:30px 32px}
   .qtext{font-size:22px}
 }
-@media (max-width:420px){.brow-l{grid-template-columns:1.6rem auto minmax(0,1fr) 4.6rem;gap:8px}}
+@media (max-width:420px){.brow-l{grid-template-columns:1.8rem auto minmax(0,1fr) auto;gap:10px;padding:10px}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 </style>
 
@@ -849,11 +855,13 @@ function renderBoard(list){
   if (!list.length){ el.innerHTML = `<div class="empty">Încă nimeni.</div>`; return; }
   const idx = list.findIndex(x => slugOf(x.name) === me);
   const top = el.classList.contains("scroll") ? list : list.slice(0, 10);
-  const row = (x, i) => `<div class="brow-l ${slugOf(x.name)===me?"me":""}">
-    <span class="rank ${i<3?"r"+(i+1):""}">${i+1}</span>
+  const row = (x, i) => { const mine = slugOf(x.name)===me, ok = x.ok ?? 0; return `<div class="brow-l ${mine?"me":""}">
+    <span class="rank ${i<3 && ok ? "r"+(i+1) : ""}">${i+1}</span>
     <span class="avatar sm">${esc(initials(x.name))}</span>
-    <div class="who-l"><b>${esc(x.name)}${slugOf(x.name)===me?" <em>(tu)</em>":""}</b><small>${x.ok ?? 0} ${x.ok===1?"întrebare":"întrebări"} · ${x.tests} ${x.tests===1?"test":"teste"}</small></div>
-    <div class="m"><span>${String(x.mastery).replace(".",",")}%</span><div class="bar"><i style="width:${Math.max(x.mastery,2)}%"></i></div></div></div>`;
+    <div class="who-l"><b class="nm"><span>${esc(x.name)}</span>${mine?"<em>tu</em>":""}</b>
+      <div class="bar"><i style="width:${ok ? Math.max(x.mastery,1.5) : 0}%"></i></div>
+      <small>${String(x.mastery).replace(".",",")}% din carte · ${x.tests} ${x.tests===1?"test":"teste"}</small></div>
+    <div class="pts"><b>${ok}</b><small>${ok===1?"întrebare":"întrebări"}</small></div></div>`; };
   el.innerHTML = top.map(row).join("") + (idx >= top.length ? `<div class="gap">···</div>${row(list[idx], idx)}` : "");
   const mine = el.querySelector(".me"); if (mine && el.classList.contains("scroll")) el.scrollTop = Math.max(0, mine.offsetTop - el.clientHeight/2);
 }
