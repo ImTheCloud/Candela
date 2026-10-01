@@ -410,6 +410,13 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .kid .link{padding:0;font-size:13.5px;color:var(--bad)}
 .kid-form{display:grid;gap:12px;padding-top:10px;border-top:1px solid var(--line)}
 .kid-form .input{padding:10px 12px;font-size:16px}
+.kids-modal{text-align:left}
+.kids-modal h3,.kids-modal>p{text-align:center}
+.ak-list{display:grid;gap:8px;margin-top:6px}
+.ak-row{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:10px}
+.ak-row .input{padding:11px 14px;font-size:16px}
+.ak-last{color:var(--ink-2);font-weight:500;max-width:9em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.kids-modal .link{justify-self:start;padding:2px 0;font-size:14.5px;color:var(--oil-ink)}
 .del-link{color:var(--bad);justify-self:center;font-size:14px}
 .forgot{justify-self:end;margin-top:-8px;font-size:14px}
 @media (max-width:420px){.brow-l{gap:8px;padding:7px 8px}}
@@ -679,8 +686,10 @@ function viewEntry(msg, tab){
       return;
     }
     lsSet("candela:email", em.includes("@") ? em.toLowerCase() : em); lsSet("candela:hasAccount", true);
-    if (isNew && $("#parent")?.checked){ await store.rpc("set_parent", {p_on: true}); store.isParent = true; store.family = [{id: store.uid, name: r.profile.name, child: false}]; }
+    const parent = isNew && $("#parent")?.checked;
+    if (parent){ await store.rpc("set_parent", {p_on: true}); store.isParent = true; store.family = [{id: store.uid, name: r.profile.name, child: false}]; }
     enter(r.profile, r.created);
+    if (parent) askChildren(ln);
   });
 }
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -836,9 +845,8 @@ function openProfile(){
     box.innerHTML = `<div class="pf-row"><span style="color:var(--ink);font-weight:600;font-size:15px">Copiii mei</span></div>
       ${kids.length ? "" : `<p class="pf-note">Adaugă-ți copiii: fiecare are rezultatele și locul lui în clasament. Pe acasă alegi cine exersează.</p>`}
       ${kids.map(k => `<div class="kid"><span class="avatar sm">${esc(initials(k.name))}</span><b>${esc(k.name)}</b><button class="link" type="button" data-kdel="${k.id}" data-kname="${esc(k.name)}">Șterge</button></div>`).join("")}
-      ${adding ? `<form class="kid-form" id="kForm" novalidate><div class="name-row">
-          <div class="field"><label for="kLast">Nume de familie</label><input class="input" id="kLast" maxlength="30" autocapitalize="words" value="${esc(ln)}"></div>
-          <div class="field"><label for="kFirst">Prenume</label><input class="input" id="kFirst" maxlength="30" autocapitalize="words"></div></div>
+      ${adding ? `<form class="kid-form" id="kForm" novalidate>
+          <div class="field"><label for="kFirst">Prenumele copilului</label><input class="input" id="kFirst" maxlength="30" autocapitalize="words"></div>
           <p class="form-error" id="kErr" role="alert"></p>
           <div class="modal-btns"><button class="btn btn-ghost" type="button" id="kNo">Anulează</button><button class="btn btn-primary" type="submit">Adaugă</button></div></form>`
         : `<button class="btn btn-ghost btn-block" type="button" id="kAdd">Adaugă un copil</button>`}`;
@@ -854,15 +862,13 @@ function openProfile(){
     f.oninput = () => { err.textContent = ""; };
     f.onsubmit = async e => {
       e.preventDefault();
-      const l1 = capName(box.querySelector("#kLast").value), f1 = capName(box.querySelector("#kFirst").value);
+      const f1 = capName(box.querySelector("#kFirst").value);
       if (!slugOf(f1)) { err.textContent = "Scrie prenumele copilului."; return; }
-      if (!slugOf(l1)) { err.textContent = "Scrie numele de familie."; return; }
       const btn = f.querySelector('[type="submit"]'); btn.disabled = true;
-      const token = await store.token(), r = token ? await store.call("family", {action: "add", first: f1, last: l1}, token) : {ok:false, error:"auth"};
+      const r = await addChild(f1, ln);
       btn.disabled = false;
-      if (!r.ok){ err.textContent = ({ name_taken: "Există deja cineva cu acest nume. Adaugă și al doilea prenume.", too_many: "Poți adăuga cel mult 10 copii." })[r.error] || loginError(r); return; }
-      store.family = [...(store.family || []), {id: r.id, name: r.name, child: true}]; S.board = null;
-      drawKids(box); toast(`${r.name.split(" ")[0]} a fost adăugat. Alege-l pe acasă ca să exerseze.`, 3500);
+      if (!r.ok){ err.textContent = childError(r); return; }
+      drawKids(box); toast(`Gata: ${r.name.split(" ")[0]} poate exersa acum.`, 3500);
       if ($(".home")) viewHome();
     };
   };
@@ -1479,6 +1485,44 @@ function familyHTML(){
   if (!S.player || S.player.guest || !store.isParent || (store.family || []).length < 2) return "";
   return `<div class="family" role="group" aria-label="Cine exersează"><span class="family-l">Cine exersează?</span>${store.family.map(x =>
     `<button class="fam ${x.id === store.pid ? "on" : ""}" type="button" data-play="${x.id}" aria-pressed="${x.id === store.pid}"><span class="avatar sm">${esc(initials(x.name))}</span>${esc(x.name.split(" ")[0])}</button>`).join("")}</div>`;
+}
+/* children share the parent's family name, so only first names are asked */
+async function addChild(first, last){
+  const token = await store.token(), r = token ? await store.call("family", {action: "add", first, last}, token) : {ok:false, error:"auth"};
+  if (r.ok){ store.family = [...(store.family || []), {id: r.id, name: r.name, child: true}]; S.board = null; }
+  return r;
+}
+function childError(r){ return ({ name_taken: "Există deja cineva cu acest nume. Adaugă și al doilea prenume.", too_many: "Poți adăuga cel mult 10 copii." })[r.error] || loginError(r); }
+function askChildren(last){
+  const bg = document.createElement("div"); bg.className = "modal-bg";
+  bg.innerHTML = `<form class="modal kids-modal" role="dialog" aria-modal="true" aria-labelledby="akH" novalidate>
+    <h3 id="akH">Copiii tăi</h3>
+    <p class="muted">Scrie prenumele fiecărui copil. Fiecare va avea rezultatele și locul lui în clasament.</p>
+    <div class="ak-list" id="akList"></div>
+    <button class="link" type="button" id="akMore">+ Încă un copil</button>
+    <p class="form-error" id="akErr" role="alert"></p>
+    <div class="modal-btns"><button class="btn btn-ghost" type="button" id="akLater">Mai târziu</button><button class="btn btn-primary" type="submit" id="akGo">Adaugă</button></div></form>`;
+  document.body.appendChild(bg);
+  const list = bg.querySelector("#akList"), err = bg.querySelector("#akErr"), close = () => bg.remove();
+  const row = () => { const d = document.createElement("div"); d.className = "ak-row"; d.innerHTML = `<input class="input" maxlength="30" autocapitalize="words" placeholder="Prenume" aria-label="Prenumele copilului"><span class="ak-last">${esc(last)}</span>`; list.appendChild(d); d.querySelector("input").focus(); };
+  row();
+  bg.querySelector("#akMore").onclick = () => { if (list.children.length < 10) row(); };
+  bg.querySelector("#akLater").onclick = close;
+  bg.oninput = () => { err.textContent = ""; };
+  bg.querySelector("form").onsubmit = async e => {
+    e.preventDefault();
+    const inputs = [...list.querySelectorAll("input")], names = inputs.map(i => capName(i.value)).filter(slugOf);
+    if (!names.length){ err.textContent = "Scrie cel puțin un prenume."; inputs[0].focus(); return; }
+    const btn = bg.querySelector("#akGo"); btn.disabled = true; btn.textContent = "Se adaugă…";
+    for (const i of inputs){
+      const n = capName(i.value); if (!slugOf(n)) { i.closest(".ak-row").remove(); continue; }
+      const r = await addChild(n, last);
+      if (!r.ok){ btn.disabled = false; btn.textContent = "Adaugă"; err.textContent = `${n}: ${childError(r)}`; i.focus(); return; }
+      i.closest(".ak-row").remove();
+    }
+    close(); viewHome();
+    toast("Gata. Alege pe acasă cine exersează.", 4000);
+  };
 }
 async function switchPlayer(id){
   if (id === store.pid) return;
