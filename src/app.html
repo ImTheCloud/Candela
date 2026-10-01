@@ -318,6 +318,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .seg.scope{margin-top:0}
 .seg.scope button{font-size:14px;white-space:nowrap;padding-inline:4px}
 .grid{margin-top:12px}
+.read-link{display:block;margin:8px auto 0;font-size:14.5px}
 .tile .check{position:absolute;top:4px;right:4px;width:16px;height:16px;border-radius:50%;background:var(--oil);display:none}
 .tile .check::after{content:"";position:absolute;left:5px;top:2.5px;width:4px;height:8px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
 .grid[data-scope="many"] .tile[aria-pressed="true"] .check{display:block}
@@ -343,6 +344,17 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .who-l small{color:var(--ink-2);font-size:12.5px}
 .board .gap{text-align:center;color:var(--ink-2);letter-spacing:.3em}
 .board .empty{border:0}
+@media (max-width:959px){
+  .hello{gap:4px;margin-bottom:4px}
+  .hello h2{font-size:24px}
+  .h-config .section-h.first{margin:10px 0 10px}
+  .h-config .section-h h3{font-size:18px}
+  .grid{margin-top:10px;gap:7px}
+}
+@media (max-width:600px){
+  .grid{grid-template-columns:repeat(5,1fr)}
+  .h-config .startbar{margin-top:8px}
+}
 @media (min-width:960px){
   .wrap{padding-inline:32px;padding-block:28px 64px}
   .entry-form{padding:28px}
@@ -365,7 +377,6 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 /* v4: quick test, question of the day, streak, reading, read aloud, text size, groups, tutorial */
 .streak{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--oil-ink);background:var(--oil-soft);padding:5px 12px;border-radius:999px;justify-self:start;margin-top:4px}
 .legend{flex-wrap:wrap;row-gap:4px}
-.read-link{display:block;margin:8px auto 0;font-size:14.5px}
 .help-line{text-align:center;margin-top:18px;display:flex;justify-content:center;gap:18px;flex-wrap:wrap}
 .help-line .link{font-size:14px}
 .reader{display:grid;gap:16px}
@@ -966,7 +977,7 @@ document.addEventListener("click", e => {
   if (e.target.closest("#who")) openProfile();
   if (e.target.closest("#acct, #gNew")) viewEntry("", e.target.closest("#gNew") ? "new" : undefined);
   if (e.target.closest("#gIn")) viewEntry("", "in");
-  if (e.target.closest("#readBook")) viewRead(lsGet("candela:read", [...S.sel][0] || 1));
+  if (e.target.closest("#readBook")) viewRead($("#grid") && S.scope === "one" && S.sel.size === 1 ? [...S.sel][0] : lsGet("candela:read", [...S.sel][0] || 1));
 });
 function mastery(p){ return Math.round((p.ok||[]).length / totalCount("both") * 1000) / 10; }
 
@@ -1003,7 +1014,7 @@ function viewHome(){
       <div class="grid" id="grid">${Array.from({length:31},(_,i)=>i+1).map(c=>`<button class="tile" data-c="${c}" aria-pressed="false" title="${c}. ${esc(TITLES[c-1])}" aria-label="Capitolul ${c}: ${esc(TITLES[c-1])}">${tileSVG(c)}<span class="n">${c}</span><i class="check" aria-hidden="true"></i></button>`).join("")}</div>
       <div class="legend"><span><i style="background:var(--cedar)"></i>scor maxim ușor</span><span><i style="background:var(--oil)"></i>scor maxim greu</span></div>
 
-      <div class="startbar"><button class="btn btn-primary btn-block" id="start"></button><button class="link read-link" id="read" type="button" hidden></button></div>
+      <div class="startbar"><button class="btn btn-primary btn-block" id="start"></button></div>
     </div>
   </aside>
 
@@ -1026,7 +1037,6 @@ function viewHome(){
     app.querySelectorAll("[data-scope]").forEach(b => b.setAttribute("aria-pressed", S.scope===b.dataset.scope));
     const st = $("#start"); st.disabled = !chs.length;
     st.innerHTML = !chs.length ? "Alege cel puțin un capitol" : `<span class="st-main">Începe · ${chs.length === 1 ? `capitolul ${chs[0]}` : esc(whatLabel(chs))}</span>`;
-    const rd = $("#read"); rd.hidden = chs.length !== 1; rd.textContent = `Citește întâi capitolul ${chs[0]}`;
     persistPrefs();
   };
   app.querySelectorAll(".tile").forEach(t => t.onclick = () => {
@@ -1043,7 +1053,6 @@ function viewHome(){
     update();
   });
   $("#start").onclick = () => openOptions();
-  $("#read").onclick = () => viewRead([...S.sel][0]);
   $("#help").onclick = tutorial;
   app.querySelectorAll("[data-play]").forEach(b => b.onclick = () => switchPlayer(b.dataset.play));
   if ($("#resume")){ $("#resume").onclick = resumeQuiz; $("#resumeX").onclick = () => { dropQuiz(); $(".resume").remove(); }; }
