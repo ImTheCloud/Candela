@@ -15,7 +15,7 @@ Teste biblice pentru pregătire, după traducerea Cornilescu. Prima carte: **1 S
 - Clasament: fiecare întrebare contează o singură dată, prima oară când e răspunsă complet corect (scor = întrebări stăpânite ÷ total). La egalitate e înaintea cel care a ajuns primul. ID-ul unei întrebări e `<capitol><e|h><index>`, deci întrebările noi se adaugă la sfârșitul listei.
 - Grupuri: pregătite doar în baza de date (funcțiile de mai sus), fără interfață deocamdată; toți sunt în același clasament.
 - Pe acasă: seria de zile, medalii pe capitol (bronz, argint, aur), citirea capitolului înainte de test, tutorial la prima vizită. Fără emoji: aplicația rămâne sobră.
-- Parola uitată: aplicația nu trimite emailuri. Administratorul (tabelul `admins`) dă o parolă provizorie din profil („Parolă provizorie pentru un cont”, funcția `functions/admin-reset/`), iar jucătorul o schimbă din profil („Schimbă parola”).
+- Parola uitată: aplicația nu trimite emailuri. Administratorul (tabelul `admins`) dă o parolă provizorie din profil („Parolă provizorie pentru un cont”, funcția `functions/admin-reset/`), iar jucătorul o schimbă din „Modifică profilul”. Tot acolo se poate șterge contul (`functions/delete-account/`, cere parola din nou; rezultatele se șterg în cascadă).
 - `index.html`, `sw.js` — fișierele generate care se publică; `manifest.webmanifest` și `icons/` fac aplicația instalabilă, iar `sw.js` o deschide și fără internet.
 
 ## Lucru

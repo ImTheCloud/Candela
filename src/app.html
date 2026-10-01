@@ -410,6 +410,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .pw-wrap .input{padding-right:52px}
 .pw-eye{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:40px;height:40px;border:0;background:transparent;border-radius:10px;display:grid;place-items:center;color:var(--ink-2);padding:0}
 .pw-eye:hover{color:var(--ink);background:var(--surface-2)}
+.del-link{color:var(--bad);justify-self:center;font-size:14px}
 .forgot{justify-self:end;margin-top:-8px;font-size:14px}
 @media (max-width:420px){.brow-l{gap:8px;padding:7px 8px}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
@@ -771,13 +772,11 @@ function openProfile(){
       </div>
 
       <div class="prof-btns"><button class="btn ${store.hasEmail() ? "btn-ghost" : "btn-primary"} btn-block" id="pfEdit">${store.hasEmail() ? "Modifică profilul" : "Adaugă emailul"}</button>
-      <button class="btn btn-ghost btn-block" id="pfPw">Schimbă parola</button>
       ${S.admin ? `<button class="btn btn-ghost btn-block" id="pfAdm">Parolă provizorie pentru un cont</button>` : ""}
       <button class="btn btn-danger btn-block" id="pfOut">Ieși din cont</button></div>`;
     sheet.querySelector("#pfX").onclick = close;
     sheet.querySelector("#pfEdit").onclick = edit;
     sheet.querySelector("#pfOut").onclick = () => { close(); logout(); };
-    sheet.querySelector("#pfPw").onclick = changePw;
     if (S.admin) sheet.querySelector("#pfAdm").onclick = adminReset;
   };
   const form = (title, fields, submit, onSubmit) => {
@@ -799,13 +798,6 @@ function openProfile(){
       if (msg != null && sheet.querySelector("#pfSave")){ btn.disabled = false; btn.textContent = label; err.textContent = msg; }
     });
   };
-  const changePw = () => form("Schimbă parola", `<div class="field"><label for="pfNew">Parola nouă</label><input class="input" id="pfNew" type="password" autocomplete="new-password" minlength="6"></div>`, "Salvează", async f => {
-    const pw = f.querySelector("#pfNew").value;
-    if (pw.length < 6 || pw.length > 72) return "Parola trebuie să aibă între 6 și 72 de caractere.";
-    try { const { error } = await sb().auth.updateUser({ password: pw }); if (error) return isNetErr(error) ? loginError({error:"network"}) : /different/i.test(error.message) ? "Alege o parolă diferită de cea veche." : "Nu am putut schimba parola. Încearcă din nou."; }
-    catch (e) { return loginError({error: isNetErr(e) ? "network" : "server"}); }
-    toast("Parola a fost schimbată."); show(); return null;
-  });
   const adminReset = () => form("Parolă provizorie", `<p class="pf-note">Pentru cine a uitat parola. Scrie emailul contului sau „Prenume Nume”, apoi dă-i parola primită. O poate schimba din profil.</p>
     <div class="field"><label for="pfWho">Contul</label><input class="input" id="pfWho" autocomplete="off" autocapitalize="none" spellcheck="false"></div>`, "Generează", async f => {
     const who = f.querySelector("#pfWho").value.trim(); if (!who) return "Scrie emailul sau numele.";
@@ -829,13 +821,17 @@ function openProfile(){
           <div class="field"><label for="pfFirst">Prenume</label><input class="input" id="pfFirst" maxlength="30" autocomplete="given-name" autocapitalize="words" value="${esc(fn)}"></div>
         </div>
         <div class="field"><label for="pfMail">Email</label><input class="input" id="pfMail" type="email" inputmode="email" maxlength="254" autocomplete="email" autocapitalize="none" spellcheck="false" value="${store.hasEmail() ? esc(store.email) : ""}"></div>
+        <div class="field"><label for="pfPw">Parolă nouă <span class="muted" style="font-weight:400">(dacă vrei s-o schimbi)</span></label><input class="input" id="pfPw" type="password" autocomplete="new-password" maxlength="72"></div>
         <p class="form-error" id="pfErr" role="alert"></p>
         <div class="modal-btns"><button class="btn btn-ghost" type="button" id="pfCancel">Anulează</button><button class="btn btn-primary" type="submit" id="pfSave">Salvează</button></div>
-      </form>`;
+      </form>
+      <button class="link del-link" id="pfDel" type="button">Șterge contul</button>`;
     sheet.querySelector("#pfX").onclick = close;
     sheet.querySelector("#pfCancel").onclick = show;
     const form = sheet.querySelector("#pfForm"), err = sheet.querySelector("#pfErr");
-    const first = sheet.querySelector("#pfFirst"), last = sheet.querySelector("#pfLast"), mail = sheet.querySelector("#pfMail");
+    const first = sheet.querySelector("#pfFirst"), last = sheet.querySelector("#pfLast"), mail = sheet.querySelector("#pfMail"), npw = sheet.querySelector("#pfPw");
+    pwEye(npw);
+    sheet.querySelector("#pfDel").onclick = del;
     (store.hasEmail() ? last : mail).focus();
     form.addEventListener("input", () => { err.textContent = ""; });
     form.addEventListener("submit", async e => {
@@ -844,8 +840,14 @@ function openProfile(){
       if (!slugOf(l1)) { err.textContent = "Scrie numele de familie."; last.focus(); return; }
       if (!slugOf(f1)) { err.textContent = "Scrie prenumele."; first.focus(); return; }
       if (!EMAIL_RE.test(em)) { err.textContent = "Scrie o adresă de email validă."; mail.focus(); return; }
+      if (npw.value && npw.value.length < 6) { err.textContent = "Parola trebuie să aibă cel puțin 6 caractere."; npw.focus(); return; }
       const btn = sheet.querySelector("#pfSave"); btn.disabled = true; btn.textContent = "Se salvează…";
       const r = await store.updateAccount(f1, l1, em);
+      if (r.ok && npw.value){
+        let pe = null;
+        try { const { error } = await sb().auth.updateUser({ password: npw.value }); pe = error; } catch (x) { pe = x; }
+        if (pe && !/different/i.test(pe.message || "")){ btn.disabled = false; btn.textContent = "Salvează"; err.textContent = isNetErr(pe) ? loginError({error:"network"}) : "Numele și emailul au fost salvate, dar parola nu. Încearcă din nou."; p.name = r.name; return; }
+      }
       if (!r.ok){
         btn.disabled = false; btn.textContent = "Salvează";
         err.textContent = ({ name_taken: "Acest nume e deja folosit de alt cont.", email_taken: "Acest email e deja folosit de alt cont.", auth: "Intră din nou în cont și încearcă iar." })[r.error] || loginError(r);
@@ -854,10 +856,25 @@ function openProfile(){
       p.name = r.name; lsSet("candela:email", r.email); S.board = null;
       const who = $("#who"); if (who) who.outerHTML = whoHTML();
       if ($("#board")) loadBoard();
-      toast("Profil actualizat.");
+      toast(npw.value ? "Profil și parolă actualizate." : "Profil actualizat.");
       show();
     });
   };
+  // deleting the account: the password is asked again, then everything goes (results, mastered questions, profile)
+  const del = () => form("Șterge contul", `<p class="pf-note">Contul, rezultatele și locul din clasament se șterg definitiv. Nu se pot recupera.</p>
+    <div class="field"><label for="pfDelPw">Parola ta, pentru confirmare</label><input class="input" id="pfDelPw" type="password" autocomplete="current-password"></div>`, "Șterge definitiv", async f => {
+    const pw = f.querySelector("#pfDelPw").value; if (!pw) return "Scrie parola.";
+    try { const { error } = await sb().auth.signInWithPassword({ email: store.email, password: pw }); if (error) return isNetErr(error) ? loginError({error:"network"}) : "Parola nu e corectă."; }
+    catch (x) { return loginError({error: isNetErr(x) ? "network" : "server"}); }
+    const token = await store.token(); if (!token) return "Intră din nou în cont și încearcă iar.";
+    const r = await store.call("delete-account", {}, token);
+    if (!r.ok) return loginError(r);
+    const uid = store.uid;
+    for (const k of ["candela:p:" + uid, "candela:pending:" + uid, "candela:email", "candela:hasAccount", "candela:quiz"]) try { localStorage.removeItem(k); } catch {}
+    close(); await store.logout(); S.board = null; S.admin = null; enterGuest();
+    toast("Contul a fost șters.");
+    return null;
+  });
   show();
   if (S.admin == null) store.rpc("is_admin").then(r => { S.admin = r.ok && r.data === true; if (S.admin && sheet.querySelector("#pfEdit") && !sheet.querySelector("#pfAdm")) show(); });
 }
