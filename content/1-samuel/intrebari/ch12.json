@@ -177,6 +177,148 @@
      "vor pieri, ei și împăratul lor"
     ]
    ]
+  },
+  {
+   "t": "tf",
+   "ref": "12:2",
+   "q": "Samuel a spus că, de acum, împăratul va merge înaintea poporului.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "12:3",
+   "q": "Ce a promis Samuel dacă cineva ar fi mărturisit că i-a luat ceva pe nedrept?",
+   "opts": [
+    "Să părăsească țara",
+    "Să aducă o jertfă pentru vină",
+    "Să-i dea înapoi",
+    "Să nu mai judece pe Israel"
+   ],
+   "a": 2
+  },
+  {
+   "t": "one",
+   "ref": "12:6",
+   "q": "Cine i-a pus pe Moise și pe Aaron, potrivit lui Samuel?",
+   "opts": [
+    "Faraon",
+    "Domnul",
+    "Iacov",
+    "Bătrânii lui Israel"
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "12:8",
+   "q": "Samuel a spus că Moise și Aaron i-au adus pe părinți să locuiască în locul acesta.",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "12:14",
+   "q": "Samuel a spus că numai poporul, nu și împăratul, trebuia să rămână alipit de Domnul.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "12:17",
+   "q": "Ce urma să înțeleagă poporul din tunetele și ploaia trimise de Domnul?",
+   "opts": [
+    "Că secerișul va fi bogat",
+    "Că filistenii vor fi învinși",
+    "Că Saul este alesul Domnului",
+    "Cât de rău au făcut când au cerut un împărat"
+   ],
+   "a": 3
+  },
+  {
+   "t": "one",
+   "ref": "12:16",
+   "q": "Ce le-a cerut Samuel oamenilor înainte de minune?",
+   "opts": [
+    "Să postească trei zile",
+    "Să mai aștepte acolo ca să vadă minunea",
+    "Să-și sfâșie hainele",
+    "Să aducă arderi-de-tot"
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "12:17-18",
+   "q": "Samuel a strigat către Domnul înainte să-i spună poporului ce semn va veni.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "12:22",
+   "q": "De ce nu-Și va părăsi Domnul poporul, potrivit lui Samuel?",
+   "opts": [
+    "Din pricina jertfelor aduse de popor",
+    "Din pricina noului împărat",
+    "Din pricina Numelui Lui celui mare",
+    "Din pricina rugăciunilor părinților"
+   ],
+   "a": 2
+  },
+  {
+   "t": "tf",
+   "ref": "12:23",
+   "q": "Samuel a spus că ar păcătui împotriva Domnului dacă ar înceta să se roage pentru popor.",
+   "a": true
+  },
+  {
+   "t": "fill",
+   "ref": "12:24",
+   "q": "„Temeți-vă numai de Domnul și slujiți-I cu ___, din toată inima voastră”",
+   "a": [
+    "credincioșie"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "12:13",
+   "q": "Potrivit lui Samuel, cine a pus în cele din urmă împăratul peste popor?",
+   "opts": [
+    "Bătrânii lui Israel",
+    "Împăratul însuși",
+    "Filistenii",
+    "Domnul"
+   ],
+   "a": 3
+  },
+  {
+   "t": "multi",
+   "ref": "12:6-12",
+   "q": "Pe care dintre următorii i-a pomenit Samuel pe nume în cuvântarea lui? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Moise",
+    "Avraam",
+    "Iacov",
+    "Iosua",
+    "Sisera",
+    "David"
+   ],
+   "a": [
+    0,
+    2,
+    4
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "12:15",
+   "q": "„mâna Domnului va fi împotriva voastră, cum a fost împotriva ___ voștri”",
+   "a": [
+    "părinților"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "12:1-25",
+   "q": "În cuvântarea din acest capitol, Samuel îl numește pe Saul pe nume.",
+   "a": false
   }
  ],
  "hard": [
@@ -433,6 +575,93 @@
    "q": "căci vedeți ce ___ desfășoară El printre voi",
    "a": [
     "putere"
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "12:3",
+   "q": "„De la cine am luat mită ca să ___ ochii asupra lui?”",
+   "a": [
+    "închid"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "12:4",
+   "q": "Poporul a spus că Samuel n-a primit nimic din mâna nimănui.",
+   "a": true
+  },
+  {
+   "t": "fill",
+   "ref": "12:5",
+   "q": "„unsul Lui este martor în ziua aceasta că n-ați găsit nimic în ___ mele”",
+   "a": [
+    "mâinile"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "12:14",
+   "q": "Ce condiție a pus Samuel în versetul 14, pe lângă teamă, slujire și ascultarea de glasul Domnului?",
+   "opts": [
+    "Să nu se însoare cu femei străine",
+    "Să păzească Sabatul",
+    "Să nu se împotrivească Cuvântului Domnului",
+    "Să aducă zeciuiala"
+   ],
+   "a": 2
+  },
+  {
+   "t": "match",
+   "ref": "12:9-11",
+   "q": "Asociază fiecare poziție dintr-o enumerare a lui Samuel cu numele potrivit.",
+   "pairs": [
+    [
+     "Primul vrăjmaș numit în v. 9",
+     "Sisera"
+    ],
+    [
+     "Ultimul vrăjmaș numit în v. 9",
+     "împăratul Moabului"
+    ],
+    [
+     "Primul izbăvitor numit în v. 11",
+     "Ierubaal"
+    ],
+    [
+     "Ultimul izbăvitor numit în v. 11",
+     "Samuel"
+    ]
+   ]
+  },
+  {
+   "t": "multi",
+   "ref": "12:2",
+   "q": "Despre cine spune Samuel în versetul 2 că merge sau a umblat „înaintea voastră”? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Împăratul",
+    "Samuel însuși",
+    "Fiii lui Samuel",
+    "Bătrânii lui Israel",
+    "Moise"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "12:8",
+   "q": "Samuel a spus că Domnul i-a trimis pe Moise și pe Aaron după ce părinții au strigat către El.",
+   "a": true
+  },
+  {
+   "t": "fill",
+   "ref": "12:20",
+   "q": "Samuel a zis poporului: „Nu vă ___! Ați făcut tot răul acesta”",
+   "a": [
+    "temeți"
    ]
   }
  ]

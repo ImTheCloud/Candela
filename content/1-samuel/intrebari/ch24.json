@@ -183,6 +183,53 @@
     "La Nob"
    ],
    "a": 2
+  },
+  {
+   "t": "tf",
+   "ref": "24:10",
+   "q": "David i-a mărturisit lui Saul că oamenii lui îl îndemnaseră să-l omoare.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "24:16",
+   "q": "Când i-a răspuns Saul lui David?",
+   "opts": [
+    "Îndată ce David a strigat după el",
+    "Când a sfârșit David de spus aceste vorbe",
+    "A doua zi, după ce s-a întors acasă",
+    "Nu i-a răspuns deloc"
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "24:7-8",
+   "q": "David a ieșit din peșteră înaintea lui Saul.",
+   "a": false
+  },
+  {
+   "t": "match",
+   "ref": "24:3-22",
+   "q": "Asociază fiecare moment cu locul lui în desfășurarea capitolului.",
+   "pairs": [
+    [
+     "Întâi",
+     "Saul intră în peșteră să doarmă"
+    ],
+    [
+     "Apoi",
+     "David taie colțul hainei lui Saul"
+    ],
+    [
+     "După aceea",
+     "David strigă după Saul"
+    ],
+    [
+     "La sfârșit",
+     "David îi jură lui Saul"
+    ]
+   ]
   }
  ],
  "hard": [
@@ -423,6 +470,28 @@
     "Numele din casa tatălui său"
    ],
    "a": 3
+  },
+  {
+   "t": "tf",
+   "ref": "24:12-13",
+   "q": "În versetele 12 și 13, David repetă că nu va pune mâna pe Saul.",
+   "a": true
+  },
+  {
+   "t": "fill",
+   "ref": "24:14",
+   "q": "„Împotriva cui a pornit împăratul lui Israel? Pe cine ___ tu?”",
+   "a": [
+    "urmărești"
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "24:7",
+   "q": "„Apoi Saul s-a sculat să iasă din peșteră și și-a văzut înainte de ___.”",
+   "a": [
+    "drum"
+   ]
   }
  ]
 }

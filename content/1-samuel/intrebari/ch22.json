@@ -192,6 +192,119 @@
    "ref": "22:23",
    "q": "David l-a trimis pe Abiatar să se ascundă în altă parte.",
    "a": false
+  },
+  {
+   "t": "tf",
+   "ref": "22:5",
+   "q": "David n-a ținut seama de cuvântul prorocului și a rămas în cetățuie.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "22:8",
+   "q": "De ce i-a învinuit Saul pe slujitorii lui?",
+   "opts": [
+    "Că au fugit din luptă",
+    "Că nu i-au dat de știre despre legământul fiului său cu fiul lui Isai",
+    "Că au lăsat cetatea Nob nepăzită",
+    "Că i-au furat sulița"
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "22:8",
+   "q": "Saul s-a plâns că pe niciunul dintre slujitorii lui nu-l doare inima pentru el.",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "22:15",
+   "q": "Ahimelec a spus că atunci întreba pentru prima dată pe Dumnezeu pentru David.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "22:23",
+   "q": "Ce motiv i-a dat David lui Abiatar ca să rămână cu el?",
+   "opts": [
+    "Că Saul îl iertase deja pe Abiatar",
+    "Că Moabul îi va primi pe amândoi",
+    "Că cel ce caută să-i ia viața lui David caută s-o ia și pe a lui Abiatar",
+    "Că prorocul Gad poruncise așa"
+   ],
+   "a": 2
+  },
+  {
+   "t": "fill",
+   "ref": "22:6",
+   "q": "„Saul a aflat că David și oamenii lui au fost ___”",
+   "a": [
+    "descoperiți"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "22:13",
+   "q": "Saul l-a acuzat pe Ahimelec că i-a dat lui David oameni înarmați.",
+   "a": false
+  },
+  {
+   "t": "fill",
+   "ref": "22:15",
+   "q": "„Să nu arunce împăratul nicio ___ asupra robului său”",
+   "a": [
+    "vină"
+   ]
+  },
+  {
+   "t": "match",
+   "ref": "22:9-21",
+   "q": "Asociază fiecare moment cu locul lui în desfășurarea poveștii.",
+   "pairs": [
+    [
+     "Întâi",
+     "Doeg îi spune lui Saul ce a văzut la Nob"
+    ],
+    [
+     "Apoi",
+     "Saul îi cheamă pe preoți la el"
+    ],
+    [
+     "După aceea",
+     "Preoții sunt omorâți"
+    ],
+    [
+     "La sfârșit",
+     "Abiatar ajunge la David"
+    ]
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "22:21",
+   "q": "Abiatar i-a spus lui David că Saul a ucis pe preoții Domnului.",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "22:8",
+   "q": "Saul credea că David îi întinde curse.",
+   "a": true
+  },
+  {
+   "t": "multi",
+   "ref": "22:23",
+   "q": "Care dintre următoarele i le-a spus David lui Abiatar? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Nu te teme de nimic",
+    "Du-te la Saul și cere-i iertare",
+    "Fugi în țara Moabului",
+    "Ascunde-te la Nob"
+   ],
+   "a": [
+    0
+   ]
   }
  ],
  "hard": [
@@ -484,6 +597,32 @@
    "a": [
     "păzit"
    ]
+  },
+  {
+   "t": "fill",
+   "ref": "22:14",
+   "q": "„gata la poruncile lui și înconjurat cu ___ în casa ta”",
+   "a": [
+    "cinste"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "22:19",
+   "q": "Ce animale sunt pomenite printre cele ucise la Nob?",
+   "opts": [
+    "Cămile, capre și oi",
+    "Cai, boi și oi",
+    "Boi, măgari și oi",
+    "Măgari, capre și cămile"
+   ],
+   "a": 2
+  },
+  {
+   "t": "tf",
+   "ref": "22:17",
+   "q": "Saul i-a numit pe preoții de la Nob „preoții Domnului”.",
+   "a": true
   }
  ]
 }

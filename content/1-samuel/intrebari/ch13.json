@@ -200,6 +200,102 @@
    "ref": "13:23",
    "q": "O ceată de filisteni s-a așezat la trecătoarea Micmașului.",
    "a": true
+  },
+  {
+   "t": "fill",
+   "ref": "13:3",
+   "q": "Saul a pus să sune cu trâmbița prin toată țara, zicând: „Să audă ___ lucrul acesta!”",
+   "a": [
+    "evreii"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "13:4",
+   "q": "Vestea auzită în tot Israelul spunea că Saul a bătut tabăra filistenilor.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "13:4",
+   "q": "Unde a fost adunat poporul la Saul?",
+   "opts": [
+    "La Mițpa",
+    "La Silo",
+    "La Ghilgal",
+    "La Rama"
+   ],
+   "a": 2
+  },
+  {
+   "t": "tf",
+   "ref": "13:6",
+   "q": "Bărbații lui Israel s-au ascuns pentru că s-au văzut la strâmtoare, strânși de aproape.",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "13:7",
+   "q": "Saul a trecut și el Iordanul împreună cu evreii care fugeau.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "13:11",
+   "q": "Ce l-a întrebat Samuel pe Saul când a ajuns?",
+   "opts": [
+    "„De ce n-ai luptat?”",
+    "„Unde este Ionatan?”",
+    "„Ce-ai făcut?”",
+    "„Câți oameni ai?”"
+   ],
+   "a": 2
+  },
+  {
+   "t": "one",
+   "ref": "13:12",
+   "q": "Ce își spunea Saul că încă nu făcuse, înainte să coboare filistenii la Ghilgal?",
+   "opts": [
+    "Nu se rugase Domnului",
+    "Nu-și numărase oamenii",
+    "Nu-l chemase pe Ionatan",
+    "Nu ascuțise săbiile"
+   ],
+   "a": 0
+  },
+  {
+   "t": "one",
+   "ref": "13:16",
+   "q": "Ce legătură era între Saul și Ionatan?",
+   "opts": [
+    "Ionatan era fratele lui Saul",
+    "Ionatan era căpetenia oștirii lui Saul",
+    "Ionatan era nepotul lui Saul",
+    "Ionatan era fiul lui Saul"
+   ],
+   "a": 3
+  },
+  {
+   "t": "multi",
+   "ref": "13:15-16",
+   "q": "Ce s-a întâmplat după ce Samuel a plecat din Ghilgal? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Saul a numărat poporul care era cu el",
+    "Saul a adus o nouă jertfă",
+    "Saul și Ionatan s-au așezat cu poporul la Gheba lui Beniamin",
+    "Saul l-a urmat pe Samuel la Rama",
+    "Saul a atacat trecătoarea Micmașului"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "13:18",
+   "q": "Una dintre cetele filistenilor a luat drumul înspre pustie.",
+   "a": true
   }
  ],
  "hard": [
@@ -477,6 +573,46 @@
    "ref": "13:21",
    "q": "Israeliții mergeau la filisteni și ca să facă vârf țepușului cu care mânau boii.",
    "a": true
+  },
+  {
+   "t": "one",
+   "ref": "13:20-21",
+   "q": "Ce unealtă apare în lista din versetul 21, dar nu și în cea din versetul 20?",
+   "opts": [
+    "Sapa",
+    "Coasa",
+    "Furca cu trei coarne",
+    "Securea"
+   ],
+   "a": 2
+  },
+  {
+   "t": "fill",
+   "ref": "13:6",
+   "q": "„s-au ascuns în peșteri, în ___, în stânci, în turnuri și în gropile pentru apă”",
+   "a": [
+    "tufișuri"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "13:10",
+   "q": "Ce făcea Saul exact în clipa în care a venit Samuel?",
+   "opts": [
+    "Își număra oamenii",
+    "Sfârșea de adus arderea-de-tot",
+    "Suna din trâmbiță",
+    "Pleca spre Micmaș"
+   ],
+   "a": 1
+  },
+  {
+   "t": "fill",
+   "ref": "13:20",
+   "q": "„ca să-și ascută fierul plugului, coasa, ___ și sapa”",
+   "a": [
+    "securea"
+   ]
   }
  ]
 }

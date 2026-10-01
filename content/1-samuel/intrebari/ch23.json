@@ -186,6 +186,174 @@
    "ref": "23:29",
    "q": "La sfârșitul capitolului, David s-a întors la Cheila.",
    "a": false
+  },
+  {
+   "t": "tf",
+   "ref": "23:1",
+   "q": "David a aflat de la alții că filistenii au început lupta împotriva Cheilei.",
+   "a": true
+  },
+  {
+   "t": "fill",
+   "ref": "23:4",
+   "q": "„Scoală-te și coboară-te la Cheila, căci dau pe filisteni în ___ tale.”",
+   "a": [
+    "mâinile"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "23:3-4",
+   "q": "Ce l-a făcut pe David să-L întrebe din nou pe Domnul?",
+   "opts": [
+    "Un vis pe care l-a avut",
+    "Frica oamenilor lui",
+    "Vestea că Saul se apropie",
+    "Sfatul lui Ionatan"
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "23:5",
+   "q": "Lupta de la Cheila s-a încheiat fără biruință pentru David.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "23:8",
+   "q": "Ce plan avea Saul când a chemat poporul la război?",
+   "opts": [
+    "Să-i alunge pe filisteni din Cheila",
+    "Să-i pedepsească pe locuitorii Cheilei",
+    "Să coboare la Cheila și să-l împresoare pe David cu oamenii lui",
+    "Să-l caute pe David în pustia Maon"
+   ],
+   "a": 2
+  },
+  {
+   "t": "one",
+   "ref": "23:15",
+   "q": "De ce a stat David în pustia Zif, în pădure?",
+   "opts": [
+    "Pentru că acolo îl aștepta Ionatan",
+    "Pentru că văzuse că Saul a pornit să-i ia viața",
+    "Pentru că zifiții îi erau prieteni",
+    "Pentru că prorocul Gad îl trimisese acolo"
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "23:17",
+   "q": "Ionatan l-a sfătuit pe David să se teamă și să fugă din țară.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "23:23",
+   "q": "Ce a promis Saul că va face după ce zifiții se vor întoarce cu vești sigure?",
+   "opts": [
+    "Va porni cu ei",
+    "Le va da ogoare și vii",
+    "Va trimite pe Abner în locul lui",
+    "Îl va ierta pe David"
+   ],
+   "a": 0
+  },
+  {
+   "t": "fill",
+   "ref": "23:25",
+   "q": "„Despre lucrul acesta s-a dat de ___ lui David, care s-a coborât la stâncă”",
+   "a": [
+    "veste"
+   ]
+  },
+  {
+   "t": "multi",
+   "ref": "23:1-27",
+   "q": "În ce momente ale capitolului au un rol filistenii? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Când atacă cetatea Cheila",
+    "Când năvălesc în țară cât timp Saul îl urmărește pe David",
+    "Când îl ajută pe Saul să-l împresoare pe David",
+    "Când îl primesc pe David în pustia Zif"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "t": "match",
+   "ref": "23:5-28",
+   "q": "Asociază fiecare moment cu locul lui în desfășurarea capitolului.",
+   "pairs": [
+    [
+     "Întâi",
+     "David izbăvește Cheila de filisteni"
+    ],
+    [
+     "Apoi",
+     "David iese din Cheila cu oamenii lui"
+    ],
+    [
+     "După aceea",
+     "Ionatan îl vizitează pe David în pădure"
+    ],
+    [
+     "La sfârșit",
+     "Saul se întoarce să iasă înaintea filistenilor"
+    ]
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "23:9-12",
+   "q": "David s-a folosit de efodul adus de Abiatar ca să-L întrebe pe Domnul.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "23:26-27",
+   "q": "Când a venit solul la Saul?",
+   "opts": [
+    "După ce David ajunsese la En-Ghedi",
+    "Înainte ca Saul să plece din Ghibea",
+    "Tocmai când Saul și oamenii lui îi înconjuraseră pe David și pe ai lui",
+    "Pe când Saul era la Cheila"
+   ],
+   "a": 2
+  },
+  {
+   "t": "one",
+   "ref": "23:12-13",
+   "q": "Ce a făcut David după ce Domnul i-a spus că locuitorii Cheilei îl vor da în mâinile lui Saul?",
+   "opts": [
+    "A ieșit din Cheila cu oamenii lui",
+    "A închis porțile cetății",
+    "A trimis soli la Saul",
+    "I-a pedepsit pe locuitorii Cheilei"
+   ],
+   "a": 0
+  },
+  {
+   "t": "tf",
+   "ref": "23:18",
+   "q": "Legământul din pădure a fost primul legământ dintre David și Ionatan.",
+   "a": false
+  },
+  {
+   "t": "tf",
+   "ref": "23:25",
+   "q": "După ce David s-a coborât la stâncă, Saul a renunțat să-l mai caute în pustia Maon.",
+   "a": false
+  },
+  {
+   "t": "tf",
+   "ref": "23:13",
+   "q": "David și oamenii lui au ieșit din Cheila și s-au dus unde au putut.",
+   "a": true
   }
  ],
  "hard": [
@@ -456,6 +624,95 @@
     "Stânca împărțirii"
    ],
    "a": 3
+  },
+  {
+   "t": "fill",
+   "ref": "23:2",
+   "q": "„Să mă duc și să ___ pe filistenii aceștia?”",
+   "a": [
+    "bat"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "23:11-12",
+   "q": "David L-a întrebat pe Domnul de două ori dacă locuitorii Cheilei îl vor da în mâinile lui Saul.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "23:18",
+   "q": "Înaintea cui au făcut iarăși legământ David și Ionatan?",
+   "opts": [
+    "Înaintea lui Abiatar",
+    "Înaintea Domnului",
+    "Înaintea zifiților",
+    "Înaintea lui Saul"
+   ],
+   "a": 1
+  },
+  {
+   "t": "one",
+   "ref": "23:9",
+   "q": "Cui i-a cerut David să aducă efodul?",
+   "opts": [
+    "Prorocului Gad",
+    "Lui Ionatan",
+    "Lui Ahimelec",
+    "Preotului Abiatar"
+   ],
+   "a": 3
+  },
+  {
+   "t": "fill",
+   "ref": "23:23",
+   "q": "„veniți apoi la mine cu ceva ___ și voi porni cu voi”",
+   "a": [
+    "temeinic"
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "23:27",
+   "q": "„___ să vii, căci au năvălit filistenii în țară.”",
+   "a": [
+    "Grăbește-te"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "23:19",
+   "q": "Zifiții au spus că David se ascunde între ei în locuri întărite, în pădure.",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "23:5",
+   "q": "David s-a dus la Cheila singur, fără oamenii lui.",
+   "a": false
+  },
+  {
+   "t": "match",
+   "ref": "23:5-29",
+   "q": "Asociază fiecare loc cu ordinea în care ajunge David acolo în acest capitol.",
+   "pairs": [
+    [
+     "Întâi",
+     "Cheila"
+    ],
+    [
+     "Apoi",
+     "Pustia Zif"
+    ],
+    [
+     "După aceea",
+     "Pustia Maon"
+    ],
+    [
+     "La sfârșit",
+     "En-Ghedi"
+    ]
+   ]
   }
  ]
 }
