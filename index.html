@@ -436,13 +436,20 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 @media (max-width:340px){.who.acct .long{display:none}}
 .sh-lvl{display:grid;gap:6px}
 .start-sheet{gap:12px}
+.sh-tools{display:flex;align-items:center;gap:8px;flex:none}
+.start-sheet .sheet-h{gap:10px}
+.start-sheet .sheet-h h3{min-width:0}
+.read-btn.sm{padding:6px 12px 6px 9px;font-size:13.5px;color:var(--ink-2)}
+.read-btn.sm svg{width:16px;height:16px}
+.read-btn.sm span{display:inline!important}
 #shCnt button{white-space:nowrap;display:grid;line-height:1.15;padding-block:7px}
 #shCnt button small{font-size:12px;font-weight:500;opacity:.75}
 .start-sheet .sheet-h h3{font-size:21px}
 .start-sheet .read-link{margin:0 auto}
 .start-sheet #shGo{min-height:54px;padding-block:8px}
 .sh-l{font-size:14px;font-weight:600}
-.sh-note{font-size:13.5px;color:var(--ink-2);min-height:1.3em}
+.sh-q{margin:0;line-height:1.35;min-height:2.7em}
+.sh-note{font-size:13px;color:var(--ink-2)}
 .sh-note.ok{color:var(--cedar);font-weight:600}
 .seg .done-ic{margin-left:5px;vertical-align:-1px}
 .sh-note .done-ic{vertical-align:-2px;margin-right:2px}
@@ -1110,13 +1117,11 @@ function openOptions(chs = [...S.sel].sort((a,b)=>a-b)){
   let mode = "easy", list, pool, perQ, n, pick = "all";
   const bg = document.createElement("div"); bg.className = "sheet-bg";
   bg.innerHTML = `<div class="sheet start-sheet" role="dialog" aria-modal="true" aria-labelledby="shT">
-    <div class="sheet-h"><h3 id="shT">${esc(whatLabel(chs))}</h3><button class="icon-btn" id="shX" aria-label="Închide"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
-    <div class="sh-lvl"><span class="sh-l">Ce nivel alegi?</span>
-      <div class="seg" role="group" aria-label="Nivel">${["easy","hard","both"].map(m=>`<button type="button" data-m="${m}">${MODE_LABEL[m]}${levelDone(chs, m) ? CHECK : ""}</button>`).join("")}</div>
-      <small class="sh-note" id="shNote"></small></div>
+    <div class="sheet-h"><h3 id="shT">${esc(whatLabel(chs))}</h3><div class="sh-tools">${chs.length === 1 && !$(".reader") ? `<button class="read-btn sm" id="shRead" type="button" aria-label="Citește capitolul ${chs[0]} înainte">${BOOK}<span>Citește</span></button>` : ""}<button class="icon-btn" id="shX" aria-label="Închide"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div></div>
+    <div class="sh-lvl"><p class="sh-q"><span class="sh-l">Ce nivel alegi?</span> <small class="sh-note" id="shNote"></small></p>
+      <div class="seg" role="group" aria-label="Nivel">${["easy","hard","both"].map(m=>`<button type="button" data-m="${m}">${MODE_LABEL[m]}${levelDone(chs, m) ? CHECK : ""}</button>`).join("")}</div></div>
     <div class="sh-lvl"><span class="sh-l">Câte întrebări vrei?</span><div class="seg" role="group" aria-label="Câte întrebări" id="shCnt">${["q","h","all"].map(k=>`<button type="button" data-p="${k}"></button>`).join("")}</div></div>
     <button class="btn btn-primary btn-block" id="shGo"></button>
-    ${chs.length === 1 && !$(".reader") ? `<button class="link read-link" id="shRead" type="button">Citește întâi capitolul ${chs[0]}</button>` : ""}
   </div>`;
   document.body.appendChild(bg);
   const set = () => {
