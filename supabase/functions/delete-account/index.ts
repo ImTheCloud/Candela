@@ -1,4 +1,4 @@
-// Deletes the signed-in player's own account. Results, mastered questions and the profile go with it (foreign keys cascade).
+// Deletes the signed-in player's own account and its children's accounts. Results, mastered questions and profiles go with them (foreign keys cascade).
 // Deployed with verify_jwt = true: the caller's own token decides which account is deleted.
 import { createClient } from "npm:@supabase/supabase-js@2";
 
@@ -17,6 +17,8 @@ Deno.serve(async (req) => {
   const token = (req.headers.get("authorization") || "").replace(/^Bearer\s+/i, "");
   const { data: who } = await admin.auth.getUser(token);
   if (!who?.user) return json(401, { error: "auth" });
+  const { data: kids } = await admin.from("profiles").select("id").eq("parent_id", who.user.id);
+  for (const k of kids || []) await admin.auth.admin.deleteUser(k.id);
   const { error } = await admin.auth.admin.deleteUser(who.user.id);
   if (error) { console.error(error); return json(500, { error: "server" }); }
   return json(200, { ok: true });

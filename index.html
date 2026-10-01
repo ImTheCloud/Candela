@@ -397,6 +397,19 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .pw-wrap .input{padding-right:52px}
 .pw-eye{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:40px;height:40px;border:0;background:transparent;border-radius:10px;display:grid;place-items:center;color:var(--ink-2);padding:0}
 .pw-eye:hover{color:var(--ink);background:var(--surface-2)}
+.family{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:10px}
+.family-l{font-size:14px;color:var(--ink-2);margin-right:2px}
+.fam{display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--line);background:var(--surface);border-radius:999px;padding:4px 14px 4px 4px;font-weight:600;font-size:14px;transition:border-color .15s,background .15s}
+.fam .avatar.sm{width:28px;height:28px;font-size:11.5px}
+.fam:hover{border-color:var(--ink-2)}
+.fam.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.fam.on .avatar{background:var(--oil)}
+.pf-hide{align-self:start;font-size:15px}
+.kid{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:10px;padding-top:10px;border-top:1px solid var(--line)}
+.kid b{font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.kid .link{padding:0;font-size:13.5px;color:var(--bad)}
+.kid-form{display:grid;gap:12px;padding-top:10px;border-top:1px solid var(--line)}
+.kid-form .input{padding:10px 12px;font-size:16px}
 .del-link{color:var(--bad);justify-self:center;font-size:14px}
 .forgot{justify-self:end;margin-top:-8px;font-size:14px}
 @media (max-width:420px){.brow-l{gap:8px;padding:7px 8px}}
@@ -472,7 +485,7 @@ const store = {
     p.ok = [...new Set([...p.ok, ...x.ok])];
   },
   async send(x){
-    const { error } = await sb().rpc("save_result", { p_at: new Date(x.at).toISOString(), p_chs: x.chs, p_mode: x.mode, p_score: x.score, p_total: x.total, p_pct: x.pct, p_secs: x.secs, p_chap: x.chap, p_ok: x.ok });
+    const { error } = await sb().rpc("save_play", { p_player: x.player || this.uid, p_at: new Date(x.at).toISOString(), p_chs: x.chs, p_mode: x.mode, p_score: x.score, p_total: x.total, p_pct: x.pct, p_secs: x.secs, p_chap: x.chap, p_ok: x.ok });
     if (error) throw error;
   },
   async flush(){
@@ -487,11 +500,20 @@ const store = {
     if (moved.length){ lsSet("candela:pending:" + this.uid, [...this.pending(), ...moved]); lsSet("candela:guestEntries", []); lsSet("candela:guest", null); }
     this.moved = moved.length;
     await this.flush();
-    const { data, error } = await sb().rpc("my_progress");
+    return this.loadPlayer(lsGet("candela:player:" + this.uid, this.uid));
+  },
+  /* a parent plays as itself or as one of its children, on the same phone; pid is who plays now */
+  async loadPlayer(pid){
+    const { data, error } = await sb().rpc("player_progress", { p_player: pid });
     if (error) throw error;
-    const p = this.norm({ name: data.name || user.user_metadata?.name || "?", history: data.history, chap: data.chap, ok: data.ok, tests: data.tests });
-    for (const x of this.pending()) this.applyEntry(p, x);
-    lsSet("candela:p:" + this.uid, p);
+    if (!data && pid !== this.uid) return this.loadPlayer(this.uid);   // that child was removed
+    this.pid = pid; lsSet("candela:player:" + this.uid, pid);
+    const p = this.norm({ name: data.name || "?", history: data.history, chap: data.chap, ok: data.ok, tests: data.tests });
+    p.child = pid !== this.uid; p.hidden = !!data.hidden;
+    if (!p.child) this.isParent = !!data.is_parent;
+    for (const x of this.pending()) if ((x.player || this.uid) === pid) this.applyEntry(p, x);
+    lsSet("candela:p:" + pid, p);
+    this.family = this.isParent ? await this.rpc("my_family").then(r => r.ok ? r.data : this.family || []) : [];
     return p;
   },
   /* returns {ok, profile} or {ok:false, error} */
@@ -544,7 +566,8 @@ const store = {
   async save(p, x){
     this.applyEntry(p, x);
     if (p.guest){ lsSet("candela:guest", p); lsSet("candela:guestEntries", [...lsGet("candela:guestEntries", []), x]); return {guest:true}; }
-    lsSet("candela:p:" + this.uid, p);
+    x.player = this.pid || this.uid;
+    lsSet("candela:p:" + x.player, p);
     try { await this.send(x); return {saved:true}; }
     catch (e) {
       if (isNetErr(e)){ lsSet("candela:pending:" + this.uid, [...this.pending(), x]); }
@@ -554,7 +577,7 @@ const store = {
   async board(){
     if (!sb()) return null;
     try {
-      const { data, error } = await sb().rpc("board");
+      const { data, error } = await sb().rpc("board_for", { p_player: S.player && !S.player.guest ? this.pid : null });
       if (error) return null;
       const total = totalCount("both");
       return data.map(x => ({ name: x.name, ok: x.ok, tests: x.tests, me: !!x.me, mastery: Math.round(x.ok / total * 1000) / 10 }));
@@ -567,7 +590,7 @@ const store = {
     catch (e) { return {ok:false, error: isNetErr(e) ? "network" : "server"}; }
   },
   async token(){ try { return (await sb().auth.getSession()).data.session?.access_token || null; } catch { return null; } },
-  async logout(){ try { await sb()?.auth.signOut(); } catch {} this.uid = null; this.email = ""; }
+  async logout(){ try { await sb()?.auth.signOut(); } catch {} this.uid = this.pid = null; this.email = ""; this.isParent = false; this.family = []; }
 };
 
 /* ---------- state ---------- */
@@ -624,6 +647,7 @@ function viewEntry(msg, tab){
       <div class="field"><label for="email">Email</label><input class="input" id="email" type="${isNew ? "email" : "text"}" inputmode="email" maxlength="254" autocomplete="${isNew ? "email" : "username"}" autocapitalize="none" spellcheck="false" required value="${isNew ? "" : esc(lsGet("candela:email", ""))}"></div>
       <div class="field"><label for="pw">Parolă</label><input class="input" id="pw" type="password" autocomplete="${isNew ? "new-password" : "current-password"}" minlength="6" required></div>
       ${isNew ? "" : `<button class="link forgot" id="forgot" type="button">Ai uitat parola?</button>`}
+      ${isNew ? `<label class="remember"><input type="checkbox" id="parent"> Sunt părinte și vreau să-mi adaug copiii</label>` : ""}
       <label class="remember"><input type="checkbox" id="remember" ${lsGet("candela:remember", true) ? "checked" : ""}> Rămâi conectat</label>
       <p class="form-error" id="err" role="alert">${msg ? esc(msg) : ""}</p>
       <button class="btn btn-primary btn-block" id="go" type="submit">${isNew ? "Creează contul" : "Intră"}</button>
@@ -655,6 +679,7 @@ function viewEntry(msg, tab){
       return;
     }
     lsSet("candela:email", em.includes("@") ? em.toLowerCase() : em); lsSet("candela:hasAccount", true);
+    if (isNew && $("#parent")?.checked){ await store.rpc("set_parent", {p_on: true}); store.isParent = true; store.family = [{id: store.uid, name: r.profile.name, child: false}]; }
     enter(r.profile, r.created);
   });
 }
@@ -688,8 +713,8 @@ async function autoLogin(){
   if (!user) return enterGuest();
   try { return enter(await store.load(user)); }
   catch (e) {
-    const local = store.local(user.id);
-    if (isNetErr(e) && local){ store.uid = user.id; store.email = user.email || ""; S.player = store.norm(local); return viewHome(); }
+    const pid = lsGet("candela:player:" + user.id, user.id), local = store.local(pid);
+    if (isNetErr(e) && local){ store.uid = user.id; store.pid = pid; store.email = user.email || ""; S.player = store.norm(local); return viewHome(); }
     await store.logout(); S.player = store.guest(); viewEntry("Intră din nou în cont.", "in");
   }
 }
@@ -736,7 +761,7 @@ function openProfile(){
       <div class="pf-head">
         <span class="avatar lg">${esc(initials(p.name))}</span>
         <h3>${esc(p.name)}</h3>
-        ${store.hasEmail() ? `<p class="prof-mail">${esc(store.email)}</p>` : `<p class="prof-mail warn">Adaugă un email: cu el intri în cont de acum înainte.</p>`}
+        ${p.child ? `<p class="prof-mail">Profil de copil, pe contul tău</p>` : store.hasEmail() ? `<p class="prof-mail">${esc(store.email)}</p>` : `<p class="prof-mail warn">Adaugă un email: cu el intri în cont de acum înainte.</p>`}
         ${rank >= 0 ? `<span class="badge-rank">Locul ${rank+1} din ${S.board.length} în clasament</span>` : ""}
       </div>
       <div class="kv">
@@ -754,14 +779,24 @@ function openProfile(){
         <div class="pf-row"><span>Medalii</span><b>${medalSummary(p)}</b></div>
         <div class="pf-row"><span>Zile la rând</span><b>${streak(p) || "–"}</b></div>
       </div>
+      <label class="remember pf-hide"><input type="checkbox" id="pfHide" ${p.hidden ? "" : "checked"}> ${p.child ? "Apare în clasament" : "Apar în clasament"}</label>
+      ${!p.child && store.isParent ? `<div class="pf-card" id="pfKids"></div>` : ""}
 
-      <div class="prof-btns"><button class="btn ${store.hasEmail() ? "btn-ghost" : "btn-primary"} btn-block" id="pfEdit">${store.hasEmail() ? "Modifică profilul" : "Adaugă emailul"}</button>
-      ${S.admin ? `<button class="btn btn-ghost btn-block" id="pfAdm">Parolă provizorie pentru un cont</button>` : ""}
+      <div class="prof-btns">${p.child ? `<button class="btn btn-primary btn-block" data-back>Înapoi la profilul meu</button>` : `<button class="btn ${store.hasEmail() ? "btn-ghost" : "btn-primary"} btn-block" id="pfEdit">${store.hasEmail() ? "Modifică profilul" : "Adaugă emailul"}</button>`}
+      ${S.admin && !p.child ? `<button class="btn btn-ghost btn-block" id="pfAdm">Parolă provizorie pentru un cont</button>` : ""}
       <button class="btn btn-danger btn-block" id="pfOut">Ieși din cont</button></div>`;
     sheet.querySelector("#pfX").onclick = close;
-    sheet.querySelector("#pfEdit").onclick = edit;
+    if (!p.child) sheet.querySelector("#pfEdit").onclick = edit;
+    else sheet.querySelector("[data-back]").onclick = () => { close(); switchPlayer(store.uid); };
     sheet.querySelector("#pfOut").onclick = () => { close(); logout(); };
-    if (S.admin) sheet.querySelector("#pfAdm").onclick = adminReset;
+    if (S.admin && !p.child) sheet.querySelector("#pfAdm").onclick = adminReset;
+    sheet.querySelector("#pfHide").onchange = async e => {
+      const on = !e.target.checked, r = await store.rpc("set_hidden", {p_player: store.pid, p_on: on});
+      if (!r.ok){ e.target.checked = on; return toast("Nu s-a putut salva. Încearcă din nou."); }
+      p.hidden = on; lsSet("candela:p:" + store.pid, p); S.board = null; if ($("#board")) loadBoard();
+      toast(on ? "Nu mai apare în clasament." : "Apare din nou în clasament.");
+    };
+    const kids = sheet.querySelector("#pfKids"); if (kids) drawKids(kids);
   };
   const form = (title, fields, submit, onSubmit) => {
     sheet.innerHTML = `${X}<h3>${title}</h3>
@@ -796,6 +831,41 @@ function openProfile(){
     sheet.querySelector("#pfCopy").onclick = async () => { try { await navigator.clipboard.writeText(r.password); toast("Parola a fost copiată."); } catch { toast(r.password, 5000); } };
     return null;
   });
+  const drawKids = (box, adding) => {
+    const kids = (store.family || []).filter(x => x.child), ln = p.name.trim().split(" ").slice(1).join(" ");
+    box.innerHTML = `<div class="pf-row"><span style="color:var(--ink);font-weight:600;font-size:15px">Copiii mei</span></div>
+      ${kids.length ? "" : `<p class="pf-note">Adaugă-ți copiii: fiecare are rezultatele și locul lui în clasament. Pe acasă alegi cine exersează.</p>`}
+      ${kids.map(k => `<div class="kid"><span class="avatar sm">${esc(initials(k.name))}</span><b>${esc(k.name)}</b><button class="link" type="button" data-kdel="${k.id}" data-kname="${esc(k.name)}">Șterge</button></div>`).join("")}
+      ${adding ? `<form class="kid-form" id="kForm" novalidate><div class="name-row">
+          <div class="field"><label for="kLast">Nume de familie</label><input class="input" id="kLast" maxlength="30" autocapitalize="words" value="${esc(ln)}"></div>
+          <div class="field"><label for="kFirst">Prenume</label><input class="input" id="kFirst" maxlength="30" autocapitalize="words"></div></div>
+          <p class="form-error" id="kErr" role="alert"></p>
+          <div class="modal-btns"><button class="btn btn-ghost" type="button" id="kNo">Anulează</button><button class="btn btn-primary" type="submit">Adaugă</button></div></form>`
+        : `<button class="btn btn-ghost btn-block" type="button" id="kAdd">Adaugă un copil</button>`}`;
+    box.querySelectorAll("[data-kdel]").forEach(b => b.onclick = () => confirmBox(`Ștergi profilul lui ${b.dataset.kname}?`, "Rezultatele și locul din clasament se șterg definitiv.", "Șterge", async () => {
+      const token = await store.token(), r = token ? await store.call("family", {action: "remove", id: b.dataset.kdel}, token) : {ok:false};
+      if (!r.ok) return toast("Nu s-a putut șterge. Încearcă din nou.");
+      store.family = store.family.filter(x => x.id !== b.dataset.kdel); S.board = null; drawKids(box); toast("Profilul a fost șters.");
+      if ($(".home")) viewHome();
+    }));
+    if (!adding){ box.querySelector("#kAdd").onclick = () => { drawKids(box, true); box.querySelector("#kFirst").focus(); }; return; }
+    box.querySelector("#kNo").onclick = () => drawKids(box);
+    const f = box.querySelector("#kForm"), err = box.querySelector("#kErr");
+    f.oninput = () => { err.textContent = ""; };
+    f.onsubmit = async e => {
+      e.preventDefault();
+      const l1 = capName(box.querySelector("#kLast").value), f1 = capName(box.querySelector("#kFirst").value);
+      if (!slugOf(f1)) { err.textContent = "Scrie prenumele copilului."; return; }
+      if (!slugOf(l1)) { err.textContent = "Scrie numele de familie."; return; }
+      const btn = f.querySelector('[type="submit"]'); btn.disabled = true;
+      const token = await store.token(), r = token ? await store.call("family", {action: "add", first: f1, last: l1}, token) : {ok:false, error:"auth"};
+      btn.disabled = false;
+      if (!r.ok){ err.textContent = ({ name_taken: "Există deja cineva cu acest nume. Adaugă și al doilea prenume.", too_many: "Poți adăuga cel mult 10 copii." })[r.error] || loginError(r); return; }
+      store.family = [...(store.family || []), {id: r.id, name: r.name, child: true}]; S.board = null;
+      drawKids(box); toast(`${r.name.split(" ")[0]} a fost adăugat. Alege-l pe acasă ca să exerseze.`, 3500);
+      if ($(".home")) viewHome();
+    };
+  };
   const edit = () => {
     const parts = p.name.trim().split(" "), fn = parts[0], ln = parts.slice(1).join(" ");
     sheet.innerHTML = `${X}<h3>Profilul meu</h3>
@@ -805,6 +875,7 @@ function openProfile(){
           <div class="field"><label for="pfFirst">Prenume</label><input class="input" id="pfFirst" maxlength="30" autocomplete="given-name" autocapitalize="words" value="${esc(fn)}"></div>
         </div>
         <div class="field"><label for="pfMail">Email</label><input class="input" id="pfMail" type="email" inputmode="email" maxlength="254" autocomplete="email" autocapitalize="none" spellcheck="false" value="${store.hasEmail() ? esc(store.email) : ""}"></div>
+        <label class="remember"><input type="checkbox" id="pfParent" ${store.isParent ? "checked" : ""}> Sunt părinte (pot adăuga copii)</label>
         <div class="field"><label for="pfPw">Parolă nouă <span class="muted" style="font-weight:400">(dacă vrei s-o schimbi)</span></label><input class="input" id="pfPw" type="password" autocomplete="new-password" maxlength="72"></div>
         <p class="form-error" id="pfErr" role="alert"></p>
         <div class="modal-btns"><button class="btn btn-ghost" type="button" id="pfCancel">Anulează</button><button class="btn btn-primary" type="submit" id="pfSave">Salvează</button></div>
@@ -837,9 +908,15 @@ function openProfile(){
         err.textContent = ({ name_taken: "Acest nume e deja folosit de alt cont.", email_taken: "Acest email e deja folosit de alt cont.", auth: "Intră din nou în cont și încearcă iar." })[r.error] || loginError(r);
         return;
       }
+      const wantParent = sheet.querySelector("#pfParent").checked;
+      if (wantParent !== !!store.isParent){
+        const pr = await store.rpc("set_parent", {p_on: wantParent});
+        if (!pr.ok){ btn.disabled = false; btn.textContent = "Salvează"; p.name = r.name; err.textContent = /has_children/.test(pr.error) ? "Șterge întâi profilurile copiilor ca să renunți la contul de părinte." : loginError(pr); return; }
+        store.isParent = wantParent; if (wantParent && !store.family?.length) store.family = [{id: store.uid, name: r.name, child: false}];
+      }
       p.name = r.name; lsSet("candela:email", r.email); S.board = null;
-      const who = $("#who"); if (who) who.outerHTML = whoHTML();
-      if ($("#board")) loadBoard();
+      const me = (store.family || []).find(x => x.id === store.uid); if (me) me.name = r.name;
+      if ($(".home")) viewHome();
       toast(npw.value ? "Profil și parolă actualizate." : "Profil actualizat.");
       show();
     });
@@ -883,6 +960,7 @@ function viewHome(){
     <div class="hello">${tests ? `<span class="eyebrow">Bine ai revenit</span>` : ""}
       <h2>${p.guest ? (tests ? "Continuăm?" : "Bun venit!") : tests ? `Continuăm, ${esc(first)}?` : `Bun venit, ${esc(first)}.`}</h2>
       ${streakHTML(p)}
+      ${familyHTML()}
       ${p.guest ? `<p class="guest-line">Joci ca invitat. <button class="link" id="gIn" type="button">Conectează-te</button> ca să-ți păstrezi rezultatele.</p>` : ""}</div>
     ${tests ? `<div class="stats">
       <div class="stat"><b>${tests}</b><small>teste făcute</small></div>
@@ -956,6 +1034,7 @@ function viewHome(){
   $("#start").onclick = () => S.sel.size > 1 ? openOptions() : startQuiz();
   $("#read").onclick = () => viewRead([...S.sel][0]);
   $("#help").onclick = tutorial;
+  app.querySelectorAll("[data-play]").forEach(b => b.onclick = () => switchPlayer(b.dataset.play));
   $("#install").onclick = installApp;
   $("#medalHelp").onclick = () => toast("Bronz: jumătate din întrebările ușoare ale capitolului știute. Argint: aproape toate cele ușoare. Aur: și trei sferturi din cele grele.", 7000);
   if ($("#resume")){ $("#resume").onclick = resumeQuiz; $("#resumeX").onclick = () => { dropQuiz(); $(".resume").remove(); }; }
@@ -974,7 +1053,8 @@ async function loadBoard(){
 function renderBoard(list){
   const el = $("#board"); if (!el) return;
   const guest = !S.player || S.player.guest;
-  if (!list.length){ el.innerHTML = `<div class="empty">Încă nimeni.</div>`; return; }
+  const note = S.player && S.player.hidden ? `<div class="empty">${S.player.child ? esc(S.player.name.split(" ")[0]) + " nu apare" : "Nu apari"} în clasament. Se poate schimba din profil.</div>` : "";
+  if (!list.length){ el.innerHTML = note || `<div class="empty">Încă nimeni.</div>`; return; }
   const idx = guest ? -1 : list.findIndex(x => x.me);
   const top = el.classList.contains("scroll") ? list : list.slice(0, 10);
   const row = (x, i) => { const mine = !guest && x.me, ok = x.ok ?? 0; return `<div class="brow-l ${mine?"me":""}">
@@ -983,7 +1063,7 @@ function renderBoard(list){
     <div class="who-l"><b class="nm"><span>${esc(x.name)}</span>${mine?"<em>tu</em>":""}</b>
       <small>${String(x.mastery).replace(".",",")}% din carte · ${x.tests} ${x.tests===1?"test":"teste"}</small></div>
     <div class="pts"><b>${ok}</b><small>${ok===1?"întrebare":"întrebări"}</small></div></div>`; };
-  el.innerHTML = top.map(row).join("") + (idx >= top.length ? `<div class="gap">···</div>${row(list[idx], idx)}` : "");
+  el.innerHTML = note + top.map(row).join("") + (idx >= top.length ? `<div class="gap">···</div>${row(list[idx], idx)}` : "");
   const mine = el.querySelector(".me"); if (mine && el.classList.contains("scroll")) el.scrollTop = Math.max(0, mine.offsetTop - el.clientHeight/2);
 }
 
@@ -1072,9 +1152,9 @@ function startQuiz(list, count = 0, o = {}){
   viewQuestion(true);
 }
 /* an unfinished test survives a reload or a closed tab, until it is finished or stopped */
-function saveQuiz(){ const Z = S.quiz; if (!Z || Z.retry) return; lsSet("candela:quiz", {qs:Z.qs, i:Z.i, answers:Z.answers, elapsed:Date.now()-Z.start, chs:Z.chs, mode:Z.mode, who: S.player && !S.player.guest ? store.uid : "guest"}); }
+function saveQuiz(){ const Z = S.quiz; if (!Z || Z.retry) return; lsSet("candela:quiz", {qs:Z.qs, i:Z.i, answers:Z.answers, elapsed:Date.now()-Z.start, chs:Z.chs, mode:Z.mode, who: S.player && !S.player.guest ? store.pid : "guest"}); }
 function dropQuiz(){ lsSet("candela:quiz", null); }
-function savedQuiz(){ const z = lsGet("candela:quiz", null); return z && z.qs && z.who === (S.player && !S.player.guest ? store.uid : "guest") ? z : null; }
+function savedQuiz(){ const z = lsGet("candela:quiz", null); return z && z.qs && z.who === (S.player && !S.player.guest ? store.pid : "guest") ? z : null; }
 function resumeHTML(){
   const z = savedQuiz(); if (!z) return "";
   return `<div class="resume card"><div><b>Test neterminat</b><small>${esc(chaptersLabel(z.chs))} · ${MODE_LABEL[z.mode]} · întrebarea ${z.i+1} din ${z.qs.length}</small></div>
@@ -1386,12 +1466,35 @@ function tutorial(){
 function forgotPassword(){
   const bg = document.createElement("div"); bg.className = "modal-bg";
   bg.innerHTML = `<div class="modal" role="dialog" aria-modal="true" aria-labelledby="fpH"><h3 id="fpH">Ai uitat parola?</h3>
-    <p class="muted">Cere-i administratorului Candela o parolă nouă. După ce intri în cont, o poți schimba din profil.</p>
+    <p class="muted">Cere-i administratorului o parolă nouă. După ce intri în cont, o poți schimba din profil.</p>
     <button class="btn btn-primary btn-block" type="button" id="fpOk" style="margin-top:8px">Am înțeles</button></div>`;
   document.body.appendChild(bg);
   const close = () => bg.remove();
   bg.querySelector("#fpOk").onclick = close; bg.onclick = e => { if (e.target === bg) close(); };
   bg.querySelector("#fpOk").focus();
+}
+
+/* ---------- family: a parent and its children on one phone ---------- */
+function familyHTML(){
+  if (!S.player || S.player.guest || !store.isParent || (store.family || []).length < 2) return "";
+  return `<div class="family" role="group" aria-label="Cine exersează"><span class="family-l">Cine exersează?</span>${store.family.map(x =>
+    `<button class="fam ${x.id === store.pid ? "on" : ""}" type="button" data-play="${x.id}" aria-pressed="${x.id === store.pid}"><span class="avatar sm">${esc(initials(x.name))}</span>${esc(x.name.split(" ")[0])}</button>`).join("")}</div>`;
+}
+async function switchPlayer(id){
+  if (id === store.pid) return;
+  if (S.quiz) S.quiz = null;
+  try { S.player = await store.loadPlayer(id); }
+  catch { return toast(loginError({error: "network"})); }
+  S.board = null; viewHome();
+  toast(`Acum exersează ${S.player.name.split(" ")[0]}.`);
+}
+function confirmBox(title, text, yes, onYes){
+  const bg = document.createElement("div"); bg.className = "modal-bg";
+  bg.innerHTML = `<div class="modal" role="alertdialog" aria-modal="true"><h3>${esc(title)}</h3><p class="muted">${esc(text)}</p><div class="modal-btns"><button class="btn btn-ghost" id="cNo" type="button">Anulează</button><button class="btn btn-primary" id="cYes" type="button">${esc(yes)}</button></div></div>`;
+  document.body.appendChild(bg);
+  const close = () => bg.remove();
+  bg.querySelector("#cNo").onclick = close; bg.onclick = e => { if (e.target === bg) close(); };
+  bg.querySelector("#cYes").onclick = () => { close(); onYes(); };
 }
 
 /* ---------- installable app (works offline once opened) ---------- */
