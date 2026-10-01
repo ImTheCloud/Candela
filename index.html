@@ -161,13 +161,10 @@ p{margin:0}
 .tile svg{position:absolute;inset:5px;width:calc(100% - 10px);height:calc(100% - 10px)}
 .tile .done-mark{position:absolute;bottom:4px;right:4px;width:17px;height:17px;border-radius:50%;background:var(--cedar);color:#fff;display:grid;place-items:center}
 .done-mark svg{position:static;width:11px;height:11px;margin:0}
-.grid-note{display:flex;align-items:center;justify-content:center;gap:6px;margin:-2px 0 0;font-size:13px;color:var(--ink-2)}
 .prog{display:flex;gap:2px;width:26px;height:5px}
 .prog i{flex:1;border-radius:3px;background:var(--line)}
 .prog i.on{background:var(--cedar)}
 .tile .prog{position:absolute;left:50%;bottom:6px;transform:translateX(-50%)}
-.grid-note .prog{display:inline-flex;width:22px}
-.grid-note .done-mark{margin-left:10px;width:17px;height:17px;border-radius:50%;background:var(--cedar);color:#fff;display:inline-grid;place-items:center;flex:none}
 .tile .n{font-family:var(--f-display);font-size:22px;line-height:1;position:relative}
 .tile[aria-pressed="true"]{background:var(--oil-soft);border-color:var(--oil);color:var(--oil-ink);box-shadow:0 0 0 3px color-mix(in oklab,var(--oil) 18%,transparent)}
 .tile[aria-pressed="true"] .trk{stroke:color-mix(in oklab,var(--oil) 20%,transparent)}
@@ -175,8 +172,6 @@ p{margin:0}
 #start .st-main,#rGo .st-main,#shGo .st-main{font-size:17px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 #start .st-sub,#rGo .st-sub,#shGo .st-sub{font-size:13px;font-weight:500;opacity:.78;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .trk{stroke:var(--surface-2)}
-.legend{display:flex;gap:14px;font-size:12px;color:var(--ink-2);margin-top:10px}
-.legend i{display:inline-block;width:10px;height:3px;border-radius:2px;margin-right:5px;vertical-align:middle}
 .opts-row{display:grid;gap:4px;background:var(--surface);border-radius:20px;padding:6px 18px;box-shadow:var(--shadow)}
 .toggle{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
 .toggle:first-child{border-top:0}
@@ -405,8 +400,6 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
   .qcard{padding:30px 32px}
   .qtext{font-size:22px}
 }
-/* v4: reading */
-.legend{flex-wrap:wrap;row-gap:4px}
 .reader{display:grid;gap:16px}
 .reader-h{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:12px}
 .past-h{margin-bottom:8px}
@@ -1130,7 +1123,7 @@ function viewHome(){
   <aside class="h-config">
     <div class="panel">
       <div class="section-h first"><h3>Ce capitol vrei să exersezi?</h3><span class="muted pick-note">Poți alege mai multe</span></div>
-      <div class="grid" id="grid">${Array.from({length:31},(_,i)=>i+1).map(c=>`<button class="tile" data-c="${c}" aria-pressed="false" title="${c}. ${esc(TITLES[c-1])}" aria-label="Capitolul ${c}: ${esc(TITLES[c-1])}${lvTried(c,"easy") ? ", ușor făcut" : ""}${lvTried(c,"hard") ? ", greu făcut" : ""}"><span class="n">${c}</span>${lvTried(c,"easy") && lvTried(c,"hard") ? `<i class="done-mark" aria-hidden="true">${CHECK}</i>` : chapTried(c) ? `<span class="prog" aria-hidden="true"><i class="${lvTried(c,"easy") ? "on" : ""}"></i><i class="${lvTried(c,"hard") ? "on" : ""}"></i></span>` : ""}</button>`).join("")}</div>${Array.from({length:31},(_,i)=>i+1).some(chapTried) ? `\n      <p class="grid-note"><span class="prog" aria-hidden="true"><i class="on"></i><i></i></span> un nivel făcut <i class="done-mark" aria-hidden="true">${CHECK}</i> ambele niveluri</p>` : ""}
+      <div class="grid" id="grid">${Array.from({length:31},(_,i)=>i+1).map(c=>`<button class="tile" data-c="${c}" aria-pressed="false" title="${c}. ${esc(TITLES[c-1])}" aria-label="Capitolul ${c}: ${esc(TITLES[c-1])}${lvTried(c,"easy") ? ", ușor făcut" : ""}${lvTried(c,"hard") ? ", greu făcut" : ""}"><span class="n">${c}</span>${lvTried(c,"easy") && lvTried(c,"hard") ? `<i class="done-mark" aria-hidden="true">${CHECK}</i>` : chapTried(c) ? `<span class="prog" aria-hidden="true"><i class="${lvTried(c,"easy") ? "on" : ""}"></i><i class="${lvTried(c,"hard") ? "on" : ""}"></i></span>` : ""}</button>`).join("")}</div>
 
       <div class="startbar"><button class="btn btn-primary btn-block" id="start"></button></div>
     </div>
