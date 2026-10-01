@@ -59,16 +59,8 @@ p{margin:0}
 
 /* Entry */
 .entry{display:flex;flex-direction:column;gap:16px;max-width:560px;margin:0 auto}
-body:has(.entry[data-step="board"]){overflow:hidden}
-.wrap:has(.entry[data-step="board"]){height:100vh;height:100dvh;padding-block:16px}
-.wrap:has(.entry[data-step="board"]) .view{height:100%}
-.entry[data-step="board"]{height:100%}
 .entry[data-step="form"]{padding-top:6vh}
 .entry-head{display:grid;justify-items:center;gap:4px;flex:none}
-.entry[data-step="board"] .entry-head{flex:1;min-height:0;align-content:center}
-.entry[data-step="board"] .entry-board{flex:none;height:calc(50dvh - 84px)}
-.entry-board{flex:1;min-height:0;display:flex;flex-direction:column}
-.entry-board .section-h{margin:0 0 10px}
 .entry .back{align-self:center}
 .verse-quote{font-family:var(--f-display);font-size:17px;line-height:1.35;text-align:center;max-width:30ch;margin:6px auto 0;color:var(--ink-2)}
 .verse-quote .ref{margin-left:6px;vertical-align:2px}
@@ -129,6 +121,15 @@ body:has(.entry[data-step="board"]){overflow:hidden}
 .more summary{font-family:var(--f-body);font-size:13.5px;font-weight:600;color:var(--oil-ink);cursor:pointer;margin-top:6px}
 .more[open] summary{margin-bottom:6px}
 .seg-note{font-size:13px;color:var(--ink-2);margin-top:8px}
+.who.acct{border:1px solid var(--line);padding-left:14px}
+.who.acct .avatar{background:var(--surface-2);color:var(--ink)}
+.guest-line{font-size:14px;color:var(--ink-2);margin-top:6px}
+.guest-line .link{padding:0;color:var(--ink);font-size:inherit}
+.guest-cta{display:grid;gap:8px;border-color:var(--oil-soft);background:linear-gradient(180deg,var(--surface),var(--bg))}
+.guest-cta b{font-size:17px}
+.guest-cta p{color:var(--ink-2);font-size:14px;margin:0}
+.guest-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
+.guest-btns .btn{white-space:nowrap;padding-inline:12px}
 .quick{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:8px}
 .tile{position:relative;aspect-ratio:1;max-width:100%;border:1.5px solid var(--line);background:var(--surface);border-radius:14px;display:grid;place-items:center;padding:0;transition:transform .15s, border-color .2s, background .2s}
@@ -378,7 +379,8 @@ function chaptersLabel(chs){
 /* ---------- storage ----------
    Supabase: accounts are first name + last name + password (Supabase Auth), progress in Postgres behind row-level security.
    A finished test is one call to save_result(); the leaderboard is the public leaderboard() function.
-   Results that could not be sent wait in localStorage and go out at the next sign-in. */
+   Results that could not be sent wait in localStorage and go out at the next sign-in.
+   Without an account the visitor plays as a guest: results stay in this browser and move to the account at sign-up or sign-in. */
 const SB = /*__SB__*/null;
 const HOSTED = true;
 const authStorage = {   // "Rămâi conectat" off → the session lives only until the browser is closed
@@ -411,8 +413,12 @@ const store = {
     for (const x of this.pending()){ try { await this.send(x); } catch (e) { if (isNetErr(e)) left.push(x); } }
     lsSet("candela:pending:" + this.uid, left);
   },
+  guest(){ const p = this.norm(lsGet("candela:guest", null), "Invitat"); p.name = "Invitat"; p.guest = true; return p; },
   async load(user){
     this.uid = user.id;
+    const moved = lsGet("candela:guestEntries", []);   // tests played as a guest join the account
+    if (moved.length){ lsSet("candela:pending:" + this.uid, [...this.pending(), ...moved]); lsSet("candela:guestEntries", []); lsSet("candela:guest", null); }
+    this.moved = moved.length;
     await this.flush();
     const { data, error } = await sb().rpc("my_progress");
     if (error) throw error;
@@ -451,6 +457,7 @@ const store = {
   /* saves one finished test; returns whether it reached the server */
   async save(p, x){
     this.applyEntry(p, x);
+    if (p.guest){ lsSet("candela:guest", p); lsSet("candela:guestEntries", [...lsGet("candela:guestEntries", []), x]); return {guest:true}; }
     lsSet("candela:p:" + this.uid, p);
     try { await this.send(x); return {saved:true}; }
     catch (e) {
@@ -502,19 +509,9 @@ function miniLamp(){ return `<svg width="22" height="22" viewBox="0 0 24 24" ari
 /* ---------- views ---------- */
 function totalCount(mode){ let n=0; for (const c in QUIZ){ if (mode!=="hard") n += (QUIZ[c].easy||[]).length; if (mode!=="easy") n += (QUIZ[c].hard||[]).length; } return n; }
 
-function viewEntry(msg, step, tab){
-  step = step || (!msg ? "board" : "form");
+function viewEntry(msg, tab){
   tab = tab || (lsGet("candela:hasAccount", false) ? "in" : "new");
-  const head = `<div class="entry-head"><div class="lamp-wrap"><div class="lamp-glow"></div>${lampSVG(step==="board"?84:56)}</div><h1>Candela<span>1 Samuel</span></h1><p class="verse-quote">„Candela lui Dumnezeu nu se stinsese încă.”<span class="ref">1 Sam. 3:3</span></p></div>`;
-  if (step === "board"){
-    mount(`<section class="entry" data-step="board">${head}
-      <div class="entry-board"><div class="section-h"><h3>Clasament</h3></div><div id="board" class="board scroll"><div class="empty">Se încarcă…</div></div></div>
-      <button class="btn btn-primary btn-block" id="toForm" type="button">Intră</button>
-    </section>`);
-    loadBoard();
-    $("#toForm").onclick = () => viewEntry("", "form");
-    return;
-  }
+  const head = `<div class="entry-head"><div class="lamp-wrap"><div class="lamp-glow"></div>${lampSVG(56)}</div><h1>Candela<span>1 Samuel</span></h1><p class="verse-quote">„Candela lui Dumnezeu nu se stinsese încă.”<span class="ref">1 Sam. 3:3</span></p></div>`;
   const isNew = tab === "new";
   mount(`<section class="entry" data-step="form">${head}
     <form class="card entry-form" id="enter" novalidate>
@@ -528,11 +525,11 @@ function viewEntry(msg, step, tab){
       <p class="form-error" id="err" role="alert">${msg ? esc(msg) : ""}</p>
       <button class="btn btn-primary btn-block" id="go" type="submit">${isNew ? "Creează contul" : "Intră"}</button>
     </form>
-    <button class="link back" id="back" type="button">Înapoi la clasament</button>
+    <button class="link back" id="back" type="button">Înapoi la teste</button>
   </section>`);
   const f = $("#enter"), err = $("#err"), first = $("#first"), last = $("#last"), pw = $("#pw");
-  $("#back").onclick = () => viewEntry("", "board");
-  app.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => viewEntry("", "form", b.dataset.tab));
+  $("#back").onclick = () => S.player ? viewHome() : enterGuest();
+  app.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => viewEntry("", b.dataset.tab));
   (!first.value ? first : !last.value ? last : pw).focus();
   f.addEventListener("input", () => { err.textContent = ""; });
   f.addEventListener("submit", async e => {
@@ -566,22 +563,25 @@ function loginError(r){
 }
 function enter(profile, created){
   S.player = profile;
-  if (created) toast("Cont creat. Bine ai venit!");
+  if (created) toast(store.moved ? "Cont creat. Rezultatele tale au fost salvate." : "Cont creat. Bine ai venit!");
+  else if (store.moved) toast("Rezultatele de invitat au fost adăugate în cont.");
+  store.moved = 0;
   viewHome();
 }
+function enterGuest(){ S.player = store.guest(); viewHome(); }
 async function autoLogin(){
   mount(`<div class="boot"><div class="lamp-wrap"><div class="lamp-glow"></div>${lampSVG(100)}</div><h1>Candela</h1><div class="boot-bar"><i></i></div></div>`);
   let user = null;
   try { user = await store.resume(); } catch {}
-  if (!user) return viewEntry();
+  if (!user) return enterGuest();
   try { return enter(await store.load(user)); }
   catch (e) {
     const local = store.local(user.id);
     if (isNetErr(e) && local){ store.uid = user.id; S.player = store.norm(local); return viewHome(); }
-    await store.logout(); viewEntry("Intră din nou în cont.");
+    await store.logout(); S.player = store.guest(); viewEntry("Intră din nou în cont.", "in");
   }
 }
-function logout(){ S.player = null; store.logout(); viewEntry(); }
+function logout(){ store.logout(); enterGuest(); }
 
 function chapStat(c, m){ return (S.player.chap[c+m[0]]||{}).best ?? null; }
 function arc(p, r, color){
@@ -595,6 +595,8 @@ function tileSVG(c){
 }
 function headerHTML(){
   const n = S.player.name;
+  if (S.player.guest) return `<header class="top"><div class="brand">${lampSVG(30)} Candela</div>
+  <button class="who acct" id="acct" type="button"><b>Intră în cont</b><span class="avatar"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="5.5" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M2.5 14c.8-3 3-4.5 5.5-4.5s4.7 1.5 5.5 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></button></header>`;
   return `<header class="top"><div class="brand">${lampSVG(30)} Candela</div>
   <button class="who" id="who" type="button" aria-label="Profilul meu"><b>${esc(n)}</b><span class="avatar">${esc(n.trim()[0].toUpperCase())}</span></button></header>`;
 }
@@ -621,7 +623,12 @@ function openProfile(){
   bg.onclick = e => { if (e.target === bg) close(); };
   bg.querySelector("#pfOut").onclick = () => { close(); logout(); };
 }
-document.addEventListener("click", e => { if (e.target.closest && e.target.closest("#who")) openProfile(); });
+document.addEventListener("click", e => {
+  if (!e.target.closest) return;
+  if (e.target.closest("#who")) openProfile();
+  if (e.target.closest("#acct, #gNew")) viewEntry("", e.target.closest("#gNew") ? "new" : undefined);
+  if (e.target.closest("#gIn")) viewEntry("", "in");
+});
 function mastery(p){ return Math.round((p.ok||[]).length / totalCount("both") * 1000) / 10; }
 
 const MODE_NOTE = { easy: "Întrebări generale despre poveste: cine, ce și de ce.", hard: "Detalii precise: nume, cifre, locuri și cuvinte exacte.", both: "Întrebări ușoare și grele, amestecate." };
@@ -634,7 +641,8 @@ function viewHome(){
   <div class="home">
   <section class="h-intro">
     <div class="hello"><span class="eyebrow">${tests ? "Bine ai revenit" : "Să începem"}</span>
-      <h2>${tests ? `Continuăm, ${esc(first)}?` : `Bun venit, ${esc(first)}.`}</h2></div>
+      <h2>${p.guest ? (tests ? "Continuăm?" : "Bun venit!") : tests ? `Continuăm, ${esc(first)}?` : `Bun venit, ${esc(first)}.`}</h2>
+      ${p.guest ? `<p class="guest-line">Joci ca invitat. <button class="link" id="gNew" type="button">Creează un cont</button> ca să-ți păstrezi rezultatele.</p>` : ""}</div>
     <div class="stats">
       <div class="stat"><b>${tests}</b><small>teste făcute</small></div>
       <div class="stat"><b>${tests?avg+"%":"–"}</b><small>media</small></div>
@@ -717,7 +725,7 @@ async function loadBoard(){
 }
 function renderBoard(list){
   const el = $("#board"); if (!el) return;
-  const me = S.player ? slugOf(S.player.name) : null;
+  const me = S.player && !S.player.guest ? slugOf(S.player.name) : null;
   if (!list.length){ el.innerHTML = `<div class="empty">Încă nimeni.</div>`; return; }
   const idx = list.findIndex(x => slugOf(x.name) === me);
   const top = el.classList.contains("scroll") ? list : list.slice(0, 10);
@@ -962,6 +970,8 @@ async function finish(){
     <div class="stat"><b>${wrong.length}</b><small>de revăzut</small></div>
     <div class="stat"><b>${min}:${String(s).padStart(2,"0")}</b><small>timp</small></div>
   </div>
+  ${p.guest && !Z.retry ? `<div class="card guest-cta"><b>Păstrează-ți rezultatul</b><p>Joci ca invitat, deci rezultatele rămân doar pe acest dispozitiv. Creează un cont ca să le salvezi și să apari în clasament.</p>
+    <div class="guest-btns"><button class="btn btn-primary" id="gNew" type="button">Creează cont</button><button class="btn btn-ghost" id="gIn" type="button">Am deja cont</button></div></div>` : ""}
   <div class="card" style="display:grid;gap:18px">
     <div><span class="eyebrow">Pe tipuri de întrebări</span></div>
     <div class="bars">${Object.entries(byType).map(([t,v])=>`<div class="brow"><span>${TYPE_LABEL[t]}</span><div class="bar"><i style="width:0" data-w="${pct(v.s,v.n)}"></i></div><span>${pct(v.s,v.n)}%</span></div>`).join("")}</div>
@@ -988,7 +998,7 @@ async function finish(){
   $("#home").onclick = () => viewHome();
   const res = await saving;
 
-  const note = $("#saveNote"); if (note && res) note.textContent = res.saved ? "" : "Rezultatul nu s-a putut trimite. Se trimite automat la următoarea intrare.";
+  const note = $("#saveNote"); if (note && res && !res.guest) note.textContent = res.saved ? "" : "Rezultatul nu s-a putut trimite. Se trimite automat la următoarea intrare.";
 }
 function mistakeHTML({q, a}){
   a = a || {pts:0, given:null, skipped:true};

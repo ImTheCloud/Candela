@@ -10,6 +10,7 @@ Teste biblice pentru pregătire, după traducerea Cornilescu. Prima carte: **1 S
   - `migrations/` — tabelele `profiles`, `results`, `chapter_best`, `mastered`, `quiz_counts` și funcțiile `save_result()`, `my_progress()`, `leaderboard()`.
   - `functions/signup/` — crearea contului (prenume + nume unic + parolă).
   - `quiz_counts.sql` — generat de `scripts/build.py`; se rulează în Supabase (SQL editor) după ce se adaugă întrebări.
+- Fără cont se joacă în modul invitat: rezultatele rămân în browser și trec în cont la înregistrare sau la intrare.
 - Clasament: fiecare întrebare contează o singură dată, prima oară când e răspunsă complet corect (scor = întrebări stăpânite ÷ total). La egalitate e înaintea cel care a ajuns primul. ID-ul unei întrebări e `<capitol><e|h><index>`, deci întrebările noi se adaugă la sfârșitul listei.
 - `index.html` — fișierul generat care se publică.
 
