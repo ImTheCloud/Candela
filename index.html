@@ -58,16 +58,27 @@ p{margin:0}
 .link{background:none;border:0;padding:6px 0;color:var(--ink-2);font-weight:500;text-decoration:underline;text-underline-offset:3px}
 
 /* Entry */
-.entry{display:grid;gap:28px;padding-top:4vh}
-.lamp-wrap{display:flex;justify-content:center;position:relative;height:150px}
+.entry{display:flex;flex-direction:column;gap:16px;max-width:560px;margin:0 auto}
+body:has(.entry){overflow:hidden}
+.wrap:has(.entry){height:100vh;height:100dvh;padding-block:16px}
+.wrap:has(.entry) .view{height:100%}
+.entry[data-step="board"]{height:100%}
+.entry[data-step="form"]{padding-top:6vh}
+.entry-head{display:grid;justify-items:center;gap:4px;flex:none}
+.entry[data-step="board"] .lamp-glow{inset:-24px 0 auto;height:130px}
+.entry-board{flex:1;min-height:0;display:flex;flex-direction:column}
+.entry-board .section-h{margin:0 0 10px}
+.entry .back{align-self:center}
+.board.scroll{position:relative;overflow-y:auto;overscroll-behavior:contain;align-content:start}
+.entry .board.scroll{flex:1;min-height:0}
+.h-board .board.scroll{max-height:420px}
+.lamp-wrap{display:flex;justify-content:center;position:relative}
 .lamp-glow{position:absolute;inset:-40px 0 auto;height:220px;background:radial-gradient(closest-side,color-mix(in oklab,var(--oil) 40%,transparent),transparent);filter:blur(6px);animation:glow 3.2s ease-in-out infinite;pointer-events:none}
 @keyframes glow{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:.85;transform:scale(1.06)}}
 .flame{transform-origin:50% 90%;animation:flicker 2.4s ease-in-out infinite}
 @keyframes flicker{0%,100%{transform:scaleY(1) skewX(0)}25%{transform:scaleY(1.06) skewX(-2deg)}50%{transform:scaleY(.96) skewX(1.5deg)}75%{transform:scaleY(1.04) skewX(-1deg)}}
-.entry h1{font-size:clamp(44px,12vw,68px);line-height:.95;text-align:center}
-.entry h1 span{display:block;font-size:.42em;letter-spacing:.02em;color:var(--ink-2);margin-top:10px}
-.verse-quote{font-family:var(--f-display);font-size:19px;line-height:1.4;text-align:center;max-width:30ch;margin:0 auto;color:var(--ink-2)}
-.verse-quote .ref{margin-left:6px;vertical-align:2px}
+.entry h1{font-size:clamp(40px,11vw,56px);line-height:.95;text-align:center}
+.entry h1 span{display:block;font-size:.4em;letter-spacing:.02em;color:var(--ink-2);margin-top:8px}
 .card{background:var(--surface);border-radius:20px;padding:22px;box-shadow:var(--shadow)}
 .field{display:grid;gap:8px}
 .field label{font-weight:600}
@@ -78,12 +89,6 @@ p{margin:0}
 .chip:hover{border-color:var(--oil);color:var(--oil-ink)}
 .chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .chip:disabled{opacity:.35;cursor:not-allowed;border-style:dashed}
-.entry-board{display:grid;gap:0}
-.entry-board .section-h{margin-top:4px}
-.features{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;text-align:center}
-.features div{display:grid;gap:2px}
-.features b{font-family:var(--f-display);font-weight:400;font-size:28px;line-height:1}
-.features small{font-size:12px;color:var(--ink-2)}
 
 /* Header */
 .top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px}
@@ -252,13 +257,9 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .home{display:grid;gap:8px;grid-template-areas:"intro" "config" "board" "hist"}
 .h-intro{grid-area:intro}.h-config{grid-area:config}.h-board{grid-area:board}.h-hist{grid-area:hist}
 .panel{display:block}
-.presets{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
-.presets .chip b{font-weight:700}
 .chip.ghost{border-style:dashed;color:var(--ink-2)}
 .chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .chip:disabled{opacity:.35;cursor:not-allowed;border-style:dashed}
-.entry-board{display:grid;gap:0}
-.entry-board .section-h{margin-top:4px}
 .seg.scope{margin-top:0}
 .seg.scope button{font-size:14px;white-space:nowrap;padding-inline:4px}
 .grid{margin-top:12px}
@@ -281,16 +282,8 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .board .empty{border:0}
 @media (min-width:960px){
   .wrap{padding-inline:32px;padding-block:28px 64px}
-  .entry{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);align-items:center;gap:56px;padding-top:6vh}
-  .entry-hero{display:grid;gap:22px}
-  .entry h1{text-align:left;font-size:88px}
-  .entry .verse-quote{text-align:left;margin:0}
-  .entry .lamp-wrap{justify-content:flex-start;height:170px}
-  .entry .features{text-align:left;max-width:26rem}
-  .entry-form{padding:32px}
-  .entry-board{grid-column:1 / -1;max-width:760px;width:100%;justify-self:center;margin-top:12px}
+  .entry-form{padding:28px}
   .home{grid-template-columns:minmax(0,1fr) 440px;grid-template-rows:auto auto 1fr;grid-template-areas:"intro config" "board config" "hist config";column-gap:40px;align-items:start}
-  .entry .lamp-glow{left:-60px;right:auto;width:300px}
   .h-config{position:sticky;top:20px;align-self:start}
   .panel{background:var(--surface);border-radius:24px;padding:24px;box-shadow:var(--shadow)}
   .panel .opts-row{background:none;box-shadow:none;padding:0}
@@ -442,37 +435,37 @@ function miniLamp(){ return `<svg width="22" height="22" viewBox="0 0 24 24" ari
 /* ---------- views ---------- */
 function totalCount(mode){ let n=0; for (const c in QUIZ){ if (mode!=="hard") n += (QUIZ[c].easy||[]).length; if (mode!=="easy") n += (QUIZ[c].hard||[]).length; } return n; }
 
-function viewEntry(msg){
+function viewEntry(msg, step){
   const sess = lsGet("candela:session", null);
-  mount(`
-  <section class="entry">
-    <div class="entry-hero">
-      <div class="lamp-wrap"><div class="lamp-glow"></div>${lampSVG(80)}</div>
-      <h1>Candela<span>Test biblic din 1 Samuel</span></h1>
-      <p class="verse-quote">„Candela lui Dumnezeu nu se stinsese încă.”<span class="ref">1 Sam. 3:3</span></p>
-      <div class="features">
-        <div><b>31</b><small>capitole</small></div>
-        <div><b>${totalCount("both").toLocaleString("ro-RO")}</b><small>întrebări</small></div>
-        <div><b>5</b><small>tipuri de întrebări</small></div>
-      </div>
-    </div>
+  step = step || (HOSTED && !msg ? "board" : "form");
+  const head = `<div class="entry-head"><div class="lamp-wrap"><div class="lamp-glow"></div>${lampSVG(step==="board"?40:56)}</div><h1>Candela<span>1 Samuel</span></h1></div>`;
+  if (step === "board"){
+    mount(`<section class="entry" data-step="board">${head}
+      <div class="entry-board"><div class="section-h"><h3>Clasament</h3></div><div id="board" class="board scroll"><div class="empty">Se încarcă…</div></div></div>
+      <button class="btn btn-primary btn-block" id="toForm" type="button">Intră</button>
+    </section>`);
+    loadBoard();
+    $("#toForm").onclick = () => viewEntry("", "form");
+    return;
+  }
+  mount(`<section class="entry" data-step="form">${head}
     <form class="card entry-form" id="enter" autocomplete="off" novalidate>
       <div class="field">
         <label for="name">Numele tău</label>
-        <input class="input" id="name" name="name" maxlength="40" placeholder="ex. Maria" autocomplete="nickname" required value="${esc(sess?.name || "")}">
+        <input class="input" id="name" name="name" maxlength="40" autocomplete="nickname" required value="${esc(sess?.name || "")}">
       </div>
       ${HOSTED ? `<div class="field">
         <label for="pin">Cod de 4 cifre</label>
         <input class="input pin" id="pin" name="pin" inputmode="numeric" pattern="[0-9]*" maxlength="4" placeholder="••••" autocomplete="off" required>
-      </div>` : `<small class="muted">Scrie același nume ca să-ți regăsești progresul.</small>`}
+      </div>` : ""}
       <p class="form-error" id="err" role="alert">${msg ? esc(msg) : ""}</p>
       <button class="btn btn-primary btn-block" id="go" type="submit">Intră</button>
     </form>
-    ${HOSTED ? `<section class="entry-board"><div class="section-h"><h3>Clasament</h3><span class="muted small">după cât din carte stăpânește fiecare</span></div><div id="board" class="board"><div class="empty">Se încarcă clasamentul…</div></div></section>` : ""}
-  </section>
-  <footer>Text de referință: Biblia, traducerea Dumitru Cornilescu</footer>`);
+    ${HOSTED ? `<button class="link back" id="back" type="button">Înapoi la clasament</button>` : ""}
+  </section>`);
   const f = $("#enter"), inp = $("#name"), pin = $("#pin"), err = $("#err");
-  if (HOSTED) loadBoard();
+  if ($("#back")) $("#back").onclick = () => viewEntry("", "board");
+  (inp.value && pin ? pin : inp).focus();
   if (pin) pin.addEventListener("input", () => { pin.value = pin.value.replace(/\D/g,"").slice(0,4); err.textContent = ""; });
   f.addEventListener("submit", async e => {
     e.preventDefault();
@@ -537,8 +530,7 @@ function viewHome(){
   <div class="home">
   <section class="h-intro">
     <div class="hello"><span class="eyebrow">${tests ? "Bine ai revenit" : "Să începem"}</span>
-      <h2>${tests ? `Continuăm, ${esc(first)}?` : `Bun venit, ${esc(first)}.`}</h2>
-      <p class="muted">${tests ? `Ai exersat ${touched} din 31 de capitole.` : "Alege un capitol și nivelul. Poți începe cu capitolul 1."}</p></div>
+      <h2>${tests ? `Continuăm, ${esc(first)}?` : `Bun venit, ${esc(first)}.`}</h2></div>
     <div class="stats">
       <div class="stat"><b>${tests}</b><small>teste făcute</small></div>
       <div class="stat"><b>${tests?avg+"%":"–"}</b><small>media</small></div>
@@ -552,39 +544,38 @@ function viewHome(){
       <div class="seg" role="group" aria-label="Nivel">
         ${["easy","hard","both"].map(m=>`<button data-mode="${m}" aria-pressed="${S.mode===m}">${MODE_LABEL[m]}</button>`).join("")}
       </div>
-      <p class="seg-note" id="modeNote"></p>
+      
 
       <div class="section-h"><h3>Ce vrei să repeți?</h3></div>
       <div class="seg scope" role="group" aria-label="Câte capitole">
         <button data-scope="one">Un capitol</button><button data-scope="many">Mai multe</button><button data-scope="all">Toată cartea</button>
       </div>
-      <p class="seg-note" id="scopeNote"></p>
+      
       <div class="grid" id="grid">${Array.from({length:31},(_,i)=>i+1).map(c=>`<button class="tile" data-c="${c}" aria-pressed="false" title="${c}. ${esc(TITLES[c-1])}" aria-label="Capitolul ${c}: ${esc(TITLES[c-1])}">${tileSVG(c)}<span class="n">${c}</span><i class="check" aria-hidden="true"></i></button>`).join("")}</div>
       <div class="legend"><span><i style="background:var(--cedar)"></i>scor maxim ușor</span><span><i style="background:var(--oil)"></i>scor maxim greu</span></div>
       <div class="chap-pick" id="chapPick"></div>
 
       <div class="section-h"><h3>Opțiuni</h3></div>
       <div class="opts-row">
-        <div class="toggle col"><div>Număr de întrebări<small id="poolNote"></small></div>
+        <div class="toggle col"><div>Număr de întrebări</div>
           <div class="counts" role="group" aria-label="Număr de întrebări">${[10,20,30,50,0].map(n=>`<button class="chip" data-n="${n}" aria-pressed="${S.count===n}">${n||"Toate"}</button>`).join("")}</div></div>
-        <div class="toggle"><div>Corectare imediată<small>Vezi răspunsul corect după fiecare întrebare.</small></div><button class="switch" id="swInstant" role="switch" aria-checked="${S.instant}" aria-label="Corectare imediată"></button></div>
-        <div class="toggle"><div>Amestecă întrebările<small>Altfel urmează ordinea versetelor.</small></div><button class="switch" id="swShuffle" role="switch" aria-checked="${S.shuffle}" aria-label="Amestecă întrebările"></button></div>
+        <div class="toggle"><div>Corectare imediată</div><button class="switch" id="swInstant" role="switch" aria-checked="${S.instant}" aria-label="Corectare imediată"></button></div>
+        <div class="toggle"><div>Amestecă întrebările</div><button class="switch" id="swShuffle" role="switch" aria-checked="${S.shuffle}" aria-label="Amestecă întrebările"></button></div>
       </div>
       <div class="startbar"><button class="btn btn-primary btn-block" id="start"></button></div>
     </div>
   </aside>
 
-  ${HOSTED ? `<section class="h-board"><div class="section-h"><h3>Clasament</h3><span class="muted small">după cât din carte stăpânești</span></div><div id="board" class="board"><div class="empty">Se încarcă clasamentul…</div></div></section>` : ""}
+  ${HOSTED ? `<section class="h-board"><div class="section-h"><h3>Clasament</h3></div><div id="board" class="board scroll"><div class="empty">Se încarcă clasamentul…</div></div></section>` : ""}
 
   <section class="h-hist">
     <div class="section-h"><h3>Istoric</h3></div>
     <div class="history">${h.length ? h.slice(-6).reverse().map(x=>`
       <div class="hrow"><span class="badge ${x.mode}">${MODE_LABEL[x.mode]}</span><div style="min-width:0"><b style="font-weight:600">${esc(chaptersLabel(x.chs))}</b><small>${dateLabel(x.at)} · ${x.score}/${x.total} puncte</small></div><span class="pct">${x.pct}%</span></div>`).join("")
-      : `<div class="empty">Aici apar testele tale, cu scorul și data. Primul test durează câteva minute.</div>`}</div>
+      : `<div class="empty">Niciun test încă.</div>`}</div>
     <div class="logout-row"><button class="link" id="logout">Ieși din cont</button></div>
   </section>
-  </div>
-  <footer>Text de referință: Biblia, traducerea Dumitru Cornilescu</footer>`);
+  </div>`);
 
   const update = () => {
     if (S.scope === "all"){ S.sel = new Set(Array.from({length:31},(_,i)=>i+1)); }
@@ -593,17 +584,14 @@ function viewHome(){
     $("#grid").dataset.scope = S.scope;
     app.querySelectorAll("[data-scope]").forEach(b => b.setAttribute("aria-pressed", S.scope===b.dataset.scope));
     app.querySelectorAll("[data-mode]").forEach(b => b.setAttribute("aria-pressed", S.mode===b.dataset.mode));
-    $("#scopeNote").textContent = {one:"Atinge un capitol.", many:"Atinge capitolele pe care le vrei.", all:"Întrebări din toate cele 31 de capitole."}[S.scope];
     const pool = buildPool(chs, S.mode).length;
     app.querySelectorAll("[data-n]").forEach(b => { const v = +b.dataset.n; b.disabled = v > 0 && v >= pool; });
     const eff = S.count && S.count < pool ? S.count : 0;
     app.querySelectorAll("[data-n]").forEach(b => b.setAttribute("aria-pressed", eff===+b.dataset.n));
     const n = S.count && S.count < pool ? S.count : pool;
-    if (!chs.length) $("#chapPick").innerHTML = `<span class="num">–</span><div><b>Niciun capitol ales</b><small>Atinge numerele din grilă.</small></div>`;
+    if (!chs.length) $("#chapPick").innerHTML = `<span class="num">–</span><div><b>Niciun capitol ales</b></div>`;
     else if (chs.length === 1){ const c = chs[0], d = QUIZ[c] || {easy:[],hard:[]}; $("#chapPick").innerHTML = `<span class="num">${c}</span><div style="min-width:0"><b>${esc(TITLES[c-1])}</b><small>${d.easy.length} întrebări ușoare · ${d.hard.length} grele</small></div>`; }
     else $("#chapPick").innerHTML = `<span class="num">${chs.length}</span><div style="min-width:0"><b>${chs.length===31 ? "Toată cartea" : esc(chaptersLabel(chs))}</b><small>${pool} întrebări la nivelul ales</small></div>`;
-    $("#poolNote").textContent = chs.length ? `${pool} întrebări disponibile.` : "";
-    $("#modeNote").textContent = {easy:"Întrebări generale despre poveste și evenimente.",hard:"Detalii precise: nume, cifre, locuri, formulări exacte.",both:"Întrebări din ambele niveluri, amestecate."}[S.mode];
     const st = $("#start"); st.disabled = !pool; st.textContent = pool ? `Începe testul · ${n} întrebări` : "Alege cel puțin un capitol";
     persistPrefs();
   };
@@ -635,20 +623,21 @@ async function loadBoard(){
   if (S.board) renderBoard(S.board);
   const list = await store.board();
   if (list) { S.board = list; renderBoard(list); }
-  else if (!S.board && $("#board")) $("#board").innerHTML = `<div class="empty">Clasamentul nu se poate încărca acum.</div>`;
+  else if (!S.board && $("#board")) $("#board").innerHTML = `<div class="empty">Clasament indisponibil.</div>`;
 }
 function renderBoard(list){
   const el = $("#board"); if (!el) return;
   const me = S.player ? slugOf(S.player.name) : null;
-  if (!list.length){ el.innerHTML = `<div class="empty">Fă primul test și apari aici.</div>`; return; }
+  if (!list.length){ el.innerHTML = `<div class="empty">Încă nimeni.</div>`; return; }
   const idx = list.findIndex(x => slugOf(x.name) === me);
-  const top = list.slice(0, 10);
+  const top = el.classList.contains("scroll") ? list : list.slice(0, 10);
   const row = (x, i) => `<div class="brow-l ${slugOf(x.name)===me?"me":""}">
     <span class="rank ${i<3?"r"+(i+1):""}">${i+1}</span>
     <span class="avatar sm">${esc(x.name.trim()[0].toUpperCase())}</span>
     <div class="who-l"><b>${esc(x.name)}${slugOf(x.name)===me?" <em>(tu)</em>":""}</b><small>${x.tests} ${x.tests===1?"test":"teste"} · ${x.chapters} cap.</small></div>
     <div class="m"><span>${x.mastery}%</span><div class="bar"><i style="width:${Math.max(x.mastery,2)}%"></i></div></div></div>`;
-  el.innerHTML = top.map(row).join("") + (idx >= 10 ? `<div class="gap">···</div>${row(list[idx], idx)}` : "");
+  el.innerHTML = top.map(row).join("") + (idx >= top.length ? `<div class="gap">···</div>${row(list[idx], idx)}` : "");
+  const mine = el.querySelector(".me"); if (mine && el.classList.contains("scroll")) el.scrollTop = Math.max(0, mine.offsetTop - el.clientHeight/2);
 }
 
 /* ---------- quiz engine ---------- */
@@ -707,7 +696,7 @@ function viewQuestion(first){
   const card = document.createElement("article");
   card.className = "qcard enter";
   card.innerHTML = `<div class="qmeta"><span class="qtype">${TYPE_LABEL[q.t]}${Z.mode==="both"?` · ${MODE_LABEL[q.mode]}`:""}</span><span class="ref">${refLabel(q.ref)}</span></div>
-    ${q.t==="fill" ? `<p class="qhint" style="margin:0">Scrie cuvântul exact din text.</p>${fillHTML(q)}` : `<p class="qtext">${esc(q.q)}</p>${q.t==="multi"?`<p class="qhint">Pot fi corecte mai multe variante, una singură sau niciuna.</p>`:""}${q.t==="match"?`<p class="qhint">Atinge un element din stânga, apoi perechea lui din dreapta.</p>`:""}`}
+    ${q.t==="fill" ? `${fillHTML(q)}` : `<p class="qtext">${esc(q.q)}</p>${q.t==="multi"?`<p class="qhint">Una, mai multe sau niciuna.</p>`:""}${q.t==="match"?``:""}`}
     <div class="answers" id="ans">${answersHTML(q)}</div><div id="fb"></div>`;
   const slot = $("#qslot");
   const old = slot.firstElementChild;
@@ -838,7 +827,6 @@ async function finish(){
   S.board = null;
   const wrong = Z.qs.map((q,i)=>({q, a: Z.answers[i]})).filter(x => !x.a || x.a.pts < 1);
   const verdict = P>=95 ? "Excelent!" : P>=80 ? "Foarte bine" : P>=60 ? "Bine, mai e puțin" : P>=40 ? "Ai pus bazele" : "Mai citește o dată";
-  const sub = P>=80 ? "Ești pregătit pentru test la aceste capitole." : P>=60 ? "Recitește versetele de mai jos și încearcă din nou." : "Recitește capitolele, apoi reia greșelile.";
   const min = Math.floor(secs/60), s = secs%60;
   mount(`${headerHTML()}
   <section class="report-head">
@@ -846,7 +834,7 @@ async function finish(){
     <div class="ring"><div class="sparks" id="sparks"></div>
       <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" fill="none" stroke="var(--surface-2)" stroke-width="9"/><circle id="ringArc" cx="60" cy="60" r="52" fill="none" stroke="var(--oil)" stroke-width="9" stroke-linecap="round" stroke-dasharray="0 400" style="transition:stroke-dasharray 1.4s cubic-bezier(.2,.8,.2,1)"/></svg>
       <div class="val"><b id="pctNum">0%</b><small>${sc} din ${n} puncte</small></div></div>
-    <h2 class="verdict">${verdict}</h2><p class="muted">${sub}</p>
+    <h2 class="verdict">${verdict}</h2>
   </section>
   <div class="kv">
     <div class="stat"><b>${n - wrong.length}</b><small>corecte</small></div>
@@ -859,7 +847,7 @@ async function finish(){
     ${Z.chs.length>1 ? `<div><span class="eyebrow">Pe capitole</span></div><div class="bars">${Object.entries(byCh).filter(([k])=>k!=="_m").map(([c,v])=>`<div class="brow"><span>Cap. ${c} · ${esc(TITLES[c-1])}</span><div class="bar"><i style="width:0" data-w="${pct(v.s,v.n)}"></i></div><span>${pct(v.s,v.n)}%</span></div>`).join("")}</div>` : ""}
   </div>
   <div class="section-h"><h3>${wrong.length ? "De revăzut" : "Nicio greșeală"}</h3>${wrong.length?`<span class="muted" style="font-size:14px">${wrong.length} întrebări</span>`:""}</div>
-  <div class="mistakes">${wrong.length ? wrong.map(mistakeHTML).join("") : `<div class="allgood">Toate răspunsurile sunt corecte. Candela arde frumos.</div>`}</div>
+  <div class="mistakes">${wrong.length ? wrong.map(mistakeHTML).join("") : `<div class="allgood">Toate răspunsurile sunt corecte.</div>`}</div>
   <div class="startbar" style="display:grid;grid-template-columns:${wrong.length?"1fr 1fr":"1fr"};gap:10px">
     ${wrong.length ? `<button class="btn btn-oil" id="retry">Reia greșelile</button>` : ""}
     <button class="btn btn-primary" id="home">Test nou</button>
@@ -879,7 +867,7 @@ async function finish(){
   $("#home").onclick = () => viewHome();
   const res = await saving;
   if (res) S.player = res.profile;
-  const note = $("#saveNote"); if (note && res) note.textContent = res.saved ? `Rezultat salvat pentru ${p.name}.` : HOSTED ? "Fără conexiune: rezultatul e păstrat pe acest telefon și se trimite la următoarea intrare." : "Rezultatul s-a salvat în acest browser.";
+  const note = $("#saveNote"); if (note && res) note.textContent = res.saved ? "" : HOSTED ? "Fără conexiune: rezultatul se trimite la următoarea intrare." : "";
 }
 function mistakeHTML({q, a}){
   a = a || {pts:0, given:null, skipped:true};
