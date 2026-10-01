@@ -359,6 +359,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
   .grid .tile{aspect-ratio:8/5;border-radius:12px}
   .grid .tile .n{font-size:19px}
   .h-config .startbar{margin-top:8px}
+  .h-board .section-h,.h-hist .section-h{margin-top:12px}
 }
 @media (min-width:960px){
   .wrap{padding-inline:32px;padding-block:28px 64px}
@@ -379,10 +380,8 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
   .qcard{padding:30px 32px}
   .qtext{font-size:22px}
 }
-/* v4: quick test, question of the day, reading, read aloud, text size, groups, tutorial */
+/* v4: reading */
 .legend{flex-wrap:wrap;row-gap:4px}
-.help-line{text-align:center;margin-top:18px;display:flex;justify-content:center;gap:18px;flex-wrap:wrap}
-.help-line .link{font-size:14px}
 .reader{display:grid;gap:16px}
 .reader-h{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:12px}
 .reader-h h2{font-size:26px;line-height:1.1}
@@ -391,17 +390,6 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .reader-text p.hl{background:#FCE98A}
 .hl-hint{font-size:13.5px;color:var(--ink-2);margin:-4px 0 0}
 .reader-text sup{font-family:var(--f-mono);font-size:11px;color:var(--oil-ink);margin-right:4px}
-.tut{max-width:380px;gap:14px;padding:26px 22px 20px}
-.tut-art{min-height:132px;display:grid;place-items:center;background:var(--bg);border-radius:18px;padding:16px}
-.tut-art .seg{width:100%;pointer-events:none}
-.tut-grid{display:grid;grid-template-columns:repeat(4,46px);gap:8px;pointer-events:none}
-.tut-grid .tile .n{font-size:18px}
-.tut-art .feedback{width:100%;text-align:left;font-size:14px;animation:none}
-.tut-art .verse{font-size:14px}
-.tut p{color:var(--ink-2)}
-.tut-dots{display:flex;justify-content:center;gap:6px}
-.tut-dots i{width:7px;height:7px;border-radius:50%;background:var(--line);transition:all .2s}
-.tut-dots i.on{background:var(--oil);width:20px;border-radius:4px}
 .pf-note{font-size:13px;color:var(--ink-2);margin:0}
 .pw-wrap{position:relative}
 .pw-wrap .input{padding-right:52px}
@@ -448,12 +436,8 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 @media (max-width:340px){.who.acct .long{display:none}}
 .sh-lvl{display:grid;gap:6px}
 .start-sheet{gap:12px}
-.seg.cnt4{grid-template-columns:1fr 1fr 1fr 1.5fr}
-.seg.cnt4 button{white-space:nowrap}
-@media (max-width:360px){.seg.cnt4 button{font-size:13.5px;padding-inline:4px}}
-.sh-own{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--ink-2)}
-.sh-own .input{width:90px;text-align:center;font-size:18px;padding:8px}
-.sh-own[hidden]{display:none}
+#shCnt button{white-space:nowrap}
+@media (max-width:360px){#shCnt button{font-size:14px;padding-inline:4px}}
 .start-sheet .sheet-h h3{font-size:21px}
 .start-sheet .read-link{margin:0 auto}
 .start-sheet #shGo{min-height:54px;padding-block:8px}
@@ -1020,7 +1004,6 @@ function viewHome(){
     <div class="history">${h.length ? h.slice(-3).reverse().map(x=>`
       <div class="hrow"><span class="badge ${x.mode}">${MODE_LABEL[x.mode]}</span><div style="min-width:0"><b style="font-weight:600">${esc(chaptersLabel(x.chs))}</b><small>${dateLabel(x.at)} · ${x.score}/${x.total} puncte</small></div><span class="pct">${x.pct}%</span></div>`).join("")
       : `<div class="empty">Niciun test încă.</div>`}</div>
-    <p class="help-line"><button class="link" id="help" type="button">Cum funcționează?</button></p>
   </section>
   </div>`);
 
@@ -1048,12 +1031,10 @@ function viewHome(){
     update();
   });
   $("#start").onclick = () => openOptions();
-  $("#help").onclick = tutorial;
   app.querySelectorAll("[data-play]").forEach(b => b.onclick = () => switchPlayer(b.dataset.play));
   if ($("#resume")){ $("#resume").onclick = resumeQuiz; $("#resumeX").onclick = () => { dropQuiz(); $(".resume").remove(); }; }
   update();
   if (HOSTED) loadBoard();
-  if (!lsGet("candela:tutorial", false)) tutorial();
 }
 
 async function loadBoard(){
@@ -1125,24 +1106,23 @@ const CHECK = `<svg class="done-ic" width="13" height="13" viewBox="0 0 16 16" a
 const levelDone = (chs, m) => chs.every(c => (m === "both" ? ["easy","hard"] : [m]).every(k => chapStat(c, k) === 100));
 const whatLabel = chs => chs.length === 1 ? `${chs[0]}. ${TITLES[chs[0]-1]}` : chs.length === 31 ? "Toată cartea" : chaptersLabel(chs);
 function openOptions(chs = [...S.sel].sort((a,b)=>a-b)){
-  // how many questions: a quarter, half, all, or a number the user types
-  let mode = "easy", list, pool, perQ, n, pick = "all", typed = 10;
+  // how many questions: a quarter, half or all of the level, shown as numbers
+  let mode = "easy", list, pool, perQ, n, pick = "all";
   const bg = document.createElement("div"); bg.className = "sheet-bg";
   bg.innerHTML = `<div class="sheet start-sheet" role="dialog" aria-modal="true" aria-labelledby="shT">
     <div class="sheet-h"><h3 id="shT">${esc(whatLabel(chs))}</h3><button class="icon-btn" id="shX" aria-label="Închide"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
     <div class="sh-lvl"><span class="sh-l">Nivel</span>
       <div class="seg" role="group" aria-label="Nivel">${["easy","hard","both"].map(m=>`<button type="button" data-m="${m}">${MODE_LABEL[m]}${levelDone(chs, m) ? CHECK : ""}</button>`).join("")}</div>
       <small class="sh-note" id="shNote"></small></div>
-    <div class="sh-lvl"><span class="sh-l">Întrebări</span><div class="seg cnt4" role="group" aria-label="Câte întrebări" id="shCnt">${[["q","25%"],["h","50%"],["all","Toate"],["own","La alegere"]].map(([k,l])=>`<button type="button" data-p="${k}">${l}</button>`).join("")}</div>
-      <label class="sh-own" id="shOwn" hidden><input class="input" id="shN" type="number" inputmode="numeric" min="1" aria-label="Număr de întrebări"><span id="shOf"></span></label></div>
+    <div class="sh-lvl"><span class="sh-l">Întrebări</span><div class="seg" role="group" aria-label="Câte întrebări" id="shCnt">${["q","h","all"].map(k=>`<button type="button" data-p="${k}"></button>`).join("")}</div></div>
     <button class="btn btn-primary btn-block" id="shGo"></button>
     ${chs.length === 1 && !$(".reader") ? `<button class="link read-link" id="shRead" type="button">Citește întâi capitolul ${chs[0]}</button>` : ""}
   </div>`;
   document.body.appendChild(bg);
   const set = () => {
-    n = pick === "q" ? Math.max(1, Math.round(pool / 4)) : pick === "h" ? Math.max(1, Math.round(pool / 2)) : pick === "own" ? Math.max(1, Math.min(pool, typed || 1)) : pool;
-    bg.querySelectorAll("[data-p]").forEach(c => c.setAttribute("aria-pressed", c.dataset.p === pick));
-    bg.querySelector("#shOwn").hidden = pick !== "own"; bg.querySelector("#shOf").textContent = `din ${pool}`; bg.querySelector("#shN").max = pool; bg.querySelector("#shGo").innerHTML = `<span class="st-main">Începe · ${n} întrebări</span><span class="st-sub">${MODE_LABEL[mode]} · ${durLabel(perQ * n)}</span>`; };
+    const count = { q: Math.max(1, Math.round(pool / 4)), h: Math.max(1, Math.round(pool / 2)), all: pool };
+    n = count[pick];
+    bg.querySelectorAll("[data-p]").forEach(c => { c.setAttribute("aria-pressed", c.dataset.p === pick); c.textContent = c.dataset.p === "all" ? `Toate (${pool})` : count[c.dataset.p]; }); bg.querySelector("#shGo").innerHTML = `<span class="st-main">Începe · ${n} întrebări</span><span class="st-sub">${MODE_LABEL[mode]} · ${durLabel(perQ * n)}</span>`; };
   const setMode = m => {
     mode = m; list = buildPool(chs, mode); pool = list.length; perQ = estSecs(list) / pool;
     bg.querySelectorAll("[data-m]").forEach(b => b.setAttribute("aria-pressed", b.dataset.m === mode));
@@ -1153,11 +1133,7 @@ function openOptions(chs = [...S.sel].sort((a,b)=>a-b)){
   };
   const close = () => bg.remove();
   setMode("easy");
-  bg.querySelectorAll("[data-p]").forEach(b => b.onclick = () => { pick = b.dataset.p; set(); if (pick === "own"){ const inp = bg.querySelector("#shN"); inp.value = Math.min(typed, pool); inp.focus(); inp.select(); } });
-  const inp = bg.querySelector("#shN");
-  inp.oninput = () => { if (inp.value !== "") { typed = Math.round(+inp.value) || 1; set(); } };
-  inp.onblur = () => { inp.value = n; };
-  inp.onkeydown = e => { if (e.key === "Enter"){ e.preventDefault(); inp.blur(); } };
+  bg.querySelectorAll("[data-p]").forEach(b => b.onclick = () => { pick = b.dataset.p; set(); });
   bg.querySelectorAll("[data-m]").forEach(b => b.onclick = () => setMode(b.dataset.m));
   bg.querySelector("#shX").onclick = close;
   bg.onclick = e => { if (e.target === bg) close(); };
@@ -1462,33 +1438,6 @@ function viewRead(c){
   $("#rGo").onclick = () => { S.scope = "one"; S.sel = new Set([c]); persistPrefs(); openOptions([c]); };
 }
 
-/* ---------- first-launch tutorial ---------- */
-function tutorial(){
-  const slides = [
-    { art: `<div class="tut-grid">${[1,2,3,4,5,6,7,8].map(c => `<span class="tile" aria-pressed="${c===3}"><span class="n">${c}</span></span>`).join("")}</div>`,
-      h: "1. Alege capitolul", p: "Atinge un capitol, apoi „Începe”. Cu „Citește” poți citi capitolul înainte." },
-    { art: `<div class="seg"><button aria-pressed="true">Ușor</button><button aria-pressed="false">Greu</button><button aria-pressed="false">Ambele</button></div>`,
-      h: "2. Alege nivelul", p: "„Ușor” pentru început. „Greu” când vrei detalii: nume, cifre, locuri." },
-    { art: `<div class="feedback ok"><b>Corect</b><div class="verse"><sup>3</sup>${esc((TEXT[3]||[])[2] || "")}</div></div>`,
-      h: "3. Răspunde și învață", p: "După fiecare răspuns vezi versetul din Biblie. La final poți relua greșelile." },
-  ];
-  let i = 0;
-  const bg = document.createElement("div"); bg.className = "modal-bg";
-  bg.innerHTML = `<div class="modal tut" role="dialog" aria-modal="true" aria-labelledby="tutH"></div>`;
-  document.body.appendChild(bg);
-  const box = bg.querySelector(".tut");
-  const close = () => { lsSet("candela:tutorial", true); bg.remove(); };
-  const draw = () => {
-    const x = slides[i], last = i === slides.length - 1;
-    box.innerHTML = `<div class="tut-art">${x.art}</div><h3 id="tutH">${x.h}</h3><p>${x.p}</p>
-      <div class="tut-dots">${slides.map((_, k) => `<i class="${k===i?"on":""}"></i>`).join("")}</div>
-      <div class="modal-btns"><button class="btn btn-ghost" id="tSkip" type="button">${i ? "Înapoi" : "Sari peste"}</button><button class="btn btn-primary" id="tNext" type="button">${last ? "Să începem" : "Înainte"}</button></div>`;
-    box.querySelector("#tSkip").onclick = () => { if (i){ i--; draw(); } else close(); };
-    box.querySelector("#tNext").onclick = () => { if (last) close(); else { i++; draw(); } };
-    box.querySelector("#tNext").focus();
-  };
-  draw();
-}
 
 /* ---------- forgotten password ----------
    The app sends no emails: an admin gives a temporary password (profile → "Parolă provizorie"), the player changes it from the profile. */
