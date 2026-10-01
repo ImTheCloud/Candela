@@ -6,21 +6,21 @@
 <style>
 /* Layout: one narrow column (max 640px) like a pocket study book; a lamp flame is the recurring mark of progress. */
 :root{
-  --bg:#F6F6F1;          /* clean light stone */
-  --surface:#FFFFFF;
-  --surface-2:#EEEFE8;
-  --ink:#1F2620;         /* olive ink */
-  --ink-2:#5E665A;
-  --line:#E2E4DA;
-  --oil:#C08410;         /* lamp oil / flame */
-  --oil-soft:#FBEFD2;
-  --oil-ink:#6B4500;
-  --cedar:#2D5A44;       /* cedar green */
-  --cedar-soft:#E1EEE5;
-  --ok:#2D7A4E; --ok-soft:#E0F2E6;
+  --bg:#F8F1E6;          /* warm cream */
+  --surface:#FFFBF4;
+  --surface-2:#F1E6D5;
+  --ink:#3A271B;         /* dark brown */
+  --ink-2:#7B6450;
+  --line:#E7D8C2;
+  --oil:#D97B26;         /* lamp oil / flame orange */
+  --oil-soft:#FBE5CC;
+  --oil-ink:#8A4510;
+  --cedar:#8A5A36;       /* warm brown (easy level, avatars) */
+  --cedar-soft:#F2E3D2;
+  --ok:#5E8A3A; --ok-soft:#E8F0DA;
   --bad:#B23A2E; --bad-soft:#FBE4DF;
-  --p1:#C08410; --p2:#2D6FA3; --p3:#8A4FA0; --p4:#2D7A4E; --p5:#B4534A;
-  --shadow:0 1px 2px rgb(31 38 32 / .04), 0 10px 30px -18px rgb(31 38 32 / .22);
+  --p1:#D97B26; --p2:#8A5A36; --p3:#B0644A; --p4:#5E8A3A; --p5:#B4534A;
+  --shadow:0 1px 2px rgb(58 39 27 / .05), 0 10px 30px -18px rgb(58 39 27 / .28);
   --f-display:"Gloock", "Georgia", "Times New Roman", serif;
   --f-body:"Onest", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --f-mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
@@ -53,7 +53,7 @@ p{margin:0}
 .btn-primary:disabled{opacity:.35;cursor:not-allowed}
 .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
 .btn-ghost:hover{border-color:var(--ink-2)}
-.btn-oil{background:var(--oil);color:#1d1400}
+.btn-oil{background:var(--oil);color:#2a1505}
 .btn-block{width:100%}
 .link{background:none;border:0;padding:6px 0;color:var(--ink-2);font-weight:500;text-decoration:underline;text-underline-offset:3px}
 
@@ -177,7 +177,7 @@ p{margin:0}
 .switch[aria-checked="true"]{background:var(--cedar)}
 .switch[aria-checked="true"]::after{transform:translateX(20px)}
 .counts{display:flex;gap:6px;flex-wrap:wrap}
-.sheet-bg{position:fixed;inset:0;z-index:30;background:rgb(31 38 32 / .35);display:flex;align-items:flex-end;justify-content:center;animation:fadeIn .2s ease both}
+.sheet-bg{position:fixed;inset:0;z-index:30;background:rgb(58 39 27 / .35);display:flex;align-items:flex-end;justify-content:center;animation:fadeIn .2s ease both}
 .sheet{width:100%;max-width:520px;background:var(--bg);border-radius:24px 24px 0 0;padding:18px 16px calc(18px + env(safe-area-inset-bottom,0px));display:grid;gap:16px;animation:sheetUp .3s cubic-bezier(.2,.8,.2,1) both}
 .sheet-h{display:flex;align-items:center;justify-content:space-between}
 .sheet-h h3{font-size:24px}
@@ -294,8 +294,8 @@ p{margin:0}
 .toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:999px;font-size:14px;opacity:0;transition:all .3s;pointer-events:none;z-index:20;max-width:calc(100% - 32px)}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 body:has(.qactions:not(:empty)) .toast{bottom:calc(100px + env(safe-area-inset-bottom,0px))}
-.modal-bg{position:fixed;inset:0;z-index:40;display:grid;place-items:center;padding:16px;background:rgb(31 38 32 / .28);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);animation:fadeIn .2s ease both}
-.modal{width:100%;max-width:360px;background:var(--surface);border-radius:24px;padding:24px;display:grid;gap:10px;text-align:center;box-shadow:0 20px 50px -20px rgb(31 38 32 / .45);animation:sheetUp .25s cubic-bezier(.2,.8,.2,1) both}
+.modal-bg{position:fixed;inset:0;z-index:40;display:grid;place-items:center;padding:16px;background:rgb(58 39 27 / .28);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);animation:fadeIn .2s ease both}
+.modal{width:100%;max-width:360px;background:var(--surface);border-radius:24px;padding:24px;display:grid;gap:10px;text-align:center;box-shadow:0 20px 50px -20px rgb(58 39 27 / .45);animation:sheetUp .25s cubic-bezier(.2,.8,.2,1) both}
 .modal h3{font-size:24px}
 .modal-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}
 footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
@@ -327,13 +327,12 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .tile .check{position:absolute;top:4px;right:4px;width:16px;height:16px;border-radius:50%;background:var(--oil);display:none}
 .tile .check::after{content:"";position:absolute;left:5px;top:2.5px;width:4px;height:8px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
 .grid[data-scope="many"] .tile[aria-pressed="true"] .check{display:block}
-.grid[data-scope="all"] .tile[aria-pressed="true"]{box-shadow:none;background:var(--surface);border-color:color-mix(in oklab,var(--oil) 45%,var(--line));color:var(--ink)}
-.grid[data-scope="all"] .tile[aria-pressed="true"] .trk{stroke:var(--surface-2)}
+.grid[data-scope="all"] .tile[aria-pressed="true"]{box-shadow:none}
 .board{display:grid;gap:6px;background:var(--surface);border-radius:18px;padding:8px;box-shadow:var(--shadow)}
 .brow-l{display:grid;grid-template-columns:2rem auto minmax(0,1fr) 7.5rem;align-items:center;gap:10px;padding:10px 10px;border-radius:12px}
 .brow-l.me{background:var(--oil-soft)}
 .brow-l .rank{font-family:var(--f-display);font-size:20px;text-align:center;color:var(--ink-2);font-variant-numeric:tabular-nums}
-.brow-l .rank.r1{color:var(--oil)}.brow-l .rank.r2{color:#8C9089}.brow-l .rank.r3{color:#A8693A}
+.brow-l .rank.r1{color:var(--oil)}.brow-l .rank.r2{color:#9A8F84}.brow-l .rank.r3{color:#A8693A}
 .avatar.sm{width:30px;height:30px;font-size:12px}
 .who-l{min-width:0}.who-l b{display:block;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.who-l em{font-style:normal;color:var(--oil-ink);font-weight:500}
 .who-l small{color:var(--ink-2);font-size:12.5px}
@@ -758,9 +757,9 @@ function viewHome(){
   mount(`${headerHTML()}
   <div class="home">
   <section class="h-intro">
-    <div class="hello"><span class="eyebrow">${tests ? "Bine ai revenit" : "Să începem"}</span>
+    <div class="hello">${tests ? `<span class="eyebrow">Bine ai revenit</span>` : ""}
       <h2>${p.guest ? (tests ? "Continuăm?" : "Bun venit!") : tests ? `Continuăm, ${esc(first)}?` : `Bun venit, ${esc(first)}.`}</h2>
-      ${p.guest ? `<p class="guest-line">Joci ca invitat. <button class="link" id="gNew" type="button">Creează un cont</button> ca să-ți păstrezi rezultatele.</p>` : ""}</div>
+      ${p.guest ? `<p class="guest-line">Joci ca invitat. <button class="link" id="gIn" type="button">Conectează-te</button> ca să-ți păstrezi rezultatele.</p>` : ""}</div>
     ${tests ? `<div class="stats">
       <div class="stat"><b>${tests}</b><small>teste făcute</small></div>
       <div class="stat"><b>${avg}%</b><small>media</small></div>

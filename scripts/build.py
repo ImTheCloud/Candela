@@ -21,8 +21,8 @@ n = sum(len(v['easy']) + len(v['hard']) for v in quiz.values())
 n_ro = f'{n:,}'.replace(',', '.')
 head = ('<!doctype html><html lang="ro"><head><meta charset="utf-8">'
         '<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">'
-        '<meta name="theme-color" content="#ECEEE7" media="(prefers-color-scheme: light)">'
-        '<meta name="theme-color" content="#11150F" media="(prefers-color-scheme: dark)">'
+        '<meta name="theme-color" content="#F8F1E6" media="(prefers-color-scheme: light)">'
+        '<meta name="theme-color" content="#F8F1E6" media="(prefers-color-scheme: dark)">'
         f'<link rel="icon" href="{fav}">'
         '<meta property="og:title" content="Candela · Test biblic 1 Samuel">'
         f'<meta property="og:description" content="{n_ro} de întrebări din 1 Samuel (Cornilescu), nivel ușor și greu.">'
