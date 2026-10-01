@@ -692,7 +692,7 @@ function viewHome(){
     const pool = buildPool(chs, S.mode).length;
     if (!chs.length) $("#chapPick").innerHTML = `<span class="num">–</span><div><b>Niciun capitol ales</b></div>`;
     else if (chs.length === 1){ const c = chs[0], d = QUIZ[c] || {easy:[],hard:[]}; $("#chapPick").innerHTML = `<span class="num">${c}</span><div style="min-width:0"><b>${esc(TITLES[c-1])}</b><small>${d.easy.length} întrebări ușoare · ${d.hard.length} grele</small></div>`; }
-    else $("#chapPick").innerHTML = `<span class="num">${chs.length}</span><div style="min-width:0"><b>${chs.length===31 ? "Toată cartea" : esc(chaptersLabel(chs))}</b><small>${pool} întrebări la nivelul ales</small></div>`;
+    else $("#chapPick").innerHTML = `<span class="num">${chs.length}</span><div style="min-width:0"><b>${chs.length===31 ? "Toată cartea" : esc(chaptersLabel(chs))}</b><small>${pool} întrebări ${({easy:"ușoare", hard:"grele", both:"ușoare și grele"})[S.mode]}</small></div>`;
     const st = $("#start"); st.disabled = !pool; st.textContent = !pool ? "Alege cel puțin un capitol" : chs.length === 1 ? `Începe testul · ${pool} întrebări` : "Începe testul";
     $("#modeNote").textContent = MODE_NOTE[S.mode];
     persistPrefs();
