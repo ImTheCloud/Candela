@@ -144,6 +144,16 @@ body:has(.entry[data-step="board"]){overflow:hidden}
 .switch[aria-checked="true"]{background:var(--cedar)}
 .switch[aria-checked="true"]::after{transform:translateX(20px)}
 .counts{display:flex;gap:6px;flex-wrap:wrap}
+.sheet-bg{position:fixed;inset:0;z-index:30;background:rgb(31 38 32 / .35);display:flex;align-items:flex-end;justify-content:center;animation:fadeIn .2s ease both}
+.sheet{width:100%;max-width:520px;background:var(--bg);border-radius:24px 24px 0 0;padding:18px 16px calc(18px + env(safe-area-inset-bottom,0px));display:grid;gap:16px;animation:sheetUp .3s cubic-bezier(.2,.8,.2,1) both}
+.sheet-h{display:flex;align-items:center;justify-content:space-between}
+.sheet-h h3{font-size:24px}
+.cnt-h{display:flex;justify-content:space-between;align-items:baseline}
+.cnt-h b{font-family:var(--f-display);font-weight:400;font-size:28px;line-height:1}
+.sheet input[type=range]{width:100%;accent-color:var(--oil)}
+@keyframes fadeIn{from{opacity:0}}
+@keyframes sheetUp{from{transform:translateY(40px);opacity:0}}
+@media (min-width:960px){.sheet-bg{align-items:center}.sheet{border-radius:24px;padding:24px}}
 .startbar{position:sticky;bottom:0;padding-block:14px calc(14px + env(safe-area-inset-bottom,0px));background:linear-gradient(to top,var(--bg) 70%,transparent);margin-top:18px;z-index:5}
 .history{display:grid;gap:8px}
 .hrow{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;background:var(--surface);border-radius:14px;padding:12px 14px}
@@ -562,13 +572,6 @@ function viewHome(){
       <div class="legend"><span><i style="background:var(--cedar)"></i>scor maxim ușor</span><span><i style="background:var(--oil)"></i>scor maxim greu</span></div>
       <div class="chap-pick" id="chapPick"></div>
 
-      <div class="section-h"><h3>Opțiuni</h3></div>
-      <div class="opts-row">
-        <div class="toggle col"><div>Număr de întrebări</div>
-          <div class="counts" role="group" aria-label="Număr de întrebări">${[10,20,30,50,0].map(n=>`<button class="chip" data-n="${n}" aria-pressed="${S.count===n}">${n||"Toate"}</button>`).join("")}</div></div>
-        <div class="toggle"><div>Corectare imediată</div><button class="switch" id="swInstant" role="switch" aria-checked="${S.instant}" aria-label="Corectare imediată"></button></div>
-        <div class="toggle"><div>Amestecă întrebările</div><button class="switch" id="swShuffle" role="switch" aria-checked="${S.shuffle}" aria-label="Amestecă întrebările"></button></div>
-      </div>
       <div class="startbar"><button class="btn btn-primary btn-block" id="start"></button></div>
     </div>
   </aside>
@@ -592,14 +595,10 @@ function viewHome(){
     app.querySelectorAll("[data-scope]").forEach(b => b.setAttribute("aria-pressed", S.scope===b.dataset.scope));
     app.querySelectorAll("[data-mode]").forEach(b => b.setAttribute("aria-pressed", S.mode===b.dataset.mode));
     const pool = buildPool(chs, S.mode).length;
-    app.querySelectorAll("[data-n]").forEach(b => { const v = +b.dataset.n; b.disabled = v > 0 && v >= pool; });
-    const eff = S.count && S.count < pool ? S.count : 0;
-    app.querySelectorAll("[data-n]").forEach(b => b.setAttribute("aria-pressed", eff===+b.dataset.n));
-    const n = S.count && S.count < pool ? S.count : pool;
     if (!chs.length) $("#chapPick").innerHTML = `<span class="num">–</span><div><b>Niciun capitol ales</b></div>`;
     else if (chs.length === 1){ const c = chs[0], d = QUIZ[c] || {easy:[],hard:[]}; $("#chapPick").innerHTML = `<span class="num">${c}</span><div style="min-width:0"><b>${esc(TITLES[c-1])}</b><small>${d.easy.length} întrebări ușoare · ${d.hard.length} grele</small></div>`; }
     else $("#chapPick").innerHTML = `<span class="num">${chs.length}</span><div style="min-width:0"><b>${chs.length===31 ? "Toată cartea" : esc(chaptersLabel(chs))}</b><small>${pool} întrebări la nivelul ales</small></div>`;
-    const st = $("#start"); st.disabled = !pool; st.textContent = pool ? `Începe testul · ${n} întrebări` : "Alege cel puțin un capitol";
+    const st = $("#start"); st.disabled = !pool; st.textContent = !pool ? "Alege cel puțin un capitol" : chs.length === 1 ? `Începe testul · ${pool} întrebări` : "Începe testul";
     persistPrefs();
   };
   app.querySelectorAll(".tile").forEach(t => t.onclick = () => {
@@ -616,10 +615,7 @@ function viewHome(){
     update();
   });
   app.querySelectorAll("[data-mode]").forEach(b => b.onclick = () => { S.mode = b.dataset.mode; update(); });
-  app.querySelectorAll("[data-n]").forEach(b => b.onclick = () => { S.count = +b.dataset.n; update(); });
-  $("#swInstant").onclick = e => { S.instant = !S.instant; e.currentTarget.setAttribute("aria-checked", S.instant); persistPrefs(); };
-  $("#swShuffle").onclick = e => { S.shuffle = !S.shuffle; e.currentTarget.setAttribute("aria-checked", S.shuffle); persistPrefs(); };
-  $("#start").onclick = () => startQuiz();
+  $("#start").onclick = () => S.sel.size > 1 ? openOptions() : startQuiz();
   $("#logout").onclick = () => { S.player = null; store.logout(); viewEntry(); };
   update();
   if (HOSTED) loadBoard();
@@ -664,16 +660,44 @@ function prepare(q){
   if (q.t === "match"){ x.right = shuffle(q.pairs.map((p,i)=>i)); }
   return x;
 }
-function startQuiz(list){
+function openOptions(){
+  const chs = [...S.sel].sort((a,b)=>a-b), pool = buildPool(chs, S.mode).length;
+  let n = pool;
+  const bg = document.createElement("div"); bg.className = "sheet-bg";
+  bg.innerHTML = `<div class="sheet" role="dialog" aria-modal="true" aria-labelledby="shT">
+    <div class="sheet-h"><h3 id="shT">Opțiuni</h3><button class="icon-btn" id="shX" aria-label="Închide"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
+    <div class="opts-row">
+      <div class="toggle col"><div class="cnt-h"><span>Număr de întrebări</span><b id="shN"></b></div>
+        <input type="range" id="shR" min="${Math.min(5,pool)}" max="${pool}" step="1" value="${pool}" aria-label="Număr de întrebări">
+        <div class="counts">${[10,20,30,50].filter(v=>v<pool).map(v=>`<button class="chip" data-n="${v}">${v}</button>`).join("")}<button class="chip" data-n="${pool}">Toate</button></div></div>
+      <div class="toggle"><div>Corectare imediată</div><button class="switch" id="swInstant" role="switch" aria-checked="${S.instant}" aria-label="Corectare imediată"></button></div>
+      <div class="toggle"><div>Amestecă întrebările</div><button class="switch" id="swShuffle" role="switch" aria-checked="${S.shuffle}" aria-label="Amestecă întrebările"></button></div>
+    </div>
+    <button class="btn btn-primary btn-block" id="shGo"></button>
+  </div>`;
+  document.body.appendChild(bg);
+  const set = v => { n = Math.max(1, Math.min(pool, v)); bg.querySelector("#shR").value = n; bg.querySelector("#shN").textContent = n;
+    bg.querySelectorAll("[data-n]").forEach(c => c.setAttribute("aria-pressed", +c.dataset.n === n)); bg.querySelector("#shGo").textContent = `Începe · ${n} întrebări`; };
+  const close = () => bg.remove();
+  set(pool);
+  bg.querySelector("#shR").oninput = e => set(+e.target.value);
+  bg.querySelectorAll("[data-n]").forEach(c => c.onclick = () => set(+c.dataset.n));
+  bg.querySelector("#swInstant").onclick = e => { S.instant = !S.instant; e.currentTarget.setAttribute("aria-checked", S.instant); persistPrefs(); };
+  bg.querySelector("#swShuffle").onclick = e => { S.shuffle = !S.shuffle; e.currentTarget.setAttribute("aria-checked", S.shuffle); persistPrefs(); };
+  bg.querySelector("#shX").onclick = close;
+  bg.onclick = e => { if (e.target === bg) close(); };
+  bg.querySelector("#shGo").onclick = () => { close(); startQuiz(null, n < pool ? n : 0); };
+}
+function startQuiz(list, count = 0){
   let qs;
   if (list) qs = list;
   else {
     const chs = [...S.sel].sort((a,b)=>a-b);
     let pool = buildPool(chs, S.mode);
     if (S.shuffle) pool = shuffle(pool);
-    if (S.count && S.count < pool.length){
+    if (count && count < pool.length){
       // keep a fair spread across chapters, then restore order if not shuffling
-      pool = shuffle(pool).slice(0, S.count);
+      pool = shuffle(pool).slice(0, count);
       if (!S.shuffle) pool.sort((a,b)=> a.ch-b.ch || refStart(a)-refStart(b));
     }
     qs = pool;
