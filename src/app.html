@@ -274,6 +274,7 @@ html:has(.sheet-bg),html:has(.modal-bg),body:has(.sheet-bg),body:has(.modal-bg){
 .spark{position:absolute;left:50%;top:50%;width:6px;height:6px;border-radius:50%;background:var(--oil);opacity:0;animation:spark 1.4s ease-out forwards}
 @keyframes spark{0%{opacity:1;transform:translate(-50%,-50%)}100%{opacity:0;transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(.4)}}
 .kv{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:22px 0}
+.kv.two{grid-template-columns:1fr 1fr}
 .bars{display:grid;gap:10px}
 .brow{display:grid;grid-template-columns:9.5em 1fr 3.2em;align-items:center;gap:10px;font-size:14px}
 .brow .bar{height:8px}
@@ -1355,7 +1356,6 @@ async function finish(){
   // always encouraging: children and beginners use the app
   const verdict = P>=95 ? "Excelent!" : P>=80 ? "Foarte bine!" : P>=60 ? "Bravo, ești pe drumul cel bun!" : P>=40 ? "Bun început! Mai încearcă o dată." : "Fiecare încercare te ajută să înveți!";
   const tip = wrong.length ? (P>=60 ? "Reia greșelile ca să le înveți și pe acestea." : "Citește capitolul, apoi reia greșelile. Vei vedea cât de repede înveți!") : "Toate răspunsurile sunt corecte. Felicitări!";
-  const min = Math.floor(secs/60), s = secs%60;
   mount(`${headerHTML()}
   <section class="report-head">
     <span class="eyebrow">Raport · ${esc(chaptersLabel(Z.chs))} · ${MODE_LABEL[Z.mode]}${Z.retry?" · reluare greșeli":""}</span>
@@ -1365,10 +1365,9 @@ async function finish(){
     <h2 class="verdict">${verdict}</h2>
     <p class="verdict-tip">${tip}</p>
   </section>
-  <div class="kv">
+  <div class="kv two">
     <div class="stat"><b>${n - wrong.length}</b><small>corecte</small></div>
     <div class="stat"><b>${wrong.length}</b><small>de revăzut</small></div>
-    <div class="stat"><b>${min}:${String(s).padStart(2,"0")}</b><small>timp</small></div>
   </div>
   ${p.guest && !Z.retry ? `<div class="card guest-cta"><b>Păstrează-ți rezultatul</b><p>Joci ca invitat, deci rezultatele rămân doar pe acest dispozitiv. Creează un cont ca să le salvezi și să apari în clasament.</p>
     <div class="guest-btns"><button class="btn btn-primary" id="gNew" type="button">Creează cont</button><button class="btn btn-ghost" id="gIn" type="button">Am deja cont</button></div></div>` : ""}
