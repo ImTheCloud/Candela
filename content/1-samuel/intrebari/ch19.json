@@ -180,6 +180,150 @@
    "ref": "19:22-23",
    "q": "Când Saul s-a dus după David, Duhul lui Dumnezeu a venit și peste el.",
    "a": true
+  },
+  {
+   "t": "multi",
+   "ref": "19:4-5",
+   "q": "Ce i-a mai amintit Ionatan lui Saul despre lupta lui David cu filisteanul? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Că David și-a pus în joc viața.",
+    "Că Saul însuși a văzut și s-a bucurat.",
+    "Că Ionatan a luptat alături de David.",
+    "Că Saul îi promisese lui David jumătate din împărăție.",
+    "Că poporul ceruse ca David să fie cruțat."
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "19:7",
+   "q": "Înainte să-l aducă la Saul, Ionatan l-a chemat pe David și i-a spus tot ce vorbise cu tatăl său.",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "19:6-10",
+   "q": "Saul și-a ținut până la capăt jurământul că David nu va muri.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "19:8-9",
+   "q": "Ce s-a întâmplat chiar înainte ca duhul cel rău să vină din nou peste Saul?",
+   "opts": [
+    "David s-a căsătorit cu Mical.",
+    "David le-a pricinuit filistenilor o mare înfrângere.",
+    "Samuel l-a mustrat pe Saul.",
+    "Ionatan a făcut legământ cu David."
+   ],
+   "a": 1
+  },
+  {
+   "t": "match",
+   "ref": "19:1-10",
+   "q": "Asociază fiecare moment cu ordinea în care s-a petrecut.",
+   "pairs": [
+    [
+     "Întâi",
+     "Saul le spune lui Ionatan și slujitorilor să-l omoare pe David"
+    ],
+    [
+     "Al doilea",
+     "Saul jură că David nu va muri"
+    ],
+    [
+     "Al treilea",
+     "David îi bate pe filisteni"
+    ],
+    [
+     "Al patrulea",
+     "Saul lovește cu sulița în perete"
+    ]
+   ]
+  },
+  {
+   "t": "match",
+   "ref": "19:12-22",
+   "q": "Asociază fiecare moment al fugii lui David cu ordinea în care s-a petrecut.",
+   "pairs": [
+    [
+     "Întâi",
+     "Mical îl coboară pe David pe fereastră"
+    ],
+    [
+     "Al doilea",
+     "Mical pune terafimul în pat"
+    ],
+    [
+     "Al treilea",
+     "David se duce la Samuel, la Rama"
+    ],
+    [
+     "Al patrulea",
+     "Saul se duce el însuși la Rama"
+    ]
+   ]
+  },
+  {
+   "t": "multi",
+   "ref": "19:2-11",
+   "q": "Cine i-a dat de știre lui David, în acest capitol, că Saul vrea să-l omoare? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Ionatan",
+    "Mical",
+    "Samuel",
+    "Abner",
+    "Merab"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "19:11",
+   "q": "Ce legătură avea Mical cu David?",
+   "opts": [
+    "Era sora lui",
+    "Era nevasta lui",
+    "Era fiica lui Samuel",
+    "Era slujnica lui Ionatan"
+   ],
+   "a": 1
+  },
+  {
+   "t": "one",
+   "ref": "19:13-16",
+   "q": "De ce a pus Mical terafimul în pat?",
+   "opts": [
+    "Ca să se roage pentru David",
+    "Ca oamenii lui Saul să creadă că David zace în pat",
+    "Ca să-l ascundă de preoți",
+    "Ca să-l ia cu ea la Rama"
+   ],
+   "a": 1
+  },
+  {
+   "t": "one",
+   "ref": "19:19",
+   "q": "Cum a aflat Saul unde se afla David?",
+   "opts": [
+    "I s-a spus că David este în Naiot, lângă Rama.",
+    "L-a văzut el însuși de pe zidul cetății.",
+    "Mical i-a mărturisit.",
+    "Ionatan i-a spus."
+   ],
+   "a": 0
+  },
+  {
+   "t": "tf",
+   "ref": "19:20-21",
+   "q": "Trimișii lui Saul au reușit să-l prindă pe David în Naiot.",
+   "a": false
   }
  ],
  "hard": [
@@ -411,6 +555,62 @@
     0,
     1,
     4
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "19:2",
+   "q": "„Dar Ionatan, fiul lui Saul, care ___ mult pe David, i-a dat de știre.”",
+   "a": [
+    "iubea"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "19:6",
+   "q": "Cu ce cuvinte a jurat Saul după ce l-a ascultat pe Ionatan?",
+   "opts": [
+    "„Așa să-mi facă Dumnezeu, dacă David va muri!”",
+    "„Pe viața mea, David nu va muri!”",
+    "„Viu este Domnul că David nu va muri!”",
+    "„Pe sufletul tău, nu-l voi atinge!”"
+   ],
+   "a": 2
+  },
+  {
+   "t": "fill",
+   "ref": "19:8",
+   "q": "„David a mers împotriva filistenilor și s-a bătut cu ei, le-a pricinuit o mare ___ și au fugit dinaintea lui.”",
+   "a": [
+    "înfrângere"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "19:9",
+   "q": "Duhul cel rău care a venit peste Saul era trimis de Domnul.",
+   "a": true
+  },
+  {
+   "t": "fill",
+   "ref": "19:11",
+   "q": "„Saul a trimis niște oameni acasă la David ca să-l ___ și să-l omoare dimineața.”",
+   "a": [
+    "pândească"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "19:13",
+   "q": "Mical a pus pielea de capră în jurul picioarelor terafimului.",
+   "a": false
+  },
+  {
+   "t": "fill",
+   "ref": "19:13",
+   "q": "„I-a pus o piele de capră în jurul capului și l-a ___ cu o haină.”",
+   "a": [
+    "învelit"
    ]
   }
  ]

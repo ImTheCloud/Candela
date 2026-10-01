@@ -203,6 +203,163 @@
    "a": [
     "vestit"
    ]
+  },
+  {
+   "t": "tf",
+   "ref": "18:5",
+   "q": "David se ducea și izbutea oriunde îl trimitea Saul.",
+   "a": true
+  },
+  {
+   "t": "fill",
+   "ref": "18:8",
+   "q": "„Lui David îi dau zeci de mii și mie-mi dau ___! Nu-i mai lipsește decât împărăția.”",
+   "a": [
+    "mii"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "18:10",
+   "q": "Ce l-a apucat pe Saul a doua zi după cântecul femeilor?",
+   "opts": [
+    "O boală grea",
+    "Duhul cel rău, trimis de Dumnezeu",
+    "Frica de filisteni",
+    "Duhul prorociei"
+   ],
+   "a": 1
+  },
+  {
+   "t": "one",
+   "ref": "18:10",
+   "q": "Ce făcea David în timp ce Saul se înfuria, cu sulița în mână?",
+   "opts": [
+    "Păzea ușa casei",
+    "Cânta, ca și în celelalte zile",
+    "Mânca la masa împăratului",
+    "Vorbea cu Ionatan"
+   ],
+   "a": 1
+  },
+  {
+   "t": "one",
+   "ref": "18:13",
+   "q": "Ce a făcut Saul ca să-l țină pe David departe de el?",
+   "opts": [
+    "L-a trimis înapoi la Betleem",
+    "L-a îndepărtat de lângă el și l-a pus mai-mare peste oameni de război",
+    "L-a închis în casa lui Ionatan",
+    "L-a trimis la Samuel, la Rama"
+   ],
+   "a": 1
+  },
+  {
+   "t": "fill",
+   "ref": "18:23",
+   "q": "„Credeți că este ___ să fii ginerele împăratului? Eu sunt un om sărac și de puțină însemnătate.”",
+   "a": [
+    "ușor"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "18:25",
+   "q": "Ce motiv le-a spus Saul slujitorilor să-i dea lui David pentru cererea prepuțurilor?",
+   "opts": [
+    "Că așa cere Legea lui Moise",
+    "Că dorește să se răzbune pe vrăjmașii lui",
+    "Că vrea să-i încerce credința lui David",
+    "Că poporul cere o dovadă de vitejie"
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "18:25",
+   "q": "Cerând prepuțurile, Saul avea de gând să-l facă pe David să cadă în mâinile filistenilor.",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "18:27",
+   "q": "David a plecat singur împotriva filistenilor ca să aducă prepuțurile.",
+   "a": false
+  },
+  {
+   "t": "match",
+   "ref": "18:4-13",
+   "q": "Asociază fiecare moment cu ordinea în care s-a petrecut.",
+   "pairs": [
+    [
+     "Întâi",
+     "Ionatan îi dă lui David mantaua lui"
+    ],
+    [
+     "Al doilea",
+     "Femeile ies cântând înaintea lui Saul"
+    ],
+    [
+     "Al treilea",
+     "Saul ridică sulița asupra lui David"
+    ],
+    [
+     "Al patrulea",
+     "Saul îl pune pe David mai-mare peste o mie de oameni"
+    ]
+   ]
+  },
+  {
+   "t": "match",
+   "ref": "18:17-27",
+   "q": "Asociază fiecare moment al căsătoriei lui David cu ordinea în care s-a petrecut.",
+   "pairs": [
+    [
+     "Întâi",
+     "Saul îi promite lui David pe Merab"
+    ],
+    [
+     "Al doilea",
+     "Merab este dată de nevastă altuia"
+    ],
+    [
+     "Al treilea",
+     "Slujitorii îi vorbesc lui David în taină din partea lui Saul"
+    ],
+    [
+     "Al patrulea",
+     "David ucide filisteni ca să fie ginerele împăratului"
+    ]
+   ]
+  },
+  {
+   "t": "multi",
+   "ref": "18:11-21",
+   "q": "Care dintre următoarele le-a spus Saul doar în sine, fără să le rostească înaintea lui David? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "„Voi pironi pe David de perete.”",
+    "„Nu vreau să-mi pun mâna mea pe el.”",
+    "„Astăzi îmi vei fi ginere.”",
+    "„I-o voi da ca să-i fie o cursă.”",
+    "„Îți voi da de nevastă pe fiică-mea cea mai mare, Merab.”"
+   ],
+   "a": [
+    0,
+    1,
+    3
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "18:17-27",
+   "q": "Câte fiice ale lui Saul i-au fost promise lui David în acest capitol?",
+   "opts": [
+    "Una",
+    "Două",
+    "Trei",
+    "Niciuna"
+   ],
+   "a": 1
   }
  ],
  "hard": [
@@ -466,6 +623,86 @@
    "a": [
     0,
     2
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "18:4",
+   "q": "Pe lângă manta și arme, Ionatan i-a dat lui David și hainele sale.",
+   "a": true
+  },
+  {
+   "t": "fill",
+   "ref": "18:3",
+   "q": "„Ionatan a făcut ___ cu David, pentru că-l iubea ca pe sufletul lui.”",
+   "a": [
+    "legământ"
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "18:6",
+   "q": "„cântând și jucând, în sunetul timpanelor și alăutelor, și scoțând strigăte de ___.”",
+   "a": [
+    "bucurie"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "18:7",
+   "q": "Femeile care cântau își răspundeau unele altora.",
+   "a": true
+  },
+  {
+   "t": "fill",
+   "ref": "18:8",
+   "q": "„Saul s-a mâniat foarte tare și nu i-a plăcut ___ aceasta.”",
+   "a": [
+    "vorba"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "18:10",
+   "q": "Unde s-a înfuriat Saul când l-a apucat duhul cel rău?",
+   "opts": [
+    "La poarta cetății",
+    "În cortul din tabără",
+    "În mijlocul casei",
+    "Pe acoperișul casei"
+   ],
+   "a": 2
+  },
+  {
+   "t": "fill",
+   "ref": "18:11",
+   "q": "„Voi pironi pe David de perete.” Dar David s-a ___ de el de două ori.",
+   "a": [
+    "ferit"
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "18:21",
+   "q": "„I-o voi da ca să-i fie o cursă și să cadă sub mâna ___.”",
+   "a": [
+    "filistenilor"
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "18:22",
+   "q": "„Iată că împăratul e binevoitor față de tine și toți slujitorii lui te ___; fii acum ginerele împăratului.”",
+   "a": [
+    "iubesc"
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "18:23",
+   "q": "„Slujitorii lui Saul au spus aceste lucruri la ___ lui David.”",
+   "a": [
+    "urechile"
    ]
   }
  ]

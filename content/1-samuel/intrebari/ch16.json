@@ -196,6 +196,93 @@
    "ref": "16:23",
    "q": "Când David cânta cu harpa, Saul se simțea ușurat și duhul cel rău pleca de la el.",
    "a": true
+  },
+  {
+   "t": "one",
+   "ref": "16:1",
+   "q": "Pentru cine plângea Samuel când Domnul l-a trimis la Betleem?",
+   "opts": [
+    "Pentru fiii lui",
+    "Pentru Saul",
+    "Pentru Eli",
+    "Pentru chivotul Domnului"
+   ],
+   "a": 1
+  },
+  {
+   "t": "one",
+   "ref": "16:3",
+   "q": "Ce i-a promis Domnul lui Samuel pentru momentul jertfei de la Betleem?",
+   "opts": [
+    "Că bătrânii cetății îl vor ocroti de Saul.",
+    "Că Isai îi va spune singur pe care fiu să-l ungă.",
+    "Că îi va arăta ce trebuie să facă și pe cine să ungă.",
+    "Că Saul nu va afla niciodată de venirea lui."
+   ],
+   "a": 2
+  },
+  {
+   "t": "tf",
+   "ref": "16:4-5",
+   "q": "La întrebarea bătrânilor dacă venirea lui vestește ceva bun, Samuel a răspuns „Da” și a spus că vine să aducă o jertfă Domnului.",
+   "a": true
+  },
+  {
+   "t": "fill",
+   "ref": "16:8",
+   "q": "„Isai a chemat pe Abinadab și l-a trecut pe dinaintea lui Samuel, și Samuel a zis: «Nici pe acesta nu l-a ___ Domnul.»”",
+   "a": [
+    "ales"
+   ]
+  },
+  {
+   "t": "match",
+   "ref": "16:11-18",
+   "q": "Asociază fiecare vorbitor cu replica lui.",
+   "pairs": [
+    [
+     "Samuel",
+     "„Aceștia sunt toți fiii tăi?”"
+    ],
+    [
+     "Isai",
+     "„A mai rămas cel mai tânăr, dar paște oile.”"
+    ],
+    [
+     "Un slujitor al lui Saul",
+     "„Iată, am văzut pe un fiu al lui Isai, Betleemitul, care știe să cânte”"
+    ]
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "16:11-12",
+   "q": "Domnul i-a spus lui Samuel să ungă pe fiul cel mai tânăr încă înainte ca acesta să fie adus de la oi.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "16:13",
+   "q": "Ce a venit peste David începând din ziua în care a fost uns?",
+   "opts": [
+    "Un duh rău de la Domnul",
+    "Duhul Domnului",
+    "Frica de Saul",
+    "Ura fraților lui"
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "16:12",
+   "q": "Când a fost adus înaintea lui Samuel, David avea fața frumoasă.",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "16:17",
+   "q": "Saul a respins propunerea slujitorilor de a-i căuta un om care să cânte.",
+   "a": false
   }
  ],
  "hard": [
@@ -497,6 +584,14 @@
    "q": "„Te rog să lași pe David în slujba mea, căci a căpătat ___ înaintea mea.”",
    "a": [
     "trecere"
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "16:18",
+   "q": "„El este și un om tare și voinic, un războinic, vorbește bine, este frumos la ___ și Domnul este cu el.”",
+   "a": [
+    "chip"
    ]
   }
  ]
