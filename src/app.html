@@ -77,6 +77,9 @@ p{margin:0}
 .chip{border:1.5px solid var(--line);background:transparent;border-radius:999px;padding:7px 14px;font-weight:500;font-size:14px;transition:all .15s}
 .chip:hover{border-color:var(--oil);color:var(--oil-ink)}
 .chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip:disabled{opacity:.35;cursor:not-allowed;border-style:dashed}
+.entry-board{display:grid;gap:0}
+.entry-board .section-h{margin-top:4px}
 .features{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;text-align:center}
 .features div{display:grid;gap:2px}
 .features b{font-family:var(--f-display);font-weight:400;font-size:28px;line-height:1}
@@ -253,6 +256,9 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .presets .chip b{font-weight:700}
 .chip.ghost{border-style:dashed;color:var(--ink-2)}
 .chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chip:disabled{opacity:.35;cursor:not-allowed;border-style:dashed}
+.entry-board{display:grid;gap:0}
+.entry-board .section-h{margin-top:4px}
 .seg.scope{margin-top:0}
 .seg.scope button{font-size:14px;white-space:nowrap;padding-inline:4px}
 .grid{margin-top:12px}
@@ -282,6 +288,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
   .entry .lamp-wrap{justify-content:flex-start;height:170px}
   .entry .features{text-align:left;max-width:26rem}
   .entry-form{padding:32px}
+  .entry-board{grid-column:1 / -1;max-width:760px;width:100%;justify-self:center;margin-top:12px}
   .home{grid-template-columns:minmax(0,1fr) 440px;grid-template-rows:auto auto 1fr;grid-template-areas:"intro config" "board config" "hist config";column-gap:40px;align-items:start}
   .entry .lamp-glow{left:-60px;right:auto;width:300px}
   .h-config{position:sticky;top:20px;align-self:start}
@@ -457,14 +464,15 @@ function viewEntry(msg){
       ${HOSTED ? `<div class="field">
         <label for="pin">Cod de 4 cifre</label>
         <input class="input pin" id="pin" name="pin" inputmode="numeric" pattern="[0-9]*" maxlength="4" placeholder="••••" autocomplete="off" required>
-        <small class="muted">Prima dată? Alege acum un cod. Data viitoare intri cu același nume și cod, de pe orice telefon sau calculator. Nimeni altcineva nu-ți poate modifica progresul.</small>
       </div>` : `<small class="muted">Scrie același nume ca să-ți regăsești progresul.</small>`}
       <p class="form-error" id="err" role="alert">${msg ? esc(msg) : ""}</p>
       <button class="btn btn-primary btn-block" id="go" type="submit">Intră</button>
     </form>
+    ${HOSTED ? `<section class="entry-board"><div class="section-h"><h3>Clasament</h3><span class="muted small">după cât din carte stăpânește fiecare</span></div><div id="board" class="board"><div class="empty">Se încarcă clasamentul…</div></div></section>` : ""}
   </section>
   <footer>Text de referință: Biblia, traducerea Dumitru Cornilescu</footer>`);
   const f = $("#enter"), inp = $("#name"), pin = $("#pin"), err = $("#err");
+  if (HOSTED) loadBoard();
   if (pin) pin.addEventListener("input", () => { pin.value = pin.value.replace(/\D/g,"").slice(0,4); err.textContent = ""; });
   f.addEventListener("submit", async e => {
     e.preventDefault();
@@ -519,7 +527,6 @@ function headerHTML(){
   <div class="who"><b>${esc(n)}</b><span class="avatar">${esc(n.trim()[0].toUpperCase())}</span></div></header>`;
 }
 function mastery(p){ return Math.round(Object.values(p.chap||{}).reduce((s,v)=>s+(v.best||0),0) / 62); }
-const PRESETS = [["1-7","Samuel","1–7"],["8-15","Saul","8–15"],["16-31","David","16–31"]];
 
 function viewHome(){
   const p = S.player, h = p.history;
@@ -552,7 +559,6 @@ function viewHome(){
         <button data-scope="one">Un capitol</button><button data-scope="many">Mai multe</button><button data-scope="all">Toată cartea</button>
       </div>
       <p class="seg-note" id="scopeNote"></p>
-      <div class="presets" id="presets">${PRESETS.map(([r,l,n])=>`<button class="chip" data-preset="${r}"><b>${l}</b> ${n}</button>`).join("")}<button class="chip ghost" data-preset="clear">Golește</button></div>
       <div class="grid" id="grid">${Array.from({length:31},(_,i)=>i+1).map(c=>`<button class="tile" data-c="${c}" aria-pressed="false" title="${c}. ${esc(TITLES[c-1])}" aria-label="Capitolul ${c}: ${esc(TITLES[c-1])}">${tileSVG(c)}<span class="n">${c}</span><i class="check" aria-hidden="true"></i></button>`).join("")}</div>
       <div class="legend"><span><i style="background:var(--cedar)"></i>scor maxim ușor</span><span><i style="background:var(--oil)"></i>scor maxim greu</span></div>
       <div class="chap-pick" id="chapPick"></div>
@@ -587,11 +593,11 @@ function viewHome(){
     $("#grid").dataset.scope = S.scope;
     app.querySelectorAll("[data-scope]").forEach(b => b.setAttribute("aria-pressed", S.scope===b.dataset.scope));
     app.querySelectorAll("[data-mode]").forEach(b => b.setAttribute("aria-pressed", S.mode===b.dataset.mode));
-    app.querySelectorAll("[data-n]").forEach(b => b.setAttribute("aria-pressed", S.count===+b.dataset.n));
-    $("#presets").hidden = S.scope !== "many";
-    app.querySelectorAll("[data-preset]").forEach(b => { const r = b.dataset.preset; if (r==="clear") return; const [a,z] = r.split("-").map(Number); b.setAttribute("aria-pressed", chs.length === z-a+1 && chs[0]===a && chs[chs.length-1]===z); });
-    $("#scopeNote").textContent = {one:"Atinge un capitol.", many:"Atinge capitolele pe care le vrei, sau alege o perioadă.", all:"Întrebări din toate cele 31 de capitole."}[S.scope];
+    $("#scopeNote").textContent = {one:"Atinge un capitol.", many:"Atinge capitolele pe care le vrei.", all:"Întrebări din toate cele 31 de capitole."}[S.scope];
     const pool = buildPool(chs, S.mode).length;
+    app.querySelectorAll("[data-n]").forEach(b => { const v = +b.dataset.n; b.disabled = v > 0 && v >= pool; });
+    const eff = S.count && S.count < pool ? S.count : 0;
+    app.querySelectorAll("[data-n]").forEach(b => b.setAttribute("aria-pressed", eff===+b.dataset.n));
     const n = S.count && S.count < pool ? S.count : pool;
     if (!chs.length) $("#chapPick").innerHTML = `<span class="num">–</span><div><b>Niciun capitol ales</b><small>Atinge numerele din grilă.</small></div>`;
     else if (chs.length === 1){ const c = chs[0], d = QUIZ[c] || {easy:[],hard:[]}; $("#chapPick").innerHTML = `<span class="num">${c}</span><div style="min-width:0"><b>${esc(TITLES[c-1])}</b><small>${d.easy.length} întrebări ușoare · ${d.hard.length} grele</small></div>`; }
@@ -614,11 +620,6 @@ function viewHome(){
     if (S.scope === "many" && prev === "all") S.sel = new Set();
     update();
   });
-  app.querySelectorAll("[data-preset]").forEach(b => b.onclick = () => {
-    const r = b.dataset.preset; S.sel = new Set();
-    if (r !== "clear"){ const [a,z] = r.split("-").map(Number); for (let c=a;c<=z;c++) S.sel.add(c); }
-    update();
-  });
   app.querySelectorAll("[data-mode]").forEach(b => b.onclick = () => { S.mode = b.dataset.mode; update(); });
   app.querySelectorAll("[data-n]").forEach(b => b.onclick = () => { S.count = +b.dataset.n; update(); });
   $("#swInstant").onclick = e => { S.instant = !S.instant; e.currentTarget.setAttribute("aria-checked", S.instant); persistPrefs(); };
@@ -638,7 +639,7 @@ async function loadBoard(){
 }
 function renderBoard(list){
   const el = $("#board"); if (!el) return;
-  const me = slugOf(S.player.name);
+  const me = S.player ? slugOf(S.player.name) : null;
   if (!list.length){ el.innerHTML = `<div class="empty">Fă primul test și apari aici.</div>`; return; }
   const idx = list.findIndex(x => slugOf(x.name) === me);
   const top = list.slice(0, 10);
