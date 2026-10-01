@@ -90,7 +90,7 @@ p{margin:0}
 
 /* Header */
 .top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px}
-.brand{display:flex;align-items:center;gap:6px;font-family:var(--f-display);font-size:28px;line-height:1}
+.brand{display:flex;align-items:center;gap:6px;font-family:var(--f-display);font-size:28px;line-height:1;border:0;background:transparent;padding:0;color:inherit;cursor:pointer;text-align:left}
 .brand svg{margin:-10px -6px -4px -12px}
 .who{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--ink-2);min-width:0;border:0;background:transparent;padding:4px;border-radius:999px;transition:background .2s}
 .who:hover{background:var(--surface-2)}
@@ -917,9 +917,9 @@ const lvTried = (c, m) => chapStat(c, m) != null;
 const chapTried = c => chapStat(c,"easy") != null || chapStat(c,"hard") != null;
 function headerHTML(){
   const n = S.player.name;
-  if (S.player.guest) return `<header class="top"><div class="brand">${lampSVG(30)} Candela</div>
+  if (S.player.guest) return `<header class="top"><button class="brand" id="brandHome" type="button" aria-label="Acasă">${lampSVG(30)} Candela</button>
   <div class="top-r">${readBtnHTML()}<button class="who acct" id="acct" type="button" aria-label="Intră în cont"><b>Intră<span class="long"> în cont</span></b><span class="avatar"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="5.5" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M2.5 14c.8-3 3-4.5 5.5-4.5s4.7 1.5 5.5 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></button></div></header>`;
-  return `<header class="top"><div class="brand">${lampSVG(30)} Candela</div>
+  return `<header class="top"><button class="brand" id="brandHome" type="button" aria-label="Acasă">${lampSVG(30)} Candela</button>
   <div class="top-r">${readBtnHTML()}${whoHTML()}</div></header>`;
 }
 const BOOK = `<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6.5C10 5 7.5 4.5 4 4.5v13c3.5 0 6 .5 8 2 2-1.5 4.5-2 8-2v-13c-3.5 0-6 .5-8 2zM12 6.5v13" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>`;
@@ -1155,6 +1155,7 @@ function openProfile(){
 }
 document.addEventListener("click", e => {
   if (!e.target.closest) return;
+  if (e.target.closest("#brandHome")) viewHome();
   if (e.target.closest("#who")) openProfile();
   if (e.target.closest("#gNew, #gIn")) S.toReport = true; else if (e.target.closest("#acct")) S.toReport = false;
   if (e.target.closest("#acct, #gNew")) viewEntry("", e.target.closest("#gNew") ? "new" : undefined);
@@ -1586,9 +1587,9 @@ function renderReport(r, o = {}){
   ${wrong ? `<div class="section-h"><h3>${nWrong ? "De revăzut" : "Nicio greșeală"}</h3>${nWrong?`<span class="muted" style="font-size:14px">${nWrong} întrebări</span>`:""}</div>
   <div class="mistakes">${nWrong ? wrong.map(mistakeHTML).join("") : `<div class="allgood">Toate răspunsurile sunt corecte.</div>`}</div>`
   : ""}
-  <div class="startbar" style="display:grid;grid-template-columns:${o.past ? "1fr" : "1fr 1fr"};gap:10px">
+  <div class="startbar" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
     ${nWrong ? `<button class="btn btn-oil" id="retry">Reia greșelile</button>` : `<button class="btn btn-oil" id="again">Refă testul</button>`}
-    ${o.past ? "" : `<button class="btn btn-primary" id="home">Test nou</button>`}
+    <button class="btn btn-primary" id="home">Acasă</button>
   </div>
   ${chs.length === 1 && nWrong ? `<button class="link read-link" id="readCh" type="button">Citește capitolul ${chs[0]}</button>` : ""}
   <p class="muted" id="saveNote" style="text-align:center;font-size:13px"></p>`);
