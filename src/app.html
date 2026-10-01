@@ -97,8 +97,16 @@ body:has(.entry[data-step="board"]){overflow:hidden}
 
 /* Header */
 .top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px}
-.brand{display:flex;align-items:center;gap:8px;font-family:var(--f-display);font-size:20px}
-.who{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--ink-2);min-width:0}
+.brand{display:flex;align-items:center;gap:6px;font-family:var(--f-display);font-size:28px;line-height:1}
+.brand svg{margin:-10px -6px -4px -12px}
+.who{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--ink-2);min-width:0;border:0;background:transparent;padding:4px 4px 4px 12px;border-radius:999px;transition:background .2s}
+.who:hover{background:var(--surface-2)}
+.prof{justify-items:center;text-align:center;position:relative;padding-top:28px}
+.prof .prof-x{position:absolute;top:14px;right:14px}
+.prof h3{font-size:28px}
+.avatar.lg{width:72px;height:72px;font-size:30px}
+.badge-rank{font-size:13px;font-weight:600;color:var(--oil-ink);background:var(--oil-soft);padding:4px 12px;border-radius:999px}
+.prof .kv{width:100%}
 .who b{color:var(--ink);font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:14ch}
 .avatar{width:32px;height:32px;border-radius:50%;background:var(--cedar);color:var(--bg);display:grid;place-items:center;font-weight:700;font-size:14px;flex:none}
 .dot{width:7px;height:7px;border-radius:50%;background:var(--ink-2)}
@@ -263,7 +271,11 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .form-error:empty{display:none}
 .input.pin{letter-spacing:.5em;font-family:var(--f-mono);font-size:22px;text-align:center;max-width:12rem}
 .entry-form{display:grid;gap:16px}
-.boot{display:grid;place-items:center;min-height:60vh;opacity:.9}
+.boot{display:grid;place-content:center;justify-items:center;gap:14px;min-height:calc(100dvh - 68px)}
+.boot h1{font-size:clamp(44px,12vw,64px);line-height:1}
+.boot-bar{width:120px;height:3px;border-radius:3px;background:var(--surface-2);overflow:hidden;margin-top:6px}
+.boot-bar i{display:block;width:40%;height:100%;background:var(--oil);border-radius:3px;animation:bootbar 1.1s ease-in-out infinite}
+@keyframes bootbar{from{transform:translateX(-100%)}to{transform:translateX(250%)}}
 .boot .flame{animation:flicker 1.2s ease-in-out infinite}
 .section-h.first{margin-top:0}
 .small{font-size:13px}
@@ -515,7 +527,7 @@ function enter(profile, created){
 async function autoLogin(){
   const sess = lsGet("candela:session", null);
   if (!sess || !sess.name || (HOSTED && !sess.pin)) return viewEntry();
-  mount(`<div class="boot">${lampSVG(50)}</div>`);
+  mount(`<div class="boot"><div class="lamp-wrap"><div class="lamp-glow"></div>${lampSVG(100)}</div><h1>Candela</h1><div class="boot-bar"><i></i></div></div>`);
   const r = await store.login(sess.name, sess.pin);
   if (r.ok) return enter(r.profile);
   if (r.error === "network" && store.local(sess.name)){ store.session = sess; S.player = store.norm(store.local(sess.name), sess.name); return viewHome(); }
@@ -534,9 +546,33 @@ function tileSVG(c){
 }
 function headerHTML(){
   const n = S.player.name;
-  return `<header class="top"><div class="brand">${miniLamp()} Candela</div>
-  <div class="who"><b>${esc(n)}</b><span class="avatar">${esc(n.trim()[0].toUpperCase())}</span></div></header>`;
+  return `<header class="top"><div class="brand">${lampSVG(30)} Candela</div>
+  <button class="who" id="who" type="button" aria-label="Profilul meu"><b>${esc(n)}</b><span class="avatar">${esc(n.trim()[0].toUpperCase())}</span></button></header>`;
 }
+function openProfile(){
+  const p = S.player; if (!p) return;
+  const h = p.history, tests = h.length, avg = tests ? Math.round(h.reduce((s,x)=>s+x.pct,0)/tests) : 0;
+  const rank = S.board ? S.board.findIndex(x => slugOf(x.name) === slugOf(p.name)) : -1;
+  const bg = document.createElement("div"); bg.className = "sheet-bg";
+  bg.innerHTML = `<div class="sheet prof" role="dialog" aria-modal="true" aria-label="Profil">
+    <button class="icon-btn prof-x" id="pfX" aria-label="Închide"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+    <span class="avatar lg">${esc(p.name.trim()[0].toUpperCase())}</span>
+    <h3>${esc(p.name)}</h3>
+    ${rank >= 0 ? `<span class="badge-rank">Locul ${rank+1} din ${S.board.length}</span>` : ""}
+    <div class="kv">
+      <div class="stat"><b>${tests}</b><small>teste</small></div>
+      <div class="stat"><b>${tests ? avg+"%" : "–"}</b><small>media</small></div>
+      <div class="stat"><b>${mastery(p)}%</b><small>din carte</small></div>
+    </div>
+    <button class="btn btn-ghost btn-block" id="pfOut">Ieși din cont</button>
+  </div>`;
+  document.body.appendChild(bg);
+  const close = () => bg.remove();
+  bg.querySelector("#pfX").onclick = close;
+  bg.onclick = e => { if (e.target === bg) close(); };
+  bg.querySelector("#pfOut").onclick = () => { close(); S.player = null; store.logout(); viewEntry(); };
+}
+document.addEventListener("click", e => { if (e.target.closest && e.target.closest("#who")) openProfile(); });
 function mastery(p){ return Math.round(Object.values(p.chap||{}).reduce((s,v)=>s+(v.best||0),0) / 62); }
 
 function viewHome(){
@@ -584,7 +620,6 @@ function viewHome(){
     <div class="history">${h.length ? h.slice(-6).reverse().map(x=>`
       <div class="hrow"><span class="badge ${x.mode}">${MODE_LABEL[x.mode]}</span><div style="min-width:0"><b style="font-weight:600">${esc(chaptersLabel(x.chs))}</b><small>${dateLabel(x.at)} · ${x.score}/${x.total} puncte</small></div><span class="pct">${x.pct}%</span></div>`).join("")
       : `<div class="empty">Niciun test încă.</div>`}</div>
-    <div class="logout-row"><button class="link" id="logout">Ieși din cont</button></div>
   </section>
   </div>`);
 
@@ -617,7 +652,6 @@ function viewHome(){
   });
   app.querySelectorAll("[data-mode]").forEach(b => b.onclick = () => { S.mode = b.dataset.mode; update(); });
   $("#start").onclick = () => S.sel.size > 1 ? openOptions() : startQuiz();
-  $("#logout").onclick = () => { S.player = null; store.logout(); viewEntry(); };
   update();
   if (HOSTED) loadBoard();
 }
