@@ -14,7 +14,7 @@ Teste biblice pentru pregătire, după traducerea Cornilescu. Prima carte: **1 S
 - Fără cont se joacă în modul invitat: rezultatele rămân în browser și trec în cont la înregistrare sau la intrare.
 - Clasament: fiecare întrebare contează o singură dată, prima oară când e răspunsă complet corect (scor = întrebări stăpânite ÷ total). La egalitate e înaintea cel care a ajuns primul. ID-ul unei întrebări e `<capitol><e|h><index>`, deci întrebările noi se adaugă la sfârșitul listei.
 - Grupuri (familie, școala duminicală): un cod de 6 caractere sau linkul `/?g=COD`; fiecare grup are clasamentul lui, cu numele întregi.
-- Pe acasă: test rapid (10 întrebări ușoare), întrebarea zilei, seria de zile, medalii pe capitol (bronz, argint, aur), citirea capitolului cu „Ascultă” (vocea românească a telefonului), mărimea textului (butonul „A A”), tutorial la prima vizită.
+- Pe acasă: seria de zile, medalii pe capitol (bronz, argint, aur), citirea capitolului cu „Ascultă” (vocea românească a telefonului), tutorial la prima vizită. Fără emoji: aplicația rămâne sobră.
 - Parola uitată: link prin email (Supabase Auth). Pentru emailuri către oricine trebuie un domeniu propriu configurat ca SMTP în Supabase.
 - `index.html`, `sw.js` — fișierele generate care se publică; `manifest.webmanifest` și `icons/` fac aplicația instalabilă, iar `sw.js` o deschide și fără internet.
 

@@ -377,24 +377,12 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
   .qtext{font-size:22px}
 }
 /* v4: quick test, question of the day, streak, medals, reading, read aloud, text size, groups, tutorial */
-.top-r{display:flex;align-items:center;gap:8px;min-width:0}
-.icon-btn.aa{display:inline-flex;align-items:baseline;justify-content:center;font-family:var(--f-display);font-size:18px;line-height:1;flex:none}
-.icon-btn.aa small{font-size:12px;margin-left:1px}
 .streak{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--oil-ink);background:var(--oil-soft);padding:5px 12px;border-radius:999px;justify-self:start;margin-top:4px}
-.today{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px}
-.tcard{background:var(--surface);border-radius:18px;padding:16px;box-shadow:var(--shadow);display:grid;gap:4px;align-content:start;justify-items:start;text-align:left;border:1.5px solid transparent;font-size:inherit}
-button.tcard{width:100%;transition:transform .15s,border-color .2s}
-button.tcard:hover:not(:disabled){border-color:var(--oil)}
-button.tcard:active:not(:disabled){transform:scale(.98)}
-.tcard:disabled{cursor:default;opacity:1}
-.tcard .ti{font-size:24px;line-height:1.1;margin-bottom:4px}
-.tcard b{font-weight:600;font-size:16px}
-.tcard small{color:var(--ink-2);font-size:13px;line-height:1.35}
-.tcard.done{background:var(--ok-soft)}
 .tile .medal{position:absolute;bottom:3px;right:3px;width:13px;height:13px;border-radius:50%;border:2px solid var(--surface)}
 .medal.m1{background:#B87333}.medal.m2{background:#A9A39A}.medal.m3{background:#E0A324}
 .legend{flex-wrap:wrap;row-gap:4px}
 .legend button{background:none;border:0;padding:0;font-size:inherit;color:inherit;text-decoration:underline dotted;text-underline-offset:3px}
+.pf-row .medal{display:inline-block;width:10px;height:10px;border-radius:50%;vertical-align:-1px}
 .legend .medal{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:2px;vertical-align:-1px}
 .legend .medal:last-of-type{margin-right:5px}
 .read-link{display:block;margin:8px auto 0;font-size:14.5px}
@@ -753,9 +741,9 @@ function tileSVG(c){
 function headerHTML(){
   const n = S.player.name;
   if (S.player.guest) return `<header class="top"><div class="brand">${lampSVG(30)} Candela</div>
-  <div class="top-r">${aaHTML()}<button class="who acct" id="acct" type="button"><b>Intră în cont</b><span class="avatar"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="5.5" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M2.5 14c.8-3 3-4.5 5.5-4.5s4.7 1.5 5.5 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></button></div></header>`;
+  <button class="who acct" id="acct" type="button"><b>Intră în cont</b><span class="avatar"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="5.5" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M2.5 14c.8-3 3-4.5 5.5-4.5s4.7 1.5 5.5 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></button></header>`;
   return `<header class="top"><div class="brand">${lampSVG(30)} Candela</div>
-  <div class="top-r">${aaHTML()}${whoHTML()}</div></header>`;
+  ${whoHTML()}</header>`;
 }
 function initials(n){ const w = n.trim().split(/\s+/); return ((w[0]||"?")[0] + (w.length > 1 ? w[w.length-1][0] : "")).toUpperCase(); }
 function whoHTML(){ const n = S.player.name; return `<button class="who" id="who" type="button" aria-label="Profilul meu"><b>${esc(n)}</b><span class="avatar">${esc(initials(n))}</span></button>`; }
@@ -797,7 +785,7 @@ function openProfile(){
         <div class="pf-row"><span>Timp de studiu</span><b>${tests ? time : "–"}</b></div>
         ${last ? `<div class="pf-row"><span>Ultimul test</span><b>${esc(chaptersLabel(last.chs))} · ${last.pct}%</b></div>` : ""}
         <div class="pf-row"><span>Medalii</span><b>${medalSummary(p)}</b></div>
-        <div class="pf-row"><span>Zile la rând</span><b>${streak(p) ? "🔥 " + streak(p) : "–"}</b></div>
+        <div class="pf-row"><span>Zile la rând</span><b>${streak(p) || "–"}</b></div>
       </div>
       <div class="pf-card" id="pfGroups"></div>
       <div class="prof-btns"><button class="btn ${store.hasEmail() ? "btn-ghost" : "btn-primary"} btn-block" id="pfEdit">${store.hasEmail() ? "Modifică profilul" : "Adaugă emailul"}</button>
@@ -876,7 +864,6 @@ function viewHome(){
       <div class="stat"><b>${String(mastery(p)).replace(".",",")}%</b><small>stăpânit</small></div>
     </div>` : ""}
     ${resumeHTML()}
-    ${todayHTML(p)}
   </section>
   <section class="h-verse"><div class="lamp-wrap"><div class="lamp-glow"></div>${lampSVG(46)}</div><p class="verse-quote">„Candela lui Dumnezeu nu se stinsese încă.”<span class="ref">1 Sam. 3:3</span></p></section>
 
@@ -923,7 +910,7 @@ function viewHome(){
     const st = $("#start"); st.disabled = !pool;
     st.innerHTML = !pool ? "Alege cel puțin un capitol" : `<span class="st-main">Începe · ${esc(what)}</span><span class="st-sub">${pool} întrebări${dur}</span>`;
     $("#modeNote").textContent = MODE_NOTE[S.mode];
-    const rd = $("#read"); rd.hidden = chs.length !== 1; rd.textContent = `📖 Citește întâi capitolul ${chs[0]}`;
+    const rd = $("#read"); rd.hidden = chs.length !== 1; rd.textContent = `Citește întâi capitolul ${chs[0]}`;
     persistPrefs();
   };
   app.querySelectorAll(".tile").forEach(t => t.onclick = () => {
@@ -942,8 +929,6 @@ function viewHome(){
   app.querySelectorAll("[data-mode]").forEach(b => b.onclick = () => { S.mode = b.dataset.mode; update(); });
   $("#start").onclick = () => S.sel.size > 1 ? openOptions() : startQuiz();
   $("#read").onclick = () => viewRead([...S.sel][0]);
-  $("#quick").onclick = quickTest;
-  $("#daily").onclick = () => startQuiz([dailyQ()], 0, {mode: "easy", daily: true});
   $("#help").onclick = tutorial;
   $("#install").onclick = installApp;
   $("#medalHelp").onclick = () => toast("Bronz: jumătate din întrebările ușoare ale capitolului știute. Argint: aproape toate cele ușoare. Aur: și trei sferturi din cele grele.", 7000);
@@ -1079,11 +1064,11 @@ function startQuiz(list, count = 0, o = {}){
     }
     qs = pool;
   }
-  S.quiz = { qs: qs.map(prepare), i: 0, answers: [], start: Date.now(), chs: [...new Set(qs.map(q=>q.ch))].sort((a,b)=>a-b), mode: o.mode || (list ? S.quiz.mode : S.mode), retry: !!o.retry, daily: !!o.daily };
+  S.quiz = { qs: qs.map(prepare), i: 0, answers: [], start: Date.now(), chs: [...new Set(qs.map(q=>q.ch))].sort((a,b)=>a-b), mode: o.mode || (list ? S.quiz.mode : S.mode), retry: !!o.retry };
   viewQuestion(true);
 }
 /* an unfinished test survives a reload or a closed tab, until it is finished or stopped */
-function saveQuiz(){ const Z = S.quiz; if (!Z || Z.retry) return; lsSet("candela:quiz", {qs:Z.qs, i:Z.i, answers:Z.answers, elapsed:Date.now()-Z.start, chs:Z.chs, mode:Z.mode, daily:!!Z.daily, who: S.player && !S.player.guest ? store.uid : "guest"}); }
+function saveQuiz(){ const Z = S.quiz; if (!Z || Z.retry) return; lsSet("candela:quiz", {qs:Z.qs, i:Z.i, answers:Z.answers, elapsed:Date.now()-Z.start, chs:Z.chs, mode:Z.mode, who: S.player && !S.player.guest ? store.uid : "guest"}); }
 function dropQuiz(){ lsSet("candela:quiz", null); }
 function savedQuiz(){ const z = lsGet("candela:quiz", null); return z && z.qs && z.who === (S.player && !S.player.guest ? store.uid : "guest") ? z : null; }
 function resumeHTML(){
@@ -1093,7 +1078,7 @@ function resumeHTML(){
 }
 function resumeQuiz(){
   const z = savedQuiz(); if (!z) return viewHome();
-  S.quiz = { qs: z.qs, i: z.i, answers: z.answers, start: Date.now() - z.elapsed, chs: z.chs, mode: z.mode, retry: false, daily: !!z.daily };
+  S.quiz = { qs: z.qs, i: z.i, answers: z.answers, start: Date.now() - z.elapsed, chs: z.chs, mode: z.mode, retry: false };
   viewQuestion(true);
 }
 function refStart(q){ return +q.ref.split(":")[1].split("-")[0]; }
@@ -1122,7 +1107,7 @@ function viewQuestion(first){
   $("#qcount").textContent = `${Z.i+1}/${n}`;
   const card = document.createElement("article");
   card.className = "qcard enter";
-  card.innerHTML = `<div class="qmeta"><span class="qtype">${Z.daily ? "Întrebarea zilei · " : ""}${TYPE_LABEL[q.t]}${Z.mode==="both"?` · ${MODE_LABEL[q.mode]}`:""}</span><span class="qmeta-r"><span class="ref">${refLabel(q.ref)}</span>${TTS ? `<button class="icon-btn say" type="button" data-say aria-label="Citește cu voce tare">${SPEAKER}</button>` : ""}</span></div>
+  card.innerHTML = `<div class="qmeta"><span class="qtype">${TYPE_LABEL[q.t]}${Z.mode==="both"?` · ${MODE_LABEL[q.mode]}`:""}</span><span class="qmeta-r"><span class="ref">${refLabel(q.ref)}</span>${TTS ? `<button class="icon-btn say" type="button" data-say aria-label="Citește cu voce tare">${SPEAKER}</button>` : ""}</span></div>
     ${q.t==="fill" ? `${fillHTML(q)}` : `<p class="qtext">${esc(q.q.replace(/\s*\(pot fi mai multe[^)]*\)/i, ""))}</p>${q.t==="multi"?`<p class="qhint">Bifează toate răspunsurile corecte. Pot fi mai multe sau niciunul.</p>`:""}${q.t==="match"?`<p class="qhint">Atinge un element din stânga, apoi perechea lui din dreapta.</p>`:""}`}
     <div class="answers" id="ans">${answersHTML(q)}</div><div id="fb"></div>
     <p class="keys">${({tf:"Taste: A adevărat · F fals · Enter verifică", one:"Taste: A, B, C… · Enter verifică", multi:"Taste: A, B, C… · Enter verifică", fill:"Enter trece la căsuța următoare", match:"Enter verifică"})[q.t]}</p>`;
@@ -1247,7 +1232,6 @@ async function finish(){
   // save
   const p = S.player;
   if (!Z.retry) dropQuiz();
-  if (Z.daily) lsSet("candela:daily", dayKey());
   let saving = Promise.resolve(null);
   if (!Z.retry){
     const chap = {}; for (const key in byCh._m){ const v = byCh._m[key]; chap[key] = pct(v.s, v.n); }
@@ -1257,7 +1241,7 @@ async function finish(){
   S.board = null;
   const wrong = Z.qs.map((q,i)=>({q, a: Z.answers[i]})).filter(x => !x.a || x.a.pts < 1);
   // always encouraging: children and beginners use the app
-  const verdict = P>=95 ? "Excelent! 🌟" : P>=80 ? "Foarte bine!" : P>=60 ? "Bravo, ești pe drumul cel bun!" : P>=40 ? "Bun început! Mai încearcă o dată." : "Fiecare încercare te ajută să înveți!";
+  const verdict = P>=95 ? "Excelent!" : P>=80 ? "Foarte bine!" : P>=60 ? "Bravo, ești pe drumul cel bun!" : P>=40 ? "Bun început! Mai încearcă o dată." : "Fiecare încercare te ajută să înveți!";
   const tip = wrong.length ? (P>=60 ? "Reia greșelile ca să le înveți și pe acestea." : "Citește capitolul, apoi reia greșelile. Vei vedea cât de repede înveți!") : "Toate răspunsurile sunt corecte. Felicitări!";
   const min = Math.floor(secs/60), s = secs%60;
   mount(`${headerHTML()}
@@ -1287,7 +1271,7 @@ async function finish(){
     ${wrong.length ? `<button class="btn btn-oil" id="retry">Reia greșelile</button>` : ""}
     <button class="btn btn-primary" id="home">Test nou</button>
   </div>
-  ${Z.chs.length === 1 && wrong.length ? `<button class="link read-link" id="readCh" type="button">📖 Citește capitolul ${Z.chs[0]}</button>` : ""}
+  ${Z.chs.length === 1 && wrong.length ? `<button class="link read-link" id="readCh" type="button">Citește capitolul ${Z.chs[0]}</button>` : ""}
   <p class="muted" id="saveNote" style="text-align:center;font-size:13px"></p>`);
     requestAnimationFrame(()=>requestAnimationFrame(()=>{
     const C = 2*Math.PI*52; $("#ringArc").setAttribute("stroke-dasharray", `${C*P/100} ${C}`);
@@ -1325,7 +1309,7 @@ function mistakeHTML({q, a}){
     <div class="verse">${verseHTML(q.ref)}</div></article>`;
 }
 
-/* ---------- motivation: streak, medals, question of the day, quick test ---------- */
+/* ---------- motivation: streak, medals ---------- */
 const dayKey = (t = Date.now()) => { const d = new Date(t); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`; };
 function streak(p){   // days in a row with at least one test, ending today or yesterday
   const days = new Set(p.history.map(x => dayKey(x.at)));
@@ -1337,7 +1321,7 @@ function streak(p){   // days in a row with at least one test, ending today or y
 function streakHTML(p){
   const n = streak(p); if (!n) return "";
   const today = p.history.some(x => dayKey(x.at) === dayKey());
-  return `<span class="streak">🔥 ${n === 1 ? "1 zi" : `${n} zile la rând`}${today ? "" : " · fă un test azi ca să continui"}</span>`;
+  return `<span class="streak">${n === 1 ? "1 zi de studiu" : `${n} zile la rând`}${today ? "" : " · fă un test azi ca să continui"}</span>`;
 }
 const MEDAL = ["", "bronz", "argint", "aur"];
 /* per chapter: bronze = half of the easy questions known, silver = 90% of the easy ones, gold = also 75% of the hard ones */
@@ -1353,28 +1337,9 @@ function medals(p){
 }
 function medalSummary(p){
   const m = medals(p), n = k => m.filter(x => x === k).length;
-  return n(1) + n(2) + n(3) ? [[3,"🥇"],[2,"🥈"],[1,"🥉"]].filter(([k]) => n(k)).map(([k,e]) => `${e} ${n(k)}`).join(" · ") : "–";
+  return n(1) + n(2) + n(3) ? [3,2,1].filter(k => n(k)).map(k => `<i class="medal m${k}" title="${MEDAL[k]}"></i> ${n(k)}`).join("&nbsp;&nbsp;") : "–";
 }
-function dailyQ(){   // the same short question for everyone on a given day
-  const all = buildPool(Array.from({length:31},(_,i)=>i+1), "easy").filter(q => q.t === "tf" || q.t === "one");
-  const d = Math.round(new Date(dayKey() + "T12:00:00").getTime() / 864e5);
-  return all[(d * 7919) % all.length];
-}
-function quickChapter(){   // the first chapter never tried, else the weakest one
-  let best = 1, low = 101;
-  for (let c = 1; c <= 31; c++){ const v = chapStat(c, "easy"); if (v == null) return c; if (v < low){ low = v; best = c; } }
-  return best;
-}
-function quickTest(){ const c = quickChapter(); startQuiz(shuffle(buildPool([c], "easy")).slice(0, 10), 0, {mode: "easy"}); }
-function todayHTML(p){
-  const c = quickChapter(), done = lsGet("candela:daily", "") === dayKey();
-  return `<div class="today">
-    <button class="tcard" id="quick" type="button"><span class="ti">⚡</span><b>Test rapid</b><small>10 întrebări ușoare din capitolul ${c}</small></button>
-    <button class="tcard ${done ? "done" : ""}" id="daily" type="button" ${done ? "disabled" : ""}><span class="ti">${done ? "✅" : "☀️"}</span><b>Întrebarea zilei</b><small>${done ? "Gata pentru azi. Revino mâine!" : "O singură întrebare, în câteva secunde"}</small></button>
-  </div>`;
-}
-
-/* ---------- read aloud (the phone's own Romanian voice) and text size ---------- */
+/* ---------- read aloud (the phone's own Romanian voice) ---------- */
 const TTS = "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
 let roVoice = null;
 function pickVoice(){ try { roVoice = speechSynthesis.getVoices().find(v => /^ro([-_]|$)/i.test(v.lang)) || null; } catch {} }
@@ -1404,15 +1369,6 @@ function sayParts(q){
   if (q.t === "match"){ parts.push("În stânga: " + q.pairs.map(p => p[0]).join(", ")); parts.push("În dreapta: " + q.right.map(i => q.pairs[i][1]).join(", ")); }
   return parts;
 }
-const ZOOMS = [1, 1.15, 1.3];
-function applyZoom(){ document.body.style.zoom = lsGet("candela:zoom", 1); }
-function aaHTML(){ return `<button class="icon-btn aa" id="aa" type="button" aria-label="Mărimea textului">A<small>A</small></button>`; }
-document.addEventListener("click", e => {
-  if (!e.target.closest?.("#aa")) return;
-  const z = ZOOMS[(ZOOMS.indexOf(lsGet("candela:zoom", 1)) + 1) % ZOOMS.length];
-  lsSet("candela:zoom", z); applyZoom();
-  toast(["Text normal", "Text mare", "Text foarte mare"][ZOOMS.indexOf(z)]);
-});
 
 /* ---------- reading a chapter before the test ---------- */
 function viewRead(c){
@@ -1439,7 +1395,7 @@ function tutorial(){
     { art: `<div class="seg"><button aria-pressed="true">Ușor</button><button aria-pressed="false">Greu</button><button aria-pressed="false">Ambele</button></div>`,
       h: "1. Alege nivelul", p: "„Ușor” pentru început. „Greu” când vrei detalii: nume, cifre, locuri." },
     { art: `<div class="tut-grid">${[1,2,3,4,5,6,7,8].map(c => `<span class="tile" aria-pressed="${c===3}"><span class="n">${c}</span></span>`).join("")}</div>`,
-      h: "2. Alege capitolul", p: "Atinge un capitol, apoi „Începe”. Sau apasă „Test rapid” și pornești imediat." },
+      h: "2. Alege capitolul", p: "Atinge un capitol, apoi „Începe”. Poți citi capitolul înainte de test." },
     { art: `<div class="feedback ok"><b>Corect</b><div class="verse"><sup>3</sup>${esc((TEXT[3]||[])[2] || "")}</div></div>`,
       h: "3. Răspunde și învață", p: "După fiecare răspuns vezi versetul din Biblie. La final poți relua greșelile." },
   ];
@@ -1585,7 +1541,6 @@ document.addEventListener("keydown", e => {
   if (!ui.checked && q.t==="tf"){ if (e.key.toLowerCase()==="a") $('.opt[data-v="1"]').click(); if (e.key.toLowerCase()==="f") $('.opt[data-v="0"]').click(); }
 });
 { const g = new URLSearchParams(location.search).get("g"); if (g){ lsSet("candela:joinCode", g.toUpperCase().slice(0, 6)); history.replaceState(null, "", location.pathname + location.hash); } }
-applyZoom();
 autoLogin();
 loadPace();
 </script>
