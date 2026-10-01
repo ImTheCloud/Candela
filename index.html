@@ -83,7 +83,6 @@ p{margin:0}
 .field label{font-weight:600}
 .input{width:100%;border:1.5px solid var(--line);background:var(--bg);border-radius:12px;padding:14px 16px;font-size:18px;transition:border-color .2s, background .2s}
 .input:focus{outline:none;border-color:var(--oil);background:var(--surface)}
-.recent{display:flex;flex-wrap:wrap;gap:8px}
 .chip{border:1.5px solid var(--line);background:transparent;border-radius:999px;padding:7px 14px;font-weight:500;font-size:14px;transition:all .15s}
 .chip:hover{border-color:var(--oil);color:var(--oil-ink)}
 .chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
@@ -124,8 +123,6 @@ p{margin:0}
 .keys{display:none;font-size:12.5px;color:var(--ink-2);font-family:var(--f-mono);margin:-4px 0 0}
 .who b{color:var(--ink);font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:14ch}
 .avatar{width:32px;height:32px;border-radius:50%;background:var(--cedar);color:var(--bg);display:grid;place-items:center;font-weight:700;font-size:14px;flex:none}
-.dot{width:7px;height:7px;border-radius:50%;background:var(--ink-2)}
-.dot.on{background:var(--ok)}
 
 /* Dashboard */
 .hello{display:grid;gap:6px;margin-bottom:20px}
@@ -152,7 +149,6 @@ p{margin:0}
 .guest-cta p{color:var(--ink-2);font-size:14px;margin:0}
 .guest-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
 .guest-btns .btn{white-space:nowrap;padding-inline:12px}
-.quick{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:8px}
 .tile{position:relative;aspect-ratio:1;max-width:100%;border:1.5px solid var(--line);background:var(--surface);border-radius:14px;display:grid;place-items:center;padding:0;transition:transform .15s, border-color .2s, background .2s}
 .tile:active{transform:scale(.94)}
@@ -164,18 +160,12 @@ p{margin:0}
 #start .st-main{font-size:17px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 #start .st-sub{font-size:13px;font-weight:500;opacity:.78;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .trk{stroke:var(--surface-2)}
-.chap-list{margin-top:12px;font-size:14px;color:var(--ink-2);min-height:21px}
 .legend{display:flex;gap:14px;font-size:12px;color:var(--ink-2);margin-top:10px}
 .legend i{display:inline-block;width:10px;height:3px;border-radius:2px;margin-right:5px;vertical-align:middle}
 .opts-row{display:grid;gap:4px;background:var(--surface);border-radius:20px;padding:6px 18px;box-shadow:var(--shadow)}
-.entry-hero{display:grid;gap:24px}
 .toggle{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
 .toggle:first-child{border-top:0}
 .toggle small{display:block;color:var(--ink-2);font-size:13px}
-.switch{position:relative;width:48px;height:28px;flex:none;border:0;border-radius:999px;background:var(--surface-2);transition:background .2s;padding:0}
-.switch::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:var(--surface);box-shadow:0 1px 3px rgb(0 0 0 / .25);transition:transform .2s cubic-bezier(.3,1.4,.5,1)}
-.switch[aria-checked="true"]{background:var(--cedar)}
-.switch[aria-checked="true"]::after{transform:translateX(20px)}
 .counts{display:flex;gap:6px;flex-wrap:wrap}
 html:has(.sheet-bg),html:has(.modal-bg),body:has(.sheet-bg),body:has(.modal-bg){overflow:hidden}
 .sheet,.modal{overscroll-behavior:contain}
@@ -311,7 +301,6 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 /* v3: accounts, leaderboard, multi-chapter, desktop */
 .form-error{min-height:0;color:var(--bad);font-size:14px;font-weight:500;margin:0}
 .form-error:empty{display:none}
-.input.pin{letter-spacing:.5em;font-family:var(--f-mono);font-size:22px;text-align:center;max-width:12rem}
 .entry-form{display:grid;gap:16px}
 .boot{display:grid;place-content:center;justify-items:center;gap:14px;min-height:calc(100dvh - 68px)}
 .boot h1{font-size:clamp(44px,12vw,64px);line-height:1}
@@ -322,11 +311,9 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .section-h.first{margin-top:0}
 .small{font-size:13px}
 .toggle.col{display:grid;gap:10px;justify-content:stretch}
-.logout-row{display:flex;justify-content:center;margin-top:12px}
 .home{display:grid;gap:8px;grid-template-areas:"intro" "config" "board" "hist"}
 .h-intro{grid-area:intro}.h-config{grid-area:config}.h-board{grid-area:board}.h-hist{grid-area:hist}
 .panel{display:block}
-.chip.ghost{border-style:dashed;color:var(--ink-2)}
 .chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .chip:disabled{opacity:.35;cursor:not-allowed;border-style:dashed}
 .seg.scope{margin-top:0}
@@ -590,8 +577,6 @@ const S = {
   sel: new Set(lsGet("candela:sel", [1])),
   mode: lsGet("candela:mode", "easy"),
   count: lsGet("candela:count", 20),
-  shuffle: true,   // questions are always mixed and corrected right away
-  instant: true,
   quiz: null,
   board: null,
   admin: null,                                    // may give temporary passwords
@@ -611,7 +596,6 @@ function lampSVG(size=64){
     <ellipse cx="80" cy="96" rx="10" ry="3" fill="var(--ink-2)"/>
   </svg>`;
 }
-function miniLamp(){ return `<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c2 3 4 5 4 8a4 4 0 0 1-8 0c0-2 1.5-3.5 2-5 .5 1.5 1.2 2.2 2 2.5C11.6 5.5 12 4 12 2z" fill="var(--oil)"/><path d="M3 16c3 0 6-1.5 9-1.5s5 .8 9 0c-.7 3-4 5.5-9 5.5-3.5 0-7-1.5-9-4z" fill="var(--ink)"/></svg>`; }
 
 /* ---------- views ---------- */
 function totalCount(mode){ let n=0; for (const c in QUIZ){ if (mode!=="hard") n += (QUIZ[c].easy||[]).length; if (mode!=="easy") n += (QUIZ[c].hard||[]).length; } return n; }
@@ -1078,11 +1062,9 @@ function startQuiz(list, count = 0, o = {}){
   else {
     const chs = [...S.sel].sort((a,b)=>a-b);
     let pool = buildPool(chs, S.mode);
-    if (S.shuffle) pool = shuffle(pool);
+    pool = shuffle(pool);
     if (count && count < pool.length){
-      // keep a fair spread across chapters, then restore order if not shuffling
-      pool = shuffle(pool).slice(0, count);
-      if (!S.shuffle) pool.sort((a,b)=> a.ch-b.ch || refStart(a)-refStart(b));
+      pool = pool.slice(0, count);
     }
     qs = pool;
   }
@@ -1103,7 +1085,6 @@ function resumeQuiz(){
   S.quiz = { qs: z.qs, i: z.i, answers: z.answers, start: Date.now() - z.elapsed, chs: z.chs, mode: z.mode, retry: false };
   viewQuestion(true);
 }
-function refStart(q){ return +q.ref.split(":")[1].split("-")[0]; }
 
 function viewQuestion(first){
   const Z = S.quiz, q = Z.qs[Z.i], n = Z.qs.length;
@@ -1191,7 +1172,7 @@ function renderActions(){
   const last = Z.i === Z.qs.length-1;
   if (!ui.checked){
     if (q.t==="tf"){ el.innerHTML = ""; return; }
-    el.innerHTML = `<button class="btn btn-primary" id="chk" ${ready(q)?"":"disabled"}>${S.instant?"Verifică":(last?"Termină":"Următoarea")}</button>`;
+    el.innerHTML = `<button class="btn btn-primary" id="chk" ${ready(q)?"":"disabled"}>Verifică</button>`;
     $("#chk").onclick = check;
   } else {
     el.innerHTML = `<button class="btn btn-primary" id="nx">${last?"Vezi rezultatul":"Următoarea"}</button>`;
@@ -1213,7 +1194,6 @@ function check(skipped=false){
   const r = grade(q, skipped === true);
   Z.answers[Z.i] = { ...r, skipped: skipped === true };
   ui.checked = true;
-  if (!S.instant){ next(); return; }
   const card = $(".qcard");
   card.querySelectorAll("button.opt,button.mitem,input").forEach(b => b.disabled = true);
   if (q.t==="tf"){ card.querySelectorAll(".opt").forEach(b => { const v = b.dataset.v==="1"; if (v===q.a) b.classList.add("correct"); else if (v===ui.pick) b.classList.add("wrong"); }); }
