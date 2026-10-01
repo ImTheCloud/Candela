@@ -109,9 +109,16 @@ p{margin:0}
 .pf-card{width:100%;background:var(--surface);border-radius:16px;padding:16px 18px;display:grid;gap:12px;box-shadow:var(--shadow);text-align:left}
 .pf-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:14px;color:var(--ink-2)}
 .pf-row b{color:var(--ink);font-weight:600;text-align:right}
+#pubBody{display:grid;gap:12px;width:100%;justify-self:stretch}
 .pf-bar{display:grid;gap:6px}
 .pf-bar-h{display:flex;justify-content:space-between;font-size:14px;color:var(--ink-2)}
 .pf-bar-h b{color:var(--ink);font-weight:600;font-family:var(--f-mono);font-size:13px}
+.pf-bar-h span:first-child{color:var(--ink);font-weight:600}
+.bar.two{position:relative;height:8px}
+.bar.two i{position:absolute;left:0;top:0;bottom:0;border-radius:999px}
+.bar.two i.seen{opacity:.3}
+.pf-bar-f{margin:0;font-size:13.5px;color:var(--ink-2)}
+.pf-bar-f b{color:var(--ink)}
 .btn-danger{background:transparent;color:var(--bad);border:1.5px solid color-mix(in oklab,var(--bad) 35%,transparent)}
 .btn-danger:hover{background:var(--bad-soft)}
 .prof .kv{margin:0}
@@ -193,7 +200,9 @@ html:has(.sheet-bg),html:has(.modal-bg),body:has(.sheet-bg),body:has(.modal-bg){
 @media (min-width:960px){.sheet-bg{align-items:center}.sheet{border-radius:24px;padding:24px}}
 .startbar{position:sticky;bottom:0;padding-block:14px calc(14px + env(safe-area-inset-bottom,0px));background:linear-gradient(to top,var(--bg) 70%,transparent);margin-top:18px;z-index:5}
 .history{display:grid;gap:8px}
-.hrow{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;background:var(--surface);border-radius:14px;padding:12px 14px}
+.hrow{width:100%;border:0;text-align:left;color:var(--ink);font:inherit;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;gap:12px;background:var(--surface);border-radius:14px;padding:12px 14px}
+.hrow:hover{background:var(--surface-2)}
+.hrow .chev,.brow-l .chev{color:var(--ink-2);opacity:.6}
 .hrow .pct{font-family:var(--f-display);font-size:22px;font-variant-numeric:tabular-nums}
 .hrow small{display:block;color:var(--ink-2);font-size:13px}
 .badge{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:999px}
@@ -333,17 +342,15 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .panel{display:block}
 .chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .chip:disabled{opacity:.35;cursor:not-allowed;border-style:dashed}
-.seg.scope{margin-top:0}
-.seg.scope button{font-size:14px;white-space:nowrap;padding-inline:4px}
 .grid{margin-top:12px}
 .read-link{display:block;margin:8px auto 0;font-size:14.5px}
 .tile .check{position:absolute;top:4px;right:4px;width:16px;height:16px;border-radius:50%;background:var(--oil);display:none}
 .tile .check::after{content:"";position:absolute;left:5px;top:2.5px;width:4px;height:8px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
-.grid[data-scope="many"] .tile[aria-pressed="true"] .check{display:block}
-.grid[data-scope="all"] .tile[aria-pressed="true"]{box-shadow:none}
 .board{display:grid;gap:2px;background:var(--surface);border-radius:18px;padding:8px;box-shadow:var(--shadow)}
-.brow-l{display:grid;grid-template-columns:1.6rem auto minmax(0,1fr) auto;align-items:center;gap:10px;padding:7px 10px;border-radius:12px}
+.brow-l{width:100%;border:0;background:none;text-align:left;font:inherit;color:var(--ink);cursor:pointer;display:grid;grid-template-columns:1.6rem auto minmax(0,1fr) auto auto;align-items:center;gap:10px;padding:7px 10px;border-radius:12px}
 .brow-l.me{background:var(--oil-soft)}
+.brow-l:not(.me):hover{background:var(--surface-2)}
+.brow-l .pts .of{font-size:14px;color:var(--ink-2)}
 .brow-l .rank{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;justify-self:center;font-family:var(--f-display);font-size:17px;color:var(--ink-2);font-variant-numeric:tabular-nums}
 .brow-l .rank.r1,.brow-l .rank.r2,.brow-l .rank.r3{color:#fff;font-size:13px}
 .brow-l .rank.r1{background:var(--oil)}.brow-l .rank.r2{background:#A99A8A}.brow-l .rank.r3{background:#A8693A}
@@ -480,22 +487,17 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .forgot{justify-self:end;margin-top:-8px;font-size:14px}
 @media (max-width:420px){.brow-l{gap:8px;padding:7px 8px}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
-/* First-visit tour */
-.tour{position:fixed;inset:0;z-index:50}
-.tour-hole{position:fixed;border-radius:16px;box-shadow:0 0 0 200vmax rgb(30 20 12 / .62);transition:top .35s cubic-bezier(.2,.8,.2,1),left .35s cubic-bezier(.2,.8,.2,1),width .35s cubic-bezier(.2,.8,.2,1),height .35s cubic-bezier(.2,.8,.2,1);pointer-events:none}
-.tour-hole::after{content:"";position:absolute;inset:-4px;border-radius:20px;border:2px solid var(--oil);animation:tourPulse 1.8s ease-in-out infinite}
-@keyframes tourPulse{50%{inset:-8px;opacity:.35}}
-.tour-tip{position:fixed;width:min(320px,calc(100vw - 32px));background:var(--surface);border-radius:18px;padding:18px;display:grid;gap:8px;box-shadow:0 20px 50px -16px rgb(0 0 0 / .5);transition:top .35s cubic-bezier(.2,.8,.2,1),left .35s cubic-bezier(.2,.8,.2,1);animation:fadeIn .25s ease both}
-.tour-tip small{color:var(--ink-2);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
-.tour-tip h3{font-size:22px}
-.tour-tip p{margin:0;color:var(--ink-2);line-height:1.45;font-size:15px}
-.tour-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:6px}
-.tour-dots{display:flex;gap:6px}
-.tour-dots i{width:7px;height:7px;border-radius:50%;background:var(--line);transition:background .2s,width .2s}
-.tour-dots i.on{background:var(--oil);width:18px;border-radius:4px}
-.tour-btns{display:flex;align-items:center;gap:8px}
-.tour-btns .btn{min-height:42px;padding:10px 18px;font-size:15px}
-.tour-btns .link{font-size:14px}
+/* First-visit welcome page */
+.welcome{display:grid;justify-items:center;gap:18px;max-width:440px;margin:0 auto;padding:12px 0 24px;text-align:center}
+.welcome h1{font-size:clamp(44px,12vw,60px);line-height:1}
+.welcome h1 span{display:block;font-family:var(--f-body);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);margin-top:8px}
+.welcome .lead{font-size:18px;line-height:1.45;margin:0;max-width:30ch}
+.welcome .count{font-weight:600;color:var(--cedar)}
+.wl-list{list-style:none;margin:0;padding:18px 20px;display:grid;gap:14px;text-align:left;width:100%}
+.wl-list li{display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start;line-height:1.4;font-size:15.5px}
+.wl-list li b{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--cedar-soft);color:var(--cedar);font-size:14px}
+.welcome .btn-block{max-width:360px}
+.pick-note{font-size:13px}
 </style>
 
 <div id="app" class="wrap"></div>
@@ -558,16 +560,17 @@ function sb(){
 const isNetErr = e => !e || /fetch|network|failed to|load failed/i.test(String(e.message || e));
 const store = {
   uid: null,
-  blank(name){ return { name, history: [], chap: {}, ok: [], tests: 0 }; },
-  norm(p, name){ p = p ? JSON.parse(JSON.stringify(p)) : this.blank(name); p.name = p.name || name; p.history = p.history || []; p.chap = p.chap || {}; p.ok = p.ok || []; p.tests = p.tests ?? p.history.length; return p; },
+  blank(name){ return { name, history: [], chap: {}, ok: [], seen: [], tests: 0 }; },
+  norm(p, name){ p = p ? JSON.parse(JSON.stringify(p)) : this.blank(name); p.name = p.name || name; p.history = p.history || []; p.chap = p.chap || {}; p.ok = p.ok || []; p.seen = [...new Set([...(p.seen || []), ...p.ok])]; p.tests = p.tests ?? p.history.length; return p; },
   pending(){ return lsGet("candela:pending:" + this.uid, []); },
   applyEntry(p, x){
     if (!p.history.some(h => h.at === x.at)){ p.history.push({at:x.at, chs:x.chs, mode:x.mode, score:x.score, total:x.total, pct:x.pct, secs:x.secs}); p.tests++; }
     for (const [k, v] of Object.entries(x.chap)){ const cur = p.chap[k] || {best:0, n:0}; p.chap[k] = {best: Math.max(cur.best||0, v), last: v, n: (cur.n||0)+1}; }
     p.ok = [...new Set([...p.ok, ...x.ok])];
+    p.seen = [...new Set([...(p.seen || []), ...(x.seen || []), ...x.ok])];
   },
   async send(x){
-    const { error } = await sb().rpc("save_play", { p_player: x.player || this.uid, p_at: new Date(x.at).toISOString(), p_chs: x.chs, p_mode: x.mode, p_score: x.score, p_total: x.total, p_pct: x.pct, p_secs: x.secs, p_chap: x.chap, p_ok: x.ok });
+    const { error } = await sb().rpc("save_play", { p_player: x.player || this.uid, p_at: new Date(x.at).toISOString(), p_chs: x.chs, p_mode: x.mode, p_score: x.score, p_total: x.total, p_pct: x.pct, p_secs: x.secs, p_chap: x.chap, p_ok: x.ok, ...(x.seen ? { p_seen: x.seen } : {}) });
     if (error) throw error;
   },
   async flush(){
@@ -590,7 +593,7 @@ const store = {
     if (error) throw error;
     if (!data && pid !== this.uid) return this.loadPlayer(this.uid);   // that child was removed
     this.pid = pid; lsSet("candela:player:" + this.uid, pid);
-    const p = this.norm({ name: data.name || "?", history: data.history, chap: data.chap, ok: data.ok, tests: data.tests });
+    const p = this.norm({ name: data.name || "?", history: data.history, chap: data.chap, ok: data.ok, seen: data.seen, tests: data.tests });
     p.child = pid !== this.uid; p.hidden = !!data.hidden;
     if (!p.child) this.isParent = !!data.is_parent;
     for (const x of this.pending()) if ((x.player || this.uid) === pid) this.applyEntry(p, x);
@@ -659,10 +662,10 @@ const store = {
   async board(){
     if (!sb()) return null;
     try {
-      const { data, error } = await sb().rpc("board_for", { p_player: S.player && !S.player.guest ? this.pid : null });
+      const { data, error } = await sb().rpc("board2", { p_player: S.player && !S.player.guest ? this.pid : null });
       if (error) return null;
       const total = totalCount("both");
-      return data.map(x => ({ name: x.name, ok: x.ok, tests: x.tests, me: !!x.me, mastery: Math.round(x.ok / total * 1000) / 10 }));
+      return data.map(x => ({ id: x.id, name: x.name, ok: x.ok, seen: Math.max(x.seen ?? 0, x.ok), tests: x.tests, me: !!x.me, mastery: Math.round(x.ok / total * 1000) / 10 }));
     } catch { return null; }
   },
   /* returns {ok, data} or {ok:false, error} */
@@ -678,7 +681,6 @@ const store = {
 /* ---------- state ---------- */
 const S = {
   player: null,
-  scope: lsGet("candela:scope", "one"),          // one | many | all
   sel: new Set(lsGet("candela:sel", [1])),
   mode: lsGet("candela:mode", "easy"),
   count: lsGet("candela:count", 20),
@@ -687,8 +689,7 @@ const S = {
   admin: null,                                    // may give temporary passwords
 };
 if (!S.sel.size) S.sel.add(1);
-if (S.scope === "one" && S.sel.size > 1) S.sel = new Set([[...S.sel][0]]);
-function persistPrefs(){ lsSet("candela:scope",S.scope); lsSet("candela:sel",[...S.sel]); lsSet("candela:mode",S.mode); lsSet("candela:count",S.count); }
+function persistPrefs(){ lsSet("candela:sel",[...S.sel]); lsSet("candela:mode",S.mode); lsSet("candela:count",S.count); }
 const app = $("#app");
 function mount(html){ document.querySelectorAll(".r-side").forEach(b => b.remove()); app.innerHTML = `<div class="view">${html}</div>`; window.scrollTo({top:0}); }
 
@@ -801,7 +802,7 @@ async function autoLogin(){
   const shown = () => new Promise(r => setTimeout(r, Math.max(0, hold - (Date.now() - t0))));
   let user = null;
   try { user = await store.resume(); } catch {}
-  if (!user){ await shown(); return enterGuest(); }
+  if (!user){ if (!lsGet("candela:welcome", false)) return viewWelcome(); await shown(); return enterGuest(); }
   try { const data = await store.load(user); await shown(); return enter(data); }
   catch (e) {
     const pid = lsGet("candela:player:" + user.id, user.id), local = store.local(pid);
@@ -810,6 +811,25 @@ async function autoLogin(){
   }
 }
 function logout(){ store.logout(); enterGuest(); }
+// shown once, the very first time someone opens the site
+function viewWelcome(){
+  mount(`<section class="welcome">
+    <div class="lamp-wrap"><div class="lamp-glow"></div>${lampSVG(80)}</div>
+    <h1>Candela<span>1 Samuel</span></h1>
+    <p class="verse-quote">„Candela lui Dumnezeu nu se stinsese încă.”<span class="ref">1 Sam. 3:3</span></p>
+    <p class="lead">Învață cartea 1 Samuel prin întrebări: <span class="count">${totalCount("both").toLocaleString("ro-RO")} de întrebări</span> din cele 31 de capitole.</p>
+    <ol class="card wl-list">
+      <li><b>1</b><span>Alegi un capitol și răspunzi la întrebări, ușoare sau grele.</span></li>
+      <li><b>2</b><span>La fiecare greșeală vezi răspunsul bun și versetul din Biblie.</span></li>
+      <li><b>3</b><span>Poți citi cartea oricând, capitol cu capitol.</span></li>
+    </ol>
+    <button class="btn btn-primary btn-block" id="wGo" type="button">Începe</button>
+    <button class="link" id="wIn" type="button">Am deja cont</button>
+  </section>`);
+  const done = () => { lsSet("candela:welcome", true); lsSet("candela:verse", true); };
+  $("#wGo").onclick = () => { done(); enterGuest(); };
+  $("#wIn").onclick = () => { done(); S.player = store.guest(); viewEntry("", "in"); };
+}
 
 function chapStat(c, m){ return (S.player.chap[c+m[0]]||{}).best ?? null; }
 function arc(p, r, color){
@@ -831,6 +851,32 @@ const BOOK = `<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"
 function readBtnHTML(){ return `<button class="read-btn" id="readBook" type="button" aria-label="Citește cartea">${BOOK}<span>Citește</span></button>`; }
 function initials(n){ const w = n.trim().split(/\s+/); return ((w[0]||"?")[0] + (w.length > 1 ? w[w.length-1][0] : "")).toUpperCase(); }
 function whoHTML(){ const n = S.player.name; return `<button class="who" id="who" type="button" aria-label="Profilul meu · ${esc(n)}" title="${esc(n)}"><span class="avatar">${esc(initials(n))}</span></button>`; }
+// correct and answered questions of one level, out of all the questions of the book
+function levelBar(label, ok, seen, tot, color, they){
+  seen = Math.max(seen, ok);
+  const w = n => Math.max(n/tot*100, n ? 1.5 : 0);
+  return `<div class="pf-bar"><div class="pf-bar-h"><span>${label}</span><span>${tot.toLocaleString("ro-RO")} în carte</span></div>
+    <div class="bar two"><i class="seen" style="width:${w(seen)}%;background:${color}"></i><i style="width:${w(ok)}%;background:${color}"></i></div>
+    <p class="pf-bar-f">${seen ? `<b>${ok}</b> ${ok === 1 ? "corectă" : "corecte"} din <b>${seen}</b> la care ${they ? "a" : "ai"} răspuns` : "Nicio întrebare încă"}</p></div>`;
+}
+// someone else's profile, opened from the leaderboard
+async function openPublicProfile(x, i){
+  const bg = document.createElement("div"); bg.className = "sheet-bg";
+  bg.innerHTML = `<div class="sheet prof" role="dialog" aria-modal="true" aria-label="Profil"><button class="icon-btn prof-x" id="pfX" aria-label="Închide"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+    <div class="pf-head"><span class="avatar lg">${esc(initials(x.name))}</span><h3>${esc(x.name)}</h3><span class="badge-rank">Locul ${i+1} în clasament</span></div>
+    <div id="pubBody"><div class="empty">Se încarcă…</div></div></div>`;
+  document.body.appendChild(bg);
+  const close = () => bg.remove();
+  bg.onclick = e => { if (e.target === bg) close(); };
+  bg.querySelector("#pfX").onclick = close;
+  const r = x.id ? await store.rpc("public_profile", { p_id: x.id }) : {ok:false};
+  const body = bg.querySelector("#pubBody"); if (!body) return;
+  if (!r.ok || !r.data){ body.innerHTML = `<div class="empty">Profilul nu se poate deschide acum.</div>`; return; }
+  const d = r.data;
+  body.innerHTML = `<div class="kv two"><div class="stat"><b>${d.tests}</b><small>${d.tests===1?"test":"teste"}</small></div><div class="stat"><b>${d.tests ? d.avg+"%" : "–"}</b><small>media</small></div></div>
+    <div class="pf-card">${levelBar("Întrebări ușoare", d.ok_e, d.seen_e, totalCount("easy"), "var(--cedar)", true)}${levelBar("Întrebări grele", d.ok_h, d.seen_h, totalCount("hard"), "var(--oil)", true)}
+    <p class="pf-bar-f">Capitole exersate: <b>${d.chaps}</b> din 31</p></div>`;
+}
 function openProfile(){
   const p = S.player; if (!p || p.guest) return;
   const bg = document.createElement("div"); bg.className = "sheet-bg";
@@ -844,7 +890,7 @@ function openProfile(){
     const rank = S.board ? S.board.findIndex(x => x.me) : -1;
     const okE = p.ok.filter(id => /^\d+e/.test(id)).length, okH = p.ok.filter(id => /^\d+h/.test(id)).length;
     const totE = totalCount("easy"), totH = totalCount("hard");
-    const pbar = (label, n, tot, color) => `<div class="pf-bar"><div class="pf-bar-h"><span>${label}</span><b>${n} / ${tot}</b></div><div class="bar"><i style="width:${Math.max(n/tot*100, n?2:0)}%;background:${color}"></i></div></div>`;
+    const seen = p.seen || [], seenE = seen.filter(id => /^\d+e/.test(id)).length, seenH = seen.filter(id => /^\d+h/.test(id)).length;
     sheet.innerHTML = `${X}
       <div class="pf-head">
         <span class="avatar lg">${esc(initials(p.name))}</span>
@@ -857,8 +903,8 @@ function openProfile(){
         <div class="stat"><b>${tests ? avg+"%" : "–"}</b><small>media</small></div>
       </div>
       <div class="pf-card">
-        ${pbar("Întrebări ușoare", okE, totE, "var(--cedar)")}
-        ${pbar("Întrebări grele", okH, totH, "var(--oil)")}
+        ${levelBar("Întrebări ușoare", okE, seenE, totE, "var(--cedar)")}
+        ${levelBar("Întrebări grele", okH, seenH, totH, "var(--oil)")}
       </div>
       <label class="remember pf-hide"><input type="checkbox" id="pfHide" ${p.hidden ? "" : "checked"}> ${p.child ? "Apare în clasament" : "Apar în clasament"}</label>
       ${!p.child && store.isParent ? `<div class="pf-card" id="pfKids"></div>` : ""}
@@ -1009,7 +1055,7 @@ document.addEventListener("click", e => {
   if (e.target.closest("#gNew, #gIn")) S.toReport = true; else if (e.target.closest("#acct")) S.toReport = false;
   if (e.target.closest("#acct, #gNew")) viewEntry("", e.target.closest("#gNew") ? "new" : undefined);
   if (e.target.closest("#gIn")) viewEntry("", "in");
-  if (e.target.closest("#readBook")) viewRead($("#grid") && S.scope === "one" && S.sel.size === 1 ? [...S.sel][0] : lsGet("candela:read", [...S.sel][0] || 1));
+  if (e.target.closest("#readBook")) viewRead($("#grid") && S.sel.size === 1 ? [...S.sel][0] : lsGet("candela:read", [...S.sel][0] || 1));
 });
 function mastery(p){ return Math.round((p.ok||[]).length / totalCount("both") * 1000) / 10; }
 
@@ -1031,11 +1077,7 @@ function viewHome(){
 
   <aside class="h-config">
     <div class="panel">
-      <div class="section-h first"><h3>Ce capitol vrei să exersezi?</h3></div>
-      <div class="seg scope" role="group" aria-label="Câte capitole">
-        <button data-scope="one">Un capitol</button><button data-scope="many">Mai multe</button><button data-scope="all">Toată cartea</button>
-      </div>
-      
+      <div class="section-h first"><h3>Ce capitol vrei să exersezi?</h3><span class="muted pick-note">Poți alege mai multe</span></div>
       <div class="grid" id="grid">${Array.from({length:31},(_,i)=>i+1).map(c=>`<button class="tile" data-c="${c}" aria-pressed="false" title="${c}. ${esc(TITLES[c-1])}" aria-label="Capitolul ${c}: ${esc(TITLES[c-1])}${chapDone(c) ? ", făcut cu 100%" : chapTried(c) ? ", făcut" : ""}"><span class="n">${c}</span><i class="check" aria-hidden="true"></i>${chapTried(c) ? `<i class="done-mark${chapDone(c) ? "" : " part"}" aria-hidden="true">${CHECK}</i>` : ""}</button>`).join("")}</div>${Array.from({length:31},(_,i)=>i+1).some(chapTried) ? `\n      <p class="grid-note"><i class="done-mark part" aria-hidden="true">${CHECK}</i> făcut deja <i class="done-mark" aria-hidden="true">${CHECK}</i> 100% corect</p>` : ""}
 
       <div class="startbar"><button class="btn btn-primary btn-block" id="start"></button></div>
@@ -1047,89 +1089,31 @@ function viewHome(){
   <section class="h-hist">
     <div class="section-h"><h3>Istoric</h3></div>
     <div class="history">${h.length ? h.slice(-3).reverse().map(x=>`
-      <div class="hrow"><span class="badge ${x.mode}">${MODE_LABEL[x.mode]}</span><div style="min-width:0"><b style="font-weight:600">${esc(chaptersLabel(x.chs))}</b></div><span class="pct">${x.pct}%</span></div>`).join("")
+      <button class="hrow" type="button" data-at="${x.at}" aria-label="Vezi raportul: ${esc(chaptersLabel(x.chs))}, ${x.pct}%"><span class="badge ${x.mode}">${MODE_LABEL[x.mode]}</span><div style="min-width:0"><b style="font-weight:600">${esc(chaptersLabel(x.chs))}</b></div><span class="pct">${x.pct}%</span>${CHEV}</button>`).join("")
       : `<div class="empty">Niciun test încă.</div>`}</div>
   </section>
   </div>`);
 
+  // one chapter chosen and already done: move on to the first chapter not done yet
+  if (!S.sel.size || (S.sel.size === 1 && chapTried([...S.sel][0]))){ const next = Array.from({length:31},(_,i)=>i+1).find(c => !chapTried(c)); if (next) S.sel = new Set([next]); else if (!S.sel.size) S.sel = new Set([1]); }
   const update = () => {
-    if (S.scope === "all"){ S.sel = new Set(Array.from({length:31},(_,i)=>i+1)); }
     const chs = [...S.sel].sort((a,b)=>a-b);
     app.querySelectorAll(".tile").forEach(t => t.setAttribute("aria-pressed", S.sel.has(+t.dataset.c)));
-    $("#grid").dataset.scope = S.scope;
-    app.querySelectorAll("[data-scope]").forEach(b => b.setAttribute("aria-pressed", S.scope===b.dataset.scope));
     const st = $("#start"); st.disabled = !chs.length;
     st.innerHTML = !chs.length ? "Alege cel puțin un capitol" : `<span class="st-main">Începe · ${chs.length === 1 ? `capitolul ${chs[0]}` : esc(whatLabel(chs))}</span>`;
     persistPrefs();
   };
   app.querySelectorAll(".tile").forEach(t => t.onclick = () => {
     const c = +t.dataset.c;
-    if (S.scope === "all") S.scope = "many";
-    if (S.scope === "one") S.sel = new Set([c]);
-    else S.sel.has(c) ? S.sel.delete(c) : S.sel.add(c);
-    update();
-  });
-  app.querySelectorAll("[data-scope]").forEach(b => b.onclick = () => {
-    const prev = S.scope; S.scope = b.dataset.scope;
-    if (S.scope === "one") S.sel = new Set([[...S.sel].sort((a,b)=>a-b)[0] || 1]);
-    if (S.scope === "many" && prev === "all") S.sel = new Set();
+    S.sel.has(c) ? S.sel.delete(c) : S.sel.add(c);
     update();
   });
   $("#start").onclick = () => openOptions();
+  app.querySelectorAll(".hrow[data-at]").forEach(b => b.onclick = () => openPastReport(+b.dataset.at));
   app.querySelectorAll("[data-play]").forEach(b => b.onclick = () => switchPlayer(b.dataset.play));
   if ($("#resume")){ $("#resume").onclick = resumeQuiz; $("#resumeX").onclick = () => { dropQuiz(); $(".resume").remove(); }; }
   update();
   if (HOSTED) loadBoard();
-  if (!lsGet("candela:tour", false)) setTimeout(() => { if ($("#grid")) tour(); }, 600);
-}
-
-/* First-visit tour: highlights the 4 main things, once per phone */
-function tour(){
-  if (lsGet("candela:tour", false) || document.querySelector(".tour")) return;
-  const guest = S.player.guest;
-  const steps = [
-    {t:"#grid", h:"Alege capitolul", p:"Atinge capitolul pe care vrei să-l exersezi."},
-    {t:"#start", h:"Începe testul", p:"Apoi alegi nivelul și câte întrebări vrei."},
-    {t:"#readBook", h:"Citește Biblia", p:"Aici citești cartea, capitol cu capitol. Atinge un verset ca să-l colorezi."},
-    {t: guest ? "#acct" : "#who", h: guest ? "Contul tău" : "Profilul tău", p: guest ? "Creează un cont ca să-ți păstrezi rezultatele și să apari în clasament." : "Aici vezi rezultatele tale și îți modifici profilul."}
-  ].filter(s => document.querySelector(s.t) && document.querySelector(s.t).offsetParent);
-  if (!steps.length) return;
-  lsSet("candela:tour", true);
-  const el = document.createElement("div"); el.className = "tour"; el.setAttribute("role", "dialog"); el.setAttribute("aria-modal", "true");
-  el.innerHTML = `<div class="tour-hole"></div><div class="tour-tip" aria-live="polite"></div>`;
-  document.body.appendChild(el);
-  const hole = el.querySelector(".tour-hole"), tip = el.querySelector(".tour-tip");
-  let i = 0;
-  const place = () => {
-    const tg = document.querySelector(steps[i].t); if (!tg) return close();
-    const r = tg.getBoundingClientRect(), pad = 6, vw = innerWidth, vh = innerHeight;
-    hole.style.top = (r.top - pad) + "px"; hole.style.left = (r.left - pad) + "px";
-    hole.style.width = (r.width + pad*2) + "px"; hole.style.height = (r.height + pad*2) + "px";
-    const tw = tip.offsetWidth, th = tip.offsetHeight, gap = 14, clampX = x => Math.max(16, Math.min(x, vw - tw - 16)), clampY = y => Math.max(12, Math.min(y, vh - th - 12));
-    let top, left = clampX(r.left + r.width/2 - tw/2);
-    if (r.bottom + pad + gap + th <= vh - 12) top = r.bottom + pad + gap;
-    else if (r.top - pad - gap - th >= 12) top = r.top - pad - gap - th;
-    else if (r.left - pad - gap - tw >= 16){ left = r.left - pad - gap - tw; top = clampY(r.top + r.height/2 - th/2); }
-    else if (r.right + pad + gap + tw <= vw - 16){ left = r.right + pad + gap; top = clampY(r.top + r.height/2 - th/2); }
-    else top = vh - th - 12;
-    tip.style.top = top + "px"; tip.style.left = left + "px";
-  };
-  const show = () => {
-    const s = steps[i], last = i === steps.length - 1;
-    tip.innerHTML = `<small>${i+1} din ${steps.length}</small><h3>${s.h}</h3><p>${s.p}</p>
-      <div class="tour-foot"><div class="tour-dots">${steps.map((_, k) => `<i class="${k === i ? "on" : ""}"></i>`).join("")}</div>
-      <div class="tour-btns">${last ? "" : `<button class="link" id="tSkip" type="button">Sari peste</button>`}<button class="btn btn-primary" id="tNext" type="button">${last ? "Am înțeles" : "Înainte"}</button></div></div>`;
-    tip.querySelector("#tNext").onclick = () => { if (last) close(); else { i++; show(); } };
-    if (!last) tip.querySelector("#tSkip").onclick = close;
-    const tg = document.querySelector(s.t), r = tg.getBoundingClientRect(), th = tip.offsetHeight, room = r.height + 12 + 14 + th;
-    if (r.top < 12 || r.bottom + 20 + th > innerHeight - 12) window.scrollBy(0, room <= innerHeight - 24 ? r.top - 18 : r.top + r.height/2 - innerHeight/2);
-    place(); tip.querySelector("#tNext").focus({preventScroll: true});
-  };
-  const onKey = e => { if (e.key === "Escape") close(); };
-  const onResize = () => place();
-  function close(){ el.remove(); removeEventListener("resize", onResize); removeEventListener("scroll", onResize, true); removeEventListener("keydown", onKey); }
-  addEventListener("resize", onResize); addEventListener("scroll", onResize, true); addEventListener("keydown", onKey);
-  show();
 }
 
 async function loadBoard(){
@@ -1146,13 +1130,14 @@ function renderBoard(list){
   if (!list.length){ el.innerHTML = note || `<div class="empty">Încă nimeni.</div>`; return; }
   const idx = guest ? -1 : list.findIndex(x => x.me);
   const top = el.classList.contains("scroll") ? list : list.slice(0, 10);
-  const row = (x, i) => { const mine = !guest && x.me, ok = x.ok ?? 0; return `<div class="brow-l ${mine?"me":""}">
+  const row = (x, i) => { const mine = !guest && x.me, ok = x.ok ?? 0; return `<button type="button" class="brow-l ${mine?"me":""}" data-i="${i}" aria-label="Profilul lui ${esc(x.name)}">
     <span class="rank ${i<3 && ok ? "r"+(i+1) : ""}">${i+1}</span>
     <span class="avatar sm">${esc(initials(x.name))}</span>
     <div class="who-l"><b class="nm"><span>${esc(x.name)}</span>${mine?"<em>tu</em>":""}</b>
-      <small>${String(x.mastery).replace(".",",")}% din carte · ${x.tests} ${x.tests===1?"test":"teste"}</small></div>
-    <div class="pts"><b>${ok}</b><small>${ok===1?"întrebare":"întrebări"}</small></div></div>`; };
+      <small>${x.tests} ${x.tests===1?"test":"teste"}</small></div>
+    <div class="pts"><b>${ok}<span class="of"> / ${x.seen}</span></b><small>corecte</small></div>${CHEV}</button>`; };
   el.innerHTML = note + top.map(row).join("") + (idx >= top.length ? `<div class="gap">···</div>${row(list[idx], idx)}` : "");
+  el.querySelectorAll(".brow-l[data-i]").forEach(b => b.onclick = () => { const i = +b.dataset.i, x = list[i]; if (!guest && x.me) openProfile(); else openPublicProfile(x, i); });
   const mine = el.querySelector(".me"); if (mine && el.classList.contains("scroll")) el.scrollTop = Math.max(0, mine.offsetTop - el.clientHeight/2);
 }
 
@@ -1196,6 +1181,7 @@ function durLabel(secs){
   return r === 60 ? `cam ${h+1} h` : `cam ${h} h${r ? ` ${r} min` : ""}`;
 }
 /* the start sheet: level (easy by default), number of questions, then start. Same sheet from home and from reading. */
+const CHEV = `<svg class="chev" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 const CHECK = `<svg class="done-ic" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 // a level is done when every chosen chapter already had 100% at it
 const levelDone = (chs, m) => chs.every(c => (m === "both" ? ["easy","hard"] : [m]).every(k => chapStat(c, k) === 100));
@@ -1418,58 +1404,86 @@ async function finish(again){
   const p = S.player;
   if (!Z.retry && !again) dropQuiz();
   let saving = Promise.resolve(null);
+  const at = Z.at || (Z.at = Date.now());
   if (!Z.retry && !again){
     const chap = {}; for (const key in byCh._m){ const v = byCh._m[key]; chap[key] = pct(v.s, v.n); }
     const ok = Z.qs.filter((q,i) => (Z.answers[i]||{}).pts >= 1).map(q => q.id);
-    saving = store.save(p, { at: Date.now(), chs: Z.chs, mode: Z.mode, score: sc, total: n, pct: P, secs, chap, ok });
+    const seen = Z.qs.filter((q,i) => Z.answers[i] && !Z.answers[i].skipped).map(q => q.id);
+    saving = store.save(p, { at, chs: Z.chs, mode: Z.mode, score: sc, total: n, pct: P, secs, chap, ok, seen });
   }
   S.board = null;
   const wrong = Z.qs.map((q,i)=>({q, a: Z.answers[i]})).filter(x => !x.a || x.a.pts < 1);
+  const rep = { at, chs: Z.chs, mode: Z.mode, retry: !!Z.retry, n, sc, P, wrong,
+    byCh: Object.fromEntries(Object.entries(byCh).filter(([k]) => k !== "_m").map(([c,v]) => [c, pct(v.s, v.n)])) };
+  if (!Z.retry && !again) keepReport(rep);
+  renderReport(rep, { guestCard: p.guest && !Z.retry });
+  const res = await saving;
+  const note = $("#saveNote"); if (note && res && !res.guest) note.textContent = res.saved ? "" : "Rezultatul nu s-a putut trimite. Se trimite automat la următoarea intrare.";
+}
+/* the last reports stay on this phone so a test from the history can be opened again, mistakes included */
+const repKey = () => "candela:reports:" + (S.player && !S.player.guest ? store.pid : "guest");
+function keepReport(r){
+  const list = lsGet(repKey(), []).filter(x => x.at !== r.at);
+  list.push(r); while (list.length > 15) list.shift();
+  lsSet(repKey(), list);
+}
+function findReport(at){
+  return [...lsGet(repKey(), []), ...lsGet("candela:reports:guest", [])].find(x => Math.abs(x.at - at) < 1000) || null;
+}
+// a test from the history: the saved report, or just its score when it was played on another phone
+function openPastReport(at){
+  const h = S.player.history.find(x => x.at === at); if (!h) return;
+  const r = findReport(at) || { at, chs: h.chs, mode: h.mode, n: h.total, sc: h.score, P: h.pct, wrong: null, byCh: {} };
+  renderReport(r, { past: true });
+}
+function renderReport(r, o = {}){
+  const { chs, mode, n, sc, P, wrong } = r;
+  const nWrong = wrong ? wrong.length : null;
   // always encouraging: children and beginners use the app
   const verdict = P>=95 ? "Excelent!" : P>=80 ? "Foarte bine!" : P>=60 ? "Bravo, ești pe drumul cel bun!" : P>=40 ? "Bun început! Mai încearcă o dată." : "Fiecare încercare te ajută să înveți!";
-  const tip = wrong.length ? (P>=60 ? "Reia greșelile ca să le înveți și pe acestea." : "Citește capitolul, apoi reia greșelile. Vei vedea cât de repede înveți!") : "Toate răspunsurile sunt corecte. Felicitări!";
+  const tip = o.past ? "" : nWrong ? (P>=60 ? "Reia greșelile ca să le înveți și pe acestea." : "Citește capitolul, apoi reia greșelile. Vei vedea cât de repede înveți!") : "Toate răspunsurile sunt corecte. Felicitări!";
+  const chList = Object.entries(r.byCh || {});
   mount(`${headerHTML()}
   <section class="report-head">
-    <span class="eyebrow">Raport · ${esc(chaptersLabel(Z.chs))} · ${MODE_LABEL[Z.mode]}${Z.retry?" · reluare greșeli":""}</span>
+    <span class="eyebrow">Raport · ${esc(chaptersLabel(chs))} · ${MODE_LABEL[mode]}${r.retry?" · reluare greșeli":""}</span>
     <div class="ring"><div class="sparks" id="sparks"></div>
       <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" fill="none" stroke="var(--surface-2)" stroke-width="9"/><circle id="ringArc" cx="60" cy="60" r="52" fill="none" stroke="var(--oil)" stroke-width="9" stroke-linecap="round" stroke-dasharray="0 400" style="transition:stroke-dasharray 1.4s cubic-bezier(.2,.8,.2,1)"/></svg>
       <div class="val"><b id="pctNum">0%</b><small>${sc} din ${n} puncte</small></div></div>
     <h2 class="verdict">${verdict}</h2>
-    <p class="verdict-tip">${tip}</p>
+    ${tip ? `<p class="verdict-tip">${tip}</p>` : ""}
   </section>
-  <div class="kv two">
-    <div class="stat"><b>${n - wrong.length}</b><small>corecte</small></div>
-    <div class="stat"><b>${wrong.length}</b><small>de revăzut</small></div>
-  </div>
-  ${p.guest && !Z.retry ? `<div class="card guest-cta"><p>Creează un cont ca să-ți păstrezi rezultatele.</p>
-    <div class="guest-btns"><button class="btn btn-primary" id="gNew" type="button">Creează cont</button><button class="btn btn-ghost" id="gIn" type="button">Am deja cont</button></div></div>` : ""}
-  ${Z.chs.length>1 ? `<div class="card" style="display:grid;gap:18px">
-    <div><span class="eyebrow">Pe capitole</span></div><div class="bars">${Object.entries(byCh).filter(([k])=>k!=="_m").map(([c,v])=>`<div class="brow"><span>Cap. ${c} · ${esc(TITLES[c-1])}</span><div class="bar"><i style="width:0" data-w="${pct(v.s,v.n)}"></i></div><span>${pct(v.s,v.n)}%</span></div>`).join("")}</div>
+  ${wrong ? `<div class="kv two">
+    <div class="stat"><b>${n - nWrong}</b><small>corecte</small></div>
+    <div class="stat"><b>${nWrong}</b><small>de revăzut</small></div>
   </div>` : ""}
-  <div class="section-h"><h3>${wrong.length ? "De revăzut" : "Nicio greșeală"}</h3>${wrong.length?`<span class="muted" style="font-size:14px">${wrong.length} întrebări</span>`:""}</div>
-  <div class="mistakes">${wrong.length ? wrong.map(mistakeHTML).join("") : `<div class="allgood">Toate răspunsurile sunt corecte.</div>`}</div>
-  <div class="startbar" style="display:grid;grid-template-columns:${wrong.length?"1fr 1fr":"1fr"};gap:10px">
-    ${wrong.length ? `<button class="btn btn-oil" id="retry">Reia greșelile</button>` : ""}
-    <button class="btn btn-primary" id="home">Test nou</button>
+  ${o.guestCard ? `<div class="card guest-cta"><p>Creează un cont ca să-ți păstrezi rezultatele.</p>
+    <div class="guest-btns"><button class="btn btn-primary" id="gNew" type="button">Creează cont</button><button class="btn btn-ghost" id="gIn" type="button">Am deja cont</button></div></div>` : ""}
+  ${chs.length>1 && chList.length ? `<div class="card" style="display:grid;gap:18px">
+    <div><span class="eyebrow">Pe capitole</span></div><div class="bars">${chList.map(([c,v])=>`<div class="brow"><span>Cap. ${c} · ${esc(TITLES[c-1])}</span><div class="bar"><i style="width:0" data-w="${v}"></i></div><span>${v}%</span></div>`).join("")}</div>
+  </div>` : ""}
+  ${wrong ? `<div class="section-h"><h3>${nWrong ? "De revăzut" : "Nicio greșeală"}</h3>${nWrong?`<span class="muted" style="font-size:14px">${nWrong} întrebări</span>`:""}</div>
+  <div class="mistakes">${nWrong ? wrong.map(mistakeHTML).join("") : `<div class="allgood">Toate răspunsurile sunt corecte.</div>`}</div>`
+  : `<p class="muted" style="text-align:center;font-size:14px">Greșelile se văd doar pe telefonul pe care ai dat testul.</p>`}
+  <div class="startbar" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+    ${nWrong ? `<button class="btn btn-oil" id="retry">Reia greșelile</button>` : `<button class="btn btn-oil" id="again">Refă testul</button>`}
+    <button class="btn btn-primary" id="home">${o.past ? "Înapoi" : "Test nou"}</button>
   </div>
-  ${Z.chs.length === 1 && wrong.length ? `<button class="link read-link" id="readCh" type="button">Citește capitolul ${Z.chs[0]}</button>` : ""}
+  ${chs.length === 1 && nWrong ? `<button class="link read-link" id="readCh" type="button">Citește capitolul ${chs[0]}</button>` : ""}
   <p class="muted" id="saveNote" style="text-align:center;font-size:13px"></p>`);
-    requestAnimationFrame(()=>requestAnimationFrame(()=>{
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
     const C = 2*Math.PI*52; $("#ringArc").setAttribute("stroke-dasharray", `${C*P/100} ${C}`);
     app.querySelectorAll("[data-w]").forEach(b => b.style.width = b.dataset.w + "%");
     const el = $("#pctNum"), t0 = performance.now();
     const tick = t => { const k = Math.min(1,(t-t0)/1300), e = 1-Math.pow(1-k,3); el.textContent = Math.round(P*e) + "%"; if (k<1) requestAnimationFrame(tick); };
     requestAnimationFrame(tick);
-    if (P >= 80 && !matchMedia("(prefers-reduced-motion: reduce)").matches){
+    if (!o.past && P >= 80 && !matchMedia("(prefers-reduced-motion: reduce)").matches){
       const sp = $("#sparks"); for (let i=0;i<22;i++){ const a = Math.random()*Math.PI*2, d = 90+Math.random()*60; const s = document.createElement("i"); s.className = "spark"; s.style.setProperty("--dx", Math.cos(a)*d+"px"); s.style.setProperty("--dy", Math.sin(a)*d+"px"); s.style.animationDelay = (1+Math.random()*.4)+"s"; s.style.background = i%3 ? "var(--oil)" : "var(--cedar)"; sp.appendChild(s); }
     }
   }));
-  if (wrong.length) $("#retry").onclick = () => startQuiz(shuffle(wrong.map(x => { const o = {...x.q}; const src = QUIZ[o.ch][o.mode][+o.id.slice(String(o.ch).length+1)]; return {...src, ch:o.ch, mode:o.mode, id:o.id}; })), 0, {retry: true, mode: Z.mode});
-  if ($("#readCh")) $("#readCh").onclick = () => viewRead(Z.chs[0]);
+  if (nWrong) $("#retry").onclick = () => startQuiz(shuffle(wrong.map(x => { const o = {...x.q}; const src = QUIZ[o.ch][o.mode][+o.id.slice(String(o.ch).length+1)]; return {...src, ch:o.ch, mode:o.mode, id:o.id}; })), 0, {retry: true, mode});
+  if ($("#again")) $("#again").onclick = () => { S.sel = new Set(chs); persistPrefs(); openOptions(chs); };
+  if ($("#readCh")) $("#readCh").onclick = () => viewRead(chs[0]);
   $("#home").onclick = () => viewHome();
-  const res = await saving;
-
-  const note = $("#saveNote"); if (note && res && !res.guest) note.textContent = res.saved ? "" : "Rezultatul nu s-a putut trimite. Se trimite automat la următoarea intrare.";
 }
 function mistakeHTML({q, a}){
   a = a || {pts:0, given:null, skipped:true};
@@ -1533,7 +1547,7 @@ function viewRead(c){
   if ($("#rNext")) $("#rNext").onclick = () => viewRead(c + 1);
   if ($("#rSideP")) $("#rSideP").onclick = () => viewRead(c - 1);
   if ($("#rSideN")) $("#rSideN").onclick = () => viewRead(c + 1);
-  $("#rGo").onclick = () => { S.scope = "one"; S.sel = new Set([c]); persistPrefs(); openOptions([c]); };
+  $("#rGo").onclick = () => { S.sel = new Set([c]); persistPrefs(); openOptions([c]); };
 }
 
 
