@@ -65,7 +65,8 @@ body:has(.entry[data-step="board"]){overflow:hidden}
 .entry[data-step="board"]{height:100%}
 .entry[data-step="form"]{padding-top:6vh}
 .entry-head{display:grid;justify-items:center;gap:4px;flex:none}
-.entry[data-step="board"] .lamp-glow{inset:-24px 0 auto;height:130px}
+.entry[data-step="board"] .entry-head{flex:1;min-height:0;align-content:center}
+.entry[data-step="board"] .entry-board{flex:none;height:calc(50dvh - 84px)}
 .entry-board{flex:1;min-height:0;display:flex;flex-direction:column}
 .entry-board .section-h{margin:0 0 10px}
 .entry .back{align-self:center}
@@ -452,7 +453,7 @@ function totalCount(mode){ let n=0; for (const c in QUIZ){ if (mode!=="hard") n 
 function viewEntry(msg, step){
   const sess = lsGet("candela:session", null);
   step = step || (HOSTED && !msg ? "board" : "form");
-  const head = `<div class="entry-head"><div class="lamp-wrap"><div class="lamp-glow"></div>${lampSVG(step==="board"?40:56)}</div><h1>Candela<span>1 Samuel</span></h1><p class="verse-quote">„Candela lui Dumnezeu nu se stinsese încă.”<span class="ref">1 Sam. 3:3</span></p></div>`;
+  const head = `<div class="entry-head"><div class="lamp-wrap"><div class="lamp-glow"></div>${lampSVG(step==="board"?84:64)}</div><h1>Candela<span>1 Samuel</span></h1><p class="verse-quote">„Candela lui Dumnezeu nu se stinsese încă.”<span class="ref">1 Sam. 3:3</span></p></div>`;
   if (step === "board"){
     mount(`<section class="entry" data-step="board">${head}
       <div class="entry-board"><div class="section-h"><h3>Clasament</h3></div><div id="board" class="board scroll"><div class="empty">Se încarcă…</div></div></div>
