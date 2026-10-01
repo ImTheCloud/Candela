@@ -176,6 +176,8 @@ p{margin:0}
 .switch[aria-checked="true"]{background:var(--cedar)}
 .switch[aria-checked="true"]::after{transform:translateX(20px)}
 .counts{display:flex;gap:6px;flex-wrap:wrap}
+html:has(.sheet-bg),html:has(.modal-bg),body:has(.sheet-bg),body:has(.modal-bg){overflow:hidden}
+.sheet,.modal{overscroll-behavior:contain}
 .sheet-bg{position:fixed;inset:0;z-index:30;background:rgb(58 39 27 / .35);display:flex;align-items:flex-end;justify-content:center;animation:fadeIn .2s ease both}
 .sheet{width:100%;max-width:520px;background:var(--bg);border-radius:24px 24px 0 0;padding:18px 16px calc(18px + env(safe-area-inset-bottom,0px));display:grid;gap:16px;animation:sheetUp .3s cubic-bezier(.2,.8,.2,1) both}
 .sheet-h{display:flex;align-items:center;justify-content:space-between}
@@ -537,14 +539,14 @@ const S = {
   sel: new Set(lsGet("candela:sel", [1])),
   mode: lsGet("candela:mode", "easy"),
   count: lsGet("candela:count", 20),
-  shuffle: lsGet("candela:shuffle", true),
-  instant: lsGet("candela:instant", true),
+  shuffle: true,   // questions are always mixed and corrected right away
+  instant: true,
   quiz: null,
   board: null,
 };
 if (!S.sel.size) S.sel.add(1);
 if (S.scope === "one" && S.sel.size > 1) S.sel = new Set([[...S.sel][0]]);
-function persistPrefs(){ lsSet("candela:scope",S.scope); lsSet("candela:sel",[...S.sel]); lsSet("candela:mode",S.mode); lsSet("candela:count",S.count); lsSet("candela:shuffle",S.shuffle); lsSet("candela:instant",S.instant); }
+function persistPrefs(){ lsSet("candela:scope",S.scope); lsSet("candela:sel",[...S.sel]); lsSet("candela:mode",S.mode); lsSet("candela:count",S.count); }
 const app = $("#app");
 function mount(html){ app.innerHTML = `<div class="view">${html}</div>`; window.scrollTo({top:0}); }
 
@@ -897,13 +899,11 @@ function openOptions(){
   let n = pool;
   const bg = document.createElement("div"); bg.className = "sheet-bg";
   bg.innerHTML = `<div class="sheet" role="dialog" aria-modal="true" aria-labelledby="shT">
-    <div class="sheet-h"><h3 id="shT">Opțiuni</h3><button class="icon-btn" id="shX" aria-label="Închide"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
+    <div class="sheet-h"><h3 id="shT">Câte întrebări?</h3><button class="icon-btn" id="shX" aria-label="Închide"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
     <div class="opts-row">
       <div class="toggle col"><div class="cnt-h"><span>Număr de întrebări</span><b id="shN"></b></div><small class="dur" id="shD"></small>
         <input type="range" id="shR" min="${Math.min(5,pool)}" max="${pool}" step="1" value="${pool}" aria-label="Număr de întrebări">
         <div class="counts">${[10,20,30,50].filter(v=>v<pool).map(v=>`<button class="chip" data-n="${v}">${v}</button>`).join("")}<button class="chip" data-n="${pool}">Toate</button></div></div>
-      <div class="toggle"><div>Corectare imediată</div><button class="switch" id="swInstant" role="switch" aria-checked="${S.instant}" aria-label="Corectare imediată"></button></div>
-      <div class="toggle"><div>Amestecă întrebările</div><button class="switch" id="swShuffle" role="switch" aria-checked="${S.shuffle}" aria-label="Amestecă întrebările"></button></div>
     </div>
     <button class="btn btn-primary btn-block" id="shGo"></button>
   </div>`;
@@ -914,8 +914,6 @@ function openOptions(){
   set(pool);
   bg.querySelector("#shR").oninput = e => set(+e.target.value);
   bg.querySelectorAll("[data-n]").forEach(c => c.onclick = () => set(+c.dataset.n));
-  bg.querySelector("#swInstant").onclick = e => { S.instant = !S.instant; e.currentTarget.setAttribute("aria-checked", S.instant); persistPrefs(); };
-  bg.querySelector("#swShuffle").onclick = e => { S.shuffle = !S.shuffle; e.currentTarget.setAttribute("aria-checked", S.shuffle); persistPrefs(); };
   bg.querySelector("#shX").onclick = close;
   bg.onclick = e => { if (e.target === bg) close(); };
   bg.querySelector("#shGo").onclick = () => { close(); startQuiz(null, n < pool ? n : 0); };
