@@ -101,6 +101,27 @@ p{margin:0}
 .avatar.lg{width:72px;height:72px;font-size:30px}
 .badge-rank{font-size:13px;font-weight:600;color:var(--oil-ink);background:var(--oil-soft);padding:4px 12px;border-radius:999px}
 .prof .kv{width:100%}
+.prof-mail{color:var(--ink-2);font-size:14px;margin-top:-10px;word-break:break-all}
+.prof-mail.warn{color:var(--oil-ink);word-break:normal;max-width:32ch}
+.prof-btns{width:100%;display:grid;gap:8px}
+.prof{max-height:92dvh;overflow:auto}
+.pf-head{display:grid;justify-items:center;gap:10px}
+.pf-head .prof-mail{margin:0}
+.pf-card{width:100%;background:var(--surface);border-radius:16px;padding:16px 18px;display:grid;gap:12px;box-shadow:var(--shadow);text-align:left}
+.pf-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:14px;color:var(--ink-2)}
+.pf-row b{color:var(--ink);font-weight:600;text-align:right}
+.pf-bar{display:grid;gap:6px}
+.pf-bar-h{display:flex;justify-content:space-between;font-size:14px;color:var(--ink-2)}
+.pf-bar-h b{color:var(--ink);font-weight:600;font-family:var(--f-mono);font-size:13px}
+.btn-danger{background:transparent;color:var(--bad);border:1.5px solid color-mix(in oklab,var(--bad) 35%,transparent)}
+.btn-danger:hover{background:var(--bad-soft)}
+.prof .kv{margin:0}
+.prof-form{width:100%;display:grid;gap:14px;text-align:left}
+.resume{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:10px;padding:14px 14px 14px 18px;margin-bottom:22px;border:1.5px solid var(--oil-soft)}
+.resume b{display:block;font-weight:600}.resume small{color:var(--ink-2);font-size:13px}
+.resume .btn{padding-inline:18px}
+.h-verse{display:none}
+.keys{display:none;font-size:12.5px;color:var(--ink-2);font-family:var(--f-mono);margin:-4px 0 0}
 .who b{color:var(--ink);font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:14ch}
 .avatar{width:32px;height:32px;border-radius:50%;background:var(--cedar);color:var(--bg);display:grid;place-items:center;font-weight:700;font-size:14px;flex:none}
 .dot{width:7px;height:7px;border-radius:50%;background:var(--ink-2)}
@@ -236,6 +257,7 @@ p{margin:0}
 @media (max-width:959px){
   .qactions{position:fixed;left:0;right:0;bottom:0;z-index:10;margin:0 auto;max-width:640px;padding:16px 16px calc(16px + env(safe-area-inset-bottom,0px));background:linear-gradient(to top,var(--bg) 75%,transparent)}
   .qactions:empty{display:none}
+  #qslot{padding-top:min(7vh,56px);padding-bottom:110px}
   .view:has(.qtop){padding-bottom:96px}
 }
 .pop{animation:pop .45s cubic-bezier(.3,1.6,.5,1)}
@@ -305,13 +327,14 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .tile .check{position:absolute;top:4px;right:4px;width:16px;height:16px;border-radius:50%;background:var(--oil);display:none}
 .tile .check::after{content:"";position:absolute;left:5px;top:2.5px;width:4px;height:8px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
 .grid[data-scope="many"] .tile[aria-pressed="true"] .check{display:block}
-.grid[data-scope="all"] .tile[aria-pressed="true"]{box-shadow:none}
+.grid[data-scope="all"] .tile[aria-pressed="true"]{box-shadow:none;background:var(--surface);border-color:color-mix(in oklab,var(--oil) 45%,var(--line));color:var(--ink)}
+.grid[data-scope="all"] .tile[aria-pressed="true"] .trk{stroke:var(--surface-2)}
 .board{display:grid;gap:6px;background:var(--surface);border-radius:18px;padding:8px;box-shadow:var(--shadow)}
 .brow-l{display:grid;grid-template-columns:2rem auto minmax(0,1fr) 7.5rem;align-items:center;gap:10px;padding:10px 10px;border-radius:12px}
 .brow-l.me{background:var(--oil-soft)}
 .brow-l .rank{font-family:var(--f-display);font-size:20px;text-align:center;color:var(--ink-2);font-variant-numeric:tabular-nums}
 .brow-l .rank.r1{color:var(--oil)}.brow-l .rank.r2{color:#8C9089}.brow-l .rank.r3{color:#A8693A}
-.avatar.sm{width:30px;height:30px;font-size:13px}
+.avatar.sm{width:30px;height:30px;font-size:12px}
 .who-l{min-width:0}.who-l b{display:block;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.who-l em{font-style:normal;color:var(--oil-ink);font-weight:500}
 .who-l small{color:var(--ink-2);font-size:12.5px}
 .brow-l .m{display:grid;gap:4px;justify-items:end}
@@ -322,7 +345,13 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 @media (min-width:960px){
   .wrap{padding-inline:32px;padding-block:28px 64px}
   .entry-form{padding:28px}
-  .home{grid-template-columns:minmax(0,1fr) 440px;grid-template-rows:auto auto 1fr;grid-template-areas:"intro config" "board config" "hist config";column-gap:40px;align-items:start}
+  .home{grid-template-columns:minmax(0,1fr) 440px;grid-template-rows:auto auto auto 1fr;grid-template-areas:"intro config" "verse config" "board config" "hist config";column-gap:40px;align-items:start}
+  .h-verse{grid-area:verse;display:grid;grid-template-columns:auto 1fr;align-items:center;gap:18px;background:var(--surface);border-radius:20px;padding:18px 24px;box-shadow:var(--shadow);margin-bottom:6px}
+  .h-verse .verse-quote{text-align:left;margin:0;max-width:none;font-size:20px}
+  .h-verse .lamp-wrap{margin:0}
+  .h-verse .lamp-glow{display:none}
+  .h-board .board.scroll{max-height:min(520px,calc(100vh - 420px))}
+  .keys{display:block}
   .h-config{position:sticky;top:20px;align-self:start}
   .panel{background:var(--surface);border-radius:24px;padding:24px;box-shadow:var(--shadow)}
   .panel .opts-row{background:none;box-shadow:none;padding:0}
@@ -377,7 +406,7 @@ function chaptersLabel(chs){
 }
 
 /* ---------- storage ----------
-   Supabase: accounts are first name + last name + password (Supabase Auth), progress in Postgres behind row-level security.
+   Supabase: accounts are email + password (Supabase Auth) with a unique first + last name, progress in Postgres behind row-level security.
    A finished test is one call to save_result(); the leaderboard is the public leaderboard() function.
    Results that could not be sent wait in localStorage and go out at the next sign-in.
    Without an account the visitor plays as a guest: results stay in this browser and move to the account at sign-up or sign-in. */
@@ -415,7 +444,7 @@ const store = {
   },
   guest(){ const p = this.norm(lsGet("candela:guest", null), "Invitat"); p.name = "Invitat"; p.guest = true; return p; },
   async load(user){
-    this.uid = user.id;
+    this.uid = user.id; this.email = user.email || "";
     const moved = lsGet("candela:guestEntries", []);   // tests played as a guest join the account
     if (moved.length){ lsSet("candela:pending:" + this.uid, [...this.pending(), ...moved]); lsSet("candela:guestEntries", []); lsSet("candela:guest", null); }
     this.moved = moved.length;
@@ -428,25 +457,44 @@ const store = {
     return p;
   },
   /* returns {ok, profile} or {ok:false, error} */
-  // Accounts have no email: Supabase Auth gets an internal address made from the name (see supabase/functions/signup).
-  authEmail(first, last){ return slugOf(first + " " + last) + "@candela.invalid"; },
-  async login(first, last, password){
+  // The login is the email. Accounts made before emails existed have an internal address built from the name,
+  // so "Prenume Nume" typed in the email field still signs them in.
+  authEmail(id){ id = id.trim(); return id.includes("@") ? id.toLowerCase() : slugOf(id) + "@candela.invalid"; },
+  hasEmail(){ return !!this.email && !this.email.endsWith("@candela.invalid"); },
+  async login(id, password){
     if (!sb()) return {ok:false, error:"network"};
     try {
-      const { data, error } = await sb().auth.signInWithPassword({ email: this.authEmail(first, last), password });
+      const { data, error } = await sb().auth.signInWithPassword({ email: this.authEmail(id), password });
       if (error) return {ok:false, error: isNetErr(error) ? "network" : /confirm/i.test(error.message) ? "unconfirmed" : "cred"};
       return {ok:true, profile: await this.load(data.user)};
     } catch (e) { return {ok:false, error: isNetErr(e) ? "network" : "server"}; }
   },
-  async signup(first, last, password){
-    if (!sb()) return {ok:false, error:"network"};
+  async call(fn, body, token){
     let r;
-    try { r = await fetch(SB.url + "/functions/v1/signup", {method:"POST", headers:{"content-type":"application/json", apikey: SB.key}, body: JSON.stringify({first, last, password})}); }
+    try { r = await fetch(SB.url + "/functions/v1/" + fn, {method:"POST", headers:{"content-type":"application/json", apikey: SB.key, ...(token ? {authorization: "Bearer " + token} : {})}, body: JSON.stringify(body)}); }
     catch { return {ok:false, error:"network"}; }
     let d = {}; try { d = await r.json(); } catch {}
-    if (!r.ok) return {ok:false, error: d.error || "server"};
-    const l = await this.login(first, last, password);
+    return r.ok ? {ok:true, ...d} : {ok:false, error: d.error || "server"};
+  },
+  async signup(first, last, email, password){
+    if (!sb()) return {ok:false, error:"network"};
+    const r = await this.call("signup", {first, last, email, password});
+    if (!r.ok) return r;
+    const l = await this.login(email, password);
     return l.ok ? {...l, created:true} : l;
+  },
+  /* changes the signed-in player's name and email */
+  async updateAccount(first, last, email){
+    if (!sb()) return {ok:false, error:"network"};
+    let token = null;
+    try { token = (await sb().auth.getSession()).data.session?.access_token; } catch {}
+    if (!token) return {ok:false, error:"auth"};
+    const r = await this.call("account", {first, last, email}, token);
+    if (!r.ok) return r;
+    try { await sb().auth.refreshSession(); } catch {}
+    this.email = r.email;
+    const p = this.local(this.uid); if (p){ p.name = r.name; lsSet("candela:p:" + this.uid, p); }
+    return r;
   },
   async resume(){
     if (!sb()) return null;
@@ -474,7 +522,7 @@ const store = {
       return data.map(x => ({ name: x.name, ok: x.ok, tests: x.tests, mastery: Math.round(x.ok / total * 1000) / 10 }));
     } catch { return null; }
   },
-  async logout(){ try { await sb()?.auth.signOut(); } catch {} this.uid = null; }
+  async logout(){ try { await sb()?.auth.signOut(); } catch {} this.uid = null; this.email = ""; }
 };
 
 /* ---------- state ---------- */
@@ -516,10 +564,11 @@ function viewEntry(msg, tab){
   mount(`<section class="entry" data-step="form">${head}
     <form class="card entry-form" id="enter" novalidate>
       <div class="seg two" role="tablist"><button type="button" role="tab" data-tab="in" aria-pressed="${!isNew}">Intră</button><button type="button" role="tab" data-tab="new" aria-pressed="${isNew}">Cont nou</button></div>
-      <div class="name-row">
-        <div class="field"><label for="first">Prenume</label><input class="input" id="first" maxlength="30" autocomplete="given-name" autocapitalize="words" required value="${isNew ? "" : esc(lsGet("candela:first", ""))}"></div>
-        <div class="field"><label for="last">Nume de familie</label><input class="input" id="last" maxlength="30" autocomplete="family-name" autocapitalize="words" required value="${isNew ? "" : esc(lsGet("candela:last", ""))}"></div>
-      </div>
+      ${isNew ? `<div class="name-row">
+        <div class="field"><label for="last">Nume de familie</label><input class="input" id="last" maxlength="30" autocomplete="family-name" autocapitalize="words" required></div>
+        <div class="field"><label for="first">Prenume</label><input class="input" id="first" maxlength="30" autocomplete="given-name" autocapitalize="words" required></div>
+      </div>` : ""}
+      <div class="field"><label for="email">Email</label><input class="input" id="email" type="${isNew ? "email" : "text"}" inputmode="email" maxlength="254" autocomplete="${isNew ? "email" : "username"}" autocapitalize="none" spellcheck="false" required value="${isNew ? "" : esc(lsGet("candela:email", ""))}"></div>
       <div class="field"><label for="pw">Parolă</label><input class="input" id="pw" type="password" autocomplete="${isNew ? "new-password" : "current-password"}" minlength="6" required></div>
       <label class="remember"><input type="checkbox" id="remember" ${lsGet("candela:remember", true) ? "checked" : ""}> Rămâi conectat</label>
       <p class="form-error" id="err" role="alert">${msg ? esc(msg) : ""}</p>
@@ -527,20 +576,21 @@ function viewEntry(msg, tab){
     </form>
     <button class="link back" id="back" type="button">Înapoi la teste</button>
   </section>`);
-  const f = $("#enter"), err = $("#err"), first = $("#first"), last = $("#last"), pw = $("#pw");
+  const f = $("#enter"), err = $("#err"), first = $("#first"), last = $("#last"), email = $("#email"), pw = $("#pw");
   $("#back").onclick = () => S.player ? viewHome() : enterGuest();
   app.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => viewEntry("", b.dataset.tab));
-  (!first.value ? first : !last.value ? last : pw).focus();
+  (isNew ? last : !email.value ? email : pw).focus();
   f.addEventListener("input", () => { err.textContent = ""; });
   f.addEventListener("submit", async e => {
     e.preventDefault();
-    const fn = first.value.trim().replace(/\s+/g," "), ln = last.value.trim().replace(/\s+/g," ");
-    if (!slugOf(fn)) { err.textContent = "Scrie prenumele."; first.focus(); return; }
-    if (!slugOf(ln)) { err.textContent = "Scrie numele de familie."; last.focus(); return; }
+    const fn = isNew ? capName(first.value) : "", ln = isNew ? capName(last.value) : "", em = email.value.trim();
+    if (isNew && !slugOf(ln)) { err.textContent = "Scrie numele de familie."; last.focus(); return; }
+    if (isNew && !slugOf(fn)) { err.textContent = "Scrie prenumele."; first.focus(); return; }
+    if (isNew ? !EMAIL_RE.test(em) : !em) { err.textContent = isNew ? "Scrie o adresă de email validă." : "Scrie emailul."; email.focus(); return; }
     if (pw.value.length < (isNew ? 6 : 1)) { err.textContent = isNew ? "Parola trebuie să aibă cel puțin 6 caractere." : "Scrie parola."; pw.focus(); return; }
     lsSet("candela:remember", $("#remember").checked);
     const btn = $("#go"), label = btn.textContent; btn.disabled = true; btn.textContent = isNew ? "Se creează…" : "Se verifică…";
-    const r = isNew ? await store.signup(fn, ln, pw.value) : await store.login(fn, ln, pw.value);
+    const r = isNew ? await store.signup(fn, ln, em, pw.value) : await store.login(em, pw.value);
     if (!r.ok){
       btn.disabled = false; btn.textContent = label;
       err.textContent = loginError(r);
@@ -548,14 +598,19 @@ function viewEntry(msg, tab){
       f.classList.remove("shake"); void f.offsetWidth; f.classList.add("shake");
       return;
     }
-    lsSet("candela:first", fn); lsSet("candela:last", ln); lsSet("candela:hasAccount", true);
+    lsSet("candela:email", em.includes("@") ? em.toLowerCase() : em); lsSet("candela:hasAccount", true);
     enter(r.profile, r.created);
   });
 }
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+// "ana-maria pop" → "Ana-Maria Pop": names are shown on the leaderboard
+const capName = n => n.trim().replace(/\s+/g," ").replace(/(^|[\s-])(\p{L})/gu, (m, a, b) => a + b.toUpperCase());
 function loginError(r){
   return ({
-    cred: "Nume sau parolă greșită.",
+    cred: "Email sau parolă greșită.",
     name_taken: "Există deja un cont cu acest nume. Dacă e al tău, alege „Intră”.",
+    email_taken: "Există deja un cont cu acest email. Dacă e al tău, alege „Intră”.",
+    email: "Scrie o adresă de email validă.",
     password: "Parola trebuie să aibă între 6 și 72 de caractere.",
     name: "Scrie prenumele și numele de familie.",
     network: "Nu există conexiune. Verifică internetul și încearcă din nou.",
@@ -577,7 +632,7 @@ async function autoLogin(){
   try { return enter(await store.load(user)); }
   catch (e) {
     const local = store.local(user.id);
-    if (isNetErr(e) && local){ store.uid = user.id; S.player = store.norm(local); return viewHome(); }
+    if (isNetErr(e) && local){ store.uid = user.id; store.email = user.email || ""; S.player = store.norm(local); return viewHome(); }
     await store.logout(); S.player = store.guest(); viewEntry("Intră din nou în cont.", "in");
   }
 }
@@ -598,30 +653,93 @@ function headerHTML(){
   if (S.player.guest) return `<header class="top"><div class="brand">${lampSVG(30)} Candela</div>
   <button class="who acct" id="acct" type="button"><b>Intră în cont</b><span class="avatar"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="5.5" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M2.5 14c.8-3 3-4.5 5.5-4.5s4.7 1.5 5.5 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></button></header>`;
   return `<header class="top"><div class="brand">${lampSVG(30)} Candela</div>
-  <button class="who" id="who" type="button" aria-label="Profilul meu"><b>${esc(n)}</b><span class="avatar">${esc(n.trim()[0].toUpperCase())}</span></button></header>`;
+  ${whoHTML()}</header>`;
 }
+function initials(n){ const w = n.trim().split(/\s+/); return ((w[0]||"?")[0] + (w.length > 1 ? w[w.length-1][0] : "")).toUpperCase(); }
+function whoHTML(){ const n = S.player.name; return `<button class="who" id="who" type="button" aria-label="Profilul meu"><b>${esc(n)}</b><span class="avatar">${esc(initials(n))}</span></button>`; }
 function openProfile(){
-  const p = S.player; if (!p) return;
-  const h = p.history, tests = h.length, avg = tests ? Math.round(h.reduce((s,x)=>s+x.pct,0)/tests) : 0;
-  const rank = S.board ? S.board.findIndex(x => slugOf(x.name) === slugOf(p.name)) : -1;
+  const p = S.player; if (!p || p.guest) return;
   const bg = document.createElement("div"); bg.className = "sheet-bg";
-  bg.innerHTML = `<div class="sheet prof" role="dialog" aria-modal="true" aria-label="Profil">
-    <button class="icon-btn prof-x" id="pfX" aria-label="Închide"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
-    <span class="avatar lg">${esc(p.name.trim()[0].toUpperCase())}</span>
-    <h3>${esc(p.name)}</h3>
-    ${rank >= 0 ? `<span class="badge-rank">Locul ${rank+1} din ${S.board.length}</span>` : ""}
-    <div class="kv">
-      <div class="stat"><b>${tests}</b><small>teste</small></div>
-      <div class="stat"><b>${tests ? avg+"%" : "–"}</b><small>media</small></div>
-      <div class="stat"><b>${String(mastery(p)).replace(".",",")}%</b><small>din carte</small></div>
-    </div>
-    <button class="btn btn-ghost btn-block" id="pfOut">Ieși din cont</button>
-  </div>`;
+  bg.innerHTML = `<div class="sheet prof" role="dialog" aria-modal="true" aria-label="Profil"></div>`;
   document.body.appendChild(bg);
-  const close = () => bg.remove();
-  bg.querySelector("#pfX").onclick = close;
+  const sheet = bg.querySelector(".sheet"), close = () => bg.remove();
   bg.onclick = e => { if (e.target === bg) close(); };
-  bg.querySelector("#pfOut").onclick = () => { close(); logout(); };
+  const X = `<button class="icon-btn prof-x" id="pfX" aria-label="Închide"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>`;
+  const show = () => {
+    const h = p.history, tests = h.length, avg = tests ? Math.round(h.reduce((s,x)=>s+x.pct,0)/tests) : 0;
+    const best = tests ? Math.max(...h.map(x=>x.pct)) : 0, secs = h.reduce((s,x)=>s+(x.secs||0),0);
+    const rank = S.board ? S.board.findIndex(x => slugOf(x.name) === slugOf(p.name)) : -1;
+    const okE = p.ok.filter(id => /^\d+e/.test(id)).length, okH = p.ok.filter(id => /^\d+h/.test(id)).length;
+    const totE = totalCount("easy"), totH = totalCount("hard");
+    const chs = new Set(Object.keys(p.chap).map(k=>parseInt(k))).size;
+    const time = secs >= 3600 ? `${Math.floor(secs/3600)} h ${Math.round(secs%3600/60)} min` : `${Math.round(secs/60)} min`;
+    const last = h.length ? h[h.length-1] : null;
+    const pbar = (label, n, tot, color) => `<div class="pf-bar"><div class="pf-bar-h"><span>${label}</span><b>${n} / ${tot}</b></div><div class="bar"><i style="width:${Math.max(n/tot*100, n?2:0)}%;background:${color}"></i></div></div>`;
+    sheet.innerHTML = `${X}
+      <div class="pf-head">
+        <span class="avatar lg">${esc(initials(p.name))}</span>
+        <h3>${esc(p.name)}</h3>
+        ${store.hasEmail() ? `<p class="prof-mail">${esc(store.email)}</p>` : `<p class="prof-mail warn">Adaugă un email: cu el intri în cont de acum înainte.</p>`}
+        ${rank >= 0 ? `<span class="badge-rank">Locul ${rank+1} din ${S.board.length} în clasament</span>` : ""}
+      </div>
+      <div class="kv">
+        <div class="stat"><b>${tests}</b><small>${tests===1?"test":"teste"}</small></div>
+        <div class="stat"><b>${tests ? avg+"%" : "–"}</b><small>media</small></div>
+        <div class="stat"><b>${tests ? best+"%" : "–"}</b><small>cel mai bun</small></div>
+      </div>
+      <div class="pf-card">
+        <div class="pf-row"><span>Din carte stăpânit</span><b>${String(mastery(p)).replace(".",",")}%</b></div>
+        ${pbar("Întrebări ușoare", okE, totE, "var(--cedar)")}
+        ${pbar("Întrebări grele", okH, totH, "var(--oil)")}
+        <div class="pf-row"><span>Capitole exersate</span><b>${chs} / 31</b></div>
+        <div class="pf-row"><span>Timp de studiu</span><b>${tests ? time : "–"}</b></div>
+        ${last ? `<div class="pf-row"><span>Ultimul test</span><b>${esc(chaptersLabel(last.chs))} · ${last.pct}%</b></div>` : ""}
+      </div>
+      <div class="prof-btns"><button class="btn ${store.hasEmail() ? "btn-ghost" : "btn-primary"} btn-block" id="pfEdit">${store.hasEmail() ? "Modifică profilul" : "Adaugă emailul"}</button>
+      <button class="btn btn-danger btn-block" id="pfOut">Ieși din cont</button></div>`;
+    sheet.querySelector("#pfX").onclick = close;
+    sheet.querySelector("#pfEdit").onclick = edit;
+    sheet.querySelector("#pfOut").onclick = () => { close(); logout(); };
+  };
+  const edit = () => {
+    const parts = p.name.trim().split(" "), fn = parts[0], ln = parts.slice(1).join(" ");
+    sheet.innerHTML = `${X}<h3>Profilul meu</h3>
+      <form class="prof-form" id="pfForm" novalidate>
+        <div class="name-row">
+          <div class="field"><label for="pfLast">Nume de familie</label><input class="input" id="pfLast" maxlength="30" autocomplete="family-name" autocapitalize="words" value="${esc(ln)}"></div>
+          <div class="field"><label for="pfFirst">Prenume</label><input class="input" id="pfFirst" maxlength="30" autocomplete="given-name" autocapitalize="words" value="${esc(fn)}"></div>
+        </div>
+        <div class="field"><label for="pfMail">Email</label><input class="input" id="pfMail" type="email" inputmode="email" maxlength="254" autocomplete="email" autocapitalize="none" spellcheck="false" value="${store.hasEmail() ? esc(store.email) : ""}"></div>
+        <p class="form-error" id="pfErr" role="alert"></p>
+        <div class="modal-btns"><button class="btn btn-ghost" type="button" id="pfCancel">Anulează</button><button class="btn btn-primary" type="submit" id="pfSave">Salvează</button></div>
+      </form>`;
+    sheet.querySelector("#pfX").onclick = close;
+    sheet.querySelector("#pfCancel").onclick = show;
+    const form = sheet.querySelector("#pfForm"), err = sheet.querySelector("#pfErr");
+    const first = sheet.querySelector("#pfFirst"), last = sheet.querySelector("#pfLast"), mail = sheet.querySelector("#pfMail");
+    (store.hasEmail() ? last : mail).focus();
+    form.addEventListener("input", () => { err.textContent = ""; });
+    form.addEventListener("submit", async e => {
+      e.preventDefault();
+      const f1 = capName(first.value), l1 = capName(last.value), em = mail.value.trim();
+      if (!slugOf(l1)) { err.textContent = "Scrie numele de familie."; last.focus(); return; }
+      if (!slugOf(f1)) { err.textContent = "Scrie prenumele."; first.focus(); return; }
+      if (!EMAIL_RE.test(em)) { err.textContent = "Scrie o adresă de email validă."; mail.focus(); return; }
+      const btn = sheet.querySelector("#pfSave"); btn.disabled = true; btn.textContent = "Se salvează…";
+      const r = await store.updateAccount(f1, l1, em);
+      if (!r.ok){
+        btn.disabled = false; btn.textContent = "Salvează";
+        err.textContent = ({ name_taken: "Acest nume e deja folosit de alt cont.", email_taken: "Acest email e deja folosit de alt cont.", auth: "Intră din nou în cont și încearcă iar." })[r.error] || loginError(r);
+        return;
+      }
+      p.name = r.name; lsSet("candela:email", r.email); S.board = null;
+      const who = $("#who"); if (who) who.outerHTML = whoHTML();
+      if ($("#board")) loadBoard();
+      toast("Profil actualizat.");
+      show();
+    });
+  };
+  show();
 }
 document.addEventListener("click", e => {
   if (!e.target.closest) return;
@@ -643,12 +761,14 @@ function viewHome(){
     <div class="hello"><span class="eyebrow">${tests ? "Bine ai revenit" : "Să începem"}</span>
       <h2>${p.guest ? (tests ? "Continuăm?" : "Bun venit!") : tests ? `Continuăm, ${esc(first)}?` : `Bun venit, ${esc(first)}.`}</h2>
       ${p.guest ? `<p class="guest-line">Joci ca invitat. <button class="link" id="gNew" type="button">Creează un cont</button> ca să-ți păstrezi rezultatele.</p>` : ""}</div>
-    <div class="stats">
+    ${tests ? `<div class="stats">
       <div class="stat"><b>${tests}</b><small>teste făcute</small></div>
-      <div class="stat"><b>${tests?avg+"%":"–"}</b><small>media</small></div>
-      <div class="stat"><b>${String(mastery(p)).replace(".",",")}%</b><small>din carte stăpânită</small></div>
-    </div>
+      <div class="stat"><b>${avg}%</b><small>media</small></div>
+      <div class="stat"><b>${String(mastery(p)).replace(".",",")}%</b><small>stăpânit</small></div>
+    </div>` : ""}
+    ${resumeHTML()}
   </section>
+  <section class="h-verse"><div class="lamp-wrap"><div class="lamp-glow"></div>${lampSVG(46)}</div><p class="verse-quote">„Candela lui Dumnezeu nu se stinsese încă.”<span class="ref">1 Sam. 3:3</span></p></section>
 
   <aside class="h-config">
     <div class="panel">
@@ -712,6 +832,7 @@ function viewHome(){
   });
   app.querySelectorAll("[data-mode]").forEach(b => b.onclick = () => { S.mode = b.dataset.mode; update(); });
   $("#start").onclick = () => S.sel.size > 1 ? openOptions() : startQuiz();
+  if ($("#resume")){ $("#resume").onclick = resumeQuiz; $("#resumeX").onclick = () => { dropQuiz(); $(".resume").remove(); }; }
   update();
   if (HOSTED) loadBoard();
 }
@@ -731,7 +852,7 @@ function renderBoard(list){
   const top = el.classList.contains("scroll") ? list : list.slice(0, 10);
   const row = (x, i) => `<div class="brow-l ${slugOf(x.name)===me?"me":""}">
     <span class="rank ${i<3?"r"+(i+1):""}">${i+1}</span>
-    <span class="avatar sm">${esc(x.name.trim()[0].toUpperCase())}</span>
+    <span class="avatar sm">${esc(initials(x.name))}</span>
     <div class="who-l"><b>${esc(x.name)}${slugOf(x.name)===me?" <em>(tu)</em>":""}</b><small>${x.ok ?? 0} ${x.ok===1?"întrebare":"întrebări"} · ${x.tests} ${x.tests===1?"test":"teste"}</small></div>
     <div class="m"><span>${String(x.mastery).replace(".",",")}%</span><div class="bar"><i style="width:${Math.max(x.mastery,2)}%"></i></div></div></div>`;
   el.innerHTML = top.map(row).join("") + (idx >= top.length ? `<div class="gap">···</div>${row(list[idx], idx)}` : "");
@@ -800,23 +921,38 @@ function startQuiz(list, count = 0){
   S.quiz = { qs: qs.map(prepare), i: 0, answers: [], start: Date.now(), chs: [...new Set(qs.map(q=>q.ch))].sort((a,b)=>a-b), mode: list ? S.quiz.mode : S.mode, retry: !!list };
   viewQuestion(true);
 }
+/* an unfinished test survives a reload or a closed tab, until it is finished or stopped */
+function saveQuiz(){ const Z = S.quiz; if (!Z || Z.retry) return; lsSet("candela:quiz", {qs:Z.qs, i:Z.i, answers:Z.answers, elapsed:Date.now()-Z.start, chs:Z.chs, mode:Z.mode, who: S.player && !S.player.guest ? store.uid : "guest"}); }
+function dropQuiz(){ lsSet("candela:quiz", null); }
+function savedQuiz(){ const z = lsGet("candela:quiz", null); return z && z.qs && z.who === (S.player && !S.player.guest ? store.uid : "guest") ? z : null; }
+function resumeHTML(){
+  const z = savedQuiz(); if (!z) return "";
+  return `<div class="resume card"><div><b>Test neterminat</b><small>${esc(chaptersLabel(z.chs))} · ${MODE_LABEL[z.mode]} · întrebarea ${z.i+1} din ${z.qs.length}</small></div>
+    <button class="btn btn-primary" id="resume" type="button">Continuă</button><button class="icon-btn" id="resumeX" type="button" aria-label="Renunță la test"><svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>`;
+}
+function resumeQuiz(){
+  const z = savedQuiz(); if (!z) return viewHome();
+  S.quiz = { qs: z.qs, i: z.i, answers: z.answers, start: Date.now() - z.elapsed, chs: z.chs, mode: z.mode, retry: false };
+  viewQuestion(true);
+}
 function refStart(q){ return +q.ref.split(":")[1].split("-")[0]; }
 
 function viewQuestion(first){
   const Z = S.quiz, q = Z.qs[Z.i], n = Z.qs.length;
   const ui = { sel: q.t==="multi" ? new Set() : null, pick: null, pairs: {}, active: null, checked: false };
   Z.ui = ui;
+  saveQuiz();
   if (first || !$(".qcard")) {
     mount(`<div class="qtop"><button class="icon-btn" id="quit" aria-label="Oprește testul"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
       <div class="bar" aria-hidden="true"><i id="prog" style="width:0"></i></div><span class="qcount" id="qcount"></span></div>
       <div id="qslot"></div>`);
     $("#quit").onclick = () => {
       const bg = document.createElement("div"); bg.className = "modal-bg";
-      bg.innerHTML = `<div class="modal" role="alertdialog" aria-modal="true" aria-labelledby="qT"><h3 id="qT">Oprești testul?</h3><p class="muted">Răspunsurile date până acum nu se salvează.</p><div class="modal-btns"><button class="btn btn-ghost" id="qNo">Continuă</button><button class="btn btn-primary" id="qYes">Oprește</button></div></div>`;
+      bg.innerHTML = `<div class="modal" role="alertdialog" aria-modal="true" aria-labelledby="qT"><h3 id="qT">Oprești testul?</h3><p class="muted">Răspunsurile date până acum se pierd.</p><div class="modal-btns"><button class="btn btn-ghost" id="qNo">Continuă</button><button class="btn btn-primary" id="qYes">Oprește</button></div></div>`;
       document.body.appendChild(bg);
       const close = () => bg.remove();
       bg.querySelector("#qNo").onclick = close; bg.onclick = e => { if (e.target === bg) close(); };
-      bg.querySelector("#qYes").onclick = () => { close(); viewHome(); };
+      bg.querySelector("#qYes").onclick = () => { close(); dropQuiz(); viewHome(); };
       bg.querySelector("#qNo").focus();
     };
   }
@@ -826,7 +962,8 @@ function viewQuestion(first){
   card.className = "qcard enter";
   card.innerHTML = `<div class="qmeta"><span class="qtype">${TYPE_LABEL[q.t]}${Z.mode==="both"?` · ${MODE_LABEL[q.mode]}`:""}</span><span class="ref">${refLabel(q.ref)}</span></div>
     ${q.t==="fill" ? `${fillHTML(q)}` : `<p class="qtext">${esc(q.q)}</p>${q.t==="multi"?`<p class="qhint">Una, mai multe sau niciuna.</p>`:""}${q.t==="match"?``:""}`}
-    <div class="answers" id="ans">${answersHTML(q)}</div><div id="fb"></div>`;
+    <div class="answers" id="ans">${answersHTML(q)}</div><div id="fb"></div>
+    <p class="keys">${({tf:"Taste: A adevărat · F fals · Enter verifică", one:"Taste: A, B, C… · Enter verifică", multi:"Taste: A, B, C… · Enter verifică", fill:"Enter trece la căsuța următoare", match:"Enter verifică"})[q.t]}</p>`;
   const slot = $("#qslot");
   const old = slot.firstElementChild;
   const place = () => { slot.innerHTML = ""; slot.appendChild(card); const actions = document.createElement("div"); actions.className = "qactions"; actions.id = "actions"; slot.appendChild(actions); bindQuestion(q, card); renderActions(); const f = card.querySelector("input"); if (f && matchMedia("(hover:hover)").matches) f.focus(); };
@@ -947,6 +1084,7 @@ async function finish(){
     (byType[q.t] ??= {s:0,n:0}); byType[q.t].s += a.pts; byType[q.t].n++; });
   // save
   const p = S.player;
+  if (!Z.retry) dropQuiz();
   let saving = Promise.resolve(null);
   if (!Z.retry){
     const chap = {}; for (const key in byCh._m){ const v = byCh._m[key]; chap[key] = pct(v.s, v.n); }
