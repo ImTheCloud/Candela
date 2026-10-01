@@ -1,4 +1,4 @@
-<!doctype html><html lang="ro"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#ECEEE7" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#11150F" media="(prefers-color-scheme: dark)"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2c2 3 4 5 4 8a4 4 0 0 1-8 0c0-2 1.5-3.5 2-5 .5 1.5 1.2 2.2 2 2.5C11.6 5.5 12 4 12 2z' fill='%23B87A0B'/%3E%3Cpath d='M3 16c3 0 6-1.5 9-1.5s5 .8 9 0c-.7 3-4 5.5-9 5.5-3.5 0-7-1.5-9-4z' fill='%231E261D'/%3E%3C/svg%3E"><meta property="og:title" content="Candela · Test biblic 1 Samuel"><meta property="og:description" content="1.411 de întrebări din 1 Samuel (Cornilescu), nivel ușor și greu."><style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style></head><body><title>Candela 1 Samuel</title>
+<!doctype html><html lang="ro"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#ECEEE7" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#11150F" media="(prefers-color-scheme: dark)"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2c2 3 4 5 4 8a4 4 0 0 1-8 0c0-2 1.5-3.5 2-5 .5 1.5 1.2 2.2 2 2.5C11.6 5.5 12 4 12 2z' fill='%23B87A0B'/%3E%3Cpath d='M3 16c3 0 6-1.5 9-1.5s5 .8 9 0c-.7 3-4 5.5-9 5.5-3.5 0-7-1.5-9-4z' fill='%231E261D'/%3E%3C/svg%3E"><meta property="og:title" content="Candela · Test biblic 1 Samuel"><meta property="og:description" content="1.411 de întrebări din 1 Samuel (Cornilescu), nivel ușor și greu."><style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script></head><body><title>Candela 1 Samuel</title>
 <meta name="description" content="Pregătire pentru testul biblic din 1 Samuel, după traducerea Cornilescu.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -72,6 +72,7 @@ body:has(.entry[data-step="board"]){overflow:hidden}
 .entry .back{align-self:center}
 .verse-quote{font-family:var(--f-display);font-size:17px;line-height:1.35;text-align:center;max-width:30ch;margin:6px auto 0;color:var(--ink-2)}
 .verse-quote .ref{margin-left:6px;vertical-align:2px}
+.seg.two{grid-template-columns:1fr 1fr}
 .remember{display:flex;align-items:center;gap:10px;font-weight:500;cursor:pointer;user-select:none}
 .remember input{width:20px;height:20px;accent-color:var(--cedar);margin:0}
 .board.scroll{position:relative;overflow-y:auto;overscroll-behavior:contain;align-content:start}
@@ -365,69 +366,96 @@ function chaptersLabel(chs){
 }
 
 /* ---------- storage ----------
-   Hosted (Vercel): name + 4-digit PIN, progress merged server-side, shared leaderboard.
-   Artifact: the claude.ai db capability, keyed by name. Both keep a local copy. */
+   Supabase: email + password accounts (Supabase Auth), progress in Postgres behind row-level security.
+   A finished test is one call to save_result(); the leaderboard is the public leaderboard() function.
+   Results that could not be sent wait in localStorage and go out at the next sign-in. */
+const SB = {"url": "https://hpmypeoszocxjjxrnbfh.supabase.co", "key": "sb_publishable_MtSGXf-G2iNiIdP0JqSm2Q_gMH_flwg"};
 const HOSTED = true;
-async function api(path, body){
-  const r = await fetch(path, body ? {method:"POST", headers:{"content-type":"application/json"}, body:JSON.stringify(body)} : {cache:"no-store"});
-  let data = {}; try { data = await r.json(); } catch {}
-  return { status: r.status, ok: r.ok, data };
+const authStorage = {   // "Rămâi conectat" off → the session lives only until the browser is closed
+  getItem(k){ try { return localStorage.getItem(k) ?? sessionStorage.getItem(k); } catch { return null; } },
+  setItem(k, v){ try { const keep = lsGet("candela:remember", true); (keep ? localStorage : sessionStorage).setItem(k, v); (keep ? sessionStorage : localStorage).removeItem(k); } catch {} },
+  removeItem(k){ try { localStorage.removeItem(k); sessionStorage.removeItem(k); } catch {} },
+};
+let sbc = null;
+function sb(){
+  if (!sbc && SB && window.supabase) sbc = window.supabase.createClient(SB.url, SB.key, { auth: { storage: authStorage, persistSession: true, autoRefreshToken: true, detectSessionInUrl: false } });
+  return sbc;
 }
+const isNetErr = e => !e || /fetch|network|failed to|load failed/i.test(String(e.message || e));
 const store = {
-  db: null, ready: false, session: null,
-  async init(){
-    if (!HOSTED) try { if (window.claude && claude.use) this.db = await claude.use("db"); } catch { this.db = null; }
-    this.ready = true;
+  uid: null,
+  blank(name){ return { name, history: [], chap: {}, ok: [], tests: 0 }; },
+  norm(p, name){ p = p ? JSON.parse(JSON.stringify(p)) : this.blank(name); p.name = p.name || name; p.history = p.history || []; p.chap = p.chap || {}; p.ok = p.ok || []; p.tests = p.tests ?? p.history.length; return p; },
+  pending(){ return lsGet("candela:pending:" + this.uid, []); },
+  applyEntry(p, x){
+    if (!p.history.some(h => h.at === x.at)){ p.history.push({at:x.at, chs:x.chs, mode:x.mode, score:x.score, total:x.total, pct:x.pct, secs:x.secs}); p.tests++; }
+    for (const [k, v] of Object.entries(x.chap)){ const cur = p.chap[k] || {best:0, n:0}; p.chap[k] = {best: Math.max(cur.best||0, v), last: v, n: (cur.n||0)+1}; }
+    p.ok = [...new Set([...p.ok, ...x.ok])];
   },
-  blank(name){ return { name, history: [], chap: {}, ok: [], updatedAt: 0 }; },
-  norm(p, name){ p = p ? JSON.parse(JSON.stringify(p)) : this.blank(name); p.name = p.name || name; p.history = p.history || []; p.chap = p.chap || {}; p.ok = p.ok || []; return p; },
-  local(name){ return lsGet("candela:p:" + slugOf(name), null); },
-  /* returns {ok, profile} or {ok:false, error, retryAt} */
-  async login(name, pin){
-    if (HOSTED){
-      let r;
-      try { r = await api("/api/login", {name, pin}); } catch { return {ok:false, error:"network"}; }
-      if (!r.ok) return {ok:false, error:r.data.error || "server", retryAt:r.data.retryAt};
-      this.session = {name, pin}; lsSet("candela:session", this.session);
-      let p = this.norm(r.data.profile, name);
-      const pending = this.local(name);
-      if (pending && pending.pending){ const m = await this.push(p, pending); if (m) p = m; }
-      lsSet("candela:p:" + slugOf(name), p);
-      return {ok:true, profile:p, created:r.data.created};
-    }
-    if (!this.ready) await Promise.race([this.initP, new Promise(r=>setTimeout(r,4000))]);
-    let remote = null;
-    if (this.db){ try { const d = await this.db.doc("players/" + slugOf(name)).get(); if (d.exists) remote = d.data(); } catch {} }
-    const p = [remote, this.local(name)].filter(Boolean).sort((a,b)=>(b.updatedAt||0)-(a.updatedAt||0))[0];
-    this.session = {name}; lsSet("candela:session", this.session);
-    return {ok:true, profile:this.norm(p, name)};
+  async send(x){
+    const { error } = await sb().rpc("save_result", { p_at: new Date(x.at).toISOString(), p_chs: x.chs, p_mode: x.mode, p_score: x.score, p_total: x.total, p_pct: x.pct, p_secs: x.secs, p_chap: x.chap, p_ok: x.ok });
+    if (error) throw error;
   },
-  async push(p, extra){
-    const profile = extra ? {history:[...p.history, ...(extra.history||[])], chap:{...(extra.chap||{}), ...p.chap}, ok:[...new Set([...(p.ok||[]), ...(extra.ok||[])])]} : p;
+  async flush(){
+    const left = [];
+    for (const x of this.pending()){ try { await this.send(x); } catch (e) { if (isNetErr(e)) left.push(x); } }
+    lsSet("candela:pending:" + this.uid, left);
+  },
+  async load(user){
+    this.uid = user.id;
+    await this.flush();
+    const { data, error } = await sb().rpc("my_progress");
+    if (error) throw error;
+    const p = this.norm({ name: data.name || user.user_metadata?.name || "?", history: data.history, chap: data.chap, ok: data.ok, tests: data.tests });
+    for (const x of this.pending()) this.applyEntry(p, x);
+    lsSet("candela:p:" + this.uid, p);
+    return p;
+  },
+  /* returns {ok, profile} or {ok:false, error} */
+  async login(email, password){
+    if (!sb()) return {ok:false, error:"network"};
     try {
-      const r = await api("/api/save", {name:this.session.name, pin:this.session.pin, profile});
-      if (r.ok) return this.norm(r.data.profile, p.name);
-    } catch {}
-    return null;
+      const { data, error } = await sb().auth.signInWithPassword({ email, password });
+      if (error) return {ok:false, error: isNetErr(error) ? "network" : /confirm/i.test(error.message) ? "unconfirmed" : "cred"};
+      return {ok:true, profile: await this.load(data.user)};
+    } catch (e) { return {ok:false, error: isNetErr(e) ? "network" : "server"}; }
   },
-  /* saves, returns the (possibly merged) profile and whether it reached the server */
-  async save(p){
-    p.updatedAt = Date.now();
-    const key = "candela:p:" + slugOf(p.name);
-    if (HOSTED){
-      const merged = await this.push(p);
-      if (merged){ lsSet(key, merged); return {saved:true, profile:merged}; }
-      lsSet(key, {...p, pending:true}); return {saved:false, profile:p};
+  async signup(name, email, password){
+    if (!sb()) return {ok:false, error:"network"};
+    let r;
+    try { r = await fetch(SB.url + "/functions/v1/signup", {method:"POST", headers:{"content-type":"application/json", apikey: SB.key}, body: JSON.stringify({name, email, password})}); }
+    catch { return {ok:false, error:"network"}; }
+    let d = {}; try { d = await r.json(); } catch {}
+    if (!r.ok) return {ok:false, error: d.error || "server"};
+    const l = await this.login(email, password);
+    return l.ok ? {...l, created:true} : l;
+  },
+  async resume(){
+    if (!sb()) return null;
+    const { data } = await sb().auth.getSession();
+    return data.session ? data.session.user : null;
+  },
+  local(uid){ return lsGet("candela:p:" + uid, null); },
+  /* saves one finished test; returns whether it reached the server */
+  async save(p, x){
+    this.applyEntry(p, x);
+    lsSet("candela:p:" + this.uid, p);
+    try { await this.send(x); return {saved:true}; }
+    catch (e) {
+      if (isNetErr(e)){ lsSet("candela:pending:" + this.uid, [...this.pending(), x]); }
+      return {saved:false};
     }
-    lsSet(key, p);
-    if (this.db){ try { await this.db.doc("players/" + slugOf(p.name)).set(JSON.parse(JSON.stringify(p))); return {saved:true, profile:p}; } catch {} }
-    return {saved:false, profile:p};
   },
   async board(){
-    if (!HOSTED) return null;
-    try { const r = await api("/api/leaderboard"); return r.ok ? r.data.players : null; } catch { return null; }
+    if (!sb()) return null;
+    try {
+      const { data, error } = await sb().rpc("leaderboard");
+      if (error) return null;
+      const total = totalCount("both");
+      return data.map(x => ({ name: x.name, ok: x.ok, tests: x.tests, mastery: Math.round(x.ok / total * 1000) / 10 }));
+    } catch { return null; }
   },
-  logout(){ this.session = null; lsSet("candela:session", null); }
+  async logout(){ try { await sb()?.auth.signOut(); } catch {} this.uid = null; }
 };
 
 /* ---------- state ---------- */
@@ -462,10 +490,10 @@ function miniLamp(){ return `<svg width="22" height="22" viewBox="0 0 24 24" ari
 /* ---------- views ---------- */
 function totalCount(mode){ let n=0; for (const c in QUIZ){ if (mode!=="hard") n += (QUIZ[c].easy||[]).length; if (mode!=="easy") n += (QUIZ[c].hard||[]).length; } return n; }
 
-function viewEntry(msg, step){
-  const sess = lsGet("candela:session", null);
-  step = step || (HOSTED && !msg ? "board" : "form");
-  const head = `<div class="entry-head"><div class="lamp-wrap"><div class="lamp-glow"></div>${lampSVG(step==="board"?84:64)}</div><h1>Candela<span>1 Samuel</span></h1><p class="verse-quote">„Candela lui Dumnezeu nu se stinsese încă.”<span class="ref">1 Sam. 3:3</span></p></div>`;
+function viewEntry(msg, step, tab){
+  step = step || (!msg ? "board" : "form");
+  tab = tab || (lsGet("candela:hasAccount", false) ? "in" : "new");
+  const head = `<div class="entry-head"><div class="lamp-wrap"><div class="lamp-glow"></div>${lampSVG(step==="board"?84:56)}</div><h1>Candela<span>1 Samuel</span></h1>${step==="board" ? `<p class="verse-quote">„Candela lui Dumnezeu nu se stinsese încă.”<span class="ref">1 Sam. 3:3</span></p>` : ""}</div>`;
   if (step === "board"){
     mount(`<section class="entry" data-step="board">${head}
       <div class="entry-board"><div class="section-h"><h3>Clasament</h3></div><div id="board" class="board scroll"><div class="empty">Se încarcă…</div></div></div>
@@ -475,64 +503,73 @@ function viewEntry(msg, step){
     $("#toForm").onclick = () => viewEntry("", "form");
     return;
   }
+  const isNew = tab === "new";
   mount(`<section class="entry" data-step="form">${head}
-    <form class="card entry-form" id="enter" autocomplete="off" novalidate>
-      <div class="field">
-        <label for="name">Numele tău</label>
-        <input class="input" id="name" name="name" maxlength="40" autocomplete="nickname" required value="${esc(sess?.name || "")}">
-      </div>
-      ${HOSTED ? `<div class="field">
-        <label for="pin">Cod de 4 cifre</label>
-        <input class="input pin" id="pin" name="pin" inputmode="numeric" pattern="[0-9]*" maxlength="4" placeholder="••••" autocomplete="off" required>
-      </div>` : ""}
+    <form class="card entry-form" id="enter" novalidate>
+      <div class="seg two" role="tablist"><button type="button" role="tab" data-tab="in" aria-pressed="${!isNew}">Intră</button><button type="button" role="tab" data-tab="new" aria-pressed="${isNew}">Cont nou</button></div>
+      ${isNew ? `<div class="field"><label for="name">Numele tău</label><input class="input" id="name" maxlength="40" autocomplete="nickname" required></div>` : ""}
+      <div class="field"><label for="email">Email</label><input class="input" id="email" type="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" required value="${esc(lsGet("candela:email", ""))}"></div>
+      <div class="field"><label for="pw">Parolă</label><input class="input" id="pw" type="password" autocomplete="${isNew ? "new-password" : "current-password"}" minlength="8" required></div>
       <label class="remember"><input type="checkbox" id="remember" ${lsGet("candela:remember", true) ? "checked" : ""}> Rămâi conectat</label>
       <p class="form-error" id="err" role="alert">${msg ? esc(msg) : ""}</p>
-      <button class="btn btn-primary btn-block" id="go" type="submit">Intră</button>
+      <button class="btn btn-primary btn-block" id="go" type="submit">${isNew ? "Creează contul" : "Intră"}</button>
     </form>
-    ${HOSTED ? `<button class="link back" id="back" type="button">Înapoi la clasament</button>` : ""}
+    <button class="link back" id="back" type="button">Înapoi la clasament</button>
   </section>`);
-  const f = $("#enter"), inp = $("#name"), pin = $("#pin"), err = $("#err");
-  if ($("#back")) $("#back").onclick = () => viewEntry("", "board");
-  (inp.value && pin ? pin : inp).focus();
-  if (pin) pin.addEventListener("input", () => { pin.value = pin.value.replace(/\D/g,"").slice(0,4); err.textContent = ""; });
+  const f = $("#enter"), err = $("#err"), name = $("#name"), email = $("#email"), pw = $("#pw");
+  $("#back").onclick = () => viewEntry("", "board");
+  app.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => viewEntry("", "form", b.dataset.tab));
+  (name || (email.value ? pw : email)).focus();
+  f.addEventListener("input", () => { err.textContent = ""; });
   f.addEventListener("submit", async e => {
     e.preventDefault();
-    const n = inp.value.trim().replace(/\s+/g," ");
-    if (!slugOf(n)) { err.textContent = "Scrie un nume cu cel puțin o literă."; inp.focus(); return; }
-    if (pin && !/^\d{4}$/.test(pin.value)) { err.textContent = "Codul are exact 4 cifre."; pin.focus(); return; }
-    const btn = $("#go"); btn.disabled = true; btn.textContent = "Se verifică…";
-    const r = await store.login(n, pin ? pin.value : null);
+    const n = name ? name.value.trim().replace(/\s+/g," ") : "", em = email.value.trim().toLowerCase();
+    if (name && !slugOf(n)) { err.textContent = "Scrie un nume cu cel puțin o literă."; name.focus(); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) { err.textContent = "Scrie o adresă de email validă."; email.focus(); return; }
+    if (pw.value.length < (isNew ? 8 : 1)) { err.textContent = isNew ? "Parola trebuie să aibă cel puțin 8 caractere." : "Scrie parola."; pw.focus(); return; }
+    lsSet("candela:remember", $("#remember").checked);
+    const btn = $("#go"), label = btn.textContent; btn.disabled = true; btn.textContent = isNew ? "Se creează…" : "Se verifică…";
+    const r = isNew ? await store.signup(n, em, pw.value) : await store.login(em, pw.value);
     if (!r.ok){
-      btn.disabled = false; btn.textContent = "Intră";
+      btn.disabled = false; btn.textContent = label;
       err.textContent = loginError(r);
-      if (pin){ pin.value = ""; pin.focus(); f.classList.remove("shake"); void f.offsetWidth; f.classList.add("shake"); }
+      if (r.error === "cred"){ pw.value = ""; pw.focus(); }
+      f.classList.remove("shake"); void f.offsetWidth; f.classList.add("shake");
       return;
     }
-    const keep = $("#remember").checked; lsSet("candela:remember", keep);
-    if (!keep) lsSet("candela:session", {name: n});
+    lsSet("candela:email", em); lsSet("candela:hasAccount", true);
     enter(r.profile, r.created);
   });
 }
 function loginError(r){
-  if (r.error === "pin") return "Cod greșit pentru acest nume. Dacă numele e al altcuiva, alege alt nume.";
-  if (r.error === "locked"){ const m = Math.max(1, Math.ceil(((r.retryAt||0) - Date.now())/60000)); return `Prea multe încercări greșite. Încearcă din nou peste ${m} min.`; }
-  if (r.error === "network") return "Nu există conexiune. Verifică internetul și încearcă din nou.";
-  return "Nu am putut intra acum. Încearcă din nou peste câteva clipe.";
+  return ({
+    cred: "Email sau parolă greșită.",
+    name_taken: "Numele e deja folosit. Alege altul (de ex. adaugă inițiala de familie).",
+    email_taken: "Există deja un cont cu acest email. Alege „Intră”.",
+    email: "Adresa de email nu e validă.",
+    password: "Parola trebuie să aibă între 8 și 72 de caractere.",
+    name: "Scrie un nume cu cel puțin o literă.",
+    network: "Nu există conexiune. Verifică internetul și încearcă din nou.",
+  })[r.error] || "Nu am putut intra acum. Încearcă din nou peste câteva clipe.";
 }
 function enter(profile, created){
   S.player = profile;
-  if (created) toast("Cont creat. Ține minte codul!");
+  if (created) toast("Cont creat. Bine ai venit!");
   viewHome();
 }
 async function autoLogin(){
-  const sess = lsGet("candela:session", null);
-  if (!sess || !sess.name || (HOSTED && !sess.pin)) return viewEntry();
   mount(`<div class="boot"><div class="lamp-wrap"><div class="lamp-glow"></div>${lampSVG(100)}</div><h1>Candela</h1><div class="boot-bar"><i></i></div></div>`);
-  const r = await store.login(sess.name, sess.pin);
-  if (r.ok) return enter(r.profile);
-  if (r.error === "network" && store.local(sess.name)){ store.session = sess; S.player = store.norm(store.local(sess.name), sess.name); return viewHome(); }
-  store.logout(); viewEntry(r.error === "pin" ? "Codul s-a schimbat. Intră din nou." : "");
+  let user = null;
+  try { user = await store.resume(); } catch {}
+  if (!user) return viewEntry();
+  try { return enter(await store.load(user)); }
+  catch (e) {
+    const local = store.local(user.id);
+    if (isNetErr(e) && local){ store.uid = user.id; S.player = store.norm(local); return viewHome(); }
+    await store.logout(); viewEntry("Intră din nou în cont.");
+  }
 }
+function logout(){ S.player = null; store.logout(); viewEntry(); }
 
 function chapStat(c, m){ return (S.player.chap[c+m[0]]||{}).best ?? null; }
 function arc(p, r, color){
@@ -570,7 +607,7 @@ function openProfile(){
   const close = () => bg.remove();
   bg.querySelector("#pfX").onclick = close;
   bg.onclick = e => { if (e.target === bg) close(); };
-  bg.querySelector("#pfOut").onclick = () => { close(); S.player = null; store.logout(); viewEntry(); };
+  bg.querySelector("#pfOut").onclick = () => { close(); logout(); };
 }
 document.addEventListener("click", e => { if (e.target.closest && e.target.closest("#who")) openProfile(); });
 function mastery(p){ return Math.round((p.ok||[]).length / totalCount("both") * 1000) / 10; }
@@ -884,13 +921,12 @@ async function finish(){
     (byType[q.t] ??= {s:0,n:0}); byType[q.t].s += a.pts; byType[q.t].n++; });
   // save
   const p = S.player;
+  let saving = Promise.resolve(null);
   if (!Z.retry){
-    for (const key in byCh._m){ const v = byCh._m[key], cp = pct(v.s, v.n), cur = p.chap[key] || {best:0,n:0};
-      p.chap[key] = { best: Math.max(cur.best||0, cp), last: cp, n: (cur.n||0)+1 }; }
-    p.history.push({ at: Date.now(), chs: Z.chs, mode: Z.mode, score: sc, total: n, pct: P, secs });
-    const ok = new Set(p.ok || []); Z.qs.forEach((q,i) => { if ((Z.answers[i]||{}).pts >= 1) ok.add(q.id); }); p.ok = [...ok];
+    const chap = {}; for (const key in byCh._m){ const v = byCh._m[key]; chap[key] = pct(v.s, v.n); }
+    const ok = Z.qs.filter((q,i) => (Z.answers[i]||{}).pts >= 1).map(q => q.id);
+    saving = store.save(p, { at: Date.now(), chs: Z.chs, mode: Z.mode, score: sc, total: n, pct: P, secs, chap, ok });
   }
-  const saving = Z.retry ? Promise.resolve(null) : store.save(p);
   S.board = null;
   const wrong = Z.qs.map((q,i)=>({q, a: Z.answers[i]})).filter(x => !x.a || x.a.pts < 1);
   const verdict = P>=95 ? "Excelent!" : P>=80 ? "Foarte bine" : P>=60 ? "Bine, mai e puțin" : P>=40 ? "Ai pus bazele" : "Mai citește o dată";
@@ -933,8 +969,8 @@ async function finish(){
   if (wrong.length) $("#retry").onclick = () => startQuiz(shuffle(wrong.map(x => { const o = {...x.q}; const src = QUIZ[o.ch][o.mode][+o.id.slice(String(o.ch).length+1)]; return {...src, ch:o.ch, mode:o.mode, id:o.id}; })));
   $("#home").onclick = () => viewHome();
   const res = await saving;
-  if (res) S.player = res.profile;
-  const note = $("#saveNote"); if (note && res) note.textContent = res.saved ? "" : HOSTED ? "Fără conexiune: rezultatul se trimite la următoarea intrare." : "";
+
+  const note = $("#saveNote"); if (note && res) note.textContent = res.saved ? "" : "Rezultatul nu s-a putut trimite. Se trimite automat la următoarea intrare.";
 }
 function mistakeHTML({q, a}){
   a = a || {pts:0, given:null, skipped:true};
@@ -963,7 +999,6 @@ document.addEventListener("keydown", e => {
   if (!ui.checked && (q.t==="one"||q.t==="multi")){ const i = LETTERS.toLowerCase().indexOf(e.key.toLowerCase()); const b = $(`.opt[data-i="${i}"]`); if (i>=0 && b) b.click(); }
   if (!ui.checked && q.t==="tf"){ if (e.key.toLowerCase()==="a") $('.opt[data-v="1"]').click(); if (e.key.toLowerCase()==="f") $('.opt[data-v="0"]').click(); }
 });
-store.initP = store.init();
 autoLogin();
 </script>
 </body></html>
