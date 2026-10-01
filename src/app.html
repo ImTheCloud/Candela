@@ -417,6 +417,18 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .ak-row .input{padding:11px 14px;font-size:16px}
 .ak-last{color:var(--ink-2);font-weight:500;max-width:9em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .kids-modal .link{justify-self:start;padding:2px 0;font-size:14.5px;color:var(--oil-ink)}
+.adm{display:grid;gap:14px}
+.adm-list{display:grid;gap:2px;background:var(--surface);border-radius:18px;padding:6px;box-shadow:var(--shadow)}
+.adm-row{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:12px;padding:10px;border-radius:12px}
+.adm-row + .adm-row{border-top:1px solid var(--line);border-radius:0}
+.adm-who{display:grid;gap:1px;min-width:0}
+.adm-who b{font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.adm-who em{font-style:normal;font-size:11px;font-weight:700;text-transform:uppercase;background:var(--oil);color:#fff;padding:1px 6px;border-radius:999px;vertical-align:2px}
+.adm-who small{color:var(--ink-2);font-size:12.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.adm-a{display:flex;gap:14px}
+.adm-a .link{padding:0;font-size:13.5px}
+.adm-a .danger{color:var(--bad)}
+.temp-pw{font-family:var(--f-mono);font-size:26px;letter-spacing:.12em;background:var(--bg);border-radius:14px;padding:14px;margin:6px 0}
 .del-link{color:var(--bad);justify-self:center;font-size:14px}
 .forgot{justify-self:end;margin-top:-8px;font-size:14px}
 @media (max-width:420px){.brow-l{gap:8px;padding:7px 8px}}
@@ -792,13 +804,13 @@ function openProfile(){
       ${!p.child && store.isParent ? `<div class="pf-card" id="pfKids"></div>` : ""}
 
       <div class="prof-btns">${p.child ? `<button class="btn btn-primary btn-block" data-back>Înapoi la profilul meu</button>` : `<button class="btn ${store.hasEmail() ? "btn-ghost" : "btn-primary"} btn-block" id="pfEdit">${store.hasEmail() ? "Modifică profilul" : "Adaugă emailul"}</button>`}
-      ${S.admin && !p.child ? `<button class="btn btn-ghost btn-block" id="pfAdm">Parolă provizorie pentru un cont</button>` : ""}
+      ${S.admin && !p.child ? `<button class="btn btn-ghost btn-block" id="pfAdm">Administrare</button>` : ""}
       <button class="btn btn-danger btn-block" id="pfOut">Ieși din cont</button></div>`;
     sheet.querySelector("#pfX").onclick = close;
     if (!p.child) sheet.querySelector("#pfEdit").onclick = edit;
     else sheet.querySelector("[data-back]").onclick = () => { close(); switchPlayer(store.uid); };
     sheet.querySelector("#pfOut").onclick = () => { close(); logout(); };
-    if (S.admin && !p.child) sheet.querySelector("#pfAdm").onclick = adminReset;
+    if (S.admin && !p.child) sheet.querySelector("#pfAdm").onclick = () => { close(); viewAdmin(); };
     sheet.querySelector("#pfHide").onchange = async e => {
       const on = !e.target.checked, r = await store.rpc("set_hidden", {p_player: store.pid, p_on: on});
       if (!r.ok){ e.target.checked = on; return toast("Nu s-a putut salva. Încearcă din nou."); }
@@ -826,20 +838,6 @@ function openProfile(){
       if (msg != null && sheet.querySelector("#pfSave")){ btn.disabled = false; btn.textContent = label; err.textContent = msg; }
     });
   };
-  const adminReset = () => form("Parolă provizorie", `<p class="pf-note">Pentru cine a uitat parola. Scrie emailul contului sau „Prenume Nume”, apoi dă-i parola primită. O poate schimba din profil.</p>
-    <div class="field"><label for="pfWho">Contul</label><input class="input" id="pfWho" autocomplete="off" autocapitalize="none" spellcheck="false"></div>`, "Generează", async f => {
-    const who = f.querySelector("#pfWho").value.trim(); if (!who) return "Scrie emailul sau numele.";
-    const token = await store.token(); if (!token) return "Intră din nou în cont și încearcă iar.";
-    const r = await store.call("admin-reset", {who}, token);
-    if (!r.ok) return ({ not_found: "Nu există niciun cont cu acest email sau nume.", forbidden: "Doar administratorul poate face asta." })[r.error] || loginError(r);
-    sheet.innerHTML = `${X}<h3>Parolă provizorie</h3><p class="pf-note" style="text-align:center">Parola nouă pentru <b style="color:var(--ink)">${esc(r.name)}</b>:</p>
-      <p style="font-family:var(--f-mono);font-size:26px;letter-spacing:.12em;text-align:center;background:var(--bg);border-radius:14px;padding:14px">${esc(r.password)}</p>
-      <div class="prof-btns"><button class="btn btn-ghost btn-block" id="pfCopy">Copiază</button><button class="btn btn-primary btn-block" id="pfDone">Gata</button></div>`;
-    sheet.querySelector("#pfX").onclick = close;
-    sheet.querySelector("#pfDone").onclick = show;
-    sheet.querySelector("#pfCopy").onclick = async () => { try { await navigator.clipboard.writeText(r.password); toast("Parola a fost copiată."); } catch { toast(r.password, 5000); } };
-    return null;
-  });
   const drawKids = (box, adding) => {
     const kids = (store.family || []).filter(x => x.child), ln = p.name.trim().split(" ").slice(1).join(" ");
     box.innerHTML = `<div class="pf-row"><span style="color:var(--ink);font-weight:600;font-size:15px">Copiii mei</span></div>
@@ -1478,6 +1476,60 @@ function forgotPassword(){
   const close = () => bg.remove();
   bg.querySelector("#fpOk").onclick = close; bg.onclick = e => { if (e.target === bg) close(); };
   bg.querySelector("#fpOk").focus();
+}
+
+/* ---------- admin page: every account, with a temporary password or deletion ---------- */
+async function viewAdmin(){
+  let users = null, q = "";
+  mount(`<section class="adm">
+    <div class="reader-h"><button class="icon-btn" id="aBack" type="button" aria-label="Înapoi"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3L5 8l5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div><span class="eyebrow" id="aCount">Conturi</span><h2>Administrare</h2></div></div>
+    <input class="input" id="aQ" type="search" placeholder="Caută după nume sau email" aria-label="Caută" autocomplete="off" spellcheck="false">
+    <div class="adm-list" id="aList"><div class="empty">Se încarcă…</div></div>
+  </section>`);
+  $("#aBack").onclick = () => viewHome();
+  const call = async body => { const token = await store.token(); return token ? store.call("admin", body, token) : {ok:false, error:"auth"}; };
+  const draw = () => {
+    const el = $("#aList"); if (!el || !users) return;
+    const f = fold(q), list = users.filter(u => !f || fold(u.name + " " + u.email + " " + u.parent).includes(f));
+    $("#aCount").textContent = `${users.length} ${users.length === 1 ? "cont" : "conturi"}`;
+    el.innerHTML = list.length ? list.map(u => `<div class="adm-row">
+      <span class="avatar sm">${esc(initials(u.name))}</span>
+      <div class="adm-who"><b>${esc(u.name)}${u.me ? " <em>tu</em>" : ""}</b><small>${u.email ? esc(u.email) : u.parent ? `copil · ${esc(u.parent)}` : "fără email"}</small>
+        <small>${u.tests} ${u.tests === 1 ? "test" : "teste"} · din ${new Date(u.created).toLocaleDateString("ro-RO", {day:"numeric", month:"short", year:"numeric"})}</small></div>
+      <div class="adm-a">${u.parent || u.me ? "" : `<button class="link" type="button" data-apw="${u.id}">Parolă</button>`}${u.me ? "" : `<button class="link danger" type="button" data-adel="${u.id}">Șterge</button>`}</div></div>`).join("")
+      : `<div class="empty">Niciun cont găsit.</div>`;
+    el.querySelectorAll("[data-adel]").forEach(b => b.onclick = () => {
+      const u = users.find(x => x.id === b.dataset.adel), kids = users.filter(x => x.parent === u.name).length;
+      confirmBox(`Ștergi contul lui ${u.name}?`, `Rezultatele și locul din clasament se șterg definitiv${kids ? `, împreună cu ${kids === 1 ? "profilul copilului" : `cele ${kids} profiluri de copii`}` : ""}.`, "Șterge", async () => {
+        const r = await call({action: "delete", id: u.id});
+        if (!r.ok) return toast("Nu s-a putut șterge. Încearcă din nou.");
+        users = users.filter(x => x.id !== u.id && x.parent !== u.name); S.board = null; draw(); toast("Contul a fost șters.");
+      });
+    });
+    el.querySelectorAll("[data-apw]").forEach(b => b.onclick = () => {
+      const u = users.find(x => x.id === b.dataset.apw);
+      confirmBox(`Parolă nouă pentru ${u.name}?`, "Parola veche nu va mai merge. Îi dai parola nouă, iar el o poate schimba din profil.", "Generează", async () => {
+        const token = await store.token(), r = token ? await store.call("admin-reset", {who: u.email || u.name}, token) : {ok:false};
+        if (!r.ok) return toast("Nu s-a putut genera parola.");
+        showTempPassword(r.name, r.password);
+      });
+    });
+  };
+  $("#aQ").oninput = e => { q = e.target.value; draw(); };
+  const r = await call({action: "list"});
+  if (!$("#aList")) return;
+  if (!r.ok){ $("#aList").innerHTML = `<div class="empty">${r.error === "forbidden" ? "Doar administratorul are acces aici." : "Lista nu s-a putut încărca."}</div>`; return; }
+  users = r.users; draw();
+}
+function showTempPassword(name, pw){
+  const bg = document.createElement("div"); bg.className = "modal-bg";
+  bg.innerHTML = `<div class="modal" role="dialog" aria-modal="true"><h3>Parolă provizorie</h3><p class="muted">Parola nouă pentru <b style="color:var(--ink)">${esc(name)}</b>:</p>
+    <p class="temp-pw">${esc(pw)}</p>
+    <div class="modal-btns"><button class="btn btn-ghost" id="tpCopy" type="button">Copiază</button><button class="btn btn-primary" id="tpOk" type="button">Gata</button></div></div>`;
+  document.body.appendChild(bg);
+  bg.querySelector("#tpOk").onclick = () => bg.remove();
+  bg.querySelector("#tpCopy").onclick = async () => { try { await navigator.clipboard.writeText(pw); toast("Parola a fost copiată."); } catch { toast(pw, 5000); } };
 }
 
 /* ---------- family: a parent and its children on one phone ---------- */
