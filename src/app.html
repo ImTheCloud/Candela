@@ -159,12 +159,10 @@ p{margin:0}
 .tile{position:relative;aspect-ratio:1;max-width:100%;border:1.5px solid var(--line);background:var(--surface);border-radius:14px;display:grid;place-items:center;padding:0;transition:transform .15s, border-color .2s, background .2s}
 .tile:active{transform:scale(.94)}
 .tile svg{position:absolute;inset:5px;width:calc(100% - 10px);height:calc(100% - 10px)}
-.tile .lv{position:absolute;left:0;right:0;bottom:4px;display:flex;justify-content:center;gap:3px}
-.lv-e,.lv-h{display:inline-grid;place-items:center;min-width:15px;height:14px;padding:0 3px;border-radius:4px;font-style:normal;font-size:9.5px;font-weight:800;line-height:1;color:#fff;font-family:var(--f-body)}
-.lv-e{background:var(--cedar)}.lv-h{background:var(--oil)}
-.tile.has-lv .n{transform:translateY(-6px)}
+.tile .done-mark{position:absolute;bottom:4px;right:4px;width:17px;height:17px;border-radius:50%;background:var(--cedar);color:#fff;display:grid;place-items:center}
+.done-mark svg{position:static;width:11px;height:11px;margin:0}
 .grid-note{display:flex;align-items:center;justify-content:center;gap:6px;margin:-2px 0 0;font-size:13px;color:var(--ink-2)}
-.grid-note .lv-h{margin-left:10px}
+.grid-note .done-mark{width:17px;height:17px;border-radius:50%;background:var(--cedar);color:#fff;display:inline-grid;place-items:center;flex:none}
 .tile .n{font-family:var(--f-display);font-size:22px;line-height:1;position:relative}
 .tile[aria-pressed="true"]{background:var(--oil-soft);border-color:var(--oil);color:var(--oil-ink);box-shadow:0 0 0 3px color-mix(in oklab,var(--oil) 18%,transparent)}
 .tile[aria-pressed="true"] .trk{stroke:color-mix(in oklab,var(--oil) 20%,transparent)}
@@ -376,7 +374,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 }
 @media (max-width:600px){
   .grid{grid-template-columns:repeat(5,1fr);gap:6px}
-  .grid .tile{aspect-ratio:5/4;border-radius:12px}
+  .grid .tile{aspect-ratio:4/3;border-radius:12px}
   .grid .tile .n{font-size:19px}
   .h-config .startbar{margin-top:8px}
   .h-board .section-h,.h-hist .section-h{margin-top:12px}
@@ -455,6 +453,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 @media (max-width:350px){.read-btn{padding:8px}.read-btn span{display:none}}
 @media (max-width:420px){.top-r:has(.acct) .read-btn{padding:8px}.top-r:has(.acct) .read-btn span{display:none}.who.acct{padding:8px 14px}.who.acct .avatar{display:none}}
 @media (max-width:340px){.who.acct .long{display:none}}
+@media (max-width:360px){.grid .tile{aspect-ratio:1}.tile .done-mark{width:15px;height:15px;bottom:3px;right:3px}}
 .sh-lvl{display:grid;gap:6px}
 .start-sheet{gap:12px}
 .sh-tools{display:flex;align-items:center;gap:8px;flex:none}
@@ -1081,7 +1080,7 @@ function viewHome(){
   <aside class="h-config">
     <div class="panel">
       <div class="section-h first"><h3>Ce capitol vrei să exersezi?</h3><span class="muted pick-note">Poți alege mai multe</span></div>
-      <div class="grid" id="grid">${Array.from({length:31},(_,i)=>i+1).map(c=>`<button class="tile${chapTried(c) ? " has-lv" : ""}" data-c="${c}" aria-pressed="false" title="${c}. ${esc(TITLES[c-1])}" aria-label="Capitolul ${c}: ${esc(TITLES[c-1])}${lvTried(c,"easy") ? ", ușor făcut" : ""}${lvTried(c,"hard") ? ", greu făcut" : ""}"><span class="n">${c}</span>${chapTried(c) ? `<span class="lv" aria-hidden="true">${lvTried(c,"easy") ? `<i class="lv-e">U</i>` : ""}${lvTried(c,"hard") ? `<i class="lv-h">G</i>` : ""}</span>` : ""}</button>`).join("")}</div>${Array.from({length:31},(_,i)=>i+1).some(chapTried) ? `\n      <p class="grid-note"><i class="lv-e" aria-hidden="true">U</i> ușor făcut <i class="lv-h" aria-hidden="true">G</i> greu făcut</p>` : ""}
+      <div class="grid" id="grid">${Array.from({length:31},(_,i)=>i+1).map(c=>`<button class="tile" data-c="${c}" aria-pressed="false" title="${c}. ${esc(TITLES[c-1])}" aria-label="Capitolul ${c}: ${esc(TITLES[c-1])}${lvTried(c,"easy") ? ", ușor făcut" : ""}${lvTried(c,"hard") ? ", greu făcut" : ""}"><span class="n">${c}</span>${chapTried(c) ? `<i class="done-mark" aria-hidden="true">${CHECK}</i>` : ""}</button>`).join("")}</div>${Array.from({length:31},(_,i)=>i+1).some(chapTried) ? `\n      <p class="grid-note"><i class="done-mark" aria-hidden="true">${CHECK}</i> capitol făcut deja</p>` : ""}
 
       <div class="startbar"><button class="btn btn-primary btn-block" id="start"></button></div>
     </div>
@@ -1188,7 +1187,8 @@ const BACK_BTN = id => `<button class="icon-btn" id="${id}" type="button" aria-l
 const CHEV = `<svg class="chev" width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 const CHECK = `<svg class="done-ic" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 // a level is done when every chosen chapter already had 100% at it
-const levelDone = (chs, m) => chs.every(c => (m === "both" ? ["easy","hard"] : [m]).every(k => chapStat(c, k) === 100));
+const levelDone = (chs, m) => chs.every(c => (m === "both" ? ["easy","hard"] : [m]).every(k => chapStat(c, k) != null));
+const levelBest = (c, m) => m === "both" ? null : chapStat(c, m);
 const whatLabel = chs => chs.length === 1 ? `${chs[0]}. ${TITLES[chs[0]-1]}` : chs.length === 31 ? "Toată cartea" : chaptersLabel(chs);
 function openOptions(chs = [...S.sel].sort((a,b)=>a-b)){
   // how many questions: a quarter, half or all of the level, shown as numbers
@@ -1211,7 +1211,8 @@ function openOptions(chs = [...S.sel].sort((a,b)=>a-b)){
     bg.querySelectorAll("[data-m]").forEach(b => b.setAttribute("aria-pressed", b.dataset.m === mode));
     const done = levelDone(chs, mode);
     const note = bg.querySelector("#shNote"); note.classList.toggle("ok", done);
-    note.innerHTML = done ? `${CHECK} Făcut deja, cu 100%. Îl poți reface.` : esc(MODE_NOTE[mode]);
+    const best = chs.length === 1 ? levelBest(chs[0], mode) : null;
+    note.innerHTML = done ? `${CHECK} Făcut deja${best != null ? `, cel mai bun rezultat: ${best}%` : ""}. Îl poți reface.` : esc(MODE_NOTE[mode]);
     set();
   };
   const close = () => bg.remove();
