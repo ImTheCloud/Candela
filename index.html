@@ -379,8 +379,8 @@ const store = {
     if (!HOSTED) try { if (window.claude && claude.use) this.db = await claude.use("db"); } catch { this.db = null; }
     this.ready = true;
   },
-  blank(name){ return { name, history: [], chap: {}, updatedAt: 0 }; },
-  norm(p, name){ p = p ? JSON.parse(JSON.stringify(p)) : this.blank(name); p.name = p.name || name; p.history = p.history || []; p.chap = p.chap || {}; return p; },
+  blank(name){ return { name, history: [], chap: {}, ok: [], updatedAt: 0 }; },
+  norm(p, name){ p = p ? JSON.parse(JSON.stringify(p)) : this.blank(name); p.name = p.name || name; p.history = p.history || []; p.chap = p.chap || {}; p.ok = p.ok || []; return p; },
   local(name){ return lsGet("candela:p:" + slugOf(name), null); },
   /* returns {ok, profile} or {ok:false, error, retryAt} */
   async login(name, pin){
@@ -403,7 +403,7 @@ const store = {
     return {ok:true, profile:this.norm(p, name)};
   },
   async push(p, extra){
-    const profile = extra ? {history:[...p.history, ...(extra.history||[])], chap:{...(extra.chap||{}), ...p.chap}} : p;
+    const profile = extra ? {history:[...p.history, ...(extra.history||[])], chap:{...(extra.chap||{}), ...p.chap}, ok:[...new Set([...(p.ok||[]), ...(extra.ok||[])])]} : p;
     try {
       const r = await api("/api/save", {name:this.session.name, pin:this.session.pin, profile});
       if (r.ok) return this.norm(r.data.profile, p.name);
@@ -562,7 +562,7 @@ function openProfile(){
     <div class="kv">
       <div class="stat"><b>${tests}</b><small>teste</small></div>
       <div class="stat"><b>${tests ? avg+"%" : "–"}</b><small>media</small></div>
-      <div class="stat"><b>${mastery(p)}%</b><small>din carte</small></div>
+      <div class="stat"><b>${String(mastery(p)).replace(".",",")}%</b><small>din carte</small></div>
     </div>
     <button class="btn btn-ghost btn-block" id="pfOut">Ieși din cont</button>
   </div>`;
@@ -573,7 +573,7 @@ function openProfile(){
   bg.querySelector("#pfOut").onclick = () => { close(); S.player = null; store.logout(); viewEntry(); };
 }
 document.addEventListener("click", e => { if (e.target.closest && e.target.closest("#who")) openProfile(); });
-function mastery(p){ return Math.round(Object.values(p.chap||{}).reduce((s,v)=>s+(v.best||0),0) / 62); }
+function mastery(p){ return Math.round((p.ok||[]).length / totalCount("both") * 1000) / 10; }
 
 function viewHome(){
   const p = S.player, h = p.history;
@@ -588,7 +588,7 @@ function viewHome(){
     <div class="stats">
       <div class="stat"><b>${tests}</b><small>teste făcute</small></div>
       <div class="stat"><b>${tests?avg+"%":"–"}</b><small>media</small></div>
-      <div class="stat"><b>${mastery(p)}%</b><small>din carte stăpânită</small></div>
+      <div class="stat"><b>${String(mastery(p)).replace(".",",")}%</b><small>din carte stăpânită</small></div>
     </div>
   </section>
 
@@ -672,8 +672,8 @@ function renderBoard(list){
   const row = (x, i) => `<div class="brow-l ${slugOf(x.name)===me?"me":""}">
     <span class="rank ${i<3?"r"+(i+1):""}">${i+1}</span>
     <span class="avatar sm">${esc(x.name.trim()[0].toUpperCase())}</span>
-    <div class="who-l"><b>${esc(x.name)}${slugOf(x.name)===me?" <em>(tu)</em>":""}</b><small>${x.tests} ${x.tests===1?"test":"teste"} · ${x.chapters} cap.</small></div>
-    <div class="m"><span>${x.mastery}%</span><div class="bar"><i style="width:${Math.max(x.mastery,2)}%"></i></div></div></div>`;
+    <div class="who-l"><b>${esc(x.name)}${slugOf(x.name)===me?" <em>(tu)</em>":""}</b><small>${x.ok ?? 0} ${x.ok===1?"întrebare":"întrebări"} · ${x.tests} ${x.tests===1?"test":"teste"}</small></div>
+    <div class="m"><span>${String(x.mastery).replace(".",",")}%</span><div class="bar"><i style="width:${Math.max(x.mastery,2)}%"></i></div></div></div>`;
   el.innerHTML = top.map(row).join("") + (idx >= top.length ? `<div class="gap">···</div>${row(list[idx], idx)}` : "");
   const mine = el.querySelector(".me"); if (mine && el.classList.contains("scroll")) el.scrollTop = Math.max(0, mine.offsetTop - el.clientHeight/2);
 }
@@ -888,6 +888,7 @@ async function finish(){
     for (const key in byCh._m){ const v = byCh._m[key], cp = pct(v.s, v.n), cur = p.chap[key] || {best:0,n:0};
       p.chap[key] = { best: Math.max(cur.best||0, cp), last: cp, n: (cur.n||0)+1 }; }
     p.history.push({ at: Date.now(), chs: Z.chs, mode: Z.mode, score: sc, total: n, pct: P, secs });
+    const ok = new Set(p.ok || []); Z.qs.forEach((q,i) => { if ((Z.answers[i]||{}).pts >= 1) ok.add(q.id); }); p.ok = [...ok];
   }
   const saving = Z.retry ? Promise.resolve(null) : store.save(p);
   S.board = null;

@@ -26,5 +26,7 @@ head = ('<!doctype html><html lang="ro"><head><meta charset="utf-8">'
         f'<meta property="og:description" content="{n_ro} de întrebări din 1 Samuel (Cornilescu), nivel ușor și greu.">'
         '<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}'
         'body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style></head><body>')
+counts = {c: {'e': len(v['easy']), 'h': len(v['hard'])} for c, v in sorted(quiz.items())}
+open(os.path.join(ROOT, 'lib', 'quiz-counts.json'), 'w').write(json.dumps(counts) + '\n')
 open(os.path.join(ROOT, 'index.html'), 'w').write(head + s + '</body></html>')
 print(f'index.html: {len(quiz)} chapters, {n} questions')
