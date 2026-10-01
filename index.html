@@ -985,7 +985,7 @@ function viewQuestion(first){
   const card = document.createElement("article");
   card.className = "qcard enter";
   card.innerHTML = `<div class="qmeta"><span class="qtype">${TYPE_LABEL[q.t]}${Z.mode==="both"?` · ${MODE_LABEL[q.mode]}`:""}</span><span class="ref">${refLabel(q.ref)}</span></div>
-    ${q.t==="fill" ? `${fillHTML(q)}` : `<p class="qtext">${esc(q.q)}</p>${q.t==="multi"?`<p class="qhint">Una, mai multe sau niciuna.</p>`:""}${q.t==="match"?``:""}`}
+    ${q.t==="fill" ? `${fillHTML(q)}` : `<p class="qtext">${esc(q.q.replace(/\s*\(pot fi mai multe[^)]*\)/i, ""))}</p>${q.t==="multi"?`<p class="qhint">Bifează toate răspunsurile corecte. Pot fi mai multe sau niciunul.</p>`:""}${q.t==="match"?`<p class="qhint">Atinge un element din stânga, apoi perechea lui din dreapta.</p>`:""}`}
     <div class="answers" id="ans">${answersHTML(q)}</div><div id="fb"></div>
     <p class="keys">${({tf:"Taste: A adevărat · F fals · Enter verifică", one:"Taste: A, B, C… · Enter verifică", multi:"Taste: A, B, C… · Enter verifică", fill:"Enter trece la căsuța următoare", match:"Enter verifică"})[q.t]}</p>`;
   const slot = $("#qslot");
@@ -1174,7 +1174,7 @@ function mistakeHTML({q, a}){
     yours = skipped ? "—" : q.pairs.map((p,i)=> a.given[i]===i ? null : `${esc(p[0])} → ${a.given[i]!=null ? esc(q.pairs[a.given[i]][1]) : "—"}`).filter(Boolean).join("<br>");
     correct = q.pairs.map(p=>`${esc(p[0])} → ${esc(p[1])}`).join("<br>");
   }
-  const qtext = q.t==="fill" ? esc(q.q).replace(/___/g, "<b>____</b>") : esc(q.q);
+  const qtext = q.t==="fill" ? esc(q.q).replace(/___/g, "<b>____</b>") : esc(q.q.replace(/\s*\(pot fi mai multe[^)]*\)/i, ""));
   return `<article class="mistake"><div class="qmeta"><span class="qtype">${TYPE_LABEL[q.t]}</span><span class="ref">${refLabel(q.ref)}</span></div>
     <p class="q">${qtext}</p>
     <div class="ans"><div><span class="l">Răspunsul tău</span><span class="${skipped?"":"y"}">${yours}</span></div><div><span class="l">Corect</span><span class="c">${correct}</span></div></div>
