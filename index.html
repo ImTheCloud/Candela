@@ -1006,7 +1006,7 @@ function viewHome(){
     <div class="history">${h.length ? h.slice(-6).reverse().map(x=>`
       <div class="hrow"><span class="badge ${x.mode}">${MODE_LABEL[x.mode]}</span><div style="min-width:0"><b style="font-weight:600">${esc(chaptersLabel(x.chs))}</b><small>${dateLabel(x.at)} · ${x.score}/${x.total} puncte</small></div><span class="pct">${x.pct}%</span></div>`).join("")
       : `<div class="empty">Niciun test încă.</div>`}</div>
-    <p class="help-line"><button class="link" id="help" type="button">Cum funcționează?</button><button class="link" id="install" type="button" ${installEvt ? "" : "hidden"}>Instalează aplicația pe telefon</button></p>
+    <p class="help-line"><button class="link" id="help" type="button">Cum funcționează?</button></p>
   </section>
   </div>`);
 
@@ -1043,7 +1043,6 @@ function viewHome(){
   $("#read").onclick = () => viewRead([...S.sel][0]);
   $("#help").onclick = tutorial;
   app.querySelectorAll("[data-play]").forEach(b => b.onclick = () => switchPlayer(b.dataset.play));
-  $("#install").onclick = installApp;
   if ($("#resume")){ $("#resume").onclick = resumeQuiz; $("#resumeX").onclick = () => { dropQuiz(); $(".resume").remove(); }; }
   update();
   if (HOSTED) loadBoard();
@@ -1587,10 +1586,7 @@ function confirmBox(title, text, yes, onYes){
   bg.querySelector("#cYes").onclick = () => { close(); onYes(); };
 }
 
-/* ---------- installable app (works offline once opened) ---------- */
-let installEvt = null;
-addEventListener("beforeinstallprompt", e => { e.preventDefault(); installEvt = e; const b = $("#install"); if (b) b.hidden = false; });
-async function installApp(){ if (!installEvt) return; installEvt.prompt(); try { await installEvt.userChoice; } catch {} installEvt = null; const b = $("#install"); if (b) b.hidden = true; }
+/* ---------- works offline once opened ---------- */
 if ("serviceWorker" in navigator && location.protocol === "https:") addEventListener("load", () => navigator.serviceWorker.register("/sw.js").catch(() => {}));
 
 /* ---------- boot ---------- */
