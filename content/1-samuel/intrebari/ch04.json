@@ -305,6 +305,61 @@
    "ref": "4:10",
    "q": "A doua luptă a fost începută de filisteni.",
    "a": true
+  },
+  {
+   "t": "multi",
+   "ref": "4:2",
+   "q": "Câți oameni din Israel au omorât filistenii în prima luptă?",
+   "opts": [
+    "aproape trei mii de oameni",
+    "aproape patru mii de oameni",
+    "aproape treizeci de mii de oameni",
+    "aproape patru sute de oameni"
+   ],
+   "a": [
+    1
+   ]
+  },
+  {
+   "t": "multi",
+   "ref": "4:3",
+   "q": "Ce a făcut poporul lui Israel după ce a fost bătut prima oară de filisteni?",
+   "opts": [
+    "au bocit",
+    "s-au smerit în sac și cenușă și au postit înaintea Domnului",
+    "s-au întors în tabără",
+    "au fugit fiecare în cortul lui"
+   ],
+   "a": [
+    2
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "4:3",
+   "q": "Cine a zis: „Haidem să luăm de la Silo chivotul legământului Domnului”?",
+   "opts": [
+    "Samuel",
+    "Eli",
+    "Fiii lui Eli",
+    "Bătrânii lui Israel"
+   ],
+   "a": 3
+  },
+  {
+   "t": "multi",
+   "ref": "4:5",
+   "q": "Ce s-a întâmplat când a intrat chivotul legământului Domnului în tabără?",
+   "opts": [
+    "tot Israelul a scos strigăte de bucurie",
+    "s-a cutremurat pământul",
+    "tot Israelul s-a înspăimântat",
+    "filistenii au fugit din tabăra lor"
+   ],
+   "a": [
+    0,
+    1
+   ]
   }
  ],
  "hard": [
@@ -620,6 +675,30 @@
    "a": [
     "cutremurat"
    ]
+  },
+  {
+   "t": "one",
+   "ref": "4:4",
+   "q": "Unde se afla chivotul legământului Domnului când poporul a trimis să fie adus?",
+   "opts": [
+    "la Silo",
+    "între heruvimi",
+    "în tabăra lui Israel",
+    "la Rama, în muntele lui Efraim"
+   ],
+   "a": 0
+  },
+  {
+   "t": "one",
+   "ref": "4:4",
+   "q": "Unde erau fiii lui Eli când poporul a trimis să fie adus chivotul?",
+   "opts": [
+    "în tabăra lui Israel",
+    "lângă altarul pentru jertfe",
+    "la Rama",
+    "împreună cu chivotul legământului lui Dumnezeu"
+   ],
+   "a": 3
   }
  ]
 }
