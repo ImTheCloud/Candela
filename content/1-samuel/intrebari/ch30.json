@@ -234,6 +234,108 @@
     "Preoților din Nob"
    ],
    "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "30:14",
+   "q": "Egipteanul a recunoscut că oastea din care făcea parte arsese Țiclagul.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "30:13",
+   "q": "Ce l-a întrebat David mai întâi pe egiptean?",
+   "opts": [
+    "„Câți sunt amaleciții?”",
+    "„Al cui ești și de unde ești?”",
+    "„Unde este prada?”",
+    "„Cine te-a trimis?”"
+   ],
+   "a": 1
+  },
+  {
+   "t": "one",
+   "ref": "30:15",
+   "q": "Ce i-a cerut David egipteanului?",
+   "opts": [
+    "Să-i spună numele stăpânului său",
+    "Să se întoarcă în Egipt",
+    "Să-l ducă la oastea amaleciților",
+    "Să lupte alături de el"
+   ],
+   "a": 2
+  },
+  {
+   "t": "tf",
+   "ref": "30:2",
+   "q": "Amaleciții luaseră prinși doar pe cei mari, lăsându-i pe cei mici în cetate.",
+   "a": false
+  },
+  {
+   "t": "tf",
+   "ref": "30:22",
+   "q": "Oamenii răi care nu voiau să împartă prada erau dintre cei rămași la pârâul Besor.",
+   "a": false
+  },
+  {
+   "t": "fill",
+   "ref": "30:24",
+   "q": "„Și cine v-ar ___ în privința aceasta? Partea trebuie să fie aceeași”",
+   "a": [
+    "asculta"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "30:31",
+   "q": "Pe lângă cetățile numite, unde a mai trimis David din pradă?",
+   "opts": [
+    "Tuturor cetăților filistenilor",
+    "În toate locurile pe care le străbătuse cu oamenii lui",
+    "Lui Saul, la Ghibea",
+    "Preoților din Nob"
+   ],
+   "a": 1
+  },
+  {
+   "t": "multi",
+   "ref": "30:7-17",
+   "q": "Care dintre următoarele s-au întâmplat ÎNAINTE ca David să-i bată pe amaleciți? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "David L-a întrebat pe Domnul",
+    "Două sute de oameni s-au oprit la pârâul Besor",
+    "Oamenii răi au cerut să nu se dea pradă celor rămași",
+    "David a trimis daruri bătrânilor lui Iuda",
+    "Egipteanul i-a slujit de călăuză"
+   ],
+   "a": [
+    0,
+    1,
+    4
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "30:16",
+   "q": "Când i-a găsit David, amaleciții erau adunați într-o cetate întărită.",
+   "a": false
+  },
+  {
+   "t": "multi",
+   "ref": "30:17-31",
+   "q": "Care dintre următoarele s-au întâmplat DUPĂ biruința asupra amaleciților? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "David i-a întrebat de sănătate pe cei rămași la Besor",
+    "David i-a cerut lui Abiatar efodul",
+    "Hotărârea despre împărțirea prăzii a devenit lege în Israel",
+    "Egipteanul a primit pâine și apă",
+    "David a trimis daruri celor din Hebron"
+   ],
+   "a": [
+    0,
+    2,
+    4
+   ]
   }
  ],
  "hard": [
@@ -582,6 +684,50 @@
    "ref": "30:27",
    "q": "Ramot, căruia David i-a trimis dar, este descris ca fiind „de la miazănoapte”.",
    "a": false
+  },
+  {
+   "t": "one",
+   "ref": "30:10",
+   "q": "Cu câți oameni a urmărit David mai departe pe amaleciți, după pârâul Besor?",
+   "opts": [
+    "Două sute",
+    "Trei sute",
+    "Patru sute",
+    "Șase sute"
+   ],
+   "a": 2
+  },
+  {
+   "t": "one",
+   "ref": "30:13",
+   "q": "De câte zile îl părăsise stăpânul amalecit pe egiptean?",
+   "opts": [
+    "De o zi",
+    "De trei zile",
+    "De șapte zile",
+    "De zece zile"
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "30:28",
+   "q": "Printre cei care au primit din prada lui David erau și cei din Eștemoa.",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "30:20",
+   "q": "Cei ce mânau turma luată de David mergeau în urma ei.",
+   "a": false
+  },
+  {
+   "t": "fill",
+   "ref": "30:6",
+   "q": "„Dar David s-a ___, sprijinindu-se pe Domnul Dumnezeul lui.”",
+   "a": [
+    "îmbărbătat"
+   ]
   }
  ]
 }

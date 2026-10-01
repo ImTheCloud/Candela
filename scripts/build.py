@@ -32,6 +32,6 @@ head = ('<!doctype html><html lang="ro"><head><meta charset="utf-8">'
 # Question counts per chapter must match public.quiz_counts in Supabase (used to validate mastered question ids).
 rows = ','.join(f"({c},{len(v['easy'])},{len(v['hard'])})" for c, v in sorted(quiz.items()))
 open(os.path.join(ROOT, 'supabase', 'quiz_counts.sql'), 'w').write(
-    'truncate public.quiz_counts;\ninsert into public.quiz_counts (ch, e, h) values ' + rows + ';\n')
+    'insert into public.quiz_counts (ch, e, h) values ' + rows + '\n  on conflict (ch) do update set e = excluded.e, h = excluded.h;\n')
 open(os.path.join(ROOT, 'index.html'), 'w').write(head + s + '</body></html>')
 print(f'index.html: {len(quiz)} chapters, {n} questions')

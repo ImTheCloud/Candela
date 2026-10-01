@@ -179,6 +179,143 @@
    "ref": "28:25",
    "q": "Saul a rămas peste noapte în casa femeii.",
    "a": false
+  },
+  {
+   "t": "one",
+   "ref": "28:6-7",
+   "q": "Ce l-a făcut pe Saul să caute o femeie care cheamă morții?",
+   "opts": [
+    "Îi poruncise Samuel înainte să moară",
+    "Domnul nu-i răspunsese când L-a întrebat",
+    "Îl sfătuise Achiș",
+    "Așa îi ceruse Abner"
+   ],
+   "a": 1
+  },
+  {
+   "t": "one",
+   "ref": "28:3-7",
+   "q": "Ce era ciudat în faptul că Saul a căutat o femeie care cheamă morții?",
+   "opts": [
+    "Chiar el îndepărtase din țară pe cei ce chemau morții",
+    "Femeia era filisteancă",
+    "Samuel îi poruncise s-o caute",
+    "Era zi de sărbătoare"
+   ],
+   "a": 0
+  },
+  {
+   "t": "tf",
+   "ref": "28:12-13",
+   "q": "După ce femeia a țipat că el este Saul, împăratul s-a mâniat și a amenințat-o.",
+   "a": false
+  },
+  {
+   "t": "fill",
+   "ref": "28:16",
+   "q": "„Pentru ce mă ___ pe mine, când Domnul S-a depărtat de tine”",
+   "a": [
+    "întrebi"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "28:17",
+   "q": "Samuel i-a spus lui Saul că i se întâmplă ce îi vestise el mai dinainte din partea Domnului.",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "28:21-22",
+   "q": "Femeia i-a cerut lui Saul să-i asculte și el glasul, așa cum îl ascultase și ea pe al lui.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "28:22",
+   "q": "De ce voia femeia ca Saul să mănânce?",
+   "opts": [
+    "Ca să-i plătească pentru chemarea mortului",
+    "Ca să sărbătorească venirea lui Samuel",
+    "Ca să prindă putere ca să pornească la drum",
+    "Ca să rămână peste noapte la ea"
+   ],
+   "a": 2
+  },
+  {
+   "t": "tf",
+   "ref": "28:25",
+   "q": "Femeia a pus mâncarea doar înaintea lui Saul, iar slujitorii lui au rămas flămânzi.",
+   "a": false
+  },
+  {
+   "t": "tf",
+   "ref": "28:3",
+   "q": "Înainte de întâmplarea de la En-Dor, Samuel murise și tot Israelul îl plânsese.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "28:21",
+   "q": "Ce a făcut-o pe femeie să vină la Saul după cuvintele lui Samuel?",
+   "opts": [
+    "A văzut că era foarte înspăimântat",
+    "A strigat-o Samuel",
+    "A chemat-o Saul",
+    "S-a temut de slujitorii lui"
+   ],
+   "a": 0
+  },
+  {
+   "t": "multi",
+   "ref": "28:15",
+   "q": "Ce a recunoscut Saul însuși înaintea lui Samuel? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Că filistenii îi fac război",
+    "Că Dumnezeu S-a depărtat de la el",
+    "Că a cruțat pe Amalec",
+    "Că a omorât preoții din Nob",
+    "Că l-a urmărit pe David pe nedrept"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "t": "multi",
+   "ref": "28:4-25",
+   "q": "Care dintre următoarele s-au întâmplat ÎNAINTE ca Saul să meargă la femeia din En-Dor? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Saul L-a întrebat pe Domnul și n-a primit răspuns",
+    "Filistenii au tăbărât la Sunem",
+    "Saul a căzut la pământ plin de groază",
+    "Saul a mâncat azimi",
+    "Saul a luat alte haine"
+   ],
+   "a": [
+    0,
+    1,
+    4
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "28:1",
+   "q": "Împotriva cui urma David să meargă la oștire alături de Achiș?",
+   "opts": [
+    "Împotriva amaleciților",
+    "Împotriva lui Israel",
+    "Împotriva Egiptului",
+    "Împotriva Moabului"
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "28:10-11",
+   "q": "Femeia l-a întrebat pe Saul pe cine să-l scoale abia după ce el i-a jurat pe Domnul că nu i se va întâmpla niciun rău.",
+   "a": true
   }
  ],
  "hard": [
@@ -459,6 +596,54 @@
    "ref": "28:24",
    "q": "Femeia a copt pâine dospită pentru Saul.",
    "a": false
+  },
+  {
+   "t": "tf",
+   "ref": "28:1",
+   "q": "Achiș i-a cerut lui David să vină la oștire singur, fără oamenii lui.",
+   "a": false
+  },
+  {
+   "t": "tf",
+   "ref": "28:8-11",
+   "q": "La prima lui cerere către femeie, Saul a spus de la început numele lui Samuel.",
+   "a": false
+  },
+  {
+   "t": "fill",
+   "ref": "28:20",
+   "q": "„Îndată, Saul a căzut la pământ cât era de ___”",
+   "a": [
+    "lung"
+   ]
+  },
+  {
+   "t": "multi",
+   "ref": "28:13-14",
+   "q": "Ce întrebări i-a pus Saul femeii după ce ea a țipat? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "„Câți sunt?”",
+    "„Dar ce vezi?”",
+    "„De unde vine?”",
+    "„Cum e la chip?”",
+    "„Ce spune?”"
+   ],
+   "a": [
+    1,
+    3
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "28:9",
+   "q": "Cui i-a povestit femeia ce făcuse Saul cu cei ce cheamă morții?",
+   "opts": [
+    "Slujitorilor ei",
+    "Chiar lui Saul, fără să știe cine este",
+    "Lui Samuel",
+    "Vecinilor din En-Dor"
+   ],
+   "a": 1
   }
  ]
 }

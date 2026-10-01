@@ -228,6 +228,122 @@
    "ref": "26:25",
    "q": "După această întâlnire, David s-a întors să locuiască la curtea lui Saul.",
    "a": false
+  },
+  {
+   "t": "tf",
+   "ref": "26:5",
+   "q": "David s-a dus el însuși la locul unde tăbărâse Saul și a văzut unde era culcat.",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "26:15",
+   "q": "David i-a spus lui Abner că cineva din popor venise să-l omoare pe împărat.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "26:16",
+   "q": "De ce a spus David că Abner și oamenii lui sunt vrednici de moarte?",
+   "opts": [
+    "Pentru că au fugit din luptă",
+    "Pentru că au jefuit poporul",
+    "Pentru că n-au vegheat asupra stăpânului lor, unsul Domnului",
+    "Pentru că l-au trădat pe David"
+   ],
+   "a": 2
+  },
+  {
+   "t": "match",
+   "ref": "26:19",
+   "q": "Asociază fiecare situație cu ce a spus David despre ea.",
+   "pairs": [
+    [
+     "Dacă Domnul îl ațâță pe Saul",
+     "să primească mirosul unui dar de mâncare"
+    ],
+    [
+     "Dacă oamenii îl ațâță pe Saul",
+     "blestemați să fie înaintea Domnului"
+    ],
+    [
+     "Cei ce-l izgonesc pe David",
+     "vor să-l dezlipească de moștenirea Domnului"
+    ]
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "26:20",
+   "q": "Ce a cerut David să nu i se întâmple?",
+   "opts": [
+    "Să nu fie dat în mâna filistenilor",
+    "Să nu-i cadă sângele pe pământ departe de Fața Domnului",
+    "Să nu-și piardă nevestele",
+    "Să nu fie prins de Abner"
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "26:8",
+   "q": "Abișai voia să-l lovească pe Saul de mai multe ori, ca să fie sigur că moare.",
+   "a": false
+  },
+  {
+   "t": "tf",
+   "ref": "26:18-19",
+   "q": "Vorbindu-i lui Saul, David s-a numit pe sine „robul” lui.",
+   "a": true
+  },
+  {
+   "t": "multi",
+   "ref": "26:7-25",
+   "q": "Care dintre următoarele s-au întâmplat DUPĂ ce David a ieșit din tabăra lui Saul? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "David a strigat către Abner",
+    "Saul a cunoscut glasul lui David",
+    "Abișai a cerut să-l lovească pe Saul",
+    "David a trimis iscoade",
+    "Saul l-a binecuvântat pe David"
+   ],
+   "a": [
+    0,
+    1,
+    4
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "26:14",
+   "q": "Cui a strigat David după ce s-a depărtat de tabără?",
+   "opts": [
+    "Doar lui Saul",
+    "Zifiților",
+    "Lui Ioab",
+    "Poporului și lui Abner"
+   ],
+   "a": 3
+  },
+  {
+   "t": "one",
+   "ref": "26:3",
+   "q": "Unde se afla David când Saul a tăbărât pe dealul Hachila?",
+   "opts": [
+    "În pustie",
+    "În Ghibea",
+    "La Carmel",
+    "În cetatea Keila"
+   ],
+   "a": 0
+  },
+  {
+   "t": "fill",
+   "ref": "26:16",
+   "q": "„Ce ai făcut tu nu este ___. Viu este Domnul că sunteți vrednici de moarte”",
+   "a": [
+    "bine"
+   ]
   }
  ],
  "hard": [
@@ -528,6 +644,38 @@
    "q": "„și El mă va ___ din orice necaz”",
    "a": [
     "izbăvi"
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "26:17",
+   "q": "„Și David a răspuns: Glasul meu, ___, domnul meu!”",
+   "a": [
+    "împărate"
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "26:13",
+   "q": "„David a trecut de cealaltă ___ și a ajuns departe pe vârful muntelui”",
+   "a": [
+    "parte"
+   ]
+  },
+  {
+   "t": "multi",
+   "ref": "26:6",
+   "q": "Cui i-a pus David întrebarea „Cine vrea să se coboare cu mine în tabără la Saul?” (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Lui Ioab",
+    "Lui Ahimelec, Hetitul",
+    "Lui Abner",
+    "Lui Abișai",
+    "Lui Doeg"
+   ],
+   "a": [
+    1,
+    3
    ]
   }
  ]

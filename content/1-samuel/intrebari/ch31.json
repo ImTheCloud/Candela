@@ -160,6 +160,60 @@
    "ref": "31:13",
    "q": "După îngropare, locuitorii Iabesului au postit.",
    "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "31:12",
+   "q": "Vitejii din Iabes au luat de pe zid numai trupul lui Saul, lăsând acolo trupurile fiilor lui.",
+   "a": false
+  },
+  {
+   "t": "multi",
+   "ref": "31:2-13",
+   "q": "Care dintre următoarele s-au întâmplat DUPĂ moartea lui Saul? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Filistenii i-au tăiat capul",
+    "Arcașii l-au rănit greu",
+    "Locuitorii Iabesului au postit",
+    "Ionatan a fost ucis de filisteni",
+    "Filistenii s-au așezat în cetățile părăsite de israeliți"
+   ],
+   "a": [
+    0,
+    2,
+    4
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "31:4",
+   "q": "Pe cine numea Saul „netăiații împrejur”, de care se temea să nu-și bată joc de el?",
+   "opts": [
+    "Pe amaleciți",
+    "Pe filisteni",
+    "Pe locuitorii Iabesului",
+    "Pe oamenii lui David"
+   ],
+   "a": 1
+  },
+  {
+   "t": "match",
+   "ref": "31:10-13",
+   "q": "Asociază fiecare etapă cu ce s-a întâmplat cu trupul lui Saul.",
+   "pairs": [
+    [
+     "Mai întâi",
+     "a fost atârnat pe zidurile Bet-Șanului"
+    ],
+    [
+     "Apoi",
+     "a fost ars la Iabes"
+    ],
+    [
+     "La urmă",
+     "oasele au fost îngropate sub stejar"
+    ]
+   ]
   }
  ],
  "hard": [
