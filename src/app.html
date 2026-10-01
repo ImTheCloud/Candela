@@ -363,15 +363,9 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
   .qcard{padding:30px 32px}
   .qtext{font-size:22px}
 }
-/* v4: quick test, question of the day, streak, medals, reading, read aloud, text size, groups, tutorial */
+/* v4: quick test, question of the day, streak, reading, read aloud, text size, groups, tutorial */
 .streak{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--oil-ink);background:var(--oil-soft);padding:5px 12px;border-radius:999px;justify-self:start;margin-top:4px}
-.tile .medal{position:absolute;bottom:3px;right:3px;width:13px;height:13px;border-radius:50%;border:2px solid var(--surface)}
-.medal.m1{background:#B87333}.medal.m2{background:#A9A39A}.medal.m3{background:#E0A324}
 .legend{flex-wrap:wrap;row-gap:4px}
-.legend button{background:none;border:0;padding:0;font-size:inherit;color:inherit;text-decoration:underline dotted;text-underline-offset:3px}
-.pf-row .medal{display:inline-block;width:10px;height:10px;border-radius:50%;vertical-align:-1px}
-.legend .medal{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:2px;vertical-align:-1px}
-.legend .medal:last-of-type{margin-right:5px}
 .read-link{display:block;margin:8px auto 0;font-size:14.5px}
 .help-line{text-align:center;margin-top:18px;display:flex;justify-content:center;gap:18px;flex-wrap:wrap}
 .help-line .link{font-size:14px}
@@ -429,6 +423,15 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .adm-a .link{padding:0;font-size:13.5px}
 .adm-a .danger{color:var(--bad)}
 .temp-pw{font-family:var(--f-mono);font-size:26px;letter-spacing:.12em;background:var(--bg);border-radius:14px;padding:14px;margin:6px 0}
+.top-r{display:flex;align-items:center;gap:8px;min-width:0}
+.read-btn{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:transparent;border-radius:999px;padding:7px 14px 7px 11px;font-size:14px;font-weight:600;color:var(--ink);flex:none;transition:background .2s}
+.read-btn:hover{background:var(--surface-2)}
+@media (max-width:420px){.read-btn{padding:7px 11px 7px 9px;font-size:13.5px}.top-r{gap:6px}}
+@media (max-width:350px){.read-btn{padding:8px}.read-btn span{display:none}}
+.r-pick{display:grid;gap:6px;font-size:14px;font-weight:600}
+.r-pick select{font-size:16px;padding:11px 14px;appearance:auto}
+.r-nav{display:flex;justify-content:space-between;gap:10px}
+.r-nav .btn{min-height:44px;padding:10px 16px;font-size:15px}
 .del-link{color:var(--bad);justify-self:center;font-size:14px}
 .forgot{justify-self:end;margin-top:-8px;font-size:14px}
 @media (max-width:420px){.brow-l{gap:8px;padding:7px 8px}}
@@ -754,10 +757,12 @@ function tileSVG(c){
 function headerHTML(){
   const n = S.player.name;
   if (S.player.guest) return `<header class="top"><div class="brand">${lampSVG(30)} Candela</div>
-  <button class="who acct" id="acct" type="button"><b>Intră în cont</b><span class="avatar"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="5.5" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M2.5 14c.8-3 3-4.5 5.5-4.5s4.7 1.5 5.5 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></button></header>`;
+  <div class="top-r">${readBtnHTML()}<button class="who acct" id="acct" type="button"><b>Intră în cont</b><span class="avatar"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="5.5" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M2.5 14c.8-3 3-4.5 5.5-4.5s4.7 1.5 5.5 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></button></div></header>`;
   return `<header class="top"><div class="brand">${lampSVG(30)} Candela</div>
-  ${whoHTML()}</header>`;
+  <div class="top-r">${readBtnHTML()}${whoHTML()}</div></header>`;
 }
+const BOOK = `<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6.5C10 5 7.5 4.5 4 4.5v13c3.5 0 6 .5 8 2 2-1.5 4.5-2 8-2v-13c-3.5 0-6 .5-8 2zM12 6.5v13" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>`;
+function readBtnHTML(){ return `<button class="read-btn" id="readBook" type="button" aria-label="Citește cartea">${BOOK}<span>Citește</span></button>`; }
 function initials(n){ const w = n.trim().split(/\s+/); return ((w[0]||"?")[0] + (w.length > 1 ? w[w.length-1][0] : "")).toUpperCase(); }
 function whoHTML(){ const n = S.player.name; return `<button class="who" id="who" type="button" aria-label="Profilul meu"><b>${esc(n)}</b><span class="avatar">${esc(initials(n))}</span></button>`; }
 function openProfile(){
@@ -797,7 +802,6 @@ function openProfile(){
         <div class="pf-row"><span>Capitole exersate</span><b>${chs} / 31</b></div>
         <div class="pf-row"><span>Timp de studiu</span><b>${tests ? time : "–"}</b></div>
         ${last ? `<div class="pf-row"><span>Ultimul test</span><b>${esc(chaptersLabel(last.chs))} · ${last.pct}%</b></div>` : ""}
-        <div class="pf-row"><span>Medalii</span><b>${medalSummary(p)}</b></div>
         <div class="pf-row"><span>Zile la rând</span><b>${streak(p) || "–"}</b></div>
       </div>
       <label class="remember pf-hide"><input type="checkbox" id="pfHide" ${p.hidden ? "" : "checked"}> ${p.child ? "Apare în clasament" : "Apar în clasament"}</label>
@@ -948,6 +952,7 @@ document.addEventListener("click", e => {
   if (e.target.closest("#who")) openProfile();
   if (e.target.closest("#acct, #gNew")) viewEntry("", e.target.closest("#gNew") ? "new" : undefined);
   if (e.target.closest("#gIn")) viewEntry("", "in");
+  if (e.target.closest("#readBook")) viewRead(lsGet("candela:read", [...S.sel][0] || 1));
 });
 function mastery(p){ return Math.round((p.ok||[]).length / totalCount("both") * 1000) / 10; }
 
@@ -957,7 +962,6 @@ function viewHome(){
   const tests = h.length, avg = tests ? Math.round(h.reduce((s,x)=>s+x.pct,0)/tests) : 0;
   const touched = new Set(Object.keys(p.chap).map(k=>parseInt(k))).size;
   const first = p.name.split(" ")[0];
-  const med = medals(p);
   mount(`${headerHTML()}
   <div class="home">
   <section class="h-intro">
@@ -988,8 +992,8 @@ function viewHome(){
         <button data-scope="one">Un capitol</button><button data-scope="many">Mai multe</button><button data-scope="all">Toată cartea</button>
       </div>
       
-      <div class="grid" id="grid">${Array.from({length:31},(_,i)=>i+1).map(c=>`<button class="tile" data-c="${c}" aria-pressed="false" title="${c}. ${esc(TITLES[c-1])}" aria-label="Capitolul ${c}: ${esc(TITLES[c-1])}${med[c] ? `, medalie de ${MEDAL[med[c]]}` : ""}">${tileSVG(c)}<span class="n">${c}</span><i class="check" aria-hidden="true"></i>${med[c] ? `<i class="medal m${med[c]}" aria-hidden="true"></i>` : ""}</button>`).join("")}</div>
-      <div class="legend"><span><i style="background:var(--cedar)"></i>scor maxim ușor</span><span><i style="background:var(--oil)"></i>scor maxim greu</span><button type="button" id="medalHelp"><i class="medal m1"></i><i class="medal m2"></i><i class="medal m3"></i>medalii</button></div>
+      <div class="grid" id="grid">${Array.from({length:31},(_,i)=>i+1).map(c=>`<button class="tile" data-c="${c}" aria-pressed="false" title="${c}. ${esc(TITLES[c-1])}" aria-label="Capitolul ${c}: ${esc(TITLES[c-1])}">${tileSVG(c)}<span class="n">${c}</span><i class="check" aria-hidden="true"></i></button>`).join("")}</div>
+      <div class="legend"><span><i style="background:var(--cedar)"></i>scor maxim ușor</span><span><i style="background:var(--oil)"></i>scor maxim greu</span></div>
 
       <div class="startbar"><button class="btn btn-primary btn-block" id="start"></button><button class="link read-link" id="read" type="button" hidden></button></div>
     </div>
@@ -1040,7 +1044,6 @@ function viewHome(){
   $("#help").onclick = tutorial;
   app.querySelectorAll("[data-play]").forEach(b => b.onclick = () => switchPlayer(b.dataset.play));
   $("#install").onclick = installApp;
-  $("#medalHelp").onclick = () => toast("Bronz: jumătate din întrebările ușoare ale capitolului știute. Argint: aproape toate cele ușoare. Aur: și trei sferturi din cele grele.", 7000);
   if ($("#resume")){ $("#resume").onclick = resumeQuiz; $("#resumeX").onclick = () => { dropQuiz(); $(".resume").remove(); }; }
   update();
   if (HOSTED) loadBoard();
@@ -1394,7 +1397,7 @@ function mistakeHTML({q, a}){
     <div class="verse">${verseHTML(q.ref)}</div></article>`;
 }
 
-/* ---------- motivation: streak, medals ---------- */
+/* ---------- motivation: streak ---------- */
 const dayKey = (t = Date.now()) => { const d = new Date(t); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`; };
 function streak(p){   // days in a row with at least one test, ending today or yesterday
   const days = new Set(p.history.map(x => dayKey(x.at)));
@@ -1408,32 +1411,23 @@ function streakHTML(p){
   const today = p.history.some(x => dayKey(x.at) === dayKey());
   return `<span class="streak">${n === 1 ? "1 zi de studiu" : `${n} zile la rând`}${today ? "" : " · fă un test azi ca să continui"}</span>`;
 }
-const MEDAL = ["", "bronz", "argint", "aur"];
-/* per chapter: bronze = half of the easy questions known, silver = 90% of the easy ones, gold = also 75% of the hard ones */
-function medals(p){
-  const e = {}, h = {};
-  for (const id of p.ok || []){ const m = /^(\d+)([eh])/.exec(id); if (m) (m[2]==="e" ? e : h)[m[1]] = ((m[2]==="e" ? e : h)[m[1]] || 0) + 1; }
-  const out = [0];
-  for (let c = 1; c <= 31; c++){
-    const E = (e[c]||0) / QUIZ[c].easy.length, H = (h[c]||0) / QUIZ[c].hard.length;
-    out[c] = E >= .9 && H >= .75 ? 3 : E >= .9 ? 2 : E >= .5 ? 1 : 0;
-  }
-  return out;
-}
-function medalSummary(p){
-  const m = medals(p), n = k => m.filter(x => x === k).length;
-  return n(1) + n(2) + n(3) ? [3,2,1].filter(k => n(k)).map(k => `<i class="medal m${k}" title="${MEDAL[k]}"></i> ${n(k)}`).join("&nbsp;&nbsp;") : "–";
-}
 /* ---------- reading a chapter before the test ---------- */
+/* the whole book can be read, one chapter at a time; the last chapter read is remembered */
 function viewRead(c){
+  c = Math.min(31, Math.max(1, +c || 1)); lsSet("candela:read", c);
   const vs = TEXT[c] || [];
   mount(`<section class="reader">
     <div class="reader-h"><button class="icon-btn" id="rBack" type="button" aria-label="Înapoi"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3L5 8l5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       <div><span class="eyebrow">1 Samuel ${c}</span><h2>${esc(TITLES[c-1])}</h2></div></div>
+    <label class="r-pick"><span>Capitolul</span><select class="input" id="rPick">${TITLES.map((t, i) => `<option value="${i+1}" ${i+1 === c ? "selected" : ""}>${i+1}. ${esc(t)}</option>`).join("")}</select></label>
     <div class="reader-text">${vs.map((v, i) => `<p data-v="${i+1}"><sup>${i+1}</sup>${esc(v)}</p>`).join("")}</div>
+    <div class="r-nav">${c > 1 ? `<button class="btn btn-ghost" id="rPrev" type="button">← Capitolul ${c-1}</button>` : "<span></span>"}${c < 31 ? `<button class="btn btn-ghost" id="rNext" type="button">Capitolul ${c+1} →</button>` : ""}</div>
     <div class="startbar"><button class="btn btn-primary btn-block" id="rGo" type="button">Am citit · Începe testul</button></div>
   </section>`);
   $("#rBack").onclick = () => viewHome();
+  $("#rPick").onchange = e => viewRead(+e.target.value);
+  if ($("#rPrev")) $("#rPrev").onclick = () => viewRead(c - 1);
+  if ($("#rNext")) $("#rNext").onclick = () => viewRead(c + 1);
   $("#rGo").onclick = () => { S.scope = "one"; S.sel = new Set([c]); persistPrefs(); startQuiz(); };
 }
 

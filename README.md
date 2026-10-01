@@ -16,7 +16,7 @@ Teste biblice pentru pregătire, după traducerea Cornilescu. Prima carte: **1 S
 - Cont de părinte (bifat la înregistrare sau din „Modifică profilul”): părintele își adaugă copiii (`functions/family/`), iar pe acasă alege „Cine exersează?”. Un copil e un cont fără email și fără parolă cunoscută; rezultatele lui se salvează cu `save_play(p_player, …)`, verificat de `can_play()`.
 - Oricine poate alege din profil să nu apară în clasament (`profiles.hidden`, `set_hidden`).
 - Grupuri: pregătite doar în baza de date (funcțiile de mai sus), fără interfață deocamdată; toți sunt în același clasament.
-- Pe acasă: seria de zile, medalii pe capitol (bronz, argint, aur), citirea capitolului înainte de test, tutorial la prima vizită. Fără emoji: aplicația rămâne sobră.
+- Pe acasă: seria de zile, citirea întregii cărți (butonul „Citește” din antet, capitol cu capitol) și a capitolului înainte de test, tutorial la prima vizită. Fără emoji: aplicația rămâne sobră.
 - Parola uitată: aplicația nu trimite emailuri. Administratorul (tabelul `admins`) are pagina „Administrare” din profil: lista conturilor, parolă provizorie (`functions/admin-reset/`) și ștergere (`functions/admin/`), iar jucătorul o schimbă din „Modifică profilul”. Tot acolo se poate șterge contul (`functions/delete-account/`, cere parola din nou; rezultatele se șterg în cascadă).
 - `index.html`, `sw.js` — fișierele generate care se publică; `manifest.webmanifest` și `icons/` fac aplicația instalabilă, iar `sw.js` o deschide și fără internet.
 
