@@ -331,6 +331,8 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 @keyframes bootbar{from{transform:translateX(-100%)}to{transform:translateX(250%)}}
 .boot .flame{animation:flicker 1.2s ease-in-out infinite}
 .section-h.first{margin-top:0}
+.h-config .section-h.first{flex-direction:column;align-items:flex-start;gap:2px}
+.h-config .section-h.first h3{white-space:nowrap}
 .small{font-size:13px}
 .toggle.col{display:grid;gap:10px;justify-content:stretch}
 .home{display:grid;gap:8px;grid-template-areas:"intro" "config" "board" "hist"}
@@ -459,6 +461,9 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .sh-tools{display:flex;align-items:center;gap:8px;flex:none}
 .start-sheet .sheet-h{gap:10px}
 .start-sheet .sheet-h h3{min-width:0}
+.sh-title{display:grid;gap:2px;min-width:0}
+.sh-title h3{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sh-sub{margin:-8px 0 0;font-size:14px;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .read-btn.sm{padding:6px 12px 6px 9px;font-size:13.5px;color:var(--ink-2)}
 .read-btn.sm svg{width:16px;height:16px}
 .read-btn.sm span{display:inline!important}
@@ -468,8 +473,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .start-sheet .read-link{margin:0 auto}
 .start-sheet #shGo{min-height:54px;padding-block:8px}
 .sh-l{font-size:14px;font-weight:600}
-.sh-q{margin:0;line-height:1.35;min-height:2.7em}
-.sh-note{font-size:13px;color:var(--ink-2)}
+.sh-note{font-size:13px;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-height:1.4em;text-align:center}
 .sh-note.ok{color:var(--cedar);font-weight:600}
 .seg .done-ic{margin-left:5px;vertical-align:-1px}
 .sh-note .done-ic{vertical-align:-2px;margin-right:2px}
@@ -485,16 +489,22 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .forgot{justify-self:end;margin-top:-8px;font-size:14px}
 @media (max-width:420px){.brow-l{gap:8px;padding:7px 8px}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
-/* First-visit welcome page */
-.welcome{display:grid;justify-items:center;gap:18px;max-width:440px;margin:0 auto;padding:12px 0 24px;text-align:center}
-.welcome h1{font-size:clamp(44px,12vw,60px);line-height:1}
-.welcome h1 span{display:block;font-family:var(--f-body);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);margin-top:8px}
-.welcome .lead{font-size:18px;line-height:1.45;margin:0;max-width:30ch}
-.welcome .count{font-weight:600;color:var(--cedar)}
-.wl-list{list-style:none;margin:0;padding:18px 20px;display:grid;gap:14px;text-align:left;width:100%}
-.wl-list li{display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start;line-height:1.4;font-size:15.5px}
-.wl-list li b{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--cedar-soft);color:var(--cedar);font-size:14px}
-.welcome .btn-block{max-width:360px}
+/* First-visit welcome page: fits one screen from 320x568 up */
+.wrap:has(.welcome){padding-block:0}
+.welcome{min-height:100dvh;padding-block:16px;display:grid;align-content:center;justify-items:center;gap:clamp(10px,2.2vh,18px);max-width:420px;margin:0 auto;text-align:center}
+.welcome .lamp-wrap svg{width:clamp(56px,11vh,80px);height:auto}
+.welcome .lamp-glow{inset:-30px 0 auto;height:150px}
+.welcome h1{font-size:clamp(38px,7.5vh,56px);line-height:1;margin-top:-6px}
+.welcome .verse-quote{margin:0;font-size:clamp(15px,2.4vh,17px)}
+.welcome .lead{font-size:16px;margin:0;white-space:nowrap}
+.wl-verse{text-wrap:balance;max-width:24ch}
+@media (min-width:600px){.wl-verse{max-width:none}}
+.wl-verse .ref{display:block;width:max-content;margin:6px auto 0}
+.welcome .count{font-weight:700;color:var(--cedar)}
+.wl-list{list-style:none;margin:0;padding:clamp(10px,2vh,16px) 18px;display:grid;gap:clamp(8px,1.6vh,12px);text-align:left;width:100%}
+.wl-list li{display:grid;grid-template-columns:26px 1fr;gap:12px;align-items:center;font-size:15.5px;white-space:nowrap}
+.wl-list li span{overflow:hidden;text-overflow:ellipsis}
+.wl-list li b{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--cedar-soft);color:var(--cedar);font-size:13px}
 .pick-note{font-size:13px}
 </style>
 
@@ -794,7 +804,7 @@ function backHome(){
   else viewHome();
 }
 // bump to show the welcome page once more to everyone, signed in or not
-const WELCOME_V = 2;
+const WELCOME_V = 3;
 async function autoLogin(){
   if (lsGet("candela:welcome", 0) !== WELCOME_V) return viewWelcome();
   mount(`<div class="boot"><div class="lamp-wrap"><div class="lamp-glow"></div>${lampSVG(100)}</div><h1>Candela</h1><p class="verse-quote">„Candela lui Dumnezeu nu se stinsese încă.”<span class="ref">1 Sam. 3:3</span></p><div class="boot-bar"><i></i></div></div>`);
@@ -812,24 +822,22 @@ async function autoLogin(){
   }
 }
 function logout(){ store.logout(); enterGuest(); }
-// shown once, the very first time someone opens the site
+// shown once, the very first time someone opens the site: one screen, no scrolling
 function viewWelcome(){
   mount(`<section class="welcome">
-    <div class="lamp-wrap"><div class="lamp-glow"></div>${lampSVG(80)}</div>
-    <h1>Candela<span>1 Samuel</span></h1>
-    <p class="verse-quote">„Candela lui Dumnezeu nu se stinsese încă.”<span class="ref">1 Sam. 3:3</span></p>
-    <p class="lead">Învață cartea 1 Samuel prin întrebări: <span class="count">${totalCount("both").toLocaleString("ro-RO")} de întrebări</span> din cele 31 de capitole.</p>
+    <div class="lamp-wrap"><div class="lamp-glow"></div>${lampSVG(46)}</div>
+    <h1>Candela</h1>
+    <p class="verse-quote wl-verse">„Candela lui Dumnezeu nu se stinsese încă.”<span class="ref">1 Sam. 3:3</span></p>
+    <p class="lead"><span class="count">${totalCount("both").toLocaleString("ro-RO")} de întrebări</span> din 1 Samuel</p>
     <ol class="card wl-list">
-      <li><b>1</b><span>Alegi un capitol și răspunzi la întrebări, ușoare sau grele.</span></li>
-      <li><b>2</b><span>La fiecare greșeală vezi răspunsul bun și versetul din Biblie.</span></li>
-      <li><b>3</b><span>Poți citi cartea oricând, capitol cu capitol.</span></li>
+      <li><b>1</b><span>Alegi un capitol și nivelul</span></li>
+      <li><b>2</b><span>Răspunzi la întrebări</span></li>
+      <li><b>3</b><span>Vezi răspunsul și versetul</span></li>
+      <li><b>4</b><span>Citești Biblia oricând</span></li>
     </ol>
     <button class="btn btn-primary btn-block" id="wGo" type="button">Începe</button>
-    <button class="link" id="wIn" type="button">Am deja cont</button>
   </section>`);
-  const done = () => { lsSet("candela:welcome", WELCOME_V); lsSet("candela:verse", true); };
-  $("#wGo").onclick = () => { done(); autoLogin(); };
-  $("#wIn").onclick = async () => { done(); let u = null; try { u = await store.resume(); } catch {} if (u) return autoLogin(); S.player = store.guest(); viewEntry("", "in"); };
+  $("#wGo").onclick = () => { lsSet("candela:welcome", WELCOME_V); lsSet("candela:verse", true); autoLogin(); };
 }
 
 function chapStat(c, m){ return (S.player.chap[c+m[0]]||{}).best ?? null; }
@@ -1061,7 +1069,7 @@ document.addEventListener("click", e => {
 });
 function mastery(p){ return Math.round((p.ok||[]).length / totalCount("both") * 1000) / 10; }
 
-const MODE_NOTE = { easy: "Întrebări generale despre poveste: cine, ce și de ce.", hard: "Detalii precise: nume, cifre, locuri și cuvinte exacte.", both: "Întrebări ușoare și grele, amestecate." };
+const MODE_NOTE = { easy: "Întrebări generale: cine, ce, de ce.", hard: "Detalii: nume, cifre, locuri.", both: "Ușoare și grele, amestecate." };
 function viewHome(){
   const p = S.player, h = p.history;
   const tests = h.length, avg = tests ? Math.round(h.reduce((s,x)=>s+x.pct,0)/tests) : 0;
@@ -1195,9 +1203,10 @@ function openOptions(chs = [...S.sel].sort((a,b)=>a-b)){
   let mode = "easy", list, pool, perQ, n, pick = "all";
   const bg = document.createElement("div"); bg.className = "sheet-bg";
   bg.innerHTML = `<div class="sheet start-sheet" role="dialog" aria-modal="true" aria-labelledby="shT">
-    <div class="sheet-h"><h3 id="shT">${esc(whatLabel(chs))}</h3><div class="sh-tools">${chs.length === 1 && !$(".reader") ? `<button class="read-btn sm" id="shRead" type="button" aria-label="Citește capitolul ${chs[0]} înainte">${BOOK}<span>Citește</span></button>` : ""}<button class="icon-btn" id="shX" aria-label="Închide"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div></div>
-    <div class="sh-lvl"><p class="sh-q"><span class="sh-l">Ce nivel alegi?</span> <small class="sh-note" id="shNote"></small></p>
-      <div class="seg" role="group" aria-label="Nivel">${["easy","hard","both"].map(m=>`<button type="button" data-m="${m}">${MODE_LABEL[m]}${levelDone(chs, m) ? CHECK : ""}</button>`).join("")}</div></div>
+    <div class="sheet-h"><div class="sh-title"><h3 id="shT">${chs.length === 1 ? `Capitolul ${chs[0]}` : esc(chaptersLabel(chs))}</h3></div><div class="sh-tools">${chs.length === 1 && !$(".reader") ? `<button class="read-btn sm" id="shRead" type="button" aria-label="Citește capitolul ${chs[0]} înainte">${BOOK}<span>Citește</span></button>` : ""}<button class="icon-btn" id="shX" aria-label="Închide"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div></div>${chs.length === 1 ? `<p class="sh-sub">${esc(TITLES[chs[0]-1])}</p>` : ""}
+    <div class="sh-lvl"><span class="sh-l">Ce nivel alegi?</span>
+      <div class="seg" role="group" aria-label="Nivel">${["easy","hard","both"].map(m=>`<button type="button" data-m="${m}">${MODE_LABEL[m]}${levelDone(chs, m) ? CHECK : ""}</button>`).join("")}</div>
+      <small class="sh-note" id="shNote"></small></div>
     <div class="sh-lvl"><span class="sh-l">Câte întrebări vrei?</span><div class="seg" role="group" aria-label="Câte întrebări" id="shCnt">${["q","h","all"].map(k=>`<button type="button" data-p="${k}"></button>`).join("")}</div></div>
     <button class="btn btn-primary btn-block" id="shGo"></button>
   </div>`;
@@ -1212,7 +1221,7 @@ function openOptions(chs = [...S.sel].sort((a,b)=>a-b)){
     const done = levelDone(chs, mode);
     const note = bg.querySelector("#shNote"); note.classList.toggle("ok", done);
     const best = chs.length === 1 ? levelBest(chs[0], mode) : null;
-    note.innerHTML = done ? `${CHECK} Făcut deja${best != null ? `, cel mai bun rezultat: ${best}%` : ""}. Îl poți reface.` : esc(MODE_NOTE[mode]);
+    note.innerHTML = done ? `${CHECK} Făcut deja${best != null ? ` · cel mai bun: ${best}%` : ""}` : esc(MODE_NOTE[mode]);
     set();
   };
   const close = () => bg.remove();
