@@ -374,8 +374,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
   .qcard{padding:30px 32px}
   .qtext{font-size:22px}
 }
-/* v4: quick test, question of the day, streak, reading, read aloud, text size, groups, tutorial */
-.streak{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--oil-ink);background:var(--oil-soft);padding:5px 12px;border-radius:999px;justify-self:start;margin-top:4px}
+/* v4: quick test, question of the day, reading, read aloud, text size, groups, tutorial */
 .legend{flex-wrap:wrap;row-gap:4px}
 .help-line{text-align:center;margin-top:18px;display:flex;justify-content:center;gap:18px;flex-wrap:wrap}
 .help-line .link{font-size:14px}
@@ -800,12 +799,11 @@ function openProfile(){
   const X = `<button class="icon-btn prof-x" id="pfX" aria-label="Închide"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>`;
   const show = () => {
     const h = p.history, tests = h.length, avg = tests ? Math.round(h.reduce((s,x)=>s+x.pct,0)/tests) : 0;
-    const best = tests ? Math.max(...h.map(x=>x.pct)) : 0, secs = h.reduce((s,x)=>s+(x.secs||0),0);
+    const best = tests ? Math.max(...h.map(x=>x.pct)) : 0;
     const rank = S.board ? S.board.findIndex(x => x.me) : -1;
     const okE = p.ok.filter(id => /^\d+e/.test(id)).length, okH = p.ok.filter(id => /^\d+h/.test(id)).length;
     const totE = totalCount("easy"), totH = totalCount("hard");
     const chs = new Set(Object.keys(p.chap).map(k=>parseInt(k))).size;
-    const time = secs >= 3600 ? `${Math.floor(secs/3600)} h ${Math.round(secs%3600/60)} min` : `${Math.round(secs/60)} min`;
     const last = h.length ? h[h.length-1] : null;
     const pbar = (label, n, tot, color) => `<div class="pf-bar"><div class="pf-bar-h"><span>${label}</span><b>${n} / ${tot}</b></div><div class="bar"><i style="width:${Math.max(n/tot*100, n?2:0)}%;background:${color}"></i></div></div>`;
     sheet.innerHTML = `${X}
@@ -825,9 +823,7 @@ function openProfile(){
         ${pbar("Întrebări ușoare", okE, totE, "var(--cedar)")}
         ${pbar("Întrebări grele", okH, totH, "var(--oil)")}
         <div class="pf-row"><span>Capitole exersate</span><b>${chs} / 31</b></div>
-        <div class="pf-row"><span>Timp de studiu</span><b>${tests ? time : "–"}</b></div>
         ${last ? `<div class="pf-row"><span>Ultimul test</span><b>${esc(chaptersLabel(last.chs))} · ${last.pct}%</b></div>` : ""}
-        <div class="pf-row"><span>Zile la rând</span><b>${streak(p) || "–"}</b></div>
       </div>
       <label class="remember pf-hide"><input type="checkbox" id="pfHide" ${p.hidden ? "" : "checked"}> ${p.child ? "Apare în clasament" : "Apar în clasament"}</label>
       ${!p.child && store.isParent ? `<div class="pf-card" id="pfKids"></div>` : ""}
@@ -992,7 +988,6 @@ function viewHome(){
   <section class="h-intro">
     <div class="hello">${tests ? `<span class="eyebrow">Bine ai revenit</span>` : ""}
       <h2>${p.guest ? (tests ? "Continuăm?" : "Bun venit!") : tests ? `Continuăm, ${esc(first)}?` : `Bun venit, ${esc(first)}.`}</h2>
-      ${streakHTML(p)}
       ${familyHTML()}
       ${p.guest ? `<p class="guest-line">Joci ca invitat. <button class="link" id="gIn" type="button">Conectează-te</button> ca să-ți păstrezi rezultatele.</p>` : ""}</div>
     ${tests ? `<div class="stats">
@@ -1426,20 +1421,6 @@ function mistakeHTML({q, a}){
     <div class="verse">${verseHTML(q.ref)}</div></article>`;
 }
 
-/* ---------- motivation: streak ---------- */
-const dayKey = (t = Date.now()) => { const d = new Date(t); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`; };
-function streak(p){   // days in a row with at least one test, ending today or yesterday
-  const days = new Set(p.history.map(x => dayKey(x.at)));
-  const d = new Date(); d.setHours(12,0,0,0);
-  if (!days.has(dayKey(d))) d.setDate(d.getDate()-1);
-  let n = 0; while (days.has(dayKey(d))){ n++; d.setDate(d.getDate()-1); }
-  return n;
-}
-function streakHTML(p){
-  const n = streak(p); if (!n) return "";
-  const today = p.history.some(x => dayKey(x.at) === dayKey());
-  return `<span class="streak">${n === 1 ? "1 zi de studiu" : `${n} zile la rând`}${today ? "" : " · fă un test azi ca să continui"}</span>`;
-}
 /* ---------- reading a chapter before the test ---------- */
 /* the whole book can be read, one chapter at a time; the last chapter read is remembered */
 function viewRead(c){
