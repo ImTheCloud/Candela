@@ -1144,12 +1144,13 @@ function openOptions(chs = [...S.sel].sort((a,b)=>a-b)){
   const set = (v, typing) => { n = Math.max(1, Math.min(pool, Math.round(v) || 1)); const inp = bg.querySelector("#shN"); if (!typing) inp.value = n;
     bg.querySelectorAll("[data-n]").forEach(c => c.setAttribute("aria-pressed", +c.dataset.n === n)); bg.querySelector("#shGo").innerHTML = `<span class="st-main">Începe · ${n} întrebări</span><span class="st-sub">${MODE_LABEL[mode]} · ${durLabel(perQ * n)}</span>`; };
   const setMode = m => {
+    const all = !n || n >= pool; // "Toate" stays "Toate" when the level changes
     mode = m; list = buildPool(chs, mode); pool = list.length; perQ = estSecs(list) / pool;
     bg.querySelectorAll("[data-m]").forEach(b => b.setAttribute("aria-pressed", b.dataset.m === mode));
     const done = levelDone(chs, mode);
     const note = bg.querySelector("#shNote"); note.classList.toggle("ok", done);
     note.innerHTML = done ? `${CHECK} Făcut deja, cu 100%. Îl poți reface.` : esc(MODE_NOTE[mode]);
-    const keep = n && n < pool ? n : pool;
+    const keep = all ? pool : Math.min(n, pool);
     bg.querySelector("#shCnt").innerHTML = `<div class="cnt-h"><span>Întrebări <small>din ${pool}</small></span>
         <div class="stepper"><button type="button" class="icon-btn" id="shMinus" aria-label="Mai puține">−</button><input class="input" id="shN" type="number" inputmode="numeric" min="1" max="${pool}" value="${keep}" aria-label="Număr de întrebări"><button type="button" class="icon-btn" id="shPlus" aria-label="Mai multe">+</button></div></div>
         <div class="counts">${[10,20,30,50].filter(v=>v<pool).map(v=>`<button type="button" class="chip" data-n="${v}">${v}</button>`).join("")}<button type="button" class="chip" data-n="${pool}">Toate</button></div>`;
