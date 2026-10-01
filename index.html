@@ -154,6 +154,12 @@ p{margin:0}
 .tile svg{position:absolute;inset:5px;width:calc(100% - 10px);height:calc(100% - 10px)}
 .tile .done-mark{position:absolute;bottom:4px;right:4px;width:17px;height:17px;border-radius:50%;background:var(--cedar);color:#fff;display:grid;place-items:center}
 .tile .done-mark svg{position:static;width:11px;height:11px;margin:0}
+.done-mark.part{background:var(--surface);color:var(--cedar);box-shadow:inset 0 0 0 1.5px var(--cedar)}
+.grid-note{display:flex;align-items:center;justify-content:center;gap:6px;margin:-2px 0 0;font-size:13px;color:var(--ink-2)}
+.grid-note .done-mark{position:static;width:17px;height:17px;border-radius:50%;background:var(--cedar);color:#fff;display:inline-grid;place-items:center;flex:none}
+.grid-note .done-mark.part{background:var(--surface);color:var(--cedar)}
+.grid-note .done-mark + .done-mark,.grid-note .done-mark:nth-of-type(2){margin-left:10px}
+.grid-note svg{width:11px;height:11px}
 .tile .n{font-family:var(--f-display);font-size:22px;line-height:1;position:relative}
 .tile[aria-pressed="true"]{background:var(--oil-soft);border-color:var(--oil);color:var(--oil-ink);box-shadow:0 0 0 3px color-mix(in oklab,var(--oil) 18%,transparent)}
 .tile[aria-pressed="true"] .trk{stroke:color-mix(in oklab,var(--oil) 20%,transparent)}
@@ -211,6 +217,7 @@ html:has(.sheet-bg),html:has(.modal-bg),body:has(.sheet-bg),body:has(.modal-bg){
 .qtype{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--cedar)}
 .qtext{font-size:20px;line-height:1.4;font-weight:500}
 .qhint{font-size:13px;color:var(--ink-2);margin-top:-8px}
+.qhint.ans{justify-self:start;background:var(--cedar-soft);color:var(--cedar);font-weight:600;border-radius:10px;padding:5px 12px;font-size:13.5px;line-height:1.3}
 .answers{display:grid;gap:10px}
 .opt{display:flex;align-items:flex-start;gap:12px;width:100%;text-align:left;border:1.5px solid var(--line);background:var(--bg);border-radius:var(--r);padding:14px;font-size:16px;line-height:1.35;transition:border-color .15s, background .15s, transform .15s}
 .opt:hover:not(:disabled){border-color:var(--ink-2)}
@@ -226,15 +233,23 @@ html:has(.sheet-bg),html:has(.modal-bg),body:has(.sheet-bg),body:has(.modal-bg){
 .opt:disabled{cursor:default}
 .tf{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .tf .opt{justify-content:center;font-weight:600;font-size:17px;padding:20px 10px}
-.match{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.match .col{display:grid;gap:8px;align-content:start;min-width:0}
-.mitem{position:relative;text-align:left;border:1.5px solid var(--line);background:var(--bg);border-radius:12px;padding:11px 12px 11px 14px;font-size:14.5px;line-height:1.3;min-height:48px;transition:border-color .15s, background .15s, transform .15s;overflow-wrap:anywhere}
-.mitem.sel{border-color:var(--ink);background:var(--surface);transform:translateY(-1px);box-shadow:var(--shadow)}
-.mitem[data-pair]::before{content:"";position:absolute;left:0;top:8px;bottom:8px;width:4px;border-radius:0 4px 4px 0;background:var(--pc)}
-.mitem[data-pair]{border-color:var(--pc)}
-.mitem .tag{display:inline-grid;place-items:center;width:18px;height:18px;border-radius:50%;background:var(--pc);color:var(--surface);font-size:11px;font-weight:700;margin-right:6px;vertical-align:1px}
-.mitem.ok{background:var(--ok-soft)}
-.mitem.no{background:var(--bad-soft)}
+.mx{display:grid;gap:8px}
+.mrow{border:1.5px solid var(--line);background:var(--bg);border-radius:14px;overflow:hidden;transition:border-color .15s,background .15s}
+.mrow.open{border-color:var(--oil);background:var(--surface);box-shadow:var(--shadow)}
+.mhead{display:grid;gap:4px;width:100%;text-align:left;background:none;border:0;padding:11px 14px;color:var(--ink)}
+.mhead .ml{font-weight:700;font-size:15px;line-height:1.3}
+.mhead .mv{font-size:14.5px;line-height:1.35;color:var(--ink-2);overflow-wrap:anywhere}
+.mrow:not(.filled) .mv{color:var(--oil);font-weight:600;font-size:13.5px}
+.mrow.filled:not(.open) .mv{color:var(--ink);border-left:3px solid var(--cedar);padding-left:9px}
+.mopts{display:grid;gap:6px;padding:0 10px 10px}
+.mopt{text-align:left;border:1.5px solid var(--line);background:var(--bg);border-radius:12px;padding:11px 12px;font-size:14.5px;line-height:1.35;min-height:46px;color:var(--ink);overflow-wrap:anywhere}
+.mopt:hover{border-color:var(--ink-2)}
+.mopt.taken{opacity:.5}
+.mopt[aria-pressed="true"]{border-color:var(--ink)}
+.mrow.ok{background:var(--ok-soft);border-color:transparent}
+.mrow.no{background:var(--bad-soft);border-color:transparent}
+.mrow.ok .mv,.mrow.no .mv{border-left:0;padding-left:0}
+.mrow .mfix{padding:0 14px 11px;margin-top:-4px}
 .mfix{display:block;font-size:12.5px;color:var(--ok);margin-top:4px;font-weight:600}
 .fill{font-family:var(--f-display);font-size:21px;line-height:1.75}
 .fill input{font-family:var(--f-body);font-size:17px;width:8.5em;max-width:100%;border:0;border-bottom:2px solid var(--oil);background:var(--oil-soft);border-radius:8px 8px 2px 2px;padding:2px 8px;margin:0 2px;color:var(--ink);transition:background .2s,border-color .2s}
@@ -465,6 +480,22 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .forgot{justify-self:end;margin-top:-8px;font-size:14px}
 @media (max-width:420px){.brow-l{gap:8px;padding:7px 8px}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+/* First-visit tour */
+.tour{position:fixed;inset:0;z-index:50}
+.tour-hole{position:fixed;border-radius:16px;box-shadow:0 0 0 200vmax rgb(30 20 12 / .62);transition:top .35s cubic-bezier(.2,.8,.2,1),left .35s cubic-bezier(.2,.8,.2,1),width .35s cubic-bezier(.2,.8,.2,1),height .35s cubic-bezier(.2,.8,.2,1);pointer-events:none}
+.tour-hole::after{content:"";position:absolute;inset:-4px;border-radius:20px;border:2px solid var(--oil);animation:tourPulse 1.8s ease-in-out infinite}
+@keyframes tourPulse{50%{inset:-8px;opacity:.35}}
+.tour-tip{position:fixed;width:min(320px,calc(100vw - 32px));background:var(--surface);border-radius:18px;padding:18px;display:grid;gap:8px;box-shadow:0 20px 50px -16px rgb(0 0 0 / .5);transition:top .35s cubic-bezier(.2,.8,.2,1),left .35s cubic-bezier(.2,.8,.2,1);animation:fadeIn .25s ease both}
+.tour-tip small{color:var(--ink-2);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.tour-tip h3{font-size:22px}
+.tour-tip p{margin:0;color:var(--ink-2);line-height:1.45;font-size:15px}
+.tour-foot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:6px}
+.tour-dots{display:flex;gap:6px}
+.tour-dots i{width:7px;height:7px;border-radius:50%;background:var(--line);transition:background .2s,width .2s}
+.tour-dots i.on{background:var(--oil);width:18px;border-radius:4px}
+.tour-btns{display:flex;align-items:center;gap:8px}
+.tour-btns .btn{min-height:42px;padding:10px 18px;font-size:15px}
+.tour-btns .link{font-size:14px}
 </style>
 
 <div id="app" class="wrap"></div>
@@ -706,7 +737,7 @@ function viewEntry(msg, tab){
   </section>`);
   const f = $("#enter"), err = $("#err"), first = $("#first"), last = $("#last"), email = $("#email"), pw = $("#pw");
   pwEye(pw);
-  $("#back").onclick = () => S.player ? viewHome() : enterGuest();
+  $("#back").onclick = () => S.player ? backHome() : enterGuest();
   if ($("#forgot")) $("#forgot").onclick = forgotPassword;
   app.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => viewEntry("", b.dataset.tab));
   (isNew ? last : !email.value ? email : pw).focus();
@@ -755,9 +786,14 @@ function enter(profile, created){
   else if (store.moved) toast("Rezultatele de invitat au fost adăugate în cont.");
   store.moved = 0;
   S.admin = null;
-  viewHome();
+  backHome();
 }
-function enterGuest(){ S.player = store.guest(); viewHome(); }
+function enterGuest(){ S.player = store.guest(); backHome(); }
+// Back to the report when the person signed in from it, otherwise home.
+function backHome(){
+  if (S.toReport && S.lastReport){ S.toReport = false; S.quiz = S.lastReport; finish(true); }
+  else viewHome();
+}
 async function autoLogin(){
   mount(`<div class="boot"><div class="lamp-wrap"><div class="lamp-glow"></div>${lampSVG(100)}</div><h1>Candela</h1><p class="verse-quote">„Candela lui Dumnezeu nu se stinsese încă.”<span class="ref">1 Sam. 3:3</span></p><div class="boot-bar"><i></i></div></div>`);
   // the first time, the verse stays on screen long enough to be read
@@ -781,8 +817,9 @@ function arc(p, r, color){
   const C = 2*Math.PI*r, L = C*Math.max(p,2)/100;
   return `<circle cx="27" cy="27" r="${r}" fill="none" stroke="${color}" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="${L} ${C}" transform="rotate(-90 27 27)"/>`;
 }
-// a chapter answered 100% at one level or more gets a small check
+// a chapter tested at least once gets a check (filled when 100% at one level or more)
 const chapDone = c => chapStat(c,"easy") === 100 || chapStat(c,"hard") === 100;
+const chapTried = c => chapStat(c,"easy") != null || chapStat(c,"hard") != null;
 function headerHTML(){
   const n = S.player.name;
   if (S.player.guest) return `<header class="top"><div class="brand">${lampSVG(30)} Candela</div>
@@ -969,6 +1006,7 @@ function openProfile(){
 document.addEventListener("click", e => {
   if (!e.target.closest) return;
   if (e.target.closest("#who")) openProfile();
+  if (e.target.closest("#gNew, #gIn")) S.toReport = true; else if (e.target.closest("#acct")) S.toReport = false;
   if (e.target.closest("#acct, #gNew")) viewEntry("", e.target.closest("#gNew") ? "new" : undefined);
   if (e.target.closest("#gIn")) viewEntry("", "in");
   if (e.target.closest("#readBook")) viewRead($("#grid") && S.scope === "one" && S.sel.size === 1 ? [...S.sel][0] : lsGet("candela:read", [...S.sel][0] || 1));
@@ -993,12 +1031,12 @@ function viewHome(){
 
   <aside class="h-config">
     <div class="panel">
-      <div class="section-h first"><h3>Alege capitolul</h3></div>
+      <div class="section-h first"><h3>Ce capitol vrei să exersezi?</h3></div>
       <div class="seg scope" role="group" aria-label="Câte capitole">
         <button data-scope="one">Un capitol</button><button data-scope="many">Mai multe</button><button data-scope="all">Toată cartea</button>
       </div>
       
-      <div class="grid" id="grid">${Array.from({length:31},(_,i)=>i+1).map(c=>`<button class="tile" data-c="${c}" aria-pressed="false" title="${c}. ${esc(TITLES[c-1])}" aria-label="Capitolul ${c}: ${esc(TITLES[c-1])}${chapDone(c) ? ", făcut cu 100%" : ""}"><span class="n">${c}</span><i class="check" aria-hidden="true"></i>${chapDone(c) ? `<i class="done-mark" aria-hidden="true">${CHECK}</i>` : ""}</button>`).join("")}</div>
+      <div class="grid" id="grid">${Array.from({length:31},(_,i)=>i+1).map(c=>`<button class="tile" data-c="${c}" aria-pressed="false" title="${c}. ${esc(TITLES[c-1])}" aria-label="Capitolul ${c}: ${esc(TITLES[c-1])}${chapDone(c) ? ", făcut cu 100%" : chapTried(c) ? ", făcut" : ""}"><span class="n">${c}</span><i class="check" aria-hidden="true"></i>${chapTried(c) ? `<i class="done-mark${chapDone(c) ? "" : " part"}" aria-hidden="true">${CHECK}</i>` : ""}</button>`).join("")}</div>${Array.from({length:31},(_,i)=>i+1).some(chapTried) ? `\n      <p class="grid-note"><i class="done-mark part" aria-hidden="true">${CHECK}</i> făcut deja <i class="done-mark" aria-hidden="true">${CHECK}</i> 100% corect</p>` : ""}
 
       <div class="startbar"><button class="btn btn-primary btn-block" id="start"></button></div>
     </div>
@@ -1009,7 +1047,7 @@ function viewHome(){
   <section class="h-hist">
     <div class="section-h"><h3>Istoric</h3></div>
     <div class="history">${h.length ? h.slice(-3).reverse().map(x=>`
-      <div class="hrow"><span class="badge ${x.mode}">${MODE_LABEL[x.mode]}</span><div style="min-width:0"><b style="font-weight:600">${esc(chaptersLabel(x.chs))}</b><small>${dateLabel(x.at)} · ${x.score}/${x.total} puncte</small></div><span class="pct">${x.pct}%</span></div>`).join("")
+      <div class="hrow"><span class="badge ${x.mode}">${MODE_LABEL[x.mode]}</span><div style="min-width:0"><b style="font-weight:600">${esc(chaptersLabel(x.chs))}</b></div><span class="pct">${x.pct}%</span></div>`).join("")
       : `<div class="empty">Niciun test încă.</div>`}</div>
   </section>
   </div>`);
@@ -1042,6 +1080,56 @@ function viewHome(){
   if ($("#resume")){ $("#resume").onclick = resumeQuiz; $("#resumeX").onclick = () => { dropQuiz(); $(".resume").remove(); }; }
   update();
   if (HOSTED) loadBoard();
+  if (!lsGet("candela:tour", false)) setTimeout(() => { if ($("#grid")) tour(); }, 600);
+}
+
+/* First-visit tour: highlights the 4 main things, once per phone */
+function tour(){
+  if (lsGet("candela:tour", false) || document.querySelector(".tour")) return;
+  const guest = S.player.guest;
+  const steps = [
+    {t:"#grid", h:"Alege capitolul", p:"Atinge capitolul pe care vrei să-l exersezi."},
+    {t:"#start", h:"Începe testul", p:"Apoi alegi nivelul și câte întrebări vrei."},
+    {t:"#readBook", h:"Citește Biblia", p:"Aici citești cartea, capitol cu capitol. Atinge un verset ca să-l colorezi."},
+    {t: guest ? "#acct" : "#who", h: guest ? "Contul tău" : "Profilul tău", p: guest ? "Creează un cont ca să-ți păstrezi rezultatele și să apari în clasament." : "Aici vezi rezultatele tale și îți modifici profilul."}
+  ].filter(s => document.querySelector(s.t) && document.querySelector(s.t).offsetParent);
+  if (!steps.length) return;
+  lsSet("candela:tour", true);
+  const el = document.createElement("div"); el.className = "tour"; el.setAttribute("role", "dialog"); el.setAttribute("aria-modal", "true");
+  el.innerHTML = `<div class="tour-hole"></div><div class="tour-tip" aria-live="polite"></div>`;
+  document.body.appendChild(el);
+  const hole = el.querySelector(".tour-hole"), tip = el.querySelector(".tour-tip");
+  let i = 0;
+  const place = () => {
+    const tg = document.querySelector(steps[i].t); if (!tg) return close();
+    const r = tg.getBoundingClientRect(), pad = 6, vw = innerWidth, vh = innerHeight;
+    hole.style.top = (r.top - pad) + "px"; hole.style.left = (r.left - pad) + "px";
+    hole.style.width = (r.width + pad*2) + "px"; hole.style.height = (r.height + pad*2) + "px";
+    const tw = tip.offsetWidth, th = tip.offsetHeight, gap = 14, clampX = x => Math.max(16, Math.min(x, vw - tw - 16)), clampY = y => Math.max(12, Math.min(y, vh - th - 12));
+    let top, left = clampX(r.left + r.width/2 - tw/2);
+    if (r.bottom + pad + gap + th <= vh - 12) top = r.bottom + pad + gap;
+    else if (r.top - pad - gap - th >= 12) top = r.top - pad - gap - th;
+    else if (r.left - pad - gap - tw >= 16){ left = r.left - pad - gap - tw; top = clampY(r.top + r.height/2 - th/2); }
+    else if (r.right + pad + gap + tw <= vw - 16){ left = r.right + pad + gap; top = clampY(r.top + r.height/2 - th/2); }
+    else top = vh - th - 12;
+    tip.style.top = top + "px"; tip.style.left = left + "px";
+  };
+  const show = () => {
+    const s = steps[i], last = i === steps.length - 1;
+    tip.innerHTML = `<small>${i+1} din ${steps.length}</small><h3>${s.h}</h3><p>${s.p}</p>
+      <div class="tour-foot"><div class="tour-dots">${steps.map((_, k) => `<i class="${k === i ? "on" : ""}"></i>`).join("")}</div>
+      <div class="tour-btns">${last ? "" : `<button class="link" id="tSkip" type="button">Sari peste</button>`}<button class="btn btn-primary" id="tNext" type="button">${last ? "Am înțeles" : "Înainte"}</button></div></div>`;
+    tip.querySelector("#tNext").onclick = () => { if (last) close(); else { i++; show(); } };
+    if (!last) tip.querySelector("#tSkip").onclick = close;
+    const tg = document.querySelector(s.t), r = tg.getBoundingClientRect(), th = tip.offsetHeight, room = r.height + 12 + 14 + th;
+    if (r.top < 12 || r.bottom + 20 + th > innerHeight - 12) window.scrollBy(0, room <= innerHeight - 24 ? r.top - 18 : r.top + r.height/2 - innerHeight/2);
+    place(); tip.querySelector("#tNext").focus({preventScroll: true});
+  };
+  const onKey = e => { if (e.key === "Escape") close(); };
+  const onResize = () => place();
+  function close(){ el.remove(); removeEventListener("resize", onResize); removeEventListener("scroll", onResize, true); removeEventListener("keydown", onKey); }
+  addEventListener("resize", onResize); addEventListener("scroll", onResize, true); addEventListener("keydown", onKey);
+  show();
 }
 
 async function loadBoard(){
@@ -1127,7 +1215,7 @@ function openOptions(chs = [...S.sel].sort((a,b)=>a-b)){
   const set = () => {
     const count = { q: Math.max(1, Math.round(pool / 4)), h: Math.max(1, Math.round(pool / 2)), all: pool };
     n = count[pick];
-    bg.querySelectorAll("[data-p]").forEach(c => { c.setAttribute("aria-pressed", c.dataset.p === pick); c.innerHTML = `${count[c.dataset.p]}<small>${({q:"(25%)", h:"(50%)", all:"(toate)"})[c.dataset.p]}</small>`; }); bg.querySelector("#shGo").innerHTML = `<span class="st-main">Începe · ${n} întrebări</span><span class="st-sub">${MODE_LABEL[mode]} · ${durLabel(perQ * n)}</span>`; };
+    bg.querySelectorAll("[data-p]").forEach(c => { c.setAttribute("aria-pressed", c.dataset.p === pick); c.innerHTML = `${count[c.dataset.p]}<small>${({q:"(25%)", h:"(50%)", all:"(toate)"})[c.dataset.p]}</small>`; }); bg.querySelector("#shGo").innerHTML = `<span class="st-main">Începe</span><span class="st-sub">Durează aproximativ ${durLabel(perQ * n).replace(/^cam /, "")}</span>`; };
   const setMode = m => {
     mode = m; list = buildPool(chs, mode); pool = list.length; perQ = estSecs(list) / pool;
     bg.querySelectorAll("[data-m]").forEach(b => b.setAttribute("aria-pressed", b.dataset.m === mode));
@@ -1199,7 +1287,7 @@ function viewQuestion(first){
   const card = document.createElement("article");
   card.className = "qcard enter";
   card.innerHTML = `<div class="qmeta"><span class="qtype">${q.t==="tf"||q.t==="one" ? "" : TYPE_LABEL[q.t]}${Z.mode==="both"?`${q.t==="tf"||q.t==="one" ? "" : " · "}${MODE_LABEL[q.mode]}`:""}</span><span class="ref">${refLabel(q.ref)}</span></div>
-    ${q.t==="fill" ? `${fillHTML(q)}` : `<p class="qtext">${esc(q.q.replace(/\s*\(pot fi mai multe[^)]*\)/i, ""))}</p>${q.t==="multi"?`<p class="qhint">Bifează toate răspunsurile corecte. Pot fi mai multe sau niciunul.</p>`:""}${q.t==="match"?`<p class="qhint">Atinge un element din stânga, apoi perechea lui din dreapta.</p>`:""}`}
+    ${q.t==="fill" ? `${fillHTML(q)}` : `<p class="qtext">${esc(q.q.replace(/\s*\(pot fi mai multe[^)]*\)/i, ""))}</p>${q.t==="one"?`<p class="qhint ans">Un singur răspuns corect</p>`:""}${q.t==="multi"?`<p class="qhint ans">Corecte: unul, mai multe sau niciunul</p>`:""}${q.t==="match"?`<p class="qhint ans">Alege răspunsul pentru fiecare</p>`:""}`}
     <div class="answers" id="ans">${answersHTML(q)}</div><div id="fb"></div>
     <p class="keys">${({tf:"Taste: A adevărat · F fals · Enter verifică", one:"Taste: A, B, C… · Enter verifică", multi:"Taste: A, B, C… · Enter verifică", fill:"Enter trece la căsuța următoare", match:"Enter verifică"})[q.t]}</p>`;
   const slot = $("#qslot");
@@ -1214,7 +1302,7 @@ function fillHTML(q){
 function answersHTML(q){
   if (q.t==="tf") return `<div class="tf"><button class="opt" data-v="1"><span>Adevărat</span></button><button class="opt" data-v="0"><span>Fals</span></button></div>`;
   if (q.t==="one"||q.t==="multi") return q.opts.map((o,i)=>`<button class="opt ${q.t}" data-i="${i}" aria-pressed="false"><span class="k">${LETTERS[i]}</span><span>${esc(o)}</span></button>`).join("");
-  if (q.t==="match") return `<div class="match"><div class="col">${q.pairs.map((p,i)=>`<button class="mitem" data-l="${i}">${esc(p[0])}</button>`).join("")}</div><div class="col">${q.right.map(i=>`<button class="mitem" data-r="${i}">${esc(q.pairs[i][1])}</button>`).join("")}</div></div>`;
+  if (q.t==="match") return `<div class="mx" id="mx"></div>`;
   return "";
 }
 function bindQuestion(q, card){
@@ -1224,22 +1312,28 @@ function bindQuestion(q, card){
   if (q.t==="multi") card.querySelectorAll(".opt").forEach(b => b.onclick = () => { if (ui.checked) return; const i = +b.dataset.i; ui.sel.has(i) ? ui.sel.delete(i) : ui.sel.add(i); b.setAttribute("aria-pressed", ui.sel.has(i)); renderActions(); });
   if (q.t==="fill") card.querySelectorAll("input").forEach(inp => { inp.oninput = () => renderActions(); inp.onkeydown = e => { if (e.key==="Enter"){ e.preventDefault(); const nx = card.querySelector(`input[data-k="${+inp.dataset.k+1}"]`); if (nx) nx.focus(); else if (!ui.checked) check(); else next(); } }; });
   if (q.t==="match"){
+    // One row per item; the open row lists the answers still free, right under it.
+    const box = card.querySelector("#mx");
     const paint = () => {
-      const used = Object.values(ui.pairs);
-      card.querySelectorAll("[data-l]").forEach(b => { const l = +b.dataset.l; b.classList.toggle("sel", ui.active===l); paintPair(b, ui.pairs[l]!=null ? l : null); });
-      card.querySelectorAll("[data-r]").forEach(b => { const r = +b.dataset.r; const l = Object.keys(ui.pairs).find(k => ui.pairs[k]===r); paintPair(b, l!=null ? +l : null); });
+      box.innerHTML = q.pairs.map((p, l) => {
+        const v = ui.pairs[l], open = ui.active === l && !ui.checked;
+        const owner = r => q.pairs.findIndex((_, k) => k !== l && ui.pairs[k] === r);
+        return `<div class="mrow${open ? " open" : ""}${v != null ? " filled" : ""}" data-l="${l}">
+          <button class="mhead" type="button" data-l="${l}" aria-expanded="${open}"><span class="ml">${esc(p[0])}</span>
+          <span class="mv">${v != null ? esc(q.pairs[v][1]) : open ? "Alege mai jos" : "Alege"}</span></button>
+          ${open ? `<div class="mopts">${q.right.map(r => `<button class="mopt${owner(r) >= 0 ? " taken" : ""}" type="button" data-r="${r}" aria-pressed="${r === v}">${esc(q.pairs[r][1])}</button>`).join("")}</div>` : ""}</div>`;
+      }).join("");
+      box.querySelectorAll(".mhead").forEach(b => b.onclick = () => { if (ui.checked) return; const l = +b.dataset.l; ui.active = ui.active === l ? null : l; paint(); });
+      box.querySelectorAll(".mopt").forEach(b => b.onclick = () => {
+        if (ui.checked) return; const r = +b.dataset.r;
+        const other = q.pairs.findIndex((_, k) => k !== ui.active && ui.pairs[k] === r);
+        if (other >= 0){ if (ui.pairs[ui.active] != null) ui.pairs[other] = ui.pairs[ui.active]; else delete ui.pairs[other]; }
+        ui.pairs[ui.active] = r;
+        const next = q.pairs.findIndex((_, i) => ui.pairs[i] == null);
+        ui.active = next >= 0 ? next : null; paint();
+      });
       renderActions();
     };
-    card.querySelectorAll("[data-l]").forEach(b => b.onclick = () => { if (ui.checked) return; const l = +b.dataset.l; if (ui.pairs[l]!=null) delete ui.pairs[l]; ui.active = l; paint(); });
-    card.querySelectorAll("[data-r]").forEach(b => b.onclick = () => {
-      if (ui.checked) return; const r = +b.dataset.r;
-      const owner = Object.keys(ui.pairs).find(k => ui.pairs[k]===r);
-      if (ui.active==null){ if (owner!=null){ delete ui.pairs[owner]; ui.active = +owner; paint(); return; } const free = q.pairs.findIndex((_,i)=>ui.pairs[i]==null); if (free<0) return; ui.active = free; }
-      if (owner!=null) delete ui.pairs[owner];
-      ui.pairs[ui.active] = r;
-      const nextFree = q.pairs.findIndex((_,i)=>ui.pairs[i]==null);
-      ui.active = nextFree>=0 ? nextFree : null; paint();
-    });
     ui.active = 0; paint();
   }
 }
@@ -1284,11 +1378,11 @@ function check(skipped=false){
   Z.answers[Z.i] = { ...r, skipped: skipped === true };
   ui.checked = true;
   const card = $(".qcard");
-  card.querySelectorAll("button.opt,button.mitem,input").forEach(b => b.disabled = true);
+  card.querySelectorAll("button.opt,input").forEach(b => b.disabled = true);
   if (q.t==="tf"){ card.querySelectorAll(".opt").forEach(b => { const v = b.dataset.v==="1"; if (v===q.a) b.classList.add("correct"); else if (v===ui.pick) b.classList.add("wrong"); }); }
   if (q.t==="one"){ card.querySelectorAll(".opt").forEach(b => { const i = +b.dataset.i; if (i===q.a) b.classList.add("correct"); else if (i===ui.pick) b.classList.add("wrong"); }); }
   if (q.t==="multi"){ card.querySelectorAll(".opt").forEach(b => { const i = +b.dataset.i, should = q.a.includes(i), did = ui.sel.has(i); if (should) b.classList.add("correct"); else if (did) b.classList.add("wrong"); }); }
-  if (q.t==="match"){ card.querySelectorAll("[data-l]").forEach(b => { const l = +b.dataset.l, good = ui.pairs[l]===l; b.classList.add(good?"ok":"no"); if (!good) b.insertAdjacentHTML("beforeend", `<span class="mfix">→ ${esc(q.pairs[l][1])}</span>`); }); }
+  if (q.t==="match"){ ui.active = null; card.querySelectorAll(".mopts").forEach(o => o.remove()); card.querySelectorAll(".mrow").forEach(row => { const l = +row.dataset.l, good = ui.pairs[l]===l; row.classList.remove("open"); row.classList.add(good?"ok":"no"); row.querySelector(".mhead").disabled = true; if (ui.pairs[l]==null) row.querySelector(".mv").textContent = "—"; if (!good) row.insertAdjacentHTML("beforeend", `<span class="mfix">Corect: ${esc(q.pairs[l][1])}</span>`); }); }
   if (q.t==="fill"){ card.querySelectorAll("input").forEach((inp,i) => { const ok = r.okEach ? r.okEach[i] : false; inp.classList.add(ok?"ok":"no"); if (!ok) inp.insertAdjacentHTML("afterend", ` <b style="color:var(--ok);font-family:var(--f-body);font-size:16px">${esc(q.a[i])}</b>`); }); }
   const full = r.pts === 1, partial = r.pts > 0 && r.pts < 1;
   $("#fb").innerHTML = `<div class="feedback ${full?"ok":"no"}"><b>${full ? "Corect" : partial ? `Parțial: ${Math.round(r.pts*q.pairs.length)} din ${q.pairs.length} perechi` : skipped===true ? "Sărită" : "Greșit"}</b>${!full ? correctLine(q) : ""}<div class="verse">${verseHTML(q.ref)}</div></div>`;
@@ -1308,8 +1402,9 @@ function next(){
 }
 
 /* ---------- results ---------- */
-async function finish(){
-  const Z = S.quiz, n = Z.qs.length;
+async function finish(again){
+  // again: show the same report once more (after logging in from it), without saving twice
+  const Z = S.quiz, n = Z.qs.length; S.lastReport = Z;
   const score = Z.answers.reduce((s,a)=>s+(a?a.pts:0),0);
   const sc = Math.round(score*10)/10, P = pct(score, n);
   const secs = Math.round((Date.now()-Z.start)/1000);
@@ -1321,9 +1416,9 @@ async function finish(){
     (byType[q.t] ??= {s:0,n:0}); byType[q.t].s += a.pts; byType[q.t].n++; });
   // save
   const p = S.player;
-  if (!Z.retry) dropQuiz();
+  if (!Z.retry && !again) dropQuiz();
   let saving = Promise.resolve(null);
-  if (!Z.retry){
+  if (!Z.retry && !again){
     const chap = {}; for (const key in byCh._m){ const v = byCh._m[key]; chap[key] = pct(v.s, v.n); }
     const ok = Z.qs.filter((q,i) => (Z.answers[i]||{}).pts >= 1).map(q => q.id);
     saving = store.save(p, { at: Date.now(), chs: Z.chs, mode: Z.mode, score: sc, total: n, pct: P, secs, chap, ok });
