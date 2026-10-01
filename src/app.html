@@ -159,10 +159,9 @@ p{margin:0}
 .tile .n{font-family:var(--f-display);font-size:22px;line-height:1;position:relative}
 .tile[aria-pressed="true"]{background:var(--oil-soft);border-color:var(--oil);color:var(--oil-ink);box-shadow:0 0 0 3px color-mix(in oklab,var(--oil) 18%,transparent)}
 .tile[aria-pressed="true"] .trk{stroke:color-mix(in oklab,var(--oil) 20%,transparent)}
-.chap-pick{display:flex;align-items:center;gap:14px;margin-top:14px;padding:14px 16px;background:var(--surface);border:1px solid var(--line);border-radius:16px}
-.chap-pick .num{font-family:var(--f-display);font-size:34px;line-height:1;color:var(--oil);min-width:1.4em;text-align:center}
-.chap-pick b{display:block;font-family:var(--f-display);font-weight:400;font-size:20px;line-height:1.2}
-.chap-pick small{color:var(--ink-2);font-size:13px}
+#start{display:grid;gap:2px;justify-items:center;padding-block:12px;min-height:60px;line-height:1.2}
+#start .st-main{font-size:17px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#start .st-sub{font-size:13px;font-weight:500;opacity:.78;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .trk{stroke:var(--surface-2)}
 .chap-list{margin-top:12px;font-size:14px;color:var(--ink-2);min-height:21px}
 .legend{display:flex;gap:14px;font-size:12px;color:var(--ink-2);margin-top:10px}
@@ -792,7 +791,6 @@ function viewHome(){
       
       <div class="grid" id="grid">${Array.from({length:31},(_,i)=>i+1).map(c=>`<button class="tile" data-c="${c}" aria-pressed="false" title="${c}. ${esc(TITLES[c-1])}" aria-label="Capitolul ${c}: ${esc(TITLES[c-1])}">${tileSVG(c)}<span class="n">${c}</span><i class="check" aria-hidden="true"></i></button>`).join("")}</div>
       <div class="legend"><span><i style="background:var(--cedar)"></i>scor maxim ușor</span><span><i style="background:var(--oil)"></i>scor maxim greu</span></div>
-      <div class="chap-pick" id="chapPick"></div>
 
       <div class="startbar"><button class="btn btn-primary btn-block" id="start"></button></div>
     </div>
@@ -816,10 +814,9 @@ function viewHome(){
     app.querySelectorAll("[data-scope]").forEach(b => b.setAttribute("aria-pressed", S.scope===b.dataset.scope));
     app.querySelectorAll("[data-mode]").forEach(b => b.setAttribute("aria-pressed", S.mode===b.dataset.mode));
     const list = buildPool(chs, S.mode), pool = list.length, dur = pool ? ` · ${durLabel(estSecs(list))}` : "";
-    if (!chs.length) $("#chapPick").innerHTML = `<span class="num">–</span><div><b>Niciun capitol ales</b></div>`;
-    else if (chs.length === 1){ const c = chs[0], d = QUIZ[c] || {easy:[],hard:[]}; $("#chapPick").innerHTML = `<span class="num">${c}</span><div style="min-width:0"><b>${esc(TITLES[c-1])}</b><small>${pool} întrebări ${({easy:"ușoare", hard:"grele", both:"ușoare și grele"})[S.mode]}${dur}</small></div>`; }
-    else $("#chapPick").innerHTML = `<span class="num">${chs.length}</span><div style="min-width:0"><b>${chs.length===31 ? "Toată cartea" : esc(chaptersLabel(chs))}</b><small>${pool} întrebări ${({easy:"ușoare", hard:"grele", both:"ușoare și grele"})[S.mode]}${dur}</small></div>`;
-    const st = $("#start"); st.disabled = !pool; st.textContent = !pool ? "Alege cel puțin un capitol" : chs.length === 1 ? `Începe testul · ${pool} întrebări` : "Începe testul";
+    const what = chs.length === 1 ? `${chs[0]}. ${TITLES[chs[0]-1]}` : chs.length === 31 ? "Toată cartea" : chaptersLabel(chs);
+    const st = $("#start"); st.disabled = !pool;
+    st.innerHTML = !pool ? "Alege cel puțin un capitol" : `<span class="st-main">Începe · ${esc(what)}</span><span class="st-sub">${pool} întrebări${dur}</span>`;
     $("#modeNote").textContent = MODE_NOTE[S.mode];
     persistPrefs();
   };
