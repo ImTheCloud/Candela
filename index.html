@@ -585,6 +585,7 @@ const store = {
   async send(x){
     const { error } = await sb().rpc("save_play", { p_player: x.player || this.uid, p_at: new Date(x.at).toISOString(), p_chs: x.chs, p_mode: x.mode, p_score: x.score, p_total: x.total, p_pct: x.pct, p_secs: x.secs, p_chap: x.chap, p_ok: x.ok, ...(x.seen ? { p_seen: x.seen } : {}) });
     if (error) throw error;
+    if (x.wrong) await sb().rpc("set_result_wrong", { p_player: x.player || this.uid, p_at: new Date(x.at).toISOString(), p_wrong: x.wrong }).then(() => {}, () => {});
   },
   async flush(){
     const left = [];
@@ -1433,7 +1434,8 @@ async function finish(again){
     const chap = {}; for (const key in byCh._m){ const v = byCh._m[key]; chap[key] = pct(v.s, v.n); }
     const ok = Z.qs.filter((q,i) => (Z.answers[i]||{}).pts >= 1).map(q => q.id);
     const seen = Z.qs.filter((q,i) => Z.answers[i] && !Z.answers[i].skipped).map(q => q.id);
-    saving = store.save(p, { at, chs: Z.chs, mode: Z.mode, score: sc, total: n, pct: P, secs, chap, ok, seen });
+    const wrongIds = Z.qs.map((q,i) => ({q, a: Z.answers[i]})).filter(x => !x.a || x.a.pts < 1).map(packWrong);
+    saving = store.save(p, { at, chs: Z.chs, mode: Z.mode, score: sc, total: n, pct: P, secs, chap, ok, seen, wrong: wrongIds });
   }
   S.board = null;
   const wrong = Z.qs.map((q,i)=>({q, a: Z.answers[i]})).filter(x => !x.a || x.a.pts < 1);
@@ -1444,6 +1446,15 @@ async function finish(again){
   const res = await saving;
   const note = $("#saveNote"); if (note && res && !res.guest) note.textContent = res.saved ? "" : "Rezultatul nu s-a putut trimite. Se trimite automat la următoarea intrare.";
 }
+/* a mistake kept with the account: the question id and the answer given, in the question's own option order */
+function packWrong({q, a}){
+  const src = srcOf(q.id);
+  let g = a && !a.skipped ? a.given : null;
+  if (g != null && src && (q.t === "one" || q.t === "multi")){ const canon = i => src.opts.indexOf(q.opts[i]); g = q.t === "one" ? canon(g) : g.map(canon).sort((x,y)=>x-y); }
+  return { id: q.id, g, p: a ? a.pts : 0 };
+}
+function srcOf(id){ const m = /^(\d+)([eh])(\d+)$/.exec(id); if (!m) return null; const q = (QUIZ[+m[1]] || {})[m[2] === "e" ? "easy" : "hard"]; return q && q[+m[3]] ? {...q[+m[3]], ch: +m[1], mode: m[2] === "e" ? "easy" : "hard", id} : null; }
+function unpackWrong(list){ return (list || []).map(w => { const q = srcOf(w.id); return q ? { q, a: { pts: w.p || 0, given: w.g, skipped: w.g == null } } : null; }).filter(Boolean); }
 /* the last reports stay on this phone so a test from the history can be opened again, mistakes included */
 const repKey = () => "candela:reports:" + (S.player && !S.player.guest ? store.pid : "guest");
 function keepReport(r){
@@ -1455,9 +1466,13 @@ function findReport(at){
   return [...lsGet(repKey(), []), ...lsGet("candela:reports:guest", [])].find(x => Math.abs(x.at - at) < 1000) || null;
 }
 // a test from the history: the saved report, or just its score when it was played on another phone
-function openPastReport(at){
+async function openPastReport(at){
   const h = S.player.history.find(x => x.at === at); if (!h) return;
-  const r = findReport(at) || { at, chs: h.chs, mode: h.mode, n: h.total, sc: h.score, P: h.pct, wrong: null, byCh: {} };
+  let r = findReport(at);
+  if (!r){
+    r = { at, chs: h.chs, mode: h.mode, n: h.total, sc: h.score, P: h.pct, wrong: null, byCh: {} };
+    if (!S.player.guest){ const res = await store.rpc("result_wrong", { p_player: store.pid, p_at: new Date(at).toISOString() }); if (res.ok && Array.isArray(res.data)) r.wrong = unpackWrong(res.data); }
+  }
   renderReport(r, { past: true });
 }
 function renderReport(r, o = {}){
@@ -1487,7 +1502,7 @@ function renderReport(r, o = {}){
   </div>` : ""}
   ${wrong ? `<div class="section-h"><h3>${nWrong ? "De revăzut" : "Nicio greșeală"}</h3>${nWrong?`<span class="muted" style="font-size:14px">${nWrong} întrebări</span>`:""}</div>
   <div class="mistakes">${nWrong ? wrong.map(mistakeHTML).join("") : `<div class="allgood">Toate răspunsurile sunt corecte.</div>`}</div>`
-  : `<p class="muted" style="text-align:center;font-size:14px">Greșelile se văd doar pe telefonul pe care ai dat testul.</p>`}
+  : ""}
   <div class="startbar" style="display:grid;grid-template-columns:${o.past ? "1fr" : "1fr 1fr"};gap:10px">
     ${nWrong ? `<button class="btn btn-oil" id="retry">Reia greșelile</button>` : `<button class="btn btn-oil" id="again">Refă testul</button>`}
     ${o.past ? "" : `<button class="btn btn-primary" id="home">Test nou</button>`}
