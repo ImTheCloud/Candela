@@ -173,6 +173,75 @@
      "n-a vrut să asculte glasul lui Samuel"
     ]
    ]
+  },
+  {
+   "t": "one",
+   "ref": "8:1-2",
+   "q": "Câți fii ai lui Samuel sunt numiți în acest capitol?",
+   "opts": [
+    "Unul",
+    "Trei",
+    "Doi",
+    "Patru"
+   ],
+   "a": 2
+  },
+  {
+   "t": "tf",
+   "ref": "8:3",
+   "q": "Fiii lui Samuel judecau cu dreptate, ca și tatăl lor.",
+   "a": false
+  },
+  {
+   "t": "tf",
+   "ref": "8:9-10",
+   "q": "Samuel le-a vorbit despre dreptul împăratului pentru că Domnul i-a poruncit să-i înștiințeze.",
+   "a": true
+  },
+  {
+   "t": "multi",
+   "ref": "8:11-17",
+   "q": "Care dintre următoarele a spus Samuel că le va lua împăratul? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Casele lor",
+    "Aurul și argintul lor",
+    "Chivotul Domnului",
+    "Cetățile lor întărite"
+   ],
+   "a": []
+  },
+  {
+   "t": "match",
+   "ref": "8:4-22",
+   "q": "Asociază fiecare moment cu locul lui în ordinea faptelor.",
+   "pairs": [
+    [
+     "Primul",
+     "Bătrânii lui Israel cer un împărat"
+    ],
+    [
+     "Al doilea",
+     "Samuel se roagă Domnului"
+    ],
+    [
+     "Al treilea",
+     "Samuel le face cunoscut dreptul împăratului"
+    ],
+    [
+     "Al patrulea",
+     "Poporul nu vrea să asculte glasul lui Samuel"
+    ],
+    [
+     "Al cincilea",
+     "Samuel îi trimite pe bărbații lui Israel acasă"
+    ]
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "8:22",
+   "q": "La sfârșitul capitolului, Samuel unge pe loc un împărat în fața bărbaților lui Israel.",
+   "a": false
   }
  ],
  "hard": [
@@ -406,6 +475,32 @@
      "„Ei se poartă cu tine cum s-au purtat totdeauna”"
     ]
    ]
+  },
+  {
+   "t": "fill",
+   "ref": "8:3",
+   "q": "„Fiii lui Samuel n-au călcat pe urmele lui, ci se dădeau la ___”",
+   "a": [
+    "lăcomie"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "8:7-22",
+   "q": "De câte ori îi spune Domnul lui Samuel, în acest capitol, să asculte glasul poporului?",
+   "opts": [
+    "O dată",
+    "De două ori",
+    "De trei ori",
+    "De patru ori"
+   ],
+   "a": 2
+  },
+  {
+   "t": "tf",
+   "ref": "8:16",
+   "q": "Samuel a spus că împăratul va lua cei mai slabi boi și măgari ai poporului.",
+   "a": false
   }
  ]
 }

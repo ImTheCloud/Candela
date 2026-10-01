@@ -166,6 +166,93 @@
      "acolo era casa lui Samuel"
     ]
    ]
+  },
+  {
+   "t": "one",
+   "ref": "7:1",
+   "q": "Al cui fiu era Eleazar, cel sfințit ca să păzească chivotul?",
+   "opts": [
+    "Al lui Eli",
+    "Al lui Abinadab",
+    "Al lui Samuel",
+    "Al lui Iosua din Bet-Șemeș"
+   ],
+   "a": 1
+  },
+  {
+   "t": "one",
+   "ref": "7:3",
+   "q": "Cui i-a vorbit Samuel despre întoarcerea la Domnul din toată inima?",
+   "opts": [
+    "Doar preoților",
+    "Locuitorilor din Chiriat-Iearim",
+    "Întregii case a lui Israel",
+    "Bătrânilor din Rama"
+   ],
+   "a": 2
+  },
+  {
+   "t": "fill",
+   "ref": "7:3",
+   "q": "„dumnezeii străini și astarteele, îndreptați-vă ___ spre Domnul”",
+   "a": [
+    "inima"
+   ]
+  },
+  {
+   "t": "match",
+   "ref": "7:2-10",
+   "q": "Asociază fiecare situație cu ce a urmat după ea.",
+   "pairs": [
+    [
+     "Israel a plâns după Domnul",
+     "Samuel l-a îndemnat să se întoarcă la Domnul din toată inima"
+    ],
+    [
+     "Israeliții s-au temut de filisteni",
+     "i-au cerut lui Samuel să strige pentru ei către Domnul"
+    ],
+    [
+     "Samuel a strigat către Domnul",
+     "Domnul l-a ascultat și a tunat împotriva filistenilor"
+    ]
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "7:12",
+   "q": "Eleazar a fost cel care a pus piatra Eben-Ezer între Mițpa și Șen.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "7:16-17",
+   "q": "Unde se întorcea Samuel după înconjurul pe care îl făcea în fiecare an?",
+   "opts": [
+    "La Silo",
+    "La Rama",
+    "La Chiriat-Iearim",
+    "La Betel"
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "7:17",
+   "q": "Samuel judeca pe Israel doar în timpul înconjurului anual, nu și acasă, la Rama.",
+   "a": false
+  },
+  {
+   "t": "multi",
+   "ref": "7:1-17",
+   "q": "Care dintre următoarele se întâmplă în acest capitol? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Chivotul este dus înapoi la Silo",
+    "Samuel este ales împărat",
+    "Eleazar aduce arderea-de-tot la Mițpa",
+    "Israel cere filistenilor pace"
+   ],
+   "a": []
   }
  ],
  "hard": [
@@ -397,6 +484,14 @@
    "ref": "7:17",
    "q": "Samuel a zidit un altar Domnului la Silo.",
    "a": false
+  },
+  {
+   "t": "fill",
+   "ref": "7:10",
+   "q": "„Domnul a tunat în ziua aceea cu mare vuiet împotriva filistenilor și i-a pus pe fugă. Au fost bătuți ___ lui Israel.”",
+   "a": [
+    "dinaintea"
+   ]
   }
  ]
 }

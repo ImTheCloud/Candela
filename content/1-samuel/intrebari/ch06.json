@@ -164,6 +164,142 @@
     0,
     1
    ]
+  },
+  {
+   "t": "one",
+   "ref": "6:2",
+   "q": "Ce voiau filistenii să afle de la preoți și de la ghicitori?",
+   "opts": [
+    "Cine dintre ei păcătuise",
+    "Cum trebuie să trimită chivotul înapoi la locul lui",
+    "Când va înceta foametea",
+    "Unde să ascundă chivotul"
+   ],
+   "a": 1
+  },
+  {
+   "t": "multi",
+   "ref": "6:3-5",
+   "q": "Ce le-au spus preoții și ghicitorii filistenilor că s-ar putea întâmpla dacă aduc jertfa pentru vină? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Se vor vindeca",
+    "Vor ști pentru ce nu s-a îndepărtat mâna Lui de peste ei",
+    "Vor birui pe Israel în luptă",
+    "Poate Dumnezeu va înceta să-Și apese mâna peste ei",
+    "Vor primi chivotul înapoi după un an"
+   ],
+   "a": [
+    0,
+    1,
+    3
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "6:4",
+   "q": "De ce trebuiau să fie câte cinci umflăturile și șoarecii de aur?",
+   "opts": [
+    "Pentru că chivotul stătuse cinci luni la ei",
+    "După numărul preoților lui Dagon",
+    "După numărul domnitorilor filistenilor",
+    "După numărul vacilor"
+   ],
+   "a": 2
+  },
+  {
+   "t": "fill",
+   "ref": "6:5",
+   "q": "„care pustiesc țara și dați ___ Dumnezeului lui Israel”",
+   "a": [
+    "slavă"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "6:4",
+   "q": "Ghicitorii au spus că urgia îi lovise doar pe oamenii de rând, nu și pe domnitorii filistenilor.",
+   "a": false
+  },
+  {
+   "t": "multi",
+   "ref": "6:2-9",
+   "q": "Care dintre următoarele le-au cerut preoții și ghicitorii filistenilor? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Să ardă chivotul",
+    "Să păstreze chivotul în templul lui Dagon",
+    "Să trimită chivotul pe umerii preoților lor",
+    "Să trimită o oaste care să însoțească chivotul"
+   ],
+   "a": []
+  },
+  {
+   "t": "tf",
+   "ref": "6:8",
+   "q": "Ghicitorii au cerut ca un filistean să mâne vacile până la Bet-Șemeș.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "6:9",
+   "q": "Ce trebuiau să facă filistenii după ce trimiteau carul?",
+   "opts": [
+    "Să-l urmărească cu privirea",
+    "Să postească trei zile",
+    "Să ardă tămâie lui Dagon",
+    "Să trimită soli la Silo"
+   ],
+   "a": 0
+  },
+  {
+   "t": "tf",
+   "ref": "6:10",
+   "q": "Filistenii au urmat sfatul preoților și ghicitorilor și au făcut întocmai.",
+   "a": true
+  },
+  {
+   "t": "match",
+   "ref": "6:12-14",
+   "q": "Asociază fiecare element cu ce spune textul despre el.",
+   "pairs": [
+    [
+     "Domnitorii filistenilor",
+     "au mers după vaci"
+    ],
+    [
+     "Vacile",
+     "au fost aduse ca ardere-de-tot Domnului"
+    ],
+    [
+     "Piatra cea mare",
+     "se afla în câmpul unde s-a oprit carul"
+    ]
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "6:16",
+   "q": "Domnitorii filistenilor s-au întors la Ecron fără să vadă ce s-a întâmplat cu chivotul la Bet-Șemeș.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "6:19",
+   "q": "Cum descrie textul lovitura pe care a dat-o Domnul oamenilor din Bet-Șemeș?",
+   "opts": [
+    "O mare urgie",
+    "O foamete grea",
+    "O ploaie de piatră",
+    "O sabie din cer"
+   ],
+   "a": 0
+  },
+  {
+   "t": "fill",
+   "ref": "6:21",
+   "q": "„Filistenii au adus înapoi chivotul Domnului; ___ și suiți-l la voi.”",
+   "a": [
+    "coborâți-vă"
+   ]
   }
  ],
  "hard": [
@@ -434,6 +570,40 @@
      "„Filistenii au adus înapoi chivotul Domnului”"
     ]
    ]
+  },
+  {
+   "t": "fill",
+   "ref": "6:6",
+   "q": "„Nu i-a pedepsit El și n-au lăsat ei atunci pe copiii lui Israel să ___?”",
+   "a": [
+    "plece"
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "6:9",
+   "q": "„dacă se va sui pe drumul ___ său spre Bet-Șemeș”",
+   "a": [
+    "hotarului"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "6:15",
+   "q": "Oamenii din Bet-Șemeș au adus Domnului arderi-de-tot și jertfe abia a doua zi după sosirea chivotului.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "6:18",
+   "q": "Ale cui erau cetățile filistenilor după numărul cărora s-au făcut șoarecii de aur?",
+   "opts": [
+    "Ale preoților lui Dagon",
+    "Ale regelui din Gat",
+    "Ale celor cinci căpetenii",
+    "Ale fiilor lui Anac"
+   ],
+   "a": 2
   }
  ]
 }

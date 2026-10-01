@@ -206,6 +206,139 @@
    "a": [
     "Ghibea"
    ]
+  },
+  {
+   "t": "one",
+   "ref": "10:1",
+   "q": "Ce i-a spus Samuel lui Saul după ce l-a uns?",
+   "opts": [
+    "Că Domnul l-a uns ca să fie căpetenia moștenirii Lui",
+    "Că va fi preot la Silo",
+    "Că va găsi măgărițele la Rama",
+    "Că trebuie să se întoarcă la filisteni"
+   ],
+   "a": 0
+  },
+  {
+   "t": "one",
+   "ref": "10:2",
+   "q": "Când urma Saul să-i găsească pe cei doi oameni de la mormântul Rahelei?",
+   "opts": [
+    "Peste șapte zile",
+    "Chiar în ziua aceea, după ce se despărțea de Samuel",
+    "La luna nouă",
+    "După ce ajungea acasă la tatăl său"
+   ],
+   "a": 1
+  },
+  {
+   "t": "one",
+   "ref": "10:3",
+   "q": "Încotro mergeau cei trei oameni pe care Saul urma să-i întâlnească la stejarul din Tabor?",
+   "opts": [
+    "Se suiau la Dumnezeu, în Betel",
+    "Coborau spre Egipt",
+    "Mergeau la Samuel, la Rama",
+    "Fugeau de filisteni"
+   ],
+   "a": 0
+  },
+  {
+   "t": "tf",
+   "ref": "10:4",
+   "q": "Cei trei oameni de la stejarul din Tabor urmau să-l întrebe pe Saul de sănătate.",
+   "a": true
+  },
+  {
+   "t": "match",
+   "ref": "10:2-10",
+   "q": "Asociază fiecare semn cu locul lui în ordinea dată de Samuel.",
+   "pairs": [
+    [
+     "Primul",
+     "doi oameni îi vor vorbi despre măgărițe"
+    ],
+    [
+     "Al doilea",
+     "trei oameni îi vor da două pâini"
+    ],
+    [
+     "Al treilea",
+     "o ceată de proroci îi va ieși înainte"
+    ]
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "10:7",
+   "q": "„Când ți se vor împlini semnele acestea, fă ce vei găsi de făcut, căci ___ este cu tine.”",
+   "a": [
+    "Dumnezeu"
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "10:8",
+   "q": "„Să mă aștepți șapte zile acolo, până voi ajunge eu la tine și-ți voi spune ce ai să ___.”",
+   "a": [
+    "faci"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "10:12",
+   "q": "Întrebarea „Oare și Saul este între proroci?” a ajuns o zicală.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "10:14",
+   "q": "Ce l-a întrebat mai întâi unchiul lui Saul?",
+   "opts": [
+    "„Unde v-ați dus?”",
+    "„Ce v-a spus Samuel?”",
+    "„Ați găsit măgărițele?”",
+    "„De ce ați întârziat?”"
+   ],
+   "a": 0
+  },
+  {
+   "t": "multi",
+   "ref": "10:18",
+   "q": "Din mâna cui a spus Domnul, prin Samuel, că l-a izbăvit pe Israel, pe lângă egipteni? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Din mâna tuturor împărățiilor care îi apăsau",
+    "Din mâna babilonienilor",
+    "Din mâna lui Goliat",
+    "Din mâna amaleciților"
+   ],
+   "a": [
+    0
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "10:20",
+   "q": "Samuel a fost cel care a apropiat semințiile lui Israel la tragerea la sorți.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "10:22",
+   "q": "Ce L-au întrebat pe Domnul când nu l-au găsit pe Saul?",
+   "opts": [
+    "„Pe cine să alegem în locul lui?”",
+    "„A venit oare omul acesta aici?”",
+    "„S-a întors la Ghibea?”",
+    "„Este vrednic să fie împărat?”"
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "10:24",
+   "q": "Samuel a spus că în tot poporul nu este nimeni care să fie ca Saul.",
+   "a": true
   }
  ],
  "hard": [
@@ -461,6 +594,52 @@
    "a": [
     "ajuta",
     "dar"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "10:2",
+   "q": "În hotarul cărei seminții se afla mormântul Rahelei?",
+   "opts": [
+    "Iuda",
+    "Efraim",
+    "Beniamin",
+    "Dan"
+   ],
+   "a": 2
+  },
+  {
+   "t": "tf",
+   "ref": "10:4",
+   "q": "Samuel i-a spus lui Saul că va refuza pâinile pe care i le vor oferi cei trei oameni.",
+   "a": false
+  },
+  {
+   "t": "fill",
+   "ref": "10:5",
+   "q": "„vei întâlni o ceată de proroci coborându-se de pe înălțimea pentru ___”",
+   "a": [
+    "jertfă"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "10:14",
+   "q": "Cui i-a pus unchiul lui Saul întrebarea „Unde v-ați dus?”",
+   "opts": [
+    "Numai lui Saul",
+    "Lui Saul și slugii lui",
+    "Lui Samuel",
+    "Lui Chis"
+   ],
+   "a": 1
+  },
+  {
+   "t": "fill",
+   "ref": "10:19",
+   "q": "„care v-a izbăvit din toate relele și din toate ___ voastre”",
+   "a": [
+    "suferințele"
    ]
   }
  ]

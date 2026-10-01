@@ -203,6 +203,139 @@
    "a": [
     "cuvântul"
    ]
+  },
+  {
+   "t": "tf",
+   "ref": "9:2",
+   "q": "Saul îi întrecea pe toți în înălțime de la umăr în sus.",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "9:4",
+   "q": "Saul și sluga au găsit măgărițele în țara lui Beniamin.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "9:6",
+   "q": "Unde le-a spus sluga că se află omul lui Dumnezeu?",
+   "opts": [
+    "La Silo",
+    "În cetatea aceasta",
+    "La Betel",
+    "La Ghilgal"
+   ],
+   "a": 1
+  },
+  {
+   "t": "fill",
+   "ref": "9:10",
+   "q": "„Saul a zis slugii: „Ai ___; haidem să mergem!”",
+   "a": [
+    "dreptate"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "9:13",
+   "q": "Fetele le-au spus că îl vor găsi pe văzător înainte ca el să se suie la locul înalt să mănânce.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "9:13",
+   "q": "Cine mănâncă după ce văzătorul binecuvântează jertfa?",
+   "opts": [
+    "Numai preoții",
+    "Cei poftiți",
+    "Numai bătrânii cetății",
+    "Nimeni până a doua zi"
+   ],
+   "a": 1
+  },
+  {
+   "t": "match",
+   "ref": "9:9-24",
+   "q": "Asociază fiecare replică cu cel care a rostit-o.",
+   "pairs": [
+    [
+     "„Haidem să mergem la văzător!”",
+     "cel care mergea odinioară să întrebe pe Dumnezeu"
+    ],
+    [
+     "„Aici este văzătorul?”",
+     "Saul și sluga"
+    ],
+    [
+     "„Suiți-vă dar, căci acum îl veți găsi”",
+     "fetele"
+    ],
+    [
+     "„Iată ce a fost păstrat, pune-o înainte și mănâncă”",
+     "Samuel"
+    ]
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "9:18",
+   "q": "Ce l-a rugat Saul pe Samuel când s-a apropiat de el la poartă?",
+   "opts": [
+    "Să-i spună unde sunt măgărițele",
+    "Să-i arate unde este casa văzătorului",
+    "Să-i dea ceva de mâncare",
+    "Să-l ducă la Rama"
+   ],
+   "a": 1
+  },
+  {
+   "t": "multi",
+   "ref": "9:20",
+   "q": "Pentru cine spunea Samuel că este păstrat tot ce este mai de preț în Israel? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Pentru Saul",
+    "Pentru fiii lui Samuel",
+    "Pentru toată casa tatălui lui Saul",
+    "Pentru preoții de la Silo",
+    "Pentru seminția lui Iuda"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "9:21",
+   "q": "„Și familia mea nu este cea mai mică dintre toate familiile din seminția lui Beniamin? Pentru ce dar îmi ___ astfel?”",
+   "a": [
+    "vorbești"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "9:25",
+   "q": "După masă, Samuel și Saul au rămas peste noapte pe înălțime.",
+   "a": false
+  },
+  {
+   "t": "tf",
+   "ref": "9:26",
+   "q": "În dimineața următoare, Saul a plecat singur, iar Samuel a rămas în cetate.",
+   "a": false
+  },
+  {
+   "t": "multi",
+   "ref": "9:25-27",
+   "q": "Care dintre următoarele s-au întâmplat în dimineața plecării lui Saul? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Samuel l-a uns pe Saul la poarta cetății, în fața poporului",
+    "Saul a găsit măgărițele pe drum",
+    "Chis a venit să-l caute pe Saul",
+    "Sluga a rămas în casa lui Samuel"
+   ],
+   "a": []
   }
  ],
  "hard": [
@@ -470,6 +603,97 @@
     "Spata și ce era pe ea"
    ],
    "a": 3
+  },
+  {
+   "t": "one",
+   "ref": "9:1",
+   "q": "Ce spune textul despre Afiah, ultimul nume din genealogia lui Chis?",
+   "opts": [
+    "Era fiul unui beniamit",
+    "Era preot la Silo",
+    "Era fiul lui Iuda",
+    "Era judecător în Israel"
+   ],
+   "a": 0
+  },
+  {
+   "t": "fill",
+   "ref": "9:2",
+   "q": "„El avea un fiu cu numele Saul, ___ și frumos”",
+   "a": [
+    "tânăr"
+   ]
+  },
+  {
+   "t": "match",
+   "ref": "9:4-5",
+   "q": "Asociază fiecare etapă a căutării cu locul prin care au trecut, în ordinea din text.",
+   "pairs": [
+    [
+     "Prima",
+     "muntele lui Efraim"
+    ],
+    [
+     "A doua",
+     "țara Șalișa"
+    ],
+    [
+     "A treia",
+     "țara Șaalim"
+    ],
+    [
+     "A patra",
+     "țara lui Beniamin"
+    ],
+    [
+     "A cincea",
+     "țara Țuf"
+    ]
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "9:5",
+   "q": "„Haide să ne întoarcem, ca nu cumva tatăl meu, lăsând ___, să fie îngrijorat de noi.”",
+   "a": [
+    "măgărițele"
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "9:16",
+   "q": "„Mâine, la ceasul acesta, îți voi trimite un om din țara lui ___”",
+   "a": [
+    "Beniamin"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "9:18",
+   "q": "În ce loc anume s-a apropiat Saul de Samuel?",
+   "opts": [
+    "La fântâna cetății",
+    "La mijlocul porții",
+    "Pe acoperișul casei",
+    "La marginea cetății"
+   ],
+   "a": 1
+  },
+  {
+   "t": "fill",
+   "ref": "9:24",
+   "q": "„pune-o înainte și mănâncă, fiindcă pentru tine s-a păstrat când am ___ poporul”",
+   "a": [
+    "poftit"
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "9:26",
+   "q": "„Samuel a chemat pe Saul de pe acoperiș și a zis: „Scoală-te, și te voi ___.”",
+   "a": [
+    "însoți"
+   ]
   }
  ]
 }
