@@ -489,17 +489,22 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .forgot{justify-self:end;margin-top:-8px;font-size:14px}
 @media (max-width:420px){.brow-l{gap:8px;padding:7px 8px}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
-/* First-visit welcome page: fits one screen from 320x568 up */
+/* First-visit welcome page: one screen from 320x568 up, button pinned at the bottom */
 .wrap:has(.welcome){padding-block:0}
-.welcome{min-height:100dvh;padding-block:16px;display:grid;align-content:center;justify-items:center;gap:clamp(10px,2.2vh,18px);max-width:420px;margin:0 auto;text-align:center}
-.welcome .lamp-wrap svg{width:clamp(96px,19vh,150px);height:auto;margin-bottom:-8px}
-.welcome .lamp-glow{inset:-20px 0 auto;height:200px}
-.welcome h1{font-size:clamp(38px,7.5vh,56px);line-height:1;margin-top:-6px}
-.welcome .verse-quote{margin:0;font-size:clamp(15px,2.4vh,17px)}
-.welcome .lead{font-size:16px;margin:0;white-space:nowrap}
+.welcome{min-height:100dvh;display:flex;flex-direction:column;max-width:420px;margin:0 auto;text-align:center;padding:clamp(12px,3vh,32px) 0 calc(16px + env(safe-area-inset-bottom,0px))}
+.wl-top{margin-top:auto;display:grid;justify-items:center;gap:clamp(4px,1vh,10px)}
+.wl-mid{display:grid;gap:clamp(10px,2vh,16px);padding-block:clamp(10px,2.4vh,24px)}
+.wl-bottom{margin-top:auto;padding-top:16px;position:sticky;bottom:calc(16px + env(safe-area-inset-bottom,0px))}
+.wl-bottom .btn{min-height:56px;font-size:18px;box-shadow:0 12px 28px -14px var(--ink)}
+.welcome .lamp-wrap svg{width:clamp(84px,16vh,140px);height:auto;margin-bottom:-6px}
+.welcome .lamp-glow{inset:-20px 0 auto;height:190px}
+.wl-brand{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--cedar)}
+.welcome h1{font-size:clamp(42px,8.5vh,64px);line-height:1}
+.welcome .verse-quote{margin:2px 0 0;font-size:clamp(15px,2.4vh,17px)}
 .wl-verse{text-wrap:balance;max-width:24ch}
 @media (min-width:600px){.wl-verse{max-width:none}}
 .wl-verse .ref{display:block;width:max-content;margin:6px auto 0}
+.welcome .lead{font-size:16px;margin:0;white-space:nowrap}
 .welcome .count{font-weight:700;color:var(--cedar)}
 .wl-list{list-style:none;margin:0;padding:clamp(10px,2vh,16px) 18px;display:grid;gap:clamp(8px,1.6vh,12px);text-align:left;width:100%}
 .wl-list li{display:grid;grid-template-columns:26px 1fr;gap:12px;align-items:center;font-size:15.5px;white-space:nowrap}
@@ -804,7 +809,7 @@ function backHome(){
   else viewHome();
 }
 // bump to show the welcome page once more to everyone, signed in or not
-const WELCOME_V = 3;
+const WELCOME_V = 4;
 async function autoLogin(){
   if (lsGet("candela:welcome", 0) !== WELCOME_V) return viewWelcome();
   mount(`<div class="boot"><div class="lamp-wrap"><div class="lamp-glow"></div>${lampSVG(100)}</div><h1>Candela</h1><p class="verse-quote">„Candela lui Dumnezeu nu se stinsese încă.”<span class="ref">1 Sam. 3:3</span></p><div class="boot-bar"><i></i></div></div>`);
@@ -822,20 +827,25 @@ async function autoLogin(){
   }
 }
 function logout(){ store.logout(); enterGuest(); }
-// shown once, the very first time someone opens the site: one screen, no scrolling
+// shown once, the very first time someone opens the site: one screen, no scrolling, the button at the bottom
 function viewWelcome(){
   mount(`<section class="welcome">
-    <div class="lamp-wrap"><div class="lamp-glow"></div>${lampSVG(46)}</div>
-    <h1>Candela</h1>
-    <p class="verse-quote wl-verse">„Candela lui Dumnezeu nu se stinsese încă.”<span class="ref">1 Sam. 3:3</span></p>
-    <p class="lead"><span class="count">${totalCount("both").toLocaleString("ro-RO")} de întrebări</span> din 1 Samuel</p>
-    <ol class="card wl-list">
-      <li><b>1</b><span>Alegi un capitol și nivelul</span></li>
-      <li><b>2</b><span>Răspunzi la întrebări</span></li>
-      <li><b>3</b><span>Vezi răspunsul și versetul</span></li>
-      <li><b>4</b><span>Citești Biblia oricând</span></li>
-    </ol>
-    <button class="btn btn-primary btn-block" id="wGo" type="button">Începe</button>
+    <div class="wl-top">
+      <div class="lamp-wrap"><div class="lamp-glow"></div>${lampSVG(46)}</div>
+      <span class="wl-brand">Candela · 1 Samuel</span>
+      <h1>Bun venit!</h1>
+      <p class="verse-quote wl-verse">„Candela lui Dumnezeu nu se stinsese încă.”<span class="ref">1 Sam. 3:3</span></p>
+    </div>
+    <div class="wl-mid">
+      <p class="lead"><span class="count">${totalCount("both").toLocaleString("ro-RO")} de întrebări</span> din 1 Samuel</p>
+      <ol class="card wl-list">
+        <li><b>1</b><span>Alegi un capitol și nivelul</span></li>
+        <li><b>2</b><span>Răspunzi la întrebări</span></li>
+        <li><b>3</b><span>Vezi răspunsul și versetul</span></li>
+        <li><b>4</b><span>Citești Biblia oricând</span></li>
+      </ol>
+    </div>
+    <div class="wl-bottom"><button class="btn btn-primary btn-block" id="wGo" type="button">Începe</button></div>
   </section>`);
   $("#wGo").onclick = () => { lsSet("candela:welcome", WELCOME_V); lsSet("candela:verse", true); autoLogin(); };
 }
