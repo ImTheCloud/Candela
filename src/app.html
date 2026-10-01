@@ -139,7 +139,6 @@ p{margin:0}
 .more summary{font-family:var(--f-body);font-size:13.5px;font-weight:600;color:var(--oil-ink);cursor:pointer;margin-top:6px}
 .more[open] summary{margin-bottom:6px}
 .seg-note{font-size:13px;color:var(--ink-2)}
-.lvl-h{justify-content:flex-start;gap:12px;flex-wrap:wrap;row-gap:2px}
 .who.acct{border:1px solid var(--line);padding-left:14px}
 .who.acct .avatar{background:var(--surface-2);color:var(--ink)}
 .guest-line{font-size:14px;color:var(--ink-2);margin-top:6px}
@@ -430,6 +429,12 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 @media (max-width:350px){.read-btn{padding:8px}.read-btn span{display:none}}
 @media (max-width:420px){.top-r:has(.acct) .read-btn{padding:8px}.top-r:has(.acct) .read-btn span{display:none}.who.acct{padding:8px 14px}.who.acct .avatar{display:none}}
 @media (max-width:340px){.who.acct .long{display:none}}
+.sh-lvl{display:grid;gap:8px}
+.sh-l{font-size:14px;font-weight:600}
+.sh-note{font-size:13.5px;color:var(--ink-2);min-height:1.3em}
+.sh-note.ok{color:var(--cedar);font-weight:600}
+.seg .done-ic{margin-left:5px;vertical-align:-1px}
+.sh-note .done-ic{vertical-align:-2px;margin-right:2px}
 .r-pick{display:grid;gap:6px;font-size:14px;font-weight:600}
 .r-pick select{font-size:16px;padding:11px 14px;appearance:auto}
 .r-nav{display:flex;justify-content:space-between;gap:10px}
@@ -990,13 +995,7 @@ function viewHome(){
 
   <aside class="h-config">
     <div class="panel">
-      <div class="section-h first lvl-h"><h3>Nivel</h3><span class="seg-note" id="modeNote"></span></div>
-      <div class="seg" role="group" aria-label="Nivel">
-        ${["easy","hard","both"].map(m=>`<button data-mode="${m}" aria-pressed="${S.mode===m}">${MODE_LABEL[m]}</button>`).join("")}
-      </div>
-      
-
-      <div class="section-h"><h3>Câte capitole vrei să exersezi?</h3></div>
+      <div class="section-h first"><h3>Câte capitole vrei să exersezi?</h3></div>
       <div class="seg scope" role="group" aria-label="Câte capitole">
         <button data-scope="one">Un capitol</button><button data-scope="many">Mai multe</button><button data-scope="all">Toată cartea</button>
       </div>
@@ -1025,12 +1024,8 @@ function viewHome(){
     app.querySelectorAll(".tile").forEach(t => t.setAttribute("aria-pressed", S.sel.has(+t.dataset.c)));
     $("#grid").dataset.scope = S.scope;
     app.querySelectorAll("[data-scope]").forEach(b => b.setAttribute("aria-pressed", S.scope===b.dataset.scope));
-    app.querySelectorAll("[data-mode]").forEach(b => b.setAttribute("aria-pressed", S.mode===b.dataset.mode));
-    const list = buildPool(chs, S.mode), pool = list.length, dur = pool ? ` · ${durLabel(estSecs(list))}` : "";
-    const what = chs.length === 1 ? `${chs[0]}. ${TITLES[chs[0]-1]}` : chs.length === 31 ? "Toată cartea" : chaptersLabel(chs);
-    const st = $("#start"); st.disabled = !pool;
-    st.innerHTML = !pool ? "Alege cel puțin un capitol" : `<span class="st-main">Începe · ${esc(what)}</span><span class="st-sub">${pool} întrebări${dur}</span>`;
-    $("#modeNote").textContent = MODE_NOTE[S.mode];
+    const st = $("#start"); st.disabled = !chs.length;
+    st.innerHTML = !chs.length ? "Alege cel puțin un capitol" : `<span class="st-main">Începe · ${chs.length === 1 ? `capitolul ${chs[0]}` : esc(whatLabel(chs))}</span><span class="st-sub">${countsLabel(chs)}</span>`;
     const rd = $("#read"); rd.hidden = chs.length !== 1; rd.textContent = `Citește întâi capitolul ${chs[0]}`;
     persistPrefs();
   };
@@ -1047,7 +1042,6 @@ function viewHome(){
     if (S.scope === "many" && prev === "all") S.sel = new Set();
     update();
   });
-  app.querySelectorAll("[data-mode]").forEach(b => b.onclick = () => { S.mode = b.dataset.mode; update(); });
   $("#start").onclick = () => openOptions();
   $("#read").onclick = () => viewRead([...S.sel][0]);
   $("#help").onclick = tutorial;
@@ -1121,34 +1115,52 @@ function durLabel(secs){
   const h = Math.floor(m/60), r = Math.round((m - h*60)/10)*10;
   return r === 60 ? `cam ${h+1} h` : `cam ${h} h${r ? ` ${r} min` : ""}`;
 }
-function openOptions(){
-  const chs = [...S.sel].sort((a,b)=>a-b), list = buildPool(chs, S.mode), pool = list.length, perQ = estSecs(list) / pool;
-  let n = pool;
+/* the start sheet: level (easy by default), number of questions, then start. Same sheet from home and from reading. */
+const CHECK = `<svg class="done-ic" width="13" height="13" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+// a level is done when every chosen chapter already had 100% at it
+const levelDone = (chs, m) => chs.every(c => (m === "both" ? ["easy","hard"] : [m]).every(k => chapStat(c, k) === 100));
+// how many questions each level has, shown under the start buttons
+const countsLabel = chs => `${buildPool(chs, "easy").length} ușoare · ${buildPool(chs, "hard").length} grele`;
+const whatLabel = chs => chs.length === 1 ? `${chs[0]}. ${TITLES[chs[0]-1]}` : chs.length === 31 ? "Toată cartea" : chaptersLabel(chs);
+function openOptions(chs = [...S.sel].sort((a,b)=>a-b)){
+  let mode = "easy", list, pool, perQ, n;
   const bg = document.createElement("div"); bg.className = "sheet-bg";
   bg.innerHTML = `<div class="sheet" role="dialog" aria-modal="true" aria-labelledby="shT">
-    <div class="sheet-h"><h3 id="shT">Câte întrebări?</h3><button class="icon-btn" id="shX" aria-label="Închide"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
-    <div class="opts-row">
-      <div class="toggle col"><div class="cnt-h"><span>Întrebări <small>din ${pool}</small></span>
-        <div class="stepper"><button type="button" class="icon-btn" id="shMinus" aria-label="Mai puține">−</button><input class="input" id="shN" type="number" inputmode="numeric" min="1" max="${pool}" value="${pool}" aria-label="Număr de întrebări"><button type="button" class="icon-btn" id="shPlus" aria-label="Mai multe">+</button></div></div>
-        <div class="counts">${[10,20,30,50].filter(v=>v<pool).map(v=>`<button class="chip" data-n="${v}">${v}</button>`).join("")}<button class="chip" data-n="${pool}">Toate</button></div></div>
-    </div>
+    <div class="sheet-h"><h3 id="shT">${esc(whatLabel(chs))}</h3><button class="icon-btn" id="shX" aria-label="Închide"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
+    <div class="sh-lvl"><span class="sh-l">Nivel</span>
+      <div class="seg" role="group" aria-label="Nivel">${["easy","hard","both"].map(m=>`<button type="button" data-m="${m}">${MODE_LABEL[m]}${levelDone(chs, m) ? CHECK : ""}</button>`).join("")}</div>
+      <small class="sh-note" id="shNote"></small></div>
+    <div class="opts-row"><div class="toggle col" id="shCnt"></div></div>
     <button class="btn btn-primary btn-block" id="shGo"></button>
   </div>`;
   document.body.appendChild(bg);
-  const inp = bg.querySelector("#shN");
-  const set = (v, typing) => { n = Math.max(1, Math.min(pool, Math.round(v) || 1)); if (!typing) inp.value = n;
-    bg.querySelectorAll("[data-n]").forEach(c => c.setAttribute("aria-pressed", +c.dataset.n === n)); bg.querySelector("#shGo").innerHTML = `<span class="st-main">Începe · ${n} întrebări</span><span class="st-sub">${durLabel(perQ * n)}</span>`; };
+  const set = (v, typing) => { n = Math.max(1, Math.min(pool, Math.round(v) || 1)); const inp = bg.querySelector("#shN"); if (!typing) inp.value = n;
+    bg.querySelectorAll("[data-n]").forEach(c => c.setAttribute("aria-pressed", +c.dataset.n === n)); bg.querySelector("#shGo").innerHTML = `<span class="st-main">Începe · ${n} întrebări</span><span class="st-sub">${MODE_LABEL[mode]} · ${durLabel(perQ * n)}</span>`; };
+  const setMode = m => {
+    mode = m; list = buildPool(chs, mode); pool = list.length; perQ = estSecs(list) / pool;
+    bg.querySelectorAll("[data-m]").forEach(b => b.setAttribute("aria-pressed", b.dataset.m === mode));
+    const done = levelDone(chs, mode);
+    const note = bg.querySelector("#shNote"); note.classList.toggle("ok", done);
+    note.innerHTML = done ? `${CHECK} Făcut deja, cu 100%. Îl poți reface.` : esc(MODE_NOTE[mode]);
+    const keep = n && n < pool ? n : pool;
+    bg.querySelector("#shCnt").innerHTML = `<div class="cnt-h"><span>Întrebări <small>din ${pool}</small></span>
+        <div class="stepper"><button type="button" class="icon-btn" id="shMinus" aria-label="Mai puține">−</button><input class="input" id="shN" type="number" inputmode="numeric" min="1" max="${pool}" value="${keep}" aria-label="Număr de întrebări"><button type="button" class="icon-btn" id="shPlus" aria-label="Mai multe">+</button></div></div>
+        <div class="counts">${[10,20,30,50].filter(v=>v<pool).map(v=>`<button type="button" class="chip" data-n="${v}">${v}</button>`).join("")}<button type="button" class="chip" data-n="${pool}">Toate</button></div>`;
+    const inp = bg.querySelector("#shN");
+    inp.oninput = () => { if (inp.value !== "") set(+inp.value, true); };
+    inp.onblur = () => set(+inp.value || n);
+    inp.onkeydown = e => { if (e.key === "Enter"){ e.preventDefault(); inp.blur(); } };
+    bg.querySelector("#shMinus").onclick = () => set(n - 1);
+    bg.querySelector("#shPlus").onclick = () => set(n + 1);
+    bg.querySelectorAll("[data-n]").forEach(c => c.onclick = () => set(+c.dataset.n));
+    set(keep);
+  };
   const close = () => bg.remove();
-  set(pool);
-  inp.oninput = () => { if (inp.value !== "") set(+inp.value, true); };
-  inp.onblur = () => set(+inp.value || n);
-  inp.onkeydown = e => { if (e.key === "Enter"){ e.preventDefault(); inp.blur(); } };
-  bg.querySelector("#shMinus").onclick = () => set(n - 1);
-  bg.querySelector("#shPlus").onclick = () => set(n + 1);
-  bg.querySelectorAll("[data-n]").forEach(c => c.onclick = () => set(+c.dataset.n));
+  setMode("easy");
+  bg.querySelectorAll("[data-m]").forEach(b => b.onclick = () => setMode(b.dataset.m));
   bg.querySelector("#shX").onclick = close;
   bg.onclick = e => { if (e.target === bg) close(); };
-  bg.querySelector("#shGo").onclick = () => { close(); startQuiz(null, n < pool ? n : 0); };
+  bg.querySelector("#shGo").onclick = () => { close(); S.mode = mode; S.sel = new Set(chs); persistPrefs(); startQuiz(null, n < pool ? n : 0); };
 }
 function startQuiz(list, count = 0, o = {}){
   let qs;
@@ -1422,14 +1434,14 @@ function streakHTML(p){
 /* the whole book can be read, one chapter at a time; the last chapter read is remembered */
 function viewRead(c){
   c = Math.min(31, Math.max(1, +c || 1)); lsSet("candela:read", c);
-  const vs = TEXT[c] || [], list = buildPool([c], S.mode), n = list.length;
+  const vs = TEXT[c] || [];
   mount(`<section class="reader">
     <div class="reader-h"><button class="icon-btn" id="rBack" type="button" aria-label="Înapoi"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3L5 8l5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       <div><span class="eyebrow">1 Samuel ${c}</span><h2>${esc(TITLES[c-1])}</h2></div></div>
     <label class="r-pick"><span>Capitolul</span><select class="input" id="rPick">${TITLES.map((t, i) => `<option value="${i+1}" ${i+1 === c ? "selected" : ""}>${i+1}. ${esc(t)}</option>`).join("")}</select></label>
     <div class="reader-text">${vs.map((v, i) => `<p data-v="${i+1}"><sup>${i+1}</sup>${esc(v)}</p>`).join("")}</div>
     <div class="r-nav">${c > 1 ? `<button class="btn btn-ghost" id="rPrev" type="button">← Capitolul ${c-1}</button>` : "<span></span>"}${c < 31 ? `<button class="btn btn-ghost" id="rNext" type="button">Capitolul ${c+1} →</button>` : ""}</div>
-    <div class="startbar"><button class="btn btn-primary btn-block" id="rGo" type="button"><span class="st-main">Fă testul pe capitolul ${c}</span><span class="st-sub">${n} întrebări despre ce ai citit${n ? ` · ${durLabel(estSecs(list))}` : ""}</span></button></div>
+    <div class="startbar"><button class="btn btn-primary btn-block" id="rGo" type="button"><span class="st-main">Fă testul pe capitolul ${c}</span><span class="st-sub">${countsLabel([c])}</span></button></div>
   </section>`);
   document.body.insertAdjacentHTML("beforeend", `${c > 1 ? `<button class="r-side l" id="rSideP" type="button" aria-label="Capitolul ${c-1}" title="Capitolul ${c-1}"><svg width="18" height="18" viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3L5 8l5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>` : ""}
   ${c < 31 ? `<button class="r-side r" id="rSideN" type="button" aria-label="Capitolul ${c+1}" title="Capitolul ${c+1}"><svg width="18" height="18" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>` : ""}`);
@@ -1439,16 +1451,16 @@ function viewRead(c){
   if ($("#rNext")) $("#rNext").onclick = () => viewRead(c + 1);
   if ($("#rSideP")) $("#rSideP").onclick = () => viewRead(c - 1);
   if ($("#rSideN")) $("#rSideN").onclick = () => viewRead(c + 1);
-  $("#rGo").onclick = () => { S.scope = "one"; S.sel = new Set([c]); persistPrefs(); startQuiz(); };
+  $("#rGo").onclick = () => { S.scope = "one"; S.sel = new Set([c]); persistPrefs(); openOptions([c]); };
 }
 
 /* ---------- first-launch tutorial ---------- */
 function tutorial(){
   const slides = [
-    { art: `<div class="seg"><button aria-pressed="true">Ușor</button><button aria-pressed="false">Greu</button><button aria-pressed="false">Ambele</button></div>`,
-      h: "1. Alege nivelul", p: "„Ușor” pentru început. „Greu” când vrei detalii: nume, cifre, locuri." },
     { art: `<div class="tut-grid">${[1,2,3,4,5,6,7,8].map(c => `<span class="tile" aria-pressed="${c===3}"><span class="n">${c}</span></span>`).join("")}</div>`,
-      h: "2. Alege capitolul", p: "Atinge un capitol, apoi „Începe”. Poți citi capitolul înainte de test." },
+      h: "1. Alege capitolul", p: "Atinge un capitol, apoi „Începe”. Cu „Citește” poți citi capitolul înainte." },
+    { art: `<div class="seg"><button aria-pressed="true">Ușor</button><button aria-pressed="false">Greu</button><button aria-pressed="false">Ambele</button></div>`,
+      h: "2. Alege nivelul", p: "„Ușor” pentru început. „Greu” când vrei detalii: nume, cifre, locuri." },
     { art: `<div class="feedback ok"><b>Corect</b><div class="verse"><sup>3</sup>${esc((TEXT[3]||[])[2] || "")}</div></div>`,
       h: "3. Răspunde și învață", p: "După fiecare răspuns vezi versetul din Biblie. La final poți relua greșelile." },
   ];
