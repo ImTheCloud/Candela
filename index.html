@@ -388,32 +388,12 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .read-link{display:block;margin:8px auto 0;font-size:14.5px}
 .help-line{text-align:center;margin-top:18px;display:flex;justify-content:center;gap:18px;flex-wrap:wrap}
 .help-line .link{font-size:14px}
-.qmeta-r{display:flex;align-items:center;gap:8px}
-.icon-btn.say{width:34px;height:34px;color:var(--ink-2)}
-.icon-btn.say.on,[data-say].on{background:var(--oil-soft);border-color:var(--oil);color:var(--oil-ink)}
 .reader{display:grid;gap:16px}
-.reader-h{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px}
+.reader-h{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:12px}
 .reader-h h2{font-size:26px;line-height:1.1}
-.reader-h .btn{min-height:42px;padding:8px 14px;font-size:14.5px}
 .reader-text{background:var(--surface);border-radius:20px;padding:20px;box-shadow:var(--shadow);font-family:var(--f-display);font-size:18px;line-height:1.65}
 .reader-text p{margin:0 0 .45em;padding:0 4px;border-radius:6px;transition:background .3s}
 .reader-text sup{font-family:var(--f-mono);font-size:11px;color:var(--oil-ink);margin-right:4px}
-.reader-text p.speaking{background:var(--oil-soft)}
-.board-tabs{display:flex;gap:6px;overflow-x:auto;margin:-4px 0 10px;padding-bottom:2px;scrollbar-width:none}
-.board-tabs:empty{display:none}
-.board-tabs .chip{flex:none;white-space:nowrap}
-.grp{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:10px;padding-top:10px;border-top:1px solid var(--line)}
-.grp b{display:block;font-weight:600;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.grp small{color:var(--ink-2);font-size:13px}
-.grp code{font-family:var(--f-mono);font-size:13px;color:var(--oil-ink);background:var(--oil-soft);padding:1px 6px;border-radius:6px;letter-spacing:.08em}
-.grp-a{display:flex;align-items:center;gap:8px}
-.grp-a .link{padding:0;font-size:13.5px}
-.grp-btns{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.grp-btns .btn{min-height:42px;padding:8px 10px;font-size:14.5px}
-.grp-form{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px}
-.grp-form .input{padding:10px 12px;font-size:16px}
-.grp-form .btn{min-height:44px;padding:8px 16px}
-.pf-note{font-size:13px;color:var(--ink-2);margin:0}
 .tut{max-width:380px;gap:14px;padding:26px 22px 20px}
 .tut-art{min-height:132px;display:grid;place-items:center;background:var(--bg);border-radius:18px;padding:16px}
 .tut-art .seg{width:100%;pointer-events:none}
@@ -425,6 +405,11 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .tut-dots{display:flex;justify-content:center;gap:6px}
 .tut-dots i{width:7px;height:7px;border-radius:50%;background:var(--line);transition:all .2s}
 .tut-dots i.on{background:var(--oil);width:20px;border-radius:4px}
+.pf-note{font-size:13px;color:var(--ink-2);margin:0}
+.pw-wrap{position:relative}
+.pw-wrap .input{padding-right:52px}
+.pw-eye{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:40px;height:40px;border:0;background:transparent;border-radius:10px;display:grid;place-items:center;color:var(--ink-2);padding:0}
+.pw-eye:hover{color:var(--ink);background:var(--surface-2)}
 .forgot{justify-self:end;margin-top:-8px;font-size:14px}
 @media (max-width:420px){.brow-l{gap:8px;padding:7px 8px}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
@@ -609,14 +594,12 @@ const S = {
   quiz: null,
   board: null,
   admin: null,                                    // may give temporary passwords
-  groups: null,                                   // the signed-in player's groups (family, Sunday school)
-  boardTab: lsGet("candela:boardTab", "all"),     // "all" or a group id
 };
 if (!S.sel.size) S.sel.add(1);
 if (S.scope === "one" && S.sel.size > 1) S.sel = new Set([[...S.sel][0]]);
 function persistPrefs(){ lsSet("candela:scope",S.scope); lsSet("candela:sel",[...S.sel]); lsSet("candela:mode",S.mode); lsSet("candela:count",S.count); }
 const app = $("#app");
-function mount(html){ stopSpeak(); app.innerHTML = `<div class="view">${html}</div>`; window.scrollTo({top:0}); }
+function mount(html){ app.innerHTML = `<div class="view">${html}</div>`; window.scrollTo({top:0}); }
 
 function lampSVG(size=64){
   return `<svg width="${size*1.6}" height="${size*1.6}" viewBox="0 0 160 160" aria-hidden="true">
@@ -632,6 +615,16 @@ function miniLamp(){ return `<svg width="22" height="22" viewBox="0 0 24 24" ari
 /* ---------- views ---------- */
 function totalCount(mode){ let n=0; for (const c in QUIZ){ if (mode!=="hard") n += (QUIZ[c].easy||[]).length; if (mode!=="easy") n += (QUIZ[c].hard||[]).length; } return n; }
 
+/* an eye button inside a password field shows or hides what was typed */
+const EYE = `<svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>`;
+const EYE_OFF = `<svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 4l16 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>`;
+function pwEye(input){
+  const wrap = document.createElement("div"); wrap.className = "pw-wrap";
+  input.replaceWith(wrap); wrap.appendChild(input);
+  const b = document.createElement("button"); b.type = "button"; b.className = "pw-eye"; b.setAttribute("aria-label", "Arată parola"); b.innerHTML = EYE;
+  b.onclick = () => { const show = input.type === "password"; input.type = show ? "text" : "password"; b.innerHTML = show ? EYE_OFF : EYE; b.setAttribute("aria-label", show ? "Ascunde parola" : "Arată parola"); input.focus(); };
+  wrap.appendChild(b);
+}
 function viewEntry(msg, tab){
   tab = tab || (lsGet("candela:hasAccount", false) ? "in" : "new");
   const head = `<div class="entry-head"><div class="lamp-wrap"><div class="lamp-glow"></div>${lampSVG(56)}</div><h1>Candela<span>1 Samuel</span></h1><p class="verse-quote">„Candela lui Dumnezeu nu se stinsese încă.”<span class="ref">1 Sam. 3:3</span></p></div>`;
@@ -653,6 +646,7 @@ function viewEntry(msg, tab){
     <button class="link back" id="back" type="button">Înapoi la teste</button>
   </section>`);
   const f = $("#enter"), err = $("#err"), first = $("#first"), last = $("#last"), email = $("#email"), pw = $("#pw");
+  pwEye(pw);
   $("#back").onclick = () => S.player ? viewHome() : enterGuest();
   if ($("#forgot")) $("#forgot").onclick = forgotPassword;
   app.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => viewEntry("", b.dataset.tab));
@@ -698,16 +692,15 @@ function enter(profile, created){
   if (created) toast(store.moved ? "Cont creat. Rezultatele tale au fost salvate." : "Cont creat. Bine ai venit!");
   else if (store.moved) toast("Rezultatele de invitat au fost adăugate în cont.");
   store.moved = 0;
-  S.groups = null; S.admin = null;
+  S.admin = null;
   viewHome();
-  joinPending();
 }
 function enterGuest(){ S.player = store.guest(); viewHome(); }
 async function autoLogin(){
   mount(`<div class="boot"><div class="lamp-wrap"><div class="lamp-glow"></div>${lampSVG(100)}</div><h1>Candela</h1><div class="boot-bar"><i></i></div></div>`);
   let user = null;
   try { user = await store.resume(); } catch {}
-  if (!user){ enterGuest(); if (lsGet("candela:joinCode", null)) viewEntry("Ca să intri în grup, intră în cont sau creează unul.", lsGet("candela:hasAccount", false) ? "in" : "new"); return; }
+  if (!user) return enterGuest();
   try { return enter(await store.load(user)); }
   catch (e) {
     const local = store.local(user.id);
@@ -776,7 +769,7 @@ function openProfile(){
         <div class="pf-row"><span>Medalii</span><b>${medalSummary(p)}</b></div>
         <div class="pf-row"><span>Zile la rând</span><b>${streak(p) || "–"}</b></div>
       </div>
-      <div class="pf-card" id="pfGroups"></div>
+
       <div class="prof-btns"><button class="btn ${store.hasEmail() ? "btn-ghost" : "btn-primary"} btn-block" id="pfEdit">${store.hasEmail() ? "Modifică profilul" : "Adaugă emailul"}</button>
       <button class="btn btn-ghost btn-block" id="pfPw">Schimbă parola</button>
       ${S.admin ? `<button class="btn btn-ghost btn-block" id="pfAdm">Parolă provizorie pentru un cont</button>` : ""}
@@ -786,8 +779,6 @@ function openProfile(){
     sheet.querySelector("#pfOut").onclick = () => { close(); logout(); };
     sheet.querySelector("#pfPw").onclick = changePw;
     if (S.admin) sheet.querySelector("#pfAdm").onclick = adminReset;
-    const box = sheet.querySelector("#pfGroups"); bindGroups(box);
-    if (!S.groups) store.rpc("my_groups").then(r => { if (r.ok){ S.groups = r.data; if (box.isConnected) bindGroups(box); } });
   };
   const form = (title, fields, submit, onSubmit) => {
     sheet.innerHTML = `${X}<h3>${title}</h3>
@@ -798,6 +789,7 @@ function openProfile(){
     sheet.querySelector("#pfX").onclick = close;
     sheet.querySelector("#pfCancel").onclick = show;
     const f = sheet.querySelector("#pfF"), err = sheet.querySelector("#pfErr");
+    f.querySelectorAll('input[type="password"]').forEach(pwEye);
     f.querySelector("input").focus();
     f.addEventListener("input", () => { err.textContent = ""; });
     f.addEventListener("submit", async e => {
@@ -920,7 +912,7 @@ function viewHome(){
     </div>
   </aside>
 
-  ${HOSTED ? `<section class="h-board"><div class="section-h"><h3>Clasament</h3></div><div class="board-tabs" id="boardTabs"></div><div id="board" class="board scroll"><div class="empty">Se încarcă clasamentul…</div></div></section>` : ""}
+  ${HOSTED ? `<section class="h-board"><div class="section-h"><h3>Clasament</h3></div><div id="board" class="board scroll"><div class="empty">Se încarcă clasamentul…</div></div></section>` : ""}
 
   <section class="h-hist">
     <div class="section-h"><h3>Istoric</h3></div>
@@ -973,32 +965,12 @@ function viewHome(){
 
 async function loadBoard(){
   const el = $("#board"); if (!el) return;
-  const signed = S.player && !S.player.guest;
-  if (signed && !S.groups){ const r = await store.rpc("my_groups"); if (r.ok) S.groups = r.data; }
-  const tab = signed && S.groups?.some(g => g.id === S.boardTab) ? S.boardTab : "all";
-  renderTabs(tab);
-  if (tab !== "all"){
-    el.innerHTML = `<div class="empty">Se încarcă…</div>`;
-    const r = await store.rpc("group_board", {p_id: tab});
-    if (S.boardTab !== tab || !$("#board")) return;
-    if (!r.ok) { el.innerHTML = `<div class="empty">Clasament indisponibil.</div>`; return; }
-    const total = totalCount("both");
-    renderBoard(r.data.map(x => ({...x, mastery: Math.round(x.ok / total * 1000) / 10})), true);
-    return;
-  }
   if (S.board) renderBoard(S.board);
   const list = await store.board();
-  if (S.groups?.some(g => g.id === S.boardTab)) return;   // the player switched to a group meanwhile
   if (list) { S.board = list; renderBoard(list); }
   else if (!S.board && $("#board")) $("#board").innerHTML = `<div class="empty">Clasament indisponibil.</div>`;
 }
-function renderTabs(tab){
-  const t = $("#boardTabs"); if (!t) return;
-  if (!S.groups?.length || !S.player || S.player.guest){ t.innerHTML = ""; return; }
-  t.innerHTML = [{id:"all", name:"Toți"}, ...S.groups].map(g => `<button class="chip" type="button" data-btab="${g.id}" aria-pressed="${tab === g.id}">${esc(g.name)}</button>`).join("");
-  t.querySelectorAll("[data-btab]").forEach(b => b.onclick = () => { setBoardTab(b.dataset.btab); loadBoard(); });
-}
-function renderBoard(list, group = false){
+function renderBoard(list){
   const el = $("#board"); if (!el) return;
   const guest = !S.player || S.player.guest;
   if (!list.length){ el.innerHTML = `<div class="empty">Încă nimeni.</div>`; return; }
@@ -1008,7 +980,7 @@ function renderBoard(list, group = false){
     <span class="rank ${i<3 && ok ? "r"+(i+1) : ""}">${i+1}</span>
     <span class="avatar sm">${esc(initials(x.name))}</span>
     <div class="who-l"><b class="nm"><span>${esc(x.name)}</span>${mine?"<em>tu</em>":""}</b>
-      <small>${group ? (x.last_at ? `ultimul test ${new Date(x.last_at).toLocaleDateString("ro-RO",{day:"numeric",month:"short"})}` : "niciun test încă") : `${String(x.mastery).replace(".",",")}% din carte`} · ${x.tests} ${x.tests===1?"test":"teste"}</small></div>
+      <small>${String(x.mastery).replace(".",",")}% din carte · ${x.tests} ${x.tests===1?"test":"teste"}</small></div>
     <div class="pts"><b>${ok}</b><small>${ok===1?"întrebare":"întrebări"}</small></div></div>`; };
   el.innerHTML = top.map(row).join("") + (idx >= top.length ? `<div class="gap">···</div>${row(list[idx], idx)}` : "");
   const mine = el.querySelector(".me"); if (mine && el.classList.contains("scroll")) el.scrollTop = Math.max(0, mine.offsetTop - el.clientHeight/2);
@@ -1119,7 +1091,6 @@ function refStart(q){ return +q.ref.split(":")[1].split("-")[0]; }
 function viewQuestion(first){
   const Z = S.quiz, q = Z.qs[Z.i], n = Z.qs.length;
   const ui = { sel: q.t==="multi" ? new Set() : null, pick: null, pairs: {}, active: null, checked: false };
-  stopSpeak();
   Z.ui = ui;
   saveQuiz();
   if (first || !$(".qcard")) {
@@ -1140,13 +1111,13 @@ function viewQuestion(first){
   $("#qcount").textContent = `${Z.i+1}/${n}`;
   const card = document.createElement("article");
   card.className = "qcard enter";
-  card.innerHTML = `<div class="qmeta"><span class="qtype">${TYPE_LABEL[q.t]}${Z.mode==="both"?` · ${MODE_LABEL[q.mode]}`:""}</span><span class="qmeta-r"><span class="ref">${refLabel(q.ref)}</span>${TTS ? `<button class="icon-btn say" type="button" data-say aria-label="Citește cu voce tare">${SPEAKER}</button>` : ""}</span></div>
+  card.innerHTML = `<div class="qmeta"><span class="qtype">${TYPE_LABEL[q.t]}${Z.mode==="both"?` · ${MODE_LABEL[q.mode]}`:""}</span><span class="ref">${refLabel(q.ref)}</span></div>
     ${q.t==="fill" ? `${fillHTML(q)}` : `<p class="qtext">${esc(q.q.replace(/\s*\(pot fi mai multe[^)]*\)/i, ""))}</p>${q.t==="multi"?`<p class="qhint">Bifează toate răspunsurile corecte. Pot fi mai multe sau niciunul.</p>`:""}${q.t==="match"?`<p class="qhint">Atinge un element din stânga, apoi perechea lui din dreapta.</p>`:""}`}
     <div class="answers" id="ans">${answersHTML(q)}</div><div id="fb"></div>
     <p class="keys">${({tf:"Taste: A adevărat · F fals · Enter verifică", one:"Taste: A, B, C… · Enter verifică", multi:"Taste: A, B, C… · Enter verifică", fill:"Enter trece la căsuța următoare", match:"Enter verifică"})[q.t]}</p>`;
   const slot = $("#qslot");
   const old = slot.firstElementChild;
-  const place = () => { slot.innerHTML = ""; slot.appendChild(card); const actions = document.createElement("div"); actions.className = "qactions"; actions.id = "actions"; slot.appendChild(actions); bindQuestion(q, card); renderActions(); const sb_ = card.querySelector("[data-say]"); if (sb_) sb_.onclick = () => speak(sayParts(q), sb_); const f = card.querySelector("input"); if (f && matchMedia("(hover:hover)").matches) f.focus(); };
+  const place = () => { slot.innerHTML = ""; slot.appendChild(card); const actions = document.createElement("div"); actions.className = "qactions"; actions.id = "actions"; slot.appendChild(actions); bindQuestion(q, card); renderActions(); const f = card.querySelector("input"); if (f && matchMedia("(hover:hover)").matches) f.focus(); };
   if (old && !first){ old.classList.remove("enter"); old.classList.add("leave"); setTimeout(place, 200); } else place();
 }
 function fillHTML(q){
@@ -1372,54 +1343,17 @@ function medalSummary(p){
   const m = medals(p), n = k => m.filter(x => x === k).length;
   return n(1) + n(2) + n(3) ? [3,2,1].filter(k => n(k)).map(k => `<i class="medal m${k}" title="${MEDAL[k]}"></i> ${n(k)}`).join("&nbsp;&nbsp;") : "–";
 }
-/* ---------- read aloud (the phone's own Romanian voice) ---------- */
-const TTS = "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
-let roVoice = null;
-function pickVoice(){ try { roVoice = speechSynthesis.getVoices().find(v => /^ro([-_]|$)/i.test(v.lang)) || null; } catch {} }
-if (TTS){ pickVoice(); speechSynthesis.addEventListener?.("voiceschanged", pickVoice); }
-const SPEAKER = `<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>`;
-function stopSpeak(){
-  if (TTS) try { speechSynthesis.cancel(); } catch {}
-  document.querySelectorAll(".speaking").forEach(e => e.classList.remove("speaking"));
-  document.querySelectorAll("[data-say].on").forEach(b => b.classList.remove("on"));
-}
-function speak(parts, btn, onPart){
-  if (!TTS) return;
-  if (btn?.classList.contains("on")){ stopSpeak(); return; }
-  stopSpeak(); btn?.classList.add("on");
-  parts.forEach((t, i) => {
-    const u = new SpeechSynthesisUtterance(t); u.lang = "ro-RO"; if (roVoice) u.voice = roVoice; u.rate = .92;
-    u.onstart = () => onPart?.(i);
-    if (i === parts.length - 1) u.onend = () => { btn?.classList.remove("on"); onPart?.(-1); };
-    speechSynthesis.speak(u);
-  });
-}
-function sayParts(q){
-  if (q.t === "fill") return [q.q.replace(/___/g, " … ")];
-  const parts = [q.q.replace(/\s*\(pot fi mai multe[^)]*\)/i, "")];
-  if (q.t === "tf") parts.push("Adevărat sau fals?");
-  if (q.t === "one" || q.t === "multi") q.opts.forEach((o, i) => parts.push(`${LETTERS[i]}. ${o}`));
-  if (q.t === "match"){ parts.push("În stânga: " + q.pairs.map(p => p[0]).join(", ")); parts.push("În dreapta: " + q.right.map(i => q.pairs[i][1]).join(", ")); }
-  return parts;
-}
-
 /* ---------- reading a chapter before the test ---------- */
 function viewRead(c){
   const vs = TEXT[c] || [];
   mount(`<section class="reader">
     <div class="reader-h"><button class="icon-btn" id="rBack" type="button" aria-label="Înapoi"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3L5 8l5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-      <div><span class="eyebrow">1 Samuel ${c}</span><h2>${esc(TITLES[c-1])}</h2></div>
-      ${TTS ? `<button class="btn btn-ghost" id="rSay" type="button" data-say>${SPEAKER} Ascultă</button>` : ""}</div>
+      <div><span class="eyebrow">1 Samuel ${c}</span><h2>${esc(TITLES[c-1])}</h2></div></div>
     <div class="reader-text">${vs.map((v, i) => `<p data-v="${i+1}"><sup>${i+1}</sup>${esc(v)}</p>`).join("")}</div>
     <div class="startbar"><button class="btn btn-primary btn-block" id="rGo" type="button">Am citit · Începe testul</button></div>
   </section>`);
   $("#rBack").onclick = () => viewHome();
   $("#rGo").onclick = () => { S.scope = "one"; S.sel = new Set([c]); persistPrefs(); startQuiz(); };
-  const say = $("#rSay");
-  if (say) say.onclick = () => speak(vs, say, i => {
-    app.querySelectorAll(".reader-text p.speaking").forEach(x => x.classList.remove("speaking"));
-    const el = app.querySelector(`.reader-text p[data-v="${i+1}"]`); if (i >= 0 && el){ el.classList.add("speaking"); el.scrollIntoView({block: "center", behavior: "smooth"}); }
-  });
 }
 
 /* ---------- first-launch tutorial ---------- */
@@ -1463,69 +1397,6 @@ function forgotPassword(){
   bg.querySelector("#fpOk").focus();
 }
 
-/* ---------- groups: family or Sunday school, each with its own leaderboard ---------- */
-function setBoardTab(id){ S.boardTab = id; lsSet("candela:boardTab", id); }
-function groupsHTML(form){
-  const gs = S.groups;
-  return `<div class="pf-row"><span style="color:var(--ink);font-weight:600;font-size:15px">Grupuri</span></div>
-    <p class="pf-note">Pentru familie sau școala duminicală. Fiecare grup are clasamentul lui, iar părintele sau învățătorul vede progresul fiecăruia.</p>
-    ${gs == null ? `<p class="pf-note">Se încarcă…</p>` : gs.map(g => `<div class="grp"><div style="min-width:0"><b>${esc(g.name)}</b><small>${g.members} ${g.members===1?"membru":"membri"} · cod <code>${esc(g.code)}</code></small></div>
-      <div class="grp-a"><button class="chip" type="button" data-gshare="${esc(g.code)}" data-gname="${esc(g.name)}">Invită</button><button class="link" type="button" data-gleave="${g.id}" data-mine="${g.mine}">${g.mine ? "Șterge" : "Ieși"}</button></div></div>`).join("")}
-    ${form === "create" ? `<form class="grp-form" id="gForm" novalidate><input class="input" id="gVal" maxlength="40" placeholder="ex. Familia Popescu" aria-label="Numele grupului"><button class="btn btn-primary" type="submit">Creează</button></form>`
-      : form === "join" ? `<form class="grp-form" id="gForm" novalidate><input class="input" id="gVal" maxlength="6" placeholder="Codul grupului" aria-label="Codul grupului" autocapitalize="characters" autocomplete="off" spellcheck="false" style="text-transform:uppercase;letter-spacing:.12em;font-family:var(--f-mono)"><button class="btn btn-primary" type="submit">Intră</button></form>`
-      : `<div class="grp-btns"><button class="btn btn-ghost" type="button" data-gform="create">Creează un grup</button><button class="btn btn-ghost" type="button" data-gform="join">Am un cod</button></div>`}
-    <p class="form-error" id="gErr" role="alert"></p>`;
-}
-function bindGroups(box, form){
-  box.innerHTML = groupsHTML(form);
-  box.querySelectorAll("[data-gform]").forEach(b => b.onclick = () => { bindGroups(box, b.dataset.gform); box.querySelector("#gVal").focus(); });
-  box.querySelectorAll("[data-gshare]").forEach(b => b.onclick = () => shareGroup(b.dataset.gshare, b.dataset.gname));
-  box.querySelectorAll("[data-gleave]").forEach(b => b.onclick = () => {
-    const mine = b.dataset.mine === "true", id = b.dataset.gleave;
-    confirmBox(mine ? "Ștergi grupul?" : "Ieși din grup?", mine ? "Grupul dispare pentru toți membrii. Rezultatele lor rămân." : "Poți reveni oricând cu codul grupului.", mine ? "Șterge" : "Ieși", async () => {
-      const r = await store.rpc("leave_group", {p_id: id});
-      if (!r.ok) return toast("Nu s-a putut. Încearcă din nou.");
-      S.groups = S.groups.filter(g => g.id !== id); if (S.boardTab === id) setBoardTab("all");
-      if (box.isConnected) bindGroups(box); loadBoard();
-    });
-  });
-  const f = box.querySelector("#gForm"); if (!f) return;
-  f.onsubmit = async e => {
-    e.preventDefault();
-    const v = box.querySelector("#gVal").value.trim(), err = box.querySelector("#gErr");
-    if (form === "create" && v.length < 2){ err.textContent = "Scrie un nume pentru grup."; return; }
-    if (form === "join" && v.length !== 6){ err.textContent = "Codul are 6 caractere."; return; }
-    const btn = f.querySelector("button"); btn.disabled = true;
-    const r = form === "create" ? await store.rpc("create_group", {p_name: v}) : await store.rpc("join_group", {p_code: v});
-    btn.disabled = false;
-    if (!r.ok){ err.textContent = /no_group/.test(r.error) ? "Nu există niciun grup cu acest cod." : /too_many/.test(r.error) ? "Ai deja 10 grupuri." : /full/.test(r.error) ? "Grupul e plin." : loginError(r); return; }
-    const g = r.data[0], gr = await store.rpc("my_groups"); if (gr.ok) S.groups = gr.data;
-    setBoardTab(g.id); if (box.isConnected) bindGroups(box); loadBoard();
-    toast(form === "create" ? `Grupul e gata. Apasă „Invită” ca să trimiți codul ${g.code}.` : `Ai intrat în grupul „${g.name}”.`, 4500);
-  };
-}
-async function shareGroup(code, name){
-  const url = `${location.origin}/?g=${code}`, text = `Intră în grupul „${name}” pe Candela (1 Samuel). Codul grupului: ${code}`;
-  try { if (navigator.share){ await navigator.share({title: "Candela", text, url}); return; } } catch (e) { if (e.name === "AbortError") return; }
-  try { await navigator.clipboard.writeText(`${text}\n${url}`); toast("Invitația a fost copiată. Trimite-o pe WhatsApp sau SMS.", 3500); }
-  catch { toast(`Codul grupului: ${code}`, 5000); }
-}
-function confirmBox(title, text, yes, onYes){
-  const bg = document.createElement("div"); bg.className = "modal-bg";
-  bg.innerHTML = `<div class="modal" role="alertdialog" aria-modal="true"><h3>${esc(title)}</h3><p class="muted">${esc(text)}</p><div class="modal-btns"><button class="btn btn-ghost" id="cNo" type="button">Anulează</button><button class="btn btn-primary" id="cYes" type="button">${esc(yes)}</button></div></div>`;
-  document.body.appendChild(bg);
-  const close = () => bg.remove();
-  bg.querySelector("#cNo").onclick = close; bg.onclick = e => { if (e.target === bg) close(); };
-  bg.querySelector("#cYes").onclick = () => { close(); onYes(); };
-}
-async function joinPending(){
-  const code = lsGet("candela:joinCode", null); if (!code || !S.player || S.player.guest) return;
-  lsSet("candela:joinCode", null);
-  const r = await store.rpc("join_group", {p_code: code});
-  if (!r.ok){ toast(/no_group/.test(r.error) ? "Codul grupului nu mai există." : "Nu am putut intra în grup.", 3500); return; }
-  S.groups = null; setBoardTab(r.data[0].id); toast(`Ai intrat în grupul „${r.data[0].name}”.`, 3500); loadBoard();
-}
-
 /* ---------- installable app (works offline once opened) ---------- */
 let installEvt = null;
 addEventListener("beforeinstallprompt", e => { e.preventDefault(); installEvt = e; const b = $("#install"); if (b) b.hidden = false; });
@@ -1540,7 +1411,6 @@ document.addEventListener("keydown", e => {
   if (!ui.checked && (q.t==="one"||q.t==="multi")){ const i = LETTERS.toLowerCase().indexOf(e.key.toLowerCase()); const b = $(`.opt[data-i="${i}"]`); if (i>=0 && b) b.click(); }
   if (!ui.checked && q.t==="tf"){ if (e.key.toLowerCase()==="a") $('.opt[data-v="1"]').click(); if (e.key.toLowerCase()==="f") $('.opt[data-v="0"]').click(); }
 });
-{ const g = new URLSearchParams(location.search).get("g"); if (g){ lsSet("candela:joinCode", g.toUpperCase().slice(0, 6)); history.replaceState(null, "", location.pathname + location.hash); } }
 autoLogin();
 loadPace();
 </script>
