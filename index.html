@@ -593,11 +593,7 @@ const store = {
     try { const { data, error } = await sb().rpc(fn, args); return error ? {ok:false, error: isNetErr(error) ? "network" : String(error.message || "server")} : {ok:true, data}; }
     catch (e) { return {ok:false, error: isNetErr(e) ? "network" : "server"}; }
   },
-  async resetPassword(email){
-    if (!sb()) return {ok:false, error:"network"};
-    try { const { error } = await sb().auth.resetPasswordForEmail(email, { redirectTo: location.origin + "/" }); return error ? {ok:false, error: isNetErr(error) ? "network" : /rate|seconds/i.test(error.message) ? "rate" : "mail"} : {ok:true}; }
-    catch (e) { return {ok:false, error: isNetErr(e) ? "network" : "mail"}; }
-  },
+  async token(){ try { return (await sb().auth.getSession()).data.session?.access_token || null; } catch { return null; } },
   async logout(){ try { await sb()?.auth.signOut(); } catch {} this.uid = null; this.email = ""; }
 };
 
@@ -612,6 +608,7 @@ const S = {
   instant: true,
   quiz: null,
   board: null,
+  admin: null,                                    // may give temporary passwords
   groups: null,                                   // the signed-in player's groups (family, Sunday school)
   boardTab: lsGet("candela:boardTab", "all"),     // "all" or a group id
 };
@@ -657,7 +654,7 @@ function viewEntry(msg, tab){
   </section>`);
   const f = $("#enter"), err = $("#err"), first = $("#first"), last = $("#last"), email = $("#email"), pw = $("#pw");
   $("#back").onclick = () => S.player ? viewHome() : enterGuest();
-  if ($("#forgot")) $("#forgot").onclick = () => forgotPassword($("#email").value.trim());
+  if ($("#forgot")) $("#forgot").onclick = forgotPassword;
   app.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => viewEntry("", b.dataset.tab));
   (isNew ? last : !email.value ? email : pw).focus();
   f.addEventListener("input", () => { err.textContent = ""; });
@@ -701,21 +698,13 @@ function enter(profile, created){
   if (created) toast(store.moved ? "Cont creat. Rezultatele tale au fost salvate." : "Cont creat. Bine ai venit!");
   else if (store.moved) toast("Rezultatele de invitat au fost adăugate în cont.");
   store.moved = 0;
-  S.groups = null;
+  S.groups = null; S.admin = null;
   viewHome();
   joinPending();
 }
 function enterGuest(){ S.player = store.guest(); viewHome(); }
 async function autoLogin(){
   mount(`<div class="boot"><div class="lamp-wrap"><div class="lamp-glow"></div>${lampSVG(100)}</div><h1>Candela</h1><div class="boot-bar"><i></i></div></div>`);
-  const hp = new URLSearchParams(location.hash.slice(1));
-  if (hp.get("type") === "recovery" || hp.get("error_description")){
-    history.replaceState(null, "", location.pathname + location.search);
-    if (hp.get("access_token") && sb()){
-      try { const { error } = await sb().auth.setSession({ access_token: hp.get("access_token"), refresh_token: hp.get("refresh_token") }); if (!error) return viewNewPassword(); } catch {}
-    }
-    S.player = store.guest(); return viewEntry("Linkul nu mai e valabil. Cere unul nou cu „Ai uitat parola?”.", "in");
-  }
   let user = null;
   try { user = await store.resume(); } catch {}
   if (!user){ enterGuest(); if (lsGet("candela:joinCode", null)) viewEntry("Ca să intri în grup, intră în cont sau creează unul.", lsGet("candela:hasAccount", false) ? "in" : "new"); return; }
@@ -789,13 +778,56 @@ function openProfile(){
       </div>
       <div class="pf-card" id="pfGroups"></div>
       <div class="prof-btns"><button class="btn ${store.hasEmail() ? "btn-ghost" : "btn-primary"} btn-block" id="pfEdit">${store.hasEmail() ? "Modifică profilul" : "Adaugă emailul"}</button>
+      <button class="btn btn-ghost btn-block" id="pfPw">Schimbă parola</button>
+      ${S.admin ? `<button class="btn btn-ghost btn-block" id="pfAdm">Parolă provizorie pentru un cont</button>` : ""}
       <button class="btn btn-danger btn-block" id="pfOut">Ieși din cont</button></div>`;
     sheet.querySelector("#pfX").onclick = close;
     sheet.querySelector("#pfEdit").onclick = edit;
     sheet.querySelector("#pfOut").onclick = () => { close(); logout(); };
+    sheet.querySelector("#pfPw").onclick = changePw;
+    if (S.admin) sheet.querySelector("#pfAdm").onclick = adminReset;
     const box = sheet.querySelector("#pfGroups"); bindGroups(box);
     if (!S.groups) store.rpc("my_groups").then(r => { if (r.ok){ S.groups = r.data; if (box.isConnected) bindGroups(box); } });
   };
+  const form = (title, fields, submit, onSubmit) => {
+    sheet.innerHTML = `${X}<h3>${title}</h3>
+      <form class="prof-form" id="pfF" novalidate>${fields}
+        <p class="form-error" id="pfErr" role="alert"></p>
+        <div class="modal-btns"><button class="btn btn-ghost" type="button" id="pfCancel">Înapoi</button><button class="btn btn-primary" type="submit" id="pfSave">${submit}</button></div>
+      </form>`;
+    sheet.querySelector("#pfX").onclick = close;
+    sheet.querySelector("#pfCancel").onclick = show;
+    const f = sheet.querySelector("#pfF"), err = sheet.querySelector("#pfErr");
+    f.querySelector("input").focus();
+    f.addEventListener("input", () => { err.textContent = ""; });
+    f.addEventListener("submit", async e => {
+      e.preventDefault();
+      const btn = sheet.querySelector("#pfSave"), label = btn.textContent; btn.disabled = true; btn.textContent = "Se salvează…";
+      const msg = await onSubmit(f);
+      if (msg != null && sheet.querySelector("#pfSave")){ btn.disabled = false; btn.textContent = label; err.textContent = msg; }
+    });
+  };
+  const changePw = () => form("Schimbă parola", `<div class="field"><label for="pfNew">Parola nouă</label><input class="input" id="pfNew" type="password" autocomplete="new-password" minlength="6"></div>`, "Salvează", async f => {
+    const pw = f.querySelector("#pfNew").value;
+    if (pw.length < 6 || pw.length > 72) return "Parola trebuie să aibă între 6 și 72 de caractere.";
+    try { const { error } = await sb().auth.updateUser({ password: pw }); if (error) return isNetErr(error) ? loginError({error:"network"}) : /different/i.test(error.message) ? "Alege o parolă diferită de cea veche." : "Nu am putut schimba parola. Încearcă din nou."; }
+    catch (e) { return loginError({error: isNetErr(e) ? "network" : "server"}); }
+    toast("Parola a fost schimbată."); show(); return null;
+  });
+  const adminReset = () => form("Parolă provizorie", `<p class="pf-note">Pentru cine a uitat parola. Scrie emailul contului sau „Prenume Nume”, apoi dă-i parola primită. O poate schimba din profil.</p>
+    <div class="field"><label for="pfWho">Contul</label><input class="input" id="pfWho" autocomplete="off" autocapitalize="none" spellcheck="false"></div>`, "Generează", async f => {
+    const who = f.querySelector("#pfWho").value.trim(); if (!who) return "Scrie emailul sau numele.";
+    const token = await store.token(); if (!token) return "Intră din nou în cont și încearcă iar.";
+    const r = await store.call("admin-reset", {who}, token);
+    if (!r.ok) return ({ not_found: "Nu există niciun cont cu acest email sau nume.", forbidden: "Doar administratorul poate face asta." })[r.error] || loginError(r);
+    sheet.innerHTML = `${X}<h3>Parolă provizorie</h3><p class="pf-note" style="text-align:center">Parola nouă pentru <b style="color:var(--ink)">${esc(r.name)}</b>:</p>
+      <p style="font-family:var(--f-mono);font-size:26px;letter-spacing:.12em;text-align:center;background:var(--bg);border-radius:14px;padding:14px">${esc(r.password)}</p>
+      <div class="prof-btns"><button class="btn btn-ghost btn-block" id="pfCopy">Copiază</button><button class="btn btn-primary btn-block" id="pfDone">Gata</button></div>`;
+    sheet.querySelector("#pfX").onclick = close;
+    sheet.querySelector("#pfDone").onclick = show;
+    sheet.querySelector("#pfCopy").onclick = async () => { try { await navigator.clipboard.writeText(r.password); toast("Parola a fost copiată."); } catch { toast(r.password, 5000); } };
+    return null;
+  });
   const edit = () => {
     const parts = p.name.trim().split(" "), fn = parts[0], ln = parts.slice(1).join(" ");
     sheet.innerHTML = `${X}<h3>Profilul meu</h3>
@@ -835,6 +867,7 @@ function openProfile(){
     });
   };
   show();
+  if (S.admin == null) store.rpc("is_admin").then(r => { S.admin = r.ok && r.data === true; if (S.admin && sheet.querySelector("#pfEdit") && !sheet.querySelector("#pfAdm")) show(); });
 }
 document.addEventListener("click", e => {
   if (!e.target.closest) return;
@@ -1417,50 +1450,17 @@ function tutorial(){
   draw();
 }
 
-/* ---------- forgotten password ---------- */
-function forgotPassword(prefill){
+/* ---------- forgotten password ----------
+   The app sends no emails: an admin gives a temporary password (profile → "Parolă provizorie"), the player changes it from the profile. */
+function forgotPassword(){
   const bg = document.createElement("div"); bg.className = "modal-bg";
-  bg.innerHTML = `<form class="modal" role="dialog" aria-modal="true" aria-labelledby="fpH" novalidate style="text-align:left">
-    <h3 id="fpH" style="text-align:center">Ai uitat parola?</h3>
-    <p class="muted" style="text-align:center">Scrie emailul contului. Îți trimitem un link ca să alegi o parolă nouă.</p>
-    <input class="input" id="fpMail" type="email" inputmode="email" autocomplete="email" autocapitalize="none" spellcheck="false" value="${esc(prefill.includes("@") ? prefill : "")}" aria-label="Email">
-    <p class="form-error" id="fpErr" role="alert"></p>
-    <div class="modal-btns"><button class="btn btn-ghost" type="button" id="fpNo">Anulează</button><button class="btn btn-primary" type="submit" id="fpGo">Trimite</button></div></form>`;
+  bg.innerHTML = `<div class="modal" role="dialog" aria-modal="true" aria-labelledby="fpH"><h3 id="fpH">Ai uitat parola?</h3>
+    <p class="muted">Cere-i administratorului Candela o parolă nouă. După ce intri în cont, o poți schimba din profil.</p>
+    <button class="btn btn-primary btn-block" type="button" id="fpOk" style="margin-top:8px">Am înțeles</button></div>`;
   document.body.appendChild(bg);
-  const close = () => bg.remove(), f = bg.querySelector("form"), mail = bg.querySelector("#fpMail"), err = bg.querySelector("#fpErr");
-  bg.querySelector("#fpNo").onclick = close; bg.onclick = e => { if (e.target === bg) close(); };
-  mail.focus();
-  f.onsubmit = async e => {
-    e.preventDefault();
-    const em = mail.value.trim(); if (!EMAIL_RE.test(em)){ err.textContent = "Scrie o adresă de email validă."; return; }
-    const btn = bg.querySelector("#fpGo"); btn.disabled = true; btn.textContent = "Se trimite…";
-    const r = await store.resetPassword(em.toLowerCase());
-    btn.disabled = false; btn.textContent = "Trimite";
-    if (!r.ok){ err.textContent = r.error === "network" ? loginError(r) : r.error === "rate" ? "Ai cerut deja un link. Așteaptă un minut și încearcă din nou." : "Nu am putut trimite emailul acum. Încearcă mai târziu."; return; }
-    f.innerHTML = `<h3 style="text-align:center">Verifică emailul</h3><p class="muted" style="text-align:center">Dacă există un cont cu adresa ${esc(em)}, ai primit un link. Deschide-l pe acest dispozitiv ca să alegi parola nouă.</p><button class="btn btn-primary btn-block" type="button" id="fpOk">Am înțeles</button>`;
-    f.querySelector("#fpOk").onclick = close;
-  };
-}
-function viewNewPassword(){
-  mount(`<section class="entry" data-step="form"><div class="entry-head"><div class="lamp-wrap"><div class="lamp-glow"></div>${lampSVG(56)}</div><h1>Parolă nouă</h1></div>
-    <form class="card entry-form" id="np" novalidate>
-      <div class="field"><label for="np1">Parola nouă</label><input class="input" id="np1" type="password" autocomplete="new-password" minlength="6"></div>
-      <p class="form-error" id="npErr" role="alert"></p>
-      <button class="btn btn-primary btn-block" id="npGo" type="submit">Salvează parola</button>
-    </form></section>`);
-  const pw = $("#np1"), err = $("#npErr"); pw.focus();
-  $("#np").onsubmit = async e => {
-    e.preventDefault();
-    if (pw.value.length < 6){ err.textContent = "Parola trebuie să aibă cel puțin 6 caractere."; return; }
-    const btn = $("#npGo"); btn.disabled = true; btn.textContent = "Se salvează…";
-    try {
-      const { data, error } = await sb().auth.updateUser({ password: pw.value });
-      if (error) throw error;
-      lsSet("candela:hasAccount", true);
-      toast("Parola a fost schimbată.");
-      return enter(await store.load(data.user));
-    } catch (e2) { btn.disabled = false; btn.textContent = "Salvează parola"; err.textContent = isNetErr(e2) ? loginError({error:"network"}) : "Nu am putut schimba parola. Cere un link nou."; }
-  };
+  const close = () => bg.remove();
+  bg.querySelector("#fpOk").onclick = close; bg.onclick = e => { if (e.target === bg) close(); };
+  bg.querySelector("#fpOk").focus();
 }
 
 /* ---------- groups: family or Sunday school, each with its own leaderboard ---------- */
