@@ -103,7 +103,7 @@ p{margin:0}
 .prof-mail{color:var(--ink-2);font-size:14px;margin-top:-10px;word-break:break-all}
 .prof-mail.warn{color:var(--oil-ink);word-break:normal;max-width:32ch}
 .prof-btns{width:100%;display:grid;gap:8px}
-.prof{max-height:92dvh;overflow:auto}
+.prof{max-height:min(92dvh,calc(var(--vvh,100dvh) - 16px));overflow:auto}
 .pf-head{display:grid;justify-items:center;gap:10px}
 .pf-head .prof-mail{margin:0}
 .pf-card{width:100%;background:var(--surface);border-radius:16px;padding:16px 18px;display:grid;gap:12px;box-shadow:var(--shadow);text-align:left}
@@ -177,10 +177,12 @@ p{margin:0}
 .toggle:first-child{border-top:0}
 .toggle small{display:block;color:var(--ink-2);font-size:13px}
 .counts{display:flex;gap:6px;flex-wrap:wrap}
+html.scroll-locked,body.scroll-locked{overflow:hidden!important;overscroll-behavior:none!important;touch-action:none}
+body.scroll-locked{position:fixed!important;left:0!important;right:0!important;width:100%!important;height:100%!important}
 html:has(.sheet-bg),html:has(.modal-bg),body:has(.sheet-bg),body:has(.modal-bg){overflow:hidden}
-.sheet,.modal{overscroll-behavior:contain}
-.sheet-bg{position:fixed;inset:0;z-index:30;background:rgb(58 39 27 / .35);display:flex;align-items:flex-end;justify-content:center;animation:fadeIn .2s ease both}
-.sheet{width:100%;max-width:520px;background:var(--bg);border-radius:24px 24px 0 0;padding:18px 16px calc(18px + env(safe-area-inset-bottom,0px));display:grid;gap:16px;animation:sheetUp .3s cubic-bezier(.2,.8,.2,1) both}
+.sheet,.modal{overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.sheet-bg{position:fixed;inset:0;z-index:30;background:rgb(58 39 27 / .35);display:flex;align-items:flex-end;justify-content:center;animation:fadeIn .2s ease both;touch-action:none;overscroll-behavior:contain}
+.sheet{width:100%;max-width:520px;background:var(--bg);border-radius:24px 24px 0 0;padding:18px 16px calc(18px + env(safe-area-inset-bottom,0px));display:grid;gap:16px;animation:sheetUp .3s cubic-bezier(.2,.8,.2,1) both;touch-action:pan-y;overscroll-behavior:contain;max-height:min(92dvh,calc(var(--vvh,100dvh) - 16px));overflow-y:auto}
 .sheet-h{display:flex;align-items:center;justify-content:space-between}
 .sheet-h h3{font-size:24px}
 .dur{font-size:13px;color:var(--ink-2);margin-top:-6px}
@@ -314,8 +316,8 @@ html:has(.sheet-bg),html:has(.modal-bg),body:has(.sheet-bg),body:has(.modal-bg){
 .toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:999px;font-size:14px;opacity:0;transition:all .3s;pointer-events:none;z-index:20;max-width:calc(100% - 32px)}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 body:has(.qactions:not(:empty)) .toast{bottom:calc(100px + env(safe-area-inset-bottom,0px))}
-.modal-bg{position:fixed;inset:0;z-index:40;display:grid;place-items:center;padding:16px;background:rgb(58 39 27 / .28);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);animation:fadeIn .2s ease both}
-.modal{width:100%;max-width:360px;background:var(--surface);border-radius:24px;padding:24px;display:grid;gap:10px;text-align:center;box-shadow:0 20px 50px -20px rgb(58 39 27 / .45);animation:sheetUp .25s cubic-bezier(.2,.8,.2,1) both}
+.modal-bg{position:fixed;inset:0;z-index:40;display:grid;place-items:center;padding:16px;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;touch-action:none;background:rgb(58 39 27 / .28);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);animation:fadeIn .2s ease both}
+.modal{width:100%;max-width:360px;background:var(--surface);border-radius:24px;padding:24px;display:grid;gap:10px;text-align:center;box-shadow:0 20px 50px -20px rgb(58 39 27 / .45);animation:sheetUp .25s cubic-bezier(.2,.8,.2,1) both;margin:auto;max-height:min(calc(100dvh - 32px),calc(var(--vvh,100dvh) - 32px));overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;touch-action:pan-y}
 .modal h3{font-size:24px}
 .modal-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}
 footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
@@ -538,6 +540,47 @@ const LETTERS = "ABCDEF";
 /* ---------- utilities ---------- */
 const $ = (s, el=document) => el.querySelector(s);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+/* ---------- modal scroll lock & visual viewport ---------- */
+let _scrollLockTop = 0;
+const _modalObserver = new MutationObserver(() => {
+  const hasOverlay = !!document.querySelector(".sheet-bg, .modal-bg");
+  if (hasOverlay) {
+    if (!document.body.classList.contains("scroll-locked")) {
+      _scrollLockTop = window.scrollY || window.pageYOffset || 0;
+      document.body.classList.add("scroll-locked");
+      document.documentElement.classList.add("scroll-locked");
+      document.body.style.top = `-${_scrollLockTop}px`;
+    }
+  } else {
+    if (document.body.classList.contains("scroll-locked")) {
+      document.body.classList.remove("scroll-locked");
+      document.documentElement.classList.remove("scroll-locked");
+      document.body.style.top = "";
+      window.scrollTo(0, _scrollLockTop);
+    }
+  }
+});
+_modalObserver.observe(document.body, { childList: true });
+
+if (window.visualViewport) {
+  const syncVv = () => {
+    document.documentElement.style.setProperty("--vvh", `${window.visualViewport.height}px`);
+    if (document.body.classList.contains("scroll-locked") && window.scrollY !== 0) {
+      window.scrollTo(0, 0);
+    }
+  };
+  window.visualViewport.addEventListener("resize", syncVv);
+  window.visualViewport.addEventListener("scroll", syncVv);
+  syncVv();
+}
+document.addEventListener("touchmove", e => {
+  if (document.body.classList.contains("scroll-locked")) {
+    if (e.target.classList && (e.target.classList.contains("modal-bg") || e.target.classList.contains("sheet-bg"))) {
+      e.preventDefault();
+    }
+  }
+}, { passive: false });
 const shuffle = a => { a = a.slice(); for (let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; };
 const fold = s => String(s).normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase().replace(/[^a-z0-9]+/g," ").trim();
 const slugOf = name => fold(name).replace(/ /g,"-").slice(0,60);
@@ -940,7 +983,7 @@ function openProfile(){
       </div>
       ${!p.child && store.isParent ? `<div class="pf-card" id="pfKids"></div>` : ""}
       <div class="set-list">
-        ${p.child ? "" : `<button class="set-row${store.hasEmail() ? "" : " warn"}" id="pfEdit" type="button"><span class="set-t">${store.hasEmail() ? "Numele și emailul" : "Adaugă emailul"}</span>${CHEV}</button>
+        ${p.child ? "" : `<button class="set-row${store.hasEmail() ? "" : " warn"}" id="pfEdit" type="button"><span class="set-t">${store.hasEmail() ? "Nume, email și parolă" : "Adaugă emailul"}</span>${CHEV}</button>
         <button class="set-row" id="pfPwd" type="button"><span class="set-t">Schimbă parola</span>${CHEV}</button>
         <label class="set-row"><span class="set-t">Cont de părinte<small>Îți adaugi copiii</small></span><input type="checkbox" class="switch" id="pfParent" ${store.isParent ? "checked" : ""}></label>`}
         <label class="set-row"><span class="set-t">${p.child ? "Apare în clasament" : "Apar în clasament"}<small>${p.child ? "Numele lui se vede" : "Numele meu se vede"}</small></span><input type="checkbox" class="switch" id="pfHide" ${p.hidden ? "" : "checked"}></label>
@@ -1029,21 +1072,26 @@ function openProfile(){
   };
   const edit = () => {
     const parts = p.name.trim().split(" "), fn = parts[0], ln = parts.slice(1).join(" ");
-    sheet.innerHTML = `${X}<h3>${store.hasEmail() ? "Numele și emailul" : "Adaugă emailul"}</h3>
+    sheet.innerHTML = `${X}<h3>${store.hasEmail() ? "Nume, email și parolă" : "Adaugă emailul"}</h3>
       <form class="prof-form" id="pfForm" novalidate>
         <div class="name-row">
           <div class="field"><label for="pfLast">Nume de familie</label><input class="input" id="pfLast" maxlength="30" autocomplete="family-name" autocapitalize="words" value="${esc(ln)}"></div>
           <div class="field"><label for="pfFirst">Prenume</label><input class="input" id="pfFirst" maxlength="30" autocomplete="given-name" autocapitalize="words" value="${esc(fn)}"></div>
         </div>
         <div class="field"><label for="pfMail">Email</label><input class="input" id="pfMail" type="email" inputmode="email" maxlength="254" autocomplete="email" autocapitalize="none" spellcheck="false" value="${store.hasEmail() ? esc(store.email) : ""}"></div>
+        <div class="field"><label for="pfPw">Parolă nouă <span class="muted" style="font-weight:400">(dacă vrei s-o schimbi)</span></label><input class="input" id="pfPw" type="password" autocomplete="new-password" maxlength="72"></div>
         <p class="form-error" id="pfErr" role="alert"></p>
         <div class="modal-btns"><button class="btn btn-ghost" type="button" id="pfCancel">Anulează</button><button class="btn btn-primary" type="submit" id="pfSave">Salvează</button></div>
       </form>`;
     sheet.querySelector("#pfX").onclick = close;
     sheet.querySelector("#pfCancel").onclick = show;
     const form = sheet.querySelector("#pfForm"), err = sheet.querySelector("#pfErr");
-    const first = sheet.querySelector("#pfFirst"), last = sheet.querySelector("#pfLast"), mail = sheet.querySelector("#pfMail");
+    const first = sheet.querySelector("#pfFirst"), last = sheet.querySelector("#pfLast"), mail = sheet.querySelector("#pfMail"), npw = sheet.querySelector("#pfPw");
+    pwEye(npw);
     (store.hasEmail() ? last : mail).focus();
+    form.querySelectorAll("input").forEach(inp => {
+      inp.addEventListener("focus", () => setTimeout(() => inp.scrollIntoView({ block: "nearest", behavior: "smooth" }), 100));
+    });
     form.addEventListener("input", () => { err.textContent = ""; });
     form.addEventListener("submit", async e => {
       e.preventDefault();
@@ -1051,8 +1099,19 @@ function openProfile(){
       if (!slugOf(l1)) { err.textContent = "Scrie numele de familie."; last.focus(); return; }
       if (!slugOf(f1)) { err.textContent = "Scrie prenumele."; first.focus(); return; }
       if (!EMAIL_RE.test(em)) { err.textContent = "Scrie o adresă de email validă."; mail.focus(); return; }
+      if (npw.value && npw.value.length < 6) { err.textContent = "Parola trebuie să aibă cel puțin 6 caractere."; npw.focus(); return; }
       const btn = sheet.querySelector("#pfSave"); btn.disabled = true; btn.textContent = "Se salvează…";
       const r = await store.updateAccount(f1, l1, em);
+      if (r.ok && npw.value){
+        let pe = null;
+        try { const { error } = await sb().auth.updateUser({ password: npw.value }); pe = error; } catch (x) { pe = x; }
+        if (pe && !/different/i.test(pe.message || "")){
+          btn.disabled = false; btn.textContent = "Salvează";
+          err.textContent = isNetErr(pe) ? loginError({error:"network"}) : "Numele și emailul au fost salvate, dar parola nu. Încearcă din nou.";
+          p.name = r.name;
+          return;
+        }
+      }
       if (!r.ok){
         btn.disabled = false; btn.textContent = "Salvează";
         err.textContent = ({ name_taken: "Acest nume e deja folosit de alt cont.", email_taken: "Acest email e deja folosit de alt cont.", auth: "Intră din nou în cont și încearcă iar." })[r.error] || loginError(r);
@@ -1061,7 +1120,7 @@ function openProfile(){
       p.name = r.name; lsSet("candela:email", r.email); S.board = null;
       const me = (store.family || []).find(x => x.id === store.uid); if (me) me.name = r.name;
       if ($(".home")) viewHome();
-      toast("Profil actualizat.");
+      toast(npw.value ? "Profil și parolă actualizate." : "Profil actualizat.");
       show();
     });
   };
