@@ -1,0 +1,454 @@
+{
+ "ch": 21,
+ "easy": [
+  {
+   "t": "tf",
+   "ref": "21:1",
+   "q": "David s-a dus la Nob, la preotul Ahimelec.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "21:1",
+   "q": "Cum l-a întâmpinat preotul Ahimelec pe David?",
+   "opts": [
+    "Bucuros, cu o jertfă",
+    "Speriat",
+    "Cu mânie",
+    "Nu a vrut să-l primească"
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "21:2",
+   "q": "David i-a spus preotului că fuge de Saul.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "21:4-6",
+   "q": "Ce fel de pâine i-a dat preotul lui David?",
+   "opts": [
+    "Pâine obișnuită",
+    "Turte de smochine",
+    "Pâinea sfințită",
+    "Azimi coapte în grabă"
+   ],
+   "a": 2
+  },
+  {
+   "t": "multi",
+   "ref": "21:3-9",
+   "q": "Ce a primit David de la Ahimelec? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Pâine",
+    "O sabie",
+    "Un cal",
+    "Efodul",
+    "Argint"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "21:7",
+   "q": "La Nob se afla atunci și un om dintre slujitorii lui Saul.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "21:8",
+   "q": "De ce nu avea David nicio armă la el?",
+   "opts": [
+    "O pierduse în luptă",
+    "I-o luase Saul",
+    "Porunca împăratului era grabnică",
+    "O dăduse lui Ionatan"
+   ],
+   "a": 2
+  },
+  {
+   "t": "one",
+   "ref": "21:9",
+   "q": "Ce sabie i-a dat preotul lui David?",
+   "opts": [
+    "Sabia lui Saul",
+    "Sabia lui Goliat",
+    "Sabia lui Ionatan",
+    "Sabia lui Abner"
+   ],
+   "a": 1
+  },
+  {
+   "t": "fill",
+   "ref": "21:10",
+   "q": "„David s-a sculat și a ___ chiar în ziua aceea de Saul”",
+   "a": [
+    "fugit"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "21:10",
+   "q": "După ce a plecat de la Nob, David a ajuns la Achiș, împăratul Gatului.",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "21:11",
+   "q": "Slujitorii lui Achiș l-au recunoscut pe David.",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "21:12",
+   "q": "David s-a simțit în siguranță la curtea lui Achiș.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "21:13",
+   "q": "Ce a făcut David ca să scape din mâna lui Achiș?",
+   "opts": [
+    "S-a prefăcut nebun",
+    "A fugit noaptea",
+    "A plătit o răscumpărare",
+    "S-a ascuns într-o peșteră"
+   ],
+   "a": 0
+  },
+  {
+   "t": "match",
+   "ref": "21:1-14",
+   "q": "Asociază fiecare replică cu persoana care a rostit-o.",
+   "pairs": [
+    [
+     "„Pentru ce ești singur și nu este nimeni cu tine?”",
+     "Ahimelec"
+    ],
+    [
+     "„Nu-i alta ca ea; dă-mi-o.”",
+     "David"
+    ],
+    [
+     "„Nu este acesta David, împăratul țării?”",
+     "Slujitorii lui Achiș"
+    ],
+    [
+     "„Pentru ce mi-l aduceți?”",
+     "Achiș"
+    ]
+   ]
+  },
+  {
+   "t": "match",
+   "ref": "21:6-13",
+   "q": "Asociază fiecare personaj cu ce face sau i se întâmplă în acest capitol.",
+   "pairs": [
+    [
+     "Ahimelec",
+     "Dă pâinea sfințită"
+    ],
+    [
+     "Doeg",
+     "Se află la Nob în ziua aceea"
+    ],
+    [
+     "David",
+     "Face pe nebunul"
+    ],
+    [
+     "Goliat",
+     "Sabia lui este dată lui David"
+    ]
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "21:14",
+   "q": "„Vedeți bine că omul acesta și-a pierdut ___”",
+   "a": [
+    "mințile"
+   ]
+  },
+  {
+   "t": "multi",
+   "ref": "21:14-15",
+   "q": "Ce a spus Achiș despre David? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Că și-a pierdut mințile",
+    "Că nu duce lipsă de nebuni",
+    "Că trebuie omorât",
+    "Că trebuie trimis înapoi la Saul",
+    "Că este un viteaz"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "21:15",
+   "q": "Achiș l-a primit cu plăcere pe David în casa lui.",
+   "a": false
+  }
+ ],
+ "hard": [
+  {
+   "t": "fill",
+   "ref": "21:1",
+   "q": "„David s-a dus la ___, la preotul ___”",
+   "a": [
+    "Nob",
+    "Ahimelec"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "21:1",
+   "q": "Ahimelec l-a întrebat pe David: „Pentru ce ești singur și nu este nimeni cu tine?”",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "21:2",
+   "q": "David a spus că împăratul i-a poruncit ca nimeni să nu știe nimic de pricina pentru care l-a trimis.",
+   "a": true
+  },
+  {
+   "t": "fill",
+   "ref": "21:2",
+   "q": "„Am hotărât un loc de ___ cu oamenii mei”",
+   "a": [
+    "întâlnire"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "21:4",
+   "q": "Preotul a pus condiția ca oamenii lui David să se fi ferit de împreunarea cu femei.",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "21:5",
+   "q": "David a spus că oamenii lui s-au ferit de femei de șapte zile.",
+   "a": false
+  },
+  {
+   "t": "match",
+   "ref": "21:3-15",
+   "q": "Asociază fiecare replică cu persoana care a rostit-o.",
+   "pairs": [
+    [
+     "„Dă-mi cinci pâini sau ce se va găsi.”",
+     "David"
+    ],
+    [
+     "„N-am pâine obișnuită la îndemână, ci numai pâine sfințită”",
+     "Ahimelec"
+    ],
+    [
+     "„Să intre el în casa mea?”",
+     "Achiș"
+    ]
+   ]
+  },
+  {
+   "t": "multi",
+   "ref": "21:6",
+   "q": "Ce spune textul despre pâinea dată lui David? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Era pâinea pentru punerea înainte",
+    "Fusese luată dinaintea Domnului",
+    "Urma să fie înlocuită cu pâine caldă",
+    "Era pâine de orz",
+    "Fusese coaptă de leviți"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "21:7",
+   "q": "Unde se afla Doeg în ziua aceea?",
+   "opts": [
+    "La poarta cetății",
+    "În tabăra lui Saul",
+    "La Gat",
+    "Închis înaintea Domnului"
+   ],
+   "a": 3
+  },
+  {
+   "t": "fill",
+   "ref": "21:7",
+   "q": "„era un ___, numit Doeg, căpetenia ___ lui Saul”",
+   "a": [
+    "edomit",
+    "păstorilor"
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "21:8",
+   "q": "„N-ai la îndemână o ___ sau o ___?”",
+   "a": [
+    "suliță",
+    "sabie"
+   ]
+  },
+  {
+   "t": "match",
+   "ref": "21:1-10",
+   "q": "Asociază fiecare personaj cu descrierea lui din text.",
+   "pairs": [
+    [
+     "Ahimelec",
+     "Preotul de la Nob"
+    ],
+    [
+     "Doeg",
+     "Căpetenia păstorilor lui Saul"
+    ],
+    [
+     "Goliat",
+     "Filisteanul a cărui sabie se afla la Nob"
+    ],
+    [
+     "Achiș",
+     "Împăratul Gatului"
+    ]
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "21:9",
+   "q": "În ce vale îl omorâse David pe Goliat?",
+   "opts": [
+    "Valea Terebinților",
+    "Valea Refaim",
+    "Valea Sorec",
+    "Valea Hinom"
+   ],
+   "a": 0
+  },
+  {
+   "t": "multi",
+   "ref": "21:9",
+   "q": "Unde și cum se afla sabia lui Goliat? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Învelită într-un covor",
+    "Sub chivotul legământului",
+    "În dosul efodului",
+    "Atârnată de un stâlp",
+    "În cortul lui Saul"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "21:9",
+   "q": "Ahimelec a spus că, în afară de sabia lui Goliat, mai erau și alte arme acolo.",
+   "a": false
+  },
+  {
+   "t": "match",
+   "ref": "21:3-11",
+   "q": "Asociază fiecare număr cu ce se referă el în text.",
+   "pairs": [
+    [
+     "Cinci",
+     "Pâinile cerute de David"
+    ],
+    [
+     "Trei",
+     "Zilele de când plecaseră oamenii lui David"
+    ],
+    [
+     "Miile",
+     "Cei bătuți de Saul, după cântare"
+    ],
+    [
+     "Zecile de mii",
+     "Cei bătuți de David, după cântare"
+    ]
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "21:11",
+   "q": "„Saul și-a bătut ___ lui, Iar David, zecile lui de ___”",
+   "a": [
+    "miile",
+    "mii"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "21:11",
+   "q": "Cum l-au numit slujitorii lui Achiș pe David?",
+   "opts": [
+    "Robul lui Saul",
+    "Fiul lui Isai",
+    "Împăratul țării",
+    "Căpetenia evreilor"
+   ],
+   "a": 2
+  },
+  {
+   "t": "tf",
+   "ref": "21:12",
+   "q": "David a pus la inimă cuvintele slujitorilor lui Achiș.",
+   "a": true
+  },
+  {
+   "t": "multi",
+   "ref": "21:13",
+   "q": "Ce a făcut David când a făcut pe nebunul înaintea lui Achiș? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Făcea zgârieturi pe ușile porților",
+    "Lăsa să-i curgă balele pe barbă",
+    "Își smulgea părul",
+    "Făcea năzdrăvănii",
+    "Se rostogolea în țărână"
+   ],
+   "a": [
+    0,
+    1,
+    3
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "21:14",
+   "q": "Achiș le-a poruncit slujitorilor să-l închidă pe David.",
+   "a": false
+  },
+  {
+   "t": "fill",
+   "ref": "21:15",
+   "q": "„Oare duc lipsă de ___, de-mi aduceți pe acesta”",
+   "a": [
+    "nebuni"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "21:15",
+   "q": "Achiș s-a plâns că slujitorii îl fac martor la năzdrăvăniile lui David.",
+   "a": true
+  }
+ ]
+}

@@ -1,0 +1,402 @@
+{
+ "ch": 7,
+ "easy": [
+  {
+   "t": "tf",
+   "ref": "7:1",
+   "q": "Locuitorii din Chiriat-Iearim au venit și au luat chivotul Domnului.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "7:2",
+   "q": "Ce a făcut toată casa lui Israel după ce chivotul a stat multă vreme la Chiriat-Iearim?",
+   "opts": [
+    "A plâns după Domnul",
+    "A dus chivotul la Silo",
+    "A cerut un împărat",
+    "A pornit război împotriva filistenilor"
+   ],
+   "a": 0
+  },
+  {
+   "t": "multi",
+   "ref": "7:3",
+   "q": "Ce le-a cerut Samuel israeliților, ca Domnul să-i izbăvească de filisteni? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Să se întoarcă la Domnul din toată inima",
+    "Să scoată dumnezeii străini din mijlocul lor",
+    "Să-I slujească numai Domnului",
+    "Să ducă chivotul înapoi la Silo",
+    "Să-și aleagă un împărat"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "7:4",
+   "q": "Copiii lui Israel au scos baalii și astarteele și au slujit numai Domnului.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "7:5",
+   "q": "Unde le-a cerut Samuel israeliților să se strângă?",
+   "opts": [
+    "La Silo",
+    "La Mițpa",
+    "La Ghilgal",
+    "La Betel"
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "7:6",
+   "q": "La adunare, israeliții au postit și au mărturisit: „Am păcătuit împotriva Domnului!”",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "7:7",
+   "q": "Când au aflat că filistenii se suie împotriva lor, israeliții nu s-au temut deloc.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "7:8",
+   "q": "Ce i-au cerut israeliții lui Samuel când au venit filistenii?",
+   "opts": [
+    "Să-i conducă la luptă",
+    "Să ceară pace filistenilor",
+    "Să nu înceteze să strige pentru ei către Domnul",
+    "Să aducă chivotul în tabără"
+   ],
+   "a": 2
+  },
+  {
+   "t": "multi",
+   "ref": "7:9-11",
+   "q": "Ce s-a întâmplat când filistenii s-au apropiat ca să bată pe Israel? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Samuel aducea o ardere-de-tot",
+    "Domnul a tunat împotriva filistenilor",
+    "Israel a fugit dinaintea filistenilor",
+    "Filistenii au luat din nou chivotul",
+    "Bărbații lui Israel i-au urmărit pe filisteni"
+   ],
+   "a": [
+    0,
+    1,
+    4
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "7:10",
+   "q": "Cum i-a pus Domnul pe fugă pe filisteni?",
+   "opts": [
+    "A trimis grindină",
+    "A tunat cu mare vuiet",
+    "A trimis un înger",
+    "A despicat pământul"
+   ],
+   "a": 1
+  },
+  {
+   "t": "fill",
+   "ref": "7:12",
+   "q": "„i-a pus numele Eben-Ezer (Piatră de ajutor), zicând: „Până aici Domnul ne-a ___”",
+   "a": [
+    "ajutat"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "7:13",
+   "q": "După această înfrângere, filistenii au continuat să intre pe ținutul lui Israel.",
+   "a": false
+  },
+  {
+   "t": "match",
+   "ref": "7:4-15",
+   "q": "Asociază fiecare personaj sau grup cu ce spune textul despre el.",
+   "pairs": [
+    [
+     "Samuel",
+     "a fost judecător în Israel toată viața lui"
+    ],
+    [
+     "Filistenii",
+     "au fost smeriți"
+    ],
+    [
+     "Copiii lui Israel",
+     "au scos baalii și astarteele"
+    ]
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "7:15",
+   "q": "„Samuel a fost ___ în Israel în tot timpul vieții lui”",
+   "a": [
+    "judecător"
+   ]
+  },
+  {
+   "t": "match",
+   "ref": "7:1-17",
+   "q": "Asociază fiecare loc cu ce s-a întâmplat acolo.",
+   "pairs": [
+    [
+     "Chiriat-Iearim",
+     "acolo a stat chivotul"
+    ],
+    [
+     "Mițpa",
+     "acolo s-a adunat Israel la chemarea lui Samuel"
+    ],
+    [
+     "Rama",
+     "acolo era casa lui Samuel"
+    ]
+   ]
+  }
+ ],
+ "hard": [
+  {
+   "t": "one",
+   "ref": "7:1",
+   "q": "Unde era casa lui Abinadab, în care a fost dus chivotul?",
+   "opts": [
+    "În vale",
+    "Pe deal",
+    "Lângă poartă",
+    "Lângă fântână"
+   ],
+   "a": 1
+  },
+  {
+   "t": "match",
+   "ref": "7:1-9",
+   "q": "Asociază fiecare personaj cu ce spune textul despre el.",
+   "pairs": [
+    [
+     "Abinadab",
+     "stăpânul casei în care a fost dus chivotul"
+    ],
+    [
+     "Eleazar",
+     "a fost sfințit ca să păzească chivotul"
+    ],
+    [
+     "Samuel",
+     "a adus un miel sugar ca ardere-de-tot"
+    ]
+   ]
+  },
+  {
+   "t": "match",
+   "ref": "7:2-16",
+   "q": "Asociază fiecare durată cu ce se spune despre ea.",
+   "pairs": [
+    [
+     "Douăzeci de ani",
+     "trecuseră de când chivotul fusese pus în Chiriat-Iearim"
+    ],
+    [
+     "În fiecare an",
+     "Samuel făcea înconjurul a trei cetăți"
+    ],
+    [
+     "Tot timpul vieții lui Samuel",
+     "mâna Domnului a fost împotriva filistenilor"
+    ]
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "7:3",
+   "q": "„scoateți din mijlocul vostru dumnezeii străini și ___”",
+   "a": [
+    "astarteele"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "7:3",
+   "q": "Din mâna cui spunea Samuel că îi va izbăvi Domnul?",
+   "opts": [
+    "A amaleciților",
+    "A moabiților",
+    "A filistenilor",
+    "A egiptenilor"
+   ],
+   "a": 2
+  },
+  {
+   "t": "fill",
+   "ref": "7:5",
+   "q": "„Strângeți pe tot Israelul la Mițpa, și eu mă voi ___ Domnului pentru voi”",
+   "a": [
+    "ruga"
+   ]
+  },
+  {
+   "t": "multi",
+   "ref": "7:6",
+   "q": "Ce gest simbolic au făcut israeliții la Mițpa? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Și-au rupt hainele",
+    "Au scos apă și au vărsat-o înaintea Domnului",
+    "Și-au presărat cenușă pe cap",
+    "Au ars tămâie"
+   ],
+   "a": [
+    1
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "7:6",
+   "q": "Samuel judeca pe copiii lui Israel la Mițpa.",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "7:7",
+   "q": "Domnitorii filistenilor s-au suit împotriva lui Israel după ce au aflat de adunarea de la Mițpa.",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "7:9",
+   "q": "Samuel a tăiat mielul în bucăți înainte de a-l aduce ca ardere-de-tot.",
+   "a": false
+  },
+  {
+   "t": "fill",
+   "ref": "7:9",
+   "q": "„A strigat către Domnul pentru Israel, și Domnul l-a ___”",
+   "a": [
+    "ascultat"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "7:10",
+   "q": "Filistenii s-au apropiat chiar pe când Samuel aducea arderea-de-tot.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "7:11",
+   "q": "De unde au ieșit bărbații lui Israel ca să-i urmărească pe filisteni?",
+   "opts": [
+    "Din Rama",
+    "Din Mițpa",
+    "Din Ghilgal",
+    "Din Bet-Șemeș"
+   ],
+   "a": 1
+  },
+  {
+   "t": "match",
+   "ref": "7:11-14",
+   "q": "Asociază fiecare loc cu ce se spune despre el.",
+   "pairs": [
+    [
+     "Bet-Car",
+     "până sub el au fost bătuți filistenii"
+    ],
+    [
+     "Șen",
+     "între el și Mițpa a fost pusă piatra"
+    ],
+    [
+     "Ecron și Gat",
+     "capetele ținutului de cetăți întoarse la Israel"
+    ]
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "7:12",
+   "q": "„Samuel a luat o piatră pe care a pus-o între Mițpa și Șen și i-a pus numele ___”",
+   "a": [
+    "Eben-Ezer"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "7:12",
+   "q": "Explicația dată în text pentru Eben-Ezer este „Piatră de ajutor”.",
+   "a": true
+  },
+  {
+   "t": "multi",
+   "ref": "7:14",
+   "q": "Ce afirmații despre cetățile luate de filisteni sunt adevărate? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "S-au întors la Israel",
+    "S-au întors împreună cu ținutul lor",
+    "Israel a cucerit și Gaza",
+    "Au fost date leviților"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "7:14",
+   "q": "„Israel le-a ___ din mâna filistenilor”",
+   "a": [
+    "smuls"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "7:14",
+   "q": "A fost pace între Israel și moabiți.",
+   "a": false
+  },
+  {
+   "t": "multi",
+   "ref": "7:16",
+   "q": "Ce locuri înconjura Samuel în fiecare an ca să judece pe Israel? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Betel",
+    "Ghilgal",
+    "Mițpa",
+    "Silo",
+    "Hebron"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "7:16",
+   "q": "„și judeca pe Israel în toate ___ acestea”",
+   "a": [
+    "locurile"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "7:17",
+   "q": "Samuel a zidit un altar Domnului la Silo.",
+   "a": false
+  }
+ ]
+}

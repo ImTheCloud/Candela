@@ -1,0 +1,727 @@
+{
+ "ch": 25,
+ "easy": [
+  {
+   "t": "tf",
+   "ref": "25:1",
+   "q": "După moartea lui Samuel, tot Israelul s-a adunat și l-a plâns.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "25:1",
+   "q": "Unde a fost îngropat Samuel?",
+   "opts": [
+    "La Silo",
+    "La Ghibea",
+    "În locuința lui, la Rama",
+    "La Betleem"
+   ],
+   "a": 2
+  },
+  {
+   "t": "tf",
+   "ref": "25:2-3",
+   "q": "Nabal era un om sărac care trăia din munca altora.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "25:3",
+   "q": "Cum este descrisă Abigail, nevasta lui Nabal?",
+   "opts": [
+    "Aspră și rea în faptele ei",
+    "O femeie cu judecată și frumoasă la chip",
+    "Lăudăroasă și leneșă",
+    "Bătrână și bolnavă"
+   ],
+   "a": 1
+  },
+  {
+   "t": "fill",
+   "ref": "25:3",
+   "q": "„dar bărbatul ei era ___ și rău în faptele lui”",
+   "a": [
+    "aspru"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "25:4-8",
+   "q": "Ce le-a cerut David oamenilor trimiși la Nabal?",
+   "opts": [
+    "Să-i ia oile cu forța",
+    "Să-l întrebe de sănătate și să ceară un dar pentru David și oamenii lui",
+    "Să-l cheme la război împotriva lui Saul",
+    "Să-i ceară o fiică de nevastă"
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "25:7",
+   "q": "Oamenii lui David nu le luaseră nimic păstorilor lui Nabal cât timp au fost la Carmel.",
+   "a": true
+  },
+  {
+   "t": "multi",
+   "ref": "25:10-11",
+   "q": "Cum a răspuns Nabal solilor lui David? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Le-a dat cu bucurie ce i-au cerut",
+    "A întrebat cine este David",
+    "A spus că astăzi mulți slujitori fug de la stăpâni",
+    "A refuzat să dea ceva unor oameni care sunt de nu știu unde",
+    "I-a invitat la ospăț"
+   ],
+   "a": [
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "25:13",
+   "q": "Ce a poruncit David oamenilor săi după ce a auzit răspunsul lui Nabal?",
+   "opts": [
+    "Să se întoarcă în pustie",
+    "Să-și încingă fiecare sabia",
+    "Să trimită alți soli",
+    "Să aducă jertfă Domnului"
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "25:14-17",
+   "q": "Abigail a aflat de purtarea lui Nabal de la unul din slujitorii lui Nabal.",
+   "a": true
+  },
+  {
+   "t": "multi",
+   "ref": "25:15-16",
+   "q": "Ce a spus slujitorul despre oamenii lui David? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Au fost foarte buni cu noi",
+    "Ne-au ocărât adesea",
+    "Ne-au fost zid și zi, și noapte",
+    "Ne-au furat din turme"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "25:19",
+   "q": "Abigail i-a spus lui Nabal că pleacă să-l întâmpine pe David.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "25:21-22",
+   "q": "Ce plănuia David să facă?",
+   "opts": [
+    "Să-i ceară socoteală lui Nabal înaintea lui Saul",
+    "Să nu lase să rămână nimeni de parte bărbătească din tot ce era al lui Nabal",
+    "Să ia toate oile lui Nabal",
+    "Să plece din țară"
+   ],
+   "a": 1
+  },
+  {
+   "t": "match",
+   "ref": "25:23-35",
+   "q": "Asociază fiecare personaj cu fapta lui.",
+   "pairs": [
+    [
+     "Abigail",
+     "s-a aruncat la picioarele lui David"
+    ],
+    [
+     "David",
+     "a binecuvântat pe Domnul care a trimis-o pe Abigail"
+    ],
+    [
+     "Nabal",
+     "s-a purtat rău cu solii lui David"
+    ],
+    [
+     "Slujitorul lui Nabal",
+     "a vestit-o pe Abigail despre primejdie"
+    ]
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "25:24",
+   "q": "Abigail a luat vina asupra ei când a vorbit cu David.",
+   "a": true
+  },
+  {
+   "t": "multi",
+   "ref": "25:26-31",
+   "q": "Ce argumente i-a adus Abigail lui David? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Domnul l-a oprit să verse sânge",
+    "Domnul îi va face o casă trainică",
+    "Saul a murit deja",
+    "Nu va avea mustrări de cuget că a vărsat sânge degeaba",
+    "Nabal îi va plăti dublu"
+   ],
+   "a": [
+    0,
+    1,
+    3
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "25:33",
+   "q": "„Binecuvântată să fie ___ ta și binecuvântată să fii tu”",
+   "a": [
+    "judecata"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "25:35",
+   "q": "Ce a făcut David cu darul Abigailei?",
+   "opts": [
+    "L-a refuzat",
+    "L-a luat din mâna ei și a trimis-o acasă în pace",
+    "L-a trimis lui Saul",
+    "L-a dat preoților"
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "25:36",
+   "q": "Când s-a întors Abigail acasă, Nabal dădea un ospăț în casa lui.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "25:37-38",
+   "q": "Ce s-a întâmplat cu Nabal după ce a aflat ce se întâmplase?",
+   "opts": [
+    "L-a omorât David",
+    "A fugit la Saul",
+    "Inima lui s-a făcut ca o piatră și, după câteva zile, Domnul l-a lovit și a murit",
+    "S-a pocăit și i-a trimis daruri lui David"
+   ],
+   "a": 2
+  },
+  {
+   "t": "match",
+   "ref": "25:39-44",
+   "q": "Asociază fiecare femeie cu ce se spune despre ea.",
+   "pairs": [
+    [
+     "Abigail",
+     "a devenit nevasta lui David după moartea lui Nabal"
+    ],
+    [
+     "Ahinoam",
+     "a fost și ea nevasta lui David alături de Abigail"
+    ],
+    [
+     "Mical",
+     "a fost dată de Saul lui Palti"
+    ]
+   ]
+  },
+  {
+   "t": "multi",
+   "ref": "25:39-42",
+   "q": "Ce s-a întâmplat după moartea lui Nabal? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "David L-a binecuvântat pe Domnul",
+    "David a trimis vorbă Abigailei că vrea s-o ia de nevastă",
+    "Abigail a refuzat cererea lui David",
+    "Abigail a mers după solii lui David și i-a fost nevastă"
+   ],
+   "a": [
+    0,
+    1,
+    3
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "25:39",
+   "q": "„Domnul a făcut ca ___ lui Nabal să cadă asupra capului lui”",
+   "a": [
+    "răutatea"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "25:44",
+   "q": "Saul o dăduse pe Mical, nevasta lui David, altui bărbat.",
+   "a": true
+  }
+ ],
+ "hard": [
+  {
+   "t": "one",
+   "ref": "25:1",
+   "q": "În ce pustie s-a coborât David după moartea lui Samuel?",
+   "opts": [
+    "Pustia Zif",
+    "Pustia Maon",
+    "Pustia Paran",
+    "Pustia En-Ghedi"
+   ],
+   "a": 2
+  },
+  {
+   "t": "match",
+   "ref": "25:1-3",
+   "q": "Asociază fiecare persoană sau eveniment cu locul legat de el.",
+   "pairs": [
+    [
+     "Samuel",
+     "îngropat la Rama"
+    ],
+    [
+     "David",
+     "s-a coborât în pustia Paran"
+    ],
+    [
+     "Nabal",
+     "om din Maon"
+    ]
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "25:2",
+   "q": "Omul bogat locuia în Maon, iar averea lui era în Carmel.",
+   "a": true
+  },
+  {
+   "t": "multi",
+   "ref": "25:2",
+   "q": "Ce avea omul bogat din Maon? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Trei mii de oi",
+    "O mie de capre",
+    "Două mii de cămile",
+    "Cinci sute de boi",
+    "O mie de oi"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "25:2",
+   "q": "„și se afla la Carmel pentru ___ oilor lui”",
+   "a": [
+    "tunderea"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "25:3",
+   "q": "Din cine se trăgea Nabal?",
+   "opts": [
+    "Din Iuda",
+    "Din Caleb",
+    "Din Beniamin",
+    "Din Edom"
+   ],
+   "a": 1
+  },
+  {
+   "t": "one",
+   "ref": "25:5",
+   "q": "Câți tineri a trimis David la Nabal?",
+   "opts": [
+    "Cinci",
+    "Șapte",
+    "Zece",
+    "Doisprezece"
+   ],
+   "a": 2
+  },
+  {
+   "t": "fill",
+   "ref": "25:6",
+   "q": "„Să trăiești în ___ și pacea să fie cu casa ta”",
+   "a": [
+    "pace"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "25:8",
+   "q": "Solii au spus că vin într-o zi de doliu.",
+   "a": false
+  },
+  {
+   "t": "fill",
+   "ref": "25:8",
+   "q": "„Dă dar, te rog, robilor tăi și ___ tău David ce te lasă inima”",
+   "a": [
+    "fiului"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "25:9",
+   "q": "După ce au transmis cuvintele lui David, solii au tăcut.",
+   "a": true
+  },
+  {
+   "t": "fill",
+   "ref": "25:10",
+   "q": "„Cine este David și cine este fiul lui ___?”",
+   "a": [
+    "Isai"
+   ]
+  },
+  {
+   "t": "multi",
+   "ref": "25:11",
+   "q": "Ce a spus Nabal că nu vrea să dea unor oameni „de nu știu unde”? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Pâinea",
+    "Vinul",
+    "Apa",
+    "Vitele tăiate pentru tunzători",
+    "Lâna"
+   ],
+   "a": [
+    0,
+    2,
+    3
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "25:12",
+   "q": "Oamenii lui David au rămas la Carmel așteptând un alt răspuns.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "25:13",
+   "q": "Aproximativ câți oameni s-au suit după David împotriva lui Nabal?",
+   "opts": [
+    "Două sute",
+    "Trei sute",
+    "Patru sute",
+    "Șase sute"
+   ],
+   "a": 2
+  },
+  {
+   "t": "one",
+   "ref": "25:13",
+   "q": "Câți oameni au rămas la calabalâcuri?",
+   "opts": [
+    "O sută",
+    "Două sute",
+    "Trei sute",
+    "Patru sute"
+   ],
+   "a": 1
+  },
+  {
+   "t": "fill",
+   "ref": "25:16",
+   "q": "„Ne-au fost ___ și zi, și noapte”",
+   "a": [
+    "zid"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "25:17",
+   "q": "Slujitorul a spus că Nabal era atât de rău încât nimeni nu îndrăznea să-i vorbească.",
+   "a": true
+  },
+  {
+   "t": "match",
+   "ref": "25:18",
+   "q": "Asociază fiecare cantitate cu ce a luat Abigail.",
+   "pairs": [
+    [
+     "Două sute",
+     "pâini"
+    ],
+    [
+     "Două",
+     "burdufuri cu vin"
+    ],
+    [
+     "Cinci",
+     "oi pregătite"
+    ],
+    [
+     "O sută",
+     "turte de stafide"
+    ]
+   ]
+  },
+  {
+   "t": "multi",
+   "ref": "25:18",
+   "q": "Ce a mai luat Abigail în dar pentru David? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Cinci măsuri de grâu prăjit",
+    "Două sute de legături de smochine",
+    "Zece măsuri de orz",
+    "Trei vase cu miere",
+    "Un vițel îngrășat"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "25:19",
+   "q": "Abigail și-a trimis slujitorii înaintea ei și a spus că ea va veni după ei.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "25:20",
+   "q": "Pe ce drum a coborât Abigail muntele?",
+   "opts": [
+    "Pe un drum pietros",
+    "Pe un drum tufos",
+    "Pe drumul împărătesc",
+    "Pe malul unui pârâu"
+   ],
+   "a": 1
+  },
+  {
+   "t": "fill",
+   "ref": "25:21",
+   "q": "„căci mi-a întors ___ pentru bine”",
+   "a": [
+    "rău"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "25:22",
+   "q": "David jurase să nu lase pe nimeni de parte bărbătească al lui Nabal până la apusul soarelui.",
+   "a": false
+  },
+  {
+   "t": "tf",
+   "ref": "25:23",
+   "q": "Când l-a zărit pe David, Abigail s-a dat jos repede de pe măgar.",
+   "a": true
+  },
+  {
+   "t": "fill",
+   "ref": "25:24",
+   "q": "„Îngăduie roabei tale să-ți vorbească la ___”",
+   "a": [
+    "urechi"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "25:25",
+   "q": "Ce înseamnă numele Nabal, potrivit Abigailei?",
+   "opts": [
+    "Rău",
+    "Bogat",
+    "Nebun",
+    "Aspru"
+   ],
+   "a": 2
+  },
+  {
+   "t": "fill",
+   "ref": "25:25",
+   "q": "„căci, cum îi este ___, așa este și el”",
+   "a": [
+    "numele"
+   ]
+  },
+  {
+   "t": "multi",
+   "ref": "25:26-28",
+   "q": "Ce a spus Abigail în cuvântarea ei? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "„Vrăjmașii tăi... să fie ca Nabal!”",
+    "„Domnul meu poartă războaiele Domnului”",
+    "„Niciodată nu va fi răutate în tine”",
+    "„Mâine vei fi împărat peste Israel”",
+    "„Saul va cădea în luptă”"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "25:29",
+   "q": "„sufletul domnului meu va fi legat în ___ celor vii la Domnul Dumnezeul tău”",
+   "a": [
+    "mănunchiul"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "25:29",
+   "q": "Cu ce a spus Abigail că va arunca Domnul sufletul vrăjmașilor lui David?",
+   "opts": [
+    "Cu sabia",
+    "Cu praștia",
+    "Cu arcul",
+    "Cu vântul"
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "25:30",
+   "q": "Abigail a vorbit despre ziua când Domnul îl va pune pe David mai-mare peste Israel.",
+   "a": true
+  },
+  {
+   "t": "fill",
+   "ref": "25:31",
+   "q": "„Și când va face Domnul bine domnului meu, adu-ți aminte de ___ ta”",
+   "a": [
+    "roaba"
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "25:34",
+   "q": "„n-ar mai fi rămas nimic din ce este al lui ___ până la lumina zilei de mâine”",
+   "a": [
+    "Nabal"
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "25:35",
+   "q": "„Suie-te în ___ acasă; vezi că ți-am ascultat glasul”",
+   "a": [
+    "pace"
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "25:36",
+   "q": "„inima îi era veselă și era ___ mort”",
+   "a": [
+    "beat"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "25:36",
+   "q": "Cu ce este comparat ospățul pe care îl dădea Nabal?",
+   "opts": [
+    "Cu un ospăț de nuntă",
+    "Cu un ospăț împărătesc",
+    "Cu ospățul tunzătorilor",
+    "Cu o sărbătoare a lunii noi"
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "25:37",
+   "q": "Abigail i-a istorisit lui Nabal ce se întâmplase chiar în seara ospățului.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "25:38",
+   "q": "După cam câte zile l-a lovit Domnul pe Nabal?",
+   "opts": [
+    "Trei",
+    "Șapte",
+    "Zece",
+    "Patruzeci"
+   ],
+   "a": 2
+  },
+  {
+   "t": "tf",
+   "ref": "25:40",
+   "q": "Slujitorii lui David au găsit-o pe Abigail la Carmel.",
+   "a": true
+  },
+  {
+   "t": "fill",
+   "ref": "25:41",
+   "q": "„gata să spele picioarele ___ domnului meu”",
+   "a": [
+    "slujitorilor"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "25:42",
+   "q": "Câte fete au însoțit-o pe Abigail când a plecat la David?",
+   "opts": [
+    "Două",
+    "Trei",
+    "Cinci",
+    "Șapte"
+   ],
+   "a": 2
+  },
+  {
+   "t": "match",
+   "ref": "25:43-44",
+   "q": "Asociază fiecare nume cu locul sau rudenia lui.",
+   "pairs": [
+    [
+     "Ahinoam",
+     "Izreel"
+    ],
+    [
+     "Palti",
+     "Galim"
+    ],
+    [
+     "Laiș",
+     "tatăl lui Palti"
+    ],
+    [
+     "Mical",
+     "fiica lui Saul"
+    ]
+   ]
+  },
+  {
+   "t": "multi",
+   "ref": "25:44",
+   "q": "Care dintre afirmații despre Palti sunt adevărate conform textului? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Era din Galim",
+    "Era fiul lui Laiș",
+    "Era fiul lui Ner",
+    "Era fiul lui Ahitub",
+    "Era din Carmel"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  }
+ ]
+}

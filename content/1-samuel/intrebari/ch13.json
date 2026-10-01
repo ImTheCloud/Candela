@@ -1,0 +1,482 @@
+{
+ "ch": 13,
+ "easy": [
+  {
+   "t": "tf",
+   "ref": "13:2",
+   "q": "Saul a păstrat cu el doar o parte din popor, iar pe ceilalți i-a trimis pe fiecare la cortul lui.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "13:3",
+   "q": "Cine a bătut tabăra filistenilor de la Gheba?",
+   "opts": [
+    "Saul",
+    "Ionatan",
+    "Samuel",
+    "Abner"
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "13:4",
+   "q": "După lovitura dată filistenilor, se zicea că Israel s-a făcut plăcut filistenilor.",
+   "a": false
+  },
+  {
+   "t": "multi",
+   "ref": "13:6-7",
+   "q": "Cum au reacționat israeliții când au venit filistenii împotriva lor? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "S-au ascuns în peșteri și în stânci",
+    "Unii evrei au trecut Iordanul",
+    "Au atacat îndată tabăra filistenilor",
+    "Poporul de lângă Saul tremura",
+    "Au cerut pace filistenilor"
+   ],
+   "a": [
+    0,
+    1,
+    3
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "13:8",
+   "q": "Pe cine aștepta Saul la Ghilgal?",
+   "opts": [
+    "Pe Ionatan",
+    "Pe Abner",
+    "Pe Samuel",
+    "Pe Eli"
+   ],
+   "a": 2
+  },
+  {
+   "t": "tf",
+   "ref": "13:9",
+   "q": "Saul a adus el însuși arderea-de-tot, fără să-l mai aștepte pe Samuel.",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "13:10",
+   "q": "Samuel a sosit abia la o săptămână după ce Saul adusese jertfa.",
+   "a": false
+  },
+  {
+   "t": "multi",
+   "ref": "13:11-12",
+   "q": "Ce motive a invocat Saul pentru că a adus jertfa? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Poporul se împrăștia de lângă el",
+    "Samuel nu venise la timpul hotărât",
+    "Filistenii erau strânși la Micmaș",
+    "Ionatan îi ceruse să jertfească",
+    "Preotul îi poruncise să jertfească"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "13:13",
+   "q": "Samuel i-a spus lui Saul că n-a păzit porunca pe care i-o dăduse Domnul.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "13:13-14",
+   "q": "Ce consecință a anunțat Samuel pentru Saul?",
+   "opts": [
+    "Va muri în luptă cu filistenii",
+    "Domnia lui nu va dăinui",
+    "Ionatan va fi ucis",
+    "Va fi luat rob de filisteni"
+   ],
+   "a": 1
+  },
+  {
+   "t": "fill",
+   "ref": "13:14",
+   "q": "„Domnul Și-a ales un om după ___ Lui”",
+   "a": [
+    "inima"
+   ]
+  },
+  {
+   "t": "match",
+   "ref": "13:3-14",
+   "q": "Asociază fiecare personaj cu fapta lui.",
+   "pairs": [
+    [
+     "Ionatan",
+     "a bătut tabăra filistenilor de la Gheba"
+    ],
+    [
+     "Saul",
+     "a adus arderea-de-tot"
+    ],
+    [
+     "Samuel",
+     "a anunțat că domnia lui Saul nu va dăinui"
+    ],
+    [
+     "Filistenii",
+     "s-au strâns să lupte cu Israel"
+    ]
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "13:15",
+   "q": "După ce l-a mustrat pe Saul, Samuel a rămas cu el la Ghilgal.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "13:17",
+   "q": "Ce a ieșit din tabăra filistenilor ca să pustiască țara?",
+   "opts": [
+    "Un uriaș",
+    "Trei cete",
+    "O mie de care",
+    "Soli de pace"
+   ],
+   "a": 1
+  },
+  {
+   "t": "one",
+   "ref": "13:19",
+   "q": "De ce nu se găsea niciun fierar în Israel?",
+   "opts": [
+    "Saul interzisese meseria aceasta",
+    "Fierarii fugiseră în Egipt",
+    "Filistenii voiau să-i împiedice pe evrei să-și facă săbii sau sulițe",
+    "Nu era fier în țară"
+   ],
+   "a": 2
+  },
+  {
+   "t": "fill",
+   "ref": "13:20",
+   "q": "„Și fiecare om din Israel se cobora la ___ ca să-și ascută fierul plugului”",
+   "a": [
+    "filisteni"
+   ]
+  },
+  {
+   "t": "match",
+   "ref": "13:19-22",
+   "q": "Asociază fiecare lucru cu ce spune textul despre el.",
+   "pairs": [
+    [
+     "Fierarii din Israel",
+     "nu se găsea niciunul"
+    ],
+    [
+     "Uneltele agricole",
+     "erau ascuțite la filisteni"
+    ],
+    [
+     "Sabia și sulița în ziua luptei",
+     "le aveau doar Saul și Ionatan"
+    ]
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "13:22",
+   "q": "În ziua luptei, tot poporul care era cu Saul avea săbii și sulițe.",
+   "a": false
+  },
+  {
+   "t": "tf",
+   "ref": "13:23",
+   "q": "O ceată de filisteni s-a așezat la trecătoarea Micmașului.",
+   "a": true
+  }
+ ],
+ "hard": [
+  {
+   "t": "one",
+   "ref": "13:1",
+   "q": "Câți ani avea Saul când a ajuns împărat?",
+   "opts": [
+    "Douăzeci",
+    "Patruzeci",
+    "Treizeci",
+    "Douăzeci și cinci"
+   ],
+   "a": 2
+  },
+  {
+   "t": "tf",
+   "ref": "13:1",
+   "q": "Saul a domnit trei ani peste Israel.",
+   "a": false
+  },
+  {
+   "t": "match",
+   "ref": "13:2",
+   "q": "Asociază numărul de bărbați cu locul unde se aflau.",
+   "pairs": [
+    [
+     "Două mii",
+     "cu Saul la Micmaș și pe muntele Betel"
+    ],
+    [
+     "O mie",
+     "cu Ionatan la Ghibea lui Beniamin"
+    ],
+    [
+     "Trei mii",
+     "totalul bărbaților aleși de Saul"
+    ]
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "13:3",
+   "q": "Filistenii n-au aflat că Ionatan le bătuse tabăra.",
+   "a": false
+  },
+  {
+   "t": "fill",
+   "ref": "13:3",
+   "q": "„Saul a pus să sune cu ___ prin toată țara”",
+   "a": [
+    "trâmbița"
+   ]
+  },
+  {
+   "t": "multi",
+   "ref": "13:5",
+   "q": "Ce aveau filistenii când s-au strâns să lupte cu Israel? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "O mie de care",
+    "Trei mii de care",
+    "Șase mii de călăreți",
+    "Zece mii de călăreți",
+    "Popor fără număr, ca nisipul de pe țărmul mării"
+   ],
+   "a": [
+    0,
+    2,
+    4
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "13:5",
+   "q": "Unde au tăbărât filistenii, la Micmaș?",
+   "opts": [
+    "La apus de Betel",
+    "La răsărit de Bet-Aven",
+    "La miazăzi de Gheba",
+    "La răsărit de Bet-Horon"
+   ],
+   "a": 1
+  },
+  {
+   "t": "multi",
+   "ref": "13:6",
+   "q": "Unde s-au ascuns bărbații lui Israel? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "În peșteri",
+    "În cetăți întărite",
+    "În turnuri",
+    "În gropile pentru apă",
+    "În corturile filistenilor"
+   ],
+   "a": [
+    0,
+    2,
+    3
+   ]
+  },
+  {
+   "t": "multi",
+   "ref": "13:7",
+   "q": "În țara cui voiau să se ducă evreii care au trecut Iordanul? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Gad",
+    "Moab",
+    "Galaad",
+    "Edom"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "13:8",
+   "q": "Câte zile a așteptat Saul după timpul hotărât de Samuel?",
+   "opts": [
+    "Trei",
+    "Zece",
+    "Patruzeci",
+    "Șapte"
+   ],
+   "a": 3
+  },
+  {
+   "t": "fill",
+   "ref": "13:9",
+   "q": "„Aduceți-mi arderea-de-tot și ___ de mulțumire”",
+   "a": [
+    "jertfele"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "13:10",
+   "q": "Când a venit Samuel, Saul i-a ieșit înainte să-i ureze de bine.",
+   "a": true
+  },
+  {
+   "t": "fill",
+   "ref": "13:12",
+   "q": "„Filistenii se vor coborî împotriva mea la ___, și eu nu m-am rugat Domnului”",
+   "a": [
+    "Ghilgal"
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "13:12",
+   "q": "„Atunci am ___ și am adus arderea-de-tot”",
+   "a": [
+    "îndrăznit"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "13:13",
+   "q": "Cu ce cuvinte a numit Samuel fapta lui Saul?",
+   "opts": [
+    "„Ai lucrat ca un copil”",
+    "„Ai lucrat ca un vrăjmaș”",
+    "„Ai lucrat ca un nebun”",
+    "„Ai lucrat ca un păgân”"
+   ],
+   "a": 2
+  },
+  {
+   "t": "tf",
+   "ref": "13:13",
+   "q": "Samuel a spus că Domnul ar fi întărit pe vecie domnia lui Saul peste Israel.",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "13:14",
+   "q": "Samuel a spus că Domnul l-a rânduit pe omul ales să fie „împăratul” poporului Său.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "13:15",
+   "q": "Unde s-a suit Samuel din Ghilgal?",
+   "opts": [
+    "La Rama",
+    "La Silo",
+    "La Mițpa",
+    "La Ghibea lui Beniamin"
+   ],
+   "a": 3
+  },
+  {
+   "t": "tf",
+   "ref": "13:15",
+   "q": "La numărătoare, Saul avea cu el aproape șase sute de oameni.",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "13:16",
+   "q": "Când Saul și Ionatan se așezaseră la Gheba lui Beniamin, filistenii tăbărau la Ghilgal.",
+   "a": false
+  },
+  {
+   "t": "match",
+   "ref": "13:17-18",
+   "q": "Asociază fiecare ceată a filistenilor cu drumul pe care l-a luat.",
+   "pairs": [
+    [
+     "Prima ceată",
+     "spre Ofra, spre țara Șual"
+    ],
+    [
+     "A doua ceată",
+     "spre Bet-Horon"
+    ],
+    [
+     "A treia ceată",
+     "spre hotarul care caută spre valea Țeboim"
+    ]
+   ]
+  },
+  {
+   "t": "match",
+   "ref": "13:3-15",
+   "q": "Asociază fiecare loc cu ce s-a petrecut acolo.",
+   "pairs": [
+    [
+     "Gheba",
+     "acolo era tabăra filistenilor bătută de Ionatan"
+    ],
+    [
+     "Micmaș",
+     "acolo au tăbărât filistenii, la răsărit de Bet-Aven"
+    ],
+    [
+     "Ghilgal",
+     "acolo a adus Saul arderea-de-tot"
+    ],
+    [
+     "Ghibea lui Beniamin",
+     "acolo s-a suit Samuel după mustrare"
+    ]
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "13:19",
+   "q": "„În toată țara lui Israel nu se găsea niciun ___”",
+   "a": [
+    "fierar"
+   ]
+  },
+  {
+   "t": "multi",
+   "ref": "13:20-21",
+   "q": "Ce unelte mergeau israeliții să-și ascută la filisteni? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Fierul plugului",
+    "Sabia",
+    "Coasa",
+    "Sulița",
+    "Sapa"
+   ],
+   "a": [
+    0,
+    2,
+    4
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "13:21",
+   "q": "Israeliții mergeau la filisteni și ca să facă vârf țepușului cu care mânau boii.",
+   "a": true
+  }
+ ]
+}

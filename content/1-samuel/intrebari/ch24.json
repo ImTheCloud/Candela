@@ -1,0 +1,428 @@
+{
+ "ch": 24,
+ "easy": [
+  {
+   "t": "one",
+   "ref": "24:1",
+   "q": "Unde i s-a spus lui Saul că se află David?",
+   "opts": [
+    "În pustia Maon",
+    "În pustia En-Ghedi",
+    "În pustia Zif",
+    "În pustia Paran"
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "24:2",
+   "q": "Saul a pornit după David cu oameni aleși din tot Israelul.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "24:3",
+   "q": "De ce a intrat Saul în peșteră?",
+   "opts": [
+    "Ca să doarmă",
+    "Ca să se ascundă",
+    "Ca să-l caute pe David",
+    "Ca să se roage"
+   ],
+   "a": 0
+  },
+  {
+   "t": "tf",
+   "ref": "24:4",
+   "q": "Oamenii lui David l-au îndemnat să-l cruțe pe Saul.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "24:4",
+   "q": "Ce i-a tăiat David lui Saul în peșteră?",
+   "opts": [
+    "O șuviță de păr",
+    "Cureaua sabiei",
+    "Colțul hainei",
+    "Coarda arcului"
+   ],
+   "a": 2
+  },
+  {
+   "t": "tf",
+   "ref": "24:5",
+   "q": "După ce a tăiat colțul hainei, David s-a bucurat de fapta lui.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "24:6",
+   "q": "De ce nu a vrut David să pună mâna pe Saul?",
+   "opts": [
+    "Pentru că îi era socru",
+    "Pentru că se temea de oastea lui",
+    "Pentru că Ionatan l-a rugat",
+    "Pentru că era unsul Domnului"
+   ],
+   "a": 3
+  },
+  {
+   "t": "fill",
+   "ref": "24:7",
+   "q": "„David a oprit pe oamenii săi și i-a împiedicat să se ___ asupra lui Saul”",
+   "a": [
+    "arunce"
+   ]
+  },
+  {
+   "t": "multi",
+   "ref": "24:8",
+   "q": "Ce a făcut David când a ieșit după Saul din peșteră? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "A strigat: „Împărate, domnul meu!”",
+    "S-a plecat cu fața la pământ",
+    "S-a închinat",
+    "A scos sabia",
+    "A fugit"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "24:10-11",
+   "q": "David i-a arătat lui Saul colțul hainei ca dovadă că nu i-a vrut răul.",
+   "a": true
+  },
+  {
+   "t": "match",
+   "ref": "24:4-19",
+   "q": "Asociază fiecare replică cu cel care a rostit-o.",
+   "pairs": [
+    [
+     "„Iată ziua în care Domnul îți zice...”",
+     "Oamenii lui David"
+    ],
+    [
+     "„Judece Domnul între mine și tine”",
+     "David"
+    ],
+    [
+     "„Domnul să-ți răsplătească pentru ce mi-ai făcut în ziua aceasta!”",
+     "Saul"
+    ]
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "24:16",
+   "q": "Saul a ridicat glasul și a plâns.",
+   "a": true
+  },
+  {
+   "t": "multi",
+   "ref": "24:18",
+   "q": "Ce a recunoscut Saul? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Că Domnul îl dăduse în mâinile lui David",
+    "Că David nu l-a omorât",
+    "Că David voia să-i ia viața",
+    "Că Ionatan va moșteni tronul",
+    "Că Samuel l-a uns pe David"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "24:20",
+   "q": "Saul a recunoscut că David va domni.",
+   "a": true
+  },
+  {
+   "t": "match",
+   "ref": "24:3-22",
+   "q": "Asociază fiecare loc cu ce se spune despre el.",
+   "pairs": [
+    [
+     "Stânele de oi de lângă drum",
+     "Lângă ele era peștera"
+    ],
+    [
+     "Fundul peșterii",
+     "Acolo erau David și oamenii lui"
+    ],
+    [
+     "Locul întărit",
+     "Acolo s-au suit David și oamenii lui la sfârșit"
+    ]
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "24:22",
+   "q": "„David a ___ lui Saul. Apoi Saul a plecat acasă”",
+   "a": [
+    "jurat"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "24:22",
+   "q": "Unde a plecat Saul după ce David i-a jurat?",
+   "opts": [
+    "La Rama",
+    "La război",
+    "Acasă",
+    "La Nob"
+   ],
+   "a": 2
+  }
+ ],
+ "hard": [
+  {
+   "t": "fill",
+   "ref": "24:1",
+   "q": "„Când s-a întors Saul de la urmărirea ___”",
+   "a": [
+    "filistenilor"
+   ]
+  },
+  {
+   "t": "match",
+   "ref": "24:2-14",
+   "q": "Asociază fiecare element cu descrierea lui din text.",
+   "pairs": [
+    [
+     "Oamenii luați de Saul",
+     "Trei mii, aleși din tot Israelul"
+    ],
+    [
+     "Stâncile",
+     "Ale țapilor sălbatici"
+    ],
+    [
+     "David, în ochii săi",
+     "Un câine mort, un purice"
+    ]
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "24:4",
+   "q": "„Dau pe ___ tău în mâinile tale; fă-i ce-ți va plăcea”",
+   "a": [
+    "vrăjmașul"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "24:4",
+   "q": "Cum a tăiat David colțul hainei lui Saul?",
+   "opts": [
+    "În grabă",
+    "Încet",
+    "Cu zgomot",
+    "Cu mânie"
+   ],
+   "a": 1
+  },
+  {
+   "t": "fill",
+   "ref": "24:6",
+   "q": "„Să mă ___ Domnul să fac împotriva domnului meu”",
+   "a": [
+    "ferească"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "24:6",
+   "q": "În același verset, David spune de două ori că Saul este unsul Domnului.",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "24:7",
+   "q": "După ce David și-a oprit oamenii, Saul s-a sculat și a ieșit din peșteră.",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "24:8",
+   "q": "Saul s-a uitat înapoi când David l-a strigat.",
+   "a": true
+  },
+  {
+   "t": "fill",
+   "ref": "24:9",
+   "q": "„De ce asculți tu de vorbele oamenilor care zic: David îți vrea ___”",
+   "a": [
+    "răul"
+   ]
+  },
+  {
+   "t": "multi",
+   "ref": "24:8-11",
+   "q": "Cum îl numește David pe Saul în versetele 8-11? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Părintele meu",
+    "Unsul Domnului",
+    "Domnul meu",
+    "Fiul lui Chiș",
+    "Fratele meu"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "24:10",
+   "q": "David a spus că Domnul îl dăduse pe Saul în mâinile lui chiar în ziua aceea, în peșteră.",
+   "a": true
+  },
+  {
+   "t": "multi",
+   "ref": "24:11",
+   "q": "Ce a spus David că nu se află în purtarea lui? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Răutate",
+    "Răzvrătire",
+    "Mândrie",
+    "Vicleșug",
+    "Frică"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "24:11",
+   "q": "David a recunoscut că a păcătuit împotriva lui Saul.",
+   "a": false
+  },
+  {
+   "t": "fill",
+   "ref": "24:11",
+   "q": "„Totuși tu îmi întinzi ___, ca să-mi iei viața”",
+   "a": [
+    "curse"
+   ]
+  },
+  {
+   "t": "match",
+   "ref": "24:4-16",
+   "q": "Asociază fiecare replică cu cel căruia îi este atribuită.",
+   "pairs": [
+    [
+     "„Uite, părintele meu, uite colțul hainei tale în mâna mea.”",
+     "David"
+    ],
+    [
+     "„Glasul tău este, fiule David?”",
+     "Saul"
+    ],
+    [
+     "„Dau pe vrăjmașul tău în mâinile tale; fă-i ce-ți va plăcea.”",
+     "Domnul, după spusele oamenilor lui David"
+    ]
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "24:12",
+   "q": "„Domnul să mă ___ pe tine, dar eu nu voi pune mâna pe tine”",
+   "a": [
+    "răzbune"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "24:13",
+   "q": "Cum numește David spusa „Răul de la cei răi vine”?",
+   "opts": [
+    "O pildă a lui Solomon",
+    "Vechea zicală",
+    "O cântare a lui Moise",
+    "Porunca Legii"
+   ],
+   "a": 1
+  },
+  {
+   "t": "fill",
+   "ref": "24:14",
+   "q": "„Împotriva cui a pornit împăratul lui ___?”",
+   "a": [
+    "Israel"
+   ]
+  },
+  {
+   "t": "multi",
+   "ref": "24:15",
+   "q": "Ce a spus David că va face Domnul? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Va judeca între ei",
+    "Îl va lovi pe Saul cu boală",
+    "Îi va apăra pricina",
+    "Îl va izbăvi din mâna lui Saul",
+    "Îi va da împărăția chiar în anul acela"
+   ],
+   "a": [
+    0,
+    2,
+    3
+   ]
+  },
+  {
+   "t": "match",
+   "ref": "24:17-21",
+   "q": "Asociază începutul fiecărei fraze a lui Saul cu continuarea ei.",
+   "pairs": [
+    [
+     "„Tu ești mai bun decât mine,”",
+     "„căci tu mi-ai făcut bine, iar eu ți-am făcut rău.”"
+    ],
+    [
+     "„Tu îți arăți azi bunătatea”",
+     "„cu care te porți față de mine”"
+    ],
+    [
+     "„Jură-mi dar pe Domnul”",
+     "„că nu-mi vei nimici sămânța mea după mine”"
+    ]
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "24:19",
+   "q": "„Dacă întâlnește cineva pe ___ lui, îl lasă oare să-și urmeze drumul în ___?”",
+   "a": [
+    "vrăjmașul",
+    "liniște"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "24:21",
+   "q": "Ce i-a mai cerut Saul lui David să nu-i șteargă?",
+   "opts": [
+    "Altarul din Ghibea",
+    "Legământul cu Ionatan",
+    "Moștenirea lui Beniamin",
+    "Numele din casa tatălui său"
+   ],
+   "a": 3
+  }
+ ]
+}

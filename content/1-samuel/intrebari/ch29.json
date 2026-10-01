@@ -1,0 +1,419 @@
+{
+ "ch": 29,
+ "easy": [
+  {
+   "t": "tf",
+   "ref": "29:1",
+   "q": "La începutul capitolului, filistenii și Israel erau adunați pentru luptă, fiecare în tabăra lui.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "29:1-2",
+   "q": "Împotriva cui se pregăteau de luptă filistenii?",
+   "opts": [
+    "Amaleciților",
+    "Moabiților",
+    "Egiptenilor",
+    "Lui Israel"
+   ],
+   "a": 3
+  },
+  {
+   "t": "tf",
+   "ref": "29:2",
+   "q": "David și oamenii lui mergeau împreună cu Achiș în oastea filistenilor.",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "29:3",
+   "q": "Domnii filistenilor s-au bucurat să-i vadă pe evrei alături de ei.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "29:3",
+   "q": "Ce a spus Achiș despre purtarea lui David de când venise la el?",
+   "opts": [
+    "Că l-a prins mințind de câteva ori",
+    "Că n-a găsit nimic de care să-l învinuiască",
+    "Că a fost leneș și nepăsător",
+    "Că plănuia să fugă la Saul"
+   ],
+   "a": 1
+  },
+  {
+   "t": "multi",
+   "ref": "29:4",
+   "q": "De ce voiau domnitorii filistenilor să-l trimită înapoi pe David? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "David era bolnav și obosit",
+    "Se temeau să nu le fie vrăjmaș în timpul luptei",
+    "Achiș voia să-l păstreze ca paznic al cetății",
+    "Credeau că s-ar putea face plăcut stăpânului său cu capetele oamenilor lor",
+    "David refuzase să lupte"
+   ],
+   "a": [
+    1,
+    3
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "29:5",
+   "q": "„Saul și-a bătut ___ lui, Iar David, ___ lui de mii.”",
+   "a": [
+    "miile",
+    "zecile"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "29:6",
+   "q": "Achiș i-a spus lui David că nu era pe placul domnitorilor filistenilor.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "29:7",
+   "q": "De ce i-a cerut Achiș lui David să se întoarcă?",
+   "opts": [
+    "Ca să păzească femeile din Țiclag",
+    "Pentru că Saul se apropia de tabără",
+    "Ca să nu facă nimic neplăcut înaintea domnitorilor filistenilor",
+    "Pentru că David îl jignise"
+   ],
+   "a": 2
+  },
+  {
+   "t": "fill",
+   "ref": "29:7",
+   "q": "„Întoarce-te dar și mergi în ___.”",
+   "a": [
+    "pace"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "29:8",
+   "q": "David a plecat fără să ridice nicio întrebare.",
+   "a": false
+  },
+  {
+   "t": "match",
+   "ref": "29:3-8",
+   "q": "Asociază fiecare vorbitor cu replica lui.",
+   "pairs": [
+    [
+     "Domnii filistenilor",
+     "„Trimite înapoi pe omul acesta”"
+    ],
+    [
+     "Achiș",
+     "„Acesta este David, slujitorul lui Saul”"
+    ],
+    [
+     "David",
+     "„Dar ce am făcut și ce ai găsit în robul tău?”"
+    ]
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "29:9",
+   "q": "Cine a hotărât de fapt ca David să nu meargă la luptă?",
+   "opts": [
+    "Achiș",
+    "David",
+    "Domnitorii filistenilor",
+    "Saul"
+   ],
+   "a": 2
+  },
+  {
+   "t": "tf",
+   "ref": "29:10",
+   "q": "Achiș i-a spus lui David să plece de îndată ce se va lumina.",
+   "a": true
+  },
+  {
+   "t": "match",
+   "ref": "29:4-11",
+   "q": "Asociază fiecare personaj sau grup cu ce a făcut.",
+   "pairs": [
+    [
+     "Domnitorii filistenilor",
+     "S-au mâniat pe Achiș"
+    ],
+    [
+     "Achiș",
+     "L-a chemat pe David și i-a spus să se întoarcă"
+    ],
+    [
+     "David și oamenii lui",
+     "S-au sculat ca să plece dimineața"
+    ],
+    [
+     "Filistenii",
+     "Au mers mai departe spre luptă"
+    ]
+   ]
+  },
+  {
+   "t": "multi",
+   "ref": "29:11",
+   "q": "Ce s-a întâmplat la sfârșitul capitolului 29? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "David s-a alăturat lui Saul",
+    "Achiș s-a întors cu David",
+    "David și oamenii lui au pornit înapoi spre țara filistenilor",
+    "Filistenii s-au suit mai departe la luptă"
+   ],
+   "a": [
+    2,
+    3
+   ]
+  }
+ ],
+ "hard": [
+  {
+   "t": "one",
+   "ref": "29:1",
+   "q": "Unde își strânseseră filistenii toate oștile?",
+   "opts": [
+    "Ghilboa",
+    "Mițpa",
+    "Afec",
+    "Soco"
+   ],
+   "a": 2
+  },
+  {
+   "t": "fill",
+   "ref": "29:1",
+   "q": "și Israel tăbărâse la ___ lui ___.",
+   "a": [
+    "fântâna",
+    "Izreel"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "29:2",
+   "q": "Domnii filistenilor au înaintat cu zecile și sutele lor.",
+   "a": false
+  },
+  {
+   "t": "fill",
+   "ref": "29:2",
+   "q": "David și oamenii lui mergeau mai la ___, cu Achiș.",
+   "a": [
+    "coadă"
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "29:3",
+   "q": "Domnii filistenilor au zis: „Ce caută ___ aceștia aici?”",
+   "a": [
+    "evreii"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "29:3",
+   "q": "Achiș a spus că David era cu el de puțină vreme.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "29:4",
+   "q": "Unde au cerut domnitorii ca David să fie trimis înapoi?",
+   "opts": [
+    "La Gat, la casa lui Achiș",
+    "În pustia Zif",
+    "La Saul",
+    "În locul unde îl așezase Achiș"
+   ],
+   "a": 3
+  },
+  {
+   "t": "fill",
+   "ref": "29:5",
+   "q": "Nu este acesta David pentru care ___ jucând?",
+   "a": [
+    "cântau"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "29:6",
+   "q": "Achiș și-a început cuvintele către David cu jurământul „Viu este Domnul”.",
+   "a": true
+  },
+  {
+   "t": "multi",
+   "ref": "29:6",
+   "q": "Ce i-a spus Achiș lui David în 29:6? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Că este un om curat la suflet",
+    "Că îi place să-l vadă mergând și venind cu el în tabără",
+    "Că n-a găsit nimic rău în el",
+    "Că este pe placul domnitorilor",
+    "Că îi va da o cetate"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "29:8",
+   "q": "Împotriva cui spunea David că voia să lupte?",
+   "opts": [
+    "Împotriva amaleciților din miazăzi",
+    "Împotriva vrăjmașilor domnului său, împăratul",
+    "Împotriva lui Saul și a fiilor lui",
+    "Împotriva cheretiților"
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "29:8",
+   "q": "Vorbind cu Achiș, David s-a numit pe sine „robul tău”.",
+   "a": true
+  },
+  {
+   "t": "fill",
+   "ref": "29:9",
+   "q": "Știu că ești plăcut înaintea mea ca un ___ al lui ___.",
+   "a": [
+    "înger",
+    "Dumnezeu"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "29:10",
+   "q": "Achiș i-a cerut lui David să plece singur, fără oamenii care veniseră cu el.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "29:10",
+   "q": "Cum îi numește Achiș pe oamenii care veniseră cu David?",
+   "opts": [
+    "Vitejii tăi",
+    "Evreii tăi",
+    "Slujitorii stăpânului tău",
+    "Robii lui Saul"
+   ],
+   "a": 2
+  },
+  {
+   "t": "multi",
+   "ref": "29:10-11",
+   "q": "Care dintre următoarele detalii apar în 29:10-11? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Achiș le-a dat merinde pentru drum",
+    "David a primit daruri de la domnitori",
+    "Achiș a mers cu David până la Țiclag",
+    "Oamenii lui David au fost dezarmați"
+   ],
+   "a": []
+  },
+  {
+   "t": "tf",
+   "ref": "29:11",
+   "q": "David și oamenii lui s-au sculat din noapte de tot.",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "29:11",
+   "q": "Planul lui David era să plece dimineața și să se întoarcă în țara filistenilor.",
+   "a": true
+  },
+  {
+   "t": "multi",
+   "ref": "29:1-11",
+   "q": "Care dintre următoarele nume de locuri apar în capitolul 29? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Țiclag",
+    "Afec",
+    "Ghilboa",
+    "Izreel",
+    "Gat"
+   ],
+   "a": [
+    1,
+    3
+   ]
+  },
+  {
+   "t": "match",
+   "ref": "29:3-9",
+   "q": "Asociază fiecare vorbitor cu cuvintele lui.",
+   "pairs": [
+    [
+     "Achiș",
+     "„De mult este cu mine”"
+    ],
+    [
+     "Domnitorii filistenilor (citați de Achiș)",
+     "„Să nu se suie cu noi la luptă”"
+    ],
+    [
+     "David",
+     "„De când sunt la tine până în ziua de azi”"
+    ]
+   ]
+  },
+  {
+   "t": "match",
+   "ref": "29:3-8",
+   "q": "Asociază expresia cu persoana sau grupul la care se referă.",
+   "pairs": [
+    [
+     "„Slujitorul lui Saul”",
+     "David"
+    ],
+    [
+     "„Împăratul lui Israel”",
+     "Saul"
+    ],
+    [
+     "„Domnitorii”",
+     "Căpeteniile filistenilor"
+    ]
+   ]
+  },
+  {
+   "t": "match",
+   "ref": "29:1-11",
+   "q": "Asociază fiecare grup cu poziția sau mișcarea lui.",
+   "pairs": [
+    [
+     "Domnii filistenilor",
+     "Au înaintat cu sutele și miile lor"
+    ],
+    [
+     "David și oamenii lui",
+     "Mergeau mai la coadă, cu Achiș"
+    ],
+    [
+     "Israel",
+     "Tăbărâse lângă o fântână"
+    ],
+    [
+     "Filistenii, la final",
+     "S-au suit la Izreel"
+    ]
+   ]
+  }
+ ]
+}

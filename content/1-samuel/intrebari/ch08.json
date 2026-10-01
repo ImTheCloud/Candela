@@ -1,0 +1,411 @@
+{
+ "ch": 8,
+ "easy": [
+  {
+   "t": "tf",
+   "ref": "8:1",
+   "q": "Când a îmbătrânit, Samuel i-a pus pe fiii săi judecători peste Israel.",
+   "a": true
+  },
+  {
+   "t": "multi",
+   "ref": "8:3",
+   "q": "Ce spune textul despre fiii lui Samuel? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "N-au călcat pe urmele tatălui lor",
+    "Slujeau cu credincioșie",
+    "Judecau la Silo",
+    "Au fost uciși de filisteni"
+   ],
+   "a": [
+    0
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "8:4-5",
+   "q": "Ce au cerut bătrânii lui Israel de la Samuel?",
+   "opts": [
+    "Să le dea un împărat",
+    "Să-și schimbe fiii cu alți judecători",
+    "Să aducă chivotul la Rama",
+    "Să pornească război împotriva filistenilor"
+   ],
+   "a": 0
+  },
+  {
+   "t": "tf",
+   "ref": "8:6",
+   "q": "După cererea bătrânilor, Samuel s-a rugat Domnului.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "8:7",
+   "q": "Pe cine spune Domnul că L-a lepădat de fapt poporul?",
+   "opts": [
+    "Pe Samuel",
+    "Pe fiii lui Samuel",
+    "Pe Domnul Însuși",
+    "Pe preoți"
+   ],
+   "a": 2
+  },
+  {
+   "t": "tf",
+   "ref": "8:9",
+   "q": "Domnul i-a spus lui Samuel să refuze cererea poporului.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "8:11-17",
+   "q": "Despre ce l-a avertizat Samuel pe popor?",
+   "opts": [
+    "Că împăratul le va lua fiii, fetele, ogoarele și vitele",
+    "Că împăratul va fi ales dintre preoți",
+    "Că filistenii vor veni din nou",
+    "Că chivotul va fi luat iar"
+   ],
+   "a": 0
+  },
+  {
+   "t": "match",
+   "ref": "8:14-17",
+   "q": "Asociază fiecare bun al poporului cu ce va face împăratul cu el.",
+   "pairs": [
+    [
+     "Câmpiile, viile și măslinii",
+     "va da cea mai bună parte slujitorilor lui"
+    ],
+    [
+     "Robii, roabele, boii și măgarii",
+     "îi va întrebuința la lucrările lui"
+    ],
+    [
+     "Oile",
+     "va lua zeciuială din ele"
+    ]
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "8:17",
+   "q": "„Va lua zeciuială din oile voastre și voi înșivă veți fi ___ lui”",
+   "a": [
+    "slugile"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "8:18",
+   "q": "Samuel a spus că Domnul îi va asculta când vor striga împotriva împăratului lor.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "8:19",
+   "q": "Cum a răspuns poporul la avertismentul lui Samuel?",
+   "opts": [
+    "A renunțat la cerere",
+    "A cerut timp de gândire",
+    "N-a vrut să asculte și a cerut tot un împărat",
+    "L-a ales pe Samuel împărat"
+   ],
+   "a": 2
+  },
+  {
+   "t": "multi",
+   "ref": "8:20",
+   "q": "Ce motive a dat poporul pentru care voia un împărat? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Să fie și ei ca toate neamurile",
+    "Ca împăratul să-i judece",
+    "Ca împăratul să-i cârmuiască în războaie",
+    "Ca împăratul să zidească un templu",
+    "Ca dările să fie mai mici"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "8:22",
+   "q": "Ce i-a spus Domnul lui Samuel la sfârșitul capitolului?",
+   "opts": [
+    "Să-i pedepsească pe bătrâni",
+    "Să le asculte glasul și să pună un împărat peste ei",
+    "Să-i lase pe fiii lui judecători",
+    "Să aștepte șapte ani"
+   ],
+   "a": 1
+  },
+  {
+   "t": "fill",
+   "ref": "8:22",
+   "q": "„Și Samuel a zis bărbaților lui Israel: „Duceți-vă fiecare în ___ lui”",
+   "a": [
+    "cetatea"
+   ]
+  },
+  {
+   "t": "match",
+   "ref": "8:3-19",
+   "q": "Asociază fiecare personaj sau grup cu ce a făcut.",
+   "pairs": [
+    [
+     "Bătrânii lui Israel",
+     "au cerut un împărat"
+    ],
+    [
+     "Domnul",
+     "a spus că poporul L-a lepădat pe El"
+    ],
+    [
+     "Fiii lui Samuel",
+     "n-au călcat pe urmele tatălui lor"
+    ],
+    [
+     "Poporul",
+     "n-a vrut să asculte glasul lui Samuel"
+    ]
+   ]
+  }
+ ],
+ "hard": [
+  {
+   "t": "one",
+   "ref": "8:2",
+   "q": "Cum se numea fiul întâi născut al lui Samuel?",
+   "opts": [
+    "Abia",
+    "Ioel",
+    "Eleazar",
+    "Fineas"
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "8:2",
+   "q": "Al doilea fiu al lui Samuel se numea Abia.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "8:2",
+   "q": "Unde erau judecători fiii lui Samuel?",
+   "opts": [
+    "La Rama",
+    "La Mițpa",
+    "La Beer-Șeba",
+    "La Betel"
+   ],
+   "a": 2
+  },
+  {
+   "t": "match",
+   "ref": "8:2-5",
+   "q": "Asociază fiecare personaj cu ce spune textul despre el.",
+   "pairs": [
+    [
+     "Samuel",
+     "era bătrân, după cuvintele bătrânilor"
+    ],
+    [
+     "Ioel și Abia",
+     "erau fiii lui Samuel"
+    ],
+    [
+     "Bătrânii lui Israel",
+     "au venit la Rama"
+    ]
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "8:3",
+   "q": "„se dădeau la lăcomie, luau ___ și călcau dreptatea”",
+   "a": [
+    "mită"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "8:4",
+   "q": "Bătrânii lui Israel au venit la Samuel unul câte unul, fără să se fi strâns împreună.",
+   "a": false
+  },
+  {
+   "t": "fill",
+   "ref": "8:5",
+   "q": "„acum pune un împărat peste noi să ne judece, cum au toate ___”",
+   "a": [
+    "neamurile"
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "8:6",
+   "q": "„Samuel n-a văzut cu ___ faptul că ziceau”",
+   "a": [
+    "plăcere"
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "8:7",
+   "q": "„ci pe Mine mă leapădă, ca să nu mai ___ peste ei”",
+   "a": [
+    "domnesc"
+   ]
+  },
+  {
+   "t": "multi",
+   "ref": "8:8",
+   "q": "Ce spune Domnul despre purtarea poporului de când l-a scos din Egipt? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "L-au părăsit",
+    "Au slujit altor dumnezei",
+    "I-au fost mereu credincioși",
+    "Au cerut un împărat încă din pustie"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "8:9",
+   "q": "„dar înștiințează-i și fă-le cunoscut ___ împăratului care va domni peste ei”",
+   "a": [
+    "dreptul"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "8:10",
+   "q": "Samuel a spus poporului doar o parte din cuvintele Domnului.",
+   "a": false
+  },
+  {
+   "t": "tf",
+   "ref": "8:11",
+   "q": "Samuel a spus că împăratul îi va pune pe fiii lor să alerge înaintea carului lui.",
+   "a": true
+  },
+  {
+   "t": "multi",
+   "ref": "8:12",
+   "q": "Peste câți oameni spunea Samuel că îi va pune împăratul căpetenii pe fiii lor? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Peste o mie",
+    "Peste o sută",
+    "Peste cincizeci",
+    "Peste zece"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "t": "multi",
+   "ref": "8:12",
+   "q": "La ce lucrări îi va întrebuința împăratul pe fiii lor? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "La aratul pământurilor lui",
+    "La seceratul bucatelor lui",
+    "La facerea armelor lui de război",
+    "La facerea uneltelor carelor lui",
+    "La zidirea templului"
+   ],
+   "a": [
+    0,
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "t": "match",
+   "ref": "8:11-15",
+   "q": "Asociază fiecare categorie cu ce va face împăratul cu ea.",
+   "pairs": [
+    [
+     "Fiii voștri",
+     "îi va pune la carele sale și între călăreții lui"
+    ],
+    [
+     "Fetele voastre",
+     "le va lua să-i facă miresme, de mâncare și pâine"
+    ],
+    [
+     "Zeciuiala din rodul semințelor și viilor",
+     "o va da famenilor și slujitorilor lui"
+    ]
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "8:15",
+   "q": "Samuel a spus că împăratul va lua a cincea parte din rodul semințelor.",
+   "a": false
+  },
+  {
+   "t": "fill",
+   "ref": "8:18",
+   "q": "„veți striga împotriva împăratului vostru pe care-l veți ___”",
+   "a": [
+    "alege"
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "8:19",
+   "q": "„Nu, au zis ei, ci să fie un ___ peste noi”",
+   "a": [
+    "împărat"
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "8:20",
+   "q": "„va merge în ___ noastră și ne va cârmui în războaiele noastre”",
+   "a": [
+    "fruntea"
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "8:21",
+   "q": "„Samuel, după ce a auzit toate cuvintele poporului, le-a spus în ___ Domnului”",
+   "a": [
+    "auzul"
+   ]
+  },
+  {
+   "t": "match",
+   "ref": "8:5-9",
+   "q": "Asociază fiecare replică cu cel care a rostit-o.",
+   "pairs": [
+    [
+     "Bătrânii lui Israel",
+     "„Iată că tu ești bătrân și copiii tăi nu calcă pe urmele tale”"
+    ],
+    [
+     "Poporul (după cuvintele lui Samuel)",
+     "„Dă-ne un împărat ca să ne judece”"
+    ],
+    [
+     "Domnul",
+     "„Ei se poartă cu tine cum s-au purtat totdeauna”"
+    ]
+   ]
+  }
+ ]
+}

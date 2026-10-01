@@ -1,0 +1,467 @@
+{
+ "ch": 10,
+ "easy": [
+  {
+   "t": "tf",
+   "ref": "10:1",
+   "q": "Samuel a turnat untdelemn pe capul lui Saul.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "10:1",
+   "q": "Ce a făcut Samuel după ce a turnat untdelemnul pe capul lui Saul?",
+   "opts": [
+    "L-a binecuvântat cu mâinile ridicate",
+    "L-a sărutat",
+    "A adus o jertfă",
+    "A plâns"
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "10:2",
+   "q": "Samuel i-a spus lui Saul că măgărițele încă nu au fost găsite.",
+   "a": false
+  },
+  {
+   "t": "match",
+   "ref": "10:2-5",
+   "q": "Asociază fiecare loc cu ce urma să găsească Saul acolo, după cuvântul lui Samuel.",
+   "pairs": [
+    [
+     "Mormântul Rahelei",
+     "vestea că măgărițele s-au găsit"
+    ],
+    [
+     "Stejarul din Tabor",
+     "oameni care îi vor da pâini"
+    ],
+    [
+     "Ghibea Elohim",
+     "o ceată de proroci"
+    ]
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "10:6",
+   "q": "Samuel a spus că Duhul Domnului va veni peste Saul și că va fi prefăcut într-alt om.",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "10:7",
+   "q": "Samuel i-a spus lui Saul ca, după împlinirea semnelor, să nu facă nimic până nu primește alte porunci.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "10:8",
+   "q": "Unde trebuia Saul să se coboare și să-l aștepte pe Samuel?",
+   "opts": [
+    "La Betel",
+    "La Mițpa",
+    "La Ghilgal",
+    "La Rama"
+   ],
+   "a": 2
+  },
+  {
+   "t": "fill",
+   "ref": "10:9",
+   "q": "De îndată ce Saul a întors spatele ca să se despartă de Samuel, Dumnezeu i-a dat o altă ___",
+   "a": [
+    "inimă"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "10:10",
+   "q": "La Ghibea, Saul a prorocit în mijlocul unei cete de proroci.",
+   "a": true
+  },
+  {
+   "t": "fill",
+   "ref": "10:11",
+   "q": "„Ce s-a întâmplat cu fiul lui Chis? Oare și ___ este între proroci?”",
+   "a": [
+    "Saul"
+   ]
+  },
+  {
+   "t": "multi",
+   "ref": "10:14-16",
+   "q": "Care dintre următoarele i le-a spus Saul unchiului său? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Că s-au dus să caute măgărițele",
+    "Că s-au dus la Samuel",
+    "Că Samuel l-a uns împărat",
+    "Că măgărițele s-au găsit",
+    "Că a prorocit cu prorocii"
+   ],
+   "a": [
+    0,
+    1,
+    3
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "10:17",
+   "q": "Samuel a chemat poporul înaintea Domnului la Mițpa.",
+   "a": true
+  },
+  {
+   "t": "multi",
+   "ref": "10:18",
+   "q": "Ce a amintit Domnul, prin Samuel, că a făcut pentru Israel? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "L-a scos din Egipt",
+    "L-a izbăvit din mâna egiptenilor",
+    "L-a trecut prin Iordan pe uscat",
+    "I-a dat mană în pustie"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "10:19",
+   "q": "Ce le-a reproșat Domnul israeliților prin Samuel?",
+   "opts": [
+    "Că s-au închinat la Baal",
+    "Că nu au adus jertfe",
+    "Că au fugit de filisteni",
+    "Că L-au lepădat cerând un împărat"
+   ],
+   "a": 3
+  },
+  {
+   "t": "one",
+   "ref": "10:20-21",
+   "q": "Cum a fost ales Saul în fața poporului la Mițpa?",
+   "opts": [
+    "Prin tragere la sorți",
+    "Prin votul bătrânilor",
+    "Printr-o luptă",
+    "Prin moștenire"
+   ],
+   "a": 0
+  },
+  {
+   "t": "one",
+   "ref": "10:22",
+   "q": "Unde se ascunsese Saul când l-au căutat?",
+   "opts": [
+    "Într-o peșteră",
+    "Între vase",
+    "Pe acoperiș",
+    "Într-un cort"
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "10:23",
+   "q": "După ce l-au găsit, Saul a fost scos și s-a înfățișat în mijlocul poporului.",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "10:24",
+   "q": "Când Samuel l-a arătat poporului pe Saul, tot poporul a strigat: „Trăiască împăratul!”",
+   "a": true
+  },
+  {
+   "t": "match",
+   "ref": "10:25-27",
+   "q": "Asociază fiecare persoană sau grup cu ce a făcut.",
+   "pairs": [
+    [
+     "Samuel",
+     "a trimis tot poporul acasă"
+    ],
+    [
+     "O parte din ostași",
+     "l-au însoțit pe Saul acasă"
+    ],
+    [
+     "Oamenii răi",
+     "l-au disprețuit pe Saul"
+    ],
+    [
+     "Saul",
+     "s-a făcut că nu-i aude pe cei ce-l disprețuiau"
+    ]
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "10:26",
+   "q": "Și Saul s-a dus acasă, în ___",
+   "a": [
+    "Ghibea"
+   ]
+  }
+ ],
+ "hard": [
+  {
+   "t": "fill",
+   "ref": "10:1",
+   "q": "Samuel a luat ___ cu untdelemn și a turnat-o pe capul lui Saul",
+   "a": [
+    "sticluța"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "10:2",
+   "q": "Câți oameni urma să găsească Saul la mormântul Rahelei?",
+   "opts": [
+    "Unul",
+    "Doi",
+    "Trei",
+    "Patru"
+   ],
+   "a": 1
+  },
+  {
+   "t": "multi",
+   "ref": "10:2-3",
+   "q": "Care dintre următoarele nume de locuri apar în semnele vestite de Samuel în versetele 2-3? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Țelțah",
+    "Betel",
+    "Silo",
+    "Hebron",
+    "Gat"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "10:2",
+   "q": "tatăl tău nu se mai gândește la măgărițe, ci este îngrijorat de voi și zice: «Ce să fac pentru ___ meu?»",
+   "a": [
+    "fiul"
+   ]
+  },
+  {
+   "t": "match",
+   "ref": "10:3",
+   "q": "Asociază fiecare dintre cei trei oameni de la stejarul din Tabor cu ce ducea.",
+   "pairs": [
+    [
+     "Primul",
+     "trei iezi"
+    ],
+    [
+     "Al doilea",
+     "trei turte de pâine"
+    ],
+    [
+     "Al treilea",
+     "un burduf cu vin"
+    ]
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "10:4",
+   "q": "Câte pâini urmau să-i dea lui Saul cei trei oameni?",
+   "opts": [
+    "Una",
+    "Trei",
+    "Două",
+    "Cinci"
+   ],
+   "a": 2
+  },
+  {
+   "t": "tf",
+   "ref": "10:5",
+   "q": "La Ghibea Elohim se afla garnizoana filistenilor.",
+   "a": true
+  },
+  {
+   "t": "multi",
+   "ref": "10:5",
+   "q": "Cu ce instrumente coborau prorocii de pe înălțime? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Lăute",
+    "Trâmbițe",
+    "Timpane",
+    "Fluiere",
+    "Cobze",
+    "Harfe"
+   ],
+   "a": [
+    0,
+    2,
+    3,
+    4
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "10:8",
+   "q": "Câte zile trebuia Saul să-l aștepte pe Samuel la Ghilgal?",
+   "opts": [
+    "Trei",
+    "Cinci",
+    "Zece",
+    "Șapte"
+   ],
+   "a": 3
+  },
+  {
+   "t": "multi",
+   "ref": "10:8",
+   "q": "Ce jertfe urma să aducă Samuel la Ghilgal? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Arderi-de-tot",
+    "Jertfe de mulțumire",
+    "Jertfe pentru vină",
+    "Daruri de mâncare"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "10:9",
+   "q": "Semnele vestite de Samuel s-au împlinit pe rând, în zile diferite.",
+   "a": false
+  },
+  {
+   "t": "fill",
+   "ref": "10:11",
+   "q": "Toți cei ce-l cunoscuseră mai înainte au văzut că ___ împreună cu prorocii",
+   "a": [
+    "prorocea"
+   ]
+  },
+  {
+   "t": "match",
+   "ref": "10:12-24",
+   "q": "Asociază fiecare replică cu cel care a rostit-o.",
+   "pairs": [
+    [
+     "„Și cine este tatăl lor?”",
+     "Cineva din Ghibea"
+    ],
+    [
+     "„Istorisește-mi dar ce v-a spus Samuel.”",
+     "Unchiul lui Saul"
+    ],
+    [
+     "„Vedeți pe cel pe care l-a ales Domnul?”",
+     "Samuel"
+    ]
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "10:13",
+   "q": "Când a sfârșit de prorocit, Saul s-a dus pe înălțime.",
+   "a": true
+  },
+  {
+   "t": "fill",
+   "ref": "10:19",
+   "q": "Înfățișați-vă acum înaintea Domnului, după semințiile voastre și după ___ voastre",
+   "a": [
+    "miile"
+   ]
+  },
+  {
+   "t": "match",
+   "ref": "10:20-21",
+   "q": "Asociază fiecare etapă a tragerii la sorți cu cel care a ieșit.",
+   "pairs": [
+    [
+     "Dintre semințiile lui Israel",
+     "seminția lui Beniamin"
+    ],
+    [
+     "Dintre familiile lui Beniamin",
+     "familia lui Matri"
+    ],
+    [
+     "La urmă",
+     "Saul, fiul lui Chis"
+    ]
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "10:21",
+   "q": "Când a ieșit la sorți, Saul stătea în mijlocul adunării.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "10:22",
+   "q": "Cum au aflat unde se ascunsese Saul?",
+   "opts": [
+    "L-a arătat sluga lui",
+    "Au întrebat din nou pe Domnul",
+    "L-au văzut prorocii",
+    "Samuel îl văzuse ascunzându-se"
+   ],
+   "a": 1
+  },
+  {
+   "t": "fill",
+   "ref": "10:23",
+   "q": "Îi întrecea pe toți în ___, de la umăr în sus",
+   "a": [
+    "înălțime"
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "10:25",
+   "q": "Samuel a făcut cunoscut poporului dreptul ___ și l-a scris într-o carte",
+   "a": [
+    "împărăției"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "10:25",
+   "q": "Unde a pus Samuel cartea în care a scris?",
+   "opts": [
+    "În chivotul legământului",
+    "Înaintea Domnului",
+    "În casa lui Saul",
+    "La Rama"
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "10:26",
+   "q": "Ostașii care l-au însoțit pe Saul erau cei a căror inimă o mișcase Dumnezeu.",
+   "a": true
+  },
+  {
+   "t": "fill",
+   "ref": "10:27",
+   "q": "„Ce ne poate ___ acesta?” Și l-au disprețuit și nu i-au adus niciun ___",
+   "a": [
+    "ajuta",
+    "dar"
+   ]
+  }
+ ]
+}

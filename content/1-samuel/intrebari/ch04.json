@@ -1,0 +1,447 @@
+{
+ "ch": 4,
+ "easy": [
+  {
+   "t": "tf",
+   "ref": "4:1",
+   "q": "Chemarea lui Samuel a ajuns la cunoștința întregului Israel.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "4:2",
+   "q": "Cine a fost bătut în prima luptă dintre Israel și filisteni?",
+   "opts": [
+    "Filistenii",
+    "Israel",
+    "Niciuna dintre tabere",
+    "Amaleciții"
+   ],
+   "a": 1
+  },
+  {
+   "t": "match",
+   "ref": "4:3-7",
+   "q": "Asociază fiecare grup cu reacția lui legată de chivot.",
+   "pairs": [
+    [
+     "Bătrânii lui Israel",
+     "au propus să fie adus chivotul de la Silo"
+    ],
+    [
+     "Tot Israelul",
+     "a scos strigăte de bucurie"
+    ],
+    [
+     "Filistenii",
+     "s-au temut, crezând că Dumnezeu venise în tabără"
+    ]
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "4:3",
+   "q": "„ca să vină în mijlocul nostru și să ne ___ din mâna vrăjmașilor noștri”",
+   "a": [
+    "izbăvească"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "4:4",
+   "q": "Fiii lui Eli au rămas la Silo când chivotul a fost dus în tabără.",
+   "a": false
+  },
+  {
+   "t": "multi",
+   "ref": "4:7-9",
+   "q": "Ce au zis sau au făcut filistenii după ce au aflat că chivotul a sosit în tabăra lui Israel? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Au zis: „Vai de noi!”",
+    "Și-au amintit cum au fost loviți egiptenii",
+    "Au fugit din tabără fără luptă",
+    "Au trimis soli să ceară pace",
+    "S-au îmbărbătat unii pe alții să lupte"
+   ],
+   "a": [
+    0,
+    1,
+    4
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "4:10",
+   "q": "În a doua luptă, Israel i-a învins pe filisteni.",
+   "a": false
+  },
+  {
+   "t": "multi",
+   "ref": "4:10-11",
+   "q": "Ce s-a întâmplat în a doua luptă? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Chivotul lui Dumnezeu a fost luat",
+    "Hofni și Fineas au murit",
+    "Eli a murit pe câmpul de luptă",
+    "Israel a fost bătut din nou",
+    "Filistenii au fugit în corturile lor"
+   ],
+   "a": [
+    0,
+    1,
+    3
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "4:12",
+   "q": "Cine a adus la Silo vestea despre luptă?",
+   "opts": [
+    "Samuel",
+    "Unul dintre fiii lui Eli",
+    "Un om care alergase din tabăra de bătaie",
+    "Un filistean"
+   ],
+   "a": 2
+  },
+  {
+   "t": "tf",
+   "ref": "4:13-14",
+   "q": "Eli a auzit strigătele cetății înainte ca vestitorul să ajungă la el.",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "4:15",
+   "q": "Eli era foarte bătrân și nu mai putea să vadă.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "4:18",
+   "q": "Ce anume l-a făcut pe Eli să cadă de pe scaun?",
+   "opts": [
+    "Pomenirea chivotului lui Dumnezeu",
+    "Vestea morții fiilor lui",
+    "Vederea omului cu hainele sfâșiate",
+    "Strigătele cetății"
+   ],
+   "a": 0
+  },
+  {
+   "t": "match",
+   "ref": "4:11-21",
+   "q": "Asociază fiecare personaj sau lucru cu ce s-a întâmplat cu el.",
+   "pairs": [
+    [
+     "Eli",
+     "a murit când a auzit vestea"
+    ],
+    [
+     "Hofni și Fineas",
+     "au murit în luptă"
+    ],
+    [
+     "Nevasta lui Fineas",
+     "a născut un fiu"
+    ],
+    [
+     "Chivotul lui Dumnezeu",
+     "a fost luat de filisteni"
+    ]
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "4:21",
+   "q": "De ce a primit copilul numele I-Cabod?",
+   "opts": [
+    "Pentru că bărbatul ei era preot",
+    "Pentru că se născuse la Silo",
+    "Pentru că slava se dusese din Israel, chivotul fiind luat",
+    "Pentru că așa ceruse Eli"
+   ],
+   "a": 2
+  },
+  {
+   "t": "fill",
+   "ref": "4:22",
+   "q": "„S-a dus ___ din Israel, căci chivotul lui Dumnezeu este luat”",
+   "a": [
+    "slava"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "4:17",
+   "q": "Vestitorul i-a spus lui Eli că Israel a câștigat lupta, dar fiii lui au murit.",
+   "a": false
+  }
+ ],
+ "hard": [
+  {
+   "t": "match",
+   "ref": "4:1-4",
+   "q": "Asociază fiecare loc cu ce se spune despre el la începutul capitolului.",
+   "pairs": [
+    [
+     "Eben-Ezer",
+     "locul lângă care a tăbărât Israel"
+    ],
+    [
+     "Afec",
+     "locul unde tăbărâseră filistenii"
+    ],
+    [
+     "Silo",
+     "locul de unde a fost adus chivotul"
+    ]
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "4:3",
+   "q": "„Haidem să luăm de la ___ chivotul legământului Domnului”",
+   "a": [
+    "Silo"
+   ]
+  },
+  {
+   "t": "multi",
+   "ref": "4:4",
+   "q": "Ce expresii folosește textul despre Domnul când chivotul este adus în tabără? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Domnul oștirilor",
+    "care șade între heruvimi",
+    "Cel Preaînalt",
+    "Stânca lui Israel",
+    "Dumnezeul părinților"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "4:6",
+   "q": "Filistenii au numit tabăra lui Israel „tabăra evreilor”.",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "4:7",
+   "q": "Filistenii au zis: „N-a fost așa ceva până acum!”",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "4:8",
+   "q": "Pe cine spuneau filistenii că i-au lovit „dumnezeii aceștia” cu tot felul de urgii în pustie?",
+   "opts": [
+    "Pe amoriți",
+    "Pe egipteni",
+    "Pe canaaniți",
+    "Pe moabiți"
+   ],
+   "a": 1
+  },
+  {
+   "t": "fill",
+   "ref": "4:9",
+   "q": "„ca nu cumva să fiți ___ evreilor, cum v-au fost ei ___ vouă”",
+   "a": [
+    "robi",
+    "robi"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "4:10",
+   "q": "După a doua înfrângere, fiecare israelit a fugit în cetatea lui.",
+   "a": false
+  },
+  {
+   "t": "match",
+   "ref": "4:2-18",
+   "q": "Asociază fiecare număr cu ce reprezintă în text.",
+   "pairs": [
+    [
+     "Aproape patru mii",
+     "oamenii uciși în prima luptă"
+    ],
+    [
+     "Treizeci de mii",
+     "pedeștrii căzuți în a doua luptă"
+    ],
+    [
+     "Nouăzeci și opt",
+     "vârsta lui Eli"
+    ],
+    [
+     "Patruzeci",
+     "anii cât a judecat Eli pe Israel"
+    ]
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "4:12",
+   "q": "Din ce seminție era omul care a alergat cu vestea la Silo?",
+   "opts": [
+    "Iuda",
+    "Efraim",
+    "Levi",
+    "Beniamin"
+   ],
+   "a": 3
+  },
+  {
+   "t": "multi",
+   "ref": "4:12",
+   "q": "Cum arăta omul care a venit la Silo cu vestea? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Avea hainele sfâșiate",
+    "Avea capul acoperit cu țărână",
+    "Era desculț",
+    "Era rănit la cap",
+    "Purta sac pe trup"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "4:12",
+   "q": "Omul cu vestea a ajuns la Silo abia a doua zi după luptă.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "4:13",
+   "q": "Unde aștepta Eli vești despre luptă?",
+   "opts": [
+    "La ușa Templului",
+    "Pe un scaun lângă drum",
+    "Pe zidul cetății",
+    "În cortul întâlnirii"
+   ],
+   "a": 1
+  },
+  {
+   "t": "fill",
+   "ref": "4:13",
+   "q": "„căci inima îi era ___ pentru chivotul lui Dumnezeu”",
+   "a": [
+    "neliniștită"
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "4:16",
+   "q": "„Vin de pe câmpul de bătaie și din câmpul de bătaie am ___ astăzi”",
+   "a": [
+    "fugit"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "4:16",
+   "q": "Cum l-a numit Eli pe omul care i-a adus vestea?",
+   "opts": [
+    "Frate",
+    "Slujitorule",
+    "Fiule",
+    "Prietene"
+   ],
+   "a": 2
+  },
+  {
+   "t": "multi",
+   "ref": "4:18",
+   "q": "Ce detalii dă textul despre căderea și moartea lui Eli? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "A căzut pe spate",
+    "A căzut lângă poartă",
+    "Și-a rupt ceafa",
+    "Era om bătrân și greu",
+    "A căzut în fața altarului"
+   ],
+   "a": [
+    0,
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "4:19",
+   "q": "Ce rudă îi era lui Eli nevasta lui Fineas?",
+   "opts": [
+    "Fiică",
+    "Noră",
+    "Nepoată",
+    "Soră"
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "4:19",
+   "q": "Nevasta lui Fineas a aflat de moartea socrului ei, dar nu și de cea a bărbatului ei.",
+   "a": false
+  },
+  {
+   "t": "fill",
+   "ref": "4:20",
+   "q": "„Dar ea n-a ___ și n-a luat seama la ce i se spunea”",
+   "a": [
+    "răspuns"
+   ]
+  },
+  {
+   "t": "match",
+   "ref": "4:3-20",
+   "q": "Asociază fiecare replică cu cel care a rostit-o.",
+   "pairs": [
+    [
+     "Bătrânii lui Israel",
+     "„Pentru ce ne-a lăsat Domnul să fim bătuți astăzi de filisteni?”"
+    ],
+    [
+     "Filistenii",
+     "„Ce înseamnă strigătele acestea care răsună în tabăra evreilor?”"
+    ],
+    [
+     "Eli",
+     "„Ce înseamnă zarva aceasta?”"
+    ],
+    [
+     "Femeile de lângă nevasta lui Fineas",
+     "„Nu te teme, căci ai născut un fiu!”"
+    ]
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "4:21",
+   "q": "Ce înseamnă numele I-Cabod, după text?",
+   "opts": [
+    "Domnul a ajutat",
+    "Dumnezeu a auzit",
+    "Nu mai e slavă",
+    "Fiul durerii"
+   ],
+   "a": 2
+  },
+  {
+   "t": "tf",
+   "ref": "4:21",
+   "q": "Numele I-Cabod i-a fost dat copilului de bunicul său, Eli.",
+   "a": false
+  }
+ ]
+}

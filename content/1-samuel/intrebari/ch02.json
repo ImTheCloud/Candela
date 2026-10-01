@@ -1,0 +1,549 @@
+{
+ "ch": 2,
+ "easy": [
+  {
+   "t": "one",
+   "ref": "2:1",
+   "q": "Ce a făcut Ana după ce l-a închinat pe Samuel Domnului?",
+   "opts": [
+    "a plâns și n-a mâncat",
+    "s-a rugat și L-a lăudat pe Domnul",
+    "s-a certat cu Penina",
+    "a plecat din țară"
+   ],
+   "a": 1
+  },
+  {
+   "t": "multi",
+   "ref": "2:6-8",
+   "q": "Ce face Domnul, potrivit cântării Anei? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "omoară și înviază",
+    "sărăcește și îmbogățește",
+    "smerește și înalță",
+    "ridică din pulbere pe cel sărac",
+    "îi uită pe cei săraci"
+   ],
+   "a": [
+    0,
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "2:11",
+   "q": "După rugăciunea Anei, copilul Samuel s-a întors cu părinții lui acasă.",
+   "a": false
+  },
+  {
+   "t": "tf",
+   "ref": "2:12",
+   "q": "Fiii lui Eli Îl cunoșteau pe Domnul.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "2:17",
+   "q": "De ce era păcatul fiilor lui Eli foarte mare înaintea Domnului?",
+   "opts": [
+    "pentru că se închinau la idoli",
+    "pentru că furau din visteria Templului",
+    "pentru că nesocoteau darurile Domnului",
+    "pentru că nu se rugau"
+   ],
+   "a": 2
+  },
+  {
+   "t": "tf",
+   "ref": "2:18",
+   "q": "În timp ce fiii lui Eli păcătuiau, copilul Samuel făcea slujba înaintea Domnului.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "2:19",
+   "q": "Când îi aducea Ana fiului ei mantia cea mică?",
+   "opts": [
+    "când se suia cu bărbatul ei să aducă jertfa din fiecare an",
+    "la fiecare lună nouă",
+    "doar o singură dată, când l-a lăsat la Silo",
+    "la sărbătoarea seceratului"
+   ],
+   "a": 0
+  },
+  {
+   "t": "match",
+   "ref": "2:11-23",
+   "q": "Asociază fiecare personaj cu ce a făcut.",
+   "pairs": [
+    [
+     "Elcana",
+     "s-a dus acasă, la Rama"
+    ],
+    [
+     "Ana",
+     "îi făcea fiului ei în fiecare an o mantie mică"
+    ],
+    [
+     "Eli",
+     "le-a cerut fiilor lui socoteală pentru faptele lor rele"
+    ]
+   ]
+  },
+  {
+   "t": "match",
+   "ref": "2:13-21",
+   "q": "Asociază fiecare personaj cu descrierea lui.",
+   "pairs": [
+    [
+     "Sluga preotului",
+     "venea cu o furculiță în clipa când se fierbea carnea"
+    ],
+    [
+     "Eli",
+     "i-a binecuvântat pe Elcana și pe nevasta lui"
+    ],
+    [
+     "Samuel",
+     "creștea înaintea Domnului"
+    ]
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "2:21",
+   "q": "După ce l-a dat pe Samuel Domnului, Ana n-a mai avut alți copii.",
+   "a": false
+  },
+  {
+   "t": "multi",
+   "ref": "2:22",
+   "q": "Ce a aflat Eli despre fiii lui? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "cum se purtau cu tot Israelul",
+    "că se culcau cu femeile care slujeau la ușa cortului întâlnirii",
+    "că fugiseră în Egipt",
+    "că se pocăiseră de faptele lor"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "2:24",
+   "q": "Eli le-a spus fiilor lui că ei fac pe poporul Domnului să păcătuiască.",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "2:25",
+   "q": "Fiii lui Eli au ascultat de mustrarea tatălui lor și s-au îndreptat.",
+   "a": false
+  },
+  {
+   "t": "fill",
+   "ref": "2:26",
+   "q": "Tânărul Samuel creștea mereu și era plăcut ___ și ___.",
+   "a": [
+    "Domnului",
+    "oamenilor"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "2:27",
+   "q": "Cine a venit la Eli să-i vestească judecata Domnului asupra casei lui?",
+   "opts": [
+    "Samuel",
+    "un om al lui Dumnezeu",
+    "un înger",
+    "Elcana"
+   ],
+   "a": 1
+  },
+  {
+   "t": "multi",
+   "ref": "2:29",
+   "q": "Pentru ce este mustrat Eli prin omul lui Dumnezeu? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "îi cinstea pe fiii lui mai mult decât pe Domnul",
+    "ei călcau în picioare jertfele și darurile Domnului",
+    "nu aducea deloc jertfe",
+    "se îngrășau din cele dintâi roade ale darurilor poporului",
+    "se închina lui Baal"
+   ],
+   "a": [
+    0,
+    1,
+    3
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "2:30",
+   "q": "Căci voi cinsti pe cine Mă ___, dar cei ce Mă disprețuiesc vor fi ___.",
+   "a": [
+    "cinstește",
+    "disprețuiți"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "2:31",
+   "q": "Domnul a vestit că în casa lui Eli nu va mai fi niciun bătrân.",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "2:34",
+   "q": "Semnul dat lui Eli era că fiii lui vor muri în ani diferiți, unul după altul.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "2:35",
+   "q": "Pe cine a spus Domnul că Își va pune, în locul casei lui Eli?",
+   "opts": [
+    "un împărat",
+    "un proroc",
+    "un judecător",
+    "un preot credincios"
+   ],
+   "a": 3
+  }
+ ],
+ "hard": [
+  {
+   "t": "fill",
+   "ref": "2:1",
+   "q": "Mi se bucură ___ în Domnul, Puterea mea a fost înălțată de ___.",
+   "a": [
+    "inima",
+    "Domnul"
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "2:2",
+   "q": "Nu este alt Dumnezeu decât Tine; Nu este ___ așa ca Dumnezeul nostru.",
+   "a": [
+    "stâncă"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "2:3",
+   "q": "Ana spune în cântarea ei că toate faptele sunt cântărite de Domnul.",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "2:4",
+   "q": "În cântarea Anei, arcul celor slabi s-a sfărâmat, iar cei puternici sunt încinși cu putere.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "2:5",
+   "q": "De câte ori naște „cea stearpă”, potrivit cântării Anei?",
+   "opts": [
+    "de trei ori",
+    "de cinci ori",
+    "de șapte ori",
+    "de zece ori"
+   ],
+   "a": 2
+  },
+  {
+   "t": "match",
+   "ref": "2:5-9",
+   "q": "Asociază fiecare grup cu ce i se întâmplă, potrivit cântării Anei.",
+   "pairs": [
+    [
+     "cei ce erau sătui",
+     "se închiriază pentru pâine"
+    ],
+    [
+     "cei ce erau flămânzi",
+     "se odihnesc"
+    ],
+    [
+     "cea care avea mulți copii",
+     "stă lâncezită"
+    ],
+    [
+     "cei răi",
+     "vor fi nimiciți în întuneric"
+    ]
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "2:6",
+   "q": "Domnul omoară și înviază, El coboară în ___ morților și El scoate de acolo.",
+   "a": [
+    "Locuința"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "2:8",
+   "q": "Ce spune Ana că sunt ai Domnului și pe ei a așezat El lumea?",
+   "opts": [
+    "temeliile mărilor",
+    "stâlpii pământului",
+    "stelele cerului",
+    "munții cei veșnici"
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "2:9",
+   "q": "Ana spune că omul va birui prin putere.",
+   "a": false
+  },
+  {
+   "t": "multi",
+   "ref": "2:10",
+   "q": "Ce spune Ana despre Domnul în 2:10? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Își va arunca tunetul asupra vrăjmașilor Lui",
+    "va judeca marginile pământului",
+    "va da Împăratului Său putere",
+    "va înălța tăria Unsului Lui",
+    "va trimite foc din cer peste Silo"
+   ],
+   "a": [
+    0,
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "2:13",
+   "q": "Câte coarne avea furculița cu care venea sluga preotului?",
+   "opts": [
+    "două",
+    "trei",
+    "patru",
+    "șapte"
+   ],
+   "a": 1
+  },
+  {
+   "t": "multi",
+   "ref": "2:14",
+   "q": "În ce vase vâra sluga furculița? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "cazan",
+    "căldare",
+    "tigaie",
+    "oală",
+    "ulcior",
+    "coș"
+   ],
+   "a": [
+    0,
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "2:14",
+   "q": "Fiii lui Eli se purtau astfel doar cu cei din seminția lui Efraim care veneau la Silo.",
+   "a": false
+  },
+  {
+   "t": "tf",
+   "ref": "2:15",
+   "q": "Sluga preotului venea să ceară carnea chiar înainte de a se arde grăsimea.",
+   "a": true
+  },
+  {
+   "t": "fill",
+   "ref": "2:15",
+   "q": "„Dă pentru preot carnea de ___; el nu va lua de la tine carne fiartă, ci vrea carne ___.”",
+   "a": [
+    "fript",
+    "crudă"
+   ]
+  },
+  {
+   "t": "match",
+   "ref": "2:16-36",
+   "q": "Asociază fiecare replică cu cel care a rostit-o (sau va rosti-o).",
+   "pairs": [
+    [
+     "„După ce se va arde grăsimea, vei lua ce-ți va plăcea”",
+     "omul care aducea jertfa"
+    ],
+    [
+     "„Dă-mi acum, căci altfel iau cu sila”",
+     "sluga preotului"
+    ],
+    [
+     "„Nu, copii, ce aud spunându-se despre voi nu este bine”",
+     "Eli"
+    ],
+    [
+     "„Pune-mă, te rog, în una din slujbele preoției”",
+     "cei rămași din casa lui Eli"
+    ]
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "2:18",
+   "q": "Cu ce era îmbrăcat copilul Samuel când făcea slujba înaintea Domnului?",
+   "opts": [
+    "o mantie de purpură",
+    "o haină de păr",
+    "un efod de in",
+    "un efod de aur"
+   ],
+   "a": 2
+  },
+  {
+   "t": "fill",
+   "ref": "2:20",
+   "q": "„care să înlocuiască pe acela pe care l-a ___ ea Domnului!”",
+   "a": [
+    "împrumutat"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "2:21",
+   "q": "Câți copii a mai născut Ana după ce a cercetat-o Domnul?",
+   "opts": [
+    "doi fii și o fiică",
+    "trei fii și două fiice",
+    "patru fii",
+    "trei fii și o fiică"
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "2:22",
+   "q": "Când a aflat de faptele fiilor lui, Eli era încă tânăr.",
+   "a": false
+  },
+  {
+   "t": "fill",
+   "ref": "2:25",
+   "q": "Dacă un om păcătuiește împotriva altui om, îl va judeca ___, dar dacă păcătuiește împotriva ___, cine se va ruga pentru el?",
+   "a": [
+    "Dumnezeu",
+    "Domnului"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "2:25",
+   "q": "Ce motiv dă textul pentru faptul că fiii lui Eli n-au ascultat de glasul tatălui lor?",
+   "opts": [
+    "erau prea tineri",
+    "Domnul voia să-i omoare",
+    "nu-l auzeau pe Eli",
+    "poporul îi apăra"
+   ],
+   "a": 1
+  },
+  {
+   "t": "one",
+   "ref": "2:27",
+   "q": "Unde erau strămoșii lui Eli când li S-a descoperit Domnul?",
+   "opts": [
+    "în pustie, la Sinai",
+    "în Canaan, la Hebron",
+    "în Babilon",
+    "în Egipt, în casa lui Faraon"
+   ],
+   "a": 3
+  },
+  {
+   "t": "multi",
+   "ref": "2:28",
+   "q": "Pentru ce slujbe spune Domnul că a ales casa tatălui lui Eli? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "să se suie la altarul Lui",
+    "să ardă tămâia",
+    "să poarte efodul",
+    "să conducă oastea",
+    "să ungă împărați"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "2:30",
+   "q": "Domnul spusese că și casa lui Eli și casa tatălui său vor umbla totdeauna înaintea Lui.",
+   "a": true
+  },
+  {
+   "t": "match",
+   "ref": "2:31-35",
+   "q": "Asociază fiecare început de frază cu continuarea ei, din vestirea omului lui Dumnezeu.",
+   "pairs": [
+    [
+     "„Voi tăia brațul tău”",
+     "„și brațul casei tatălui tău”"
+    ],
+    [
+     "„îi voi zidi”",
+     "„o casă stătătoare”"
+    ],
+    [
+     "„va umbla totdeauna”",
+     "„înaintea Unsului Meu”"
+    ]
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "2:32",
+   "q": "Eli avea să vadă un potrivnic al său în locașul Domnului.",
+   "a": true
+  },
+  {
+   "t": "fill",
+   "ref": "2:33",
+   "q": "Voi lăsa să rămână la altarul Meu numai ___ dintr-ai tăi.",
+   "a": [
+    "unul"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "2:33",
+   "q": "Toți ceilalți din casa lui Eli aveau să moară la adânci bătrâneți.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "2:36",
+   "q": "Pentru ce se vor arunca cu fața la pământ cei rămași din casa lui Eli?",
+   "opts": [
+    "pentru un loc la masa împăratului",
+    "pentru o haină de in",
+    "pentru un ban de argint și o bucată de pâine",
+    "pentru o bucată de pământ"
+   ],
+   "a": 2
+  }
+ ]
+}

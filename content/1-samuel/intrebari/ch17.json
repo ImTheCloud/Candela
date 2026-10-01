@@ -1,0 +1,841 @@
+{
+ "ch": 17,
+ "easy": [
+  {
+   "t": "one",
+   "ref": "17:1",
+   "q": "Ce au făcut filistenii la începutul acestei întâmplări?",
+   "opts": [
+    "Au cerut pace de la Saul.",
+    "Și-au strâns oștile ca să facă război.",
+    "Au trimis daruri împăratului lui Israel.",
+    "Au asediat Ierusalimul."
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "17:3",
+   "q": "Taberele filistenilor și ale lui Israel erau despărțite de un râu mare.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "17:4",
+   "q": "Cum se numea uriașul care a ieșit din tabăra filistenilor?",
+   "opts": [
+    "Achiș",
+    "Goliat",
+    "Abner",
+    "Ahimelec"
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "17:8-9",
+   "q": "Filisteanul a cerut ca Israel să aleagă un om care să se bată cu el, iar poporul învins să fie robul celuilalt.",
+   "a": true
+  },
+  {
+   "t": "multi",
+   "ref": "17:11",
+   "q": "Cum au reacționat Saul și tot Israelul la cuvintele filisteanului? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "S-au înspăimântat.",
+    "Au fost cuprinși de o mare frică.",
+    "Au atacat imediat tabăra filistenilor.",
+    "Au râs de filistean.",
+    "Au trimis un om să se lupte cu el."
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "17:12",
+   "q": "David era fiul lui Isai din Ierusalim.",
+   "a": false
+  },
+  {
+   "t": "tf",
+   "ref": "17:13",
+   "q": "Cei trei fii mai mari ai lui Isai îl urmaseră pe Saul la război.",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "17:14",
+   "q": "David era cel mai tânăr dintre fiii lui Isai.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "17:15",
+   "q": "Ce făcea David în timp ce frații lui mai mari erau la război?",
+   "opts": [
+    "Slujea în cortul lui Saul.",
+    "Era ucenic la Samuel în Rama.",
+    "Păștea oile tatălui său la Betleem.",
+    "Lucra la zidurile cetății."
+   ],
+   "a": 2
+  },
+  {
+   "t": "one",
+   "ref": "17:17-18",
+   "q": "De ce l-a trimis Isai pe David în tabără?",
+   "opts": [
+    "Să se lupte cu filisteanul.",
+    "Să ducă merinde fraților lui.",
+    "Să-l cheme pe Saul acasă.",
+    "Să ducă o scrisoare lui Samuel."
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "17:20",
+   "q": "Când a plecat în tabără, David și-a lăsat oile fără nicio pază.",
+   "a": false
+  },
+  {
+   "t": "tf",
+   "ref": "17:23",
+   "q": "David nu era de față când Goliat și-a rostit din nou provocarea.",
+   "a": false
+  },
+  {
+   "t": "multi",
+   "ref": "17:25",
+   "q": "Ce urma să primească omul care l-ar fi omorât pe filistean? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Împăratul îl va umple de bogății.",
+    "Va primi de nevastă pe fiica împăratului.",
+    "Casa tatălui său va fi scutită de dări în Israel.",
+    "Va primi jumătate din împărăție.",
+    "Va fi pus căpetenia întregii oștiri."
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "17:28",
+   "q": "Care dintre frații lui David s-a mâniat pe el pentru întrebările lui?",
+   "opts": [
+    "Abinadab",
+    "Șama",
+    "Eliab",
+    "Ionatan"
+   ],
+   "a": 2
+  },
+  {
+   "t": "tf",
+   "ref": "17:31",
+   "q": "Cuvintele lui David au ajuns la Saul, care a trimis să-l caute.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "17:32",
+   "q": "Ce i-a propus David lui Saul?",
+   "opts": [
+    "Să ceară pace filistenilor.",
+    "Să meargă el însuși să se bată cu filisteanul.",
+    "Să-l trimită pe Eliab la luptă.",
+    "Să se retragă din vale."
+   ],
+   "a": 1
+  },
+  {
+   "t": "one",
+   "ref": "17:33",
+   "q": "De ce credea Saul că David nu se poate lupta cu filisteanul?",
+   "opts": [
+    "Pentru că David nu era din Israel.",
+    "Pentru că David era un copil, iar filisteanul un om războinic din tinerețea lui.",
+    "Pentru că David era bolnav.",
+    "Pentru că Samuel îi interzisese."
+   ],
+   "a": 1
+  },
+  {
+   "t": "multi",
+   "ref": "17:34-35",
+   "q": "Ce făcea David când un leu sau un urs venea să-i ia o oaie din turmă? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Alerga după el.",
+    "Îl lovea.",
+    "Își chema frații în ajutor.",
+    "Fugea acasă la tatăl său.",
+    "Lăsa oaia fiarei."
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "17:37",
+   "q": "„Domnul, care m-a izbăvit din gheara leului și din laba ursului, mă va izbăvi și din mâna acestui ___.”",
+   "a": [
+    "filistean"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "17:38-39",
+   "q": "David a ieșit la luptă îmbrăcat cu armura lui Saul.",
+   "a": false
+  },
+  {
+   "t": "multi",
+   "ref": "17:40",
+   "q": "Ce a luat David cu el când a înaintat împotriva filisteanului? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Toiagul",
+    "Pietre netede din pârâu",
+    "Praștia",
+    "Sabia lui Saul",
+    "Un scut",
+    "Un arc"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "17:42",
+   "q": "Când l-a văzut pe David, filisteanul s-a temut de el.",
+   "a": false
+  },
+  {
+   "t": "tf",
+   "ref": "17:43",
+   "q": "Filisteanul l-a blestemat pe David pe dumnezeii lui.",
+   "a": true
+  },
+  {
+   "t": "fill",
+   "ref": "17:45",
+   "q": "„Eu vin împotriva ta în Numele Domnului ___.”",
+   "a": [
+    "oștirilor"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "17:46",
+   "q": "Ce a spus David că va ști tot pământul după luptă?",
+   "opts": [
+    "Că David va fi împărat.",
+    "Că Israel are un Dumnezeu.",
+    "Că filistenii sunt slabi.",
+    "Că Saul este un mare războinic."
+   ],
+   "a": 1
+  },
+  {
+   "t": "fill",
+   "ref": "17:47",
+   "q": "„Domnul nu mântuiește nici prin sabie, nici prin suliță. Căci ___ este a Domnului.”",
+   "a": [
+    "biruința"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "17:49",
+   "q": "Unde l-a lovit piatra pe filistean?",
+   "opts": [
+    "În piept",
+    "În frunte",
+    "În ochi",
+    "În genunchi"
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "17:50",
+   "q": "David a fost mai tare decât filisteanul cu o praștie și cu o piatră, fără să aibă sabie în mână.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "17:51",
+   "q": "Cu ce i-a tăiat David capul filisteanului?",
+   "opts": [
+    "Cu sabia lui Saul",
+    "Cu sabia filisteanului",
+    "Cu un cuțit de păstor",
+    "Cu o piatră ascuțită"
+   ],
+   "a": 1
+  },
+  {
+   "t": "match",
+   "ref": "17:51-53",
+   "q": "Asociază fiecare grup cu ce a făcut după moartea uriașului.",
+   "pairs": [
+    [
+     "Filistenii",
+     "au luat-o la fugă"
+    ],
+    [
+     "Bărbații lui Israel și Iuda",
+     "au dat chiote și i-au urmărit pe filisteni"
+    ],
+    [
+     "Copiii lui Israel, la întoarcere",
+     "au jefuit tabăra filistenilor"
+    ]
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "17:54",
+   "q": "David a pus armele filisteanului în cortul său.",
+   "a": true
+  },
+  {
+   "t": "match",
+   "ref": "17:55-57",
+   "q": "Asociază fiecare personaj cu ce a făcut la sfârșitul capitolului.",
+   "pairs": [
+    [
+     "Saul",
+     "a întrebat al cui fiu este tânărul care merge împotriva filisteanului"
+    ],
+    [
+     "Abner",
+     "l-a adus pe David înaintea lui Saul"
+    ],
+    [
+     "David",
+     "ținea în mână capul filisteanului"
+    ]
+   ]
+  }
+ ],
+ "hard": [
+  {
+   "t": "fill",
+   "ref": "17:1",
+   "q": "„Filistenii și-au strâns oștile ca să facă război și s-au adunat la ___, o cetate a lui Iuda.”",
+   "a": [
+    "Soco"
+   ]
+  },
+  {
+   "t": "match",
+   "ref": "17:1-54",
+   "q": "Asociază fiecare loc cu ce se spune despre el în capitol.",
+   "pairs": [
+    [
+     "Efes-Damim",
+     "locul unde au tăbărât filistenii"
+    ],
+    [
+     "Valea Terebinților",
+     "locul unde au tăbărât Saul și Israel"
+    ],
+    [
+     "Gat",
+     "cetatea din care era Goliat"
+    ],
+    [
+     "Ierusalim",
+     "locul unde a dus David capul filisteanului"
+    ]
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "17:4",
+   "q": "Ce înălțime avea Goliat?",
+   "opts": [
+    "Șapte coți",
+    "Șase coți și o palmă",
+    "Cinci coți și o palmă",
+    "Șase coți"
+   ],
+   "a": 1
+  },
+  {
+   "t": "one",
+   "ref": "17:5",
+   "q": "Cât cântăreau zalele de solzi ale lui Goliat?",
+   "opts": [
+    "Șase sute de sicli de aramă",
+    "O mie de sicli de aramă",
+    "Trei mii de sicli de aramă",
+    "Cinci mii de sicli de aramă"
+   ],
+   "a": 3
+  },
+  {
+   "t": "multi",
+   "ref": "17:5-6",
+   "q": "Care dintre următoarele piese ale echipamentului lui Goliat erau din fier, potrivit textului? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Coiful",
+    "Zalele de solzi",
+    "Turecii de peste fluierele picioarelor",
+    "Pavăza dintre umeri"
+   ],
+   "a": []
+  },
+  {
+   "t": "tf",
+   "ref": "17:7",
+   "q": "Fierul suliței lui Goliat cântărea șase sute de sicli de fier.",
+   "a": true
+  },
+  {
+   "t": "fill",
+   "ref": "17:7",
+   "q": "„Coada suliței lui era ca un ___ de țesut.”",
+   "a": [
+    "sul"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "17:7",
+   "q": "Goliat își purta singur scutul în luptă.",
+   "a": false
+  },
+  {
+   "t": "tf",
+   "ref": "17:9",
+   "q": "Goliat a spus că, dacă un israelit îl va omorî, filistenii vor fi robii israeliților.",
+   "a": true
+  },
+  {
+   "t": "fill",
+   "ref": "17:10",
+   "q": "„Arunc astăzi o ___ asupra oștirii lui Israel! Dați-mi un om ca să mă lupt cu el.”",
+   "a": [
+    "ocară"
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "17:12",
+   "q": "„David era fiul efratitului aceluia din Betleemul lui Iuda numit Isai, care avea ___ fii.”",
+   "a": [
+    "opt"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "17:12",
+   "q": "Pe vremea lui Saul, Isai era un om tânăr, în puterea vârstei.",
+   "a": false
+  },
+  {
+   "t": "match",
+   "ref": "17:13",
+   "q": "Asociază fiecare frate al lui David cu locul lui între cei trei fii plecați la război.",
+   "pairs": [
+    [
+     "Eliab",
+     "întâiul născut"
+    ],
+    [
+     "Abinadab",
+     "al doilea"
+    ],
+    [
+     "Șama",
+     "al treilea"
+    ]
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "17:16",
+   "q": "Filisteanul a înaintat dimineața și seara timp de patruzeci de zile.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "17:17",
+   "q": "Câte pâini i-a dat Isai lui David pentru frații lui?",
+   "opts": [
+    "Cinci",
+    "Șapte",
+    "Zece",
+    "Douăsprezece"
+   ],
+   "a": 2
+  },
+  {
+   "t": "multi",
+   "ref": "17:17-18",
+   "q": "Ce i-a dat Isai lui David să ducă în tabără? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Grâu prăjit",
+    "Pâini",
+    "Cașuri de brânză",
+    "Un burduf cu vin",
+    "Un ied",
+    "Smochine"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "17:18",
+   "q": "Cui erau destinate cele zece cașuri de brânză?",
+   "opts": [
+    "Lui Saul",
+    "Lui Abner",
+    "Căpeteniei care era peste mia lor",
+    "Fraților lui David"
+   ],
+   "a": 2
+  },
+  {
+   "t": "fill",
+   "ref": "17:18",
+   "q": "„Să vezi dacă frații tăi sunt bine și să-mi aduci vești ___.”",
+   "a": [
+    "temeinice"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "17:20",
+   "q": "David a plecat spre tabără seara târziu.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "17:20",
+   "q": "Ce făcea oștirea când a ajuns David în tabără?",
+   "opts": [
+    "Se retrăgea din vale.",
+    "Pornise să se așeze în șiruri de bătaie și scotea strigăte de război.",
+    "Aducea jertfe Domnului.",
+    "Dormea în corturi."
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "17:21",
+   "q": "Israel și filistenii s-au așezat în șiruri de bătaie, oștire către oștire.",
+   "a": true
+  },
+  {
+   "t": "fill",
+   "ref": "17:22",
+   "q": "„David a dat lucrurile pe care le avea în mâinile celui ce păzea ___.”",
+   "a": [
+    "calabalâcurile"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "17:23",
+   "q": "Când a venit David, Goliat a rostit alte cuvinte decât mai înainte.",
+   "a": false
+  },
+  {
+   "t": "tf",
+   "ref": "17:24",
+   "q": "La vederea lui Goliat, israeliții au ieșit cu curaj în întâmpinarea lui.",
+   "a": false
+  },
+  {
+   "t": "multi",
+   "ref": "17:26",
+   "q": "Ce a întrebat David pe oamenii de lângă el? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Ce se va face aceluia care va omorî pe filistean",
+    "Cine este filisteanul acesta, acest netăiat împrejur",
+    "Unde este cortul împăratului",
+    "Câți ostași are Saul"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "17:26",
+   "q": "„Cine este filisteanul acesta, acest netăiat împrejur, ca să ocărască oștirea Dumnezeului celui ___?”",
+   "a": [
+    "viu"
+   ]
+  },
+  {
+   "t": "match",
+   "ref": "17:27-58",
+   "q": "Asociază fiecare vorbitor cu replica lui.",
+   "pairs": [
+    [
+     "Poporul",
+     "„Așa și așa se va face aceluia care-l va omorî.”"
+    ],
+    [
+     "Saul",
+     "„Du-te și Domnul să fie cu tine!”"
+    ],
+    [
+     "Abner",
+     "„Pe sufletul tău, împărate, că nu știu.”"
+    ],
+    [
+     "David, la final",
+     "„Sunt fiul robului tău Isai, Betleemitul.”"
+    ]
+   ]
+  },
+  {
+   "t": "multi",
+   "ref": "17:28",
+   "q": "De ce l-a acuzat Eliab pe David? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "De mândrie",
+    "De lașitate",
+    "De răutatea inimii",
+    "Că a venit să vadă lupta",
+    "Că a furat oi"
+   ],
+   "a": [
+    0,
+    2,
+    3
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "17:28",
+   "q": "„Pentru ce te-ai coborât tu și cui ai lăsat acele puține ___ în pustie?”",
+   "a": [
+    "oi"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "17:29",
+   "q": "David i-a răspuns lui Eliab: „Ce-am făcut oare? Nu pot să vorbesc astfel?”",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "17:30",
+   "q": "Când David a pus aceleași întrebări altui om, poporul i-a dat un răspuns diferit.",
+   "a": false
+  },
+  {
+   "t": "fill",
+   "ref": "17:32",
+   "q": "„Nimeni să nu-și piardă ___ din pricina filisteanului acestuia!”",
+   "a": [
+    "nădejdea"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "17:35",
+   "q": "Când fiara se ridica împotriva lui, David o apuca de falcă, o lovea și o omora.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "17:35",
+   "q": "De unde îi smulgea David oaia fiarei?",
+   "opts": [
+    "Din gheare",
+    "Din gură",
+    "Din vizuină",
+    "Din spini"
+   ],
+   "a": 1
+  },
+  {
+   "t": "fill",
+   "ref": "17:37",
+   "q": "„Domnul, care m-a izbăvit din gheara ___ și din laba ___.”",
+   "a": [
+    "leului",
+    "ursului"
+   ]
+  },
+  {
+   "t": "multi",
+   "ref": "17:38-39",
+   "q": "Ce i-a dat Saul lui David înainte de luptă? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Hainele lui",
+    "Un coif de aramă",
+    "O platoșă",
+    "Sabia lui",
+    "Un scut",
+    "O suliță"
+   ],
+   "a": [
+    0,
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "17:39",
+   "q": "„Nu pot să merg cu armătura aceasta, căci nu sunt ___ cu ea.”",
+   "a": [
+    "obișnuit"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "17:40",
+   "q": "Câte pietre netede și-a ales David din pârâu?",
+   "opts": [
+    "Trei",
+    "Una",
+    "Cinci",
+    "Șapte"
+   ],
+   "a": 2
+  },
+  {
+   "t": "fill",
+   "ref": "17:40",
+   "q": "„Și-a ales din pârâu cinci pietre netede și le-a pus în traista lui de ___.”",
+   "a": [
+    "păstor"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "17:41",
+   "q": "Omul care ducea scutul filisteanului mergea în urma lui.",
+   "a": false
+  },
+  {
+   "t": "fill",
+   "ref": "17:43",
+   "q": "„Ce, sunt ___, de vii la mine cu toiege?”",
+   "a": [
+    "câine"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "17:44",
+   "q": "Cui a spus filisteanul că va da carnea lui David?",
+   "opts": [
+    "Câinilor din Gat",
+    "Păsărilor cerului și fiarelor câmpului",
+    "Lui Dagon, ca jertfă",
+    "Peștilor mării"
+   ],
+   "a": 1
+  },
+  {
+   "t": "multi",
+   "ref": "17:45",
+   "q": "Cu ce a spus David că vine filisteanul împotriva lui? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Cu sabie",
+    "Cu suliță",
+    "Cu praștie",
+    "Cu pavăză",
+    "Cu arc"
+   ],
+   "a": [
+    0,
+    1,
+    3
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "17:46",
+   "q": "David a spus că în ziua aceea va da stârvurile taberei filistenilor păsărilor cerului și fiarelor pământului.",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "17:47",
+   "q": "David a spus că Domnul nu mântuiește nici prin sabie, nici prin suliță.",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "17:48",
+   "q": "Când filisteanul a pornit spre el, David l-a așteptat nemișcat.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "17:49",
+   "q": "Cum a căzut filisteanul după ce a fost lovit de piatră?",
+   "opts": [
+    "Pe spate",
+    "În genunchi",
+    "Cu fața la pământ",
+    "Pe o parte"
+   ],
+   "a": 2
+  },
+  {
+   "t": "one",
+   "ref": "17:52",
+   "q": "Până unde i-au urmărit israeliții pe filisteni?",
+   "opts": [
+    "Până la porțile Gazei",
+    "Până la porțile Ecronului",
+    "Până la porțile Asdodului",
+    "Până la porțile Ascalonului"
+   ],
+   "a": 1
+  },
+  {
+   "t": "multi",
+   "ref": "17:52",
+   "q": "Care dintre următoarele locuri sunt pomenite în legătură cu drumul pe care au căzut filistenii răniți? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Șaaraim",
+    "Gat",
+    "Gaza",
+    "Asdod",
+    "Ecron"
+   ],
+   "a": [
+    0,
+    1,
+    4
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "17:56",
+   "q": "Saul i-a poruncit lui Abner să afle al cui fiu este tânărul.",
+   "a": true
+  }
+ ]
+}

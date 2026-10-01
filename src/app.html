@@ -1,0 +1,760 @@
+<title>Candela 1 Samuel</title>
+<meta name="description" content="Pregătire pentru testul biblic din 1 Samuel, după traducerea Cornilescu.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Onest:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: one narrow column (max 640px) like a pocket study book; a lamp flame is the recurring mark of progress. */
+:root{
+  --bg:#ECEEE7;          /* stone */
+  --surface:#FAFBF7;
+  --surface-2:#E2E5DB;
+  --ink:#1E261D;         /* olive ink */
+  --ink-2:#56604F;
+  --line:#CDD2C3;
+  --oil:#B87A0B;         /* lamp oil / flame */
+  --oil-soft:#F3E3BE;
+  --oil-ink:#5E3E00;
+  --cedar:#2D5A44;       /* cedar green */
+  --cedar-soft:#D5E6DA;
+  --ok:#2D7A4E; --ok-soft:#D6EDDD;
+  --bad:#B23A2E; --bad-soft:#F6DAD4;
+  --p1:#B87A0B; --p2:#2D6FA3; --p3:#8A4FA0; --p4:#2D7A4E; --p5:#B4534A;
+  --shadow:0 1px 2px rgb(30 38 29 / .06), 0 8px 24px -12px rgb(30 38 29 / .18);
+  --f-display:"Gloock", "Georgia", "Times New Roman", serif;
+  --f-body:"Onest", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --f-mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --r:14px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#11150F; --surface:#1A2018; --surface-2:#242B21; --ink:#ECEEE4; --ink-2:#A4AD9C; --line:#333C30;
+  --oil:#EBAA3C; --oil-soft:#3A2C12; --oil-ink:#F6D59A; --cedar:#86BFA0; --cedar-soft:#1F3328;
+  --ok:#6CC892; --ok-soft:#173424; --bad:#F08A7E; --bad-soft:#3B1C18;
+  --p1:#EBAA3C; --p2:#6FAEE0; --p3:#C390D6; --p4:#6CC892; --p5:#E9867C;
+  --shadow:0 1px 2px rgb(0 0 0 / .3), 0 10px 30px -14px rgb(0 0 0 / .6); color-scheme:dark;}}
+:root[data-theme="dark"]{
+  --bg:#11150F; --surface:#1A2018; --surface-2:#242B21; --ink:#ECEEE4; --ink-2:#A4AD9C; --line:#333C30;
+  --oil:#EBAA3C; --oil-soft:#3A2C12; --oil-ink:#F6D59A; --cedar:#86BFA0; --cedar-soft:#1F3328;
+  --ok:#6CC892; --ok-soft:#173424; --bad:#F08A7E; --bad-soft:#3B1C18;
+  --p1:#EBAA3C; --p2:#6FAEE0; --p3:#C390D6; --p4:#6CC892; --p5:#E9867C;
+  --shadow:0 1px 2px rgb(0 0 0 / .3), 0 10px 30px -14px rgb(0 0 0 / .6); color-scheme:dark;}
+
+*{box-sizing:border-box}
+html,body{min-height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--oil);outline-offset:2px}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;text-wrap:balance;margin:0;letter-spacing:-.01em}
+p{margin:0}
+.wrap{max-width:640px;margin:0 auto;padding-inline:16px;padding-block:20px 48px}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+.ref{font-family:var(--f-mono);font-size:12px;font-weight:500;letter-spacing:.02em;color:var(--oil-ink);background:var(--oil-soft);padding:3px 8px;border-radius:999px;white-space:nowrap}
+.muted{color:var(--ink-2)}
+.view{animation:viewIn .45s cubic-bezier(.2,.8,.2,1) both}
+@keyframes viewIn{from{opacity:.0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;padding:14px 22px;font-weight:600;font-size:16px;transition:transform .15s ease, background .2s, box-shadow .2s;min-height:50px}
+.btn:active{transform:scale(.97)}
+.btn-primary{background:var(--ink);color:var(--bg)}
+.btn-primary:hover{box-shadow:0 6px 18px -8px var(--ink)}
+.btn-primary:disabled{opacity:.35;cursor:not-allowed}
+.btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn-ghost:hover{border-color:var(--ink-2)}
+.btn-oil{background:var(--oil);color:#1d1400}
+.btn-block{width:100%}
+.link{background:none;border:0;padding:6px 0;color:var(--ink-2);font-weight:500;text-decoration:underline;text-underline-offset:3px}
+
+/* Entry */
+.entry{display:grid;gap:28px;padding-top:4vh}
+.lamp-wrap{display:flex;justify-content:center;position:relative;height:150px}
+.lamp-glow{position:absolute;inset:-40px 0 auto;height:220px;background:radial-gradient(closest-side,color-mix(in oklab,var(--oil) 40%,transparent),transparent);filter:blur(6px);animation:glow 3.2s ease-in-out infinite;pointer-events:none}
+@keyframes glow{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:.85;transform:scale(1.06)}}
+.flame{transform-origin:50% 90%;animation:flicker 2.4s ease-in-out infinite}
+@keyframes flicker{0%,100%{transform:scaleY(1) skewX(0)}25%{transform:scaleY(1.06) skewX(-2deg)}50%{transform:scaleY(.96) skewX(1.5deg)}75%{transform:scaleY(1.04) skewX(-1deg)}}
+.entry h1{font-size:clamp(44px,12vw,68px);line-height:.95;text-align:center}
+.entry h1 span{display:block;font-size:.42em;letter-spacing:.02em;color:var(--ink-2);margin-top:10px}
+.verse-quote{font-family:var(--f-display);font-size:19px;line-height:1.4;text-align:center;max-width:30ch;margin:0 auto;color:var(--ink-2)}
+.verse-quote .ref{margin-left:6px;vertical-align:2px}
+.card{background:var(--surface);border-radius:20px;padding:22px;box-shadow:var(--shadow)}
+.field{display:grid;gap:8px}
+.field label{font-weight:600}
+.input{width:100%;border:1.5px solid var(--line);background:var(--bg);border-radius:12px;padding:14px 16px;font-size:18px;transition:border-color .2s, background .2s}
+.input:focus{outline:none;border-color:var(--oil);background:var(--surface)}
+.recent{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1.5px solid var(--line);background:transparent;border-radius:999px;padding:7px 14px;font-weight:500;font-size:14px;transition:all .15s}
+.chip:hover{border-color:var(--oil);color:var(--oil-ink)}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;text-align:center}
+.features div{display:grid;gap:2px}
+.features b{font-family:var(--f-display);font-weight:400;font-size:28px;line-height:1}
+.features small{font-size:12px;color:var(--ink-2)}
+
+/* Header */
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px}
+.brand{display:flex;align-items:center;gap:8px;font-family:var(--f-display);font-size:20px}
+.who{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--ink-2);min-width:0}
+.who b{color:var(--ink);font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:14ch}
+.avatar{width:32px;height:32px;border-radius:50%;background:var(--cedar);color:var(--bg);display:grid;place-items:center;font-weight:700;font-size:14px;flex:none}
+.sync{font-size:12px;display:flex;align-items:center;gap:6px;color:var(--ink-2);white-space:nowrap}
+@media (max-width:420px){.sync span{display:none}}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--ink-2)}
+.dot.on{background:var(--ok)}
+
+/* Dashboard */
+.hello{display:grid;gap:6px;margin-bottom:20px}
+.hello h2{font-size:clamp(30px,8vw,40px);line-height:1.05}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:26px}
+.stat{background:var(--surface);border-radius:16px;padding:14px;display:grid;gap:2px;box-shadow:var(--shadow)}
+.stat b{font-family:var(--f-display);font-weight:400;font-size:28px;line-height:1.1;font-variant-numeric:tabular-nums}
+.stat small{font-size:12px;color:var(--ink-2)}
+.section-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:26px 0 12px}
+.section-h h3{font-size:22px}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);background:var(--surface-2);border-radius:999px;padding:4px;gap:4px}
+.seg button{border:0;background:transparent;border-radius:999px;padding:10px 6px;font-weight:600;font-size:15px;color:var(--ink-2);transition:background .2s,color .2s}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg);box-shadow:var(--shadow)}
+.more summary{font-family:var(--f-body);font-size:13.5px;font-weight:600;color:var(--oil-ink);cursor:pointer;margin-top:6px}
+.more[open] summary{margin-bottom:6px}
+.seg-note{font-size:13px;color:var(--ink-2);margin-top:8px}
+.quick{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:8px}
+.tile{position:relative;aspect-ratio:1;max-width:100%;border:1.5px solid var(--line);background:var(--surface);border-radius:14px;display:grid;place-items:center;padding:0;transition:transform .15s, border-color .2s, background .2s}
+.tile:active{transform:scale(.94)}
+.tile svg{position:absolute;inset:5px;width:calc(100% - 10px);height:calc(100% - 10px)}
+.tile .n{font-family:var(--f-display);font-size:22px;line-height:1;position:relative}
+.tile[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.tile[aria-pressed="true"] .trk{stroke:color-mix(in oklab,var(--bg) 22%,transparent)}
+.trk{stroke:var(--surface-2)}
+.chap-list{margin-top:12px;font-size:14px;color:var(--ink-2);min-height:21px}
+.legend{display:flex;gap:14px;font-size:12px;color:var(--ink-2);margin-top:10px}
+.legend i{display:inline-block;width:10px;height:3px;border-radius:2px;margin-right:5px;vertical-align:middle}
+.opts-row{display:grid;gap:12px}
+.toggle{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-top:1px solid var(--line)}
+.toggle:first-child{border-top:0}
+.toggle small{display:block;color:var(--ink-2);font-size:13px}
+.switch{position:relative;width:48px;height:28px;flex:none;border:0;border-radius:999px;background:var(--surface-2);transition:background .2s;padding:0}
+.switch::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:var(--surface);box-shadow:0 1px 3px rgb(0 0 0 / .25);transition:transform .2s cubic-bezier(.3,1.4,.5,1)}
+.switch[aria-checked="true"]{background:var(--cedar)}
+.switch[aria-checked="true"]::after{transform:translateX(20px)}
+.counts{display:flex;gap:6px;flex-wrap:wrap}
+.startbar{position:sticky;bottom:0;padding-block:14px calc(14px + env(safe-area-inset-bottom,0px));background:linear-gradient(to top,var(--bg) 70%,transparent);margin-top:18px;z-index:5}
+.history{display:grid;gap:8px}
+.hrow{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;background:var(--surface);border-radius:14px;padding:12px 14px}
+.hrow .pct{font-family:var(--f-display);font-size:22px;font-variant-numeric:tabular-nums}
+.hrow small{display:block;color:var(--ink-2);font-size:13px}
+.badge{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:999px}
+.badge.easy{background:var(--cedar-soft);color:var(--cedar)}
+.badge.hard{background:var(--oil-soft);color:var(--oil-ink)}
+.badge.both{background:var(--surface-2);color:var(--ink-2)}
+.empty{padding:18px;border:1.5px dashed var(--line);border-radius:14px;color:var(--ink-2);font-size:14px;text-align:center}
+
+/* Quiz */
+.qtop{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;margin-bottom:18px}
+.icon-btn{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--line);background:transparent;display:grid;place-items:center;padding:0}
+.bar{height:6px;background:var(--surface-2);border-radius:999px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--oil);border-radius:999px;transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.qcount{font-family:var(--f-mono);font-size:13px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.qcard{background:var(--surface);border-radius:22px;padding:22px 20px;box-shadow:var(--shadow);display:grid;gap:18px}
+.qcard.enter{animation:qIn .42s cubic-bezier(.2,.8,.2,1) both}
+.qcard.leave{animation:qOut .22s ease-in both}
+@keyframes qIn{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:none}}
+@keyframes qOut{to{opacity:0;transform:translateX(-28px)}}
+.qmeta{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.qtype{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--cedar)}
+.qtext{font-size:20px;line-height:1.4;font-weight:500}
+.qhint{font-size:13px;color:var(--ink-2);margin-top:-8px}
+.answers{display:grid;gap:10px}
+.opt{display:flex;align-items:flex-start;gap:12px;width:100%;text-align:left;border:1.5px solid var(--line);background:var(--bg);border-radius:var(--r);padding:14px;font-size:16px;line-height:1.35;transition:border-color .15s, background .15s, transform .15s}
+.opt:hover:not(:disabled){border-color:var(--ink-2)}
+.opt:active:not(:disabled){transform:scale(.985)}
+.opt .k{flex:none;width:26px;height:26px;border-radius:8px;border:1.5px solid var(--line);display:grid;place-items:center;font-family:var(--f-mono);font-size:12px;color:var(--ink-2);transition:all .15s}
+.opt.multi .k{border-radius:7px}
+.opt[aria-pressed="true"]{border-color:var(--ink);background:var(--surface)}
+.opt[aria-pressed="true"] .k{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.opt.correct{border-color:var(--ok);background:var(--ok-soft)}
+.opt.correct .k{background:var(--ok);border-color:var(--ok);color:var(--bg)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.opt.wrong .k{background:var(--bad);border-color:var(--bad);color:var(--bg)}
+.opt:disabled{cursor:default}
+.tf{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tf .opt{justify-content:center;font-weight:600;font-size:17px;padding:20px 10px}
+.match{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.match .col{display:grid;gap:8px;align-content:start;min-width:0}
+.mitem{position:relative;text-align:left;border:1.5px solid var(--line);background:var(--bg);border-radius:12px;padding:11px 12px 11px 14px;font-size:14.5px;line-height:1.3;min-height:48px;transition:border-color .15s, background .15s, transform .15s;overflow-wrap:anywhere}
+.mitem.sel{border-color:var(--ink);background:var(--surface);transform:translateY(-1px);box-shadow:var(--shadow)}
+.mitem[data-pair]::before{content:"";position:absolute;left:0;top:8px;bottom:8px;width:4px;border-radius:0 4px 4px 0;background:var(--pc)}
+.mitem[data-pair]{border-color:var(--pc)}
+.mitem .tag{display:inline-grid;place-items:center;width:18px;height:18px;border-radius:50%;background:var(--pc);color:var(--surface);font-size:11px;font-weight:700;margin-right:6px;vertical-align:1px}
+.mitem.ok{background:var(--ok-soft)}
+.mitem.no{background:var(--bad-soft)}
+.mfix{display:block;font-size:12.5px;color:var(--ok);margin-top:4px;font-weight:600}
+.fill{font-family:var(--f-display);font-size:21px;line-height:1.75}
+.fill input{font-family:var(--f-body);font-size:17px;width:8.5em;max-width:100%;border:0;border-bottom:2px solid var(--oil);background:var(--oil-soft);border-radius:8px 8px 2px 2px;padding:2px 8px;margin:0 2px;color:var(--ink);transition:background .2s,border-color .2s}
+.fill input:focus{outline:none;background:var(--surface-2)}
+.fill input.ok{border-color:var(--ok);background:var(--ok-soft)}
+.fill input.no{border-color:var(--bad);background:var(--bad-soft)}
+.feedback{border-radius:14px;padding:14px 16px;display:grid;gap:6px;font-size:15px;animation:fbIn .35s cubic-bezier(.2,.8,.2,1)}
+@keyframes fbIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.feedback.ok{background:var(--ok-soft)}
+.feedback.no{background:var(--bad-soft)}
+.feedback b{font-weight:700}
+.feedback.ok b{color:var(--ok)}
+.feedback.no b{color:var(--bad)}
+.verse{font-family:var(--f-display);font-size:16px;line-height:1.5;color:var(--ink);border-left:3px solid var(--oil);padding-left:12px}
+.verse sup{font-family:var(--f-mono);font-size:10px;color:var(--oil-ink);margin-right:3px}
+.qactions{display:flex;gap:10px;margin-top:16px}
+.qactions .btn{flex:1}
+.pop{animation:pop .45s cubic-bezier(.3,1.6,.5,1)}
+@keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.03)}100%{transform:scale(1)}}
+.shake{animation:shake .4s ease}
+@keyframes shake{20%,60%{transform:translateX(-5px)}40%,80%{transform:translateX(5px)}}
+
+/* Results */
+.report-head{display:grid;justify-items:center;gap:14px;text-align:center;padding:10px 0 6px}
+.ring{position:relative;width:200px;height:200px;max-width:100%}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring .val{position:absolute;inset:0;display:grid;place-items:center;align-content:center}
+.ring .val b{font-family:var(--f-display);font-weight:400;font-size:58px;line-height:1;font-variant-numeric:tabular-nums}
+.ring .val small{color:var(--ink-2);font-size:14px}
+.verdict{font-family:var(--f-display);font-size:30px;line-height:1.1}
+.sparks{position:absolute;inset:0;pointer-events:none;overflow:visible}
+.spark{position:absolute;left:50%;top:50%;width:6px;height:6px;border-radius:50%;background:var(--oil);opacity:0;animation:spark 1.4s ease-out forwards}
+@keyframes spark{0%{opacity:1;transform:translate(-50%,-50%)}100%{opacity:0;transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(.4)}}
+.kv{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:22px 0}
+.bars{display:grid;gap:10px}
+.brow{display:grid;grid-template-columns:9.5em 1fr 3.2em;align-items:center;gap:10px;font-size:14px}
+.brow .bar{height:8px}
+.brow .bar i{background:var(--cedar)}
+.brow span:last-child{text-align:right;font-family:var(--f-mono);font-size:12.5px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.mistake{background:var(--surface);border-radius:18px;padding:18px;display:grid;gap:12px;box-shadow:var(--shadow)}
+.mistake .q{font-weight:500}
+.ans{display:grid;gap:6px;font-size:14.5px}
+.ans div{display:grid;grid-template-columns:7.2em 1fr;gap:8px}
+.ans dt,.ans .l{color:var(--ink-2)}
+.ans .y{color:var(--bad);text-decoration:line-through;text-decoration-thickness:1px}
+.ans .c{color:var(--ok);font-weight:600}
+.mistakes{display:grid;gap:12px}
+.allgood{text-align:center;padding:24px;background:var(--ok-soft);border-radius:18px;color:var(--ok);font-weight:600}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:999px;font-size:14px;opacity:0;transition:all .3s;pointer-events:none;z-index:20;max-width:calc(100% - 32px)}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.confirm{display:grid;gap:10px;margin-top:12px;padding:14px;border-radius:14px;background:var(--surface-2)}
+footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
+@media (max-width:420px){.qtext{font-size:18.5px}.fill{font-size:19px}.stat b{font-size:24px}.ans div{grid-template-columns:1fr;gap:0}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+</style>
+
+<div id="app" class="wrap"></div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+<script>
+const QUIZ = /*__QUIZ__*/{};
+const TEXT = /*__TEXT__*/{};
+const TITLES = ["Nașterea lui Samuel","Cântarea Anei. Fiii lui Eli","Chemarea lui Samuel","Chivotul luat de filisteni","Chivotul în Asdod","Chivotul se întoarce","Biruința de la Mițpa","Israel cere un împărat","Saul și măgărițele","Saul uns împărat","Biruința asupra lui Nahaș","Cuvântarea lui Samuel","Jertfa lui Saul la Ghilgal","Isprava lui Ionatan","Saul lepădat de Domnul","David uns de Samuel","David și Goliat","Ionatan și David","Saul îl urmărește pe David","Legământul cu Ionatan","David la Nob și la Gat","Peștera Adulam","David la Cheila și în pustie","David îl cruță pe Saul","Nabal și Abigail","A doua cruțare a lui Saul","David la Achiș","Saul la En-Dor","David trimis înapoi","Țiclagul ars","Moartea lui Saul"];
+const TYPE_LABEL = {tf:"Adevărat / Fals", one:"Variantă corectă", multi:"Alegere multiplă", match:"Asociere", fill:"Completează versetul"};
+const MODE_LABEL = {easy:"Ușor", hard:"Greu", both:"Ambele"};
+const LETTERS = "ABCDEF";
+
+/* ---------- utilities ---------- */
+const $ = (s, el=document) => el.querySelector(s);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const shuffle = a => { a = a.slice(); for (let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; };
+const fold = s => String(s).normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase().replace(/[^a-z0-9]+/g," ").trim();
+const slugOf = name => fold(name).replace(/ /g,"-").slice(0,60);
+const pct = (a,b) => b ? Math.round(a/b*100) : 0;
+const refLabel = r => "1 Sam. " + r;
+function lsGet(k, d){ try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } }
+function lsSet(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }
+function toast(msg){ const t = $("#toast"); t.textContent = msg; t.classList.add("show"); clearTimeout(toast._t); toast._t = setTimeout(()=>t.classList.remove("show"), 2400); }
+function verseHTML(ref){
+  const m = /^(\d+):(\d+)(?:-(\d+))?$/.exec(ref); if (!m) return "";
+  const c = +m[1], a = +m[2], b = +(m[3]||m[2]); const vs = TEXT[c] || [];
+  const one = v => `<sup>${v}</sup>${esc(vs[v-1])} `;
+  let out = ""; const end = Math.min(b, vs.length);
+  if (end - a < 4){ for (let v=a; v<=end; v++) out += one(v); return out.trim(); }
+  for (let v=a; v<a+2; v++) out += one(v);
+  let rest = ""; for (let v=a+2; v<=end; v++) rest += one(v);
+  return `${out}<details class="more"><summary>Citește versetele ${a+2}–${end}</summary>${rest.trim()}</details>`;
+}
+function dateLabel(ts){ const d = new Date(ts); return d.toLocaleDateString("ro-RO",{day:"numeric",month:"short"}) + ", " + d.toLocaleTimeString("ro-RO",{hour:"2-digit",minute:"2-digit"}); }
+function chaptersLabel(chs){
+  if (chs.length === 31) return "Toate capitolele";
+  const s = chs.slice().sort((a,b)=>a-b), parts = []; let i = 0;
+  while (i < s.length){ let j = i; while (j+1 < s.length && s[j+1] === s[j]+1) j++; parts.push(j>i+1 ? `${s[i]}–${s[j]}` : j===i+1 ? `${s[i]}, ${s[j]}` : `${s[i]}`); i = j+1; }
+  return (s.length === 1 ? "Capitolul " : "Capitolele ") + parts.join(", ");
+}
+
+/* ---------- storage: shared db by name, local fallback ---------- */
+const HOSTED = /*__HOSTED__*/false;
+const apiDb = {
+  doc(path){
+    const id = encodeURIComponent(path.split("/").pop());
+    return {
+      async get(){ const r = await fetch(`/api/player?id=${id}`, {cache:"no-store"}); if (r.status === 404) return {exists:false, data:()=>undefined}; if (!r.ok) throw {code:"unavailable"}; const d = await r.json(); return {exists:true, data:()=>d}; },
+      async set(data){ const r = await fetch(`/api/player?id=${id}`, {method:"POST", headers:{"content-type":"application/json"}, body:JSON.stringify(data)}); if (!r.ok) throw {code:"unavailable"}; }
+    };
+  }
+};
+const store = {
+  db: null, writable: true, ready: false,
+  async init(){
+    if (HOSTED) this.db = apiDb;
+    else try { if (window.claude && claude.use) this.db = await claude.use("db"); } catch { this.db = null; }
+    this.ready = true; renderSync();
+  },
+  blank(name){ return { name, history: [], chap: {}, updatedAt: 0 }; },
+  async load(name){
+    const slug = slugOf(name);
+    let local = lsGet("candela:p:" + slug, null);
+    let remote = null;
+    if (this.db){
+      try { const s = await this.db.doc("players/" + slug).get(); if (s.exists) remote = s.data(); } catch {}
+    }
+    let p = [remote, local].filter(Boolean).sort((a,b)=>(b.updatedAt||0)-(a.updatedAt||0))[0];
+    p = p ? JSON.parse(JSON.stringify(p)) : this.blank(name);
+    p.name = p.name || name; p.history = p.history || []; p.chap = p.chap || {};
+    return p;
+  },
+  async save(p){
+    p.updatedAt = Date.now();
+    if (p.history.length > 120) p.history = p.history.slice(-120);
+    const slug = slugOf(p.name);
+    lsSet("candela:p:" + slug, p);
+    if (this.db && this.writable){
+      try { await this.db.doc("players/" + slug).set(JSON.parse(JSON.stringify(p))); return true; }
+      catch (e) { if (e && (e.code === "invalid_argument" || e.code === "not_granted" || e.code === "revoked")) { this.writable = false; renderSync(); } return false; }
+    }
+    return false;
+  }
+};
+
+/* ---------- state ---------- */
+const S = {
+  player: null,
+  sel: new Set(lsGet("candela:sel", [1])),
+  mode: lsGet("candela:mode", "easy"),
+  count: lsGet("candela:count", 20),
+  shuffle: lsGet("candela:shuffle", true),
+  instant: lsGet("candela:instant", true),
+  quiz: null,
+};
+function persistPrefs(){ lsSet("candela:sel",[...S.sel]); lsSet("candela:mode",S.mode); lsSet("candela:count",S.count); lsSet("candela:shuffle",S.shuffle); lsSet("candela:instant",S.instant); }
+const app = $("#app");
+function mount(html){ app.innerHTML = `<div class="view">${html}</div>`; window.scrollTo({top:0}); }
+
+function lampSVG(size=64){
+  return `<svg width="${size*1.6}" height="${size*1.6}" viewBox="0 0 160 160" aria-hidden="true">
+    <g class="flame"><path d="M80 18c10 18 22 30 22 48 0 13-10 22-22 22s-22-9-22-22c0-12 8-20 12-30 2 8 6 12 10 14-2-12 0-22 0-32z" fill="var(--oil)"/>
+    <path d="M80 50c5 9 10 15 10 23 0 6-4 10-10 10s-10-4-10-10c0-7 6-13 10-23z" fill="var(--oil-soft)"/></g>
+    <path d="M28 104c18 0 34-8 52-8s30 4 52 0c-4 18-24 32-52 32-20 0-40-8-52-24z" fill="var(--ink)"/>
+    <path d="M132 96c8-4 14-2 16 4-6 0-10 2-16 6z" fill="var(--ink)"/>
+    <ellipse cx="80" cy="96" rx="10" ry="3" fill="var(--ink-2)"/>
+  </svg>`;
+}
+function miniLamp(){ return `<svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c2 3 4 5 4 8a4 4 0 0 1-8 0c0-2 1.5-3.5 2-5 .5 1.5 1.2 2.2 2 2.5C11.6 5.5 12 4 12 2z" fill="var(--oil)"/><path d="M3 16c3 0 6-1.5 9-1.5s5 .8 9 0c-.7 3-4 5.5-9 5.5-3.5 0-7-1.5-9-4z" fill="var(--ink)"/></svg>`; }
+
+/* ---------- views ---------- */
+function totalCount(mode){ let n=0; for (const c in QUIZ){ if (mode!=="hard") n += (QUIZ[c].easy||[]).length; if (mode!=="easy") n += (QUIZ[c].hard||[]).length; } return n; }
+
+function viewEntry(){
+  const recent = lsGet("candela:recent", []);
+  mount(`
+  <section class="entry">
+    <div class="lamp-wrap"><div class="lamp-glow"></div>${lampSVG(80)}</div>
+    <h1>Candela<span>Test biblic din 1 Samuel</span></h1>
+    <p class="verse-quote">„Candela lui Dumnezeu nu se stinsese încă.”<span class="ref">1 Sam. 3:3</span></p>
+    <form class="card" id="enter" autocomplete="off" style="display:grid;gap:16px">
+      <div class="field">
+        <label for="name">Cum te numești?</label>
+        <input class="input" id="name" name="name" maxlength="40" placeholder="ex. Maria" required>
+        <small class="muted">Fără parolă. Scrie același nume pe orice dispozitiv și îți regăsești progresul.</small>
+      </div>
+      ${recent.length ? `<div class="recent" aria-label="Nume folosite recent">${recent.map(n=>`<button type="button" class="chip" data-name="${esc(n)}">${esc(n)}</button>`).join("")}</div>` : ""}
+      <button class="btn btn-primary btn-block" id="go" type="submit">Intră</button>
+    </form>
+    <div class="features">
+      <div><b>31</b><small>capitole</small></div>
+      <div><b>${totalCount("both")}</b><small>întrebări</small></div>
+      <div><b>5</b><small>tipuri de întrebări</small></div>
+    </div>
+  </section>
+  <footer>Text de referință: Biblia, traducerea Dumitru Cornilescu</footer>`);
+  const f = $("#enter"), inp = $("#name");
+  f.addEventListener("submit", e => { e.preventDefault(); const n = inp.value.trim().replace(/\s+/g," "); if (!slugOf(n)) { inp.focus(); toast("Scrie un nume cu cel puțin o literă."); return; } login(n); });
+  app.querySelectorAll("[data-name]").forEach(b => b.onclick = () => login(b.dataset.name));
+}
+
+async function login(name){
+  const btn = $("#go"); if (btn){ btn.disabled = true; btn.textContent = "Se încarcă…"; }
+  if (!store.ready) await Promise.race([store.initP, new Promise(r=>setTimeout(r,4000))]);
+  S.player = await store.load(name);
+  const recent = lsGet("candela:recent", []).filter(n => slugOf(n) !== slugOf(name)); recent.unshift(name); lsSet("candela:recent", recent.slice(0,5));
+  lsSet("candela:last", name);
+  viewHome();
+}
+
+function chapStat(c, m){ return (S.player.chap[c+m[0]]||{}).best ?? null; }
+function arc(p, r, color){
+  if (p == null) return "";
+  const C = 2*Math.PI*r, L = C*Math.max(p,2)/100;
+  return `<circle cx="27" cy="27" r="${r}" fill="none" stroke="${color}" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="${L} ${C}" transform="rotate(-90 27 27)"/>`;
+}
+function tileSVG(c){
+  const e = chapStat(c,"easy"), h = chapStat(c,"hard");
+  return `<svg viewBox="0 0 54 54" aria-hidden="true"><circle class="trk" cx="27" cy="27" r="24" fill="none" stroke-width="2.6"/><circle class="trk" cx="27" cy="27" r="19.5" fill="none" stroke-width="2.6"/>${arc(e,24,"var(--cedar)")}${arc(h,19.5,"var(--oil)")}</svg>`;
+}
+function headerHTML(){
+  const n = S.player.name;
+  return `<header class="top"><div class="brand">${miniLamp()} Candela</div>
+  <div class="who"><span id="sync" class="sync"></span><b>${esc(n)}</b><span class="avatar">${esc(n.trim()[0].toUpperCase())}</span></div></header>`;
+}
+function renderSync(){
+  const el = $("#sync"); if (!el) return;
+  const on = store.db && store.writable;
+  el.innerHTML = `<i class="dot ${on?"on":""}"></i><span>${on ? "sincronizat" : "salvat local"}</span>`;
+  el.title = on ? "Progresul se salvează sub numele tău și îl regăsești pe orice dispozitiv." : "Progresul se păstrează doar în acest browser.";
+}
+
+function viewHome(){
+  const p = S.player, h = p.history;
+  const tests = h.length, avg = tests ? Math.round(h.reduce((s,x)=>s+x.pct,0)/tests) : 0;
+  const best = tests ? Math.max(...h.map(x=>x.pct)) : 0;
+  const touched = new Set(Object.keys(p.chap).map(k=>parseInt(k))).size;
+  const first = p.name.split(" ")[0];
+  mount(`${headerHTML()}
+  <section class="hello"><span class="eyebrow">${tests ? "Bine ai revenit" : "Să începem"}</span>
+    <h2>${tests ? `Continuăm, ${esc(first)}?` : `Bun venit, ${esc(first)}.`}</h2>
+    <p class="muted">${tests ? `Ai exersat ${touched} din 31 de capitole.` : "Alege unul sau mai multe capitole și nivelul. Poți începe cu capitolul 1."}</p></section>
+  <div class="stats">
+    <div class="stat"><b>${tests}</b><small>teste făcute</small></div>
+    <div class="stat"><b>${tests?avg+"%":"–"}</b><small>media</small></div>
+    <div class="stat"><b>${tests?best+"%":"–"}</b><small>cel mai bun</small></div>
+  </div>
+
+  <div class="section-h"><h3>Nivel</h3></div>
+  <div class="seg" role="group" aria-label="Nivel">
+    ${["easy","hard","both"].map(m=>`<button data-mode="${m}" aria-pressed="${S.mode===m}">${MODE_LABEL[m]}</button>`).join("")}
+  </div>
+  <p class="seg-note" id="modeNote"></p>
+
+  <div class="section-h"><h3>Capitole</h3><span class="muted" style="font-size:14px" id="selCount"></span></div>
+  <div class="quick">
+    <button class="chip" data-q="all">Toate</button>
+    <button class="chip" data-q="1-7">1–7 · Samuel</button>
+    <button class="chip" data-q="8-15">8–15 · Saul</button>
+    <button class="chip" data-q="16-31">16–31 · David</button>
+    <button class="chip" data-q="none">Golește</button>
+  </div>
+  <div class="grid" id="grid">${Array.from({length:31},(_,i)=>i+1).map(c=>`<button class="tile" data-c="${c}" aria-pressed="${S.sel.has(c)}" title="${c}. ${esc(TITLES[c-1])}" aria-label="Capitolul ${c}: ${esc(TITLES[c-1])}">${tileSVG(c)}<span class="n">${c}</span></button>`).join("")}</div>
+  <div class="legend"><span><i style="background:var(--cedar)"></i>scor maxim ușor</span><span><i style="background:var(--oil)"></i>scor maxim greu</span></div>
+  <p class="chap-list" id="chapList"></p>
+
+  <div class="section-h"><h3>Opțiuni</h3></div>
+  <div class="card opts-row">
+    <div class="toggle" style="display:grid;gap:10px;justify-content:stretch"><div>Număr de întrebări<small id="poolNote"></small></div>
+      <div class="counts" role="group" aria-label="Număr de întrebări">${[10,20,30,50,0].map(n=>`<button class="chip" data-n="${n}" aria-pressed="${S.count===n}">${n||"Toate"}</button>`).join("")}</div></div>
+    <div class="toggle"><div>Corectare imediată<small>Vezi răspunsul corect după fiecare întrebare.</small></div><button class="switch" id="swInstant" role="switch" aria-checked="${S.instant}" aria-label="Corectare imediată"></button></div>
+    <div class="toggle"><div>Amestecă întrebările<small>Altfel urmează ordinea versetelor.</small></div><button class="switch" id="swShuffle" role="switch" aria-checked="${S.shuffle}" aria-label="Amestecă întrebările"></button></div>
+  </div>
+
+  <div class="section-h"><h3>Istoric</h3></div>
+  <div class="history">${h.length ? h.slice(-6).reverse().map(x=>`
+    <div class="hrow"><span class="badge ${x.mode}">${MODE_LABEL[x.mode]}</span><div style="min-width:0"><b style="font-weight:600">${esc(chaptersLabel(x.chs))}</b><small>${dateLabel(x.at)} · ${x.score}/${x.total} puncte</small></div><span class="pct">${x.pct}%</span></div>`).join("")
+    : `<div class="empty">Aici apar testele tale, cu scorul și data. Primul test durează câteva minute.</div>`}</div>
+
+  <div class="startbar"><button class="btn btn-primary btn-block" id="start"></button></div>
+  <div style="display:flex;justify-content:center"><button class="link" id="logout">Schimbă numele</button></div>
+  <footer>Text de referință: Biblia, traducerea Dumitru Cornilescu</footer>`);
+  renderSync();
+
+  const update = () => {
+    const chs = [...S.sel].sort((a,b)=>a-b);
+    app.querySelectorAll(".tile").forEach(t => t.setAttribute("aria-pressed", S.sel.has(+t.dataset.c)));
+    app.querySelectorAll("[data-mode]").forEach(b => b.setAttribute("aria-pressed", S.mode===b.dataset.mode));
+    app.querySelectorAll("[data-n]").forEach(b => b.setAttribute("aria-pressed", S.count===+b.dataset.n));
+    const pool = buildPool(chs, S.mode).length;
+    const n = S.count && S.count < pool ? S.count : pool;
+    $("#selCount").textContent = chs.length ? `${chs.length} selectate` : "";
+    $("#chapList").textContent = chs.length === 1 ? `${chs[0]}. ${TITLES[chs[0]-1]}` : chs.length ? chaptersLabel(chs) : "Atinge un capitol ca să-l selectezi.";
+    $("#poolNote").textContent = `${pool} întrebări disponibile în selecție.`;
+    $("#modeNote").textContent = {easy:"Întrebări generale despre poveste și evenimente.",hard:"Detalii precise: nume, cifre, locuri, formulări exacte.",both:"Întrebări din ambele niveluri, amestecate."}[S.mode];
+    const st = $("#start"); st.disabled = !pool; st.textContent = pool ? `Începe testul · ${n} întrebări` : "Alege cel puțin un capitol";
+    persistPrefs();
+  };
+  app.querySelectorAll(".tile").forEach(t => t.onclick = () => { const c = +t.dataset.c; S.sel.has(c) ? S.sel.delete(c) : S.sel.add(c); update(); });
+  app.querySelectorAll("[data-mode]").forEach(b => b.onclick = () => { S.mode = b.dataset.mode; update(); });
+  app.querySelectorAll("[data-n]").forEach(b => b.onclick = () => { S.count = +b.dataset.n; update(); });
+  app.querySelectorAll("[data-q]").forEach(b => b.onclick = () => {
+    const q = b.dataset.q; S.sel.clear();
+    if (q === "all") for (let c=1;c<=31;c++) S.sel.add(c);
+    else if (q !== "none"){ const [a,z] = q.split("-").map(Number); for (let c=a;c<=z;c++) S.sel.add(c); }
+    update();
+  });
+  $("#swInstant").onclick = e => { S.instant = !S.instant; e.currentTarget.setAttribute("aria-checked", S.instant); persistPrefs(); };
+  $("#swShuffle").onclick = e => { S.shuffle = !S.shuffle; e.currentTarget.setAttribute("aria-checked", S.shuffle); persistPrefs(); };
+  $("#start").onclick = () => startQuiz();
+  $("#logout").onclick = () => { S.player = null; lsSet("candela:last", null); viewEntry(); };
+  update();
+}
+
+/* ---------- quiz engine ---------- */
+function buildPool(chs, mode){
+  const out = [];
+  for (const c of chs){
+    const d = QUIZ[c]; if (!d) continue;
+    for (const m of (mode==="both" ? ["easy","hard"] : [mode]))
+      (d[m]||[]).forEach((q,i) => out.push({...q, ch:c, mode:m, id:`${c}${m[0]}${i}`}));
+  }
+  return out;
+}
+function prepare(q){
+  const x = {...q};
+  if (q.t === "one"){ const idx = shuffle(q.opts.map((_,i)=>i)); x.opts = idx.map(i=>q.opts[i]); x.a = idx.indexOf(q.a); }
+  if (q.t === "multi"){ const idx = shuffle(q.opts.map((_,i)=>i)); x.opts = idx.map(i=>q.opts[i]); x.a = q.a.map(a=>idx.indexOf(a)).sort((a,b)=>a-b); }
+  if (q.t === "match"){ x.right = shuffle(q.pairs.map((p,i)=>i)); }
+  return x;
+}
+function startQuiz(list){
+  let qs;
+  if (list) qs = list;
+  else {
+    const chs = [...S.sel].sort((a,b)=>a-b);
+    let pool = buildPool(chs, S.mode);
+    if (S.shuffle) pool = shuffle(pool);
+    if (S.count && S.count < pool.length){
+      // keep a fair spread across chapters, then restore order if not shuffling
+      pool = shuffle(pool).slice(0, S.count);
+      if (!S.shuffle) pool.sort((a,b)=> a.ch-b.ch || refStart(a)-refStart(b));
+    }
+    qs = pool;
+  }
+  S.quiz = { qs: qs.map(prepare), i: 0, answers: [], start: Date.now(), chs: [...new Set(qs.map(q=>q.ch))].sort((a,b)=>a-b), mode: list ? S.quiz.mode : S.mode, retry: !!list };
+  viewQuestion(true);
+}
+function refStart(q){ return +q.ref.split(":")[1].split("-")[0]; }
+
+function viewQuestion(first){
+  const Z = S.quiz, q = Z.qs[Z.i], n = Z.qs.length;
+  const ui = { sel: q.t==="multi" ? new Set() : null, pick: null, pairs: {}, active: null, checked: false };
+  Z.ui = ui;
+  if (first || !$(".qcard")) {
+    mount(`<div class="qtop"><button class="icon-btn" id="quit" aria-label="Oprește testul"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+      <div class="bar" aria-hidden="true"><i id="prog" style="width:0"></i></div><span class="qcount" id="qcount"></span></div>
+      <div id="quitBox"></div><div id="qslot"></div>`);
+    $("#quit").onclick = () => {
+      const box = $("#quitBox");
+      if (box.innerHTML) { box.innerHTML = ""; return; }
+      box.innerHTML = `<div class="confirm"><b>Oprești testul?</b><span class="muted" style="font-size:14px">Răspunsurile date până acum nu se salvează.</span><div style="display:flex;gap:8px"><button class="btn btn-ghost" id="qNo" style="flex:1">Continuă</button><button class="btn btn-primary" id="qYes" style="flex:1">Oprește</button></div></div>`;
+      $("#qNo").onclick = () => box.innerHTML = ""; $("#qYes").onclick = () => viewHome();
+    };
+  }
+  $("#prog").style.width = (Z.i/n*100) + "%";
+  $("#qcount").textContent = `${Z.i+1}/${n}`;
+  const card = document.createElement("article");
+  card.className = "qcard enter";
+  card.innerHTML = `<div class="qmeta"><span class="qtype">${TYPE_LABEL[q.t]}${Z.mode==="both"?` · ${MODE_LABEL[q.mode]}`:""}</span><span class="ref">${refLabel(q.ref)}</span></div>
+    ${q.t==="fill" ? `<p class="qhint" style="margin:0">Scrie cuvântul exact din text.</p>${fillHTML(q)}` : `<p class="qtext">${esc(q.q)}</p>${q.t==="multi"?`<p class="qhint">Pot fi corecte mai multe variante, una singură sau niciuna.</p>`:""}${q.t==="match"?`<p class="qhint">Atinge un element din stânga, apoi perechea lui din dreapta.</p>`:""}`}
+    <div class="answers" id="ans">${answersHTML(q)}</div><div id="fb"></div>`;
+  const slot = $("#qslot");
+  const old = slot.firstElementChild;
+  const place = () => { slot.innerHTML = ""; slot.appendChild(card); const actions = document.createElement("div"); actions.className = "qactions"; actions.id = "actions"; slot.appendChild(actions); bindQuestion(q, card); renderActions(); const f = card.querySelector("input"); if (f && matchMedia("(hover:hover)").matches) f.focus(); };
+  if (old && !first){ old.classList.remove("enter"); old.classList.add("leave"); setTimeout(place, 200); } else place();
+}
+function fillHTML(q){
+  let k = 0;
+  return `<p class="fill">${esc(q.q).split("___").map((part,i,arr)=> part + (i<arr.length-1 ? `<input id="fill${k}" data-k="${k++}" autocapitalize="off" autocomplete="off" spellcheck="false" aria-label="Cuvântul lipsă ${k}">` : "")).join("")}</p>`;
+}
+function answersHTML(q){
+  if (q.t==="tf") return `<div class="tf"><button class="opt" data-v="1"><span>Adevărat</span></button><button class="opt" data-v="0"><span>Fals</span></button></div>`;
+  if (q.t==="one"||q.t==="multi") return q.opts.map((o,i)=>`<button class="opt ${q.t}" data-i="${i}" aria-pressed="false"><span class="k">${LETTERS[i]}</span><span>${esc(o)}</span></button>`).join("");
+  if (q.t==="match") return `<div class="match"><div class="col">${q.pairs.map((p,i)=>`<button class="mitem" data-l="${i}">${esc(p[0])}</button>`).join("")}</div><div class="col">${q.right.map(i=>`<button class="mitem" data-r="${i}">${esc(q.pairs[i][1])}</button>`).join("")}</div></div>`;
+  return "";
+}
+function bindQuestion(q, card){
+  const ui = S.quiz.ui;
+  if (q.t==="tf") card.querySelectorAll(".opt").forEach(b => b.onclick = () => { if (ui.checked) return; ui.pick = b.dataset.v==="1"; card.querySelectorAll(".opt").forEach(x=>x.setAttribute("aria-pressed", x===b)); renderActions(); if (S.quiz) check(); });
+  if (q.t==="one") card.querySelectorAll(".opt").forEach(b => b.onclick = () => { if (ui.checked) return; ui.pick = +b.dataset.i; card.querySelectorAll(".opt").forEach(x=>x.setAttribute("aria-pressed", x===b)); renderActions(); });
+  if (q.t==="multi") card.querySelectorAll(".opt").forEach(b => b.onclick = () => { if (ui.checked) return; const i = +b.dataset.i; ui.sel.has(i) ? ui.sel.delete(i) : ui.sel.add(i); b.setAttribute("aria-pressed", ui.sel.has(i)); renderActions(); });
+  if (q.t==="fill") card.querySelectorAll("input").forEach(inp => { inp.oninput = () => renderActions(); inp.onkeydown = e => { if (e.key==="Enter"){ e.preventDefault(); const nx = card.querySelector(`input[data-k="${+inp.dataset.k+1}"]`); if (nx) nx.focus(); else if (!ui.checked) check(); else next(); } }; });
+  if (q.t==="match"){
+    const paint = () => {
+      const used = Object.values(ui.pairs);
+      card.querySelectorAll("[data-l]").forEach(b => { const l = +b.dataset.l; b.classList.toggle("sel", ui.active===l); paintPair(b, ui.pairs[l]!=null ? l : null); });
+      card.querySelectorAll("[data-r]").forEach(b => { const r = +b.dataset.r; const l = Object.keys(ui.pairs).find(k => ui.pairs[k]===r); paintPair(b, l!=null ? +l : null); });
+      renderActions();
+    };
+    card.querySelectorAll("[data-l]").forEach(b => b.onclick = () => { if (ui.checked) return; const l = +b.dataset.l; if (ui.pairs[l]!=null) delete ui.pairs[l]; ui.active = l; paint(); });
+    card.querySelectorAll("[data-r]").forEach(b => b.onclick = () => {
+      if (ui.checked) return; const r = +b.dataset.r;
+      const owner = Object.keys(ui.pairs).find(k => ui.pairs[k]===r);
+      if (ui.active==null){ if (owner!=null){ delete ui.pairs[owner]; ui.active = +owner; paint(); return; } const free = q.pairs.findIndex((_,i)=>ui.pairs[i]==null); if (free<0) return; ui.active = free; }
+      if (owner!=null) delete ui.pairs[owner];
+      ui.pairs[ui.active] = r;
+      const nextFree = q.pairs.findIndex((_,i)=>ui.pairs[i]==null);
+      ui.active = nextFree>=0 ? nextFree : null; paint();
+    });
+    ui.active = 0; paint();
+  }
+}
+function paintPair(b, slot){
+  const label = b.querySelector(".tag"); if (label) label.remove();
+  if (slot==null){ b.removeAttribute("data-pair"); b.style.removeProperty("--pc"); return; }
+  b.dataset.pair = slot; b.style.setProperty("--pc", `var(--p${slot%5+1})`);
+  b.insertAdjacentHTML("afterbegin", `<span class="tag">${slot+1}</span>`);
+}
+function ready(q){
+  const ui = S.quiz.ui;
+  if (q.t==="tf"||q.t==="one") return ui.pick!=null;
+  if (q.t==="multi") return true;
+  if (q.t==="match") return Object.keys(ui.pairs).length === q.pairs.length;
+  if (q.t==="fill") return [...document.querySelectorAll(".qcard input")].every(i=>i.value.trim());
+}
+function renderActions(){
+  const Z = S.quiz, q = Z.qs[Z.i], ui = Z.ui, el = $("#actions"); if (!el) return;
+  const last = Z.i === Z.qs.length-1;
+  if (!ui.checked){
+    if (q.t==="tf"){ el.innerHTML = ""; return; }
+    el.innerHTML = `<button class="btn btn-ghost" id="skip">Sari peste</button><button class="btn btn-primary" id="chk" ${ready(q)?"":"disabled"}>${S.instant?"Verifică":(last?"Termină":"Următoarea")}</button>`;
+    $("#chk").onclick = check; $("#skip").onclick = () => check(true);
+  } else {
+    el.innerHTML = `<button class="btn btn-primary" id="nx">${last?"Vezi rezultatul":"Următoarea"}</button>`;
+    $("#nx").onclick = next; $("#nx").focus({preventScroll:true});
+  }
+}
+function grade(q, skipped){
+  const ui = S.quiz.ui;
+  if (skipped) return { pts:0, max:1, given:null };
+  if (q.t==="tf") return { pts: ui.pick===q.a ? 1 : 0, max:1, given: ui.pick };
+  if (q.t==="one") return { pts: ui.pick===q.a ? 1 : 0, max:1, given: ui.pick };
+  if (q.t==="multi"){ const g = [...ui.sel].sort((a,b)=>a-b); return { pts: JSON.stringify(g)===JSON.stringify(q.a) ? 1 : 0, max:1, given: g }; }
+  if (q.t==="match"){ let ok = 0; q.pairs.forEach((_,i)=>{ if (ui.pairs[i]===i) ok++; }); return { pts: ok/q.pairs.length, max:1, given: {...ui.pairs} }; }
+  if (q.t==="fill"){ const vals = [...document.querySelectorAll(".qcard input")].map(i=>i.value.trim()); const okEach = vals.map((v,i)=>fold(v)===fold(q.a[i])); return { pts: okEach.every(Boolean) ? 1 : 0, max:1, given: vals, okEach }; }
+}
+function check(skipped=false){
+  const Z = S.quiz, q = Z.qs[Z.i], ui = Z.ui;
+  if (ui.checked) return;
+  const r = grade(q, skipped === true);
+  Z.answers[Z.i] = { ...r, skipped: skipped === true };
+  ui.checked = true;
+  if (!S.instant){ next(); return; }
+  const card = $(".qcard");
+  card.querySelectorAll("button.opt,button.mitem,input").forEach(b => b.disabled = true);
+  if (q.t==="tf"){ card.querySelectorAll(".opt").forEach(b => { const v = b.dataset.v==="1"; if (v===q.a) b.classList.add("correct"); else if (v===ui.pick) b.classList.add("wrong"); }); }
+  if (q.t==="one"){ card.querySelectorAll(".opt").forEach(b => { const i = +b.dataset.i; if (i===q.a) b.classList.add("correct"); else if (i===ui.pick) b.classList.add("wrong"); }); }
+  if (q.t==="multi"){ card.querySelectorAll(".opt").forEach(b => { const i = +b.dataset.i, should = q.a.includes(i), did = ui.sel.has(i); if (should) b.classList.add("correct"); else if (did) b.classList.add("wrong"); }); }
+  if (q.t==="match"){ card.querySelectorAll("[data-l]").forEach(b => { const l = +b.dataset.l, good = ui.pairs[l]===l; b.classList.add(good?"ok":"no"); if (!good) b.insertAdjacentHTML("beforeend", `<span class="mfix">→ ${esc(q.pairs[l][1])}</span>`); }); }
+  if (q.t==="fill"){ card.querySelectorAll("input").forEach((inp,i) => { const ok = r.okEach ? r.okEach[i] : false; inp.classList.add(ok?"ok":"no"); if (!ok) inp.insertAdjacentHTML("afterend", ` <b style="color:var(--ok);font-family:var(--f-body);font-size:16px">${esc(q.a[i])}</b>`); }); }
+  const full = r.pts === 1, partial = r.pts > 0 && r.pts < 1;
+  $("#fb").innerHTML = `<div class="feedback ${full?"ok":"no"}"><b>${full ? "Corect" : partial ? `Parțial: ${Math.round(r.pts*q.pairs.length)} din ${q.pairs.length} perechi` : skipped===true ? "Sărită" : "Greșit"}</b>${!full ? correctLine(q) : ""}<div class="verse">${verseHTML(q.ref)}</div></div>`;
+  card.classList.add(full ? "pop" : "shake");
+  renderActions();
+}
+function correctLine(q){
+  if (q.t==="tf") return `<span>Afirmația este <b style="color:inherit">${q.a?"adevărată":"falsă"}</b>.</span>`;
+  if (q.t==="one") return `<span>Răspuns corect: ${esc(q.opts[q.a])}</span>`;
+  if (q.t==="multi") return `<span>Corecte: ${q.a.length ? q.a.map(i=>esc(q.opts[i])).join("; ") : "niciuna"}</span>`;
+  return "";
+}
+function next(){
+  const Z = S.quiz;
+  if (Z.i < Z.qs.length-1){ Z.i++; viewQuestion(false); }
+  else finish();
+}
+
+/* ---------- results ---------- */
+async function finish(){
+  const Z = S.quiz, n = Z.qs.length;
+  const score = Z.answers.reduce((s,a)=>s+(a?a.pts:0),0);
+  const sc = Math.round(score*10)/10, P = pct(score, n);
+  const secs = Math.round((Date.now()-Z.start)/1000);
+  // per chapter & per type
+  const byCh = {}, byType = {};
+  Z.qs.forEach((q,i) => { const a = Z.answers[i]||{pts:0};
+    (byCh[q.ch] ??= {s:0,n:0}); byCh[q.ch].s += a.pts; byCh[q.ch].n++;
+    const key = q.ch + q.mode[0]; ((byCh._m ??= {})[key] ??= {s:0,n:0}); byCh._m[key].s += a.pts; byCh._m[key].n++;
+    (byType[q.t] ??= {s:0,n:0}); byType[q.t].s += a.pts; byType[q.t].n++; });
+  // save
+  const p = S.player;
+  if (!Z.retry){
+    for (const key in byCh._m){ const v = byCh._m[key], cp = pct(v.s, v.n), cur = p.chap[key] || {best:0,n:0};
+      p.chap[key] = { best: Math.max(cur.best||0, cp), last: cp, n: (cur.n||0)+1 }; }
+    p.history.push({ at: Date.now(), chs: Z.chs, mode: Z.mode, score: sc, total: n, pct: P, secs });
+  }
+  const saving = Z.retry ? Promise.resolve(null) : store.save(p);
+  const wrong = Z.qs.map((q,i)=>({q, a: Z.answers[i]})).filter(x => !x.a || x.a.pts < 1);
+  const verdict = P>=95 ? "Excelent!" : P>=80 ? "Foarte bine" : P>=60 ? "Bine, mai e puțin" : P>=40 ? "Ai pus bazele" : "Mai citește o dată";
+  const sub = P>=80 ? "Ești pregătit pentru test la aceste capitole." : P>=60 ? "Recitește versetele de mai jos și încearcă din nou." : "Recitește capitolele, apoi reia greșelile.";
+  const min = Math.floor(secs/60), s = secs%60;
+  mount(`${headerHTML()}
+  <section class="report-head">
+    <span class="eyebrow">Raport · ${esc(chaptersLabel(Z.chs))} · ${MODE_LABEL[Z.mode]}${Z.retry?" · reluare greșeli":""}</span>
+    <div class="ring"><div class="sparks" id="sparks"></div>
+      <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" fill="none" stroke="var(--surface-2)" stroke-width="9"/><circle id="ringArc" cx="60" cy="60" r="52" fill="none" stroke="var(--oil)" stroke-width="9" stroke-linecap="round" stroke-dasharray="0 400" style="transition:stroke-dasharray 1.4s cubic-bezier(.2,.8,.2,1)"/></svg>
+      <div class="val"><b id="pctNum">0%</b><small>${sc} din ${n} puncte</small></div></div>
+    <h2 class="verdict">${verdict}</h2><p class="muted">${sub}</p>
+  </section>
+  <div class="kv">
+    <div class="stat"><b>${n - wrong.length}</b><small>corecte</small></div>
+    <div class="stat"><b>${wrong.length}</b><small>de revăzut</small></div>
+    <div class="stat"><b>${min}:${String(s).padStart(2,"0")}</b><small>timp</small></div>
+  </div>
+  <div class="card" style="display:grid;gap:18px">
+    <div><span class="eyebrow">Pe tipuri de întrebări</span></div>
+    <div class="bars">${Object.entries(byType).map(([t,v])=>`<div class="brow"><span>${TYPE_LABEL[t]}</span><div class="bar"><i style="width:0" data-w="${pct(v.s,v.n)}"></i></div><span>${pct(v.s,v.n)}%</span></div>`).join("")}</div>
+    ${Z.chs.length>1 ? `<div><span class="eyebrow">Pe capitole</span></div><div class="bars">${Object.entries(byCh).filter(([k])=>k!=="_m").map(([c,v])=>`<div class="brow"><span>Cap. ${c} · ${esc(TITLES[c-1])}</span><div class="bar"><i style="width:0" data-w="${pct(v.s,v.n)}"></i></div><span>${pct(v.s,v.n)}%</span></div>`).join("")}</div>` : ""}
+  </div>
+  <div class="section-h"><h3>${wrong.length ? "De revăzut" : "Nicio greșeală"}</h3>${wrong.length?`<span class="muted" style="font-size:14px">${wrong.length} întrebări</span>`:""}</div>
+  <div class="mistakes">${wrong.length ? wrong.map(mistakeHTML).join("") : `<div class="allgood">Toate răspunsurile sunt corecte. Candela arde frumos.</div>`}</div>
+  <div class="startbar" style="display:grid;grid-template-columns:${wrong.length?"1fr 1fr":"1fr"};gap:10px">
+    ${wrong.length ? `<button class="btn btn-oil" id="retry">Reia greșelile</button>` : ""}
+    <button class="btn btn-primary" id="home">Test nou</button>
+  </div>
+  <p class="muted" id="saveNote" style="text-align:center;font-size:13px"></p>`);
+  renderSync();
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    const C = 2*Math.PI*52; $("#ringArc").setAttribute("stroke-dasharray", `${C*P/100} ${C}`);
+    app.querySelectorAll("[data-w]").forEach(b => b.style.width = b.dataset.w + "%");
+    const el = $("#pctNum"), t0 = performance.now();
+    const tick = t => { const k = Math.min(1,(t-t0)/1300), e = 1-Math.pow(1-k,3); el.textContent = Math.round(P*e) + "%"; if (k<1) requestAnimationFrame(tick); };
+    requestAnimationFrame(tick);
+    if (P >= 80 && !matchMedia("(prefers-reduced-motion: reduce)").matches){
+      const sp = $("#sparks"); for (let i=0;i<22;i++){ const a = Math.random()*Math.PI*2, d = 90+Math.random()*60; const s = document.createElement("i"); s.className = "spark"; s.style.setProperty("--dx", Math.cos(a)*d+"px"); s.style.setProperty("--dy", Math.sin(a)*d+"px"); s.style.animationDelay = (1+Math.random()*.4)+"s"; s.style.background = i%3 ? "var(--oil)" : "var(--cedar)"; sp.appendChild(s); }
+    }
+  }));
+  if (wrong.length) $("#retry").onclick = () => startQuiz(shuffle(wrong.map(x => { const o = {...x.q}; const src = QUIZ[o.ch][o.mode][+o.id.slice(String(o.ch).length+1)]; return {...src, ch:o.ch, mode:o.mode, id:o.id}; })));
+  $("#home").onclick = () => viewHome();
+  const ok = await saving;
+  const note = $("#saveNote"); if (note && !Z.retry) note.textContent = ok ? `Rezultat salvat pentru ${p.name}.` : ok===false && store.db ? "Rezultatul s-a salvat doar pe acest dispozitiv." : store.db ? "" : "Rezultatul s-a salvat în acest browser.";
+}
+function mistakeHTML({q, a}){
+  a = a || {pts:0, given:null, skipped:true};
+  const skipped = a.skipped || a.given==null;
+  let yours = "", correct = "";
+  if (q.t==="tf"){ yours = skipped ? "—" : (a.given?"Adevărat":"Fals"); correct = q.a?"Adevărat":"Fals"; }
+  if (q.t==="one"){ yours = skipped ? "—" : esc(q.opts[a.given]); correct = esc(q.opts[q.a]); }
+  if (q.t==="multi"){ yours = skipped ? "—" : (a.given.length ? a.given.map(i=>esc(q.opts[i])).join("; ") : "niciuna"); correct = q.a.length ? q.a.map(i=>esc(q.opts[i])).join("; ") : "niciuna"; }
+  if (q.t==="fill"){ yours = skipped ? "—" : a.given.map(esc).join(", "); correct = q.a.map(esc).join(", "); }
+  if (q.t==="match"){
+    yours = skipped ? "—" : q.pairs.map((p,i)=> a.given[i]===i ? null : `${esc(p[0])} → ${a.given[i]!=null ? esc(q.pairs[a.given[i]][1]) : "—"}`).filter(Boolean).join("<br>");
+    correct = q.pairs.map(p=>`${esc(p[0])} → ${esc(p[1])}`).join("<br>");
+  }
+  const qtext = q.t==="fill" ? esc(q.q).replace(/___/g, "<b>____</b>") : esc(q.q);
+  return `<article class="mistake"><div class="qmeta"><span class="qtype">${TYPE_LABEL[q.t]}</span><span class="ref">${refLabel(q.ref)}</span></div>
+    <p class="q">${qtext}</p>
+    <div class="ans"><div><span class="l">Răspunsul tău</span><span class="${skipped?"":"y"}">${yours}</span></div><div><span class="l">Corect</span><span class="c">${correct}</span></div></div>
+    <div class="verse">${verseHTML(q.ref)}</div></article>`;
+}
+
+/* ---------- boot ---------- */
+document.addEventListener("keydown", e => {
+  if (!S.quiz || !$(".qcard") || e.target.tagName==="INPUT") return;
+  const q = S.quiz.qs[S.quiz.i], ui = S.quiz.ui;
+  if (e.key==="Enter"){ e.preventDefault(); if (ui.checked) next(); else if (ready(q) && $("#chk")) check(); }
+  if (!ui.checked && (q.t==="one"||q.t==="multi")){ const i = LETTERS.toLowerCase().indexOf(e.key.toLowerCase()); const b = $(`.opt[data-i="${i}"]`); if (i>=0 && b) b.click(); }
+  if (!ui.checked && q.t==="tf"){ if (e.key.toLowerCase()==="a") $('.opt[data-v="1"]').click(); if (e.key.toLowerCase()==="f") $('.opt[data-v="0"]').click(); }
+});
+store.initP = store.init();
+viewEntry();
+const lastName = lsGet("candela:last", null);
+if (lastName) { const inp = $("#name"); if (inp) inp.value = lastName; }
+</script>

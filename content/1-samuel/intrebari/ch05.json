@@ -1,0 +1,411 @@
+{
+ "ch": 5,
+ "easy": [
+  {
+   "t": "tf",
+   "ref": "5:1",
+   "q": "Filistenii au dus chivotul lui Dumnezeu direct la Ecron.",
+   "a": false
+  },
+  {
+   "t": "tf",
+   "ref": "5:2",
+   "q": "Filistenii au pus chivotul în casa zeului lor, Dagon.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "5:3",
+   "q": "Ce au făcut asdodenii după ce l-au găsit prima dată pe Dagon căzut?",
+   "opts": [
+    "L-au ars",
+    "L-au pus înapoi la locul lui",
+    "L-au lăsat la pământ",
+    "L-au dus la Gat"
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "5:3-4",
+   "q": "Dagon a fost găsit căzut înaintea chivotului de două ori.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "5:5",
+   "q": "Ce obicei au păstrat preoții lui Dagon și cei ce intră în casa lui la Asdod?",
+   "opts": [
+    "Nu calcă pe prag",
+    "Nu intră desculți",
+    "Nu se apropie de altar",
+    "Aduc jertfe în fiecare dimineață"
+   ],
+   "a": 0
+  },
+  {
+   "t": "tf",
+   "ref": "5:6",
+   "q": "Domnul i-a lovit cu bube pe cei din Asdod.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "5:7",
+   "q": "Ce au hotărât oamenii din Asdod?",
+   "opts": [
+    "Să ardă chivotul",
+    "Să aducă jertfe lui Dagon pentru chivot",
+    "Ca chivotul să nu rămână la ei",
+    "Să păstreze chivotul în casa lui Dagon"
+   ],
+   "a": 2
+  },
+  {
+   "t": "fill",
+   "ref": "5:7",
+   "q": "„căci mâna Lui apasă asupra noastră și asupra lui ___, dumnezeul nostru”",
+   "a": [
+    "Dagon"
+   ]
+  },
+  {
+   "t": "match",
+   "ref": "5:1-10",
+   "q": "Asociază ordinea cu cetatea în care a fost dus chivotul.",
+   "pairs": [
+    [
+     "Prima cetate",
+     "Asdod"
+    ],
+    [
+     "A doua cetate",
+     "Gat"
+    ],
+    [
+     "A treia cetate",
+     "Ecron"
+    ]
+   ]
+  },
+  {
+   "t": "match",
+   "ref": "5:2-11",
+   "q": "Asociază fiecare personaj sau grup cu ce a făcut sau a pățit.",
+   "pairs": [
+    [
+     "Dagon",
+     "a fost găsit căzut cu fața la pământ"
+    ],
+    [
+     "Preoții lui Dagon",
+     "nu calcă pe pragul casei lui"
+    ],
+    [
+     "Ecroniții",
+     "au cerut ca chivotul să fie trimis înapoi"
+    ]
+   ]
+  },
+  {
+   "t": "multi",
+   "ref": "5:10",
+   "q": "Cum au reacționat ecroniții când a intrat chivotul în cetatea lor? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "S-au bucurat",
+    "Au strigat că chivotul a fost adus ca să-i omoare",
+    "L-au dus în templul lor",
+    "Au adus jertfe Domnului"
+   ],
+   "a": [
+    1
+   ]
+  },
+  {
+   "t": "multi",
+   "ref": "5:6-12",
+   "q": "Cu ce au fost loviți filistenii în cetățile unde a fost dus chivotul? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Cu bube la șezut",
+    "Cu o mare groază",
+    "Cu lepră",
+    "Cu foamete",
+    "Cu întuneric"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "5:11",
+   "q": "Unde voiau ecroniții să fie trimis chivotul?",
+   "opts": [
+    "La Gaza",
+    "Înapoi la locul lui",
+    "La Ascalon",
+    "În pustie"
+   ],
+   "a": 1
+  },
+  {
+   "t": "fill",
+   "ref": "5:12",
+   "q": "„și țipetele cetății se înălțau până la ___”",
+   "a": [
+    "cer"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "5:12",
+   "q": "Oamenii din Ecron care nu mureau erau totuși loviți cu bube.",
+   "a": true
+  }
+ ],
+ "hard": [
+  {
+   "t": "match",
+   "ref": "5:1-10",
+   "q": "Asociază fiecare loc cu ce spune capitolul 5 despre el.",
+   "pairs": [
+    [
+     "Eben-Ezer",
+     "de acolo au luat filistenii chivotul"
+    ],
+    [
+     "Asdod",
+     "acolo era casa lui Dagon"
+    ],
+    [
+     "Gat",
+     "oamenii au avut o spuzeală de bube la șezut"
+    ],
+    [
+     "Ecron",
+     "în toată cetatea era o groază de moarte"
+    ]
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "5:2",
+   "q": "Ce explicație dă textul pentru numele Dagon?",
+   "opts": [
+    "Zeul soarelui",
+    "Zeul pește",
+    "Zeul furtunii",
+    "Zeul grânelor"
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "5:2",
+   "q": "Filistenii au așezat chivotul lângă Dagon.",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "5:3",
+   "q": "Prima dată, Dagon a fost găsit întins cu fața în sus.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "5:3",
+   "q": "Când l-au găsit asdodenii pe Dagon căzut prima dată?",
+   "opts": [
+    "La miezul nopții",
+    "Seara, la apusul soarelui",
+    "A doua zi, dis-de-dimineață",
+    "După șapte zile"
+   ],
+   "a": 2
+  },
+  {
+   "t": "multi",
+   "ref": "5:4",
+   "q": "Ce părți ale lui Dagon au fost găsite tăiate a doua oară? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Capul",
+    "Picioarele",
+    "Cele două mâini",
+    "Trunchiul",
+    "Coroana"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "5:4",
+   "q": "„erau tăiate pe prag și nu-i rămăsese decât ___”",
+   "a": [
+    "trunchiul"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "5:5",
+   "q": "Obiceiul de a nu călca pe prag îi privea doar pe preoții lui Dagon.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "5:5",
+   "q": "Până când spune textul că se păstrează obiceiul legat de pragul casei lui Dagon?",
+   "opts": [
+    "Până la moartea lui Eli",
+    "Până în ziua de azi",
+    "Șapte ani",
+    "Până la întoarcerea chivotului"
+   ],
+   "a": 1
+  },
+  {
+   "t": "fill",
+   "ref": "5:6",
+   "q": "„i-a lovit cu bube la șezut, atât în Asdod, cât și în ___ lui”",
+   "a": [
+    "ținutul"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "5:6",
+   "q": "Mâna Domnului i-a pustiit pe cei din Asdod.",
+   "a": true
+  },
+  {
+   "t": "match",
+   "ref": "5:8-11",
+   "q": "Asociază fiecare replică cu cei care au rostit-o.",
+   "pairs": [
+    [
+     "Oamenii din Asdod",
+     "„Ce să facem cu chivotul Dumnezeului lui Israel?”"
+    ],
+    [
+     "Domnitorii filistenilor",
+     "„Să se ducă la Gat chivotul Dumnezeului lui Israel.”"
+    ],
+    [
+     "Ecroniții",
+     "„Trimiteți înapoi chivotul Dumnezeului lui Israel”"
+    ]
+   ]
+  },
+  {
+   "t": "multi",
+   "ref": "5:8-11",
+   "q": "Ce afirmații despre domnitorii filistenilor sunt adevărate în capitolul 5? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Au fost adunați de oamenii din Asdod",
+    "Au fost strânși și de oamenii din Ecron",
+    "Au cerut sfatul preoților din Silo",
+    "Au ars casa lui Dagon",
+    "Au fost primii loviți cu bube"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "5:9",
+   "q": "„a lovit pe oamenii cetății de la ___ până la ___”",
+   "a": [
+    "mic",
+    "mare"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "5:9",
+   "q": "După sosirea chivotului la Gat, în cetate a fost o mare groază.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "5:11",
+   "q": "Ce au făcut ecroniții după sosirea chivotului?",
+   "opts": [
+    "Au trimis și au strâns pe toți domnitorii filistenilor",
+    "L-au dus în templul lui Dagon",
+    "L-au trimis singuri la Bet-Șemeș",
+    "Au adus jertfe lui Dagon"
+   ],
+   "a": 0
+  },
+  {
+   "t": "tf",
+   "ref": "5:11",
+   "q": "La Ecron, mâna lui Dumnezeu apăsa cu putere.",
+   "a": true
+  },
+  {
+   "t": "multi",
+   "ref": "5:3-12",
+   "q": "Care dintre următoarele cetăți filistene sunt numite în capitolul 5? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Gaza",
+    "Ascalon",
+    "Afec",
+    "Bet-Șemeș"
+   ],
+   "a": []
+  },
+  {
+   "t": "match",
+   "ref": "5:2-4",
+   "q": "Asociază fiecare lucru cu locul unde a fost găsit sau pus.",
+   "pairs": [
+    [
+     "Chivotul",
+     "lângă Dagon, în casa lui"
+    ],
+    [
+     "Trunchiul lui Dagon",
+     "singurul lucru rămas din el, după a doua cădere"
+    ],
+    [
+     "Capul și mâinile lui Dagon",
+     "pe prag"
+    ]
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "5:10",
+   "q": "„Când a intrat chivotul lui Dumnezeu în ___, ecroniții au strigat”",
+   "a": [
+    "Ecron"
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "5:12",
+   "q": "„Oamenii care nu mureau erau loviți cu ___ la șezut”",
+   "a": [
+    "bube"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "5:7",
+   "q": "Ce nume folosesc oamenii din Asdod pentru chivot?",
+   "opts": [
+    "Chivotul legământului Domnului oștirilor",
+    "Chivotul mărturiei",
+    "Chivotul Dumnezeului lui Israel",
+    "Chivotul sfânt al lui Iacov"
+   ],
+   "a": 2
+  }
+ ]
+}

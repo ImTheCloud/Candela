@@ -1,0 +1,472 @@
+{
+ "ch": 18,
+ "easy": [
+  {
+   "t": "tf",
+   "ref": "18:1",
+   "q": "Sufletul lui Ionatan s-a alipit de sufletul lui David după ce David a sfârșit de vorbit cu Saul.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "18:2",
+   "q": "Ce a făcut Saul cu David în aceeași zi?",
+   "opts": [
+    "L-a trimis înapoi la oile tatălui său",
+    "Nu l-a lăsat să se întoarcă în casa tatălui său",
+    "L-a trimis în pustie",
+    "L-a trimis la Samuel, la Rama"
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "18:3",
+   "q": "Ionatan a făcut legământ cu David pentru că se temea de el.",
+   "a": false
+  },
+  {
+   "t": "multi",
+   "ref": "18:5",
+   "q": "Cui era plăcut David? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Întregului popor",
+    "Slujitorilor lui Saul",
+    "Domnitorilor filistenilor",
+    "Lui Merab"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "18:6",
+   "q": "Cine a ieșit din toate cetățile lui Israel, cântând, la întoarcerea lui David de la omorârea filisteanului?",
+   "opts": [
+    "Preoții",
+    "Femeile",
+    "Bătrânii",
+    "Leviții"
+   ],
+   "a": 1
+  },
+  {
+   "t": "one",
+   "ref": "18:8",
+   "q": "Cum a reacționat Saul la cântecul femeilor?",
+   "opts": [
+    "S-a bucurat împreună cu ele",
+    "L-a lăudat pe David înaintea poporului",
+    "S-a mâniat foarte tare",
+    "A dat daruri femeilor"
+   ],
+   "a": 2
+  },
+  {
+   "t": "tf",
+   "ref": "18:9",
+   "q": "Din ziua aceea, Saul a privit cu ochi răi pe David.",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "18:10-11",
+   "q": "Când Saul a ridicat sulița asupra lui, David a fost rănit.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "18:12",
+   "q": "De ce se temea Saul de David?",
+   "opts": [
+    "Pentru că filistenii se temeau de David",
+    "Pentru că Domnul era cu David și Se depărtase de la Saul",
+    "Pentru că Ionatan voia să-i ia locul",
+    "Pentru că David avea o oaste mai mare"
+   ],
+   "a": 1
+  },
+  {
+   "t": "multi",
+   "ref": "18:13-16",
+   "q": "Care dintre următoarele sunt adevărate despre David în această perioadă? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Izbutea în tot ce făcea",
+    "Domnul era cu el",
+    "Saul l-a făcut mare preot",
+    "A fugit la filisteni",
+    "Saul a încetat să se teamă de el"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "18:17",
+   "q": "Ce urmărea Saul în ascuns când i-a promis lui David pe fiica sa?",
+   "opts": [
+    "Să-l facă moștenitorul tronului",
+    "Ca David să cadă de mâna filistenilor",
+    "Să-l împace pe Ionatan",
+    "Să-l țină departe de Samuel"
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "18:18",
+   "q": "David s-a socotit vrednic să fie ginerele împăratului.",
+   "a": false
+  },
+  {
+   "t": "tf",
+   "ref": "18:19",
+   "q": "Merab a ajuns până la urmă nevasta lui David.",
+   "a": false
+  },
+  {
+   "t": "match",
+   "ref": "18:4-27",
+   "q": "Asociază fiecare personaj cu fapta lui.",
+   "pairs": [
+    [
+     "Ionatan",
+     "I-a dat lui David mantaua pe care o purta"
+    ],
+    [
+     "Merab",
+     "A fost dată de nevastă altui bărbat"
+    ],
+    [
+     "Mical",
+     "A devenit nevasta lui David"
+    ],
+    [
+     "Femeile din cetățile lui Israel",
+     "Au ieșit cântând și jucând înaintea lui Saul"
+    ]
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "18:25",
+   "q": "Ce a cerut Saul de la David în locul zestrei?",
+   "opts": [
+    "Aur și argint",
+    "Prepuțuri de ale filistenilor",
+    "Sabia lui Goliat",
+    "O turmă de oi"
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "18:26-27",
+   "q": "David a îndeplinit cererea lui Saul și a primit-o pe Mical de nevastă.",
+   "a": true
+  },
+  {
+   "t": "match",
+   "ref": "18:1-29",
+   "q": "Asociază fiecare personaj cu sentimentul lui față de David.",
+   "pairs": [
+    [
+     "Ionatan",
+     "L-a iubit ca pe sufletul din el"
+    ],
+    [
+     "Mical",
+     "Iubea pe David, iar lucrul acesta i-a plăcut lui Saul"
+    ],
+    [
+     "Saul",
+     "I-a fost vrăjmaș toată viața"
+    ]
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "18:28",
+   "q": "„Saul a văzut și a înțeles că ___ era cu David.”",
+   "a": [
+    "Domnul"
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "18:30",
+   "q": "„David avea mai multă izbândă decât toți slujitorii lui Saul și numele lui a ajuns foarte ___.”",
+   "a": [
+    "vestit"
+   ]
+  }
+ ],
+ "hard": [
+  {
+   "t": "fill",
+   "ref": "18:1",
+   "q": "„Ionatan l-a iubit ca pe ___ din el.”",
+   "a": [
+    "sufletul"
+   ]
+  },
+  {
+   "t": "multi",
+   "ref": "18:4",
+   "q": "Ce i-a dat Ionatan lui David? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Mantaua",
+    "Sulița",
+    "Sabia",
+    "Arcul",
+    "Scutul",
+    "Cingătoarea"
+   ],
+   "a": [
+    0,
+    2,
+    3,
+    5
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "18:5",
+   "q": "Saul l-a pus pe David în fruntea oamenilor de război.",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "18:6",
+   "q": "Femeile au ieșit înaintea împăratului Saul numai din cetatea Ghibea.",
+   "a": false
+  },
+  {
+   "t": "multi",
+   "ref": "18:6",
+   "q": "În sunetul căror instrumente cântau și jucau femeile? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Timpane",
+    "Alăute",
+    "Trâmbițe",
+    "Harfe",
+    "Chimvale"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "18:8",
+   "q": "Ce a zis Saul că îi mai lipsește lui David?",
+   "opts": [
+    "Sabia lui Goliat",
+    "Ungerea",
+    "Împărăția",
+    "Oastea"
+   ],
+   "a": 2
+  },
+  {
+   "t": "tf",
+   "ref": "18:10",
+   "q": "Duhul cel rău l-a apucat pe Saul chiar în ziua întoarcerii de la omorârea filisteanului.",
+   "a": false
+  },
+  {
+   "t": "fill",
+   "ref": "18:10",
+   "q": "„David cânta, ca și în celelalte zile, și Saul era cu ___ în mână.”",
+   "a": [
+    "sulița"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "18:11",
+   "q": "De câte ori s-a ferit David de Saul?",
+   "opts": [
+    "O dată",
+    "De două ori",
+    "De trei ori",
+    "De șapte ori"
+   ],
+   "a": 1
+  },
+  {
+   "t": "fill",
+   "ref": "18:11",
+   "q": "„Voi pironi pe David de ___.”",
+   "a": [
+    "perete"
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "18:12",
+   "q": "„Saul se temea de David, pentru că Domnul era cu David și Se ___ de la el.”",
+   "a": [
+    "depărtase"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "18:14-15",
+   "q": "Saul, văzând că David izbutea totdeauna, se bucura de el.",
+   "a": false
+  },
+  {
+   "t": "tf",
+   "ref": "18:16",
+   "q": "Tot Israelul și Iuda iubeau pe David pentru că ieșea și intra în fruntea lor.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "18:17",
+   "q": "Cum se numea fiica cea mai mare a lui Saul?",
+   "opts": [
+    "Mical",
+    "Ahinoam",
+    "Merab",
+    "Rițpa"
+   ],
+   "a": 2
+  },
+  {
+   "t": "fill",
+   "ref": "18:17",
+   "q": "„numai să-mi slujești cu vitejie și să porți ___ Domnului”",
+   "a": [
+    "războaiele"
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "18:18",
+   "q": "„Cine sunt eu și ce este ___ mea, ce este familia tatălui meu în Israel”",
+   "a": [
+    "viața"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "18:19",
+   "q": "Cui a fost dată de nevastă Merab?",
+   "opts": [
+    "Lui Adriel din Mehola",
+    "Lui Abner",
+    "Lui Paltiel din Galim",
+    "Lui Doeg edomitul"
+   ],
+   "a": 0
+  },
+  {
+   "t": "tf",
+   "ref": "18:21",
+   "q": "Saul i-a zis lui David pentru a treia oară: „Astăzi îmi vei fi ginere.”",
+   "a": false
+  },
+  {
+   "t": "tf",
+   "ref": "18:22",
+   "q": "Saul le-a poruncit slujitorilor săi să-i vorbească lui David în taină.",
+   "a": true
+  },
+  {
+   "t": "match",
+   "ref": "18:7-25",
+   "q": "Asociază fiecare replică cu cine a rostit-o.",
+   "pairs": [
+    [
+     "„Saul a bătut miile lui, iar David, zecile lui de mii.”",
+     "Femeile care cântau"
+    ],
+    [
+     "„I-o voi da ca să-i fie o cursă.”",
+     "Saul"
+    ],
+    [
+     "„Eu sunt un om sărac și de puțină însemnătate.”",
+     "David"
+    ],
+    [
+     "„Iată că împăratul e binevoitor față de tine.”",
+     "Slujitorii lui Saul"
+    ]
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "18:24",
+   "q": "Slujitorii lui Saul i-au spus împăratului ce răspunsese David.",
+   "a": true
+  },
+  {
+   "t": "match",
+   "ref": "18:13-27",
+   "q": "Asociază fiecare număr cu ce se referă la el în text.",
+   "pairs": [
+    [
+     "O mie",
+     "Oamenii peste care a fost pus David mai-mare"
+    ],
+    [
+     "O sută",
+     "Prepuțurile cerute de Saul"
+    ],
+    [
+     "Două sute",
+     "Filistenii uciși de David"
+    ]
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "18:26",
+   "q": "David a adus prepuțurile după ce trecuse vremea hotărâtă.",
+   "a": false
+  },
+  {
+   "t": "match",
+   "ref": "18:17-27",
+   "q": "Asociază fiecare persoană cu detaliul potrivit.",
+   "pairs": [
+    [
+     "Merab",
+     "Fiica cea mai mare a lui Saul"
+    ],
+    [
+     "Adriel",
+     "Bărbatul din Mehola"
+    ],
+    [
+     "Mical",
+     "Dată de nevastă lui David după ce a adus numărul întreg"
+    ]
+   ]
+  },
+  {
+   "t": "multi",
+   "ref": "18:29-30",
+   "q": "Care dintre următoarele afirmații sunt adevărate? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Saul s-a temut din ce în ce mai mult de David",
+    "Domnitorii filistenilor nu mai ieșeau la luptă",
+    "David avea mai multă izbândă decât toți slujitorii lui Saul",
+    "Mical l-a trădat pe David",
+    "Saul l-a iertat pe David"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  }
+ ]
+}

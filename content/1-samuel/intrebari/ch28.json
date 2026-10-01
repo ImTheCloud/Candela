@@ -1,0 +1,464 @@
+{
+ "ch": 28,
+ "easy": [
+  {
+   "t": "one",
+   "ref": "28:1",
+   "q": "De ce și-au strâns filistenii taberele?",
+   "opts": [
+    "Ca să-l prindă pe David",
+    "Ca să pornească război împotriva lui Israel",
+    "Ca să sărbătorească pe Dagon",
+    "Ca să lupte cu amaleciții"
+   ],
+   "a": 1
+  },
+  {
+   "t": "match",
+   "ref": "28:1-23",
+   "q": "Asociază fiecare personaj cu fapta lui.",
+   "pairs": [
+    [
+     "Achiș",
+     "l-a luat pe David cu el la oștire"
+    ],
+    [
+     "Samuel",
+     "a vestit înfrângerea lui Israel"
+    ],
+    [
+     "Femeia",
+     "a pregătit mâncare pentru Saul"
+    ],
+    [
+     "Slujitorii lui Saul",
+     "au stăruit să-l facă să mănânce"
+    ]
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "28:2",
+   "q": "Ce i-a spus Achiș lui David că îl va face?",
+   "opts": [
+    "Căpetenia oștirii lui",
+    "Păzitorul capului său în tot timpul",
+    "Împărat peste Țiclag",
+    "Sfetnicul lui"
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "28:3",
+   "q": "Saul îndepărtase din țară pe cei ce chemau morții și pe cei ce ghiceau.",
+   "a": true
+  },
+  {
+   "t": "match",
+   "ref": "28:4-7",
+   "q": "Asociază fiecare personaj cu ce a făcut.",
+   "pairs": [
+    [
+     "Filistenii",
+     "au tăbărât împotriva lui Israel"
+    ],
+    [
+     "Saul",
+     "a fost cuprins de frică la vederea taberei"
+    ],
+    [
+     "Slujitorii lui Saul",
+     "i-au spus de o femeie care cheamă morții"
+    ]
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "28:6",
+   "q": "Cum i-a răspuns Domnul lui Saul când L-a întrebat?",
+   "opts": [
+    "Printr-un proroc",
+    "Printr-un vis",
+    "Nu i-a răspuns deloc",
+    "Prin Samuel"
+   ],
+   "a": 2
+  },
+  {
+   "t": "one",
+   "ref": "28:7",
+   "q": "Ce le-a cerut Saul slujitorilor să-i caute?",
+   "opts": [
+    "Un proroc al Domnului",
+    "O femeie care să cheme morții",
+    "Un preot cu efod",
+    "Un ghicitor filistean"
+   ],
+   "a": 1
+  },
+  {
+   "t": "multi",
+   "ref": "28:9-10",
+   "q": "Ce s-a întâmplat când Saul i-a cerut femeii să cheme un mort? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Saul i-a jurat pe Domnul că nu i se va întâmpla niciun rău",
+    "Femeia l-a recunoscut imediat pe Saul",
+    "Femeia a refuzat definitiv",
+    "Femeia a cerut plată"
+   ],
+   "a": [
+    0
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "28:11",
+   "q": "Pe cine i-a cerut Saul femeii să-l cheme?",
+   "opts": [
+    "Pe Eli",
+    "Pe Samuel",
+    "Pe Ionatan",
+    "Pe Avraam"
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "28:12",
+   "q": "Când l-a văzut pe Samuel, femeia și-a dat seama că omul din fața ei era Saul.",
+   "a": true
+  },
+  {
+   "t": "fill",
+   "ref": "28:15",
+   "q": "„Sunt într-o mare ___: filistenii îmi fac război”",
+   "a": [
+    "strâmtorare"
+   ]
+  },
+  {
+   "t": "multi",
+   "ref": "28:16-19",
+   "q": "Ce i-a spus Samuel lui Saul? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Domnul S-a depărtat de el",
+    "Domnul S-a făcut vrăjmașul lui",
+    "Israel va birui pe filisteni",
+    "Israel va fi dat în mâinile filistenilor",
+    "Saul va mai domni mulți ani"
+   ],
+   "a": [
+    0,
+    1,
+    3
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "28:17",
+   "q": "„Domnul a rupt ___ din mâinile tale și a dat-o altuia, lui David”",
+   "a": [
+    "împărăția"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "28:20",
+   "q": "După cuvintele lui Samuel, Saul a căzut la pământ, plin de groază.",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "28:23",
+   "q": "Saul a acceptat de la început să mănânce.",
+   "a": false
+  },
+  {
+   "t": "tf",
+   "ref": "28:25",
+   "q": "Saul a rămas peste noapte în casa femeii.",
+   "a": false
+  }
+ ],
+ "hard": [
+  {
+   "t": "fill",
+   "ref": "28:2",
+   "q": "„Ei bine, vei vedea ce va face ___ tău”",
+   "a": [
+    "robul"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "28:3",
+   "q": "Samuel fusese îngropat la Silo.",
+   "a": false
+  },
+  {
+   "t": "match",
+   "ref": "28:4-7",
+   "q": "Asociază fiecare loc cu ce se leagă de el.",
+   "pairs": [
+    [
+     "Sunem",
+     "tabăra filistenilor"
+    ],
+    [
+     "Ghilboa",
+     "tabăra lui Israel"
+    ],
+    [
+     "En-Dor",
+     "locul femeii care chema morții"
+    ]
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "28:5",
+   "q": "„și un ___ puternic i-a apucat inima”",
+   "a": [
+    "tremur"
+   ]
+  },
+  {
+   "t": "multi",
+   "ref": "28:6",
+   "q": "Prin care mijloace nu i-a răspuns Domnul lui Saul? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Vise",
+    "Urim",
+    "Proroci",
+    "Tumim",
+    "Efod",
+    "Îngeri"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "t": "multi",
+   "ref": "28:8",
+   "q": "Ce a făcut Saul ca să meargă la femeie? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "S-a schimbat",
+    "A luat alte haine",
+    "A plecat cu doi oameni",
+    "A postit trei zile",
+    "Și-a lăsat sulița la Abner"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "28:8",
+   "q": "Când au ajuns Saul și oamenii lui la femeie?",
+   "opts": [
+    "Dimineața",
+    "La amiază",
+    "Seara, la apus",
+    "Noaptea"
+   ],
+   "a": 3
+  },
+  {
+   "t": "fill",
+   "ref": "28:8",
+   "q": "„Spune-mi ___ chemând un mort”",
+   "a": [
+    "viitorul"
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "28:9",
+   "q": "„pentru ce dar întinzi o ___ vieții mele, ca să mă omori?”",
+   "a": [
+    "cursă"
+   ]
+  },
+  {
+   "t": "match",
+   "ref": "28:9-18",
+   "q": "Asociază fiecare vorbitor cu replica lui.",
+   "pairs": [
+    [
+     "Femeia",
+     "„Știi ce a făcut Saul”"
+    ],
+    [
+     "Saul",
+     "„Te-am chemat să-mi arăți ce să fac.”"
+    ],
+    [
+     "Samuel",
+     "„N-ai ascultat de glasul Domnului”"
+    ]
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "28:11",
+   "q": "„Pe cine vrei să-ți ___?”",
+   "a": [
+    "scol"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "28:12",
+   "q": "Ce a făcut femeia când l-a văzut pe Samuel?",
+   "opts": [
+    "A leșinat",
+    "A fugit din casă",
+    "A scos un țipăt mare",
+    "A căzut cu fața la pământ"
+   ],
+   "a": 2
+  },
+  {
+   "t": "fill",
+   "ref": "28:12",
+   "q": "„Pentru ce m-ai ___? Tu ești Saul!”",
+   "a": [
+    "înșelat"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "28:13",
+   "q": "Ce a spus femeia că vede?",
+   "opts": [
+    "Un înger cu sabie",
+    "O ființă dumnezeiască sculându-se din pământ",
+    "Un nor de foc",
+    "Un om îmbrăcat în in"
+   ],
+   "a": 1
+  },
+  {
+   "t": "multi",
+   "ref": "28:14",
+   "q": "Cum l-a descris femeia pe cel ce se scula? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Un bătrân",
+    "Învelit cu o mantie",
+    "Purtând o coroană",
+    "Ținând un toiag",
+    "Un tânăr"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "28:14",
+   "q": "Când a înțeles că era Samuel, Saul s-a plecat cu fața la pământ și s-a închinat.",
+   "a": true
+  },
+  {
+   "t": "fill",
+   "ref": "28:15",
+   "q": "„Pentru ce m-ai ___ chemându-mă?”",
+   "a": [
+    "tulburat"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "28:15",
+   "q": "În cuvintele către Samuel, Saul a spus că nu a primit răspuns nici prin Urim.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "28:18",
+   "q": "Pe cine nu făcuse Saul să simtă aprinderea mâniei Domnului?",
+   "opts": [
+    "Pe filisteni",
+    "Pe Moab",
+    "Pe Amalec",
+    "Pe Edom"
+   ],
+   "a": 2
+  },
+  {
+   "t": "fill",
+   "ref": "28:19",
+   "q": "„Mâine, tu și ___ tăi veți fi împreună cu mine”",
+   "a": [
+    "fiii"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "28:20",
+   "q": "Saul nu avea putere, pentru că nu mâncase toată ziua și toată noaptea.",
+   "a": true
+  },
+  {
+   "t": "fill",
+   "ref": "28:21",
+   "q": "„mi-am pus ___ în primejdie ascultând de cuvintele pe care mi le-ai spus”",
+   "a": [
+    "viața"
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "28:22",
+   "q": "„lasă-mă să-ți dau o bucată de ___, ca să mănânci”",
+   "a": [
+    "pâine"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "28:23",
+   "q": "Unde a șezut Saul după ce s-a sculat de la pământ?",
+   "opts": [
+    "Pe un scaun",
+    "Pe pat",
+    "La masă",
+    "Pe prag"
+   ],
+   "a": 1
+  },
+  {
+   "t": "match",
+   "ref": "28:24",
+   "q": "Asociază fiecare lucru cu ce a făcut femeia cu el.",
+   "pairs": [
+    [
+     "Vițelul gras",
+     "l-a tăiat în grabă"
+    ],
+    [
+     "Făina",
+     "a frământat-o"
+    ],
+    [
+     "Azimile",
+     "le-a copt"
+    ]
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "28:24",
+   "q": "Femeia a copt pâine dospită pentru Saul.",
+   "a": false
+  }
+ ]
+}

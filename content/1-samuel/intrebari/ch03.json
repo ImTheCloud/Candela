@@ -1,0 +1,421 @@
+{
+ "ch": 3,
+ "easy": [
+  {
+   "t": "tf",
+   "ref": "3:1",
+   "q": "În vremea aceea, Domnul vorbea des, iar vedeniile erau multe.",
+   "a": false
+  },
+  {
+   "t": "tf",
+   "ref": "3:2",
+   "q": "Eli începuse să nu mai vadă bine.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "3:4-5",
+   "q": "Ce a crezut Samuel când a auzit prima dată chemarea?",
+   "opts": [
+    "că visase",
+    "că îl chemase Eli",
+    "că îl chemase mama lui",
+    "că îl chemase Hofni"
+   ],
+   "a": 1
+  },
+  {
+   "t": "match",
+   "ref": "3:4-10",
+   "q": "Asociază fiecare replică cu cel care a rostit-o.",
+   "pairs": [
+    [
+     "„Iată-mă, căci m-ai chemat.”",
+     "Samuel"
+    ],
+    [
+     "„Nu te-am chemat; întoarce-te și te culcă.”",
+     "Eli"
+    ],
+    [
+     "„Samuele, Samuele!”",
+     "Domnul"
+    ]
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "3:6",
+   "q": "La a doua chemare, Samuel a rămas în pat, fără să se mai ducă la Eli.",
+   "a": false
+  },
+  {
+   "t": "tf",
+   "ref": "3:7",
+   "q": "Samuel nu-L cunoștea încă pe Domnul atunci când a fost chemat.",
+   "a": true
+  },
+  {
+   "t": "multi",
+   "ref": "3:9",
+   "q": "Ce l-a sfătuit Eli pe Samuel? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "să se ducă să se culce",
+    "să răspundă „Vorbește, Doamne...”, dacă va mai fi chemat",
+    "să fugă din Templu",
+    "să aprindă candela",
+    "să-i trezească pe fiii lui Eli"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "3:10",
+   "q": "Și Samuel a răspuns: „Vorbește, căci ___ Tău ascultă.”",
+   "a": [
+    "robul"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "3:11-12",
+   "q": "Domnul i-a vorbit lui Samuel despre judecata care avea să vină asupra casei lui Eli.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "3:13",
+   "q": "De ce avea Domnul să pedepsească casa lui Eli?",
+   "opts": [
+    "pentru că Eli nu aducea jertfe",
+    "pentru că Eli nu i-a oprit pe fiii lui de la fărădelege",
+    "pentru că Samuel îl părăsise",
+    "pentru că poporul se închina la idoli"
+   ],
+   "a": 1
+  },
+  {
+   "t": "match",
+   "ref": "3:3-21",
+   "q": "Asociază fiecare loc sau casă cu ce se spune despre ea.",
+   "pairs": [
+    [
+     "Templul Domnului",
+     "locul unde era culcat Samuel"
+    ],
+    [
+     "Silo",
+     "locul unde Domnul nu înceta să Se arate"
+    ],
+    [
+     "Casa lui Eli",
+     "avea să fie pedepsită de Domnul"
+    ]
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "3:15",
+   "q": "Samuel s-a temut să-i istorisească lui Eli vedenia.",
+   "a": true
+  },
+  {
+   "t": "fill",
+   "ref": "3:17",
+   "q": "„Care este ___ pe care ți l-a vorbit Domnul? Nu-mi ascunde ___.”",
+   "a": [
+    "cuvântul",
+    "nimic"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "3:18",
+   "q": "Samuel i-a ascuns lui Eli o parte din ce îi spusese Domnul.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "3:18",
+   "q": "Cum a reacționat Eli când a auzit vestea?",
+   "opts": [
+    "s-a mâniat pe Samuel",
+    "a plâns și a fugit",
+    "„Domnul este Acesta, să facă ce va crede!”",
+    "a adus îndată o jertfă de ispășire"
+   ],
+   "a": 2
+  },
+  {
+   "t": "multi",
+   "ref": "3:19-20",
+   "q": "Ce se spune despre Samuel la sfârșitul capitolului? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Domnul era cu el",
+    "tot Israelul a cunoscut că era proroc al Domnului",
+    "a fost uns împărat",
+    "s-a mutat la Ierusalim",
+    "și-a părăsit slujba de la Templu"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  }
+ ],
+ "hard": [
+  {
+   "t": "match",
+   "ref": "3:1-3",
+   "q": "Asociază fiecare personaj sau obiect cu ce se spune despre el la începutul capitolului.",
+   "pairs": [
+    [
+     "Samuel",
+     "slujea Domnului înaintea lui Eli"
+    ],
+    [
+     "Eli",
+     "stătea culcat la locul lui"
+    ],
+    [
+     "candela lui Dumnezeu",
+     "nu se stinsese încă"
+    ]
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "3:3",
+   "q": "Când l-a chemat Domnul pe Samuel, candela lui Dumnezeu se stinsese deja.",
+   "a": false
+  },
+  {
+   "t": "multi",
+   "ref": "3:3",
+   "q": "Ce se afla, potrivit textului, în Templul Domnului unde era culcat Samuel? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "chivotul lui Dumnezeu",
+    "tablele legii, la vedere",
+    "toiagul lui Aaron",
+    "efodul de aur"
+   ],
+   "a": [
+    0
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "3:4",
+   "q": "Prima dată când a fost chemat, Samuel a răspuns: „Iată-mă!”",
+   "a": true
+  },
+  {
+   "t": "match",
+   "ref": "3:4-10",
+   "q": "Asociază fiecare chemare cu ce s-a întâmplat atunci.",
+   "pairs": [
+    [
+     "Prima chemare",
+     "Samuel a alergat la Eli"
+    ],
+    [
+     "A doua chemare",
+     "Eli i-a spus „fiule”"
+    ],
+    [
+     "A treia chemare",
+     "Eli a înțeles că Domnul cheamă pe copil"
+    ],
+    [
+     "A patra chemare",
+     "Domnul a venit și S-a înfățișat"
+    ]
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "3:8",
+   "q": "Domnul a chemat din nou pe Samuel, pentru a ___ oară.",
+   "a": [
+    "treia"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "3:9-10",
+   "q": "Ce cuvânt din răspunsul învățat de la Eli NU l-a rostit Samuel când a răspuns Domnului?",
+   "opts": [
+    "„robul”",
+    "„ascultă”",
+    "„Doamne”",
+    "„Vorbește”"
+   ],
+   "a": 2
+  },
+  {
+   "t": "fill",
+   "ref": "3:11",
+   "q": "Iată că voi face în Israel un lucru care va ___ urechile oricui îl va auzi.",
+   "a": [
+    "asurzi"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "3:12",
+   "q": "Despre casa lui Eli, Domnul a zis: „voi începe și voi isprăvi”.",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "3:13",
+   "q": "Domnul spune că Eli nu avea cunoștință de fărădelegea fiilor săi.",
+   "a": false
+  },
+  {
+   "t": "fill",
+   "ref": "3:13",
+   "q": "prin care fiii lui s-au făcut vrednici de ___, fără ca el să-i fi oprit.",
+   "a": [
+    "lepădat"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "3:13",
+   "q": "Pentru cât timp a spus Domnul că vrea să pedepsească casa lui Eli?",
+   "opts": [
+    "șapte ani",
+    "pentru totdeauna",
+    "până la moartea lui Eli",
+    "patruzeci de ani"
+   ],
+   "a": 1
+  },
+  {
+   "t": "multi",
+   "ref": "3:14",
+   "q": "Prin ce NU va fi ispășită fărădelegea casei lui Eli, potrivit jurământului Domnului? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "jertfe",
+    "post",
+    "daruri de mâncare",
+    "rugăciuni"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "3:14",
+   "q": "De aceea, jur casei lui Eli că niciodată fărădelegea casei lui Eli nu va fi ___.",
+   "a": [
+    "ispășită"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "3:15",
+   "q": "După vedenie, Samuel a rămas treaz toată noaptea.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "3:15",
+   "q": "Ce a deschis Samuel dimineața?",
+   "opts": [
+    "porțile cetății",
+    "cortul întâlnirii",
+    "ușile Casei Domnului",
+    "chivotul"
+   ],
+   "a": 2
+  },
+  {
+   "t": "tf",
+   "ref": "3:16",
+   "q": "Dimineața, Samuel s-a dus din proprie inițiativă la Eli să-i spună vedenia.",
+   "a": false
+  },
+  {
+   "t": "fill",
+   "ref": "3:16",
+   "q": "Dar Eli a chemat pe Samuel și a zis: „Samuele, ___!”",
+   "a": [
+    "fiule"
+   ]
+  },
+  {
+   "t": "match",
+   "ref": "3:12-18",
+   "q": "Asociază fiecare replică cu cel care a rostit-o.",
+   "pairs": [
+    [
+     "„În ziua aceea voi împlini asupra lui Eli tot ce am rostit”",
+     "Domnul"
+    ],
+    [
+     "„Dumnezeu să Se poarte cu tine cu toată asprimea”",
+     "Eli"
+    ],
+    [
+     "„Iată-mă!” (când l-a chemat Eli dimineața)",
+     "Samuel"
+    ]
+   ]
+  },
+  {
+   "t": "multi",
+   "ref": "3:15-18",
+   "q": "Ce s-a întâmplat în dimineața de după vedenie? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Samuel a deschis ușile Casei Domnului",
+    "Eli l-a chemat pe Samuel",
+    "Samuel i-a istorisit lui Eli tot",
+    "Samuel a fugit la Rama",
+    "Eli a adus o jertfă de ispășire"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "3:19",
+   "q": "Domnul n-a lăsat să cadă la pământ niciunul din cuvintele lui Samuel.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "3:20",
+   "q": "Între ce limite a cunoscut tot Israelul că Samuel era proroc?",
+   "opts": [
+    "de la Silo până la Rama",
+    "de la Ghilgal până la Betel",
+    "de la Iordan până la mare",
+    "de la Dan până la Beer-Șeba"
+   ],
+   "a": 3
+  },
+  {
+   "t": "one",
+   "ref": "3:21",
+   "q": "Prin ce Se descoperea Domnul lui Samuel în Silo?",
+   "opts": [
+    "prin vise",
+    "prin Cuvântul Domnului",
+    "prin Urim și Tumim",
+    "prin îngeri"
+   ],
+   "a": 1
+  }
+ ]
+}

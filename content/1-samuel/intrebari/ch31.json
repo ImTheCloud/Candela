@@ -1,0 +1,413 @@
+{
+ "ch": 31,
+ "easy": [
+  {
+   "t": "fill",
+   "ref": "31:1",
+   "q": "bărbații lui Israel au luat-o la ___ dinaintea filistenilor",
+   "a": [
+    "fugă"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "31:1",
+   "q": "Israel a câștigat lupta împotriva filistenilor.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "31:2",
+   "q": "Cine i-a urmărit pe Saul și pe fiii lui?",
+   "opts": [
+    "Amaleciții",
+    "Filistenii",
+    "Oamenii lui David",
+    "Moabiții"
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "31:2",
+   "q": "Ionatan, fiul lui Saul, a fost ucis de filisteni.",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "31:3",
+   "q": "Saul a scăpat nevătămat din luptă.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "31:4",
+   "q": "Ce a făcut purtătorul de arme când Saul i-a cerut să-l omoare?",
+   "opts": [
+    "L-a ascultat imediat",
+    "A fugit la filisteni",
+    "N-a voit, căci îi era teamă",
+    "A chemat ajutor"
+   ],
+   "a": 2
+  },
+  {
+   "t": "tf",
+   "ref": "31:4",
+   "q": "Saul a murit aruncându-se în propria sabie.",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "31:5",
+   "q": "După moartea lui Saul, purtătorul lui de arme a fugit de pe câmpul de luptă.",
+   "a": false
+  },
+  {
+   "t": "multi",
+   "ref": "31:6",
+   "q": "Cine a pierit în lupta aceasta? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Saul",
+    "Fiii lui Saul",
+    "Cel ce-i purta armele lui Saul",
+    "David",
+    "Abiatar"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "31:6",
+   "q": "Astfel au pierit în același timp și în aceeași ___ Saul",
+   "a": [
+    "zi"
+   ]
+  },
+  {
+   "t": "match",
+   "ref": "31:1-7",
+   "q": "Asociază fiecare grup cu ce a făcut.",
+   "pairs": [
+    [
+     "Bărbații lui Israel din luptă",
+     "Au căzut uciși pe munte"
+    ],
+    [
+     "Israeliții de dincolo de Iordan",
+     "Și-au părăsit cetățile"
+    ],
+    [
+     "Filistenii",
+     "S-au așezat în cetățile părăsite"
+    ]
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "31:8",
+   "q": "Pentru ce au venit filistenii a doua zi pe câmpul de luptă?",
+   "opts": [
+    "Ca să îngroape morții",
+    "Ca să facă pace",
+    "Ca să-l caute pe David",
+    "Ca să dezbrace pe cei morți"
+   ],
+   "a": 3
+  },
+  {
+   "t": "match",
+   "ref": "31:4-12",
+   "q": "Asociază fiecare cauză cu urmarea ei.",
+   "pairs": [
+    [
+     "Saul se temea ca netăiații împrejur să nu-și bată joc de el",
+     "S-a aruncat în sabia lui"
+    ],
+    [
+     "Purtătorul de arme l-a văzut pe Saul mort",
+     "S-a aruncat și el în sabia lui"
+    ],
+    [
+     "Locuitorii Iabesului au auzit ce făcuseră filistenii lui Saul",
+     "Vitejii lor au mers să ia trupurile"
+    ]
+   ]
+  },
+  {
+   "t": "multi",
+   "ref": "31:11-13",
+   "q": "Ce au făcut vitejii din Iabes? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Au atacat tabăra filistenilor",
+    "Au luat trupurile de pe zid",
+    "Au ars trupurile",
+    "Au dus trupurile la David",
+    "Au îngropat oasele"
+   ],
+   "a": [
+    1,
+    2,
+    4
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "31:13",
+   "q": "După îngropare, locuitorii Iabesului au postit.",
+   "a": true
+  }
+ ],
+ "hard": [
+  {
+   "t": "multi",
+   "ref": "31:2",
+   "q": "Care dintre următorii fii ai lui Saul sunt numiți printre cei uciși alături de Ionatan? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Abinadab",
+    "Ișvi",
+    "Malchișua",
+    "Abner",
+    "Eliab"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "31:3",
+   "q": "Saul a fost prins în ___ luptei",
+   "a": [
+    "toiul"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "31:3",
+   "q": "Cine l-a ajuns pe Saul și l-a rănit greu?",
+   "opts": [
+    "Prăștierii",
+    "Arcașii",
+    "Un amalecit",
+    "Purtătorul lui de arme"
+   ],
+   "a": 1
+  },
+  {
+   "t": "fill",
+   "ref": "31:4",
+   "q": "ca nu cumva acești ___ împrejur să vină să mă străpungă",
+   "a": [
+    "netăiați"
+   ]
+  },
+  {
+   "t": "match",
+   "ref": "31:4",
+   "q": "Asociază începutul cu sfârșitul cuvintelor lui Saul.",
+   "pairs": [
+    [
+     "„Scoate-ți sabia”",
+     "„și străpunge-mă”"
+    ],
+    [
+     "„ca nu cumva acești netăiați împrejur”",
+     "„să vină să mă străpungă”"
+    ],
+    [
+     "„și să-și bată”",
+     "„joc de mine”"
+    ]
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "31:6",
+   "q": "Câți fii ai lui Saul au pierit în aceeași zi cu el?",
+   "opts": [
+    "Doi",
+    "Patru",
+    "Trei",
+    "Cinci"
+   ],
+   "a": 2
+  },
+  {
+   "t": "tf",
+   "ref": "31:6",
+   "q": "Potrivit 31:6, au pierit în aceeași zi și toți oamenii lui Saul.",
+   "a": true
+  },
+  {
+   "t": "fill",
+   "ref": "31:7",
+   "q": "Cei din Israel care erau dincolo de ___ și dincolo de ___",
+   "a": [
+    "vale",
+    "Iordan"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "31:7",
+   "q": "Israeliții de dincolo de Iordan au fugit înainte să afle de moartea lui Saul.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "31:8",
+   "q": "Când au găsit filistenii trupurile lui Saul și ale fiilor lui?",
+   "opts": [
+    "În aceeași seară",
+    "După trei zile",
+    "A doua zi",
+    "După șapte zile"
+   ],
+   "a": 2
+  },
+  {
+   "t": "multi",
+   "ref": "31:9",
+   "q": "Unde au trimis filistenii să dea de veste? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Prin toată țara filistenilor",
+    "La Achiș, în Gat",
+    "În casele idolilor lor",
+    "În popor",
+    "În Egipt"
+   ],
+   "a": [
+    0,
+    2,
+    3
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "31:9",
+   "q": "Au tăiat ___ lui Saul și i-au luat ___",
+   "a": [
+    "capul",
+    "armele"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "31:10",
+   "q": "Armele lui Saul au fost puse în casa lui Dagon.",
+   "a": false
+  },
+  {
+   "t": "match",
+   "ref": "31:9-13",
+   "q": "Asociază fiecare lucru cu ce s-a întâmplat cu el.",
+   "pairs": [
+    [
+     "Armele lui Saul",
+     "Au fost puse în casa astarteelor"
+    ],
+    [
+     "Trupurile lui Saul și ale fiilor lui",
+     "Au fost arse la Iabes"
+    ],
+    [
+     "Oasele",
+     "Au fost îngropate sub un copac"
+    ]
+   ]
+  },
+  {
+   "t": "match",
+   "ref": "31:1-13",
+   "q": "Asociază fiecare loc cu ce se spune despre el.",
+   "pairs": [
+    [
+     "Muntele Ghilboa",
+     "Acolo au căzut uciși bărbații lui Israel"
+    ],
+    [
+     "Bet-Șan",
+     "Pe zidurile lui a fost atârnat trupul lui Saul"
+    ],
+    [
+     "Galaad",
+     "Ținutul cetății Iabes"
+    ],
+    [
+     "Iordanul",
+     "Dincolo de el locuiau israeliți care și-au părăsit cetățile"
+    ]
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "31:12",
+   "q": "La Bet-Șan au mers numai câțiva bătrâni din Iabes.",
+   "a": false
+  },
+  {
+   "t": "tf",
+   "ref": "31:12",
+   "q": "Vitejii din Iabes au mers toată noaptea.",
+   "a": true
+  },
+  {
+   "t": "fill",
+   "ref": "31:13",
+   "q": "le-au îngropat sub ___ din Iabes. Și au postit ___ zile.",
+   "a": [
+    "stejarul",
+    "șapte"
+   ]
+  },
+  {
+   "t": "multi",
+   "ref": "31:1-13",
+   "q": "Care dintre următoarele locuri sunt menționate în capitolul 31? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Ghilboa",
+    "Țiclag",
+    "Bet-Șan",
+    "Afec",
+    "Iabes",
+    "Iordan"
+   ],
+   "a": [
+    0,
+    2,
+    4,
+    5
+   ]
+  },
+  {
+   "t": "multi",
+   "ref": "31:9-10",
+   "q": "Care dintre următoarele le-au făcut filistenii trupului lui Saul, potrivit 31:9-10? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "I-au ars trupul",
+    "I-au îngropat trupul",
+    "L-au dus în Gat",
+    "I-au dat trupul lui David"
+   ],
+   "a": []
+  },
+  {
+   "t": "tf",
+   "ref": "31:8",
+   "q": "Filistenii i-au găsit pe Saul și pe fiii lui căzuți pe muntele Carmel.",
+   "a": false
+  },
+  {
+   "t": "tf",
+   "ref": "31:11",
+   "q": "Iabesul din care au venit vitejii este numit „Iabesul din Galaad”.",
+   "a": true
+  }
+ ]
+}
