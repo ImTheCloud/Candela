@@ -141,7 +141,8 @@ p{margin:0}
 .seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg);box-shadow:var(--shadow)}
 .more summary{font-family:var(--f-body);font-size:13.5px;font-weight:600;color:var(--oil-ink);cursor:pointer;margin-top:6px}
 .more[open] summary{margin-bottom:6px}
-.seg-note{font-size:13px;color:var(--ink-2);margin-top:8px}
+.seg-note{font-size:13px;color:var(--ink-2)}
+.lvl-h{justify-content:flex-start;gap:12px;flex-wrap:wrap;row-gap:2px}
 .who.acct{border:1px solid var(--line);padding-left:14px}
 .who.acct .avatar{background:var(--surface-2);color:var(--ink)}
 .guest-line{font-size:14px;color:var(--ink-2);margin-top:6px}
@@ -185,7 +186,11 @@ html:has(.sheet-bg),html:has(.modal-bg),body:has(.sheet-bg),body:has(.modal-bg){
 .dur{font-size:13px;color:var(--ink-2);margin-top:-6px}
 .cnt-h{display:flex;justify-content:space-between;align-items:baseline}
 .cnt-h b{font-family:var(--f-display);font-weight:400;font-size:28px;line-height:1}
-.sheet input[type=range]{width:100%;accent-color:var(--oil)}
+.cnt-h span small{color:var(--ink-2);font-size:13px}
+.stepper{display:flex;align-items:center;gap:6px}
+.stepper .icon-btn{font-size:20px;line-height:1;color:var(--ink)}
+.stepper .input{width:84px;text-align:center;padding:8px 6px;font-family:var(--f-display);font-size:24px;-moz-appearance:textfield}
+.stepper .input::-webkit-outer-spin-button,.stepper .input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
 @keyframes fadeIn{from{opacity:0}}
 @keyframes sheetUp{from{transform:translateY(40px);opacity:0}}
 @media (min-width:960px){.sheet-bg{align-items:center}.sheet{border-radius:24px;padding:24px}}
@@ -779,11 +784,10 @@ function viewHome(){
 
   <aside class="h-config">
     <div class="panel">
-      <div class="section-h first"><h3>Nivel</h3></div>
+      <div class="section-h first lvl-h"><h3>Nivel</h3><span class="seg-note" id="modeNote"></span></div>
       <div class="seg" role="group" aria-label="Nivel">
         ${["easy","hard","both"].map(m=>`<button data-mode="${m}" aria-pressed="${S.mode===m}">${MODE_LABEL[m]}</button>`).join("")}
       </div>
-      <p class="seg-note" id="modeNote"></p>
       
 
       <div class="section-h"><h3>Câte capitole vrei să exersezi?</h3></div>
@@ -901,18 +905,24 @@ function openOptions(){
   bg.innerHTML = `<div class="sheet" role="dialog" aria-modal="true" aria-labelledby="shT">
     <div class="sheet-h"><h3 id="shT">Câte întrebări?</h3><button class="icon-btn" id="shX" aria-label="Închide"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div>
     <div class="opts-row">
-      <div class="toggle col"><div class="cnt-h"><span>Număr de întrebări</span><b id="shN"></b></div><small class="dur" id="shD"></small>
-        <input type="range" id="shR" min="${Math.min(5,pool)}" max="${pool}" step="1" value="${pool}" aria-label="Număr de întrebări">
+      <div class="toggle col"><div class="cnt-h"><span>Întrebări <small>din ${pool}</small></span>
+        <div class="stepper"><button type="button" class="icon-btn" id="shMinus" aria-label="Mai puține">−</button><input class="input" id="shN" type="number" inputmode="numeric" min="1" max="${pool}" value="${pool}" aria-label="Număr de întrebări"><button type="button" class="icon-btn" id="shPlus" aria-label="Mai multe">+</button></div></div>
+        <small class="dur" id="shD"></small>
         <div class="counts">${[10,20,30,50].filter(v=>v<pool).map(v=>`<button class="chip" data-n="${v}">${v}</button>`).join("")}<button class="chip" data-n="${pool}">Toate</button></div></div>
     </div>
     <button class="btn btn-primary btn-block" id="shGo"></button>
   </div>`;
   document.body.appendChild(bg);
-  const set = v => { n = Math.max(1, Math.min(pool, v)); bg.querySelector("#shR").value = n; bg.querySelector("#shN").textContent = n;
+  const inp = bg.querySelector("#shN");
+  const set = (v, typing) => { n = Math.max(1, Math.min(pool, Math.round(v) || 1)); if (!typing) inp.value = n;
     bg.querySelectorAll("[data-n]").forEach(c => c.setAttribute("aria-pressed", +c.dataset.n === n)); bg.querySelector("#shGo").textContent = `Începe · ${n} întrebări`; bg.querySelector("#shD").textContent = durLabel(perQ * n); };
   const close = () => bg.remove();
   set(pool);
-  bg.querySelector("#shR").oninput = e => set(+e.target.value);
+  inp.oninput = () => { if (inp.value !== "") set(+inp.value, true); };
+  inp.onblur = () => set(+inp.value || n);
+  inp.onkeydown = e => { if (e.key === "Enter"){ e.preventDefault(); inp.blur(); } };
+  bg.querySelector("#shMinus").onclick = () => set(n - 1);
+  bg.querySelector("#shPlus").onclick = () => set(n + 1);
   bg.querySelectorAll("[data-n]").forEach(c => c.onclick = () => set(+c.dataset.n));
   bg.querySelector("#shX").onclick = close;
   bg.onclick = e => { if (e.target === bg) close(); };
