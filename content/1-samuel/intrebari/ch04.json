@@ -176,6 +176,135 @@
    "ref": "4:17",
    "q": "Vestitorul i-a spus lui Eli că Israel a câștigat lupta, dar fiii lui au murit.",
    "a": false
+  },
+  {
+   "t": "tf",
+   "ref": "4:1",
+   "q": "Israel a ieșit înaintea filistenilor ca să lupte împotriva lor.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "4:3",
+   "q": "Unde s-a întors poporul după prima înfrângere?",
+   "opts": [
+    "la Silo",
+    "în tabără",
+    "la Rama",
+    "acasă, fiecare în cetatea lui"
+   ],
+   "a": 1
+  },
+  {
+   "t": "one",
+   "ref": "4:6",
+   "q": "Ce au auzit filistenii din tabăra lui Israel înainte să afle că sosise chivotul?",
+   "opts": [
+    "răsunetul strigătelor",
+    "sunetul trâmbițelor",
+    "plânsetele poporului",
+    "cântecul preoților"
+   ],
+   "a": 0
+  },
+  {
+   "t": "fill",
+   "ref": "4:9",
+   "q": "Întăriți-vă și fiți oameni, filistenilor, ca nu cumva să fiți robi evreilor, cum v-au fost ei robi vouă: fiți oameni și ___!",
+   "a": [
+    "luptați"
+   ]
+  },
+  {
+   "t": "multi",
+   "ref": "4:17",
+   "q": "Ce vești i-a adus omul lui Eli? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Israel a fugit dinaintea filistenilor",
+    "poporul a suferit o mare înfrângere",
+    "Hofni și Fineas au murit",
+    "Samuel a fost luat rob",
+    "filistenii vin spre Silo",
+    "chivotul Domnului a fost luat"
+   ],
+   "a": [
+    0,
+    1,
+    2,
+    5
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "4:18",
+   "q": "Ce slujbă avusese Eli în Israel, potrivit 4:18?",
+   "opts": [
+    "fusese împărat",
+    "fusese judecător",
+    "fusese căpetenie de oaste",
+    "fusese proroc"
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "4:19",
+   "q": "Nevasta lui Fineas a născut chiar după ce a auzit vestea, căci au apucat-o durerile nașterii.",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "4:20",
+   "q": "Nevasta lui Fineas era pe moarte când femeile i-au spus că a născut un fiu.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "4:2-11",
+   "q": "Ce s-a întâmplat ÎNAINTE de aducerea chivotului în tabără?",
+   "opts": [
+    "Hofni și Fineas au murit",
+    "Eli a căzut de pe scaun",
+    "Israel a fost bătut și au murit aproape patru mii de oameni",
+    "s-a născut I-Cabod"
+   ],
+   "a": 2
+  },
+  {
+   "t": "tf",
+   "ref": "4:2-10",
+   "q": "În a doua luptă au căzut din Israel mai puțini oameni decât în prima.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "4:19-21",
+   "q": "Al cui fiu era I-Cabod?",
+   "opts": [
+    "al lui Hofni",
+    "al lui Fineas",
+    "al lui Eli",
+    "al lui Samuel"
+   ],
+   "a": 1
+  },
+  {
+   "t": "one",
+   "ref": "4:16",
+   "q": "De unde a spus omul că vine, când a ajuns la Eli?",
+   "opts": [
+    "de la Rama",
+    "de pe câmpul de bătaie",
+    "de la Afec, din tabăra filistenilor",
+    "de la Silo"
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "4:10",
+   "q": "A doua luptă a fost începută de filisteni.",
+   "a": true
   }
  ],
  "hard": [
@@ -442,6 +571,55 @@
    "ref": "4:21",
    "q": "Numele I-Cabod i-a fost dat copilului de bunicul său, Eli.",
    "a": false
+  },
+  {
+   "t": "fill",
+   "ref": "4:8",
+   "q": "Vai de noi! Cine ne va izbăvi din mâna acestor dumnezei ___?",
+   "a": [
+    "puternici"
+   ]
+  },
+  {
+   "t": "multi",
+   "ref": "4:21",
+   "q": "Din pricina căror lucruri a spus mama lui I-Cabod: „S-a dus slava din Israel!”, potrivit 4:21? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "luarea chivotului lui Dumnezeu",
+    "moartea socrului ei",
+    "moartea bărbatului ei",
+    "înfrângerea lui Samuel",
+    "arderea Templului din Silo"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "4:2",
+   "q": "Filistenii s-au așezat în linie de ___ împotriva lui Israel și lupta a început.",
+   "a": [
+    "bătaie"
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "4:19",
+   "q": "s-a ___ și a născut, căci au apucat-o durerile nașterii.",
+   "a": [
+    "încovoiat"
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "4:5",
+   "q": "tot Israelul a scos strigăte de bucurie de s-a ___ pământul.",
+   "a": [
+    "cutremurat"
+   ]
   }
  ]
 }

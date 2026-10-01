@@ -165,6 +165,108 @@
     0,
     1
    ]
+  },
+  {
+   "t": "tf",
+   "ref": "3:13",
+   "q": "Domnul spune că îi vestise deja lui Eli că vrea să pedepsească casa lui.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "3:5",
+   "q": "Ce a făcut Samuel după ce Eli i-a spus prima dată să se întoarcă și să se culce?",
+   "opts": [
+    "a rămas treaz la ușa lui Eli",
+    "s-a dus și s-a culcat",
+    "a plecat acasă, la Rama",
+    "a aprins candela"
+   ],
+   "a": 1
+  },
+  {
+   "t": "one",
+   "ref": "3:11",
+   "q": "Unde a spus Domnul că va face lucrul care va asurzi urechile oricui îl va auzi?",
+   "opts": [
+    "în Egipt",
+    "în Israel",
+    "în Filistia",
+    "numai în casa lui Eli"
+   ],
+   "a": 1
+  },
+  {
+   "t": "one",
+   "ref": "3:14",
+   "q": "Ce a făcut Domnul față de casa lui Eli, potrivit 3:14?",
+   "opts": [
+    "a iertat-o",
+    "a jurat împotriva ei",
+    "a binecuvântat-o",
+    "a uitat-o"
+   ],
+   "a": 1
+  },
+  {
+   "t": "one",
+   "ref": "3:9",
+   "q": "Unde s-a dus Samuel după ce Eli l-a învățat ce să răspundă?",
+   "opts": [
+    "la Eli, să-l vegheze",
+    "la ușile Casei Domnului",
+    "să se culce la locul lui",
+    "afară, în curte"
+   ],
+   "a": 2
+  },
+  {
+   "t": "one",
+   "ref": "3:4-8",
+   "q": "De câte ori s-a dus Samuel la Eli crezând că el îl chemase?",
+   "opts": [
+    "o dată",
+    "de două ori",
+    "de trei ori",
+    "de patru ori"
+   ],
+   "a": 2
+  },
+  {
+   "t": "one",
+   "ref": "3:16-18",
+   "q": "De ce i-a istorisit Samuel totul lui Eli, deși se temea?",
+   "opts": [
+    "pentru că Eli l-a chemat și i-a cerut să nu-i ascundă nimic",
+    "pentru că poporul l-a silit",
+    "pentru că Domnul i-a poruncit să tacă",
+    "pentru că a vrut să-l rușineze pe Eli"
+   ],
+   "a": 0
+  },
+  {
+   "t": "one",
+   "ref": "3:19",
+   "q": "Ce se mai spune despre Samuel în 3:19, pe lângă faptul că Domnul era cu el?",
+   "opts": [
+    "s-a însurat",
+    "creștea",
+    "a plecat din Silo",
+    "a devenit mare-preot"
+   ],
+   "a": 1
+  },
+  {
+   "t": "one",
+   "ref": "3:4",
+   "q": "Cine l-a chemat de fapt pe Samuel în noaptea aceea?",
+   "opts": [
+    "Eli",
+    "Hofni",
+    "Domnul",
+    "Elcana"
+   ],
+   "a": 2
   }
  ],
  "hard": [
@@ -416,6 +518,39 @@
     "prin îngeri"
    ],
    "a": 1
+  },
+  {
+   "t": "fill",
+   "ref": "3:7",
+   "q": "Samuel nu cunoștea încă pe Domnul și Cuvântul Domnului nu-i fusese încă ___.",
+   "a": [
+    "descoperit"
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "3:10",
+   "q": "Domnul a venit, S-a înfățișat și l-a chemat ca și în celelalte ___",
+   "a": [
+    "dăți"
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "3:2",
+   "q": "Eli începea să aibă ochii ___ și nu mai putea să vadă.",
+   "a": [
+    "tulburi"
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "3:1",
+   "q": "Cuvântul Domnului era ___ în vremea aceea și vedeniile nu erau ___.",
+   "a": [
+    "rar",
+    "dese"
+   ]
   }
  ]
 }

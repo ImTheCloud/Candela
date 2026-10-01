@@ -188,6 +188,198 @@
     "să-l dea Domnului pentru toată viața lui"
    ],
    "a": 3
+  },
+  {
+   "t": "multi",
+   "ref": "1:3",
+   "q": "Ce făcea Elcana la Silo, când se suia acolo în fiecare an? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "se închina înaintea Domnului",
+    "aducea jertfe Domnului",
+    "slujea ca preot",
+    "judeca poporul",
+    "vindea vite"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "1:9",
+   "q": "Ana s-a sculat să se roage după ce au mâncat și au băut ei la Silo.",
+   "a": true
+  },
+  {
+   "t": "multi",
+   "ref": "1:18",
+   "q": "Ce s-a schimbat la Ana după ce a plecat de la Eli? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "a mâncat",
+    "fața ei n-a mai fost aceeași",
+    "s-a certat cu Penina",
+    "a rămas să locuiască la Templu"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "1:19",
+   "q": "Înainte de a se întoarce acasă, familia lui Elcana s-a închinat până la pământ înaintea Domnului.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "1:20",
+   "q": "Cine i-a pus numele copilului născut de Ana?",
+   "opts": [
+    "Elcana",
+    "preotul Eli",
+    "Ana",
+    "Penina"
+   ],
+   "a": 2
+  },
+  {
+   "t": "multi",
+   "ref": "1:21",
+   "q": "Pentru ce s-a suit Elcana cu toată casa lui, după nașterea lui Samuel? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "să aducă Domnului jertfa de peste an",
+    "să-și împlinească juruința",
+    "să-l ia pe Eli la Rama",
+    "să o mustre pe Penina",
+    "să cumpere vite"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "1:23",
+   "q": "Ana a rămas acasă și a alăptat copilul până l-a înțărcat.",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "1:28",
+   "q": "După ce l-au dat pe copil Domnului, au plecat de la Silo fără să se mai închine.",
+   "a": false
+  },
+  {
+   "t": "multi",
+   "ref": "1:2",
+   "q": "Care dintre următoarele erau nevestele lui Elcana? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "Mical",
+    "Ana",
+    "Abigail",
+    "Penina",
+    "Rut"
+   ],
+   "a": [
+    1,
+    3
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "1:10",
+   "q": "Ana se ruga Domnului cu bucurie și cânta.",
+   "a": false
+  },
+  {
+   "t": "fill",
+   "ref": "1:22",
+   "q": "„Când voi ___ copilul, îl voi duce ca să fie pus înaintea Domnului și să rămână acolo pentru totdeauna.”",
+   "a": [
+    "înțărca"
+   ]
+  },
+  {
+   "t": "match",
+   "ref": "1:6-20",
+   "q": "Asociază fiecare cauză cu urmarea ei.",
+   "pairs": [
+    [
+     "Domnul o făcuse stearpă pe Ana",
+     "Penina o înțepa deseori"
+    ],
+    [
+     "Ana își mișca numai buzele când se ruga",
+     "Eli a crezut că este beată"
+    ],
+    [
+     "Domnul Și-a adus aminte de Ana",
+     "Ana a născut un fiu"
+    ]
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "1:24",
+   "q": "Unde l-a dus Ana pe copil după ce l-a înțărcat?",
+   "opts": [
+    "la Rama, în casa tatălui ei",
+    "în Casa Domnului, la Silo",
+    "la Betel, la altar",
+    "la Ierusalim, la împărat"
+   ],
+   "a": 1
+  },
+  {
+   "t": "one",
+   "ref": "1:7",
+   "q": "Când o înțepa Penina pe Ana, potrivit 1:7?",
+   "opts": [
+    "ori de câte ori se suia Ana la Casa Domnului",
+    "numai când Elcana era plecat",
+    "doar în ziua de Sabat",
+    "când Ana se întorcea de la fântână"
+   ],
+   "a": 0
+  },
+  {
+   "t": "one",
+   "ref": "1:1",
+   "q": "Cum se numea omul din Ramataim-Țofim cu care începe cartea?",
+   "opts": [
+    "Eli",
+    "Elcana",
+    "Samuel",
+    "Hofni"
+   ],
+   "a": 1
+  },
+  {
+   "t": "one",
+   "ref": "1:3",
+   "q": "Al cui fii erau Hofni și Fineas, preoții de la Silo?",
+   "opts": [
+    "ai lui Elcana",
+    "ai lui Samuel",
+    "ai lui Eli",
+    "ai lui Ieroham"
+   ],
+   "a": 2
+  },
+  {
+   "t": "one",
+   "ref": "1:13-25",
+   "q": "Care dintre aceste fapte s-a întâmplat PRIMUL?",
+   "opts": [
+    "Eli a crezut că Ana este beată",
+    "Ana a născut un fiu",
+    "Ana a înțărcat copilul",
+    "copilul a fost dus la Eli"
+   ],
+   "a": 0
   }
  ],
  "hard": [
@@ -452,6 +644,102 @@
    "a": [
     "rugăciunea"
    ]
+  },
+  {
+   "t": "match",
+   "ref": "1:11-26",
+   "q": "Asociază fiecare persoană cu felul în care o numește Ana în acest capitol.",
+   "pairs": [
+    [
+     "Domnul",
+     "„Dumnezeul oștirilor”"
+    ],
+    [
+     "Eli",
+     "„domnul meu”"
+    ],
+    [
+     "Ana însăși",
+     "„roaba Ta”"
+    ]
+   ]
+  },
+  {
+   "t": "multi",
+   "ref": "1:11",
+   "q": "Ce a cerut Ana de la Domnul în juruința ei, înainte de a face promisiunea? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "să caute spre întristarea roabei Lui",
+    "să-Și aducă aminte de ea și să n-o uite",
+    "să-i dea un copil de parte bărbătească",
+    "s-o pedepsească pe Penina",
+    "să-i dea bogăție mai multă decât Peninei"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "1:16",
+   "q": "căci numai prea multa mea ___ și supărarea m-au făcut să vorbesc până acum.",
+   "a": [
+    "durere"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "1:19",
+   "q": "În dimineața plecării de la Silo, s-au sculat dis-de-dimineață.",
+   "a": true
+  },
+  {
+   "t": "fill",
+   "ref": "1:26",
+   "q": "Ana a zis: „Domnul meu, ___-mă! Cât este de adevărat că sufletul tău trăiește",
+   "a": [
+    "iartă"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "1:1",
+   "q": "Cine era bunicul lui Elcana, potrivit genealogiei din 1:1?",
+   "opts": [
+    "Tohu",
+    "Țuf",
+    "Elihu",
+    "Ieroham"
+   ],
+   "a": 2
+  },
+  {
+   "t": "multi",
+   "ref": "1:8",
+   "q": "Care dintre următoarele întrebări i le-a pus Elcana Anei? (pot fi mai multe sau niciunul)",
+   "opts": [
+    "„Pentru ce ți-este întristată inima?”",
+    "„De ce te-ai certat cu Penina?”",
+    "„De ce nu te rogi Domnului?”",
+    "„Vrei să mergem la preotul Eli?”"
+   ],
+   "a": [
+    0
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "1:12",
+   "q": "De ce se uita Eli cu băgare de seamă la Ana?",
+   "opts": [
+    "pentru că ea stătea multă vreme în rugăciune înaintea Domnului",
+    "pentru că ea plângea cu glas tare",
+    "pentru că ea se așezase pe scaunul lui",
+    "pentru că ea nu adusese jertfă"
+   ],
+   "a": 0
   }
  ]
 }
