@@ -1,4 +1,4 @@
-<!doctype html><html lang="ro"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#F8F1E6" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#F8F1E6" media="(prefers-color-scheme: dark)"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2c2 3 4 5 4 8a4 4 0 0 1-8 0c0-2 1.5-3.5 2-5 .5 1.5 1.2 2.2 2 2.5C11.6 5.5 12 4 12 2z' fill='%23B87A0B'/%3E%3Cpath d='M3 16c3 0 6-1.5 9-1.5s5 .8 9 0c-.7 3-4 5.5-9 5.5-3.5 0-7-1.5-9-4z' fill='%231E261D'/%3E%3C/svg%3E"><meta property="og:title" content="Candela · Test biblic 1 Samuel"><meta property="og:description" content="2.004 de întrebări din 1 Samuel (Cornilescu), nivel ușor și greu."><style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script></head><body><title>Candela 1 Samuel</title>
+<!doctype html><html lang="ro"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#F8F1E6" media="(prefers-color-scheme: light)"><meta name="theme-color" content="#F8F1E6" media="(prefers-color-scheme: dark)"><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2c2 3 4 5 4 8a4 4 0 0 1-8 0c0-2 1.5-3.5 2-5 .5 1.5 1.2 2.2 2 2.5C11.6 5.5 12 4 12 2z' fill='%23B87A0B'/%3E%3Cpath d='M3 16c3 0 6-1.5 9-1.5s5 .8 9 0c-.7 3-4 5.5-9 5.5-3.5 0-7-1.5-9-4z' fill='%231E261D'/%3E%3C/svg%3E"><link rel="manifest" href="/manifest.webmanifest"><link rel="apple-touch-icon" href="/icons/apple-touch-icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Candela"><meta property="og:title" content="Candela · Test biblic 1 Samuel"><meta property="og:description" content="2.004 de întrebări din 1 Samuel (Cornilescu), nivel ușor și greu."><style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script></head><body><title>Candela 1 Samuel</title>
 <meta name="description" content="Pregătire pentru testul biblic din 1 Samuel, după traducerea Cornilescu.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -70,7 +70,7 @@ p{margin:0}
 .remember input{width:20px;height:20px;accent-color:var(--cedar);margin:0}
 .board.scroll{position:relative;overflow-y:auto;overscroll-behavior:contain;align-content:start}
 .entry .board.scroll{flex:1;min-height:0}
-.h-board .board.scroll{max-height:420px}
+.h-board .board.scroll{max-height:300px}
 .lamp-wrap{display:flex;justify-content:center;position:relative}
 .lamp-glow{position:absolute;inset:-40px 0 auto;height:220px;background:radial-gradient(closest-side,color-mix(in oklab,var(--oil) 40%,transparent),transparent);filter:blur(6px);animation:glow 3.2s ease-in-out infinite;pointer-events:none}
 @keyframes glow{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:.85;transform:scale(1.06)}}
@@ -279,6 +279,7 @@ html:has(.sheet-bg),html:has(.modal-bg),body:has(.sheet-bg),body:has(.modal-bg){
 .ring .val{position:absolute;inset:0;display:grid;place-items:center;align-content:center}
 .ring .val b{font-family:var(--f-display);font-weight:400;font-size:58px;line-height:1;font-variant-numeric:tabular-nums}
 .ring .val small{color:var(--ink-2);font-size:14px}
+.verdict-tip{color:var(--ink-2);font-size:15px;margin:6px auto 0;max-width:34ch;text-align:center}
 .verdict{font-family:var(--f-display);font-size:30px;line-height:1.1}
 .sparks{position:absolute;inset:0;pointer-events:none;overflow:visible}
 .spark{position:absolute;left:50%;top:50%;width:6px;height:6px;border-radius:50%;background:var(--oil);opacity:0;animation:spark 1.4s ease-out forwards}
@@ -335,20 +336,22 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .tile .check::after{content:"";position:absolute;left:5px;top:2.5px;width:4px;height:8px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
 .grid[data-scope="many"] .tile[aria-pressed="true"] .check{display:block}
 .grid[data-scope="all"] .tile[aria-pressed="true"]{box-shadow:none}
-.board{display:grid;gap:6px;background:var(--surface);border-radius:18px;padding:8px;box-shadow:var(--shadow)}
-.brow-l{display:grid;grid-template-columns:2rem auto minmax(0,1fr) auto;align-items:center;gap:12px;padding:12px;border-radius:14px}
+.board{display:grid;gap:2px;background:var(--surface);border-radius:18px;padding:8px;box-shadow:var(--shadow)}
+.brow-l{display:grid;grid-template-columns:1.6rem auto minmax(0,1fr) auto;align-items:center;gap:10px;padding:7px 10px;border-radius:12px}
 .brow-l.me{background:var(--oil-soft)}
-.brow-l .rank{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;justify-self:center;font-family:var(--f-display);font-size:17px;color:var(--ink-2);font-variant-numeric:tabular-nums}
-.brow-l .rank.r1,.brow-l .rank.r2,.brow-l .rank.r3{color:#fff;font-size:15px}
+.brow-l .rank{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;justify-self:center;font-family:var(--f-display);font-size:17px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.brow-l .rank.r1,.brow-l .rank.r2,.brow-l .rank.r3{color:#fff;font-size:13px}
 .brow-l .rank.r1{background:var(--oil)}.brow-l .rank.r2{background:#A99A8A}.brow-l .rank.r3{background:#A8693A}
-.brow-l .who-l{display:grid;gap:5px}
+.brow-l .who-l{display:grid;gap:1px}
+.brow-l .who-l b{font-size:14px}.brow-l .who-l small{font-size:12px}
+.brow-l .avatar.sm{width:26px;height:26px;font-size:11px}
 .brow-l .nm{display:flex!important;align-items:center;gap:6px;min-width:0}
 .brow-l .nm span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .brow-l .nm em{flex:none;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;background:var(--oil);color:#fff;padding:2px 7px;border-radius:999px}
 .brow-l .who-l .bar{height:5px;max-width:260px}
 .brow-l .pts{display:grid;justify-items:end;line-height:1.1}
-.brow-l .pts b{font-family:var(--f-display);font-weight:400;font-size:24px;font-variant-numeric:tabular-nums}
-.brow-l .pts small{font-size:11.5px;color:var(--ink-2)}
+.brow-l .pts b{font-family:var(--f-display);font-weight:400;font-size:19px;font-variant-numeric:tabular-nums}
+.brow-l .pts small{font-size:11px;color:var(--ink-2)}
 .avatar.sm{width:30px;height:30px;font-size:12px}
 .who-l{min-width:0}.who-l b{display:block;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.who-l em{font-style:normal;color:var(--oil-ink);font-weight:500}
 .who-l small{color:var(--ink-2);font-size:12.5px}
@@ -362,7 +365,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
   .h-verse .verse-quote{text-align:left;margin:0;max-width:none;font-size:20px}
   .h-verse .lamp-wrap{margin:0}
   .h-verse .lamp-glow{display:none}
-  .h-board .board.scroll{max-height:min(520px,calc(100vh - 420px))}
+  .h-board .board.scroll{max-height:min(400px,calc(100vh - 420px))}
   .keys{display:block}
   .h-config{position:sticky;top:20px;align-self:start}
   .panel{background:var(--surface);border-radius:24px;padding:24px;box-shadow:var(--shadow)}
@@ -373,7 +376,69 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
   .qcard{padding:30px 32px}
   .qtext{font-size:22px}
 }
-@media (max-width:420px){.brow-l{grid-template-columns:1.8rem auto minmax(0,1fr) auto;gap:10px;padding:10px}}
+/* v4: quick test, question of the day, streak, medals, reading, read aloud, text size, groups, tutorial */
+.top-r{display:flex;align-items:center;gap:8px;min-width:0}
+.icon-btn.aa{display:inline-flex;align-items:baseline;justify-content:center;font-family:var(--f-display);font-size:18px;line-height:1;flex:none}
+.icon-btn.aa small{font-size:12px;margin-left:1px}
+.streak{display:inline-flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:var(--oil-ink);background:var(--oil-soft);padding:5px 12px;border-radius:999px;justify-self:start;margin-top:4px}
+.today{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px}
+.tcard{background:var(--surface);border-radius:18px;padding:16px;box-shadow:var(--shadow);display:grid;gap:4px;align-content:start;justify-items:start;text-align:left;border:1.5px solid transparent;font-size:inherit}
+button.tcard{width:100%;transition:transform .15s,border-color .2s}
+button.tcard:hover:not(:disabled){border-color:var(--oil)}
+button.tcard:active:not(:disabled){transform:scale(.98)}
+.tcard:disabled{cursor:default;opacity:1}
+.tcard .ti{font-size:24px;line-height:1.1;margin-bottom:4px}
+.tcard b{font-weight:600;font-size:16px}
+.tcard small{color:var(--ink-2);font-size:13px;line-height:1.35}
+.tcard.done{background:var(--ok-soft)}
+.tile .medal{position:absolute;bottom:3px;right:3px;width:13px;height:13px;border-radius:50%;border:2px solid var(--surface)}
+.medal.m1{background:#B87333}.medal.m2{background:#A9A39A}.medal.m3{background:#E0A324}
+.legend{flex-wrap:wrap;row-gap:4px}
+.legend button{background:none;border:0;padding:0;font-size:inherit;color:inherit;text-decoration:underline dotted;text-underline-offset:3px}
+.legend .medal{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:2px;vertical-align:-1px}
+.legend .medal:last-of-type{margin-right:5px}
+.read-link{display:block;margin:8px auto 0;font-size:14.5px}
+.help-line{text-align:center;margin-top:18px;display:flex;justify-content:center;gap:18px;flex-wrap:wrap}
+.help-line .link{font-size:14px}
+.qmeta-r{display:flex;align-items:center;gap:8px}
+.icon-btn.say{width:34px;height:34px;color:var(--ink-2)}
+.icon-btn.say.on,[data-say].on{background:var(--oil-soft);border-color:var(--oil);color:var(--oil-ink)}
+.reader{display:grid;gap:16px}
+.reader-h{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px}
+.reader-h h2{font-size:26px;line-height:1.1}
+.reader-h .btn{min-height:42px;padding:8px 14px;font-size:14.5px}
+.reader-text{background:var(--surface);border-radius:20px;padding:20px;box-shadow:var(--shadow);font-family:var(--f-display);font-size:18px;line-height:1.65}
+.reader-text p{margin:0 0 .45em;padding:0 4px;border-radius:6px;transition:background .3s}
+.reader-text sup{font-family:var(--f-mono);font-size:11px;color:var(--oil-ink);margin-right:4px}
+.reader-text p.speaking{background:var(--oil-soft)}
+.board-tabs{display:flex;gap:6px;overflow-x:auto;margin:-4px 0 10px;padding-bottom:2px;scrollbar-width:none}
+.board-tabs:empty{display:none}
+.board-tabs .chip{flex:none;white-space:nowrap}
+.grp{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:10px;padding-top:10px;border-top:1px solid var(--line)}
+.grp b{display:block;font-weight:600;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.grp small{color:var(--ink-2);font-size:13px}
+.grp code{font-family:var(--f-mono);font-size:13px;color:var(--oil-ink);background:var(--oil-soft);padding:1px 6px;border-radius:6px;letter-spacing:.08em}
+.grp-a{display:flex;align-items:center;gap:8px}
+.grp-a .link{padding:0;font-size:13.5px}
+.grp-btns{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.grp-btns .btn{min-height:42px;padding:8px 10px;font-size:14.5px}
+.grp-form{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px}
+.grp-form .input{padding:10px 12px;font-size:16px}
+.grp-form .btn{min-height:44px;padding:8px 16px}
+.pf-note{font-size:13px;color:var(--ink-2);margin:0}
+.tut{max-width:380px;gap:14px;padding:26px 22px 20px}
+.tut-art{min-height:132px;display:grid;place-items:center;background:var(--bg);border-radius:18px;padding:16px}
+.tut-art .seg{width:100%;pointer-events:none}
+.tut-grid{display:grid;grid-template-columns:repeat(4,46px);gap:8px;pointer-events:none}
+.tut-grid .tile .n{font-size:18px}
+.tut-art .feedback{width:100%;text-align:left;font-size:14px;animation:none}
+.tut-art .verse{font-size:14px}
+.tut p{color:var(--ink-2)}
+.tut-dots{display:flex;justify-content:center;gap:6px}
+.tut-dots i{width:7px;height:7px;border-radius:50%;background:var(--line);transition:all .2s}
+.tut-dots i.on{background:var(--oil);width:20px;border-radius:4px}
+.forgot{justify-self:end;margin-top:-8px;font-size:14px}
+@media (max-width:420px){.brow-l{gap:8px;padding:7px 8px}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 </style>
 
@@ -398,7 +463,7 @@ const pct = (a,b) => b ? Math.round(a/b*100) : 0;
 const refLabel = r => "1 Sam. " + r;
 function lsGet(k, d){ try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } }
 function lsSet(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }
-function toast(msg){ const t = $("#toast"); t.textContent = msg; t.classList.add("show"); clearTimeout(toast._t); toast._t = setTimeout(()=>t.classList.remove("show"), 2400); }
+function toast(msg, ms = 2400){ const t = $("#toast"); t.textContent = msg; t.classList.add("show"); clearTimeout(toast._t); toast._t = setTimeout(()=>t.classList.remove("show"), ms); }
 function verseHTML(ref){
   const m = /^(\d+):(\d+)(?:-(\d+))?$/.exec(ref); if (!m) return "";
   const c = +m[1], a = +m[2], b = +(m[3]||m[2]); const vs = TEXT[c] || [];
@@ -528,11 +593,22 @@ const store = {
   async board(){
     if (!sb()) return null;
     try {
-      const { data, error } = await sb().rpc("leaderboard");
+      const { data, error } = await sb().rpc("board");
       if (error) return null;
       const total = totalCount("both");
-      return data.map(x => ({ name: x.name, ok: x.ok, tests: x.tests, mastery: Math.round(x.ok / total * 1000) / 10 }));
+      return data.map(x => ({ name: x.name, ok: x.ok, tests: x.tests, me: !!x.me, mastery: Math.round(x.ok / total * 1000) / 10 }));
     } catch { return null; }
+  },
+  /* returns {ok, data} or {ok:false, error} */
+  async rpc(fn, args){
+    if (!sb()) return {ok:false, error:"network"};
+    try { const { data, error } = await sb().rpc(fn, args); return error ? {ok:false, error: isNetErr(error) ? "network" : String(error.message || "server")} : {ok:true, data}; }
+    catch (e) { return {ok:false, error: isNetErr(e) ? "network" : "server"}; }
+  },
+  async resetPassword(email){
+    if (!sb()) return {ok:false, error:"network"};
+    try { const { error } = await sb().auth.resetPasswordForEmail(email, { redirectTo: location.origin + "/" }); return error ? {ok:false, error: isNetErr(error) ? "network" : /rate|seconds/i.test(error.message) ? "rate" : "mail"} : {ok:true}; }
+    catch (e) { return {ok:false, error: isNetErr(e) ? "network" : "mail"}; }
   },
   async logout(){ try { await sb()?.auth.signOut(); } catch {} this.uid = null; this.email = ""; }
 };
@@ -548,12 +624,14 @@ const S = {
   instant: true,
   quiz: null,
   board: null,
+  groups: null,                                   // the signed-in player's groups (family, Sunday school)
+  boardTab: lsGet("candela:boardTab", "all"),     // "all" or a group id
 };
 if (!S.sel.size) S.sel.add(1);
 if (S.scope === "one" && S.sel.size > 1) S.sel = new Set([[...S.sel][0]]);
 function persistPrefs(){ lsSet("candela:scope",S.scope); lsSet("candela:sel",[...S.sel]); lsSet("candela:mode",S.mode); lsSet("candela:count",S.count); }
 const app = $("#app");
-function mount(html){ app.innerHTML = `<div class="view">${html}</div>`; window.scrollTo({top:0}); }
+function mount(html){ stopSpeak(); app.innerHTML = `<div class="view">${html}</div>`; window.scrollTo({top:0}); }
 
 function lampSVG(size=64){
   return `<svg width="${size*1.6}" height="${size*1.6}" viewBox="0 0 160 160" aria-hidden="true">
@@ -582,6 +660,7 @@ function viewEntry(msg, tab){
       </div>` : ""}
       <div class="field"><label for="email">Email</label><input class="input" id="email" type="${isNew ? "email" : "text"}" inputmode="email" maxlength="254" autocomplete="${isNew ? "email" : "username"}" autocapitalize="none" spellcheck="false" required value="${isNew ? "" : esc(lsGet("candela:email", ""))}"></div>
       <div class="field"><label for="pw">Parolă</label><input class="input" id="pw" type="password" autocomplete="${isNew ? "new-password" : "current-password"}" minlength="6" required></div>
+      ${isNew ? "" : `<button class="link forgot" id="forgot" type="button">Ai uitat parola?</button>`}
       <label class="remember"><input type="checkbox" id="remember" ${lsGet("candela:remember", true) ? "checked" : ""}> Rămâi conectat</label>
       <p class="form-error" id="err" role="alert">${msg ? esc(msg) : ""}</p>
       <button class="btn btn-primary btn-block" id="go" type="submit">${isNew ? "Creează contul" : "Intră"}</button>
@@ -590,6 +669,7 @@ function viewEntry(msg, tab){
   </section>`);
   const f = $("#enter"), err = $("#err"), first = $("#first"), last = $("#last"), email = $("#email"), pw = $("#pw");
   $("#back").onclick = () => S.player ? viewHome() : enterGuest();
+  if ($("#forgot")) $("#forgot").onclick = () => forgotPassword($("#email").value.trim());
   app.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => viewEntry("", b.dataset.tab));
   (isNew ? last : !email.value ? email : pw).focus();
   f.addEventListener("input", () => { err.textContent = ""; });
@@ -633,14 +713,24 @@ function enter(profile, created){
   if (created) toast(store.moved ? "Cont creat. Rezultatele tale au fost salvate." : "Cont creat. Bine ai venit!");
   else if (store.moved) toast("Rezultatele de invitat au fost adăugate în cont.");
   store.moved = 0;
+  S.groups = null;
   viewHome();
+  joinPending();
 }
 function enterGuest(){ S.player = store.guest(); viewHome(); }
 async function autoLogin(){
   mount(`<div class="boot"><div class="lamp-wrap"><div class="lamp-glow"></div>${lampSVG(100)}</div><h1>Candela</h1><div class="boot-bar"><i></i></div></div>`);
+  const hp = new URLSearchParams(location.hash.slice(1));
+  if (hp.get("type") === "recovery" || hp.get("error_description")){
+    history.replaceState(null, "", location.pathname + location.search);
+    if (hp.get("access_token") && sb()){
+      try { const { error } = await sb().auth.setSession({ access_token: hp.get("access_token"), refresh_token: hp.get("refresh_token") }); if (!error) return viewNewPassword(); } catch {}
+    }
+    S.player = store.guest(); return viewEntry("Linkul nu mai e valabil. Cere unul nou cu „Ai uitat parola?”.", "in");
+  }
   let user = null;
   try { user = await store.resume(); } catch {}
-  if (!user) return enterGuest();
+  if (!user){ enterGuest(); if (lsGet("candela:joinCode", null)) viewEntry("Ca să intri în grup, intră în cont sau creează unul.", lsGet("candela:hasAccount", false) ? "in" : "new"); return; }
   try { return enter(await store.load(user)); }
   catch (e) {
     const local = store.local(user.id);
@@ -663,9 +753,9 @@ function tileSVG(c){
 function headerHTML(){
   const n = S.player.name;
   if (S.player.guest) return `<header class="top"><div class="brand">${lampSVG(30)} Candela</div>
-  <button class="who acct" id="acct" type="button"><b>Intră în cont</b><span class="avatar"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="5.5" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M2.5 14c.8-3 3-4.5 5.5-4.5s4.7 1.5 5.5 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></button></header>`;
+  <div class="top-r">${aaHTML()}<button class="who acct" id="acct" type="button"><b>Intră în cont</b><span class="avatar"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="5.5" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M2.5 14c.8-3 3-4.5 5.5-4.5s4.7 1.5 5.5 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></button></div></header>`;
   return `<header class="top"><div class="brand">${lampSVG(30)} Candela</div>
-  ${whoHTML()}</header>`;
+  <div class="top-r">${aaHTML()}${whoHTML()}</div></header>`;
 }
 function initials(n){ const w = n.trim().split(/\s+/); return ((w[0]||"?")[0] + (w.length > 1 ? w[w.length-1][0] : "")).toUpperCase(); }
 function whoHTML(){ const n = S.player.name; return `<button class="who" id="who" type="button" aria-label="Profilul meu"><b>${esc(n)}</b><span class="avatar">${esc(initials(n))}</span></button>`; }
@@ -680,7 +770,7 @@ function openProfile(){
   const show = () => {
     const h = p.history, tests = h.length, avg = tests ? Math.round(h.reduce((s,x)=>s+x.pct,0)/tests) : 0;
     const best = tests ? Math.max(...h.map(x=>x.pct)) : 0, secs = h.reduce((s,x)=>s+(x.secs||0),0);
-    const rank = S.board ? S.board.findIndex(x => slugOf(x.name) === slugOf(p.name)) : -1;
+    const rank = S.board ? S.board.findIndex(x => x.me) : -1;
     const okE = p.ok.filter(id => /^\d+e/.test(id)).length, okH = p.ok.filter(id => /^\d+h/.test(id)).length;
     const totE = totalCount("easy"), totH = totalCount("hard");
     const chs = new Set(Object.keys(p.chap).map(k=>parseInt(k))).size;
@@ -706,12 +796,17 @@ function openProfile(){
         <div class="pf-row"><span>Capitole exersate</span><b>${chs} / 31</b></div>
         <div class="pf-row"><span>Timp de studiu</span><b>${tests ? time : "–"}</b></div>
         ${last ? `<div class="pf-row"><span>Ultimul test</span><b>${esc(chaptersLabel(last.chs))} · ${last.pct}%</b></div>` : ""}
+        <div class="pf-row"><span>Medalii</span><b>${medalSummary(p)}</b></div>
+        <div class="pf-row"><span>Zile la rând</span><b>${streak(p) ? "🔥 " + streak(p) : "–"}</b></div>
       </div>
+      <div class="pf-card" id="pfGroups"></div>
       <div class="prof-btns"><button class="btn ${store.hasEmail() ? "btn-ghost" : "btn-primary"} btn-block" id="pfEdit">${store.hasEmail() ? "Modifică profilul" : "Adaugă emailul"}</button>
       <button class="btn btn-danger btn-block" id="pfOut">Ieși din cont</button></div>`;
     sheet.querySelector("#pfX").onclick = close;
     sheet.querySelector("#pfEdit").onclick = edit;
     sheet.querySelector("#pfOut").onclick = () => { close(); logout(); };
+    const box = sheet.querySelector("#pfGroups"); bindGroups(box);
+    if (!S.groups) store.rpc("my_groups").then(r => { if (r.ok){ S.groups = r.data; if (box.isConnected) bindGroups(box); } });
   };
   const edit = () => {
     const parts = p.name.trim().split(" "), fn = parts[0], ln = parts.slice(1).join(" ");
@@ -767,11 +862,13 @@ function viewHome(){
   const tests = h.length, avg = tests ? Math.round(h.reduce((s,x)=>s+x.pct,0)/tests) : 0;
   const touched = new Set(Object.keys(p.chap).map(k=>parseInt(k))).size;
   const first = p.name.split(" ")[0];
+  const med = medals(p);
   mount(`${headerHTML()}
   <div class="home">
   <section class="h-intro">
     <div class="hello">${tests ? `<span class="eyebrow">Bine ai revenit</span>` : ""}
       <h2>${p.guest ? (tests ? "Continuăm?" : "Bun venit!") : tests ? `Continuăm, ${esc(first)}?` : `Bun venit, ${esc(first)}.`}</h2>
+      ${streakHTML(p)}
       ${p.guest ? `<p class="guest-line">Joci ca invitat. <button class="link" id="gIn" type="button">Conectează-te</button> ca să-ți păstrezi rezultatele.</p>` : ""}</div>
     ${tests ? `<div class="stats">
       <div class="stat"><b>${tests}</b><small>teste făcute</small></div>
@@ -779,6 +876,7 @@ function viewHome(){
       <div class="stat"><b>${String(mastery(p)).replace(".",",")}%</b><small>stăpânit</small></div>
     </div>` : ""}
     ${resumeHTML()}
+    ${todayHTML(p)}
   </section>
   <section class="h-verse"><div class="lamp-wrap"><div class="lamp-glow"></div>${lampSVG(46)}</div><p class="verse-quote">„Candela lui Dumnezeu nu se stinsese încă.”<span class="ref">1 Sam. 3:3</span></p></section>
 
@@ -795,20 +893,21 @@ function viewHome(){
         <button data-scope="one">Un capitol</button><button data-scope="many">Mai multe</button><button data-scope="all">Toată cartea</button>
       </div>
       
-      <div class="grid" id="grid">${Array.from({length:31},(_,i)=>i+1).map(c=>`<button class="tile" data-c="${c}" aria-pressed="false" title="${c}. ${esc(TITLES[c-1])}" aria-label="Capitolul ${c}: ${esc(TITLES[c-1])}">${tileSVG(c)}<span class="n">${c}</span><i class="check" aria-hidden="true"></i></button>`).join("")}</div>
-      <div class="legend"><span><i style="background:var(--cedar)"></i>scor maxim ușor</span><span><i style="background:var(--oil)"></i>scor maxim greu</span></div>
+      <div class="grid" id="grid">${Array.from({length:31},(_,i)=>i+1).map(c=>`<button class="tile" data-c="${c}" aria-pressed="false" title="${c}. ${esc(TITLES[c-1])}" aria-label="Capitolul ${c}: ${esc(TITLES[c-1])}${med[c] ? `, medalie de ${MEDAL[med[c]]}` : ""}">${tileSVG(c)}<span class="n">${c}</span><i class="check" aria-hidden="true"></i>${med[c] ? `<i class="medal m${med[c]}" aria-hidden="true"></i>` : ""}</button>`).join("")}</div>
+      <div class="legend"><span><i style="background:var(--cedar)"></i>scor maxim ușor</span><span><i style="background:var(--oil)"></i>scor maxim greu</span><button type="button" id="medalHelp"><i class="medal m1"></i><i class="medal m2"></i><i class="medal m3"></i>medalii</button></div>
 
-      <div class="startbar"><button class="btn btn-primary btn-block" id="start"></button></div>
+      <div class="startbar"><button class="btn btn-primary btn-block" id="start"></button><button class="link read-link" id="read" type="button" hidden></button></div>
     </div>
   </aside>
 
-  ${HOSTED ? `<section class="h-board"><div class="section-h"><h3>Clasament</h3></div><div id="board" class="board scroll"><div class="empty">Se încarcă clasamentul…</div></div></section>` : ""}
+  ${HOSTED ? `<section class="h-board"><div class="section-h"><h3>Clasament</h3></div><div class="board-tabs" id="boardTabs"></div><div id="board" class="board scroll"><div class="empty">Se încarcă clasamentul…</div></div></section>` : ""}
 
   <section class="h-hist">
     <div class="section-h"><h3>Istoric</h3></div>
     <div class="history">${h.length ? h.slice(-6).reverse().map(x=>`
       <div class="hrow"><span class="badge ${x.mode}">${MODE_LABEL[x.mode]}</span><div style="min-width:0"><b style="font-weight:600">${esc(chaptersLabel(x.chs))}</b><small>${dateLabel(x.at)} · ${x.score}/${x.total} puncte</small></div><span class="pct">${x.pct}%</span></div>`).join("")
       : `<div class="empty">Niciun test încă.</div>`}</div>
+    <p class="help-line"><button class="link" id="help" type="button">Cum funcționează?</button><button class="link" id="install" type="button" ${installEvt ? "" : "hidden"}>Instalează aplicația pe telefon</button></p>
   </section>
   </div>`);
 
@@ -824,6 +923,7 @@ function viewHome(){
     const st = $("#start"); st.disabled = !pool;
     st.innerHTML = !pool ? "Alege cel puțin un capitol" : `<span class="st-main">Începe · ${esc(what)}</span><span class="st-sub">${pool} întrebări${dur}</span>`;
     $("#modeNote").textContent = MODE_NOTE[S.mode];
+    const rd = $("#read"); rd.hidden = chs.length !== 1; rd.textContent = `📖 Citește întâi capitolul ${chs[0]}`;
     persistPrefs();
   };
   app.querySelectorAll(".tile").forEach(t => t.onclick = () => {
@@ -841,30 +941,56 @@ function viewHome(){
   });
   app.querySelectorAll("[data-mode]").forEach(b => b.onclick = () => { S.mode = b.dataset.mode; update(); });
   $("#start").onclick = () => S.sel.size > 1 ? openOptions() : startQuiz();
+  $("#read").onclick = () => viewRead([...S.sel][0]);
+  $("#quick").onclick = quickTest;
+  $("#daily").onclick = () => startQuiz([dailyQ()], 0, {mode: "easy", daily: true});
+  $("#help").onclick = tutorial;
+  $("#install").onclick = installApp;
+  $("#medalHelp").onclick = () => toast("Bronz: jumătate din întrebările ușoare ale capitolului știute. Argint: aproape toate cele ușoare. Aur: și trei sferturi din cele grele.", 7000);
   if ($("#resume")){ $("#resume").onclick = resumeQuiz; $("#resumeX").onclick = () => { dropQuiz(); $(".resume").remove(); }; }
   update();
   if (HOSTED) loadBoard();
+  if (!lsGet("candela:tutorial", false)) tutorial();
 }
 
 async function loadBoard(){
   const el = $("#board"); if (!el) return;
+  const signed = S.player && !S.player.guest;
+  if (signed && !S.groups){ const r = await store.rpc("my_groups"); if (r.ok) S.groups = r.data; }
+  const tab = signed && S.groups?.some(g => g.id === S.boardTab) ? S.boardTab : "all";
+  renderTabs(tab);
+  if (tab !== "all"){
+    el.innerHTML = `<div class="empty">Se încarcă…</div>`;
+    const r = await store.rpc("group_board", {p_id: tab});
+    if (S.boardTab !== tab || !$("#board")) return;
+    if (!r.ok) { el.innerHTML = `<div class="empty">Clasament indisponibil.</div>`; return; }
+    const total = totalCount("both");
+    renderBoard(r.data.map(x => ({...x, mastery: Math.round(x.ok / total * 1000) / 10})), true);
+    return;
+  }
   if (S.board) renderBoard(S.board);
   const list = await store.board();
+  if (S.groups?.some(g => g.id === S.boardTab)) return;   // the player switched to a group meanwhile
   if (list) { S.board = list; renderBoard(list); }
   else if (!S.board && $("#board")) $("#board").innerHTML = `<div class="empty">Clasament indisponibil.</div>`;
 }
-function renderBoard(list){
+function renderTabs(tab){
+  const t = $("#boardTabs"); if (!t) return;
+  if (!S.groups?.length || !S.player || S.player.guest){ t.innerHTML = ""; return; }
+  t.innerHTML = [{id:"all", name:"Toți"}, ...S.groups].map(g => `<button class="chip" type="button" data-btab="${g.id}" aria-pressed="${tab === g.id}">${esc(g.name)}</button>`).join("");
+  t.querySelectorAll("[data-btab]").forEach(b => b.onclick = () => { setBoardTab(b.dataset.btab); loadBoard(); });
+}
+function renderBoard(list, group = false){
   const el = $("#board"); if (!el) return;
-  const me = S.player && !S.player.guest ? slugOf(S.player.name) : null;
+  const guest = !S.player || S.player.guest;
   if (!list.length){ el.innerHTML = `<div class="empty">Încă nimeni.</div>`; return; }
-  const idx = list.findIndex(x => slugOf(x.name) === me);
+  const idx = guest ? -1 : list.findIndex(x => x.me);
   const top = el.classList.contains("scroll") ? list : list.slice(0, 10);
-  const row = (x, i) => { const mine = slugOf(x.name)===me, ok = x.ok ?? 0; return `<div class="brow-l ${mine?"me":""}">
+  const row = (x, i) => { const mine = !guest && x.me, ok = x.ok ?? 0; return `<div class="brow-l ${mine?"me":""}">
     <span class="rank ${i<3 && ok ? "r"+(i+1) : ""}">${i+1}</span>
     <span class="avatar sm">${esc(initials(x.name))}</span>
     <div class="who-l"><b class="nm"><span>${esc(x.name)}</span>${mine?"<em>tu</em>":""}</b>
-      <div class="bar"><i style="width:${ok ? Math.max(x.mastery,1.5) : 0}%"></i></div>
-      <small>${String(x.mastery).replace(".",",")}% din carte · ${x.tests} ${x.tests===1?"test":"teste"}</small></div>
+      <small>${group ? (x.last_at ? `ultimul test ${new Date(x.last_at).toLocaleDateString("ro-RO",{day:"numeric",month:"short"})}` : "niciun test încă") : `${String(x.mastery).replace(".",",")}% din carte`} · ${x.tests} ${x.tests===1?"test":"teste"}</small></div>
     <div class="pts"><b>${ok}</b><small>${ok===1?"întrebare":"întrebări"}</small></div></div>`; };
   el.innerHTML = top.map(row).join("") + (idx >= top.length ? `<div class="gap">···</div>${row(list[idx], idx)}` : "");
   const mine = el.querySelector(".me"); if (mine && el.classList.contains("scroll")) el.scrollTop = Math.max(0, mine.offsetTop - el.clientHeight/2);
@@ -889,7 +1015,18 @@ function prepare(q){
 }
 /* rough time to answer, by question type and level (seconds), including reading the correction; only an estimate shown before starting, there is no timer */
 const SECS = { tf:[10,14], one:[14,20], multi:[22,30], fill:[18,26], match:[32,45] };
-function estSecs(list){ return list.reduce((s,q) => s + (SECS[q.t]||[18,24])[q.mode==="hard"?1:0], 0); }
+// once enough tests exist, the real average time per question (by level) replaces the guess, within ×0.5–×2 of it
+let PACE = lsGet("candela:pace", null);
+function estSecs(list){
+  const by = {easy:[0,0], hard:[0,0]};
+  for (const q of list){ const b = by[q.mode] || by.easy; b[0] += (SECS[q.t]||[18,24])[q.mode==="hard"?1:0]; b[1]++; }
+  return Object.entries(by).reduce((s, [m, [guess, n]]) => s + (PACE?.[m] && n ? Math.min(guess*2, Math.max(guess/2, PACE[m]*n)) : guess), 0);
+}
+async function loadPace(){
+  const r = await store.rpc("pace"); if (!r.ok || !r.data) return;
+  PACE = {}; for (const x of r.data) if (x.n >= 15 && x.mode !== "both") PACE[x.mode] = +x.secs;
+  lsSet("candela:pace", PACE);
+}
 function durLabel(secs){
   const m = secs / 60;
   if (m < 1.5) return "cam 1 min";
@@ -928,7 +1065,7 @@ function openOptions(){
   bg.onclick = e => { if (e.target === bg) close(); };
   bg.querySelector("#shGo").onclick = () => { close(); startQuiz(null, n < pool ? n : 0); };
 }
-function startQuiz(list, count = 0){
+function startQuiz(list, count = 0, o = {}){
   let qs;
   if (list) qs = list;
   else {
@@ -942,11 +1079,11 @@ function startQuiz(list, count = 0){
     }
     qs = pool;
   }
-  S.quiz = { qs: qs.map(prepare), i: 0, answers: [], start: Date.now(), chs: [...new Set(qs.map(q=>q.ch))].sort((a,b)=>a-b), mode: list ? S.quiz.mode : S.mode, retry: !!list };
+  S.quiz = { qs: qs.map(prepare), i: 0, answers: [], start: Date.now(), chs: [...new Set(qs.map(q=>q.ch))].sort((a,b)=>a-b), mode: o.mode || (list ? S.quiz.mode : S.mode), retry: !!o.retry, daily: !!o.daily };
   viewQuestion(true);
 }
 /* an unfinished test survives a reload or a closed tab, until it is finished or stopped */
-function saveQuiz(){ const Z = S.quiz; if (!Z || Z.retry) return; lsSet("candela:quiz", {qs:Z.qs, i:Z.i, answers:Z.answers, elapsed:Date.now()-Z.start, chs:Z.chs, mode:Z.mode, who: S.player && !S.player.guest ? store.uid : "guest"}); }
+function saveQuiz(){ const Z = S.quiz; if (!Z || Z.retry) return; lsSet("candela:quiz", {qs:Z.qs, i:Z.i, answers:Z.answers, elapsed:Date.now()-Z.start, chs:Z.chs, mode:Z.mode, daily:!!Z.daily, who: S.player && !S.player.guest ? store.uid : "guest"}); }
 function dropQuiz(){ lsSet("candela:quiz", null); }
 function savedQuiz(){ const z = lsGet("candela:quiz", null); return z && z.qs && z.who === (S.player && !S.player.guest ? store.uid : "guest") ? z : null; }
 function resumeHTML(){
@@ -956,7 +1093,7 @@ function resumeHTML(){
 }
 function resumeQuiz(){
   const z = savedQuiz(); if (!z) return viewHome();
-  S.quiz = { qs: z.qs, i: z.i, answers: z.answers, start: Date.now() - z.elapsed, chs: z.chs, mode: z.mode, retry: false };
+  S.quiz = { qs: z.qs, i: z.i, answers: z.answers, start: Date.now() - z.elapsed, chs: z.chs, mode: z.mode, retry: false, daily: !!z.daily };
   viewQuestion(true);
 }
 function refStart(q){ return +q.ref.split(":")[1].split("-")[0]; }
@@ -964,6 +1101,7 @@ function refStart(q){ return +q.ref.split(":")[1].split("-")[0]; }
 function viewQuestion(first){
   const Z = S.quiz, q = Z.qs[Z.i], n = Z.qs.length;
   const ui = { sel: q.t==="multi" ? new Set() : null, pick: null, pairs: {}, active: null, checked: false };
+  stopSpeak();
   Z.ui = ui;
   saveQuiz();
   if (first || !$(".qcard")) {
@@ -984,13 +1122,13 @@ function viewQuestion(first){
   $("#qcount").textContent = `${Z.i+1}/${n}`;
   const card = document.createElement("article");
   card.className = "qcard enter";
-  card.innerHTML = `<div class="qmeta"><span class="qtype">${TYPE_LABEL[q.t]}${Z.mode==="both"?` · ${MODE_LABEL[q.mode]}`:""}</span><span class="ref">${refLabel(q.ref)}</span></div>
+  card.innerHTML = `<div class="qmeta"><span class="qtype">${Z.daily ? "Întrebarea zilei · " : ""}${TYPE_LABEL[q.t]}${Z.mode==="both"?` · ${MODE_LABEL[q.mode]}`:""}</span><span class="qmeta-r"><span class="ref">${refLabel(q.ref)}</span>${TTS ? `<button class="icon-btn say" type="button" data-say aria-label="Citește cu voce tare">${SPEAKER}</button>` : ""}</span></div>
     ${q.t==="fill" ? `${fillHTML(q)}` : `<p class="qtext">${esc(q.q.replace(/\s*\(pot fi mai multe[^)]*\)/i, ""))}</p>${q.t==="multi"?`<p class="qhint">Bifează toate răspunsurile corecte. Pot fi mai multe sau niciunul.</p>`:""}${q.t==="match"?`<p class="qhint">Atinge un element din stânga, apoi perechea lui din dreapta.</p>`:""}`}
     <div class="answers" id="ans">${answersHTML(q)}</div><div id="fb"></div>
     <p class="keys">${({tf:"Taste: A adevărat · F fals · Enter verifică", one:"Taste: A, B, C… · Enter verifică", multi:"Taste: A, B, C… · Enter verifică", fill:"Enter trece la căsuța următoare", match:"Enter verifică"})[q.t]}</p>`;
   const slot = $("#qslot");
   const old = slot.firstElementChild;
-  const place = () => { slot.innerHTML = ""; slot.appendChild(card); const actions = document.createElement("div"); actions.className = "qactions"; actions.id = "actions"; slot.appendChild(actions); bindQuestion(q, card); renderActions(); const f = card.querySelector("input"); if (f && matchMedia("(hover:hover)").matches) f.focus(); };
+  const place = () => { slot.innerHTML = ""; slot.appendChild(card); const actions = document.createElement("div"); actions.className = "qactions"; actions.id = "actions"; slot.appendChild(actions); bindQuestion(q, card); renderActions(); const sb_ = card.querySelector("[data-say]"); if (sb_) sb_.onclick = () => speak(sayParts(q), sb_); const f = card.querySelector("input"); if (f && matchMedia("(hover:hover)").matches) f.focus(); };
   if (old && !first){ old.classList.remove("enter"); old.classList.add("leave"); setTimeout(place, 200); } else place();
 }
 function fillHTML(q){
@@ -1109,6 +1247,7 @@ async function finish(){
   // save
   const p = S.player;
   if (!Z.retry) dropQuiz();
+  if (Z.daily) lsSet("candela:daily", dayKey());
   let saving = Promise.resolve(null);
   if (!Z.retry){
     const chap = {}; for (const key in byCh._m){ const v = byCh._m[key]; chap[key] = pct(v.s, v.n); }
@@ -1117,7 +1256,9 @@ async function finish(){
   }
   S.board = null;
   const wrong = Z.qs.map((q,i)=>({q, a: Z.answers[i]})).filter(x => !x.a || x.a.pts < 1);
-  const verdict = P>=95 ? "Excelent!" : P>=80 ? "Foarte bine" : P>=60 ? "Bine, mai e puțin" : P>=40 ? "Ai pus bazele" : "Mai citește o dată";
+  // always encouraging: children and beginners use the app
+  const verdict = P>=95 ? "Excelent! 🌟" : P>=80 ? "Foarte bine!" : P>=60 ? "Bravo, ești pe drumul cel bun!" : P>=40 ? "Bun început! Mai încearcă o dată." : "Fiecare încercare te ajută să înveți!";
+  const tip = wrong.length ? (P>=60 ? "Reia greșelile ca să le înveți și pe acestea." : "Citește capitolul, apoi reia greșelile. Vei vedea cât de repede înveți!") : "Toate răspunsurile sunt corecte. Felicitări!";
   const min = Math.floor(secs/60), s = secs%60;
   mount(`${headerHTML()}
   <section class="report-head">
@@ -1126,6 +1267,7 @@ async function finish(){
       <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" fill="none" stroke="var(--surface-2)" stroke-width="9"/><circle id="ringArc" cx="60" cy="60" r="52" fill="none" stroke="var(--oil)" stroke-width="9" stroke-linecap="round" stroke-dasharray="0 400" style="transition:stroke-dasharray 1.4s cubic-bezier(.2,.8,.2,1)"/></svg>
       <div class="val"><b id="pctNum">0%</b><small>${sc} din ${n} puncte</small></div></div>
     <h2 class="verdict">${verdict}</h2>
+    <p class="verdict-tip">${tip}</p>
   </section>
   <div class="kv">
     <div class="stat"><b>${n - wrong.length}</b><small>corecte</small></div>
@@ -1145,6 +1287,7 @@ async function finish(){
     ${wrong.length ? `<button class="btn btn-oil" id="retry">Reia greșelile</button>` : ""}
     <button class="btn btn-primary" id="home">Test nou</button>
   </div>
+  ${Z.chs.length === 1 && wrong.length ? `<button class="link read-link" id="readCh" type="button">📖 Citește capitolul ${Z.chs[0]}</button>` : ""}
   <p class="muted" id="saveNote" style="text-align:center;font-size:13px"></p>`);
     requestAnimationFrame(()=>requestAnimationFrame(()=>{
     const C = 2*Math.PI*52; $("#ringArc").setAttribute("stroke-dasharray", `${C*P/100} ${C}`);
@@ -1156,7 +1299,8 @@ async function finish(){
       const sp = $("#sparks"); for (let i=0;i<22;i++){ const a = Math.random()*Math.PI*2, d = 90+Math.random()*60; const s = document.createElement("i"); s.className = "spark"; s.style.setProperty("--dx", Math.cos(a)*d+"px"); s.style.setProperty("--dy", Math.sin(a)*d+"px"); s.style.animationDelay = (1+Math.random()*.4)+"s"; s.style.background = i%3 ? "var(--oil)" : "var(--cedar)"; sp.appendChild(s); }
     }
   }));
-  if (wrong.length) $("#retry").onclick = () => startQuiz(shuffle(wrong.map(x => { const o = {...x.q}; const src = QUIZ[o.ch][o.mode][+o.id.slice(String(o.ch).length+1)]; return {...src, ch:o.ch, mode:o.mode, id:o.id}; })));
+  if (wrong.length) $("#retry").onclick = () => startQuiz(shuffle(wrong.map(x => { const o = {...x.q}; const src = QUIZ[o.ch][o.mode][+o.id.slice(String(o.ch).length+1)]; return {...src, ch:o.ch, mode:o.mode, id:o.id}; })), 0, {retry: true, mode: Z.mode});
+  if ($("#readCh")) $("#readCh").onclick = () => viewRead(Z.chs[0]);
   $("#home").onclick = () => viewHome();
   const res = await saving;
 
@@ -1181,6 +1325,257 @@ function mistakeHTML({q, a}){
     <div class="verse">${verseHTML(q.ref)}</div></article>`;
 }
 
+/* ---------- motivation: streak, medals, question of the day, quick test ---------- */
+const dayKey = (t = Date.now()) => { const d = new Date(t); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`; };
+function streak(p){   // days in a row with at least one test, ending today or yesterday
+  const days = new Set(p.history.map(x => dayKey(x.at)));
+  const d = new Date(); d.setHours(12,0,0,0);
+  if (!days.has(dayKey(d))) d.setDate(d.getDate()-1);
+  let n = 0; while (days.has(dayKey(d))){ n++; d.setDate(d.getDate()-1); }
+  return n;
+}
+function streakHTML(p){
+  const n = streak(p); if (!n) return "";
+  const today = p.history.some(x => dayKey(x.at) === dayKey());
+  return `<span class="streak">🔥 ${n === 1 ? "1 zi" : `${n} zile la rând`}${today ? "" : " · fă un test azi ca să continui"}</span>`;
+}
+const MEDAL = ["", "bronz", "argint", "aur"];
+/* per chapter: bronze = half of the easy questions known, silver = 90% of the easy ones, gold = also 75% of the hard ones */
+function medals(p){
+  const e = {}, h = {};
+  for (const id of p.ok || []){ const m = /^(\d+)([eh])/.exec(id); if (m) (m[2]==="e" ? e : h)[m[1]] = ((m[2]==="e" ? e : h)[m[1]] || 0) + 1; }
+  const out = [0];
+  for (let c = 1; c <= 31; c++){
+    const E = (e[c]||0) / QUIZ[c].easy.length, H = (h[c]||0) / QUIZ[c].hard.length;
+    out[c] = E >= .9 && H >= .75 ? 3 : E >= .9 ? 2 : E >= .5 ? 1 : 0;
+  }
+  return out;
+}
+function medalSummary(p){
+  const m = medals(p), n = k => m.filter(x => x === k).length;
+  return n(1) + n(2) + n(3) ? [[3,"🥇"],[2,"🥈"],[1,"🥉"]].filter(([k]) => n(k)).map(([k,e]) => `${e} ${n(k)}`).join(" · ") : "–";
+}
+function dailyQ(){   // the same short question for everyone on a given day
+  const all = buildPool(Array.from({length:31},(_,i)=>i+1), "easy").filter(q => q.t === "tf" || q.t === "one");
+  const d = Math.round(new Date(dayKey() + "T12:00:00").getTime() / 864e5);
+  return all[(d * 7919) % all.length];
+}
+function quickChapter(){   // the first chapter never tried, else the weakest one
+  let best = 1, low = 101;
+  for (let c = 1; c <= 31; c++){ const v = chapStat(c, "easy"); if (v == null) return c; if (v < low){ low = v; best = c; } }
+  return best;
+}
+function quickTest(){ const c = quickChapter(); startQuiz(shuffle(buildPool([c], "easy")).slice(0, 10), 0, {mode: "easy"}); }
+function todayHTML(p){
+  const c = quickChapter(), done = lsGet("candela:daily", "") === dayKey();
+  return `<div class="today">
+    <button class="tcard" id="quick" type="button"><span class="ti">⚡</span><b>Test rapid</b><small>10 întrebări ușoare din capitolul ${c}</small></button>
+    <button class="tcard ${done ? "done" : ""}" id="daily" type="button" ${done ? "disabled" : ""}><span class="ti">${done ? "✅" : "☀️"}</span><b>Întrebarea zilei</b><small>${done ? "Gata pentru azi. Revino mâine!" : "O singură întrebare, în câteva secunde"}</small></button>
+  </div>`;
+}
+
+/* ---------- read aloud (the phone's own Romanian voice) and text size ---------- */
+const TTS = "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
+let roVoice = null;
+function pickVoice(){ try { roVoice = speechSynthesis.getVoices().find(v => /^ro([-_]|$)/i.test(v.lang)) || null; } catch {} }
+if (TTS){ pickVoice(); speechSynthesis.addEventListener?.("voiceschanged", pickVoice); }
+const SPEAKER = `<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" fill="currentColor"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>`;
+function stopSpeak(){
+  if (TTS) try { speechSynthesis.cancel(); } catch {}
+  document.querySelectorAll(".speaking").forEach(e => e.classList.remove("speaking"));
+  document.querySelectorAll("[data-say].on").forEach(b => b.classList.remove("on"));
+}
+function speak(parts, btn, onPart){
+  if (!TTS) return;
+  if (btn?.classList.contains("on")){ stopSpeak(); return; }
+  stopSpeak(); btn?.classList.add("on");
+  parts.forEach((t, i) => {
+    const u = new SpeechSynthesisUtterance(t); u.lang = "ro-RO"; if (roVoice) u.voice = roVoice; u.rate = .92;
+    u.onstart = () => onPart?.(i);
+    if (i === parts.length - 1) u.onend = () => { btn?.classList.remove("on"); onPart?.(-1); };
+    speechSynthesis.speak(u);
+  });
+}
+function sayParts(q){
+  if (q.t === "fill") return [q.q.replace(/___/g, " … ")];
+  const parts = [q.q.replace(/\s*\(pot fi mai multe[^)]*\)/i, "")];
+  if (q.t === "tf") parts.push("Adevărat sau fals?");
+  if (q.t === "one" || q.t === "multi") q.opts.forEach((o, i) => parts.push(`${LETTERS[i]}. ${o}`));
+  if (q.t === "match"){ parts.push("În stânga: " + q.pairs.map(p => p[0]).join(", ")); parts.push("În dreapta: " + q.right.map(i => q.pairs[i][1]).join(", ")); }
+  return parts;
+}
+const ZOOMS = [1, 1.15, 1.3];
+function applyZoom(){ document.body.style.zoom = lsGet("candela:zoom", 1); }
+function aaHTML(){ return `<button class="icon-btn aa" id="aa" type="button" aria-label="Mărimea textului">A<small>A</small></button>`; }
+document.addEventListener("click", e => {
+  if (!e.target.closest?.("#aa")) return;
+  const z = ZOOMS[(ZOOMS.indexOf(lsGet("candela:zoom", 1)) + 1) % ZOOMS.length];
+  lsSet("candela:zoom", z); applyZoom();
+  toast(["Text normal", "Text mare", "Text foarte mare"][ZOOMS.indexOf(z)]);
+});
+
+/* ---------- reading a chapter before the test ---------- */
+function viewRead(c){
+  const vs = TEXT[c] || [];
+  mount(`<section class="reader">
+    <div class="reader-h"><button class="icon-btn" id="rBack" type="button" aria-label="Înapoi"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3L5 8l5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div><span class="eyebrow">1 Samuel ${c}</span><h2>${esc(TITLES[c-1])}</h2></div>
+      ${TTS ? `<button class="btn btn-ghost" id="rSay" type="button" data-say>${SPEAKER} Ascultă</button>` : ""}</div>
+    <div class="reader-text">${vs.map((v, i) => `<p data-v="${i+1}"><sup>${i+1}</sup>${esc(v)}</p>`).join("")}</div>
+    <div class="startbar"><button class="btn btn-primary btn-block" id="rGo" type="button">Am citit · Începe testul</button></div>
+  </section>`);
+  $("#rBack").onclick = () => viewHome();
+  $("#rGo").onclick = () => { S.scope = "one"; S.sel = new Set([c]); persistPrefs(); startQuiz(); };
+  const say = $("#rSay");
+  if (say) say.onclick = () => speak(vs, say, i => {
+    app.querySelectorAll(".reader-text p.speaking").forEach(x => x.classList.remove("speaking"));
+    const el = app.querySelector(`.reader-text p[data-v="${i+1}"]`); if (i >= 0 && el){ el.classList.add("speaking"); el.scrollIntoView({block: "center", behavior: "smooth"}); }
+  });
+}
+
+/* ---------- first-launch tutorial ---------- */
+function tutorial(){
+  const slides = [
+    { art: `<div class="seg"><button aria-pressed="true">Ușor</button><button aria-pressed="false">Greu</button><button aria-pressed="false">Ambele</button></div>`,
+      h: "1. Alege nivelul", p: "„Ușor” pentru început. „Greu” când vrei detalii: nume, cifre, locuri." },
+    { art: `<div class="tut-grid">${[1,2,3,4,5,6,7,8].map(c => `<span class="tile" aria-pressed="${c===3}"><span class="n">${c}</span></span>`).join("")}</div>`,
+      h: "2. Alege capitolul", p: "Atinge un capitol, apoi „Începe”. Sau apasă „Test rapid” și pornești imediat." },
+    { art: `<div class="feedback ok"><b>Corect</b><div class="verse"><sup>3</sup>${esc((TEXT[3]||[])[2] || "")}</div></div>`,
+      h: "3. Răspunde și învață", p: "După fiecare răspuns vezi versetul din Biblie. La final poți relua greșelile." },
+  ];
+  let i = 0;
+  const bg = document.createElement("div"); bg.className = "modal-bg";
+  bg.innerHTML = `<div class="modal tut" role="dialog" aria-modal="true" aria-labelledby="tutH"></div>`;
+  document.body.appendChild(bg);
+  const box = bg.querySelector(".tut");
+  const close = () => { lsSet("candela:tutorial", true); bg.remove(); };
+  const draw = () => {
+    const x = slides[i], last = i === slides.length - 1;
+    box.innerHTML = `<div class="tut-art">${x.art}</div><h3 id="tutH">${x.h}</h3><p>${x.p}</p>
+      <div class="tut-dots">${slides.map((_, k) => `<i class="${k===i?"on":""}"></i>`).join("")}</div>
+      <div class="modal-btns"><button class="btn btn-ghost" id="tSkip" type="button">${i ? "Înapoi" : "Sari peste"}</button><button class="btn btn-primary" id="tNext" type="button">${last ? "Să începem" : "Înainte"}</button></div>`;
+    box.querySelector("#tSkip").onclick = () => { if (i){ i--; draw(); } else close(); };
+    box.querySelector("#tNext").onclick = () => { if (last) close(); else { i++; draw(); } };
+    box.querySelector("#tNext").focus();
+  };
+  draw();
+}
+
+/* ---------- forgotten password ---------- */
+function forgotPassword(prefill){
+  const bg = document.createElement("div"); bg.className = "modal-bg";
+  bg.innerHTML = `<form class="modal" role="dialog" aria-modal="true" aria-labelledby="fpH" novalidate style="text-align:left">
+    <h3 id="fpH" style="text-align:center">Ai uitat parola?</h3>
+    <p class="muted" style="text-align:center">Scrie emailul contului. Îți trimitem un link ca să alegi o parolă nouă.</p>
+    <input class="input" id="fpMail" type="email" inputmode="email" autocomplete="email" autocapitalize="none" spellcheck="false" value="${esc(prefill.includes("@") ? prefill : "")}" aria-label="Email">
+    <p class="form-error" id="fpErr" role="alert"></p>
+    <div class="modal-btns"><button class="btn btn-ghost" type="button" id="fpNo">Anulează</button><button class="btn btn-primary" type="submit" id="fpGo">Trimite</button></div></form>`;
+  document.body.appendChild(bg);
+  const close = () => bg.remove(), f = bg.querySelector("form"), mail = bg.querySelector("#fpMail"), err = bg.querySelector("#fpErr");
+  bg.querySelector("#fpNo").onclick = close; bg.onclick = e => { if (e.target === bg) close(); };
+  mail.focus();
+  f.onsubmit = async e => {
+    e.preventDefault();
+    const em = mail.value.trim(); if (!EMAIL_RE.test(em)){ err.textContent = "Scrie o adresă de email validă."; return; }
+    const btn = bg.querySelector("#fpGo"); btn.disabled = true; btn.textContent = "Se trimite…";
+    const r = await store.resetPassword(em.toLowerCase());
+    btn.disabled = false; btn.textContent = "Trimite";
+    if (!r.ok){ err.textContent = r.error === "network" ? loginError(r) : r.error === "rate" ? "Ai cerut deja un link. Așteaptă un minut și încearcă din nou." : "Nu am putut trimite emailul acum. Încearcă mai târziu."; return; }
+    f.innerHTML = `<h3 style="text-align:center">Verifică emailul</h3><p class="muted" style="text-align:center">Dacă există un cont cu adresa ${esc(em)}, ai primit un link. Deschide-l pe acest dispozitiv ca să alegi parola nouă.</p><button class="btn btn-primary btn-block" type="button" id="fpOk">Am înțeles</button>`;
+    f.querySelector("#fpOk").onclick = close;
+  };
+}
+function viewNewPassword(){
+  mount(`<section class="entry" data-step="form"><div class="entry-head"><div class="lamp-wrap"><div class="lamp-glow"></div>${lampSVG(56)}</div><h1>Parolă nouă</h1></div>
+    <form class="card entry-form" id="np" novalidate>
+      <div class="field"><label for="np1">Parola nouă</label><input class="input" id="np1" type="password" autocomplete="new-password" minlength="6"></div>
+      <p class="form-error" id="npErr" role="alert"></p>
+      <button class="btn btn-primary btn-block" id="npGo" type="submit">Salvează parola</button>
+    </form></section>`);
+  const pw = $("#np1"), err = $("#npErr"); pw.focus();
+  $("#np").onsubmit = async e => {
+    e.preventDefault();
+    if (pw.value.length < 6){ err.textContent = "Parola trebuie să aibă cel puțin 6 caractere."; return; }
+    const btn = $("#npGo"); btn.disabled = true; btn.textContent = "Se salvează…";
+    try {
+      const { data, error } = await sb().auth.updateUser({ password: pw.value });
+      if (error) throw error;
+      lsSet("candela:hasAccount", true);
+      toast("Parola a fost schimbată.");
+      return enter(await store.load(data.user));
+    } catch (e2) { btn.disabled = false; btn.textContent = "Salvează parola"; err.textContent = isNetErr(e2) ? loginError({error:"network"}) : "Nu am putut schimba parola. Cere un link nou."; }
+  };
+}
+
+/* ---------- groups: family or Sunday school, each with its own leaderboard ---------- */
+function setBoardTab(id){ S.boardTab = id; lsSet("candela:boardTab", id); }
+function groupsHTML(form){
+  const gs = S.groups;
+  return `<div class="pf-row"><span style="color:var(--ink);font-weight:600;font-size:15px">Grupuri</span></div>
+    <p class="pf-note">Pentru familie sau școala duminicală. Fiecare grup are clasamentul lui, iar părintele sau învățătorul vede progresul fiecăruia.</p>
+    ${gs == null ? `<p class="pf-note">Se încarcă…</p>` : gs.map(g => `<div class="grp"><div style="min-width:0"><b>${esc(g.name)}</b><small>${g.members} ${g.members===1?"membru":"membri"} · cod <code>${esc(g.code)}</code></small></div>
+      <div class="grp-a"><button class="chip" type="button" data-gshare="${esc(g.code)}" data-gname="${esc(g.name)}">Invită</button><button class="link" type="button" data-gleave="${g.id}" data-mine="${g.mine}">${g.mine ? "Șterge" : "Ieși"}</button></div></div>`).join("")}
+    ${form === "create" ? `<form class="grp-form" id="gForm" novalidate><input class="input" id="gVal" maxlength="40" placeholder="ex. Familia Popescu" aria-label="Numele grupului"><button class="btn btn-primary" type="submit">Creează</button></form>`
+      : form === "join" ? `<form class="grp-form" id="gForm" novalidate><input class="input" id="gVal" maxlength="6" placeholder="Codul grupului" aria-label="Codul grupului" autocapitalize="characters" autocomplete="off" spellcheck="false" style="text-transform:uppercase;letter-spacing:.12em;font-family:var(--f-mono)"><button class="btn btn-primary" type="submit">Intră</button></form>`
+      : `<div class="grp-btns"><button class="btn btn-ghost" type="button" data-gform="create">Creează un grup</button><button class="btn btn-ghost" type="button" data-gform="join">Am un cod</button></div>`}
+    <p class="form-error" id="gErr" role="alert"></p>`;
+}
+function bindGroups(box, form){
+  box.innerHTML = groupsHTML(form);
+  box.querySelectorAll("[data-gform]").forEach(b => b.onclick = () => { bindGroups(box, b.dataset.gform); box.querySelector("#gVal").focus(); });
+  box.querySelectorAll("[data-gshare]").forEach(b => b.onclick = () => shareGroup(b.dataset.gshare, b.dataset.gname));
+  box.querySelectorAll("[data-gleave]").forEach(b => b.onclick = () => {
+    const mine = b.dataset.mine === "true", id = b.dataset.gleave;
+    confirmBox(mine ? "Ștergi grupul?" : "Ieși din grup?", mine ? "Grupul dispare pentru toți membrii. Rezultatele lor rămân." : "Poți reveni oricând cu codul grupului.", mine ? "Șterge" : "Ieși", async () => {
+      const r = await store.rpc("leave_group", {p_id: id});
+      if (!r.ok) return toast("Nu s-a putut. Încearcă din nou.");
+      S.groups = S.groups.filter(g => g.id !== id); if (S.boardTab === id) setBoardTab("all");
+      if (box.isConnected) bindGroups(box); loadBoard();
+    });
+  });
+  const f = box.querySelector("#gForm"); if (!f) return;
+  f.onsubmit = async e => {
+    e.preventDefault();
+    const v = box.querySelector("#gVal").value.trim(), err = box.querySelector("#gErr");
+    if (form === "create" && v.length < 2){ err.textContent = "Scrie un nume pentru grup."; return; }
+    if (form === "join" && v.length !== 6){ err.textContent = "Codul are 6 caractere."; return; }
+    const btn = f.querySelector("button"); btn.disabled = true;
+    const r = form === "create" ? await store.rpc("create_group", {p_name: v}) : await store.rpc("join_group", {p_code: v});
+    btn.disabled = false;
+    if (!r.ok){ err.textContent = /no_group/.test(r.error) ? "Nu există niciun grup cu acest cod." : /too_many/.test(r.error) ? "Ai deja 10 grupuri." : /full/.test(r.error) ? "Grupul e plin." : loginError(r); return; }
+    const g = r.data[0], gr = await store.rpc("my_groups"); if (gr.ok) S.groups = gr.data;
+    setBoardTab(g.id); if (box.isConnected) bindGroups(box); loadBoard();
+    toast(form === "create" ? `Grupul e gata. Apasă „Invită” ca să trimiți codul ${g.code}.` : `Ai intrat în grupul „${g.name}”.`, 4500);
+  };
+}
+async function shareGroup(code, name){
+  const url = `${location.origin}/?g=${code}`, text = `Intră în grupul „${name}” pe Candela (1 Samuel). Codul grupului: ${code}`;
+  try { if (navigator.share){ await navigator.share({title: "Candela", text, url}); return; } } catch (e) { if (e.name === "AbortError") return; }
+  try { await navigator.clipboard.writeText(`${text}\n${url}`); toast("Invitația a fost copiată. Trimite-o pe WhatsApp sau SMS.", 3500); }
+  catch { toast(`Codul grupului: ${code}`, 5000); }
+}
+function confirmBox(title, text, yes, onYes){
+  const bg = document.createElement("div"); bg.className = "modal-bg";
+  bg.innerHTML = `<div class="modal" role="alertdialog" aria-modal="true"><h3>${esc(title)}</h3><p class="muted">${esc(text)}</p><div class="modal-btns"><button class="btn btn-ghost" id="cNo" type="button">Anulează</button><button class="btn btn-primary" id="cYes" type="button">${esc(yes)}</button></div></div>`;
+  document.body.appendChild(bg);
+  const close = () => bg.remove();
+  bg.querySelector("#cNo").onclick = close; bg.onclick = e => { if (e.target === bg) close(); };
+  bg.querySelector("#cYes").onclick = () => { close(); onYes(); };
+}
+async function joinPending(){
+  const code = lsGet("candela:joinCode", null); if (!code || !S.player || S.player.guest) return;
+  lsSet("candela:joinCode", null);
+  const r = await store.rpc("join_group", {p_code: code});
+  if (!r.ok){ toast(/no_group/.test(r.error) ? "Codul grupului nu mai există." : "Nu am putut intra în grup.", 3500); return; }
+  S.groups = null; setBoardTab(r.data[0].id); toast(`Ai intrat în grupul „${r.data[0].name}”.`, 3500); loadBoard();
+}
+
+/* ---------- installable app (works offline once opened) ---------- */
+let installEvt = null;
+addEventListener("beforeinstallprompt", e => { e.preventDefault(); installEvt = e; const b = $("#install"); if (b) b.hidden = false; });
+async function installApp(){ if (!installEvt) return; installEvt.prompt(); try { await installEvt.userChoice; } catch {} installEvt = null; const b = $("#install"); if (b) b.hidden = true; }
+if ("serviceWorker" in navigator && location.protocol === "https:") addEventListener("load", () => navigator.serviceWorker.register("/sw.js").catch(() => {}));
+
 /* ---------- boot ---------- */
 document.addEventListener("keydown", e => {
   if (!S.quiz || !$(".qcard") || e.target.tagName==="INPUT") return;
@@ -1189,6 +1584,9 @@ document.addEventListener("keydown", e => {
   if (!ui.checked && (q.t==="one"||q.t==="multi")){ const i = LETTERS.toLowerCase().indexOf(e.key.toLowerCase()); const b = $(`.opt[data-i="${i}"]`); if (i>=0 && b) b.click(); }
   if (!ui.checked && q.t==="tf"){ if (e.key.toLowerCase()==="a") $('.opt[data-v="1"]').click(); if (e.key.toLowerCase()==="f") $('.opt[data-v="0"]').click(); }
 });
+{ const g = new URLSearchParams(location.search).get("g"); if (g){ lsSet("candela:joinCode", g.toUpperCase().slice(0, 6)); history.replaceState(null, "", location.pathname + location.hash); } }
+applyZoom();
 autoLogin();
+loadPace();
 </script>
 </body></html>

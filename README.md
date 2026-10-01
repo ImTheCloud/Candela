@@ -7,13 +7,16 @@ Teste biblice pentru pregătire, după traducerea Cornilescu. Prima carte: **1 S
 - `content/1-samuel/intrebari/chNN.json` — întrebările pe capitole (`easy` / `hard`).
 - `content/1-samuel/text-cornilescu.json` — textul Cornilescu, verset cu verset.
 - `supabase/` — baza de date (Supabase, proiectul „candela”): conturi email + parolă (Supabase Auth) cu nume + prenume unic; conturile vechi au o adresă internă `<nume>@candela.invalid` până își adaugă emailul, progres în Postgres cu row-level security.
-  - `migrations/` — tabelele `profiles`, `results`, `chapter_best`, `mastered`, `quiz_counts` și funcțiile `save_result()`, `my_progress()`, `leaderboard()`.
+  - `migrations/` — tabelele `profiles`, `results`, `chapter_best`, `mastered`, `quiz_counts`, `groups`, `group_members` și funcțiile `save_result()` (cu verificări de plauzibilitate), `my_progress()`, `board()` (clasamentul public, „Prenume N.”), grupurile (`create_group`, `join_group`, `leave_group`, `my_groups`, `group_board`) și `pace()` (timpul real pe întrebare).
   - `functions/signup/` — crearea contului (nume + prenume unic, email, parolă).
   - `functions/account/` — schimbarea numelui și a emailului din profil.
   - `quiz_counts.sql` — generat de `scripts/build.py`; se rulează în Supabase (SQL editor) după ce se adaugă întrebări.
 - Fără cont se joacă în modul invitat: rezultatele rămân în browser și trec în cont la înregistrare sau la intrare.
 - Clasament: fiecare întrebare contează o singură dată, prima oară când e răspunsă complet corect (scor = întrebări stăpânite ÷ total). La egalitate e înaintea cel care a ajuns primul. ID-ul unei întrebări e `<capitol><e|h><index>`, deci întrebările noi se adaugă la sfârșitul listei.
-- `index.html` — fișierul generat care se publică.
+- Grupuri (familie, școala duminicală): un cod de 6 caractere sau linkul `/?g=COD`; fiecare grup are clasamentul lui, cu numele întregi.
+- Pe acasă: test rapid (10 întrebări ușoare), întrebarea zilei, seria de zile, medalii pe capitol (bronz, argint, aur), citirea capitolului cu „Ascultă” (vocea românească a telefonului), mărimea textului (butonul „A A”), tutorial la prima vizită.
+- Parola uitată: link prin email (Supabase Auth). Pentru emailuri către oricine trebuie un domeniu propriu configurat ca SMTP în Supabase.
+- `index.html`, `sw.js` — fișierele generate care se publică; `manifest.webmanifest` și `icons/` fac aplicația instalabilă, iar `sw.js` o deschide și fără internet.
 
 ## Lucru
 ```

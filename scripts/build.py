@@ -24,6 +24,8 @@ head = ('<!doctype html><html lang="ro"><head><meta charset="utf-8">'
         '<meta name="theme-color" content="#F8F1E6" media="(prefers-color-scheme: light)">'
         '<meta name="theme-color" content="#F8F1E6" media="(prefers-color-scheme: dark)">'
         f'<link rel="icon" href="{fav}">'
+        '<link rel="manifest" href="/manifest.webmanifest"><link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">'
+        '<meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Candela">'
         '<meta property="og:title" content="Candela · Test biblic 1 Samuel">'
         f'<meta property="og:description" content="{n_ro} de întrebări din 1 Samuel (Cornilescu), nivel ușor și greu.">'
         '<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}'
@@ -33,5 +35,10 @@ head = ('<!doctype html><html lang="ro"><head><meta charset="utf-8">'
 rows = ','.join(f"({c},{len(v['easy'])},{len(v['hard'])})" for c, v in sorted(quiz.items()))
 open(os.path.join(ROOT, 'supabase', 'quiz_counts.sql'), 'w').write(
     'insert into public.quiz_counts (ch, e, h) values ' + rows + '\n  on conflict (ch) do update set e = excluded.e, h = excluded.h;\n')
-open(os.path.join(ROOT, 'index.html'), 'w').write(head + s + '</body></html>')
+page = head + s + '</body></html>'
+open(os.path.join(ROOT, 'index.html'), 'w').write(page)
+# Service worker: the page opens offline once visited; the version changes with every build so phones pick up updates.
+import hashlib
+ver = hashlib.sha1(page.encode()).hexdigest()[:10]
+open(os.path.join(ROOT, 'sw.js'), 'w').write(open(os.path.join(ROOT, 'scripts', 'sw.template.js')).read().replace('__VERSION__', ver))
 print(f'index.html: {len(quiz)} chapters, {n} questions')
