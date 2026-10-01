@@ -156,9 +156,9 @@ p{margin:0}
 .tile .n{font-family:var(--f-display);font-size:22px;line-height:1;position:relative}
 .tile[aria-pressed="true"]{background:var(--oil-soft);border-color:var(--oil);color:var(--oil-ink);box-shadow:0 0 0 3px color-mix(in oklab,var(--oil) 18%,transparent)}
 .tile[aria-pressed="true"] .trk{stroke:color-mix(in oklab,var(--oil) 20%,transparent)}
-#start,#rGo{display:grid;gap:2px;justify-items:center;padding-block:12px;min-height:60px;line-height:1.2}
-#start .st-main,#rGo .st-main{font-size:17px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-#start .st-sub,#rGo .st-sub{font-size:13px;font-weight:500;opacity:.78;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#start,#rGo,#shGo{display:grid;gap:2px;justify-items:center;padding-block:12px;min-height:60px;line-height:1.2}
+#start .st-main,#rGo .st-main,#shGo .st-main{font-size:17px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#start .st-sub,#rGo .st-sub,#shGo .st-sub{font-size:13px;font-weight:500;opacity:.78;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .trk{stroke:var(--surface-2)}
 .legend{display:flex;gap:14px;font-size:12px;color:var(--ink-2);margin-top:10px}
 .legend i{display:inline-block;width:10px;height:3px;border-radius:2px;margin-right:5px;vertical-align:middle}
@@ -737,11 +737,14 @@ function enter(profile, created){
 }
 function enterGuest(){ S.player = store.guest(); viewHome(); }
 async function autoLogin(){
-  mount(`<div class="boot"><div class="lamp-wrap"><div class="lamp-glow"></div>${lampSVG(100)}</div><h1>Candela</h1><div class="boot-bar"><i></i></div></div>`);
+  mount(`<div class="boot"><div class="lamp-wrap"><div class="lamp-glow"></div>${lampSVG(100)}</div><h1>Candela</h1><p class="verse-quote">„Candela lui Dumnezeu nu se stinsese încă.”<span class="ref">1 Sam. 3:3</span></p><div class="boot-bar"><i></i></div></div>`);
+  // the first time, the verse stays on screen long enough to be read
+  const t0 = Date.now(), hold = lsGet("candela:verse", false) ? 0 : 2500; lsSet("candela:verse", true);
+  const shown = () => new Promise(r => setTimeout(r, Math.max(0, hold - (Date.now() - t0))));
   let user = null;
   try { user = await store.resume(); } catch {}
-  if (!user) return enterGuest();
-  try { return enter(await store.load(user)); }
+  if (!user){ await shown(); return enterGuest(); }
+  try { const data = await store.load(user); await shown(); return enter(data); }
   catch (e) {
     const pid = lsGet("candela:player:" + user.id, user.id), local = store.local(pid);
     if (isNetErr(e) && local){ store.uid = user.id; store.pid = pid; store.email = user.email || ""; S.player = store.norm(local); return viewHome(); }
@@ -1045,7 +1048,7 @@ function viewHome(){
     update();
   });
   app.querySelectorAll("[data-mode]").forEach(b => b.onclick = () => { S.mode = b.dataset.mode; update(); });
-  $("#start").onclick = () => S.sel.size > 1 ? openOptions() : startQuiz();
+  $("#start").onclick = () => openOptions();
   $("#read").onclick = () => viewRead([...S.sel][0]);
   $("#help").onclick = tutorial;
   app.querySelectorAll("[data-play]").forEach(b => b.onclick = () => switchPlayer(b.dataset.play));
@@ -1127,7 +1130,6 @@ function openOptions(){
     <div class="opts-row">
       <div class="toggle col"><div class="cnt-h"><span>Întrebări <small>din ${pool}</small></span>
         <div class="stepper"><button type="button" class="icon-btn" id="shMinus" aria-label="Mai puține">−</button><input class="input" id="shN" type="number" inputmode="numeric" min="1" max="${pool}" value="${pool}" aria-label="Număr de întrebări"><button type="button" class="icon-btn" id="shPlus" aria-label="Mai multe">+</button></div></div>
-        <small class="dur" id="shD"></small>
         <div class="counts">${[10,20,30,50].filter(v=>v<pool).map(v=>`<button class="chip" data-n="${v}">${v}</button>`).join("")}<button class="chip" data-n="${pool}">Toate</button></div></div>
     </div>
     <button class="btn btn-primary btn-block" id="shGo"></button>
@@ -1135,7 +1137,7 @@ function openOptions(){
   document.body.appendChild(bg);
   const inp = bg.querySelector("#shN");
   const set = (v, typing) => { n = Math.max(1, Math.min(pool, Math.round(v) || 1)); if (!typing) inp.value = n;
-    bg.querySelectorAll("[data-n]").forEach(c => c.setAttribute("aria-pressed", +c.dataset.n === n)); bg.querySelector("#shGo").textContent = `Începe · ${n} întrebări`; bg.querySelector("#shD").textContent = durLabel(perQ * n); };
+    bg.querySelectorAll("[data-n]").forEach(c => c.setAttribute("aria-pressed", +c.dataset.n === n)); bg.querySelector("#shGo").innerHTML = `<span class="st-main">Începe · ${n} întrebări</span><span class="st-sub">${durLabel(perQ * n)}</span>`; };
   const close = () => bg.remove();
   set(pool);
   inp.oninput = () => { if (inp.value !== "") set(+inp.value, true); };
