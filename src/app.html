@@ -428,7 +428,20 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .fam:hover{border-color:var(--ink-2)}
 .fam.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .fam.on .avatar{background:var(--oil)}
-.pf-hide{align-self:start;font-size:15px}
+.set-list{width:100%;background:var(--surface);border-radius:16px;box-shadow:var(--shadow);display:grid;text-align:left;overflow:hidden}
+.set-row{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:56px;padding:10px 16px 10px 18px;border:0;background:transparent;font:inherit;color:var(--ink);font-size:15.5px;font-weight:600;text-align:left;cursor:pointer;width:100%}
+.set-row+.set-row{border-top:1px solid var(--line)}
+.set-row:hover{background:var(--surface-2)}
+.set-row.warn .set-t{color:var(--oil-ink)}
+.set-t{display:grid;gap:2px;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.set-t small{font-size:13px;font-weight:400;color:var(--ink-2);overflow:hidden;text-overflow:ellipsis}
+.set-row>svg{flex:none;color:var(--ink-2)}
+.switch{appearance:none;-webkit-appearance:none;flex:none;width:46px;height:28px;border-radius:999px;background:var(--line);position:relative;cursor:pointer;margin:0;transition:background .2s}
+.switch::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.2);transition:transform .2s}
+.switch:checked{background:var(--cedar)}
+.switch:checked::after{transform:translateX(18px)}
+.switch:focus-visible{outline:2px solid var(--cedar);outline-offset:2px}
+.switch:disabled{opacity:.6}
 .kid{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:10px;padding-top:10px;border-top:1px solid var(--line)}
 .kid b{font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .kid .link{padding:0;font-size:13.5px;color:var(--bad)}
@@ -932,14 +945,33 @@ function openProfile(){
         ${levelBar("Întrebări ușoare", okE, seenE, totE, "var(--cedar)")}
         ${levelBar("Întrebări grele", okH, seenH, totH, "var(--oil)")}
       </div>
-      <label class="remember pf-hide"><input type="checkbox" id="pfHide" ${p.hidden ? "" : "checked"}> ${p.child ? "Apare în clasament" : "Apar în clasament"}</label>
       ${!p.child && store.isParent ? `<div class="pf-card" id="pfKids"></div>` : ""}
-
-      <div class="prof-btns">${p.child ? `<button class="btn btn-primary btn-block" data-back>Înapoi la profilul meu</button>` : `<button class="btn ${store.hasEmail() ? "btn-ghost" : "btn-primary"} btn-block" id="pfEdit">${store.hasEmail() ? "Modifică profilul" : "Adaugă emailul"}</button>`}
-      ${S.admin && !p.child ? `<button class="btn btn-ghost btn-block" id="pfAdm">Administrare</button>` : ""}
-      <button class="btn btn-danger btn-block" id="pfOut">Ieși din cont</button></div>`;
+      <div class="set-list">
+        ${p.child ? "" : `<button class="set-row${store.hasEmail() ? "" : " warn"}" id="pfEdit" type="button"><span class="set-t">${store.hasEmail() ? "Numele și emailul" : "Adaugă emailul"}</span>${CHEV}</button>
+        <button class="set-row" id="pfPwd" type="button"><span class="set-t">Schimbă parola</span>${CHEV}</button>
+        <label class="set-row"><span class="set-t">Cont de părinte<small>Îți adaugi copiii</small></span><input type="checkbox" class="switch" id="pfParent" ${store.isParent ? "checked" : ""}></label>`}
+        <label class="set-row"><span class="set-t">${p.child ? "Apare în clasament" : "Apar în clasament"}<small>${p.child ? "Numele lui se vede" : "Numele meu se vede"}</small></span><input type="checkbox" class="switch" id="pfHide" ${p.hidden ? "" : "checked"}></label>
+        ${S.admin && !p.child ? `<button class="set-row" id="pfAdm" type="button"><span class="set-t">Administrare</span>${CHEV}</button>` : ""}
+      </div>
+      <div class="prof-btns">${p.child ? `<button class="btn btn-primary btn-block" data-back>Înapoi la profilul meu</button>` : ""}
+      <button class="btn btn-danger btn-block" id="pfOut">Ieși din cont</button></div>
+      ${p.child ? "" : `<button class="link del-link" id="pfDel" type="button">Șterge contul</button>`}`;
     sheet.querySelector("#pfX").onclick = close;
-    if (!p.child) sheet.querySelector("#pfEdit").onclick = edit;
+    if (!p.child){
+      sheet.querySelector("#pfEdit").onclick = edit;
+      sheet.querySelector("#pfPwd").onclick = pwd;
+      sheet.querySelector("#pfDel").onclick = del;
+      sheet.querySelector("#pfParent").onchange = async e => {
+        const on = e.target.checked; e.target.disabled = true;
+        const r = await store.rpc("set_parent", {p_on: on});
+        e.target.disabled = false;
+        if (!r.ok){ e.target.checked = !on; return toast(/has_children/.test(r.error) ? "Șterge întâi profilurile copiilor." : "Nu s-a putut salva. Încearcă din nou.", 3500); }
+        store.isParent = on; if (on && !store.family?.length) store.family = [{id: store.uid, name: p.name, child: false}];
+        if ($(".home")) viewHome();
+        const top = sheet.scrollTop; show(); sheet.scrollTop = top;
+        toast(on ? "Acum îți poți adăuga copiii." : "Nu mai ești cont de părinte.");
+      };
+    }
     else sheet.querySelector("[data-back]").onclick = () => { close(); switchPlayer(store.uid); };
     sheet.querySelector("#pfOut").onclick = () => { close(); logout(); };
     if (S.admin && !p.child) sheet.querySelector("#pfAdm").onclick = () => { close(); viewAdmin(); };
@@ -1004,25 +1036,20 @@ function openProfile(){
   };
   const edit = () => {
     const parts = p.name.trim().split(" "), fn = parts[0], ln = parts.slice(1).join(" ");
-    sheet.innerHTML = `${X}<h3>Profilul meu</h3>
+    sheet.innerHTML = `${X}<h3>${store.hasEmail() ? "Numele și emailul" : "Adaugă emailul"}</h3>
       <form class="prof-form" id="pfForm" novalidate>
         <div class="name-row">
           <div class="field"><label for="pfLast">Nume de familie</label><input class="input" id="pfLast" maxlength="30" autocomplete="family-name" autocapitalize="words" value="${esc(ln)}"></div>
           <div class="field"><label for="pfFirst">Prenume</label><input class="input" id="pfFirst" maxlength="30" autocomplete="given-name" autocapitalize="words" value="${esc(fn)}"></div>
         </div>
         <div class="field"><label for="pfMail">Email</label><input class="input" id="pfMail" type="email" inputmode="email" maxlength="254" autocomplete="email" autocapitalize="none" spellcheck="false" value="${store.hasEmail() ? esc(store.email) : ""}"></div>
-        <label class="remember"><input type="checkbox" id="pfParent" ${store.isParent ? "checked" : ""}> Sunt părinte (pot adăuga copii)</label>
-        <div class="field"><label for="pfPw">Parolă nouă <span class="muted" style="font-weight:400">(dacă vrei s-o schimbi)</span></label><input class="input" id="pfPw" type="password" autocomplete="new-password" maxlength="72"></div>
         <p class="form-error" id="pfErr" role="alert"></p>
         <div class="modal-btns"><button class="btn btn-ghost" type="button" id="pfCancel">Anulează</button><button class="btn btn-primary" type="submit" id="pfSave">Salvează</button></div>
-      </form>
-      <button class="link del-link" id="pfDel" type="button">Șterge contul</button>`;
+      </form>`;
     sheet.querySelector("#pfX").onclick = close;
     sheet.querySelector("#pfCancel").onclick = show;
     const form = sheet.querySelector("#pfForm"), err = sheet.querySelector("#pfErr");
-    const first = sheet.querySelector("#pfFirst"), last = sheet.querySelector("#pfLast"), mail = sheet.querySelector("#pfMail"), npw = sheet.querySelector("#pfPw");
-    pwEye(npw);
-    sheet.querySelector("#pfDel").onclick = del;
+    const first = sheet.querySelector("#pfFirst"), last = sheet.querySelector("#pfLast"), mail = sheet.querySelector("#pfMail");
     (store.hasEmail() ? last : mail).focus();
     form.addEventListener("input", () => { err.textContent = ""; });
     form.addEventListener("submit", async e => {
@@ -1031,32 +1058,31 @@ function openProfile(){
       if (!slugOf(l1)) { err.textContent = "Scrie numele de familie."; last.focus(); return; }
       if (!slugOf(f1)) { err.textContent = "Scrie prenumele."; first.focus(); return; }
       if (!EMAIL_RE.test(em)) { err.textContent = "Scrie o adresă de email validă."; mail.focus(); return; }
-      if (npw.value && npw.value.length < 6) { err.textContent = "Parola trebuie să aibă cel puțin 6 caractere."; npw.focus(); return; }
       const btn = sheet.querySelector("#pfSave"); btn.disabled = true; btn.textContent = "Se salvează…";
       const r = await store.updateAccount(f1, l1, em);
-      if (r.ok && npw.value){
-        let pe = null;
-        try { const { error } = await sb().auth.updateUser({ password: npw.value }); pe = error; } catch (x) { pe = x; }
-        if (pe && !/different/i.test(pe.message || "")){ btn.disabled = false; btn.textContent = "Salvează"; err.textContent = isNetErr(pe) ? loginError({error:"network"}) : "Numele și emailul au fost salvate, dar parola nu. Încearcă din nou."; p.name = r.name; return; }
-      }
       if (!r.ok){
         btn.disabled = false; btn.textContent = "Salvează";
         err.textContent = ({ name_taken: "Acest nume e deja folosit de alt cont.", email_taken: "Acest email e deja folosit de alt cont.", auth: "Intră din nou în cont și încearcă iar." })[r.error] || loginError(r);
         return;
       }
-      const wantParent = sheet.querySelector("#pfParent").checked;
-      if (wantParent !== !!store.isParent){
-        const pr = await store.rpc("set_parent", {p_on: wantParent});
-        if (!pr.ok){ btn.disabled = false; btn.textContent = "Salvează"; p.name = r.name; err.textContent = /has_children/.test(pr.error) ? "Șterge întâi profilurile copiilor ca să renunți la contul de părinte." : loginError(pr); return; }
-        store.isParent = wantParent; if (wantParent && !store.family?.length) store.family = [{id: store.uid, name: r.name, child: false}];
-      }
       p.name = r.name; lsSet("candela:email", r.email); S.board = null;
       const me = (store.family || []).find(x => x.id === store.uid); if (me) me.name = r.name;
       if ($(".home")) viewHome();
-      toast(npw.value ? "Profil și parolă actualizate." : "Profil actualizat.");
+      toast("Profil actualizat.");
       show();
     });
   };
+  const pwd = () => form("Schimbă parola", `<div class="field"><label for="pfPw">Parola nouă</label><input class="input" id="pfPw" type="password" autocomplete="new-password" maxlength="72"></div>
+    <div class="field"><label for="pfPw2">Scrie-o încă o dată</label><input class="input" id="pfPw2" type="password" autocomplete="new-password" maxlength="72"></div>`, "Salvează", async f => {
+    const a = f.querySelector("#pfPw").value, b = f.querySelector("#pfPw2").value;
+    if (a.length < 6) return "Parola trebuie să aibă cel puțin 6 caractere.";
+    if (a !== b) return "Cele două parole nu sunt la fel.";
+    let pe = null;
+    try { const { error } = await sb().auth.updateUser({ password: a }); pe = error; } catch (x) { pe = x; }
+    if (pe && !/different/i.test(pe.message || "")) return isNetErr(pe) ? loginError({error:"network"}) : "Parola nu s-a putut schimba. Încearcă din nou.";
+    toast("Parola a fost schimbată."); show();
+    return null;
+  });
   // deleting the account: the password is asked again, then everything goes (results, mastered questions, profile)
   const del = () => form("Șterge contul", `<p class="pf-note">Contul, rezultatele și locul din clasament se șterg definitiv. Nu se pot recupera.</p>
     <div class="field"><label for="pfDelPw">Parola ta, pentru confirmare</label><input class="input" id="pfDelPw" type="password" autocomplete="current-password"></div>`, "Șterge definitiv", async f => {
