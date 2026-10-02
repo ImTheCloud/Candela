@@ -217,12 +217,18 @@ html:has(.sheet-bg),html:has(.modal-bg),body:has(.sheet-bg),body:has(.modal-bg){
 .empty{padding:18px;border:1.5px dashed var(--line);border-radius:14px;color:var(--ink-2);font-size:14px;text-align:center}
 
 /* Quiz */
-.qtop{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;margin-bottom:18px}
+.view:has(.qtop){display:flex;flex-direction:column;min-height:calc(100dvh - 36px);min-height:calc(var(--vvh,100dvh) - 36px);max-width:640px;margin:0 auto}
+.qtop{flex:none;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;margin-bottom:12px}
 .icon-btn{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--line);background:transparent;display:grid;place-items:center;padding:0}
 .bar{height:6px;background:var(--surface-2);border-radius:999px;overflow:hidden}
 .bar i{display:block;height:100%;background:var(--oil);border-radius:999px;transition:width .5s cubic-bezier(.2,.8,.2,1)}
 .qcount{font-family:var(--f-mono);font-size:13px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+#qslot{flex:1;display:flex;flex-direction:column;align-items:stretch;min-height:0}
+body.quiz-fixed #qslot{justify-content:center}
+body:not(.quiz-fixed) #qslot{justify-content:flex-start}
 .qcard{background:var(--surface);border-radius:22px;padding:22px 20px;box-shadow:var(--shadow);display:grid;gap:18px}
+body.quiz-fixed .qcard{max-height:calc(100dvh - 120px);max-height:calc(var(--vvh,100dvh) - 120px);overflow-y:auto;-webkit-overflow-scrolling:touch}
+body:not(.quiz-fixed) .qcard{max-height:none;overflow:visible}
 .qcard.enter{animation:qIn .42s cubic-bezier(.2,.8,.2,1) both}
 .qcard.leave{animation:qOut .22s ease-in both}
 @keyframes qIn{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:none}}
@@ -282,11 +288,14 @@ html:has(.sheet-bg),html:has(.modal-bg),body:has(.sheet-bg),body:has(.modal-bg){
 .qactions{display:flex;gap:10px;margin-top:16px}
 .qactions .btn{flex:1}
 @media (max-width:959px){
-  .qactions{position:fixed;left:0;right:0;bottom:0;z-index:10;margin:0 auto;max-width:640px;padding:16px 16px calc(16px + env(safe-area-inset-bottom,0px));background:linear-gradient(to top,var(--bg) 75%,transparent)}
+  .wrap:has(.qtop){padding-block:14px calc(80px + env(safe-area-inset-bottom,0px))}
+  .view:has(.qtop){min-height:calc(100dvh - 28px);min-height:calc(var(--vvh,100dvh) - 28px);padding-bottom:0}
+  .qactions{position:fixed;left:0;right:0;bottom:0;z-index:10;margin:0 auto;max-width:640px;padding:14px 16px calc(14px + env(safe-area-inset-bottom,0px));background:linear-gradient(to top,var(--bg) 80%,transparent)}
   .qactions:empty{display:none}
-  #qslot{padding-top:min(7vh,56px);padding-bottom:110px}
-  .view:has(.qtop){padding-bottom:96px}
+  #qslot{padding-bottom:12px}
 }
+html.quiz-fixed,html:has(body.quiz-fixed),body.quiz-fixed{overflow:hidden!important;overscroll-behavior:none!important}
+body.quiz-fixed .wrap{overflow:hidden!important;overscroll-behavior:none!important}
 .pop{animation:pop .45s cubic-bezier(.3,1.6,.5,1)}
 @keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.03)}100%{transform:scale(1)}}
 .shake{animation:shake .4s ease}
@@ -586,6 +595,11 @@ document.addEventListener("touchmove", e => {
     if (!scrollable) {
       e.preventDefault();
     }
+  } else if (document.body.classList.contains("quiz-fixed")) {
+    const scrollable = e.target.closest(".qcard");
+    if (!scrollable || scrollable.scrollHeight <= scrollable.clientHeight) {
+      e.preventDefault();
+    }
   }
 }, { passive: false });
 document.addEventListener("focusin", e => {
@@ -801,8 +815,8 @@ function persistPrefs(){ lsSet("candela:sel",[...S.sel]); lsSet("candela:mode",S
 const app = $("#app");
 function mount(html){
   document.querySelectorAll(".sheet-bg, .modal-bg, .r-side").forEach(b => b.remove());
-  document.body.classList.remove("scroll-locked");
-  document.documentElement.classList.remove("scroll-locked");
+  document.body.classList.remove("scroll-locked", "quiz-fixed");
+  document.documentElement.classList.remove("scroll-locked", "quiz-fixed");
   document.body.style.top = "";
   app.innerHTML = `<div class="view">${html}</div>`;
   window.scrollTo({top:0});
@@ -1422,6 +1436,10 @@ function viewQuestion(first){
   const ui = { sel: q.t==="multi" ? new Set() : null, pick: null, pairs: {}, active: null, checked: false };
   Z.ui = ui;
   saveQuiz();
+  document.body.classList.add("quiz-fixed");
+  window.scrollTo({ top: 0, behavior: "instant" });
+  document.documentElement.scrollTop = 0;
+  document.body.scrollTop = 0;
   if (first || !$(".qcard")) {
     mount(`<div class="qtop"><button class="icon-btn" id="quit" aria-label="Oprește testul"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
       <div class="bar" aria-hidden="true"><i id="prog" style="width:0"></i></div><span class="qcount" id="qcount"></span></div>
@@ -1446,7 +1464,21 @@ function viewQuestion(first){
     <p class="keys">${({tf:"Taste: A adevărat · F fals · Enter verifică", one:"Taste: A, B, C… · Enter verifică", multi:"Taste: A, B, C… · Enter verifică", fill:"Enter trece la căsuța următoare", match:"Enter verifică"})[q.t]}</p>`;
   const slot = $("#qslot");
   const old = slot.firstElementChild;
-  const place = () => { slot.innerHTML = ""; slot.appendChild(card); const actions = document.createElement("div"); actions.className = "qactions"; actions.id = "actions"; slot.appendChild(actions); bindQuestion(q, card); renderActions(); const f = card.querySelector("input"); if (f && matchMedia("(hover:hover)").matches) f.focus(); };
+  const place = () => {
+    slot.innerHTML = "";
+    slot.appendChild(card);
+    const actions = document.createElement("div");
+    actions.className = "qactions";
+    actions.id = "actions";
+    slot.appendChild(actions);
+    bindQuestion(q, card);
+    renderActions();
+    window.scrollTo({ top: 0, behavior: "instant" });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+    const f = card.querySelector("input");
+    if (f && matchMedia("(hover:hover)").matches) f.focus();
+  };
   if (old && !first){ old.classList.remove("enter"); old.classList.add("leave"); setTimeout(place, 200); } else place();
 }
 function fillHTML(q){
@@ -1531,6 +1563,8 @@ function check(skipped=false){
   const r = grade(q, skipped === true);
   Z.answers[Z.i] = { ...r, skipped: skipped === true };
   ui.checked = true;
+  document.body.classList.remove("quiz-fixed");
+  document.documentElement.classList.remove("quiz-fixed");
   const card = $(".qcard");
   card.querySelectorAll("button.opt,input").forEach(b => b.disabled = true);
   if (q.t==="tf"){ card.querySelectorAll(".opt").forEach(b => { const v = b.dataset.v==="1"; if (v===q.a) b.classList.add("correct"); else if (v===ui.pick) b.classList.add("wrong"); }); }
@@ -1542,6 +1576,15 @@ function check(skipped=false){
   $("#fb").innerHTML = `<div class="feedback ${full?"ok":"no"}"><b>${full ? "Corect" : partial ? `Parțial: ${Math.round(r.pts*q.pairs.length)} din ${q.pairs.length} perechi` : skipped===true ? "Sărită" : "Greșit"}</b>${!full ? correctLine(q) : ""}<div class="verse">${verseHTML(q.ref)}</div></div>`;
   card.classList.add(full ? "pop" : "shake");
   renderActions();
+  requestAnimationFrame(() => {
+    const fb = $("#fb");
+    if (fb) {
+      const rect = fb.getBoundingClientRect();
+      if (rect.bottom > window.innerHeight - 70) {
+        fb.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
+    }
+  });
 }
 function correctLine(q){
   if (q.t==="tf") return `<span>Afirmația este <b style="color:inherit">${q.a?"adevărată":"falsă"}</b>.</span>`;
@@ -1557,6 +1600,8 @@ function next(){
 
 /* ---------- results ---------- */
 async function finish(again){
+  document.body.classList.remove("quiz-fixed");
+  document.documentElement.classList.remove("quiz-fixed");
   // again: show the same report once more (after logging in from it), without saving twice
   const Z = S.quiz, n = Z.qs.length; S.lastReport = Z;
   const score = Z.answers.reduce((s,a)=>s+(a?a.pts:0),0);
