@@ -2,22 +2,27 @@
  "ch": 9,
  "easy": [
   {
-   "t": "tf",
-   "ref": "9:1-2",
-   "q": "Saul era fiul lui Chis, un om din Beniamin.",
-   "a": true
-  },
-  {
    "t": "one",
    "ref": "9:3",
    "q": "Ce i-a cerut Chis fiului său Saul să caute?",
    "opts": [
-    "Niște boi rătăciți",
     "Măgărițele rătăcite",
-    "Oile turmei",
-    "Un slujitor fugit"
+    "Niște boi rătăciți",
+    "Oile turmei"
    ],
-   "a": 1
+   "a": 0
+  },
+  {
+   "t": "tf",
+   "ref": "9:2",
+   "q": "Saul îi întrecea pe toți în înălțime, de la umăr în sus.",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "9:4",
+   "q": "Saul și sluga au găsit măgărițele în țara lui Beniamin.",
+   "a": false
   },
   {
    "t": "tf",
@@ -31,24 +36,21 @@
    "q": "Cine i-a propus lui Saul să meargă la omul lui Dumnezeu din cetate?",
    "opts": [
     "Tatăl său, Chis",
-    "Niște fete care scoteau apă",
     "Sluga care îl însoțea",
-    "Unchiul său"
+    "Niște fete care scoteau apă"
    ],
-   "a": 2
+   "a": 1
   },
   {
    "t": "multi",
    "ref": "9:7-8",
-   "q": "Care dintre următoarele afirmații despre darul pentru omul lui Dumnezeu sunt adevărate? (pot fi mai multe sau niciunul)",
+   "q": "Care dintre următoarele afirmații despre darul pentru omul lui Dumnezeu sunt adevărate?",
    "opts": [
-    "Saul nu mai avea merinde în saci",
+    "Saul avea în saci pâine din belșug",
     "Sluga avea la el ceva argint pe care să-l dea",
-    "Saul a adus un miel ca dar",
-    "Omul lui Dumnezeu a refuzat darul"
+    "Saul avea la el un sfert de siclu de argint"
    ],
    "a": [
-    0,
     1
    ]
   },
@@ -59,22 +61,15 @@
    "a": true
   },
   {
-   "t": "tf",
-   "ref": "9:10",
-   "q": "Saul a refuzat propunerea slugii și s-a întors acasă.",
-   "a": false
-  },
-  {
    "t": "one",
    "ref": "9:11",
    "q": "Pe cine au întâlnit Saul și sluga pe când se suiau spre cetate?",
    "opts": [
+    "Niște fete care ieșiseră să scoată apă",
     "Niște păstori",
-    "Pe preoții cetății",
-    "Pe Samuel însuși",
-    "Niște fete care ieșiseră să scoată apă"
+    "Pe preoții cetății"
    ],
-   "a": 3
+   "a": 0
   },
   {
    "t": "tf",
@@ -98,10 +93,6 @@
     [
      "Fetele",
      "au spus unde îl pot găsi pe văzător"
-    ],
-    [
-     "Samuel",
-     "i-a întâlnit la poarta cetății"
     ]
    ]
   },
@@ -110,12 +101,11 @@
    "ref": "9:15-16",
    "q": "Ce i-a descoperit Domnul lui Samuel cu o zi înainte de venirea lui Saul?",
    "opts": [
-    "Că va veni un om pe care să-l ungă drept căpetenie a poporului",
     "Că filistenii vor ataca a doua zi",
-    "Că fiii lui vor fi judecați",
+    "Că va veni un om pe care să-l ungă drept căpetenie a poporului",
     "Că trebuie să plece la Ghilgal"
    ],
-   "a": 0
+   "a": 1
   },
   {
    "t": "fill",
@@ -124,12 +114,6 @@
    "a": [
     "filistenilor"
    ]
-  },
-  {
-   "t": "tf",
-   "ref": "9:18",
-   "q": "Saul l-a recunoscut imediat pe Samuel ca fiind văzătorul.",
-   "a": false
   },
   {
    "t": "fill",
@@ -145,33 +129,47 @@
    "q": "Ce i-a spus Samuel lui Saul despre măgărițe?",
    "opts": [
     "Că au fost furate de filisteni",
-    "Că s-au găsit",
-    "Că le va găsi în țara Țuf",
-    "Că nu le va mai găsi niciodată"
+    "Că nu le va mai găsi niciodată",
+    "Că s-au găsit"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "t": "tf",
    "ref": "9:21",
-   "q": "Saul a răspuns cu smerenie, spunând că este beniamit, din una din cele mai mici seminții ale lui Israel.",
-   "a": true
+   "q": "Saul a spus că familia lui este cea mai mare dintre familiile din seminția lui Beniamin.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "9:18",
+   "q": "Ce l-a rugat Saul pe Samuel când s-a apropiat de el la poartă?",
+   "opts": [
+    "Să-i spună unde sunt măgărițele",
+    "Să-i dea ceva de mâncare",
+    "Să-i arate unde este casa văzătorului"
+   ],
+   "a": 2
   },
   {
    "t": "multi",
    "ref": "9:23-24",
-   "q": "Care dintre următoarele s-au întâmplat la masa de pe înălțime? (pot fi mai multe sau niciunul)",
+   "q": "Care dintre următoarele s-au întâmplat la masa de pe înălțime?",
    "opts": [
     "Bucătarul a adus o porție păstrată pentru Saul",
     "Saul a refuzat să mănânce",
-    "Saul a mâncat cu Samuel în ziua aceea",
-    "Samuel l-a uns pe Saul în fața celor poftiți",
-    "Sluga a fost trimisă acasă"
+    "Saul a mâncat cu Samuel în ziua aceea"
    ],
    "a": [
     0,
     2
    ]
+  },
+  {
+   "t": "tf",
+   "ref": "9:25",
+   "q": "Samuel a stat de vorbă cu Saul pe acoperișul casei.",
+   "a": true
   },
   {
    "t": "match",
@@ -187,10 +185,6 @@
      "Samuel a stat de vorbă cu Saul"
     ],
     [
-     "În revărsatul zorilor",
-     "Samuel l-a chemat pe Saul să se scoale"
-    ],
-    [
      "La marginea cetății",
      "sluga a fost trimisă înainte"
     ]
@@ -203,177 +197,13 @@
    "a": [
     "cuvântul"
    ]
-  },
-  {
-   "t": "tf",
-   "ref": "9:2",
-   "q": "Saul îi întrecea pe toți în înălțime de la umăr în sus.",
-   "a": true
-  },
-  {
-   "t": "tf",
-   "ref": "9:4",
-   "q": "Saul și sluga au găsit măgărițele în țara lui Beniamin.",
-   "a": false
-  },
-  {
-   "t": "one",
-   "ref": "9:6",
-   "q": "Unde le-a spus sluga că se află omul lui Dumnezeu?",
-   "opts": [
-    "La Silo",
-    "În cetatea aceasta",
-    "La Betel",
-    "La Ghilgal"
-   ],
-   "a": 1
-  },
-  {
-   "t": "fill",
-   "ref": "9:10",
-   "q": "„Saul a zis slugii: „Ai ___; haidem să mergem!”",
-   "a": [
-    "dreptate"
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "9:13",
-   "q": "Fetele le-au spus că îl vor găsi pe văzător înainte ca el să se suie la locul înalt să mănânce.",
-   "a": true
-  },
-  {
-   "t": "one",
-   "ref": "9:13",
-   "q": "Cine mănâncă după ce văzătorul binecuvântează jertfa?",
-   "opts": [
-    "Numai preoții",
-    "Cei poftiți",
-    "Numai bătrânii cetății",
-    "Nimeni până a doua zi"
-   ],
-   "a": 1
-  },
-  {
-   "t": "match",
-   "ref": "9:9-24",
-   "q": "Asociază fiecare replică cu cel care a rostit-o.",
-   "pairs": [
-    [
-     "„Haidem să mergem la văzător!”",
-     "cel care mergea odinioară să întrebe pe Dumnezeu"
-    ],
-    [
-     "„Aici este văzătorul?”",
-     "Saul și sluga"
-    ],
-    [
-     "„Suiți-vă dar, căci acum îl veți găsi”",
-     "fetele"
-    ],
-    [
-     "„Iată ce a fost păstrat, pune-o înainte și mănâncă”",
-     "Samuel"
-    ]
-   ]
-  },
-  {
-   "t": "one",
-   "ref": "9:18",
-   "q": "Ce l-a rugat Saul pe Samuel când s-a apropiat de el la poartă?",
-   "opts": [
-    "Să-i spună unde sunt măgărițele",
-    "Să-i arate unde este casa văzătorului",
-    "Să-i dea ceva de mâncare",
-    "Să-l ducă la Rama"
-   ],
-   "a": 1
-  },
-  {
-   "t": "multi",
-   "ref": "9:20",
-   "q": "Pentru cine spunea Samuel că este păstrat tot ce este mai de preț în Israel? (pot fi mai multe sau niciunul)",
-   "opts": [
-    "Pentru Saul",
-    "Pentru fiii lui Samuel",
-    "Pentru toată casa tatălui lui Saul",
-    "Pentru preoții de la Silo",
-    "Pentru seminția lui Iuda"
-   ],
-   "a": [
-    0,
-    2
-   ]
-  },
-  {
-   "t": "fill",
-   "ref": "9:21",
-   "q": "„Și familia mea nu este cea mai mică dintre toate familiile din seminția lui Beniamin? Pentru ce dar îmi ___ astfel?”",
-   "a": [
-    "vorbești"
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "9:25",
-   "q": "După masă, Samuel și Saul au rămas peste noapte pe înălțime.",
-   "a": false
-  },
-  {
-   "t": "tf",
-   "ref": "9:26",
-   "q": "În dimineața următoare, Saul a plecat singur, iar Samuel a rămas în cetate.",
-   "a": false
-  },
-  {
-   "t": "multi",
-   "ref": "9:25-27",
-   "q": "Care dintre următoarele s-au întâmplat în dimineața plecării lui Saul? (pot fi mai multe sau niciunul)",
-   "opts": [
-    "Samuel l-a uns pe Saul la poarta cetății, în fața poporului",
-    "Saul a găsit măgărițele pe drum",
-    "Samuel l-a însoțit pe Saul până la marginea cetății",
-    "Sluga a rămas în casa lui Samuel"
-   ],
-   "a": [
-    2
-   ]
   }
  ],
  "hard": [
   {
-   "t": "match",
-   "ref": "9:1",
-   "q": "Asociază fiecare nume din genealogia lui Chis cu tatăl său, potrivit textului.",
-   "pairs": [
-    [
-     "Chis",
-     "fiul lui Abiel"
-    ],
-    [
-     "Abiel",
-     "fiul lui Țeror"
-    ],
-    [
-     "Țeror",
-     "fiul lui Becorat"
-    ],
-    [
-     "Becorat",
-     "fiul lui Afiah"
-    ]
-   ]
-  },
-  {
    "t": "tf",
    "ref": "9:1",
    "q": "Chis este descris ca „un om tare și voinic”.",
-   "a": true
-  },
-  {
-   "t": "tf",
-   "ref": "9:2",
-   "q": "Textul spune că Saul era mai frumos decât oricare din copiii lui Israel.",
    "a": true
   },
   {
@@ -385,20 +215,15 @@
   {
    "t": "multi",
    "ref": "9:4",
-   "q": "Prin care dintre următoarele ținuturi a trecut Saul căutând măgărițele? (pot fi mai multe sau niciunul)",
+   "q": "Prin care dintre următoarele ținuturi a trecut Saul căutând măgărițele?",
    "opts": [
     "Muntele lui Efraim",
-    "Țara Șalișa",
     "Țara Moabului",
-    "Țara Șaalim",
-    "Țara lui Beniamin",
-    "Valea Sorec"
+    "Țara Șaalim"
    ],
    "a": [
     0,
-    1,
-    3,
-    4
+    2
    ]
   },
   {
@@ -406,10 +231,9 @@
    "ref": "9:5",
    "q": "În ce țară ajunseseră când Saul a propus să se întoarcă?",
    "opts": [
-    "Țara Șaalim",
-    "Țara Șalișa",
-    "Țara Țuf",
-    "Țara Gosen"
+    "Țara Gosen",
+    "Țara Moabului",
+    "Țara Țuf"
    ],
    "a": 2
   },
@@ -423,31 +247,15 @@
    ]
   },
   {
-   "t": "match",
-   "ref": "9:3-20",
-   "q": "Asociază fiecare replică cu cel care a rostit-o.",
-   "pairs": [
-    [
-     "„Ia cu tine o slugă, scoală-te”",
-     "Chis"
-    ],
-    [
-     "„Poate că ne va arăta drumul pe care trebuie să apucăm”",
-     "Sluga"
-    ],
-    [
-     "„Du-te repede, astăzi a venit în cetate”",
-     "Fetele"
-    ],
-    [
-     "„Ce avem?”",
-     "Saul"
-    ],
-    [
-     "„Nu te neliniști de măgărițele pe care le-ai pierdut”",
-     "Samuel"
-    ]
-   ]
+   "t": "one",
+   "ref": "9:8",
+   "q": "Ce avea sluga la el ca să dea omului lui Dumnezeu?",
+   "opts": [
+    "Un sfert de siclu de aur",
+    "Un sfert de siclu de argint",
+    "Un ied din turma lui Chis"
+   ],
+   "a": 1
   },
   {
    "t": "match",
@@ -455,38 +263,30 @@
    "q": "Asociază fiecare cifră cu detaliul din text.",
    "pairs": [
     [
-     "Un sfert",
-     "de siclu de argint avea sluga"
-    ],
-    [
      "Trei",
-     "zile trecuseră de când se pierduseră măgărițele"
+     "zile de când se pierduseră măgărițele"
     ],
     [
      "O zi",
      "mai înainte de venirea lui Saul îl înștiințase Domnul pe Samuel"
     ],
     [
-     "Treizeci",
-     "de inși (aproape) erau printre cei poftiți"
+     "Aproape treizeci",
+     "de inși erau poftiți la masă"
     ]
    ]
   },
   {
    "t": "multi",
    "ref": "9:12",
-   "q": "Ce le-au spus fetele lui Saul și slugii despre văzător? (pot fi mai multe sau niciunul)",
+   "q": "Ce le-au spus fetele lui Saul și slugii despre văzător?",
    "opts": [
-    "Că a venit în cetate astăzi",
-    "Că poporul aduce jertfă pe înălțime",
     "Că a plecat la Rama",
-    "Că stă bolnav în casă",
-    "Că este înaintea lor"
+    "Că poporul aduce jertfă la Ghilgal",
+    "Că a venit în cetate astăzi"
    ],
    "a": [
-    0,
-    1,
-    4
+    2
    ]
   },
   {
@@ -500,20 +300,19 @@
   {
    "t": "tf",
    "ref": "9:14",
-   "q": "Când l-au întâlnit Saul și sluga, Samuel cobora de pe înălțime.",
+   "q": "Când l-au întâlnit Saul și sluga la poartă, Samuel cobora de pe înălțime.",
    "a": false
   },
   {
    "t": "one",
    "ref": "9:16",
-   "q": "Când i-a spus Domnul lui Samuel că îi va trimite omul din Beniamin?",
+   "q": "Când a spus Domnul că îi va trimite lui Samuel omul din Beniamin?",
    "opts": [
-    "Peste trei zile",
     "Mâine, la ceasul acesta",
-    "În ziua Sabatului",
-    "La luna nouă"
+    "Peste trei zile",
+    "În ziua Sabatului"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "t": "fill",
@@ -525,18 +324,23 @@
    ]
   },
   {
-   "t": "tf",
-   "ref": "9:17",
-   "q": "Domnul i-a vorbit lui Samuel chiar când acesta l-a zărit pe Saul.",
-   "a": true
-  },
-  {
    "t": "fill",
    "ref": "9:17",
    "q": "„Iată omul despre care ți-am vorbit; el va ___ peste poporul Meu.”",
    "a": [
     "domni"
    ]
+  },
+  {
+   "t": "one",
+   "ref": "9:18",
+   "q": "În ce loc anume s-a apropiat Saul de Samuel?",
+   "opts": [
+    "La fântâna cetății",
+    "Pe acoperișul casei",
+    "La mijlocul porții"
+   ],
+   "a": 2
   },
   {
    "t": "tf",
@@ -549,40 +353,30 @@
    "ref": "9:19",
    "q": "Ce i-a promis Samuel lui Saul că îi va spune a doua zi?",
    "opts": [
-    "Unde sunt măgărițele",
     "Numele viitoarei lui soții",
     "Tot ce se petrece în inima lui",
     "Când va muri"
    ],
-   "a": 2
-  },
-  {
-   "t": "fill",
-   "ref": "9:20",
-   "q": "Și pentru cine este păstrat tot ce este mai de ___ în Israel?",
-   "a": [
-    "preț"
-   ]
+   "a": 1
   },
   {
    "t": "tf",
    "ref": "9:21",
-   "q": "Saul a spus că familia lui este cea mai mică dintre toate familiile din seminția lui Beniamin.",
+   "q": "Saul a spus că familia lui este cea mai mică dintre familiile din seminția lui Beniamin.",
    "a": true
   },
   {
    "t": "multi",
-   "ref": "9:22-23",
-   "q": "Care dintre următoarele sunt adevărate despre ospăț? (pot fi mai multe sau niciunul)",
+   "ref": "9:22",
+   "q": "Care dintre următoarele sunt adevărate despre ospăț?",
    "opts": [
-    "Samuel l-a luat la masă și pe sluga lui Saul",
-    "Saul a stat pe ultimul loc",
-    "Bucătarul primise porunca să pună o porție deoparte",
-    "Sluga a mâncat afară",
-    "Ospățul a avut loc în casa lui Chis"
+    "Saul a primit locul cel dintâi între cei poftiți",
+    "Samuel a luat la masă și pe sluga lui Saul",
+    "Erau aproape treizeci de inși poftiți"
    ],
    "a": [
     0,
+    1,
     2
    ]
   },
@@ -599,122 +393,11 @@
    "ref": "9:24",
    "q": "Ce a pus bucătarul înaintea lui Saul?",
    "opts": [
+    "Spata și ce era pe ea",
     "Pieptul",
-    "Coapsa dreaptă",
-    "Grăsimea",
-    "Spata și ce era pe ea"
-   ],
-   "a": 3
-  },
-  {
-   "t": "one",
-   "ref": "9:1",
-   "q": "Ce spune textul despre Afiah, ultimul nume din genealogia lui Chis?",
-   "opts": [
-    "Era fiul unui beniamit",
-    "Era preot la Silo",
-    "Era fiul lui Iuda",
-    "Era judecător în Israel"
+    "Grăsimea"
    ],
    "a": 0
-  },
-  {
-   "t": "fill",
-   "ref": "9:2",
-   "q": "„El avea un fiu cu numele Saul, ___ și frumos”",
-   "a": [
-    "tânăr"
-   ]
-  },
-  {
-   "t": "match",
-   "ref": "9:4-5",
-   "q": "Asociază fiecare etapă a căutării cu locul prin care au trecut, în ordinea din text.",
-   "pairs": [
-    [
-     "Prima",
-     "muntele lui Efraim"
-    ],
-    [
-     "A doua",
-     "țara Șalișa"
-    ],
-    [
-     "A treia",
-     "țara Șaalim"
-    ],
-    [
-     "A patra",
-     "țara lui Beniamin"
-    ],
-    [
-     "A cincea",
-     "țara Țuf"
-    ]
-   ]
-  },
-  {
-   "t": "fill",
-   "ref": "9:5",
-   "q": "„Haide să ne întoarcem, ca nu cumva tatăl meu, lăsând ___, să fie îngrijorat de noi.”",
-   "a": [
-    "măgărițele"
-   ]
-  },
-  {
-   "t": "fill",
-   "ref": "9:16",
-   "q": "„Mâine, la ceasul acesta, îți voi trimite un om din țara lui ___”",
-   "a": [
-    "Beniamin"
-   ]
-  },
-  {
-   "t": "one",
-   "ref": "9:18",
-   "q": "În ce loc anume s-a apropiat Saul de Samuel?",
-   "opts": [
-    "La fântâna cetății",
-    "La mijlocul porții",
-    "Pe acoperișul casei",
-    "La marginea cetății"
-   ],
-   "a": 1
-  },
-  {
-   "t": "fill",
-   "ref": "9:24",
-   "q": "„pune-o înainte și mănâncă, fiindcă pentru tine s-a păstrat când am ___ poporul”",
-   "a": [
-    "poftit"
-   ]
-  },
-  {
-   "t": "fill",
-   "ref": "9:26",
-   "q": "„Samuel a chemat pe Saul de pe acoperiș și a zis: „Scoală-te, și te voi ___.”",
-   "a": [
-    "însoți"
-   ]
-  },
-  {
-   "t": "multi",
-   "ref": "9:7-8",
-   "q": "Ce aveau Saul sau sluga lui de dat omului lui Dumnezeu, potrivit textului?",
-   "opts": [
-    "Un sfert de siclu de aur",
-    "Merinde din sacii lor",
-    "O jumătate de siclu de argint",
-    "Un ied din turma lui Chis",
-    "Un dar adus de Saul de acasă"
-   ],
-   "a": []
-  },
-  {
-   "t": "tf",
-   "ref": "9:27",
-   "q": "Când s-au coborât la marginea cetății, Samuel i-a cerut lui Saul să-și trimită sluga înapoi acasă, la Chis.",
-   "a": false
   }
  ]
 }

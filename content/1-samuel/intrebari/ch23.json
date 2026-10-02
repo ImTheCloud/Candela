@@ -2,455 +2,229 @@
  "ch": 23,
  "easy": [
   {
-   "t": "one",
+   "t": "tf",
    "ref": "23:1",
-   "q": "Ce cetate atacau filistenii la începutul capitolului?",
+   "q": "Filistenii au început lupta împotriva Cheilei.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "23:2",
+   "q": "Ce a făcut David înainte să se ducă la Cheila?",
    "opts": [
-    "Nob",
-    "Ghibea",
-    "Cheila",
-    "Zif"
+    "A cerut sfatul lui Ionatan",
+    "A întrebat pe Domnul",
+    "A trimis iscoade"
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "23:3",
+   "q": "Oamenii lui David erau gata să meargă fără teamă la Cheila.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "23:5",
+   "q": "Ce a făcut David la Cheila?",
+   "opts": [
+    "A fugit de filisteni",
+    "A încheiat pace cu filistenii",
+    "I-a bătut pe filisteni și a izbăvit cetatea"
    ],
    "a": 2
   },
   {
    "t": "tf",
-   "ref": "23:2",
-   "q": "David a întrebat pe Domnul înainte să meargă împotriva filistenilor.",
-   "a": true
-  },
-  {
-   "t": "fill",
-   "ref": "23:2",
-   "q": "„Du-te, bate pe filisteni și ___ Cheila”",
-   "a": [
-    "izbăvește"
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "23:3",
-   "q": "Oamenii lui David erau dornici să lupte la Cheila.",
-   "a": false
-  },
-  {
-   "t": "tf",
-   "ref": "23:4",
-   "q": "David l-a întrebat pe Domnul a doua oară.",
-   "a": true
-  },
-  {
-   "t": "multi",
-   "ref": "23:5",
-   "q": "Ce a făcut David la Cheila? (pot fi mai multe sau niciunul)",
-   "opts": [
-    "S-a bătut împotriva filistenilor",
-    "Le-a luat filistenilor vitele",
-    "A ars cetatea",
-    "A încheiat pace cu filistenii"
-   ],
-   "a": [
-    0,
-    1
-   ]
-  },
-  {
-   "t": "tf",
    "ref": "23:7",
-   "q": "Saul a crezut că Dumnezeu îl dă pe David în mâinile lui, fiindcă se închisese într-o cetate.",
+   "q": "Saul a socotit că Dumnezeu îl dă pe David în mâinile lui.",
    "a": true
   },
   {
    "t": "one",
-   "ref": "23:10-12",
-   "q": "Ce i-a descoperit Domnul lui David despre locuitorii Cheilei?",
+   "ref": "23:9",
+   "q": "Ce i-a cerut David preotului Abiatar să aducă?",
    "opts": [
-    "Că îl vor apăra de Saul",
-    "Că vor fugi de frica lui Saul",
-    "Că îl vor ajuta împotriva filistenilor",
-    "Că îl vor da în mâinile lui Saul"
-   ],
-   "a": 3
-  },
-  {
-   "t": "tf",
-   "ref": "23:13",
-   "q": "Saul și-a continuat drumul spre Cheila, deși David plecase.",
-   "a": false
-  },
-  {
-   "t": "fill",
-   "ref": "23:14",
-   "q": "„Saul îl căuta mereu, dar ___ nu l-a dat în mâinile lui”",
-   "a": [
-    "Dumnezeu"
-   ]
-  },
-  {
-   "t": "one",
-   "ref": "23:16",
-   "q": "Cine a venit la David în pădure și i-a întărit încrederea în Dumnezeu?",
-   "opts": [
-    "Ionatan",
-    "Abiatar",
-    "Gad",
-    "Mical"
+    "Efodul",
+    "Sabia lui Goliat",
+    "Pâinea sfințită"
    ],
    "a": 0
   },
   {
    "t": "multi",
-   "ref": "23:17",
-   "q": "Ce i-a spus Ionatan lui David? (pot fi mai multe sau niciunul)",
+   "ref": "23:11-12",
+   "q": "Ce i-a răspuns Domnul lui David?",
    "opts": [
-    "Tu vei domni peste Israel",
-    "Eu voi fi al doilea după tine",
-    "Mâna tatălui meu nu te va atinge",
-    "Fugi în țara Moabului",
-    "Predă-te tatălui meu"
+    "Locuitorii Cheilei îl vor apăra pe David",
+    "Saul se va coborî la Cheila",
+    "Saul se va întoarce fără să-l caute"
    ],
    "a": [
-    0,
-    1,
-    2
+    1
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "23:13",
+   "q": "Ce a făcut David după răspunsul Domnului?",
+   "opts": [
+    "A ieșit din Cheila cu oamenii lui",
+    "A rămas să apere cetatea",
+    "S-a predat lui Saul"
+   ],
+   "a": 0
+  },
+  {
+   "t": "tf",
+   "ref": "23:14",
+   "q": "Saul îl căuta mereu pe David, dar Dumnezeu nu l-a dat în mâinile lui.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "23:16",
+   "q": "Cine s-a dus la David în pădure ca să-l întărească?",
+   "opts": [
+    "Ionatan",
+    "Abiatar",
+    "Gad"
+   ],
+   "a": 0
+  },
+  {
+   "t": "fill",
+   "ref": "23:17",
+   "q": "Tu vei domni peste ___ și eu voi fi al doilea după tine.",
+   "a": [
+    "Israel"
    ]
   },
   {
    "t": "tf",
    "ref": "23:18",
-   "q": "După legământ, David a plecat acasă împreună cu Ionatan.",
+   "q": "David și Ionatan au făcut un legământ înaintea lui Saul.",
    "a": false
   },
   {
-   "t": "match",
-   "ref": "23:6-27",
-   "q": "Asociază fiecare personaj sau grup cu fapta lui.",
-   "pairs": [
-    [
-     "Abiatar",
-     "A venit la David cu efodul"
-    ],
-    [
-     "Ionatan",
-     "A făcut iarăși legământ cu David"
-    ],
-    [
-     "Zifiții",
-     "I-au spus lui Saul unde se ascunde David"
-    ],
-    [
-     "Un sol",
-     "L-a chemat pe Saul înapoi din urmărire"
-    ]
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "23:26",
-   "q": "Saul și oamenii lui îi înconjuraseră pe David și pe ai lui, ca să pună mâna pe ei.",
-   "a": true
+   "t": "one",
+   "ref": "23:19-20",
+   "q": "Cine a spus lui Saul unde se ascunde David?",
+   "opts": [
+    "Locuitorii Cheilei",
+    "Zifiții",
+    "Filistenii"
+   ],
+   "a": 1
   },
   {
    "t": "one",
    "ref": "23:27-28",
    "q": "De ce a încetat Saul să-l urmărească pe David?",
    "opts": [
-    "Ionatan l-a convins",
-    "Filistenii năvăliseră în țară",
-    "S-a îmbolnăvit",
-    "I-a pierdut urma"
-   ],
-   "a": 1
-  },
-  {
-   "t": "match",
-   "ref": "23:5-29",
-   "q": "Asociază fiecare loc cu ce s-a petrecut acolo.",
-   "pairs": [
-    [
-     "Cheila",
-     "David a izbăvit-o de filisteni"
-    ],
-    [
-     "Pustia Zif",
-     "Ionatan l-a vizitat pe David în pădure"
-    ],
-    [
-     "En-Ghedi",
-     "David s-a suit acolo în locuri întărite, la sfârșitul capitolului"
-    ]
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "23:29",
-   "q": "La sfârșitul capitolului, David s-a întors la Cheila.",
-   "a": false
-  },
-  {
-   "t": "tf",
-   "ref": "23:1",
-   "q": "David a aflat de la alții că filistenii au început lupta împotriva Cheilei.",
-   "a": true
-  },
-  {
-   "t": "fill",
-   "ref": "23:4",
-   "q": "„Scoală-te și coboară-te la Cheila, căci dau pe filisteni în ___ tale.”",
-   "a": [
-    "mâinile"
-   ]
-  },
-  {
-   "t": "one",
-   "ref": "23:3-4",
-   "q": "Ce l-a făcut pe David să-L întrebe din nou pe Domnul?",
-   "opts": [
-    "Un vis pe care l-a avut",
-    "Frica oamenilor lui",
-    "Vestea că Saul se apropie",
-    "Sfatul lui Ionatan"
-   ],
-   "a": 1
-  },
-  {
-   "t": "tf",
-   "ref": "23:5",
-   "q": "Lupta de la Cheila s-a încheiat fără biruință pentru David.",
-   "a": false
-  },
-  {
-   "t": "one",
-   "ref": "23:8",
-   "q": "Ce plan avea Saul când a chemat poporul la război?",
-   "opts": [
-    "Să-i alunge pe filisteni din Cheila",
-    "Să-i pedepsească pe locuitorii Cheilei",
-    "Să coboare la Cheila și să-l împresoare pe David cu oamenii lui",
-    "Să-l caute pe David în pustia Maon"
+    "Ionatan l-a rugat",
+    "S-a lăsat noaptea",
+    "Filistenii au năvălit în țară"
    ],
    "a": 2
   },
   {
-   "t": "one",
-   "ref": "23:15",
-   "q": "De ce a stat David în pustia Zif, în pădure?",
-   "opts": [
-    "Pentru că acolo îl aștepta Ionatan",
-    "Pentru că văzuse că Saul a pornit să-i ia viața",
-    "Pentru că zifiții îi erau prieteni",
-    "Pentru că prorocul Gad îl trimisese acolo"
-   ],
-   "a": 1
-  },
-  {
    "t": "tf",
-   "ref": "23:17",
-   "q": "Ionatan l-a sfătuit pe David să se teamă și să fugă din țară.",
+   "ref": "23:26-28",
+   "q": "Saul a reușit să-l prindă pe David în pustia Maon.",
    "a": false
   },
   {
-   "t": "one",
-   "ref": "23:23",
-   "q": "Ce a promis Saul că va face după ce zifiții se vor întoarce cu vești sigure?",
-   "opts": [
-    "Va porni cu ei",
-    "Le va da ogoare și vii",
-    "Va trimite pe Abner în locul lui",
-    "Îl va ierta pe David"
-   ],
-   "a": 0
+   "t": "match",
+   "ref": "23:6-19",
+   "q": "Potrivește persoana cu fapta.",
+   "pairs": [
+    [
+     "Abiatar",
+     "a venit la David cu efodul în mână"
+    ],
+    [
+     "Ionatan",
+     "i-a spus că David va domni peste Israel"
+    ],
+    [
+     "Zifiții",
+     "au dat de veste lui Saul"
+    ]
+   ]
   },
   {
    "t": "fill",
-   "ref": "23:25",
-   "q": "„Despre lucrul acesta s-a dat de ___ lui David, care s-a coborât la stâncă”",
+   "ref": "23:2",
+   "q": "Du-te, bate pe ___ și izbăvește Cheila.",
    "a": [
-    "veste"
+    "filisteni"
    ]
   },
   {
    "t": "multi",
-   "ref": "23:1-27",
-   "q": "În ce momente ale capitolului au un rol filistenii? (pot fi mai multe sau niciunul)",
+   "ref": "23:3-5",
+   "q": "Ce s-a întâmplat în legătură cu plecarea la Cheila?",
    "opts": [
-    "Când atacă cetatea Cheila",
-    "Când năvălesc în țară cât timp Saul îl urmărește pe David",
-    "Când îl ajută pe Saul să-l împresoare pe David",
-    "Când îl primesc pe David în pustia Zif"
-   ],
-   "a": [
-    0,
-    1
-   ]
-  },
-  {
-   "t": "match",
-   "ref": "23:5-28",
-   "q": "Asociază fiecare moment cu locul lui în desfășurarea capitolului.",
-   "pairs": [
-    [
-     "Întâi",
-     "David izbăvește Cheila de filisteni"
-    ],
-    [
-     "Apoi",
-     "David iese din Cheila cu oamenii lui"
-    ],
-    [
-     "După aceea",
-     "Ionatan îl vizitează pe David în pădure"
-    ],
-    [
-     "La sfârșit",
-     "Saul se întoarce să iasă înaintea filistenilor"
-    ]
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "23:9-12",
-   "q": "David s-a folosit de efodul adus de Abiatar ca să-L întrebe pe Domnul.",
-   "a": true
-  },
-  {
-   "t": "one",
-   "ref": "23:26-27",
-   "q": "Când a venit solul la Saul?",
-   "opts": [
-    "După ce David ajunsese la En-Ghedi",
-    "Înainte ca Saul să plece din Ghibea",
-    "Tocmai când Saul și oamenii lui îi înconjuraseră pe David și pe ai lui",
-    "Pe când Saul era la Cheila"
-   ],
-   "a": 2
-  },
-  {
-   "t": "one",
-   "ref": "23:12-13",
-   "q": "Ce a făcut David după ce Domnul i-a spus că locuitorii Cheilei îl vor da în mâinile lui Saul?",
-   "opts": [
-    "A ieșit din Cheila cu oamenii lui",
-    "A închis porțile cetății",
-    "A trimis soli la Saul",
-    "I-a pedepsit pe locuitorii Cheilei"
-   ],
-   "a": 0
-  },
-  {
-   "t": "tf",
-   "ref": "23:18",
-   "q": "Legământul din pădure a fost primul legământ dintre David și Ionatan.",
-   "a": false
-  },
-  {
-   "t": "tf",
-   "ref": "23:25",
-   "q": "După ce David s-a coborât la stâncă, Saul a renunțat să-l mai caute în pustia Maon.",
-   "a": false
-  },
-  {
-   "t": "tf",
-   "ref": "23:13",
-   "q": "David și oamenii lui au ieșit din Cheila și s-au dus unde au putut.",
-   "a": true
-  }
- ],
- "hard": [
-  {
-   "t": "tf",
-   "ref": "23:1",
-   "q": "Filistenii jefuiau viile Cheilei.",
-   "a": false
-  },
-  {
-   "t": "fill",
-   "ref": "23:3",
-   "q": "„Ce va fi când vom merge la Cheila, împotriva ___ filistenilor?”",
-   "a": [
-    "oștilor"
-   ]
-  },
-  {
-   "t": "match",
-   "ref": "23:3-24",
-   "q": "Asociază fiecare loc cu ce se spune despre el.",
-   "pairs": [
-    [
-     "Cheila",
-     "Cetate cu porți și zăvoare"
-    ],
-    [
-     "Iuda",
-     "Oamenii lui David se temeau chiar acolo"
-    ],
-    [
-     "Zif",
-     "Acolo s-au dus zifiții înaintea lui Saul"
-    ]
-   ]
-  },
-  {
-   "t": "one",
-   "ref": "23:6",
-   "q": "Al cui fiu era Abiatar?",
-   "opts": [
-    "Al lui Ahitub",
-    "Al lui Eli",
-    "Al lui Ahimelec",
-    "Al lui Doeg"
-   ],
-   "a": 2
-  },
-  {
-   "t": "tf",
-   "ref": "23:8",
-   "q": "Saul a chemat numai pe oamenii săi aleși să coboare la Cheila.",
-   "a": false
-  },
-  {
-   "t": "match",
-   "ref": "23:9-21",
-   "q": "Asociază fiecare replică cu cel care a rostit-o.",
-   "pairs": [
-    [
-     "„Adu efodul!”",
-     "David"
-    ],
-    [
-     "„Se va coborî.”",
-     "Domnul"
-    ],
-    [
-     "„Domnul să vă binecuvânteze că aveți milă de mine!”",
-     "Saul"
-    ]
-   ]
-  },
-  {
-   "t": "fill",
-   "ref": "23:10",
-   "q": "„Saul vrea să vină la Cheila ca să ___ cetatea din pricina mea”",
-   "a": [
-    "nimicească"
-   ]
-  },
-  {
-   "t": "multi",
-   "ref": "23:10-11",
-   "q": "Care dintre următoarele expresii apar în rugăciunea lui David? (pot fi mai multe sau niciunul)",
-   "opts": [
-    "„Doamne, Dumnezeul lui Israel”",
-    "„robul Tău a aflat”",
-    "„binevoiește și descoperă lucrul acesta”",
-    "„Dumnezeul părinților mei”",
-    "„Stânca mea”"
+    "Oamenii lui David s-au temut",
+    "David a întrebat iarăși pe Domnul",
+    "David a izbăvit locuitorii Cheilei"
    ],
    "a": [
     0,
     1,
     2
    ]
+  }
+ ],
+ "hard": [
+  {
+   "t": "one",
+   "ref": "23:1",
+   "q": "Ce au jefuit filistenii la Cheila?",
+   "opts": [
+    "Ariile",
+    "Turmele",
+    "Casele"
+   ],
+   "a": 0
+  },
+  {
+   "t": "tf",
+   "ref": "23:4",
+   "q": "David a întrebat pe Domnul a doua oară înainte să meargă la Cheila.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "23:5",
+   "q": "Ce a luat David de la filisteni?",
+   "opts": [
+    "Armele",
+    "Aurul",
+    "Vitele"
+   ],
+   "a": 2
+  },
+  {
+   "t": "fill",
+   "ref": "23:6",
+   "q": "Când a fugit Abiatar, fiul lui Ahimelec, la David, în Cheila, s-a coborât cu efodul în ___.",
+   "a": [
+    "mână"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "23:7",
+   "q": "Cum a descris Saul Cheila?",
+   "opts": [
+    "O cetate fără ziduri",
+    "O cetate cu porți și zăvoare",
+    "O cetate pe un munte înalt"
+   ],
+   "a": 1
   },
   {
    "t": "one",
@@ -459,34 +233,14 @@
    "opts": [
     "Aproape patru sute",
     "Aproape șase sute",
-    "Aproape trei sute",
-    "Aproape o mie"
+    "Trei mii"
    ],
    "a": 1
   },
   {
-   "t": "multi",
-   "ref": "23:14-15",
-   "q": "Unde a locuit sau a stat David, conform versetelor 14-15? (pot fi mai multe sau niciunul)",
-   "opts": [
-    "În pustie",
-    "În locuri întărite",
-    "Pe un munte",
-    "În pădure",
-    "În peștera Adulam",
-    "În cetatea Cheila"
-   ],
-   "a": [
-    0,
-    1,
-    2,
-    3
-   ]
-  },
-  {
    "t": "fill",
-   "ref": "23:16",
-   "q": "„El i-a întărit încrederea în ___”",
+   "ref": "23:14",
+   "q": "Saul îl căuta mereu, dar ___ nu l-a dat în mâinile lui.",
    "a": [
     "Dumnezeu"
    ]
@@ -494,244 +248,76 @@
   {
    "t": "tf",
    "ref": "23:17",
-   "q": "Ionatan a spus că tatăl său, Saul, nu știe că David va domni.",
+   "q": "Ionatan i-a spus lui David că Saul nu știe nimic despre faptul că David va domni.",
    "a": false
   },
   {
-   "t": "fill",
-   "ref": "23:19",
-   "q": "„în pădure, pe dealul Hachila, care este la ___ de pustie”",
-   "a": [
-    "miazăzi"
-   ]
-  },
-  {
-   "t": "match",
-   "ref": "23:19-28",
-   "q": "Asociază fiecare loc cu ce se spune despre el.",
-   "pairs": [
-    [
-     "Hachila",
-     "Dealul unde zifiții spuneau că se ascunde David"
-    ],
-    [
-     "Ghibea",
-     "Locul unde s-au suit zifiții la Saul"
-    ],
-    [
-     "Maon",
-     "Pustia în care David s-a coborât la stâncă"
-    ],
-    [
-     "Sela-Hamahlecot",
-     "Locul unde Saul a încetat urmărirea"
-    ]
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "23:20",
-   "q": "Zifiții i-au spus lui Saul: „Coboară-te dar, împărate, fiindcă aceasta este toată dorința sufletului tău.”",
-   "a": true
-  },
-  {
-   "t": "fill",
-   "ref": "23:20",
-   "q": "„lasă pe noi dacă e vorba să-l dăm în mâinile ___”",
-   "a": [
-    "împăratului"
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "23:22",
-   "q": "Saul a spus că i se spusese că David este foarte șiret.",
-   "a": true
-  },
-  {
-   "t": "multi",
-   "ref": "23:22-23",
-   "q": "Ce le-a cerut Saul zifiților? (pot fi mai multe sau niciunul)",
-   "opts": [
-    "Să afle în ce loc și-a îndreptat David pașii",
-    "Să afle cine l-a văzut",
-    "Să cerceteze toate locurile unde se ascunde",
-    "Să-l prindă singuri",
-    "Să-i aducă sabia lui Goliat"
-   ],
-   "a": [
-    0,
-    1,
-    2
-   ]
-  },
-  {
-   "t": "fill",
-   "ref": "23:23",
-   "q": "„Dacă este în țară, îl voi căuta printre toate ___ lui Iuda”",
-   "a": [
-    "miile"
-   ]
-  },
-  {
    "t": "one",
-   "ref": "23:24",
-   "q": "În ce parte a pustiei Maon erau David și oamenii lui?",
+   "ref": "23:19",
+   "q": "Pe ce deal spuneau zifiții că se ascunde David?",
    "opts": [
-    "Pe muntele dinspre răsărit",
-    "În valea dinspre apus",
-    "În câmpia dinspre miazăzi de pustie",
-    "La izvoarele dinspre miazănoapte"
+    "Heret",
+    "Sela",
+    "Hachila"
    ],
    "a": 2
   },
   {
-   "t": "tf",
-   "ref": "23:25",
-   "q": "Când a aflat că Saul îl caută, David s-a coborât la stâncă.",
-   "a": true
+   "t": "one",
+   "ref": "23:21-22",
+   "q": "Cum l-a descris Saul pe David zifiților?",
+   "opts": [
+    "Foarte șiret",
+    "Foarte puternic",
+    "Foarte credincios"
+   ],
+   "a": 0
   },
   {
-   "t": "tf",
-   "ref": "23:26",
-   "q": "Saul și David mergeau pe aceeași parte a muntelui.",
-   "a": false
-  },
-  {
-   "t": "fill",
-   "ref": "23:26",
-   "q": "„David fugea ___, ca să scape de Saul”",
+   "t": "multi",
+   "ref": "23:22-23",
+   "q": "Ce le-a cerut Saul zifiților?",
+   "opts": [
+    "Să-i aducă pe oamenii lui David legați",
+    "Să cerceteze unde se ascunde David",
+    "Să-l omoare singuri pe David"
+   ],
    "a": [
-    "repede"
+    1
    ]
+  },
+  {
+   "t": "tf",
+   "ref": "23:26",
+   "q": "Saul și oamenii lui înconjuraseră pe David și pe oamenii lui, ca să pună mâna pe ei.",
+   "a": true
   },
   {
    "t": "fill",
    "ref": "23:28",
-   "q": "„De aceea, locul acela s-a numit ___”",
+   "q": "De aceea, locul acela s-a numit ___ (Stânca împărțirii).",
    "a": [
     "Sela-Hamahlecot"
    ]
   },
   {
-   "t": "one",
-   "ref": "23:28",
-   "q": "Ce înseamnă numele Sela-Hamahlecot?",
-   "opts": [
-    "Stânca ajutorului",
-    "Piatra mărturiei",
-    "Valea despărțirii",
-    "Stânca împărțirii"
-   ],
-   "a": 3
-  },
-  {
-   "t": "fill",
-   "ref": "23:2",
-   "q": "„Să mă duc și să ___ pe filistenii aceștia?”",
-   "a": [
-    "bat"
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "23:11-12",
-   "q": "David L-a întrebat pe Domnul de două ori dacă locuitorii Cheilei îl vor da în mâinile lui Saul.",
-   "a": true
-  },
-  {
-   "t": "one",
-   "ref": "23:18",
-   "q": "Înaintea cui au făcut iarăși legământ David și Ionatan?",
-   "opts": [
-    "Înaintea lui Abiatar",
-    "Înaintea Domnului",
-    "Înaintea zifiților",
-    "Înaintea lui Saul"
-   ],
-   "a": 1
-  },
-  {
-   "t": "one",
-   "ref": "23:9",
-   "q": "Cui i-a cerut David să aducă efodul?",
-   "opts": [
-    "Prorocului Gad",
-    "Lui Ionatan",
-    "Lui Ahimelec",
-    "Preotului Abiatar"
-   ],
-   "a": 3
-  },
-  {
-   "t": "fill",
-   "ref": "23:23",
-   "q": "„veniți apoi la mine cu ceva ___ și voi porni cu voi”",
-   "a": [
-    "temeinic"
-   ]
-  },
-  {
-   "t": "fill",
-   "ref": "23:27",
-   "q": "„___ să vii, căci au năvălit filistenii în țară.”",
-   "a": [
-    "Grăbește-te"
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "23:19",
-   "q": "Zifiții au spus că David se ascunde între ei în locuri întărite, în pădure.",
-   "a": true
-  },
-  {
-   "t": "tf",
-   "ref": "23:5",
-   "q": "David s-a dus la Cheila singur, fără oamenii lui.",
-   "a": false
-  },
-  {
    "t": "match",
-   "ref": "23:5-29",
-   "q": "Asociază fiecare loc cu ordinea în care ajunge David acolo în acest capitol.",
+   "ref": "23:14-29",
+   "q": "Potrivește locul cu întâmplarea.",
    "pairs": [
     [
-     "Întâi",
-     "Cheila"
+     "Pustia Zif",
+     "David a stat în pădure"
     ],
     [
-     "Apoi",
-     "Pustia Zif"
+     "Pustia Maon",
+     "Saul era aproape să-l înconjoare pe David"
     ],
     [
-     "După aceea",
-     "Pustia Maon"
-    ],
-    [
-     "La sfârșit",
-     "En-Ghedi"
+     "En-Ghedi",
+     "David s-a suit acolo după ce Saul a încetat urmărirea"
     ]
    ]
-  },
-  {
-   "t": "multi",
-   "ref": "23:13-29",
-   "q": "Care dintre următoarele afirmații sunt adevărate?",
-   "opts": [
-    "David a ieșit din Cheila cu aproape patru sute de oameni.",
-    "Zifiții s-au suit la Saul, la Rama.",
-    "Dealul Hachila este la miazănoapte de pustie.",
-    "Ionatan i-a spus lui David: „Eu voi fi al treilea după tine.”",
-    "La sfârșitul capitolului, David s-a suit spre locurile întărite din Maon."
-   ],
-   "a": []
-  },
-  {
-   "t": "tf",
-   "ref": "23:27-28",
-   "q": "Saul a încetat să-l urmărească pe David și s-a întors să iasă înaintea amaleciților.",
-   "a": false
   }
  ]
 }

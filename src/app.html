@@ -2,7 +2,7 @@
 <meta name="description" content="Pregătire pentru testul biblic din 1 Samuel, după traducerea Cornilescu.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Onest:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&family=Onest:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
 <style>
 /* Layout: one narrow column (max 640px) like a pocket study book; a lamp flame is the recurring mark of progress. */
 :root{
@@ -22,6 +22,7 @@
   --p1:#D97B26; --p2:#8A5A36; --p3:#B0644A; --p4:#5E8A3A; --p5:#B4534A;
   --shadow:0 1px 2px rgb(58 39 27 / .05), 0 10px 30px -18px rgb(58 39 27 / .28);
   --f-display:"Gloock", "Georgia", "Times New Roman", serif;
+  --f-bible:"Source Serif 4", "Georgia", "Times New Roman", serif;
   --f-body:"Onest", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --f-mono:"IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
   --r:14px;
@@ -208,6 +209,13 @@ html:has(.sheet-bg),html:has(.modal-bg),body:has(.sheet-bg),body:has(.modal-bg){
 .history{display:grid;gap:6px}
 .hrow{width:100%;border:0;text-align:left;color:var(--ink);font:inherit;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;gap:10px;background:var(--surface);border-radius:12px;padding:9px 12px}
 .hrow .chev,.brow-l .chev{color:var(--ink-2);opacity:.6}
+.hist-page{display:grid;gap:18px}
+.hgroup{display:grid;gap:8px}
+.hg-h{display:grid;gap:1px}
+.hg-h b{font-size:15px;font-weight:600;line-height:1.3}
+.hg-h .muted{font-size:12.5px}
+.sh-hist{max-height:172px;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.sh-hist .hrow{background:var(--surface-2)}
 .hrow .pct{font-family:var(--f-display);font-size:19px;font-variant-numeric:tabular-nums;line-height:1}
 .hrow .hrow-info{display:grid;gap:1px;min-width:0}
 .hrow .hrow-info b{font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -258,20 +266,28 @@ body:not(.quiz-fixed) .qcard{max-height:none;overflow:visible}
 .mx{display:grid;gap:8px}
 .mrow{border:1.5px solid var(--line);background:var(--bg);border-radius:14px;overflow:hidden;transition:border-color .15s,background .15s}
 .mrow.open{border-color:var(--oil);background:var(--surface);box-shadow:var(--shadow)}
-.mhead{display:grid;gap:4px;width:100%;text-align:left;background:none;border:0;padding:11px 14px;color:var(--ink)}
+.mrows{display:grid;gap:8px}
+.mhead{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:12px;width:100%;text-align:left;background:none;border:0;padding:11px 14px;color:var(--ink)}
+.mn{width:26px;height:26px;border-radius:50%;background:var(--surface-2);color:var(--ink-2);display:grid;place-items:center;font-family:var(--f-mono);font-size:12px;font-weight:500}
+.mrow.open .mn{background:var(--oil);color:var(--bg)}
+.mrow.filled:not(.open) .mn{background:var(--cedar);color:var(--bg)}
+.mb{display:grid;gap:3px;min-width:0}
 .mhead .ml{font-weight:700;font-size:15px;line-height:1.3}
-.mhead .mv{font-size:14.5px;line-height:1.35;color:var(--ink-2);overflow-wrap:anywhere}
-.mrow:not(.filled) .mv{color:var(--oil);font-weight:600;font-size:13.5px}
-.mrow.filled:not(.open) .mv{color:var(--ink);border-left:3px solid var(--cedar);padding-left:9px}
-.mopts{display:grid;gap:6px;padding:0 10px 10px}
-.mopt{text-align:left;border:1.5px solid var(--line);background:var(--bg);border-radius:12px;padding:11px 12px;font-size:14.5px;line-height:1.35;min-height:46px;color:var(--ink);overflow-wrap:anywhere}
+.mhead .mv{font-size:14px;line-height:1.35;color:var(--ink-2);overflow-wrap:anywhere}
+.mrow:not(.filled) .mv{color:var(--ink-2);font-style:italic}
+.mrow.open:not(.filled) .mv{color:var(--oil-ink);font-weight:600;font-style:normal}
+.mrow.filled .mv{color:var(--ink);font-style:normal;font-weight:500}
+.mchoices{display:grid;gap:6px;margin-top:14px}
+.mlabel{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
+.mopt{display:flex;align-items:center;gap:10px;text-align:left;border:1.5px solid var(--line);background:var(--bg);border-radius:12px;padding:10px 12px;font-size:14.5px;line-height:1.35;min-height:44px;color:var(--ink);overflow-wrap:anywhere}
 .mopt:hover{border-color:var(--ink-2)}
-.mopt.taken{opacity:.5}
-.mopt[aria-pressed="true"]{border-color:var(--ink)}
+.mopt.taken{background:var(--surface-2);color:var(--ink-2)}
+.mtag{flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-family:var(--f-mono);font-size:11px;background:transparent;color:var(--bg)}
+.mopt.taken .mtag{background:var(--cedar)}
 .mrow.ok{background:var(--ok-soft);border-color:transparent}
 .mrow.no{background:var(--bad-soft);border-color:transparent}
 .mrow.ok .mv,.mrow.no .mv{border-left:0;padding-left:0}
-.mrow .mfix{padding:0 14px 11px;margin-top:-4px}
+.mrow .mfix{padding:0 14px 11px 52px;margin-top:-4px}
 .mfix{display:block;font-size:12.5px;color:var(--ok);margin-top:4px;font-weight:600}
 .fill{font-family:var(--f-display);font-size:21px;line-height:1.75}
 .fill input{font-family:var(--f-body);font-size:17px;width:8.5em;max-width:100%;border:0;border-bottom:2px solid var(--oil);background:var(--oil-soft);border-radius:8px 8px 2px 2px;padding:2px 8px;margin:0 2px;color:var(--ink);transition:background .2s,border-color .2s}
@@ -285,8 +301,8 @@ body:not(.quiz-fixed) .qcard{max-height:none;overflow:visible}
 .feedback b{font-weight:700}
 .feedback.ok b{color:var(--ok)}
 .feedback.no b{color:var(--bad)}
-.verse{font-family:var(--f-display);font-size:16px;line-height:1.5;color:var(--ink);border-left:3px solid var(--oil);padding-left:12px}
-.verse sup{font-family:var(--f-mono);font-size:10px;color:var(--oil-ink);margin-right:3px}
+.verse{font-family:var(--f-bible);font-weight:400;font-size:16.5px;line-height:1.6;color:var(--ink);border-left:3px solid var(--oil);padding-left:12px;text-wrap:pretty}
+.verse sup,.reader-text sup{font-family:var(--f-body);font-weight:600;font-size:.62em;line-height:1;color:var(--oil-ink);margin-right:.3em;vertical-align:.55em;letter-spacing:.02em}
 .qactions{display:flex;gap:10px;margin-top:16px}
 .qactions .btn{flex:1}
 @media (max-width:959px){
@@ -427,11 +443,10 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .reader-h{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:12px}
 .past-h{margin-bottom:8px}
 .reader-h h2{font-size:26px;line-height:1.1}
-.reader-text{background:var(--surface);border-radius:20px;padding:20px;box-shadow:var(--shadow);font-family:var(--f-display);font-size:18px;line-height:1.65}
+.reader-text{background:var(--surface);border-radius:20px;padding:20px;box-shadow:var(--shadow);font-family:var(--f-bible);font-weight:400;font-size:18.5px;line-height:1.75;text-wrap:pretty}
 .reader-text p{margin:0 0 .45em;padding:0 4px;border-radius:6px;transition:background .3s;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .reader-text p.hl{background:#FCE98A}
 .hl-hint{font-size:13.5px;color:var(--ink-2);margin:-4px 0 0}
-.reader-text sup{font-family:var(--f-mono);font-size:11px;color:var(--oil-ink);margin-right:4px}
 .pf-note{font-size:13px;color:var(--ink-2);margin:0}
 .pw-wrap{position:relative}
 .pw-wrap .input{padding-right:52px}
@@ -644,7 +659,21 @@ const refLabel = r => "1 Sam. " + r;
 function lsGet(k, d){ try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } }
 function lsSet(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }
 function toast(msg, ms = 2400){ const t = $("#toast"); t.textContent = msg; t.classList.add("show"); clearTimeout(toast._t); toast._t = setTimeout(()=>t.classList.remove("show"), ms); }
+/* the quiz screen is fixed (question centred) as long as it fits; a tall question (matching) lets the page scroll instead of being cut */
+function fitFixed(){
+  const card = $(".qcard"); if (!card || (S.quiz && S.quiz.ui && S.quiz.ui.checked)) return;
+  document.body.classList.add("quiz-fixed");
+  if (card.scrollHeight > card.clientHeight + 1) document.body.classList.remove("quiz-fixed");
+}
 function resetScroll(){ window.scrollTo({ top: 0, behavior: "instant" }); document.documentElement.scrollTop = 0; document.body.scrollTop = 0; }
+/* The question bank was rebuilt (fewer questions, 3 choices): ids from the old bank no longer match, so progress kept on this device starts again. */
+const BANK_V = "2";
+try {
+  if (localStorage.getItem("candela:bank") !== BANK_V){
+    Object.keys(localStorage).filter(k => /^candela:(p:|pending:|reports:|quiz$|guest$|guestEntries$)/.test(k)).forEach(k => localStorage.removeItem(k));
+    localStorage.setItem("candela:bank", BANK_V);
+  }
+} catch {}
 function closeModal(bg, onDone){
   if (!bg || bg._closing) return;
   bg._closing = true;
@@ -1284,10 +1313,8 @@ function viewHome(){
   ${HOSTED ? `<section class="h-board"><div class="section-h"><h3>Clasament</h3></div><div id="board" class="board scroll"><div class="empty">Se încarcă clasamentul…</div></div></section>` : ""}
 
   <section class="h-hist">
-    <div class="section-h"><h3>Istoric</h3></div>
-    <div class="history">${h.length ? h.slice(-3).reverse().map(x=>`
-      <button class="hrow" type="button" data-at="${x.at}" aria-label="Vezi raportul: ${esc(chaptersLabel(x.chs))}, ${x.pct}%"><span class="badge ${x.mode}">${MODE_LABEL[x.mode]}</span><div class="hrow-info"><b>${esc(chaptersLabel(x.chs))}</b><small>${dateLabel(x.at)}</small></div><span class="pct">${x.pct}%</span>${CHEV}</button>`).join("")
-      : `<div class="empty">Niciun test încă.</div>`}</div>
+    <div class="section-h"><h3>Istoric</h3>${h.length > 3 ? `<button class="link" id="allHist" type="button">Vezi tot</button>` : ""}</div>
+    <div class="history">${h.length ? h.slice(-3).reverse().map(attemptRow).join("") : `<div class="empty">Niciun test încă.</div>`}</div>
   </section>
   </div>`);
 
@@ -1307,6 +1334,7 @@ function viewHome(){
   });
   $("#start").onclick = () => openOptions();
   app.querySelectorAll(".hrow[data-at]").forEach(b => b.onclick = () => { S.homeScroll = window.scrollY; openPastReport(+b.dataset.at); });
+  if ($("#allHist")) $("#allHist").onclick = viewHistory;
   app.querySelectorAll("[data-play]").forEach(b => b.onclick = () => switchPlayer(b.dataset.play));
   if ($("#resume")){ $("#resume").onclick = resumeQuiz; $("#resumeX").onclick = () => { dropQuiz(); $(".resume").remove(); }; }
   update();
@@ -1394,6 +1422,7 @@ function openOptions(chs = [...S.sel].sort((a,b)=>a-b)){
     <div class="sh-lvl"><span class="sh-l">Ce nivel alegi?</span>
       <div class="seg" role="group" aria-label="Nivel">${["easy","hard","both"].map(m=>`<button type="button" data-m="${m}">${MODE_LABEL[m]}${levelDone(chs, m) ? CHECK : ""}</button>`).join("")}</div>
       <small class="sh-note" id="shNote"></small></div>
+    ${chs.length === 1 && S.player.history.some(x => x.chs.length === 1 && x.chs[0] === chs[0]) ? `<div class="sh-lvl"><span class="sh-l">Încercările tale</span><div class="history sh-hist">${S.player.history.filter(x => x.chs.length === 1 && x.chs[0] === chs[0]).sort((a, b) => b.at - a.at).map(attemptRow).join("")}</div></div>` : ""}
     <div class="sh-lvl"><span class="sh-l">Câte întrebări vrei?</span><div class="seg" role="group" aria-label="Câte întrebări" id="shCnt">${["q","h","all"].map(k=>`<button type="button" data-p="${k}"></button>`).join("")}</div></div>
     <button class="btn btn-primary btn-block" id="shGo"></button>
   </div>`;
@@ -1416,6 +1445,7 @@ function openOptions(chs = [...S.sel].sort((a,b)=>a-b)){
   bg.querySelectorAll("[data-p]").forEach(b => b.onclick = () => { pick = b.dataset.p; set(); });
   bg.querySelectorAll("[data-m]").forEach(b => b.onclick = () => setMode(b.dataset.m));
   bg.querySelector("#shX").onclick = close;
+  bg.querySelectorAll(".hrow[data-at]").forEach(b => b.onclick = () => closeModal(bg, () => openPastReport(+b.dataset.at)));
   bg.onclick = e => { if (e.target === bg) close(); };
   if (bg.querySelector("#shRead")) bg.querySelector("#shRead").onclick = () => closeModal(bg, () => viewRead(chs[0]));
   bg.querySelector("#shGo").onclick = () => closeModal(bg, () => { S.mode = mode; S.sel = new Set(chs); persistPrefs(); startQuiz(null, n < pool ? n : 0); });
@@ -1474,7 +1504,7 @@ function viewQuestion(first){
   const card = document.createElement("article");
   card.className = "qcard enter";
   card.innerHTML = `<div class="qmeta"><span class="qtype">${q.t==="tf"||q.t==="one" ? "" : TYPE_LABEL[q.t]}${Z.mode==="both"?`${q.t==="tf"||q.t==="one" ? "" : " · "}${MODE_LABEL[q.mode]}`:""}</span><span class="ref">${refLabel(q.ref)}</span></div>
-    ${q.t==="fill" ? `${fillHTML(q)}` : `<p class="qtext">${esc(q.q.replace(/\s*\(pot fi mai multe[^)]*\)/i, ""))}</p>${q.t==="one"?`<p class="qhint ans">Un singur răspuns corect</p>`:""}${q.t==="multi"?`<p class="qhint ans">Unul, mai multe sau niciunul</p>`:""}${q.t==="match"?`<p class="qhint ans">Alege câte un răspuns</p>`:""}`}
+    ${q.t==="fill" ? `${fillHTML(q)}` : `<p class="qtext">${esc(q.q.replace(/\s*\(pot fi mai multe[^)]*\)/i, ""))}</p>${q.t==="one"?`<p class="qhint ans">Un singur răspuns corect</p>`:""}${q.t==="multi"?`<p class="qhint ans">Unul, mai multe sau niciunul</p>`:""}${q.t==="match"?`<p class="qhint ans">Un răspuns pentru fiecare</p>`:""}`}
     <div class="answers" id="ans">${answersHTML(q)}</div><div id="fb"></div>
     <p class="keys">${({tf:"Taste: A adevărat · F fals · Enter verifică", one:"Taste: A, B, C… · Enter verifică", multi:"Taste: A, B, C… · Enter verifică", fill:"Enter trece la căsuța următoare", match:"Enter verifică"})[q.t]}</p>`;
   document.body.classList.add("quiz-fixed");
@@ -1489,7 +1519,7 @@ function viewQuestion(first){
     actions.id = "actions";
     slot.appendChild(actions);
     bindQuestion(q, card);
-    renderActions();
+    renderActions(); fitFixed();
     resetScroll();
     const f = card.querySelector("input");
     if (f && matchMedia("(hover:hover)").matches) f.focus();
@@ -1513,27 +1543,28 @@ function bindQuestion(q, card){
   if (q.t==="multi") card.querySelectorAll(".opt").forEach(b => b.onclick = () => { if (ui.checked) return; const i = +b.dataset.i; ui.sel.has(i) ? ui.sel.delete(i) : ui.sel.add(i); b.setAttribute("aria-pressed", ui.sel.has(i)); renderActions(); });
   if (q.t==="fill") card.querySelectorAll("input").forEach(inp => { inp.oninput = () => renderActions(); inp.onkeydown = e => { if (e.key==="Enter"){ e.preventDefault(); const nx = card.querySelector(`input[data-k="${+inp.dataset.k+1}"]`); if (nx) nx.focus(); else if (!ui.checked) check(); else next(); } }; });
   if (q.t==="match"){
-    // One row per item; the open row lists the answers still free, right under it.
+    // Items on top (the active one is highlighted), all answers always visible below: tap an answer to give it to the active item.
     const box = card.querySelector("#mx");
     const paint = () => {
-      box.innerHTML = q.pairs.map((p, l) => {
-        const v = ui.pairs[l], open = ui.active === l && !ui.checked;
-        const owner = r => q.pairs.findIndex((_, k) => k !== l && ui.pairs[k] === r);
-        return `<div class="mrow${open ? " open" : ""}${v != null ? " filled" : ""}" data-l="${l}">
-          <button class="mhead" type="button" data-l="${l}" aria-expanded="${open}"><span class="ml">${esc(p[0])}</span>
-          <span class="mv">${v != null ? esc(q.pairs[v][1]) : open ? "Alege mai jos" : "Alege"}</span></button>
-          ${open ? `<div class="mopts">${q.right.map(r => `<button class="mopt${owner(r) >= 0 ? " taken" : ""}" type="button" data-r="${r}" aria-pressed="${r === v}">${esc(q.pairs[r][1])}</button>`).join("")}</div>` : ""}</div>`;
-      }).join("");
-      box.querySelectorAll(".mhead").forEach(b => b.onclick = () => { if (ui.checked) return; const l = +b.dataset.l; ui.active = ui.active === l ? null : l; paint(); });
+      const act = ui.checked ? null : ui.active;
+      const ownerOf = r => q.pairs.findIndex((_, k) => ui.pairs[k] === r);
+      box.innerHTML = `<div class="mrows">${q.pairs.map((p, l) => {
+        const v = ui.pairs[l];
+        return `<div class="mrow${act === l ? " open" : ""}${v != null ? " filled" : ""}" data-l="${l}">
+          <button class="mhead" type="button" data-l="${l}" aria-label="${esc(p[0])}"><span class="mn">${l + 1}</span><span class="mb"><span class="ml">${esc(p[0])}</span>
+          <span class="mv">${v != null ? esc(q.pairs[v][1]) : act === l ? "Alege răspunsul de mai jos" : "Alege un răspuns"}</span></span></button></div>`;
+      }).join("")}</div>
+      <div class="mchoices"><span class="mlabel">Răspunsuri</span>${q.right.map(r => { const o = ownerOf(r); return `<button class="mopt${o >= 0 ? " taken" : ""}" type="button" data-r="${r}"><span class="mtag">${o >= 0 ? o + 1 : ""}</span><span>${esc(q.pairs[r][1])}</span></button>`; }).join("")}</div>`;
+      box.querySelectorAll(".mhead").forEach(b => b.onclick = () => { if (ui.checked) return; ui.active = +b.dataset.l; paint(); });
       box.querySelectorAll(".mopt").forEach(b => b.onclick = () => {
-        if (ui.checked) return; const r = +b.dataset.r;
+        if (ui.checked || ui.active == null) return; const r = +b.dataset.r;
         const other = q.pairs.findIndex((_, k) => k !== ui.active && ui.pairs[k] === r);
         if (other >= 0){ if (ui.pairs[ui.active] != null) ui.pairs[other] = ui.pairs[ui.active]; else delete ui.pairs[other]; }
         ui.pairs[ui.active] = r;
-        const next = q.pairs.findIndex((_, i) => ui.pairs[i] == null);
-        ui.active = next >= 0 ? next : null; paint();
+        const nx = q.pairs.findIndex((_, i) => ui.pairs[i] == null);
+        ui.active = nx >= 0 ? nx : null; paint();
       });
-      renderActions();
+      renderActions(); fitFixed();
     };
     ui.active = 0; paint();
   }
@@ -1584,7 +1615,7 @@ function check(skipped=false){
   if (q.t==="tf"){ card.querySelectorAll(".opt").forEach(b => { const v = b.dataset.v==="1"; if (v===q.a) b.classList.add("correct"); else if (v===ui.pick) b.classList.add("wrong"); }); }
   if (q.t==="one"){ card.querySelectorAll(".opt").forEach(b => { const i = +b.dataset.i; if (i===q.a) b.classList.add("correct"); else if (i===ui.pick) b.classList.add("wrong"); }); }
   if (q.t==="multi"){ card.querySelectorAll(".opt").forEach(b => { const i = +b.dataset.i, should = q.a.includes(i), did = ui.sel.has(i); if (should) b.classList.add("correct"); else if (did) b.classList.add("wrong"); }); }
-  if (q.t==="match"){ ui.active = null; card.querySelectorAll(".mopts").forEach(o => o.remove()); card.querySelectorAll(".mrow").forEach(row => { const l = +row.dataset.l, good = ui.pairs[l]===l; row.classList.remove("open"); row.classList.add(good?"ok":"no"); row.querySelector(".mhead").disabled = true; if (ui.pairs[l]==null) row.querySelector(".mv").textContent = "—"; if (!good) row.insertAdjacentHTML("beforeend", `<span class="mfix">Corect: ${esc(q.pairs[l][1])}</span>`); }); }
+  if (q.t==="match"){ ui.active = null; card.querySelectorAll(".mchoices").forEach(o => o.remove()); card.querySelectorAll(".mrow").forEach(row => { const l = +row.dataset.l, good = ui.pairs[l]===l; row.classList.remove("open"); row.classList.add(good?"ok":"no"); row.querySelector(".mhead").disabled = true; if (ui.pairs[l]==null) row.querySelector(".mv").textContent = "—"; if (!good) row.insertAdjacentHTML("beforeend", `<span class="mfix">Corect: ${esc(q.pairs[l][1])}</span>`); }); }
   if (q.t==="fill"){ card.querySelectorAll("input").forEach((inp,i) => { const ok = r.okEach ? r.okEach[i] : false; inp.classList.add(ok?"ok":"no"); if (!ok) inp.insertAdjacentHTML("afterend", ` <b style="color:var(--ok);font-family:var(--f-body);font-size:16px">${esc(q.a[i])}</b>`); }); }
   const full = r.pts === 1, partial = r.pts > 0 && r.pts < 1;
   $("#fb").innerHTML = `<div class="feedback ${full?"ok":"no"}"><b>${full ? "Corect" : partial ? `Parțial: ${Math.round(r.pts*q.pairs.length)} din ${q.pairs.length} perechi` : skipped===true ? "Sărită" : "Greșit"}</b>${!full ? correctLine(q) : ""}<div class="verse">${verseHTML(q.ref)}</div></div>`;
@@ -1656,6 +1687,24 @@ function packWrong({q, a}){
 }
 function srcOf(id){ const m = /^(\d+)([eh])(\d+)$/.exec(id); if (!m) return null; const q = (QUIZ[+m[1]] || {})[m[2] === "e" ? "easy" : "hard"]; return q && q[+m[3]] ? {...q[+m[3]], ch: +m[1], mode: m[2] === "e" ? "easy" : "hard", id} : null; }
 function unpackWrong(list){ return (list || []).map(w => { const q = srcOf(w.id); return q ? { q, a: { pts: w.p || 0, given: w.g, skipped: w.g == null } } : null; }).filter(Boolean); }
+const attemptRow = x => `<button class="hrow" type="button" data-at="${x.at}" aria-label="Vezi raportul: ${esc(chaptersLabel(x.chs))}, ${x.pct}%"><span class="badge ${x.mode}">${MODE_LABEL[x.mode]}</span><div class="hrow-info"><b>${esc(chaptersLabel(x.chs))}</b><small>${dateLabel(x.at)}</small></div><span class="pct">${x.pct}%</span>${CHEV}</button>`;
+/* the whole history: every test, grouped by chapter, newest first; each one opens its report */
+function viewHistory(){
+  S.reportBack = null; S.reportCh = null;
+  const h = S.player.history.slice().sort((a, b) => b.at - a.at);
+  const groups = new Map();
+  h.forEach(x => { const k = x.chs.length === 1 ? x.chs[0] : 0; if (!groups.has(k)) groups.set(k, []); groups.get(k).push(x); });
+  const keys = [...groups.keys()].sort((a, b) => (a || 99) - (b || 99));
+  mount(`${headerHTML(false)}
+  <section class="hist-page">
+    <div class="reader-h">${BACK_BTN("hBack")}<div><span class="eyebrow">${h.length} ${h.length === 1 ? "test" : "teste"}</span><h2>Istoric</h2></div></div>
+    ${h.length ? keys.map(k => { const g = groups.get(k), best = Math.max(...g.map(x => x.pct));
+      return `<div class="hgroup"><div class="hg-h"><b>${k ? `${k}. ${esc(TITLES[k-1])}` : "Mai multe capitole"}</b><span class="muted">${g.length} ${g.length === 1 ? "încercare" : "încercări"} · cel mai bun ${best}%</span></div>
+        <div class="history">${g.map(attemptRow).join("")}</div></div>`; }).join("") : `<div class="empty">Niciun test încă.</div>`}
+  </section>`);
+  $("#hBack").onclick = viewHome;
+  app.querySelectorAll(".hrow[data-at]").forEach(b => b.onclick = () => openPastReport(+b.dataset.at, { from: "hist" }));
+}
 /* the last reports stay on this phone so a test from the history can be opened again, mistakes included */
 const repKey = () => "candela:reports:" + (S.player && !S.player.guest ? store.pid : "guest");
 function keepReport(r){
@@ -1667,14 +1716,14 @@ function findReport(at){
   return [...lsGet(repKey(), []), ...lsGet("candela:reports:guest", [])].find(x => Math.abs(x.at - at) < 1000) || null;
 }
 // a test from the history: the saved report, or just its score when it was played on another phone
-async function openPastReport(at){
+async function openPastReport(at, o = {}){
   const h = S.player.history.find(x => x.at === at); if (!h) return;
   let r = findReport(at);
   if (!r){
     r = { at, chs: h.chs, mode: h.mode, n: h.total, sc: h.score, P: h.pct, wrong: null, byCh: {} };
     if (!S.player.guest){ const res = await store.rpc("result_wrong", { p_player: store.pid, p_at: new Date(at).toISOString() }); if (res.ok && Array.isArray(res.data)) r.wrong = unpackWrong(res.data); }
   }
-  renderReport(r, { past: true });
+  renderReport(r, { past: true, ...o });
 }
 function renderReport(r, o = {}){
   const { chs, mode, n, sc, P, wrong } = r;
@@ -1712,6 +1761,7 @@ function renderReport(r, o = {}){
     <button class="btn btn-primary" id="home">Acasă</button>
   </div>
   ${chs.length === 1 ? `<button class="link read-link" id="readCh" type="button">Citește capitolul ${chs[0]}</button>` : ""}
+  ${o.from === "hist" ? `<button class="link read-link" id="backHist" type="button">Înapoi la istoric</button>` : ""}
   <p class="muted" id="saveNote" style="text-align:center;font-size:13px"></p>`);
   requestAnimationFrame(()=>requestAnimationFrame(()=>{
     const C = 2*Math.PI*52; $("#ringArc").setAttribute("stroke-dasharray", `${C*P/100} ${C}`);
@@ -1726,6 +1776,7 @@ function renderReport(r, o = {}){
   if (nWrong) $("#retry").onclick = () => { S.reportBack = null; S.reportCh = null; startQuiz(shuffle(wrong.map(x => { const o = {...x.q}; const src = QUIZ[o.ch][o.mode][+o.id.slice(String(o.ch).length+1)]; return {...src, ch:o.ch, mode:o.mode, id:o.id}; })), 0, {retry: true, mode}); };
   if ($("#again")) $("#again").onclick = () => { S.reportBack = null; S.reportCh = null; S.sel = new Set(chs); persistPrefs(); openOptions(chs); };
   if ($("#readCh")) $("#readCh").onclick = () => viewRead(chs[0]);
+  if ($("#backHist")) $("#backHist").onclick = viewHistory;
   if ($("#home")) $("#home").onclick = () => { S.reportBack = null; S.reportCh = null; const savedScroll = S.homeScroll || 0; S.homeScroll = 0; viewHome(); if (savedScroll) requestAnimationFrame(() => requestAnimationFrame(() => window.scrollTo({top: savedScroll}))); };
 }
 function mistakeHTML({q, a}){

@@ -2,82 +2,41 @@
  "ch": 16,
  "easy": [
   {
-   "t": "tf",
+   "t": "one",
    "ref": "16:1",
-   "q": "Domnul l-a trimis pe Samuel la Isai, Betleemitul, pentru că Își alesese ca împărat pe unul din fiii lui.",
+   "q": "La cine l-a trimis Domnul pe Samuel?",
+   "opts": [
+    "La Isai, Betleemitul",
+    "La preotul Ahia",
+    "La Abner"
+   ],
+   "a": 0
+  },
+  {
+   "t": "one",
+   "ref": "16:1",
+   "q": "Cu ce trebuia să-și umple Samuel cornul?",
+   "opts": [
+    "Cu untdelemn",
+    "Cu vin",
+    "Cu apă"
+   ],
+   "a": 0
+  },
+  {
+   "t": "tf",
+   "ref": "16:2",
+   "q": "Samuel se temea că Saul îl va ucide dacă va afla.",
    "a": true
   },
   {
-   "t": "fill",
-   "ref": "16:1",
-   "q": "„Pe unul din fiii lui Mi l-am ales ca ___.”",
-   "a": [
-    "împărat"
-   ]
-  },
-  {
-   "t": "match",
-   "ref": "16:1-13",
-   "q": "Asociază fiecare personaj cu rolul lui în ungerea noului împărat.",
-   "pairs": [
-    [
-     "Domnul",
-     "Și-a ales ca împărat pe unul din fiii lui Isai"
-    ],
-    [
-     "Isai",
-     "și-a trecut fiii pe dinaintea lui Samuel"
-    ],
-    [
-     "Eliab",
-     "Samuel a crezut că el este unsul Domnului"
-    ],
-    [
-     "David",
-     "a fost uns de Samuel"
-    ]
-   ]
-  },
-  {
-   "t": "one",
-   "ref": "16:2",
-   "q": "De ce se temea Samuel să meargă să ungă un nou împărat?",
-   "opts": [
-    "Filistenii îi vor ieși în cale.",
-    "Saul va afla și îl va ucide.",
-    "Bătrânii lui Israel nu-l vor primi.",
-    "Isai nu-l va lăsa să intre în casă."
-   ],
-   "a": 1
-  },
-  {
-   "t": "tf",
-   "ref": "16:2-3",
-   "q": "Domnul i-a poruncit lui Samuel să anunțe deschis la Betleem că a venit să ungă un nou împărat.",
-   "a": false
-  },
-  {
-   "t": "one",
-   "ref": "16:4",
-   "q": "Cum au reacționat bătrânii Betleemului la venirea lui Samuel?",
-   "opts": [
-    "L-au primit cu cântări și jocuri.",
-    "Au închis porțile cetății.",
-    "Au alergat înspăimântați înaintea lui.",
-    "I-au adus daruri de aur."
-   ],
-   "a": 2
-  },
-  {
    "t": "multi",
-   "ref": "16:6-7",
-   "q": "Ce i-a spus Domnul lui Samuel când acesta a crezut că Eliab este unsul Lui? (pot fi mai multe sau niciunul)",
+   "ref": "16:2-3",
+   "q": "Ce i-a poruncit Domnul lui Samuel să facă?",
    "opts": [
-    "Să nu se uite la înfățișarea și statura lui.",
-    "Că pe Eliab l-a lepădat.",
-    "Că Domnul Se uită la inimă.",
-    "Că Eliab va fi împărat după Saul.",
-    "Să-l ungă imediat pe Eliab."
+    "Să-l ungă pe cel pe care i-l va arăta",
+    "Să ia un vițel",
+    "Să poftească pe Isai la jertfă"
    ],
    "a": [
     0,
@@ -86,9 +45,20 @@
    ]
   },
   {
+   "t": "one",
+   "ref": "16:6",
+   "q": "Pe cine a crezut Samuel că este unsul Domnului?",
+   "opts": [
+    "Pe Abinadab",
+    "Pe Eliab",
+    "Pe Șama"
+   ],
+   "a": 1
+  },
+  {
    "t": "fill",
    "ref": "16:7",
-   "q": "„Omul se uită la ceea ce izbește ochii, dar Domnul Se uită la ___.”",
+   "q": "Omul se uită la ceea ce izbește ochii, dar Domnul Se uită la ___.",
    "a": [
     "inimă"
    ]
@@ -96,522 +66,221 @@
   {
    "t": "tf",
    "ref": "16:10",
-   "q": "Isai a trecut pe dinaintea lui Samuel șapte dintre fiii lui, dar Domnul n-a ales pe niciunul din ei.",
-   "a": true
+   "q": "Domnul a ales pe unul din cei șapte fii ai lui Isai care au trecut pe dinaintea lui Samuel.",
+   "a": false
   },
   {
    "t": "one",
    "ref": "16:11",
-   "q": "Unde era fiul cel mai tânăr al lui Isai când a venit Samuel?",
+   "q": "Unde era David când a cerut Samuel să-l aducă?",
    "opts": [
-    "Era la război cu Saul.",
-    "Păștea oile.",
-    "Era la Rama, la Samuel.",
-    "Lucra la ogor cu slujitorii."
+    "Era la război",
+    "Păștea oile",
+    "Era la Saul"
    ],
    "a": 1
-  },
-  {
-   "t": "fill",
-   "ref": "16:12",
-   "q": "„Scoală-te și ___-l, căci el este!”",
-   "a": [
-    "unge"
-   ]
   },
   {
    "t": "tf",
    "ref": "16:13",
-   "q": "După ce l-a uns pe David, Samuel a rămas la Betleem, în casa lui Isai.",
-   "a": false
+   "q": "Duhul Domnului a venit peste David începând din ziua ungerii.",
+   "a": true
   },
   {
    "t": "tf",
    "ref": "16:14",
-   "q": "După ungerea lui David, Duhul Domnului a rămas mai departe cu Saul.",
+   "q": "Duhul Domnului a rămas peste Saul.",
    "a": false
   },
   {
-   "t": "match",
-   "ref": "16:14-23",
-   "q": "Asociază fiecare personaj cu ce i s-a întâmplat sau ce a făcut.",
-   "pairs": [
-    [
-     "Saul",
-     "era muncit de un duh rău"
-    ],
-    [
-     "Slujitorii lui Saul",
-     "au propus să se caute un om care să cânte cu harpa"
-    ],
-    [
-     "David",
-     "cânta cu mâna lui la harpă înaintea lui Saul"
-    ]
-   ]
-  },
-  {
    "t": "one",
-   "ref": "16:18",
-   "q": "Cine i-a vorbit lui Saul despre fiul lui Isai?",
+   "ref": "16:15-16",
+   "q": "De ce au căutat slujitorii un om care să cânte cu harpa?",
    "opts": [
-    "Ionatan, fiul lui Saul",
-    "Unul din slujitorii lui Saul",
-    "Samuel",
-    "Abner, căpetenia oștirii"
-   ],
-   "a": 1
-  },
-  {
-   "t": "multi",
-   "ref": "16:19-21",
-   "q": "Care dintre următoarele s-au întâmplat după ce slujitorul i-a vorbit lui Saul despre David? (pot fi mai multe sau niciunul)",
-   "opts": [
-    "Saul a trimis oameni la Isai să i-l trimită pe David.",
-    "Isai a trimis daruri lui Saul prin David.",
-    "David i-a plăcut mult lui Saul.",
-    "Samuel a venit să-l mustre pe Saul.",
-    "David a fugit înapoi la oi."
-   ],
-   "a": [
-    0,
-    1,
-    2
-   ]
-  },
-  {
-   "t": "one",
-   "ref": "16:22",
-   "q": "Ce i-a cerut Saul lui Isai după ce David i-a câștigat trecerea?",
-   "opts": [
-    "Să-i trimită și pe ceilalți fii.",
-    "Să-l lase pe David în slujba lui.",
-    "Să vină și el la curte.",
-    "Să-i trimită mai multe daruri."
-   ],
-   "a": 1
-  },
-  {
-   "t": "tf",
-   "ref": "16:23",
-   "q": "Când David cânta cu harpa, Saul se simțea ușurat și duhul cel rău pleca de la el.",
-   "a": true
-  },
-  {
-   "t": "one",
-   "ref": "16:1",
-   "q": "Pentru cine plângea Samuel când Domnul l-a trimis la Betleem?",
-   "opts": [
-    "Pentru fiii lui",
-    "Pentru Saul",
-    "Pentru Eli",
-    "Pentru chivotul Domnului"
-   ],
-   "a": 1
-  },
-  {
-   "t": "one",
-   "ref": "16:3",
-   "q": "Ce i-a promis Domnul lui Samuel pentru momentul jertfei de la Betleem?",
-   "opts": [
-    "Că bătrânii cetății îl vor ocroti de Saul.",
-    "Că Isai îi va spune singur pe care fiu să-l ungă.",
-    "Că îi va arăta ce trebuie să facă și pe cine să ungă.",
-    "Că Saul nu va afla niciodată de venirea lui."
+    "Ca să-l desfete la ospețe",
+    "Ca să vestească victoriile",
+    "Ca să-l ușureze pe Saul când duhul rău era peste el"
    ],
    "a": 2
   },
   {
    "t": "tf",
-   "ref": "16:4-5",
-   "q": "La întrebarea bătrânilor dacă venirea lui vestește ceva bun, Samuel a răspuns „Da” și a spus că vine să aducă o jertfă Domnului.",
-   "a": true
+   "ref": "16:21",
+   "q": "David a fost pus să-i poarte cupa lui Saul.",
+   "a": false
   },
   {
    "t": "fill",
-   "ref": "16:8",
-   "q": "„Isai a chemat pe Abinadab și l-a trecut pe dinaintea lui Samuel, și Samuel a zis: «Nici pe acesta nu l-a ___ Domnul.»”",
+   "ref": "16:23",
+   "q": "David lua ___ și cânta cu mâna lui.",
+   "a": [
+    "harpa"
+   ]
+  },
+  {
+   "t": "match",
+   "ref": "16:13-23",
+   "q": "Potrivește personajul cu ce i s-a întâmplat.",
+   "pairs": [
+    [
+     "Samuel",
+     "L-a uns pe David"
+    ],
+    [
+     "Saul",
+     "A fost muncit de un duh rău"
+    ],
+    [
+     "David",
+     "A cântat cu harpa înaintea lui Saul"
+    ]
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "16:23",
+   "q": "Când David cânta, duhul rău pleca de la Saul.",
+   "a": true
+  }
+ ],
+ "hard": [
+  {
+   "t": "fill",
+   "ref": "16:1",
+   "q": "pe unul din fiii lui Mi l-am ___ ca împărat",
    "a": [
     "ales"
    ]
   },
   {
-   "t": "match",
-   "ref": "16:11-18",
-   "q": "Asociază fiecare vorbitor cu replica lui.",
-   "pairs": [
-    [
-     "Samuel",
-     "„Aceștia sunt toți fiii tăi?”"
-    ],
-    [
-     "Isai",
-     "„A mai rămas cel mai tânăr, dar paște oile.”"
-    ],
-    [
-     "Un slujitor al lui Saul",
-     "„Iată, am văzut pe un fiu al lui Isai, Betleemitul, care știe să cânte”"
-    ]
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "16:11-12",
-   "q": "Domnul i-a spus lui Samuel să ungă pe fiul cel mai tânăr încă înainte ca acesta să fie adus de la oi.",
-   "a": false
-  },
-  {
-   "t": "one",
-   "ref": "16:13",
-   "q": "Ce a venit peste David începând din ziua în care a fost uns?",
-   "opts": [
-    "Un duh rău de la Domnul",
-    "Duhul Domnului",
-    "Frica de Saul",
-    "Ura fraților lui"
-   ],
-   "a": 1
-  },
-  {
-   "t": "tf",
-   "ref": "16:12",
-   "q": "Când a fost adus înaintea lui Samuel, David avea fața frumoasă.",
-   "a": true
-  },
-  {
-   "t": "tf",
-   "ref": "16:17",
-   "q": "Saul a respins propunerea slujitorilor de a-i căuta un om care să cânte.",
-   "a": false
-  }
- ],
- "hard": [
-  {
-   "t": "match",
-   "ref": "16:1-5",
-   "q": "Asociază fiecare vorbitor cu replica lui.",
-   "pairs": [
-    [
-     "Domnul",
-     "„Când vei înceta să plângi pe Saul?”"
-    ],
-    [
-     "Bătrânii cetății",
-     "„Ce vestește venirea ta: ceva bun?”"
-    ],
-    [
-     "Samuel",
-     "„Sfințiți-vă și veniți cu mine la jertfă.”"
-    ]
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "16:1",
-   "q": "Domnul i-a spus lui Samuel că pe Saul l-a lepădat ca să nu mai domnească peste Israel.",
-   "a": true
-  },
-  {
-   "t": "one",
-   "ref": "16:1",
-   "q": "Cu ce i-a poruncit Domnul lui Samuel să-și umple cornul?",
-   "opts": [
-    "Cu vin",
-    "Cu mir",
-    "Cu untdelemn",
-    "Cu apă din Iordan"
-   ],
-   "a": 2
-  },
-  {
-   "t": "one",
-   "ref": "16:2",
-   "q": "Ce animal i-a spus Domnul lui Samuel să ia cu el pentru jertfă?",
-   "opts": [
-    "Un berbec",
-    "Un vițel",
-    "Un miel",
-    "Un ied"
-   ],
-   "a": 1
-  },
-  {
-   "t": "fill",
-   "ref": "16:2",
-   "q": "„Vin să aduc o ___ Domnului.”",
-   "a": [
-    "jertfă"
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "16:3",
-   "q": "Domnul i-a spus lui Samuel să-l poftească pe Isai la jertfă.",
-   "a": true
-  },
-  {
    "t": "tf",
    "ref": "16:4",
-   "q": "Samuel a făcut ce zisese Domnul și s-a dus la Hebron.",
-   "a": false
+   "q": "Bătrânii Betleemului au alergat înspăimântați înaintea lui Samuel.",
+   "a": true
   },
   {
-   "t": "fill",
-   "ref": "16:4",
-   "q": "„Bătrânii cetății au alergat ___ înaintea lui.”",
-   "a": [
-    "înspăimântați"
-   ]
-  },
-  {
-   "t": "tf",
+   "t": "one",
    "ref": "16:5",
-   "q": "Samuel l-a sfințit pe Isai împreună cu fiii lui și i-a poftit la jertfă.",
-   "a": true
+   "q": "Ce trebuia să facă Isai și fiii lui înainte de jertfă?",
+   "opts": [
+    "Să se sfințească",
+    "Să postească",
+    "Să aducă daruri"
+   ],
+   "a": 0
   },
   {
-   "t": "match",
+   "t": "multi",
    "ref": "16:6-9",
-   "q": "Asociază fiecare fiu al lui Isai cu ce se spune despre el.",
-   "pairs": [
-    [
-     "Eliab",
-     "Samuel a zis: „Negreșit, unsul Domnului este aici”"
-    ],
-    [
-     "Abinadab",
-     "a fost chemat de Isai și trecut primul după Eliab"
-    ],
-    [
-     "Șama",
-     "a fost trecut de Isai după Abinadab"
-    ]
-   ]
-  },
-  {
-   "t": "fill",
-   "ref": "16:7",
-   "q": "„Nu te uita la înfățișarea și ___ staturii lui, căci l-am lepădat.”",
+   "q": "Care dintre fii au fost respinși?",
+   "opts": [
+    "Eliab",
+    "Abinadab",
+    "David"
+   ],
    "a": [
-    "înălțimea"
+    0,
+    1
    ]
-  },
-  {
-   "t": "tf",
-   "ref": "16:8-9",
-   "q": "După Abinadab, Isai l-a trecut pe Eliab pe dinaintea lui Samuel.",
-   "a": false
   },
   {
    "t": "one",
    "ref": "16:10",
-   "q": "Câți fii a trecut Isai pe dinaintea lui Samuel înainte să fie adus cel mai tânăr?",
+   "q": "Câți fii a trecut Isai pe dinaintea lui Samuel înainte să fie adus David?",
    "opts": [
-    "Cinci",
-    "Șase",
     "Opt",
+    "Cinci",
     "Șapte"
-   ],
-   "a": 3
-  },
-  {
-   "t": "fill",
-   "ref": "16:11",
-   "q": "„Trimite să-l aducă, fiindcă nu vom ședea la ___ până nu va veni aici.”",
-   "a": [
-    "masă"
-   ]
-  },
-  {
-   "t": "multi",
-   "ref": "16:12",
-   "q": "Care dintre următoarele trăsături ale lui David sunt menționate când a fost adus înaintea lui Samuel? (pot fi mai multe sau niciunul)",
-   "opts": [
-    "Păr bălai",
-    "Statură înaltă",
-    "Ochi frumoși",
-    "Păr negru",
-    "Glas puternic"
-   ],
-   "a": [
-    0,
-    2
-   ]
-  },
-  {
-   "t": "fill",
-   "ref": "16:13",
-   "q": "„Samuel a luat cornul cu untdelemn și l-a uns în mijlocul ___ lui.”",
-   "a": [
-    "fraților"
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "16:13",
-   "q": "Duhul Domnului a venit peste David numai în ziua ungerii.",
-   "a": false
-  },
-  {
-   "t": "one",
-   "ref": "16:13",
-   "q": "Unde s-a dus Samuel după ce l-a uns pe David?",
-   "opts": [
-    "La Ghilgal",
-    "La Mițpa",
-    "La Rama",
-    "La Silo"
    ],
    "a": 2
   },
   {
+   "t": "fill",
+   "ref": "16:11",
+   "q": "A mai rămas cel mai ___, dar paște oile",
+   "a": [
+    "tânăr"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "16:12",
+   "q": "Cum este descris David?",
+   "opts": [
+    "Înalt de stat și cu barba lungă",
+    "Cu păr bălai, ochi frumoși și față frumoasă",
+    "Bătrân și înțelept"
+   ],
+   "a": 1
+  },
+  {
    "t": "tf",
-   "ref": "16:14-15",
-   "q": "Slujitorii lui Saul i-au spus că duhul rău care îl muncea era de la Dumnezeu.",
+   "ref": "16:13",
+   "q": "Samuel l-a uns pe David în taină, fără ca frații lui să fie de față.",
+   "a": false
+  },
+  {
+   "t": "tf",
+   "ref": "16:13",
+   "q": "După ungere, Samuel a rămas la Betleem.",
+   "a": false
+  },
+  {
+   "t": "fill",
+   "ref": "16:14",
+   "q": "a fost muncit de un duh rău, care venea de la ___",
+   "a": [
+    "Domnul"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "16:15-16",
+   "q": "Slujitorii lui Saul i-au propus să caute un om care să cânte cu harpa.",
    "a": true
   },
   {
    "t": "match",
-   "ref": "16:15-22",
-   "q": "Asociază fiecare vorbitor cu replica lui.",
+   "ref": "16:17-20",
+   "q": "Potrivește personajul cu fapta lui.",
    "pairs": [
     [
-     "Slujitorii lui Saul",
-     "„Iată că un duh rău de la Dumnezeu te muncește.”"
+     "Saul",
+     "A cerut un om care să cânte bine"
     ],
     [
-     "Saul, către slujitori",
-     "„Găsiți-mi dar un om care să cânte bine”"
+     "Un slujitor",
+     "A recomandat pe un fiu al lui Isai"
     ],
     [
-     "Saul, către Isai",
-     "„Te rog să lași pe David în slujba mea”"
+     "Isai",
+     "A trimis pe David cu un măgar încărcat"
     ]
    ]
   },
   {
    "t": "multi",
-   "ref": "16:16",
-   "q": "Care dintre următoarele apar în propunerea slujitorilor lui Saul? (pot fi mai multe sau niciunul)",
+   "ref": "16:18",
+   "q": "Ce a spus slujitorul despre fiul lui Isai?",
    "opts": [
-    "Vor căuta un om care să știe să cânte cu harpa.",
-    "Omul va cânta cu mâna când duhul rău va fi peste Saul.",
-    "Saul va fi ușurat.",
-    "Omul trebuie să fie din seminția lui Beniamin.",
-    "Saul să aducă o jertfă pentru curățire."
+    "Este bătrân și înțelept",
+    "Este cunoscut ca preot",
+    "Știe să cânte"
    ],
    "a": [
-    0,
-    1,
     2
    ]
   },
   {
-   "t": "tf",
-   "ref": "16:17",
-   "q": "Saul le-a cerut slujitorilor să-i găsească un proroc care să alunge duhul rău.",
-   "a": false
-  },
-  {
-   "t": "multi",
-   "ref": "16:18",
-   "q": "Cum l-a descris slujitorul pe fiul lui Isai? (pot fi mai multe sau niciunul)",
-   "opts": [
-    "Știe să cânte",
-    "Un om tare și voinic, un războinic",
-    "Vorbește bine",
-    "Domnul este cu el",
-    "Este cel mai bogat din Betleem",
-    "Este nazireu de la naștere"
-   ],
-   "a": [
-    0,
-    1,
-    2,
-    3
-   ]
-  },
-  {
    "t": "one",
-   "ref": "16:19",
-   "q": "Cum l-a descris Saul pe David în mesajul trimis lui Isai?",
-   "opts": [
-    "„Fiul tău David, care cântă cu harpa”",
-    "„Fiul tău David, care este cu oile”",
-    "„Fiul tău cel mai tânăr”",
-    "„Fiul tău cel războinic”"
-   ],
-   "a": 1
-  },
-  {
-   "t": "multi",
    "ref": "16:20",
-   "q": "Ce a trimis Isai lui Saul prin fiul său David? (pot fi mai multe sau niciunul)",
+   "q": "Ce a trimis Isai lui Saul prin David?",
    "opts": [
-    "Un măgar încărcat cu pâine",
-    "Un burduf cu vin",
-    "Un ied",
-    "Un vițel",
-    "Zece cașuri de brânză"
+    "Un măgar încărcat cu pâine, un burduf cu vin și un ied",
+    "Un vițel și untdelemn",
+    "Un berbec și grâu"
    ],
-   "a": [
-    0,
-    1,
-    2
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "16:20",
-   "q": "Isai a trimis darurile lui Saul prin slujitorul său.",
-   "a": false
-  },
-  {
-   "t": "one",
-   "ref": "16:21",
-   "q": "Ce slujbă a primit David la curtea lui Saul?",
-   "opts": [
-    "A fost pus căpetenie peste o mie.",
-    "A fost pus să-i poarte armele.",
-    "A fost pus paharnicul împăratului.",
-    "A fost pus păzitorul turmelor împărătești."
-   ],
-   "a": 1
-  },
-  {
-   "t": "fill",
-   "ref": "16:22",
-   "q": "„Te rog să lași pe David în slujba mea, căci a căpătat ___ înaintea mea.”",
-   "a": [
-    "trecere"
-   ]
-  },
-  {
-   "t": "fill",
-   "ref": "16:18",
-   "q": "„El este și un om tare și voinic, un războinic, vorbește bine, este frumos la ___ și Domnul este cu el.”",
-   "a": [
-    "chip"
-   ]
-  },
-  {
-   "t": "multi",
-   "ref": "16:6-11",
-   "q": "Care dintre următoarele afirmații despre fiii lui Isai sunt adevărate?",
-   "opts": [
-    "Când l-a văzut pe Abinadab, Samuel și-a zis: „Negreșit, unsul Domnului este aici”",
-    "Domnul i-a spus lui Samuel să nu se uite la înfățișarea lui Șama",
-    "Isai a trecut pe dinaintea lui Samuel opt fii",
-    "În text, Abinadab este numit al treilea, după Eliab și Șama",
-    "Fiul cel mai tânăr păștea caprele"
-   ],
-   "a": []
-  },
-  {
-   "t": "tf",
-   "ref": "16:18",
-   "q": "Slujitorul lui Saul a spus despre fiul lui Isai că știe să cânte, dar că nu este încă un războinic.",
-   "a": false
+   "a": 0
   }
  ]
 }

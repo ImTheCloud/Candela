@@ -2,21 +2,30 @@
  "ch": 22,
  "easy": [
   {
+   "t": "one",
+   "ref": "22:1",
+   "q": "Unde a scăpat David după ce a plecat din Gat?",
+   "opts": [
+    "În Nob",
+    "În peștera Adulam",
+    "În Ghibea"
+   ],
+   "a": 1
+  },
+  {
    "t": "tf",
    "ref": "22:1",
-   "q": "Frații lui David nu au aflat unde se ascundea el.",
+   "q": "Frații lui David au refuzat să se coboare la el.",
    "a": false
   },
   {
    "t": "multi",
    "ref": "22:2",
-   "q": "Ce fel de oameni s-au strâns la David? (pot fi mai multe sau niciunul)",
+   "q": "Cine s-a strâns în jurul lui David?",
    "opts": [
-    "Cei ce se aflau în nevoie",
-    "Cei ce aveau datorii",
-    "Cei ce erau nemulțumiți",
-    "Preoții de la Nob",
-    "Oștenii aleși ai lui Saul"
+    "Cei aflați în nevoie",
+    "Cei nemulțumiți",
+    "Cei care aveau datorii"
    ],
    "a": [
     0,
@@ -25,629 +34,287 @@
    ]
   },
   {
-   "t": "fill",
-   "ref": "22:2",
-   "q": "„s-au strâns la el și el a ajuns ___ lor”",
-   "a": [
-    "căpetenia"
-   ]
+   "t": "tf",
+   "ref": "22:3-4",
+   "q": "David a lăsat pe tatăl și pe mama lui la împăratul Moabului.",
+   "a": true
   },
   {
    "t": "one",
-   "ref": "22:3-4",
-   "q": "În ce țară și-a dus David părinții?",
+   "ref": "22:5",
+   "q": "Cine i-a spus lui David să intre în țara lui Iuda?",
    "opts": [
-    "Țara filistenilor",
-    "Țara Moabului",
-    "Țara Edomului",
-    "Țara lui Amon"
+    "Preotul Abiatar",
+    "Ionatan",
+    "Prorocul Gad"
    ],
-   "a": 1
-  },
-  {
-   "t": "match",
-   "ref": "22:5-22",
-   "q": "Asociază fiecare replică cu persoana care a rostit-o.",
-   "pairs": [
-    [
-     "„Nu ședea în cetățuie”",
-     "Prorocul"
-    ],
-    [
-     "„Departe de mine așa ceva!”",
-     "Ahimelec"
-    ],
-    [
-     "„Trebuie să mori, Ahimelec, tu și toată casa tatălui tău.”",
-     "Saul"
-    ],
-    [
-     "„Eu sunt pricina morții tuturor sufletelor din casa tatălui tău.”",
-     "David"
-    ]
-   ]
+   "a": 2
   },
   {
    "t": "tf",
-   "ref": "22:7-8",
-   "q": "Saul i-a lăudat pe slujitorii săi pentru credincioșia lor.",
+   "ref": "22:8",
+   "q": "Saul a spus că slujitorii lui l-au înștiințat despre legământul fiului său cu David.",
    "a": false
   },
   {
    "t": "one",
    "ref": "22:9-10",
-   "q": "Cine i-a spus lui Saul că David fusese la Ahimelec?",
+   "q": "Cine i-a spus lui Saul ce făcuse Ahimelec pentru David?",
    "opts": [
+    "Doeg, Edomitul",
     "Abner",
-    "Ionatan",
-    "Abiatar",
-    "Doeg"
-   ],
-   "a": 3
-  },
-  {
-   "t": "multi",
-   "ref": "22:10",
-   "q": "Ce a spus Doeg că a făcut Ahimelec pentru David? (pot fi mai multe sau niciunul)",
-   "opts": [
-    "A întrebat pe Domnul pentru el",
-    "I-a dat merinde",
-    "I-a dat sabia lui Goliat",
-    "L-a uns împărat",
-    "L-a ascuns în cetate"
-   ],
-   "a": [
-    0,
-    1,
-    2
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "22:11",
-   "q": "Saul l-a chemat doar pe Ahimelec, fără ceilalți preoți.",
-   "a": false
-  },
-  {
-   "t": "one",
-   "ref": "22:14-15",
-   "q": "Cum s-a apărat Ahimelec înaintea lui Saul?",
-   "opts": [
-    "A spus că David este credincios și că el nu știe nimic de vreo uneltire",
-    "A recunoscut că s-a unit cu David",
-    "A dat vina pe Doeg",
-    "A cerut să fie judecat de Samuel"
+    "Ionatan"
    ],
    "a": 0
   },
   {
    "t": "tf",
-   "ref": "22:17",
-   "q": "Saul a spus că preoții știuseră că David fuge și nu i-au dat de veste.",
+   "ref": "22:14-15",
+   "q": "Ahimelec a spus că nu știa nimic despre vreun plan al lui David împotriva lui Saul.",
    "a": true
   },
   {
    "t": "one",
    "ref": "22:17",
-   "q": "Ce au făcut slujitorii lui Saul când li s-a poruncit să omoare preoții?",
+   "q": "Cine a refuzat să omoare preoții Domnului?",
    "opts": [
-    "Au ascultat imediat",
-    "N-au voit să întindă mâna asupra lor",
-    "Au fugit la David",
-    "I-au ascuns pe preoți"
-   ],
-   "a": 1
-  },
-  {
-   "t": "fill",
-   "ref": "22:17",
-   "q": "„Întoarceți-vă și omorâți pe ___ Domnului”",
-   "a": [
-    "preoții"
-   ]
-  },
-  {
-   "t": "match",
-   "ref": "22:11-21",
-   "q": "Asociază fiecare personaj cu ce a făcut sau ce i s-a întâmplat.",
-   "pairs": [
-    [
-     "Saul",
-     "A poruncit uciderea preoților"
-    ],
-    [
-     "Doeg",
-     "A lovit pe preoți"
-    ],
-    [
-     "Abiatar",
-     "A scăpat și a fugit la David"
-    ],
-    [
-     "Ahimelec",
-     "A fost chemat la judecată de împărat"
-    ]
-   ]
-  },
-  {
-   "t": "multi",
-   "ref": "22:19",
-   "q": "Ce a trecut Saul prin ascuțișul sabiei în cetatea Nob? (pot fi mai multe sau niciunul)",
-   "opts": [
-    "Femeile",
-    "Copiii",
-    "Boii și oile",
-    "Caprele"
-   ],
-   "a": [
-    0,
-    1,
-    2
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "22:22",
-   "q": "David bănuise că Doeg îi va spune lui Saul ce a văzut.",
-   "a": true
-  },
-  {
-   "t": "tf",
-   "ref": "22:23",
-   "q": "David l-a trimis pe Abiatar să se ascundă în altă parte.",
-   "a": false
-  },
-  {
-   "t": "tf",
-   "ref": "22:5",
-   "q": "David n-a ținut seama de cuvântul prorocului și a rămas în cetățuie.",
-   "a": false
-  },
-  {
-   "t": "one",
-   "ref": "22:8",
-   "q": "De ce i-a învinuit Saul pe slujitorii lui?",
-   "opts": [
-    "Că au fugit din luptă",
-    "Că nu i-au dat de știre despre legământul fiului său cu fiul lui Isai",
-    "Că au lăsat cetatea Nob nepăzită",
-    "Că i-au furat sulița"
-   ],
-   "a": 1
-  },
-  {
-   "t": "tf",
-   "ref": "22:8",
-   "q": "Saul s-a plâns că pe niciunul dintre slujitorii lui nu-l doare inima pentru el.",
-   "a": true
-  },
-  {
-   "t": "tf",
-   "ref": "22:15",
-   "q": "Ahimelec a spus că atunci întreba pentru prima dată pe Dumnezeu pentru David.",
-   "a": false
-  },
-  {
-   "t": "one",
-   "ref": "22:23",
-   "q": "Ce motiv i-a dat David lui Abiatar ca să rămână cu el?",
-   "opts": [
-    "Că Saul îl iertase deja pe Abiatar",
-    "Că Moabul îi va primi pe amândoi",
-    "Că cel ce caută să-i ia viața lui David caută s-o ia și pe a lui Abiatar",
-    "Că prorocul Gad poruncise așa"
+    "Doeg",
+    "Abiatar",
+    "Slujitorii împăratului"
    ],
    "a": 2
   },
   {
-   "t": "fill",
-   "ref": "22:6",
-   "q": "„Saul a aflat că David și oamenii lui au fost ___”",
-   "a": [
-    "descoperiți"
-   ]
+   "t": "one",
+   "ref": "22:18",
+   "q": "Cine a omorât preoții din ordinul lui Saul?",
+   "opts": [
+    "Doeg, Edomitul",
+    "Abiatar",
+    "Ahimelec"
+   ],
+   "a": 0
   },
   {
    "t": "tf",
-   "ref": "22:13",
-   "q": "Saul l-a acuzat pe Ahimelec că i-a dat lui David oameni înarmați.",
+   "ref": "22:19",
+   "q": "Saul a nimicit cetatea Nob, dar a cruțat vitele.",
    "a": false
   },
   {
+   "t": "one",
+   "ref": "22:20-21",
+   "q": "Care dintre fiii lui Ahimelec a scăpat și a fugit la David?",
+   "opts": [
+    "Ahitub",
+    "Abiatar",
+    "Gad"
+   ],
+   "a": 1
+  },
+  {
    "t": "fill",
-   "ref": "22:15",
-   "q": "„Să nu arunce împăratul nicio ___ asupra robului său”",
+   "ref": "22:23",
+   "q": "Rămâi cu ___, nu te teme de ___.",
    "a": [
-    "vină"
+    "mine",
+    "nimic"
    ]
   },
   {
    "t": "match",
-   "ref": "22:9-21",
-   "q": "Asociază fiecare moment cu locul lui în desfășurarea poveștii.",
+   "ref": "22:5-20",
+   "q": "Potrivește persoana cu fapta.",
    "pairs": [
     [
-     "Întâi",
-     "Doeg îi spune lui Saul ce a văzut la Nob"
+     "Gad",
+     "l-a trimis pe David în țara lui Iuda"
     ],
     [
-     "Apoi",
-     "Saul îi cheamă pe preoți la el"
+     "Doeg",
+     "a ucis preoții"
     ],
     [
-     "După aceea",
-     "Preoții sunt omorâți"
-    ],
-    [
-     "La sfârșit",
-     "Abiatar ajunge la David"
+     "Abiatar",
+     "a scăpat și a fugit la David"
     ]
    ]
   },
   {
    "t": "tf",
-   "ref": "22:21",
-   "q": "Abiatar i-a spus lui David că Saul a ucis pe preoții Domnului.",
+   "ref": "22:16",
+   "q": "Saul a hotărât ca Ahimelec și toată casa tatălui său să moară.",
    "a": true
   },
   {
    "t": "tf",
-   "ref": "22:8",
-   "q": "Saul credea că David îi întinde curse.",
+   "ref": "22:22",
+   "q": "David a spus că el este pricina morții celor din casa lui Abiatar.",
    "a": true
   },
   {
-   "t": "multi",
-   "ref": "22:23",
-   "q": "Care dintre următoarele i le-a spus David lui Abiatar? (pot fi mai multe sau niciunul)",
-   "opts": [
-    "Nu te teme de nimic",
-    "Du-te la Saul și cere-i iertare",
-    "Fugi în țara Moabului",
-    "Ascunde-te la Nob"
-   ],
-   "a": [
-    0
-   ]
-  }
- ],
- "hard": [
-  {
    "t": "fill",
    "ref": "22:1",
-   "q": "„David a plecat de acolo și a scăpat în peștera ___”",
+   "q": "David a plecat de acolo și a scăpat în peștera ___.",
    "a": [
     "Adulam"
    ]
   },
   {
+   "t": "multi",
+   "ref": "22:17-19",
+   "q": "Ce s-a întâmplat la Nob?",
+   "opts": [
+    "Saul i-a iertat pe preoți",
+    "Doeg a omorât optzeci și cinci de preoți",
+    "Cetatea a fost cruțată"
+   ],
+   "a": [
+    1
+   ]
+  }
+ ],
+ "hard": [
+  {
    "t": "one",
    "ref": "22:2",
-   "q": "Câți oameni s-au unit cu David?",
+   "q": "Câți oameni s-au unit cu David la Adulam?",
    "opts": [
-    "Aproape trei sute",
     "Aproape șase sute",
-    "Aproape patru sute",
-    "Aproape o mie"
+    "O sută",
+    "Aproape patru sute"
    ],
    "a": 2
   },
   {
-   "t": "fill",
-   "ref": "22:3",
-   "q": "„Dă voie, te rog, tatălui meu și mamei mele să vină la voi până voi ști ce va face ___ cu mine”",
-   "a": [
-    "Dumnezeu"
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "22:4",
-   "q": "Părinții lui David au locuit cu împăratul Moabului tot timpul cât a stat David în cetățuie.",
-   "a": true
-  },
-  {
    "t": "one",
-   "ref": "22:5",
-   "q": "Cum se numea prorocul care i-a vorbit lui David?",
+   "ref": "22:3",
+   "q": "Unde a mers David în țara Moabului?",
    "opts": [
-    "Natan",
-    "Gad",
-    "Samuel",
-    "Ahia"
+    "La Zif",
+    "La Mițpe",
+    "La En-Ghedi"
    ],
    "a": 1
   },
   {
-   "t": "one",
+   "t": "fill",
    "ref": "22:5",
-   "q": "Unde i-a spus prorocul lui David să meargă?",
+   "q": "David a plecat și a ajuns la pădurea ___.",
+   "a": [
+    "Heret"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "22:6",
+   "q": "Saul ședea sub un tamarisc, la Rama, cu sulița în mână.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "22:7",
+   "q": "Cum i-a numit Saul pe slujitorii de lângă el?",
    "opts": [
-    "În țara Moabului",
-    "În țara filistenilor",
-    "În țara lui Iuda",
-    "În Galaad"
+    "Leviți",
+    "Iudei",
+    "Beniamiți"
    ],
    "a": 2
   },
   {
-   "t": "match",
-   "ref": "22:3-19",
-   "q": "Asociază fiecare loc cu ce se spune despre el.",
-   "pairs": [
-    [
-     "Mițpe",
-     "Locul din țara Moabului unde s-a dus David"
-    ],
-    [
-     "Heret",
-     "Pădurea la care a ajuns David"
-    ],
-    [
-     "Ghibea",
-     "Locul unde ședea Saul sub tamarisc"
-    ],
-    [
-     "Nob",
-     "Cetatea preoțească trecută prin ascuțișul sabiei"
-    ]
+   "t": "fill",
+   "ref": "22:7",
+   "q": "Vă va da fiul lui Isai la toți ___ și ___?",
+   "a": [
+    "ogoare",
+    "vii"
    ]
   },
   {
    "t": "multi",
-   "ref": "22:6",
-   "q": "Ce spune textul despre locul unde ședea Saul când a aflat de David? (pot fi mai multe sau niciunul)",
+   "ref": "22:8",
+   "q": "Ce le-a reproșat Saul slujitorilor lui?",
    "opts": [
-    "Era sub tamarisc",
-    "Era la Ghibea",
-    "Era pe înălțime",
-    "Era sub un stejar",
-    "Era la Rama"
+    "Că nu i-au adus dările",
+    "Că l-au părăsit în bătălie",
+    "Că nimeni nu l-a înștiințat de legământul fiului său cu fiul lui Isai"
    ],
    "a": [
-    0,
-    1,
     2
    ]
   },
   {
-   "t": "tf",
-   "ref": "22:6",
-   "q": "Când stătea sub tamarisc, Saul avea în mână un toiag.",
-   "a": false
-  },
-  {
    "t": "one",
-   "ref": "22:7",
-   "q": "Cum i-a numit Saul pe slujitorii săi?",
-   "opts": [
-    "Efraimiți",
-    "Iudei",
-    "Leviți",
-    "Beniamiți"
-   ],
-   "a": 3
-  },
-  {
-   "t": "multi",
-   "ref": "22:7",
-   "q": "Ce i-a întrebat Saul pe slujitori dacă le va da fiul lui Isai? (pot fi mai multe sau niciunul)",
-   "opts": [
-    "Ogoare",
-    "Vii",
-    "Funcția de căpetenii peste o mie",
-    "Funcția de căpetenii peste o sută",
-    "Turme de oi"
-   ],
-   "a": [
-    0,
-    1,
-    2,
-    3
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "22:8",
-   "q": "Saul a spus că fiul său a răsculat pe robul său împotriva lui.",
-   "a": true
-  },
-  {
-   "t": "fill",
    "ref": "22:9",
-   "q": "„Eu am văzut pe fiul lui Isai venind la Nob, la Ahimelec, fiul lui ___”",
-   "a": [
-    "Ahitub"
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "22:9",
-   "q": "Doeg, cel care l-a pârât pe David, era moabit.",
-   "a": false
-  },
-  {
-   "t": "match",
-   "ref": "22:9-20",
-   "q": "Asociază fiecare personaj cu felul în care este numit în text.",
-   "pairs": [
-    [
-     "Ahimelec",
-     "Fiul lui Ahitub"
-    ],
-    [
-     "Abiatar",
-     "Fiul lui Ahimelec"
-    ],
-    [
-     "David",
-     "Fiul lui Isai"
-    ],
-    [
-     "Doeg",
-     "Edomitul"
-    ]
-   ]
-  },
-  {
-   "t": "match",
-   "ref": "22:3-12",
-   "q": "Asociază fiecare replică cu persoana care a rostit-o.",
-   "pairs": [
-    [
-     "„Ascultă, fiul lui Ahitub!”",
-     "Saul"
-    ],
-    [
-     "„Iată-mă, domnul meu!”",
-     "Ahimelec"
-    ],
-    [
-     "„Dă voie, te rog, tatălui meu și mamei mele să vină la voi”",
-     "David"
-    ]
-   ]
-  },
-  {
-   "t": "multi",
-   "ref": "22:14",
-   "q": "Cum l-a descris Ahimelec pe David înaintea lui Saul? (pot fi mai multe sau niciunul)",
+   "q": "Al cui fiu era Ahimelec?",
    "opts": [
-    "Credincios",
-    "Ginerele împăratului",
-    "Fiul împăratului",
-    "Căpetenia oștirii",
-    "Gata la poruncile împăratului"
-   ],
-   "a": [
-    0,
-    1,
-    4
-   ]
-  },
-  {
-   "t": "fill",
-   "ref": "22:15",
-   "q": "„căci robul tău nu știe nimic din toate acestea, nici lucru ___, nici lucru ___”",
-   "a": [
-    "mic",
-    "mare"
-   ]
-  },
-  {
-   "t": "one",
-   "ref": "22:17",
-   "q": "Cui a poruncit Saul mai întâi să omoare pe preoți?",
-   "opts": [
-    "Alergătorilor care stăteau lângă el",
-    "Lui Doeg",
-    "Lui Abner",
-    "Filistenilor"
+    "Al lui Ahitub",
+    "Al lui Abiatar",
+    "Al lui Isai"
    ],
    "a": 0
   },
   {
+   "t": "multi",
+   "ref": "22:10",
+   "q": "Ce a făcut Ahimelec pentru David, după spusele lui Doeg?",
+   "opts": [
+    "A întrebat pe Domnul pentru el",
+    "I-a dat sabia lui Goliat",
+    "I-a dat merinde"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "22:14",
+   "q": "Ahimelec l-a numit pe David „credinciosul David, ginerele împăratului”.",
+   "a": true
+  },
+  {
    "t": "one",
    "ref": "22:18",
-   "q": "Câți oameni a omorât Doeg în ziua aceea?",
+   "q": "Câți oameni care purtau efodul de in a omorât Doeg?",
    "opts": [
     "Șaptezeci",
     "Optzeci și cinci",
-    "Nouăzeci și cinci",
-    "Optzeci"
+    "Trei sute"
    ],
    "a": 1
   },
   {
-   "t": "tf",
-   "ref": "22:18",
-   "q": "Doeg a omorât preoții chiar în ziua aceea.",
-   "a": true
-  },
-  {
-   "t": "fill",
-   "ref": "22:18",
-   "q": "„de oameni care purtau efodul de ___”",
-   "a": [
-    "in"
-   ]
-  },
-  {
-   "t": "fill",
-   "ref": "22:19",
-   "q": "„Saul a mai trecut prin ascuțișul sabiei cetatea ___ Nob”",
-   "a": [
-    "preoțească"
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "22:20-21",
-   "q": "Abiatar era fiul lui Ahimelec și nepotul lui Ahitub.",
-   "a": true
-  },
-  {
-   "t": "fill",
-   "ref": "22:22",
-   "q": "„M-am gândit chiar în ziua aceea că ___, Edomitul, fiind acolo, nu se putea să nu spună lui Saul”",
-   "a": [
-    "Doeg"
-   ]
-  },
-  {
-   "t": "fill",
-   "ref": "22:23",
-   "q": "„lângă mine vei fi bine ___”",
-   "a": [
-    "păzit"
-   ]
-  },
-  {
-   "t": "fill",
-   "ref": "22:14",
-   "q": "„gata la poruncile lui și înconjurat cu ___ în casa ta”",
-   "a": [
-    "cinste"
-   ]
-  },
-  {
    "t": "one",
-   "ref": "22:19",
-   "q": "Ce animale sunt pomenite printre cele ucise la Nob?",
+   "ref": "22:22",
+   "q": "De ce se gândise David că Doeg îl va da de gol lui Saul?",
    "opts": [
-    "Cămile, capre și oi",
-    "Cai, boi și oi",
-    "Boi, măgari și oi",
-    "Măgari, capre și cămile"
+    "Doeg era acolo și nu putea să nu-i spună",
+    "Doeg era dușmanul preoților",
+    "Doeg era rudă cu Saul"
    ],
-   "a": 2
+   "a": 0
   },
   {
-   "t": "tf",
-   "ref": "22:17",
-   "q": "Saul i-a numit pe preoții de la Nob „preoții Domnului”.",
-   "a": true
-  },
-  {
-   "t": "tf",
-   "ref": "22:5",
-   "q": "După cuvântul prorocului Gad, David a plecat și a ajuns la pădurea Hachila.",
-   "a": false
-  },
-  {
-   "t": "multi",
-   "ref": "22:6-18",
-   "q": "Care dintre următoarele afirmații sunt adevărate?",
-   "opts": [
-    "Doeg a omorât în ziua aceea optzeci și cinci de oameni.",
-    "Oamenii uciși de Doeg purtau efodul de aur.",
-    "Saul ședea sub tamarisc, la Ghibea.",
-    "Ahimelec era fiul lui Abiatar.",
-    "Alergătorii lui Saul au lovit primii pe preoți."
-   ],
-   "a": [
-    0,
-    2
+   "t": "match",
+   "ref": "22:1-6",
+   "q": "Potrivește locul cu ce se întâmplă acolo.",
+   "pairs": [
+    [
+     "Adulam",
+     "frații lui David au venit la el"
+    ],
+    [
+     "Mițpe",
+     "David și-a dus părinții la împăratul Moabului"
+    ],
+    [
+     "Ghibea",
+     "Saul ședea sub tamarisc"
+    ]
    ]
   }
  ]

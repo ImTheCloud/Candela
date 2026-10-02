@@ -2,412 +2,68 @@
  "ch": 6,
  "easy": [
   {
-   "t": "fill",
+   "t": "tf",
    "ref": "6:1",
-   "q": "„Chivotul Domnului a fost ___ luni în țara filistenilor”",
-   "a": [
-    "șapte"
-   ]
+   "q": "Chivotul Domnului a stat trei luni în țara filistenilor.",
+   "a": false
   },
   {
    "t": "one",
    "ref": "6:2",
-   "q": "Pe cine au chemat filistenii ca să afle cum să trimită chivotul înapoi?",
+   "q": "Pe cine au chemat filistenii ca să-i sfătuiască despre chivot?",
    "opts": [
-    "Pe bătrânii lui Israel",
-    "Pe preoți și pe ghicitori",
-    "Pe domnitorii din Gat",
-    "Pe Samuel"
+    "Pe bătrâni și pe judecători",
+    "Pe Samuel și pe leviți",
+    "Pe preoți și pe ghicitori"
+   ],
+   "a": 2
+  },
+  {
+   "t": "one",
+   "ref": "6:3",
+   "q": "Ce jertfă au cerut preoții să se trimită odată cu chivotul?",
+   "opts": [
+    "O jertfă de mulțumire",
+    "O jertfă pentru vină",
+    "O ardere-de-tot"
    ],
    "a": 1
   },
   {
-   "t": "tf",
-   "ref": "6:3",
-   "q": "Preoții și ghicitorii au sfătuit ca chivotul să fie trimis înapoi fără niciun dar.",
-   "a": false
-  },
-  {
    "t": "multi",
-   "ref": "6:4-5",
-   "q": "Ce au trimis filistenii împreună cu chivotul, ca jertfă pentru vină? (pot fi mai multe sau niciunul)",
+   "ref": "6:4",
+   "q": "Ce lucruri de aur trebuiau făcute pentru jertfa pentru vină?",
    "opts": [
-    "Umflături de aur",
-    "Șoareci de aur",
-    "Un vițel de aur",
-    "Vase de argint",
-    "Haine de in"
+    "Coroane",
+    "Potire",
+    "Umflături"
    ],
    "a": [
-    0,
-    1
+    2
    ]
   },
   {
    "t": "tf",
    "ref": "6:6",
-   "q": "Ghicitorii le-au amintit filistenilor de egipteni și de Faraon, care și-au împietrit inima.",
+   "q": "Preoții filistenilor i-au îndemnat să nu-și împietrească inima, cum au făcut egiptenii și Faraon.",
    "a": true
   },
   {
-   "t": "one",
+   "t": "tf",
    "ref": "6:7",
-   "q": "Ce trebuiau să pregătească filistenii pentru a duce chivotul?",
-   "opts": [
-    "O ladă de cedru",
-    "Un car nou de tot",
-    "O corabie",
-    "O targă purtată de preoți"
-   ],
-   "a": 1
-  },
-  {
-   "t": "tf",
-   "ref": "6:9",
-   "q": "Dacă vacile mergeau spre Bet-Șemeș, filistenii aveau să știe că Domnul le făcuse acel mare rău.",
+   "q": "Chivotul trebuia pus pe un car nou, tras de două vaci care n-au tras niciodată la jug.",
    "a": true
-  },
-  {
-   "t": "one",
-   "ref": "6:12",
-   "q": "Ce drum au luat vacile?",
-   "opts": [
-    "S-au întors acasă la viței",
-    "Au rătăcit pe câmp",
-    "Au apucat drept pe drumul spre Bet-Șemeș",
-    "Au mers spre Silo"
-   ],
-   "a": 2
-  },
-  {
-   "t": "tf",
-   "ref": "6:13",
-   "q": "Locuitorii din Bet-Șemeș s-au bucurat când au văzut chivotul.",
-   "a": true
-  },
-  {
-   "t": "one",
-   "ref": "6:14",
-   "q": "Ce s-a întâmplat cu carul la Bet-Șemeș?",
-   "opts": [
-    "A fost păstrat pentru chivot",
-    "A fost trimis înapoi filistenilor",
-    "Lemnele lui au fost despicate pentru ardere-de-tot",
-    "A fost ars de filisteni"
-   ],
-   "a": 2
-  },
-  {
-   "t": "match",
-   "ref": "6:14-16",
-   "q": "Asociază fiecare personaj sau grup cu ce a făcut.",
-   "pairs": [
-    [
-     "Leviții",
-     "au coborât chivotul și lada"
-    ],
-    [
-     "Domnitorii filistenilor",
-     "s-au întors la Ecron"
-    ],
-    [
-     "Oamenii din Bet-Șemeș",
-     "au adus Domnului arderi-de-tot și jertfe"
-    ]
-   ]
-  },
-  {
-   "t": "match",
-   "ref": "6:3-19",
-   "q": "Asociază fiecare personaj sau grup cu fapta sau pățania lui.",
-   "pairs": [
-    [
-     "Filistenii",
-     "au trimis chivotul înapoi cu un dar pentru vină"
-    ],
-    [
-     "Vacile",
-     "au mers drept spre Bet-Șemeș"
-    ],
-    [
-     "Oamenii din Bet-Șemeș",
-     "au fost loviți pentru că s-au uitat în chivot"
-    ]
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "6:19",
-   "q": "După ce Domnul a lovit poporul din Bet-Șemeș, poporul a plâns.",
-   "a": true
-  },
-  {
-   "t": "fill",
-   "ref": "6:20",
-   "q": "„Cine poate sta înaintea Domnului, înaintea acestui Dumnezeu ___?”",
-   "a": [
-    "sfânt"
-   ]
-  },
-  {
-   "t": "multi",
-   "ref": "6:20-21",
-   "q": "Ce au făcut oamenii din Bet-Șemeș după urgie? (pot fi mai multe sau niciunul)",
-   "opts": [
-    "S-au întrebat cine poate sta înaintea Domnului",
-    "Au trimis după alții să ia chivotul",
-    "Au dus chivotul înapoi la Silo",
-    "Au ars chivotul",
-    "Au păstrat chivotul în cetatea lor"
-   ],
-   "a": [
-    0,
-    1
-   ]
-  },
-  {
-   "t": "one",
-   "ref": "6:2",
-   "q": "Ce voiau filistenii să afle de la preoți și de la ghicitori?",
-   "opts": [
-    "Cine dintre ei păcătuise",
-    "Cum trebuie să trimită chivotul înapoi la locul lui",
-    "Când va înceta foametea",
-    "Unde să ascundă chivotul"
-   ],
-   "a": 1
-  },
-  {
-   "t": "multi",
-   "ref": "6:3-5",
-   "q": "Ce le-au spus preoții și ghicitorii filistenilor că s-ar putea întâmpla dacă aduc jertfa pentru vină? (pot fi mai multe sau niciunul)",
-   "opts": [
-    "Se vor vindeca",
-    "Vor ști pentru ce nu s-a îndepărtat mâna Lui de peste ei",
-    "Vor birui pe Israel în luptă",
-    "Poate Dumnezeu va înceta să-Și apese mâna peste ei",
-    "Vor primi chivotul înapoi după un an"
-   ],
-   "a": [
-    0,
-    1,
-    3
-   ]
-  },
-  {
-   "t": "one",
-   "ref": "6:4",
-   "q": "De ce trebuiau să fie câte cinci umflăturile și șoarecii de aur?",
-   "opts": [
-    "Pentru că chivotul stătuse cinci luni la ei",
-    "După numărul preoților lui Dagon",
-    "După numărul domnitorilor filistenilor",
-    "După numărul vacilor"
-   ],
-   "a": 2
-  },
-  {
-   "t": "fill",
-   "ref": "6:5",
-   "q": "„care pustiesc țara și dați ___ Dumnezeului lui Israel”",
-   "a": [
-    "slavă"
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "6:4",
-   "q": "Ghicitorii au spus că urgia îi lovise doar pe oamenii de rând, nu și pe domnitorii filistenilor.",
-   "a": false
-  },
-  {
-   "t": "multi",
-   "ref": "6:2-9",
-   "q": "Care dintre următoarele le-au cerut preoții și ghicitorii filistenilor? (pot fi mai multe sau niciunul)",
-   "opts": [
-    "Să nu trimită chivotul cu mâna goală",
-    "Să păstreze chivotul în templul lui Dagon",
-    "Să pună chivotul într-un car nou de tot",
-    "Să trimită o oaste care să însoțească chivotul"
-   ],
-   "a": [
-    0,
-    2
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "6:8",
-   "q": "Ghicitorii au cerut ca un filistean să mâne vacile până la Bet-Șemeș.",
-   "a": false
   },
   {
    "t": "one",
    "ref": "6:9",
-   "q": "Ce trebuiau să facă filistenii după ce trimiteau carul?",
+   "q": "Ce semn trebuia să arate că Domnul le-a făcut acel mare rău?",
    "opts": [
-    "Să-l urmărească cu privirea",
-    "Să postească trei zile",
-    "Să ardă tămâie lui Dagon",
-    "Să trimită soli la Silo"
+    "Vacile să urce pe drumul spre Bet-Șemeș",
+    "Vacile să se oprească la hotar",
+    "Vițeii să-și urmeze mamele"
    ],
    "a": 0
-  },
-  {
-   "t": "tf",
-   "ref": "6:10",
-   "q": "Filistenii au urmat sfatul preoților și ghicitorilor și au făcut întocmai.",
-   "a": true
-  },
-  {
-   "t": "match",
-   "ref": "6:12-14",
-   "q": "Asociază fiecare element cu ce spune textul despre el.",
-   "pairs": [
-    [
-     "Domnitorii filistenilor",
-     "au mers după vaci"
-    ],
-    [
-     "Vacile",
-     "au fost aduse ca ardere-de-tot Domnului"
-    ],
-    [
-     "Piatra cea mare",
-     "se afla în câmpul unde s-a oprit carul"
-    ]
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "6:16",
-   "q": "Domnitorii filistenilor s-au întors la Ecron fără să vadă ce s-a întâmplat cu chivotul la Bet-Șemeș.",
-   "a": false
-  },
-  {
-   "t": "one",
-   "ref": "6:19",
-   "q": "Cum descrie textul lovitura pe care a dat-o Domnul oamenilor din Bet-Șemeș?",
-   "opts": [
-    "O mare urgie",
-    "O foamete grea",
-    "O ploaie de piatră",
-    "O sabie din cer"
-   ],
-   "a": 0
-  },
-  {
-   "t": "fill",
-   "ref": "6:21",
-   "q": "„Filistenii au adus înapoi chivotul Domnului; ___ și suiți-l la voi.”",
-   "a": [
-    "coborâți-vă"
-   ]
-  }
- ],
- "hard": [
-  {
-   "t": "fill",
-   "ref": "6:3",
-   "q": "„să nu-l trimiteți cu mâna goală, ci aduceți lui Dumnezeu o jertfă pentru ___”",
-   "a": [
-    "vină"
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "6:4",
-   "q": "Filistenii au trimis cinci umflături de aur și cinci șoareci de aur.",
-   "a": true
-  },
-  {
-   "t": "fill",
-   "ref": "6:5",
-   "q": "„niște chipuri după șoarecii voștri care ___ țara”",
-   "a": [
-    "pustiesc"
-   ]
-  },
-  {
-   "t": "multi",
-   "ref": "6:5",
-   "q": "Peste ce spuneau ghicitorii că apasă mâna Dumnezeului lui Israel? (pot fi mai multe sau niciunul)",
-   "opts": [
-    "Peste voi",
-    "Peste dumnezeii voștri",
-    "Peste țara voastră",
-    "Peste vitele voastre",
-    "Peste corăbiile voastre"
-   ],
-   "a": [
-    0,
-    1,
-    2
-   ]
-  },
-  {
-   "t": "multi",
-   "ref": "6:7",
-   "q": "Ce condiții trebuiau să îndeplinească vacile înjugate la car? (pot fi mai multe sau niciunul)",
-   "opts": [
-    "Să fie tinere",
-    "Să dea țâță",
-    "Să nu fi tras la jug",
-    "Să fie albe",
-    "Să aibă trei ani"
-   ],
-   "a": [
-    0,
-    1,
-    2
-   ]
-  },
-  {
-   "t": "fill",
-   "ref": "6:8",
-   "q": "„să puneți alături de el, într-o ___, lucrurile de aur”",
-   "a": [
-    "ladă"
-   ]
-  },
-  {
-   "t": "fill",
-   "ref": "6:9",
-   "q": "„nu mâna Lui ne-a lovit, ci lucrul acesta a venit peste noi din ___”",
-   "a": [
-    "întâmplare"
-   ]
-  },
-  {
-   "t": "match",
-   "ref": "6:7-11",
-   "q": "Asociază fiecare element cu ce s-a făcut cu el.",
-   "pairs": [
-    [
-     "Vacile",
-     "au fost înjugate la car"
-    ],
-    [
-     "Vițeii",
-     "au fost închiși acasă"
-    ],
-    [
-     "Lada",
-     "a fost pusă în car cu șoarecii de aur și chipurile umflăturilor"
-    ]
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "6:10",
-   "q": "Filistenii au înjugat la car trei vaci care alăptau.",
-   "a": false
-  },
-  {
-   "t": "tf",
-   "ref": "6:12",
-   "q": "Vacile au mers spre Bet-Șemeș mugind.",
-   "a": true
   },
   {
    "t": "fill",
@@ -419,51 +75,156 @@
    ]
   },
   {
-   "t": "one",
-   "ref": "6:12",
-   "q": "Până unde au mers domnitorii filistenilor după vaci?",
-   "opts": [
-    "Până la Silo",
-    "Până la hotarul Bet-Șemeșului",
-    "Până la Mițpa",
-    "Până la Chiriat-Iearim"
-   ],
-   "a": 1
-  },
-  {
-   "t": "one",
+   "t": "tf",
    "ref": "6:13",
-   "q": "Ce făceau locuitorii din Bet-Șemeș când au zărit chivotul?",
-   "opts": [
-    "Culegeau via",
-    "Păzeau oile",
-    "Secerau grânele în vale",
-    "Aduceau jertfe"
-   ],
-   "a": 2
+   "q": "Locuitorii din Bet-Șemeș s-au întristat când au văzut chivotul.",
+   "a": false
   },
   {
    "t": "one",
    "ref": "6:14",
-   "q": "În câmpul cui s-a oprit carul?",
+   "q": "Ce au făcut cu vacile care au adus carul?",
    "opts": [
-    "Al lui Abinadab",
-    "Al lui Iosua din Bet-Șemeș",
-    "Al lui Eleazar",
-    "Al lui Elcana"
+    "Le-au dat înapoi filistenilor",
+    "Le-au adus ardere-de-tot Domnului",
+    "Le-au lăsat să pască în câmp"
    ],
    "a": 1
   },
   {
-   "t": "multi",
+   "t": "match",
    "ref": "6:14-15",
-   "q": "Ce au pus leviții pe piatra cea mare? (pot fi mai multe sau niciunul)",
+   "q": "Potrivește fiecare lucru cu rolul lui.",
+   "pairs": [
+    [
+     "Lemnele carului",
+     "Au fost despicate pentru foc"
+    ],
+    [
+     "Vacile",
+     "Au fost aduse ardere-de-tot Domnului"
+    ],
+    [
+     "Piatra cea mare",
+     "Pe ea au fost puse chivotul și lada cu lucrurile de aur"
+    ]
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "6:19",
+   "q": "Domnul i-a lovit pe oamenii din Bet-Șemeș pentru că s-au uitat în chivot.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "6:21",
+   "q": "Către cine au trimis soli locuitorii din Bet-Șemeș, ca să ia chivotul?",
    "opts": [
-    "Chivotul Domnului",
-    "Lada cu lucrurile de aur",
-    "Vacile",
-    "Roțile carului",
-    "Vițeii"
+    "Către locuitorii din Chiriat-Iearim",
+    "Către locuitorii din Gat",
+    "Către Samuel, la Rama"
+   ],
+   "a": 0
+  }
+ ],
+ "hard": [
+  {
+   "t": "tf",
+   "ref": "6:4",
+   "q": "Numărul umflăturilor și al șoarecilor de aur era după numărul domnitorilor filistenilor.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "6:4",
+   "q": "Câți șoareci de aur au cerut preoții?",
+   "opts": [
+    "Șapte",
+    "Cinci",
+    "Zece"
+   ],
+   "a": 1
+  },
+  {
+   "t": "fill",
+   "ref": "6:7",
+   "q": "„două vaci tinere, care dau ___ și care n-au tras la ___”",
+   "a": [
+    "țâță",
+    "jug"
+   ]
+  },
+  {
+   "t": "multi",
+   "ref": "6:7-8",
+   "q": "Ce se cerea pentru trimiterea chivotului?",
+   "opts": [
+    "Vaci care n-au tras la jug",
+    "O ladă pentru lucrurile de aur",
+    "Un car nou de tot"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "6:9",
+   "q": "Ce vor ști filistenii dacă carul nu urcă spre Bet-Șemeș?",
+   "opts": [
+    "Că lucrul acesta a venit peste ei din întâmplare",
+    "Că dumnezeii lor i-au izbăvit",
+    "Că trebuie să aducă alte jertfe"
+   ],
+   "a": 0
+  },
+  {
+   "t": "tf",
+   "ref": "6:12",
+   "q": "Vacile s-au abătut spre stânga, când au ajuns la hotar.",
+   "a": false
+  },
+  {
+   "t": "match",
+   "ref": "6:12-15",
+   "q": "Potrivește fiecare grup cu ce a făcut.",
+   "pairs": [
+    [
+     "Domnitorii filistenilor",
+     "Au mers după vaci până la hotarul Bet-Șemeșului"
+    ],
+    [
+     "Leviții",
+     "Au coborât chivotul Domnului și lada de lângă el"
+    ],
+    [
+     "Locuitorii din Bet-Șemeș",
+     "Au secerat grânele în vale și au zărit chivotul"
+    ]
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "6:14",
+   "q": "Al cui era câmpul în care s-a oprit carul?",
+   "opts": [
+    "Al lui Abinadab",
+    "Al lui Eleazar",
+    "Al lui Iosua din Bet-Șemeș"
+   ],
+   "a": 2
+  },
+  {
+   "t": "multi",
+   "ref": "6:17",
+   "q": "Care dintre aceste cetăți au primit câte o umflătură de aur?",
+   "opts": [
+    "Asdod",
+    "Ecron",
+    "Bet-Șemeș"
    ],
    "a": [
     0,
@@ -473,159 +234,16 @@
   {
    "t": "tf",
    "ref": "6:16",
-   "q": "Cei cinci domnitori ai filistenilor s-au întors la Ecron abia a doua zi.",
-   "a": false
-  },
-  {
-   "t": "multi",
-   "ref": "6:17",
-   "q": "Pentru care dintre aceste cetăți a fost dată câte o umflătură de aur? (pot fi mai multe sau niciunul)",
-   "opts": [
-    "Asdod",
-    "Gaza",
-    "Ascalon",
-    "Gat",
-    "Ecron",
-    "Silo"
-   ],
-   "a": [
-    0,
-    1,
-    2,
-    3,
-    4
-   ]
-  },
-  {
-   "t": "match",
-   "ref": "6:4-18",
-   "q": "Asociază fiecare element cu explicația dată în text.",
-   "pairs": [
-    [
-     "Umflăturile de aur",
-     "câte una pentru fiecare dintre cele cinci cetăți"
-    ],
-    [
-     "Șoarecii de aur",
-     "după numărul tuturor cetăților filistenilor"
-    ],
-    [
-     "Piatra cea mare",
-     "adeverește lucrul acesta până astăzi"
-    ]
-   ]
+   "q": "Cei cinci domnitori ai filistenilor s-au întors la Ecron în aceeași zi.",
+   "a": true
   },
   {
    "t": "fill",
-   "ref": "6:18",
-   "q": "„atât cetăți întărite, cât și cetăți fără ___”",
-   "a": [
-    "ziduri"
-   ]
-  },
-  {
-   "t": "one",
    "ref": "6:19",
-   "q": "Câți oameni din popor spune textul că a lovit Domnul (numărul din afara parantezei)?",
-   "opts": [
-    "Șapte sute",
-    "Patruzeci",
-    "Șaptezeci",
-    "O sută"
-   ],
-   "a": 2
-  },
-  {
-   "t": "fill",
-   "ref": "6:20",
-   "q": "„Și la cine trebuie să se suie chivotul, dacă se ___ de la noi?”",
+   "q": "Domnul a lovit pe oamenii din Bet-Șemeș când s-au uitat în ___ Domnului.",
    "a": [
-    "depărtează"
+    "chivotul"
    ]
-  },
-  {
-   "t": "one",
-   "ref": "6:21",
-   "q": "La locuitorii cărei cetăți au trimis soli oamenii din Bet-Șemeș?",
-   "opts": [
-    "Mițpa",
-    "Chiriat-Iearim",
-    "Rama",
-    "Ghilgal"
-   ],
-   "a": 1
-  },
-  {
-   "t": "match",
-   "ref": "6:4-21",
-   "q": "Asociază fiecare replică cu cei care au rostit-o.",
-   "pairs": [
-    [
-     "Filistenii",
-     "„Ce jertfă pentru vină să-I aducem?”"
-    ],
-    [
-     "Preoții și ghicitorii",
-     "„Pentru ce să vă împietriți inima?”"
-    ],
-    [
-     "Solii din Bet-Șemeș",
-     "„Filistenii au adus înapoi chivotul Domnului”"
-    ]
-   ]
-  },
-  {
-   "t": "fill",
-   "ref": "6:6",
-   "q": "„Nu i-a pedepsit El și n-au lăsat ei atunci pe copiii lui Israel să ___?”",
-   "a": [
-    "plece"
-   ]
-  },
-  {
-   "t": "fill",
-   "ref": "6:9",
-   "q": "„dacă se va sui pe drumul ___ său spre Bet-Șemeș”",
-   "a": [
-    "hotarului"
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "6:15",
-   "q": "Oamenii din Bet-Șemeș au adus Domnului arderi-de-tot și jertfe abia a doua zi după sosirea chivotului.",
-   "a": false
-  },
-  {
-   "t": "one",
-   "ref": "6:18",
-   "q": "Ale cui erau cetățile filistenilor după numărul cărora s-au făcut șoarecii de aur?",
-   "opts": [
-    "Ale preoților lui Dagon",
-    "Ale regelui din Gat",
-    "Ale celor cinci căpetenii",
-    "Ale fiilor lui Anac"
-   ],
-   "a": 2
-  },
-  {
-   "t": "multi",
-   "ref": "6:1",
-   "q": "Cât timp a fost chivotul Domnului în țara filistenilor?",
-   "opts": [
-    "trei luni",
-    "patru luni",
-    "cinci luni",
-    "șase luni",
-    "douăzeci de luni"
-   ],
-   "a": []
-  },
-  {
-   "t": "tf",
-   "ref": "6:16",
-   "q": "După ce au văzut ce s-a întâmplat la Bet-Șemeș, cei cinci domnitori ai filistenilor s-au întors la Gat în aceeași zi.",
-   "a": false
   }
  ]
 }
