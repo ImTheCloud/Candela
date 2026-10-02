@@ -1023,7 +1023,7 @@ function viewWelcome(){
         <div class="pf-rules" style="margin:0; padding:0; border:none;">
           <div class="pf-rule"><span class="r-icon">✓</span><span>Răspunsurile corecte aduc <b>puncte</b>.</span></div>
           <div class="pf-rule"><span class="r-icon">↺</span><span><b>Reia greșelile</b> nu dă puncte.</span></div>
-          <div class="pf-rule"><span class="r-icon">+</span><span>Punctaj mai mare? <b>Refă testul</b>.</span></div>
+          <div class="pf-rule"><span class="r-icon">+</span><span>Pentru un punctaj mai mare: <b>refă testul</b>.</span></div>
         </div>
       </div>
     </div>
@@ -1139,7 +1139,7 @@ function openProfile(){
         <div class="pf-rules">
           <div class="pf-rule"><span class="r-icon">✓</span><span>Răspunsurile corecte aduc <b>puncte</b>.</span></div>
           <div class="pf-rule"><span class="r-icon">↺</span><span><b>Reia greșelile</b> nu dă puncte.</span></div>
-          <div class="pf-rule"><span class="r-icon">+</span><span>Punctaj mai mare? <b>Refă testul</b>.</span></div>
+          <div class="pf-rule"><span class="r-icon">+</span><span>Pentru un punctaj mai mare: <b>refă testul</b>.</span></div>
         </div>
       </div>
       ${!p.child && store.isParent ? `<div class="pf-card" id="pfKids"></div>` : ""}
@@ -1820,7 +1820,7 @@ function renderReport(r, o = {}){
     <div class="pf-rules" style="margin:0; padding:0; border:none;">
       <div class="pf-rule"><span class="r-icon">✓</span><span>Răspunsurile corecte aduc <b>puncte</b>.</span></div>
       <div class="pf-rule"><span class="r-icon">↺</span><span><b>Reia greșelile</b> nu dă puncte.</span></div>
-      <div class="pf-rule"><span class="r-icon">+</span><span>Punctaj mai mare? <b>Refă testul</b>.</span></div>
+      <div class="pf-rule"><span class="r-icon">+</span><span>Pentru un punctaj mai mare: <b>refă testul</b>.</span></div>
     </div>
   </div>` : ""}
   ${wrong ? `<div class="kv two">
@@ -1840,7 +1840,7 @@ function renderReport(r, o = {}){
     <div class="pf-rules" style="margin:0; padding:0; border:none;">
       <div class="pf-rule"><span class="r-icon">✓</span><span>Răspunsurile corecte aduc <b>puncte</b>.</span></div>
       <div class="pf-rule"><span class="r-icon">↺</span><span><b>Reia greșelile</b> nu dă puncte.</span></div>
-      <div class="pf-rule"><span class="r-icon">+</span><span>Punctaj mai mare? <b>Refă testul</b>.</span></div>
+      <div class="pf-rule"><span class="r-icon">+</span><span>Pentru un punctaj mai mare: <b>refă testul</b>.</span></div>
     </div>
   </div>` : ""}
   <div class="startbar" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
