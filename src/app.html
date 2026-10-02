@@ -110,7 +110,7 @@ p{margin:0}
 .pf-card{width:100%;background:var(--surface);border-radius:16px;padding:16px 18px;display:grid;gap:12px;box-shadow:var(--shadow);text-align:left}
 .pf-rules{margin-top:4px;padding-top:14px;border-top:1px solid var(--border);display:grid;gap:8px}
 .pf-rule{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;line-height:1.35;color:var(--ink-2)}
-.pf-rule .r-icon{color:var(--oil);font-weight:600;width:14px;text-align:center;font-size:14px}
+.pf-rule .r-icon{color:var(--oil);font-weight:600;width:14px;height:14px;display:inline-flex;align-items:center;justify-content:center;text-align:center;font-size:14px;flex:none}
 .pf-rule b{color:var(--ink);font-weight:600}
 .pf-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:14px;color:var(--ink-2)}
 .pf-row b{color:var(--ink);font-weight:600;text-align:right}
@@ -161,7 +161,7 @@ p{margin:0}
 .guest-cta p{color:var(--ink);font-size:15px;font-weight:500;margin:0}
 .guest-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
 .guest-btns .btn{white-space:nowrap;padding-inline:12px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:8px}
+.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
 .tile{position:relative;aspect-ratio:1;max-width:100%;border:1.5px solid var(--line);background:var(--surface);border-radius:14px;display:grid;place-items:center;padding:0;transition:transform .15s, border-color .2s, background .2s}
 .tile:active{transform:scale(.94)}
 .tile svg{position:absolute;inset:5px;width:calc(100% - 10px);height:calc(100% - 10px)}
@@ -209,15 +209,13 @@ html:has(.sheet-bg),html:has(.modal-bg),body:has(.sheet-bg),body:has(.modal-bg){
 @keyframes sheetDown{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(100%)}}
 @media (min-width:960px){.sheet-bg{align-items:center}.sheet{border-radius:24px;padding:24px;animation:modalUp .32s cubic-bezier(.16,1,.3,1) both}.sheet-bg.closing .sheet{animation:modalDown .22s cubic-bezier(.4,0,1,1) forwards}}
 @media (prefers-reduced-motion:reduce){.modal-bg,.sheet-bg,.modal-bg.closing,.sheet-bg.closing,.modal,.sheet,.modal-bg.closing .modal,.sheet-bg.closing .sheet{animation:none!important;transform:none!important}}
-.exam-box{margin-top:14px}
-.btn-exam{width:100%;display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--surface);border:1.5px solid var(--line);border-radius:var(--r);color:var(--ink);cursor:pointer;text-align:left;transition:border-color .15s,transform .15s,box-shadow .15s;box-shadow:var(--shadow)}
-.btn-exam:hover{border-color:var(--oil);transform:translateY(-1px);box-shadow:0 4px 12px -4px rgb(58 39 27 / .18)}
-.btn-exam:active{transform:scale(.985)}
-.btn-exam .exam-icon{font-size:22px;line-height:1;flex:none}
-.btn-exam .exam-meta{display:grid;gap:2px;flex:1;min-width:0}
-.btn-exam .exam-meta b{font-size:15px;font-weight:700;color:var(--ink)}
-.btn-exam .exam-meta small{font-size:12px;color:var(--ink-2)}
-.btn-exam .exam-tag{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background:var(--oil-soft);color:var(--oil-ink);flex:none}
+.tile-exam{grid-column:span 4;position:relative;display:flex;align-items:center;justify-content:center;gap:10px;padding:0 14px;border:1.5px solid var(--line);background:var(--surface);border-radius:14px;cursor:pointer;color:var(--ink);font-family:inherit;font-size:16px;font-weight:600;transition:transform .15s,border-color .2s,background .2s,box-shadow .2s;box-shadow:var(--shadow);text-decoration:none;-webkit-tap-highlight-color:transparent;min-height:0;box-sizing:border-box}
+.tile-exam svg{color:var(--oil);flex:none}
+.tile-exam:hover{border-color:var(--oil);background:var(--oil-soft)}
+.tile-exam:active{transform:scale(.97)}
+@media (max-width:600px){
+  .tile-exam{border-radius:12px;font-size:14.5px;gap:7px;padding:0 10px}
+}
 .startbar{position:sticky;bottom:0;padding-block:14px calc(14px + env(safe-area-inset-bottom,0px));background:linear-gradient(to top,var(--bg) 70%,transparent);margin-top:18px;z-index:5}
 .history{display:grid;gap:6px}
 .hrow{width:100%;border:0;text-align:left;color:var(--ink);font:inherit;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;gap:10px;background:var(--surface);border-radius:12px;padding:9px 12px}
@@ -922,6 +920,7 @@ function totalCount(mode){ let n=0; for (const c in QUIZ){ if (mode!=="hard") n 
 /* an eye button inside a password field shows or hides what was typed */
 const EYE = `<svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>`;
 const EYE_OFF = `<svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 4l16 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>`;
+const EXAM_ICON = (sz = 14) => `<svg width="${sz}" height="${sz}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>`;
 function pwEye(input){
   const wrap = document.createElement("div"); wrap.className = "pw-wrap";
   input.replaceWith(wrap); wrap.appendChild(input);
@@ -1052,7 +1051,7 @@ function viewWelcome(){
           <div class="pf-rule"><span class="r-icon">↺</span><span><b>Reia greșelile</b> nu dă puncte.</span></div>
           <div class="pf-rule"><span class="r-icon" style="font-size:17px; line-height:14px">+</span><span>Pentru un punctaj mai mare: <b>refă testul</b>.</span></div>
           <div class="pf-rule"><span class="r-icon" style="font-size:16px; line-height:14px">◷</span><span>Timpul este informativ, <b>nu afectează</b> scorul.</span></div>
-          <div class="pf-rule"><span class="r-icon">📝</span><span><b>Examenul alb</b> nu aduce puncte în clasament.</span></div>
+          <div class="pf-rule"><span class="r-icon">${EXAM_ICON(14)}</span><span><b>Examenul alb</b> nu aduce puncte în clasament.</span></div>
         </div>
       </div>
     </div>
@@ -1178,7 +1177,7 @@ function openProfile(){
           <div class="pf-rule"><span class="r-icon">↺</span><span><b>Reia greșelile</b> nu dă puncte.</span></div>
           <div class="pf-rule"><span class="r-icon" style="font-size:17px; line-height:14px">+</span><span>Pentru un punctaj mai mare: <b>refă testul</b>.</span></div>
           <div class="pf-rule"><span class="r-icon" style="font-size:16px; line-height:14px">◷</span><span>Timpul este informativ, <b>nu afectează</b> scorul.</span></div>
-          <div class="pf-rule"><span class="r-icon">📝</span><span><b>Examenul alb</b> nu aduce puncte în clasament.</span></div>
+          <div class="pf-rule"><span class="r-icon">${EXAM_ICON(14)}</span><span><b>Examenul alb</b> nu aduce puncte în clasament.</span></div>
         </div>
       </div>
       ${!p.child && store.isParent ? `<div class="pf-card" id="pfKids"></div>` : ""}
@@ -1381,16 +1380,11 @@ function viewHome(){
           <span class="n">${c}</span>
           ${fracHTML}
         </button>`;
-      }).join("")}</div>
-      <div class="exam-box">
-        <button type="button" class="btn-exam" id="btnExam" aria-label="Începe un examen alb">
-          <span class="exam-icon" aria-hidden="true">📝</span>
-          <div class="exam-meta">
-            <b>Examen alb</b>
-            <small>20 de întrebări din toată cartea · fără puncte</small>
-          </div>
-          <span class="exam-tag">Simulare</span>
-        </button>
+      }).join("")}
+      <button type="button" class="tile-exam" id="btnExam" aria-label="Începe un examen alb">
+        ${EXAM_ICON(18)}
+        <span>Examen alb</span>
+      </button>
       </div>
       <div class="startbar" id="sbar" style="display:${S.sel.size ? 'block' : 'none'}"><button type="button" class="btn btn-primary lg" id="sbtn" style="width:100%">${S.sel.size ? `Începe ${chaptersLabel([...S.sel]).toLowerCase()}` : ""}</button></div>
     </div>
@@ -1685,7 +1679,7 @@ function openExamOptions(){
 
   bg.innerHTML = `<div class="sheet start-sheet" role="dialog" aria-modal="true" aria-labelledby="shT">
     <div class="sheet-h"><div class="sh-title"><h3 id="shT">Examen alb</h3></div><div class="sh-tools"><button class="icon-btn" id="shX" aria-label="Închide"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div></div>
-    <p class="sh-sub">20 de întrebări din toată cartea (5 A/F, 5 cu un răspuns, 5 cu mai multe, 5 de completat). <b>Nu aduce puncte în clasament.</b></p>
+    <p class="sh-sub">Este exact același examen ca la Talant în Negoț. <b>Nu aduce puncte în clasament.</b></p>
     <div class="sh-lvl" style="margin-top:16px;"><span class="sh-l">Alege nivelul examenului</span>
       <div style="display:grid; gap:10px; margin-top:10px;">
         ${lvlButtons}
@@ -2078,7 +2072,7 @@ function renderReport(r, o = {}){
     <div class="pf-rules" style="margin:0; padding:0; border:none;">
       <div class="pf-rule"><span class="r-icon">✓</span><span>Răspunsurile corecte aduc <b>puncte</b>.</span></div>
       <div class="pf-rule"><span class="r-icon">↺</span><span><b>Reia greșelile</b> nu dă puncte.</span></div>
-      <div class="pf-rule"><span class="r-icon">📝</span><span><b>Examenul alb</b> nu aduce puncte în clasament.</span></div>
+      <div class="pf-rule"><span class="r-icon">${EXAM_ICON(14)}</span><span><b>Examenul alb</b> nu aduce puncte în clasament.</span></div>
       <div class="pf-rule"><span class="r-icon" style="font-size:17px; line-height:14px">+</span><span>Pentru un punctaj mai mare: <b>refă testul</b>.</span></div>
       <div class="pf-rule"><span class="r-icon" style="font-size:16px; line-height:14px">◷</span><span>Timpul este informativ, <b>nu afectează</b> scorul.</span></div>
     </div>
@@ -2101,7 +2095,7 @@ function renderReport(r, o = {}){
     <div class="pf-rules" style="margin:0; padding:0; border:none;">
       <div class="pf-rule"><span class="r-icon">✓</span><span>Răspunsurile corecte aduc <b>puncte</b>.</span></div>
       <div class="pf-rule"><span class="r-icon">↺</span><span><b>Reia greșelile</b> nu dă puncte.</span></div>
-      <div class="pf-rule"><span class="r-icon">📝</span><span><b>Examenul alb</b> nu aduce puncte în clasament.</span></div>
+      <div class="pf-rule"><span class="r-icon">${EXAM_ICON(14)}</span><span><b>Examenul alb</b> nu aduce puncte în clasament.</span></div>
       <div class="pf-rule"><span class="r-icon" style="font-size:17px; line-height:14px">+</span><span>Pentru un punctaj mai mare: <b>refă testul</b>.</span></div>
       <div class="pf-rule"><span class="r-icon" style="font-size:16px; line-height:14px">◷</span><span>Timpul este informativ, <b>nu afectează</b> scorul.</span></div>
     </div>
