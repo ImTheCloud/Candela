@@ -1594,7 +1594,7 @@ function renderReport(r, o = {}){
   S.reportCh = chs && chs.length === 1 ? chs[0] : (chs && chs[0] ? chs[0] : 1);
   // always encouraging: children and beginners use the app
   const verdict = P>=95 ? "Excelent!" : P>=80 ? "Foarte bine!" : P>=60 ? "Bravo, ești pe drumul cel bun!" : P>=40 ? "Bun început! Mai încearcă o dată." : "Fiecare încercare te ajută să înveți!";
-  const tip = o.past ? "" : nWrong ? (P>=60 ? "Reia greșelile ca să le înveți și pe acestea." : "Citește capitolul, apoi reia greșelile. Vei vedea cât de repede înveți!") : "Toate răspunsurile sunt corecte. Felicitări!";
+  const tip = o.past ? "" : r.retry ? (nWrong ? "Continuă până înțelegi toate răspunsurile corecte." : "Ai corectat greșelile! Felicitări pentru perseverență.") : nWrong ? (P>=60 ? "Reia greșelile ca să le înveți și pe acestea." : "Citește capitolul, apoi reia greșelile. Vei vedea cât de repede înveți!") : "Toate răspunsurile sunt corecte. Felicitări!";
   const chList = Object.entries(r.byCh || {});
   mount(`${headerHTML(false)}
   <section class="report-head">
@@ -1605,6 +1605,13 @@ function renderReport(r, o = {}){
     <h2 class="verdict">${verdict}</h2>
     ${tip ? `<p class="verdict-tip">${tip}</p>` : ""}
   </section>
+  ${r.retry ? `<div class="card retry-info" style="display:flex;align-items:flex-start;gap:12px;padding:14px 16px;margin:14px 0;background:var(--surface-2);border-radius:16px;box-shadow:none">
+    <span style="font-size:22px;line-height:1;flex-shrink:0" aria-hidden="true">💡</span>
+    <div style="font-size:13.5px;line-height:1.45;color:var(--ink-2)">
+      <b style="color:var(--ink);display:block;margin-bottom:2px;font-size:14px">Exercițiu de învățare (fără puncte în clasament)</b>
+      Punctele obținute din reluarea greșelilor nu se adaugă la scorul din clasament sau istoric — scorul oficial rămâne cel de la testul inițial. Scopul este să reții și să înțelegi răspunsurile corecte!
+    </div>
+  </div>` : ""}
   ${wrong ? `<div class="kv two">
     <div class="stat"><b>${n - nWrong}</b><small>corecte</small></div>
     <div class="stat"><b>${nWrong}</b><small>de revăzut</small></div>
@@ -1618,7 +1625,7 @@ function renderReport(r, o = {}){
   <div class="mistakes">${nWrong ? wrong.map(mistakeHTML).join("") : `<div class="allgood">Toate răspunsurile sunt corecte.</div>`}</div>`
   : ""}
   <div class="startbar" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-    ${nWrong ? `<button class="btn btn-oil" id="retry">Reia greșelile</button>` : `<button class="btn btn-oil" id="again">Refă testul</button>`}
+    ${nWrong ? `<button class="btn btn-oil" id="retry" title="Exercițiu de învățare (fără puncte în clasament)">Reia greșelile</button>` : `<button class="btn btn-oil" id="again">Refă testul</button>`}
     <button class="btn btn-primary" id="home">Acasă</button>
   </div>
   ${chs.length === 1 ? `<button class="link read-link" id="readCh" type="button">Citește capitolul ${chs[0]}</button>` : ""}
