@@ -293,8 +293,8 @@ body:not(.quiz-fixed) .qcard{max-height:none;overflow:visible}
 .mrow.ok .mv,.mrow.no .mv{border-left:0;padding-left:0}
 .mrow .mfix{padding:0 14px 11px 52px;margin-top:-4px}
 .mfix{display:block;font-size:12.5px;color:var(--ok);margin-top:4px;font-weight:600}
-.fill{font-family:var(--f-display);font-size:21px;line-height:1.75}
-.fill input{font-family:var(--f-body);font-size:17px;width:8.5em;max-width:100%;border:0;border-bottom:2px solid var(--oil);background:var(--oil-soft);border-radius:8px 8px 2px 2px;padding:2px 8px;margin:0 2px;color:var(--ink);transition:background .2s,border-color .2s}
+.fill{font-family:var(--f-body);font-size:20px;line-height:1.5;font-weight:500;color:var(--ink)}
+.fill input{font-family:var(--f-body);font-size:18px;font-weight:500;width:8.5em;max-width:100%;border:0;border-bottom:2px solid var(--oil);background:var(--oil-soft);border-radius:8px 8px 2px 2px;padding:2px 8px;margin:0 2px;color:var(--ink);transition:background .2s,border-color .2s;vertical-align:baseline}
 .fill input:focus{outline:none;background:var(--surface-2)}
 .fill input.ok{border-color:var(--ok);background:var(--ok-soft)}
 .fill input.no{border-color:var(--bad);background:var(--bad-soft)}
@@ -362,7 +362,7 @@ body:has(.qactions:not(:empty)) .toast{bottom:calc(100px + env(safe-area-inset-b
 .modal h3{font-size:24px}
 .modal-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}
 footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
-@media (max-width:420px){.qtext{font-size:18.5px}.fill{font-size:19px}.stat b{font-size:24px}.ans div{grid-template-columns:1fr;gap:0}}
+@media (max-width:420px){.qtext,.fill{font-size:18.5px}.stat b{font-size:24px}.ans div{grid-template-columns:1fr;gap:0}}
 /* v3: accounts, leaderboard, multi-chapter, desktop */
 .form-error{min-height:0;color:var(--bad);font-size:14px;font-weight:500;margin:0}
 .form-error:empty{display:none}
@@ -867,9 +867,10 @@ const store = {
 };
 
 /* ---------- state ---------- */
+try { localStorage.removeItem("candela:sel"); } catch {}
 const S = {
   player: null,
-  sel: new Set(lsGet("candela:sel", [1])),
+  sel: new Set(),
   mode: lsGet("candela:mode", "easy"),
   count: lsGet("candela:count", 20),
   quiz: null,
@@ -879,8 +880,7 @@ const S = {
   reportCh: null,
   homeScroll: 0,                                  // scroll position to restore when going back home
 };
-if (!S.sel.size) S.sel.add(1);
-function persistPrefs(){ lsSet("candela:sel",[...S.sel]); lsSet("candela:mode",S.mode); lsSet("candela:count",S.count); }
+function persistPrefs(){ lsSet("candela:mode",S.mode); lsSet("candela:count",S.count); }
 const app = $("#app");
 function mount(html){
   document.querySelectorAll(".sheet-bg, .modal-bg, .r-side").forEach(b => b.remove());
@@ -1312,7 +1312,7 @@ function openProfile(){
 }
 document.addEventListener("click", e => {
   if (!e.target.closest) return;
-  if (e.target.closest("#brandHome")) viewHome();
+  if (e.target.closest("#brandHome")) { S.sel = new Set(); viewHome(); }
   if (e.target.closest("#who")) openProfile();
   if (e.target.closest("#gNew, #gIn")) S.toReport = true; else if (e.target.closest("#acct")) S.toReport = false;
   if (e.target.closest("#acct, #gNew")) viewEntry("", e.target.closest("#gNew") ? "new" : undefined);
@@ -1361,7 +1361,7 @@ function viewHome(){
           ${fracHTML}
         </button>`;
       }).join("")}</div>
-      <div class="startbar" id="sbar"><button type="button" class="btn btn-primary lg" id="sbtn" style="width:100%"></button></div>
+      <div class="startbar" id="sbar" style="display:${S.sel.size ? 'block' : 'none'}"><button type="button" class="btn btn-primary lg" id="sbtn" style="width:100%">${S.sel.size ? `Începe ${chaptersLabel([...S.sel]).toLowerCase()}` : ""}</button></div>
     </div>
   </aside>
 
@@ -1373,7 +1373,6 @@ function viewHome(){
   </section>
   </div>`);
 
-  if (!S.sel.size || chapTried([...S.sel][0])){ const next = Array.from({length:31},(_,i)=>i+1).find(c => !chapTried(c)); if (next) S.sel = new Set([next]); else if (!S.sel.size) S.sel = new Set([1]); }
   const update = () => {
     app.querySelectorAll(".tile").forEach(t => t.setAttribute("aria-pressed", S.sel.has(+t.dataset.c)));
     const btn = $("#sbtn");
@@ -1481,6 +1480,7 @@ const levelLast = (c, m) => {
   return chapLast(c, m);
 };
 function openOptions(chs = [...S.sel].sort((a,b)=>a-b)){
+  if (!chs || !chs.length) return;
   const c = chs[0];
   const bg = document.createElement("div"); bg.className = "sheet-bg";
   
@@ -1663,7 +1663,7 @@ function viewQuestion(first){
 }
 function fillHTML(q){
   let k = 0;
-  return `<p class="fill">${esc(q.q).split("___").map((part,i,arr)=> part + (i<arr.length-1 ? `<input id="fill${k}" data-k="${k++}" autocapitalize="off" autocomplete="off" spellcheck="false" aria-label="Cuvântul lipsă ${k}">` : "")).join("")}</p>`;
+  return `<p class="qtext fill">${esc(q.q).split("___").map((part,i,arr)=> part + (i<arr.length-1 ? `<input id="fill${k}" data-k="${k++}" autocapitalize="off" autocomplete="off" spellcheck="false" aria-label="Cuvântul lipsă ${k}">` : "")).join("")}</p>`;
 }
 function answersHTML(q){
   if (q.t==="tf") return `<div class="tf"><button class="opt" data-v="1"><span>Adevărat</span></button><button class="opt" data-v="0"><span>Fals</span></button></div>`;
@@ -1984,7 +1984,7 @@ function renderReport(r, o = {}){
   if ($("#readCh")) $("#readCh").onclick = () => viewRead(chs[0]);
   if ($("#repBack")) $("#repBack").onclick = () => { if (o.from === "hist") viewHistory(); else viewHome(); };
   if ($("#backHist")) $("#backHist").onclick = viewHistory;
-  if ($("#home")) $("#home").onclick = () => { S.reportBack = null; S.reportCh = null; const savedScroll = S.homeScroll || 0; S.homeScroll = 0; viewHome(); if (savedScroll) requestAnimationFrame(() => requestAnimationFrame(() => window.scrollTo({top: savedScroll}))); };
+  if ($("#home")) $("#home").onclick = () => { S.reportBack = null; S.reportCh = null; S.sel = new Set(); const savedScroll = S.homeScroll || 0; S.homeScroll = 0; viewHome(); if (savedScroll) requestAnimationFrame(() => requestAnimationFrame(() => window.scrollTo({top: savedScroll}))); };
 }
 function mistakeHTML({q, a}){
   a = a || {pts:0, given:null, skipped:true};
