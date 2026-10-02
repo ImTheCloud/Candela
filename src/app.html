@@ -33,9 +33,10 @@
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{min-height:100%}
 body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
-button,input{font:inherit;color:inherit}
+button,input,select,textarea,summary{font:inherit;color:inherit;-webkit-tap-highlight-color:transparent}
 button{cursor:pointer}
-:focus-visible{outline:2px solid var(--oil);outline-offset:2px}
+button:focus,button:focus-visible,summary:focus,summary:focus-visible{outline:none!important}
+input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--oil);outline-offset:2px}
 h1,h2,h3{font-family:var(--f-display);font-weight:400;text-wrap:balance;margin:0;letter-spacing:-.01em}
 p{margin:0}
 .wrap{max-width:1180px;margin:0 auto;padding-inline:16px;padding-block:20px calc(48px + env(safe-area-inset-bottom,0px))}
@@ -85,7 +86,7 @@ p{margin:0}
 .input{width:100%;border:1.5px solid var(--line);background:var(--bg);border-radius:12px;padding:14px 16px;font-size:18px;transition:border-color .2s, background .2s}
 .input:focus{outline:none;border-color:var(--oil);background:var(--surface)}
 .chip{border:1.5px solid var(--line);background:transparent;border-radius:999px;padding:7px 14px;font-weight:500;font-size:14px;transition:all .15s}
-.chip:hover{border-color:var(--oil);color:var(--oil-ink)}
+.chip:hover{border-color:var(--ink-2);color:var(--ink)}
 .chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .chip:disabled{opacity:.35;cursor:not-allowed;border-style:dashed}
 
@@ -211,14 +212,16 @@ html:has(.sheet-bg),html:has(.modal-bg),body:has(.sheet-bg),body:has(.modal-bg){
 @media (prefers-reduced-motion:reduce){.modal-bg,.sheet-bg,.modal-bg.closing,.sheet-bg.closing,.modal,.sheet,.modal-bg.closing .modal,.sheet-bg.closing .sheet{animation:none!important;transform:none!important}}
 .tile-exam{grid-column:span 4;position:relative;display:flex;align-items:center;justify-content:center;gap:10px;padding:0 14px;border:1.5px solid var(--line);background:var(--surface);border-radius:14px;cursor:pointer;color:var(--ink);font-family:inherit;font-size:16px;font-weight:600;transition:transform .15s,border-color .2s,background .2s,box-shadow .2s;box-shadow:var(--shadow);text-decoration:none;-webkit-tap-highlight-color:transparent;min-height:0;box-sizing:border-box}
 .tile-exam svg{color:var(--oil);flex:none}
-.tile-exam:hover{border-color:var(--oil);background:var(--oil-soft)}
-.tile-exam:active{transform:scale(.97)}
+.tile-exam:hover{border-color:var(--ink-2);background:var(--surface)}
+.tile-exam:active{transform:scale(.97);background:var(--surface)}
+.tile-exam:focus,.tile-exam:focus-visible{outline:none!important;background:var(--surface)}
 @media (max-width:600px){
   .tile-exam{border-radius:12px;font-size:14.5px;gap:7px;padding:0 10px}
 }
 .startbar{position:sticky;bottom:0;padding-block:14px calc(14px + env(safe-area-inset-bottom,0px));background:linear-gradient(to top,var(--bg) 70%,transparent);margin-top:18px;z-index:5}
 .history{display:grid;gap:6px}
-.hrow{width:100%;border:0;text-align:left;color:var(--ink);font:inherit;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;gap:10px;background:var(--surface);border-radius:12px;padding:9px 12px}
+.hrow{width:100%;border:0;text-align:left;color:var(--ink);font:inherit;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;gap:10px;background:var(--surface);border-radius:12px;padding:9px 12px;outline:none;-webkit-tap-highlight-color:transparent}
+.hrow:focus,.hrow:focus-visible,.hrow:active{outline:none!important}
 .hrow .chev,.brow-l .chev{color:var(--ink-2);opacity:.6}
 .hist-page{display:grid;gap:18px}
 .hgroup{display:grid;gap:8px}
@@ -254,56 +257,40 @@ body:not(.quiz-fixed) .qcard{max-height:none;overflow:visible}
 .qcard.leave{animation:qOut .22s ease-in both}
 @keyframes qIn{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:none}}
 @keyframes qOut{to{opacity:0;transform:translateX(-28px)}}
-.qcard.qtype-multi{border-top:4px solid #8B5CF6}
-.qcard.qtype-one{border-top:4px solid var(--oil)}
-.qmeta{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
-.qmeta-left{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.qmeta{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.qmeta-left{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.qtype-badge{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background:var(--surface-2);color:var(--ink);border:1px solid var(--line);line-height:1.2}
+.qtype-badge svg{flex:none}
+.qtype-badge.type-multi{background:var(--oil-soft);color:var(--oil-ink);border:1.5px solid rgba(217,123,38,.45);font-weight:750;box-shadow:0 1px 3px rgba(217,123,38,.12)}
+.qtype-badge.type-one{background:var(--surface-2);color:var(--ink);border:1px solid var(--line)}
+.qtype-badge.type-tf{background:var(--surface-2);color:var(--ink);border:1px solid var(--line)}
+.qtype-badge.type-match{background:var(--surface-2);color:var(--ink);border:1px solid var(--line)}
+.qtype-badge.type-fill{background:var(--surface-2);color:var(--ink);border:1px solid var(--line)}
+.qmode-tag{font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:3px 8px;border-radius:999px;background:transparent;color:var(--ink-2);border:1px solid var(--line);line-height:1.2}
+.qmode-tag.hard{color:var(--cedar);border-color:rgba(138,90,54,.35)}
 .qtype{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--cedar)}
-.qtype-badge{display:inline-flex;align-items:center;gap:5px;font-family:var(--f-body);font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:3px 9px;border-radius:999px}
-.qtype-badge-multi{background:#EDE9FE;color:#6D28D9;border:1px solid #DDD6FE}
-.qtype-badge-one{background:var(--oil-soft);color:var(--oil-ink);border:1px solid rgba(217,123,38,0.25)}
-.qtype-badge-default{background:var(--surface-2);color:var(--ink-2);border:1px solid var(--line)}
-.qmode-pill{font-size:11px;font-weight:600;color:var(--ink-2);background:var(--surface-2);padding:3px 8px;border-radius:6px;text-transform:uppercase}
 .qtext{font-size:20px;line-height:1.4;font-weight:500}
 .qhint{font-size:13px;color:var(--ink-2);margin-top:-8px}
 .qhint.ans{justify-self:start;background:var(--cedar-soft);color:var(--cedar);font-weight:600;border-radius:10px;padding:5px 12px;font-size:13.5px;line-height:1.3}
-.q-type-alert{display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:12px;margin-top:-6px;font-size:14px;line-height:1.35}
-.q-alert-icon{flex:none;display:grid;place-items:center}
-.q-alert-content{display:flex;flex-direction:column;gap:1px}
-.q-alert-title{font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
-.q-alert-desc{font-size:13.5px;opacity:0.92}
-.alert-multi{background:#F3E8FF;border:1.5px solid #C084FC;color:#581C87;box-shadow:0 2px 8px -2px rgba(124,58,237,0.12)}
-.alert-multi .q-alert-icon{color:#7C3AED}
-.alert-one{background:var(--surface-2);border:1.5px solid var(--line);color:var(--ink)}
-.alert-one .q-alert-icon{color:var(--oil)}
 .answers{display:grid;gap:10px}
-.opt{display:flex;align-items:center;gap:12px;width:100%;text-align:left;border:1.5px solid var(--line);background:var(--bg);border-radius:var(--r);padding:13px 14px;font-size:16px;line-height:1.35;transition:border-color .15s, background .15s, transform .15s, box-shadow .15s}
+.opt{display:flex;align-items:center;gap:12px;width:100%;text-align:left;border:1.5px solid var(--line);background:var(--bg);border-radius:var(--r);padding:13px 14px;font-size:16px;line-height:1.35;transition:border-color .15s, background .15s, transform .15s}
 .opt:hover:not(:disabled){border-color:var(--ink-2)}
 .opt:active:not(:disabled){transform:scale(.985)}
 .opt .opt-label{flex:1}
-.opt .k{flex:none;width:26px;height:26px;border:1.5px solid var(--line);display:grid;place-items:center;font-family:var(--f-mono);font-size:12px;color:var(--ink-2);transition:all .15s}
-.opt.opt-one .k.opt-radio-badge{border-radius:50%}
-.opt-choice-indicator.indicator-radio{flex:none;width:20px;height:20px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;transition:all .15s ease}
-.indicator-radio .radio-core{width:9px;height:9px;border-radius:50%;background:transparent;transition:all .15s ease}
+.opt .k{flex:none;width:26px;height:26px;border:1.5px solid var(--line);border-radius:50%;display:grid;place-items:center;font-family:var(--f-mono);font-size:12px;color:var(--ink-2);transition:all .15s}
 .opt.opt-one[aria-pressed="true"]{border-color:var(--ink);background:var(--surface)}
 .opt.opt-one[aria-pressed="true"] .k{background:var(--ink);border-color:var(--ink);color:var(--bg)}
-.opt.opt-one[aria-pressed="true"] .indicator-radio{border-color:var(--ink)}
-.opt.opt-one[aria-pressed="true"] .indicator-radio .radio-core{background:var(--ink)}
-.opt.opt-multi{border-color:#E2D9F3}
-.opt.opt-multi:hover:not(:disabled){border-color:#A78BFA;background:#FAF7FD}
-.opt.opt-multi .k.opt-check-badge{border-radius:6px;border-color:#DDD6FE;background:#F5F3FF;color:#6D28D9}
-.opt-choice-indicator.indicator-check{flex:none;width:22px;height:22px;border-radius:6px;border:2px solid #C4B5FD;background:var(--bg);display:grid;place-items:center;color:transparent;transition:all .15s ease}
-.opt.opt-multi[aria-pressed="true"]{border-color:#7C3AED;background:#F5F0FD;box-shadow:0 2px 8px -2px rgba(124,58,237,0.15)}
-.opt.opt-multi[aria-pressed="true"] .k.opt-check-badge{background:#7C3AED;border-color:#7C3AED;color:#FFF}
-.opt.opt-multi[aria-pressed="true"] .indicator-check{background:#7C3AED;border-color:#7C3AED;color:#FFF}
+.opt.opt-multi .k{border-radius:6px}
+.opt-choice-indicator.indicator-check{flex:none;width:20px;height:20px;border-radius:6px;border:2px solid var(--line);background:transparent;display:grid;place-items:center;color:transparent;transition:all .15s ease}
+.opt.opt-multi[aria-pressed="true"]{border-color:var(--ink);background:var(--surface)}
+.opt.opt-multi[aria-pressed="true"] .k{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.opt.opt-multi[aria-pressed="true"] .indicator-check{background:var(--ink);border-color:var(--ink);color:var(--bg)}
 .opt.correct{border-color:var(--ok)!important;background:var(--ok-soft)!important}
 .opt.correct .k{background:var(--ok)!important;border-color:var(--ok)!important;color:var(--bg)!important}
-.opt.correct .indicator-check,.opt.correct .indicator-radio{border-color:var(--ok)!important;background:var(--ok)!important;color:#fff!important}
-.opt.correct .radio-core{background:#fff!important}
+.opt.correct .indicator-check{border-color:var(--ok)!important;background:var(--ok)!important;color:#fff!important}
 .opt.wrong{border-color:var(--bad)!important;background:var(--bad-soft)!important}
 .opt.wrong .k{background:var(--bad)!important;border-color:var(--bad)!important;color:var(--bg)!important}
-.opt.wrong .indicator-check,.opt.wrong .indicator-radio{border-color:var(--bad)!important;background:var(--bad)!important;color:#fff!important}
-.opt.wrong .radio-core{background:#fff!important}
+.opt.wrong .indicator-check{border-color:var(--bad)!important;background:var(--bad)!important;color:#fff!important}
 .opt:disabled{cursor:default}
 .tf{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .tf .opt{justify-content:center;font-weight:600;font-size:17px;padding:20px 10px}
@@ -349,11 +336,11 @@ body:not(.quiz-fixed) .qcard{max-height:none;overflow:visible}
 .verse:not(:has(.verse-container)){border-left:3px solid var(--oil);padding-left:12px}
 .verse sup,.reader-text sup,.verse-ctx-body sup,.verse-target-text sup{font-family:var(--f-body);font-weight:700;font-size:.65em;line-height:1;color:var(--oil-ink);margin-right:.35em;vertical-align:.5em;letter-spacing:.02em}
 .verse-container{display:flex;flex-direction:column;gap:8px;margin-top:4px}
-.verse-expander{border:1px dashed var(--line);border-radius:12px;background:rgba(0,0,0,0.02);transition:all .2s ease;overflow:hidden}
-.verse-expander[open]{background:var(--surface);border-style:solid;border-color:var(--line);box-shadow:0 2px 8px -2px rgba(58,39,27,0.06)}
-.verse-expander-btn{list-style:none;cursor:pointer;padding:8px 12px;display:flex;align-items:center;justify-content:center;gap:8px;font-family:var(--f-body);font-size:13px;font-weight:600;color:var(--oil-ink);user-select:none;transition:background .15s,color .15s}
+.verse-expander{border:1px dashed var(--line);border-radius:12px;background:transparent;overflow:hidden}
+.verse-expander[open]{border-style:solid;border-color:var(--line)}
+.verse-expander-btn{list-style:none;cursor:pointer;padding:8px 12px;display:flex;align-items:center;justify-content:center;gap:8px;font-family:var(--f-body);font-size:13px;font-weight:600;color:var(--ink-2);background:transparent;user-select:none;outline:none;-webkit-tap-highlight-color:transparent}
 .verse-expander-btn::-webkit-details-marker{display:none}
-.verse-expander-btn:hover{background:var(--oil-soft)}
+.verse-expander-btn:hover,.verse-expander-btn:focus,.verse-expander-btn:active{background:transparent!important;outline:none!important;color:var(--ink)}
 .verse-expander .exp-icon{flex:none;transition:transform .2s ease}
 .verse-expander:not([open]) .exp-text-open{display:none}
 .verse-expander[open] .exp-text-closed{display:none}
@@ -667,6 +654,13 @@ const QUIZ = /*__QUIZ__*/{};
 const TEXT = /*__TEXT__*/{};
 const TITLES = ["Nașterea lui Samuel","Cântarea Anei / Fiii lui Eli","Chemarea lui Samuel","Chivotul luat de filisteni","Chivotul în Asdod","Chivotul se întoarce","Biruința de la Mițpa","Israel cere un împărat","Saul și măgărițele","Saul uns împărat","Biruința asupra lui Nahaș","Cuvântarea lui Samuel","Jertfa lui Saul la Ghilgal","Isprava lui Ionatan","Saul lepădat de Domnul","David uns de Samuel","David și Goliat","Ionatan și David","Saul îl urmărește pe David","Legământul cu Ionatan","David la Nob și la Gat","Peștera Adulam","David la Cheila și în pustie","David îl cruță pe Saul","Nabal și Abigail","A doua cruțare a lui Saul","David la Achiș","Saul la En-Dor","David trimis înapoi","Țiclagul ars","Moartea lui Saul"];
 const TYPE_LABEL = {tf:"Adevărat / Fals", one:"Răspuns unic", multi:"Alegere multiplă", match:"Asociere", fill:"Completează versetul"};
+const TYPE_ICON = {
+  tf: `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg>`,
+  one: `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="3" fill="currentColor"></circle></svg>`,
+  multi: `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"></rect><path d="M9 12l2 2 4-4"></path></svg>`,
+  match: `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>`,
+  fill: `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>`
+};
 const MODE_LABEL = {easy:"Ușor", hard:"Greu", both:"Ambele"};
 const LETTERS = "ABCDEF";
 
@@ -811,12 +805,10 @@ function verseHTML(ref){
   if (a > 1){
     let beforeText = "";
     for (let v = 1; v < a; v++) beforeText += one(v);
-    const count = a - 1;
-    const label = count === 1 ? "versetul 1" : `versetele 1–${count}`;
     beforeHTML = `<details class="verse-expander verse-prev">
       <summary class="verse-expander-btn">
         <svg class="exp-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg>
-        <span class="exp-text-closed">Depliază începutul capitolului (${label})</span>
+        <span class="exp-text-closed">Depliază începutul capitolului</span>
         <span class="exp-text-open">Restrânge începutul capitolului</span>
       </summary>
       <div class="verse-ctx-body">${beforeText.trim()}</div>
@@ -832,13 +824,10 @@ function verseHTML(ref){
   if (end < vs.length){
     let afterText = "";
     for (let v = end + 1; v <= vs.length; v++) afterText += one(v);
-    const startNext = end + 1;
-    const countAfter = vs.length - end;
-    const label = countAfter === 1 ? `versetul ${vs.length}` : `versetele ${startNext}–${vs.length}`;
     afterHTML = `<details class="verse-expander verse-next">
       <summary class="verse-expander-btn">
         <svg class="exp-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
-        <span class="exp-text-closed">Depliază continuarea capitolului (${label})</span>
+        <span class="exp-text-closed">Depliază continuarea capitolului</span>
         <span class="exp-text-open">Restrânge continuarea capitolului</span>
       </summary>
       <div class="verse-ctx-body">${afterText.trim()}</div>
@@ -1696,8 +1685,8 @@ function openOptions(chs = [...S.sel].sort((a,b)=>a-b)){
     else durStr = durLabel((mEasy + mHard) * 60);
     durStr = durStr.replace(/^cam /, "");
 
-    return `<button type="button" class="hrow" data-m="${m}" style="display:flex; align-items:center; gap:12px; padding:12px 14px; border:2px solid transparent; ${m==='both'?'background:var(--oil-soft);':''}">
-      <div style="flex:none; color:${m==='both'?'var(--oil)':'var(--ink)'}; display:grid; place-items:center; width:28px; height:28px; background:var(--bg); border-radius:8px; box-shadow:0 1px 2px rgba(0,0,0,0.06)">
+    return `<button type="button" class="hrow" data-m="${m}" style="display:flex; align-items:center; gap:12px; padding:12px 14px; border:1.5px solid var(--line); background:var(--surface);">
+      <div style="flex:none; color:var(--ink); display:grid; place-items:center; width:28px; height:28px; background:var(--bg); border-radius:8px; box-shadow:0 1px 2px rgba(0,0,0,0.06)">
         ${ICONS[m]}
       </div>
       <div style="flex:1; text-align:left;">
@@ -2083,8 +2072,8 @@ function openExamOptions(){
 
   const lvlButtons = ["easy", "hard", "both"].map(m => {
     const durStr = m === "easy" ? "7 min" : m === "hard" ? "9 min" : "8 min";
-    return `<button type="button" class="hrow" data-m="${m}" style="display:flex; align-items:center; gap:12px; padding:12px 14px; border:2px solid transparent; ${m==='both'?'background:var(--oil-soft);':''}">
-      <div style="flex:none; color:${m==='both'?'var(--oil)':'var(--ink)'}; display:grid; place-items:center; width:28px; height:28px; background:var(--bg); border-radius:8px; box-shadow:0 1px 2px rgba(0,0,0,0.06)">
+    return `<button type="button" class="hrow" data-m="${m}" style="display:flex; align-items:center; gap:12px; padding:12px 14px; border:1.5px solid var(--line); background:var(--surface);">
+      <div style="flex:none; color:var(--ink); display:grid; place-items:center; width:28px; height:28px; background:var(--bg); border-radius:8px; box-shadow:0 1px 2px rgba(0,0,0,0.06)">
         ${ICONS[m]}
       </div>
       <div style="flex:1; text-align:left;">
@@ -2198,31 +2187,14 @@ function viewQuestion(first){
   $("#prog").style.width = (Z.i/n*100) + "%";
   $("#qcount").textContent = `${Z.i+1}/${n}`;
   const card = document.createElement("article");
-  card.className = `qcard enter qtype-${q.t}`;
-
-  let typeChip = "";
-  if (q.t === "multi") {
-    typeChip = `<span class="qtype-badge qtype-badge-multi"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><polyline points="4.5 6.5 6 8 8.5 5.5"></polyline><rect x="3" y="14" width="7" height="7" rx="1.5"></rect><polyline points="4.5 17.5 6 19 8.5 16.5"></polyline><line x1="14" y1="6.5" x2="21" y2="6.5"></line><line x1="14" y1="17.5" x2="21" y2="17.5"></line></svg><span>Alegere multiplă</span></span>`;
-  } else if (q.t === "one") {
-    typeChip = `<span class="qtype-badge qtype-badge-one"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="3.5" fill="currentColor"></circle></svg><span>Răspuns unic</span></span>`;
-  } else {
-    typeChip = `<span class="qtype-badge qtype-badge-default"><span>${TYPE_LABEL[q.t] || ""}</span></span>`;
-  }
-  const modeTag = Z.mode === "both" ? `<span class="qmode-pill">${MODE_LABEL[q.mode]}</span>` : "";
-
-  let hintBanner = "";
-  if (q.t === "multi") {
-    hintBanner = `<div class="q-type-alert alert-multi"><div class="q-alert-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg></div><div class="q-alert-content"><strong class="q-alert-title">Alegere multiplă</strong><span class="q-alert-desc">Selectează <u>toate</u> răspunsurile corecte (pot fi 2, 3 sau mai multe)!</span></div></div>`;
-  } else if (q.t === "one") {
-    hintBanner = `<div class="q-type-alert alert-one"><div class="q-alert-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="3.5" fill="currentColor"></circle></svg></div><div class="q-alert-content"><strong class="q-alert-title">Răspuns unic</strong><span class="q-alert-desc">Alege o singură variantă corectă din cele de mai jos</span></div></div>`;
-  } else if (q.t === "match") {
-    hintBanner = `<p class="qhint ans">Un răspuns pentru fiecare</p>`;
-  }
-
-  card.innerHTML = `<div class="qmeta"><div class="qmeta-left">${typeChip}${modeTag}</div><span class="ref">${refLabel(q.ref)}</span></div>
-    ${q.t==="fill" ? `${fillHTML(q)}` : `<p class="qtext">${esc(q.q.replace(/\s*\(pot fi mai multe[^)]*\)/i, ""))}</p>${hintBanner}`}
+  card.className = "qcard enter";
+  const typeStr = TYPE_LABEL[q.t] || "";
+  const iconStr = TYPE_ICON[q.t] || "";
+  const modeTag = Z.mode === "both" ? `<span class="qmode-tag ${q.mode}">${MODE_LABEL[q.mode]}</span>` : "";
+  card.innerHTML = `<div class="qmeta"><div class="qmeta-left"><span class="qtype-badge type-${q.t}">${iconStr}<span>${typeStr}</span></span>${modeTag}</div><span class="ref">${refLabel(q.ref)}</span></div>
+    ${q.t==="fill" ? `${fillHTML(q)}` : `<p class="qtext">${esc(q.q.replace(/\s*\(pot fi mai multe[^)]*\)/i, ""))}</p>${q.t==="match"?`<p class="qhint ans">Un răspuns pentru fiecare</p>`:""}`}
     <div class="answers" id="ans">${answersHTML(q)}</div><div id="fb"></div>
-    <p class="keys">${({tf:"Taste: A adevărat · F fals · Enter verifică", one:"Taste: A, B, C… · Enter verifică", multi:"Taste: A, B, C… (bifează mai multe) · Enter verifică", fill:"Enter trece la căsuța următoare", match:"Enter verifică"})[q.t]}</p>`;
+    <p class="keys">${({tf:"Taste: A adevărat · F fals", one:"Taste: A, B, C…", multi:"Taste: A, B, C… · Enter verifică", fill:"Enter trece la căsuța următoare", match:"Enter verifică"})[q.t]}</p>`;
   if (q.t !== "match") document.body.classList.add("quiz-fixed");
   else document.body.classList.remove("quiz-fixed");
   resetScroll();
@@ -2249,7 +2221,7 @@ function fillHTML(q){
 }
 function answersHTML(q){
   if (q.t==="tf") return `<div class="tf"><button class="opt" data-v="1"><span>Adevărat</span></button><button class="opt" data-v="0"><span>Fals</span></button></div>`;
-  if (q.t==="one") return q.opts.map((o,i)=>`<button class="opt one opt-one" data-i="${i}" aria-pressed="false"><span class="k opt-radio-badge">${LETTERS[i]}</span><span class="opt-label">${esc(o)}</span><span class="opt-choice-indicator indicator-radio" aria-hidden="true"><span class="radio-core"></span></span></button>`).join("");
+  if (q.t==="one") return q.opts.map((o,i)=>`<button class="opt one opt-one" data-i="${i}" aria-pressed="false"><span class="k">${LETTERS[i]}</span><span class="opt-label">${esc(o)}</span></button>`).join("");
   if (q.t==="multi") return q.opts.map((o,i)=>`<button class="opt multi opt-multi" data-i="${i}" aria-pressed="false"><span class="k opt-check-badge">${LETTERS[i]}</span><span class="opt-label">${esc(o)}</span><span class="opt-choice-indicator indicator-check" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span></button>`).join("");
   if (q.t==="match") return `<div class="mx" id="mx"></div>`;
   return "";
@@ -2257,7 +2229,7 @@ function answersHTML(q){
 function bindQuestion(q, card){
   const ui = S.quiz.ui;
   if (q.t==="tf") card.querySelectorAll(".opt").forEach(b => b.onclick = () => { if (ui.checked) return; ui.pick = b.dataset.v==="1"; card.querySelectorAll(".opt").forEach(x=>x.setAttribute("aria-pressed", x===b)); renderActions(); if (S.quiz) check(); });
-  if (q.t==="one") card.querySelectorAll(".opt").forEach(b => b.onclick = () => { if (ui.checked) return; ui.pick = +b.dataset.i; card.querySelectorAll(".opt").forEach(x=>x.setAttribute("aria-pressed", x===b)); renderActions(); });
+  if (q.t==="one") card.querySelectorAll(".opt").forEach(b => b.onclick = () => { if (ui.checked) return; ui.pick = +b.dataset.i; card.querySelectorAll(".opt").forEach(x=>x.setAttribute("aria-pressed", x===b)); renderActions(); if (S.quiz) check(); });
   if (q.t==="multi") card.querySelectorAll(".opt").forEach(b => b.onclick = () => { if (ui.checked) return; const i = +b.dataset.i; ui.sel.has(i) ? ui.sel.delete(i) : ui.sel.add(i); b.setAttribute("aria-pressed", ui.sel.has(i)); renderActions(); });
   if (q.t==="fill") card.querySelectorAll("input").forEach(inp => { inp.oninput = () => renderActions(); inp.onkeydown = e => { if (e.key==="Enter"){ e.preventDefault(); const nx = card.querySelector(`input[data-k="${+inp.dataset.k+1}"]`); if (nx) nx.focus(); else if (!ui.checked) check(); else next(); } }; });
   if (q.t==="match"){
@@ -2304,15 +2276,8 @@ function renderActions(){
   const Z = S.quiz, q = Z.qs[Z.i], ui = Z.ui, el = $("#actions"); if (!el) return;
   const last = Z.i === Z.qs.length-1;
   if (!ui.checked){
-    if (q.t==="tf"){ el.innerHTML = ""; return; }
-    let chkText = "Verifică";
-    if (q.t === "multi") {
-      const cnt = ui.sel ? ui.sel.size : 0;
-      if (cnt === 0) chkText = "Verifică (niciun răspuns selectat)";
-      else if (cnt === 1) chkText = "Verifică (1 variantă selectată)";
-      else chkText = `Verifică (${cnt} variante selectate)`;
-    }
-    el.innerHTML = `<button class="btn btn-primary" id="chk" ${ready(q)?"":"disabled"}>${chkText}</button>`;
+    if (q.t==="tf" || q.t==="one"){ el.innerHTML = ""; return; }
+    el.innerHTML = `<button class="btn btn-primary" id="chk" ${ready(q)?"":"disabled"}>Verifică</button>`;
     $("#chk").onclick = check;
   } else {
     el.innerHTML = `<button class="btn btn-primary" id="nx">${last?"Vezi rezultatul":"Următoarea"}</button>`;
@@ -2690,7 +2655,7 @@ function mistakeHTML({q, a}){
     correct = q.pairs.map(p=>`${esc(p[0])} → ${esc(p[1])}`).join("<br>");
   }
   const qtext = q.t==="fill" ? esc(q.q).replace(/___/g, "<b>____</b>") : esc(q.q.replace(/\s*\(pot fi mai multe[^)]*\)/i, ""));
-  return `<article class="mistake"><div class="qmeta"><span class="qtype">${TYPE_LABEL[q.t]}</span><span class="ref">${refLabel(q.ref)}</span></div>
+  return `<article class="mistake"><div class="qmeta"><div class="qmeta-left"><span class="qtype-badge type-${q.t}">${TYPE_ICON[q.t]||""}<span>${TYPE_LABEL[q.t]}</span></span></div><span class="ref">${refLabel(q.ref)}</span></div>
     <p class="q">${qtext}</p>
     <div class="ans"><div><span class="l">Răspunsul tău</span><span class="${skipped?"":"y"}">${yours}</span></div><div><span class="l">Corect</span><span class="c">${correct}</span></div></div>
     <div class="verse">${verseHTML(q.ref)}</div></article>`;
