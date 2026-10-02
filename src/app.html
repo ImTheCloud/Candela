@@ -28,9 +28,10 @@
   color-scheme:light;
 }
 
-*{box-sizing:border-box}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{min-height:100%}
 body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
+button,input,a,label,select,textarea{-webkit-tap-highlight-color:transparent}
 button,input{font:inherit;color:inherit}
 button{cursor:pointer}
 :focus-visible{outline:2px solid var(--oil);outline-offset:2px}
@@ -91,8 +92,7 @@ p{margin:0}
 .top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:22px}
 .brand{display:flex;align-items:center;gap:8px;font-family:var(--f-display);font-size:30px;line-height:1;border:0;background:transparent;padding:0;color:inherit;cursor:pointer;text-align:left}
 .brand svg{margin:-10px -6px -4px -12px}
-.who{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--ink-2);min-width:0;border:0;background:transparent;padding:4px;border-radius:999px;transition:background .2s}
-.who:hover{background:var(--surface-2)}
+.who{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--ink-2);min-width:0;border:0;background:transparent;padding:4px;border-radius:999px}
 .prof{justify-items:center;text-align:center;position:relative;padding-top:28px}
 .prof .prof-x{position:absolute;top:14px;right:14px}
 .prof h3{font-size:28px}
@@ -119,7 +119,6 @@ p{margin:0}
 .pf-bar-f{margin:0;font-size:13.5px;color:var(--ink-2)}
 .pf-bar-f b{color:var(--ink)}
 .btn-danger{background:transparent;color:var(--bad);border:1.5px solid color-mix(in oklab,var(--bad) 35%,transparent)}
-.btn-danger:hover{background:var(--bad-soft)}
 .prof .kv{margin:0}
 .prof-form{width:100%;display:grid;gap:14px;text-align:left}
 .resume{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:10px;padding:14px 14px 14px 18px;margin-bottom:22px;border:1.5px solid var(--oil-soft)}
@@ -206,7 +205,6 @@ html:has(.sheet-bg),html:has(.modal-bg),body:has(.sheet-bg),body:has(.modal-bg){
 .startbar{position:sticky;bottom:0;padding-block:14px calc(14px + env(safe-area-inset-bottom,0px));background:linear-gradient(to top,var(--bg) 70%,transparent);margin-top:18px;z-index:5}
 .history{display:grid;gap:8px}
 .hrow{width:100%;border:0;text-align:left;color:var(--ink);font:inherit;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;gap:12px;background:var(--surface);border-radius:14px;padding:12px 14px}
-.hrow:hover{background:var(--surface-2)}
 .hrow .chev,.brow-l .chev{color:var(--ink-2);opacity:.6}
 .hrow .pct{font-family:var(--f-display);font-size:22px;font-variant-numeric:tabular-nums}
 .hrow small{display:block;color:var(--ink-2);font-size:13px}
@@ -367,7 +365,6 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .board{display:grid;gap:2px;background:var(--surface);border-radius:18px;padding:8px;box-shadow:var(--shadow)}
 .brow-l{width:100%;border:0;background:none;text-align:left;font:inherit;color:var(--ink);cursor:pointer;display:grid;grid-template-columns:1.6rem auto minmax(0,1fr) auto auto;align-items:center;gap:10px;padding:7px 10px;border-radius:12px}
 .brow-l.me{background:var(--oil-soft)}
-.brow-l:not(.me):hover{background:var(--surface-2)}
 .brow-l .pts .of{font-size:14px;color:var(--ink-2)}
 .brow-l .rank{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;justify-self:center;font-family:var(--f-display);font-size:17px;color:var(--ink-2);font-variant-numeric:tabular-nums}
 .brow-l .rank.r1,.brow-l .rank.r2,.brow-l .rank.r3{color:#fff;font-size:13px}
@@ -458,7 +455,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .pw-wrap{position:relative}
 .pw-wrap .input{padding-right:52px}
 .pw-eye{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:40px;height:40px;border:0;background:transparent;border-radius:10px;display:grid;place-items:center;color:var(--ink-2);padding:0}
-.pw-eye:hover{color:var(--ink);background:var(--surface-2)}
+.pw-eye:hover{color:var(--ink)}
 .family{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:10px}
 .family-l{font-size:14px;color:var(--ink-2);margin-right:2px}
 .fam{display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--line);background:var(--surface);border-radius:999px;padding:4px 14px 4px 4px;font-weight:600;font-size:14px;transition:border-color .15s,background .15s}
@@ -467,9 +464,8 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .fam.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .fam.on .avatar{background:var(--oil)}
 .set-list{width:100%;background:var(--surface);border-radius:16px;box-shadow:var(--shadow);display:grid;text-align:left;overflow:hidden}
-.set-row{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:56px;padding:10px 16px 10px 18px;border:0;background:transparent;font:inherit;color:var(--ink);font-size:15.5px;font-weight:600;text-align:left;cursor:pointer;width:100%;user-select:none}
+.set-row{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:56px;padding:10px 16px 10px 18px;border:0;background:transparent;font:inherit;color:var(--ink);font-size:15.5px;font-weight:600;text-align:left;cursor:pointer;width:100%;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}
 .set-row+.set-row{border-top:1px solid var(--line)}
-button.set-row:hover{background:var(--surface-2)}
 .set-row.warn .set-t{color:var(--oil-ink)}
 .set-t{display:grid;gap:2px;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .set-t small{font-size:13px;font-weight:400;color:var(--ink-2);overflow:hidden;text-overflow:ellipsis}
@@ -505,8 +501,8 @@ button.set-row:hover{background:var(--surface-2)}
 .adm-a .danger{color:var(--bad)}
 .temp-pw{font-family:var(--f-mono);font-size:26px;letter-spacing:.12em;background:var(--bg);border-radius:14px;padding:14px;margin:6px 0}
 .top-r{display:flex;align-items:center;gap:10px;min-width:0}
-.read-btn{display:inline-flex;align-items:center;gap:7px;border:1.5px solid var(--line);background:transparent;border-radius:999px;padding:8px 16px 8px 12px;font-size:15px;font-weight:600;color:var(--ink);flex:none;min-height:40px;transition:background .2s,border-color .2s}
-.read-btn:hover{background:var(--surface-2);border-color:var(--ink-2)}
+.read-btn{display:inline-flex;align-items:center;gap:7px;border:1.5px solid var(--line);background:transparent;border-radius:999px;padding:8px 16px 8px 12px;font-size:15px;font-weight:600;color:var(--ink);flex:none;min-height:40px;transition:border-color .2s}
+.read-btn:hover{border-color:var(--ink-2)}
 @media (max-width:420px){.read-btn{padding:8px 12px 8px 10px;font-size:14px}.top-r{gap:8px}}
 @media (max-width:350px){.read-btn{padding:9px}.read-btn span{display:none}}
 @media (max-width:420px){.top-r:has(.acct) .read-btn{padding:8px 12px}.who.acct{padding:6px 14px}}
@@ -538,7 +534,6 @@ button.set-row:hover{background:var(--surface-2)}
 .r-nav{display:flex;justify-content:space-between;gap:10px}
 .r-nav .btn{min-height:44px;padding:10px 16px;font-size:15px}
 .r-side{position:fixed;top:50%;transform:translateY(-50%);z-index:6;width:34px;height:56px;display:grid;place-items:center;border:1px solid var(--line);background:color-mix(in srgb,var(--surface) 92%,transparent);color:var(--ink);border-radius:12px;box-shadow:var(--shadow);padding:0}
-.r-side:hover{background:var(--surface-2)}
 .r-side.l{left:2px}.r-side.r{right:2px}
 @media (min-width:760px){.r-side{width:44px;height:64px}.r-side.l{left:calc(50% - 380px)}.r-side.r{right:calc(50% - 380px)}}
 .del-link{color:var(--bad);justify-self:center;font-size:14px}
@@ -1099,19 +1094,15 @@ function openProfile(){
       ${!p.child && store.isParent ? `<div class="pf-card" id="pfKids"></div>` : ""}
       <div class="set-list">
         ${p.child ? "" : `<button class="set-row${store.hasEmail() ? "" : " warn"}" id="pfEdit" type="button"><span class="set-t">${store.hasEmail() ? "Nume, email și parolă" : "Adaugă emailul"}</span>${CHEV}</button>
-        <button class="set-row" id="pfPwd" type="button"><span class="set-t">Schimbă parola</span>${CHEV}</button>
         <label class="set-row"><span class="set-t">Cont de părinte<small>Îți adaugi copiii</small></span><input type="checkbox" class="switch" id="pfParent" ${store.isParent ? "checked" : ""}></label>`}
         <label class="set-row"><span class="set-t">${p.child ? "Apare în clasament" : "Apar în clasament"}<small>${p.child ? "Numele lui se vede" : "Numele meu se vede"}</small></span><input type="checkbox" class="switch" id="pfHide" ${p.hidden ? "" : "checked"}></label>
         ${S.admin && !p.child ? `<button class="set-row" id="pfAdm" type="button"><span class="set-t">Administrare</span>${CHEV}</button>` : ""}
       </div>
       <div class="prof-btns">${p.child ? `<button class="btn btn-primary btn-block" data-back>Înapoi la profilul meu</button>` : ""}
-      <button class="btn btn-danger btn-block" id="pfOut">Ieși din cont</button></div>
-      ${p.child ? "" : `<button class="link del-link" id="pfDel" type="button">Șterge contul</button>`}`;
+      <button class="btn btn-danger btn-block" id="pfOut">Ieși din cont</button></div>`;
     sheet.querySelector("#pfX").onclick = close;
     if (!p.child){
       sheet.querySelector("#pfEdit").onclick = edit;
-      sheet.querySelector("#pfPwd").onclick = pwd;
-      sheet.querySelector("#pfDel").onclick = del;
       sheet.querySelector("#pfParent").onchange = async e => {
         const on = e.target.checked; e.target.disabled = true;
         const r = await store.rpc("set_parent", {p_on: on});
@@ -1242,32 +1233,6 @@ function openProfile(){
       show();
     });
   };
-  const pwd = () => form("Schimbă parola", `<div class="field"><label for="pfPw">Parola nouă</label><input class="input" id="pfPw" type="password" autocomplete="new-password" maxlength="72"></div>
-    <div class="field"><label for="pfPw2">Scrie-o încă o dată</label><input class="input" id="pfPw2" type="password" autocomplete="new-password" maxlength="72"></div>`, "Salvează", async f => {
-    const a = f.querySelector("#pfPw").value, b = f.querySelector("#pfPw2").value;
-    if (a.length < 6) return "Parola trebuie să aibă cel puțin 6 caractere.";
-    if (a !== b) return "Cele două parole nu sunt la fel.";
-    let pe = null;
-    try { const { error } = await sb().auth.updateUser({ password: a }); pe = error; } catch (x) { pe = x; }
-    if (pe && !/different/i.test(pe.message || "")) return isNetErr(pe) ? loginError({error:"network"}) : "Parola nu s-a putut schimba. Încearcă din nou.";
-    toast("Parola a fost schimbată."); show();
-    return null;
-  });
-  // deleting the account: the password is asked again, then everything goes (results, mastered questions, profile)
-  const del = () => form("Șterge contul", `<p class="pf-note">Contul, rezultatele și locul din clasament se șterg definitiv. Nu se pot recupera.</p>
-    <div class="field"><label for="pfDelPw">Parola ta, pentru confirmare</label><input class="input" id="pfDelPw" type="password" autocomplete="current-password"></div>`, "Șterge definitiv", async f => {
-    const pw = f.querySelector("#pfDelPw").value; if (!pw) return "Scrie parola.";
-    try { const { error } = await sb().auth.signInWithPassword({ email: store.email, password: pw }); if (error) return isNetErr(error) ? loginError({error:"network"}) : "Parola nu e corectă."; }
-    catch (x) { return loginError({error: isNetErr(x) ? "network" : "server"}); }
-    const token = await store.token(); if (!token) return "Intră din nou în cont și încearcă iar.";
-    const r = await store.call("delete-account", {}, token);
-    if (!r.ok) return loginError(r);
-    const uid = store.uid;
-    for (const k of ["candela:p:" + uid, "candela:pending:" + uid, "candela:email", "candela:hasAccount", "candela:quiz"]) try { localStorage.removeItem(k); } catch {}
-    close(); await store.logout(); S.board = null; S.admin = null; enterGuest();
-    toast("Contul a fost șters.");
-    return null;
-  });
   show();
   if (S.admin == null) store.rpc("is_admin").then(r => { S.admin = r.ok && r.data === true; if (S.admin && sheet.querySelector("#pfEdit") && !sheet.querySelector("#pfAdm")) show(); });
 }
