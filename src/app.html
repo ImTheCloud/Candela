@@ -1350,6 +1350,7 @@ function viewHome(){
           ${fracHTML}
         </button>`;
       }).join("")}</div>
+      <div class="startbar" id="sbar"><button type="button" class="btn btn-primary lg" id="sbtn" style="width:100%"></button></div>
     </div>
   </aside>
 
@@ -1364,13 +1365,17 @@ function viewHome(){
   if (!S.sel.size || chapTried([...S.sel][0])){ const next = Array.from({length:31},(_,i)=>i+1).find(c => !chapTried(c)); if (next) S.sel = new Set([next]); else if (!S.sel.size) S.sel = new Set([1]); }
   const update = () => {
     app.querySelectorAll(".tile").forEach(t => t.setAttribute("aria-pressed", S.sel.has(+t.dataset.c)));
+    const btn = $("#sbtn");
+    if (btn) btn.innerHTML = S.sel.size === 1 ? `Începe 1 capitol` : `Începe ${S.sel.size} capitole`;
     persistPrefs();
   };
   app.querySelectorAll(".tile").forEach(t => t.onclick = () => {
-    S.sel = new Set([+t.dataset.c]);
+    const c = +t.dataset.c;
+    if (S.sel.has(c)) { if (S.sel.size > 1) S.sel.delete(c); }
+    else S.sel.add(c);
     update();
-    openOptions();
   });
+  if ($("#sbtn")) $("#sbtn").onclick = () => openOptions();
   app.querySelectorAll(".hrow[data-at]").forEach(b => b.onclick = () => { S.homeScroll = window.scrollY; openPastReport(+b.dataset.at); });
   if ($("#allHist")) $("#allHist").onclick = viewHistory;
   app.querySelectorAll("[data-play]").forEach(b => b.onclick = () => switchPlayer(b.dataset.play));
@@ -1421,7 +1426,7 @@ function prepare(q){
   return x;
 }
 /* rough time to answer, by question type and level (seconds), including reading the correction; only an estimate shown before starting, there is no timer */
-const SECS = { tf:[8,12], one:[12,18], multi:[19,26], fill:[16,23], match:[28,40] };
+const SECS = { tf:[9,13], one:[13,19], multi:[20,28], fill:[17,25], match:[30,42] };
 // once enough tests exist, the real average time per question (by level) replaces the guess, within ×0.5–×2 of it
 let PACE = lsGet("candela:pace", null);
 function estSecs(list){
@@ -1474,12 +1479,18 @@ function openOptions(chs = [...S.sel].sort((a,b)=>a-b)){
   const lvlButtons = ["easy", "hard", "both"].map(m => {
     let done = levelDone(chs, m);
     let note = "";
+    let qCount = 0;
     if (m === "both") {
       done = false;
       note = esc(MODE_NOTE[m]);
+      qCount = chs.reduce((s, chap) => s + (QUIZ[chap]?.easy || []).length + (QUIZ[chap]?.hard || []).length, 0);
     } else {
-      const sc = (S.player.ok || []).filter(id => parseInt(id, 10) === c && id.includes(m[0])).length;
-      const tot = (QUIZ[c]?.[m] || []).length;
+      const tot = chs.reduce((s, chap) => s + (QUIZ[chap]?.[m] || []).length, 0);
+      qCount = tot;
+      let sc = 0;
+      for (const chap of chs) {
+        sc += (S.player.ok || []).filter(id => parseInt(id, 10) === chap && id.includes(m[0])).length;
+      }
       note = done ? `Făcut deja · scor: ${sc}/${tot}` : esc(MODE_NOTE[m]);
     }
 
@@ -1502,14 +1513,19 @@ function openOptions(chs = [...S.sel].sort((a,b)=>a-b)){
         </div>
       </div>
       <div style="flex:none; display:flex; align-items:center; gap:2px;">
-        <span style="font-size:12.5px; color:var(--oil-ink); font-weight:600;">${durStr}</span>
+        <span style="font-size:12.5px; color:var(--oil-ink); font-weight:600;">${qCount} q &middot; ${durStr}</span>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--oil-ink); opacity:0.6;"><polyline points="9 18 15 12 9 6"></polyline></svg>
       </div>
     </button>`;
   }).join("");
 
+  const isMulti = chs.length > 1;
+  const titleStr = isMulti ? `${chs.length} capitole` : `Capitolul ${c}`;
+  const subStr = isMulti ? chs.join(", ") : esc(TITLES[c-1]);
+  const readBtnStr = !isMulti && !$(".reader") ? `<button class="read-btn sm" id="shRead" type="button" aria-label="Citește capitolul ${c} înainte">${BOOK}<span>Citește</span></button>` : "";
+
   bg.innerHTML = `<div class="sheet start-sheet" role="dialog" aria-modal="true" aria-labelledby="shT">
-    <div class="sheet-h"><div class="sh-title"><h3 id="shT">Capitolul ${c}</h3></div><div class="sh-tools">${!$(".reader") ? `<button class="read-btn sm" id="shRead" type="button" aria-label="Citește capitolul ${c} înainte">${BOOK}<span>Citește</span></button>` : ""}<button class="icon-btn" id="shX" aria-label="Închide"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div></div><p class="sh-sub">${esc(TITLES[c-1])}</p>
+    <div class="sheet-h"><div class="sh-title"><h3 id="shT">${titleStr}</h3></div><div class="sh-tools">${readBtnStr}<button class="icon-btn" id="shX" aria-label="Închide"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div></div><p class="sh-sub">${subStr}</p>
     <div class="sh-lvl" style="margin-top:16px;"><span class="sh-l">Alege nivelul pentru a începe</span>
       <div style="display:grid; gap:10px; margin-top:10px;">
         ${lvlButtons}
@@ -1561,23 +1577,36 @@ function viewQuestion(first){
   saveQuiz();
   if (first || !$(".qcard")) {
     if (window._qTimer) clearInterval(window._qTimer);
-    mount(`<div class="qtop"><button class="icon-btn" id="quit" aria-label="Oprește testul"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
-      <div class="bar" aria-hidden="true"><i id="prog" style="width:0"></i></div>
-      <span id="qtimer" style="font-family:var(--f-mono);font-size:13px;color:var(--oil-ink);opacity:0.6;font-weight:600;margin-right:8px;flex:none;"></span>
-      <span class="qcount" id="qcount"></span></div>
-      <div id="qslot"></div>`);
+    mount(`<div class="qtop" style="align-items:center;">
+      <button class="icon-btn" id="quit" aria-label="Pauză test"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg></button>
+      <div style="display:flex; flex-direction:column; align-items:center; gap:8px;">
+        <div class="bar" style="width:100%;" aria-hidden="true"><i id="prog" style="width:0"></i></div>
+        <div style="display:flex; align-items:center; gap:4px; color:var(--oil-ink); opacity:0.65;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          <span id="qtimer" style="font-family:var(--f-mono); font-size:14px; font-weight:700;"></span>
+        </div>
+      </div>
+      <span class="qcount" id="qcount" style="font-size:14px; font-weight:600; color:var(--ink-2); min-width:40px; text-align:right;"></span>
+    </div>
+    <div id="qslot"></div>`);
     const updateTimer = () => {
-      const el = $("#qtimer"); if (!el) { clearInterval(window._qTimer); return; }
+      const el = $("#qtimer"); if (!el) { clearInterval(window._qTimer); window._qTimer = null; return; }
       const sec = Math.floor((Date.now() - S.quiz.start) / 1000);
       el.textContent = `${Math.floor(sec / 60)}:${(sec % 60).toString().padStart(2, '0')}`;
     };
+    const pauseTimer = () => { if (window._qTimer) { clearInterval(window._qTimer); window._qTimer = null; } Z.pausedAt = Date.now(); };
+    const resumeTimer = () => { if (Z.pausedAt) { S.quiz.start += (Date.now() - Z.pausedAt); Z.pausedAt = null; } if (!window._qTimer) window._qTimer = setInterval(updateTimer, 1000); };
+    
     updateTimer();
     window._qTimer = setInterval(updateTimer, 1000);
     $("#quit").onclick = () => {
+      pauseTimer();
       const bg = document.createElement("div"); bg.className = "modal-bg";
-      bg.innerHTML = `<div class="modal" role="alertdialog" aria-modal="true" aria-labelledby="qT"><h3 id="qT">Ce vrei să faci?</h3><p class="muted">Dacă oprești sau reîncepi, progresul de până acum se pierde.</p><div class="modal-btns" style="display:flex;flex-direction:column;gap:8px;"><button class="btn btn-primary" id="qNo" style="width:100%">Continuă testul</button><button class="btn btn-ghost" id="qRestart" style="width:100%">Reîncepe testul</button><button class="btn btn-ghost btn-danger" id="qYes" style="width:100%">Oprește de tot</button></div></div>`;
+      const sec = Math.floor((Date.now() - S.quiz.start) / 1000);
+      const timeStr = `${Math.floor(sec / 60)}:${(sec % 60).toString().padStart(2, '0')}`;
+      bg.innerHTML = `<div class="modal" role="alertdialog" aria-modal="true" aria-labelledby="qT"><h3 id="qT" style="display:flex; justify-content:space-between; align-items:center;">Pauză <span style="font-family:var(--f-mono); font-size:18px; color:var(--oil-ink); opacity:0.8;">${timeStr}</span></h3><p class="muted">Dacă oprești sau reîncepi, progresul de până acum se pierde.</p><div class="modal-btns" style="display:flex;flex-direction:column;gap:8px;"><button class="btn btn-primary" id="qNo" style="width:100%">Continuă testul</button><button class="btn btn-ghost" id="qRestart" style="width:100%">Reîncepe testul</button><button class="btn btn-ghost btn-danger" id="qYes" style="width:100%">Oprește de tot</button></div></div>`;
       document.body.appendChild(bg);
-      const close = () => closeModal(bg);
+      const close = () => { resumeTimer(); closeModal(bg); };
       bg.querySelector("#qNo").onclick = close; bg.onclick = e => { if (e.target === bg) close(); };
       bg.querySelector("#qRestart").onclick = () => closeModal(bg, () => { const qs = Z.qs; const m = Z.mode; const isR = Z.retry; dropQuiz(); startQuiz(qs, {mode: m, retry: isR}); });
       bg.querySelector("#qYes").onclick = () => closeModal(bg, () => { dropQuiz(); viewHome(); });
