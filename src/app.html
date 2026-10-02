@@ -203,11 +203,13 @@ html:has(.sheet-bg),html:has(.modal-bg),body:has(.sheet-bg),body:has(.modal-bg){
 @media (min-width:960px){.sheet-bg{align-items:center}.sheet{border-radius:24px;padding:24px;animation:modalUp .32s cubic-bezier(.16,1,.3,1) both}.sheet-bg.closing .sheet{animation:modalDown .22s cubic-bezier(.4,0,1,1) forwards}}
 @media (prefers-reduced-motion:reduce){.modal-bg,.sheet-bg,.modal-bg.closing,.sheet-bg.closing,.modal,.sheet,.modal-bg.closing .modal,.sheet-bg.closing .sheet{animation:none!important;transform:none!important}}
 .startbar{position:sticky;bottom:0;padding-block:14px calc(14px + env(safe-area-inset-bottom,0px));background:linear-gradient(to top,var(--bg) 70%,transparent);margin-top:18px;z-index:5}
-.history{display:grid;gap:8px}
-.hrow{width:100%;border:0;text-align:left;color:var(--ink);font:inherit;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;gap:12px;background:var(--surface);border-radius:14px;padding:12px 14px}
+.history{display:grid;gap:6px}
+.hrow{width:100%;border:0;text-align:left;color:var(--ink);font:inherit;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;gap:10px;background:var(--surface);border-radius:12px;padding:9px 12px}
 .hrow .chev,.brow-l .chev{color:var(--ink-2);opacity:.6}
-.hrow .pct{font-family:var(--f-display);font-size:22px;font-variant-numeric:tabular-nums}
-.hrow small{display:block;color:var(--ink-2);font-size:13px}
+.hrow .pct{font-family:var(--f-display);font-size:19px;font-variant-numeric:tabular-nums;line-height:1}
+.hrow .hrow-info{display:grid;gap:1px;min-width:0}
+.hrow .hrow-info b{font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hrow .hrow-info small{display:block;color:var(--ink-2);font-size:11.5px;white-space:nowrap}
 .badge{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border-radius:999px}
 .badge.easy{background:var(--cedar-soft);color:var(--cedar)}
 .badge.hard{background:var(--oil-soft);color:var(--oil-ink)}
@@ -828,6 +830,7 @@ const S = {
   admin: null,                                    // may give temporary passwords
   reportBack: null,
   reportCh: null,
+  homeScroll: 0,                                  // scroll position to restore when going back home
 };
 if (!S.sel.size) S.sel.add(1);
 function persistPrefs(){ lsSet("candela:sel",[...S.sel]); lsSet("candela:mode",S.mode); lsSet("candela:count",S.count); }
@@ -1280,7 +1283,7 @@ function viewHome(){
   <section class="h-hist">
     <div class="section-h"><h3>Istoric</h3></div>
     <div class="history">${h.length ? h.slice(-3).reverse().map(x=>`
-      <button class="hrow" type="button" data-at="${x.at}" aria-label="Vezi raportul: ${esc(chaptersLabel(x.chs))}, ${x.pct}%"><span class="badge ${x.mode}">${MODE_LABEL[x.mode]}</span><div style="min-width:0"><b style="font-weight:600">${esc(chaptersLabel(x.chs))}</b></div><span class="pct">${x.pct}%</span>${CHEV}</button>`).join("")
+      <button class="hrow" type="button" data-at="${x.at}" aria-label="Vezi raportul: ${esc(chaptersLabel(x.chs))}, ${x.pct}%"><span class="badge ${x.mode}">${MODE_LABEL[x.mode]}</span><div class="hrow-info"><b>${esc(chaptersLabel(x.chs))}</b><small>${dateLabel(x.at)}</small></div><span class="pct">${x.pct}%</span>${CHEV}</button>`).join("")
       : `<div class="empty">Niciun test încă.</div>`}</div>
   </section>
   </div>`);
@@ -1300,7 +1303,7 @@ function viewHome(){
     update();
   });
   $("#start").onclick = () => openOptions();
-  app.querySelectorAll(".hrow[data-at]").forEach(b => b.onclick = () => openPastReport(+b.dataset.at));
+  app.querySelectorAll(".hrow[data-at]").forEach(b => b.onclick = () => { S.homeScroll = window.scrollY; openPastReport(+b.dataset.at); });
   app.querySelectorAll("[data-play]").forEach(b => b.onclick = () => switchPlayer(b.dataset.play));
   if ($("#resume")){ $("#resume").onclick = resumeQuiz; $("#resumeX").onclick = () => { dropQuiz(); $(".resume").remove(); }; }
   update();
@@ -1328,7 +1331,7 @@ function renderBoard(list){
       <small>${x.tests} ${x.tests===1?"test":"teste"}</small></div>
     <div class="pts"><b>${ok}</b><small>${ok===1?"punct":"puncte"}</small></div>${CHEV}</button>`; };
   el.innerHTML = note + top.map(row).join("") + (idx >= top.length ? `<div class="gap">···</div>${row(list[idx], idx)}` : "");
-  el.querySelectorAll(".brow-l[data-i]").forEach(b => b.onclick = () => { const i = +b.dataset.i, x = list[i]; if (!guest && x.me) openProfile(); else openPublicProfile(x, i); });
+  el.querySelectorAll(".brow-l[data-i]").forEach(b => b.onclick = () => { const i = +b.dataset.i, x = list[i]; if (!guest && x.me) openProfile(); else { S.homeScroll = window.scrollY; openPublicProfile(x, i); } });
   const mine = el.querySelector(".me"); if (mine && el.classList.contains("scroll")) el.scrollTop = Math.max(0, mine.offsetTop - el.clientHeight/2);
 }
 
@@ -1732,7 +1735,7 @@ function renderReport(r, o = {}){
   if (nWrong) $("#retry").onclick = () => { S.reportBack = null; S.reportCh = null; startQuiz(shuffle(wrong.map(x => { const o = {...x.q}; const src = QUIZ[o.ch][o.mode][+o.id.slice(String(o.ch).length+1)]; return {...src, ch:o.ch, mode:o.mode, id:o.id}; })), 0, {retry: true, mode}); };
   if ($("#again")) $("#again").onclick = () => { S.reportBack = null; S.reportCh = null; S.sel = new Set(chs); persistPrefs(); openOptions(chs); };
   if ($("#readCh")) $("#readCh").onclick = () => viewRead(chs[0]);
-  if ($("#home")) $("#home").onclick = () => { S.reportBack = null; S.reportCh = null; viewHome(); };
+  if ($("#home")) $("#home").onclick = () => { S.reportBack = null; S.reportCh = null; const savedScroll = S.homeScroll || 0; S.homeScroll = 0; viewHome(); if (savedScroll) requestAnimationFrame(() => requestAnimationFrame(() => window.scrollTo({top: savedScroll}))); };
 }
 function mistakeHTML({q, a}){
   a = a || {pts:0, given:null, skipped:true};
