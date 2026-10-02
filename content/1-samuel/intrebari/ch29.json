@@ -134,9 +134,9 @@
   {
    "t": "multi",
    "ref": "29:11",
-   "q": "Ce s-a întâmplat la sfârșitul capitolului?",
+   "q": "Ce au făcut David și oamenii lui după ce Achiș le-a cerut să plece dinaintea domnitorilor filistenilor?",
    "opts": [
-    "David s-a alăturat lui Saul",
+    "David s-a alăturat armatei lui Saul",
     "Filistenii s-au retras la Gat",
     "David și oamenii lui au pornit înapoi spre țara filistenilor"
    ],
@@ -284,26 +284,30 @@
   },
   {
    "t": "multi",
-   "ref": "29:10-11",
-   "q": "Care dintre următoarele detalii apar în 29:10-11?",
+   "ref": "29:10",
+   "q": "Ce îndrumări le-a dat Achiș lui David și oamenilor lui pentru plecare?",
    "opts": [
-    "Achiș le-a dat merinde pentru drum",
-    "David a primit daruri de la domnitori",
-    "Oamenii lui David au fost dezarmați"
+    "Să se scoale dis-de-dimineață",
+    "Să plece îndată ce se va lumina de ziuă",
+    "Să lase armele în tabăra filistenilor"
    ],
-   "a": []
+   "a": [
+    0,
+    1
+   ]
   },
   {
    "t": "multi",
-   "ref": "29:1-11",
-   "q": "Care dintre următoarele nume de locuri apar în capitolul 29?",
+   "ref": "29:1",
+   "q": "Unde au tăbărât taberele înainte de confruntare?",
    "opts": [
-    "Sunem",
-    "Ghilboa",
-    "Afec"
+    "Filistenii și-au strâns toate oștile la Afec",
+    "Israel a tăbărât lângă fântâna din Izreel",
+    "David a rămas cu oamenii lui la Țiclag"
    ],
    "a": [
-    2
+    0,
+    1
    ]
   },
   {
@@ -328,7 +332,7 @@
   {
    "t": "tf",
    "ref": "29:11",
-   "q": "La sfârșitul capitolului, după plecarea lui David, filistenii s-au suit la Afec.",
+   "q": "După plecarea lui David dimineața, filistenii s-au suit la Afec.",
    "a": false
   },
   {
