@@ -1021,6 +1021,7 @@ function viewWelcome(){
 }
 
 function chapStat(c, m){ return (S.player.chap[c+m[0]]||{}).best ?? null; }
+function chapLast(c, m){ return (S.player.chap[c+m[0]]||{}).last ?? null; }
 function arc(p, r, color){
   if (p == null) return "";
   const C = 2*Math.PI*r, L = C*Math.max(p,2)/100;
@@ -1412,17 +1413,28 @@ const CHECK = `<svg class="done-ic" width="13" height="13" viewBox="0 0 16 16" a
 // a level is done when every chosen chapter already had 100% at it
 const levelDone = (chs, m) => chs.every(c => (m === "both" ? ["easy","hard"] : [m]).every(k => chapStat(c, k) != null));
 const levelBest = (c, m) => m === "both" ? null : chapStat(c, m);
+const levelLast = (c, m) => {
+  if (m === "both") {
+    const h = [...S.player.history].reverse().find(x => x.mode === "both" && x.chs.length === 1 && x.chs[0] === c);
+    return h ? h.pct : null;
+  }
+  return chapLast(c, m);
+};
 const whatLabel = chs => chs.length === 1 ? `${chs[0]}. ${TITLES[chs[0]-1]}` : chs.length === 31 ? "Toată cartea" : chaptersLabel(chs);
 function openOptions(chs = [...S.sel].sort((a,b)=>a-b)){
   // how many questions: a quarter, half or all of the level, shown as numbers
   let mode = "easy", list, pool, perQ, n, pick = "all";
+  const chsStr = JSON.stringify(chs);
+  const relevantHistory = S.player.history.filter(x => JSON.stringify([...x.chs].sort((a,b)=>a-b)) === chsStr).sort((a, b) => b.at - a.at);
+  const histHtml = relevantHistory.length > 0 ? 
+    `<div class="sh-lvl"><span class="sh-l">Încercările tale${relevantHistory.length > 3 ? ` <small class="muted" style="font-weight:normal;font-size:13px">(ultimele 3 din ${relevantHistory.length})</small>` : ""}</span><div class="history sh-hist">${relevantHistory.slice(0, 3).map(attemptRow).join("")}</div></div>` : "";
   const bg = document.createElement("div"); bg.className = "sheet-bg";
   bg.innerHTML = `<div class="sheet start-sheet" role="dialog" aria-modal="true" aria-labelledby="shT">
     <div class="sheet-h"><div class="sh-title"><h3 id="shT">${chs.length === 1 ? `Capitolul ${chs[0]}` : esc(chaptersLabel(chs))}</h3></div><div class="sh-tools">${chs.length === 1 && !$(".reader") ? `<button class="read-btn sm" id="shRead" type="button" aria-label="Citește capitolul ${chs[0]} înainte">${BOOK}<span>Citește</span></button>` : ""}<button class="icon-btn" id="shX" aria-label="Închide"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div></div>${chs.length === 1 ? `<p class="sh-sub">${esc(TITLES[chs[0]-1])}</p>` : ""}
+    ${histHtml}
     <div class="sh-lvl"><span class="sh-l">Ce nivel alegi?</span>
       <div class="seg" role="group" aria-label="Nivel">${["easy","hard","both"].map(m=>`<button type="button" data-m="${m}">${MODE_LABEL[m]}${levelDone(chs, m) ? CHECK : ""}</button>`).join("")}</div>
       <small class="sh-note" id="shNote"></small></div>
-    ${chs.length === 1 && S.player.history.some(x => x.chs.length === 1 && x.chs[0] === chs[0]) ? `<div class="sh-lvl"><span class="sh-l">Încercările tale</span><div class="history sh-hist">${S.player.history.filter(x => x.chs.length === 1 && x.chs[0] === chs[0]).sort((a, b) => b.at - a.at).map(attemptRow).join("")}</div></div>` : ""}
     <div class="sh-lvl"><span class="sh-l">Câte întrebări vrei?</span><div class="seg" role="group" aria-label="Câte întrebări" id="shCnt">${["q","h","all"].map(k=>`<button type="button" data-p="${k}"></button>`).join("")}</div></div>
     <button class="btn btn-primary btn-block" id="shGo"></button>
   </div>`;
@@ -1436,8 +1448,8 @@ function openOptions(chs = [...S.sel].sort((a,b)=>a-b)){
     bg.querySelectorAll("[data-m]").forEach(b => b.setAttribute("aria-pressed", b.dataset.m === mode));
     const done = levelDone(chs, mode);
     const note = bg.querySelector("#shNote"); note.classList.toggle("ok", done);
-    const best = chs.length === 1 ? levelBest(chs[0], mode) : null;
-    note.innerHTML = done ? `${CHECK} Făcut deja${best != null ? ` · cel mai bun: ${best}%` : ""}` : esc(MODE_NOTE[mode]);
+    const lastSc = chs.length === 1 ? levelLast(chs[0], mode) : null;
+    note.innerHTML = done ? `${CHECK} Făcut deja${lastSc != null ? ` · ultimul scor: ${lastSc}%` : ""}` : esc(MODE_NOTE[mode]);
     set();
   };
   const close = () => closeModal(bg);
@@ -1594,6 +1606,58 @@ function renderActions(){
     $("#nx").onclick = next; $("#nx").focus({preventScroll:true});
   }
 }
+const RO_NUM_MAP = new Map();
+function buildRoNums() {
+  const units = ["zero", "unu", "doi", "trei", "patru", "cinci", "șase", "șapte", "opt", "nouă"];
+  const femUnits = ["zero", "una", "două", "trei", "patru", "cinci", "șase", "șapte", "opt", "nouă"];
+  const oUnits = ["zero", "o", "două", "trei", "patru", "cinci", "șase", "șapte", "opt", "nouă"];
+  const teens = ["zece", "unsprezece", "doisprezece", "treisprezece", "paisprezece", "cincisprezece", "șaisprezece", "șaptesprezece", "optsprezece", "nouăsprezece"];
+  const femTeens = [...teens]; femTeens[2] = "douăsprezece";
+  const tens = ["", "", "douăzeci", "treizeci", "patruzeci", "cincizeci", "șaizeci", "șaptezeci", "optzeci", "nouăzeci"];
+  const add = (n, words) => {
+    if (!RO_NUM_MAP.has(n)) RO_NUM_MAP.set(n, new Set());
+    words.forEach(w => RO_NUM_MAP.get(n).add(fold(w).replace(/[\s\-]/g, '')));
+  };
+  for (let i=0; i<10; i++) add(i, [units[i], femUnits[i], oUnits[i]]);
+  for (let i=10; i<20; i++) add(i, [teens[i-10], femTeens[i-10]]);
+  for (let i=20; i<100; i++) {
+    const t = Math.floor(i/10), u = i%10;
+    if (u === 0) add(i, [tens[t]]);
+    else add(i, [tens[t] + " și " + units[u], tens[t] + " și " + femUnits[u], tens[t] + " și " + oUnits[u]]);
+  }
+  add(100, ["sută", "o sută"]);
+  add(1000, ["mie", "o mie"]);
+}
+buildRoNums();
+
+function tolerantMatch(ans, exp) {
+  const clean = s => fold(s).replace(/[.,;:'"!?()\[\]{}„”«»]/g, '');
+  const cA = clean(ans), cE = clean(exp);
+  if (cA === cE) return true;
+  const sA = cA.replace(/[\s\-]/g, ''), sE = cE.replace(/[\s\-]/g, '');
+  if (sA === sE) return true;
+  const numA = parseInt(sA, 10), numE = parseInt(sE, 10);
+  if (!isNaN(numA) && numA.toString() === sA && RO_NUM_MAP.has(numA) && RO_NUM_MAP.get(numA).has(sE)) return true;
+  if (!isNaN(numE) && numE.toString() === sE && RO_NUM_MAP.has(numE) && RO_NUM_MAP.get(numE).has(sA)) return true;
+  const lDist = (a, b) => {
+    if (!a.length) return b.length;
+    if (!b.length) return a.length;
+    const m = Array.from({length: b.length + 1}, (_, i) => [i]);
+    for (let j = 0; j <= a.length; j++) m[0][j] = j;
+    for (let i = 1; i <= b.length; i++) {
+      for (let j = 1; j <= a.length; j++) {
+        m[i][j] = b[i - 1] === a[j - 1] ? m[i - 1][j - 1] : Math.min(m[i - 1][j - 1], m[i][j - 1], m[i - 1][j]) + 1;
+      }
+    }
+    return m[b.length][a.length];
+  };
+  const tol = sE.length >= 8 ? 2 : (sE.length >= 4 ? 1 : 0);
+  if (tol > 0) {
+    if (lDist(cA, cE) <= tol) return true;
+    if (lDist(sA, sE) <= tol) return true;
+  }
+  return false;
+}
 function grade(q, skipped){
   const ui = S.quiz.ui;
   if (skipped) return { pts:0, max:1, given:null };
@@ -1601,7 +1665,7 @@ function grade(q, skipped){
   if (q.t==="one") return { pts: ui.pick===q.a ? 1 : 0, max:1, given: ui.pick };
   if (q.t==="multi"){ const g = [...ui.sel].sort((a,b)=>a-b); return { pts: JSON.stringify(g)===JSON.stringify(q.a) ? 1 : 0, max:1, given: g }; }
   if (q.t==="match"){ let ok = 0; q.pairs.forEach((_,i)=>{ if (ui.pairs[i]===i) ok++; }); return { pts: ok/q.pairs.length, max:1, given: {...ui.pairs} }; }
-  if (q.t==="fill"){ const vals = [...document.querySelectorAll(".qcard input")].map(i=>i.value.trim()); const okEach = vals.map((v,i)=>fold(v)===fold(q.a[i])); return { pts: okEach.every(Boolean) ? 1 : 0, max:1, given: vals, okEach }; }
+  if (q.t==="fill"){ const vals = [...document.querySelectorAll(".qcard input")].map(i=>i.value.trim()); const okEach = vals.map((v,i)=>tolerantMatch(v, q.a[i])); return { pts: okEach.every(Boolean) ? 1 : 0, max:1, given: vals, okEach }; }
 }
 function check(skipped=false){
   const Z = S.quiz, q = Z.qs[Z.i], ui = Z.ui;
@@ -1756,6 +1820,7 @@ function renderReport(r, o = {}){
   ${wrong ? `<div class="section-h"><h3>${nWrong ? "De revăzut" : "Nicio greșeală"}</h3>${nWrong?`<span class="muted" style="font-size:14px">${nWrong} întrebări</span>`:""}</div>
   <div class="mistakes">${nWrong ? wrong.map(mistakeHTML).join("") : `<div class="allgood">Toate răspunsurile sunt corecte.</div>`}</div>`
   : ""}
+  ${(!r.retry && nWrong > 0) ? `<div class="retry-info" style="margin-bottom:16px"><b>Despre puncte</b>„Reia greșelile” este un exercițiu de învățare și nu recuperează punctele pierdute. Pentru a recupera punctele, trebuie să refaci testul complet la ${mode === "easy" ? "nivelul Ușor" : (mode === "hard" ? "nivelul Greu" : "nivelurile ratate (Ușor și/sau Greu)")}.</div>` : ""}
   <div class="startbar" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
     ${nWrong ? `<button class="btn btn-oil" id="retry" title="Exercițiu de învățare (fără puncte în clasament)">Reia greșelile</button>` : `<button class="btn btn-oil" id="again">Refă testul</button>`}
     <button class="btn btn-primary" id="home">Acasă</button>
