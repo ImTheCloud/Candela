@@ -1765,8 +1765,7 @@ function viewHistory(){
   const groups = new Map();
   h.forEach(x => { const k = x.chs.length === 1 ? x.chs[0] : 0; if (!groups.has(k)) groups.set(k, []); groups.get(k).push(x); });
   const keys = [...groups.keys()].sort((a, b) => (a || 99) - (b || 99));
-  mount(`${headerHTML(false)}
-  <section class="hist-page">
+  mount(`<section class="hist-page">
     <div class="reader-h">${BACK_BTN("hBack")}<div><span class="eyebrow">${h.length} ${h.length === 1 ? "test" : "teste"}</span><h2>Istoric</h2></div></div>
     ${h.length ? keys.map(k => { const g = groups.get(k), best = Math.max(...g.map(x => x.pct));
       return `<div class="hgroup"><div class="hg-h"><b>${k ? `${k}. ${esc(TITLES[k-1])}` : "Mai multe capitole"}</b><span class="muted">${g.length} ${g.length === 1 ? "încercare" : "încercări"} · cel mai bun ${best}%</span></div>
@@ -1804,8 +1803,7 @@ function renderReport(r, o = {}){
   const verdict = P>=95 ? "Excelent!" : P>=80 ? "Foarte bine!" : P>=60 ? "Bravo, ești pe drumul cel bun!" : P>=40 ? "Bun început! Mai încearcă o dată." : "Fiecare încercare te ajută să înveți!";
   const tip = o.past ? "" : r.retry ? (nWrong ? "Continuă până înțelegi toate răspunsurile corecte." : "Ai corectat greșelile! Felicitări pentru perseverență.") : nWrong ? (P>=60 ? "Reia greșelile ca să le înveți și pe acestea." : "Citește capitolul, apoi reia greșelile. Vei vedea cât de repede înveți!") : "Toate răspunsurile sunt corecte. Felicitări!";
   const chList = Object.entries(r.byCh || {});
-  mount(`${headerHTML(false)}
-  <section class="report-head">
+  mount(`<section class="report-head">
     <div class="reader-h" style="margin-bottom:0; align-items:center;">${BACK_BTN("repBack")}
       <div><span class="eyebrow" style="margin-bottom:0;">Raport · ${esc(chaptersLabel(chs))} · ${MODE_LABEL[mode]}${r.retry?" · reluare greșeli":""}</span></div>
     </div>
@@ -1835,7 +1833,7 @@ function renderReport(r, o = {}){
   ${wrong ? `<div class="section-h"><h3>${nWrong ? "De revăzut" : "Nicio greșeală"}</h3>${nWrong?`<span class="muted" style="font-size:14px">${nWrong} întrebări</span>`:""}</div>
   <div class="mistakes">${nWrong ? wrong.map(mistakeHTML).join("") : `<div class="allgood">Toate răspunsurile sunt corecte.</div>`}</div>`
   : ""}
-  ${(!r.retry && nWrong > 0) ? `<div class="card" style="margin-bottom:16px; padding:16px;">
+  ${(!r.retry && nWrong > 0) ? `<div class="card" style="margin:16px 0; padding:16px;">
     <b style="display:block; font-size:13.5px; color:var(--ink); margin-bottom:10px;">Despre puncte</b>
     <div class="pf-rules" style="margin:0; padding:0; border:none;">
       <div class="pf-rule"><span class="r-icon">✓</span><span>Răspunsurile corecte aduc <b>puncte</b>.</span></div>
@@ -1863,7 +1861,7 @@ function renderReport(r, o = {}){
   if (nWrong) $("#retry").onclick = () => { S.reportBack = null; S.reportCh = null; startQuiz(shuffle(wrong.map(x => { const o = {...x.q}; const src = QUIZ[o.ch][o.mode][+o.id.slice(String(o.ch).length+1)]; return {...src, ch:o.ch, mode:o.mode, id:o.id}; })), {retry: true, mode}); };
   if ($("#again")) $("#again").onclick = () => { S.reportBack = null; S.reportCh = null; S.sel = new Set(chs); persistPrefs(); openOptions(chs); };
   if ($("#readCh")) $("#readCh").onclick = () => viewRead(chs[0]);
-  if ($("#repBack")) $("#repBack").onclick = () => { if (o.past) viewHistory(); else viewHome(); };
+  if ($("#repBack")) $("#repBack").onclick = () => { if (o.from === "hist") viewHistory(); else viewHome(); };
   if ($("#backHist")) $("#backHist").onclick = viewHistory;
   if ($("#home")) $("#home").onclick = () => { S.reportBack = null; S.reportCh = null; const savedScroll = S.homeScroll || 0; S.homeScroll = 0; viewHome(); if (savedScroll) requestAnimationFrame(() => requestAnimationFrame(() => window.scrollTo({top: savedScroll}))); };
 }
