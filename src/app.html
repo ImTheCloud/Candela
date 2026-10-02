@@ -284,6 +284,13 @@ body:not(.quiz-fixed) .qcard{max-height:none;overflow:visible}
 .qmeta-left{display:flex;align-items:center;gap:6px;flex-wrap:nowrap}
 .qfoot{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:2px}
 .qfoot .ref{margin-left:auto}
+.q-verdict-pill{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:3.5px 10px;border-radius:999px;line-height:1.2;animation:pop .35s cubic-bezier(.3,1.6,.5,1)}
+.q-verdict-pill.ok{background:var(--ok-soft);color:var(--ok);border:1.5px solid color-mix(in oklab,var(--ok) 35%,transparent)}
+.q-verdict-pill.no{background:var(--bad-soft);color:var(--bad);border:1.5px solid color-mix(in oklab,var(--bad) 35%,transparent)}
+.fb-status{display:flex;align-items:center;gap:8px;margin-bottom:2px}
+.fb-pill{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;padding:5px 12px;border-radius:999px;line-height:1.2}
+.fb-pill.ok{background:var(--ok-soft);color:var(--ok);border:1.5px solid color-mix(in oklab,var(--ok) 35%,transparent)}
+.fb-pill.no{background:var(--bad-soft);color:var(--bad);border:1.5px solid color-mix(in oklab,var(--bad) 35%,transparent)}
 .qtype-badge{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background:var(--surface-2);color:var(--ink);border:1px solid var(--line);line-height:1.2}
 .qtype-badge svg{flex:none}
 .qtype-badge.type-multi{background:var(--oil-soft);color:var(--oil-ink);border:1.5px solid rgba(217,123,38,.45);font-weight:750;box-shadow:0 1px 3px rgba(217,123,38,.12)}
@@ -352,10 +359,9 @@ body:not(.quiz-fixed) .qcard{max-height:none;overflow:visible}
 .fill input.ok{border-color:var(--ok);background:var(--ok-soft)}
 .fill input.no{border-color:var(--bad);background:var(--bad-soft)}
 #fb:empty{display:none}
-.feedback{border-radius:14px;padding:12px 14px;display:grid;gap:8px;font-size:15px;animation:fbIn .35s cubic-bezier(.2,.8,.2,1)}
+.fb-clean{display:grid;gap:8px;font-size:15px;animation:fbIn .35s cubic-bezier(.2,.8,.2,1)}
 @keyframes fbIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-.feedback.no{background:var(--bad-soft);border:1px solid color-mix(in oklab,var(--bad) 25%,transparent)}
-.fb-ans{font-size:15px;font-weight:600;color:var(--ink);line-height:1.4}
+.fb-ans{background:var(--bad-soft);border:1px solid color-mix(in oklab,var(--bad) 25%,transparent);border-radius:12px;padding:10px 14px;font-size:15px;font-weight:600;color:var(--ink);line-height:1.4}
 .fb-ans b{color:var(--bad);font-weight:700}
 .verse{font-family:var(--f-bible);font-weight:400;font-size:16.5px;line-height:1.6;color:var(--ink);text-wrap:pretty}
 .verse:not(:has(.verse-container)){border-left:3px solid var(--oil);padding-left:12px}
@@ -2269,7 +2275,7 @@ function viewQuestion(first){
   const typeStr = TYPE_LABEL[q.t] || "";
   const iconStr = TYPE_ICON[q.t] || "";
   const modeTag = Z.mode === "both" ? `<span class="qmode-tag ${q.mode}">${MODE_LABEL[q.mode]}</span>` : "";
-  card.innerHTML = `<div class="qmeta"><div class="qmeta-left"><span class="qtype-badge type-${q.t}">${iconStr}<span>${typeStr}</span></span>${modeTag}</div></div>
+  card.innerHTML = `<div class="qmeta"><div class="qmeta-left"><span class="qtype-badge type-${q.t}">${iconStr}<span>${typeStr}</span></span>${modeTag}</div><div id="qverdict"></div></div>
     ${q.t==="fill" ? `${fillHTML(q)}` : `<p class="qtext">${esc(q.q.replace(/\s*\(pot fi mai multe[^)]*\)/i, ""))}</p>${q.t==="match"?`<p class="qhint ans">Un răspuns pentru fiecare</p>`:""}${q.t==="multi"?`<p class="qhint multi-hint">Pot fi corecte: niciunul, unul, două sau toate răspunsurile.</p>`:""}`}
     <div class="answers" id="ans">${answersHTML(q)}</div><div id="fb"></div>
     <div class="qfoot"><p class="keys">${({tf:"Taste: A adevărat · F fals", one:"Taste: A, B, C… · Enter verifică", multi:"Taste: A, B, C… · Enter verifică", fill:"Enter trece la căsuța următoare", match:"Enter verifică"})[q.t]}</p>${q.ref ? `<span class="ref">${refLabel(q.ref)}</span>` : ""}</div>`;
@@ -2434,15 +2440,23 @@ function check(skipped=false){
   if (q.t==="match"){ ui.active = null; card.querySelectorAll(".mchoices").forEach(o => o.remove()); card.querySelectorAll(".mrow").forEach(row => { const l = +row.dataset.l, good = ui.pairs[l]===l; row.classList.remove("open"); row.classList.add(good?"ok":"no"); row.querySelector(".mhead").disabled = true; if (ui.pairs[l]==null) row.querySelector(".mv").textContent = "—"; if (!good) row.insertAdjacentHTML("beforeend", `<span class="mfix">Corect: ${esc(q.pairs[l][1])}</span>`); }); }
   if (q.t==="fill"){ card.querySelectorAll("input").forEach((inp,i) => { const ok = r.okEach ? r.okEach[i] : false; inp.classList.add(ok?"ok":"no"); if (!ok) inp.insertAdjacentHTML("afterend", ` <b style="color:var(--ok);font-family:var(--f-body);font-size:16px">${esc(q.a[i])}</b>`); }); }
   const full = r.pts === 1;
+  const vHtml = q.ref ? verseHTML(q.ref) : "";
+  const vBadge = full 
+    ? `<span class="q-verdict-pill ok"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Corect</span>`
+    : `<span class="q-verdict-pill no"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Greșit</span>`;
+  const elV = $("#qverdict"); if (elV) elV.innerHTML = vBadge;
+
+  const fbPill = `<span class="fb-pill ${full ? "ok" : "no"}">${full ? `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Corect` : `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Greșit`}</span>`;
+
   if (full) {
     document.body.classList.add("ans-ok");
     document.body.classList.remove("ans-no");
-    $("#fb").innerHTML = "";
+    $("#fb").innerHTML = `<div class="fb-clean"><div class="fb-status">${fbPill}</div>${vHtml ? `<div class="verse">${vHtml}</div>` : ""}</div>`;
   } else {
     document.body.classList.add("ans-no");
     document.body.classList.remove("ans-ok");
     const ansHtml = correctLine(q);
-    $("#fb").innerHTML = `<div class="feedback no">${ansHtml ? `<div class="fb-ans">${ansHtml}</div>` : ""}<div class="verse">${verseHTML(q.ref)}</div></div>`;
+    $("#fb").innerHTML = `<div class="fb-clean fb-wrong"><div class="fb-status">${fbPill}</div>${ansHtml ? `<div class="fb-ans">${ansHtml}</div>` : ""}${vHtml ? `<div class="verse">${vHtml}</div>` : ""}</div>`;
   }
   card.classList.add(full ? "pop" : "shake");
   renderActions();
