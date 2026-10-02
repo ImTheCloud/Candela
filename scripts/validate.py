@@ -5,6 +5,8 @@ import json, sys, os, re, unicodedata, glob
 HERE = os.path.dirname(os.path.abspath(__file__))
 TEXT = json.load(open(os.path.join(HERE, '..', 'content', '1-samuel', 'text-cornilescu.json')))
 
+MAX_PER_LEVEL = 20
+
 def norm(s):
     s = unicodedata.normalize('NFD', s.lower())
     s = ''.join(c for c in s if unicodedata.category(c) != 'Mn')
@@ -47,16 +49,16 @@ def check(ch):
                 if not isinstance(q.get('a'), bool): errs.append(f'{tag} tf needs bool a')
             elif t == 'one':
                 o = q.get('opts', [])
-                if not (3 <= len(o) <= 4) or not isinstance(q.get('a'), int) or not (0 <= q['a'] < len(o)): errs.append(f'{tag} one: 3-4 opts and valid index a')
+                if len(o) != 3 or not isinstance(q.get('a'), int) or not (0 <= q['a'] < len(o)): errs.append(f'{tag} one: exactly 3 opts and valid index a')
                 if len(set(o)) != len(o): errs.append(f'{tag} duplicate opts')
             elif t == 'multi':
                 o = q.get('opts', []); a_ = q.get('a')
-                if not (4 <= len(o) <= 6) or not isinstance(a_, list) or any((not isinstance(x, int)) or x < 0 or x >= len(o) for x in a_) or len(set(a_)) != len(a_):
-                    errs.append(f'{tag} multi: 4-6 opts and list a of valid indices (may be empty)')
+                if len(o) != 3 or not isinstance(a_, list) or any((not isinstance(x, int)) or x < 0 or x >= len(o) for x in a_) or len(set(a_)) != len(a_):
+                    errs.append(f'{tag} multi: exactly 3 opts and list a of valid indices (may be empty)')
                 if len(set(o)) != len(o): errs.append(f'{tag} duplicate opts')
             elif t == 'match':
                 p = q.get('pairs', [])
-                if not (3 <= len(p) <= 5) or any(len(x) != 2 for x in p): errs.append(f'{tag} match: 3-5 pairs [left,right]')
+                if len(p) != 3 or any(len(x) != 2 for x in p): errs.append(f'{tag} match: exactly 3 pairs [left,right]')
                 if len(set(x[1] for x in p)) != len(p) or len(set(x[0] for x in p)) != len(p): errs.append(f'{tag} match: lefts/rights must be unique')
             elif t == 'fill':
                 ans = q.get('a')
@@ -70,6 +72,7 @@ def check(ch):
                 if fn not in vn: errs.append(f'{tag} fill text not found verbatim in {ref}: {full!r}')
             else:
                 errs.append(f'{tag} unknown type {t}')
+        if len(qs) > MAX_PER_LEVEL: warns.append(f'{mode}: {len(qs)} questions, keep at most {MAX_PER_LEVEL}')
         stats[mode] = (len(qs), types)
         for t in ('tf', 'one', 'multi', 'match', 'fill'):
             if types.get(t, 0) < 2: warns.append(f'{mode}: only {types.get(t,0)} of type {t}')

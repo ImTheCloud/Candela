@@ -6,132 +6,43 @@
    "ref": "15:1-3",
    "q": "Ce i-a poruncit Domnul lui Saul prin Samuel?",
    "opts": [
-    "Să bată pe filisteni",
-    "Să zidească un altar la Ghilgal",
-    "Să bată pe Amalec și să nimicească cu desăvârșire tot ce era al lui",
-    "Să facă legământ de pace cu Amalec"
+    "Să bată pe Amalec și să nimicească tot ce-i al lui",
+    "Să facă pace cu Amalec",
+    "Să zidească un altar la Ghilgal"
    ],
-   "a": 2
-  },
-  {
-   "t": "tf",
-   "ref": "15:2",
-   "q": "Domnul voia să-l pedepsească pe Amalec pentru ce făcuse lui Israel la ieșirea din Egipt.",
-   "a": true
-  },
-  {
-   "t": "tf",
-   "ref": "15:6",
-   "q": "Saul i-a nimicit și pe cheniți, împreună cu Amalec.",
-   "a": false
+   "a": 0
   },
   {
    "t": "one",
-   "ref": "15:8",
-   "q": "Pe cine a prins viu Saul?",
+   "ref": "15:2",
+   "q": "Pentru ce se pedepsea Amalec?",
    "opts": [
-    "Pe Achiș",
-    "Pe Agag, împăratul lui Amalec",
-    "Pe Nahaș",
-    "Pe Goliat"
+    "Luase chivotul Domnului",
+    "Îi astupase drumul lui Israel la ieșirea din Egipt",
+    "Jefuise cetatea Ghibea"
    ],
    "a": 1
   },
   {
+   "t": "tf",
+   "ref": "15:3",
+   "q": "Domnul a poruncit ca Saul să cruțe copiii și pruncii.",
+   "a": false
+  },
+  {
+   "t": "tf",
+   "ref": "15:8",
+   "q": "Saul a prins viu pe Agag, împăratul lui Amalec.",
+   "a": true
+  },
+  {
    "t": "multi",
    "ref": "15:9",
-   "q": "Ce au cruțat Saul și poporul? (pot fi mai multe sau niciunul)",
+   "q": "Ce au cruțat Saul și poporul?",
    "opts": [
-    "Pe Agag",
-    "Oile cele mai bune",
     "Boii cei mai buni",
-    "Tot ce era prost și nebăgat în seamă",
-    "Pe filistenii prinși"
-   ],
-   "a": [
-    0,
-    1,
-    2
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "15:10-11",
-   "q": "Domnul i-a spus lui Samuel că Îi pare rău că l-a pus pe Saul împărat.",
-   "a": true
-  },
-  {
-   "t": "tf",
-   "ref": "15:11",
-   "q": "Samuel s-a bucurat când a aflat vestea despre Saul.",
-   "a": false
-  },
-  {
-   "t": "tf",
-   "ref": "15:13",
-   "q": "Când l-a întâlnit pe Samuel, Saul a spus că a păzit Cuvântul Domnului.",
-   "a": true
-  },
-  {
-   "t": "one",
-   "ref": "15:14",
-   "q": "Ce l-a dat de gol pe Saul înaintea lui Samuel?",
-   "opts": [
-    "Prada de aur din cortul lui",
-    "Behăitul oilor și mugetul boilor",
-    "Mărturia lui Agag",
-    "Vorbele lui Ionatan"
-   ],
-   "a": 1
-  },
-  {
-   "t": "one",
-   "ref": "15:15",
-   "q": "Pe cine a dat vina Saul pentru cruțarea animalelor?",
-   "opts": [
-    "Pe Samuel",
     "Pe Agag",
-    "Pe popor",
-    "Pe Ionatan"
-   ],
-   "a": 2
-  },
-  {
-   "t": "one",
-   "ref": "15:20-21",
-   "q": "Ce scop a spus Saul că aveau animalele luate din pradă?",
-   "opts": [
-    "Să fie vândute",
-    "Să fie jertfite Domnului la Ghilgal",
-    "Să hrănească oastea",
-    "Să fie date preoților"
-   ],
-   "a": 1
-  },
-  {
-   "t": "fill",
-   "ref": "15:22",
-   "q": "„Ascultarea face mai mult decât ___”",
-   "a": [
-    "jertfele"
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "15:23",
-   "q": "Samuel a spus că, fiindcă Saul a lepădat Cuvântul Domnului, Domnul îl leapădă ca împărat.",
-   "a": true
-  },
-  {
-   "t": "multi",
-   "ref": "15:24-25",
-   "q": "Ce a recunoscut și ce a cerut Saul după mustrare? (pot fi mai multe sau niciunul)",
-   "opts": [
-    "A recunoscut că a păcătuit",
-    "A spus că s-a temut de popor",
-    "A cerut iertare pentru păcatul lui",
-    "A cerut să fie uns din nou",
-    "A dat vina pe Agag"
+    "Oile cele mai bune"
    ],
    "a": [
     0,
@@ -140,637 +51,49 @@
    ]
   },
   {
-   "t": "tf",
-   "ref": "15:26",
-   "q": "La prima rugăminte a lui Saul, Samuel a acceptat să se întoarcă cu el.",
-   "a": false
-  },
-  {
-   "t": "one",
-   "ref": "15:27",
-   "q": "Ce s-a întâmplat când Saul l-a apucat pe Samuel ca să-l oprească?",
-   "opts": [
-    "Samuel a căzut la pământ",
-    "Saul a fost lovit de Domnul",
-    "Haina lui Samuel s-a rupt",
-    "Samuel l-a iertat pe loc"
-   ],
-   "a": 2
-  },
-  {
-   "t": "fill",
-   "ref": "15:28",
-   "q": "„Domnul rupe astăzi domnia lui Israel de asupra ta și o dă ___ mai bun decât tine”",
-   "a": [
-    "altuia"
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "15:31",
-   "q": "În cele din urmă, Samuel a mers după Saul, iar Saul s-a închinat înaintea Domnului.",
-   "a": true
-  },
-  {
-   "t": "match",
-   "ref": "15:6-33",
-   "q": "Asociază fiecare personaj cu fapta lui.",
-   "pairs": [
-    [
-     "Saul",
-     "a cruțat pe Agag și cele mai bune animale"
-    ],
-    [
-     "Samuel",
-     "l-a tăiat pe Agag în bucăți"
-    ],
-    [
-     "Cheniții",
-     "au plecat din mijlocul lui Amalec"
-    ]
-   ]
-  },
-  {
-   "t": "match",
-   "ref": "15:34-35",
-   "q": "Asociază fiecare cu ce spune finalul capitolului despre el.",
-   "pairs": [
-    [
-     "Domnul",
-     "Se căise că pusese pe Saul împărat"
-    ],
-    [
-     "Samuel",
-     "plângea pe Saul"
-    ],
-    [
-     "Saul",
-     "s-a suit acasă"
-    ]
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "15:35",
-   "q": "După aceste întâmplări, Samuel l-a vizitat des pe Saul.",
-   "a": false
-  },
-  {
-   "t": "tf",
-   "ref": "15:1",
-   "q": "Înainte să-i transmită porunca, Samuel i-a cerut lui Saul să asculte ce zice Domnul.",
-   "a": true
-  },
-  {
-   "t": "one",
-   "ref": "15:2",
-   "q": "Ce făcuse Amalec lui Israel la ieșirea din Egipt?",
-   "opts": [
-    "Îi furase vitele",
-    "Îi astupase drumul",
-    "Îi otrăvise fântânile",
-    "Îi luase robi pe copii"
-   ],
-   "a": 1
-  },
-  {
-   "t": "tf",
-   "ref": "15:5",
-   "q": "Saul a mers cu oastea până la cetatea lui Amalec.",
-   "a": true
-  },
-  {
-   "t": "one",
-   "ref": "15:12",
-   "q": "Unde s-a coborât Saul după ce trecuse pe la Carmel?",
-   "opts": [
-    "La Rama",
-    "La Silo",
-    "La Ghilgal",
-    "La Telaim"
-   ],
-   "a": 2
-  },
-  {
-   "t": "tf",
-   "ref": "15:12",
-   "q": "Samuel a aflat de la alții unde se dusese Saul.",
-   "a": true
-  },
-  {
-   "t": "tf",
-   "ref": "15:16",
-   "q": "Samuel i-a spus lui Saul că Domnul îi vorbise astă-noapte.",
-   "a": true
-  },
-  {
-   "t": "multi",
-   "ref": "15:17-19",
-   "q": "Ce i-a amintit sau i-a reproșat Samuel lui Saul în versetele 17-19? (pot fi mai multe sau niciunul)",
-   "opts": [
-    "Că n-a ascultat glasul Domnului",
-    "Că s-a aruncat asupra prăzii",
-    "Că l-a cruțat pe Ionatan",
-    "Că a adus jertfa fără el la Ghilgal",
-    "Că a făcut ce este rău înaintea Domnului"
-   ],
-   "a": [
-    0,
-    1,
-    4
-   ]
-  },
-  {
-   "t": "fill",
-   "ref": "15:20",
-   "q": "„Am ascultat glasul Domnului și m-am dus în ___ pe care mă trimitea Domnul”",
-   "a": [
-    "calea"
-   ]
-  },
-  {
-   "t": "one",
-   "ref": "15:18",
-   "q": "Până când trebuia Saul să se războiască cu amaleciții, potrivit poruncii amintite de Samuel?",
-   "opts": [
-    "Până la apusul soarelui",
-    "Șapte zile",
-    "Până îi va nimici",
-    "Până când Agag se va preda"
-   ],
-   "a": 2
-  },
-  {
-   "t": "one",
-   "ref": "15:27",
-   "q": "Când l-a apucat Saul pe Samuel de haină?",
-   "opts": [
-    "Pe când se întorcea Samuel să plece",
-    "Când Samuel l-a tăiat pe Agag",
-    "Când Samuel a ajuns la Ghilgal",
-    "Când Samuel se ruga"
-   ],
-   "a": 0
-  },
-  {
-   "t": "fill",
-   "ref": "15:30",
-   "q": "Saul a zis iarăși: „Am ___! Acum, te rog, cinstește-mă”",
-   "a": [
-    "păcătuit"
-   ]
-  },
-  {
-   "t": "one",
-   "ref": "15:32",
-   "q": "Cine a cerut să fie adus Agag?",
-   "opts": [
-    "Saul",
-    "Poporul",
-    "Bătrânii lui Israel",
-    "Samuel"
-   ],
-   "a": 3
-  },
-  {
-   "t": "one",
-   "ref": "15:33",
-   "q": "Ce i-a spus Samuel lui Agag că se va întâmpla cu mama lui?",
-   "opts": [
-    "Va fi luată roabă",
-    "Va fi lăsată fără copii între femei",
-    "Va fi cruțată",
-    "Va fugi în Egipt"
-   ],
-   "a": 1
-  },
-  {
-   "t": "one",
-   "ref": "15:35",
-   "q": "De ce plângea Samuel pe Saul?",
-   "opts": [
-    "Pentru că Saul murise în luptă",
-    "Pentru că Saul îl alungase",
-    "Pentru că Domnul Se căise că-l pusese pe Saul împărat",
-    "Pentru că Saul era bolnav"
-   ],
-   "a": 2
-  },
-  {
-   "t": "one",
-   "ref": "15:6",
-   "q": "Ce motiv imediat le-a dat Saul cheniților ca să plece din mijlocul lui Amalec?",
-   "opts": [
-    "Ca să nu fie prăpădiți împreună cu Amalec",
-    "Ca să-i aducă ajutoare",
-    "Ca să le dea o parte din pradă",
-    "Ca să se întoarcă în Egipt"
-   ],
-   "a": 0
-  },
-  {
-   "t": "fill",
-   "ref": "15:3",
-   "q": "„bate pe Amalec și nimicește cu desăvârșire tot ce-i al lui; să nu-i ___”",
-   "a": [
-    "cruți"
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "15:9",
-   "q": "Potrivit textului, doar poporul, nu și Saul, a cruțat ce era mai bun.",
-   "a": false
-  },
-  {
-   "t": "one",
-   "ref": "15:34",
-   "q": "Unde s-a dus Saul după despărțirea de Samuel?",
-   "opts": [
-    "La Rama",
-    "La Carmel",
-    "Acasă, la Ghibea lui Saul",
-    "La Telaim"
-   ],
-   "a": 2
-  },
-  {
-   "t": "tf",
-   "ref": "15:26-27",
-   "q": "Saul l-a apucat pe Samuel de haină după ce Samuel refuzase să se întoarcă cu el.",
-   "a": true
-  },
-  {
-   "t": "tf",
-   "ref": "15:13-24",
-   "q": "Saul a recunoscut că a păcătuit chiar de la începutul întâlnirii cu Samuel.",
-   "a": false
-  }
- ],
- "hard": [
-  {
-   "t": "fill",
-   "ref": "15:1",
-   "q": "„Pe mine m-a trimis Domnul să te ___ împărat peste poporul Lui”",
-   "a": [
-    "ung"
-   ]
-  },
-  {
-   "t": "fill",
-   "ref": "15:2",
-   "q": "„Așa vorbește Domnul ___: Mi-aduc aminte de ceea ce a făcut Amalec”",
-   "a": [
-    "oștirilor"
-   ]
-  },
-  {
-   "t": "multi",
-   "ref": "15:3",
-   "q": "Pe cine trebuia Saul să omoare, potrivit poruncii? (pot fi mai multe sau niciunul)",
-   "opts": [
-    "Bărbații și femeile",
-    "Copiii și pruncii",
-    "Caii și carele",
-    "Cămilele și măgarii",
-    "Boii și oile"
-   ],
-   "a": [
-    0,
-    1,
-    3,
-    4
-   ]
-  },
-  {
-   "t": "one",
-   "ref": "15:4",
-   "q": "Câți oameni pedeștri a numărat Saul?",
-   "opts": [
-    "O sută de mii",
-    "Două sute de mii",
-    "Trei sute de mii",
-    "Treizeci de mii"
-   ],
-   "a": 1
-  },
-  {
-   "t": "tf",
-   "ref": "15:4",
-   "q": "Saul avea douăzeci de mii de oameni din Iuda.",
-   "a": false
-  },
-  {
-   "t": "tf",
-   "ref": "15:5",
-   "q": "Saul a pus niște oameni la pândă pe munte.",
-   "a": false
-  },
-  {
-   "t": "fill",
-   "ref": "15:6",
-   "q": "„căci voi v-ați purtat cu ___ față de copiii lui Israel când s-au suit din Egipt”",
-   "a": [
-    "bunăvoință"
-   ]
-  },
-  {
-   "t": "one",
-   "ref": "15:7",
-   "q": "De unde până unde a bătut Saul pe Amalec?",
-   "opts": [
-    "De la Micmaș până la Aialon",
-    "De la Telaim până la Carmel",
-    "De la Havila până la Șur",
-    "De la Gheba până la Ghezer"
-   ],
-   "a": 2
-  },
-  {
-   "t": "tf",
-   "ref": "15:7",
-   "q": "Șur este în fața Moabului.",
-   "a": false
-  },
-  {
-   "t": "one",
-   "ref": "15:8",
-   "q": "Cum a nimicit Saul poporul lui Amalec?",
-   "opts": [
-    "Prin foc",
-    "Trecându-l prin ascuțișul sabiei",
-    "Prin foamete",
-    "Aruncându-l în râu"
-   ],
-   "a": 1
-  },
-  {
-   "t": "multi",
-   "ref": "15:9",
-   "q": "Care dintre următoarele au fost și ele cruțate? (pot fi mai multe sau niciunul)",
-   "opts": [
-    "Vitele grase",
-    "Mieii grași",
-    "Cămilele",
-    "Măgarii",
-    "Tot ce era mai bun"
-   ],
-   "a": [
-    0,
-    1,
-    4
-   ]
-  },
-  {
-   "t": "fill",
-   "ref": "15:9",
-   "q": "„au nimicit numai tot ce era ___ și nebăgat în seamă”",
-   "a": [
-    "prost"
-   ]
-  },
-  {
    "t": "fill",
    "ref": "15:11",
-   "q": "„căci se abate de la Mine și nu păzește ___ Mele”",
+   "q": "Îmi pare ___ că am pus pe Saul împărat",
    "a": [
-    "cuvintele"
+    "rău"
    ]
   },
   {
    "t": "tf",
    "ref": "15:11",
-   "q": "Samuel a strigat toată noaptea către Domnul.",
+   "q": "Samuel s-a mâhnit și toată noaptea a strigat către Domnul.",
    "a": true
   },
   {
-   "t": "tf",
-   "ref": "15:12",
-   "q": "Samuel s-a sculat dis-de-dimineață ca să se ducă înaintea lui Saul.",
-   "a": true
-  },
-  {
-   "t": "fill",
+   "t": "one",
    "ref": "15:13",
-   "q": "„Fii ___ de Domnul! Am păzit Cuvântul Domnului.”",
-   "a": [
-    "binecuvântat"
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "15:16",
-   "q": "Când Samuel i-a zis să stea și să asculte, Saul i-a răspuns: „Vorbește.”",
-   "a": true
-  },
-  {
-   "t": "fill",
-   "ref": "15:17",
-   "q": "„Când erai ___ în ochii tăi, n-ai ajuns tu căpetenia semințiilor lui Israel”",
-   "a": [
-    "mic"
-   ]
-  },
-  {
-   "t": "one",
-   "ref": "15:18",
-   "q": "Cum i-a numit Domnul pe amaleciți în porunca dată lui Saul?",
+   "q": "Ce i-a zis Saul lui Samuel când l-a întâlnit?",
    "opts": [
-    "Netăiații împrejur",
-    "Păcătoșii aceia",
-    "Vrăjmașii Mei",
-    "Fiii lui Belial"
+    "„Am păcătuit.”",
+    "„Am păzit Cuvântul Domnului.”",
+    "„Domnul m-a lepădat.”"
    ],
    "a": 1
   },
   {
-   "t": "tf",
-   "ref": "15:19",
-   "q": "Samuel l-a întrebat pe Saul de ce i-a cruțat pe cheniți.",
-   "a": false
-  },
-  {
-   "t": "tf",
-   "ref": "15:20",
-   "q": "Saul a susținut că l-a adus pe Agag și că i-a nimicit cu desăvârșire pe amaleciți.",
-   "a": true
-  },
-  {
    "t": "one",
-   "ref": "15:21",
-   "q": "Cum a numit Saul oile și boii luați din pradă?",
-   "opts": [
-    "Zeciuială",
-    "Dar de pace",
-    "Jertfă de ispășire",
-    "Pârgă din ceea ce trebuia nimicit"
-   ],
-   "a": 3
-  },
-  {
-   "t": "match",
-   "ref": "15:22-23",
-   "q": "Asociază fiecare lucru cu ce spune Samuel despre el.",
-   "pairs": [
-    [
-     "Neascultarea",
-     "este tot atât de vinovată ca ghicirea"
-    ],
-    [
-     "Împotrivirea",
-     "nu este mai puțin vinovată decât închinarea la idoli și terafimii"
-    ],
-    [
-     "Păzirea cuvântului Său",
-     "face mai mult decât grăsimea berbecilor"
-    ]
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "15:24",
-   "q": "Saul a spus că a călcat porunca Domnului și n-a ascultat cuvintele lui Samuel.",
-   "a": true
-  },
-  {
-   "t": "fill",
-   "ref": "15:25",
-   "q": "„întoarce-te cu mine, ca să mă închin până la ___ înaintea Domnului”",
-   "a": [
-    "pământ"
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "15:27",
-   "q": "Saul l-a apucat pe Samuel de mână ca să-l oprească.",
-   "a": false
-  },
-  {
-   "t": "multi",
-   "ref": "15:29",
-   "q": "Care dintre următoarele le spune Samuel că le face Cel ce este tăria lui Israel? (pot fi mai multe sau niciunul)",
-   "opts": [
-    "Minte",
-    "Se căiește",
-    "Îi pare rău ca unui om",
-    "Își schimbă hotărârea"
-   ],
-   "a": []
-  },
-  {
-   "t": "match",
-   "ref": "15:26-32",
-   "q": "Asociază fiecare vorbitor cu replica sa.",
-   "pairs": [
-    [
-     "Samuel",
-     "„Nu mă voi întoarce cu tine.”"
-    ],
-    [
-     "Saul",
-     "„Cinstește-mă în fața bătrânilor poporului meu”"
-    ],
-    [
-     "Agag",
-     "„Negreșit, a trecut amărăciunea morții!”"
-    ]
-   ]
-  },
-  {
-   "t": "fill",
-   "ref": "15:32",
-   "q": "„Și Agag a înaintat ___ spre el, căci zicea”",
-   "a": [
-    "vesel"
-   ]
-  },
-  {
-   "t": "fill",
-   "ref": "15:33",
-   "q": "„După cum sabia ta a lăsat ___ fără copii”",
-   "a": [
-    "femei"
-   ]
-  },
-  {
-   "t": "match",
-   "ref": "15:4-34",
-   "q": "Asociază fiecare loc cu ce s-a petrecut acolo.",
-   "pairs": [
-    [
-     "Telaim",
-     "acolo a numărat Saul poporul"
-    ],
-    [
-     "Carmel",
-     "acolo și-a înălțat Saul un semn de biruință"
-    ],
-    [
-     "Ghilgal",
-     "acolo a fost tăiat Agag în bucăți"
-    ],
-    [
-     "Rama",
-     "acolo a plecat Samuel"
-    ]
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "15:15",
-   "q": "Vorbind despre jertfe, Saul i-a spus lui Samuel „Domnului Dumnezeului tău”.",
-   "a": true
-  },
-  {
-   "t": "fill",
    "ref": "15:14",
-   "q": "„Ce înseamnă behăitul acesta de oi care ajunge la ___ mele”",
-   "a": [
-    "urechile"
-   ]
-  },
-  {
-   "t": "fill",
-   "ref": "15:28",
-   "q": "„Domnul rupe ___ domnia lui Israel de asupra ta”",
-   "a": [
-    "astăzi"
-   ]
-  },
-  {
-   "t": "match",
-   "ref": "15:11-15",
-   "q": "Asociază fiecare vorbitor cu replica sa.",
-   "pairs": [
-    [
-     "Domnul",
-     "„Îmi pare rău că am pus pe Saul împărat”"
-    ],
-    [
-     "Saul",
-     "„Le-au adus de la amaleciți”"
-    ],
-    [
-     "Samuel",
-     "„Ce înseamnă behăitul acesta de oi”"
-    ],
-    [
-     "Cei care au venit la Samuel",
-     "„Saul s-a dus la Carmel”"
-    ]
-   ]
+   "q": "Ce a auzit Samuel, care l-a făcut să-l mustre pe Saul?",
+   "opts": [
+    "Behăitul oilor și mugetul boilor",
+    "Sunetul trâmbițelor",
+    "Plânsetul prizonierilor"
+   ],
+   "a": 0
   },
   {
    "t": "multi",
-   "ref": "15:30",
-   "q": "În fața cui a cerut Saul să fie cinstit, la a doua rugăminte? (pot fi mai multe sau niciunul)",
+   "ref": "15:15-21",
+   "q": "Ce spunea Saul ca scuză?",
    "opts": [
-    "Bătrânii poporului său",
-    "Israel",
-    "Preoții",
-    "Ionatan",
-    "Cheniții"
+    "Poporul a cruțat oile și boii cei mai buni",
+    "Animalele au fost cruțate ca să fie jertfite Domnului",
+    "Nu primise nicio poruncă de nimicire"
    ],
    "a": [
     0,
@@ -779,50 +102,238 @@
   },
   {
    "t": "fill",
-   "ref": "15:17",
-   "q": "„n-ai ajuns tu ___ semințiilor lui Israel”",
+   "ref": "15:22",
+   "q": "Ascultarea face mai mult decât ___",
    "a": [
-    "căpetenia"
+    "jertfele"
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "15:23",
+   "q": "Samuel a spus că neascultarea este tot atât de vinovată ca ghicirea.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "15:24",
+   "q": "De ce a spus Saul că a păcătuit?",
+   "opts": [
+    "Nu cunoștea porunca",
+    "Samuel întârziase",
+    "Se temea de popor și i-a ascultat glasul"
+   ],
+   "a": 2
+  },
+  {
+   "t": "tf",
+   "ref": "15:26",
+   "q": "Samuel a refuzat la început să se întoarcă cu Saul.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "15:27-28",
+   "q": "Ce a spus Samuel despre haina ruptă?",
+   "opts": [
+    "Saul va fi iertat",
+    "Domnia lui Saul va trece lui Ionatan",
+    "Domnul rupe domnia de la Saul și o dă altuia mai bun"
+   ],
+   "a": 2
+  },
+  {
+   "t": "tf",
+   "ref": "15:32-33",
+   "q": "Saul l-a omorât pe Agag.",
+   "a": false
+  },
+  {
+   "t": "tf",
+   "ref": "15:35",
+   "q": "Samuel a mai mers să vadă pe Saul până în ziua morții sale.",
+   "a": false
+  },
+  {
+   "t": "match",
+   "ref": "15:13-32",
+   "q": "Potrivește fiecare personaj cu cuvintele lui.",
+   "pairs": [
+    [
+     "Saul",
+     "Am păzit Cuvântul Domnului"
+    ],
+    [
+     "Samuel",
+     "Ascultarea face mai mult decât jertfele"
+    ],
+    [
+     "Agag",
+     "A trecut amărăciunea morții"
+    ]
+   ]
+  }
+ ],
+ "hard": [
+  {
+   "t": "fill",
+   "ref": "15:3",
+   "q": "...să omori bărbații și femeile, copiii și pruncii, ___ și măgarii, boii și oile.",
+   "a": [
+    "cămilele"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "15:4",
+   "q": "Unde a numărat Saul poporul?",
+   "opts": [
+    "La Telaim",
+    "La Ghilgal",
+    "La Micmaș"
+   ],
+   "a": 0
+  },
+  {
+   "t": "one",
+   "ref": "15:4",
+   "q": "Câți oameni din Iuda erau în oastea lui Saul?",
+   "opts": [
+    "Două sute de mii",
+    "Treizeci de mii",
+    "Zece mii"
+   ],
+   "a": 2
+  },
+  {
+   "t": "tf",
+   "ref": "15:5",
+   "q": "Saul a pus niște oameni la pândă în vale.",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "15:6",
+   "q": "Saul a poruncit ca și cheniții să fie nimiciți împreună cu Amalec.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "15:7",
+   "q": "Până unde a bătut Saul pe Amalec?",
+   "opts": [
+    "Până la Rama",
+    "Până la Telaim",
+    "Până la Șur, în fața Egiptului"
+   ],
+   "a": 2
+  },
+  {
+   "t": "one",
+   "ref": "15:12",
+   "q": "Unde se spunea că Saul și-a înălțat un semn de biruință?",
+   "opts": [
+    "La Carmel",
+    "La Ghilgal",
+    "La Rama"
+   ],
+   "a": 0
+  },
+  {
+   "t": "multi",
+   "ref": "15:17",
+   "q": "Ce făcuse Domnul pentru Saul?",
+   "opts": [
+    "L-a făcut preot",
+    "L-a făcut căpetenia semințiilor lui Israel",
+    "L-a dat în mâna filistenilor"
+   ],
+   "a": [
+    1
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "15:21",
+   "q": "Unde voia poporul să jertfească animalele cruțate?",
+   "opts": [
+    "La Ghilgal",
+    "La Betel",
+    "La Silo"
+   ],
+   "a": 0
+  },
+  {
+   "t": "fill",
+   "ref": "15:23",
+   "q": "Împotrivirea nu este mai puțin vinovată decât închinarea la idoli și ___.",
+   "a": [
+    "terafimii"
    ]
   },
   {
    "t": "fill",
-   "ref": "15:22",
-   "q": "„Îi plac Domnului mai mult ___ și jertfele decât ascultarea de glasul Domnului?”",
+   "ref": "15:29",
+   "q": "Cel ce este tăria lui Israel nu minte și nu Se ___.",
    "a": [
-    "arderile-de-tot"
+    "căiește"
    ]
   },
   {
    "t": "tf",
-   "ref": "15:2-6",
-   "q": "Atât fapta lui Amalec, cât și bunăvoința cheniților sunt legate în text de ieșirea lui Israel din Egipt.",
-   "a": true
-  },
-  {
-   "t": "tf",
-   "ref": "15:13",
-   "q": "La întâlnirea lor, Saul a vorbit primul, înainte de Samuel.",
-   "a": true
-  },
-  {
-   "t": "multi",
-   "ref": "15:4",
-   "q": "Ce a aflat Saul la numărătoarea poporului de la Telaim?",
-   "opts": [
-    "Erau trei sute de mii de oameni pedeștri",
-    "Erau treizeci de mii de oameni din Iuda",
-    "Erau două sute de mii de oameni din Iuda",
-    "Erau zece mii de oameni pedeștri",
-    "Numărătoarea s-a făcut la Bezec"
-   ],
-   "a": []
-  },
-  {
-   "t": "tf",
-   "ref": "15:12",
-   "q": "Lui Samuel i s-a spus că Saul s-a dus la Carmel și și-a zidit acolo un altar Domnului.",
+   "ref": "15:30",
+   "q": "Saul a cerut să fie cinstit în fața bătrânilor poporului, spunând că nu a păcătuit.",
    "a": false
+  },
+  {
+   "t": "one",
+   "ref": "15:32",
+   "q": "Ce credea Agag când a înaintat spre Samuel?",
+   "opts": [
+    "Că va fi înjunghiat",
+    "Că a trecut amărăciunea morții",
+    "Că va fi dus rob"
+   ],
+   "a": 1
+  },
+  {
+   "t": "fill",
+   "ref": "15:33",
+   "q": "Samuel a zis: „După cum sabia ta a lăsat femei fără ___, tot așa și ___ ta va fi lăsată fără copii între femei.”",
+   "a": [
+    "copii",
+    "mama"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "15:34",
+   "q": "Unde a plecat Samuel după aceea?",
+   "opts": [
+    "La Betleem",
+    "La Rama",
+    "La Ghilgal"
+   ],
+   "a": 1
+  },
+  {
+   "t": "match",
+   "ref": "15:4-33",
+   "q": "Potrivește locul cu cele petrecute acolo.",
+   "pairs": [
+    [
+     "Telaim",
+     "Numărătoarea oștirii"
+    ],
+    [
+     "Carmel",
+     "Semnul de biruință al lui Saul"
+    ],
+    [
+     "Ghilgal",
+     "Agag tăiat înaintea Domnului"
+    ]
+   ]
   }
  ]
 }

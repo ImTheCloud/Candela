@@ -2,235 +2,139 @@
  "ch": 11,
  "easy": [
   {
+   "t": "one",
+   "ref": "11:1",
+   "q": "Cine a împresurat Iabesul din Galaad?",
+   "opts": [
+    "Nahaș, Amonitul",
+    "Filistenii",
+    "Moabiții"
+   ],
+   "a": 0
+  },
+  {
    "t": "tf",
    "ref": "11:1",
-   "q": "Iabesul din Galaad a fost împresurat de filisteni.",
-   "a": false
-  },
-  {
-   "t": "tf",
-   "ref": "11:2",
-   "q": "Nahaș a acceptat legământul cu locuitorii Iabesului fără nicio condiție.",
-   "a": false
-  },
-  {
-   "t": "one",
-   "ref": "11:2",
-   "q": "Ce urmărea Nahaș prin condiția pe care a pus-o pentru legământ?",
-   "opts": [
-    "Să ia robi pentru țara lui",
-    "Să arunce o ocară asupra întregului Israel",
-    "Să obțină aurul cetății",
-    "Să-l provoace pe Samuel la luptă"
-   ],
-   "a": 1
-  },
-  {
-   "t": "tf",
-   "ref": "11:3",
-   "q": "Bătrânii din Iabes au spus că, dacă nu-i va ajuta nimeni, se vor supune lui Nahaș.",
+   "q": "Locuitorii din Iabes i-au spus lui Nahaș că îi vor fi supuși dacă face legământ cu ei.",
    "a": true
   },
   {
    "t": "one",
-   "ref": "11:4",
-   "q": "Cum a reacționat poporul din cetatea lui Saul când a auzit vestea solilor?",
+   "ref": "11:2",
+   "q": "Ce a cerut Nahaș pentru a face legământ cu cei din Iabes?",
    "opts": [
-    "S-a înarmat imediat",
-    "A ridicat glasul și a plâns",
-    "A râs de soli",
-    "A fugit din cetate"
+    "Să le ia toate turmele",
+    "Să le scoată tuturor ochiul drept",
+    "Să le ia întâii născuți"
    ],
    "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "11:4",
+   "q": "Când solii au spus aceste lucruri la Ghibea, tot poporul a plâns.",
+   "a": true
   },
   {
    "t": "tf",
    "ref": "11:5",
-   "q": "Când au venit solii, Saul stătea la judecată în fața poporului.",
+   "q": "Saul tocmai se întorcea de la război când a aflat vestea.",
    "a": false
   },
   {
-   "t": "fill",
+   "t": "one",
    "ref": "11:6",
-   "q": "Cum a auzit Saul aceste lucruri, ___ lui Dumnezeu a venit peste el",
-   "a": [
-    "Duhul"
-   ]
-  },
-  {
-   "t": "multi",
-   "ref": "11:7",
-   "q": "Ce a făcut Saul ca să strângă poporul? (pot fi mai multe sau niciunul)",
+   "q": "Ce a venit peste Saul când a auzit vestea?",
    "opts": [
-    "A tăiat în bucăți o pereche de boi",
-    "A trimis bucățile prin soli în tot ținutul lui Israel",
-    "A suflat din trâmbiță pe munte",
-    "A spus că boii celor ce nu vor veni vor fi tăiați la fel",
-    "A promis pradă tuturor"
+    "Duhul lui Dumnezeu",
+    "Un înger al Domnului",
+    "O vedenie"
    ],
-   "a": [
-    0,
-    1,
-    3
-   ]
+   "a": 0
   },
   {
    "t": "tf",
    "ref": "11:7",
-   "q": "Groaza Domnului a apucat pe popor, care a pornit ca un singur om.",
+   "q": "Groaza Domnului a apucat poporul, care a pornit ca un singur om.",
    "a": true
   },
   {
-   "t": "tf",
-   "ref": "11:9-10",
-   "q": "Locuitorii Iabesului le-au spus amoniților că li se vor supune a doua zi.",
-   "a": true
-  },
-  {
-   "t": "multi",
-   "ref": "11:9-11",
-   "q": "Care dintre următoarele fac parte din planul și biruința lui Saul? (pot fi mai multe sau niciunul)",
-   "opts": [
-    "Le-a promis celor din Iabes ajutor a doua zi",
-    "A atacat tabăra amoniților",
-    "L-a prins pe Nahaș și l-a omorât",
-    "A cerut ajutorul filistenilor"
-   ],
+   "t": "fill",
+   "ref": "11:9",
+   "q": "„Mâine, când va dogori soarele, veți avea ___.”",
    "a": [
-    0,
-    1
+    "ajutor"
    ]
   },
   {
    "t": "one",
    "ref": "11:11",
-   "q": "Ce s-a întâmplat cu amoniții în bătălie?",
+   "q": "În câte cete a împărțit Saul poporul?",
    "opts": [
-    "Au fost bătuți și risipiți",
-    "Au cucerit Iabesul",
-    "Au făcut pace cu Saul",
-    "S-au retras fără luptă"
+    "În două cete",
+    "În patru cete",
+    "În trei cete"
    ],
-   "a": 0
-  },
-  {
-   "t": "match",
-   "ref": "11:1-11",
-   "q": "Asociază fiecare personaj sau grup cu rolul lui în poveste.",
-   "pairs": [
-    [
-     "Nahaș",
-     "asediatorul Iabesului"
-    ],
-    [
-     "Locuitorii Iabesului",
-     "cei amenințați de amoniți"
-    ],
-    [
-     "Saul",
-     "conducătorul oștirii care i-a izbăvit"
-    ],
-    [
-     "Solii",
-     "cei care au dus vestea prin Israel"
-    ]
-   ]
-  },
-  {
-   "t": "match",
-   "ref": "11:12-13",
-   "q": "Asociază fiecare persoană sau grup cu ce a vrut sau a spus după biruință.",
-   "pairs": [
-    [
-     "Poporul",
-     "voia să-i omoare pe cei ce nu-l voiseră pe Saul"
-    ],
-    [
-     "Saul",
-     "a hotărât ca nimeni să nu fie omorât"
-    ],
-    [
-     "Domnul",
-     "a dat izbăvire lui Israel în ziua aceea"
-    ]
-   ]
-  },
-  {
-   "t": "one",
-   "ref": "11:15",
-   "q": "Ce a făcut tot poporul cu Saul la Ghilgal?",
-   "opts": [
-    "L-a judecat",
-    "L-a pus împărat înaintea Domnului",
-    "L-a trimis împotriva filistenilor",
-    "L-a lepădat"
-   ],
-   "a": 1
-  },
-  {
-   "t": "fill",
-   "ref": "11:15",
-   "q": "și Saul și toți oamenii lui Israel s-au ___ foarte mult acolo",
-   "a": [
-    "veselit"
-   ]
+   "a": 2
   },
   {
    "t": "tf",
-   "ref": "11:5",
-   "q": "Când Saul a întrebat de ce plânge poporul, i s-a istorisit ce spuseseră cei din Iabes.",
-   "a": true
+   "ref": "11:11",
+   "q": "Dintre amoniții care au scăpat, mulți au rămas împreună.",
+   "a": false
+  },
+  {
+   "t": "multi",
+   "ref": "11:12-13",
+   "q": "Ce s-a spus după victorie?",
+   "opts": [
+    "Poporul a cerut să fie omorâți cei ce nu-l voiau pe Saul",
+    "Saul a zis că nimeni nu va fi omorât în ziua aceea",
+    "Saul a zis că Domnul a dat o izbăvire lui Israel"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "11:13",
+   "q": "„căci astăzi Domnul a dat o ___ lui Israel”",
+   "a": [
+    "izbăvire"
+   ]
   },
   {
    "t": "one",
-   "ref": "11:9-10",
-   "q": "De ce le-au putut spune cei din Iabes amoniților că li se vor supune „mâine”?",
+   "ref": "11:14-15",
+   "q": "Unde au pus poporul pe Saul împărat înaintea Domnului?",
    "opts": [
-    "Pentru că nu mai aveau apă în cetate",
-    "Pentru că aflaseră că a doua zi le va veni ajutor",
-    "Pentru că Nahaș le promisese pace",
-    "Pentru că bătrânii voiau să fugă noaptea"
+    "La Mițpa",
+    "La Ghilgal",
+    "La Ghibea"
    ],
    "a": 1
   },
   {
    "t": "match",
    "ref": "11:1-15",
-   "q": "Asociază fiecare moment cu locul lui în ordinea faptelor.",
+   "q": "Asociază fiecare personaj cu fapta lui.",
    "pairs": [
     [
-     "Primul",
-     "Nahaș împresoară Iabesul"
+     "Nahaș",
+     "a împresurat Iabesul"
     ],
     [
-     "Al doilea",
-     "Solii ajung la Ghibea"
+     "Saul",
+     "a trimis bucăți de boi prin tot ținutul"
     ],
     [
-     "Al treilea",
-     "Saul taie în bucăți o pereche de boi"
-    ],
-    [
-     "Al patrulea",
-     "Amoniții sunt bătuți și risipiți"
-    ],
-    [
-     "Al cincilea",
-     "Saul este pus împărat la Ghilgal"
+     "Samuel",
+     "a chemat poporul la Ghilgal"
     ]
    ]
-  },
-  {
-   "t": "one",
-   "ref": "11:14",
-   "q": "Cine a chemat poporul să meargă la Ghilgal după biruință?",
-   "opts": [
-    "Saul",
-    "Samuel",
-    "Bătrânii din Iabes",
-    "Solii"
-   ],
-   "a": 1
   }
  ],
  "hard": [
@@ -243,114 +147,53 @@
    ]
   },
   {
-   "t": "multi",
-   "ref": "11:1-4",
-   "q": "Care dintre următoarele nume de locuri apar în versetele 1-4? (pot fi mai multe sau niciunul)",
-   "opts": [
-    "Iabes",
-    "Galaad",
-    "Mițpa",
-    "Ghibea",
-    "Rama",
-    "Hebron"
-   ],
-   "a": [
-    0,
-    1,
-    3
-   ]
-  },
-  {
-   "t": "multi",
-   "ref": "11:1-3",
-   "q": "Care dintre următoarele i-au oferit locuitorii Iabesului lui Nahaș? (pot fi mai multe sau niciunul)",
-   "opts": [
-    "Un tribut în aur",
-    "Fiicele lor ca roabe",
-    "Ostatici dintre bătrâni",
-    "Armele lor"
-   ],
-   "a": []
-  },
-  {
-   "t": "fill",
+   "t": "tf",
    "ref": "11:2",
-   "q": "dacă mă lăsați să vă scot la toți ochiul ___",
-   "a": [
-    "drept"
-   ]
-  },
-  {
-   "t": "match",
-   "ref": "11:2-12",
-   "q": "Asociază fiecare replică cu cel care a rostit-o.",
-   "pairs": [
-    [
-     "„Voi face legământ cu voi dacă mă lăsați...”",
-     "Nahaș"
-    ],
-    [
-     "„Dă-ne un răgaz...”",
-     "Bătrânii din Iabes"
-    ],
-    [
-     "„Ce are poporul de plânge?”",
-     "Saul"
-    ],
-    [
-     "„Dați încoace pe oamenii aceia, ca să-i omorâm.”",
-     "Poporul"
-    ]
-   ]
+   "q": "Nahaș voia să le scoată tuturor ochiul stâng, ca să arunce o ocară asupra întregului Israel.",
+   "a": false
   },
   {
    "t": "one",
    "ref": "11:3",
-   "q": "Ce răgaz au cerut bătrânii din Iabes?",
+   "q": "Cât răgaz au cerut bătrânii din Iabes?",
    "opts": [
     "Trei zile",
-    "Șapte zile",
     "Zece zile",
-    "O lună"
+    "Șapte zile"
    ],
-   "a": 1
+   "a": 2
   },
   {
-   "t": "tf",
-   "ref": "11:3",
-   "q": "Bătrânii din Iabes voiau să trimită soli doar la seminția lui Iuda.",
-   "a": false
+   "t": "one",
+   "ref": "11:4",
+   "q": "Unde au ajuns solii din Iabes?",
+   "opts": [
+    "La Ghibea, cetatea lui Saul",
+    "La Mițpa",
+    "La Ghilgal"
+   ],
+   "a": 0
   },
   {
-   "t": "fill",
-   "ref": "11:5",
-   "q": "Saul tocmai se întorcea de la câmp, în urma ___",
-   "a": [
-    "boilor"
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "11:6",
-   "q": "Când Duhul lui Dumnezeu a venit peste Saul, el s-a mâniat foarte tare.",
-   "a": true
-  },
-  {
-   "t": "fill",
+   "t": "multi",
    "ref": "11:7",
-   "q": "„Oricine nu va merge după ___ și ___ își va vedea boii tăiați la fel.”",
+   "q": "Ce a făcut Saul cu boii?",
+   "opts": [
+    "I-a adus jertfă la Ghilgal",
+    "I-a trimis în dar lui Nahaș",
+    "A luat o pereche de boi"
+   ],
    "a": [
-    "Saul",
-    "Samuel"
+    2
    ]
   },
   {
    "t": "match",
-   "ref": "11:8-11",
-   "q": "Asociază fiecare grup cu numărul lui.",
+   "ref": "11:8",
+   "q": "Asociază fiecare element cu detaliul din numărătoare.",
    "pairs": [
     [
-     "Copiii lui Israel la numărătoare",
+     "Copiii lui Israel",
      "trei sute de mii"
     ],
     [
@@ -358,155 +201,49 @@
      "treizeci de mii"
     ],
     [
-     "Cetele în care Saul a împărțit poporul",
-     "trei"
+     "Locul numărătorii",
+     "Bezec"
     ]
    ]
-  },
-  {
-   "t": "match",
-   "ref": "11:1-15",
-   "q": "Asociază fiecare loc cu ce s-a petrecut acolo.",
-   "pairs": [
-    [
-     "Iabesul din Galaad",
-     "cetatea împresurată de Nahaș"
-    ],
-    [
-     "Ghibea",
-     "cetatea lui Saul"
-    ],
-    [
-     "Bezec",
-     "locul numărătorii"
-    ],
-    [
-     "Ghilgal",
-     "locul unde s-a dus tot poporul după biruință"
-    ]
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "11:9",
-   "q": "Solii au fost trimiși înapoi cu vestea că ajutorul va veni peste trei zile.",
-   "a": false
   },
   {
    "t": "fill",
-   "ref": "11:9",
-   "q": "Mâine, când va ___ soarele, veți avea ajutor",
+   "ref": "11:7",
+   "q": "___ Domnului a apucat pe popor, care a pornit ca un singur om.",
    "a": [
-    "dogori"
+    "Groaza"
    ]
   },
   {
    "t": "tf",
-   "ref": "11:9",
-   "q": "Când au primit vestea, cei din Iabes s-au umplut de bucurie.",
-   "a": true
-  },
-  {
-   "t": "fill",
    "ref": "11:10",
-   "q": "„Mâine ne vom supune vouă și ne veți face ce vă va ___.”",
-   "a": [
-    "plăcea"
-   ]
+   "q": "Iabeșenii au spus amoniților că se vor supune peste trei zile.",
+   "a": false
   },
   {
    "t": "one",
    "ref": "11:11",
-   "q": "În ce moment au pătruns israeliții în tabăra amoniților?",
+   "q": "Când au pătruns în tabăra amoniților?",
    "opts": [
     "La miezul nopții",
     "În straja dimineții",
-    "La amiază",
     "La apusul soarelui"
    ],
    "a": 1
   },
   {
-   "t": "one",
-   "ref": "11:11",
-   "q": "Până când i-au bătut pe amoniți?",
-   "opts": [
-    "Până seara",
-    "Până în zori",
-    "Până la căldura zilei",
-    "Trei zile la rând"
-   ],
-   "a": 2
-  },
-  {
-   "t": "tf",
-   "ref": "11:11",
-   "q": "Dintre amoniții care au scăpat n-au mai rămas doi laolaltă.",
-   "a": true
-  },
-  {
    "t": "fill",
    "ref": "11:12",
-   "q": "Cine zicea: ‘Saul să ___ peste noi?’ Dați încoace pe oamenii aceia",
+   "q": "„Cine zicea: ‘Saul să ___ peste noi?’”",
    "a": [
     "domnească"
    ]
   },
   {
-   "t": "one",
-   "ref": "11:12",
-   "q": "Cui i-a cerut poporul să le fie dați cei ce se împotriviseră domniei lui Saul?",
-   "opts": [
-    "Lui Saul",
-    "Bătrânilor",
-    "Lui Samuel",
-    "Lui Ionatan"
-   ],
-   "a": 2
-  },
-  {
-   "t": "fill",
-   "ref": "11:14",
-   "q": "„Veniți și să mergem la Ghilgal, ca să ___ acolo împărăția.”",
-   "a": [
-    "întărim"
-   ]
-  },
-  {
-   "t": "multi",
-   "ref": "11:15",
-   "q": "Care dintre următoarele s-au întâmplat la Ghilgal, potrivit versetului 15? (pot fi mai multe sau niciunul)",
-   "opts": [
-    "Au fost aduse jertfe de mulțumire înaintea Domnului",
-    "Samuel a uns un alt împărat",
-    "Au fost omorâți potrivnicii lui Saul",
-    "S-a zidit un altar nou"
-   ],
-   "a": [
-    0
-   ]
-  },
-  {
-   "t": "multi",
-   "ref": "11:8",
-   "q": "Ce spune textul despre numărătoarea făcută de Saul la Bezec?",
-   "opts": [
-    "Copiii lui Israel erau trei sute de mii",
-    "Bărbații lui Iuda erau treizeci de mii",
-    "Bărbații lui Iuda erau zece mii",
-    "Copiii lui Israel erau două sute de mii",
-    "Numărătoarea s-a făcut la Telaim"
-   ],
-   "a": [
-    0,
-    1
-   ]
-  },
-  {
    "t": "tf",
-   "ref": "11:11",
-   "q": "A doua zi, Saul a împărțit poporul în două cete și au pătruns în tabăra amoniților în straja dimineții.",
-   "a": false
+   "ref": "11:15",
+   "q": "La Ghilgal au adus jertfe de mulțumire înaintea Domnului.",
+   "a": true
   }
  ]
 }

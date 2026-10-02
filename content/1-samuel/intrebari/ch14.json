@@ -10,91 +10,44 @@
   {
    "t": "one",
    "ref": "14:1",
-   "q": "Cu cine a pornit Ionatan spre straja filistenilor?",
+   "q": "Cine a mers cu Ionatan la straja filistenilor?",
    "opts": [
-    "Cu Saul",
-    "Cu tânărul care-i purta armele",
-    "Cu Abner",
-    "Cu preotul Ahia"
+    "Tânărul care-i purta armele",
+    "Saul",
+    "Preotul Ahia"
    ],
-   "a": 1
+   "a": 0
   },
   {
-   "t": "tf",
-   "ref": "14:3",
-   "q": "Poporul nu știa că Ionatan s-a dus.",
-   "a": true
-  },
-  {
-   "t": "one",
+   "t": "fill",
    "ref": "14:6",
-   "q": "De ce credea Ionatan că pot birui doar doi oameni?",
-   "opts": [
-    "Pentru că filistenii dormeau",
-    "Pentru că aveau săbii mai bune",
-    "Pentru că nimic nu împiedică pe Domnul să dea izbăvire printr-un mic număr ca și printr-un mare număr",
-    "Pentru că Saul venea în urma lor cu oastea"
-   ],
-   "a": 2
-  },
-  {
-   "t": "tf",
-   "ref": "14:7",
-   "q": "Cel ce-i ducea armele a încercat să-l oprească pe Ionatan.",
-   "a": false
+   "q": "nimic nu împiedică pe Domnul să dea ___ printr-un mic număr ca și printr-un mare număr",
+   "a": [
+    "izbăvire"
+   ]
   },
   {
    "t": "one",
    "ref": "14:9-10",
-   "q": "Care a fost semnul stabilit de Ionatan ca să știe dacă să se suie la filisteni?",
+   "q": "Care era semnul lui Ionatan că Domnul îi dă pe filisteni în mâinile lor?",
    "opts": [
-    "Dacă filistenii fugeau de ei",
-    "Dacă filistenii le ziceau: „Suiți-vă la noi!”",
-    "Dacă tuna din cer",
-    "Dacă filistenii le aruncau săgeți"
+    "Dacă filistenii vor fugi",
+    "Dacă filistenii vor zice: „Suiți-vă la noi!”",
+    "Dacă filistenii vor trage cu arcul"
    ],
    "a": 1
   },
   {
    "t": "tf",
-   "ref": "14:11",
-   "q": "Filistenii au spus batjocoritor că evreii ies din găurile în care s-au ascuns.",
+   "ref": "14:15",
+   "q": "Groaza care a cuprins tabăra filistenilor era groaza lui Dumnezeu.",
    "a": true
-  },
-  {
-   "t": "multi",
-   "ref": "14:13-15",
-   "q": "Ce s-a întâmplat după ce Ionatan s-a suit la filisteni? (pot fi mai multe sau niciunul)",
-   "opts": [
-    "Filistenii au căzut înaintea lui Ionatan",
-    "A intrat groaza în tabără",
-    "Ionatan a fost rănit",
-    "Filistenii au trimis după ajutoare",
-    "Țara s-a îngrozit"
-   ],
-   "a": [
-    0,
-    1,
-    4
-   ]
   },
   {
    "t": "tf",
-   "ref": "14:15",
-   "q": "Textul spune că groaza din tabăra filistenilor era groaza lui Dumnezeu.",
-   "a": true
-  },
-  {
-   "t": "one",
    "ref": "14:17",
-   "q": "Pe cine au constatat că lipsesc, când Saul a pus să fie numărat poporul?",
-   "opts": [
-    "Pe Ahia",
-    "Pe Abner",
-    "Pe Samuel",
-    "Pe Ionatan și pe cel ce-i purta armele"
-   ],
-   "a": 3
+   "q": "Prin numărătoare, Saul a aflat că lipseau Ionatan și purtătorul lui de arme.",
+   "a": true
   },
   {
    "t": "tf",
@@ -105,85 +58,11 @@
   {
    "t": "multi",
    "ref": "14:21-22",
-   "q": "Cine s-a alăturat israeliților care erau cu Saul și Ionatan? (pot fi mai multe sau niciunul)",
+   "q": "Cine s-a alăturat luptei împotriva filistenilor?",
    "opts": [
-    "Evreii care erau mai dinainte la filisteni",
-    "Bărbații lui Israel care se ascunseseră",
-    "Amaleciții",
-    "Moabiții",
-    "Cheniții"
-   ],
-   "a": [
-    0,
-    1
-   ]
-  },
-  {
-   "t": "fill",
-   "ref": "14:23",
-   "q": "„Domnul a izbăvit pe ___ în ziua aceea”",
-   "a": [
-    "Israel"
-   ]
-  },
-  {
-   "t": "one",
-   "ref": "14:24",
-   "q": "Ce jurământ i-a pus Saul pe popor să facă?",
-   "opts": [
-    "Să nu bea apă până seara",
-    "Să nu mănânce pâine până seara",
-    "Să nu ia nimic din pradă",
-    "Să nu se întoarcă acasă"
-   ],
-   "a": 1
-  },
-  {
-   "t": "tf",
-   "ref": "14:26",
-   "q": "Poporul a mâncat din mierea găsită în pădure.",
-   "a": false
-  },
-  {
-   "t": "one",
-   "ref": "14:27",
-   "q": "De ce a mâncat Ionatan miere?",
-   "opts": [
-    "Voia să-l sfideze pe tatăl său",
-    "Preotul i-a dat voie",
-    "Nu știa de jurământul pe care-l pusese tatăl său pe popor",
-    "Era rănit"
-   ],
-   "a": 2
-  },
-  {
-   "t": "tf",
-   "ref": "14:29",
-   "q": "Ionatan a spus că tatăl său tulbură poporul.",
-   "a": true
-  },
-  {
-   "t": "one",
-   "ref": "14:32",
-   "q": "Ce păcat a făcut poporul obosit, când s-a aruncat asupra prăzii?",
-   "opts": [
-    "A mâncat carnea cu sânge cu tot",
-    "S-a închinat la idoli",
-    "A fugit din luptă",
-    "A cârtit împotriva lui Samuel"
-   ],
-   "a": 0
-  },
-  {
-   "t": "multi",
-   "ref": "14:33-35",
-   "q": "Ce a făcut Saul după ce a aflat că poporul mănâncă cu sânge? (pot fi mai multe sau niciunul)",
-   "opts": [
-    "A pus să se rostogolească o piatră mare",
-    "A cerut ca animalele să fie înjunghiate acolo",
-    "A zidit un altar Domnului",
-    "I-a ucis pe cei vinovați",
-    "A trimis după Samuel"
+    "Israeliții care erau cu Saul și Ionatan",
+    "Bărbații ascunși în muntele Efraim",
+    "Evreii care fuseseră mai înainte la filisteni"
    ],
    "a": [
     0,
@@ -192,966 +71,309 @@
    ]
   },
   {
-   "t": "tf",
-   "ref": "14:37",
-   "q": "Când Saul a întrebat pe Dumnezeu dacă să coboare după filisteni, nu i s-a dat niciun răspuns în clipa aceea.",
-   "a": true
-  },
-  {
    "t": "one",
-   "ref": "14:38-42",
-   "q": "Cum a aflat Saul cine păcătuise?",
-   "opts": [
-    "Printr-un vis",
-    "Prin Samuel",
-    "Prin aruncarea sorțului",
-    "Prin mărturia poporului"
-   ],
-   "a": 2
-  },
-  {
-   "t": "tf",
-   "ref": "14:39",
-   "q": "Saul a jurat că vinovatul va muri chiar dacă ar fi fiul său Ionatan.",
-   "a": true
-  },
-  {
-   "t": "tf",
-   "ref": "14:43",
-   "q": "Ionatan a mărturisit ce făcuse și a spus că este gata să moară.",
-   "a": true
-  },
-  {
-   "t": "one",
-   "ref": "14:45",
-   "q": "Cine l-a scăpat pe Ionatan de la moarte?",
-   "opts": [
-    "Saul",
-    "Poporul",
-    "Samuel",
-    "Ahia"
-   ],
-   "a": 1
-  },
-  {
-   "t": "match",
-   "ref": "14:3-29",
-   "q": "Asociază fiecare personaj cu fapta lui.",
-   "pairs": [
-    [
-     "Ionatan",
-     "a pătruns la straja filistenilor"
-    ],
-    [
-     "Saul",
-     "a pus poporul să jure"
-    ],
-    [
-     "Ahia",
-     "purta efodul"
-    ],
-    [
-     "Cel ce-i purta armele lui Ionatan",
-     "s-a declarat gata să-l urmeze oriunde"
-    ]
-   ]
-  },
-  {
-   "t": "multi",
-   "ref": "14:47",
-   "q": "Cu care dintre următorii a făcut Saul război? (pot fi mai multe sau niciunul)",
-   "opts": [
-    "Moab",
-    "Copiii lui Amon",
-    "Egipt",
-    "Edom",
-    "Filistenii",
-    "Asiria"
-   ],
-   "a": [
-    0,
-    1,
-    3,
-    4
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "14:48",
-   "q": "Saul a fost învins de Amalec.",
-   "a": false
-  },
-  {
-   "t": "match",
-   "ref": "14:49-50",
-   "q": "Asociază fiecare persoană cu legătura ei cu Saul.",
-   "pairs": [
-    [
-     "Ionatan",
-     "fiu al lui Saul"
-    ],
-    [
-     "Mical",
-     "fata cea mai mică a lui Saul"
-    ],
-    [
-     "Ahinoam",
-     "nevasta lui Saul"
-    ],
-    [
-     "Abner",
-     "căpetenia oștirii lui Saul"
-    ]
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "14:52",
-   "q": "În timpul vieții lui Saul a fost pace cu filistenii.",
-   "a": false
-  },
-  {
-   "t": "fill",
-   "ref": "14:52",
-   "q": "„de îndată ce Saul zărea vreun om ___ și voinic, îl lua cu el”",
-   "a": [
-    "tare"
-   ]
-  },
-  {
-   "t": "one",
-   "ref": "14:2",
-   "q": "Unde stătea Saul cu poporul lui când a pornit Ionatan spre filisteni?",
-   "opts": [
-    "În Ghilgal",
-    "La marginea cetății Ghibea",
-    "La Micmaș",
-    "La Silo"
-   ],
-   "a": 1
-  },
-  {
-   "t": "fill",
-   "ref": "14:6",
-   "q": "„Poate că Domnul va ___ pentru noi”",
-   "a": [
-    "lucra"
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "14:12",
-   "q": "Ionatan i-a spus purtătorului de arme să se suie după el.",
-   "a": true
-  },
-  {
-   "t": "one",
-   "ref": "14:13",
-   "q": "Ce făcea purtătorul de arme mergând după Ionatan?",
-   "opts": [
-    "Suna din trâmbiță",
-    "Strângea prada",
-    "Arunca moartea în urma lui",
-    "Păzea drumul de întoarcere"
-   ],
-   "a": 2
-  },
-  {
-   "t": "one",
-   "ref": "14:20",
-   "q": "Ce au făcut Saul și poporul lui după ce Saul i-a zis preotului „Trage-ți mâna!”?",
-   "opts": [
-    "S-au strâns și au înaintat până la locul luptei",
-    "S-au ascuns în peșteri",
-    "Au trimis soli după Samuel",
-    "Au rămas să aducă jertfe"
-   ],
-   "a": 0
-  },
-  {
-   "t": "one",
-   "ref": "14:22",
-   "q": "Ce i-a făcut pe bărbații ascunși în muntele lui Efraim să iasă la luptă?",
-   "opts": [
-    "Chemarea trâmbiței",
-    "Porunca lui Samuel",
-    "Au aflat că filistenii fugeau",
-    "Au văzut chivotul"
-   ],
-   "a": 2
-  },
-  {
-   "t": "fill",
    "ref": "14:24",
-   "q": "„Ziua aceea a fost ___ pentru bărbații lui Israel”",
-   "a": [
-    "obositoare"
-   ]
-  },
-  {
-   "t": "one",
-   "ref": "14:26",
-   "q": "De ce n-a dus nimeni din popor miere la gură, deși mierea curgea?",
+   "q": "Ce a pus Saul poporul să jure?",
    "opts": [
-    "Mierea era stricată",
-    "Poporul ținea jurământul",
-    "Preotul o oprise",
-    "Nu voiau să piardă vremea"
-   ],
-   "a": 1
-  },
-  {
-   "t": "fill",
-   "ref": "14:28",
-   "q": "„Și poporul era ___ de puteri”",
-   "a": [
-    "sleit"
-   ]
-  },
-  {
-   "t": "one",
-   "ref": "14:30",
-   "q": "Ce a spus Ionatan că s-ar fi întâmplat dacă poporul ar fi mâncat din pradă?",
-   "opts": [
-    "Poporul s-ar fi îmbolnăvit",
-    "Domnul i-ar fi pedepsit",
-    "Filistenii s-ar fi întors",
-    "Înfrângerea filistenilor ar fi fost mai mare"
-   ],
-   "a": 3
-  },
-  {
-   "t": "one",
-   "ref": "14:36",
-   "q": "Ce a propus Saul după ce a zidit altarul?",
-   "opts": [
-    "Să coboare noaptea după filisteni și să-i jefuiască până la lumina zilei",
-    "Să se întoarcă acasă",
-    "Să facă pace cu filistenii",
-    "Să-l cheme pe Samuel"
-   ],
-   "a": 0
-  },
-  {
-   "t": "tf",
-   "ref": "14:36",
-   "q": "Poporul s-a împotrivit planului lui Saul de a urmări noaptea pe filisteni.",
-   "a": false
-  },
-  {
-   "t": "tf",
-   "ref": "14:38",
-   "q": "Saul a chemat căpeteniile poporului ca să cerceteze de cine fusese săvârșit păcatul.",
-   "a": true
-  },
-  {
-   "t": "one",
-   "ref": "14:37-38",
-   "q": "Ce l-a făcut pe Saul să caute un păcat săvârșit în ziua aceea?",
-   "opts": [
-    "Un vis al preotului",
-    "Dumnezeu nu i-a dat niciun răspuns",
-    "Poporul se plângea de foame",
-    "Filistenii scăpaseră"
-   ],
-   "a": 1
-  },
-  {
-   "t": "one",
-   "ref": "14:40",
-   "q": "Cum a așezat Saul oamenii înainte de aruncarea sorțului?",
-   "opts": [
-    "Pe seminții",
-    "Căpeteniile de o parte, poporul de cealaltă",
-    "Poporul de o parte, iar el și Ionatan de cealaltă",
-    "Preoții de o parte, ostașii de cealaltă"
-   ],
-   "a": 2
-  },
-  {
-   "t": "tf",
-   "ref": "14:44",
-   "q": "După mărturisirea lui Ionatan, Saul a hotărât să-l ierte.",
-   "a": false
-  },
-  {
-   "t": "multi",
-   "ref": "14:45",
-   "q": "Ce motive a dat poporul ca să nu-l lase pe Ionatan să moară? (pot fi mai multe sau niciunul)",
-   "opts": [
-    "A făcut o mare izbăvire în Israel",
-    "Cu Dumnezeu a lucrat el în ziua aceea",
-    "Era moștenitorul domniei",
-    "Sorțul fusese aruncat greșit",
-    "Mâncase doar puțină miere"
-   ],
-   "a": [
-    0,
-    1
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "14:46",
-   "q": "După ce Saul a încetat urmărirea, filistenii s-au dus acasă.",
-   "a": true
-  },
-  {
-   "t": "tf",
-   "ref": "14:47",
-   "q": "Oriîncotro se întorcea, Saul era biruitor.",
-   "a": true
-  },
-  {
-   "t": "multi",
-   "ref": "14:48",
-   "q": "Ce spune textul despre Saul în versetul 48? (pot fi mai multe sau niciunul)",
-   "opts": [
-    "S-a arătat viteaz",
-    "A scăpat pe Israel din mâna celor ce-l jefuiau",
-    "A făcut pace cu filistenii",
-    "A zidit o cetate nouă"
-   ],
-   "a": [
-    0,
-    1
-   ]
-  },
-  {
-   "t": "one",
-   "ref": "14:49",
-   "q": "Câte fete avea Saul?",
-   "opts": [
-    "Una",
-    "Trei",
-    "Două",
-    "Patru"
-   ],
-   "a": 2
-  },
-  {
-   "t": "tf",
-   "ref": "14:18",
-   "q": "Textul spune că pe vremea aceea chivotul lui Dumnezeu era cu copiii lui Israel.",
-   "a": true
-  },
-  {
-   "t": "fill",
-   "ref": "14:47",
-   "q": "„a făcut război în toate ___ cu toți vrăjmașii lui”",
-   "a": [
-    "părțile"
-   ]
-  },
-  {
-   "t": "match",
-   "ref": "14:12-45",
-   "q": "Asociază fiecare vorbitor cu replica lui.",
-   "pairs": [
-    [
-     "Filistenii de strajă",
-     "„Suiți-vă la noi, ca să vă arătăm ceva.”"
-    ],
-    [
-     "Cineva din popor",
-     "„Tatăl tău a pus pe popor să jure”"
-    ],
-    [
-     "Saul",
-     "„Spune-mi ce-ai făcut.”"
-    ],
-    [
-     "Poporul",
-     "„Ce! Să moară Ionatan?”"
-    ]
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "14:32",
-   "q": "Poporul a înjunghiat animalele luate din pradă pe pământ.",
-   "a": true
-  },
-  {
-   "t": "tf",
-   "ref": "14:19",
-   "q": "Zarva din tabăra filistenilor s-a potolit cât timp vorbea Saul cu preotul.",
-   "a": false
-  }
- ],
- "hard": [
-  {
-   "t": "fill",
-   "ref": "14:1",
-   "q": "„Vino și să pătrundem până la ___ filistenilor, care este dincolo de locul acesta”",
-   "a": [
-    "straja"
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "14:2",
-   "q": "Saul avea cu el aproape șase sute de oameni.",
-   "a": true
-  },
-  {
-   "t": "multi",
-   "ref": "14:3",
-   "q": "Care dintre următorii apar în genealogia lui Ahia? (pot fi mai multe sau niciunul)",
-   "opts": [
-    "Ahitub",
-    "I-Cabod",
-    "Fineas",
-    "Eli",
-    "Ahimelec",
-    "Abiatar"
-   ],
-   "a": [
-    0,
-    1,
-    2,
-    3
-   ]
-  },
-  {
-   "t": "one",
-   "ref": "14:3",
-   "q": "Ce purta Ahia?",
-   "opts": [
-    "Chivotul",
-    "Efodul",
-    "Toiagul lui Aaron",
-    "Trâmbița"
-   ],
-   "a": 1
-  },
-  {
-   "t": "one",
-   "ref": "14:4",
-   "q": "Cum se numeau cele două piscuri de stâncă de la trecători?",
-   "opts": [
-    "Ofra și Șual",
-    "Migron și Gheba",
-    "Boțeț și Sene",
-    "Bet-Aven și Betel"
-   ],
-   "a": 2
-  },
-  {
-   "t": "tf",
-   "ref": "14:5",
-   "q": "Piscul de la miazănoapte era față în față cu Gheba.",
-   "a": false
-  },
-  {
-   "t": "fill",
-   "ref": "14:6",
-   "q": "„Vino și să pătrundem până la straja acestor ___ împrejur”",
-   "a": [
-    "netăiați"
-   ]
-  },
-  {
-   "t": "fill",
-   "ref": "14:7",
-   "q": "„n-asculta decât de ___ tău și iată-mă cu tine”",
-   "a": [
-    "simțământul"
-   ]
-  },
-  {
-   "t": "fill",
-   "ref": "14:8",
-   "q": "„haidem la oamenii aceștia și să ne ___ lor”",
-   "a": [
-    "arătăm"
-   ]
-  },
-  {
-   "t": "one",
-   "ref": "14:9",
-   "q": "Ce trebuiau să zică filistenii pentru ca Ionatan să rămână pe loc?",
-   "opts": [
-    "„Predați-vă!”",
-    "„Opriți-vă până vom veni noi la voi!”",
-    "„Fugiți de aici!”",
-    "„Cine sunteți voi?”"
-   ],
-   "a": 1
-  },
-  {
-   "t": "fill",
-   "ref": "14:12",
-   "q": "„Suiți-vă la noi, ca să vă arătăm ___”",
-   "a": [
-    "ceva"
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "14:13",
-   "q": "Ionatan s-a suit ajutându-se cu mâinile și picioarele.",
-   "a": true
-  },
-  {
-   "t": "one",
-   "ref": "14:14",
-   "q": "Câți oameni au ucis Ionatan și purtătorul armelor în prima înfrângere?",
-   "opts": [
-    "Zece",
-    "Douăzeci",
-    "Patruzeci",
-    "O sută"
+    "Să nu doarmă până la biruință",
+    "Să nu mănânce pâine până seara",
+    "Să nu lase niciun filistean în viață"
    ],
    "a": 1
   },
   {
    "t": "tf",
-   "ref": "14:14",
-   "q": "Prima înfrângere s-a petrecut pe o întindere de aproape un pogon întreg de pământ.",
-   "a": false
-  },
-  {
-   "t": "multi",
-   "ref": "14:15",
-   "q": "Despre cine spune textul că s-a înspăimântat? (pot fi mai multe sau niciunul)",
-   "opts": [
-    "Straja",
-    "Prădătorii",
-    "Străjerii lui Saul",
-    "Cel ce-i ducea armele lui Ionatan"
-   ],
-   "a": [
-    0,
-    1
-   ]
-  },
-  {
-   "t": "one",
-   "ref": "14:16",
-   "q": "Unde erau străjerii lui Saul care au văzut mulțimea împrăștiindu-se?",
-   "opts": [
-    "La Micmaș",
-    "La Ghilgal",
-    "La Bet-Aven",
-    "La Ghibea lui Beniamin"
-   ],
-   "a": 3
-  },
-  {
-   "t": "fill",
-   "ref": "14:17",
-   "q": "„Numărați, vă rog, și vedeți cine a ___ din mijlocul nostru”",
-   "a": [
-    "plecat"
-   ]
-  },
-  {
-   "t": "one",
-   "ref": "14:18",
-   "q": "Ce i-a cerut Saul lui Ahia să aducă?",
-   "opts": [
-    "Efodul",
-    "Chivotul lui Dumnezeu",
-    "Trâmbița",
-    "Sabia"
-   ],
-   "a": 1
-  },
-  {
-   "t": "one",
-   "ref": "14:19",
-   "q": "Ce i-a spus Saul preotului când zarva din tabăra filistenilor creștea?",
-   "opts": [
-    "„Trage-ți mâna!”",
-    "„Adu jertfa!”",
-    "„Întreabă pe Domnul!”",
-    "„Sună din trâmbiță!”"
-   ],
-   "a": 0
-  },
-  {
-   "t": "tf",
-   "ref": "14:20",
-   "q": "Învălmășeala din tabăra filistenilor era nespus de mare.",
-   "a": true
-  },
-  {
-   "t": "one",
-   "ref": "14:23",
-   "q": "Până unde s-a întins lupta în ziua aceea?",
-   "opts": [
-    "Până la Ghilgal",
-    "Până dincolo de Bet-Aven",
-    "Până la Gaza",
-    "Până la Iordan"
-   ],
-   "a": 1
-  },
-  {
-   "t": "fill",
-   "ref": "14:24",
-   "q": "„până mă voi ___ pe vrăjmașii mei”",
-   "a": [
-    "răzbuna"
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "14:25",
-   "q": "Poporul a găsit miere pe fața pământului, într-o pădure.",
-   "a": true
-  },
-  {
-   "t": "one",
    "ref": "14:27",
-   "q": "Cu ce a luat Ionatan mierea?",
-   "opts": [
-    "Cu sabia",
-    "Cu mâna goală",
-    "Cu un vas",
-    "Cu vârful toiagului"
-   ],
-   "a": 3
-  },
-  {
-   "t": "fill",
-   "ref": "14:27",
-   "q": "„a dus mâna la gură, și ochii i s-au ___”",
-   "a": [
-    "luminat"
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "14:28",
-   "q": "Cel care i-a spus lui Ionatan despre jurământ a fost preotul Ahia.",
+   "q": "Ionatan știa de jurământul pus de tatăl său.",
    "a": false
   },
   {
    "t": "fill",
-   "ref": "14:30",
-   "q": "„dacă poporul ar fi mâncat azi din ___ pe care a găsit-o la vrăjmașii lui”",
+   "ref": "14:29",
+   "q": "Ionatan a zis: „Tatăl meu ___ poporul.”",
    "a": [
-    "prada"
-   ]
-  },
-  {
-   "t": "multi",
-   "ref": "14:32",
-   "q": "Ce animale a luat poporul din pradă și le-a mâncat cu sânge? (pot fi mai multe sau niciunul)",
-   "opts": [
-    "Oi",
-    "Boi",
-    "Cămile",
-    "Viței",
-    "Măgari"
-   ],
-   "a": [
-    0,
-    1,
-    3
+    "tulbură"
    ]
   },
   {
    "t": "tf",
-   "ref": "14:33",
-   "q": "Saul le-a spus celor care mâncau cu sânge: „Voi faceți o nelegiuire.”",
-   "a": true
-  },
-  {
-   "t": "tf",
-   "ref": "14:34",
-   "q": "Fiecare din popor și-a adus boul peste noapte, ca să-l înjunghie pe piatră.",
-   "a": true
+   "ref": "14:33-34",
+   "q": "Poporul a fost lăsat să mănânce carnea cu sânge, fără nicio îndreptare.",
+   "a": false
   },
   {
    "t": "tf",
    "ref": "14:35",
-   "q": "Altarul zidit de Saul a fost al doilea altar pe care l-a zidit Domnului.",
-   "a": false
-  },
-  {
-   "t": "fill",
-   "ref": "14:36",
-   "q": "„să-i jefuim până la lumina ___ și să nu lăsăm să rămână unul măcar”",
-   "a": [
-    "zilei"
-   ]
+   "q": "Altarul zidit de Saul a fost cel dintâi altar pe care l-a zidit Domnului.",
+   "a": true
   },
   {
    "t": "one",
-   "ref": "14:36",
-   "q": "Cine a zis: „Să ne apropiem aici de Dumnezeu”?",
+   "ref": "14:37",
+   "q": "Cum a răspuns Dumnezeu când Saul a întrebat dacă să urmărească pe filisteni?",
    "opts": [
-    "Ionatan",
-    "Abner",
-    "Preotul",
-    "Poporul"
-   ],
-   "a": 2
-  },
-  {
-   "t": "fill",
-   "ref": "14:39",
-   "q": "„Căci, viu este Domnul, ___ lui Israel, chiar dacă l-ar fi săvârșit fiul meu”",
-   "a": [
-    "Izbăvitorul"
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "14:39",
-   "q": "Când Saul a jurat că vinovatul va muri, poporul i-a răspuns îndată.",
-   "a": false
-  },
-  {
-   "t": "one",
-   "ref": "14:41",
-   "q": "Pe cine a căzut sorțul prima dată?",
-   "opts": [
-    "Pe popor",
-    "Pe căpeteniile poporului",
-    "Pe Ionatan și pe Saul",
-    "Pe preoți"
+    "I-a spus să-i urmărească",
+    "I-a spus să aștepte dimineața",
+    "Nu i-a dat niciun răspuns"
    ],
    "a": 2
   },
   {
    "t": "tf",
-   "ref": "14:42",
-   "q": "Când s-a aruncat sorțul între Saul și Ionatan, sorțul a căzut pe Saul.",
+   "ref": "14:39",
+   "q": "Saul a jurat că vinovatul va fi cruțat, chiar dacă ar fi fiul său Ionatan.",
    "a": false
   },
   {
-   "t": "match",
-   "ref": "14:7-41",
-   "q": "Asociază fiecare vorbitor cu replica sa.",
-   "pairs": [
-    [
-     "Cel ce-i ducea armele lui Ionatan",
-     "„Fă tot ce ai în inimă”"
-    ],
-    [
-     "Ionatan",
-     "„Tatăl meu tulbură poporul”"
-    ],
-    [
-     "Poporul",
-     "„Fă ce vei crede.”"
-    ],
-    [
-     "Saul",
-     "„Dumnezeul lui Israel, arată adevărul!”"
-    ]
-   ]
+   "t": "one",
+   "ref": "14:41-42",
+   "q": "Pe cine a căzut sorțul în cele din urmă?",
+   "opts": [
+    "Pe Saul",
+    "Pe Abner",
+    "Pe Ionatan"
+   ],
+   "a": 2
   },
   {
-   "t": "fill",
-   "ref": "14:44",
-   "q": "„Dumnezeu să Se poarte cu toată ___ față de mine dacă nu vei muri”",
-   "a": [
-    "asprimea"
-   ]
+   "t": "one",
+   "ref": "14:45",
+   "q": "Cine a scăpat pe Ionatan de la moarte?",
+   "opts": [
+    "Poporul",
+    "Preotul Ahia",
+    "Abner"
+   ],
+   "a": 0
   },
   {
    "t": "fill",
    "ref": "14:45",
-   "q": "„Viu este Domnul că un ___ din capul lui nu va cădea la pământ”",
+   "q": "un ___ din capul lui nu va cădea la pământ",
    "a": [
     "păr"
    ]
   },
   {
-   "t": "tf",
-   "ref": "14:46",
-   "q": "După ce Ionatan a fost cruțat, Saul a continuat să urmărească pe filisteni.",
-   "a": false
-  },
-  {
-   "t": "one",
-   "ref": "14:47",
-   "q": "Împărații din ce loc sunt amintiți printre vrăjmașii lui Saul?",
-   "opts": [
-    "Gat",
-    "Damasc",
-    "Tir",
-    "Țoba"
-   ],
-   "a": 3
-  },
-  {
-   "t": "multi",
-   "ref": "14:49",
-   "q": "Care dintre următorii erau fiii lui Saul? (pot fi mai multe sau niciunul)",
-   "opts": [
-    "Ionatan",
-    "Ișvi",
-    "Abner",
-    "Malchișua",
-    "Ahia",
-    "Ner"
-   ],
-   "a": [
-    0,
-    1,
-    3
-   ]
-  },
-  {
    "t": "match",
-   "ref": "14:49-51",
-   "q": "Asociază fiecare nume cu cine era.",
+   "ref": "14:6-45",
+   "q": "Potrivește fiecare om cu cuvintele lui.",
    "pairs": [
     [
-     "Merab",
-     "fata cea mai mare a lui Saul"
+     "Ionatan",
+     "Poate că Domnul va lucra pentru noi"
     ],
     [
-     "Chis",
-     "tatăl lui Saul"
+     "Saul",
+     "Blestemat să fie omul care va mânca pâine până seara"
     ],
     [
-     "Ahimaaț",
-     "tatăl Ahinoamei"
-    ],
-    [
-     "Ner",
-     "tatăl lui Abner"
-    ],
-    [
-     "Abiel",
-     "tatăl lui Chis și al lui Ner"
+     "Poporul",
+     "Un păr din capul lui nu va cădea la pământ"
     ]
    ]
-  },
-  {
-   "t": "tf",
-   "ref": "14:50",
-   "q": "Ner, tatăl lui Abner, era unchiul lui Saul.",
-   "a": true
-  },
-  {
-   "t": "match",
-   "ref": "14:2-31",
-   "q": "Asociază fiecare loc cu ce spune textul despre el.",
-   "pairs": [
-    [
-     "Migron",
-     "acolo era rodiul sub care stătea Saul"
-    ],
-    [
-     "Silo",
-     "acolo fusese Eli preotul Domnului"
-    ],
-    [
-     "Aialon",
-     "până acolo au fost bătuți filistenii de la Micmaș"
-    ],
-    [
-     "Muntele lui Efraim",
-     "acolo se ascunseseră bărbați ai lui Israel"
-    ]
-   ]
-  },
+  }
+ ],
+ "hard": [
   {
    "t": "fill",
-   "ref": "14:12",
-   "q": "„Suie-te după mine, căci Domnul îi dă în mâinile lui ___”",
+   "ref": "14:2",
+   "q": "Saul stătea la marginea cetății Ghibea, sub ___ din Migron.",
    "a": [
-    "Israel"
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "14:16",
-   "q": "Străjerii lui Saul au văzut mulțimea filistenilor fugind doar într-o singură direcție.",
-   "a": false
-  },
-  {
-   "t": "fill",
-   "ref": "14:28",
-   "q": "„Tatăl tău a pus pe popor să jure zicând: ‘Blestemat să fie omul care va mânca ___!’”",
-   "a": [
-    "astăzi"
+    "rodiul"
    ]
   },
   {
    "t": "one",
-   "ref": "14:34",
-   "q": "Ce le-a cerut Saul fiecăruia să aducă pentru a fi înjunghiat pe piatră?",
+   "ref": "14:2",
+   "q": "Câți oameni avea Saul cu el la Ghibea?",
    "opts": [
-    "Un vițel sau un țap",
-    "Boul sau oaia",
-    "Un miel fără cusur",
-    "Două turturele"
+    "Aproape șase sute",
+    "Aproape trei mii",
+    "O mie"
    ],
-   "a": 1
-  },
-  {
-   "t": "fill",
-   "ref": "14:33",
-   "q": "„Iată că poporul ___ împotriva Domnului, mâncând cu sânge”",
-   "a": [
-    "păcătuiește"
-   ]
+   "a": 0
   },
   {
    "t": "one",
-   "ref": "14:45",
-   "q": "Ce cuvânt a strigat poporul înainte de a jura pe viața Domnului că Ionatan nu va muri?",
+   "ref": "14:3",
+   "q": "Ce purta preotul Ahia?",
    "opts": [
-    "„Îndurare!”",
-    "„Niciodată!”",
-    "„Ajunge!”",
-    "„Oprește-te!”"
+    "Toiagul",
+    "Efodul",
+    "Cornul cu untdelemn"
    ],
    "a": 1
   },
   {
    "t": "tf",
    "ref": "14:3",
-   "q": "Ahitub, tatăl lui Ahia, era fratele lui I-Cabod.",
+   "q": "Poporul știa că Ionatan s-a dus.",
+   "a": false
+  },
+  {
+   "t": "tf",
+   "ref": "14:4",
+   "q": "Boțeț și Sene erau numele a două piscuri de stâncă.",
    "a": true
   },
   {
+   "t": "tf",
+   "ref": "14:6",
+   "q": "Ionatan i-a numit pe filisteni „netăiați împrejur”.",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "14:11",
+   "q": "Filistenii au zis: „Iată că evreii ies din găurile în care s-au ascuns.”",
+   "a": true
+  },
+  {
+   "t": "fill",
+   "ref": "14:13",
+   "q": "cel ce-i ducea armele arunca ___ în urma lui",
+   "a": [
+    "moartea"
+   ]
+  },
+  {
    "t": "one",
-   "ref": "14:49",
-   "q": "Care fiu al lui Saul este numit al doilea în lista fiilor lui?",
+   "ref": "14:14",
+   "q": "Câți oameni au ucis Ionatan și purtătorul armelor în această primă înfrângere?",
    "opts": [
-    "Malchișua",
-    "Ionatan",
-    "Ișvi",
-    "Abner"
+    "Zece",
+    "Douăzeci",
+    "Cincizeci"
+   ],
+   "a": 1
+  },
+  {
+   "t": "one",
+   "ref": "14:18",
+   "q": "Cui a zis Saul: „Adu încoace chivotul lui Dumnezeu!”?",
+   "opts": [
+    "Lui Ahia",
+    "Lui Abner",
+    "Lui Ionatan"
+   ],
+   "a": 0
+  },
+  {
+   "t": "one",
+   "ref": "14:23",
+   "q": "Până unde s-a întins lupta?",
+   "opts": [
+    "Dincolo de Hebron",
+    "Dincolo de Ghilgal",
+    "Dincolo de Bet-Aven"
    ],
    "a": 2
   },
   {
-   "t": "fill",
-   "ref": "14:41",
-   "q": "„Sorțul a căzut pe Ionatan și pe Saul, și poporul a ___”",
+   "t": "multi",
+   "ref": "14:25-27",
+   "q": "Ce s-a întâmplat în pădure?",
+   "opts": [
+    "Poporul a văzut mierea curgând",
+    "Poporul a ținut jurământul",
+    "Ionatan nu știa de jurământ"
+   ],
    "a": [
-    "scăpat"
+    0,
+    1,
+    2
    ]
   },
   {
-   "t": "multi",
-   "ref": "14:49-51",
-   "q": "Care dintre următoarele afirmații despre familia lui Saul sunt adevărate?",
+   "t": "fill",
+   "ref": "14:27",
+   "q": "l-a vârât într-un ___ de miere",
+   "a": [
+    "fagure"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "14:31",
+   "q": "Până unde au bătut pe filisteni, pornind de la Micmaș?",
    "opts": [
-    "Fata cea mai mare a lui Saul se numea Mical",
-    "Nevasta lui Saul era Ahinoam, fata lui Abiel",
-    "Abner era fiul lui Chis",
-    "Ner era tatăl lui Chis",
-    "Fiii lui Saul erau Ionatan, Ișvi și Abinadab"
+    "Până la Beer-Șeba",
+    "Până la Betleem",
+    "Până la Aialon"
    ],
-   "a": []
+   "a": 2
+  },
+  {
+   "t": "multi",
+   "ref": "14:32",
+   "q": "Ce a luat poporul din pradă?",
+   "opts": [
+    "Cămile",
+    "Oi",
+    "Măgari"
+   ],
+   "a": [
+    1
+   ]
   },
   {
    "t": "tf",
-   "ref": "14:31",
-   "q": "Potrivit textului, în ziua aceea israeliții au bătut pe filisteni de la Micmaș până la Aialon.",
-   "a": true
+   "ref": "14:41",
+   "q": "Sorțul a căzut mai întâi pe popor.",
+   "a": false
+  },
+  {
+   "t": "multi",
+   "ref": "14:47",
+   "q": "Cu cine a făcut război Saul?",
+   "opts": [
+    "Cu Moab",
+    "Cu copiii lui Amon",
+    "Cu Egiptul"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "t": "match",
+   "ref": "14:49-50",
+   "q": "Potrivește persoana cu descrierea.",
+   "pairs": [
+    [
+     "Merab",
+     "Fiica cea mai mare a lui Saul"
+    ],
+    [
+     "Mical",
+     "Fiica cea mai mică a lui Saul"
+    ],
+    [
+     "Ahinoam",
+     "Nevasta lui Saul"
+    ]
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "14:50",
+   "q": "Ce legătură de rudenie era între Saul și Abner?",
+   "opts": [
+    "Abner era unchiul lui Saul",
+    "Abner era fratele lui Saul",
+    "Abner era fiul lui Saul"
+   ],
+   "a": 0
+  },
+  {
+   "t": "fill",
+   "ref": "14:52",
+   "q": "De îndată ce Saul zărea vreun om tare și voinic, îl ___ cu el.",
+   "a": [
+    "lua"
+   ]
   }
  ]
 }
