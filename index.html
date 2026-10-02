@@ -169,9 +169,9 @@ p{margin:0}
 .tile-sc.full{color:var(--ok)}
 .tile .n{font-family:var(--f-display);font-size:22px;line-height:1;position:relative}
 .tile:has(.tile-sc) .n{transform:translateY(-6px)}
-.tile.t-full{background:var(--ok-soft);border-color:transparent}
-.tile.t-half{background:var(--warn-soft);border-color:transparent}
-.tile.t-low{background:var(--bad-soft);border-color:transparent}
+.tile.t-full{background:var(--ok-soft)}
+.tile.t-half{background:var(--warn-soft)}
+.tile.t-low{background:var(--bad-soft)}
 .tile[aria-pressed="true"]{background:var(--oil-soft);border-color:var(--oil);color:var(--oil-ink);box-shadow:0 0 0 3px color-mix(in oklab,var(--oil) 18%,transparent)}
 .tile[aria-pressed="true"] .trk{stroke:color-mix(in oklab,var(--oil) 20%,transparent)}
 #start,#rGo,#shGo{display:grid;gap:2px;justify-items:center;padding-block:12px;min-height:60px;line-height:1.2}
@@ -337,6 +337,7 @@ body.quiz-fixed .wrap{overflow:hidden!important;overscroll-behavior:none!importa
 @keyframes spark{0%{opacity:1;transform:translate(-50%,-50%)}100%{opacity:0;transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(.4)}}
 .kv{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:22px 0}
 .kv.two{grid-template-columns:1fr 1fr}
+.kv.four{grid-template-columns:1fr 1fr}
 .bars{display:grid;gap:10px}
 .brow{display:grid;grid-template-columns:9.5em 1fr 3.2em;align-items:center;gap:10px;font-size:14px}
 .brow .bar{height:8px}
@@ -1124,6 +1125,9 @@ function openProfile(){
     const okE = p.ok.filter(id => /^\d+e/.test(id)).length, okH = p.ok.filter(id => /^\d+h/.test(id)).length;
     const totE = totalCount("easy"), totH = totalCount("hard");
     const seen = p.seen || [], seenE = seen.filter(id => /^\d+e/.test(id)).length, seenH = seen.filter(id => /^\d+h/.test(id)).length;
+    const totSecs = h.reduce((s, x) => s + (x.secs || 0), 0);
+    const m = Math.floor(totSecs / 60), s = totSecs % 60;
+    const timeStr = `${m}:${s.toString().padStart(2, '0')}`;
     sheet.innerHTML = `${X}
       <div class="pf-head">
         <span class="avatar lg">${esc(initials(p.name))}</span>
@@ -1131,8 +1135,9 @@ function openProfile(){
         ${p.child ? `<p class="prof-mail">Profil de copil, pe contul tău</p>` : store.hasEmail() ? `<p class="prof-mail">${esc(store.email)}</p>` : `<p class="prof-mail warn">Adaugă un email: cu el intri în cont de acum înainte.</p>`}
         ${rank >= 0 ? `<span class="badge-rank">Locul ${rank+1} din ${S.board.length} în clasament</span>` : ""}
       </div>
-      <div class="kv">
+      <div class="kv four">
         <div class="stat"><b>${tests}</b><small>${tests===1?"test":"teste"}</small></div>
+        <div class="stat"><b>${totSecs ? timeStr : "–"}</b><small>timp alocat</small></div>
         <div class="stat"><b>${tests ? avg+"%" : "–"}</b><small>media</small></div>
         <div class="stat"><b>${p.ok.length}</b><small>${p.ok.length===1?"punct":"puncte"}</small></div>
       </div>
@@ -1571,10 +1576,11 @@ function viewQuestion(first){
     window._qTimer = setInterval(updateTimer, 1000);
     $("#quit").onclick = () => {
       const bg = document.createElement("div"); bg.className = "modal-bg";
-      bg.innerHTML = `<div class="modal" role="alertdialog" aria-modal="true" aria-labelledby="qT"><h3 id="qT">Oprești testul?</h3><p class="muted">Răspunsurile date până acum se pierd.</p><div class="modal-btns"><button class="btn btn-ghost" id="qNo">Continuă</button><button class="btn btn-primary" id="qYes">Oprește</button></div></div>`;
+      bg.innerHTML = `<div class="modal" role="alertdialog" aria-modal="true" aria-labelledby="qT"><h3 id="qT">Ce vrei să faci?</h3><p class="muted">Dacă oprești sau reîncepi, progresul de până acum se pierde.</p><div class="modal-btns" style="display:flex;flex-direction:column;gap:8px;"><button class="btn btn-primary" id="qNo" style="width:100%">Continuă testul</button><button class="btn btn-ghost" id="qRestart" style="width:100%">Reîncepe testul</button><button class="btn btn-ghost btn-danger" id="qYes" style="width:100%">Oprește de tot</button></div></div>`;
       document.body.appendChild(bg);
       const close = () => closeModal(bg);
       bg.querySelector("#qNo").onclick = close; bg.onclick = e => { if (e.target === bg) close(); };
+      bg.querySelector("#qRestart").onclick = () => closeModal(bg, () => { const qs = Z.qs; const m = Z.mode; const isR = Z.retry; dropQuiz(); startQuiz(qs, {mode: m, retry: isR}); });
       bg.querySelector("#qYes").onclick = () => closeModal(bg, () => { dropQuiz(); viewHome(); });
       bg.querySelector("#qNo").focus();
     };
