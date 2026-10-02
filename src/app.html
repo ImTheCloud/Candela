@@ -254,23 +254,56 @@ body:not(.quiz-fixed) .qcard{max-height:none;overflow:visible}
 .qcard.leave{animation:qOut .22s ease-in both}
 @keyframes qIn{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:none}}
 @keyframes qOut{to{opacity:0;transform:translateX(-28px)}}
+.qcard.qtype-multi{border-top:4px solid #8B5CF6}
+.qcard.qtype-one{border-top:4px solid var(--oil)}
 .qmeta{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.qmeta-left{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .qtype{font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--cedar)}
+.qtype-badge{display:inline-flex;align-items:center;gap:5px;font-family:var(--f-body);font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:3px 9px;border-radius:999px}
+.qtype-badge-multi{background:#EDE9FE;color:#6D28D9;border:1px solid #DDD6FE}
+.qtype-badge-one{background:var(--oil-soft);color:var(--oil-ink);border:1px solid rgba(217,123,38,0.25)}
+.qtype-badge-default{background:var(--surface-2);color:var(--ink-2);border:1px solid var(--line)}
+.qmode-pill{font-size:11px;font-weight:600;color:var(--ink-2);background:var(--surface-2);padding:3px 8px;border-radius:6px;text-transform:uppercase}
 .qtext{font-size:20px;line-height:1.4;font-weight:500}
 .qhint{font-size:13px;color:var(--ink-2);margin-top:-8px}
 .qhint.ans{justify-self:start;background:var(--cedar-soft);color:var(--cedar);font-weight:600;border-radius:10px;padding:5px 12px;font-size:13.5px;line-height:1.3}
+.q-type-alert{display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:12px;margin-top:-6px;font-size:14px;line-height:1.35}
+.q-alert-icon{flex:none;display:grid;place-items:center}
+.q-alert-content{display:flex;flex-direction:column;gap:1px}
+.q-alert-title{font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+.q-alert-desc{font-size:13.5px;opacity:0.92}
+.alert-multi{background:#F3E8FF;border:1.5px solid #C084FC;color:#581C87;box-shadow:0 2px 8px -2px rgba(124,58,237,0.12)}
+.alert-multi .q-alert-icon{color:#7C3AED}
+.alert-one{background:var(--surface-2);border:1.5px solid var(--line);color:var(--ink)}
+.alert-one .q-alert-icon{color:var(--oil)}
 .answers{display:grid;gap:10px}
-.opt{display:flex;align-items:flex-start;gap:12px;width:100%;text-align:left;border:1.5px solid var(--line);background:var(--bg);border-radius:var(--r);padding:14px;font-size:16px;line-height:1.35;transition:border-color .15s, background .15s, transform .15s}
+.opt{display:flex;align-items:center;gap:12px;width:100%;text-align:left;border:1.5px solid var(--line);background:var(--bg);border-radius:var(--r);padding:13px 14px;font-size:16px;line-height:1.35;transition:border-color .15s, background .15s, transform .15s, box-shadow .15s}
 .opt:hover:not(:disabled){border-color:var(--ink-2)}
 .opt:active:not(:disabled){transform:scale(.985)}
-.opt .k{flex:none;width:26px;height:26px;border-radius:8px;border:1.5px solid var(--line);display:grid;place-items:center;font-family:var(--f-mono);font-size:12px;color:var(--ink-2);transition:all .15s}
-.opt.multi .k{border-radius:7px}
-.opt[aria-pressed="true"]{border-color:var(--ink);background:var(--surface)}
-.opt[aria-pressed="true"] .k{background:var(--ink);border-color:var(--ink);color:var(--bg)}
-.opt.correct{border-color:var(--ok);background:var(--ok-soft)}
-.opt.correct .k{background:var(--ok);border-color:var(--ok);color:var(--bg)}
-.opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
-.opt.wrong .k{background:var(--bad);border-color:var(--bad);color:var(--bg)}
+.opt .opt-label{flex:1}
+.opt .k{flex:none;width:26px;height:26px;border:1.5px solid var(--line);display:grid;place-items:center;font-family:var(--f-mono);font-size:12px;color:var(--ink-2);transition:all .15s}
+.opt.opt-one .k.opt-radio-badge{border-radius:50%}
+.opt-choice-indicator.indicator-radio{flex:none;width:20px;height:20px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;transition:all .15s ease}
+.indicator-radio .radio-core{width:9px;height:9px;border-radius:50%;background:transparent;transition:all .15s ease}
+.opt.opt-one[aria-pressed="true"]{border-color:var(--ink);background:var(--surface)}
+.opt.opt-one[aria-pressed="true"] .k{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.opt.opt-one[aria-pressed="true"] .indicator-radio{border-color:var(--ink)}
+.opt.opt-one[aria-pressed="true"] .indicator-radio .radio-core{background:var(--ink)}
+.opt.opt-multi{border-color:#E2D9F3}
+.opt.opt-multi:hover:not(:disabled){border-color:#A78BFA;background:#FAF7FD}
+.opt.opt-multi .k.opt-check-badge{border-radius:6px;border-color:#DDD6FE;background:#F5F3FF;color:#6D28D9}
+.opt-choice-indicator.indicator-check{flex:none;width:22px;height:22px;border-radius:6px;border:2px solid #C4B5FD;background:var(--bg);display:grid;place-items:center;color:transparent;transition:all .15s ease}
+.opt.opt-multi[aria-pressed="true"]{border-color:#7C3AED;background:#F5F0FD;box-shadow:0 2px 8px -2px rgba(124,58,237,0.15)}
+.opt.opt-multi[aria-pressed="true"] .k.opt-check-badge{background:#7C3AED;border-color:#7C3AED;color:#FFF}
+.opt.opt-multi[aria-pressed="true"] .indicator-check{background:#7C3AED;border-color:#7C3AED;color:#FFF}
+.opt.correct{border-color:var(--ok)!important;background:var(--ok-soft)!important}
+.opt.correct .k{background:var(--ok)!important;border-color:var(--ok)!important;color:var(--bg)!important}
+.opt.correct .indicator-check,.opt.correct .indicator-radio{border-color:var(--ok)!important;background:var(--ok)!important;color:#fff!important}
+.opt.correct .radio-core{background:#fff!important}
+.opt.wrong{border-color:var(--bad)!important;background:var(--bad-soft)!important}
+.opt.wrong .k{background:var(--bad)!important;border-color:var(--bad)!important;color:var(--bg)!important}
+.opt.wrong .indicator-check,.opt.wrong .indicator-radio{border-color:var(--bad)!important;background:var(--bad)!important;color:#fff!important}
+.opt.wrong .radio-core{background:#fff!important}
 .opt:disabled{cursor:default}
 .tf{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .tf .opt{justify-content:center;font-weight:600;font-size:17px;padding:20px 10px}
@@ -312,8 +345,26 @@ body:not(.quiz-fixed) .qcard{max-height:none;overflow:visible}
 .feedback b{font-weight:700}
 .feedback.ok b{color:var(--ok)}
 .feedback.no b{color:var(--bad)}
-.verse{font-family:var(--f-bible);font-weight:400;font-size:16.5px;line-height:1.6;color:var(--ink);border-left:3px solid var(--oil);padding-left:12px;text-wrap:pretty}
-.verse sup,.reader-text sup{font-family:var(--f-body);font-weight:600;font-size:.62em;line-height:1;color:var(--oil-ink);margin-right:.3em;vertical-align:.55em;letter-spacing:.02em}
+.verse{font-family:var(--f-bible);font-weight:400;font-size:16.5px;line-height:1.6;color:var(--ink);text-wrap:pretty}
+.verse:not(:has(.verse-container)){border-left:3px solid var(--oil);padding-left:12px}
+.verse sup,.reader-text sup,.verse-ctx-body sup,.verse-target-text sup{font-family:var(--f-body);font-weight:700;font-size:.65em;line-height:1;color:var(--oil-ink);margin-right:.35em;vertical-align:.5em;letter-spacing:.02em}
+.verse-container{display:flex;flex-direction:column;gap:8px;margin-top:4px}
+.verse-expander{border:1px dashed var(--line);border-radius:12px;background:rgba(0,0,0,0.02);transition:all .2s ease;overflow:hidden}
+.verse-expander[open]{background:var(--surface);border-style:solid;border-color:var(--line);box-shadow:0 2px 8px -2px rgba(58,39,27,0.06)}
+.verse-expander-btn{list-style:none;cursor:pointer;padding:8px 12px;display:flex;align-items:center;justify-content:center;gap:8px;font-family:var(--f-body);font-size:13px;font-weight:600;color:var(--oil-ink);user-select:none;transition:background .15s,color .15s}
+.verse-expander-btn::-webkit-details-marker{display:none}
+.verse-expander-btn:hover{background:var(--oil-soft)}
+.verse-expander .exp-icon{flex:none;transition:transform .2s ease}
+.verse-expander:not([open]) .exp-text-open{display:none}
+.verse-expander[open] .exp-text-closed{display:none}
+.verse-expander[open] .exp-icon{transform:rotate(180deg)}
+.verse-ctx-body{padding:12px 14px;font-family:var(--f-bible);font-size:15.5px;line-height:1.65;color:var(--ink-2);border-top:1px solid var(--line);max-height:280px;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.verse-ctx-body::-webkit-scrollbar{width:5px}
+.verse-ctx-body::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+.verse-target-core{background:var(--surface);border:1.5px solid var(--line);border-left:4px solid var(--oil);border-radius:12px;padding:12px 14px;display:grid;gap:6px;box-shadow:0 2px 8px -2px rgba(58,39,27,0.05)}
+.verse-target-badge{display:flex;align-items:center;gap:6px}
+.vt-pill{font-family:var(--f-mono);font-size:11.5px;font-weight:700;letter-spacing:.03em;color:var(--oil-ink);background:var(--oil-soft);padding:2px 8px;border-radius:999px;text-transform:uppercase}
+.verse-target-text{font-family:var(--f-bible);font-size:16.5px;line-height:1.6;color:var(--ink);font-weight:500}
 .qactions{display:flex;gap:10px;margin-top:16px}
 .qactions .btn{flex:1}
 @media (max-width:959px){
@@ -615,7 +666,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 const QUIZ = /*__QUIZ__*/{};
 const TEXT = /*__TEXT__*/{};
 const TITLES = ["Nașterea lui Samuel","Cântarea Anei / Fiii lui Eli","Chemarea lui Samuel","Chivotul luat de filisteni","Chivotul în Asdod","Chivotul se întoarce","Biruința de la Mițpa","Israel cere un împărat","Saul și măgărițele","Saul uns împărat","Biruința asupra lui Nahaș","Cuvântarea lui Samuel","Jertfa lui Saul la Ghilgal","Isprava lui Ionatan","Saul lepădat de Domnul","David uns de Samuel","David și Goliat","Ionatan și David","Saul îl urmărește pe David","Legământul cu Ionatan","David la Nob și la Gat","Peștera Adulam","David la Cheila și în pustie","David îl cruță pe Saul","Nabal și Abigail","A doua cruțare a lui Saul","David la Achiș","Saul la En-Dor","David trimis înapoi","Țiclagul ars","Moartea lui Saul"];
-const TYPE_LABEL = {tf:"Adevărat / Fals", one:"Variantă corectă", multi:"Alegere multiplă", match:"Asociere", fill:"Completează versetul"};
+const TYPE_LABEL = {tf:"Adevărat / Fals", one:"Răspuns unic", multi:"Alegere multiplă", match:"Asociere", fill:"Completează versetul"};
 const MODE_LABEL = {easy:"Ușor", hard:"Greu", both:"Ambele"};
 const LETTERS = "ABCDEF";
 
@@ -749,12 +800,56 @@ function closeModal(bg, onDone){
 function verseHTML(ref){
   const m = /^(\d+):(\d+)(?:-(\d+))?$/.exec(ref); if (!m) return "";
   const c = +m[1], a = +m[2], b = +(m[3]||m[2]); const vs = TEXT[c] || [];
+  if (!vs.length) return "";
   const one = v => `<sup>${v}</sup>${esc(vs[v-1])} `;
-  let out = ""; const end = Math.min(b, vs.length);
-  if (end - a < 4){ for (let v=a; v<=end; v++) out += one(v); return out.trim(); }
-  for (let v=a; v<a+2; v++) out += one(v);
-  let rest = ""; for (let v=a+2; v<=end; v++) rest += one(v);
-  return `${out}<details class="more"><summary>Citește versetele ${a+2}–${end}</summary>${rest.trim()}</details>`;
+  const end = Math.min(b, vs.length);
+
+  let coreText = "";
+  for (let v = a; v <= end; v++) coreText += one(v);
+
+  let beforeHTML = "";
+  if (a > 1){
+    let beforeText = "";
+    for (let v = 1; v < a; v++) beforeText += one(v);
+    const count = a - 1;
+    const label = count === 1 ? "versetul 1" : `versetele 1–${count}`;
+    beforeHTML = `<details class="verse-expander verse-prev">
+      <summary class="verse-expander-btn">
+        <svg class="exp-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg>
+        <span class="exp-text-closed">Depliază începutul capitolului (${label})</span>
+        <span class="exp-text-open">Restrânge începutul capitolului</span>
+      </summary>
+      <div class="verse-ctx-body">${beforeText.trim()}</div>
+    </details>`;
+  }
+
+  const targetHTML = `<div class="verse-target-core">
+    <div class="verse-target-badge"><span class="vt-pill">1 Samuel ${ref}</span></div>
+    <div class="verse-target-text">${coreText.trim()}</div>
+  </div>`;
+
+  let afterHTML = "";
+  if (end < vs.length){
+    let afterText = "";
+    for (let v = end + 1; v <= vs.length; v++) afterText += one(v);
+    const startNext = end + 1;
+    const countAfter = vs.length - end;
+    const label = countAfter === 1 ? `versetul ${vs.length}` : `versetele ${startNext}–${vs.length}`;
+    afterHTML = `<details class="verse-expander verse-next">
+      <summary class="verse-expander-btn">
+        <svg class="exp-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        <span class="exp-text-closed">Depliază continuarea capitolului (${label})</span>
+        <span class="exp-text-open">Restrânge continuarea capitolului</span>
+      </summary>
+      <div class="verse-ctx-body">${afterText.trim()}</div>
+    </details>`;
+  }
+
+  return `<div class="verse-container" data-ref="${esc(ref)}">
+    ${beforeHTML}
+    ${targetHTML}
+    ${afterHTML}
+  </div>`;
 }
 function dateLabel(ts){ const d = new Date(ts); return d.toLocaleDateString("ro-RO",{day:"numeric",month:"short"}) + ", " + d.toLocaleTimeString("ro-RO",{hour:"2-digit",minute:"2-digit"}); }
 function chaptersLabel(chs){
@@ -2103,11 +2198,31 @@ function viewQuestion(first){
   $("#prog").style.width = (Z.i/n*100) + "%";
   $("#qcount").textContent = `${Z.i+1}/${n}`;
   const card = document.createElement("article");
-  card.className = "qcard enter";
-  card.innerHTML = `<div class="qmeta"><span class="qtype">${q.t==="tf"||q.t==="one" ? "" : TYPE_LABEL[q.t]}${Z.mode==="both"?`${q.t==="tf"||q.t==="one" ? "" : " · "}${MODE_LABEL[q.mode]}`:""}</span><span class="ref">${refLabel(q.ref)}</span></div>
-    ${q.t==="fill" ? `${fillHTML(q)}` : `<p class="qtext">${esc(q.q.replace(/\s*\(pot fi mai multe[^)]*\)/i, ""))}</p>${q.t==="one"?`<p class="qhint ans">Un singur răspuns corect</p>`:""}${q.t==="multi"?`<p class="qhint ans">Unul, mai multe sau niciunul</p>`:""}${q.t==="match"?`<p class="qhint ans">Un răspuns pentru fiecare</p>`:""}`}
+  card.className = `qcard enter qtype-${q.t}`;
+
+  let typeChip = "";
+  if (q.t === "multi") {
+    typeChip = `<span class="qtype-badge qtype-badge-multi"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"></rect><polyline points="4.5 6.5 6 8 8.5 5.5"></polyline><rect x="3" y="14" width="7" height="7" rx="1.5"></rect><polyline points="4.5 17.5 6 19 8.5 16.5"></polyline><line x1="14" y1="6.5" x2="21" y2="6.5"></line><line x1="14" y1="17.5" x2="21" y2="17.5"></line></svg><span>Alegere multiplă</span></span>`;
+  } else if (q.t === "one") {
+    typeChip = `<span class="qtype-badge qtype-badge-one"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="3.5" fill="currentColor"></circle></svg><span>Răspuns unic</span></span>`;
+  } else {
+    typeChip = `<span class="qtype-badge qtype-badge-default"><span>${TYPE_LABEL[q.t] || ""}</span></span>`;
+  }
+  const modeTag = Z.mode === "both" ? `<span class="qmode-pill">${MODE_LABEL[q.mode]}</span>` : "";
+
+  let hintBanner = "";
+  if (q.t === "multi") {
+    hintBanner = `<div class="q-type-alert alert-multi"><div class="q-alert-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg></div><div class="q-alert-content"><strong class="q-alert-title">Alegere multiplă</strong><span class="q-alert-desc">Selectează <u>toate</u> răspunsurile corecte (pot fi 2, 3 sau mai multe)!</span></div></div>`;
+  } else if (q.t === "one") {
+    hintBanner = `<div class="q-type-alert alert-one"><div class="q-alert-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="3.5" fill="currentColor"></circle></svg></div><div class="q-alert-content"><strong class="q-alert-title">Răspuns unic</strong><span class="q-alert-desc">Alege o singură variantă corectă din cele de mai jos</span></div></div>`;
+  } else if (q.t === "match") {
+    hintBanner = `<p class="qhint ans">Un răspuns pentru fiecare</p>`;
+  }
+
+  card.innerHTML = `<div class="qmeta"><div class="qmeta-left">${typeChip}${modeTag}</div><span class="ref">${refLabel(q.ref)}</span></div>
+    ${q.t==="fill" ? `${fillHTML(q)}` : `<p class="qtext">${esc(q.q.replace(/\s*\(pot fi mai multe[^)]*\)/i, ""))}</p>${hintBanner}`}
     <div class="answers" id="ans">${answersHTML(q)}</div><div id="fb"></div>
-    <p class="keys">${({tf:"Taste: A adevărat · F fals · Enter verifică", one:"Taste: A, B, C… · Enter verifică", multi:"Taste: A, B, C… · Enter verifică", fill:"Enter trece la căsuța următoare", match:"Enter verifică"})[q.t]}</p>`;
+    <p class="keys">${({tf:"Taste: A adevărat · F fals · Enter verifică", one:"Taste: A, B, C… · Enter verifică", multi:"Taste: A, B, C… (bifează mai multe) · Enter verifică", fill:"Enter trece la căsuța următoare", match:"Enter verifică"})[q.t]}</p>`;
   if (q.t !== "match") document.body.classList.add("quiz-fixed");
   else document.body.classList.remove("quiz-fixed");
   resetScroll();
@@ -2134,7 +2249,8 @@ function fillHTML(q){
 }
 function answersHTML(q){
   if (q.t==="tf") return `<div class="tf"><button class="opt" data-v="1"><span>Adevărat</span></button><button class="opt" data-v="0"><span>Fals</span></button></div>`;
-  if (q.t==="one"||q.t==="multi") return q.opts.map((o,i)=>`<button class="opt ${q.t}" data-i="${i}" aria-pressed="false"><span class="k">${LETTERS[i]}</span><span>${esc(o)}</span></button>`).join("");
+  if (q.t==="one") return q.opts.map((o,i)=>`<button class="opt one opt-one" data-i="${i}" aria-pressed="false"><span class="k opt-radio-badge">${LETTERS[i]}</span><span class="opt-label">${esc(o)}</span><span class="opt-choice-indicator indicator-radio" aria-hidden="true"><span class="radio-core"></span></span></button>`).join("");
+  if (q.t==="multi") return q.opts.map((o,i)=>`<button class="opt multi opt-multi" data-i="${i}" aria-pressed="false"><span class="k opt-check-badge">${LETTERS[i]}</span><span class="opt-label">${esc(o)}</span><span class="opt-choice-indicator indicator-check" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span></button>`).join("");
   if (q.t==="match") return `<div class="mx" id="mx"></div>`;
   return "";
 }
@@ -2189,7 +2305,14 @@ function renderActions(){
   const last = Z.i === Z.qs.length-1;
   if (!ui.checked){
     if (q.t==="tf"){ el.innerHTML = ""; return; }
-    el.innerHTML = `<button class="btn btn-primary" id="chk" ${ready(q)?"":"disabled"}>Verifică</button>`;
+    let chkText = "Verifică";
+    if (q.t === "multi") {
+      const cnt = ui.sel ? ui.sel.size : 0;
+      if (cnt === 0) chkText = "Verifică (niciun răspuns selectat)";
+      else if (cnt === 1) chkText = "Verifică (1 variantă selectată)";
+      else chkText = `Verifică (${cnt} variante selectate)`;
+    }
+    el.innerHTML = `<button class="btn btn-primary" id="chk" ${ready(q)?"":"disabled"}>${chkText}</button>`;
     $("#chk").onclick = check;
   } else {
     el.innerHTML = `<button class="btn btn-primary" id="nx">${last?"Vezi rezultatul":"Următoarea"}</button>`;
@@ -2305,12 +2428,14 @@ async function finish(again){
   const score = Z.answers.reduce((s,a)=>s+(a?a.pts:0),0);
   const sc = Math.round(score*10)/10, P = pct(score, n);
   const secs = Math.round((Date.now()-Z.start)/1000);
-  // per chapter & per type
-  const byCh = {}, byType = {};
+  // per chapter, per type & per mode
+  const byCh = {}, byType = {}, byMode = { easy: { s: 0, n: 0 }, hard: { s: 0, n: 0 } };
   Z.qs.forEach((q,i) => { const a = Z.answers[i]||{pts:0};
     (byCh[q.ch] ??= {s:0,n:0}); byCh[q.ch].s += a.pts; byCh[q.ch].n++;
     const key = q.ch + q.mode[0]; ((byCh._m ??= {})[key] ??= {s:0,n:0}); byCh._m[key].s += a.pts; byCh._m[key].n++;
-    (byType[q.t] ??= {s:0,n:0}); byType[q.t].s += a.pts; byType[q.t].n++; });
+    (byType[q.t] ??= {s:0,n:0}); byType[q.t].s += a.pts; byType[q.t].n++;
+    const m = q.mode === "hard" ? "hard" : "easy";
+    byMode[m].s += a.pts; byMode[m].n++; });
   // save
   const p = S.player;
   if (!Z.retry && !again) dropQuiz();
@@ -2326,7 +2451,7 @@ async function finish(again){
   }
   S.board = null;
   const wrong = Z.qs.map((q,i)=>({q, a: Z.answers[i]})).filter(x => !x.a || x.a.pts < 1);
-  const rep = { at, chs: Z.chs, mode: Z.mode, retry: !!Z.retry, exam: !!Z.exam, n, sc, P, wrong, secs,
+  const rep = { at, chs: Z.chs, mode: Z.mode, retry: !!Z.retry, exam: !!Z.exam, n, sc, P, wrong, secs, byMode,
     byCh: Object.fromEntries(Object.entries(byCh).filter(([k]) => k !== "_m").map(([c,v]) => [c, pct(v.s, v.n)])) };
   if (!Z.retry && !again) keepReport(rep);
   renderReport(rep, { guestCard: p.guest && !Z.retry });
@@ -2396,12 +2521,45 @@ function renderReport(r, o = {}){
   const nWrong = wrong ? wrong.length : null;
   S.reportBack = () => renderReport(r, o);
   S.reportCh = (chs && chs[0] !== 0) ? chs[0] : 1;
+
+  let byMode = r.byMode;
+  if (!byMode) {
+    if (mode === "easy") {
+      byMode = { easy: { s: sc, n }, hard: { s: 0, n: 0 } };
+    } else if (mode === "hard") {
+      byMode = { easy: { s: 0, n: 0 }, hard: { s: sc, n } };
+    } else if (wrong && Array.isArray(wrong)) {
+      const wrongEasy = wrong.filter(w => w.q && (w.q.mode === "easy" || (w.q.id && w.q.id.includes("e")))).length;
+      const wrongHard = wrong.filter(w => w.q && (w.q.mode === "hard" || (w.q.id && w.q.id.includes("h")))).length;
+      const easyTotal = Math.round(n / 2);
+      const hardTotal = n - easyTotal;
+      byMode = {
+        easy: { s: Math.max(0, easyTotal - wrongEasy), n: easyTotal },
+        hard: { s: Math.max(0, hardTotal - wrongHard), n: hardTotal }
+      };
+    }
+  }
+
+  const hasEasy = byMode && byMode.easy && byMode.easy.n > 0;
+  const hasHard = byMode && byMode.hard && byMode.hard.n > 0;
+  const isBoth = (hasEasy && hasHard) || mode === "both";
+
+  const easySc = hasEasy ? Math.round(byMode.easy.s * 10) / 10 : (mode === "easy" ? sc : 0);
+  const easyN = hasEasy ? byMode.easy.n : (mode === "easy" ? n : 0);
+  const easyPct = easyN > 0 ? Math.round((easySc / easyN) * 100) : 0;
+
+  const hardSc = hasHard ? Math.round(byMode.hard.s * 10) / 10 : (mode === "hard" ? sc : 0);
+  const hardN = hasHard ? byMode.hard.n : (mode === "hard" ? n : 0);
+  const hardPct = hardN > 0 ? Math.round((hardSc / hardN) * 100) : 0;
+
+  const modeBadgeText = isBoth ? "Ușor & Greu" : (mode === "hard" ? "Nivel Greu" : "Nivel Ușor");
+
   // always encouraging: children and beginners use the app
   const verdict = P>=95 ? "Excelent!" : P>=80 ? "Foarte bine!" : P>=60 ? "Bravo, ești pe drumul cel bun!" : P>=40 ? "Bun început! Mai încearcă o dată." : "Fiecare încercare te ajută să înveți!";
   const tip = o.past ? "" : r.retry ? (nWrong ? "Continuă până înțelegi toate răspunsurile corecte." : "Ai corectat greșelile! Felicitări pentru perseverență.") : nWrong ? (P>=60 ? "Reia greșelile ca să le înveți și pe acestea." : "Citește capitolul, apoi reia greșelile. Vei vedea cât de repede înveți!") : "Toate răspunsurile sunt corecte. Felicitări!";
   const chList = Object.entries(r.byCh || {});
   mount(`<div class="reader-h" style="margin-bottom:24px; align-items:center;">${BACK_BTN("repBack")}
-      <div><span class="eyebrow" style="margin-bottom:0;">Raport · ${esc(chaptersLabel(chs))} · ${MODE_LABEL[mode]}${r.retry?" · reluare greșeli":""}</span></div>
+      <div><span class="eyebrow" style="margin-bottom:0;">Raport · ${esc(chaptersLabel(chs))} · ${modeBadgeText}${r.retry?" · reluare greșeli":""}</span></div>
     </div>
   <section class="report-head">
     <div class="ring"><div class="sparks" id="sparks"></div>
@@ -2425,6 +2583,45 @@ function renderReport(r, o = {}){
     <div class="stat"><b>${nWrong}</b><small>de revăzut</small></div>` : ""}
     ${r.secs ? `<div class="stat"><b>${Math.floor(r.secs/60)}:${(r.secs%60).toString().padStart(2,'0')}</b><small>timp</small></div>` : ""}
   </div>
+  <div class="card" style="margin:16px 0; padding:16px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px;">
+      <span class="eyebrow" style="margin-bottom:0; font-size:12px;">Nivelul testului</span>
+      <span class="badge ${isBoth ? 'both' : (hasHard ? 'hard' : 'easy')}" style="font-size:11.5px; padding:3px 10px; font-weight:700;">
+        ${isBoth ? 'Ușor &amp; Greu' : (hasHard ? 'Nivel Greu' : 'Nivel Ușor')}
+      </span>
+    </div>
+    ${isBoth ? `
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+      <div style="background:var(--surface-2); border-radius:12px; padding:12px; border:1px solid var(--border); display:flex; flex-direction:column; gap:4px;">
+        <div style="display:flex; align-items:center; justify-content:space-between;">
+          <span class="badge easy" style="font-size:11px; padding:2px 8px;">Ușor</span>
+          <b style="font-size:13px; color:var(--cedar);">${easyPct}%</b>
+        </div>
+        <div style="font-size:18px; font-weight:700; color:var(--ink); margin-top:2px;">${easySc} din ${easyN}</div>
+        <small style="color:var(--muted); font-size:11.5px;">${isExam ? "corecte" : "puncte"}</small>
+      </div>
+      <div style="background:var(--surface-2); border-radius:12px; padding:12px; border:1px solid var(--border); display:flex; flex-direction:column; gap:4px;">
+        <div style="display:flex; align-items:center; justify-content:space-between;">
+          <span class="badge hard" style="font-size:11px; padding:2px 8px;">Greu</span>
+          <b style="font-size:13px; color:var(--oil-ink);">${hardPct}%</b>
+        </div>
+        <div style="font-size:18px; font-weight:700; color:var(--ink); margin-top:2px;">${hardSc} din ${hardN}</div>
+        <small style="color:var(--muted); font-size:11.5px;">${isExam ? "corecte" : "puncte"}</small>
+      </div>
+    </div>
+    ` : `
+    <div style="background:var(--surface-2); border-radius:12px; padding:12px 14px; border:1px solid var(--border); display:flex; align-items:center; justify-content:space-between;">
+      <div style="display:flex; align-items:center; gap:8px;">
+        <span class="badge ${hasHard ? 'hard' : 'easy'}" style="font-size:11px; padding:2px 8px;">${hasHard ? 'Greu' : 'Ușor'}</span>
+        <span style="font-size:13.5px; color:var(--ink-2); font-weight:600;">${hasHard ? 'Chestionar nivel greu' : 'Chestionar nivel ușor'}</span>
+      </div>
+      <div style="text-align:right;">
+        <div style="font-size:17px; font-weight:700; color:var(--ink);">${hasHard ? hardSc : easySc} din ${hasHard ? hardN : easyN}</div>
+        <small style="font-size:12px; font-weight:700; color:${hasHard ? 'var(--oil-ink)' : 'var(--cedar)'};">${hasHard ? hardPct : easyPct}% scor nivel</small>
+      </div>
+    </div>
+    `}
+  </div>
   ${o.guestCard ? `<div class="card guest-cta"><p>Creează un cont ca să-ți păstrezi rezultatele.</p>
     <div class="guest-btns"><button class="btn btn-primary" id="gNew" type="button">Creează cont</button><button class="btn btn-ghost" id="gIn" type="button">Am deja cont</button></div></div>` : ""}
   ${!isExam && chs.length>1 && chList.length ? `<div class="card" style="display:grid;gap:18px">
@@ -2444,8 +2641,8 @@ function renderReport(r, o = {}){
     </div>
   </div>` : ""}
   <div class="startbar" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-    ${nWrong ? `<button class="btn btn-oil" id="retry" title="Exercițiu de învățare (fără puncte în clasament)">Reia greșelile</button>` : `<button class="btn btn-oil" id="again">${isExam ? "Refă examenul" : "Refă testul"}</button>`}
-    <button class="btn btn-primary" id="home">Acasă</button>
+    ${nWrong ? `<button class="btn btn-oil" id="retry" title="Exercițiu de învățare (fără puncte în clasament)" style="font-size:14.5px;padding:12px 8px;text-align:center;">Reia greșelile</button>` : `<button class="btn btn-oil" id="again" style="font-size:14.5px;padding:12px 8px;text-align:center;">${isExam ? "Refă examenul" : "Refă testul"}</button>`}
+    <button class="btn btn-primary" id="home" style="font-size:14.5px;padding:12px 8px;text-align:center;">Pagina principală</button>
   </div>
   ${chs.length === 1 && chs[0] !== 0 ? `<button class="link read-link" id="readCh" type="button">Citește capitolul ${chs[0]}</button>` : ""}
   ${o.from === "hist" ? `<button class="link read-link" id="backHist" type="button">Înapoi la istoric</button>` : ""}
@@ -2723,7 +2920,6 @@ function viewRead(c){
       ${vs.map((v, i) => `<p data-v="${i+1}"><sup>${i+1}</sup>${highlightVerseEntities(v)}</p>`).join("")}
     </div>
 
-    <div class="r-nav">${c > 1 ? `<button class="btn btn-ghost" id="rPrev" type="button">← Capitolul ${c-1}</button>` : "<span></span>"}${c < 31 ? `<button class="btn btn-ghost" id="rNext" type="button">Capitolul ${c+1} →</button>` : ""}</div>
     <div class="startbar"><button class="btn btn-primary btn-block" id="rGo" type="button"><span class="st-main">Fă testul pe capitolul ${c}</span></button></div>
   </section>`);
 
@@ -2773,8 +2969,6 @@ function viewRead(c){
     }
   };
   $("#rPick").onchange = e => viewRead(+e.target.value);
-  if ($("#rPrev")) $("#rPrev").onclick = () => viewRead(c - 1);
-  if ($("#rNext")) $("#rNext").onclick = () => viewRead(c + 1);
   if ($("#rSideP")) $("#rSideP").onclick = () => viewRead(c - 1);
   if ($("#rSideN")) $("#rSideN").onclick = () => viewRead(c + 1);
   $("#rGo").onclick = () => { S.reportBack = null; S.reportCh = null; S.sel = new Set([c]); persistPrefs(); openOptions([c]); };
