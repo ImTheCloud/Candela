@@ -861,7 +861,7 @@ function pwEye(input){
   const wrap = document.createElement("div"); wrap.className = "pw-wrap";
   input.replaceWith(wrap); wrap.appendChild(input);
   const b = document.createElement("button"); b.type = "button"; b.className = "pw-eye"; b.setAttribute("aria-label", "Arată parola"); b.innerHTML = EYE;
-  b.onclick = () => { const show = input.type === "password"; input.type = show ? "text" : "password"; b.innerHTML = show ? EYE_OFF : EYE; b.setAttribute("aria-label", show ? "Ascunde parola" : "Arată parola"); input.focus(); };
+  b.onclick = () => { const show = input.type === "password"; input.type = show ? "text" : "password"; b.innerHTML = show ? EYE_OFF : EYE; b.setAttribute("aria-label", show ? "Ascunde parola" : "Arată parola"); };
   wrap.appendChild(b);
 }
 function viewEntry(msg, tab){
@@ -1115,7 +1115,6 @@ function openProfile(){
     sheet.querySelector("#pfCancel").onclick = show;
     const f = sheet.querySelector("#pfF"), err = sheet.querySelector("#pfErr");
     f.querySelectorAll('input[type="password"]').forEach(pwEye);
-    f.querySelector("input").focus();
     f.addEventListener("input", () => { err.textContent = ""; });
     f.addEventListener("submit", async e => {
       e.preventDefault();
@@ -1139,7 +1138,7 @@ function openProfile(){
       if (!r.ok) return toast("Nu s-a putut șterge. Încearcă din nou.");
       store.family = store.family.filter(x => x.id !== b.dataset.kdel); S.board = null; drawKids(box); toast("Profilul a fost șters.");
     }));
-    if (!adding){ box.querySelector("#kAdd").onclick = () => { drawKids(box, true); box.querySelector("#kFirst").focus(); }; return; }
+    if (!adding){ box.querySelector("#kAdd").onclick = () => { drawKids(box, true); }; return; }
     box.querySelector("#kNo").onclick = () => drawKids(box);
     const f = box.querySelector("#kForm"), err = box.querySelector("#kErr");
     f.oninput = () => { err.textContent = ""; };
@@ -1172,7 +1171,6 @@ function openProfile(){
     const form = sheet.querySelector("#pfForm"), err = sheet.querySelector("#pfErr");
     const first = sheet.querySelector("#pfFirst"), last = sheet.querySelector("#pfLast"), mail = sheet.querySelector("#pfMail"), npw = sheet.querySelector("#pfPw");
     pwEye(npw);
-    (store.hasEmail() ? last : mail).focus();
     form.querySelectorAll("input").forEach(inp => {
       inp.addEventListener("focus", () => setTimeout(() => inp.scrollIntoView({ block: "nearest", behavior: "smooth" }), 100));
     });
@@ -1878,7 +1876,7 @@ function askChildren(last){
     <div class="modal-btns"><button class="btn btn-ghost" type="button" id="akLater">Mai târziu</button><button class="btn btn-primary" type="submit" id="akGo">Adaugă</button></div></form>`;
   document.body.appendChild(bg);
   const list = bg.querySelector("#akList"), err = bg.querySelector("#akErr"), close = () => closeModal(bg);
-  const row = () => { const d = document.createElement("div"); d.className = "ak-row"; d.innerHTML = `<input class="input" maxlength="30" autocapitalize="words" placeholder="Prenume" aria-label="Prenumele copilului"><span class="ak-last">${esc(last)}</span>`; list.appendChild(d); d.querySelector("input").focus(); };
+  const row = () => { const d = document.createElement("div"); d.className = "ak-row"; d.innerHTML = `<input class="input" maxlength="30" autocapitalize="words" placeholder="Prenume" aria-label="Prenumele copilului"><span class="ak-last">${esc(last)}</span>`; list.appendChild(d); };
   row();
   bg.querySelector("#akMore").onclick = () => { if (list.children.length < 10) row(); };
   bg.querySelector("#akLater").onclick = close;
