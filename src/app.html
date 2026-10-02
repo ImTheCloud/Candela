@@ -1442,13 +1442,9 @@ const levelLast = (c, m) => {
 function openOptions(chs = [...S.sel].sort((a,b)=>a-b)){
   let mode = "easy", list, pool, perQ;
   const c = chs[0];
-  const relevantHistory = S.player.history.filter(x => x.chs.length === 1 && x.chs[0] === c).sort((a, b) => b.at - a.at);
-  const histHtml = relevantHistory.length > 0 ? 
-    `<div class="sh-lvl"><span class="sh-l">Încercările tale${relevantHistory.length > 3 ? ` <small class="muted" style="font-weight:normal;font-size:13px">(ultimele 3 din ${relevantHistory.length})</small>` : ""}</span><div class="history sh-hist">${relevantHistory.slice(0, 3).map(attemptRow).join("")}</div></div>` : "";
   const bg = document.createElement("div"); bg.className = "sheet-bg";
   bg.innerHTML = `<div class="sheet start-sheet" role="dialog" aria-modal="true" aria-labelledby="shT">
     <div class="sheet-h"><div class="sh-title"><h3 id="shT">Capitolul ${c}</h3></div><div class="sh-tools">${!$(".reader") ? `<button class="read-btn sm" id="shRead" type="button" aria-label="Citește capitolul ${c} înainte">${BOOK}<span>Citește</span></button>` : ""}<button class="icon-btn" id="shX" aria-label="Închide"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div></div><p class="sh-sub">${esc(TITLES[c-1])}</p>
-    ${histHtml}
     <div class="sh-lvl"><span class="sh-l">Ce nivel alegi?</span>
       <div class="seg" role="group" aria-label="Nivel">${["easy","hard","both"].map(m=>`<button type="button" data-m="${m}">${MODE_LABEL[m]}${levelDone(chs, m) ? CHECK : ""}</button>`).join("")}</div>
       <small class="sh-note" id="shNote"></small></div>
@@ -1803,10 +1799,10 @@ function renderReport(r, o = {}){
   const verdict = P>=95 ? "Excelent!" : P>=80 ? "Foarte bine!" : P>=60 ? "Bravo, ești pe drumul cel bun!" : P>=40 ? "Bun început! Mai încearcă o dată." : "Fiecare încercare te ajută să înveți!";
   const tip = o.past ? "" : r.retry ? (nWrong ? "Continuă până înțelegi toate răspunsurile corecte." : "Ai corectat greșelile! Felicitări pentru perseverență.") : nWrong ? (P>=60 ? "Reia greșelile ca să le înveți și pe acestea." : "Citește capitolul, apoi reia greșelile. Vei vedea cât de repede înveți!") : "Toate răspunsurile sunt corecte. Felicitări!";
   const chList = Object.entries(r.byCh || {});
-  mount(`<section class="report-head">
-    <div class="reader-h" style="margin-bottom:0; align-items:center;">${BACK_BTN("repBack")}
+  mount(`<div class="reader-h" style="margin-bottom:24px; align-items:center;">${BACK_BTN("repBack")}
       <div><span class="eyebrow" style="margin-bottom:0;">Raport · ${esc(chaptersLabel(chs))} · ${MODE_LABEL[mode]}${r.retry?" · reluare greșeli":""}</span></div>
     </div>
+  <section class="report-head">
     <div class="ring"><div class="sparks" id="sparks"></div>
       <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" fill="none" stroke="var(--surface-2)" stroke-width="9"/><circle id="ringArc" cx="60" cy="60" r="52" fill="none" stroke="var(--oil)" stroke-width="9" stroke-linecap="round" stroke-dasharray="0 400" style="transition:stroke-dasharray 1.4s cubic-bezier(.2,.8,.2,1)"/></svg>
       <div class="val"><b id="pctNum">0%</b><small>${sc} din ${n} puncte</small></div></div>
