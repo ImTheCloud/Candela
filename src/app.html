@@ -32,7 +32,11 @@
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{min-height:100%;overflow-x:hidden}
-body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;transition:background-color .35s ease}
+html:has(body.ans-ok),body.ans-ok{--bg:#EAF3DC;background-color:#EAF3DC!important}
+html:has(body.ans-no),body.ans-no{--bg:#FDEBE7;background-color:#FDEBE7!important}
+body.ans-ok .qcard{border:1.5px solid var(--ok);box-shadow:0 4px 24px -4px rgba(94,138,58,.22)}
+body.ans-no .qcard{border:1.5px solid var(--bad);box-shadow:0 4px 24px -4px rgba(178,58,46,.22)}
 button,input,select,textarea,summary{font:inherit;color:inherit;-webkit-tap-highlight-color:transparent}
 button{cursor:pointer}
 button:focus,button:focus-visible,summary:focus,summary:focus-visible{outline:none!important}
@@ -347,13 +351,12 @@ body:not(.quiz-fixed) .qcard{max-height:none;overflow:visible}
 .fill input:focus{outline:none;background:var(--surface-2)}
 .fill input.ok{border-color:var(--ok);background:var(--ok-soft)}
 .fill input.no{border-color:var(--bad);background:var(--bad-soft)}
-.feedback{border-radius:14px;padding:14px 16px;display:grid;gap:6px;font-size:15px;animation:fbIn .35s cubic-bezier(.2,.8,.2,1)}
+#fb:empty{display:none}
+.feedback{border-radius:14px;padding:12px 14px;display:grid;gap:8px;font-size:15px;animation:fbIn .35s cubic-bezier(.2,.8,.2,1)}
 @keyframes fbIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-.feedback.ok{background:var(--ok-soft)}
-.feedback.no{background:var(--bad-soft)}
-.feedback b{font-weight:700}
-.feedback.ok b{color:var(--ok)}
-.feedback.no b{color:var(--bad)}
+.feedback.no{background:var(--bad-soft);border:1px solid color-mix(in oklab,var(--bad) 25%,transparent)}
+.fb-ans{font-size:15px;font-weight:600;color:var(--ink);line-height:1.4}
+.fb-ans b{color:var(--bad);font-weight:700}
 .verse{font-family:var(--f-bible);font-weight:400;font-size:16.5px;line-height:1.6;color:var(--ink);text-wrap:pretty}
 .verse:not(:has(.verse-container)){border-left:3px solid var(--oil);padding-left:12px}
 .verse sup,.reader-text sup,.verse-ctx-body sup,.verse-target-text sup{font-family:var(--f-body);font-weight:700;font-size:.65em;line-height:1;color:var(--oil-ink);margin-right:.35em;vertical-align:.5em;letter-spacing:.02em}
@@ -1052,7 +1055,7 @@ function persistPrefs(){ lsSet("candela:mode",S.mode); lsSet("candela:count",S.c
 const app = $("#app");
 function mount(html){
   document.querySelectorAll(".sheet-bg, .modal-bg, .r-side").forEach(b => b.remove());
-  document.body.classList.remove("scroll-locked", "quiz-fixed");
+  document.body.classList.remove("scroll-locked", "quiz-fixed", "ans-ok", "ans-no");
   document.documentElement.classList.remove("scroll-locked");
   document.body.style.top = "";
   app.innerHTML = `<div class="view">${html}</div>`;
@@ -2217,6 +2220,7 @@ function resumeQuiz(){
 }
 
 function viewQuestion(first){
+  document.body.classList.remove("ans-ok", "ans-no");
   const Z = S.quiz, q = Z.qs[Z.i], n = Z.qs.length;
   const ui = { sel: q.t==="multi" ? new Set() : null, pick: null, pairs: {}, active: null, checked: false };
   Z.ui = ui;
@@ -2430,12 +2434,21 @@ function check(skipped=false){
   if (q.t==="match"){ ui.active = null; card.querySelectorAll(".mchoices").forEach(o => o.remove()); card.querySelectorAll(".mrow").forEach(row => { const l = +row.dataset.l, good = ui.pairs[l]===l; row.classList.remove("open"); row.classList.add(good?"ok":"no"); row.querySelector(".mhead").disabled = true; if (ui.pairs[l]==null) row.querySelector(".mv").textContent = "—"; if (!good) row.insertAdjacentHTML("beforeend", `<span class="mfix">Corect: ${esc(q.pairs[l][1])}</span>`); }); }
   if (q.t==="fill"){ card.querySelectorAll("input").forEach((inp,i) => { const ok = r.okEach ? r.okEach[i] : false; inp.classList.add(ok?"ok":"no"); if (!ok) inp.insertAdjacentHTML("afterend", ` <b style="color:var(--ok);font-family:var(--f-body);font-size:16px">${esc(q.a[i])}</b>`); }); }
   const full = r.pts === 1;
-  $("#fb").innerHTML = `<div class="feedback ${full?"ok":"no"}"><b>${full ? "Corect" : skipped===true ? "Sărită" : "Greșit"}</b>${!full ? correctLine(q) : ""}<div class="verse">${verseHTML(q.ref)}</div></div>`;
+  if (full) {
+    document.body.classList.add("ans-ok");
+    document.body.classList.remove("ans-no");
+    $("#fb").innerHTML = "";
+  } else {
+    document.body.classList.add("ans-no");
+    document.body.classList.remove("ans-ok");
+    const ansHtml = correctLine(q);
+    $("#fb").innerHTML = `<div class="feedback no">${ansHtml ? `<div class="fb-ans">${ansHtml}</div>` : ""}<div class="verse">${verseHTML(q.ref)}</div></div>`;
+  }
   card.classList.add(full ? "pop" : "shake");
   renderActions();
   requestAnimationFrame(() => {
     const fb = $("#fb");
-    if (fb) {
+    if (fb && fb.firstElementChild) {
       const rect = fb.getBoundingClientRect();
       if (rect.bottom > window.innerHeight - 70) {
         fb.scrollIntoView({ behavior: "smooth", block: "nearest" });
@@ -2444,12 +2457,13 @@ function check(skipped=false){
   });
 }
 function correctLine(q){
-  if (q.t==="tf") return `<span>Afirmația este <b style="color:inherit">${q.a?"adevărată":"falsă"}</b>.</span>`;
-  if (q.t==="one") return `<span>Răspuns corect: ${esc(q.opts[q.a])}</span>`;
-  if (q.t==="multi") return `<span>Corecte: ${q.a.length ? q.a.map(i=>esc(q.opts[i])).join("; ") : "niciuna"}</span>`;
+  if (q.t==="tf") return `<span>Afirmația este <b>${q.a?"adevărată":"falsă"}</b>.</span>`;
+  if (q.t==="one") return `<span>Răspuns corect: <b>${esc(q.opts[q.a])}</b></span>`;
+  if (q.t==="multi") return `<span>Corecte: <b>${q.a.length ? q.a.map(i=>esc(q.opts[i])).join("; ") : "niciuna"}</b></span>`;
   return "";
 }
 function next(){
+  document.body.classList.remove("ans-ok", "ans-no");
   const Z = S.quiz;
   if (Z.i < Z.qs.length-1){ Z.i++; viewQuestion(false); }
   else finish();
@@ -2457,7 +2471,7 @@ function next(){
 
 /* ---------- results ---------- */
 async function finish(again){
-  document.body.classList.remove("quiz-fixed");
+  document.body.classList.remove("quiz-fixed", "ans-ok", "ans-no");
   // again: show the same report once more (after logging in from it), without saving twice
   const Z = S.quiz, n = Z.qs.length; S.lastReport = Z;
   const score = Z.answers.reduce((s,a)=>s+(a?a.pts:0),0);
