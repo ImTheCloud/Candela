@@ -476,10 +476,19 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .hl-entity{background:transparent;color:inherit;border-radius:3px;padding:0 2px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
 
 /* Only when colors are active - subtle and discreet */
+.show-colors .hl-entity{cursor:pointer}
 .show-colors .hl-person{background:rgba(167,139,250,.14);border-bottom:1px solid rgba(139,92,246,.35);color:inherit}
 .show-colors .hl-place{background:rgba(74,222,128,.14);border-bottom:1px solid rgba(34,197,94,.35);color:inherit}
 .show-colors .hl-number{background:rgba(251,191,36,.16);border-bottom:1px solid rgba(217,119,6,.35);color:inherit}
 .show-colors .hl-object{background:rgba(56,189,248,.14);border-bottom:1px solid rgba(14,165,233,.35);color:inherit}
+
+/* Entity Mini Popover on click */
+.entity-popover{position:absolute;z-index:900;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:5px 9px;box-shadow:0 6px 20px rgba(0,0,0,.15);display:inline-flex;align-items:center;gap:8px;font-family:var(--f-body);font-size:12px;color:var(--ink);animation:popIn .15s ease-out;pointer-events:auto;max-width:calc(100vw - 24px);white-space:nowrap}
+@keyframes popIn{from{opacity:0;transform:translateY(4px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+.entity-popover .pop-term{font-weight:600;max-width:160px;overflow:hidden;text-overflow:ellipsis}
+.entity-popover .leg-badge{font-size:11px;padding:2px 7px}
+.entity-popover .pop-close{border:0;background:transparent;color:var(--ink-2);cursor:pointer;padding:2px 4px;display:flex;align-items:center;justify-content:center;border-radius:4px;font-size:13px;line-height:1}
+.entity-popover .pop-close:hover{color:var(--ink);background:var(--line)}
 .pf-note{font-size:13px;color:var(--ink-2);margin:0}
 .pw-wrap{position:relative}
 .pw-wrap .input{padding-right:52px}
@@ -2492,31 +2501,89 @@ const ENTITIES_DATA = {
     "Abiatar", "Agag", "Nahaș", "Icabod", "Eliab", "Abinadab", "Șama", "Malchișua", "Ișvi",
     "Penina", "Ahinoam", "Abișai", "Ioab", "Țeruia", "Merab", "Palti", "Adriel", "Ahia",
     "Ahitub", "Bedan", "Ieroham", "Elihu", "Tohu", "Țuf", "Dagon", "Asael", "Ieșua", "Laiș",
-    "Șimea", "Filisteanul"
+    "Șimea", "Ner", "Maoch", "Talmai", "Amonitul", "Edomitul", "Filisteanul",
+    "Filistenii", "filistenii", "filisteni", "filistean", "filisteeni",
+    "Amoniții", "amoniții", "amoniți", "amonit",
+    "Amaleciții", "amaleciții", "amaleciți", "amalecit", "Amalec",
+    "Gheșuriții", "gheșuriții", "Ghirziții", "ghirziții",
+    "Cheniții", "cheniții", "chenit",
+    "Moabiții", "moabiții", "Edomiții", "edomiții",
+    "israeliții", "israelit", "israeliți", "Israel", "Israelul"
   ],
   place: [
-    "Ramataim-Țofim", "Valea Terebinților", "Sela-Hamahlecoth", "Iabeșul Galaadului", "Chiriat-Iearim",
-    "Eben-Ezer", "Bet-Șemeș", "Bet-Șan", "Bet-Aven", "En-Ghedi", "En-Dor", "Adulam", "Cheila",
-    "Țiclag", "Ghilboa", "Betleemul", "Betleem", "Ghibea", "Ghilgal", "Mițpa", "Mițpe", "Șilo",
-    "Silo", "Rama", "Gat", "Nob", "Carmel", "Maon", "Zif", "Horeș", "Hachila", "Boțeț", "Sene",
-    "Micmaș", "Aialon", "Șunem", "Afec", "Besor", "Hebron", "Iabeș", "Galaad", "Asdod", "Așdod",
-    "Ecron", "Gaza", "Efraim", "Beniamin", "Iuda"
+    "Ramataim-Țofim", "Valea Terebinților", "valea Terebinților", "valea Elah",
+    "Sela-Hamahlecoth", "Iabeșul Galaadului", "Iabeș din Galaad", "Chiriat-Iearim", "Eben-Ezer",
+    "Bet-Șemeș", "Bet-Șan", "Bet-Aven", "En-Ghedi", "En-Dor", "Adulam", "Cheila",
+    "Țiclag", "Ghilboa", "Betleemul", "Betleem", "Ghibea lui Saul", "Ghibea lui Beniamin",
+    "Ghibea Elohim", "Ghibea", "Ghibeea", "Ghilgal", "Mițpa", "Mițpe", "Șilo", "Silo",
+    "Rama", "Gat", "Nob", "Carmel", "Maon", "Zif", "Horeș", "Hachila", "dealul Hachila",
+    "Boțeț", "Sene", "Micmaș", "Aialon", "Șunem", "Afec", "Besor", "pârâul Besor",
+    "Hebron", "Iabeș", "Galaad", "Asdod", "Așdod", "Ecron", "Gaza", "Ascalon",
+    "Efraim", "Beniamin", "Iuda", "Egipt", "Moab", "Amon", "Havila", "Șur", "Naiot",
+    "Heret", "Soco", "Azecah", "Bet-Car", "Șen", "Bet-El", "Betel", "stejarul din Tabor",
+    "Casa Domnului", "Templul Domnului", "Templului Domnului", "Muntele Ghilboa",
+    "muntele lui Efraim", "peștera Adulam", "stânca Țapilor sălbatici"
   ],
   object: [
-    "chivotul legământului", "chivotul Domnului", "chivotul lui Dumnezeu", "chivotul",
-    "urim și tumim", "cornul cu untdelemn", "sabia lui Goliat", "pâinile pentru punerea înainte",
-    "pâinile sfinte", "furculița cu trei coarne", "terafimul", "terafimi", "cortul întâlnirii",
-    "praștia", "sulița", "urciorul de apă", "efodul", "efod"
+    "chivotul legământului Domnului", "chivotul legământului", "chivotul Domnului",
+    "chivotul lui Dumnezeu", "chivotul",
+    "pâinile pentru punerea înainte", "pâinea pentru punerea înainte", "pâinile sfinte",
+    "pâine sfințită", "pâinea sfințită",
+    "furculiță cu trei coarne", "furculița cu trei coarne",
+    "sabia lui Goliat", "sabia lui Saul", "sabia", "săbii", "săbiile",
+    "sulița lui Saul", "sulița de aramă", "sulița", "suliță", "sulițe", "suliței",
+    "coif de aramă", "coiful de aramă", "coiful", "coif",
+    "platoșă de solzi", "platoșa de solzi", "platoșă", "platoșa",
+    "zale de solzi", "apărători de aramă", "tureci de aramă", "pavăză de aramă", "pavăză", "scutul", "scut",
+    "praștia", "praștie", "traista de păstor", "traista lui de păstor", "traistă",
+    "toiag de păstor", "toiagul", "toiag",
+    "cornul cu untdelemn", "cornul de untdelemn", "cornul",
+    "urim și tumim", "Urim și Tumim", "Urim", "Tumim",
+    "efodul de in", "efodul", "efod",
+    "terafimul", "terafimi", "terafimii",
+    "urciorul de apă", "urcior",
+    "un car nou", "car nou", "carul",
+    "harpa", "harpă", "alăuta", "alăute",
+    "arcul lui Ionatan", "arcul", "arc", "săgețile", "săgeți", "săgeată",
+    "mantaua lui Saul", "mantaua", "manta", "mantia", "poala mantalei"
   ],
   number: [
-    "patruzeci de zile", "patruzeci de ani", "treizeci de ani", "douăzeci de ani", "șapte zile", "trei zile", "zece zile",
-    "treizeci de mii de care", "șase mii de călăreți", "treizeci de mii", "patruzeci de mii", "zece mii", "cinci mii", "patru mii", "trei mii", "două mii", "o mie",
-    "trei mii de oameni", "trei mii de bărbați", "trei mii de oi", "o mie de capre",
-    "trei sute de oameni", "patru sute de oameni", "șase sute de oameni",
-    "optzeci și cinci de preoți", "două sute de prepuțuri", "o sută de prepuțuri",
-    "două sute de pâini", "o sută de legături", "două sute de turte", "cinci oi", "cinci măsuri", "trei boi", "trei măsuri",
-    "zece pâini", "zece bucăți", "cinci pietre netede", "cinci pietre", "cinci șoareci", "cinci umflături", "cinci domnitori",
-    "șase coți și o palmă", "douăzeci de oameni", "doi fii", "două vaci", "o efă de făină", "un burduf de vin"
+    "trei tauri", "o efă de făină", "un burduf cu vin", "două burdufuri cu vin",
+    "două sute de pâini", "cinci oi pregătite", "cinci oi", "cinci măsuri de grâu prăjit",
+    "cinci măsuri de grâu", "cinci măsuri", "o sută de turte de stafide",
+    "două sute de legături de smochine", "două legături de stafide",
+    "o bucată de turtă de smochine", "efa aceasta de grâu prăjit", "efa de grâu prăjit",
+    "zece cașuri de brânză", "zece pâini", "două pâini", "trei turte de pâine",
+    "trei iezi", "trei mii de oi", "o mie de capre", "două vaci tinere", "două vaci",
+    "șase coți și o palmă", "șase coți", "o palmă",
+    "cinci mii de sicli de aramă", "cinci mii de sicli",
+    "șase sute de sicli de fier", "șase sute de sicli",
+    "un sfert de siclu de argint", "un sfert de siclu", "o treime de siclu",
+    "cinci domnitori ai filistenilor", "cinci domnitori", "cinci căpetenii",
+    "cinci umflături de aur", "cinci umflături",
+    "cinci șoareci de aur", "cinci șoareci",
+    "cinci pietre netede", "cinci pietre",
+    "o sută de prepuțuri", "două sute de prepuțuri",
+    "patruzeci de zile și patruzeci de nopți", "patruzeci de zile", "patruzeci de ani",
+    "treizeci de ani", "douăzeci de ani", "doi ani", "trei ani",
+    "șapte zile", "trei zile și trei nopți", "trei zile", "patru luni", "șapte luni",
+    "zece zile", "nouăzeci și opt de ani",
+    "cincizeci de mii șaptezeci de oameni", "două sute de mii de pedestrași",
+    "trei sute de mii de oameni", "trei sute de mii",
+    "treizeci de mii de oameni aleși", "treizeci de mii de oameni", "treizeci de mii",
+    "trei mii de oameni aleși", "trei mii de bărbați aleși", "trei mii de oameni",
+    "trei mii de bărbați", "trei mii",
+    "două mii erau cu Saul", "două mii", "o mie erau cu Ionatan", "o mie de oameni", "o mie",
+    "șase mii de călăreți", "treizeci de mii de care", "o mie de care",
+    "patru sute de oameni", "patru sute de tineri", "patru sute",
+    "șase sute de oameni", "șase sute",
+    "trei sute de oameni", "două sute de oameni",
+    "optzeci și cinci de oameni", "șaptezeci de oameni",
+    "douăzeci de oameni", "treizeci de oameni", "zece mii de oameni", "zece mii",
+    "zece tineri", "cinci fete", "opt fii", "șapte fii", "trei fii mai mari",
+    "trei fii", "doi fii", "două neveste", "două fete", "două fiice",
+    "trei oameni", "doi oameni", "trei săgeți", "două ori", "trei ori", "șapte ori",
+    "o ceată de proroci"
   ]
 };
 
@@ -2553,6 +2620,66 @@ function highlightVerseEntities(text) {
   });
 }
 
+let _popTimer = null;
+function showEntityPopover(markEl) {
+  const existing = document.getElementById("entityPopover");
+  if (existing) existing.remove();
+  if (_popTimer) { clearTimeout(_popTimer); _popTimer = null; }
+
+  const cat = markEl.classList.contains("hl-person") ? "person" :
+              markEl.classList.contains("hl-place") ? "place" :
+              markEl.classList.contains("hl-number") ? "number" : "object";
+  const catLabels = {
+    person: "Nume",
+    place: "Locuri",
+    number: "Cifre & Măsuri",
+    object: "Obiecte"
+  };
+  const catLabel = catLabels[cat] || "Detalii";
+
+  const pop = document.createElement("div");
+  pop.id = "entityPopover";
+  pop.className = "entity-popover";
+  pop.setAttribute("role", "tooltip");
+  pop.innerHTML = `<span class="pop-term">${esc(markEl.textContent)}</span><span class="leg-badge c-${cat}">${catLabel}</span><button type="button" class="pop-close" aria-label="Închide">✕</button>`;
+
+  document.body.appendChild(pop);
+
+  const rect = markEl.getBoundingClientRect();
+  const popRect = pop.getBoundingClientRect();
+  let top = rect.top + window.scrollY - popRect.height - 6;
+  if (top < window.scrollY + 8) {
+    top = rect.bottom + window.scrollY + 6;
+  }
+  let left = rect.left + window.scrollX + (rect.width / 2) - (popRect.width / 2);
+  left = Math.max(10, Math.min(left, window.innerWidth - popRect.width - 10));
+
+  pop.style.top = `${top}px`;
+  pop.style.left = `${left}px`;
+
+  const closePop = () => {
+    if (_popTimer) { clearTimeout(_popTimer); _popTimer = null; }
+    pop.style.transition = "opacity .15s, transform .15s";
+    pop.style.opacity = "0";
+    pop.style.transform = "translateY(4px) scale(.95)";
+    setTimeout(() => { if (pop.parentNode) pop.remove(); }, 160);
+  };
+
+  pop.querySelector(".pop-close").onclick = e => {
+    e.stopPropagation();
+    closePop();
+  };
+
+  _popTimer = setTimeout(closePop, 2500);
+}
+
+document.addEventListener("click", e => {
+  const pop = document.getElementById("entityPopover");
+  if (pop && !pop.contains(e.target) && !e.target.closest(".hl-entity")) {
+    pop.remove();
+  }
+}, { passive: true });
+
 function viewRead(c){
   c = Math.min(31, Math.max(1, +c || 1)); lsSet("candela:read", c);
   const vs = TEXT[c] || [];
@@ -2567,7 +2694,7 @@ function viewRead(c){
       <div class="reader-legend ${colorsOn ? '' : 'is-dimmed'}" id="readerLegend">
         <span class="leg-badge c-person">Nume</span>
         <span class="leg-badge c-place">Locuri</span>
-        <span class="leg-badge c-number">Cifre</span>
+        <span class="leg-badge c-number">Cifre & Măsuri</span>
         <span class="leg-badge c-object">Obiecte</span>
       </div>
       <button type="button" class="reader-toggle-btn" id="btnColorToggle" aria-pressed="${colorsOn}" title="${colorsOn ? 'Dezactivează culorile' : 'Activează culorile'}">
@@ -2602,6 +2729,20 @@ function viewRead(c){
       if (rLeg) rLeg.classList.toggle("is-dimmed", !colorsOn);
       const rText = $("#readerText");
       if (rText) rText.classList.toggle("show-colors", colorsOn);
+      if (!colorsOn) {
+        const pop = document.getElementById("entityPopover");
+        if (pop) pop.remove();
+      }
+    };
+  }
+
+  const rText = $("#readerText");
+  if (rText) {
+    rText.onclick = e => {
+      const mark = e.target.closest(".hl-entity");
+      if (mark && colorsOn) {
+        showEntityPopover(mark);
+      }
     };
   }
 
