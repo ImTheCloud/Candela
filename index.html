@@ -123,8 +123,7 @@ p{margin:0}
 .bar.two i.seen{opacity:.3}
 .pf-bar-f{margin:0;font-size:13.5px;color:var(--ink-2)}
 .pf-bar-f b{color:var(--ink)}
-.retry-info{display:grid;gap:2px;padding:14px 16px;margin:14px 0;background:var(--surface-2);border-radius:16px;font-size:13.5px;line-height:1.45;color:var(--ink-2)}
-.retry-info b{color:var(--ink);font-size:14px}
+
 .btn-danger{background:transparent;color:var(--bad);border:1.5px solid color-mix(in oklab,var(--bad) 35%,transparent)}
 .prof .kv{margin:0}
 .prof-form{width:100%;display:grid;gap:14px;text-align:left}
@@ -1019,7 +1018,14 @@ function viewWelcome(){
         <li><b>3</b><span>Vezi răspunsul și versetul</span></li>
         <li><b>4</b><span>Citești Biblia oricând</span></li>
       </ol>
-      <div class="retry-info" style="margin-top:16px;"><b>Cum funcționează punctajul?</b>Fiecare răspuns corect dintr-un test îți aduce puncte în clasament. Opțiunea „Reia greșelile” este doar pentru învățare și nu recuperează punctele pierdute. Pentru a obține un scor mai mare, trebuie să refaci testul de la capăt.</div>
+      <div class="card" style="margin-top:14px; padding:16px;">
+        <b style="display:block; font-size:13.5px; color:var(--ink); margin-bottom:10px;">Despre puncte</b>
+        <div class="pf-rules" style="margin:0; padding:0; border:none;">
+          <div class="pf-rule"><span class="r-icon">✓</span><span>Fiecare răspuns corect dintr-un test nou aduce <b>puncte</b>.</span></div>
+          <div class="pf-rule"><span class="r-icon">↺</span><span><b>Reia greșelile</b> ajută la învățare, dar nu adaugă puncte.</span></div>
+          <div class="pf-rule"><span class="r-icon">+</span><span>Pentru un scor mai mare, trebuie să <b>refaci testul de la zero</b>.</span></div>
+        </div>
+      </div>
     </div>
     <div class="wl-bottom"><button class="btn btn-primary btn-block" id="wGo" type="button">Începe</button></div>
   </section>`);
@@ -1809,7 +1815,14 @@ function renderReport(r, o = {}){
     <h2 class="verdict">${verdict}</h2>
     ${tip ? `<p class="verdict-tip">${tip}</p>` : ""}
   </section>
-  ${r.retry ? `<div class="retry-info"><b>Exercițiu de învățare, fără puncte în clasament</b>Punctele de la reluarea greșelilor nu se adaugă la scorul din clasament sau din istoric: scorul oficial rămâne cel al testului inițial. Scopul este să înveți răspunsurile corecte.</div>` : ""}
+  ${r.retry ? `<div class="card" style="margin:16px 0; padding:16px;">
+    <b style="display:block; font-size:13.5px; color:var(--ink); margin-bottom:10px;">Despre puncte</b>
+    <div class="pf-rules" style="margin:0; padding:0; border:none;">
+      <div class="pf-rule"><span class="r-icon">✓</span><span>Fiecare răspuns corect dintr-un test nou aduce <b>puncte</b>.</span></div>
+      <div class="pf-rule"><span class="r-icon">↺</span><span><b>Reia greșelile</b> ajută la învățare, dar nu adaugă puncte.</span></div>
+      <div class="pf-rule"><span class="r-icon">+</span><span>Pentru un scor mai mare, trebuie să <b>refaci testul de la zero</b>.</span></div>
+    </div>
+  </div>` : ""}
   ${wrong ? `<div class="kv two">
     <div class="stat"><b>${n - nWrong}</b><small>corecte</small></div>
     <div class="stat"><b>${nWrong}</b><small>de revăzut</small></div>
@@ -1822,7 +1835,14 @@ function renderReport(r, o = {}){
   ${wrong ? `<div class="section-h"><h3>${nWrong ? "De revăzut" : "Nicio greșeală"}</h3>${nWrong?`<span class="muted" style="font-size:14px">${nWrong} întrebări</span>`:""}</div>
   <div class="mistakes">${nWrong ? wrong.map(mistakeHTML).join("") : `<div class="allgood">Toate răspunsurile sunt corecte.</div>`}</div>`
   : ""}
-  ${(!r.retry && nWrong > 0) ? `<div class="retry-info" style="margin-bottom:16px"><b>Despre puncte</b>„Reia greșelile” este un exercițiu de învățare și nu recuperează punctele pierdute. Pentru a recupera punctele, trebuie să refaci testul complet la ${mode === "easy" ? "nivelul Ușor" : (mode === "hard" ? "nivelul Greu" : "nivelurile ratate (Ușor și/sau Greu)")}.</div>` : ""}
+  ${(!r.retry && nWrong > 0) ? `<div class="card" style="margin-bottom:16px; padding:16px;">
+    <b style="display:block; font-size:13.5px; color:var(--ink); margin-bottom:10px;">Despre puncte</b>
+    <div class="pf-rules" style="margin:0; padding:0; border:none;">
+      <div class="pf-rule"><span class="r-icon">✓</span><span>Fiecare răspuns corect dintr-un test nou aduce <b>puncte</b>.</span></div>
+      <div class="pf-rule"><span class="r-icon">↺</span><span><b>Reia greșelile</b> ajută la învățare, dar nu adaugă puncte.</span></div>
+      <div class="pf-rule"><span class="r-icon">+</span><span>Pentru un scor mai mare, trebuie să <b>refaci testul de la zero</b>.</span></div>
+    </div>
+  </div>` : ""}
   <div class="startbar" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
     ${nWrong ? `<button class="btn btn-oil" id="retry" title="Exercițiu de învățare (fără puncte în clasament)">Reia greșelile</button>` : `<button class="btn btn-oil" id="again">Refă testul</button>`}
     <button class="btn btn-primary" id="home">Acasă</button>
