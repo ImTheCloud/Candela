@@ -890,7 +890,6 @@ function viewEntry(msg, tab){
   $("#back").onclick = () => S.player ? backHome() : enterGuest();
   if ($("#forgot")) $("#forgot").onclick = forgotPassword;
   app.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => viewEntry("", b.dataset.tab));
-  (isNew ? last : !email.value ? email : pw).focus();
   f.addEventListener("input", () => { err.textContent = ""; });
   f.addEventListener("submit", async e => {
     e.preventDefault();
