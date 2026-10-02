@@ -107,6 +107,10 @@ p{margin:0}
 .pf-head{display:grid;justify-items:center;gap:10px}
 .pf-head .prof-mail{margin:0}
 .pf-card{width:100%;background:var(--surface);border-radius:16px;padding:16px 18px;display:grid;gap:12px;box-shadow:var(--shadow);text-align:left}
+.pf-rules{margin-top:4px;padding-top:14px;border-top:1px solid var(--border);display:grid;gap:8px}
+.pf-rule{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;line-height:1.35;color:var(--ink-2)}
+.pf-rule .r-icon{color:var(--oil);font-weight:600;width:14px;text-align:center;font-size:14px}
+.pf-rule b{color:var(--ink);font-weight:600}
 .pf-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:14px;color:var(--ink-2)}
 .pf-row b{color:var(--ink);font-weight:600;text-align:right}
 #pubBody{display:grid;gap:12px;width:100%;justify-self:stretch}
@@ -1069,7 +1073,11 @@ async function openPublicProfile(x, i){
   const body = bg.querySelector("#pubBody"); if (!body) return;
   if (!r.ok || !r.data){ body.innerHTML = `<div class="empty">Profilul nu se poate deschide acum.</div>`; return; }
   const d = r.data;
-  body.innerHTML = `<div class="kv two"><div class="stat"><b>${d.tests}</b><small>${d.tests===1?"test":"teste"}</small></div><div class="stat"><b>${d.tests ? d.avg+"%" : "–"}</b><small>media</small></div></div>
+  body.innerHTML = `<div class="kv">
+    <div class="stat"><b>${d.tests}</b><small>${d.tests===1?"test":"teste"}</small></div>
+    <div class="stat"><b>${d.tests ? d.avg+"%" : "–"}</b><small>media</small></div>
+    <div class="stat"><b>${d.ok_e + d.ok_h}</b><small>${(d.ok_e + d.ok_h)===1?"punct":"puncte"}</small></div>
+  </div>
     <div class="pf-card">${levelBar("Întrebări ușoare", d.ok_e, d.seen_e, totalCount("easy"), "var(--cedar)", true)}${levelBar("Întrebări grele", d.ok_h, d.seen_h, totalCount("hard"), "var(--oil)", true)}
     <p class="pf-bar-f">Capitole exersate: <b>${d.chaps}</b> din 31</p></div>`;
 }
@@ -1114,15 +1122,20 @@ function openProfile(){
         ${p.child ? `<p class="prof-mail">Profil de copil, pe contul tău</p>` : store.hasEmail() ? `<p class="prof-mail">${esc(store.email)}</p>` : `<p class="prof-mail warn">Adaugă un email: cu el intri în cont de acum înainte.</p>`}
         ${rank >= 0 ? `<span class="badge-rank">Locul ${rank+1} din ${S.board.length} în clasament</span>` : ""}
       </div>
-      <div class="kv two">
+      <div class="kv">
         <div class="stat"><b>${tests}</b><small>${tests===1?"test":"teste"}</small></div>
         <div class="stat"><b>${tests ? avg+"%" : "–"}</b><small>media</small></div>
+        <div class="stat"><b>${p.ok.length}</b><small>${p.ok.length===1?"punct":"puncte"}</small></div>
       </div>
       <div class="pf-card">
         ${levelBar("Întrebări ușoare", okE, seenE, totE, "var(--cedar)")}
         ${levelBar("Întrebări grele", okH, seenH, totH, "var(--oil)")}
+        <div class="pf-rules">
+          <div class="pf-rule"><span class="r-icon">✓</span><span>Fiecare răspuns corect dintr-un test nou aduce <b>puncte</b>.</span></div>
+          <div class="pf-rule"><span class="r-icon">↺</span><span><b>Reia greșelile</b> ajută la învățare, dar nu adaugă puncte.</span></div>
+          <div class="pf-rule"><span class="r-icon">+</span><span>Pentru un scor mai mare, trebuie să <b>refaci testul de la zero</b>.</span></div>
+        </div>
       </div>
-      <div class="retry-info" style="margin: 0 16px 16px;"><b>Despre puncte</b>Fiecare răspuns corect îți aduce puncte. Opțiunea „Reia greșelile” este doar pentru învățare și nu recuperează punctele pierdute. Pentru un scor mai mare, trebuie să refaci testul de la capăt.</div>
       ${!p.child && store.isParent ? `<div class="pf-card" id="pfKids"></div>` : ""}
       <div class="set-list">
         ${p.child ? "" : `<button class="set-row${store.hasEmail() ? "" : " warn"}" id="pfEdit" type="button"><span class="set-t">${store.hasEmail() ? "Nume, email și parolă" : "Adaugă emailul"}</span>${CHEV}</button>
