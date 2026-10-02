@@ -1328,8 +1328,6 @@ function viewHome(){
     <div class="panel">
       <div class="section-h first"><h3>Ce capitol vrei să exersezi?</h3></div>
       <div class="grid" id="grid">${Array.from({length:31},(_,i)=>i+1).map(c=>`<button class="tile" data-c="${c}" aria-pressed="false" title="${c}. ${esc(TITLES[c-1])}" aria-label="Capitolul ${c}: ${esc(TITLES[c-1])}${lvTried(c,"easy") ? ", ușor făcut" : ""}${lvTried(c,"hard") ? ", greu făcut" : ""}"><span class="n">${c}</span>${lvTried(c,"easy") && lvTried(c,"hard") ? `<i class="done-mark" aria-hidden="true">${CHECK}</i>` : chapTried(c) ? `<span class="prog" aria-hidden="true"><i class="${lvTried(c,"easy") ? "on" : ""}"></i><i class="${lvTried(c,"hard") ? "on" : ""}"></i></span>` : ""}</button>`).join("")}</div>
-
-      <div class="startbar"><button class="btn btn-primary btn-block" id="start"></button></div>
     </div>
   </aside>
 
@@ -1343,17 +1341,14 @@ function viewHome(){
 
   if (!S.sel.size || chapTried([...S.sel][0])){ const next = Array.from({length:31},(_,i)=>i+1).find(c => !chapTried(c)); if (next) S.sel = new Set([next]); else if (!S.sel.size) S.sel = new Set([1]); }
   const update = () => {
-    const c = [...S.sel][0];
     app.querySelectorAll(".tile").forEach(t => t.setAttribute("aria-pressed", S.sel.has(+t.dataset.c)));
-    const st = $("#start"); st.disabled = false;
-    st.innerHTML = `<span class="st-main">Începe · capitolul ${c}</span>`;
     persistPrefs();
   };
   app.querySelectorAll(".tile").forEach(t => t.onclick = () => {
     S.sel = new Set([+t.dataset.c]);
     update();
+    openOptions();
   });
-  $("#start").onclick = () => openOptions();
   app.querySelectorAll(".hrow[data-at]").forEach(b => b.onclick = () => { S.homeScroll = window.scrollY; openPastReport(+b.dataset.at); });
   if ($("#allHist")) $("#allHist").onclick = viewHistory;
   app.querySelectorAll("[data-play]").forEach(b => b.onclick = () => switchPlayer(b.dataset.play));
@@ -1443,16 +1438,25 @@ function openOptions(chs = [...S.sel].sort((a,b)=>a-b)){
   const c = chs[0];
   const bg = document.createElement("div"); bg.className = "sheet-bg";
   
+  const secsEasy = estSecs(buildPool(chs, "easy"));
+  const secsHard = estSecs(buildPool(chs, "hard"));
+  const mEasy = Math.round(secsEasy / 60);
+  const mHard = Math.round(secsHard / 60);
+
   const lvlButtons = ["easy", "hard", "both"].map(m => {
-    const list = buildPool(chs, m); const pool = list.length; const perQ = estSecs(list) / pool;
     const done = levelDone(chs, m);
     const lastSc = levelLast(c, m);
     const note = done ? `Făcut deja${lastSc != null ? ` · ultimul scor: ${lastSc}%` : ""}` : esc(MODE_NOTE[m]);
-    const dur = durLabel(perQ * pool).replace(/^cam /, "");
+    let durStr = "";
+    if (m === "easy") durStr = durLabel(secsEasy);
+    else if (m === "hard") durStr = durLabel(secsHard);
+    else durStr = durLabel((mEasy + mHard) * 60);
+    durStr = durStr.replace(/^cam /, "");
+
     return `<button type="button" class="hrow" data-m="${m}" style="display:block; padding:16px; border:2px solid transparent;">
       <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px; font-size:16px; color:var(--ink);">
         <b>${MODE_LABEL[m]}</b>
-        <span style="font-size:13px; color:var(--oil-ink); font-weight:500;">${dur}</span>
+        <span style="font-size:13px; color:var(--oil-ink); font-weight:500;">${durStr}</span>
       </div>
       <div style="font-size:13.5px; color:${done ? 'var(--cedar)' : 'var(--oil-ink)'}; display:flex; align-items:center; gap:6px;">
         ${done ? `<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M13.333 4L6 11.333 2.667 8"/></svg>` : ""}${note}
