@@ -1035,12 +1035,31 @@ async function openPublicProfile(x, i){
     <div class="pf-card">${levelBar("Întrebări ușoare", d.ok_e, d.seen_e, totalCount("easy"), "var(--cedar)", true)}${levelBar("Întrebări grele", d.ok_h, d.seen_h, totalCount("hard"), "var(--oil)", true)}
     <p class="pf-bar-f">Capitole exersate: <b>${d.chaps}</b> din 31</p></div>`;
 }
+function refreshHomeHeaderAndFamily(){
+  const who = $("#who"); if (who) who.outerHTML = whoHTML();
+  const p = S.player; if (!p) return;
+  const h2 = $(".hello h2"); if (h2 && !p.guest) h2.textContent = `Bun venit, ${esc(p.name.split(" ")[0])}.`;
+  const famEl = $(".family"), hello = $(".hello");
+  const fHtml = familyHTML();
+  if (famEl){
+    if (fHtml){
+      const temp = document.createElement("div"); temp.innerHTML = fHtml;
+      famEl.replaceWith(temp.firstElementChild);
+      app.querySelectorAll("[data-play]").forEach(b => b.onclick = () => switchPlayer(b.dataset.play));
+    } else {
+      famEl.remove();
+    }
+  } else if (fHtml && hello){
+    const temp = document.createElement("div"); temp.innerHTML = fHtml;
+    hello.appendChild(temp.firstElementChild);
+    app.querySelectorAll("[data-play]").forEach(b => b.onclick = () => switchPlayer(b.dataset.play));
+  }
+}
 function openProfile(){
   const p = S.player; if (!p || p.guest) return;
   const bg = document.createElement("div"); bg.className = "sheet-bg";
   bg.innerHTML = `<div class="sheet prof" role="dialog" aria-modal="true" aria-label="Profil"></div>`;
   document.body.appendChild(bg);
-  bg._onClose = () => { if ($(".home")) viewHome(); };
   const sheet = bg.querySelector(".sheet"), close = () => closeModal(bg);
   bg.onclick = e => { if (e.target === bg) close(); };
   const X = `<button class="icon-btn prof-x" id="pfX" aria-label="Închide"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>`;
@@ -1084,6 +1103,7 @@ function openProfile(){
         if (!r.ok){ e.target.checked = !on; return toast(/has_children/.test(r.error) ? "Șterge întâi profilurile copiilor." : "Nu s-a putut salva. Încearcă din nou.", 3500); }
         store.isParent = on; if (on && !store.family?.length) store.family = [{id: store.uid, name: p.name, child: false}];
         show();
+        refreshHomeHeaderAndFamily();
         if (on){
           const kidsEl = sheet.querySelector("#pfKids");
           if (kidsEl){
@@ -1137,6 +1157,8 @@ function openProfile(){
       const token = await store.token(), r = token ? await store.call("family", {action: "remove", id: b.dataset.kdel}, token) : {ok:false};
       if (!r.ok) return toast("Nu s-a putut șterge. Încearcă din nou.");
       store.family = store.family.filter(x => x.id !== b.dataset.kdel); S.board = null; drawKids(box); toast("Profilul a fost șters.");
+      refreshHomeHeaderAndFamily();
+      if ($("#board")) loadBoard();
     }));
     if (!adding){ box.querySelector("#kAdd").onclick = () => { drawKids(box, true); }; return; }
     box.querySelector("#kNo").onclick = () => drawKids(box);
@@ -1151,6 +1173,8 @@ function openProfile(){
       btn.disabled = false;
       if (!r.ok){ err.textContent = childError(r); return; }
       drawKids(box); toast(`Gata: ${r.name.split(" ")[0]} poate face teste acum.`, 3500);
+      refreshHomeHeaderAndFamily();
+      if ($("#board")) loadBoard();
     };
   };
   const edit = () => {
@@ -1202,6 +1226,8 @@ function openProfile(){
       p.name = r.name; lsSet("candela:email", r.email); S.board = null;
       const me = (store.family || []).find(x => x.id === store.uid); if (me) me.name = r.name;
       toast(npw.value ? "Profil și parolă actualizate." : "Profil actualizat.");
+      refreshHomeHeaderAndFamily();
+      if ($("#board")) loadBoard();
       show();
     });
   };
