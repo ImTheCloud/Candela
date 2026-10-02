@@ -534,6 +534,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .leg-badge.c-place{background:rgba(74,222,128,.14);border-bottom:1px solid rgba(34,197,94,.35)}
 .leg-badge.c-number{background:rgba(251,191,36,.16);border-bottom:1px solid rgba(217,119,6,.35)}
 .leg-badge.c-object{background:rgba(56,189,248,.14);border-bottom:1px solid rgba(14,165,233,.35)}
+.leg-badge.c-animal{background:rgba(244,114,182,.14);border-bottom:1px solid rgba(236,72,153,.35)}
 
 .reader-toggle-btn{display:inline-flex;align-items:center;gap:4px;font-family:inherit;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink-2);cursor:pointer;flex-shrink:0;margin-left:auto;white-space:nowrap;transition:border-color .15s,background .15s,color .15s;-webkit-tap-highlight-color:transparent}
 .reader-toggle-btn:hover{border-color:var(--ink-2);color:var(--ink)}
@@ -554,6 +555,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .show-colors .hl-place{background:rgba(74,222,128,.14);border-bottom:1px solid rgba(34,197,94,.35);color:inherit}
 .show-colors .hl-number{background:rgba(251,191,36,.16);border-bottom:1px solid rgba(217,119,6,.35);color:inherit}
 .show-colors .hl-object{background:rgba(56,189,248,.14);border-bottom:1px solid rgba(14,165,233,.35);color:inherit}
+.show-colors .hl-animal{background:rgba(244,114,182,.14);border-bottom:1px solid rgba(236,72,153,.35);color:inherit}
 
 /* Entity Mini Popover on click */
 .entity-popover{position:absolute;z-index:900;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:5px 9px;box-shadow:0 6px 20px rgba(0,0,0,.15);display:inline-flex;align-items:center;gap:8px;font-family:var(--f-body);font-size:12px;color:var(--ink);animation:popIn .15s ease-out;pointer-events:auto;max-width:calc(100vw - 24px);white-space:nowrap}
@@ -890,7 +892,7 @@ function chaptersLabel(chs){
    A finished test is one call to save_result(); the leaderboard is the public leaderboard() function.
    Results that could not be sent wait in localStorage and go out at the next sign-in.
    Without an account the visitor plays as a guest: results stay in this browser and move to the account at sign-up or sign-in. */
-const SB = {"url": "https://hpmypeoszocxjjxrnbfh.supabase.co", "key": "sb_publishable_MtSGXf-G2iNiIdP0JqSm2Q_gMH_flwg"};
+const SB = {"url":"https://hpmypeoszocxjjxrnbfh.supabase.co","key":"sb_publishable_MtSGXf-G2iNiIdP0JqSm2Q_gMH_flwg"};
 const HOSTED = true;
 const authStorage = {   // "Rămâi conectat" off → the session lives only until the browser is closed
   getItem(k){ try { return localStorage.getItem(k) ?? sessionStorage.getItem(k); } catch { return null; } },
@@ -2709,9 +2711,10 @@ const ENTITIES_DATA = {
     "Țeruia", "Țeruiei", "Merab", "Palti", "Paltiel", "Adriel", "Ahia", "Ahitub", "Bedan",
     "Ieroham", "Elihu", "Tohu", "Țuf", "Laiș", "Șimea", "Ner", "Maoch", "Maoc", "Talmai",
     "Abiel", "Țeror", "Becorat", "Afiah", "Ahimaaț", "Eleazar", "Ioel", "Dagon", "Sisera",
-    "Barac", "Iefta", "Ierubaal", "Moise", "Aaron", "Iosua", "Faraon", "Caleb", "Iacov", "Abia"
+    "Barac", "Iefta", "Ierubaal", "Moise", "Aaron", "Iosua", "Faraon", "Caleb", "Iacov", "Abia", "Urie"
   ],
   place: [
+    "Filistenii", "Filistenilor", "Filisteanul", "Amaleciții", "Amaleciți", "Amaleciților", "Amalecitul", "Amoniții", "Amoniți", "Amoniților", "Amonitul", "Edomiții", "Edomitul", "Egiptenii", "Egiptenilor", "Cheniții", "Cheniților", "Hitiții", "Hitiul", "Evreii", "Evreilor",
     "Israelul", "Israelului", "Israel",
     "Ramataim-Țofim", "Valea Terebinților", "valea Terebinților", "valea Elah",
     "Sela-Hamahlecoth", "Sela-Hamahlecot", "Iabeșul Galaadului", "Iabeș din Galaad",
@@ -2796,7 +2799,18 @@ const ENTITIES_DATA = {
     "o bucată de turtă de smochine",
     "șapte zile", "șapte luni", "șapte ori",
     "patru luni", "un an și patru luni",
-    "o ceată de proroci"
+    "o ceată de proroci",
+    "unu", "doi", "două", "trei", "patru", "cinci", "șase", "șapte", "opt", "nouă", "zece", "unsprezece", "doisprezece", "douăzeci", "treizeci", "patruzeci", "cincizeci", "șaizeci", "șaptezeci", "optzeci", "nouăzeci", "sută", "sute", "mie", "mii", "zeci", "primul", "al doilea", "a doua", "a treia"
+  ],
+  animal: [
+    "bou", "boi", "boii", "vacă", "vaci", "vacile", "vițel", "viței", "vițeii", 
+    "oaie", "oi", "oile", "berbec", "berbeci", "berbecii", "miel", "miei", "mieii", 
+    "capră", "capre", "caprele", "ied", "iezi", "iezii", "țap", "țapilor", "turmă", "turma", "turme", "turmele",
+    "măgar", "măgari", "măgarii", "măgăriță", "măgărițe", "măgărițele", 
+    "câine", "câini", "câinii", "purice", "puricele", "potârniche", "potârnichea", 
+    "urs", "ursul", "leu", "leul", "șoarece", "șoareci", "șoarecii", 
+    "pasăre", "păsări", "păsările", "vultur", "vulturi", "vulturii", 
+    "cămilă", "cămile", "cămilele", "pui", "puii"
   ]
 };
 
@@ -2842,11 +2856,13 @@ function showEntityPopover(markEl) {
 
   const cat = markEl.classList.contains("hl-person") ? "person" :
               markEl.classList.contains("hl-place") ? "place" :
-              markEl.classList.contains("hl-number") ? "number" : "object";
+              markEl.classList.contains("hl-number") ? "number" : 
+              markEl.classList.contains("hl-animal") ? "animal" : "object";
   const catLabels = {
     person: "Nume",
     place: "Locuri",
     number: "Cifre & Măsuri",
+    animal: "Animale",
     object: "Obiecte"
   };
   const catLabel = catLabels[cat] || "Detalii";
@@ -2910,6 +2926,7 @@ function viewRead(c){
         <span class="leg-badge c-place">Locuri</span>
         <span class="leg-badge c-number">Cifre & Măsuri</span>
         <span class="leg-badge c-object">Obiecte</span>
+        <span class="leg-badge c-animal">Animale</span>
       </div>
       <button type="button" class="reader-toggle-btn" id="btnColorToggle" aria-pressed="${colorsOn}" title="${colorsOn ? 'Dezactivează culorile' : 'Activează culorile'}">
         <span class="r-icon" id="btnColorIcon">${colorsOn ? TOGGLE_ICONS.off : TOGGLE_ICONS.on}</span>
