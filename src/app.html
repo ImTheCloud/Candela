@@ -1787,7 +1787,9 @@ function renderReport(r, o = {}){
   const chList = Object.entries(r.byCh || {});
   mount(`${headerHTML(false)}
   <section class="report-head">
-    <span class="eyebrow">Raport · ${esc(chaptersLabel(chs))} · ${MODE_LABEL[mode]}${r.retry?" · reluare greșeli":""}</span>
+    <div class="reader-h" style="margin-bottom:0; align-items:center;">${BACK_BTN("repBack")}
+      <div><span class="eyebrow" style="margin-bottom:0;">Raport · ${esc(chaptersLabel(chs))} · ${MODE_LABEL[mode]}${r.retry?" · reluare greșeli":""}</span></div>
+    </div>
     <div class="ring"><div class="sparks" id="sparks"></div>
       <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" fill="none" stroke="var(--surface-2)" stroke-width="9"/><circle id="ringArc" cx="60" cy="60" r="52" fill="none" stroke="var(--oil)" stroke-width="9" stroke-linecap="round" stroke-dasharray="0 400" style="transition:stroke-dasharray 1.4s cubic-bezier(.2,.8,.2,1)"/></svg>
       <div class="val"><b id="pctNum">0%</b><small>${sc} din ${n} puncte</small></div></div>
@@ -1828,6 +1830,7 @@ function renderReport(r, o = {}){
   if (nWrong) $("#retry").onclick = () => { S.reportBack = null; S.reportCh = null; startQuiz(shuffle(wrong.map(x => { const o = {...x.q}; const src = QUIZ[o.ch][o.mode][+o.id.slice(String(o.ch).length+1)]; return {...src, ch:o.ch, mode:o.mode, id:o.id}; })), {retry: true, mode}); };
   if ($("#again")) $("#again").onclick = () => { S.reportBack = null; S.reportCh = null; S.sel = new Set(chs); persistPrefs(); openOptions(chs); };
   if ($("#readCh")) $("#readCh").onclick = () => viewRead(chs[0]);
+  if ($("#repBack")) $("#repBack").onclick = () => { if (o.past) viewHistory(); else viewHome(); };
   if ($("#backHist")) $("#backHist").onclick = viewHistory;
   if ($("#home")) $("#home").onclick = () => { S.reportBack = null; S.reportCh = null; const savedScroll = S.homeScroll || 0; S.homeScroll = 0; viewHome(); if (savedScroll) requestAnimationFrame(() => requestAnimationFrame(() => window.scrollTo({top: savedScroll}))); };
 }
