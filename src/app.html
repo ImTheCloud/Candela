@@ -1135,9 +1135,8 @@ function openProfile(){
         ${p.child ? `<p class="prof-mail">Profil de copil, pe contul tău</p>` : store.hasEmail() ? `<p class="prof-mail">${esc(store.email)}</p>` : `<p class="prof-mail warn">Adaugă un email: cu el intri în cont de acum înainte.</p>`}
         ${rank >= 0 ? `<span class="badge-rank">Locul ${rank+1} din ${S.board.length} în clasament</span>` : ""}
       </div>
-      <div class="kv four">
+      <div class="kv">
         <div class="stat"><b>${tests}</b><small>${tests===1?"test":"teste"}</small></div>
-        <div class="stat"><b>${totSecs ? timeStr : "–"}</b><small>timp alocat</small></div>
         <div class="stat"><b>${tests ? avg+"%" : "–"}</b><small>media</small></div>
         <div class="stat"><b>${p.ok.length}</b><small>${p.ok.length===1?"punct":"puncte"}</small></div>
       </div>
@@ -1857,9 +1856,10 @@ async function openPastReport(at, o = {}){
   const h = S.player.history.find(x => x.at === at); if (!h) return;
   let r = findReport(at);
   if (!r){
-    r = { at, chs: h.chs, mode: h.mode, n: h.total, sc: h.score, P: h.pct, wrong: null, byCh: {} };
+    r = { at, chs: h.chs, mode: h.mode, n: h.total, sc: h.score, P: h.pct, secs: h.secs, wrong: null, byCh: {} };
     if (!S.player.guest){ const res = await store.rpc("result_wrong", { p_player: store.pid, p_at: new Date(at).toISOString() }); if (res.ok && Array.isArray(res.data)) r.wrong = unpackWrong(res.data); }
   }
+  if (r && !r.secs && h.secs) r.secs = h.secs;
   renderReport(r, { past: true, ...o });
 }
 function renderReport(r, o = {}){
