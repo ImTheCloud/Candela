@@ -1068,8 +1068,8 @@ function openProfile(){
       ${!p.child && store.isParent ? `<div class="pf-card" id="pfKids"></div>` : ""}
       <div class="set-list">
         ${p.child ? "" : `<button class="set-row${store.hasEmail() ? "" : " warn"}" id="pfEdit" type="button"><span class="set-t">${store.hasEmail() ? "Nume, email și parolă" : "Adaugă emailul"}</span>${CHEV}</button>
-        <label class="set-row"><span class="set-t">Cont de părinte<small>Îți adaugi copiii</small></span><input type="checkbox" class="switch" id="pfParent" ${store.isParent ? "checked" : ""}></label>`}
-        <label class="set-row"><span class="set-t">${p.child ? "Apare în clasament" : "Apar în clasament"}<small>${p.child ? "Numele lui se vede" : "Numele meu se vede"}</small></span><input type="checkbox" class="switch" id="pfHide" ${p.hidden ? "" : "checked"}></label>
+        <label class="set-row"><span class="set-t">Cont de părinte<small>Poți să îți adaugi copiii</small></span><input type="checkbox" class="switch" id="pfParent" ${store.isParent ? "checked" : ""}></label>`}
+        <label class="set-row"><span class="set-t">${p.child ? "Apare în clasament" : "Apar în clasament"}<small>${p.child ? "Rezultatele și locul lui sunt vizibile în clasamentul public" : "Rezultatele și locul tău sunt vizibile în clasamentul public"}</small></span><input type="checkbox" class="switch" id="pfHide" ${p.hidden ? "" : "checked"}></label>
         ${S.admin && !p.child ? `<button class="set-row" id="pfAdm" type="button"><span class="set-t">Administrare</span>${CHEV}</button>` : ""}
       </div>
       <div class="prof-btns">${p.child ? `<button class="btn btn-primary btn-block" data-back>Înapoi la profilul meu</button>` : ""}
@@ -1126,7 +1126,7 @@ function openProfile(){
   const drawKids = (box, adding) => {
     const kids = (store.family || []).filter(x => x.child), ln = p.name.trim().split(" ").slice(1).join(" ");
     box.innerHTML = `<div class="pf-row"><span style="color:var(--ink);font-weight:600;font-size:15px">Copiii mei</span></div>
-      ${kids.length ? "" : `<p class="pf-note">Adaugă-ți copiii: fiecare are rezultatele și locul lui în clasament. Pe acasă alegi cine exersează.</p>`}
+      ${kids.length ? "" : `<p class="pf-note">Adaugă-ți copiii: fiecare are propriile rezultate și locul său în clasament. Pe pagina principală poți alege oricând cine face testul.</p>`}
       ${kids.map(k => `<div class="kid"><span class="avatar sm">${esc(initials(k.name))}</span><b>${esc(k.name)}</b><button class="link" type="button" data-kdel="${k.id}" data-kname="${esc(k.name)}">Șterge</button></div>`).join("")}
       ${adding ? `<form class="kid-form" id="kForm" novalidate>
           <div class="field"><label for="kFirst">Prenumele copilului</label><div class="ak-row"><input class="input" id="kFirst" maxlength="30" autocapitalize="words" placeholder="Prenume"><span class="ak-last">${esc(ln)}</span></div><small class="muted kid-hint">Numele de familie se adaugă singur.</small></div>
@@ -1150,7 +1150,7 @@ function openProfile(){
       const r = await addChild(f1, ln);
       btn.disabled = false;
       if (!r.ok){ err.textContent = childError(r); return; }
-      drawKids(box); toast(`Gata: ${r.name.split(" ")[0]} poate exersa acum.`, 3500);
+      drawKids(box); toast(`Gata: ${r.name.split(" ")[0]} poate face teste acum.`, 3500);
     };
   };
   const edit = () => {
@@ -1249,7 +1249,7 @@ function viewHome(){
     </div>
   </aside>
 
-  ${HOSTED ? `<section class="h-board"><div class="section-h"><h3>Clasament</h3></div><div id="board" class="board scroll"><div class="empty">Se încarcă clasamentul…</div></div></section>` : ""}
+  ${HOSTED ? `<section class="h-board"><div class="section-h"><h3>Clasament</h3><span class="muted pick-note">Locurile și scorurile tuturor participanților</span></div><div id="board" class="board scroll"><div class="empty">Se încarcă clasamentul…</div></div></section>` : ""}
 
   <section class="h-hist">
     <div class="section-h"><h3>Istoric</h3></div>
@@ -1855,7 +1855,7 @@ function showTempPassword(name, pw){
 /* ---------- family: a parent and its children on one phone ---------- */
 function familyHTML(){
   if (!S.player || S.player.guest || !store.isParent || (store.family || []).length < 2) return "";
-  return `<div class="family" role="group" aria-label="Cine exersează"><span class="family-l">Cine exersează?</span>${store.family.map(x =>
+  return `<div class="family" role="group" aria-label="Cine face testul"><span class="family-l">Cine face testul?</span>${store.family.map(x =>
     `<button class="fam ${x.id === store.pid ? "on" : ""}" type="button" data-play="${x.id}" aria-pressed="${x.id === store.pid}"><span class="avatar sm">${esc(initials(x.name))}</span>${esc(x.name.split(" ")[0])}</button>`).join("")}</div>`;
 }
 /* children share the parent's family name, so only first names are asked */
@@ -1895,7 +1895,7 @@ function askChildren(last){
     }
     closeModal(bg, () => {
       viewHome();
-      toast("Gata. Alege pe acasă cine exersează.", 4000);
+      toast("Gata! Pe pagina principală poți alege oricând cine face testul.", 4000);
     });
   };
 }
@@ -1905,7 +1905,7 @@ async function switchPlayer(id){
   try { S.player = await store.loadPlayer(id); }
   catch { return toast(loginError({error: "network"})); }
   S.board = null; viewHome();
-  toast(`Acum exersează ${S.player.name.split(" ")[0]}.`);
+  toast(`Acum face testul ${S.player.name.split(" ")[0]}.`);
 }
 function confirmBox(title, text, yes, onYes){
   const bg = document.createElement("div"); bg.className = "modal-bg";
