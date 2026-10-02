@@ -1021,9 +1021,9 @@ function viewWelcome(){
       <div class="card" style="margin-top:14px; padding:16px;">
         <b style="display:block; font-size:13.5px; color:var(--ink); margin-bottom:10px;">Despre puncte</b>
         <div class="pf-rules" style="margin:0; padding:0; border:none;">
-          <div class="pf-rule"><span class="r-icon">✓</span><span>Fiecare răspuns corect dintr-un test nou aduce <b>puncte</b>.</span></div>
-          <div class="pf-rule"><span class="r-icon">↺</span><span><b>Reia greșelile</b> ajută la învățare, dar nu adaugă puncte.</span></div>
-          <div class="pf-rule"><span class="r-icon">+</span><span>Pentru un scor mai mare, trebuie să <b>refaci testul de la zero</b>.</span></div>
+          <div class="pf-rule"><span class="r-icon">✓</span><span>Răspunsurile corecte aduc <b>puncte</b>.</span></div>
+          <div class="pf-rule"><span class="r-icon">↺</span><span><b>Reia greșelile</b> nu dă puncte.</span></div>
+          <div class="pf-rule"><span class="r-icon">+</span><span>Punctaj mai mare? <b>Refă testul</b>.</span></div>
         </div>
       </div>
     </div>
@@ -1137,9 +1137,9 @@ function openProfile(){
         ${levelBar("Întrebări ușoare", okE, seenE, totE, "var(--cedar)")}
         ${levelBar("Întrebări grele", okH, seenH, totH, "var(--oil)")}
         <div class="pf-rules">
-          <div class="pf-rule"><span class="r-icon">✓</span><span>Fiecare răspuns corect dintr-un test nou aduce <b>puncte</b>.</span></div>
-          <div class="pf-rule"><span class="r-icon">↺</span><span><b>Reia greșelile</b> ajută la învățare, dar nu adaugă puncte.</span></div>
-          <div class="pf-rule"><span class="r-icon">+</span><span>Pentru un scor mai mare, trebuie să <b>refaci testul de la zero</b>.</span></div>
+          <div class="pf-rule"><span class="r-icon">✓</span><span>Răspunsurile corecte aduc <b>puncte</b>.</span></div>
+          <div class="pf-rule"><span class="r-icon">↺</span><span><b>Reia greșelile</b> nu dă puncte.</span></div>
+          <div class="pf-rule"><span class="r-icon">+</span><span>Punctaj mai mare? <b>Refă testul</b>.</span></div>
         </div>
       </div>
       ${!p.child && store.isParent ? `<div class="pf-card" id="pfKids"></div>` : ""}
@@ -1818,9 +1818,9 @@ function renderReport(r, o = {}){
   ${r.retry ? `<div class="card" style="margin:16px 0; padding:16px;">
     <b style="display:block; font-size:13.5px; color:var(--ink); margin-bottom:10px;">Despre puncte</b>
     <div class="pf-rules" style="margin:0; padding:0; border:none;">
-      <div class="pf-rule"><span class="r-icon">✓</span><span>Fiecare răspuns corect dintr-un test nou aduce <b>puncte</b>.</span></div>
-      <div class="pf-rule"><span class="r-icon">↺</span><span><b>Reia greșelile</b> ajută la învățare, dar nu adaugă puncte.</span></div>
-      <div class="pf-rule"><span class="r-icon">+</span><span>Pentru un scor mai mare, trebuie să <b>refaci testul de la zero</b>.</span></div>
+      <div class="pf-rule"><span class="r-icon">✓</span><span>Răspunsurile corecte aduc <b>puncte</b>.</span></div>
+      <div class="pf-rule"><span class="r-icon">↺</span><span><b>Reia greșelile</b> nu dă puncte.</span></div>
+      <div class="pf-rule"><span class="r-icon">+</span><span>Punctaj mai mare? <b>Refă testul</b>.</span></div>
     </div>
   </div>` : ""}
   ${wrong ? `<div class="kv two">
@@ -1838,9 +1838,9 @@ function renderReport(r, o = {}){
   ${(!r.retry && nWrong > 0) ? `<div class="card" style="margin-bottom:16px; padding:16px;">
     <b style="display:block; font-size:13.5px; color:var(--ink); margin-bottom:10px;">Despre puncte</b>
     <div class="pf-rules" style="margin:0; padding:0; border:none;">
-      <div class="pf-rule"><span class="r-icon">✓</span><span>Fiecare răspuns corect dintr-un test nou aduce <b>puncte</b>.</span></div>
-      <div class="pf-rule"><span class="r-icon">↺</span><span><b>Reia greșelile</b> ajută la învățare, dar nu adaugă puncte.</span></div>
-      <div class="pf-rule"><span class="r-icon">+</span><span>Pentru un scor mai mare, trebuie să <b>refaci testul de la zero</b>.</span></div>
+      <div class="pf-rule"><span class="r-icon">✓</span><span>Răspunsurile corecte aduc <b>puncte</b>.</span></div>
+      <div class="pf-rule"><span class="r-icon">↺</span><span><b>Reia greșelile</b> nu dă puncte.</span></div>
+      <div class="pf-rule"><span class="r-icon">+</span><span>Punctaj mai mare? <b>Refă testul</b>.</span></div>
     </div>
   </div>` : ""}
   <div class="startbar" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
