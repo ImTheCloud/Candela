@@ -1,279 +1,279 @@
 {
- "ch": 4,
- "easy": [
-  {
-   "t": "one",
-   "ref": "4:1",
-   "q": "Împotriva cui a ieșit Israel să lupte?",
-   "opts": [
-    "egiptenii",
-    "filistenii",
-    "amaleciții"
-   ],
-   "a": 1
-  },
-  {
-   "t": "tf",
-   "ref": "4:2",
-   "q": "În prima luptă, Israel a fost bătut de filisteni.",
-   "a": true
-  },
-  {
-   "t": "one",
-   "ref": "4:3",
-   "q": "Ce au hotărât bătrânii lui Israel după înfrângere?",
-   "opts": [
-    "să ceară ajutor de la Egipt",
-    "să se întoarcă la Silo fără luptă",
-    "să ia chivotul legământului de la Silo"
-   ],
-   "a": 2
-  },
-  {
-   "t": "tf",
-   "ref": "4:5",
-   "q": "Când chivotul a intrat în tabără, Israel a rămas în tăcere.",
-   "a": false
-  },
-  {
-   "t": "one",
-   "ref": "4:6-7",
-   "q": "De ce s-au temut filistenii?",
-   "opts": [
-    "au crezut că Dumnezeu venise în tabăra lui Israel",
-    "au văzut o oaste mai mare decât a lor",
-    "au auzit că Samuel venise în tabără"
-   ],
-   "a": 0
-  },
-  {
-   "t": "tf",
-   "ref": "4:10",
-   "q": "A doua oară Israel a învins pe filisteni.",
-   "a": false
-  },
-  {
-   "t": "multi",
-   "ref": "4:10-11",
-   "q": "Ce s-a întâmplat în a doua luptă?",
-   "opts": [
-    "Hofni și Fineas au murit",
-    "au căzut treizeci de mii de oameni pedeștri",
-    "chivotul lui Dumnezeu a fost luat"
-   ],
-   "a": [
-    0,
-    1,
-    2
-   ]
-  },
-  {
-   "t": "one",
-   "ref": "4:18",
-   "q": "La ce veste a căzut Eli de pe scaun?",
-   "opts": [
-    "la vestea că chivotul a fost luat",
-    "la vestea morții fiilor săi",
-    "la vestea înfrângerii lui Israel"
-   ],
-   "a": 0
-  },
-  {
-   "t": "tf",
-   "ref": "4:18",
-   "q": "Eli a murit căzând de pe scaun.",
-   "a": true
-  },
-  {
-   "t": "one",
-   "ref": "4:19",
-   "q": "Cine a născut un fiu când a aflat vestea?",
-   "opts": [
-    "nevasta lui Hofni",
-    "Ana",
-    "nevasta lui Fineas"
-   ],
-   "a": 2
-  },
-  {
-   "t": "one",
-   "ref": "4:21",
-   "q": "Ce înseamnă numele I-Cabod?",
-   "opts": [
-    "Dumnezeu a ascultat",
-    "Nu mai e slavă",
-    "Fiul durerii"
-   ],
-   "a": 1
-  },
-  {
-   "t": "match",
-   "ref": "4:11-21",
-   "q": "Asociază fiecare personaj cu ce i s-a întâmplat.",
-   "pairs": [
-    [
-     "Hofni și Fineas",
-     "au murit în luptă"
+    "ch": 4,
+    "easy": [
+        {
+            "t": "one",
+            "ref": "4:1",
+            "q": "Împotriva cui a ieșit Israel să lupte?",
+            "opts": [
+                "egiptenii",
+                "filistenii",
+                "amaleciții"
+            ],
+            "a": 1
+        },
+        {
+            "t": "tf",
+            "ref": "4:2",
+            "q": "În prima luptă, Israel a fost bătut de filisteni.",
+            "a": true
+        },
+        {
+            "t": "one",
+            "ref": "4:3",
+            "q": "Ce au hotărât bătrânii lui Israel după înfrângere?",
+            "opts": [
+                "să ceară ajutor de la Egipt",
+                "să se întoarcă la Silo fără luptă",
+                "să ia chivotul legământului de la Silo"
+            ],
+            "a": 2
+        },
+        {
+            "t": "tf",
+            "ref": "4:5",
+            "q": "Când chivotul a intrat în tabără, Israel a rămas în tăcere.",
+            "a": false
+        },
+        {
+            "t": "one",
+            "ref": "4:6-7",
+            "q": "De ce s-au temut filistenii?",
+            "opts": [
+                "au crezut că Dumnezeu venise în tabăra lui Israel",
+                "au văzut o oaste mai mare decât a lor",
+                "au auzit că Samuel venise în tabără"
+            ],
+            "a": 0
+        },
+        {
+            "t": "tf",
+            "ref": "4:10",
+            "q": "A doua oară Israel a învins pe filisteni.",
+            "a": false
+        },
+        {
+            "t": "multi",
+            "ref": "4:10-11",
+            "q": "Ce s-a întâmplat în a doua luptă?",
+            "opts": [
+                "Hofni și Fineas au murit",
+                "au căzut treizeci de mii de oameni pedeștri",
+                "chivotul lui Dumnezeu a fost luat"
+            ],
+            "a": [
+                0,
+                1,
+                2
+            ]
+        },
+        {
+            "t": "one",
+            "ref": "4:18",
+            "q": "La ce veste a căzut Eli de pe scaun?",
+            "opts": [
+                "la vestea că chivotul a fost luat",
+                "la vestea morții fiilor săi",
+                "la vestea înfrângerii lui Israel"
+            ],
+            "a": 0
+        },
+        {
+            "t": "tf",
+            "ref": "4:18",
+            "q": "Eli a murit căzând de pe scaun.",
+            "a": true
+        },
+        {
+            "t": "one",
+            "ref": "4:19",
+            "q": "Cine a născut un fiu când a aflat vestea?",
+            "opts": [
+                "nevasta lui Hofni",
+                "Ana",
+                "nevasta lui Fineas"
+            ],
+            "a": 2
+        },
+        {
+            "t": "one",
+            "ref": "4:21",
+            "q": "Ce înseamnă numele I-Cabod?",
+            "opts": [
+                "Dumnezeu a ascultat",
+                "Nu mai e slavă",
+                "Fiul durerii"
+            ],
+            "a": 1
+        },
+        {
+            "t": "match",
+            "ref": "4:11-21",
+            "q": "Asociază fiecare personaj cu ce i s-a întâmplat.",
+            "pairs": [
+                [
+                    "Hofni și Fineas",
+                    "au murit în luptă"
+                ],
+                [
+                    "Eli",
+                    "a căzut de pe scaun și a murit"
+                ],
+                [
+                    "nevasta lui Fineas",
+                    "a născut un fiu și l-a numit I-Cabod"
+                ]
+            ]
+        }
     ],
-    [
-     "Eli",
-     "a căzut de pe scaun și a murit"
-    ],
-    [
-     "nevasta lui Fineas",
-     "a născut un fiu și l-a numit I-Cabod"
+    "hard": [
+        {
+            "t": "match",
+            "ref": "4:1-4",
+            "q": "Asociază fiecare loc cu ce s-a petrecut acolo.",
+            "pairs": [
+                [
+                    "Eben-Ezer",
+                    "tabăra lui Israel"
+                ],
+                [
+                    "Afec",
+                    "tabăra filistenilor"
+                ],
+                [
+                    "Silo",
+                    "de unde au adus chivotul"
+                ]
+            ]
+        },
+        {
+            "t": "one",
+            "ref": "4:2",
+            "q": "Câți oameni din Israel au căzut în prima luptă cu filistenii la Eben-Ezer?",
+            "opts": [
+                "zece mii",
+                "patru mii",
+                "treizeci de mii"
+            ],
+            "a": 1
+        },
+        {
+            "t": "one",
+            "ref": "4:10",
+            "q": "Câți oameni pedeștri din Israel au căzut în a doua luptă?",
+            "opts": [
+                "patru mii",
+                "trei mii",
+                "treizeci de mii"
+            ],
+            "a": 2
+        },
+        {
+            "t": "tf",
+            "ref": "4:4",
+            "q": "Hofni și Fineas erau lângă chivot când a fost adus din Silo.",
+            "a": true
+        },
+        {
+            "t": "fill",
+            "ref": "4:4",
+            "q": "Poporul a trimis la Silo, de unde au adus chivotul legământului Domnului oștirilor, care șade între ___. Cei doi fii ai lui Eli, Hofni și Fineas, erau acolo, împreună cu chivotul legământului lui Dumnezeu.",
+            "a": [
+                "heruvimi"
+            ]
+        },
+        {
+            "t": "one",
+            "ref": "4:8",
+            "q": "Pe cine au lovit, după filisteni, dumnezeii lui Israel cu tot felul de urgii în pustie?",
+            "opts": [
+                "pe egipteni",
+                "pe amaleciți",
+                "pe moabiți"
+            ],
+            "a": 0
+        },
+        {
+            "t": "multi",
+            "ref": "4:12",
+            "q": "Ce se spune despre omul care a adus vestea la Silo?",
+            "opts": [
+                "era din Beniamin",
+                "era din Iuda",
+                "a venit a doua zi"
+            ],
+            "a": [
+                0
+            ]
+        },
+        {
+            "t": "tf",
+            "ref": "4:13",
+            "q": "Eli aștepta pe un scaun lângă drum, pentru că avea inima neliniștită din pricina chivotului.",
+            "a": true
+        },
+        {
+            "t": "one",
+            "ref": "4:15",
+            "q": "Câți ani avea Eli?",
+            "opts": [
+                "optzeci",
+                "nouăzeci și opt",
+                "nouăzeci și nouă"
+            ],
+            "a": 1
+        },
+        {
+            "t": "one",
+            "ref": "4:18",
+            "q": "Câți ani fusese Eli judecător în Israel?",
+            "opts": [
+                "douăzeci",
+                "patruzeci",
+                "treizeci"
+            ],
+            "a": 1
+        },
+        {
+            "t": "tf",
+            "ref": "4:11-18",
+            "q": "Eli a murit în luptă, împreună cu fiii lui.",
+            "a": false
+        },
+        {
+            "t": "multi",
+            "ref": "4:21",
+            "q": "Din ce pricini a spus nora lui Eli: „S-a dus slava din Israel”?",
+            "opts": [
+                "luarea chivotului",
+                "moartea socrului ei",
+                "moartea bărbatului ei"
+            ],
+            "a": [
+                0,
+                1,
+                2
+            ]
+        },
+        {
+            "t": "fill",
+            "ref": "4:22",
+            "q": "Ea a zis: „S-a dus slava din Israel, căci ___ lui Dumnezeu este luat.\"",
+            "a": [
+                "chivotul"
+            ]
+        },
+        {
+            "t": "tf",
+            "ref": "4:1",
+            "q": "Chemarea lui Samuel a ajuns la cunoștința întregului Israel.",
+            "a": true
+        },
+        {
+            "t": "tf",
+            "ref": "4:9",
+            "q": "Filistenii au hotărât să se predea evreilor.",
+            "a": false
+        }
     ]
-   ]
-  }
- ],
- "hard": [
-  {
-   "t": "match",
-   "ref": "4:1-4",
-   "q": "Asociază fiecare loc cu ce s-a petrecut acolo.",
-   "pairs": [
-    [
-     "Eben-Ezer",
-     "tabăra lui Israel"
-    ],
-    [
-     "Afec",
-     "tabăra filistenilor"
-    ],
-    [
-     "Silo",
-     "de unde au adus chivotul"
-    ]
-   ]
-  },
-  {
-   "t": "one",
-   "ref": "4:2",
-   "q": "Câți oameni au fost uciși, aproximativ, în prima luptă?",
-   "opts": [
-    "zece mii",
-    "patru mii",
-    "treizeci de mii"
-   ],
-   "a": 1
-  },
-  {
-   "t": "one",
-   "ref": "4:10",
-   "q": "Câți oameni pedeștri din Israel au căzut în a doua luptă?",
-   "opts": [
-    "patru mii",
-    "trei mii",
-    "treizeci de mii"
-   ],
-   "a": 2
-  },
-  {
-   "t": "tf",
-   "ref": "4:4",
-   "q": "Hofni și Fineas erau lângă chivot când a fost adus din Silo.",
-   "a": true
-  },
-  {
-   "t": "fill",
-   "ref": "4:4",
-   "q": "Poporul a trimis la Silo, de unde au adus chivotul legământului Domnului oștirilor, care șade între ___. Cei doi fii ai lui Eli, Hofni și Fineas, erau acolo, împreună cu chivotul legământului lui Dumnezeu.",
-   "a": [
-    "heruvimi"
-   ]
-  },
-  {
-   "t": "one",
-   "ref": "4:8",
-   "q": "Pe cine au lovit, după filisteni, dumnezeii lui Israel cu tot felul de urgii în pustie?",
-   "opts": [
-    "pe egipteni",
-    "pe amaleciți",
-    "pe moabiți"
-   ],
-   "a": 0
-  },
-  {
-   "t": "multi",
-   "ref": "4:12",
-   "q": "Ce se spune despre omul care a adus vestea la Silo?",
-   "opts": [
-    "era din Beniamin",
-    "era din Iuda",
-    "a venit a doua zi"
-   ],
-   "a": [
-    0
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "4:13",
-   "q": "Eli aștepta pe un scaun lângă drum, pentru că avea inima neliniștită din pricina chivotului.",
-   "a": true
-  },
-  {
-   "t": "one",
-   "ref": "4:15",
-   "q": "Câți ani avea Eli?",
-   "opts": [
-    "optzeci",
-    "nouăzeci și opt",
-    "nouăzeci și nouă"
-   ],
-   "a": 1
-  },
-  {
-   "t": "one",
-   "ref": "4:18",
-   "q": "Câți ani fusese Eli judecător în Israel?",
-   "opts": [
-    "douăzeci",
-    "patruzeci",
-    "treizeci"
-   ],
-   "a": 1
-  },
-  {
-   "t": "tf",
-   "ref": "4:11-18",
-   "q": "Eli a murit în luptă, împreună cu fiii lui.",
-   "a": false
-  },
-  {
-   "t": "multi",
-   "ref": "4:21",
-   "q": "Din ce pricini a spus nora lui Eli: „S-a dus slava din Israel”?",
-   "opts": [
-    "luarea chivotului",
-    "moartea socrului ei",
-    "moartea bărbatului ei"
-   ],
-   "a": [
-    0,
-    1,
-    2
-   ]
-  },
-  {
-   "t": "fill",
-   "ref": "4:22",
-   "q": "Ea a zis: „S-a dus slava din Israel, căci ___ lui Dumnezeu este luat.\"",
-   "a": [
-    "chivotul"
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "4:1",
-   "q": "Chemarea lui Samuel a ajuns la cunoștința întregului Israel.",
-   "a": true
-  },
-  {
-   "t": "tf",
-   "ref": "4:9",
-   "q": "Filistenii au hotărât să se predea evreilor.",
-   "a": false
-  }
- ]
 }
