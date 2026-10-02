@@ -164,12 +164,8 @@ p{margin:0}
 .tile{position:relative;aspect-ratio:1;max-width:100%;border:1.5px solid var(--line);background:var(--surface);border-radius:14px;display:grid;place-items:center;padding:0;transition:transform .15s, border-color .2s, background .2s}
 .tile:active{transform:scale(.94)}
 .tile svg{position:absolute;inset:5px;width:calc(100% - 10px);height:calc(100% - 10px)}
-.tile .done-mark{position:absolute;bottom:4px;right:4px;width:17px;height:17px;border-radius:50%;background:var(--cedar);color:#fff;display:grid;place-items:center}
-.done-mark svg{position:static;width:11px;height:11px;margin:0}
-.prog{display:flex;gap:2px;width:26px;height:5px}
-.prog i{flex:1;border-radius:3px;background:var(--line)}
-.prog i.on{background:var(--cedar)}
-.tile .prog{position:absolute;left:50%;bottom:6px;transform:translateX(-50%)}
+.tile-sc{position:absolute;bottom:4px;left:0;right:0;text-align:center;font-size:11.5px;font-weight:600;color:var(--oil-ink);font-family:var(--f-mono);letter-spacing:0.02em}
+.tile-sc.full{color:var(--cedar)}
 .tile .n{font-family:var(--f-display);font-size:22px;line-height:1;position:relative}
 .tile[aria-pressed="true"]{background:var(--oil-soft);border-color:var(--oil);color:var(--oil-ink);box-shadow:0 0 0 3px color-mix(in oklab,var(--oil) 18%,transparent)}
 .tile[aria-pressed="true"] .trk{stroke:color-mix(in oklab,var(--oil) 20%,transparent)}
@@ -504,7 +500,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .read-btn:hover{border-color:var(--ink-2)}
 @media (max-width:420px){.read-btn{padding:8px 12px 8px 10px;font-size:14px}.top-r{gap:8px}}
 @media (max-width:350px){.read-btn{padding:9px}.read-btn span{display:none}}
-@media (max-width:360px){.grid .tile{aspect-ratio:1}.tile .done-mark{width:15px;height:15px;bottom:3px;right:3px}}
+@media (max-width:360px){.grid .tile{aspect-ratio:1}}
 .sh-lvl{display:grid;gap:6px}
 .start-sheet{gap:12px}
 .sh-tools{display:flex;align-items:center;gap:8px;flex:none}
@@ -1067,18 +1063,19 @@ function levelBar(label, ok, seen, tot, color, they){
 }
 // someone else's profile, opened from the leaderboard
 async function openPublicProfile(x, i){
+  const r = x.id ? await store.rpc("public_profile", { p_id: x.id }) : {ok:false};
+  if (!r.ok || !r.data) return; // Silent fail or could add a toast
+
   const bg = document.createElement("div"); bg.className = "sheet-bg";
   bg.innerHTML = `<div class="sheet prof" role="dialog" aria-modal="true" aria-label="Profil"><button class="icon-btn prof-x" id="pfX" aria-label="Închide"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
     <div class="pf-head"><span class="avatar lg">${esc(initials(x.name))}</span><h3>${esc(x.name)}</h3><span class="badge-rank">Locul ${i+1} în clasament</span></div>
-    <div id="pubBody"><div class="empty">Se încarcă…</div></div></div>`;
+    <div id="pubBody"></div></div>`;
   document.body.appendChild(bg);
   const close = () => closeModal(bg);
   bg.onclick = e => { if (e.target === bg) close(); };
   bg.querySelector("#pfX").onclick = close;
-  const r = x.id ? await store.rpc("public_profile", { p_id: x.id }) : {ok:false};
-  const body = bg.querySelector("#pubBody"); if (!body) return;
-  if (!r.ok || !r.data){ body.innerHTML = `<div class="empty">Profilul nu se poate deschide acum.</div>`; return; }
   const d = r.data;
+  const body = bg.querySelector("#pubBody");
   body.innerHTML = `<div class="kv">
     <div class="stat"><b>${d.tests}</b><small>${d.tests===1?"test":"teste"}</small></div>
     <div class="stat"><b>${d.tests ? d.avg+"%" : "–"}</b><small>media</small></div>
@@ -1327,7 +1324,16 @@ function viewHome(){
   <aside class="h-config">
     <div class="panel">
       <div class="section-h first"><h3>Ce capitol vrei să exersezi?</h3></div>
-      <div class="grid" id="grid">${Array.from({length:31},(_,i)=>i+1).map(c=>`<button class="tile" data-c="${c}" aria-pressed="false" title="${c}. ${esc(TITLES[c-1])}" aria-label="Capitolul ${c}: ${esc(TITLES[c-1])}${lvTried(c,"easy") ? ", ușor făcut" : ""}${lvTried(c,"hard") ? ", greu făcut" : ""}"><span class="n">${c}</span>${lvTried(c,"easy") && lvTried(c,"hard") ? `<i class="done-mark" aria-hidden="true">${CHECK}</i>` : chapTried(c) ? `<span class="prog" aria-hidden="true"><i class="${lvTried(c,"easy") ? "on" : ""}"></i><i class="${lvTried(c,"hard") ? "on" : ""}"></i></span>` : ""}</button>`).join("")}</div>
+      <div class="grid" id="grid">${Array.from({length:31},(_,i)=>i+1).map(c=> {
+        const sc = (S.player.ok || []).filter(id => parseInt(id, 10) === c).length;
+        const tot = (QUIZ[c]?.easy || []).length + (QUIZ[c]?.hard || []).length;
+        const hasPoints = sc > 0 || chapTried(c);
+        const fracHTML = hasPoints ? `<span class="tile-sc ${sc===tot ? 'full' : ''}">${sc}/${tot}</span>` : "";
+        return `<button class="tile" data-c="${c}" aria-pressed="false" title="${c}. ${esc(TITLES[c-1])}" aria-label="Capitolul ${c}: ${esc(TITLES[c-1])}">
+          <span class="n">${c}</span>
+          ${fracHTML}
+        </button>`;
+      }).join("")}</div>
     </div>
   </aside>
 
