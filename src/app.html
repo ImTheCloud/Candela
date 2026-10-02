@@ -965,7 +965,7 @@ function openProfile(){
   const bg = document.createElement("div"); bg.className = "sheet-bg";
   bg.innerHTML = `<div class="sheet prof" role="dialog" aria-modal="true" aria-label="Profil"></div>`;
   document.body.appendChild(bg);
-  const sheet = bg.querySelector(".sheet"), close = () => bg.remove();
+  const sheet = bg.querySelector(".sheet"), close = () => { bg.remove(); if ($(".home")) viewHome(); };
   bg.onclick = e => { if (e.target === bg) close(); };
   const X = `<button class="icon-btn prof-x" id="pfX" aria-label="Închide"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>`;
   const show = () => {
@@ -1011,8 +1011,14 @@ function openProfile(){
         e.target.disabled = false;
         if (!r.ok){ e.target.checked = !on; return toast(/has_children/.test(r.error) ? "Șterge întâi profilurile copiilor." : "Nu s-a putut salva. Încearcă din nou.", 3500); }
         store.isParent = on; if (on && !store.family?.length) store.family = [{id: store.uid, name: p.name, child: false}];
-        if ($(".home")) viewHome();
-        const top = sheet.scrollTop; show(); sheet.scrollTop = top;
+        show();
+        if (on){
+          const kidsEl = sheet.querySelector("#pfKids");
+          if (kidsEl){
+            drawKids(kidsEl, true);
+            kidsEl.scrollIntoView({ behavior: "smooth", block: "center" });
+          }
+        }
         toast(on ? "Acum îți poți adăuga copiii." : "Nu mai ești cont de părinte.");
       };
     }
@@ -1060,7 +1066,6 @@ function openProfile(){
       const token = await store.token(), r = token ? await store.call("family", {action: "remove", id: b.dataset.kdel}, token) : {ok:false};
       if (!r.ok) return toast("Nu s-a putut șterge. Încearcă din nou.");
       store.family = store.family.filter(x => x.id !== b.dataset.kdel); S.board = null; drawKids(box); toast("Profilul a fost șters.");
-      if ($(".home")) viewHome();
     }));
     if (!adding){ box.querySelector("#kAdd").onclick = () => { drawKids(box, true); box.querySelector("#kFirst").focus(); }; return; }
     box.querySelector("#kNo").onclick = () => drawKids(box);
@@ -1075,7 +1080,6 @@ function openProfile(){
       btn.disabled = false;
       if (!r.ok){ err.textContent = childError(r); return; }
       drawKids(box); toast(`Gata: ${r.name.split(" ")[0]} poate exersa acum.`, 3500);
-      if ($(".home")) viewHome();
     };
   };
   const edit = () => {
@@ -1127,7 +1131,6 @@ function openProfile(){
       }
       p.name = r.name; lsSet("candela:email", r.email); S.board = null;
       const me = (store.family || []).find(x => x.id === store.uid); if (me) me.name = r.name;
-      if ($(".home")) viewHome();
       toast(npw.value ? "Profil și parolă actualizate." : "Profil actualizat.");
       show();
     });
