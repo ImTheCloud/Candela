@@ -20,7 +20,7 @@ fav = ("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 
 n = sum(len(v['easy']) + len(v['hard']) for v in quiz.values())
 n_ro = f'{n:,}'.replace(',', '.')
 head = ('<!doctype html><html lang="ro"><head><meta charset="utf-8">'
-        '<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">'
+        '<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,interactive-widget=resizes-content">'
         '<meta name="theme-color" content="#F8F1E6" media="(prefers-color-scheme: light)">'
         '<meta name="theme-color" content="#F8F1E6" media="(prefers-color-scheme: dark)">'
         f'<link rel="icon" href="{fav}">'
