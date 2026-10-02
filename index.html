@@ -209,6 +209,15 @@ html:has(.sheet-bg),html:has(.modal-bg),body:has(.sheet-bg),body:has(.modal-bg){
 @keyframes sheetDown{from{opacity:1;transform:translateY(0)}to{opacity:0;transform:translateY(100%)}}
 @media (min-width:960px){.sheet-bg{align-items:center}.sheet{border-radius:24px;padding:24px;animation:modalUp .32s cubic-bezier(.16,1,.3,1) both}.sheet-bg.closing .sheet{animation:modalDown .22s cubic-bezier(.4,0,1,1) forwards}}
 @media (prefers-reduced-motion:reduce){.modal-bg,.sheet-bg,.modal-bg.closing,.sheet-bg.closing,.modal,.sheet,.modal-bg.closing .modal,.sheet-bg.closing .sheet{animation:none!important;transform:none!important}}
+.exam-box{margin-top:14px}
+.btn-exam{width:100%;display:flex;align-items:center;gap:12px;padding:12px 14px;background:var(--surface);border:1.5px solid var(--line);border-radius:var(--r);color:var(--ink);cursor:pointer;text-align:left;transition:border-color .15s,transform .15s,box-shadow .15s;box-shadow:var(--shadow)}
+.btn-exam:hover{border-color:var(--oil);transform:translateY(-1px);box-shadow:0 4px 12px -4px rgb(58 39 27 / .18)}
+.btn-exam:active{transform:scale(.985)}
+.btn-exam .exam-icon{font-size:22px;line-height:1;flex:none}
+.btn-exam .exam-meta{display:grid;gap:2px;flex:1;min-width:0}
+.btn-exam .exam-meta b{font-size:15px;font-weight:700;color:var(--ink)}
+.btn-exam .exam-meta small{font-size:12px;color:var(--ink-2)}
+.btn-exam .exam-tag{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background:var(--oil-soft);color:var(--oil-ink);flex:none}
 .startbar{position:sticky;bottom:0;padding-block:14px calc(14px + env(safe-area-inset-bottom,0px));background:linear-gradient(to top,var(--bg) 70%,transparent);margin-top:18px;z-index:5}
 .history{display:grid;gap:6px}
 .hrow{width:100%;border:0;text-align:left;color:var(--ink);font:inherit;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;gap:10px;background:var(--surface);border-radius:12px;padding:9px 12px}
@@ -337,7 +346,8 @@ body.quiz-fixed .wrap{overflow:hidden!important;overscroll-behavior:none!importa
 @keyframes spark{0%{opacity:1;transform:translate(-50%,-50%)}100%{opacity:0;transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(.4)}}
 .kv{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:22px 0}
 .kv.two{grid-template-columns:1fr 1fr}
-.kv.four{grid-template-columns:1fr 1fr}
+.kv.four{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:22px 0}
+@media (max-width:480px){.kv.four{grid-template-columns:repeat(2,1fr)}}
 .bars{display:grid;gap:10px}
 .brow{display:grid;grid-template-columns:9.5em 1fr 3.2em;align-items:center;gap:10px;font-size:14px}
 .brow .bar{height:8px}
@@ -713,6 +723,8 @@ function verseHTML(ref){
 }
 function dateLabel(ts){ const d = new Date(ts); return d.toLocaleDateString("ro-RO",{day:"numeric",month:"short"}) + ", " + d.toLocaleTimeString("ro-RO",{hour:"2-digit",minute:"2-digit"}); }
 function chaptersLabel(chs){
+  if (!chs || !chs.length) return "";
+  if (chs.length === 1 && chs[0] === 0) return "Examen alb";
   if (chs.length === 31) return "Toate capitolele";
   const s = chs.slice().sort((a,b)=>a-b), parts = []; let i = 0;
   while (i < s.length){
@@ -747,14 +759,17 @@ function sb(){
 const isNetErr = e => !e || /fetch|network|failed to|load failed/i.test(String(e.message || e));
 const store = {
   uid: null,
-  blank(name){ return { name, history: [], chap: {}, ok: [], seen: [], tests: 0 }; },
-  norm(p, name){ p = p ? JSON.parse(JSON.stringify(p)) : this.blank(name); p.name = p.name || name; p.history = p.history || []; p.chap = p.chap || {}; p.ok = p.ok || []; p.seen = [...new Set([...(p.seen || []), ...p.ok])]; p.tests = p.tests ?? p.history.length; return p; },
+  blank(name){ return { name, history: [], chap: {}, ok: [], seen: [], tests: 0, exams: 0 }; },
+  norm(p, name){ p = p ? JSON.parse(JSON.stringify(p)) : this.blank(name); p.name = p.name || name; p.history = p.history || []; p.chap = p.chap || {}; p.ok = p.ok || []; p.seen = [...new Set([...(p.seen || []), ...p.ok])]; p.tests = p.tests ?? p.history.length; p.exams = p.exams ?? p.history.filter(h => h.exam || (h.chs && h.chs.length === 1 && h.chs[0] === 0)).length; return p; },
   pending(){ return lsGet("candela:pending:" + this.uid, []); },
   applyEntry(p, x){
-    if (!p.history.some(h => h.at === x.at)){ p.history.push({at:x.at, chs:x.chs, mode:x.mode, score:x.score, total:x.total, pct:x.pct, secs:x.secs}); p.tests++; }
-    for (const [k, v] of Object.entries(x.chap)){ const cur = p.chap[k] || {best:0, n:0}; p.chap[k] = {best: Math.max(cur.best||0, v), last: v, n: (cur.n||0)+1}; }
-    p.ok = [...new Set([...p.ok, ...x.ok])];
-    p.seen = [...new Set([...(p.seen || []), ...(x.seen || []), ...x.ok])];
+    const isExam = !!x.exam || (x.chs && x.chs.length === 1 && x.chs[0] === 0);
+    if (!p.history.some(h => h.at === x.at)){ p.history.push({at:x.at, chs:x.chs, mode:x.mode, score:x.score, total:x.total, pct:x.pct, secs:x.secs, exam: isExam}); p.tests++; if (isExam) p.exams = (p.exams || 0) + 1; }
+    if (!isExam){
+      for (const [k, v] of Object.entries(x.chap)){ const cur = p.chap[k] || {best:0, n:0}; p.chap[k] = {best: Math.max(cur.best||0, v), last: v, n: (cur.n||0)+1}; }
+      p.ok = [...new Set([...p.ok, ...x.ok])];
+      p.seen = [...new Set([...(p.seen || []), ...(x.seen || []), ...x.ok])];
+    }
   },
   async send(x){
     const { error } = await sb().rpc("save_play", { p_player: x.player || this.uid, p_at: new Date(x.at).toISOString(), p_chs: x.chs, p_mode: x.mode, p_score: x.score, p_total: x.total, p_pct: x.pct, p_secs: x.secs, p_chap: x.chap, p_ok: x.ok, ...(x.seen ? { p_seen: x.seen } : {}) });
@@ -1037,6 +1052,7 @@ function viewWelcome(){
           <div class="pf-rule"><span class="r-icon">↺</span><span><b>Reia greșelile</b> nu dă puncte.</span></div>
           <div class="pf-rule"><span class="r-icon" style="font-size:17px; line-height:14px">+</span><span>Pentru un punctaj mai mare: <b>refă testul</b>.</span></div>
           <div class="pf-rule"><span class="r-icon" style="font-size:16px; line-height:14px">◷</span><span>Timpul este informativ, <b>nu afectează</b> scorul.</span></div>
+          <div class="pf-rule"><span class="r-icon">📝</span><span><b>Examenul alb</b> nu aduce puncte în clasament.</span></div>
         </div>
       </div>
     </div>
@@ -1092,11 +1108,13 @@ async function openPublicProfile(x, i){
   bg.onclick = e => { if (e.target === bg) close(); };
   bg.querySelector("#pfX").onclick = close;
   const d = r.data;
+  const exams = d.exams ?? (x.me && S.player ? (S.player.exams ?? S.player.history.filter(h => h.exam || (h.chs && h.chs.length === 1 && h.chs[0] === 0)).length) : 0) ?? 0;
   const body = bg.querySelector("#pubBody");
-  body.innerHTML = `<div class="kv">
+  body.innerHTML = `<div class="kv four">
     <div class="stat"><b>${d.tests}</b><small>${d.tests===1?"test":"teste"}</small></div>
     <div class="stat"><b>${d.tests ? d.avg+"%" : "–"}</b><small>media</small></div>
     <div class="stat"><b>${d.ok_e + d.ok_h}</b><small>${(d.ok_e + d.ok_h)===1?"punct":"puncte"}</small></div>
+    <div class="stat"><b>${exams}</b><small>${exams===1?"examen alb":"examene albe"}</small></div>
   </div>
     <div class="pf-card">${levelBar("Întrebări ușoare", d.ok_e, d.seen_e, totalCount("easy"), "var(--cedar)", true)}${levelBar("Întrebări grele", d.ok_h, d.seen_h, totalCount("hard"), "var(--oil)", true)}
     <p class="pf-bar-f">Capitole exersate: <b>${d.chaps}</b> din 31</p></div>`;
@@ -1138,6 +1156,7 @@ function openProfile(){
     const totSecs = h.reduce((s, x) => s + (x.secs || 0), 0);
     const m = Math.floor(totSecs / 60), s = totSecs % 60;
     const timeStr = `${m}:${s.toString().padStart(2, '0')}`;
+    const exams = p.exams ?? p.history.filter(h => h.exam || (h.chs && h.chs.length === 1 && h.chs[0] === 0)).length;
     sheet.innerHTML = `${X}
       <div class="pf-head">
         <span class="avatar lg">${esc(initials(p.name))}</span>
@@ -1145,10 +1164,11 @@ function openProfile(){
         ${p.child ? `<p class="prof-mail">Profil de copil, pe contul tău</p>` : store.hasEmail() ? `<p class="prof-mail">${esc(store.email)}</p>` : `<p class="prof-mail warn">Adaugă un email: cu el intri în cont de acum înainte.</p>`}
         ${rank >= 0 ? `<span class="badge-rank">Locul ${rank+1} din ${S.board.length} în clasament</span>` : ""}
       </div>
-      <div class="kv">
+      <div class="kv four">
         <div class="stat"><b>${tests}</b><small>${tests===1?"test":"teste"}</small></div>
         <div class="stat"><b>${tests ? avg+"%" : "–"}</b><small>media</small></div>
         <div class="stat"><b>${p.ok.length}</b><small>${p.ok.length===1?"punct":"puncte"}</small></div>
+        <div class="stat"><b>${exams}</b><small>${exams===1?"examen alb":"examene albe"}</small></div>
       </div>
       <div class="pf-card">
         ${levelBar("Întrebări ușoare", okE, seenE, totE, "var(--cedar)")}
@@ -1158,6 +1178,7 @@ function openProfile(){
           <div class="pf-rule"><span class="r-icon">↺</span><span><b>Reia greșelile</b> nu dă puncte.</span></div>
           <div class="pf-rule"><span class="r-icon" style="font-size:17px; line-height:14px">+</span><span>Pentru un punctaj mai mare: <b>refă testul</b>.</span></div>
           <div class="pf-rule"><span class="r-icon" style="font-size:16px; line-height:14px">◷</span><span>Timpul este informativ, <b>nu afectează</b> scorul.</span></div>
+          <div class="pf-rule"><span class="r-icon">📝</span><span><b>Examenul alb</b> nu aduce puncte în clasament.</span></div>
         </div>
       </div>
       ${!p.child && store.isParent ? `<div class="pf-card" id="pfKids"></div>` : ""}
@@ -1361,6 +1382,16 @@ function viewHome(){
           ${fracHTML}
         </button>`;
       }).join("")}</div>
+      <div class="exam-box">
+        <button type="button" class="btn-exam" id="btnExam" aria-label="Începe un examen alb">
+          <span class="exam-icon" aria-hidden="true">📝</span>
+          <div class="exam-meta">
+            <b>Examen alb</b>
+            <small>20 de întrebări din toată cartea · fără puncte</small>
+          </div>
+          <span class="exam-tag">Simulare</span>
+        </button>
+      </div>
       <div class="startbar" id="sbar" style="display:${S.sel.size ? 'block' : 'none'}"><button type="button" class="btn btn-primary lg" id="sbtn" style="width:100%">${S.sel.size ? `Începe ${chaptersLabel([...S.sel]).toLowerCase()}` : ""}</button></div>
     </div>
   </aside>
@@ -1394,6 +1425,7 @@ function viewHome(){
     update();
   });
   if ($("#sbtn")) $("#sbtn").onclick = () => openOptions();
+  if ($("#btnExam")) $("#btnExam").onclick = () => openExamOptions();
   app.querySelectorAll(".hrow[data-at]").forEach(b => b.onclick = () => { S.homeScroll = window.scrollY; openPastReport(+b.dataset.at); });
   if ($("#allHist")) $("#allHist").onclick = viewHistory;
   app.querySelectorAll("[data-play]").forEach(b => b.onclick = () => switchPlayer(b.dataset.play));
@@ -1567,6 +1599,114 @@ function openOptions(chs = [...S.sel].sort((a,b)=>a-b)){
   bg.onclick = e => { if (e.target === bg) close(); };
   if (bg.querySelector("#shRead")) bg.querySelector("#shRead").onclick = () => closeModal(bg, () => viewRead(c));
 }
+function buildExamPool(mode){
+  const allQs = buildPool(Array.from({length:31}, (_,i)=>i+1), mode);
+  const tfQs = shuffle(allQs.filter(q => q.t === "tf"));
+  const oneQs = shuffle(allQs.filter(q => q.t === "one"));
+  const multiQs = shuffle(allQs.filter(q => q.t === "multi"));
+  const fillQs = shuffle(allQs.filter(q => q.t === "fill"));
+
+  const pickDiverse = (list, count = 5) => {
+    const chosen = [];
+    const usedChs = new Set();
+    for (const q of list){
+      if (!usedChs.has(q.ch)){
+        chosen.push(q);
+        usedChs.add(q.ch);
+        if (chosen.length === count) break;
+      }
+    }
+    if (chosen.length < count){
+      for (const q of list){
+        if (!chosen.includes(q)){
+          chosen.push(q);
+          if (chosen.length === count) break;
+        }
+      }
+    }
+    return chosen;
+  };
+
+  const p1 = pickDiverse(tfQs, 5);
+  const p2 = pickDiverse(oneQs, 5);
+  const p3 = pickDiverse(multiQs, 5);
+  const p4 = pickDiverse(fillQs, 5);
+
+  return [...p1, ...p2, ...p3, ...p4];
+}
+
+function startExam(mode = "easy"){
+  const qs = buildExamPool(mode);
+  S.quiz = {
+    qs: qs.map(prepare),
+    i: 0,
+    answers: [],
+    start: Date.now(),
+    chs: [0],
+    mode,
+    retry: false,
+    exam: true
+  };
+  viewQuestion(true);
+}
+
+function openExamOptions(){
+  const bg = document.createElement("div"); bg.className = "sheet-bg";
+  
+  const ICONS = {
+    easy: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>`,
+    hard: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>`,
+    both: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>`
+  };
+
+  const lvlButtons = ["easy", "hard", "both"].map(m => {
+    const durStr = m === "easy" ? "6 min" : m === "hard" ? "8 min" : "7 min";
+    return `<button type="button" class="hrow" data-m="${m}" style="display:flex; align-items:center; gap:12px; padding:12px 14px; border:2px solid transparent; ${m==='both'?'background:var(--oil-soft);':''}">
+      <div style="flex:none; color:${m==='both'?'var(--oil)':'var(--ink)'}; display:grid; place-items:center; width:28px; height:28px; background:var(--bg); border-radius:8px; box-shadow:0 1px 2px rgba(0,0,0,0.06)">
+        ${ICONS[m]}
+      </div>
+      <div style="flex:1; text-align:left;">
+        <div style="margin-bottom:2px; font-size:15px; color:var(--ink);">
+          <b style="font-weight:700">${MODE_LABEL[m]}</b>
+        </div>
+        <div style="font-size:12.5px; color:var(--ink-2); display:flex; align-items:center; gap:4px; font-weight:500;">
+          ${esc(MODE_NOTE[m])}
+        </div>
+      </div>
+      <div style="flex:none; display:flex; align-items:center; gap:6px;">
+        <div style="display:flex; flex-direction:column; align-items:flex-end; gap:2px;">
+          <span style="font-size:13px; color:var(--oil-ink); font-weight:600;">${durStr}</span>
+          <span style="font-size:11px; color:var(--ink-2); font-weight:500;">20 întrebări</span>
+        </div>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--oil-ink); opacity:0.5;"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </div>
+    </button>`;
+  }).join("");
+
+  bg.innerHTML = `<div class="sheet start-sheet" role="dialog" aria-modal="true" aria-labelledby="shT">
+    <div class="sheet-h"><div class="sh-title"><h3 id="shT">Examen alb</h3></div><div class="sh-tools"><button class="icon-btn" id="shX" aria-label="Închide"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div></div>
+    <p class="sh-sub">20 de întrebări din toată cartea (5 A/F, 5 cu un răspuns, 5 cu mai multe, 5 de completat). <b>Nu aduce puncte în clasament.</b></p>
+    <div class="sh-lvl" style="margin-top:16px;"><span class="sh-l">Alege nivelul examenului</span>
+      <div style="display:grid; gap:10px; margin-top:10px;">
+        ${lvlButtons}
+      </div>
+    </div>
+  </div>`;
+  document.body.appendChild(bg);
+
+  const close = () => closeModal(bg);
+  bg.querySelector("#shX").onclick = close;
+  bg.onclick = e => { if (e.target === bg) close(); };
+  bg.querySelectorAll("[data-m]").forEach(b => {
+    b.onclick = () => {
+      const mode = b.dataset.m;
+      closeModal(bg, () => {
+        startExam(mode);
+      });
+    };
+  });
+}
+
 function startQuiz(list, o = {}){
   let qs;
   if (list) qs = list;
@@ -1574,11 +1714,11 @@ function startQuiz(list, o = {}){
     const chs = [...S.sel].sort((a,b)=>a-b);
     qs = shuffle(buildPool(chs, S.mode));
   }
-  S.quiz = { qs: qs.map(prepare), i: 0, answers: [], start: Date.now(), chs: [...new Set(qs.map(q=>q.ch))].sort((a,b)=>a-b), mode: o.mode || (list ? S.quiz.mode : S.mode), retry: !!o.retry };
+  S.quiz = { qs: qs.map(prepare), i: 0, answers: [], start: Date.now(), chs: [...new Set(qs.map(q=>q.ch))].sort((a,b)=>a-b), mode: o.mode || (list ? S.quiz.mode : S.mode), retry: !!o.retry, exam: !!o.exam };
   viewQuestion(true);
 }
 /* an unfinished test survives a reload or a closed tab, until it is finished or stopped */
-function saveQuiz(){ const Z = S.quiz; if (!Z || Z.retry) return; lsSet("candela:quiz", {qs:Z.qs, i:Z.i, answers:Z.answers, elapsed:Date.now()-Z.start, chs:Z.chs, mode:Z.mode, who: S.player && !S.player.guest ? store.pid : "guest"}); }
+function saveQuiz(){ const Z = S.quiz; if (!Z || Z.retry) return; lsSet("candela:quiz", {qs:Z.qs, i:Z.i, answers:Z.answers, elapsed:Date.now()-Z.start, chs:Z.chs, mode:Z.mode, exam:!!Z.exam, who: S.player && !S.player.guest ? store.pid : "guest"}); }
 function dropQuiz(){ lsSet("candela:quiz", null); }
 function savedQuiz(){ const z = lsGet("candela:quiz", null); return z && z.qs && z.who === (S.player && !S.player.guest ? store.pid : "guest") ? z : null; }
 function resumeHTML(){
@@ -1588,7 +1728,7 @@ function resumeHTML(){
 }
 function resumeQuiz(){
   const z = savedQuiz(); if (!z) return viewHome();
-  S.quiz = { qs: z.qs, i: z.i, answers: z.answers, start: Date.now() - z.elapsed, chs: z.chs, mode: z.mode, retry: false };
+  S.quiz = { qs: z.qs, i: z.i, answers: z.answers, start: Date.now() - z.elapsed, chs: z.chs, mode: z.mode, retry: false, exam: !!z.exam };
   viewQuestion(true);
 }
 
@@ -1850,15 +1990,16 @@ async function finish(again){
   let saving = Promise.resolve(null);
   const at = Z.at || (Z.at = Date.now());
   if (!Z.retry && !again){
-    const chap = {}; for (const key in byCh._m){ const v = byCh._m[key]; chap[key] = pct(v.s, v.n); }
-    const ok = Z.qs.filter((q,i) => (Z.answers[i]||{}).pts >= 1).map(q => q.id);
-    const seen = Z.qs.filter((q,i) => Z.answers[i] && !Z.answers[i].skipped).map(q => q.id);
+    const chap = {};
+    if (!Z.exam){ for (const key in byCh._m){ const v = byCh._m[key]; chap[key] = pct(v.s, v.n); } }
+    const ok = Z.exam ? [] : Z.qs.filter((q,i) => (Z.answers[i]||{}).pts >= 1).map(q => q.id);
+    const seen = Z.exam ? [] : Z.qs.filter((q,i) => Z.answers[i] && !Z.answers[i].skipped).map(q => q.id);
     const wrongIds = Z.qs.map((q,i) => ({q, a: Z.answers[i]})).filter(x => !x.a || x.a.pts < 1).map(packWrong);
-    saving = store.save(p, { at, chs: Z.chs, mode: Z.mode, score: sc, total: n, pct: P, secs, chap, ok, seen, wrong: wrongIds });
+    saving = store.save(p, { at, chs: Z.chs, mode: Z.mode, score: sc, total: n, pct: P, secs, chap, ok, seen, wrong: wrongIds, exam: !!Z.exam });
   }
   S.board = null;
   const wrong = Z.qs.map((q,i)=>({q, a: Z.answers[i]})).filter(x => !x.a || x.a.pts < 1);
-  const rep = { at, chs: Z.chs, mode: Z.mode, retry: !!Z.retry, n, sc, P, wrong, secs,
+  const rep = { at, chs: Z.chs, mode: Z.mode, retry: !!Z.retry, exam: !!Z.exam, n, sc, P, wrong, secs,
     byCh: Object.fromEntries(Object.entries(byCh).filter(([k]) => k !== "_m").map(([c,v]) => [c, pct(v.s, v.n)])) };
   if (!Z.retry && !again) keepReport(rep);
   renderReport(rep, { guestCard: p.guest && !Z.retry });
@@ -1880,12 +2021,12 @@ function viewHistory(){
   S.reportBack = null; S.reportCh = null;
   const h = S.player.history.slice().sort((a, b) => b.at - a.at);
   const groups = new Map();
-  h.forEach(x => { const k = x.chs.length === 1 ? x.chs[0] : 0; if (!groups.has(k)) groups.set(k, []); groups.get(k).push(x); });
-  const keys = [...groups.keys()].sort((a, b) => (a || 99) - (b || 99));
+  h.forEach(x => { const k = (x.chs.length === 1 && x.chs[0] === 0) ? "exam" : (x.chs.length === 1 ? x.chs[0] : 0); if (!groups.has(k)) groups.set(k, []); groups.get(k).push(x); });
+  const keys = [...groups.keys()].sort((a, b) => (a === "exam" ? 100 : (a || 99)) - (b === "exam" ? 100 : (b || 99)));
   mount(`<section class="hist-page">
     <div class="reader-h">${BACK_BTN("hBack")}<div><span class="eyebrow">${h.length} ${h.length === 1 ? "test" : "teste"}</span><h2>Istoric</h2></div></div>
     ${h.length ? keys.map(k => { const g = groups.get(k), best = Math.max(...g.map(x => x.pct));
-      return `<div class="hgroup"><div class="hg-h"><b>${k ? `${k}. ${esc(TITLES[k-1])}` : "Mai multe capitole"}</b><span class="muted">${g.length} ${g.length === 1 ? "încercare" : "încercări"} · cel mai bun ${best}%</span></div>
+      return `<div class="hgroup"><div class="hg-h"><b>${k === "exam" ? "Examen alb" : (k ? `${k}. ${esc(TITLES[k-1])}` : "Mai multe capitole")}</b><span class="muted">${g.length} ${g.length === 1 ? "încercare" : "încercări"} · cel mai bun ${best}%</span></div>
         <div class="history">${g.map(attemptRow).join("")}</div></div>`; }).join("") : `<div class="empty">Niciun test încă.</div>`}
   </section>`);
   $("#hBack").onclick = viewHome;
@@ -1914,9 +2055,10 @@ async function openPastReport(at, o = {}){
 }
 function renderReport(r, o = {}){
   const { chs, mode, n, sc, P, wrong } = r;
+  const isExam = !!r.exam || (chs && chs.length === 1 && chs[0] === 0);
   const nWrong = wrong ? wrong.length : null;
   S.reportBack = () => renderReport(r, o);
-  S.reportCh = chs?.[0] || 1;
+  S.reportCh = (chs && chs[0] !== 0) ? chs[0] : 1;
   // always encouraging: children and beginners use the app
   const verdict = P>=95 ? "Excelent!" : P>=80 ? "Foarte bine!" : P>=60 ? "Bravo, ești pe drumul cel bun!" : P>=40 ? "Bun început! Mai încearcă o dată." : "Fiecare încercare te ajută să înveți!";
   const tip = o.past ? "" : r.retry ? (nWrong ? "Continuă până înțelegi toate răspunsurile corecte." : "Ai corectat greșelile! Felicitări pentru perseverență.") : nWrong ? (P>=60 ? "Reia greșelile ca să le înveți și pe acestea." : "Citește capitolul, apoi reia greșelile. Vei vedea cât de repede înveți!") : "Toate răspunsurile sunt corecte. Felicitări!";
@@ -1927,7 +2069,7 @@ function renderReport(r, o = {}){
   <section class="report-head">
     <div class="ring"><div class="sparks" id="sparks"></div>
       <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" fill="none" stroke="var(--surface-2)" stroke-width="9"/><circle id="ringArc" cx="60" cy="60" r="52" fill="none" stroke="var(--oil)" stroke-width="9" stroke-linecap="round" stroke-dasharray="0 400" style="transition:stroke-dasharray 1.4s cubic-bezier(.2,.8,.2,1)"/></svg>
-      <div class="val"><b id="pctNum">0%</b><small>${sc} din ${n} puncte</small></div></div>
+      <div class="val"><b id="pctNum">0%</b><small>${isExam ? `${sc} din ${n} corecte` : `${sc} din ${n} puncte`}</small></div></div>
     <h2 class="verdict">${verdict}</h2>
     ${tip ? `<p class="verdict-tip">${tip}</p>` : ""}
   </section>
@@ -1936,6 +2078,7 @@ function renderReport(r, o = {}){
     <div class="pf-rules" style="margin:0; padding:0; border:none;">
       <div class="pf-rule"><span class="r-icon">✓</span><span>Răspunsurile corecte aduc <b>puncte</b>.</span></div>
       <div class="pf-rule"><span class="r-icon">↺</span><span><b>Reia greșelile</b> nu dă puncte.</span></div>
+      <div class="pf-rule"><span class="r-icon">📝</span><span><b>Examenul alb</b> nu aduce puncte în clasament.</span></div>
       <div class="pf-rule"><span class="r-icon" style="font-size:17px; line-height:14px">+</span><span>Pentru un punctaj mai mare: <b>refă testul</b>.</span></div>
       <div class="pf-rule"><span class="r-icon" style="font-size:16px; line-height:14px">◷</span><span>Timpul este informativ, <b>nu afectează</b> scorul.</span></div>
     </div>
@@ -1947,26 +2090,27 @@ function renderReport(r, o = {}){
   </div>
   ${o.guestCard ? `<div class="card guest-cta"><p>Creează un cont ca să-ți păstrezi rezultatele.</p>
     <div class="guest-btns"><button class="btn btn-primary" id="gNew" type="button">Creează cont</button><button class="btn btn-ghost" id="gIn" type="button">Am deja cont</button></div></div>` : ""}
-  ${chs.length>1 && chList.length ? `<div class="card" style="display:grid;gap:18px">
+  ${!isExam && chs.length>1 && chList.length ? `<div class="card" style="display:grid;gap:18px">
     <div><span class="eyebrow">Pe capitole</span></div><div class="bars">${chList.map(([c,v])=>`<div class="brow"><span>Cap. ${c} · ${esc(TITLES[c-1])}</span><div class="bar"><i style="width:0" data-w="${v}"></i></div><span>${v}%</span></div>`).join("")}</div>
   </div>` : ""}
   ${wrong ? `<div class="section-h"><h3>${nWrong ? "De revăzut" : "Nicio greșeală"}</h3>${nWrong?`<span class="muted" style="font-size:14px">${nWrong} întrebări</span>`:""}</div>
   <div class="mistakes">${nWrong ? wrong.map(mistakeHTML).join("") : `<div class="allgood">Toate răspunsurile sunt corecte.</div>`}</div>`
   : ""}
-  ${(!r.retry && nWrong > 0) ? `<div class="card" style="margin:16px 0; padding:16px;">
+  ${(!r.retry && (nWrong > 0 || isExam)) ? `<div class="card" style="margin:16px 0; padding:16px;">
     <b style="display:block; font-size:13.5px; color:var(--ink); margin-bottom:10px;">Despre puncte</b>
     <div class="pf-rules" style="margin:0; padding:0; border:none;">
       <div class="pf-rule"><span class="r-icon">✓</span><span>Răspunsurile corecte aduc <b>puncte</b>.</span></div>
       <div class="pf-rule"><span class="r-icon">↺</span><span><b>Reia greșelile</b> nu dă puncte.</span></div>
+      <div class="pf-rule"><span class="r-icon">📝</span><span><b>Examenul alb</b> nu aduce puncte în clasament.</span></div>
       <div class="pf-rule"><span class="r-icon" style="font-size:17px; line-height:14px">+</span><span>Pentru un punctaj mai mare: <b>refă testul</b>.</span></div>
       <div class="pf-rule"><span class="r-icon" style="font-size:16px; line-height:14px">◷</span><span>Timpul este informativ, <b>nu afectează</b> scorul.</span></div>
     </div>
   </div>` : ""}
   <div class="startbar" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-    ${nWrong ? `<button class="btn btn-oil" id="retry" title="Exercițiu de învățare (fără puncte în clasament)">Reia greșelile</button>` : `<button class="btn btn-oil" id="again">Refă testul</button>`}
+    ${nWrong ? `<button class="btn btn-oil" id="retry" title="Exercițiu de învățare (fără puncte în clasament)">Reia greșelile</button>` : `<button class="btn btn-oil" id="again">${isExam ? "Refă examenul" : "Refă testul"}</button>`}
     <button class="btn btn-primary" id="home">Acasă</button>
   </div>
-  ${chs.length === 1 ? `<button class="link read-link" id="readCh" type="button">Citește capitolul ${chs[0]}</button>` : ""}
+  ${chs.length === 1 && chs[0] !== 0 ? `<button class="link read-link" id="readCh" type="button">Citește capitolul ${chs[0]}</button>` : ""}
   ${o.from === "hist" ? `<button class="link read-link" id="backHist" type="button">Înapoi la istoric</button>` : ""}
   <p class="muted" id="saveNote" style="text-align:center;font-size:13px"></p>`);
   requestAnimationFrame(()=>requestAnimationFrame(()=>{
@@ -1979,8 +2123,21 @@ function renderReport(r, o = {}){
       const sp = $("#sparks"); for (let i=0;i<22;i++){ const a = Math.random()*Math.PI*2, d = 90+Math.random()*60; const s = document.createElement("i"); s.className = "spark"; s.style.setProperty("--dx", Math.cos(a)*d+"px"); s.style.setProperty("--dy", Math.sin(a)*d+"px"); s.style.animationDelay = (1+Math.random()*.4)+"s"; s.style.background = i%3 ? "var(--oil)" : "var(--cedar)"; sp.appendChild(s); }
     }
   }));
-  if (nWrong) $("#retry").onclick = () => { S.reportBack = null; S.reportCh = null; startQuiz(shuffle(wrong.map(x => { const o = {...x.q}; const src = QUIZ[o.ch][o.mode][+o.id.slice(String(o.ch).length+1)]; return {...src, ch:o.ch, mode:o.mode, id:o.id}; })), {retry: true, mode}); };
-  if ($("#again")) $("#again").onclick = () => { S.reportBack = null; S.reportCh = null; S.sel = new Set(chs); persistPrefs(); openOptions(chs); };
+  if (nWrong) $("#retry").onclick = () => {
+    S.reportBack = null; S.reportCh = null;
+    const retryQs = shuffle(wrong.map(x => { const o = {...x.q}; const src = QUIZ[o.ch][o.mode][+o.id.slice(String(o.ch).length+1)]; return {...src, ch:o.ch, mode:o.mode, id:o.id}; }));
+    if (isExam) {
+      S.quiz = { qs: retryQs.map(prepare), i: 0, answers: [], start: Date.now(), chs: [0], mode, retry: true, exam: true };
+      viewQuestion(true);
+    } else {
+      startQuiz(retryQs, {retry: true, mode});
+    }
+  };
+  if ($("#again")) $("#again").onclick = () => {
+    S.reportBack = null; S.reportCh = null;
+    if (isExam) { openExamOptions(); }
+    else { S.sel = new Set(chs); persistPrefs(); openOptions(chs); }
+  };
   if ($("#readCh")) $("#readCh").onclick = () => viewRead(chs[0]);
   if ($("#repBack")) $("#repBack").onclick = () => { if (o.from === "hist") viewHistory(); else viewHome(); };
   if ($("#backHist")) $("#backHist").onclick = viewHistory;
