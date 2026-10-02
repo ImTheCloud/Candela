@@ -18,6 +18,7 @@
   --cedar:#8A5A36;       /* warm brown (easy level, avatars) */
   --cedar-soft:#F2E3D2;
   --ok:#5E8A3A; --ok-soft:#E8F0DA;
+  --warn:#D99C26; --warn-soft:#FCF0D2;
   --bad:#B23A2E; --bad-soft:#FBE4DF;
   --p1:#D97B26; --p2:#8A5A36; --p3:#B0644A; --p4:#5E8A3A; --p5:#B4534A;
   --shadow:0 1px 2px rgb(58 39 27 / .05), 0 10px 30px -18px rgb(58 39 27 / .28);
@@ -165,9 +166,12 @@ p{margin:0}
 .tile:active{transform:scale(.94)}
 .tile svg{position:absolute;inset:5px;width:calc(100% - 10px);height:calc(100% - 10px)}
 .tile-sc{position:absolute;bottom:4px;left:0;right:0;text-align:center;font-size:11.5px;font-weight:600;color:var(--oil-ink);font-family:var(--f-mono);letter-spacing:0.02em}
-.tile-sc.full{color:var(--cedar)}
+.tile-sc.full{color:var(--ok)}
 .tile .n{font-family:var(--f-display);font-size:22px;line-height:1;position:relative}
 .tile:has(.tile-sc) .n{transform:translateY(-6px)}
+.tile.t-full{background:var(--ok-soft);border-color:transparent}
+.tile.t-half{background:var(--warn-soft);border-color:transparent}
+.tile.t-low{background:var(--bad-soft);border-color:transparent}
 .tile[aria-pressed="true"]{background:var(--oil-soft);border-color:var(--oil);color:var(--oil-ink);box-shadow:0 0 0 3px color-mix(in oklab,var(--oil) 18%,transparent)}
 .tile[aria-pressed="true"] .trk{stroke:color-mix(in oklab,var(--oil) 20%,transparent)}
 #start,#rGo,#shGo{display:grid;gap:2px;justify-items:center;padding-block:12px;min-height:60px;line-height:1.2}
@@ -1021,6 +1025,7 @@ function viewWelcome(){
           <div class="pf-rule"><span class="r-icon">✓</span><span>Răspunsurile corecte aduc <b>puncte</b>.</span></div>
           <div class="pf-rule"><span class="r-icon">↺</span><span><b>Reia greșelile</b> nu dă puncte.</span></div>
           <div class="pf-rule"><span class="r-icon">+</span><span>Pentru un punctaj mai mare: <b>refă testul</b>.</span></div>
+          <div class="pf-rule"><span class="r-icon" style="font-family:var(--f-mono);font-size:14px">⏱</span><span>Timpul este informativ, <b>nu afectează</b> scorul.</span></div>
         </div>
       </div>
     </div>
@@ -1329,8 +1334,14 @@ function viewHome(){
         const sc = (S.player.ok || []).filter(id => parseInt(id, 10) === c).length;
         const tot = (QUIZ[c]?.easy || []).length + (QUIZ[c]?.hard || []).length;
         const hasPoints = sc > 0 || chapTried(c);
+        let tClass = "";
+        if (hasPoints) {
+           if (sc === tot) tClass = " t-full";
+           else if (sc >= tot / 2) tClass = " t-half";
+           else tClass = " t-low";
+        }
         const fracHTML = hasPoints ? `<span class="tile-sc ${sc===tot ? 'full' : ''}">${sc}/${tot}</span>` : "";
-        return `<button class="tile" data-c="${c}" aria-pressed="false" title="${c}. ${esc(TITLES[c-1])}" aria-label="Capitolul ${c}: ${esc(TITLES[c-1])}">
+        return `<button class="tile${tClass}" data-c="${c}" aria-pressed="false" title="${c}. ${esc(TITLES[c-1])}" aria-label="Capitolul ${c}: ${esc(TITLES[c-1])}">
           <span class="n">${c}</span>
           ${fracHTML}
         </button>`;
@@ -1406,7 +1417,7 @@ function prepare(q){
   return x;
 }
 /* rough time to answer, by question type and level (seconds), including reading the correction; only an estimate shown before starting, there is no timer */
-const SECS = { tf:[10,14], one:[14,20], multi:[22,30], fill:[18,26], match:[32,45] };
+const SECS = { tf:[7,10], one:[10,15], multi:[16,22], fill:[14,20], match:[24,34] };
 // once enough tests exist, the real average time per question (by level) replaces the guess, within ×0.5–×2 of it
 let PACE = lsGet("candela:pace", null);
 function estSecs(list){
@@ -1545,9 +1556,19 @@ function viewQuestion(first){
   Z.ui = ui;
   saveQuiz();
   if (first || !$(".qcard")) {
+    if (window._qTimer) clearInterval(window._qTimer);
     mount(`<div class="qtop"><button class="icon-btn" id="quit" aria-label="Oprește testul"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
-      <div class="bar" aria-hidden="true"><i id="prog" style="width:0"></i></div><span class="qcount" id="qcount"></span></div>
+      <div class="bar" aria-hidden="true"><i id="prog" style="width:0"></i></div>
+      <span id="qtimer" style="font-family:var(--f-mono);font-size:13px;color:var(--oil-ink);opacity:0.6;font-weight:600;margin-right:8px;flex:none;"></span>
+      <span class="qcount" id="qcount"></span></div>
       <div id="qslot"></div>`);
+    const updateTimer = () => {
+      const el = $("#qtimer"); if (!el) { clearInterval(window._qTimer); return; }
+      const sec = Math.floor((Date.now() - S.quiz.start) / 1000);
+      el.textContent = `${Math.floor(sec / 60)}:${(sec % 60).toString().padStart(2, '0')}`;
+    };
+    updateTimer();
+    window._qTimer = setInterval(updateTimer, 1000);
     $("#quit").onclick = () => {
       const bg = document.createElement("div"); bg.className = "modal-bg";
       bg.innerHTML = `<div class="modal" role="alertdialog" aria-modal="true" aria-labelledby="qT"><h3 id="qT">Oprești testul?</h3><p class="muted">Răspunsurile date până acum se pierd.</p><div class="modal-btns"><button class="btn btn-ghost" id="qNo">Continuă</button><button class="btn btn-primary" id="qYes">Oprește</button></div></div>`;
@@ -1782,7 +1803,7 @@ async function finish(again){
   }
   S.board = null;
   const wrong = Z.qs.map((q,i)=>({q, a: Z.answers[i]})).filter(x => !x.a || x.a.pts < 1);
-  const rep = { at, chs: Z.chs, mode: Z.mode, retry: !!Z.retry, n, sc, P, wrong,
+  const rep = { at, chs: Z.chs, mode: Z.mode, retry: !!Z.retry, n, sc, P, wrong, secs,
     byCh: Object.fromEntries(Object.entries(byCh).filter(([k]) => k !== "_m").map(([c,v]) => [c, pct(v.s, v.n)])) };
   if (!Z.retry && !again) keepReport(rep);
   renderReport(rep, { guestCard: p.guest && !Z.retry });
@@ -1860,12 +1881,14 @@ function renderReport(r, o = {}){
       <div class="pf-rule"><span class="r-icon">✓</span><span>Răspunsurile corecte aduc <b>puncte</b>.</span></div>
       <div class="pf-rule"><span class="r-icon">↺</span><span><b>Reia greșelile</b> nu dă puncte.</span></div>
       <div class="pf-rule"><span class="r-icon">+</span><span>Pentru un punctaj mai mare: <b>refă testul</b>.</span></div>
+      <div class="pf-rule"><span class="r-icon" style="font-family:var(--f-mono);font-size:14px">⏱</span><span>Timpul este informativ, <b>nu afectează</b> scorul.</span></div>
     </div>
   </div>` : ""}
-  ${wrong ? `<div class="kv two">
-    <div class="stat"><b>${n - nWrong}</b><small>corecte</small></div>
-    <div class="stat"><b>${nWrong}</b><small>de revăzut</small></div>
-  </div>` : ""}
+  <div class="kv ${wrong ? (r.secs ? 'three' : 'two') : 'one'}" style="margin-top:16px; margin-bottom:16px;">
+    ${wrong ? `<div class="stat"><b>${n - nWrong}</b><small>corecte</small></div>
+    <div class="stat"><b>${nWrong}</b><small>de revăzut</small></div>` : ""}
+    ${r.secs ? `<div class="stat"><b>${Math.floor(r.secs/60)}:${(r.secs%60).toString().padStart(2,'0')}</b><small>timp</small></div>` : ""}
+  </div>
   ${o.guestCard ? `<div class="card guest-cta"><p>Creează un cont ca să-ți păstrezi rezultatele.</p>
     <div class="guest-btns"><button class="btn btn-primary" id="gNew" type="button">Creează cont</button><button class="btn btn-ghost" id="gIn" type="button">Am deja cont</button></div></div>` : ""}
   ${chs.length>1 && chList.length ? `<div class="card" style="display:grid;gap:18px">
@@ -1880,6 +1903,7 @@ function renderReport(r, o = {}){
       <div class="pf-rule"><span class="r-icon">✓</span><span>Răspunsurile corecte aduc <b>puncte</b>.</span></div>
       <div class="pf-rule"><span class="r-icon">↺</span><span><b>Reia greșelile</b> nu dă puncte.</span></div>
       <div class="pf-rule"><span class="r-icon">+</span><span>Pentru un punctaj mai mare: <b>refă testul</b>.</span></div>
+      <div class="pf-rule"><span class="r-icon" style="font-family:var(--f-mono);font-size:14px">⏱</span><span>Timpul este informativ, <b>nu afectează</b> scorul.</span></div>
     </div>
   </div>` : ""}
   <div class="startbar" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
