@@ -1008,6 +1008,7 @@ function viewWelcome(){
     </div>
     <div class="wl-mid">
       <p class="lead"><span class="count">${totalCount("both").toLocaleString("ro-RO")} de întrebări</span> din 1 Samuel</p>
+      <p class="muted" style="text-align:center; margin-bottom:8px;">Ce poți face pe acest site:</p>
       <ol class="card wl-list">
         <li><b>1</b><span>Alegi un capitol și nivelul</span></li>
         <li><b>2</b><span>Răspunzi la întrebări</span></li>
@@ -1120,6 +1121,7 @@ function openProfile(){
         ${levelBar("Întrebări ușoare", okE, seenE, totE, "var(--cedar)")}
         ${levelBar("Întrebări grele", okH, seenH, totH, "var(--oil)")}
       </div>
+      <div class="retry-info" style="margin: 0 16px 16px;"><b>Despre puncte</b>Fiecare răspuns corect îți aduce puncte. Opțiunea „Reia greșelile” este doar pentru învățare și nu recuperează punctele pierdute. Pentru un scor mai mare, trebuie să refaci testul de la capăt.</div>
       ${!p.child && store.isParent ? `<div class="pf-card" id="pfKids"></div>` : ""}
       <div class="set-list">
         ${p.child ? "" : `<button class="set-row${store.hasEmail() ? "" : " warn"}" id="pfEdit" type="button"><span class="set-t">${store.hasEmail() ? "Nume, email și parolă" : "Adaugă emailul"}</span>${CHEV}</button>
@@ -1297,7 +1299,7 @@ function viewHome(){
     <div class="hello">
       <h2>${p.guest ? "Bun venit!" : `Bun venit, ${esc(first)}.`}</h2>
       ${familyHTML()}
-</div>
+    </div>
     ${resumeHTML()}
   </section>
   <section class="h-verse"><div class="lamp-wrap"><div class="lamp-glow"></div>${lampSVG(46)}</div><p class="verse-quote">„Candela lui Dumnezeu nu se stinsese încă.”<span class="ref">1 Sam. 3:3</span></p></section>
@@ -1357,8 +1359,7 @@ function renderBoard(list){
   const row = (x, i) => { const mine = !guest && x.me, ok = x.ok ?? 0; return `<button type="button" class="brow-l ${mine?"me":""}" data-i="${i}" aria-label="Profilul lui ${esc(x.name)}">
     <span class="rank ${i<3 && ok ? "r"+(i+1) : ""}">${i+1}</span>
     <span class="avatar sm">${esc(initials(x.name))}</span>
-    <div class="who-l"><b class="nm"><span>${esc(x.name)}</span>${mine?"<em>tu</em>":""}</b>
-      <small>${x.tests} ${x.tests===1?"test":"teste"}</small></div>
+    <div class="who-l"><b class="nm"><span>${esc(x.name)}</span>${mine?"<em>tu</em>":""}</b></div>
     <div class="pts"><b>${ok}</b><small>${ok===1?"punct":"puncte"}</small></div>${CHEV}</button>`; };
   el.innerHTML = note + top.map(row).join("") + (idx >= top.length ? `<div class="gap">···</div>${row(list[idx], idx)}` : "");
   el.querySelectorAll(".brow-l[data-i]").forEach(b => b.onclick = () => { const i = +b.dataset.i, x = list[i]; if (!guest && x.me) openProfile(); else openPublicProfile(x, i); });
