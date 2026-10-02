@@ -1304,7 +1304,7 @@ function viewHome(){
 
   <aside class="h-config">
     <div class="panel">
-      <div class="section-h first"><h3>Ce capitol vrei să exersezi?</h3><span class="muted pick-note">Poți alege mai multe</span></div>
+      <div class="section-h first"><h3>Ce capitol vrei să exersezi?</h3></div>
       <div class="grid" id="grid">${Array.from({length:31},(_,i)=>i+1).map(c=>`<button class="tile" data-c="${c}" aria-pressed="false" title="${c}. ${esc(TITLES[c-1])}" aria-label="Capitolul ${c}: ${esc(TITLES[c-1])}${lvTried(c,"easy") ? ", ușor făcut" : ""}${lvTried(c,"hard") ? ", greu făcut" : ""}"><span class="n">${c}</span>${lvTried(c,"easy") && lvTried(c,"hard") ? `<i class="done-mark" aria-hidden="true">${CHECK}</i>` : chapTried(c) ? `<span class="prog" aria-hidden="true"><i class="${lvTried(c,"easy") ? "on" : ""}"></i><i class="${lvTried(c,"hard") ? "on" : ""}"></i></span>` : ""}</button>`).join("")}</div>
 
       <div class="startbar"><button class="btn btn-primary btn-block" id="start"></button></div>
@@ -1736,7 +1736,7 @@ function packWrong({q, a}){
 }
 function srcOf(id){ const m = /^(\d+)([eh])(\d+)$/.exec(id); if (!m) return null; const q = (QUIZ[+m[1]] || {})[m[2] === "e" ? "easy" : "hard"]; return q && q[+m[3]] ? {...q[+m[3]], ch: +m[1], mode: m[2] === "e" ? "easy" : "hard", id} : null; }
 function unpackWrong(list){ return (list || []).map(w => { const q = srcOf(w.id); return q ? { q, a: { pts: w.p || 0, given: w.g, skipped: w.g == null } } : null; }).filter(Boolean); }
-const attemptRow = x => `<button class="hrow" type="button" data-at="${x.at}" aria-label="Vezi raportul: ${esc(chaptersLabel(x.chs))}, ${x.pct}%"><span class="badge ${x.mode}" ${x.mode === "both" ? 'style="line-height:1.2;text-align:center;padding:4px 6px"' : ''}>${x.mode === "both" ? "Ușor<br>Greu" : MODE_LABEL[x.mode]}</span><div class="hrow-info"><b>${esc(chaptersLabel(x.chs))}</b><small>${dateLabel(x.at)}</small></div><span class="pct">${x.pct}%</span>${CHEV}</button>`;
+const attemptRow = x => `<button class="hrow" type="button" data-at="${x.at}" aria-label="Vezi raportul: ${esc(chaptersLabel(x.chs))}, ${x.pct}%"><span class="badge ${x.mode}">${MODE_LABEL[x.mode]}</span><div class="hrow-info"><b>${esc(chaptersLabel(x.chs))}</b><small>${dateLabel(x.at)}</small></div><span class="pct">${x.pct}%</span>${CHEV}</button>`;
 /* the whole history: every test, grouped by chapter, newest first; each one opens its report */
 function viewHistory(){
   S.reportBack = null; S.reportCh = null;
