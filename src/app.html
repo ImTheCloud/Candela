@@ -41,7 +41,9 @@ h1,h2,h3{font-family:var(--f-display);font-weight:400;text-wrap:balance;margin:0
 p{margin:0}
 .wrap{max-width:1180px;margin:0 auto;padding-inline:16px;padding-block:20px calc(48px + env(safe-area-inset-bottom,0px))}
 .view{max-width:640px;margin:0 auto}
-.view:has(.home), .view:has(.entry){max-width:1180px}
+.view:has(.home){max-width:1180px}
+.wrap:has(.entry){min-height:100dvh;min-height:var(--vvh,100dvh);display:flex;flex-direction:column;padding-inline:16px;padding-block:clamp(16px,3.5vh,36px);box-sizing:border-box}
+.view:has(.entry){width:100%;max-width:440px;margin:auto;display:flex;flex-direction:column}
 .eyebrow{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
 .ref{font-family:var(--f-mono);font-size:12px;font-weight:500;letter-spacing:.02em;color:var(--oil-ink);background:var(--oil-soft);padding:3px 8px;border-radius:999px;white-space:nowrap}
 .muted{color:var(--ink-2)}
@@ -61,16 +63,24 @@ p{margin:0}
 .link{background:none;border:0;padding:6px 0;color:var(--ink-2);font-weight:500;text-decoration:underline;text-underline-offset:3px}
 
 /* Entry */
-.entry{display:flex;flex-direction:column;gap:16px;max-width:560px;margin:0 auto}
-.entry[data-step="form"]{padding-top:6vh}
-.entry-head{display:grid;justify-items:center;gap:4px;flex:none}
-.entry .back{align-self:center}
-.verse-quote{font-family:var(--f-display);font-size:17px;line-height:1.35;text-align:center;max-width:30ch;margin:6px auto 0;color:var(--ink-2)}
-.verse-quote .ref{margin-left:6px;vertical-align:2px}
+.entry{display:flex;flex-direction:column;gap:14px;width:100%;max-width:420px;margin:0 auto}
+.entry[data-step="form"]{padding-top:0}
+.entry-head{display:grid;justify-items:center;gap:3px;flex:none;text-align:center}
+.entry-head .lamp-wrap{position:relative;margin-bottom:-4px}
+.entry-head .lamp-wrap svg{width:clamp(76px,12vh,96px);height:auto}
+.entry .lamp-glow{position:absolute;inset:-25px 0 auto;height:140px;background:radial-gradient(closest-side,color-mix(in oklab,var(--oil) 45%,transparent),transparent);filter:blur(8px);animation:glow 3.2s ease-in-out infinite;pointer-events:none}
+.entry h1{font-family:var(--f-display);font-size:clamp(32px,6.5vw,40px);line-height:1.05;text-align:center;letter-spacing:-.01em}
+.entry h1 span{display:block;font-size:13.5px;letter-spacing:.04em;color:var(--ink-2);margin-top:3px;font-family:var(--f-body);font-weight:600}
+.entry .back{align-self:center;font-size:14px;padding:4px 8px;margin-top:2px}
+.verse-quote{font-family:var(--f-display);font-size:13.5px;line-height:1.35;text-align:center;max-width:32ch;margin:3px auto 0;color:var(--ink-2)}
+.verse-quote .ref{margin-left:6px;vertical-align:1px;font-size:11.5px;padding:2px 7px}
 .seg.two{grid-template-columns:1fr 1fr}
-.name-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.remember{display:flex;align-items:center;gap:10px;font-weight:500;cursor:pointer;user-select:none}
-.remember input{width:20px;height:20px;accent-color:var(--cedar);margin:0}
+.entry .seg{padding:3px;margin-bottom:2px}
+.entry .seg button{padding:7px 6px;font-size:14px}
+.name-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.entry-form{display:grid;gap:12px;padding:20px 22px!important}
+.remember{display:flex;align-items:center;gap:8px;font-weight:500;font-size:13px;color:var(--ink-2);cursor:pointer;user-select:none;margin-top:2px}
+.remember input{width:16px;height:16px;accent-color:var(--cedar);margin:0}
 .board.scroll{position:relative;align-content:start}
 .entry .board.scroll{flex:1;min-height:0}
 .lamp-wrap{display:flex;justify-content:center;position:relative}
@@ -78,12 +88,11 @@ p{margin:0}
 @keyframes glow{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:.85;transform:scale(1.06)}}
 .flame{transform-origin:50% 90%;animation:flicker 2.4s ease-in-out infinite}
 @keyframes flicker{0%,100%{transform:scaleY(1) skewX(0)}25%{transform:scaleY(1.06) skewX(-2deg)}50%{transform:scaleY(.96) skewX(1.5deg)}75%{transform:scaleY(1.04) skewX(-1deg)}}
-.entry h1{font-size:clamp(40px,11vw,56px);line-height:.95;text-align:center}
-.entry h1 span{display:block;font-size:.4em;letter-spacing:.02em;color:var(--ink-2);margin-top:8px}
 .card{background:var(--surface);border-radius:20px;padding:22px;box-shadow:var(--shadow)}
-.field{display:grid;gap:8px}
-.field label{font-weight:600}
-.input{width:100%;border:1.5px solid var(--line);background:var(--bg);border-radius:12px;padding:14px 16px;font-size:18px;transition:border-color .2s, background .2s}
+.field{display:grid;gap:4px}
+.field label{font-size:12px;font-weight:600;color:var(--ink)}
+.input{width:100%;border:1.5px solid var(--line);background:var(--bg);border-radius:12px;padding:9.5px 12px;font-size:15px;min-height:40px;transition:border-color .2s, background .2s}
+.entry #go{min-height:46px;padding:12px 20px;font-size:15.5px;margin-top:2px}
 .input:focus{outline:none;border-color:var(--oil);background:var(--surface)}
 .chip{border:1.5px solid var(--line);background:transparent;border-radius:999px;padding:7px 14px;font-weight:500;font-size:14px;transition:all .15s}
 .chip:hover{border-color:var(--ink-2);color:var(--ink)}
@@ -427,7 +436,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 /* v3: accounts, leaderboard, multi-chapter, desktop */
 .form-error{min-height:0;color:var(--bad);font-size:14px;font-weight:500;margin:0}
 .form-error:empty{display:none}
-.entry-form{display:grid;gap:16px}
+.entry-form{display:grid;gap:12px}
 .boot{display:grid;place-content:center;justify-items:center;gap:14px;min-height:calc(100dvh - 68px)}
 .boot h1{font-size:clamp(44px,12vw,64px);line-height:1}
 .boot-bar{width:120px;height:3px;border-radius:3px;background:var(--surface-2);overflow:hidden;margin-top:6px}
@@ -470,13 +479,17 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .who-l small{color:var(--ink-2);font-size:12.5px}
 .board .gap{text-align:center;color:var(--ink-2);letter-spacing:.3em}
 .board .empty{border:0}
+.board-guest-card{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:9px 12px 9px 14px;margin-bottom:12px;box-shadow:0 1px 3px rgb(58 39 27 / .04)}
+.bgc-info{display:flex;flex-direction:column;gap:1px;min-width:0}
+.bgc-title{font-size:13.5px;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bgc-sub{font-size:12px;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bgc-btn{flex:none;padding:6px 14px;font-size:13px;font-weight:600;min-height:32px;border-radius:999px;white-space:nowrap}
 @media (max-width:959px){
   .hello{gap:4px;margin-bottom:4px}
   .hello h2{font-size:24px}
   .h-config .section-h.first{margin:10px 0 10px}
   .h-config .section-h h3{font-size:18px}
   .grid{margin-top:10px;gap:7px}
-  .entry[data-step="form"]{padding-top:2vh}
 }
 @media (max-width:600px){
   .grid{grid-template-columns:repeat(5,1fr);gap:6px}
@@ -487,7 +500,6 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 }
 @media (min-width:960px){
   .wrap{padding-inline:32px;padding-block:28px 64px}
-  .entry-form{padding:28px}
   .home{grid-template-columns:minmax(0,1fr) 440px;grid-template-rows:auto auto auto 1fr;grid-template-areas:"intro config" "verse config" "board config" "hist config";column-gap:40px;align-items:start}
   .h-verse{grid-area:verse;display:grid;grid-template-columns:auto 1fr;align-items:center;gap:18px;background:var(--surface);border-radius:20px;padding:18px 24px;box-shadow:var(--shadow);margin-bottom:6px}
   .h-verse .verse-quote{text-align:left;margin:0;max-width:none;font-size:20px}
@@ -552,8 +564,8 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .entity-popover .pop-close:hover{color:var(--ink);background:var(--line)}
 .pf-note{font-size:13px;color:var(--ink-2);margin:0}
 .pw-wrap{position:relative}
-.pw-wrap .input{padding-right:52px}
-.pw-eye{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:40px;height:40px;border:0;background:transparent;border-radius:10px;display:grid;place-items:center;color:var(--ink-2);padding:0}
+.pw-wrap .input{padding-right:42px}
+.pw-eye{position:absolute;right:4px;top:50%;transform:translateY(-50%);width:32px;height:32px;border:0;background:transparent;border-radius:8px;display:grid;place-items:center;color:var(--ink-2);padding:0}
 .pw-eye:hover{color:var(--ink)}
 .family{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:10px}
 .family-l{font-size:14px;color:var(--ink-2);margin-right:2px}
@@ -1066,7 +1078,7 @@ function pwEye(input){
 }
 function viewEntry(msg, tab){
   tab = tab || (lsGet("candela:hasAccount", false) ? "in" : "new");
-  const head = `<div class="entry-head"><div class="lamp-wrap"><div class="lamp-glow"></div>${lampSVG(64)}</div><h1>Candela<span>1 Samuel</span></h1><p class="verse-quote">„Candela lui Dumnezeu nu se stinsese încă.”<span class="ref">1 Sam. 3:3</span></p></div>`;
+  const head = `<div class="entry-head"><div class="lamp-wrap"><div class="lamp-glow"></div>${lampSVG(56)}</div><h1>Candela<span>1 Samuel</span></h1><p class="verse-quote">„Candela lui Dumnezeu nu se stinsese încă.”<span class="ref">1 Sam. 3:3</span></p></div>`;
   const isNew = tab === "new";
   const backLabel = S.player && !S.player.guest ? "Înapoi la capitole" : "Continuă fără cont";
   mount(`<section class="entry" data-step="form">${head}
@@ -1545,7 +1557,7 @@ function viewHome(){
     </div>
   </aside>
 
-  ${HOSTED ? `<section class="h-board"><div class="section-h"><h3>Clasament</h3></div><div id="board" class="board scroll"><div class="empty">Se încarcă clasamentul…</div></div></section>` : ""}
+  ${HOSTED ? `<section class="h-board"><div class="section-h"><h3>Clasament</h3></div><div id="boardNotice"></div><div id="board" class="board scroll"><div class="empty">Se încarcă clasamentul…</div></div></section>` : ""}
 
   <section class="h-hist">
     <div class="section-h"><h3>Istoric</h3>${h.length > 3 ? `<button class="link" id="allHist" type="button">Vezi tot</button>` : ""}</div>
@@ -1583,8 +1595,28 @@ function viewHome(){
   if (HOSTED) loadBoard();
 }
 
+function renderBoardNotice(){
+  const noticeEl = $("#boardNotice"); if (!noticeEl) return;
+  const guest = !S.player || S.player.guest;
+  const hasPlayed = guest && S.player && ((S.player.history && S.player.history.length > 0) || (S.player.ok && S.player.ok.length > 0));
+  if (hasPlayed){
+    noticeEl.innerHTML = `<div class="board-guest-card">
+      <div class="bgc-info">
+        <b class="bgc-title">Intră în clasament</b>
+        <span class="bgc-sub">Salvează punctele</span>
+      </div>
+      <button class="btn btn-primary bgc-btn" id="boardSignup" type="button">Creează cont</button>
+    </div>`;
+    const btn = $("#boardSignup");
+    if (btn) btn.onclick = () => viewEntry("", "new");
+  } else {
+    noticeEl.innerHTML = "";
+  }
+}
+
 async function loadBoard(){
   const el = $("#board"); if (!el) return;
+  renderBoardNotice();
   if (S.board) renderBoard(S.board);
   const list = await store.board();
   if (list) { S.board = list; renderBoard(list); }
@@ -1592,6 +1624,7 @@ async function loadBoard(){
 }
 function renderBoard(list){
   const el = $("#board"); if (!el) return;
+  renderBoardNotice();
   const guest = !S.player || S.player.guest;
   const note = S.player && S.player.hidden ? `<div class="empty">${S.player.child ? esc(S.player.name.split(" ")[0]) + " nu apare" : "Nu apari"} în clasament. Se poate schimba din profil.</div>` : "";
   if (!list.length){ el.innerHTML = note || `<div class="empty">Încă nimeni.</div>`; return; }
