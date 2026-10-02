@@ -110,7 +110,7 @@ p{margin:0}
 .pf-card{width:100%;background:var(--surface);border-radius:16px;padding:16px 18px;display:grid;gap:12px;box-shadow:var(--shadow);text-align:left}
 .pf-rules{margin-top:4px;padding-top:14px;border-top:1px solid var(--border);display:grid;gap:8px}
 .pf-rule{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;line-height:1.35;color:var(--ink-2)}
-.pf-rule .r-icon{color:var(--oil);font-weight:600;width:14px;height:14px;display:inline-flex;align-items:center;justify-content:center;text-align:center;font-size:14px;flex:none}
+.r-icon{color:var(--oil);font-weight:600;width:14px;height:14px;display:inline-flex;align-items:center;justify-content:center;text-align:center;font-size:14px;flex:none}
 .pf-rule b{color:var(--ink);font-weight:600}
 .pf-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:14px;color:var(--ink-2)}
 .pf-row b{color:var(--ink);font-weight:600;text-align:right}
@@ -459,62 +459,27 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .reader-text{background:var(--surface);border-radius:20px;padding:20px;box-shadow:var(--shadow);font-family:var(--f-bible);font-weight:400;font-size:18.5px;line-height:1.75;text-wrap:pretty}
 .reader-text p{margin:0 0 .45em;padding:0 4px;border-radius:6px}
 
-/* --- Bible Reader Study Highlights & Memorare Mode --- */
-.reader-stats-bar{display:flex;align-items:center;justify-content:space-around;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:8px 12px;box-shadow:var(--shadow);margin-top:-4px}
-.rs-stat{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--ink-2);cursor:pointer;padding:3px 8px;border-radius:8px;transition:background .15s,color .15s;-webkit-tap-highlight-color:transparent}
-.rs-stat:hover{background:var(--oil-soft);color:var(--oil-ink)}
-.rs-stat b{font-family:var(--f-mono);font-size:14px;font-weight:700;color:var(--ink)}
-.rs-divider{width:1px;height:16px;background:var(--line)}
+/* --- Bible Reader Colors Toolbar & Legend --- */
+.reader-toolbar{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:2px 2px 8px}
+.reader-legend{display:inline-flex;align-items:center;gap:6px;flex-wrap:wrap;transition:opacity .2s}
+.reader-legend.is-dimmed{opacity:.4}
+.leg-badge{font-size:11.5px;font-weight:500;padding:2px 7px;border-radius:5px;line-height:1.2;color:var(--ink-2);transition:opacity .2s}
+.leg-badge.c-person{background:rgba(167,139,250,.14);border-bottom:1px solid rgba(139,92,246,.35)}
+.leg-badge.c-place{background:rgba(74,222,128,.14);border-bottom:1px solid rgba(34,197,94,.35)}
+.leg-badge.c-number{background:rgba(251,191,36,.16);border-bottom:1px solid rgba(217,119,6,.35)}
+.leg-badge.c-object{background:rgba(56,189,248,.14);border-bottom:1px solid rgba(14,165,233,.35)}
 
-.reader-filter-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
-.rf-chips{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
-.rf-chip{display:inline-flex;align-items:center;gap:4px;font-family:inherit;font-size:13px;font-weight:600;padding:5px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink-2);cursor:pointer;transition:all .15s;-webkit-tap-highlight-color:transparent}
-.rf-chip:hover{border-color:var(--ink-2);color:var(--ink)}
-.rf-chip.active{background:var(--oil);border-color:var(--oil);color:#fff;box-shadow:0 1px 3px rgba(0,0,0,0.1)}
-.rf-chip.c-person.active{background:#5b21b6;border-color:#5b21b6;color:#fff}
-.rf-chip.c-place.active{background:#15803d;border-color:#15803d;color:#fff}
-.rf-chip.c-number.active{background:#b45309;border-color:#b45309;color:#fff}
-.rf-chip.c-object.active{background:#0369a1;border-color:#0369a1;color:#fff}
-
-.rf-memorare{display:inline-flex;align-items:center;gap:6px;font-family:inherit;font-size:13px;font-weight:600;padding:5px 13px;border-radius:999px;border:1.5px solid var(--oil);background:var(--oil-soft);color:var(--oil-ink);cursor:pointer;transition:all .2s;-webkit-tap-highlight-color:transparent}
-.rf-memorare:hover{background:color-mix(in oklab,var(--oil) 25%,transparent)}
-.rf-memorare.active{background:var(--oil);color:#fff;box-shadow:0 0 0 2px color-mix(in oklab,var(--oil) 35%,transparent)}
-
-.memorare-hint{font-size:13.5px;color:var(--oil-ink);background:var(--oil-soft);border:1px solid color-mix(in oklab,var(--oil) 30%,transparent);padding:8px 14px;border-radius:12px;display:flex;align-items:center;justify-content:space-between;gap:8px}
-.memorare-hint button{background:transparent;border:0;color:var(--oil-ink);font-weight:700;text-decoration:underline;cursor:pointer;padding:0;font-size:12.5px;font-family:inherit}
+.reader-toggle-btn{display:inline-flex;align-items:center;gap:5px;font-family:inherit;font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink-2);cursor:pointer;transition:border-color .15s,background .15s,color .15s;-webkit-tap-highlight-color:transparent}
+.reader-toggle-btn:hover{border-color:var(--ink-2);color:var(--ink)}
 
 /* Base highlight mark */
-.hl-entity{background:transparent;color:inherit;border-radius:4px;padding:1px 3px;cursor:pointer;transition:background .2s,border-color .2s;box-decoration-break:clone;-webkit-box-decoration-break:clone}
+.hl-entity{background:transparent;color:inherit;border-radius:3px;padding:0 2px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
 
-/* Category highlights when visible */
-.show-person .hl-person{background:#ede9fe;color:#432874;border-bottom:2px solid #a78bfa}
-.show-place .hl-place{background:#dcfce7;color:#14532d;border-bottom:2px solid #86efac}
-.show-number .hl-number{background:#fef3c7;color:#78350f;border-bottom:2px solid #fcd34d}
-.show-object .hl-object{background:#e0f2fe;color:#0c4a6e;border-bottom:2px solid #7dd3fc}
-
-/* Memorare / Flashcard mode */
-.memorare-active.show-person .hl-person,
-.memorare-active.show-place .hl-place,
-.memorare-active.show-number .hl-number,
-.memorare-active.show-object .hl-object{background:color-mix(in oklab,var(--surface) 60%,var(--bg))!important;color:transparent!important;border-bottom:2px dashed var(--oil)!important;user-select:none;-webkit-user-select:none;display:inline-block;position:relative;min-width:28px;text-align:center;line-height:1.2}
-.memorare-active.show-person .hl-person::after,
-.memorare-active.show-place .hl-place::after,
-.memorare-active.show-number .hl-number::after,
-.memorare-active.show-object .hl-object::after{content:"···";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);color:var(--oil);font-weight:700;letter-spacing:2px;font-size:14px}
-.memorare-active .hl-entity.revealed{color:#14532d!important;background:#dcfce7!important;border-bottom:2px solid #22c55e!important}
-.memorare-active .hl-entity.revealed::after{content:""!important}
-
-/* Tooltip / Entity sheet modal */
-.sheet.entity-sheet{text-align:left;gap:12px;padding:24px}
-.entity-sheet-h{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.entity-badge{font-size:12.5px;font-weight:600;padding:4px 11px;border-radius:999px;display:inline-flex;align-items:center;gap:5px}
-.entity-badge.cat-person{background:#ede9fe;color:#5b21b6}
-.entity-badge.cat-place{background:#dcfce7;color:#15803d}
-.entity-badge.cat-number{background:#fef3c7;color:#b45309}
-.entity-badge.cat-object{background:#e0f2fe;color:#0369a1}
-.entity-title{font-family:var(--f-display);font-size:26px;margin:0;color:var(--ink)}
-.entity-desc{font-size:16px;line-height:1.55;color:var(--ink);margin:0;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
-.entity-meta{font-size:13.5px;color:var(--ink-2);margin:0}
+/* Only when colors are active - subtle and discreet */
+.show-colors .hl-person{background:rgba(167,139,250,.14);border-bottom:1px solid rgba(139,92,246,.35);color:inherit}
+.show-colors .hl-place{background:rgba(74,222,128,.14);border-bottom:1px solid rgba(34,197,94,.35);color:inherit}
+.show-colors .hl-number{background:rgba(251,191,36,.16);border-bottom:1px solid rgba(217,119,6,.35);color:inherit}
+.show-colors .hl-object{background:rgba(56,189,248,.14);border-bottom:1px solid rgba(14,165,233,.35);color:inherit}
 .pf-note{font-size:13px;color:var(--ink-2);margin:0}
 .pw-wrap{position:relative}
 .pw-wrap .input{padding-right:52px}
@@ -2519,7 +2484,7 @@ function mistakeHTML({q, a}){
 
 /* ---------- reading a chapter before the test ---------- */
 /* highlighted verses ("ch:v"): kept on the phone per player, and on the account when signed in */
-/* ---------- reading a chapter with study highlights & memorare mode ---------- */
+/* ---------- reading a chapter with highlights and color toggle ---------- */
 const ENTITIES_DATA = {
   person: [
     "Samuel", "Saul", "David", "Ionatan", "Eli", "Isai", "Nabal", "Achiș", "Ana", "Abner",
@@ -2555,74 +2520,9 @@ const ENTITIES_DATA = {
   ]
 };
 
-const ENTITIES_INFO = {
-  "Saul": "Primul împărat al lui Israel, din seminția lui Beniamin, fiul lui Chiș. A domnit 40 de ani.",
-  "David": "Fiul lui Isai din Betleem, uns de Samuel ca împărat, viteazul biruitor al lui Goliat și om după inima lui Dumnezeu.",
-  "Samuel": "Profet, preot și ultimul judecător al lui Israel; i-a uns ca împărați pe Saul și pe David.",
-  "Ionatan": "Fiul cel mare al lui Saul, viteaz în război și prieten de suflet al lui David, legat de el prin legământ sfânt.",
-  "Eli": "Marele preot la Șilo și judecător peste Israel timp de 40 de ani; tatăl lui Hofni și Fineas.",
-  "Abigail": "Soția înțeleaptă a lui Nabal; a potolit mânia lui David prin daruri și a devenit soția lui.",
-  "Nabal": "Bogat și aspru crescător de vite din Maon; a refuzat să-l ajute pe David și a murit după zece zile lovit de Domnul.",
-  "Goliat": "Uriașul filistean din Gat, înalt de șase coți și o palmă, care a batjocorit oștirea lui Israel 40 de zile.",
-  "Doeg": "Edomit, căpetenia păstorilor lui Saul; i-a pârât pe preoții din Nob și a ucis 85 dintre ei.",
-  "Ahimelec": "Marele preot din cetatea Nob care i-a dat lui David pâinile sfinte și sabia lui Goliat.",
-  "Abiatar": "Fiul lui Ahimelec, singurul preot supraviețuitor din Nob; a adus efodul preoțesc în tabăra lui David.",
-  "Abner": "Fiul lui Ner, vărul lui Saul și căpetenia oștirii lui Israel.",
-  "Mical": "Fiica cea mică a lui Saul, soția lui David; l-a scăpat lăsându-l pe fereastră în noaptea primejdiei.",
-  "Ana": "Mama lui Samuel; s-a rugat cu lacrimi la Șilo pentru un fiu și l-a închinat Domnului pe viață.",
-  "Penina": "Cealaltă soție a lui Elcana, care o înțepa pe Ana ca s-o amărască fiindcă nu avea copii.",
-  "Elcana": "Tatăl lui Samuel, din Ramataim-Țofim (muntele lui Efraim), soțul Anei și al Peninei.",
-  "Chiș": "Tatăl împăratului Saul, un bărbat cu vază din seminția lui Beniamin.",
-  "Isai": "Betleemitul, tatăl lui David și al altor șapte fii; urmaș din seminția lui Iuda.",
-  "Hofni": "Fiul nelegiuit al preotului Eli; pângărea jertfele Domnului și a murit în lupta de la Afec.",
-  "Fineas": "Fiul nelegiuit al preotului Eli; a murit în aceeași zi cu fratele său când chivotul a fost capturat.",
-  "Icabod": "Fiul lui Fineas; numele său înseamnă «S-a dus slava», căci chivotul Domnului fusese luat.",
-  "Agag": "Împăratul amaleciților cruțat greșit de Saul și executat de Samuel la Ghilgal.",
-  "Nahaș": "Împăratul amonit care a cerut să scoată ochiul drept tuturor locuitorilor din Iabeșul Galaadului.",
-  "Achiș": "Împăratul filistean din Gat la care David s-a refugiat de frica lui Saul.",
-  "Abișai": "Fiul Țeruiei și nepotul lui David; viteaz credincios care a vrut să-l străpungă pe Saul în cort.",
-  "Merab": "Fiica cea mare a lui Saul, promisă inițial lui David, dar dată lui Adriel din Mehola.",
-  "Malchișua": "Fiul lui Saul care a pierit împreună cu tatăl său și cu Ionatan pe muntele Ghilboa.",
-  "Eliab": "Fratele cel mai mare al lui David, care l-a mustrat cu asprime în tabără înainte de lupta cu Goliat.",
-  "Dagon": "Idolul principal al filistenilor din Asdod, căzut zdrobit înaintea chivotului Domnului.",
-  "Filisteanul": "Goliat din Gat, uriașul luptător al filistenilor.",
-
-  "Șilo": "Cetatea sfântă unde se afla cortul întâlnirii și chivotul în timpul copilăriei lui Samuel.",
-  "Silo": "Cetatea sfântă unde se afla cortul întâlnirii și chivotul în timpul copilăriei lui Samuel.",
-  "Betleem": "Cetatea din ținutul lui Iuda unde locuia familia lui Isai și unde David a fost uns de Samuel.",
-  "Betleemul": "Cetatea din ținutul lui Iuda unde locuia familia lui Isai și unde David a fost uns de Samuel.",
-  "Rama": "Cetatea de obârșie a profetului Samuel, unde era casa lui și unde a fost înmormântat.",
-  "Ramataim-Țofim": "Numele complet al cetății Rama din muntele lui Efraim, unde s-a născut Samuel.",
-  "Ghibea": "Cetatea de scaun a lui Saul («Ghibea lui Saul»), situată în ținutul lui Beniamin.",
-  "Ghilgal": "Locul de jertfă și adunare lângă Iordan unde Saul a fost proclamat împărat.",
-  "Valea Terebinților": "Valea (Ela) unde s-au așezat taberele filistenilor și israeliților și unde David l-a ucis pe Goliat.",
-  "Eben-Ezer": "Piatra de aducere aminte pusă de Samuel după biruință: «Până aici Domnul ne-a ajutat».",
-  "Peștera Adulam": "Locul din pustie unde s-au adunat la David toți cei asupriți, datornici și amărâți (400 de oameni).",
-  "Peștera En-Ghedi": "Loc de scăpare lângă Marea Moartă unde David a cruțat viața lui Saul tăindu-i doar colțul mantalei.",
-  "Muntele Ghilboa": "Muntele pe care au căzut în luptă împăratul Saul, Ionatan și frații săi împotriva filistenilor.",
-  "Țiclag": "Cetate filisteană dăruită lui David de Achiș; a fost arsă de amaleciți și recucerită de David.",
-  "Nob": "Cetatea preoțească unde David a primit pâinile sfinte și unde Doeg i-a măcelărit pe preoți.",
-  "Cheila": "Cetate eliberată de David din mâinile filistenilor care îi prădau ariile de grâu.",
-  "Chiriat-Iearim": "Cetatea unde chivotul Domnului a rămas timp de 20 de ani în casa lui Abinadab.",
-  "Bet-Șemeș": "Cetate levitică unde cele două vaci au adus carul cu chivotul de la filisteni.",
-  "Bet-Șan": "Cetate pe ale cărei ziduri filistenii au pironit trupurile lui Saul și ale fiilor săi.",
-  "Iabeș": "Iabeșul Galaadului, cetate eliberată de Saul și ai cărei viteji au adus noaptea trupul lui Saul pentru a-l îngropa.",
-  "Iabeșul Galaadului": "Cetate din Galaad eliberată de Saul din mâinile amoniților conduși de Nahaș.",
-  "Carmel": "Loc din sudul lui Iuda unde Nabal își tundea oile și unde locuia Abigail.",
-  "Maon": "Pustie și cetate din sudul lui Iuda unde își avea bunurile bogatul Nabal.",
-  "Sela-Hamahlecoth": "«Stânca Despărțirilor», locul unde Saul a încetat urmărirea lui David pentru a lupta cu filistenii.",
-  "Gat": "Una din cele 5 mari cetăți filistene, cetatea de baștină a uriașului Goliat și a împăratului Achiș.",
-
-  "chivotul legământului": "Chivotul sfânt al Domnului, simbolul prezenței, slavei și legământului lui Dumnezeu cu Israel.",
-  "chivotul Domnului": "Lada sfântă a legământului, acoperită cu aur, pe care se afla scaunul îndurării.",
-  "chivotul": "Chivotul legământului Domnului, luat de filisteni la Afec și adus înapoi la Bet-Șemeș.",
-  "efodul": "Veșmântul sfânt preoțesc purtat de marele preot, prin care David întreba pe Domnul la Cheila și Țiclag.",
-  "urim și tumim": "Sorții sfinți păstrați în pieptarul marelui preot pentru a afla voia lui Dumnezeu.",
-  "cornul cu untdelemn": "Vasul sfânt folosit de profetul Samuel pentru a-l unge pe David la Betleem.",
-  "sabia lui Goliat": "Sabia uriașului filistean, păstrată învelită într-o pânză la Nob și dată lui David la fugă.",
-  "pâinile pentru punerea înainte": "Cele 12 pâini sfinte de pe masa din cort, mâncate la Nob de David și oamenii săi.",
-  "terafimul": "Idol casnic pus de Mical în pat acoperit cu o haină pentru a simula că David este bolnav.",
-  "cortul întâlnirii": "Cortul sfânt al Domnului așezat la Șilo unde slujea preotul Eli și tânărul Samuel."
+const TOGGLE_ICONS = {
+  on: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>`,
+  off: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>`
 };
 
 const _entityTerms = [];
@@ -2645,108 +2545,39 @@ const _entityPattern = new RegExp(
   "gi"
 );
 
-function highlightVerseEntities(text, counts) {
+function highlightVerseEntities(text) {
   return text.replace(_entityPattern, match => {
     const info = _termMap.get(match.toLowerCase());
     const cat = info ? info.cat : "object";
-    if (counts && counts[cat] !== undefined) counts[cat]++;
-    return `<mark class="hl-entity hl-${cat}" data-cat="${cat}" data-key="${esc(match)}">${esc(match)}</mark>`;
+    return `<mark class="hl-entity hl-${cat}">${esc(match)}</mark>`;
   });
-}
-
-function openEntityModal(key, cat, ch){
-  const catNames = {
-    person: { label: "Personaj biblic", icon: "👤", cls: "cat-person" },
-    place: { label: "Loc & Cetate", icon: "📍", cls: "cat-place" },
-    number: { label: "Număr & Cantitate", icon: "🔢", cls: "cat-number" },
-    object: { label: "Obiect & Element sacru", icon: "⚔️", cls: "cat-object" }
-  };
-  const cInfo = catNames[cat] || catNames.object;
-  const desc = ENTITIES_INFO[key] || ENTITIES_INFO[key.charAt(0).toUpperCase() + key.slice(1).toLowerCase()] || (
-    cat === "number" ? "Număr sau cantitate cheie din 1 Samuel. Cifrele sunt adesea întrebări esențiale la examenul Talant în Negoț!" :
-    cat === "place" ? "Cetate, vale sau ținut geografic menționat în cartea 1 Samuel." :
-    cat === "person" ? "Personaj biblic menționat în cartea 1 Samuel." :
-    "Obiect sau element simbolic/sacru din relatările cărții 1 Samuel."
-  );
-
-  const bg = document.createElement("div"); bg.className = "sheet-bg";
-  bg.innerHTML = `<div class="sheet entity-sheet" role="dialog" aria-modal="true" aria-label="${esc(key)}">
-    <button class="icon-btn prof-x" id="entX" aria-label="Închide"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
-    <div class="entity-sheet-h">
-      <span class="entity-badge ${cInfo.cls}">${cInfo.icon} ${cInfo.label}</span>
-    </div>
-    <h3 class="entity-title">${esc(key)}</h3>
-    <p class="entity-desc">${esc(desc)}</p>
-    <p class="entity-meta">Capitolul 1 Samuel ${ch}</p>
-    <button class="btn btn-primary" id="entClose" style="width:100%;margin-top:6px;">Am înțeles</button>
-  </div>`;
-  document.body.appendChild(bg);
-  const close = () => closeModal(bg);
-  bg.onclick = e => { if (e.target === bg) close(); };
-  bg.querySelector("#entX").onclick = close;
-  bg.querySelector("#entClose").onclick = close;
 }
 
 function viewRead(c){
   c = Math.min(31, Math.max(1, +c || 1)); lsSet("candela:read", c);
   const vs = TEXT[c] || [];
-  const counts = { person: 0, place: 0, number: 0, object: 0 };
-  const renderedVerses = vs.map((v, i) => `<p data-v="${i+1}"><sup>${i+1}</sup>${highlightVerseEntities(v, counts)}</p>`).join("");
-
-  if (!S.readFilter) S.readFilter = "all";
-  if (S.readMemorare === undefined) S.readMemorare = false;
-
-  const f = S.readFilter;
-  const isMem = !!S.readMemorare;
-
-  const getClassForFilter = filter => {
-    if (filter === "all") return "show-person show-place show-number show-object";
-    if (filter === "person") return "show-person";
-    if (filter === "place") return "show-place";
-    if (filter === "number") return "show-number";
-    if (filter === "object") return "show-object";
-    return "";
-  };
+  let colorsOn = lsGet("candela:rc", true);
 
   mount(`<section class="reader">
     <div class="reader-h">${BACK_BTN("rBack")}
       <div><span class="eyebrow">1 Samuel ${c}</span><h2>${esc(TITLES[c-1])}</h2></div></div>
     <label class="r-pick"><span>Capitolul</span><select class="input" id="rPick">${TITLES.map((t, i) => `<option value="${i+1}" ${i+1 === c ? "selected" : ""}>${i+1}. ${esc(t)}</option>`).join("")}</select></label>
 
-    <div class="reader-stats-bar">
-      <div class="rs-stat" data-cat="person" title="Vezi doar personajele"><span>👤</span> <b>${counts.person}</b> <span>personaje</span></div>
-      <div class="rs-divider"></div>
-      <div class="rs-stat" data-cat="place" title="Vezi doar locurile"><span>📍</span> <b>${counts.place}</b> <span>locuri</span></div>
-      <div class="rs-divider"></div>
-      <div class="rs-stat" data-cat="number" title="Vezi doar cifrele"><span>🔢</span> <b>${counts.number}</b> <span>cifre</span></div>
-      <div class="rs-divider"></div>
-      <div class="rs-stat" data-cat="object" title="Vezi doar obiectele"><span>⚔️</span> <b>${counts.object}</b> <span>obiecte</span></div>
-    </div>
-
-    <div class="reader-filter-bar">
-      <div class="rf-chips">
-        <button type="button" class="rf-chip ${f==='all'?'active':''}" data-f="all">Toate</button>
-        <button type="button" class="rf-chip c-person ${f==='person'?'active':''}" data-f="person">👤 Nume</button>
-        <button type="button" class="rf-chip c-place ${f==='place'?'active':''}" data-f="place">📍 Locuri</button>
-        <button type="button" class="rf-chip c-number ${f==='number'?'active':''}" data-f="number">🔢 Cifre</button>
-        <button type="button" class="rf-chip c-object ${f==='object'?'active':''}" data-f="object">⚔️ Obiecte</button>
-        <button type="button" class="rf-chip ${f==='none'?'active':''}" data-f="none">Text simplu</button>
+    <div class="reader-toolbar">
+      <div class="reader-legend ${colorsOn ? '' : 'is-dimmed'}" id="readerLegend">
+        <span class="leg-badge c-person">Nume</span>
+        <span class="leg-badge c-place">Locuri</span>
+        <span class="leg-badge c-number">Cifre</span>
+        <span class="leg-badge c-object">Obiecte</span>
       </div>
-      <button type="button" class="rf-memorare ${isMem?'active':''}" id="btnMemorare" aria-pressed="${isMem}">
-        <span>🧠</span>
-        <span>Mod Memorare</span>
+      <button type="button" class="reader-toggle-btn" id="btnColorToggle" aria-pressed="${colorsOn}" title="${colorsOn ? 'Dezactivează culorile' : 'Activează culorile'}">
+        <span class="r-icon" id="btnColorIcon">${colorsOn ? TOGGLE_ICONS.off : TOGGLE_ICONS.on}</span>
+        <span id="btnColorLabel">${colorsOn ? "Fără culori" : "Cu culori"}</span>
       </button>
     </div>
 
-    <div id="memHintBox" style="display:${isMem ? 'block' : 'none'};">
-      <div class="memorare-hint">
-        <span>Atinge orice cuvânt mascat ca să-i afli răspunsul.</span>
-        <button type="button" id="btnRevealAll">Arată tot</button>
-      </div>
-    </div>
-
-    <div class="reader-text ${getClassForFilter(f)} ${isMem ? 'memorare-active' : ''}" id="readerText">
-      ${renderedVerses}
+    <div class="reader-text ${colorsOn ? 'show-colors' : ''}" id="readerText">
+      ${vs.map((v, i) => `<p data-v="${i+1}"><sup>${i+1}</sup>${highlightVerseEntities(v)}</p>`).join("")}
     </div>
 
     <div class="r-nav">${c > 1 ? `<button class="btn btn-ghost" id="rPrev" type="button">← Capitolul ${c-1}</button>` : "<span></span>"}${c < 31 ? `<button class="btn btn-ghost" id="rNext" type="button">Capitolul ${c+1} →</button>` : ""}</div>
@@ -2756,65 +2587,21 @@ function viewRead(c){
   document.body.insertAdjacentHTML("beforeend", `${c > 1 ? `<button class="r-side l" id="rSideP" type="button" aria-label="Capitolul ${c-1}" title="Capitolul ${c-1}"><svg width="18" height="18" viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3L5 8l5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>` : ""}
   ${c < 31 ? `<button class="r-side r" id="rSideN" type="button" aria-label="Capitolul ${c+1}" title="Capitolul ${c+1}"><svg width="18" height="18" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>` : ""}`);
 
-  const updateFilterUI = newFilter => {
-    S.readFilter = newFilter;
-    const rText = $("#readerText");
-    if (rText) {
-      rText.classList.remove("show-person", "show-place", "show-number", "show-object");
-      const add = getClassForFilter(newFilter);
-      if (add) add.split(" ").forEach(cls => rText.classList.add(cls));
-    }
-    app.querySelectorAll(".rf-chip").forEach(ch => ch.classList.toggle("active", ch.dataset.f === newFilter));
-  };
-
-  app.querySelectorAll(".rf-chip").forEach(btn => {
-    btn.onclick = () => updateFilterUI(btn.dataset.f);
-  });
-
-  app.querySelectorAll(".rs-stat[data-cat]").forEach(stat => {
-    stat.onclick = () => updateFilterUI(stat.dataset.cat);
-  });
-
-  let allRevealed = false;
-  const btnMem = $("#btnMemorare");
-  if (btnMem) {
-    btnMem.onclick = () => {
-      S.readMemorare = !S.readMemorare;
-      const on = S.readMemorare;
-      btnMem.classList.toggle("active", on);
-      btnMem.setAttribute("aria-pressed", on);
+  const btnToggle = $("#btnColorToggle");
+  if (btnToggle) {
+    btnToggle.onclick = () => {
+      colorsOn = !colorsOn;
+      lsSet("candela:rc", colorsOn);
+      btnToggle.setAttribute("aria-pressed", colorsOn);
+      btnToggle.setAttribute("title", colorsOn ? "Dezactivează culorile" : "Activează culorile");
+      const icon = $("#btnColorIcon");
+      if (icon) icon.innerHTML = colorsOn ? TOGGLE_ICONS.off : TOGGLE_ICONS.on;
+      const lbl = $("#btnColorLabel");
+      if (lbl) lbl.textContent = colorsOn ? "Fără culori" : "Cu culori";
+      const rLeg = $("#readerLegend");
+      if (rLeg) rLeg.classList.toggle("is-dimmed", !colorsOn);
       const rText = $("#readerText");
-      if (rText) {
-        rText.classList.toggle("memorare-active", on);
-        if (!on) rText.querySelectorAll(".hl-entity.revealed").forEach(el => el.classList.remove("revealed"));
-      }
-      const hintBox = $("#memHintBox");
-      if (hintBox) hintBox.style.display = on ? "block" : "none";
-    };
-  }
-
-  const btnRevAll = $("#btnRevealAll");
-  if (btnRevAll) {
-    btnRevAll.onclick = () => {
-      allRevealed = !allRevealed;
-      const rText = $("#readerText");
-      if (rText) {
-        rText.querySelectorAll(".hl-entity").forEach(el => el.classList.toggle("revealed", allRevealed));
-      }
-      btnRevAll.textContent = allRevealed ? "Ascunde tot" : "Arată tot";
-    };
-  }
-
-  const rText = $("#readerText");
-  if (rText) {
-    rText.onclick = e => {
-      const mark = e.target.closest(".hl-entity");
-      if (!mark) return;
-      if (S.readMemorare) {
-        mark.classList.toggle("revealed");
-      } else {
-        openEntityModal(mark.dataset.key, mark.dataset.cat, c);
-      }
+      if (rText) rText.classList.toggle("show-colors", colorsOn);
     };
   }
 
