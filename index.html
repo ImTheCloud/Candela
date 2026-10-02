@@ -102,7 +102,7 @@ p{margin:0}
 .prof-mail{color:var(--ink-2);font-size:14px;margin-top:-10px;word-break:break-all}
 .prof-mail.warn{color:var(--oil-ink);word-break:normal;max-width:32ch}
 .prof-btns{width:100%;display:grid;gap:8px}
-.prof{max-height:min(90dvh,calc(var(--vvh,100dvh) - 16px));overflow:auto}
+.prof{max-height:min(94dvh,calc(100dvh - env(safe-area-inset-top,0px) - 16px));overflow-y:auto}
 .pf-head{display:grid;justify-items:center;gap:10px}
 .pf-head .prof-mail{margin:0}
 .pf-card{width:100%;background:var(--surface);border-radius:16px;padding:16px 18px;display:grid;gap:12px;box-shadow:var(--shadow);text-align:left}
@@ -180,9 +180,9 @@ p{margin:0}
 html.scroll-locked,body.scroll-locked{overflow:hidden!important;overscroll-behavior:none!important}
 html:has(.sheet-bg),html:has(.modal-bg),body:has(.sheet-bg),body:has(.modal-bg){overflow:hidden}
 .sheet,.modal{overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
-.sheet-bg{position:fixed;inset:0;z-index:30;background:rgb(58 39 27 / .32);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);display:flex;align-items:flex-end;justify-content:center;animation:modalBgIn .28s cubic-bezier(.16,1,.3,1) both;touch-action:none;overscroll-behavior:contain;padding-bottom:var(--kbd-h,0px);box-sizing:border-box}
+.sheet-bg{position:fixed;inset:0;z-index:30;background:rgb(58 39 27 / .45);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);display:flex;align-items:flex-end;justify-content:center;animation:modalBgIn .28s cubic-bezier(.16,1,.3,1) both;touch-action:none;overscroll-behavior:contain;box-sizing:border-box}
 .sheet-bg.closing{animation:modalBgOut .22s cubic-bezier(.4,0,1,1) forwards;pointer-events:none}
-.sheet{width:100%;max-width:520px;background:var(--bg);border-radius:24px 24px 0 0;padding:18px 16px calc(18px + env(safe-area-inset-bottom,0px));display:grid;gap:16px;animation:sheetUp .32s cubic-bezier(.16,1,.3,1) both;will-change:transform,opacity;touch-action:pan-y;overscroll-behavior:contain;max-height:min(90dvh,calc(var(--vvh,100dvh) - 16px));overflow-y:auto}
+.sheet{position:relative;width:100%;max-width:520px;background:var(--bg);border-radius:24px 24px 0 0;padding:18px 16px calc(18px + env(safe-area-inset-bottom,0px) + var(--kbd-h,0px));display:grid;gap:16px;animation:sheetUp .32s cubic-bezier(.16,1,.3,1) both;will-change:transform,opacity;touch-action:pan-y;overscroll-behavior:contain;max-height:min(94dvh,calc(100dvh - env(safe-area-inset-top,0px) - 16px));overflow-y:auto;box-sizing:border-box}
 .sheet-bg.closing .sheet{animation:sheetDown .22s cubic-bezier(.4,0,1,1) forwards;pointer-events:none}
 .sheet-h{display:flex;align-items:center;justify-content:space-between}
 .sheet-h h3{font-size:24px}
@@ -393,6 +393,28 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
   .h-config .section-h.first{margin:10px 0 10px}
   .h-config .section-h h3{font-size:18px}
   .grid{margin-top:10px;gap:7px}
+  .wrap:has(.entry[data-step="form"]){padding-block:max(8px,env(safe-area-inset-top,0px)) max(8px,env(safe-area-inset-bottom,0px));min-height:100dvh;min-height:var(--vvh,100dvh);display:flex;flex-direction:column;justify-content:center;overflow:hidden}
+  .view:has(.entry[data-step="form"]){display:flex;flex-direction:column;justify-content:center;width:100%}
+  .entry[data-step="form"]{padding-top:0;gap:10px;max-width:440px;width:100%}
+  .entry[data-step="form"] .entry-head{gap:2px}
+  .entry[data-step="form"] .lamp-wrap svg{width:44px;height:44px}
+  .entry[data-step="form"] .lamp-glow{height:100px;inset:-15px 0 auto}
+  .entry[data-step="form"] h1{font-size:26px;line-height:1.1}
+  .entry[data-step="form"] h1 span{display:inline-block;font-size:13px;margin-top:0;margin-left:6px;vertical-align:1px}
+  .entry[data-step="form"] .verse-quote{display:none}
+  .entry[data-step="form"] .entry-form{padding:16px 18px;border-radius:18px;gap:10px}
+  .entry[data-step="form"] .field{gap:4px}
+  .entry[data-step="form"] .field label{font-size:12.5px}
+  .entry[data-step="form"] .input{padding:9px 13px;font-size:16px;border-radius:10px}
+  .entry[data-step="form"] .pw-eye{width:34px;height:34px}
+  .entry[data-step="form"] .name-row{gap:10px}
+  .entry[data-step="form"] .remember{font-size:13px;gap:8px;margin-top:-2px}
+  .entry[data-step="form"] .remember input{width:18px;height:18px}
+  .entry[data-step="form"] .forgot{font-size:13px;padding:2px 0}
+  .entry[data-step="form"] .form-error{font-size:13px;margin:0}
+  .entry[data-step="form"] .form-error:empty{display:none}
+  .entry[data-step="form"] #go{padding:11px;font-size:15px;border-radius:12px;min-height:44px}
+  .entry[data-step="form"] .back{font-size:13px;padding:2px 0}
 }
 @media (max-width:600px){
   .grid{grid-template-columns:repeat(5,1fr);gap:6px}
@@ -602,14 +624,39 @@ document.addEventListener("touchmove", e => {
     }
   }
 }, { passive: false });
+window.addEventListener("scroll", () => {
+  if (document.body.classList.contains("scroll-locked") || document.body.classList.contains("quiz-fixed")) {
+    if (window.scrollY !== 0 || window.scrollX !== 0) {
+      window.scrollTo(0, 0);
+    }
+  }
+}, { passive: true });
 document.addEventListener("focusin", e => {
   const inp = e.target;
   if (inp && (inp.tagName === "INPUT" || inp.tagName === "TEXTAREA")) {
-    const container = inp.closest(".sheet, .modal, .prof");
+    const container = inp.closest(".sheet, .modal");
     if (container) {
+      window.scrollTo(0, 0);
       setTimeout(() => {
-        inp.scrollIntoView({ block: "center", behavior: "smooth" });
-      }, 200);
+        window.scrollTo(0, 0);
+        const cRect = container.getBoundingClientRect();
+        const iRect = inp.getBoundingClientRect();
+        const kbdH = parseInt(getComputedStyle(document.documentElement).getPropertyValue("--kbd-h")) || 0;
+        const visibleBottom = cRect.bottom - kbdH;
+        if (iRect.bottom > visibleBottom) {
+          container.scrollBy({ top: iRect.bottom - visibleBottom + 24, behavior: "smooth" });
+        } else if (iRect.top < cRect.top + 20) {
+          container.scrollBy({ top: iRect.top - cRect.top - 20, behavior: "smooth" });
+        }
+      }, 150);
+    }
+  }
+});
+document.addEventListener("focusout", e => {
+  const inp = e.target;
+  if (inp && (inp.tagName === "INPUT" || inp.tagName === "TEXTAREA")) {
+    if (document.body.classList.contains("scroll-locked")) {
+      setTimeout(() => { window.scrollTo(0, 0); }, 100);
     }
   }
 });
@@ -1073,7 +1120,7 @@ function openProfile(){
           const kidsEl = sheet.querySelector("#pfKids");
           if (kidsEl){
             drawKids(kidsEl, true);
-            kidsEl.scrollIntoView({ behavior: "smooth", block: "center" });
+            sheet.scrollTo({ top: kidsEl.offsetTop - 16, behavior: "smooth" });
           }
         }
         toast(on ? "Acum îți poți adăuga copiii." : "Nu mai ești cont de părinte.");

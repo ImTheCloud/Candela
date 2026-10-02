@@ -29,13 +29,10 @@ Deno.serve(async (req) => {
   const name = `${first} ${last}`, slug = slugOf(name);
 
   const admin = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!, { auth: { persistSession: false } });
-  const { data: taken } = await admin.from("profiles").select("id").eq("slug", slug).maybeSingle();
-  if (taken) return json(409, { error: "name_taken" });
   const { error } = await admin.auth.admin.createUser({ email, password, email_confirm: true, user_metadata: { name } });
   if (error) {
     const m = (error.message || "").toLowerCase(), code = (error as { code?: string }).code;
     if (code === "email_exists" || m.includes("already been registered")) return json(409, { error: "email_taken" });
-    if (m.includes("database")) return json(409, { error: "name_taken" });
     console.error(error);
     return json(500, { error: "server" });
   }

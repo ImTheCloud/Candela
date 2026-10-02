@@ -34,12 +34,11 @@ Deno.serve(async (req) => {
     const name = `${first} ${last}`, slug = slugOf(name);
     const { count } = await admin.from("profiles").select("id", { count: "exact", head: true }).eq("parent_id", parentId);
     if ((count || 0) >= MAX_CHILDREN) return json(409, { error: "too_many" });
-    const { data: taken } = await admin.from("profiles").select("id").eq("slug", slug).maybeSingle();
+    const { data: taken } = await admin.from("profiles").select("id").eq("parent_id", parentId).eq("slug", slug).maybeSingle();
     if (taken) return json(409, { error: "name_taken" });
     const pw = Array.from(crypto.getRandomValues(new Uint8Array(24)), b => b.toString(16).padStart(2, "0")).join("");
     const { data: made, error } = await admin.auth.admin.createUser({ email: `copil-${crypto.randomUUID()}@candela.invalid`, password: pw, email_confirm: true, user_metadata: { name } });
     if (error || !made?.user) {
-      if ((error?.message || "").toLowerCase().includes("database")) return json(409, { error: "name_taken" });
       console.error(error); return json(500, { error: "server" });
     }
     const { error: pErr } = await admin.from("profiles").update({ parent_id: parentId }).eq("id", made.user.id);

@@ -32,9 +32,6 @@ Deno.serve(async (req) => {
   if (!emailOk(email)) return json(400, { error: "email" });
   const name = `${first} ${last}`, slug = slugOf(name);
 
-  const { data: taken } = await admin.from("profiles").select("id").eq("slug", slug).neq("id", user.id).maybeSingle();
-  if (taken) return json(409, { error: "name_taken" });
-
   const changes: Record<string, unknown> = { user_metadata: { ...user.user_metadata, name } };
   if (email !== (user.email || "").toLowerCase()) { changes.email = email; changes.email_confirm = true; }
   const { error: authErr } = await admin.auth.admin.updateUserById(user.id, changes);
@@ -46,7 +43,6 @@ Deno.serve(async (req) => {
   }
   const { error: pErr } = await admin.from("profiles").update({ name, slug }).eq("id", user.id);
   if (pErr) {
-    if (pErr.code === "23505") return json(409, { error: "name_taken" });
     console.error(pErr);
     return json(500, { error: "server" });
   }
