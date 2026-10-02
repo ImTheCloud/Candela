@@ -2446,17 +2446,15 @@ function check(skipped=false){
     : `<span class="q-verdict-pill no"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Greșit</span>`;
   const elV = $("#qverdict"); if (elV) elV.innerHTML = vBadge;
 
-  const fbPill = `<span class="fb-pill ${full ? "ok" : "no"}">${full ? `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Corect` : `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Greșit`}</span>`;
-
   if (full) {
     document.body.classList.add("ans-ok");
     document.body.classList.remove("ans-no");
-    $("#fb").innerHTML = `<div class="fb-clean"><div class="fb-status">${fbPill}</div>${vHtml ? `<div class="verse">${vHtml}</div>` : ""}</div>`;
+    $("#fb").innerHTML = vHtml ? `<div class="fb-clean"><div class="verse">${vHtml}</div></div>` : "";
   } else {
     document.body.classList.add("ans-no");
     document.body.classList.remove("ans-ok");
     const ansHtml = correctLine(q);
-    $("#fb").innerHTML = `<div class="fb-clean fb-wrong"><div class="fb-status">${fbPill}</div>${ansHtml ? `<div class="fb-ans">${ansHtml}</div>` : ""}${vHtml ? `<div class="verse">${vHtml}</div>` : ""}</div>`;
+    $("#fb").innerHTML = `<div class="fb-clean fb-wrong">${ansHtml ? `<div class="fb-ans">${ansHtml}</div>` : ""}${vHtml ? `<div class="verse">${vHtml}</div>` : ""}</div>`;
   }
   card.classList.add(full ? "pop" : "shake");
   renderActions();
