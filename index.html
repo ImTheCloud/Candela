@@ -1422,7 +1422,7 @@ function prepare(q){
   return x;
 }
 /* rough time to answer, by question type and level (seconds), including reading the correction; only an estimate shown before starting, there is no timer */
-const SECS = { tf:[7,10], one:[10,15], multi:[16,22], fill:[14,20], match:[24,34] };
+const SECS = { tf:[8,12], one:[12,18], multi:[19,26], fill:[16,23], match:[28,40] };
 // once enough tests exist, the real average time per question (by level) replaces the guess, within ×0.5–×2 of it
 let PACE = lsGet("candela:pace", null);
 function estSecs(list){
