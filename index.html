@@ -31,7 +31,7 @@
 }
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{min-height:100%}
+html,body{min-height:100%;overflow-x:hidden}
 body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
 button,input,select,textarea,summary{font:inherit;color:inherit;-webkit-tap-highlight-color:transparent}
 button{cursor:pointer}
@@ -39,16 +39,17 @@ button:focus,button:focus-visible,summary:focus,summary:focus-visible{outline:no
 input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--oil);outline-offset:2px}
 h1,h2,h3{font-family:var(--f-display);font-weight:400;text-wrap:balance;margin:0;letter-spacing:-.01em}
 p{margin:0}
-.wrap{max-width:1180px;margin:0 auto;padding-inline:16px;padding-block:20px calc(48px + env(safe-area-inset-bottom,0px))}
-.view{max-width:640px;margin:0 auto}
+.wrap{max-width:1180px;width:100%;box-sizing:border-box;margin:0 auto;padding-inline:16px;padding-block:20px calc(48px + env(safe-area-inset-bottom,0px))}
+.view{max-width:640px;width:100%;box-sizing:border-box;margin:0 auto;min-width:0}
 .view:has(.home){max-width:1180px}
-.wrap:has(.entry){min-height:100dvh;min-height:var(--vvh,100dvh);display:flex;flex-direction:column;padding-inline:16px;padding-block:clamp(16px,3.5vh,36px);box-sizing:border-box}
+.wrap:has(.entry){min-height:100dvh;min-height:var(--vvh,100dvh);display:flex;flex-direction:column;padding-inline:16px;padding-block:clamp(10px,2.5vh,28px);box-sizing:border-box}
 .view:has(.entry){width:100%;max-width:440px;margin:auto;display:flex;flex-direction:column}
 .eyebrow{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
 .ref{font-family:var(--f-mono);font-size:12px;font-weight:500;letter-spacing:.02em;color:var(--oil-ink);background:var(--oil-soft);padding:3px 8px;border-radius:999px;white-space:nowrap}
 .muted{color:var(--ink-2)}
 .view{animation:viewIn .45s cubic-bezier(.2,.8,.2,1) backwards}
 @keyframes viewIn{from{opacity:.0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.view:has(.qtop){animation:none!important}
 
 /* Buttons */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;padding:14px 22px;font-weight:600;font-size:16px;transition:transform .15s ease, background .2s, box-shadow .2s;min-height:50px}
@@ -63,22 +64,22 @@ p{margin:0}
 .link{background:none;border:0;padding:6px 0;color:var(--ink-2);font-weight:500;text-decoration:underline;text-underline-offset:3px}
 
 /* Entry */
-.entry{display:flex;flex-direction:column;gap:14px;width:100%;max-width:420px;margin:0 auto}
+.entry{display:flex;flex-direction:column;gap:clamp(8px,1.6vh,14px);width:100%;max-width:420px;margin:0 auto}
 .entry[data-step="form"]{padding-top:0}
-.entry-head{display:grid;justify-items:center;gap:3px;flex:none;text-align:center}
+.entry-head{display:grid;justify-items:center;gap:2px;flex:none;text-align:center}
 .entry-head .lamp-wrap{position:relative;margin-bottom:-4px}
-.entry-head .lamp-wrap svg{width:clamp(76px,12vh,96px);height:auto}
+.entry-head .lamp-wrap svg{width:clamp(68px,10vh,92px);height:auto}
 .entry .lamp-glow{position:absolute;inset:-25px 0 auto;height:140px;background:radial-gradient(closest-side,color-mix(in oklab,var(--oil) 45%,transparent),transparent);filter:blur(8px);animation:glow 3.2s ease-in-out infinite;pointer-events:none}
-.entry h1{font-family:var(--f-display);font-size:clamp(32px,6.5vw,40px);line-height:1.05;text-align:center;letter-spacing:-.01em}
-.entry h1 span{display:block;font-size:13.5px;letter-spacing:.04em;color:var(--ink-2);margin-top:3px;font-family:var(--f-body);font-weight:600}
-.entry .back{align-self:center;font-size:14px;padding:4px 8px;margin-top:2px}
-.verse-quote{font-family:var(--f-display);font-size:13.5px;line-height:1.35;text-align:center;max-width:32ch;margin:3px auto 0;color:var(--ink-2)}
-.verse-quote .ref{margin-left:6px;vertical-align:1px;font-size:11.5px;padding:2px 7px}
+.entry h1{font-family:var(--f-display);font-size:clamp(30px,6vw,38px);line-height:1.05;text-align:center;letter-spacing:-.01em}
+.entry h1 span{display:block;font-size:13px;letter-spacing:.04em;color:var(--ink-2);margin-top:2px;font-family:var(--f-body);font-weight:600}
+.entry .back{align-self:center;font-size:13.5px;padding:3px 8px;margin-top:1px}
+.verse-quote{font-family:var(--f-display);font-size:13px;line-height:1.3;text-align:center;max-width:32ch;margin:2px auto 0;color:var(--ink-2)}
+.verse-quote .ref{margin-left:6px;vertical-align:1px;font-size:11px;padding:2px 6px}
 .seg.two{grid-template-columns:1fr 1fr}
 .entry .seg{padding:3px;margin-bottom:2px}
-.entry .seg button{padding:7px 6px;font-size:14px}
+.entry .seg button{padding:6px 6px;font-size:13.5px}
 .name-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.entry-form{display:grid;gap:12px;padding:20px 22px!important}
+.entry-form{display:grid;gap:clamp(8px,1.4vh,12px);padding:clamp(16px,2.4vh,20px) clamp(16px,3vw,22px)!important}
 .remember{display:flex;align-items:center;gap:8px;font-weight:500;font-size:13px;color:var(--ink-2);cursor:pointer;user-select:none;margin-top:2px}
 .remember input{width:16px;height:16px;accent-color:var(--cedar);margin:0}
 .board.scroll{position:relative;align-content:start}
@@ -151,7 +152,7 @@ p{margin:0}
 .resume-close{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:transparent;border:none;color:var(--ink-2);cursor:pointer;transition:all .15s ease;padding:0}
 .resume-close:hover{color:var(--bad);background:var(--bad-soft)}
 .h-verse{display:none}
-.keys{display:none;font-size:12.5px;color:var(--ink-2);font-family:var(--f-mono);margin:-4px 0 0}
+.keys{display:none;font-size:12.5px;color:var(--ink-2);font-family:var(--f-mono);margin:0}
 .who b{color:var(--ink);font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:14ch}
 .avatar{width:32px;height:32px;border-radius:50%;background:var(--cedar);color:var(--bg);display:grid;place-items:center;font-weight:700;font-size:14px;flex:none}
 .top .avatar{width:40px;height:40px;font-size:16px}
@@ -275,8 +276,10 @@ body:not(.quiz-fixed) .qcard{max-height:none;overflow:visible}
 .qcard.leave{animation:qOut .22s ease-in both}
 @keyframes qIn{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:none}}
 @keyframes qOut{to{opacity:0;transform:translateX(-28px)}}
-.qmeta{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
-.qmeta-left{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.qmeta{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.qmeta-left{display:flex;align-items:center;gap:6px;flex-wrap:nowrap}
+.qfoot{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:2px}
+.qfoot .ref{margin-left:auto}
 .qtype-badge{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:4px 10px;border-radius:999px;background:var(--surface-2);color:var(--ink);border:1px solid var(--line);line-height:1.2}
 .qtype-badge svg{flex:none}
 .qtype-badge.type-multi{background:var(--oil-soft);color:var(--oil-ink);border:1.5px solid rgba(217,123,38,.45);font-weight:750;box-shadow:0 1px 3px rgba(217,123,38,.12)}
@@ -371,12 +374,12 @@ body:not(.quiz-fixed) .qcard{max-height:none;overflow:visible}
 .verse-target-badge{display:flex;align-items:center;gap:6px}
 .vt-pill{font-family:var(--f-mono);font-size:11.5px;font-weight:700;letter-spacing:.03em;color:var(--oil-ink);background:var(--oil-soft);padding:2px 8px;border-radius:999px;text-transform:uppercase}
 .verse-target-text{font-family:var(--f-bible);font-size:16.5px;line-height:1.6;color:var(--ink);font-weight:500}
-.qactions{display:flex;gap:10px;margin-top:16px}
-.qactions .btn{flex:1}
+.qactions{display:flex;gap:10px;margin-top:16px;width:100%;box-sizing:border-box}
+.qactions .btn{flex:1;min-height:50px;font-size:16px;box-sizing:border-box}
 @media (max-width:959px){
   .wrap:has(.qtop){padding-block:14px calc(80px + env(safe-area-inset-bottom,0px))}
   .view:has(.qtop){min-height:calc(100dvh - 28px);min-height:calc(var(--vvh,100dvh) - 28px);padding-bottom:0}
-  .qactions{position:fixed;left:0;right:0;bottom:0;z-index:10;margin:0 auto;max-width:640px;padding:14px 16px calc(14px + env(safe-area-inset-bottom,0px));background:linear-gradient(to top,var(--bg) 80%,transparent)}
+  .qactions{position:fixed;left:0;right:0;bottom:0;z-index:10;margin:0 auto;max-width:640px;width:100%;box-sizing:border-box;padding:14px 16px calc(14px + env(safe-area-inset-bottom,0px));background:linear-gradient(to top,var(--bg) 80%,transparent)}
   .qactions:empty{display:none}
   #qslot{padding-bottom:12px}
 }
@@ -518,15 +521,16 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
   .qcard{padding:30px 32px}
   .qtext{font-size:22px}
 }
-.reader{display:grid;gap:16px}
-.reader-h{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:12px}
+.reader{display:grid;gap:16px;width:100%;max-width:100%;min-width:0;box-sizing:border-box}
+.reader-h{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:12px;min-width:0}
+.reader-h > div{min-width:0}
 .past-h{margin-bottom:8px}
-.reader-h h2{font-size:26px;line-height:1.1}
-.reader-text{background:var(--surface);border-radius:20px;padding:20px;box-shadow:var(--shadow);font-family:var(--f-bible);font-weight:400;font-size:18.5px;line-height:1.75;text-wrap:pretty}
+.reader-h h2{font-size:26px;line-height:1.1;overflow:hidden;text-overflow:ellipsis}
+.reader-text{background:var(--surface);border-radius:20px;padding:20px;box-shadow:var(--shadow);font-family:var(--f-bible);font-weight:400;font-size:18.5px;line-height:1.75;text-wrap:pretty;overflow-wrap:break-word;word-break:break-word;box-sizing:border-box;width:100%;max-width:100%}
 .reader-text p{margin:0 0 .45em;padding:0 4px;border-radius:6px}
 
 /* --- Bible Reader Colors Toolbar & Legend --- */
-.reader-toolbar{display:flex;align-items:center;justify-content:space-between;gap:6px;flex-wrap:nowrap;width:100%;box-sizing:border-box;padding:2px 0 8px}
+.reader-toolbar{display:flex;align-items:center;justify-content:space-between;gap:6px;flex-wrap:nowrap;width:100%;max-width:100%;min-width:0;box-sizing:border-box;padding:2px 0 8px;overflow:hidden}
 .reader-legend{display:flex;align-items:center;gap:4px;flex-wrap:nowrap;min-width:0;flex:1 1 auto;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;transition:opacity .2s}
 .reader-legend::-webkit-scrollbar{display:none}
 .reader-legend.is-dimmed{opacity:.4}
@@ -646,7 +650,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .r-nav{display:flex;justify-content:space-between;gap:10px}
 .r-nav .btn{min-height:44px;padding:10px 16px;font-size:15px}
 .r-side{position:fixed;top:50%;transform:translateY(-50%);z-index:6;width:34px;height:56px;display:grid;place-items:center;border:1px solid var(--line);background:color-mix(in srgb,var(--surface) 92%,transparent);color:var(--ink);border-radius:12px;box-shadow:var(--shadow);padding:0}
-.r-side.l{left:2px}.r-side.r{right:2px}
+.r-side.l{left:4px}.r-side.r{right:4px}
 @media (min-width:760px){.r-side{width:44px;height:64px}.r-side.l{left:calc(50% - 380px)}.r-side.r{right:calc(50% - 380px)}}
 .del-link{color:var(--bad);justify-self:center;font-size:14px}
 .forgot{justify-self:end;margin-top:-8px;font-size:14px}
@@ -780,7 +784,7 @@ const shuffle = a => { a = a.slice(); for (let i=a.length-1;i>0;i--){const j=Mat
 const fold = s => String(s).normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase().replace(/[^a-z0-9]+/g," ").trim();
 const slugOf = name => fold(name).replace(/ /g,"-").slice(0,60);
 const pct = (a,b) => b ? Math.round(a/b*100) : 0;
-const refLabel = r => "1 Sam. " + r;
+const refLabel = r => !r ? "" : String(r).startsWith("1 Sam") ? r : "1 Sam. " + r;
 function lsGet(k, d){ try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } }
 function lsSet(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }
 function toast(msg, ms = 2400){ const t = $("#toast"); t.textContent = msg; t.classList.add("show"); clearTimeout(toast._t); toast._t = setTimeout(()=>t.classList.remove("show"), ms); }
@@ -1093,6 +1097,7 @@ function viewEntry(msg, tab){
       </div>` : ""}
       <div class="field"><label for="email">Email</label><input class="input" id="email" type="${isNew ? "email" : "text"}" inputmode="email" maxlength="254" autocomplete="${isNew ? "email" : "username"}" autocapitalize="none" spellcheck="false" required value="${isNew ? "" : esc(lsGet("candela:email", ""))}"></div>
       <div class="field"><label for="pw">Parolă</label><input class="input" id="pw" type="password" autocomplete="${isNew ? "new-password" : "current-password"}" minlength="6" required></div>
+      ${isNew ? `<div class="field"><label for="pw2">Confirmă parola</label><input class="input" id="pw2" type="password" autocomplete="new-password" minlength="6" required></div>` : ""}
       ${isNew ? "" : `<button class="link forgot" id="forgot" type="button">Ai uitat parola?</button>`}
       ${isNew ? `<label class="remember"><input type="checkbox" id="parent"> Sunt părinte (adaug copii)</label>` : ""}
       <p class="form-error" id="err" role="alert">${msg ? esc(msg) : ""}</p>
@@ -1100,8 +1105,9 @@ function viewEntry(msg, tab){
     </form>
     <button class="link back" id="back" type="button">${backLabel}</button>
   </section>`);
-  const f = $("#enter"), err = $("#err"), first = $("#first"), last = $("#last"), email = $("#email"), pw = $("#pw");
+  const f = $("#enter"), err = $("#err"), first = $("#first"), last = $("#last"), email = $("#email"), pw = $("#pw"), pw2 = $("#pw2");
   pwEye(pw);
+  if (pw2) pwEye(pw2);
   $("#back").onclick = () => S.player ? backHome() : enterGuest();
   if ($("#forgot")) $("#forgot").onclick = forgotPassword;
   app.querySelectorAll("[data-tab]").forEach(b => b.onclick = () => viewEntry("", b.dataset.tab));
@@ -1113,6 +1119,10 @@ function viewEntry(msg, tab){
     if (isNew && !slugOf(fn)) { err.textContent = "Scrie prenumele."; first.focus(); return; }
     if (isNew ? !EMAIL_RE.test(em) : !em) { err.textContent = isNew ? "Scrie o adresă de email validă." : "Scrie emailul."; email.focus(); return; }
     if (pw.value.length < (isNew ? 6 : 1)) { err.textContent = isNew ? "Parola trebuie să aibă cel puțin 6 caractere." : "Scrie parola."; pw.focus(); return; }
+    if (isNew) {
+      if (!pw2.value) { err.textContent = "Confirmă parola."; pw2.focus(); f.classList.remove("shake"); void f.offsetWidth; f.classList.add("shake"); return; }
+      if (pw.value !== pw2.value) { err.textContent = "Parolele nu se potrivesc."; pw2.focus(); f.classList.remove("shake"); void f.offsetWidth; f.classList.add("shake"); return; }
+    }
     lsSet("candela:remember", true);
     const btn = $("#go"), label = btn.textContent; btn.disabled = true; btn.textContent = isNew ? "Se creează…" : "Se verifică…";
     const r = isNew ? await store.signup(fn, ln, em, pw.value) : await store.login(em, pw.value);
@@ -1777,7 +1787,8 @@ function openOptions(chs = [...S.sel].sort((a,b)=>a-b)){
   bg.querySelectorAll("[data-m]").forEach(b => {
     b.onclick = () => {
       const mode = b.dataset.m;
-      closeModal(bg, () => { S.mode = mode; S.sel = new Set(chs); persistPrefs(); startQuiz(null); });
+      bg.remove();
+      S.mode = mode; S.sel = new Set(chs); persistPrefs(); startQuiz(null);
     };
   });
   bg.querySelector("#shX").onclick = close;
@@ -2162,9 +2173,8 @@ function openExamOptions(){
   bg.querySelectorAll("[data-m]").forEach(b => {
     b.onclick = () => {
       const mode = b.dataset.m;
-      closeModal(bg, () => {
-        startExam(mode);
-      });
+      bg.remove();
+      startExam(mode);
     };
   });
 }
@@ -2222,7 +2232,8 @@ function viewQuestion(first){
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
       <span id="qtimer" style="font-family:var(--f-mono); font-size:14px; font-weight:700;"></span>
     </div>
-    <div id="qslot"></div>`);
+    <div id="qslot"></div>
+    <div class="qactions" id="actions"></div>`);
     const updateTimer = () => {
       const el = $("#qtimer"); if (!el) { clearInterval(window._qTimer); window._qTimer = null; return; }
       const sec = Math.floor((Date.now() - S.quiz.start) / 1000);
@@ -2254,10 +2265,10 @@ function viewQuestion(first){
   const typeStr = TYPE_LABEL[q.t] || "";
   const iconStr = TYPE_ICON[q.t] || "";
   const modeTag = Z.mode === "both" ? `<span class="qmode-tag ${q.mode}">${MODE_LABEL[q.mode]}</span>` : "";
-  card.innerHTML = `<div class="qmeta"><div class="qmeta-left"><span class="qtype-badge type-${q.t}">${iconStr}<span>${typeStr}</span></span>${modeTag}</div><span class="ref">${refLabel(q.ref)}</span></div>
+  card.innerHTML = `<div class="qmeta"><div class="qmeta-left"><span class="qtype-badge type-${q.t}">${iconStr}<span>${typeStr}</span></span>${modeTag}</div></div>
     ${q.t==="fill" ? `${fillHTML(q)}` : `<p class="qtext">${esc(q.q.replace(/\s*\(pot fi mai multe[^)]*\)/i, ""))}</p>${q.t==="match"?`<p class="qhint ans">Un răspuns pentru fiecare</p>`:""}${q.t==="multi"?`<p class="qhint multi-hint">Pot fi corecte: niciunul, unul, două sau toate răspunsurile.</p>`:""}`}
     <div class="answers" id="ans">${answersHTML(q)}</div><div id="fb"></div>
-    <p class="keys">${({tf:"Taste: A adevărat · F fals", one:"Taste: A, B, C… · Enter verifică", multi:"Taste: A, B, C… · Enter verifică", fill:"Enter trece la căsuța următoare", match:"Enter verifică"})[q.t]}</p>`;
+    <div class="qfoot"><p class="keys">${({tf:"Taste: A adevărat · F fals", one:"Taste: A, B, C… · Enter verifică", multi:"Taste: A, B, C… · Enter verifică", fill:"Enter trece la căsuța următoare", match:"Enter verifică"})[q.t]}</p>${q.ref ? `<span class="ref">${refLabel(q.ref)}</span>` : ""}</div>`;
   if (q.t !== "match") document.body.classList.add("quiz-fixed");
   else document.body.classList.remove("quiz-fixed");
   resetScroll();
@@ -2266,10 +2277,6 @@ function viewQuestion(first){
   const place = () => {
     slot.innerHTML = "";
     slot.appendChild(card);
-    const actions = document.createElement("div");
-    actions.className = "qactions";
-    actions.id = "actions";
-    slot.appendChild(actions);
     bindQuestion(q, card);
     renderActions(); fitFixed();
     resetScroll();
