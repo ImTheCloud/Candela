@@ -167,6 +167,7 @@ p{margin:0}
 .tile-sc{position:absolute;bottom:4px;left:0;right:0;text-align:center;font-size:11.5px;font-weight:600;color:var(--oil-ink);font-family:var(--f-mono);letter-spacing:0.02em}
 .tile-sc.full{color:var(--cedar)}
 .tile .n{font-family:var(--f-display);font-size:22px;line-height:1;position:relative}
+.tile:has(.tile-sc) .n{transform:translateY(-6px)}
 .tile[aria-pressed="true"]{background:var(--oil-soft);border-color:var(--oil);color:var(--oil-ink);box-shadow:0 0 0 3px color-mix(in oklab,var(--oil) 18%,transparent)}
 .tile[aria-pressed="true"] .trk{stroke:color-mix(in oklab,var(--oil) 20%,transparent)}
 #start,#rGo,#shGo{display:grid;gap:2px;justify-items:center;padding-block:12px;min-height:60px;line-height:1.2}
@@ -1462,8 +1463,9 @@ function openOptions(chs = [...S.sel].sort((a,b)=>a-b)){
       done = false;
       note = esc(MODE_NOTE[m]);
     } else {
-      const lastSc = levelLast(c, m);
-      note = done ? `Făcut deja${lastSc != null ? ` · scor: ${lastSc}%` : ""}` : esc(MODE_NOTE[m]);
+      const sc = (S.player.ok || []).filter(id => parseInt(id, 10) === c && id.includes(m[0])).length;
+      const tot = (QUIZ[c]?.[m] || []).length;
+      note = done ? `Făcut deja · scor: ${sc}/${tot}` : esc(MODE_NOTE[m]);
     }
 
     let durStr = "";
