@@ -763,6 +763,8 @@ const S = {
   quiz: null,
   board: null,
   admin: null,                                    // may give temporary passwords
+  reportBack: null,
+  reportCh: null,
 };
 if (!S.sel.size) S.sel.add(1);
 function persistPrefs(){ lsSet("candela:sel",[...S.sel]); lsSet("candela:mode",S.mode); lsSet("candela:count",S.count); }
@@ -930,11 +932,14 @@ function arc(p, r, color){
 const chapDone = c => chapStat(c,"easy") === 100 || chapStat(c,"hard") === 100;
 const lvTried = (c, m) => chapStat(c, m) != null;
 const chapTried = c => chapStat(c,"easy") != null || chapStat(c,"hard") != null;
-function headerHTML(){
+function headerHTML(canGoHome = true){
   const n = S.player.name;
-  if (S.player.guest) return `<header class="top"><button class="brand" id="brandHome" type="button" aria-label="Acasă">${lampSVG(32)} Candela</button>
+  const brand = canGoHome
+    ? `<button class="brand" id="brandHome" type="button" aria-label="Acasă">${lampSVG(32)} Candela</button>`
+    : `<div class="brand" aria-label="Candela" style="cursor:default">${lampSVG(32)} Candela</div>`;
+  if (S.player.guest) return `<header class="top">${brand}
   <div class="top-r">${readBtnHTML()}<button class="who acct" id="acct" type="button" aria-label="Intră în cont"><b>Intră<span class="long"> în cont</span></b><span class="avatar"><svg width="18" height="18" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="5.5" r="3" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M2.5 14c.8-3 3-4.5 5.5-4.5s4.7 1.5 5.5 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></button></div></header>`;
-  return `<header class="top"><button class="brand" id="brandHome" type="button" aria-label="Acasă">${lampSVG(32)} Candela</button>
+  return `<header class="top">${brand}
   <div class="top-r">${readBtnHTML()}${whoHTML()}</div></header>`;
 }
 const BOOK = `<svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6.5C10 5 7.5 4.5 4 4.5v13c3.5 0 6 .5 8 2 2-1.5 4.5-2 8-2v-13c-3.5 0-6 .5-8 2zM12 6.5v13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>`;
@@ -1178,12 +1183,17 @@ document.addEventListener("click", e => {
   if (e.target.closest("#gNew, #gIn")) S.toReport = true; else if (e.target.closest("#acct")) S.toReport = false;
   if (e.target.closest("#acct, #gNew")) viewEntry("", e.target.closest("#gNew") ? "new" : undefined);
   if (e.target.closest("#gIn")) viewEntry("", "in");
-  if (e.target.closest("#readBook")) viewRead($("#grid") && S.sel.size === 1 ? [...S.sel][0] : lsGet("candela:read", [...S.sel][0] || 1));
+  if (e.target.closest("#readBook")) {
+    const ch = S.reportBack && S.reportCh ? S.reportCh : ($("#grid") && S.sel.size === 1 ? [...S.sel][0] : lsGet("candela:read", [...S.sel][0] || 1));
+    viewRead(ch);
+  }
 });
 function mastery(p){ return Math.round((p.ok||[]).length / totalCount("both") * 1000) / 10; }
 
 const MODE_NOTE = { easy: "Întrebări generale: cine, ce, de ce.", hard: "Detalii: nume, cifre, locuri.", both: "Ușoare și grele, amestecate." };
 function viewHome(){
+  S.reportBack = null;
+  S.reportCh = null;
   const p = S.player, h = p.history;
   const tests = h.length, avg = tests ? Math.round(h.reduce((s,x)=>s+x.pct,0)/tests) : 0;
   const first = p.name.split(" ")[0];
@@ -1580,13 +1590,15 @@ async function openPastReport(at){
 function renderReport(r, o = {}){
   const { chs, mode, n, sc, P, wrong } = r;
   const nWrong = wrong ? wrong.length : null;
+  S.reportBack = () => renderReport(r, o);
+  S.reportCh = chs && chs.length === 1 ? chs[0] : (chs && chs[0] ? chs[0] : 1);
   // always encouraging: children and beginners use the app
   const verdict = P>=95 ? "Excelent!" : P>=80 ? "Foarte bine!" : P>=60 ? "Bravo, ești pe drumul cel bun!" : P>=40 ? "Bun început! Mai încearcă o dată." : "Fiecare încercare te ajută să înveți!";
   const tip = o.past ? "" : nWrong ? (P>=60 ? "Reia greșelile ca să le înveți și pe acestea." : "Citește capitolul, apoi reia greșelile. Vei vedea cât de repede înveți!") : "Toate răspunsurile sunt corecte. Felicitări!";
   const chList = Object.entries(r.byCh || {});
-  mount(`${o.past ? `<div class="reader-h past-h">${BACK_BTN("rpBack")}<div><span class="eyebrow">Raport · ${MODE_LABEL[mode]}</span><h2>${esc(chaptersLabel(chs))}</h2></div></div>` : headerHTML()}
+  mount(`${headerHTML(false)}
   <section class="report-head">
-    ${o.past ? "" : `<span class="eyebrow">Raport · ${esc(chaptersLabel(chs))} · ${MODE_LABEL[mode]}${r.retry?" · reluare greșeli":""}</span>`}
+    <span class="eyebrow">Raport · ${esc(chaptersLabel(chs))} · ${MODE_LABEL[mode]}${r.retry?" · reluare greșeli":""}</span>
     <div class="ring"><div class="sparks" id="sparks"></div>
       <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" fill="none" stroke="var(--surface-2)" stroke-width="9"/><circle id="ringArc" cx="60" cy="60" r="52" fill="none" stroke="var(--oil)" stroke-width="9" stroke-linecap="round" stroke-dasharray="0 400" style="transition:stroke-dasharray 1.4s cubic-bezier(.2,.8,.2,1)"/></svg>
       <div class="val"><b id="pctNum">0%</b><small>${sc} din ${n} puncte</small></div></div>
@@ -1609,7 +1621,7 @@ function renderReport(r, o = {}){
     ${nWrong ? `<button class="btn btn-oil" id="retry">Reia greșelile</button>` : `<button class="btn btn-oil" id="again">Refă testul</button>`}
     <button class="btn btn-primary" id="home">Acasă</button>
   </div>
-  ${chs.length === 1 && nWrong ? `<button class="link read-link" id="readCh" type="button">Citește capitolul ${chs[0]}</button>` : ""}
+  ${chs.length === 1 ? `<button class="link read-link" id="readCh" type="button">Citește capitolul ${chs[0]}</button>` : ""}
   <p class="muted" id="saveNote" style="text-align:center;font-size:13px"></p>`);
   requestAnimationFrame(()=>requestAnimationFrame(()=>{
     const C = 2*Math.PI*52; $("#ringArc").setAttribute("stroke-dasharray", `${C*P/100} ${C}`);
@@ -1621,11 +1633,10 @@ function renderReport(r, o = {}){
       const sp = $("#sparks"); for (let i=0;i<22;i++){ const a = Math.random()*Math.PI*2, d = 90+Math.random()*60; const s = document.createElement("i"); s.className = "spark"; s.style.setProperty("--dx", Math.cos(a)*d+"px"); s.style.setProperty("--dy", Math.sin(a)*d+"px"); s.style.animationDelay = (1+Math.random()*.4)+"s"; s.style.background = i%3 ? "var(--oil)" : "var(--cedar)"; sp.appendChild(s); }
     }
   }));
-  if (nWrong) $("#retry").onclick = () => startQuiz(shuffle(wrong.map(x => { const o = {...x.q}; const src = QUIZ[o.ch][o.mode][+o.id.slice(String(o.ch).length+1)]; return {...src, ch:o.ch, mode:o.mode, id:o.id}; })), 0, {retry: true, mode});
-  if ($("#again")) $("#again").onclick = () => { S.sel = new Set(chs); persistPrefs(); openOptions(chs); };
+  if (nWrong) $("#retry").onclick = () => { S.reportBack = null; S.reportCh = null; startQuiz(shuffle(wrong.map(x => { const o = {...x.q}; const src = QUIZ[o.ch][o.mode][+o.id.slice(String(o.ch).length+1)]; return {...src, ch:o.ch, mode:o.mode, id:o.id}; })), 0, {retry: true, mode}); };
+  if ($("#again")) $("#again").onclick = () => { S.reportBack = null; S.reportCh = null; S.sel = new Set(chs); persistPrefs(); openOptions(chs); };
   if ($("#readCh")) $("#readCh").onclick = () => viewRead(chs[0]);
-  if ($("#home")) $("#home").onclick = () => viewHome();
-  if ($("#rpBack")) $("#rpBack").onclick = () => viewHome();
+  if ($("#home")) $("#home").onclick = () => { S.reportBack = null; S.reportCh = null; viewHome(); };
 }
 function mistakeHTML({q, a}){
   a = a || {pts:0, given:null, skipped:true};
@@ -1681,7 +1692,16 @@ function viewRead(c){
   </section>`);
   document.body.insertAdjacentHTML("beforeend", `${c > 1 ? `<button class="r-side l" id="rSideP" type="button" aria-label="Capitolul ${c-1}" title="Capitolul ${c-1}"><svg width="18" height="18" viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3L5 8l5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>` : ""}
   ${c < 31 ? `<button class="r-side r" id="rSideN" type="button" aria-label="Capitolul ${c+1}" title="Capitolul ${c+1}"><svg width="18" height="18" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>` : ""}`);
-  $("#rBack").onclick = () => viewHome();
+  $("#rBack").onclick = () => {
+    if (S.reportBack) {
+      const back = S.reportBack;
+      S.reportBack = null;
+      S.reportCh = null;
+      back();
+    } else {
+      viewHome();
+    }
+  };
   $(".reader-text").onclick = e => { const el = e.target.closest("p[data-v]"); if (el && !String(getSelection())) hlToggle(c, el); };
   hlSync().then(ok => { if (!ok || !$(".reader") || +$("#rPick").value !== c) return; const now = hlGet(); app.querySelectorAll(".reader-text p[data-v]").forEach(p => p.classList.toggle("hl", now.has(`${c}:${p.dataset.v}`))); });
   $("#rPick").onchange = e => viewRead(+e.target.value);
@@ -1689,7 +1709,7 @@ function viewRead(c){
   if ($("#rNext")) $("#rNext").onclick = () => viewRead(c + 1);
   if ($("#rSideP")) $("#rSideP").onclick = () => viewRead(c - 1);
   if ($("#rSideN")) $("#rSideN").onclick = () => viewRead(c + 1);
-  $("#rGo").onclick = () => { S.sel = new Set([c]); persistPrefs(); openOptions([c]); };
+  $("#rGo").onclick = () => { S.reportBack = null; S.reportCh = null; S.sel = new Set([c]); persistPrefs(); openOptions([c]); };
 }
 
 
