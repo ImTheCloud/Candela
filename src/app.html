@@ -667,6 +667,8 @@ function toast(msg, ms = 2400){ const t = $("#toast"); t.textContent = msg; t.cl
 /* the quiz screen is fixed (question centred) as long as it fits; a tall question (matching) lets the page scroll instead of being cut */
 function fitFixed(){
   const card = $(".qcard"); if (!card || (S.quiz && S.quiz.ui && S.quiz.ui.checked)) return;
+  const q = S.quiz && S.quiz.qs && S.quiz.qs[S.quiz.i];
+  if (q && q.t === "match") { document.body.classList.remove("quiz-fixed"); return; }
   document.body.classList.add("quiz-fixed");
   if (card.scrollHeight > card.clientHeight + 1) document.body.classList.remove("quiz-fixed");
 }
@@ -1639,7 +1641,8 @@ function viewQuestion(first){
     ${q.t==="fill" ? `${fillHTML(q)}` : `<p class="qtext">${esc(q.q.replace(/\s*\(pot fi mai multe[^)]*\)/i, ""))}</p>${q.t==="one"?`<p class="qhint ans">Un singur răspuns corect</p>`:""}${q.t==="multi"?`<p class="qhint ans">Unul, mai multe sau niciunul</p>`:""}${q.t==="match"?`<p class="qhint ans">Un răspuns pentru fiecare</p>`:""}`}
     <div class="answers" id="ans">${answersHTML(q)}</div><div id="fb"></div>
     <p class="keys">${({tf:"Taste: A adevărat · F fals · Enter verifică", one:"Taste: A, B, C… · Enter verifică", multi:"Taste: A, B, C… · Enter verifică", fill:"Enter trece la căsuța următoare", match:"Enter verifică"})[q.t]}</p>`;
-  document.body.classList.add("quiz-fixed");
+  if (q.t !== "match") document.body.classList.add("quiz-fixed");
+  else document.body.classList.remove("quiz-fixed");
   resetScroll();
   const slot = $("#qslot");
   const old = slot.firstElementChild;
