@@ -290,6 +290,7 @@ body:not(.quiz-fixed) .qcard{max-height:none;overflow:visible}
 .qtext{font-size:20px;line-height:1.4;font-weight:500}
 .qhint{font-size:13px;color:var(--ink-2);margin-top:-8px}
 .qhint.ans{justify-self:start;background:var(--cedar-soft);color:var(--cedar);font-weight:600;border-radius:10px;padding:5px 12px;font-size:13.5px;line-height:1.3}
+.qhint.multi-hint{color:var(--ink-2);font-size:13px;line-height:1.35;margin-top:-8px}
 .answers{display:grid;gap:10px}
 .opt{display:flex;align-items:center;gap:12px;width:100%;text-align:left;border:1.5px solid var(--line);background:var(--bg);border-radius:var(--r);padding:13px 14px;font-size:16px;line-height:1.35;transition:border-color .15s, background .15s, transform .15s}
 .opt:hover:not(:disabled){border-color:var(--ink-2)}
@@ -2254,9 +2255,9 @@ function viewQuestion(first){
   const iconStr = TYPE_ICON[q.t] || "";
   const modeTag = Z.mode === "both" ? `<span class="qmode-tag ${q.mode}">${MODE_LABEL[q.mode]}</span>` : "";
   card.innerHTML = `<div class="qmeta"><div class="qmeta-left"><span class="qtype-badge type-${q.t}">${iconStr}<span>${typeStr}</span></span>${modeTag}</div><span class="ref">${refLabel(q.ref)}</span></div>
-    ${q.t==="fill" ? `${fillHTML(q)}` : `<p class="qtext">${esc(q.q.replace(/\s*\(pot fi mai multe[^)]*\)/i, ""))}</p>${q.t==="match"?`<p class="qhint ans">Un răspuns pentru fiecare</p>`:""}`}
+    ${q.t==="fill" ? `${fillHTML(q)}` : `<p class="qtext">${esc(q.q.replace(/\s*\(pot fi mai multe[^)]*\)/i, ""))}</p>${q.t==="match"?`<p class="qhint ans">Un răspuns pentru fiecare</p>`:""}${q.t==="multi"?`<p class="qhint multi-hint">Pot fi corecte: niciunul, unul, două sau toate răspunsurile.</p>`:""}`}
     <div class="answers" id="ans">${answersHTML(q)}</div><div id="fb"></div>
-    <p class="keys">${({tf:"Taste: A adevărat · F fals", one:"Taste: A, B, C…", multi:"Taste: A, B, C… · Enter verifică", fill:"Enter trece la căsuța următoare", match:"Enter verifică"})[q.t]}</p>`;
+    <p class="keys">${({tf:"Taste: A adevărat · F fals", one:"Taste: A, B, C… · Enter verifică", multi:"Taste: A, B, C… · Enter verifică", fill:"Enter trece la căsuța următoare", match:"Enter verifică"})[q.t]}</p>`;
   if (q.t !== "match") document.body.classList.add("quiz-fixed");
   else document.body.classList.remove("quiz-fixed");
   resetScroll();
@@ -2291,7 +2292,7 @@ function answersHTML(q){
 function bindQuestion(q, card){
   const ui = S.quiz.ui;
   if (q.t==="tf") card.querySelectorAll(".opt").forEach(b => b.onclick = () => { if (ui.checked) return; ui.pick = b.dataset.v==="1"; card.querySelectorAll(".opt").forEach(x=>x.setAttribute("aria-pressed", x===b)); renderActions(); if (S.quiz) check(); });
-  if (q.t==="one") card.querySelectorAll(".opt").forEach(b => b.onclick = () => { if (ui.checked) return; ui.pick = +b.dataset.i; card.querySelectorAll(".opt").forEach(x=>x.setAttribute("aria-pressed", x===b)); renderActions(); if (S.quiz) check(); });
+  if (q.t==="one") card.querySelectorAll(".opt").forEach(b => b.onclick = () => { if (ui.checked) return; ui.pick = +b.dataset.i; card.querySelectorAll(".opt").forEach(x=>x.setAttribute("aria-pressed", x===b)); renderActions(); });
   if (q.t==="multi") card.querySelectorAll(".opt").forEach(b => b.onclick = () => { if (ui.checked) return; const i = +b.dataset.i; ui.sel.has(i) ? ui.sel.delete(i) : ui.sel.add(i); b.setAttribute("aria-pressed", ui.sel.has(i)); renderActions(); });
   if (q.t==="fill") card.querySelectorAll("input").forEach(inp => { inp.oninput = () => renderActions(); inp.onkeydown = e => { if (e.key==="Enter"){ e.preventDefault(); const nx = card.querySelector(`input[data-k="${+inp.dataset.k+1}"]`); if (nx) nx.focus(); else if (!ui.checked) check(); else next(); } }; });
   if (q.t==="match"){
@@ -2338,7 +2339,7 @@ function renderActions(){
   const Z = S.quiz, q = Z.qs[Z.i], ui = Z.ui, el = $("#actions"); if (!el) return;
   const last = Z.i === Z.qs.length-1;
   if (!ui.checked){
-    if (q.t==="tf" || q.t==="one"){ el.innerHTML = ""; return; }
+    if (q.t==="tf"){ el.innerHTML = ""; return; }
     el.innerHTML = `<button class="btn btn-primary" id="chk" ${ready(q)?"":"disabled"}>Verifică</button>`;
     $("#chk").onclick = check;
   } else {
