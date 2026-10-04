@@ -1573,7 +1573,7 @@ function viewHome(){
     </div>
   </aside>
 
-  ${HOSTED ? `<section class="h-board"><div class="section-h"><h3>Clasament</h3></div><div id="boardNotice"></div><div id="board" class="board scroll"><div class="empty">Se încarcă clasamentul…</div></div></section>` : ""}
+  ${HOSTED ? `<section class="h-board"><div class="section-h"><h3>Clasament</h3><button class="link" id="allBoard" type="button" style="display:none">Vezi tot</button></div><div id="boardNotice"></div><div id="board" class="board"><div class="empty">Se încarcă clasamentul…</div></div></section>` : ""}
 
   <section class="h-hist">
     <div class="section-h"><h3>Istoric</h3>${h.length > 3 ? `<button class="link" id="allHist" type="button">Vezi tot</button>` : ""}</div>
@@ -1605,6 +1605,7 @@ function viewHome(){
   if ($("#btnExam")) $("#btnExam").onclick = () => openExamOptions();
   app.querySelectorAll(".hrow[data-at]").forEach(b => b.onclick = () => { S.homeScroll = window.scrollY; openPastReport(+b.dataset.at); });
   if ($("#allHist")) $("#allHist").onclick = viewHistory;
+  if ($("#allBoard")) $("#allBoard").onclick = viewBoard;
   app.querySelectorAll("[data-play]").forEach(b => b.onclick = () => switchPlayer(b.dataset.play));
   if ($("#resume")){ $("#resume").onclick = resumeQuiz; $("#resumeX").onclick = () => { dropQuiz(); document.querySelectorAll(".resume-bar").forEach(el => el.remove()); }; }
   update();
@@ -1646,6 +1647,7 @@ function renderBoard(list){
   if (!list.length){ el.innerHTML = note || `<div class="empty">Încă nimeni.</div>`; return; }
   const idx = guest ? -1 : list.findIndex(x => x.me);
   const top = el.classList.contains("scroll") ? list : list.slice(0, 10);
+  const btn = $("#allBoard"); if (btn) btn.style.display = list.length > 10 ? "" : "none";
   const row = (x, i) => { const mine = !guest && x.me, ok = x.ok ?? 0; return `<button type="button" class="brow-l ${mine?"me":""}" data-i="${i}" aria-label="Profilul lui ${esc(x.name)}">
     <span class="rank ${i<3 && ok ? "r"+(i+1) : ""}">${i+1}</span>
     <span class="avatar sm">${esc(initials(x.name))}</span>
@@ -2556,6 +2558,18 @@ function srcOf(id){
 function unpackWrong(list){ return (list || []).map(w => { const q = srcOf(w.id); return q ? { q, a: { pts: w.p || 0, given: w.g, skipped: w.g == null } } : null; }).filter(Boolean); }
 const attemptRow = x => `<button class="hrow" type="button" data-at="${x.at}" aria-label="Vezi raportul: ${esc(chaptersLabel(x.chs))}, ${x.pct}%"><span class="badge ${x.mode}">${MODE_LABEL[x.mode]}</span><div class="hrow-info"><b>${esc(chaptersLabel(x.chs))}</b><small>${dateLabel(x.at)}</small></div><span class="pct">${x.pct}%</span>${CHEV}</button>`;
 /* the whole history: every test, grouped by chapter, newest first; each one opens its report */
+function viewBoard(){
+  S.homeScroll = window.scrollY;
+  mount(`<section class="hist-page">
+    <div class="reader-h">${BACK_BTN("hBack")}<div><span class="eyebrow">Top</span><h2>Clasament</h2></div></div>
+    <div id="boardNotice"></div>
+    <div id="board" class="board scroll" style="margin-top: 16px"><div class="empty">Se încarcă clasamentul…</div></div>
+  </section>`);
+  $("#hBack").onclick = () => { mountHome(); window.scrollTo(0, S.homeScroll); };
+  if (S.board) renderBoard(S.board);
+  else loadBoard();
+}
+
 function viewHistory(){
   S.reportBack = null; S.reportCh = null;
   const h = S.player.history.slice().sort((a, b) => b.at - a.at);
