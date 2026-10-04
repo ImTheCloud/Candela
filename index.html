@@ -170,7 +170,7 @@ p{margin:0}
 .hello h2{font-size:clamp(30px,8vw,40px);line-height:1.05}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:26px}
 .stat{background:var(--surface);border-radius:16px;padding:14px;display:grid;gap:2px;box-shadow:var(--shadow)}
-.stat b{font-family:var(--f-display);font-weight:400;font-size:28px;line-height:1.1;font-variant-numeric:tabular-nums}
+.stat b{font-family:var(--f-display);font-weight:700;font-size:28px;line-height:1.1;font-variant-numeric:tabular-nums}
 .stat small{font-size:12px;color:var(--ink-2)}
 .section-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:26px 0 12px}
 .section-h h3{font-size:22px}
@@ -195,7 +195,7 @@ p{margin:0}
 .tile svg{position:absolute;inset:5px;width:calc(100% - 10px);height:calc(100% - 10px)}
 .tile-sc{position:absolute;bottom:4px;left:0;right:0;text-align:center;font-size:11.5px;font-weight:600;color:var(--oil-ink);font-family:var(--f-mono);letter-spacing:0.02em}
 .tile-sc.full{color:var(--ok)}
-.tile .n{font-family:var(--f-display);font-size:22px;line-height:1;position:relative}
+.tile .n{font-family:var(--f-display);font-weight:700;font-size:24px;line-height:1;position:relative}
 .tile:has(.tile-sc) .n{transform:translateY(-6px)}
 
 .tile[aria-pressed="true"]{background:var(--oil-soft);border-color:var(--oil);color:var(--oil-ink);box-shadow:0 0 0 3px color-mix(in oklab,var(--oil) 18%,transparent)}
@@ -1096,7 +1096,7 @@ function viewEntry(msg, tab){
     <form class="card entry-form" id="enter" novalidate>
       <div class="seg two" role="tablist"><button type="button" role="tab" data-tab="in" aria-pressed="${!isNew}">Intră</button><button type="button" role="tab" data-tab="new" aria-pressed="${isNew}">Cont nou</button></div>
       ${isNew ? `<div class="name-row">
-        <div class="field"><label for="last">Nume</label><input class="input" id="last" maxlength="30" autocomplete="family-name" autocapitalize="words" required></div>
+        <div class="field"><label for="last">Nume de Familie</label><input class="input" id="last" maxlength="30" autocomplete="family-name" autocapitalize="words" required></div>
         <div class="field"><label for="first">Prenume</label><input class="input" id="first" maxlength="30" autocomplete="given-name" autocapitalize="words" required></div>
       </div>` : ""}
       <div class="field"><label for="email">Email</label><input class="input" id="email" type="${isNew ? "email" : "text"}" inputmode="email" maxlength="254" autocomplete="${isNew ? "email" : "username"}" autocapitalize="none" spellcheck="false" required value="${isNew ? "" : esc(lsGet("candela:email", ""))}"></div>
@@ -1410,7 +1410,10 @@ function openProfile(){
       ${kids.length ? "" : `<p class="pf-note">Adaugă-ți copiii: fiecare are propriile rezultate și locul său în clasament. Pe pagina principală poți alege oricând cine face testul.</p>`}
       ${kids.map(k => `<div class="kid"><span class="avatar sm">${esc(initials(k.name))}</span><b>${esc(k.name)}</b><button class="link" type="button" data-kdel="${k.id}" data-kname="${esc(k.name)}">Șterge</button></div>`).join("")}
       ${adding ? `<form class="kid-form" id="kForm" novalidate>
-          <div class="field"><label for="kFirst">Prenumele copilului</label><div class="ak-row"><input class="input" id="kFirst" maxlength="30" autocapitalize="words" placeholder="Prenume"><span class="ak-last">${esc(ln)}</span></div><small class="muted kid-hint">Numele de familie se adaugă singur.</small></div>
+          <div class="name-row">
+            <div class="field"><label for="kLast">Nume de Familie</label><input class="input" id="kLast" maxlength="30" autocomplete="family-name" autocapitalize="words" placeholder="Nume" value="${esc(ln)}"></div>
+            <div class="field"><label for="kFirst">Prenume</label><input class="input" id="kFirst" maxlength="30" autocomplete="given-name" autocapitalize="words" placeholder="Prenume"></div>
+          </div>
           <p class="form-error" id="kErr" role="alert"></p>
           <div class="modal-btns"><button class="btn btn-ghost" type="button" id="kNo">Anulează</button><button class="btn btn-primary" type="submit">Adaugă</button></div></form>`
         : `<button class="btn btn-ghost btn-block" type="button" id="kAdd">Adaugă un copil</button>`}`;
@@ -1428,9 +1431,10 @@ function openProfile(){
     f.onsubmit = async e => {
       e.preventDefault();
       const f1 = capName(box.querySelector("#kFirst").value);
-      if (!slugOf(f1)) { err.textContent = "Scrie prenumele copilului."; return; }
+      const l1 = capName(box.querySelector("#kLast").value);
+      if (!slugOf(f1) || !slugOf(l1)) { err.textContent = "Scrie numele și prenumele."; return; }
       const btn = f.querySelector('[type="submit"]'); btn.disabled = true;
-      const r = await addChild(f1, ln);
+      const r = await addChild(f1, l1);
       btn.disabled = false;
       if (!r.ok){ err.textContent = childError(r); return; }
       drawKids(box); toast(`Gata: ${r.name.split(" ")[0]} poate face teste acum.`, 3500);
@@ -1443,7 +1447,7 @@ function openProfile(){
     sheet.innerHTML = `${X}<h3>${store.hasEmail() ? "Contul meu" : "Adaugă emailul"}</h3>
       <form class="prof-form" id="pfForm" novalidate>
         <div class="name-row">
-          <div class="field"><label for="pfLast">Nume</label><input class="input" id="pfLast" maxlength="30" autocomplete="family-name" autocapitalize="words" value="${esc(ln)}"></div>
+          <div class="field"><label for="pfLast">Nume de Familie</label><input class="input" id="pfLast" maxlength="30" autocomplete="family-name" autocapitalize="words" value="${esc(ln)}"></div>
           <div class="field"><label for="pfFirst">Prenume</label><input class="input" id="pfFirst" maxlength="30" autocomplete="given-name" autocapitalize="words" value="${esc(fn)}"></div>
         </div>
         <div class="field"><label for="pfMail">Email</label><input class="input" id="pfMail" type="email" inputmode="email" maxlength="254" autocomplete="email" autocapitalize="none" spellcheck="false" value="${store.hasEmail() ? esc(store.email) : ""}"></div>
@@ -3086,7 +3090,7 @@ async function viewAdmin(){
         if (!slugOf(nf) || !slugOf(nl)) { err.textContent = "Nume invalid."; return; }
         const btn = bg.querySelector("#edGo"); btn.disabled = true; btn.textContent = "Se salvează…";
         const r = await call({action: "edit_name", id: u.id, first: nf, last: nl});
-        if (!r.ok) { btn.disabled = false; btn.textContent = "Salvează"; err.textContent = "Eroare la salvare."; return; }
+        if (!r.ok) { btn.disabled = false; btn.textContent = "Salvează"; err.textContent = "Eroare: " + (r.error || "salvare"); console.error(r); return; }
         u.name = r.name; draw(); close(); toast("Numele a fost modificat.");
       };
     });
