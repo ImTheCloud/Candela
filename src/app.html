@@ -1557,12 +1557,7 @@ function viewHome(){
         const tot = (QUIZ[c]?.easy || []).length + (QUIZ[c]?.hard || []).length;
         const hasPoints = sc > 0 || chapTried(c);
         let tClass = "";
-        if (hasPoints) {
-           if (sc === tot) tClass = " t-full";
-           else if (sc >= tot / 2) tClass = " t-half";
-           else tClass = " t-low";
-        }
-        const fracHTML = hasPoints ? `<span class="tile-sc ${sc===tot ? 'full' : ''}">${sc}/${tot}</span>` : "";
+        const fracHTML = hasPoints ? `<span class="tile-sc">${sc}/${tot}</span>` : "";
         return `<button class="tile${tClass}" data-c="${c}" aria-pressed="false" title="${c}. ${esc(TITLES[c-1])}" aria-label="Capitolul ${c}: ${esc(TITLES[c-1])}">
           <span class="n">${c}</span>
           ${fracHTML}
