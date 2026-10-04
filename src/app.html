@@ -1503,12 +1503,7 @@ function openProfile(){
 function getSuggestedReadChapter(){
   if (S.reportBack && S.reportCh) return S.reportCh;
   if ($("#grid") && S.sel && S.sel.size === 1) return [...S.sel][0];
-  const h = S.player && S.player.history ? S.player.history : [];
-  const lastTest = [...h].reverse().find(x => x.chs && x.chs.some(c => c >= 1 && c <= 31));
-  if (lastTest) {
-    const validChs = lastTest.chs.filter(c => c >= 1 && c <= 31);
-    if (validChs.length) return Math.min(31, Math.max(...validChs) + 1);
-  }
+
   if (S.player && S.player.chap) {
     const tried = Object.keys(S.player.chap).map(k => parseInt(k, 10)).filter(c => c >= 1 && c <= 31);
     if (tried.length) return Math.min(31, Math.max(...tried) + 1);
