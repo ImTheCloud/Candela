@@ -20,7 +20,7 @@ Deno.serve(async (req) => {
   const { data: isAdmin } = await admin.from("admins").select("user_id").eq("user_id", who.user.id).maybeSingle();
   if (!isAdmin) return json(403, { error: "forbidden" });
 
-  let body: { action?: string; id?: string };
+  let body: { action?: string; id?: string; first?: string; last?: string };
   try { body = await req.json(); } catch { return json(400, { error: "body" }); }
 
   if (body.action === "list") {
