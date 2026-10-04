@@ -631,7 +631,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .kids-modal{text-align:left}
 .kids-modal h3,.kids-modal>p{text-align:center}
 .ak-list{display:grid;gap:8px;margin-top:6px}
-.ak-row{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:10px}
+.ak-row{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:10px}
 .ak-row .input{padding:11px 14px;font-size:16px}
 .ak-last{color:var(--ink-2);font-weight:500;max-width:9em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .kids-modal .link{justify-self:start;padding:2px 0;font-size:14.5px;color:var(--oil-ink)}
@@ -3142,14 +3142,14 @@ function askChildren(last){
   const bg = document.createElement("div"); bg.className = "modal-bg";
   bg.innerHTML = `<form class="modal kids-modal" role="dialog" aria-modal="true" aria-labelledby="akH" novalidate>
     <h3 id="akH">Copiii tăi</h3>
-    <p class="muted">Scrie doar prenumele fiecărui copil; numele de familie se adaugă singur. Fiecare va avea rezultatele și locul lui în clasament.</p>
+    <p class="muted">Scrie prenumele fiecărui copil; numele tău de familie este adăugat implicit, dar îl poți modifica.</p>
     <div class="ak-list" id="akList"></div>
     <button class="link" type="button" id="akMore">+ Încă un copil</button>
     <p class="form-error" id="akErr" role="alert"></p>
     <div class="modal-btns"><button class="btn btn-ghost" type="button" id="akLater">Mai târziu</button><button class="btn btn-primary" type="submit" id="akGo">Adaugă</button></div></form>`;
   document.body.appendChild(bg);
   const list = bg.querySelector("#akList"), err = bg.querySelector("#akErr"), close = () => closeModal(bg);
-  const row = () => { const d = document.createElement("div"); d.className = "ak-row"; d.innerHTML = `<input class="input" maxlength="30" autocapitalize="words" placeholder="Prenume" aria-label="Prenumele copilului"><span class="ak-last">${esc(last)}</span>`; list.appendChild(d); };
+  const row = () => { const d = document.createElement("div"); d.className = "ak-row"; d.innerHTML = `<input class="input" name="first" maxlength="30" autocapitalize="words" placeholder="Prenume" aria-label="Prenumele copilului"><input class="input" name="last" maxlength="30" autocapitalize="words" placeholder="Nume" value="${esc(last)}" aria-label="Numele de familie al copilului">`; list.appendChild(d); };
   row();
   bg.querySelector("#akMore").onclick = () => { if (list.children.length < 10) row(); };
   bg.querySelector("#akLater").onclick = close;
@@ -3157,14 +3157,18 @@ function askChildren(last){
   bg.oninput = () => { err.textContent = ""; };
   bg.querySelector("form").onsubmit = async e => {
     e.preventDefault();
-    const inputs = [...list.querySelectorAll("input")], names = inputs.map(i => capName(i.value)).filter(slugOf);
+    const rows = [...list.querySelectorAll(".ak-row")];
+    const inputs = rows.map(r => r.querySelector("[name=first]"));
+    const names = inputs.map(i => capName(i.value)).filter(slugOf);
     if (!names.length){ err.textContent = "Scrie cel puțin un prenume."; inputs[0].focus(); return; }
     const btn = bg.querySelector("#akGo"); btn.disabled = true; btn.textContent = "Se adaugă…";
-    for (const i of inputs){
-      const n = capName(i.value); if (!slugOf(n)) { i.closest(".ak-row").remove(); continue; }
-      const r = await addChild(n, last);
-      if (!r.ok){ btn.disabled = false; btn.textContent = "Adaugă"; err.textContent = `${n}: ${childError(r)}`; i.focus(); return; }
-      i.closest(".ak-row").remove();
+    for (const r of rows){
+      const fIn = r.querySelector("[name=first]"), lIn = r.querySelector("[name=last]");
+      const n = capName(fIn.value); if (!slugOf(n)) { r.remove(); continue; }
+      const l = capName(lIn.value) || last;
+      const res = await addChild(n, l);
+      if (!res.ok){ btn.disabled = false; btn.textContent = "Adaugă"; err.textContent = `${n}: ${childError(res)}`; fIn.focus(); return; }
+      r.remove();
     }
     closeModal(bg, () => {
       viewHome();
