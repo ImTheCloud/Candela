@@ -53,5 +53,22 @@ Deno.serve(async (req) => {
     if (error) { console.error(error); return json(500, { error: "server" }); }
     return json(200, { ok: true });
   }
+
+  if (body.action === "edit_name") {
+    const id = String(body.id || "");
+    let first = String(body.first || "").trim().replace(/\s+/g, " ");
+    let last = String(body.last || "").trim().replace(/\s+/g, " ");
+    const name = `${first} ${last}`.trim().slice(0, 60);
+    if (!id || !name) return json(400, { error: "bad_args" });
+    const slug = name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 60);
+    
+    const { error: authErr } = await admin.auth.admin.updateUserById(id, { user_metadata: { name } });
+    if (authErr) { console.error(authErr); return json(500, { error: "server" }); }
+    
+    const { error: profErr } = await admin.from("profiles").update({ name, slug }).eq("id", id);
+    if (profErr) { console.error(profErr); return json(500, { error: "server" }); }
+    
+    return json(200, { ok: true, name });
+  }
   return json(400, { error: "action" });
 });

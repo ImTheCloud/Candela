@@ -560,8 +560,8 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .reader-text p{margin:0 0 .45em;padding:0 4px;border-radius:6px}
 
 /* --- Bible Reader Colors Toolbar & Legend --- */
-.reader-toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px 6px;flex-wrap:wrap;width:100%;max-width:100%;min-width:0;box-sizing:border-box;padding:2px 0 8px}
-.reader-legend{display:flex;align-items:center;gap:6px;flex-wrap:wrap;min-width:0;flex:1 1 100%;transition:opacity .2s}
+.reader-toolbar{display:flex;align-items:flex-end;justify-content:space-between;gap:10px 8px;flex-wrap:nowrap;width:100%;max-width:100%;min-width:0;box-sizing:border-box;padding:2px 0 8px}
+.reader-legend{display:flex;align-items:center;gap:6px;flex-wrap:wrap;min-width:0;flex:1;transition:opacity .2s}
 .reader-legend.is-dimmed{opacity:.4}
 .leg-badge{font-size:11px;font-weight:500;padding:2px 6px;border-radius:4px;line-height:1.2;color:var(--ink-2);flex-shrink:0;white-space:nowrap;transition:opacity .2s}
 .leg-badge.c-person{background:rgba(167,139,250,.14);border-bottom:1px solid rgba(139,92,246,.35)}
@@ -2971,6 +2971,7 @@ function viewRead(c){
         <span class="leg-badge c-person">Nume</span>
         <span class="leg-badge c-place">Locuri</span>
         <span class="leg-badge c-number">Cifre & Măsuri</span>
+        <div style="flex-basis:100%;height:0;margin:0"></div>
         <span class="leg-badge c-object">Obiecte</span>
         <span class="leg-badge c-animal">Animale</span>
       </div>
@@ -3071,8 +3072,24 @@ async function viewAdmin(){
       <span class="avatar sm">${esc(initials(u.name))}</span>
       <div class="adm-who"><b>${esc(u.name)}${u.me ? " <em>tu</em>" : ""}</b><small>${u.email ? esc(u.email) : u.parent ? `copil · ${esc(u.parent)}` : "fără email"}</small>
         <small>${u.tests} ${u.tests === 1 ? "test" : "teste"} · din ${new Date(u.created).toLocaleDateString("ro-RO", {day:"numeric", month:"short", year:"numeric"})}</small></div>
-      <div class="adm-a">${u.parent || u.me ? "" : `<button class="link" type="button" data-apw="${u.id}">Parolă</button>`}${u.me ? "" : `<button class="link danger" type="button" data-adel="${u.id}">Șterge</button>`}</div></div>`).join("")
+      <div class="adm-a"><button class="link" type="button" data-aedit="${u.id}">Modifică</button>${u.parent || u.me ? "" : `<button class="link" type="button" data-apw="${u.id}">Parolă</button>`}${u.me ? "" : `<button class="link danger" type="button" data-adel="${u.id}">Șterge</button>`}</div></div>`).join("")
       : `<div class="empty">Niciun cont găsit.</div>`;
+    el.querySelectorAll("[data-aedit]").forEach(b => b.onclick = () => {
+      const u = users.find(x => x.id === b.dataset.aedit);
+      let f = "", l = ""; if (u.name.includes(" ")) { f = u.name.substring(0, u.name.indexOf(" ")); l = u.name.substring(u.name.indexOf(" ") + 1); } else f = u.name;
+      const bg = document.createElement("div"); bg.className = "modal-bg";
+      bg.innerHTML = `<form class="modal" role="dialog" aria-modal="true" aria-labelledby="edH" novalidate><h3 id="edH">Modifică numele</h3><p class="muted">Schimbă numele pentru <b>${esc(u.name)}</b>:</p><div style="display:flex;gap:12px;margin-bottom:12px"><input class="input" id="edFirst" placeholder="Prenume" value="${esc(f)}" required maxlength="30" autocapitalize="words"><input class="input" id="edLast" placeholder="Nume" value="${esc(l)}" required maxlength="30" autocapitalize="words"></div><p class="form-error" id="edErr" role="alert"></p><div class="modal-btns"><button class="btn btn-ghost" type="button" id="edCancel">Anulează</button><button class="btn btn-primary" type="submit" id="edGo">Salvează</button></div></form>`;
+      document.body.appendChild(bg); const close = () => closeModal(bg); bg.querySelector("#edCancel").onclick = close; bg.onclick = e => { if (e.target === bg) close(); };
+      const err = bg.querySelector("#edErr"), fIn = bg.querySelector("#edFirst"), lIn = bg.querySelector("#edLast");
+      bg.querySelector("form").onsubmit = async e => {
+        e.preventDefault(); const nf = capName(fIn.value), nl = capName(lIn.value);
+        if (!slugOf(nf) || !slugOf(nl)) { err.textContent = "Nume invalid."; return; }
+        const btn = bg.querySelector("#edGo"); btn.disabled = true; btn.textContent = "Se salvează…";
+        const r = await call({action: "edit_name", id: u.id, first: nf, last: nl});
+        if (!r.ok) { btn.disabled = false; btn.textContent = "Salvează"; err.textContent = "Eroare la salvare."; return; }
+        u.name = r.name; draw(); close(); toast("Numele a fost modificat.");
+      };
+    });
     el.querySelectorAll("[data-adel]").forEach(b => b.onclick = () => {
       const u = users.find(x => x.id === b.dataset.adel), kids = users.filter(x => x.parent === u.name).length;
       confirmBox(`Ștergi contul lui ${u.name}?`, `Rezultatele și locul din clasament se șterg definitiv${kids ? `, împreună cu ${kids === 1 ? "profilul copilului" : `cele ${kids} profiluri de copii`}` : ""}.`, "Șterge", async () => {
