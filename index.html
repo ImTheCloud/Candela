@@ -56,10 +56,9 @@ p{margin:0}
 .view:has(.qtop){animation:none!important}
 
 /* Buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:2px solid transparent;border-radius:16px;padding:14px 22px;font-weight:700;font-size:16px;text-transform:uppercase;letter-spacing:0.04em;transition:all .15s ease;min-height:50px border-bottom-width:4px!important;}
-.btn:active:not(:disabled){border-bottom-width:0px!important;transform:translateY(4px)!important;box-shadow:none!important;}
-.btn:active:not(:disabled){transform:translateY(4px);box-shadow:0 0px 0 transparent !important;}
-.btn-primary{background:var(--ink);color:var(--bg);box-shadow:0 4px 0 var(--ink-2)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:2px solid transparent;border-radius:16px;padding:14px 22px;font-weight:700;font-size:16px;text-transform:uppercase;letter-spacing:0.04em;transition:all .15s ease;min-height:50px;}
+.btn:active:not(:disabled){transform:translateY(2px);}
+.btn-primary{background:var(--ink);color:var(--bg);}
 @media (hover: hover) and (pointer: fine){.btn-primary:hover{filter:brightness(1.1)}}
 .btn-primary:disabled{opacity:.35;cursor:not-allowed}
 .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
@@ -215,9 +214,9 @@ p{margin:0}
 html.scroll-locked,body.scroll-locked{overflow:hidden!important;overscroll-behavior:none!important}
 html:has(.sheet-bg),html:has(.modal-bg),body:has(.sheet-bg),body:has(.modal-bg){overflow:hidden}
 .sheet,.modal{overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
-.sheet-bg{position:fixed;inset:0;z-index:30;background:rgb(58 39 27 / .45);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);display:flex;align-items:flex-end;justify-content:center;animation:modalBgIn .28s cubic-bezier(.16,1,.3,1) both;touch-action:none;overscroll-behavior:contain;box-sizing:border-box}
+.sheet-bg{position:fixed;inset:0;height:var(--vvh, 100dvh);z-index:30;background:rgb(58 39 27 / .45);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);display:flex;align-items:flex-end;justify-content:center;animation:modalBgIn .28s cubic-bezier(.16,1,.3,1) both;touch-action:none;overscroll-behavior:contain;box-sizing:border-box}
 .sheet-bg.closing{animation:modalBgOut .22s cubic-bezier(.4,0,1,1) forwards;pointer-events:none}
-.sheet{position:relative;width:100%;max-width:520px;background:var(--bg);border-radius:24px 24px 0 0;padding:18px 16px calc(18px + env(safe-area-inset-bottom,0px) + var(--kbd-h,0px));display:grid;gap:16px;animation:sheetUp .32s cubic-bezier(.16,1,.3,1) both;will-change:transform,opacity;touch-action:pan-y;overscroll-behavior:contain;max-height:min(94dvh,calc(100dvh - env(safe-area-inset-top,0px) - 16px));overflow-y:auto;box-sizing:border-box}
+.sheet{position:relative;width:100%;max-width:520px;background:var(--bg);border-radius:24px 24px 0 0;padding:18px 16px calc(18px + env(safe-area-inset-bottom,0px));display:grid;gap:16px;animation:sheetUp .32s cubic-bezier(.16,1,.3,1) both;will-change:transform,opacity;touch-action:pan-y;overscroll-behavior:contain;max-height:100%;overflow-y:auto;box-sizing:border-box}
 .sheet-bg.closing .sheet{animation:sheetDown .22s cubic-bezier(.4,0,1,1) forwards;pointer-events:none}
 .sheet-h{display:flex;align-items:center;justify-content:space-between}
 .sheet-h h3{font-size:24px}
@@ -281,9 +280,8 @@ html:has(.sheet-bg),html:has(.modal-bg),body:has(.sheet-bg),body:has(.modal-bg){
 .view:has(.qtop){display:flex;flex-direction:column;min-height:calc(100dvh - 36px);min-height:calc(var(--vvh,100dvh) - 36px);max-width:640px;margin:0 auto}
 .qtop{flex:none;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;margin-bottom:12px}
 .icon-btn{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--line);background:transparent;display:grid;place-items:center;padding:0}
-.bar{height:16px;background:var(--surface-2);border-radius:999px;position:relative;}
-.bar i{position:absolute;left:0;top:0;bottom:0;background:var(--ok);border-radius:999px;transition:width .5s cubic-bezier(.2,.8,.2,1);min-width:16px;}
-.bar i::after{content:"";position:absolute;top:4px;left:6px;right:6px;height:4px;background:rgba(255,255,255,0.35);border-radius:999px;}
+.bar{height:16px;background:var(--surface-2);border-radius:999px;position:relative;overflow:hidden;}
+.bar i{position:absolute;left:0;top:0;bottom:0;background:var(--cedar);border-radius:999px;transition:width .5s cubic-bezier(.2,.8,.2,1);min-width:16px;}
 .qcount{font-family:var(--f-mono);font-size:13px;color:var(--ink-2);font-variant-numeric:tabular-nums}
 #qslot{flex:1;display:flex;flex-direction:column;align-items:stretch;min-height:0}
 body.quiz-fixed #qslot{justify-content:center}
@@ -481,7 +479,7 @@ body.quiz-fixed .wrap{overflow:hidden!important;overscroll-behavior:none!importa
 .toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:999px;font-size:14px;opacity:0;transition:all .3s;pointer-events:none;z-index:20;max-width:calc(100% - 32px)}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 body:has(.qactions:not(:empty)) .toast{bottom:calc(100px + env(safe-area-inset-bottom,0px))}
-.modal-bg{position:fixed;inset:0;z-index:40;display:flex;align-items:center;justify-content:center;padding:16px;padding-bottom:calc(16px + var(--kbd-h,0px));overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;touch-action:none;background:rgb(58 39 27 / .32);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);animation:modalBgIn .28s cubic-bezier(.16,1,.3,1) both;box-sizing:border-box}
+.modal-bg{position:fixed;inset:0;height:var(--vvh, 100dvh);z-index:40;display:flex;align-items:center;justify-content:center;padding:16px;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;touch-action:none;background:rgb(58 39 27 / .32);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);animation:modalBgIn .28s cubic-bezier(.16,1,.3,1) both;box-sizing:border-box}
 .modal-bg.closing{animation:modalBgOut .22s cubic-bezier(.4,0,1,1) forwards;pointer-events:none}
 .modal{width:100%;max-width:360px;background:var(--surface);border-radius:24px;padding:24px;display:grid;gap:10px;text-align:center;box-shadow:0 20px 50px -20px rgb(58 39 27 / .45);animation:modalUp .32s cubic-bezier(.16,1,.3,1) both;will-change:transform,opacity;margin:auto;max-height:min(calc(100dvh - 32px),calc(var(--vvh,100dvh) - 32px));overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;touch-action:pan-y}
 .modal-bg.closing .modal{animation:modalDown .22s cubic-bezier(.4,0,1,1) forwards;pointer-events:none}
@@ -816,27 +814,7 @@ window.addEventListener("scroll", () => {
     }
   }
 }, { passive: true });
-document.addEventListener("focusin", e => {
-  const inp = e.target;
-  if (inp && (inp.tagName === "INPUT" || inp.tagName === "TEXTAREA")) {
-    const container = inp.closest(".sheet, .modal");
-    if (container) {
-      window.scrollTo(0, 0);
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-        const cRect = container.getBoundingClientRect();
-        const iRect = inp.getBoundingClientRect();
-        const kbdH = parseInt(getComputedStyle(document.documentElement).getPropertyValue("--kbd-h")) || 0;
-        const visibleBottom = cRect.bottom - kbdH;
-        if (iRect.bottom > visibleBottom) {
-          container.scrollBy({ top: iRect.bottom - visibleBottom + 24, behavior: "smooth" });
-        } else if (iRect.top < cRect.top + 20) {
-          container.scrollBy({ top: iRect.top - cRect.top - 20, behavior: "smooth" });
-        }
-      }, 150);
-    }
-  }
-});
+// removed buggy focusin listener
 document.addEventListener("focusout", e => {
   const inp = e.target;
   if (inp && (inp.tagName === "INPUT" || inp.tagName === "TEXTAREA")) {
@@ -1304,9 +1282,9 @@ function whoHTML(){ const n = S.player.name; return `<button class="who" id="who
 function levelBar(label, ok, seen, tot, color, they){
   seen = Math.max(seen, ok);
   const w = n => Math.max(n/tot*100, n ? 1.5 : 0);
-  return `<div class="pf-bar"><div class="pf-bar-h"><span>${label}</span><span>${tot.toLocaleString("ro-RO")} în carte</span></div>
+  return `<div class="pf-bar"><div class="pf-bar-h"><span>${label}</span><span>${tot.toLocaleString("ro-RO")} total</span></div>
     <div class="bar two"><i class="seen" style="width:${w(seen)}%;background:${color}"></i><i style="width:${w(ok)}%;background:${color}"></i></div>
-    <p class="pf-bar-f">${seen ? `<b>${ok}</b> ${ok === 1 ? "corectă" : "corecte"} din <b>${seen}</b> la care ${they ? "a" : "ai"} răspuns` : "Nicio întrebare încă"}</p></div>`;
+    <p class="pf-bar-f">${seen ? `<b>${ok}</b> corecte din <b>${seen}</b> încercate` : "Nicio întrebare încă"}</p></div>`;
 }
 // someone else's profile, opened from the leaderboard
 async function openPublicProfile(x, i){
@@ -1327,7 +1305,7 @@ async function openPublicProfile(x, i){
   body.innerHTML = `<div class="kv four">
     <div class="stat"><b>${d.tests}</b><small>${d.tests===1?"test":"teste"}</small></div>
     <div class="stat"><b>${d.tests ? d.avg+"%" : "–"}</b><small>media</small></div>
-    <div class="stat"><b>${d.ok_e + d.ok_h}</b><small>${(d.ok_e + d.ok_h)===1?"punct":"puncte"}</small></div>
+    <div class="stat"><b>${d.ok_e + d.ok_h} <span style="font-size:0.65em; opacity:0.6; font-weight:600;">/ ${totalCount("both")}</span></b><small>${(d.ok_e + d.ok_h)===1?"punct":"puncte"}</small></div>
     <div class="stat"><b>${exams}</b><small>${exams===1?"examen alb":"examene albe"}</small></div>
   </div>
     <div class="pf-card">${levelBar("Întrebări ușoare", d.ok_e, d.seen_e, totalCount("easy"), "var(--cedar)", true)}${levelBar("Întrebări grele", d.ok_h, d.seen_h, totalCount("hard"), "var(--oil)", true)}
@@ -1381,7 +1359,7 @@ function openProfile(){
       <div class="kv four">
         <div class="stat"><b>${tests}</b><small>${tests===1?"test":"teste"}</small></div>
         <div class="stat"><b>${tests ? avg+"%" : "–"}</b><small>media</small></div>
-        <div class="stat"><b>${p.ok.length}</b><small>${p.ok.length===1?"punct":"puncte"}</small></div>
+        <div class="stat"><b>${p.ok.length} <span style="font-size:0.65em; opacity:0.6; font-weight:600;">/ ${totalCount("both")}</span></b><small>${p.ok.length===1?"punct":"puncte"}</small></div>
         <div class="stat"><b>${exams}</b><small>${exams===1?"examen alb":"examene albe"}</small></div>
       </div>
       <div class="pf-card">
@@ -3346,12 +3324,44 @@ async function viewAdmin(){
     const el = $("#aList"); if (!el || !users) return;
     const f = fold(q), list = users.filter(u => !f || fold(u.name + " " + u.email + " " + u.parent).includes(f));
     $("#aCount").textContent = `${users.length} ${users.length === 1 ? "cont" : "conturi"}`;
-    el.innerHTML = list.length ? list.map(u => `<div class="adm-row">
+    
+    let html = "";
+    const dateStr = d => new Date(d).toLocaleDateString("ro-RO", {day:"numeric", month:"short", year:"numeric"});
+    const drawRow = (u, isChild) => `<div class="adm-row" style="${isChild ? 'margin-left: 36px; border-left: 2px solid var(--line); padding-left: 16px; margin-top: 4px;' : 'margin-top: 12px;'}">
       <span class="avatar sm">${esc(initials(u.name))}</span>
-      <div class="adm-who"><b>${esc(u.name)}${u.me ? " <em>tu</em>" : ""}</b><small>${u.email ? esc(u.email) : u.parent ? `copil · ${esc(u.parent)}` : "fără email"}</small>
-        <small>${u.tests} ${u.tests === 1 ? "test" : "teste"} · din ${new Date(u.created).toLocaleDateString("ro-RO", {day:"numeric", month:"short", year:"numeric"})}</small></div>
-      <div class="adm-a"><button class="link" type="button" data-aedit="${u.id}">Modifică</button>${u.parent || u.me ? "" : `<button class="link" type="button" data-apw="${u.id}">Parolă</button>`}${u.me ? "" : `<button class="link danger" type="button" data-adel="${u.id}">Șterge</button>`}</div></div>`).join("")
-      : `<div class="empty">Niciun cont găsit.</div>`;
+      <div class="adm-who">
+        <b style="${u.hidden ? 'text-decoration: line-through; opacity: 0.5;' : ''}">${esc(u.name)}${u.me ? " <em>tu</em>" : ""}${u.is_parent && !isChild ? " 👨‍👩‍👧‍👦" : ""}</b>
+        <small style="display:flex;gap:8px;flex-wrap:wrap;">
+          <span>${u.email ? esc(u.email) : u.parent ? `copil · ${esc(u.parent)}` : "fără email"}</span>
+          <span>·</span>
+          <span><b>${u.points || 0} pct</b> (${u.tests} teste)</span>
+        </small>
+        <small style="opacity:0.7">Activ: ${dateStr(u.last_active)} (creat: ${dateStr(u.created)})</small>
+      </div>
+      <div class="adm-a">
+        <button class="link" type="button" data-aedit="${u.id}">Edit</button>
+        ${u.parent || u.me ? "" : `<button class="link" type="button" data-apw="${u.id}">Parolă</button>`}
+        ${u.me ? "" : `<button class="link danger" type="button" data-adel="${u.id}">Șterge</button>`}
+      </div>
+    </div>`;
+
+    if (!list.length) {
+      html = `<div class="empty">Niciun cont găsit.</div>`;
+    } else if (f) {
+      // flat list for search
+      html = list.map(u => drawRow(u, false)).join("");
+    } else {
+      // group by family
+      const byId = {};
+      list.forEach(u => { u.children = []; byId[u.id] = u; });
+      const tree = [];
+      list.forEach(u => {
+        if (u.parent_id && byId[u.parent_id]) byId[u.parent_id].children.push(u);
+        else tree.push(u);
+      });
+      html = tree.map(u => drawRow(u, false) + u.children.map(c => drawRow(c, true)).join("")).join("");
+    }
+    el.innerHTML = html;
     el.querySelectorAll("[data-aedit]").forEach(b => b.onclick = () => {
       const u = users.find(x => x.id === b.dataset.aedit);
       let f = "", l = ""; if (u.name.includes(" ")) { f = u.name.substring(0, u.name.indexOf(" ")); l = u.name.substring(u.name.indexOf(" ") + 1); } else f = u.name;
