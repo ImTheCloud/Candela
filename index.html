@@ -248,9 +248,9 @@ html:has(.sheet-bg),html:has(.modal-bg),body:has(.sheet-bg),body:has(.modal-bg){
   .tile-exam{border-radius:12px;font-size:14.5px;gap:7px;padding:0 10px}
 }
 .startbar{position:sticky;bottom:0;padding-block:14px calc(14px + env(safe-area-inset-bottom,0px));background:linear-gradient(to top,var(--bg) 70%,transparent);margin-top:18px;z-index:5}
-.history{display:grid;gap:6px}
+.history{display:grid;gap:2px;background:var(--surface);border-radius:18px;padding:8px;box-shadow:var(--shadow)}
 .history .board-footer-btn{margin-top:2px}
-.hrow{width:100%;border:0;text-align:left;color:var(--ink);font:inherit;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;gap:10px;background:var(--surface);border-radius:12px;padding:9px 12px;outline:none;-webkit-tap-highlight-color:transparent;transition:all .18s ease}
+.hrow{width:100%;border:0;text-align:left;color:var(--ink);font:inherit;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;gap:10px;background:transparent;border-radius:12px;padding:9px 12px;outline:none;-webkit-tap-highlight-color:transparent;transition:all .18s ease}
 @media (hover: hover) and (pointer: fine){
   .hrow:hover{background:var(--oil-soft);transform:translateY(-1px)}
   .hrow:hover .chev{color:var(--oil);opacity:1;transform:translateX(2px)}
@@ -668,16 +668,21 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .ak-last{color:var(--ink-2);font-weight:500;max-width:9em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .kids-modal .link{justify-self:start;padding:2px 0;font-size:14.5px;color:var(--oil-ink)}
 .adm{display:grid;gap:14px}
-.adm-list{display:grid;gap:2px;background:var(--surface);border-radius:18px;padding:6px;box-shadow:var(--shadow)}
-.adm-row{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:12px;padding:10px;border-radius:12px}
-.adm-row + .adm-row{border-top:1px solid var(--line);border-radius:0}
-.adm-who{display:grid;gap:1px;min-width:0}
-.adm-who b{font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.adm-who em{font-style:normal;font-size:11px;font-weight:700;text-transform:uppercase;background:var(--oil);color:#fff;padding:1px 6px;border-radius:999px;vertical-align:2px}
-.adm-who small{color:var(--ink-2);font-size:12.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.adm-a{display:flex;gap:14px}
-.adm-a .link{padding:0;font-size:13.5px}
-.adm-a .danger{color:var(--bad)}
+.adm-card{background:var(--surface);border-radius:16px;padding:16px;margin-bottom:12px;box-shadow:var(--shadow);display:grid;gap:12px;border:1px solid var(--line)}
+.adm-card.child{margin-left:24px;border-left:3px solid var(--line);border-radius:12px;padding:12px;margin-top:-6px;box-shadow:none;background:transparent}
+.ac-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.ac-user{display:flex;align-items:center;gap:10px;min-width:0}
+.ac-info{display:grid;gap:2px}
+.ac-info b{font-weight:600;font-size:15px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ac-role{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-2);background:var(--surface-2);padding:2px 8px;border-radius:99px;display:inline-block;width:max-content}
+.ac-stats{display:flex;gap:6px;text-align:center;flex:none}
+.ac-stats .stat{background:var(--surface-2);padding:6px 10px;border-radius:10px;display:grid}
+.ac-stats .val{font-family:var(--f-display);font-weight:700;font-size:15px;color:var(--ink);line-height:1}
+.ac-stats .lbl{font-size:10px;font-weight:600;color:var(--ink-2);text-transform:uppercase}
+.ac-details{font-size:13px;color:var(--ink-2);display:flex;gap:6px;flex-wrap:wrap;line-height:1.4;padding-bottom:10px;border-bottom:1px solid var(--line)}
+.ac-actions{display:flex;gap:8px;flex-wrap:wrap}
+.ac-actions .btn{padding:6px 12px;font-size:13px;min-height:32px;border-radius:8px}
+.ac-actions .btn-danger-soft{background:var(--bad-soft);color:var(--bad);border:0;font-weight:600;cursor:pointer}
 .temp-pw{font-family:var(--f-mono);font-size:26px;letter-spacing:.12em;background:var(--bg);border-radius:14px;padding:14px;margin:6px 0}
 .top-r{display:flex;align-items:center;gap:10px;min-width:0}
 .read-btn{display:inline-flex;align-items:center;gap:6px;border:2px solid transparent;background:var(--ink);color:var(--bg);border-radius:12px;padding:7px 14px 7px 11px;font-size:13.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;box-shadow:0 4px 0 var(--ink-2);flex:none;min-height:38px;transition:all .15s ease}
@@ -1384,7 +1389,7 @@ function openProfile(){
       <button class="btn btn-danger btn-block" id="pfOut">Ieși din cont</button></div>`;
     sheet.querySelector("#pfX").onclick = close;
     if (!p.child){
-      sheet.querySelector("#pfEdit").onclick = edit;
+      sheet.querySelector("#pfEdit").onclick = () => { closeModal(bg, viewSettings); };
       sheet.querySelector("#pfParent").onchange = async e => {
         const on = e.target.checked; e.target.disabled = true;
         const r = await store.rpc("set_parent", {p_on: on});
@@ -1470,62 +1475,68 @@ function openProfile(){
       if ($("#board")) loadBoard();
     };
   };
-  const edit = () => {
-    const parts = p.name.trim().split(" "), fn = parts[0], ln = parts.slice(1).join(" ");
-    sheet.innerHTML = `${X}<h3>${store.hasEmail() ? "Contul meu" : "Adaugă emailul"}</h3>
-      <form class="prof-form" id="pfForm" novalidate>
-        <div class="name-row">
-          <div class="field"><label for="pfLast">Nume de Familie</label><input class="input" id="pfLast" maxlength="30" autocomplete="family-name" autocapitalize="words" value="${esc(ln)}"></div>
-          <div class="field"><label for="pfFirst">Prenume</label><input class="input" id="pfFirst" maxlength="30" autocomplete="given-name" autocapitalize="words" value="${esc(fn)}"></div>
-        </div>
-        <div class="field"><label for="pfMail">Email</label><input class="input" id="pfMail" type="email" inputmode="email" maxlength="254" autocomplete="email" autocapitalize="none" spellcheck="false" value="${store.hasEmail() ? esc(store.email) : ""}"></div>
-        <div class="field"><label for="pfPw">Parolă nouă</label><input class="input" id="pfPw" type="password" autocomplete="new-password" maxlength="72" placeholder="Lasă gol ca să o păstrezi"></div>
-        <p class="form-error" id="pfErr" role="alert"></p>
-        <div class="modal-btns"><button class="btn btn-ghost" type="button" id="pfCancel">Anulează</button><button class="btn btn-primary" type="submit" id="pfSave">Salvează</button></div>
-      </form>`;
-    sheet.querySelector("#pfX").onclick = close;
-    sheet.querySelector("#pfCancel").onclick = show;
-    const form = sheet.querySelector("#pfForm"), err = sheet.querySelector("#pfErr");
-    const first = sheet.querySelector("#pfFirst"), last = sheet.querySelector("#pfLast"), mail = sheet.querySelector("#pfMail"), npw = sheet.querySelector("#pfPw");
-    pwEye(npw);
-    form.querySelectorAll("input").forEach(inp => {
-      inp.addEventListener("focus", () => setTimeout(() => inp.scrollIntoView({ block: "nearest", behavior: "smooth" }), 100));
-    });
-    form.addEventListener("input", () => { err.textContent = ""; });
-    form.addEventListener("submit", async e => {
-      e.preventDefault();
-      const f1 = capName(first.value), l1 = capName(last.value), em = mail.value.trim();
-      if (!slugOf(l1)) { err.textContent = "Scrie numele de familie."; last.focus(); return; }
-      if (!slugOf(f1)) { err.textContent = "Scrie prenumele."; first.focus(); return; }
-      if (!EMAIL_RE.test(em)) { err.textContent = "Scrie o adresă de email validă."; mail.focus(); return; }
-      if (npw.value && npw.value.length < 6) { err.textContent = "Parola trebuie să aibă cel puțin 6 caractere."; npw.focus(); return; }
-      const btn = sheet.querySelector("#pfSave"); btn.disabled = true; btn.textContent = "Se salvează…";
-      const r = await store.updateAccount(f1, l1, em);
-      if (r.ok && npw.value){
-        let pe = null;
-        try { const { error } = await sb().auth.updateUser({ password: npw.value }); pe = error; } catch (x) { pe = x; }
-        if (pe && !/different/i.test(pe.message || "")){
-          btn.disabled = false; btn.textContent = "Salvează";
-          err.textContent = isNetErr(pe) ? loginError({error:"network"}) : "Numele și emailul au fost salvate, dar parola nu. Încearcă din nou.";
-          p.name = r.name;
-          return;
-        }
-      }
-      if (!r.ok){
-        btn.disabled = false; btn.textContent = "Salvează";
-        err.textContent = ({ name_taken: "Acest nume e deja folosit de alt cont.", email_taken: "Acest email e deja folosit de alt cont.", auth: "Intră din nou în cont și încearcă iar." })[r.error] || loginError(r);
-        return;
-      }
-      p.name = r.name; lsSet("candela:email", r.email); S.board = null;
-      const me = (store.family || []).find(x => x.id === store.uid); if (me) me.name = r.name;
-      toast(npw.value ? "Profil și parolă actualizate." : "Profil actualizat.");
-      refreshHomeHeaderAndFamily();
-      if ($("#board")) loadBoard();
-      show();
-    });
-  };
+
   show();
   if (S.admin == null) store.rpc("is_admin").then(r => { S.admin = r.ok && r.data === true; if (S.admin && sheet.querySelector("#pfEdit") && !sheet.querySelector("#pfAdm")) show(); });
+}
+function viewSettings() {
+  const p = store.player;
+  if (!p) return viewHome();
+  const parts = p.name.trim().split(" "), fn = parts[0], ln = parts.slice(1).join(" ");
+  
+  mount(`<section class="settings-page" style="display:grid;gap:18px;">
+    <div class="reader-h">${BACK_BTN("setBack")}<div><span class="eyebrow">Setări</span><h2>Contul meu</h2></div></div>
+    <form class="card prof-form" id="pfForm" novalidate style="padding:20px; display:grid; gap:16px;">
+      <div class="name-row" style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+        <div class="field"><label for="pfLast">Nume de Familie</label><input class="input" id="pfLast" maxlength="30" autocomplete="family-name" autocapitalize="words" value="${esc(ln)}"></div>
+        <div class="field"><label for="pfFirst">Prenume</label><input class="input" id="pfFirst" maxlength="30" autocomplete="given-name" autocapitalize="words" value="${esc(fn)}"></div>
+      </div>
+      <div class="field"><label for="pfMail">Email</label><input class="input" id="pfMail" type="email" inputmode="email" maxlength="254" autocomplete="email" autocapitalize="none" spellcheck="false" value="${store.hasEmail() ? esc(store.email) : ""}"></div>
+      <div class="field"><label for="pfPw">Parolă nouă</label><input class="input" id="pfPw" type="password" autocomplete="new-password" maxlength="72" placeholder="Lasă gol ca să o păstrezi"></div>
+      <p class="form-error" id="pfErr" role="alert"></p>
+      <div style="display:flex;justify-content:flex-end;margin-top:4px;">
+        <button class="btn btn-primary" type="submit" id="pfSave" style="width:100%">Salvează</button>
+      </div>
+    </form>
+  </section>`);
+
+  app.querySelector("#setBack").onclick = () => viewHome();
+  
+  const form = app.querySelector("#pfForm"), err = app.querySelector("#pfErr");
+  const first = app.querySelector("#pfFirst"), last = app.querySelector("#pfLast"), mail = app.querySelector("#pfMail"), npw = app.querySelector("#pfPw");
+  pwEye(npw);
+  
+  form.addEventListener("input", () => { err.textContent = ""; });
+  form.addEventListener("submit", async e => {
+    e.preventDefault();
+    const f1 = capName(first.value), l1 = capName(last.value), em = mail.value.trim();
+    if (!slugOf(l1)) { err.textContent = "Scrie numele de familie."; last.focus(); return; }
+    if (!slugOf(f1)) { err.textContent = "Scrie prenumele."; first.focus(); return; }
+    if (!EMAIL_RE.test(em)) { err.textContent = "Scrie o adresă de email validă."; mail.focus(); return; }
+    if (npw.value && npw.value.length < 6) { err.textContent = "Parola trebuie să aibă cel puțin 6 caractere."; npw.focus(); return; }
+    const btn = app.querySelector("#pfSave"); btn.disabled = true; btn.textContent = "Se salvează…";
+    const r = await store.updateAccount(f1, l1, em);
+    if (r.ok && npw.value){
+      let pe = null;
+      try { const { error } = await sb().auth.updateUser({ password: npw.value }); pe = error; } catch (x) { pe = x; }
+      if (pe && !/different/i.test(pe.message || "")){
+        btn.disabled = false; btn.textContent = "Salvează";
+        err.textContent = isNetErr(pe) ? loginError({error:"network"}) : "Numele și emailul au fost salvate, dar parola nu. Încearcă din nou.";
+        p.name = r.name;
+        return;
+      }
+    }
+    if (!r.ok){
+      btn.disabled = false; btn.textContent = "Salvează";
+      err.textContent = ({ name_taken: "Acest nume e deja folosit de alt cont.", email_taken: "Acest email e deja folosit de alt cont.", auth: "Intră din nou în cont și încearcă iar." })[r.error] || loginError(r);
+      return;
+    }
+    p.name = r.name; lsSet("candela:email", r.email); S.board = null;
+    const me = (store.family || []).find(x => x.id === store.uid); if (me) me.name = r.name;
+    toast(npw.value ? "Profil și parolă actualizate." : "Profil actualizat.");
+    refreshHomeHeaderAndFamily();
+    viewHome();
+  });
 }
 function getSuggestedReadChapter(){
   if (S.reportBack && S.reportCh) return S.reportCh;
@@ -3327,21 +3338,29 @@ async function viewAdmin(){
     
     let html = "";
     const dateStr = d => new Date(d).toLocaleDateString("ro-RO", {day:"numeric", month:"short", year:"numeric"});
-    const drawRow = (u, isChild) => `<div class="adm-row" style="${isChild ? 'margin-left: 36px; border-left: 2px solid var(--line); padding-left: 16px; margin-top: 4px;' : 'margin-top: 12px;'}">
-      <span class="avatar sm">${esc(initials(u.name))}</span>
-      <div class="adm-who">
-        <b style="${u.hidden ? 'text-decoration: line-through; opacity: 0.5;' : ''}">${esc(u.name)}${u.me ? " <em>tu</em>" : ""}${u.is_parent && !isChild ? " 👨‍👩‍👧‍👦" : ""}</b>
-        <small style="display:flex;gap:8px;flex-wrap:wrap;">
-          <span>${u.email ? esc(u.email) : u.parent ? `copil · ${esc(u.parent)}` : "fără email"}</span>
-          <span>·</span>
-          <span><b>${u.points || 0} pct</b> (${u.tests} teste)</span>
-        </small>
-        <small style="opacity:0.7">Activ: ${dateStr(u.last_active)} (creat: ${dateStr(u.created)})</small>
+    const drawRow = (u, isChild) => `<div class="adm-card ${isChild ? 'child' : ''}">
+      <div class="ac-top">
+        <div class="ac-user">
+          <span class="avatar sm">${esc(initials(u.name))}</span>
+          <div class="ac-info">
+            <b style="${u.hidden ? 'text-decoration: line-through; opacity: 0.5;' : ''}">${esc(u.name)}</b>
+            <span class="ac-role">${u.me ? "Contul tău" : (u.is_parent && !isChild ? "Părinte" : (u.parent ? "Copil" : "Jucător"))}</span>
+          </div>
+        </div>
+        <div class="ac-stats">
+          <div class="stat"><span class="val">${u.points || 0}</span><span class="lbl">pct</span></div>
+          <div class="stat"><span class="val">${u.tests || 0}</span><span class="lbl">teste</span></div>
+        </div>
       </div>
-      <div class="adm-a">
-        <button class="link" type="button" data-aedit="${u.id}">Edit</button>
-        ${u.parent || u.me ? "" : `<button class="link" type="button" data-apw="${u.id}">Parolă</button>`}
-        ${u.me ? "" : `<button class="link danger" type="button" data-adel="${u.id}">Șterge</button>`}
+      <div class="ac-details">
+        <span>${u.email ? esc(u.email) : (u.parent ? `Sub contul lui ${esc(u.parent)}` : "Fără email")}</span>
+        <span>•</span>
+        <span>Activ: ${dateStr(u.last_active)}</span>
+      </div>
+      <div class="ac-actions">
+        <button class="btn btn-ghost sm" type="button" data-aedit="${u.id}">Modifică</button>
+        ${!u.parent && !u.me ? `<button class="btn btn-ghost sm" type="button" data-apw="${u.id}">Reset parolă</button>` : ""}
+        ${!u.me ? `<button class="btn btn-danger-soft sm" type="button" data-adel="${u.id}">Șterge</button>` : ""}
       </div>
     </div>`;
 
