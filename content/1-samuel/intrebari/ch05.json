@@ -98,6 +98,34 @@
    "ref": "5:12",
    "q": "Cei care nu mureau erau loviți cu bube la șezut.",
    "a": true
+  },
+  {
+   "t": "one",
+   "ref": "5:4",
+   "q": "Ce părți din Dagon erau tăiate pe prag?",
+   "opts": [
+    "Capul și picioarele",
+    "Capul și cele două mâini",
+    "Mâinile și picioarele"
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "5:5",
+   "q": "Preoții lui Dagon calcă pe pragul casei lui Dagon din Asdod până în ziua de azi.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "5:9",
+   "q": "Ce fel de spuzeală au avut oamenii din Gat?",
+   "opts": [
+    "Spuzeală de lepră",
+    "Spuzeală de bube la șezut",
+    "O iritație pe față"
+   ],
+   "a": 1
   }
  ],
  "hard": [
@@ -200,6 +228,20 @@
     "Până la cer"
    ],
    "a": 2
+  },
+  {
+   "t": "tf",
+   "ref": "5:11",
+   "q": "În tot Ecronul era o groază de moarte.",
+   "a": true
+  },
+  {
+   "t": "fill",
+   "ref": "5:12",
+   "q": "Oamenii care nu mureau erau loviți cu bube la șezut, și țipetele cetății se înălțau până la ___.",
+   "a": [
+    "cer"
+   ]
   }
  ]
 }

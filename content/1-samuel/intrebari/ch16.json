@@ -141,6 +141,29 @@
    "ref": "16:23",
    "q": "Când David cânta, duhul rău pleca de la Saul.",
    "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "16:2",
+   "q": "Samuel l-a întrebat pe Domnul cum să meargă fără să-l omoare Saul.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "16:3",
+   "q": "Ce i-a spus Domnul lui Samuel să ia cu el?",
+   "opts": [
+    "Un vițel pentru jertfă",
+    "O oaie",
+    "Un țap"
+   ],
+   "a": 0
+  },
+  {
+   "t": "tf",
+   "ref": "16:8",
+   "q": "Abinadab a fost alesul Domnului.",
+   "a": false
   }
  ],
  "hard": [
@@ -280,6 +303,25 @@
     "Un măgar încărcat cu pâine, un burduf cu vin și un ied",
     "Un vițel și untdelemn",
     "Un berbec și grâu"
+   ],
+   "a": 0
+  },
+  {
+   "t": "fill",
+   "ref": "16:18",
+   "q": "Un slujitor a zis că David știe să cânte, este viteaz, războinic, vorbește bine și ___ este cu el.",
+   "a": [
+    "Domnul"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "16:21",
+   "q": "Ce slujbă a primit David de la Saul inițial?",
+   "opts": [
+    "Purtător de arme (străjer)",
+    "Paharnic",
+    "Bucătar"
    ],
    "a": 0
   }

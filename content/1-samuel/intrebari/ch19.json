@@ -165,6 +165,31 @@
      "Se afla în fruntea adunării de proroci"
     ]
    ]
+  },
+  {
+   "t": "tf",
+   "ref": "19:6",
+   "q": "Când a auzit glasul lui Ionatan, Saul a jurat că David va muri.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "19:12",
+   "q": "Pe unde l-a coborât Mical pe David ca să fugă?",
+   "opts": [
+    "Pe fereastră",
+    "Prin ușa din spate",
+    "Prin acoperiș"
+   ],
+   "a": 0
+  },
+  {
+   "t": "fill",
+   "ref": "19:15",
+   "q": "Saul a trimis din nou oameni să-l vadă pe David, zicând: „Aduceți-l la mine în ___, ca să-l omor.”",
+   "a": [
+    "pat"
+   ]
   }
  ],
  "hard": [
@@ -295,6 +320,25 @@
      "Saul",
      "„Pentru ce m-ai înșelat în felul acesta?”"
     ]
+   ]
+  },
+  {
+   "t": "tf",
+   "ref": "19:20",
+   "q": "Când trimișii lui Saul au văzut prorocii, Duhul lui Dumnezeu a venit și peste ei.",
+   "a": true
+  },
+  {
+   "t": "multi",
+   "ref": "19:23",
+   "q": "Peste cine a venit Duhul lui Dumnezeu pe drumul spre Naiot?",
+   "opts": [
+    "Peste Ionatan",
+    "Peste Saul",
+    "Peste Abner"
+   ],
+   "a": [
+    1
    ]
   }
  ]

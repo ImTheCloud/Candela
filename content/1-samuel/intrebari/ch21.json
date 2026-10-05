@@ -136,6 +136,29 @@
    "a": [
     1
    ]
+  },
+  {
+   "t": "one",
+   "ref": "21:1",
+   "q": "Cum a venit David la Ahimelec la Nob?",
+   "opts": [
+    "Cu o oaste",
+    "Singur",
+    "Cu Samuel"
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "21:5",
+   "q": "David i-a spus lui Ahimelec că oamenii lui sunt curați.",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "21:7",
+   "q": "Doeg era un israelit, căpetenia preoților.",
+   "a": false
   }
  ],
  "hard": [
@@ -256,6 +279,25 @@
    "ref": "21:10",
    "q": "David a fugit de Saul chiar în ziua în care a ajuns la Nob.",
    "a": true
+  },
+  {
+   "t": "fill",
+   "ref": "21:12",
+   "q": "David a pus la ___ cuvintele acestea și s-a temut mult de Achiș.",
+   "a": [
+    "inimă"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "21:15",
+   "q": "Ce a întrebat Achiș când l-a văzut pe David făcând pe nebunul?",
+   "opts": [
+    "Vreți să mă omoare?",
+    "Îmi lipsesc oare nebunii?",
+    "Cine este acesta?"
+   ],
+   "a": 1
   }
  ]
 }

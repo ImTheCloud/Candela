@@ -132,6 +132,29 @@
      "Poporul adunat la Saul"
     ]
    ]
+  },
+  {
+   "t": "tf",
+   "ref": "13:3",
+   "q": "Saul a sunat cu trâmbița prin toată țara ca să audă evreii.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "13:4",
+   "q": "Unde a fost adunat poporul la Saul?",
+   "opts": [
+    "La Ghilgal",
+    "La Rama",
+    "La Ierusalim"
+   ],
+   "a": 0
+  },
+  {
+   "t": "tf",
+   "ref": "13:11",
+   "q": "Samuel a venit exact când poporul se aduna lângă Saul.",
+   "a": false
   }
  ],
  "hard": [
@@ -293,6 +316,25 @@
    "ref": "13:23",
    "q": "Nicio ceată de filisteni nu s-a așezat la trecătoarea Micmașului.",
    "a": false
+  },
+  {
+   "t": "one",
+   "ref": "13:19",
+   "q": "Cine împiedica pe evrei să-și facă săbii?",
+   "opts": [
+    "Domnul",
+    "Filistenii",
+    "Amaleciții"
+   ],
+   "a": 1
+  },
+  {
+   "t": "fill",
+   "ref": "13:22",
+   "q": "Doar Saul și fiul său ___ aveau sabie și suliță.",
+   "a": [
+    "Ionatan"
+   ]
   }
  ]
 }

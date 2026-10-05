@@ -122,6 +122,29 @@
     "că filistenii vor ataca"
    ],
    "a": 0
+  },
+  {
+   "t": "one",
+   "ref": "3:1",
+   "q": "Cum erau vedeniile în vremea aceea?",
+   "opts": [
+    "Dese",
+    "Rare și nu erau dese",
+    "Peste tot"
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "3:2",
+   "q": "Eli avea ochii tulburi și nu mai putea să vadă bine.",
+   "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "3:6",
+   "q": "După a doua chemare, Samuel a știut imediat că e Domnul.",
+   "a": false
   }
  ],
  "hard": [
@@ -253,6 +276,28 @@
    "ref": "3:21",
    "q": "Domnul Se descoperea lui Samuel în Silo prin Cuvântul Domnului.",
    "a": true
+  },
+  {
+   "t": "fill",
+   "ref": "3:18",
+   "q": "Samuel i-a istorisit tot, fără să-i ___ nimic.",
+   "a": [
+    "ascundă"
+   ]
+  },
+  {
+   "t": "multi",
+   "ref": "3:19",
+   "q": "Ce făcea Domnul pentru Samuel care creștea?",
+   "opts": [
+    "Era cu el",
+    "L-a făcut preot mare",
+    "N-a lăsat să cadă la pământ niciunul din cuvintele sale"
+   ],
+   "a": [
+    0,
+    2
+   ]
   }
  ]
 }
