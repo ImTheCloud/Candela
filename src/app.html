@@ -879,6 +879,22 @@ function verseHTML(ref){
   
   return out;
 }
+function revealVerse(btn){
+  const wrap = btn.nextElementSibling;
+  if (!wrap) return;
+  btn.style.display = "none";
+  wrap.style.display = "block";
+  const container = wrap.querySelector(".verse-ctx-body");
+  const hl = wrap.querySelector(".verse-target-highlight");
+  if (container && hl) {
+    const scrollIt = (behavior = "auto") => {
+      const top = hl.offsetTop - container.offsetTop - (container.clientHeight / 2) + (hl.clientHeight / 2);
+      container.scrollTo({ top: Math.max(0, top), behavior });
+    };
+    scrollIt("auto");
+    requestAnimationFrame(() => setTimeout(() => scrollIt("smooth"), 40));
+  }
+}
 function dateLabel(ts){ const d = new Date(ts); return d.toLocaleDateString("ro-RO",{day:"numeric",month:"short"}) + ", " + d.toLocaleTimeString("ro-RO",{hour:"2-digit",minute:"2-digit"}); }
 function chaptersLabel(chs){
   if (!chs || !chs.length) return "";
@@ -1666,9 +1682,25 @@ function buildPool(chs, mode){
 }
 function prepare(q){
   const x = {...q};
-  if (q.t === "one"){ const idx = shuffle(q.opts.map((_,i)=>i)); x.opts = idx.map(i=>q.opts[i]); x.a = idx.indexOf(q.a); }
-  if (q.t === "multi"){ const idx = shuffle(q.opts.map((_,i)=>i)); x.opts = idx.map(i=>q.opts[i]); x.a = q.a.map(a=>idx.indexOf(a)).sort((a,b)=>a-b); }
-  if (q.t === "match"){ x.right = shuffle(q.pairs.map((p,i)=>i)); }
+  if (q.t === "one"){
+    const idx = shuffle(q.opts.map((_,i)=>i));
+    x.opts = idx.map(i=>q.opts[i]);
+    x.a = idx.indexOf(q.a);
+  }
+  if (q.t === "multi"){
+    let idx;
+    do { idx = shuffle(q.opts.map((_,i)=>i)); } while (q.opts.length > 1 && idx.every((v, i) => v === i));
+    x.opts = idx.map(i=>q.opts[i]);
+    x.a = q.a.map(a=>idx.indexOf(a)).sort((a,b)=>a-b);
+  }
+  if (q.t === "match"){
+    const n = q.pairs.length;
+    let r;
+    do {
+      r = shuffle(q.pairs.map((p,i)=>i));
+    } while (n > 1 && (r.every((v, i) => v === i) || (n <= 3 ? r.some((v, i) => v === i) : r.filter((v, i) => v === i).length >= 2)));
+    x.right = r;
+  }
   return x;
 }
 /* rough time to answer, by question type and level (seconds), including reading the correction; only an estimate shown before starting, there is no timer */
@@ -2391,15 +2423,39 @@ function buildRoNums() {
 }
 buildRoNums();
 
+function canoGod(s) {
+  return s
+    .replace(/\blui dumnezeu\b/g, "dumnezeului")
+    .replace(/\bal domnului?\b/g, "dumnezeului")
+    .replace(/\ba domnului?\b/g, "dumnezeului")
+    .replace(/\bdomnului?\b/g, "dumnezeului")
+    .replace(/\bdomnul? dumnezeu\b/g, "dumnezeu")
+    .replace(/\bdomnul?\b/g, "dumnezeu")
+    .replace(/\bdomn\b/g, "dumnezeu")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 function tolerantMatch(ans, exp) {
   const clean = s => fold(s).replace(/[.,;:'"!?()\[\]{}„”«»]/g, '');
   const cA = clean(ans), cE = clean(exp);
   if (cA === cE) return true;
   const sA = cA.replace(/[\s\-]/g, ''), sE = cE.replace(/[\s\-]/g, '');
   if (sA === sE) return true;
+
+  // Domnul / Dumnezeu equivalence
+  const gA = canoGod(cA), gE = canoGod(cE);
+  if (gA && gE && gA === gE) return true;
+  if (gA && gE && gA.replace(/[\s\-]/g, '') === gE.replace(/[\s\-]/g, '')) return true;
+
+  // Number words and digits equivalence
   const numA = parseInt(sA, 10), numE = parseInt(sE, 10);
-  if (!isNaN(numA) && numA.toString() === sA && RO_NUM_MAP.has(numA) && RO_NUM_MAP.get(numA).has(sE)) return true;
-  if (!isNaN(numE) && numE.toString() === sE && RO_NUM_MAP.has(numE) && RO_NUM_MAP.get(numE).has(sA)) return true;
+  for (const [n, words] of RO_NUM_MAP.entries()) {
+    const hasA = (!isNaN(numA) && numA.toString() === sA && numA === n) || words.has(sA);
+    const hasB = (!isNaN(numE) && numE.toString() === sE && numE === n) || words.has(sE);
+    if (hasA && hasB) return true;
+  }
+
   const lDist = (a, b) => {
     if (!a.length) return b.length;
     if (!b.length) return a.length;
@@ -2416,6 +2472,7 @@ function tolerantMatch(ans, exp) {
   if (tol > 0) {
     if (lDist(cA, cE) <= tol) return true;
     if (lDist(sA, sE) <= tol) return true;
+    if (gA && gE && (lDist(gA, gE) <= tol || lDist(gA.replace(/[\s\-]/g, ''), gE.replace(/[\s\-]/g, '')) <= tol)) return true;
   }
   return false;
 }
@@ -2446,7 +2503,7 @@ function check(skipped=false){
   const full = r.pts === 1;
   const vHtml = q.ref ? verseHTML(q.ref) : "";
 
-  const revealBtn = `<button class="btn btn-ghost btn-block" style="margin-top:12px; min-height:46px; font-size:14.5px; font-weight:700; border:2px solid var(--line); border-bottom-width:4px;" onclick="this.nextElementSibling.style.display='block'; this.style.display='none'; setTimeout(()=>{ const v = this.nextElementSibling; const hl = v.querySelector('.verse-target-highlight') || v; hl.scrollIntoView({behavior: 'smooth', block: 'center'}); }, 10);">Vezi versetul din Biblie</button>`;
+  const revealBtn = `<button class="btn btn-ghost btn-block" style="margin-top:12px; min-height:46px; font-size:14.5px; font-weight:700; border:2px solid var(--line); border-bottom-width:4px;" onclick="revealVerse(this)">Vezi versetul din Biblie</button>`;
   const ansHtml = !full ? correctLine(q) : "";
   let vHidden = "";
   if (vHtml) {
