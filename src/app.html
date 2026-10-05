@@ -1643,13 +1643,27 @@ function renderBoardNotice(){
   }
 }
 
-async function loadBoard(){
+let _boardLoading = false;
+async function loadBoard(force = false){
   const el = $("#board"); if (!el) return;
   renderBoardNotice();
-  if (S.board) renderBoard(S.board);
-  const list = await store.board();
-  if (list) { S.board = list; renderBoard(list); }
-  else if (!S.board && $("#board")) $("#board").innerHTML = `<div class="empty">Clasament indisponibil.</div>`;
+  if (S.board && !force && !el.querySelector(".brow-l")) renderBoard(S.board);
+  if (_boardLoading) return;
+  _boardLoading = true;
+  try {
+    const list = await store.board();
+    if (list) {
+      const changed = !S.board || JSON.stringify(S.board) !== JSON.stringify(list);
+      S.board = list;
+      if ($("#board") && (changed || force || !$("#board").querySelector(".brow-l"))) {
+        renderBoard(list);
+      }
+    } else if (!S.board && $("#board")) {
+      $("#board").innerHTML = `<div class="empty">Clasament indisponibil.</div>`;
+    }
+  } finally {
+    _boardLoading = false;
+  }
 }
 function renderBoard(list){
   const el = $("#board"); if (!el) return;
@@ -1665,10 +1679,27 @@ function renderBoard(list){
     <span class="avatar sm">${esc(initials(x.name))}</span>
     <div class="who-l"><b class="nm"><span>${esc(x.name)}</span>${mine?"<em>tu</em>":""}</b></div>
     <div class="pts"><b>${ok}</b><small>${ok===1?"punct":"puncte"}</small></div>${CHEV}</button>`; };
+  const prevScroll = el.scrollTop;
   el.innerHTML = note + top.map(row).join("") + (idx >= top.length ? `<div class="gap">···</div>${row(list[idx], idx)}` : "");
   el.querySelectorAll(".brow-l[data-i]").forEach(b => b.onclick = () => { const i = +b.dataset.i, x = list[i]; if (!guest && x.me) openProfile(); else openPublicProfile(x, i); });
-  const mine = el.querySelector(".me"); if (mine && el.classList.contains("scroll")) el.scrollTop = Math.max(0, mine.offsetTop - el.clientHeight/2);
+  if (el.classList.contains("scroll") && prevScroll > 0) el.scrollTop = prevScroll;
+  else {
+    const mine = el.querySelector(".me"); if (mine && el.classList.contains("scroll")) el.scrollTop = Math.max(0, mine.offsetTop - el.clientHeight/2);
+  }
 }
+
+// Auto-refresh leaderboard every 12 seconds when active + on window focus / visibility change
+setInterval(() => {
+  if (!document.hidden && $("#board")) loadBoard();
+}, 12000);
+
+document.addEventListener("visibilitychange", () => {
+  if (!document.hidden && $("#board")) loadBoard();
+});
+
+window.addEventListener("focus", () => {
+  if (!document.hidden && $("#board")) loadBoard();
+});
 
 /* ---------- quiz engine ---------- */
 function buildPool(chs, mode){
