@@ -33,20 +33,18 @@ Deno.serve(async (req) => {
     }
     const { data: profiles, error } = await admin.from("profiles").select("id, name, parent_id, created_at, is_parent, ok_at, hidden").order("created_at", { ascending: false });
     if (error) { console.error(error); return json(500, { error: "server" }); }
+
     const tests: Record<string, number> = {};
-    for (let page = 0; page < 500; page++) {
-      const { data } = await admin.from("results").select("user_id").range(page * 1000, page * 1000 + 999);
-      if (!data || data.length === 0) break;
-      for (const r of data) tests[r.user_id] = (tests[r.user_id] || 0) + 1;
-      if (data.length < 1000) break;
-    }
     const points: Record<string, number> = {};
-    for (let page = 0; page < 500; page++) {
-      const { data } = await admin.from("mastered").select("user_id").range(page * 1000, page * 1000 + 999);
-      if (!data || data.length === 0) break;
-      for (const m of data) points[m.user_id] = (points[m.user_id] || 0) + 1;
-      if (data.length < 1000) break;
-    }
+    
+    // Fetch counts in parallel for all profiles
+    await Promise.all((profiles || []).map(async (p) => {
+      const p1 = admin.from("results").select("user_id", { count: "exact", head: true }).eq("user_id", p.id);
+      const p2 = admin.from("mastered").select("user_id", { count: "exact", head: true }).eq("user_id", p.id);
+      const [r, m] = await Promise.all([p1, p2]);
+      tests[p.id] = r.count || 0;
+      points[p.id] = m.count || 0;
+    }));
     const names: Record<string, string> = Object.fromEntries((profiles || []).map(p => [p.id, p.name]));
     const users = (profiles || []).map(p => {
       const e = emails[p.id] || "";
