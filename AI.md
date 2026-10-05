@@ -53,3 +53,8 @@ Toujours inclure la clé `"ref"` (ex: `"14:24"`) pour lier la question au verset
 *   Garder l'UI légère et "premium" avec des coins arrondis, des ombres douces et des micro-animations.
 
 En suivant ces règles, tu pourras ajouter des fonctionnalités et corriger des bugs très efficacement sur ce projet !
+
+## 9. 🧹 Propreté du Projet (Clean Code & Workspace)
+*   **Nettoyage des fichiers temporaires** : Si tu as besoin de créer des scripts jetables (ex: des scripts Python ou JS pour analyser ou modifier en masse des fichiers JSON) dans le dossier `scratch/`, **tu DOIS impérativement les supprimer** une fois ta tâche terminée. 
+*   Seuls les scripts vitaux (`build.js`, `serve.js`) doivent rester dans le dossier `scratch/`.
+*   Le code ajouté doit être concis et propre, sans code mort ni commentaires inutiles. Garde toujours l'espace de travail intact.
