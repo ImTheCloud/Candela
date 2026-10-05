@@ -56,7 +56,8 @@ p{margin:0}
 .view:has(.qtop){animation:none!important}
 
 /* Buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:2px solid transparent;border-radius:16px;padding:14px 22px;font-weight:700;font-size:16px;text-transform:uppercase;letter-spacing:0.04em;transition:all .15s ease;min-height:50px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:2px solid transparent;border-radius:16px;padding:14px 22px;font-weight:700;font-size:16px;text-transform:uppercase;letter-spacing:0.04em;transition:all .15s ease;min-height:50px border-bottom-width:4px!important;}
+.btn:active:not(:disabled){border-bottom-width:0px!important;transform:translateY(4px)!important;box-shadow:none!important;}
 .btn:active:not(:disabled){transform:translateY(4px);box-shadow:0 0px 0 transparent !important;}
 .btn-primary{background:var(--ink);color:var(--bg);box-shadow:0 4px 0 var(--ink-2)}
 @media (hover: hover) and (pointer: fine){.btn-primary:hover{filter:brightness(1.1)}}
@@ -190,7 +191,8 @@ p{margin:0}
 .guest-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
 .guest-btns .btn{white-space:nowrap;padding-inline:12px}
 .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px}
-.tile{position:relative;aspect-ratio:1;max-width:100%;border:1.5px solid var(--line);background:var(--surface);border-radius:14px;display:grid;place-items:center;padding:0;transition:transform .15s, border-color .2s, background .2s}
+.tile{position:relative;aspect-ratio:1;max-width:100%;border:1.5px solid var(--line);background:var(--surface);border-radius:14px;display:grid;place-items:center;padding:0;transition:transform .15s, border-color .2s, background .2s border-bottom-width:4px!important;}
+.tile:active{border-bottom-width:1.5px!important;transform:translateY(2.5px)!important;}
 .tile:active{transform:scale(.94)}
 .tile svg{position:absolute;inset:5px;width:calc(100% - 10px);height:calc(100% - 10px)}
 .tile-sc{position:absolute;bottom:4px;left:0;right:0;text-align:center;font-size:11.5px;font-weight:600;color:var(--oil-ink);font-family:var(--f-mono);letter-spacing:0.02em}
@@ -279,8 +281,9 @@ html:has(.sheet-bg),html:has(.modal-bg),body:has(.sheet-bg),body:has(.modal-bg){
 .view:has(.qtop){display:flex;flex-direction:column;min-height:calc(100dvh - 36px);min-height:calc(var(--vvh,100dvh) - 36px);max-width:640px;margin:0 auto}
 .qtop{flex:none;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;margin-bottom:12px}
 .icon-btn{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--line);background:transparent;display:grid;place-items:center;padding:0}
-.bar{height:6px;background:var(--surface-2);border-radius:999px;overflow:hidden}
-.bar i{display:block;height:100%;background:var(--oil);border-radius:999px;transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.bar{height:16px;background:var(--surface-2);border-radius:999px;position:relative;}
+.bar i{position:absolute;left:0;top:0;bottom:0;background:var(--ok);border-radius:999px;transition:width .5s cubic-bezier(.2,.8,.2,1);min-width:16px;}
+.bar i::after{content:"";position:absolute;top:4px;left:6px;right:6px;height:4px;background:rgba(255,255,255,0.35);border-radius:999px;}
 .qcount{font-family:var(--f-mono);font-size:13px;color:var(--ink-2);font-variant-numeric:tabular-nums}
 #qslot{flex:1;display:flex;flex-direction:column;align-items:stretch;min-height:0}
 body.quiz-fixed #qslot{justify-content:center}
@@ -412,7 +415,18 @@ body.ans-no .qcard .opt:not(.correct):not(.wrong) .indicator-check{background:tr
 .verse-target-badge{display:flex;align-items:center;gap:6px}
 .vt-pill{font-family:var(--f-mono);font-size:11.5px;font-weight:700;letter-spacing:.03em;color:var(--oil-ink);background:var(--oil-soft);padding:2px 8px;border-radius:999px;text-transform:uppercase}
 .verse-target-text{font-family:var(--f-bible);font-size:16.5px;line-height:1.6;color:var(--ink);font-weight:500}
-.qactions{display:flex;gap:10px;margin-top:16px;width:100%;box-sizing:border-box}
+.qactions{display:flex;gap:10px;margin-top:16px;width:100%;box-sizing:border-box;}
+.quiz-banner{position:fixed;left:0;right:0;bottom:0;z-index:20;padding:24px 16px max(16px, env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;gap:16px;animation:bannerUp 0.35s cubic-bezier(0.2,0.8,0.2,1) forwards;box-shadow:0 -10px 40px rgba(0,0,0,0.1);max-width:640px;margin:0 auto;}
+@keyframes bannerUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+.quiz-banner.ok{background:var(--ok-soft);border-top:2px solid var(--ok);color:var(--ok);}
+.quiz-banner.no{background:var(--bad-soft);border-top:2px solid var(--bad);color:var(--bad);}
+.quiz-banner-top{display:flex;align-items:center;gap:12px;font-weight:800;font-size:24px;}
+.quiz-banner-icon{width:40px;height:40px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:24px;animation:pop 0.45s cubic-bezier(0.3,1.6,0.5,1);}
+.quiz-banner .btn{width:100%;border:none;font-size:18px;padding:16px;border-radius:16px;text-transform:uppercase;font-weight:800;}
+.quiz-banner.ok .btn{background:var(--ok);color:#fff;box-shadow:0 4px 0 color-mix(in srgb,var(--ok) 60%,#000);}
+.quiz-banner.no .btn{background:var(--bad);color:#fff;box-shadow:0 4px 0 color-mix(in srgb,var(--bad) 60%,#000);}
+body:has(.quiz-banner) .qactions{display:none!important;}
+body.quiz-fixed .qcard{padding-bottom:140px!important;}
 .qactions .btn{flex:1;min-height:46px;font-size:14.5px;box-sizing:border-box}
 @media (max-width:959px){
   .wrap:has(.qtop){padding-block:14px calc(80px + env(safe-area-inset-bottom,0px))}
@@ -452,7 +466,7 @@ body.quiz-fixed .wrap{overflow:hidden!important;overscroll-behavior:none!importa
 .rep-lvl-sep{width:1px;height:16px;background:var(--line);flex:none}
 .bars{display:grid;gap:10px}
 .brow{display:grid;grid-template-columns:9.5em 1fr 3.2em;align-items:center;gap:10px;font-size:14px}
-.brow .bar{height:8px}
+.brow .bar{height:10px; overflow:hidden;}
 .brow .bar i{background:var(--cedar)}
 .brow span:last-child{text-align:right;font-family:var(--f-mono);font-size:12.5px;color:var(--ink-2);font-variant-numeric:tabular-nums}
 .mistake{background:var(--surface);border-radius:18px;padding:18px;display:grid;gap:12px;box-shadow:var(--shadow)}
@@ -2899,7 +2913,7 @@ function renderReport(r, o = {}){
       <div><span class="eyebrow" style="margin-bottom:0;">Raport · ${esc(chaptersLabel(chs))} · ${modeBadgeText}${r.retry?" · reluare greșeli":""}</span></div>
     </div>
   <section class="report-head">
-    <div class="ring"><div class="sparks" id="sparks"></div>
+    <div class="ring" id="resultRing"><div class="sparks" id="sparks"></div>
       <svg viewBox="0 0 120 120" aria-hidden="true"><circle cx="60" cy="60" r="52" fill="none" stroke="var(--surface-2)" stroke-width="9"/><circle id="ringArc" cx="60" cy="60" r="52" fill="none" stroke="var(--oil)" stroke-width="9" stroke-linecap="round" stroke-dasharray="0 400" style="transition:stroke-dasharray 1.4s cubic-bezier(.2,.8,.2,1)"/></svg>
       <div class="val"><b id="pctNum">0%</b><small>${isExam ? `${sc} din ${n} corecte` : `${sc} din ${n} puncte`}</small></div></div>
     <h2 class="verdict">${verdict}</h2>
