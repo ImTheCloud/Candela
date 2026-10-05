@@ -1604,7 +1604,7 @@ function viewHome(){
     </div>
   </aside>
 
-  ${HOSTED ? `<section class="h-board"><div class="section-h"><h3>Clasament</h3><button class="link" id="allBoard" type="button" style="display:none">Vezi tot</button></div><div id="boardNotice"></div><div id="board" class="board"><div class="empty">Se încarcă clasamentul…</div></div></section>` : ""}
+  ${HOSTED ? `<section class="h-board"><div class="section-h"><h3>Clasament</h3></div><div id="boardNotice"></div><div id="board" class="board"><div class="empty">Se încarcă clasamentul…</div></div></section>` : ""}
 
   <section class="h-hist">
     <div class="section-h"><h3>Istoric</h3></div>
@@ -1639,7 +1639,7 @@ function viewHome(){
   if ($("#btnExam")) $("#btnExam").onclick = () => openExamOptions();
   app.querySelectorAll(".hrow[data-at]").forEach(b => b.onclick = () => { S.homeScroll = window.scrollY; openPastReport(+b.dataset.at); });
   if ($("#allHist")) $("#allHist").onclick = viewHistory;
-  if ($("#allBoard")) $("#allBoard").onclick = viewBoard;
+
   app.querySelectorAll("[data-play]").forEach(b => b.onclick = () => switchPlayer(b.dataset.play));
   if ($("#resume")){ $("#resume").onclick = resumeQuiz; $("#resumeX").onclick = () => { dropQuiz(); document.querySelectorAll(".resume-bar").forEach(el => el.remove()); }; }
   update();
@@ -1696,7 +1696,7 @@ function renderBoard(list){
   const idx = guest ? -1 : list.findIndex(x => x.me);
   const isFull = el.classList.contains("scroll");
   const top = isFull ? list : list.slice(0, 10);
-  const btn = $("#allBoard"); if (btn) btn.style.display = list.length > 10 ? "" : "none";
+
 
   const row = (x, i) => {
     const mine = !guest && x.me, ok = x.ok ?? 0;
@@ -2761,17 +2761,16 @@ function viewBoard(){
   try {
     history.pushState({ view: "board" }, "");
     const onPop = () => {
-      window.removeEventListener("popstate", onPop);
       if ($(".hist-page") && $("#board") && $("#board").classList.contains("scroll")) {
         goHome();
       }
     };
     window.addEventListener("popstate", onPop, { once: true });
     $("#hBack").onclick = () => {
-      window.removeEventListener("popstate", onPop);
       if (history.state && history.state.view === "board") {
         history.back();
       } else {
+        window.removeEventListener("popstate", onPop);
         goHome();
       }
     };
@@ -2812,17 +2811,16 @@ function viewHistory(){
       history.pushState({ view: "history" }, "");
     }
     const onPop = () => {
-      window.removeEventListener("popstate", onPop);
       if ($(".hist-page") && !$("#board")) {
         goHome();
       }
     };
     window.addEventListener("popstate", onPop, { once: true });
     $("#hBack").onclick = () => {
-      window.removeEventListener("popstate", onPop);
       if (history.state && history.state.view === "history") {
         history.back();
       } else {
+        window.removeEventListener("popstate", onPop);
         goHome();
       }
     };
