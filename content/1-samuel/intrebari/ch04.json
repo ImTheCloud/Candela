@@ -126,12 +126,6 @@
    ]
   },
   {
-   "t": "tf",
-   "ref": "4:3",
-   "q": "Bătrânii lui Israel au știut din prima că Domnul i-a lăsat să fie bătuți.",
-   "a": true
-  },
-  {
    "t": "one",
    "ref": "4:5",
    "q": "Cum au reacționat israeliții la venirea chivotului?",
@@ -141,12 +135,6 @@
     "Au fugit"
    ],
    "a": 1
-  },
-  {
-   "t": "tf",
-   "ref": "4:7",
-   "q": "Filistenii au zis că nu a mai fost așa ceva până atunci.",
-   "a": true
   }
  ],
  "hard": [
@@ -217,23 +205,15 @@
    "a": 0
   },
   {
-   "t": "multi",
+   "t": "one",
    "ref": "4:12",
-   "q": "Ce se spune despre omul care a adus vestea înfrângerii la Silo?",
+   "q": "Din ce seminție se trăgea omul care a alergat din tabăra de bătaie ca să dea vestea în cetate că Israel a fost înfrânt și chivotul luat?",
    "opts": [
-    "era din Beniamin",
-    "era din Iuda",
-    "a venit a doua zi"
+    "din Iuda",
+    "din Beniamin",
+    "din Efraim"
    ],
-   "a": [
-    0
-   ]
-  },
-  {
-   "t": "tf",
-   "ref": "4:13",
-   "q": "Eli aștepta pe un scaun lângă drum, pentru că avea inima neliniștită din pricina chivotului.",
-   "a": true
+   "a": 1
   },
   {
    "t": "one",
@@ -316,6 +296,45 @@
     "Roagă-te!"
    ],
    "a": 0
+  },
+  {
+   "t": "multi",
+   "ref": "4:13",
+   "q": "Unde era Eli când a venit omul din seminția lui Beniamin ca să aducă vestea?",
+   "opts": [
+    "pe un scaun",
+    "lângă drum",
+    "lângă ușa Templului"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "t": "multi",
+   "ref": "4:12",
+   "q": "Cum arăta înfățișarea omului care a dat vestea în Israel că filistenii au biruit?",
+   "opts": [
+    "avea hainele sfâșiate",
+    "capul acoperit cu țărână",
+    "fața îi era istovită"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "4:10",
+   "q": "În înfrângerea mare a lui Israel de către filisteni, cei 30.000 de oameni care au murit cu ce se deplasau?",
+   "opts": [
+    "cu calul",
+    "cu carul",
+    "pe jos"
+   ],
+   "a": 2
   }
  ]
 }
