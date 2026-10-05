@@ -33,12 +33,20 @@ Deno.serve(async (req) => {
     }
     const { data: profiles, error } = await admin.from("profiles").select("id, name, parent_id, created_at, is_parent, ok_at, hidden").order("created_at", { ascending: false });
     if (error) { console.error(error); return json(500, { error: "server" }); }
-    const { data: counts } = await admin.from("results").select("user_id");
     const tests: Record<string, number> = {};
-    for (const r of counts || []) tests[r.user_id] = (tests[r.user_id] || 0) + 1;
-    const { data: mastered } = await admin.from("mastered").select("user_id");
+    for (let page = 0; page < 500; page++) {
+      const { data } = await admin.from("results").select("user_id").range(page * 1000, page * 1000 + 999);
+      if (!data || data.length === 0) break;
+      for (const r of data) tests[r.user_id] = (tests[r.user_id] || 0) + 1;
+      if (data.length < 1000) break;
+    }
     const points: Record<string, number> = {};
-    for (const m of mastered || []) points[m.user_id] = (points[m.user_id] || 0) + 1;
+    for (let page = 0; page < 500; page++) {
+      const { data } = await admin.from("mastered").select("user_id").range(page * 1000, page * 1000 + 999);
+      if (!data || data.length === 0) break;
+      for (const m of data) points[m.user_id] = (points[m.user_id] || 0) + 1;
+      if (data.length < 1000) break;
+    }
     const names: Record<string, string> = Object.fromEntries((profiles || []).map(p => [p.id, p.name]));
     const users = (profiles || []).map(p => {
       const e = emails[p.id] || "";
