@@ -494,7 +494,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .tile .check::after{content:"";position:absolute;left:5px;top:2.5px;width:4px;height:8px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
 .board{display:grid;gap:2px;background:var(--surface);border-radius:18px;padding:8px;box-shadow:var(--shadow)}
 .brow-l{width:100%;border:0;background:none;text-align:left;font:inherit;color:var(--ink);cursor:pointer;display:grid;grid-template-columns:1.6rem auto minmax(0,1fr) auto auto;align-items:center;gap:10px;padding:7px 10px;border-radius:12px}
-.brow-l.me{background:var(--oil-soft)}
+.brow-l.me{background:var(--oil-soft);box-shadow:inset 0 0 0 1px color-mix(in srgb, var(--oil) 32%, transparent)}
 .brow-l .pts .of{font-size:14px;color:var(--ink-2)}
 .brow-l .rank{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;justify-self:center;font-family:var(--f-display);font-size:16px;font-weight:700;color:var(--ink-2);font-variant-numeric:tabular-nums}
 .brow-l .rank.r1,.brow-l .rank.r2,.brow-l .rank.r3{color:#fff;font-size:15px}
@@ -512,7 +512,13 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .avatar.sm{width:30px;height:30px;font-size:12px}
 .who-l{min-width:0}.who-l b{display:block;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.who-l em{font-style:normal;color:var(--oil-ink);font-weight:500}
 .who-l small{color:var(--ink-2);font-size:12.5px}
-.board .gap{text-align:center;color:var(--ink-2);letter-spacing:.3em}
+.board-gap{display:flex;align-items:center;gap:10px;width:100%;padding:8px 6px;margin:2px 0;background:none;border:0;cursor:pointer;font:inherit;color:var(--ink-2);transition:all .18s ease}
+.board-gap:hover{color:var(--ink)}
+.board-gap .bgap-line{flex:1;height:1px;background:var(--line);opacity:.8;border-radius:1px}
+.board-gap .bgap-pill{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;letter-spacing:.02em;background:var(--bg);border:1px dashed var(--line);color:var(--ink-2);padding:4px 12px;border-radius:999px;white-space:nowrap;transition:all .18s ease}
+.board-gap:hover .bgap-pill{border-color:var(--oil);border-style:solid;color:var(--oil-ink);background:var(--oil-soft);transform:scale(1.02)}
+.board-gap:hover .bgap-line{background:var(--oil);opacity:.4}
+.board-gap:active .bgap-pill{transform:scale(.98)}
 .board .empty{border:0}
 .board-guest-card{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:9px 12px 9px 14px;margin-bottom:12px;box-shadow:0 1px 3px rgb(58 39 27 / .04)}
 .bgc-info{display:flex;flex-direction:column;gap:1px;min-width:0}
@@ -1680,11 +1686,20 @@ function renderBoard(list){
     <div class="who-l"><b class="nm"><span>${esc(x.name)}</span>${mine?"<em>tu</em>":""}</b></div>
     <div class="pts"><b>${ok}</b><small>${ok===1?"punct":"puncte"}</small></div>${CHEV}</button>`; };
   const prevScroll = el.scrollTop;
-  el.innerHTML = note + top.map(row).join("") + (idx >= top.length ? `<div class="gap">···</div>${row(list[idx], idx)}` : "");
+  const diff = idx - top.length;
+  const gapHtml = (idx >= top.length) ? (
+    (diff > 0 ? `<button type="button" class="board-gap" onclick="viewBoard()" aria-label="Vezi toți cei ${diff} jucători"><span class="bgap-line"></span><span class="bgap-pill">··· încă ${diff} ${diff === 1 ? "jucător" : "jucători"} · Vezi tot ···</span><span class="bgap-line"></span></button>` : "") + row(list[idx], idx)
+  ) : "";
+  el.innerHTML = note + top.map(row).join("") + gapHtml;
   el.querySelectorAll(".brow-l[data-i]").forEach(b => b.onclick = () => { const i = +b.dataset.i, x = list[i]; if (!guest && x.me) openProfile(); else openPublicProfile(x, i); });
   if (el.classList.contains("scroll") && prevScroll > 0) el.scrollTop = prevScroll;
   else {
-    const mine = el.querySelector(".me"); if (mine && el.classList.contains("scroll")) el.scrollTop = Math.max(0, mine.offsetTop - el.clientHeight/2);
+    const mine = el.querySelector(".me");
+    if (mine && el.classList.contains("scroll")) {
+      setTimeout(() => {
+        try { mine.scrollIntoView({ block: "center", behavior: "smooth" }); } catch(_) { el.scrollTop = Math.max(0, mine.offsetTop - el.clientHeight/2); }
+      }, 50);
+    }
   }
 }
 
