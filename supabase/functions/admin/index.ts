@@ -31,15 +31,27 @@ Deno.serve(async (req) => {
       for (const u of data.users) emails[u.id] = u.email || "";
       if (data.users.length < 1000) break;
     }
-    const { data: profiles, error } = await admin.from("profiles").select("id, name, parent_id, created_at").order("created_at", { ascending: false });
+    const { data: profiles, error } = await admin.from("profiles").select("id, name, parent_id, created_at, is_parent, ok_at, hidden").order("created_at", { ascending: false });
     if (error) { console.error(error); return json(500, { error: "server" }); }
     const { data: counts } = await admin.from("results").select("user_id");
     const tests: Record<string, number> = {};
     for (const r of counts || []) tests[r.user_id] = (tests[r.user_id] || 0) + 1;
+    const { data: mastered } = await admin.from("mastered").select("user_id");
+    const points: Record<string, number> = {};
+    for (const m of mastered || []) points[m.user_id] = (points[m.user_id] || 0) + 1;
     const names: Record<string, string> = Object.fromEntries((profiles || []).map(p => [p.id, p.name]));
     const users = (profiles || []).map(p => {
       const e = emails[p.id] || "";
-      return { id: p.id, name: p.name, email: e.endsWith("@candela.invalid") ? "" : e, parent: p.parent_id ? names[p.parent_id] || "" : "", tests: tests[p.id] || 0, created: p.created_at, me: p.id === who.user.id };
+      return { 
+        id: p.id, name: p.name, 
+        email: e.endsWith("@candela.invalid") ? "" : e, 
+        parent: p.parent_id ? names[p.parent_id] || "" : "", 
+        parent_id: p.parent_id || "",
+        is_parent: p.is_parent, hidden: p.hidden,
+        tests: tests[p.id] || 0, points: points[p.id] || 0,
+        created: p.created_at, last_active: p.ok_at || p.created_at,
+        me: p.id === who.user.id 
+      };
     });
     return json(200, { ok: true, users });
   }
