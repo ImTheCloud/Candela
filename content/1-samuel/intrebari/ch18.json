@@ -147,6 +147,29 @@
    "ref": "18:30",
    "q": "David avea mai multă izbândă în lupta cu filistenii decât toți slujitorii lui Saul.",
    "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "18:3",
+   "q": "Ionatan a făcut legământ cu David, pentru că îl iubea ca pe sufletul lui.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "18:9",
+   "q": "Cum îl privea Saul pe David din ziua aceea?",
+   "opts": [
+    "Cu ochi răi",
+    "Cu bucurie",
+    "Cu mândrie"
+   ],
+   "a": 0
+  },
+  {
+   "t": "tf",
+   "ref": "18:12",
+   "q": "Saul nu se temea de David, pentru că era mai puternic ca el.",
+   "a": false
   }
  ],
  "hard": [
@@ -291,6 +314,25 @@
    "a": [
     "vrăjmaș"
    ]
+  },
+  {
+   "t": "fill",
+   "ref": "18:14",
+   "q": "David propășea în toate căile lui, și ___ era cu el.",
+   "a": [
+    "Domnul"
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "18:22",
+   "q": "Ce le-a poruncit Saul slujitorilor săi să-i spună lui David în taină?",
+   "opts": [
+    "Să fugă",
+    "Că împăratul e binevoitor și să-i fie ginere",
+    "Să renunțe la Mical"
+   ],
+   "a": 1
   }
  ]
 }

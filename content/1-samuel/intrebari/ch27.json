@@ -72,6 +72,29 @@
    "ref": "27:3",
    "q": "David avea cu el, la Gat, familiile oamenilor lui.",
    "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "27:1",
+   "q": "David s-a gândit în inima lui că va pieri într-o zi ucis de mâna lui Saul.",
+   "a": true
+  },
+  {
+   "t": "one",
+   "ref": "27:3",
+   "q": "Câte neveste avea David cu el la Gat?",
+   "opts": [
+    "Una",
+    "Două",
+    "Trei"
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "27:4",
+   "q": "Când Saul a aflat că David a fugit la Gat, a continuat să-l caute.",
+   "a": false
   }
  ],
  "hard": [
@@ -155,6 +178,23 @@
    "t": "tf",
    "ref": "27:10",
    "q": "David îi spunea lui Achiș că năvălise spre miazăzi de Beniamin.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "27:6",
+   "q": "Cărui regat i-a aparținut Țiclagul de atunci încolo?",
+   "opts": [
+    "Lui Iuda",
+    "Lui Israel",
+    "Filistenilor"
+   ],
+   "a": 0
+  },
+  {
+   "t": "tf",
+   "ref": "27:11",
+   "q": "David aducea bărbați și femei vii la Gat ca să fie robi.",
    "a": false
   }
  ]

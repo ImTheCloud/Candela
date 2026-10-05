@@ -122,6 +122,29 @@
    "ref": "7:15",
    "q": "Samuel a fost judecător în Israel în tot timpul vieții lui.",
    "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "7:2",
+   "q": "Chivotul a stat în Chiriat-Iearim doar zece ani.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "7:3",
+   "q": "Pe cine le-a cerut Samuel israeliților să slujească?",
+   "opts": [
+    "Numai Domnului",
+    "Lui Dumnezeu și lui Baal",
+    "Îngerilor"
+   ],
+   "a": 0
+  },
+  {
+   "t": "tf",
+   "ref": "7:8",
+   "q": "Israeliții i-au cerut lui Samuel să nu înceteze să strige către Domnul.",
+   "a": true
   }
  ],
  "hard": [
@@ -228,6 +251,29 @@
    ],
    "a": [
     0,
+    2
+   ]
+  },
+  {
+   "t": "fill",
+   "ref": "7:13",
+   "q": "Mâna Domnului a fost împotriva filistenilor în tot timpul vieții lui ___.",
+   "a": [
+    "Samuel"
+   ]
+  },
+  {
+   "t": "multi",
+   "ref": "7:16",
+   "q": "În ce cetăți se ducea Samuel în fiecare an să judece pe Israel?",
+   "opts": [
+    "Betel",
+    "Ghilgal",
+    "Mițpa"
+   ],
+   "a": [
+    0,
+    1,
     2
    ]
   }

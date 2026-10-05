@@ -135,6 +135,31 @@
      "a chemat poporul la Ghilgal"
     ]
    ]
+  },
+  {
+   "t": "tf",
+   "ref": "11:3",
+   "q": "Bătrânii din Iabes au cerut un răgaz de zece zile.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "11:5",
+   "q": "De unde se întorcea Saul când a auzit de Iabes?",
+   "opts": [
+    "De la luptă",
+    "De la câmp, în urma boilor",
+    "Din călătorie"
+   ],
+   "a": 1
+  },
+  {
+   "t": "fill",
+   "ref": "11:6",
+   "q": "Cum a auzit Saul aceste lucruri, ___ lui Dumnezeu a venit peste el.",
+   "a": [
+    "Duhul"
+   ]
   }
  ],
  "hard": [
@@ -244,6 +269,23 @@
    "ref": "11:15",
    "q": "La Ghilgal au adus jertfe de mulțumire înaintea Domnului.",
    "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "11:11",
+   "q": "Saul a pătruns în tabăra amoniților în straja nopții.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "11:14",
+   "q": "Unde a chemat Samuel poporul ca să întărească împărăția?",
+   "opts": [
+    "La Ierusalim",
+    "La Ghilgal",
+    "La Rama"
+   ],
+   "a": 1
   }
  ]
 }

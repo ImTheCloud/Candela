@@ -114,6 +114,34 @@
     "Să aștepte douăzeci de ani"
    ],
    "a": 1
+  },
+  {
+   "t": "one",
+   "ref": "8:1",
+   "q": "Când a pus Samuel pe fiii săi judecători?",
+   "opts": [
+    "Când a îmbătrânit",
+    "Când era tânăr",
+    "După biruința de la Mițpa"
+   ],
+   "a": 0
+  },
+  {
+   "t": "tf",
+   "ref": "8:3",
+   "q": "Fiii lui Samuel au călcat pe urmele lui și au fost drepți.",
+   "a": false
+  },
+  {
+   "t": "one",
+   "ref": "8:7",
+   "q": "Pe cine a zis Domnul că a lepădat poporul?",
+   "opts": [
+    "Pe Samuel",
+    "Pe Domnul",
+    "Pe judecători"
+   ],
+   "a": 1
   }
  ],
  "hard": [
@@ -226,6 +254,20 @@
    "ref": "8:21",
    "q": "Samuel a spus în auzul Domnului toate cuvintele poporului.",
    "a": true
+  },
+  {
+   "t": "tf",
+   "ref": "8:10",
+   "q": "Samuel a ascuns cuvintele Domnului de popor.",
+   "a": false
+  },
+  {
+   "t": "fill",
+   "ref": "8:22",
+   "q": "Samuel a zis bărbaților lui Israel: „Duceți-vă fiecare în ___ lui.”",
+   "a": [
+    "cetatea"
+   ]
   }
  ]
 }

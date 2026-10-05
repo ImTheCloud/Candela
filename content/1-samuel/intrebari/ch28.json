@@ -136,6 +136,31 @@
    "ref": "28:23",
    "q": "Saul a mâncat imediat, fără să fie rugat.",
    "a": false
+  },
+  {
+   "t": "one",
+   "ref": "28:1",
+   "q": "Cine i-a spus lui David: „Vei veni cu mine la oștire”?",
+   "opts": [
+    "Saul",
+    "Achiș",
+    "Ionatan"
+   ],
+   "a": 1
+  },
+  {
+   "t": "tf",
+   "ref": "28:4",
+   "q": "Saul a strâns tot Israelul și a tăbărât la Ghilboa.",
+   "a": true
+  },
+  {
+   "t": "fill",
+   "ref": "28:12",
+   "q": "Când a văzut pe Samuel, femeia a scos un ___ mare.",
+   "a": [
+    "țipăt"
+   ]
   }
  ],
  "hard": [
@@ -266,6 +291,31 @@
      "Slujitorii",
      "au stăruit ca Saul să mănânce"
     ]
+   ]
+  },
+  {
+   "t": "one",
+   "ref": "28:15",
+   "q": "De ce l-a chemat Saul pe Samuel?",
+   "opts": [
+    "Ca să-l certe",
+    "Să-i arate ce să facă",
+    "Să se roage pentru el"
+   ],
+   "a": 1
+  },
+  {
+   "t": "multi",
+   "ref": "28:23",
+   "q": "Cine a stăruit de Saul să mănânce?",
+   "opts": [
+    "Slujitorii lui",
+    "Ionatan",
+    "Femeia"
+   ],
+   "a": [
+    0,
+    2
    ]
   }
  ]
