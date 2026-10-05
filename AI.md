@@ -15,6 +15,7 @@ Candela est une application web (PWA) d'étude biblique interactive et de quiz, 
 *   `content/1-samuel/intrebari/ch[01-31].json` : Ces fichiers contiennent toutes les questions de quiz.
 *   `index.html` : C'est le fichier généré pour la production. **NE MODIFIE JAMAIS CE FICHIER DIRECTEMENT.**
 *   `scratch/build.js` : Le script Node.js maison qui compile `src/app.html` et les fichiers JSON pour générer le `index.html` final.
+*   `scratch/serve.js` : Le serveur HTTP local léger sans dépendance pour tester l'application en local.
 
 ## 4. 🚨 LA RÈGLE D'OR (Processus de Build)
 Puisqu'il n'y a pas de bundler (comme Vite ou Webpack), le processus de compilation est manuel via un script Node.
@@ -22,13 +23,23 @@ Puisqu'il n'y a pas de bundler (comme Vite ou Webpack), le processus de compilat
 ```bash
 node scratch/build.js
 ```
+*(ou `npm run build`)*
 
-## 5. 🧠 Gestion de l'État (State Management)
+## 5. 🚀 Démarrer le Serveur Local (Localhost)
+Pour tester l'application directement dans le navigateur en local avec la bonne gestion des fichiers statiques et MIME types :
+```bash
+node scratch/serve.js
+```
+*(ou `npm run serve`, ou `npm run dev` pour compiler puis lancer)*
+
+L'application est ensuite accessible sur : **http://localhost:8080**
+
+## 6. 🧠 Gestion de l'État (State Management)
 Toute la logique client repose sur un objet JavaScript global appelé `S` (défini dans `src/app.html`).
 *   `S.player` : Contient les informations de l'utilisateur connecté, son historique (`S.player.history`), les questions réussies (`S.player.ok`), et les chapitres tentés (`S.player.chap`).
 *   Le DOM est mis à jour manuellement par des fonctions utilitaires (comme `render()`, `show()`, etc.) en fonction des changements apportés à l'objet `S`.
 
-## 6. 📝 Format des Questions (JSON)
+## 7. 📝 Format des Questions (JSON)
 Les questions dans `content/1-samuel/intrebari/*.json` suivent un schéma strict. Voici les types supportés (`t`) :
 *   `one` : Choix unique. `a` correspond à l'index de la bonne réponse dans le tableau `opts`.
 *   `multi` : Choix multiples. `a` est un tableau contenant les index des bonnes réponses.
@@ -36,7 +47,7 @@ Les questions dans `content/1-samuel/intrebari/*.json` suivent un schéma strict
 *   `fill` : Texte à trous. La question (`q`) contient `___` (3 tirets du bas), et `a` est un tableau de strings contenant les mots corrects.
 Toujours inclure la clé `"ref"` (ex: `"14:24"`) pour lier la question au verset biblique correspondant.
 
-## 7. 🎨 Règles de Style
+## 8. 🎨 Règles de Style
 *   Utiliser uniquement le CSS natif dans `src/app.html`.
 *   Respecter les variables CSS existantes (ex: `--bg`, `--fg`, `--primary`) pour la cohérence visuelle et le support des modes (clair/sombre).
 *   Garder l'UI légère et "premium" avec des coins arrondis, des ombres douces et des micro-animations.

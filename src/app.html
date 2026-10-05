@@ -248,8 +248,15 @@ html:has(.sheet-bg),html:has(.modal-bg),body:has(.sheet-bg),body:has(.modal-bg){
 }
 .startbar{position:sticky;bottom:0;padding-block:14px calc(14px + env(safe-area-inset-bottom,0px));background:linear-gradient(to top,var(--bg) 70%,transparent);margin-top:18px;z-index:5}
 .history{display:grid;gap:6px}
-.hrow{width:100%;border:0;text-align:left;color:var(--ink);font:inherit;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;gap:10px;background:var(--surface);border-radius:12px;padding:9px 12px;outline:none;-webkit-tap-highlight-color:transparent}
-.hrow:focus,.hrow:focus-visible,.hrow:active{outline:none!important}
+.history .board-footer-btn{margin-top:2px}
+.hrow{width:100%;border:0;text-align:left;color:var(--ink);font:inherit;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;gap:10px;background:var(--surface);border-radius:12px;padding:9px 12px;outline:none;-webkit-tap-highlight-color:transparent;transition:all .18s ease}
+@media (hover: hover) and (pointer: fine){
+  .hrow:hover{background:var(--oil-soft);transform:translateY(-1px)}
+  .hrow:hover .chev{color:var(--oil);opacity:1;transform:translateX(2px)}
+}
+.hrow:active{transform:scale(.99)}
+.hrow .chev{transition:transform .18s ease, color .18s ease, opacity .18s ease}
+.hrow:focus,.hrow:focus-visible{outline:none!important}
 .hrow .chev,.brow-l .chev{color:var(--ink-2);opacity:.6}
 .hist-page{display:grid;gap:18px}
 .hgroup{display:grid;gap:8px}
@@ -512,14 +519,20 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .avatar.sm{width:30px;height:30px;font-size:12px}
 .who-l{min-width:0}.who-l b{display:block;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.who-l em{font-style:normal;color:var(--oil-ink);font-weight:500}
 .who-l small{color:var(--ink-2);font-size:12.5px}
-.board-gap{display:flex;align-items:center;gap:10px;width:100%;padding:8px 6px;margin:2px 0;background:none;border:0;cursor:pointer;font:inherit;color:var(--ink-2);transition:all .18s ease}
-.board-gap:hover{color:var(--ink)}
-.board-gap .bgap-line{flex:1;height:1px;background:var(--line);opacity:.8;border-radius:1px}
-.board-gap .bgap-pill{display:inline-flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;letter-spacing:.02em;background:var(--bg);border:1px dashed var(--line);color:var(--ink-2);padding:4px 12px;border-radius:999px;white-space:nowrap;transition:all .18s ease}
-.board-gap:hover .bgap-pill{border-color:var(--oil);border-style:solid;color:var(--oil-ink);background:var(--oil-soft);transform:scale(1.02)}
-.board-gap:hover .bgap-line{background:var(--oil);opacity:.4}
-.board-gap:active .bgap-pill{transform:scale(.98)}
+.board-skip{display:grid;grid-template-columns:1.6rem auto minmax(0,1fr) auto auto;align-items:center;gap:10px;width:100%;padding:4px 10px;margin:2px 0;box-sizing:border-box;pointer-events:none;user-select:none}
+.board-skip .bskip-dots{width:30px;height:24px;justify-self:center;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3.5px}
+.board-skip .bskip-dots i{width:4px;height:4px;border-radius:50%;background:var(--ink-2);opacity:.38;display:block}
+.board-skip .bskip-line{grid-column:2 / -1;height:1px;background:linear-gradient(90deg, color-mix(in srgb, var(--line) 75%, transparent) 0%, transparent 85%);border-radius:1px}
+@media (max-width:420px){.board-skip{gap:8px;padding:3px 8px}}
 .board .empty{border:0}
+.board-footer-btn{width:100%;display:flex;align-items:center;justify-content:center;gap:7px;padding:11px 16px;margin-top:6px;background:var(--surface-2);border:1px solid var(--line);border-radius:12px;font-family:var(--f-body);font-size:13.5px;font-weight:600;color:var(--ink);cursor:pointer;transition:all .18s ease;box-sizing:border-box}
+@media (hover: hover) and (pointer: fine){
+  .board-footer-btn:hover{background:var(--oil-soft);border-color:var(--oil);color:var(--oil-ink);transform:translateY(-1px)}
+  .board-footer-btn:hover svg{transform:translateX(3px)}
+}
+.board-footer-btn:active{transform:scale(.99)}
+.board-footer-btn svg{color:var(--oil);transition:transform .18s ease;flex:none}
+#boardNotice:empty{display:none!important}
 .board-guest-card{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:9px 12px 9px 14px;margin-bottom:12px;box-shadow:0 1px 3px rgb(58 39 27 / .04)}
 .bgc-info{display:flex;flex-direction:column;gap:1px;min-width:0}
 .bgc-title{font-size:13.5px;font-weight:600;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -1594,8 +1607,11 @@ function viewHome(){
   ${HOSTED ? `<section class="h-board"><div class="section-h"><h3>Clasament</h3><button class="link" id="allBoard" type="button" style="display:none">Vezi tot</button></div><div id="boardNotice"></div><div id="board" class="board"><div class="empty">Se încarcă clasamentul…</div></div></section>` : ""}
 
   <section class="h-hist">
-    <div class="section-h"><h3>Istoric</h3>${h.length > 3 ? `<button class="link" id="allHist" type="button">Vezi tot</button>` : ""}</div>
-    <div class="history">${h.length ? h.slice(-3).reverse().map(attemptRow).join("") : `<div class="empty">Niciun test încă.</div>`}</div>
+    <div class="section-h"><h3>Istoric</h3></div>
+    <div class="history">
+      ${h.length ? h.slice(-3).reverse().map(attemptRow).join("") : `<div class="empty">Niciun test încă.</div>`}
+      ${h.length > 3 ? `<button type="button" class="board-footer-btn" id="allHist" aria-label="Vezi tot istoricul"><span>Vezi tot istoricul</span><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button>` : ""}
+    </div>
   </section>
   </div>`);
 
@@ -1678,28 +1694,50 @@ function renderBoard(list){
   const note = S.player && S.player.hidden ? `<div class="empty">${S.player.child ? esc(S.player.name.split(" ")[0]) + " nu apare" : "Nu apari"} în clasament. Se poate schimba din profil.</div>` : "";
   if (!list.length){ el.innerHTML = note || `<div class="empty">Încă nimeni.</div>`; return; }
   const idx = guest ? -1 : list.findIndex(x => x.me);
-  const top = el.classList.contains("scroll") ? list : list.slice(0, 10);
+  const isFull = el.classList.contains("scroll");
+  const top = isFull ? list : list.slice(0, 10);
   const btn = $("#allBoard"); if (btn) btn.style.display = list.length > 10 ? "" : "none";
-  const row = (x, i) => { const mine = !guest && x.me, ok = x.ok ?? 0; return `<button type="button" class="brow-l ${mine?"me":""}" data-i="${i}" aria-label="Profilul lui ${esc(x.name)}">
-    <span class="rank ${i<3 && ok ? "r"+(i+1) : ""}">${i+1}</span>
-    <span class="avatar sm">${esc(initials(x.name))}</span>
-    <div class="who-l"><b class="nm"><span>${esc(x.name)}</span>${mine?"<em>tu</em>":""}</b></div>
-    <div class="pts"><b>${ok}</b><small>${ok===1?"punct":"puncte"}</small></div>${CHEV}</button>`; };
+
+  const row = (x, i) => {
+    const mine = !guest && x.me, ok = x.ok ?? 0;
+    return `<button type="button" class="brow-l ${mine ? "me" : ""}" data-i="${i}" aria-label="Profilul lui ${esc(x.name)}">
+      <span class="rank ${i < 3 && ok ? "r" + (i + 1) : ""}">${i + 1}</span>
+      <span class="avatar sm">${esc(initials(x.name))}</span>
+      <div class="who-l"><b class="nm"><span>${esc(x.name)}</span>${mine ? "<em>tu</em>" : ""}</b></div>
+      <div class="pts"><b>${ok}</b><small>${ok === 1 ? "punct" : "puncte"}</small></div>
+      ${CHEV}
+    </button>`;
+  };
+
   const prevScroll = el.scrollTop;
-  const diff = idx - top.length;
-  const gapHtml = (idx >= top.length) ? (
-    (diff > 0 ? `<button type="button" class="board-gap" onclick="viewBoard()" aria-label="Vezi toți cei ${diff} jucători"><span class="bgap-line"></span><span class="bgap-pill">··· încă ${diff} ${diff === 1 ? "jucător" : "jucători"} · Vezi tot ···</span><span class="bgap-line"></span></button>` : "") + row(list[idx], idx)
-  ) : "";
-  el.innerHTML = note + top.map(row).join("") + gapHtml;
-  el.querySelectorAll(".brow-l[data-i]").forEach(b => b.onclick = () => { const i = +b.dataset.i, x = list[i]; if (!guest && x.me) openProfile(); else openPublicProfile(x, i); });
-  if (el.classList.contains("scroll") && prevScroll > 0) el.scrollTop = prevScroll;
-  else {
-    const mine = el.querySelector(".me");
-    if (mine && el.classList.contains("scroll")) {
-      setTimeout(() => {
-        try { mine.scrollIntoView({ block: "center", behavior: "smooth" }); } catch(_) { el.scrollTop = Math.max(0, mine.offsetTop - el.clientHeight/2); }
-      }, 50);
+  let gapHtml = "";
+
+  if (!isFull && list.length > 10) {
+    const footerBtn = `<button type="button" class="board-footer-btn" onclick="viewBoard()" aria-label="Vezi tot clasamentul"><span>Vezi tot clasamentul</span><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button>`;
+    if (idx >= top.length) {
+      const diff = idx - top.length;
+      const gapBefore = diff > 0 ? `<div class="board-skip" aria-hidden="true"><span class="bskip-dots"><i></i><i></i><i></i></span><span class="bskip-line"></span></div>` : "";
+      gapHtml = gapBefore + row(list[idx], idx) + footerBtn;
+    } else {
+      gapHtml = footerBtn;
     }
+  }
+
+  el.innerHTML = note + top.map(row).join("") + gapHtml;
+
+  el.querySelectorAll(".brow-l[data-i]").forEach(b => {
+    b.onclick = () => {
+      const i = +b.dataset.i, x = list[i];
+      if (!guest && x.me) openProfile();
+      else openPublicProfile(x, i);
+    };
+  });
+  el.querySelectorAll(".board-footer-btn").forEach(b => {
+    b.onclick = viewBoard;
+  });
+
+  if (isFull && prevScroll > 0) {
+    el.scrollTop = prevScroll;
   }
 }
 
@@ -2705,34 +2743,96 @@ function srcOf(id){
 }
 function unpackWrong(list){ return (list || []).map(w => { const q = srcOf(w.id); return q ? { q, a: { pts: w.p || 0, given: w.g, skipped: w.g == null } } : null; }).filter(Boolean); }
 const attemptRow = x => `<button class="hrow" type="button" data-at="${x.at}" aria-label="Vezi raportul: ${esc(chaptersLabel(x.chs))}, ${x.pct}%"><span class="badge ${x.mode}">${MODE_LABEL[x.mode]}</span><div class="hrow-info"><b>${esc(chaptersLabel(x.chs))}</b><small>${dateLabel(x.at)}</small></div><span class="pct">${x.pct}%</span>${CHEV}</button>`;
-/* the whole history: every test, grouped by chapter, newest first; each one opens its report */
 function viewBoard(){
   S.homeScroll = window.scrollY;
   mount(`<section class="hist-page">
     <div class="reader-h">${BACK_BTN("hBack")}<div><span class="eyebrow">Top</span><h2>Clasament</h2></div></div>
     <div id="boardNotice"></div>
-    <div id="board" class="board scroll" style="margin-top: 16px"><div class="empty">Se încarcă clasamentul…</div></div>
+    <div id="board" class="board scroll"><div class="empty">Se încarcă clasamentul…</div></div>
   </section>`);
-  $("#hBack").onclick = () => { mountHome(); window.scrollTo(0, S.homeScroll); };
+
+  const goHome = () => {
+    const sc = S.homeScroll || 0;
+    S.homeScroll = 0;
+    viewHome();
+    if (sc) requestAnimationFrame(() => requestAnimationFrame(() => window.scrollTo(0, sc)));
+  };
+
+  try {
+    history.pushState({ view: "board" }, "");
+    const onPop = () => {
+      window.removeEventListener("popstate", onPop);
+      if ($(".hist-page") && $("#board") && $("#board").classList.contains("scroll")) {
+        goHome();
+      }
+    };
+    window.addEventListener("popstate", onPop, { once: true });
+    $("#hBack").onclick = () => {
+      window.removeEventListener("popstate", onPop);
+      if (history.state && history.state.view === "board") {
+        history.back();
+      } else {
+        goHome();
+      }
+    };
+  } catch(_) {
+    $("#hBack").onclick = goHome;
+  }
+
   if (S.board) renderBoard(S.board);
   else loadBoard();
 }
+window.viewBoard = viewBoard;
 
 function viewHistory(){
+  if (!history.state || history.state.view !== "history") {
+    S.homeScroll = window.scrollY;
+  }
   S.reportBack = null; S.reportCh = null;
   const h = S.player.history.slice().sort((a, b) => b.at - a.at);
   const groups = new Map();
   h.forEach(x => { const k = (x.chs.length === 1 && x.chs[0] === 0) ? "exam" : (x.chs.length === 1 ? x.chs[0] : 0); if (!groups.has(k)) groups.set(k, []); groups.get(k).push(x); });
   const keys = [...groups.keys()].sort((a, b) => (a === "exam" ? 100 : (a || 99)) - (b === "exam" ? 100 : (b || 99)));
   mount(`<section class="hist-page">
-    <div class="reader-h">${BACK_BTN("hBack")}<div><span class="eyebrow">${h.length} ${h.length === 1 ? "test" : "teste"}</span><h2>Istoric</h2></div></div>
+    <div class="reader-h">${BACK_BTN("hBack")}<div><span class="eyebrow">${h.length ? `${h.length} ${h.length === 1 ? "test" : "teste"}` : "Activitate"}</span><h2>Istoric</h2></div></div>
     ${h.length ? keys.map(k => { const g = groups.get(k), best = Math.max(...g.map(x => x.pct));
       return `<div class="hgroup"><div class="hg-h"><b>${k === "exam" ? "Examen alb" : (k ? `${k}. ${esc(TITLES[k-1])}` : "Mai multe capitole")}</b><span class="muted">${g.length} ${g.length === 1 ? "încercare" : "încercări"} · cel mai bun ${best}%</span></div>
         <div class="history">${g.map(attemptRow).join("")}</div></div>`; }).join("") : `<div class="empty">Niciun test încă.</div>`}
   </section>`);
-  $("#hBack").onclick = viewHome;
+
+  const goHome = () => {
+    const sc = S.homeScroll || 0;
+    S.homeScroll = 0;
+    viewHome();
+    if (sc) requestAnimationFrame(() => requestAnimationFrame(() => window.scrollTo(0, sc)));
+  };
+
+  try {
+    if (!history.state || history.state.view !== "history") {
+      history.pushState({ view: "history" }, "");
+    }
+    const onPop = () => {
+      window.removeEventListener("popstate", onPop);
+      if ($(".hist-page") && !$("#board")) {
+        goHome();
+      }
+    };
+    window.addEventListener("popstate", onPop, { once: true });
+    $("#hBack").onclick = () => {
+      window.removeEventListener("popstate", onPop);
+      if (history.state && history.state.view === "history") {
+        history.back();
+      } else {
+        goHome();
+      }
+    };
+  } catch(_) {
+    $("#hBack").onclick = goHome;
+  }
+
   app.querySelectorAll(".hrow[data-at]").forEach(b => b.onclick = () => openPastReport(+b.dataset.at, { from: "hist" }));
 }
+window.viewHistory = viewHistory;
 /* the last reports stay on this phone so a test from the history can be opened again, mistakes included */
 const repKey = () => "candela:reports:" + (S.player && !S.player.guest ? store.pid : "guest");
 function keepReport(r){

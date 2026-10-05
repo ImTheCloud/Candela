@@ -1,4 +1,9 @@
 {
   "name": "candela",
-  "private": true
+  "private": true,
+  "scripts": {
+    "build": "node scratch/build.js",
+    "serve": "node scratch/serve.js",
+    "dev": "node scratch/build.js && node scratch/serve.js"
+  }
 }
