@@ -265,6 +265,26 @@ html:has(.sheet-bg),html:has(.modal-bg),body:has(.sheet-bg),body:has(.modal-bg){
 .adm-timer b{grid-area:t;font-size:18px;font-variant-numeric:tabular-nums;line-height:1.2;white-space:nowrap}
 .adm-timer-btns{grid-area:b;display:flex;gap:5px}
 .adm-timer .btn{min-height:36px;padding:0 9px;font-size:13px;border-radius:10px;letter-spacing:0;text-transform:none}
+.pts-card{margin:16px 0;padding:16px}
+.pts-card>b{display:block;font-size:13.5px;color:var(--ink);margin-bottom:10px}
+.pts-card .pf-rules{margin:0;padding:0;border:none}
+.r-icon.r-plus{font-size:17px;line-height:14px}
+.r-icon.r-time{font-size:16px;line-height:14px}
+.lvl-first{margin-top:16px}
+.lvl-list{display:grid;gap:10px;margin-top:10px}
+.wrap-ok{white-space:normal}
+.lvl-row{display:flex;align-items:center;gap:12px;padding:12px 14px;border:1.5px solid var(--line);background:var(--surface)}
+.lvl-ic{flex:none;display:grid;place-items:center;width:28px;height:28px;background:var(--bg);color:var(--ink);border-radius:8px;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.lvl-main{flex:1;text-align:left;display:grid;gap:2px}
+.lvl-main>b{font-size:15px;font-weight:700;color:var(--ink)}
+.lvl-note{display:flex;align-items:center;gap:4px;font-size:12.5px;font-weight:500;color:var(--ink-2)}
+.lvl-note.done{color:var(--cedar)}
+.lvl-note svg{flex:none}
+.lvl-side{flex:none;display:flex;align-items:center;gap:6px}
+.lvl-dur{display:flex;flex-direction:column;align-items:flex-end;gap:2px}
+.lvl-dur b{font-size:13px;font-weight:600;color:var(--oil-ink)}
+.lvl-dur small{font-size:11px;font-weight:500;color:var(--ink-2)}
+.lvl-chev{color:var(--oil-ink);opacity:.5}
 .hist-page{display:grid;gap:18px}
 .hgroup{display:grid;gap:8px}
 .hg-h{display:grid;gap:1px}
@@ -1153,6 +1173,14 @@ function totalCount(mode){ let n=0; for (const c in QUIZ){ if (mode!=="hard") n 
 const EYE = `<svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>`;
 const EYE_OFF = `<svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 4l16 16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>`;
 const EXAM_ICON = (sz = 14) => `<svg width="${sz}" height="${sz}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>`;
+const pointsRulesHTML = () => `<div class="pf-rules">
+  <div class="pf-rule"><span class="r-icon">✓</span><span>Răspunsurile corecte aduc <b>puncte</b>.</span></div>
+  <div class="pf-rule"><span class="r-icon">↺</span><span><b>Reia greșelile</b> nu dă puncte.</span></div>
+  <div class="pf-rule"><span class="r-icon r-plus">+</span><span>Pentru un punctaj mai mare: <b>refă testul</b>.</span></div>
+  <div class="pf-rule"><span class="r-icon r-time">◷</span><span>Timpul este informativ, <b>nu afectează</b> scorul.</span></div>
+  <div class="pf-rule"><span class="r-icon">${EXAM_ICON(14)}</span><span><b>Examenul alb</b> nu aduce puncte în clasament.</span></div>
+</div>`;
+const pointsCardHTML = () => `<div class="card pts-card"><b>Despre puncte</b>${pointsRulesHTML()}</div>`;
 function pwEye(input){
   const wrap = document.createElement("div"); wrap.className = "pw-wrap";
   input.replaceWith(wrap); wrap.appendChild(input);
@@ -1400,13 +1428,7 @@ function openProfile(){
       <div class="pf-card">
         ${levelBar("Întrebări ușoare", okE, seenE, totE, "var(--cedar)")}
         ${levelBar("Întrebări grele", okH, seenH, totH, "var(--oil)")}
-        <div class="pf-rules">
-          <div class="pf-rule"><span class="r-icon">✓</span><span>Răspunsurile corecte aduc <b>puncte</b>.</span></div>
-          <div class="pf-rule"><span class="r-icon">↺</span><span><b>Reia greșelile</b> nu dă puncte.</span></div>
-          <div class="pf-rule"><span class="r-icon" style="font-size:17px; line-height:14px">+</span><span>Pentru un punctaj mai mare: <b>refă testul</b>.</span></div>
-          <div class="pf-rule"><span class="r-icon" style="font-size:16px; line-height:14px">◷</span><span>Timpul este informativ, <b>nu afectează</b> scorul.</span></div>
-          <div class="pf-rule"><span class="r-icon">${EXAM_ICON(14)}</span><span><b>Examenul alb</b> nu aduce puncte în clasament.</span></div>
-        </div>
+        ${pointsRulesHTML()}
       </div>
       ${!p.child && store.isParent ? `<div class="pf-card" id="pfKids"></div>` : ""}
       <div class="set-list">
@@ -1868,6 +1890,16 @@ const levelLast = (c, m) => {
   }
   return chapLast(c, m);
 };
+const LEVEL_ICONS = {
+  easy: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>`,
+  hard: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>`,
+  both: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>`
+};
+const levelRow = (m, { note, done = false, dur, count }) => `<button type="button" class="hrow lvl-row" data-m="${m}">
+  <span class="lvl-ic">${LEVEL_ICONS[m]}</span>
+  <span class="lvl-main"><b>${MODE_LABEL[m]}</b><span class="lvl-note${done ? " done" : ""}">${done ? `<svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.333 4L6 11.333 2.667 8"/></svg>` : ""}${note}</span></span>
+  <span class="lvl-side"><span class="lvl-dur"><b>${dur}</b><small>${count}</small></span><svg class="lvl-chev" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></span>
+</button>`;
 function openOptions(chs = [...S.sel].sort((a,b)=>a-b)){
   if (!chs || !chs.length) return;
   const c = chs[0];
@@ -1878,11 +1910,6 @@ function openOptions(chs = [...S.sel].sort((a,b)=>a-b)){
   const mEasy = Math.round(secsEasy / 60);
   const mHard = Math.round(secsHard / 60);
 
-  const ICONS = {
-    easy: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>`,
-    hard: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>`,
-    both: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>`
-  };
 
   const lvlButtons = ["easy", "hard", "both"].map(m => {
     let done = levelDone(chs, m);
@@ -1908,26 +1935,7 @@ function openOptions(chs = [...S.sel].sort((a,b)=>a-b)){
     else durStr = durLabel((mEasy + mHard) * 60);
     durStr = durStr.replace(/^cam /, "");
 
-    return `<button type="button" class="hrow" data-m="${m}" style="display:flex; align-items:center; gap:12px; padding:12px 14px; border:1.5px solid var(--line); background:var(--surface);">
-      <div style="flex:none; color:var(--ink); display:grid; place-items:center; width:28px; height:28px; background:var(--bg); border-radius:8px; box-shadow:0 1px 2px rgba(0,0,0,0.06)">
-        ${ICONS[m]}
-      </div>
-      <div style="flex:1; text-align:left;">
-        <div style="margin-bottom:2px; font-size:15px; color:var(--ink);">
-          <b style="font-weight:700">${MODE_LABEL[m]}</b>
-        </div>
-        <div style="font-size:12.5px; color:${done ? 'var(--cedar)' : 'var(--ink-2)'}; display:flex; align-items:center; gap:4px; font-weight:500;">
-          ${done ? `<svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M13.333 4L6 11.333 2.667 8"/></svg>` : ""}${note}
-        </div>
-      </div>
-      <div style="flex:none; display:flex; align-items:center; gap:6px;">
-        <div style="display:flex; flex-direction:column; align-items:flex-end; gap:2px;">
-          <span style="font-size:13px; color:var(--oil-ink); font-weight:600;">${durStr}</span>
-          <span style="font-size:11px; color:var(--ink-2); font-weight:500;">${qCount} întrebări</span>
-        </div>
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--oil-ink); opacity:0.5;"><polyline points="9 18 15 12 9 6"></polyline></svg>
-      </div>
-    </button>`;
+    return levelRow(m, { note, done, dur: durStr, count: `${qCount} întrebări` });
   }).join("");
 
   const isMulti = chs.length > 1;
@@ -1938,8 +1946,8 @@ function openOptions(chs = [...S.sel].sort((a,b)=>a-b)){
 
   bg.innerHTML = `<div class="sheet start-sheet" role="dialog" aria-modal="true" aria-labelledby="shT">
     <div class="sheet-h"><div class="sh-title"><h3 id="shT">${titleStr}</h3></div><div class="sh-tools">${readBtnStr}<button class="icon-btn" id="shX" aria-label="Închide"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div></div>${subStr ? `<p class="sh-sub">${subStr}</p>` : ""}
-    <div class="sh-lvl" style="margin-top:16px;"><span class="sh-l">Alege nivelul pentru a începe</span>
-      <div style="display:grid; gap:10px; margin-top:10px;">
+    <div class="sh-lvl lvl-first"><span class="sh-l">Alege nivelul pentru a începe</span>
+      <div class="lvl-list">
         ${lvlButtons}
       </div>
     </div>
@@ -2016,41 +2024,17 @@ function startExam(mode = "easy"){
 function openExamOptions(){
   const bg = document.createElement("div"); bg.className = "sheet-bg";
   
-  const ICONS = {
-    easy: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>`,
-    hard: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>`,
-    both: `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>`
-  };
 
   const lvlButtons = ["easy", "hard", "both"].map(m => {
     const durStr = m === "easy" ? "7 min" : m === "hard" ? "9 min" : "8 min";
-    return `<button type="button" class="hrow" data-m="${m}" style="display:flex; align-items:center; gap:12px; padding:12px 14px; border:1.5px solid var(--line); background:var(--surface);">
-      <div style="flex:none; color:var(--ink); display:grid; place-items:center; width:28px; height:28px; background:var(--bg); border-radius:8px; box-shadow:0 1px 2px rgba(0,0,0,0.06)">
-        ${ICONS[m]}
-      </div>
-      <div style="flex:1; text-align:left;">
-        <div style="margin-bottom:2px; font-size:15px; color:var(--ink);">
-          <b style="font-weight:700">${MODE_LABEL[m]}</b>
-        </div>
-        <div style="font-size:12.5px; color:var(--ink-2); display:flex; align-items:center; gap:4px; font-weight:500;">
-          ${esc(MODE_NOTE[m])}
-        </div>
-      </div>
-      <div style="flex:none; display:flex; align-items:center; gap:6px;">
-        <div style="display:flex; flex-direction:column; align-items:flex-end; gap:2px;">
-          <span style="font-size:13px; color:var(--oil-ink); font-weight:600;">${durStr}</span>
-          <span style="font-size:11px; color:var(--ink-2); font-weight:500;">21 de întrebări</span>
-        </div>
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--oil-ink); opacity:0.5;"><polyline points="9 18 15 12 9 6"></polyline></svg>
-      </div>
-    </button>`;
+    return levelRow(m, { note: esc(MODE_NOTE[m]), dur: durStr, count: "21 de întrebări" });
   }).join("");
 
   bg.innerHTML = `<div class="sheet start-sheet" role="dialog" aria-modal="true" aria-labelledby="shT">
     <div class="sheet-h"><div class="sh-title"><h3 id="shT">Examen alb</h3></div><div class="sh-tools"><button class="icon-btn" id="shX" aria-label="Închide"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button></div></div>
-    <p class="sh-sub" style="white-space:normal;">Este exact același examen ca la Talant în Negoț.</p>
-    <div class="sh-lvl" style="margin-top:16px;"><span class="sh-l">Alege nivelul examenului</span>
-      <div style="display:grid; gap:10px; margin-top:10px;">
+    <p class="sh-sub wrap-ok">Este exact același examen ca la Talant în Negoț.</p>
+    <div class="sh-lvl lvl-first"><span class="sh-l">Alege nivelul examenului</span>
+      <div class="lvl-list">
         ${lvlButtons}
       </div>
     </div>
@@ -2672,16 +2656,7 @@ function renderReport(r, o = {}){
     <h2 class="verdict">${verdict}</h2>
     ${tip ? `<p class="verdict-tip">${tip}</p>` : ""}
   </section>
-  ${r.retry ? `<div class="card" style="margin:16px 0; padding:16px;">
-    <b style="display:block; font-size:13.5px; color:var(--ink); margin-bottom:10px;">Despre puncte</b>
-    <div class="pf-rules" style="margin:0; padding:0; border:none;">
-      <div class="pf-rule"><span class="r-icon">✓</span><span>Răspunsurile corecte aduc <b>puncte</b>.</span></div>
-      <div class="pf-rule"><span class="r-icon">↺</span><span><b>Reia greșelile</b> nu dă puncte.</span></div>
-      <div class="pf-rule"><span class="r-icon">${EXAM_ICON(14)}</span><span><b>Examenul alb</b> nu aduce puncte în clasament.</span></div>
-      <div class="pf-rule"><span class="r-icon" style="font-size:17px; line-height:14px">+</span><span>Pentru un punctaj mai mare: <b>refă testul</b>.</span></div>
-      <div class="pf-rule"><span class="r-icon" style="font-size:16px; line-height:14px">◷</span><span>Timpul este informativ, <b>nu afectează</b> scorul.</span></div>
-    </div>
-  </div>` : ""}
+  ${r.retry ? `${pointsCardHTML()}` : ""}
   <div class="kv ${wrong ? (r.secs ? 'three' : 'two') : 'one'}" style="margin-top:16px; margin-bottom:16px;">
     ${wrong ? `<div class="stat"><b>${n - nWrong}</b><small>corecte</small></div>
     <div class="stat"><b>${nWrong}</b><small>de revăzut</small></div>` : ""}
@@ -2710,16 +2685,7 @@ function renderReport(r, o = {}){
   ${wrong ? `<div class="section-h"><h3>${nWrong ? "De revăzut" : "Nicio greșeală"}</h3>${nWrong?`<span class="muted" style="font-size:14px">${nWrong} întrebări</span>`:""}</div>
   <div class="mistakes">${nWrong ? wrong.map(mistakeHTML).join("") : `<div class="allgood">Toate răspunsurile sunt corecte.</div>`}</div>`
   : ""}
-  ${(!r.retry && (nWrong > 0 || isExam)) ? `<div class="card" style="margin:16px 0; padding:16px;">
-    <b style="display:block; font-size:13.5px; color:var(--ink); margin-bottom:10px;">Despre puncte</b>
-    <div class="pf-rules" style="margin:0; padding:0; border:none;">
-      <div class="pf-rule"><span class="r-icon">✓</span><span>Răspunsurile corecte aduc <b>puncte</b>.</span></div>
-      <div class="pf-rule"><span class="r-icon">↺</span><span><b>Reia greșelile</b> nu dă puncte.</span></div>
-      <div class="pf-rule"><span class="r-icon">${EXAM_ICON(14)}</span><span><b>Examenul alb</b> nu aduce puncte în clasament.</span></div>
-      <div class="pf-rule"><span class="r-icon" style="font-size:17px; line-height:14px">+</span><span>Pentru un punctaj mai mare: <b>refă testul</b>.</span></div>
-      <div class="pf-rule"><span class="r-icon" style="font-size:16px; line-height:14px">◷</span><span>Timpul este informativ, <b>nu afectează</b> scorul.</span></div>
-    </div>
-  </div>` : ""}
+  ${(!r.retry && (nWrong > 0 || isExam)) ? `${pointsCardHTML()}` : ""}
   <div class="startbar" style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
     ${nWrong ? `<button class="btn btn-oil" id="retry" title="Exercițiu de învățare (fără puncte în clasament)" style="font-size:14.5px;padding:12px 8px;text-align:center;">Reia greșelile</button>` : `<button class="btn btn-oil" id="again" style="font-size:14.5px;padding:12px 8px;text-align:center;">${isExam ? "Refă examenul" : "Refă testul"}</button>`}
     <button class="btn btn-primary" id="home" style="font-size:14.5px;padding:12px 8px;text-align:center;">Pagina principală</button>
@@ -3172,7 +3138,7 @@ async function viewAdmin(){
     el.querySelectorAll("[data-apw]").forEach(b => b.onclick = () => {
       const u = users.find(x => x.id === b.dataset.apw);
       confirmBox(`Parolă nouă pentru ${u.name}?`, "Parola veche nu va mai merge. Îi dai parola nouă, iar el o poate schimba din profil.", "Generează", async () => {
-        const token = await store.token(), r = token ? await store.call("admin-reset", {who: u.email || u.name}, token) : {ok:false};
+        const token = await store.token(), r = token ? await store.call("admin-reset", {id: u.id, who: u.email || u.name}, token) : {ok:false};
         if (!r.ok) return toast("Nu s-a putut genera parola.");
         showTempPassword(r.name, r.password);
       });
