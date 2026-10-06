@@ -1,5 +1,5 @@
 // Gives a temporary password to an account whose owner forgot it (the app sends no reset emails).
-// Only callers listed in public.admins may use it. Body: { who: "email" | "Prenume Nume" } → { ok, name, password }.
+// Only callers listed in public.admins may use it. Body: { id } (account id) or { who: "email" } → { ok, name, password }.
 import { createClient } from "npm:@supabase/supabase-js@2";
 
 const cors = {
@@ -24,13 +24,14 @@ Deno.serve(async (req) => {
   const { data: isAdmin } = await admin.from("admins").select("user_id").eq("user_id", who.user.id).maybeSingle();
   if (!isAdmin) return json(403, { error: "forbidden" });
 
-  let body: { who?: string };
+  let body: { id?: string; who?: string };
   try { body = await req.json(); } catch { return json(400, { error: "body" }); }
   const q = String(body.who || "").trim();
-  if (!q) return json(400, { error: "who" });
+  if (!body.id && !q) return json(400, { error: "who" });
 
-  let id: string | null = null, name = "";
-  if (q.includes("@")) {
+  let id: string | null = body.id ? String(body.id) : null, name = "";
+  // an account id is unique (names are not)
+  if (!id && q.includes("@")) {
     const email = q.toLowerCase();
     for (let page = 1; page <= 20 && !id; page++) {
       const { data, error } = await admin.auth.admin.listUsers({ page, perPage: 1000 });
@@ -39,9 +40,11 @@ Deno.serve(async (req) => {
       if (u) id = u.id;
       if (data.users.length < 1000) break;
     }
-  } else {
-    const { data } = await admin.from("profiles").select("id, name").eq("slug", slugOf(q)).maybeSingle();
-    if (data) { id = data.id; name = data.name; }
+  } else if (!id) {
+    // names can be shared: only one match is safe to reset
+    const { data } = await admin.from("profiles").select("id, name").eq("slug", slugOf(q)).limit(2);
+    if (data && data.length > 1) return json(409, { error: "ambiguous" });
+    if (data && data.length === 1) { id = data[0].id; name = data[0].name; }
   }
   if (!id) return json(404, { error: "not_found" });
   if (!name) { const { data } = await admin.from("profiles").select("name").eq("id", id).maybeSingle(); name = data?.name || q; }
