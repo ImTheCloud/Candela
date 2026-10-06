@@ -1393,16 +1393,28 @@ function openProfile(){
         <h3>${esc(p.name)}</h3>
         ${p.child ? `<p class="prof-mail">Profil de copil, pe contul tău</p>` : store.hasEmail() ? `<p class="prof-mail">${esc(store.email)}</p>` : `<p class="prof-mail warn">Adaugă un email: cu el intri în cont de acum înainte.</p>`}
         ${rank >= 0 ? `<span class="badge-rank">Locul ${rank+1} din ${S.board.length} în clasament</span>` : ""}
-        <div style="display:flex; justify-content:center; gap:6px; margin-top:8px;">
-          <button id="pfTimerToggle" class="btn" style="min-height:32px; padding:4px 12px; border-radius:16px; font-size:13px; font-variant-numeric:tabular-nums; background:var(--bg-card); border:1px solid var(--border); box-shadow:0 2px 4px rgba(0,0,0,0.02); transition: all 0.2s;"><span style="margin-right:4px; opacity:0.8;">⏱</span><span id="pfTimerDisplay">00:00:00<span style="font-size:0.7em; opacity:0.6; margin-left:2px;">.00</span></span></button>
-          <button id="pfTimerReset" class="btn btn-ghost" aria-label="Reset" style="min-height:32px; padding:0 8px; border-radius:16px; color:var(--ink-2);"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg></button>
-        </div>
       </div>
       <div class="kv four">
         <div class="stat"><b>${tests}</b><small>${tests===1?"test":"teste"}</small></div>
         <div class="stat"><b>${tests ? avg+"%" : "–"}</b><small>media</small></div>
         <div class="stat"><b>${p.ok.length} <span style="font-size:0.65em; opacity:0.6; font-weight:600;">/ ${totalCount("both")}</span></b><small>${p.ok.length===1?"punct":"puncte"}</small></div>
         <div class="stat"><b>${exams}</b><small>${exams===1?"examen alb":"examene albe"}</small></div>
+      </div>
+
+      <div class="pf-card" style="display:flex; align-items:center; justify-content:space-between; padding:12px 14px;">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <div style="width:38px; height:38px; border-radius:10px; background:var(--cedar-soft); color:var(--cedar); display:grid; place-items:center;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+             <div style="font-size:13px; font-weight:600; color:var(--ink-2); line-height:1.2; letter-spacing:0.02em;">Timp de studiu</div>
+             <div id="pfTimerDisplay" style="font-size:18px; font-weight:700; font-variant-numeric:tabular-nums; color:var(--ink); line-height:1.2;">00:00:00<span style="font-size:0.7em; opacity:0.5; margin-left:2px;">.00</span></div>
+          </div>
+        </div>
+        <div style="display:flex; gap:6px;">
+          <button id="pfTimerToggle" class="btn" style="min-height:36px; padding:0 14px; border-radius:10px; font-size:13px; border:1px solid var(--border); background:var(--bg-card); transition:all 0.2s;">Start</button>
+          <button id="pfTimerReset" class="btn btn-ghost" aria-label="Reset" style="min-height:36px; padding:0 8px; border-radius:10px; color:var(--ink-2);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg></button>
+        </div>
       </div>
 
       <div class="pf-card">
