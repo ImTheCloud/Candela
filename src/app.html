@@ -839,6 +839,35 @@ const refLabel = r => {
 };
 function lsGet(k, d){ try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } }
 function lsSet(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }
+const Timer = {
+  get: () => lsGet("candela:timer", { run: false, start: 0, acc: 0 }),
+  set: (t) => lsSet("candela:timer", t),
+  toggle: () => {
+    const t = Timer.get();
+    if (t.run) {
+      t.acc += Date.now() - t.start;
+      t.run = false;
+    } else {
+      t.start = Date.now();
+      t.run = true;
+    }
+    Timer.set(t);
+  },
+  reset: () => {
+    Timer.set({ run: false, start: 0, acc: 0 });
+  },
+  elapsed: () => {
+    const t = Timer.get();
+    return t.acc + (t.run ? Date.now() - t.start : 0);
+  },
+  format: (ms) => {
+    const totalSecs = Math.floor(ms / 1000);
+    const h = Math.floor(totalSecs / 3600);
+    const m = Math.floor((totalSecs % 3600) / 60);
+    const s = totalSecs % 60;
+    return `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+  }
+};
 function toast(msg, ms = 2400){ const t = $("#toast"); t.textContent = msg; t.classList.add("show"); clearTimeout(toast._t); toast._t = setTimeout(()=>t.classList.remove("show"), ms); }
 /* the quiz screen is fixed (question centred) as long as it fits; a tall question (matching) lets the page scroll instead of being cut */
 function fitFixed(){
@@ -1341,7 +1370,8 @@ function openProfile(){
   const bg = document.createElement("div"); bg.className = "sheet-bg";
   bg.innerHTML = `<div class="sheet prof" role="dialog" aria-modal="true" aria-label="Profil"></div>`;
   document.body.appendChild(bg);
-  const sheet = bg.querySelector(".sheet"), close = () => closeModal(bg);
+  let tInt = null;
+  const close = () => { if (tInt) clearInterval(tInt); closeModal(bg); };
   bg.onclick = e => { if (e.target === bg) close(); };
   const X = `<button class="icon-btn prof-x" id="pfX" aria-label="Închide"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>`;
   const show = () => {
@@ -1367,6 +1397,16 @@ function openProfile(){
         <div class="stat"><b>${p.ok.length} <span style="font-size:0.65em; opacity:0.6; font-weight:600;">/ ${totalCount("both")}</span></b><small>${p.ok.length===1?"punct":"puncte"}</small></div>
         <div class="stat"><b>${exams}</b><small>${exams===1?"examen alb":"examene albe"}</small></div>
       </div>
+      <div class="pf-card" style="display:flex; align-items:center; justify-content:space-between; padding: 12px 16px;">
+        <div>
+          <h4 style="margin:0; font-size:14px; font-weight:600; color:var(--oil)">Timp de studiu</h4>
+          <div id="pfTimerDisplay" style="font-size:24px; font-weight:700; font-variant-numeric:tabular-nums; color:var(--cedar); margin-top:4px;">00:00:00</div>
+        </div>
+        <div style="display:flex; gap:8px;">
+          <button id="pfTimerToggle" class="btn btn-primary" style="padding: 8px 12px; border-radius: 8px; font-size: 14px; min-height: 0;">Start</button>
+          <button id="pfTimerReset" class="btn" style="padding: 8px 12px; border-radius: 8px; background:var(--bg-card); border: 1px solid var(--border); font-size: 14px; min-height: 0;">Reset</button>
+        </div>
+      </div>
       <div class="pf-card">
         ${levelBar("Întrebări ușoare", okE, seenE, totE, "var(--cedar)")}
         ${levelBar("Întrebări grele", okH, seenH, totH, "var(--oil)")}
@@ -1388,6 +1428,22 @@ function openProfile(){
       <div class="prof-btns">${p.child ? `<button class="btn btn-primary btn-block" data-back>Înapoi la profilul meu</button>` : ""}
       <button class="btn btn-danger btn-block" id="pfOut">Ieși din cont</button></div>`;
     sheet.querySelector("#pfX").onclick = close;
+
+    const updateT = () => {
+      const d = sheet.querySelector("#pfTimerDisplay"), b = sheet.querySelector("#pfTimerToggle");
+      if (d && b) {
+        d.textContent = Timer.format(Timer.elapsed());
+        const run = Timer.get().run;
+        b.textContent = run ? "Pauză" : "Start";
+        b.className = run ? "btn btn-danger" : "btn btn-primary";
+      }
+    };
+    if (tInt) clearInterval(tInt);
+    tInt = setInterval(updateT, 1000);
+    updateT();
+    sheet.querySelector("#pfTimerToggle").onclick = () => { Timer.toggle(); updateT(); };
+    sheet.querySelector("#pfTimerReset").onclick = () => { if (confirm("Sigur vrei să resetezi timpul de studiu?")) { Timer.reset(); updateT(); } };
+
     if (!p.child){
       sheet.querySelector("#pfEdit").onclick = () => { closeModal(bg, viewSettings); };
       sheet.querySelector("#pfParent").onchange = async e => {

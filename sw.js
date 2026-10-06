@@ -1,6 +1,6 @@
 // Candela offline support (generated from scripts/sw.template.js by build.py).
 // The page is network-first so updates arrive at once; the copy in the cache opens it without internet.
-const CACHE = "candela-edade0b204";
+const CACHE = "candela-1b33d57a80";
 const CORE = ["/", "/manifest.webmanifest", "/icons/icon-192.png", "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"];
 self.addEventListener("install", e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE)).then(() => self.skipWaiting())); });
 self.addEventListener("activate", e => {
