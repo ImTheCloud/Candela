@@ -1401,6 +1401,7 @@ function openProfile(){
         <div class="stat"><b>${exams}</b><small>${exams===1?"examen alb":"examene albe"}</small></div>
       </div>
 
+      ${S.admin ? `
       <div class="pf-card" style="display:flex; align-items:center; justify-content:space-between; padding:12px 14px;">
         <div style="display:flex; align-items:center; gap:12px;">
           <div style="width:38px; height:38px; border-radius:10px; background:var(--cedar-soft); color:var(--cedar); display:grid; place-items:center;">
@@ -1412,10 +1413,11 @@ function openProfile(){
           </div>
         </div>
         <div style="display:flex; gap:6px;">
-          <button id="pfTimerToggle" class="btn" style="min-height:36px; padding:0 14px; border-radius:10px; font-size:13px; border:1px solid var(--border); background:var(--bg-card); transition:all 0.2s;">Start</button>
+          <button id="pfTimerToggle" class="btn" style="min-height:36px; padding:0 14px; border-radius:10px; font-size:13px; border:1px solid var(--border); background:var(--bg-card); color:var(--ink); transition:all 0.2s;">Start</button>
           <button id="pfTimerReset" class="btn btn-ghost" aria-label="Reset" style="min-height:36px; padding:0 8px; border-radius:10px; color:var(--ink-2);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg></button>
         </div>
       </div>
+      ` : ""}
 
       <div class="pf-card">
         ${levelBar("Întrebări ușoare", okE, seenE, totE, "var(--cedar)")}
@@ -1440,20 +1442,21 @@ function openProfile(){
     sheet.querySelector("#pfX").onclick = close;
 
     const updateT = () => {
+      if (!S.admin) return;
       const d = sheet.querySelector("#pfTimerDisplay"), b = sheet.querySelector("#pfTimerToggle");
       if (d && b) {
         d.innerHTML = Timer.format(Timer.elapsed());
         const run = Timer.get().run;
-        b.style.background = run ? "var(--cedar-soft)" : "var(--bg-card)";
-        b.style.borderColor = run ? "var(--cedar)" : "var(--border)";
-        b.style.color = run ? "var(--cedar)" : "var(--ink)";
+        b.textContent = run ? "Pauză" : "Start";
       }
     };
-    if (tInt) clearInterval(tInt);
-    tInt = setInterval(updateT, 50);
-    updateT();
-    sheet.querySelector("#pfTimerToggle").onclick = () => { Timer.toggle(); updateT(); };
-    sheet.querySelector("#pfTimerReset").onclick = () => { confirmBox("Resetezi timpul de studiu?", "Contorul va reporni de la zero.", "Resetează", () => { Timer.reset(); updateT(); }); };
+    if (S.admin) {
+      if (tInt) clearInterval(tInt);
+      tInt = setInterval(updateT, 50);
+      updateT();
+      sheet.querySelector("#pfTimerToggle").onclick = () => { Timer.toggle(); updateT(); };
+      sheet.querySelector("#pfTimerReset").onclick = () => { confirmBox("Resetezi timpul de studiu?", "Contorul va reporni de la zero.", "Resetează", () => { Timer.reset(); updateT(); }); };
+    }
 
     if (!p.child){
       sheet.querySelector("#pfEdit").onclick = () => { closeModal(bg, viewSettings); };
