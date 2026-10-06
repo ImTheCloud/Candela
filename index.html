@@ -843,6 +843,37 @@ const refLabel = r => {
 };
 function lsGet(k, d){ try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } }
 function lsSet(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }
+const Timer = {
+  get: () => lsGet("candela:timer", { run: false, start: 0, acc: 0 }),
+  set: (t) => lsSet("candela:timer", t),
+  toggle: () => {
+    const t = Timer.get();
+    if (t.run) {
+      t.acc += Date.now() - t.start;
+      t.run = false;
+    } else {
+      t.start = Date.now();
+      t.run = true;
+    }
+    Timer.set(t);
+  },
+  reset: () => {
+    Timer.set({ run: false, start: 0, acc: 0 });
+  },
+  elapsed: () => {
+    const t = Timer.get();
+    return t.acc + (t.run ? Date.now() - t.start : 0);
+  },
+  format: (ms) => {
+    const totalSecs = Math.floor(ms / 1000);
+    const h = Math.floor(totalSecs / 3600);
+    const m = Math.floor((totalSecs % 3600) / 60);
+    const s = totalSecs % 60;
+    const mill = ms % 1000;
+    const msStr = Math.floor(mill / 10).toString().padStart(2, '0');
+    return `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}<span style="font-size:0.7em; opacity:0.6; margin-left:2px;">.${msStr}</span>`;
+  }
+};
 function toast(msg, ms = 2400){ const t = $("#toast"); t.textContent = msg; t.classList.add("show"); clearTimeout(toast._t); toast._t = setTimeout(()=>t.classList.remove("show"), ms); }
 /* the quiz screen is fixed (question centred) as long as it fits; a tall question (matching) lets the page scroll instead of being cut */
 function fitFixed(){
@@ -1337,7 +1368,8 @@ function openProfile(){
   bg.innerHTML = `<div class="sheet prof" role="dialog" aria-modal="true" aria-label="Profil"></div>`;
   document.body.appendChild(bg);
   const sheet = bg.querySelector(".sheet");
-  const close = () => closeModal(bg);
+  let tInt = null;
+  const close = () => { if (tInt) clearInterval(tInt); closeModal(bg); };
   bg.onclick = e => { if (e.target === bg) close(); };
   const X = `<button class="icon-btn prof-x" id="pfX" aria-label="Închide"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>`;
   const show = () => {
@@ -1361,6 +1393,24 @@ function openProfile(){
         <div class="stat"><b>${exams}</b><small>${exams===1?"examen alb":"examene albe"}</small></div>
       </div>
 
+      ${S.admin ? `
+      <div class="pf-card" style="display:flex; align-items:center; justify-content:space-between; padding:12px 14px;">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <div style="width:38px; height:38px; border-radius:10px; background:var(--cedar-soft); color:var(--cedar); display:grid; place-items:center;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <div>
+             <div style="font-size:13px; font-weight:600; color:var(--ink-2); line-height:1.2; letter-spacing:0.02em;">Timp de studiu</div>
+             <div id="pfTimerDisplay" style="font-size:18px; font-weight:700; font-variant-numeric:tabular-nums; color:var(--ink); line-height:1.2;">00:00:00<span style="font-size:0.7em; opacity:0.5; margin-left:2px;">.00</span></div>
+          </div>
+        </div>
+        <div style="display:flex; gap:6px;">
+          <button id="pfTimerToggle" class="btn" style="min-height:36px; padding:0 14px; border-radius:10px; font-size:13px; border:1px solid var(--border); background:var(--bg-card); color:var(--ink); transition:all 0.2s;">Start</button>
+          <button id="pfTimerReset" class="btn btn-ghost" aria-label="Reset" style="min-height:36px; padding:0 8px; border-radius:10px; color:var(--ink-2);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg></button>
+        </div>
+      </div>
+      ` : ""}
+
       <div class="pf-card">
         ${levelBar("Întrebări ușoare", okE, seenE, totE, "var(--cedar)")}
         ${levelBar("Întrebări grele", okH, seenH, totH, "var(--oil)")}
@@ -1382,6 +1432,23 @@ function openProfile(){
       <div class="prof-btns">${p.child ? `<button class="btn btn-primary btn-block" data-back>Înapoi la profilul meu</button>` : ""}
       <button class="btn btn-danger btn-block" id="pfOut">Ieși din cont</button></div>`;
     sheet.querySelector("#pfX").onclick = close;
+
+    const updateT = () => {
+      if (!S.admin) return;
+      const d = sheet.querySelector("#pfTimerDisplay"), b = sheet.querySelector("#pfTimerToggle");
+      if (d && b) {
+        d.innerHTML = Timer.format(Timer.elapsed());
+        const run = Timer.get().run;
+        b.textContent = run ? "Pauză" : "Start";
+      }
+    };
+    if (S.admin) {
+      if (tInt) clearInterval(tInt);
+      tInt = setInterval(updateT, 50);
+      updateT();
+      sheet.querySelector("#pfTimerToggle").onclick = () => { Timer.toggle(); updateT(); };
+      sheet.querySelector("#pfTimerReset").onclick = () => { confirmBox("Resetezi timpul de studiu?", "Contorul va reporni de la zero.", "Resetează", () => { Timer.reset(); updateT(); }); };
+    }
 
     if (!p.child){
       sheet.querySelector("#pfEdit").onclick = () => { closeModal(bg, viewSettings); };

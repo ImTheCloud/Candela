@@ -32,7 +32,7 @@ Après chaque modification de `src/app.html` ou d'un fichier de questions : `npm
 - Thème clair uniquement, pas de mode sombre, aucun emoji.
 - Variables CSS de `:root` (`--bg`, `--surface`, `--ink`, `--oil`, `--cedar`...) ; pas de style inline quand une classe suffit.
 - Aucun texte ne doit passer sur deux lignes (vérifier à 320, 390 et 1280 px).
-- Sobre : pas de médailles, de séries, de minuteurs d'étude ni de notes explicatives.
+- Sobre : pas de médailles, de séries ni de notes explicatives (seul le minuteur d'étude de l'administrateur est autorisé, dans son profil).
 
 ## État
 L'objet global `S` de `app.html` contient le joueur (`S.player` : historique, questions réussies, chapitres) et la question en cours (`S.quiz`). Les vues se dessinent avec `mount(html)`.
