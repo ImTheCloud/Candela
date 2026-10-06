@@ -25,6 +25,7 @@ Après chaque modification de `src/app.html` ou d'un fichier de questions : `npm
 
 ## Questions
 - Types (`t`) : `tf` (`a` booléen), `one` (3 `opts`, `a` = index), `multi` (3 `opts`, `a` = liste d'index), `match` (exactement 3 `pairs`), `fill` (`___` dans `q`, `a` = liste de mots, texte identique au verset).
+- Une question doit se comprendre sans avoir lu le chapitre (elle peut tomber dans l'examen alb, qui mélange tous les chapitres). Si ce n'est pas possible (texte à compléter d'un verset au locuteur vague), ajouter `"exam": false` : elle reste dans les tests par chapitre mais pas dans l'examen.
 - Toujours 3 choix au maximum, 20 questions par chapitre et niveau au maximum, et une `ref` (ex. `"14:24"`).
 - L'identifiant d'une question est `<chapitre><e|h><index>` : seul l'ajout en fin de liste garde la progression des joueurs. Après un changement du nombre de questions, mettre à jour `quiz_counts`.
 

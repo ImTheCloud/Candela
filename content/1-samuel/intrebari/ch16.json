@@ -4,7 +4,7 @@
   {
    "t": "one",
    "ref": "16:1",
-   "q": "La cine l-a trimis Domnul pe Samuel?",
+   "q": "Pentru a unge un nou împărat, la cine l-a trimis Domnul pe Samuel?",
    "opts": [
     "La Isai, Betleemitul",
     "La preotul Ahia",
@@ -32,7 +32,7 @@
   {
    "t": "multi",
    "ref": "16:2-3",
-   "q": "Ce i-a poruncit Domnul lui Samuel să facă?",
+   "q": "Când l-a trimis la Betleem, ce i-a poruncit Domnul lui Samuel să facă?",
    "opts": [
     "Să-l ungă pe cel pe care i-l va arăta",
     "Să ia un vițel",
@@ -47,7 +47,7 @@
   {
    "t": "one",
    "ref": "16:6",
-   "q": "Pe cine a crezut Samuel că este unsul Domnului?",
+   "q": "Dintre fiii lui Isai, pe cine a crezut Samuel că este unsul Domnului?",
    "opts": [
     "Pe Abinadab",
     "Pe Eliab",
@@ -89,13 +89,13 @@
   {
    "t": "tf",
    "ref": "16:14",
-   "q": "Duhul Domnului a rămas peste Saul.",
+   "q": "După ungerea lui David, Duhul Domnului a rămas peste Saul.",
    "a": false
   },
   {
    "t": "one",
    "ref": "16:15-16",
-   "q": "De ce au căutat slujitorii un om care să cânte cu harpa?",
+   "q": "De ce au căutat slujitorii lui Saul un om care să cânte cu harpa?",
    "opts": [
     "Ca să-l desfete la ospețe",
     "Ca să vestească victoriile",
@@ -151,7 +151,7 @@
   {
    "t": "one",
    "ref": "16:3",
-   "q": "Ce i-a spus Domnul lui Samuel să ia cu el?",
+   "q": "Când l-a trimis la Betleem, ce i-a spus Domnul lui Samuel să ia cu el?",
    "opts": [
     "Un vițel pentru jertfă",
     "O oaie",
@@ -162,7 +162,7 @@
   {
    "t": "tf",
    "ref": "16:8",
-   "q": "Abinadab a fost alesul Domnului.",
+   "q": "Abinadab, fiul lui Isai, a fost alesul Domnului ca împărat.",
    "a": false
   }
  ],
@@ -184,7 +184,7 @@
   {
    "t": "one",
    "ref": "16:5",
-   "q": "Ce trebuia să facă Isai și fiii lui înainte de jertfă?",
+   "q": "Când Samuel a venit la Betleem, ce trebuia să facă Isai și fiii lui înainte de jertfă?",
    "opts": [
     "Să se sfințească",
     "Să postească",
@@ -240,13 +240,13 @@
   {
    "t": "tf",
    "ref": "16:13",
-   "q": "Samuel l-a uns pe David în taină, fără ca frații lui să fie de față.",
+   "q": "La Betleem, Samuel l-a uns pe David în taină, fără ca frații lui să fie de față.",
    "a": false
   },
   {
    "t": "tf",
    "ref": "16:13",
-   "q": "După ungere, Samuel a rămas la Betleem.",
+   "q": "După ce l-a uns pe David, Samuel a rămas la Betleem.",
    "a": false
   },
   {
@@ -266,7 +266,7 @@
   {
    "t": "match",
    "ref": "16:17-20",
-   "q": "Potrivește personajul cu fapta lui.",
+   "q": "Când Saul căuta un cântăreț, potrivește personajul cu fapta lui.",
    "pairs": [
     [
      "Saul",
@@ -285,7 +285,7 @@
   {
    "t": "multi",
    "ref": "16:18",
-   "q": "Ce a spus slujitorul despre fiul lui Isai?",
+   "q": "Ce a spus slujitorul lui Saul despre fiul lui Isai, Betleemitul?",
    "opts": [
     "Este bătrân și înțelept",
     "Este cunoscut ca preot",
@@ -312,7 +312,8 @@
    "q": "Un om tare și voinic, un războinic, vorbește bine, este frumos la chip și ___ este cu el.",
    "a": [
     "Domnul"
-   ]
+   ],
+   "exam": false
   },
   {
    "t": "one",

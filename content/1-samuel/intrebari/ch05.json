@@ -10,7 +10,7 @@
   {
    "t": "one",
    "ref": "5:3",
-   "q": "Ce au găsit asdodenii a doua zi dimineața?",
+   "q": "După ce chivotul a fost pus în casa lui Dagon, ce au găsit asdodenii a doua zi dimineața?",
    "opts": [
     "Chivotul dispărut din casa lui Dagon",
     "Pe Dagon întins cu fața la pământ înaintea chivotului",
@@ -41,7 +41,8 @@
    "q": "Când au văzut că așa stau lucrurile, oamenii din Asdod au zis: „Chivotul Dumnezeului lui Israel să nu rămână la noi, căci mâna Lui ___ asupra noastră și asupra lui Dagon, dumnezeul nostru.\"",
    "a": [
     "apasă"
-   ]
+   ],
+   "exam": false
   },
   {
    "t": "multi",
@@ -59,7 +60,7 @@
   {
    "t": "match",
    "ref": "5:2-10",
-   "q": "Potrivește cetatea cu ce s-a petrecut acolo.",
+   "q": "Când filistenii au purtat chivotul din cetate în cetate, potrivește cetatea cu ce s-a petrecut acolo.",
    "pairs": [
     [
      "Asdod",
@@ -95,7 +96,7 @@
   {
    "t": "tf",
    "ref": "5:12",
-   "q": "Cei care nu mureau erau loviți cu bube la șezut.",
+   "q": "În Ecron, după venirea chivotului, cei care nu mureau erau loviți cu bube la șezut.",
    "a": true
   },
   {
@@ -189,12 +190,13 @@
    "q": "Când au văzut că așa stau lucrurile, oamenii din Asdod au zis: „Chivotul Dumnezeului lui Israel să nu rămână la noi, căci mâna Lui apasă asupra noastră și asupra lui ___, dumnezeul nostru.\"",
    "a": [
     "Dagon"
-   ]
+   ],
+   "exam": false
   },
   {
    "t": "tf",
    "ref": "5:8",
-   "q": "Domnitorii filistenilor au hotărât ca chivotul să fie dus la Gat.",
+   "q": "După Asdod, domnitorii filistenilor au hotărât ca chivotul să fie dus la Gat.",
    "a": true
   },
   {
@@ -203,12 +205,13 @@
    "q": "Atunci au trimis chivotul lui Dumnezeu la Ecron. Când a intrat chivotul lui Dumnezeu în Ecron, ecroniții au strigat: „Au adus la noi chivotul Dumnezeului lui Israel ca să ne ___, pe noi și poporul nostru.\"",
    "a": [
     "omoare"
-   ]
+   ],
+   "exam": false
   },
   {
    "t": "one",
    "ref": "5:11",
-   "q": "Cum era în toată cetatea, când au cerut să se trimită chivotul înapoi?",
+   "q": "Când filistenii au cerut să se trimită chivotul înapoi, cum era în toată cetatea Ecronului?",
    "opts": [
     "O groază de moarte",
     "O mare bucurie",
@@ -219,7 +222,7 @@
   {
    "t": "one",
    "ref": "5:12",
-   "q": "Până unde se înălțau țipetele cetății?",
+   "q": "Până unde se înălțau țipetele cetății filistene lovite de bube?",
    "opts": [
     "Până la munți",
     "Până la Gat",
@@ -239,7 +242,8 @@
    "q": "Oamenii care nu mureau erau loviți cu bube la șezut, și țipetele cetății se înălțau până la ___.",
    "a": [
     "cer"
-   ]
+   ],
+   "exam": false
   }
  ]
 }
