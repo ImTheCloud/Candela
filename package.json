@@ -2,8 +2,9 @@
   "name": "candela",
   "private": true,
   "scripts": {
-    "build": "node scratch/build.js",
-    "serve": "node scratch/serve.js",
-    "dev": "node scratch/build.js && node scratch/serve.js"
+    "validate": "node scripts/validate.js",
+    "build": "node scripts/build.js",
+    "serve": "node scripts/serve.js",
+    "dev": "node scripts/build.js && node scripts/serve.js"
   }
 }

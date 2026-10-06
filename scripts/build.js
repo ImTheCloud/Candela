@@ -26,12 +26,14 @@ let fav = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox=
 
 let n = 0;
 for (let v of Object.values(quiz)) n += v.easy.length + v.hard.length;
+const counts = Object.entries(quiz).map(([ch, v]) => `(${ch},${v.easy.length},${v.hard.length})`).join(',');
+fs.writeFileSync(path.join(ROOT, 'supabase', 'quiz_counts.sql'),
+    `insert into public.quiz_counts (ch, e, h) values ${counts}\n  on conflict (ch) do update set e = excluded.e, h = excluded.h;\n`);
 let n_ro = n.toLocaleString('ro-RO');
 
 let head = `<!doctype html><html lang="ro"><head><meta charset="utf-8">` +
     `<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,interactive-widget=resizes-content">` +
     `<meta name="theme-color" content="#F8F1E6" media="(prefers-color-scheme: light)">` +
-    `<meta name="theme-color" content="#0F172A" media="(prefers-color-scheme: dark)">` + // updated theme color
     `<link rel="icon" href="${fav}">` +
     `<link rel="manifest" href="/manifest.webmanifest"><link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">` +
     `<meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Candela">` +
