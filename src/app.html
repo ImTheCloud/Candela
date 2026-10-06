@@ -1960,8 +1960,7 @@ function openOptions(chs = [...S.sel].sort((a,b)=>a-b)){
 }
 
 function buildExamPool(mode){
-  // the exam mixes every chapter: only questions that make sense without the chapter ("exam": false marks the others)
-  const allQs = buildPool(Array.from({length:31}, (_,i)=>i+1), mode).filter(q => q.exam !== false);
+  const allQs = buildPool(Array.from({length:31}, (_,i)=>i+1), mode);
   const tfQs = shuffle(allQs.filter(q => q.t === "tf"));
   const oneQs = shuffle(allQs.filter(q => q.t === "one"));
   const multiQs = shuffle(allQs.filter(q => q.t === "multi"));
