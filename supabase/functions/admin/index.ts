@@ -1,4 +1,4 @@
-// Admin page: { action: "list" } -> { ok, users: [{ id, name, email, parent, tests, created }] }; { action: "delete", id } -> { ok }.
+// Admin page: { action: "list" } -> { ok, users: [{ id, name, email, parent, tests, created }] }; { action: "delete", id } -> { ok }; { action: "edit_name", id, first, last } -> { ok, name } or 409 name_taken.
 // Only callers listed in public.admins may use it. Deleting an account also deletes its children's accounts.
 import { createClient } from "npm:@supabase/supabase-js@2";
 
@@ -80,11 +80,14 @@ Deno.serve(async (req) => {
     if (!id || !name) return json(400, { error: "bad_args" });
     const slug = name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 60);
     
-    const { error: authErr } = await admin.auth.admin.updateUserById(id, { user_metadata: { name } });
-    if (authErr) { console.error(authErr); return json(500, { error: "server" }); }
-    
+    // names are unique (by slug): check before touching anything
+    const { data: clash } = await admin.from("profiles").select("id").eq("slug", slug).neq("id", id).limit(1);
+    if (clash && clash.length) return json(409, { error: "name_taken" });
+
     const { error: profErr } = await admin.from("profiles").update({ name, slug }).eq("id", id);
-    if (profErr) { console.error(profErr); return json(500, { error: "server" }); }
+    if (profErr) { console.error(profErr); return json(profErr.code === "23505" ? 409 : 500, { error: profErr.code === "23505" ? "name_taken" : "server" }); }
+    const { error: authErr } = await admin.auth.admin.updateUserById(id, { user_metadata: { name } });
+    if (authErr) console.error(authErr);
     
     return json(200, { ok: true, name });
   }

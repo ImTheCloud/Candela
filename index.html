@@ -693,22 +693,27 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .ak-row .input{padding:11px 14px;font-size:16px}
 .ak-last{color:var(--ink-2);font-weight:500;max-width:9em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .kids-modal .link{justify-self:start;padding:2px 0;font-size:14.5px;color:var(--oil-ink)}
-.adm{display:grid;gap:14px}
-.adm-card{background:var(--surface);border-radius:16px;padding:16px;margin-bottom:12px;box-shadow:var(--shadow);display:grid;gap:12px;border:1px solid var(--line)}
-.adm-card.child{margin-left:24px;border-left:3px solid var(--line);border-radius:12px;padding:12px;margin-top:-6px;box-shadow:none;background:transparent}
-.ac-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
-.ac-user{display:flex;align-items:center;gap:10px;min-width:0}
-.ac-info{display:grid;gap:2px}
+.adm{display:grid;gap:14px;min-width:0}
+.adm-list{display:grid;gap:10px;min-width:0}
+.adm-card{min-width:0;background:var(--surface);border-radius:16px;padding:14px;box-shadow:var(--shadow);display:grid;gap:10px;border:1px solid var(--line)}
+.adm-card.child{margin-left:14px;border-left:3px solid var(--line);border-radius:12px;box-shadow:none;background:transparent}
+.ac-top{display:flex;align-items:center;gap:10px;min-width:0}
+.ac-info{display:grid;gap:2px;min-width:0;flex:1}
 .ac-info b{font-weight:600;font-size:15px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.ac-role{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-2);background:var(--surface-2);padding:2px 8px;border-radius:99px;display:inline-block;width:max-content}
-.ac-stats{display:flex;gap:6px;text-align:center;flex:none}
-.ac-stats .stat{background:var(--surface-2);padding:6px 10px;border-radius:10px;display:grid}
-.ac-stats .val{font-family:var(--f-display);font-weight:700;font-size:15px;color:var(--ink);line-height:1}
-.ac-stats .lbl{font-size:10px;font-weight:600;color:var(--ink-2);text-transform:uppercase}
-.ac-details{font-size:13px;color:var(--ink-2);display:flex;gap:6px;flex-wrap:wrap;line-height:1.4;padding-bottom:10px;border-bottom:1px solid var(--line)}
-.ac-actions{display:flex;gap:8px;flex-wrap:wrap}
-.ac-actions .btn{padding:6px 12px;font-size:13px;min-height:32px;border-radius:8px}
+.ac-info b.hid{text-decoration:line-through;opacity:.5}
+.ac-sub{font-size:13px;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ac-meta{font-size:13px;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-top:10px;border-top:1px solid var(--line)}
+.ac-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.ac-actions .btn{padding:0 8px;font-size:13px;min-height:36px;border-radius:10px;letter-spacing:0;text-transform:none;white-space:nowrap;box-shadow:none}
+.ac-actions .btn:last-child:nth-child(odd){grid-column:1/-1}
+@media(min-width:520px){.ac-actions{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr)}.ac-actions .btn:last-child:nth-child(odd){grid-column:auto}}
 .ac-actions .btn-danger-soft{background:var(--bad-soft);color:var(--bad);border:0;font-weight:600;cursor:pointer}
+.ed-modal{grid-template-columns:minmax(0,1fr)}
+.ed-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-bottom:10px}
+.ed-row .field{min-width:0}
+.ed-modal .modal-btns{grid-template-columns:repeat(2,minmax(0,1fr))}
+.ed-modal .btn{padding-inline:10px;letter-spacing:.02em}
+.ed-swap{width:100%;margin-bottom:10px}
 .temp-pw{font-family:var(--f-mono);font-size:26px;letter-spacing:.12em;background:var(--bg);border-radius:14px;padding:14px;margin:6px 0}
 .top-r{display:flex;align-items:center;gap:10px;min-width:0}
 .read-btn{display:inline-flex;align-items:center;gap:6px;border:2px solid transparent;background:var(--ink);color:var(--bg);border-radius:12px;padding:7px 14px 7px 11px;font-size:13.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;box-shadow:0 4px 0 var(--ink-2);flex:none;min-height:38px;transition:all .15s ease}
@@ -3065,32 +3070,23 @@ async function viewAdmin(){
     const el = $("#aList"); if (!el || !users) return;
     const f = fold(q), list = users.filter(u => !f || fold(u.name + " " + u.email + " " + u.parent).includes(f));
     $("#aCount").textContent = `${users.length} ${users.length === 1 ? "cont" : "conturi"}`;
-    
     let html = "";
-    const dateStr = d => new Date(d).toLocaleDateString("ro-RO", {day:"numeric", month:"short", year:"numeric"});
+    const dateStr = d => new Date(d).toLocaleDateString("ro-RO", {day:"numeric", month:"short"});
+    const role = u => u.me ? "Tu" : (u.is_parent && !u.parent ? "Părinte" : "");
     const drawRow = (u, isChild) => `<div class="adm-card ${isChild ? 'child' : ''}">
       <div class="ac-top">
-        <div class="ac-user">
-          <span class="avatar sm">${esc(initials(u.name))}</span>
-          <div class="ac-info">
-            <b style="${u.hidden ? 'text-decoration: line-through; opacity: 0.5;' : ''}">${esc(u.name)}</b>
-            <span class="ac-role">${u.me ? "Contul tău" : (u.is_parent && !isChild ? "Părinte" : (u.parent ? "Copil" : "Jucător"))}</span>
-          </div>
-        </div>
-        <div class="ac-stats">
-          <div class="stat"><span class="val">${u.points || 0}</span><span class="lbl">pct</span></div>
-          <div class="stat"><span class="val">${u.tests || 0}</span><span class="lbl">teste</span></div>
+        <span class="avatar sm">${esc(initials(u.name))}</span>
+        <div class="ac-info">
+          <b class="${u.hidden ? 'hid' : ''}">${esc(u.name)}</b>
+          <span class="ac-sub">${u.email ? esc(u.email) : (u.parent ? `Sub contul lui ${esc(u.parent)}` : "Fără email")}</span>
         </div>
       </div>
-      <div class="ac-details">
-        <span>${u.email ? esc(u.email) : (u.parent ? `Sub contul lui ${esc(u.parent)}` : "Fără email")}</span>
-        <span>•</span>
-        <span>Activ: ${dateStr(u.last_active)}</span>
-      </div>
+      <div class="ac-meta">${role(u) ? role(u) + " · " : ""}${u.points || 0} pct · ${u.tests || 0} teste · ${dateStr(u.last_active)}</div>
       <div class="ac-actions">
-        <button class="btn btn-ghost sm" type="button" data-aedit="${u.id}">Modifică</button>
-        ${!u.parent && !u.me ? `<button class="btn btn-ghost sm" type="button" data-apw="${u.id}">Reset parolă</button>` : ""}
-        ${!u.me ? `<button class="btn btn-danger-soft sm" type="button" data-adel="${u.id}">Șterge</button>` : ""}
+        <button class="btn btn-ghost" type="button" data-aedit="${u.id}">Modifică</button>
+        ${u.name.trim().split(/\s+/).length === 2 ? `<button class="btn btn-ghost" type="button" data-aswap="${u.id}">Inversează</button>` : ""}
+        ${!u.parent && !u.me ? `<button class="btn btn-ghost" type="button" data-apw="${u.id}">Parolă nouă</button>` : ""}
+        ${!u.me ? `<button class="btn btn-danger-soft" type="button" data-adel="${u.id}">Șterge</button>` : ""}
       </div>
     </div>`;
 
@@ -3115,17 +3111,25 @@ async function viewAdmin(){
       const u = users.find(x => x.id === b.dataset.aedit);
       let f = "", l = ""; if (u.name.includes(" ")) { f = u.name.substring(0, u.name.indexOf(" ")); l = u.name.substring(u.name.indexOf(" ") + 1); } else f = u.name;
       const bg = document.createElement("div"); bg.className = "modal-bg";
-      bg.innerHTML = `<form class="modal" role="dialog" aria-modal="true" aria-labelledby="edH" novalidate><h3 id="edH">Modifică numele</h3><p class="muted">Schimbă numele pentru <b>${esc(u.name)}</b>:</p><div style="display:flex;gap:12px;margin-bottom:12px"><input class="input" id="edFirst" placeholder="Prenume" value="${esc(f)}" required maxlength="30" autocapitalize="words"><input class="input" id="edLast" placeholder="Nume" value="${esc(l)}" required maxlength="30" autocapitalize="words"></div><p class="form-error" id="edErr" role="alert"></p><div class="modal-btns"><button class="btn btn-ghost" type="button" id="edCancel">Anulează</button><button class="btn btn-primary" type="submit" id="edGo">Salvează</button></div></form>`;
+      bg.innerHTML = `<form class="modal ed-modal" role="dialog" aria-modal="true" aria-labelledby="edH" novalidate><h3 id="edH">Modifică numele</h3><div class="ed-row"><div class="field"><label for="edLast">Nume de Familie</label><input class="input" id="edLast" value="${esc(l)}" required maxlength="30" autocapitalize="words"></div><div class="field"><label for="edFirst">Prenume</label><input class="input" id="edFirst" value="${esc(f)}" required maxlength="30" autocapitalize="words"></div></div><button class="btn btn-ghost ed-swap" type="button" id="edSwap">Inversează</button><p class="form-error" id="edErr" role="alert"></p><div class="modal-btns"><button class="btn btn-ghost" type="button" id="edCancel">Anulează</button><button class="btn btn-primary" type="submit" id="edGo">Salvează</button></div></form>`;
       document.body.appendChild(bg); const close = () => closeModal(bg); bg.querySelector("#edCancel").onclick = close; bg.onclick = e => { if (e.target === bg) close(); };
       const err = bg.querySelector("#edErr"), fIn = bg.querySelector("#edFirst"), lIn = bg.querySelector("#edLast");
+      bg.querySelector("#edSwap").onclick = () => { const t = fIn.value; fIn.value = lIn.value; lIn.value = t; err.textContent = ""; };
       bg.querySelector("form").onsubmit = async e => {
         e.preventDefault(); const nf = capName(fIn.value), nl = capName(lIn.value);
         if (!slugOf(nf) || !slugOf(nl)) { err.textContent = "Nume invalid."; return; }
         const btn = bg.querySelector("#edGo"); btn.disabled = true; btn.textContent = "Se salvează…";
         const r = await call({action: "edit_name", id: u.id, first: nf, last: nl});
-        if (!r.ok) { btn.disabled = false; btn.textContent = "Salvează"; err.textContent = "Eroare: " + (r.error || "salvare"); console.error(r); return; }
-        u.name = r.name; draw(); close(); toast("Numele a fost modificat.");
+        if (!r.ok) { btn.disabled = false; btn.textContent = "Salvează"; err.textContent = r.error === "name_taken" ? "Există deja un cont cu acest nume." : "Nu s-a putut salva. Încearcă din nou."; return; }
+        u.name = r.name; S.board = null; draw(); close(); toast("Numele a fost modificat.");
       };
+    });
+    el.querySelectorAll("[data-aswap]").forEach(b => b.onclick = async () => {
+      const u = users.find(x => x.id === b.dataset.aswap), [a, c] = u.name.trim().split(/\s+/);
+      b.disabled = true;
+      const r = await call({action: "edit_name", id: u.id, first: c, last: a});
+      if (!r.ok) { b.disabled = false; return toast(r.error === "name_taken" ? "Există deja un cont cu acest nume." : "Nu s-a putut salva."); }
+      u.name = r.name; S.board = null; draw(); toast(`Acum: ${r.name}`);
     });
     el.querySelectorAll("[data-adel]").forEach(b => b.onclick = () => {
       const u = users.find(x => x.id === b.dataset.adel), kids = users.filter(x => x.parent === u.name).length;
