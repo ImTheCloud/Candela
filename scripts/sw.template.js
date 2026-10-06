@@ -1,4 +1,4 @@
-// Candela offline support (generated from scripts/sw.template.js by build.py).
+// Candela offline support (generated from scripts/sw.template.js by scripts/build.js).
 // The page is network-first so updates arrive at once; the copy in the cache opens it without internet.
 const CACHE = "candela-__VERSION__";
 const CORE = ["/", "/manifest.webmanifest", "/icons/icon-192.png", "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"];

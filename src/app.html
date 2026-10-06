@@ -250,7 +250,8 @@ html:has(.sheet-bg),html:has(.modal-bg),body:has(.sheet-bg),body:has(.modal-bg){
 .startbar{position:sticky;bottom:0;padding-block:14px calc(14px + env(safe-area-inset-bottom,0px));background:linear-gradient(to top,var(--bg) 70%,transparent);margin-top:18px;z-index:5}
 .history{display:grid;gap:2px;background:var(--surface);border-radius:18px;padding:8px;box-shadow:var(--shadow)}
 .history .board-footer-btn{margin-top:2px}
-.hrow{width:100%;border:0;text-align:left;color:var(--ink);font:inherit;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto auto;align-items:center;gap:10px;background:transparent;border-radius:12px;padding:9px 12px;outline:none;-webkit-tap-highlight-color:transparent;transition:all .18s ease}
+.hrow{width:100%;border:0;text-align:left;color:var(--ink);font:inherit;cursor:pointer;display:grid;grid-template-columns:72px 1fr auto auto;align-items:center;gap:10px;background:transparent;border-radius:12px;padding:9px 12px;outline:none;-webkit-tap-highlight-color:transparent;transition:all .18s ease}
+.hrow .badge{justify-self:start}
 @media (hover: hover) and (pointer: fine){
   .hrow:hover{background:var(--oil-soft);transform:translateY(-1px)}
   .hrow:hover .chev{color:var(--oil);opacity:1;transform:translateX(2px)}
@@ -740,6 +741,9 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 @media (min-width:600px){.wl-verse{max-width:none}}
 .wl-verse .ref{display:block;width:max-content;margin:6px auto 0}
 .welcome .lead{font-size:16px;margin:0;white-space:nowrap}
+.wl-sub{margin:0 0 8px;text-align:center}
+.wl-note{margin:0;font-size:14px}
+@media (max-height:640px){.wl-sub,.wl-note{display:none}}
 .welcome .count{font-weight:700;color:var(--cedar)}
 .wl-list{list-style:none;margin:0;padding:clamp(10px,2vh,16px) 18px;display:grid;gap:clamp(8px,1.6vh,12px);text-align:left;width:100%}
 .wl-list li{display:grid;grid-template-columns:26px 1fr;gap:12px;align-items:center;font-size:15.5px;white-space:nowrap}
@@ -839,37 +843,6 @@ const refLabel = r => {
 };
 function lsGet(k, d){ try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } }
 function lsSet(k, v){ try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }
-const Timer = {
-  get: () => lsGet("candela:timer", { run: false, start: 0, acc: 0 }),
-  set: (t) => lsSet("candela:timer", t),
-  toggle: () => {
-    const t = Timer.get();
-    if (t.run) {
-      t.acc += Date.now() - t.start;
-      t.run = false;
-    } else {
-      t.start = Date.now();
-      t.run = true;
-    }
-    Timer.set(t);
-  },
-  reset: () => {
-    Timer.set({ run: false, start: 0, acc: 0 });
-  },
-  elapsed: () => {
-    const t = Timer.get();
-    return t.acc + (t.run ? Date.now() - t.start : 0);
-  },
-  format: (ms) => {
-    const totalSecs = Math.floor(ms / 1000);
-    const h = Math.floor(totalSecs / 3600);
-    const m = Math.floor((totalSecs % 3600) / 60);
-    const s = totalSecs % 60;
-    const mill = ms % 1000;
-    const msStr = Math.floor(mill / 10).toString().padStart(2, '0');
-    return `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}<span style="font-size:0.7em; opacity:0.6; margin-left:2px;">.${msStr}</span>`;
-  }
-};
 function toast(msg, ms = 2400){ const t = $("#toast"); t.textContent = msg; t.classList.add("show"); clearTimeout(toast._t); toast._t = setTimeout(()=>t.classList.remove("show"), ms); }
 /* the quiz screen is fixed (question centred) as long as it fits; a tall question (matching) lets the page scroll instead of being cut */
 function fitFixed(){
@@ -1266,23 +1239,14 @@ function viewWelcome(){
     </div>
     <div class="wl-mid">
       <p class="lead"><span class="count">${totalCount("both").toLocaleString("ro-RO")} de întrebări</span> din 1 Samuel</p>
-      <p class="muted" style="text-align:center; margin-bottom:8px;">Ce poți face pe acest site:</p>
+      <p class="muted wl-sub">Ce poți face pe acest site:</p>
       <ol class="card wl-list">
         <li><b>1</b><span>Alegi un capitol și nivelul</span></li>
         <li><b>2</b><span>Răspunzi la întrebări</span></li>
         <li><b>3</b><span>Vezi răspunsul și versetul</span></li>
         <li><b>4</b><span>Citești Biblia oricând</span></li>
       </ol>
-      <div class="card" style="margin-top:14px; padding:16px;">
-        <b style="display:block; font-size:13.5px; color:var(--ink); margin-bottom:10px;">Despre puncte</b>
-        <div class="pf-rules" style="margin:0; padding:0; border:none;">
-          <div class="pf-rule"><span class="r-icon">✓</span><span>Răspunsurile corecte aduc <b>puncte</b>.</span></div>
-          <div class="pf-rule"><span class="r-icon">↺</span><span><b>Reia greșelile</b> nu dă puncte.</span></div>
-          <div class="pf-rule"><span class="r-icon" style="font-size:17px; line-height:14px">+</span><span>Pentru un punctaj mai mare: <b>refă testul</b>.</span></div>
-          <div class="pf-rule"><span class="r-icon" style="font-size:16px; line-height:14px">◷</span><span>Timpul este informativ, <b>nu afectează</b> scorul.</span></div>
-          <div class="pf-rule"><span class="r-icon">${EXAM_ICON(14)}</span><span><b>Examenul alb</b> nu aduce puncte în clasament.</span></div>
-        </div>
-      </div>
+      <p class="muted wl-note">Răspunsurile corecte aduc puncte în clasament.</p>
     </div>
     <div class="wl-bottom"><button class="btn btn-primary btn-block" id="wGo" type="button">Începe</button></div>
   </section>`);
@@ -1373,8 +1337,7 @@ function openProfile(){
   bg.innerHTML = `<div class="sheet prof" role="dialog" aria-modal="true" aria-label="Profil"></div>`;
   document.body.appendChild(bg);
   const sheet = bg.querySelector(".sheet");
-  let tInt = null;
-  const close = () => { if (tInt) clearInterval(tInt); closeModal(bg); };
+  const close = () => closeModal(bg);
   bg.onclick = e => { if (e.target === bg) close(); };
   const X = `<button class="icon-btn prof-x" id="pfX" aria-label="Închide"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>`;
   const show = () => {
@@ -1383,9 +1346,6 @@ function openProfile(){
     const okE = p.ok.filter(id => /^\d+e/.test(id)).length, okH = p.ok.filter(id => /^\d+h/.test(id)).length;
     const totE = totalCount("easy"), totH = totalCount("hard");
     const seen = p.seen || [], seenE = seen.filter(id => /^\d+e/.test(id)).length, seenH = seen.filter(id => /^\d+h/.test(id)).length;
-    const totSecs = h.reduce((s, x) => s + (x.secs || 0), 0);
-    const m = Math.floor(totSecs / 60), s = totSecs % 60;
-    const timeStr = `${m}:${s.toString().padStart(2, '0')}`;
     const exams = p.exams ?? p.history.filter(h => h.exam || (h.chs && h.chs.length === 1 && h.chs[0] === 0)).length;
     sheet.innerHTML = `${X}
       <div class="pf-head">
@@ -1400,24 +1360,6 @@ function openProfile(){
         <div class="stat"><b>${p.ok.length} <span style="font-size:0.65em; opacity:0.6; font-weight:600;">/ ${totalCount("both")}</span></b><small>${p.ok.length===1?"punct":"puncte"}</small></div>
         <div class="stat"><b>${exams}</b><small>${exams===1?"examen alb":"examene albe"}</small></div>
       </div>
-
-      ${S.admin ? `
-      <div class="pf-card" style="display:flex; align-items:center; justify-content:space-between; padding:12px 14px;">
-        <div style="display:flex; align-items:center; gap:12px;">
-          <div style="width:38px; height:38px; border-radius:10px; background:var(--cedar-soft); color:var(--cedar); display:grid; place-items:center;">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          </div>
-          <div>
-             <div style="font-size:13px; font-weight:600; color:var(--ink-2); line-height:1.2; letter-spacing:0.02em;">Timp de studiu</div>
-             <div id="pfTimerDisplay" style="font-size:18px; font-weight:700; font-variant-numeric:tabular-nums; color:var(--ink); line-height:1.2;">00:00:00<span style="font-size:0.7em; opacity:0.5; margin-left:2px;">.00</span></div>
-          </div>
-        </div>
-        <div style="display:flex; gap:6px;">
-          <button id="pfTimerToggle" class="btn" style="min-height:36px; padding:0 14px; border-radius:10px; font-size:13px; border:1px solid var(--border); background:var(--bg-card); color:var(--ink); transition:all 0.2s;">Start</button>
-          <button id="pfTimerReset" class="btn btn-ghost" aria-label="Reset" style="min-height:36px; padding:0 8px; border-radius:10px; color:var(--ink-2);"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg></button>
-        </div>
-      </div>
-      ` : ""}
 
       <div class="pf-card">
         ${levelBar("Întrebări ușoare", okE, seenE, totE, "var(--cedar)")}
@@ -1440,23 +1382,6 @@ function openProfile(){
       <div class="prof-btns">${p.child ? `<button class="btn btn-primary btn-block" data-back>Înapoi la profilul meu</button>` : ""}
       <button class="btn btn-danger btn-block" id="pfOut">Ieși din cont</button></div>`;
     sheet.querySelector("#pfX").onclick = close;
-
-    const updateT = () => {
-      if (!S.admin) return;
-      const d = sheet.querySelector("#pfTimerDisplay"), b = sheet.querySelector("#pfTimerToggle");
-      if (d && b) {
-        d.innerHTML = Timer.format(Timer.elapsed());
-        const run = Timer.get().run;
-        b.textContent = run ? "Pauză" : "Start";
-      }
-    };
-    if (S.admin) {
-      if (tInt) clearInterval(tInt);
-      tInt = setInterval(updateT, 50);
-      updateT();
-      sheet.querySelector("#pfTimerToggle").onclick = () => { Timer.toggle(); updateT(); };
-      sheet.querySelector("#pfTimerReset").onclick = () => { confirmBox("Resetezi timpul de studiu?", "Contorul va reporni de la zero.", "Resetează", () => { Timer.reset(); updateT(); }); };
-    }
 
     if (!p.child){
       sheet.querySelector("#pfEdit").onclick = () => { closeModal(bg, viewSettings); };
@@ -1986,271 +1911,6 @@ function openOptions(chs = [...S.sel].sort((a,b)=>a-b)){
   bg.onclick = e => { if (e.target === bg) close(); };
   if (bg.querySelector("#shRead")) bg.querySelector("#shRead").onclick = () => closeModal(bg, () => viewRead(c));
 }
-const EXAM_MATCH_QUESTIONS = [
-  // --- 10 ÎNTREBĂRI UȘOARE DE ASOCIERE (5 PERECHI FIECARE) ---
-  {
-    mode: "easy",
-    t: "match",
-    ref: "1 Samuel",
-    q: "Asociază fiecare personaj principal cu fapta sau rolul său din 1 Samuel.",
-    pairs: [
-      ["Eli", "Preotul bătrân la Șilo care l-a crescut pe copilul Samuel"],
-      ["Samuel", "Profetul care i-a uns ca împărați pe Saul și pe David"],
-      ["Saul", "Primul împărat al lui Israel, din seminția lui Beniamin"],
-      ["David", "Tânărul păstor din Betleem care l-a doborât pe uriașul Goliat"],
-      ["Ionatan", "Fiul lui Saul care a legat un legământ de prietenie cu David"]
-    ]
-  },
-  {
-    mode: "easy",
-    t: "match",
-    ref: "1 Samuel",
-    q: "Asociază fiecare tată cu fiul sau fiica sa menționată în 1 Samuel.",
-    pairs: [
-      ["Elcana", "Samuel"],
-      ["Eli", "Hofni"],
-      ["Chiș", "Saul"],
-      ["Isai", "David"],
-      ["Saul", "Mical"]
-    ]
-  },
-  {
-    mode: "easy",
-    t: "match",
-    ref: "1 Samuel",
-    q: "Asociază fiecare femeie din 1 Samuel cu fapta sau rolul său.",
-    pairs: [
-      ["Ana", "Mama lui Samuel, care s-a rugat cu lacrimi la Șilo pentru un fiu"],
-      ["Penina", "Cealaltă soție a lui Elcana, care o înțepa pe Ana ca s-o amărască"],
-      ["Mical", "Fiica lui Saul care l-a ajutat pe David să fugă pe fereastră"],
-      ["Abigail", "Soția înțeleaptă din Carmel care a oprit mânia lui David prin daruri"],
-      ["Femeia din En-Dor", "Femeia pe care Saul a căutat-o noaptea pentru a-l chema pe Samuel"]
-    ]
-  },
-  {
-    mode: "easy",
-    t: "match",
-    ref: "1 Samuel",
-    q: "Asociază fiecare loc din 1 Samuel cu evenimentul petrecut acolo.",
-    pairs: [
-      ["Șilo", "Locul unde se afla cortul întâlnirii și unde a slujit Samuel în copilărie"],
-      ["Valea Terebinților", "Locul unde s-au înfruntat David și filisteanul Goliat"],
-      ["Eben-Ezer", "Locul unde Samuel a pus piatra de aducere aminte a ajutorului Domnului"],
-      ["Peștera En-Ghedi", "Locul unde David a tăiat doar colțul mantalei lui Saul fără să-l ucidă"],
-      ["Muntele Ghilboa", "Muntele unde au murit în luptă împăratul Saul și fiii săi"]
-    ]
-  },
-  {
-    mode: "easy",
-    t: "match",
-    ref: "1 Samuel",
-    q: "Asociază fiecare obiect cu contextul în care apare în 1 Samuel.",
-    pairs: [
-      ["Mantaua mică fără mâneci", "Hăinuța adusă în fiecare an de Ana copilului Samuel la Șilo"],
-      ["Cornul cu untdelemn", "Folosit de Samuel la Betleem pentru a-l unge pe David"],
-      ["Cele cinci pietre netede", "Luate de David din pârâu pentru praștia sa împotriva lui Goliat"],
-      ["Sabia lui Goliat", "Păstrată învelită într-o pânză la Nob și dată lui David la fugă"],
-      ["Idolul casnic (terafimul)", "Pus de Mical în pat acoperit cu o haină pentru a simula că David e bolnav"]
-    ]
-  },
-  {
-    mode: "easy",
-    t: "match",
-    ref: "1 Samuel",
-    q: "Asociază fiecare replică celebră cu personajul care a rostit-o.",
-    pairs: [
-      ["„Vorbește, Doamne, căci robul Tău ascultă!”", "Samuel copil la Șilo"],
-      ["„Tu vii împotriva mea cu sabie... eu vin în Numele Domnului!”", "David către Goliat"],
-      ["„Ascultarea face mai mult decât jertfele!”", "Samuel către Saul la Ghilgal"],
-      ["„Saul a bătut miile lui, iar David zecile lui de mii!”", "Femeile care cântau și dănțuiau"],
-      ["„Pentru copilul acesta mă rugam, și Domnul a ascultat rugăciunea mea!”", "Ana către preotul Eli"]
-    ]
-  },
-  {
-    mode: "easy",
-    t: "match",
-    ref: "1 Samuel",
-    q: "Asociază fiecare personaj cu neascultarea sau greșeala sa din 1 Samuel.",
-    pairs: [
-      ["Fiii lui Eli (Hofni și Fineas)", "Pângăreau jertfele Domnului luând carnea cu furculița cu trei coarne"],
-      ["Saul la Ghilgal", "A adus arderea de tot fără să-l mai aștepte pe Samuel"],
-      ["Poporul cu Saul la amaleciți", "Au cruțat oile cele mai bune și vitele grase sub pretextul jertfei"],
-      ["Nabal", "A refuzat cu asprime să dea pâine și apă oamenilor lui David"],
-      ["Saul înainte de ultima bătălie", "A mers la o femeie care chema morții, încălcând legea Domnului"]
-    ]
-  },
-  {
-    mode: "easy",
-    t: "match",
-    ref: "1 Samuel",
-    q: "Asociază fiecare potrivnic cu acțiunea sau descrierea sa din 1 Samuel.",
-    pairs: [
-      ["Goliat din Gat", "Uriașul filistean care a batjocorit oștirea lui Israel 40 de zile"],
-      ["Nahaș amonitul", "A cerut să scoată ochiul drept locuitorilor din Iabesul Galaadului"],
-      ["Agag", "Împăratul amaleciților cruțat greșit de Saul și pedepsit de Samuel"],
-      ["Achiș împăratul Gatului", "Stăpânitorul filistean înaintea căruia David s-a prefăcut nebun"],
-      ["Doeg edomitul", "Căpetenia păstorilor lui Saul care a ucis preoții din cetatea Nob"]
-    ]
-  },
-  {
-    mode: "easy",
-    t: "match",
-    ref: "1 Samuel",
-    q: "Asociază fiecare personaj cu cetatea sau ținutul său de obârșie din 1 Samuel.",
-    pairs: [
-      ["Samuel", "Rama (Ramataim-Țofim)"],
-      ["Saul", "Ghibea din seminția lui Beniamin"],
-      ["David", "Betleemul lui Iuda"],
-      ["Goliat", "Cetatea filisteană Gat"],
-      ["Nabal", "Maon (avându-și turma la Carmel)"]
-    ]
-  },
-  {
-    mode: "easy",
-    t: "match",
-    ref: "1 Samuel",
-    q: "Asociază fiecare animal cu evenimentul biblic în care este menționat.",
-    pairs: [
-      ["Măgărițele pierdute ale lui Chiș", "Căutarea lor l-a condus pe Saul la profetul Samuel în Țuf"],
-      ["Cele două vaci care alăptau", "Au tras singure carul cu chivotul Domnului spre Bet-Șemeș"],
-      ["Leul și ursul", "Fiarele răpitoare pe care David le-a ucis când păzea oile tatălui său"],
-      ["Pielea de capră", "Pusă de Mical la căpătâiul idolului din pat pentru a imita părul lui David"],
-      ["Măgarul trimis de Isai", "Încărcat cu pâine, un burduf cu vin și un ied pentru împăratul Saul"]
-    ]
-  },
-
-  // --- 10 ÎNTREBĂRI GRELE DE ASOCIERE (5 PERECHI FIECARE) ---
-  {
-    mode: "hard",
-    t: "match",
-    ref: "1 Samuel",
-    q: "Asociază fiecare număr cu evenimentul corespunzător din 1 Samuel.",
-    pairs: [
-      ["40 de zile", "Perioada în care Goliat a ieșit dimineața și seara să sfideze tabăra lui Israel"],
-      ["3000 de oameni aleși", "Oastea adunată de Saul pentru a-l căuta pe David la stâncile țapilor sălbatici"],
-      ["85 de bărbați", "Numărul de preoți care purtau efodul de in uciși de Doeg la Nob"],
-      ["200 de prepuțuri", "Darul de nuntă adus de David lui Saul pentru a se căsători cu Mical"],
-      ["20 de ani", "Timpul în care chivotul Domnului a rămas în casa lui Abinadab la Chiriat-Iearim"]
-    ]
-  },
-  {
-    mode: "hard",
-    t: "match",
-    ref: "1 Samuel",
-    q: "Asociază fiecare personaj cu legătura sa de rudenie sau familie din 1 Samuel.",
-    pairs: [
-      ["Abner", "Vărul lui Saul și căpetenia oștirii lui Israel"],
-      ["Icabod", "Nepotul lui Eli, născut când mama sa a aflat că chivotul a fost luat"],
-      ["Eliab", "Fratele cel mai mare al lui David, care l-a mustrat cu asprime în tabără"],
-      ["Merab", "Fiica cea mare a lui Saul, dată lui Adriel din Mehola în loc de David"],
-      ["Malchișua", "Fiul lui Saul care a pierit împreună cu el și Ionatan pe muntele Ghilboa"]
-    ]
-  },
-  {
-    mode: "hard",
-    t: "match",
-    ref: "1 Samuel",
-    q: "Asociază fiecare loc de pribegie al lui David cu întâmplarea petrecută acolo.",
-    pairs: [
-      ["Peștera Adulam", "Locul unde s-au adunat la David toți cei asupriți, datornici și amărâți"],
-      ["Cetatea Cheila", "Cetatea eliberată de David de filistenii care îi jefuiau ariile de grâu"],
-      ["Pădurea Horeș din pustia Zif", "Locul unde Ionatan a venit în taină la David să-i întărească încrederea în Domnul"],
-      ["Cetatea Țiclag", "Cetatea din pustie dată lui David de Achiș, prădată și arsă de amaleciți"],
-      ["Stânca Despărțirilor (Sela-Hamahlecoth)", "Locul unde Saul a încetat urmărirea lui David fiindcă filistenii năvăliseră în țară"]
-    ]
-  },
-  {
-    mode: "hard",
-    t: "match",
-    ref: "1 Samuel",
-    q: "Asociază fiecare profeție sau semn divin cu semnificația sa din 1 Samuel.",
-    pairs: [
-      ["Omul lui Dumnezeu trimis la Eli", "A profețit că niciun bărbat din casa lui nu va ajunge la bătrânețe"],
-      ["Cei trei bărbați de la stejarul Tabor", "Semnul dat lui Saul că va întâlni oameni cu trei iezi, trei pâini și un burduf"],
-      ["Prorocirea lui Saul printre proroci la Ghibea", "Semnul că Duhul Domnului a venit peste el și că a fost prefăcut într-un alt om"],
-      ["Ruperea poalei mantalei lui Samuel", "Simbolul că Domnul a rupt împărăția din mâna lui Saul și a dat-o altuia"],
-      ["Umbra lui Samuel la En-Dor", "A vestit că a doua zi Saul și fiii lui vor fi în locuința morților"]
-    ]
-  },
-  {
-    mode: "hard",
-    t: "match",
-    ref: "1 Samuel",
-    q: "Asociază fiecare episod militar din 1 Samuel cu detaliul său strategic.",
-    pairs: [
-      ["Trecerea printre stâncile Boțeț și Sene", "Ionatan și purtătorul său de arme au urcat în mâini și picioare spre tabăra filistenilor"],
-      ["Iabesul Galaadului asediat de amoniți", "Saul a tăiat o pereche de boi în bucăți și i-a trimis în tot ținutul ca să adune oastea"],
-      ["Bătălia de la Micmaș", "Filistenii aveau 30.000 de care de război și poporul lui Israel se ascundea în peșteri"],
-      ["Lupta de la Ghilgal împotriva filistenilor", "În tot Israelul nu se găsea niciun fierar, doar Saul și Ionatan aveau sabie și suliță"],
-      ["Recuperarea captivilor la pârâul Besor", "David a împărțit prada în mod egal între cei ce au luptat și cei 200 care au păzit calabalâcul"]
-    ]
-  },
-  {
-    mode: "hard",
-    t: "match",
-    ref: "1 Samuel",
-    q: "Asociază fiecare jurământ sau legământ cu persoana care l-a rostit în 1 Samuel.",
-    pairs: [
-      ["„Blestemat să fie omul care va mânca hrană până seara!”", "Împăratul Saul către oaste în ziua biruinței de la Micmaș"],
-      ["„Viu este Domnul... că nu va cădea un păr din capul lui pe pământ!”", "Poporul care l-a scăpat pe Ionatan de la moarte pentru mierea gustată"],
-      ["„Domnul să fie martor pe vecie între sămânța mea și sămânța ta!”", "Ionatan la încheierea legământului sfânt cu David lângă piatra Ezel"],
-      ["„Să-mi facă Dumnezeu ce o vrea dacă nu vei muri astăzi!”", "Saul când a aflat că Ionatan a gustat puțină miere cu vârful toiagului"],
-      ["„Dacă Domnul te ațâță împotriva mea, să primească o jertfă de mâncare!”", "David strigând către Saul după ce i-a cruțat viața la En-Ghedi"]
-    ]
-  },
-  {
-    mode: "hard",
-    t: "match",
-    ref: "1 Samuel",
-    q: "Asociază fiecare personaj cu împrejurările morții sau înmormântării sale.",
-    pairs: [
-      ["Preotul Eli", "A căzut pe spate de pe scaun lângă poartă și și-a rupt gâtul la vestea despre chivot"],
-      ["Samuel", "A murit bătrân, a fost plâns de tot Israelul și îngropat în casa lui la Rama"],
-      ["Purtătorul de arme al lui Saul", "Văzându-și împăratul căzut pe muntele Ghilboa, s-a aruncat și el în propria sabie"],
-      ["Nabal", "I-a încremenit inima în piept ca o piatră când a auzit primejdia și a murit după zece zile"],
-      ["Trupurile lui Saul și ale fiilor săi", "Atârnate de filisteni pe zidurile Bet-Șanului și luate noaptea de vitejii din Iabes"]
-    ]
-  },
-  {
-    mode: "hard",
-    t: "match",
-    ref: "1 Samuel",
-    q: "Asociază fiecare rugăciune sau mărturisire de credință cu cel care a rostit-o.",
-    pairs: [
-      ["„Domnul omoară și învie, El coboară în locuința morților și El scoate din ea!”", "Ana în cântarea ei de biruință de la Șilo"],
-      ["„Nimic nu poate împiedica pe Domnul să dea izbăvire printr-un număr mare sau mic!”", "Ionatan către tânărul care îi ducea armele"],
-      ["„Domnul Se uită la ceea ce izbește ochii, dar Domnul Se uită la inimă!”", "Cuvântul Domnului către Samuel în casa lui Isai"],
-      ["„S-a dus slava din Israel, căci chivotul lui Dumnezeu a fost luat!”", "Soția lui Fineas pe patul de moarte, numindu-și fiul Icabod"],
-      ["„Domnul să judece între mine și tine, și Domnul să mă răzbune... dar mâna mea nu se va ridica!”", "David către Saul după ce i-a tăiat colțul mantalei"]
-    ]
-  },
-  {
-    mode: "hard",
-    t: "match",
-    ref: "1 Samuel",
-    q: "Asociază fiecare personaj secundar cu fapta sau rolul său exact din 1 Samuel.",
-    pairs: [
-      ["Palti, fiul lui Laiș", "Bărbatul din Galim căruia Saul i-a dat-o de soție pe Mical, fiica sa"],
-      ["Ahimaaț", "Tatăl Ahinoamei, soția împăratului Saul"],
-      ["Ahimelec hetitul", "Însoțitorul pe care David l-a întrebat dacă coboară cu el noaptea în tabăra lui Saul"],
-      ["Abișai, fiul Țeruiei", "Viteazul care a vrut să-l străpungă pe Saul cu sulița în tabăra din pustia Zif"],
-      ["Robul egiptean părăsit", "Omul flămând găsit pe câmp care a călăuzit ceata lui David la tabăra amaleciților"]
-    ]
-  },
-  {
-    mode: "hard",
-    t: "match",
-    ref: "1 Samuel",
-    q: "Asociază fiecare element sacru cu întâmplarea relatată în 1 Samuel.",
-    pairs: [
-      ["Dagon, idolul filistenilor", "A căzut cu fața la pământ înaintea chivotului Domnului la Asdod, având capul și mâinile tăiate"],
-      ["Cei cinci șoareci și cele cinci umflături de aur", "Darul de ispășire trimis de domnitorii filisteni pe carul chivotului"],
-      ["Piatra cea mare din ogorul lui Iosua", "Locul din Bet-Șemeș unde a stat carul cu chivotul și unde s-a adus arderea de tot"],
-      ["Efodul adus de Abiatar", "Podoaba preoțească prin care David a întrebat pe Domnul la Cheila și la Țiclag"],
-      ["Pâinile pentru punerea înainte", "Pâinea sfântă mâncată la Nob de David și oamenii săi, permisă de Ahimelec"]
-    ]
-  }
-].map((q, i) => ({ ...q, id: "exam_m" + i, ch: 0 }));
 
 function buildExamPool(mode){
   const allQs = buildPool(Array.from({length:31}, (_,i)=>i+1), mode);
@@ -2283,15 +1943,7 @@ function buildExamPool(mode){
   const p1 = pickDiverse(tfQs, 5);
   const p2 = pickDiverse(oneQs, 5);
 
-  let matchCandidates;
-  if (mode === "easy") {
-    matchCandidates = EXAM_MATCH_QUESTIONS.filter(q => q.mode === "easy");
-  } else if (mode === "hard") {
-    matchCandidates = EXAM_MATCH_QUESTIONS.filter(q => q.mode === "hard");
-  } else {
-    matchCandidates = EXAM_MATCH_QUESTIONS;
-  }
-  const pMatch = shuffle(matchCandidates).slice(0, 1);
+  const pMatch = pickDiverse(shuffle(allQs.filter(q => q.t === "match")), 1);
 
   const p3 = pickDiverse(multiQs, 5);
   const p4 = pickDiverse(fillQs, 5);
@@ -2804,11 +2456,6 @@ function packWrong({q, a}){
   return { id: q.id, g, p: a ? a.pts : 0 };
 }
 function srcOf(id){
-  if (typeof id === "string" && id.startsWith("exam_m")){
-    const idx = parseInt(id.replace("exam_m", ""), 10);
-    const q = EXAM_MATCH_QUESTIONS[idx];
-    return q ? {...q, id} : null;
-  }
   const m = /^(\d+)([eh])(\d+)$/.exec(id);
   if (!m) return null;
   const q = (QUIZ[+m[1]] || {})[m[2] === "e" ? "easy" : "hard"];

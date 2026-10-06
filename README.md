@@ -1,6 +1,6 @@
 # Candela
 
-Teste biblice pentru pregătire, după traducerea Cornilescu. Prima carte: **1 Samuel** (31 de capitole, 2.004 de întrebări, nivel ușor și greu, 5 tipuri de întrebări).
+Teste biblice pentru pregătire, după traducerea Cornilescu. Prima carte: **1 Samuel** (31 de capitole, 1.000 de întrebări, nivel ușor și greu, 5 tipuri de întrebări).
 
 ## Structură
 - `src/app.html` — aplicația (HTML, CSS, JS, fără framework).
@@ -10,7 +10,7 @@ Teste biblice pentru pregătire, după traducerea Cornilescu. Prima carte: **1 S
   - `migrations/` — tabelele `profiles`, `results`, `chapter_best`, `mastered`, `quiz_counts`, `groups`, `group_members` și funcțiile `save_result()` (cu verificări de plauzibilitate), `my_progress()`, `board()` (clasamentul public, „Prenume N.”), grupurile (`create_group`, `join_group`, `leave_group`, `my_groups`, `group_board`) și `pace()` (timpul real pe întrebare).
   - `functions/signup/` — crearea contului (nume, prenume, email, parolă).
   - `functions/account/` — schimbarea numelui și a emailului din profil.
-  - `quiz_counts.sql` — generat de `scripts/build.py`; se rulează în Supabase (SQL editor) după ce se adaugă întrebări.
+  - `quiz_counts.sql` — generat de `scripts/build.js`; se rulează în Supabase (SQL editor) după ce se adaugă întrebări.
 - Fără cont se joacă în modul invitat: rezultatele rămân în browser și trec în cont la înregistrare sau la intrare.
 - Clasament: fiecare întrebare contează o singură dată, prima oară când e răspunsă complet corect (scor = întrebări stăpânite ÷ total). La egalitate e înaintea cel care a ajuns primul. ID-ul unei întrebări e `<capitol><e|h><index>`, deci întrebările noi se adaugă la sfârșitul listei.
 - Cont de părinte (bifat la înregistrare sau comutatorul din profil): părintele își adaugă copiii (`functions/family/`), iar pe acasă alege „Cine face testul?”. Un copil e un cont fără email și fără parolă cunoscută; rezultatele lui se salvează cu `save_play(p_player, …)`, verificat de `can_play()`.
@@ -22,7 +22,11 @@ Teste biblice pentru pregătire, după traducerea Cornilescu. Prima carte: **1 S
 
 ## Lucru
 ```
-python3 scripts/validate.py   # verifică referințele, duplicatele și textul exact al completărilor
-python3 scripts/build.py      # regenerează index.html și supabase/quiz_counts.sql
-node scripts/dev-server.mjs   # previzualizare pe http://localhost:4173
+npm run validate   # verifică referințele, duplicatele, 3 variante, maximum 20 pe nivel și textul exact al completărilor
+npm run build      # regenerează index.html, sw.js și supabase/quiz_counts.sql
+npm run serve      # previzualizare pe http://localhost:8080
+npm run dev        # build + serve
 ```
+Fără dependențe: doar Node.js. După ce întrebările se schimbă, se rulează `supabase/quiz_counts.sql` în Supabase (SQL editor).
+
+- Examenul alb: 21 de întrebări din toată cartea, nu aduce puncte în clasament; rezultatele lui se salvează cu capitolul `0`.
