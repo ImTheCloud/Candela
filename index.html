@@ -260,12 +260,11 @@ html:has(.sheet-bg),html:has(.modal-bg),body:has(.sheet-bg),body:has(.modal-bg){
 .hrow .chev{transition:transform .18s ease, color .18s ease, opacity .18s ease}
 .hrow:focus,.hrow:focus-visible{outline:none!important}
 .hrow .chev,.brow-l .chev{color:var(--ink-2);opacity:.6}
-.adm-timer{min-width:0;display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--surface);border-radius:14px;padding:10px 14px;box-shadow:var(--shadow);margin-top:10px}
-.adm-timer small{display:block;font-size:12px;font-weight:600;color:var(--ink-2)}
-.adm-timer b{font-size:18px;font-variant-numeric:tabular-nums;line-height:1.2}
-.adm-timer-btns{display:flex;gap:6px;flex:none}
-.adm-timer .btn{min-height:36px;padding:0 10px;font-size:13px;border-radius:10px;letter-spacing:0;text-transform:none}
-@media (max-width:420px){.adm-timer b span{display:none}}
+.adm-timer{min-width:0;display:grid;grid-template-columns:1fr auto;grid-template-areas:"l l" "t b";align-items:center;gap:2px 12px;background:var(--surface);border-radius:14px;padding:10px 14px;box-shadow:var(--shadow);margin-top:10px}
+.adm-timer small{grid-area:l;font-size:12px;font-weight:600;color:var(--ink-2)}
+.adm-timer b{grid-area:t;font-size:18px;font-variant-numeric:tabular-nums;line-height:1.2;white-space:nowrap}
+.adm-timer-btns{grid-area:b;display:flex;gap:5px}
+.adm-timer .btn{min-height:36px;padding:0 9px;font-size:13px;border-radius:10px;letter-spacing:0;text-transform:none}
 .hist-page{display:grid;gap:18px}
 .hgroup{display:grid;gap:8px}
 .hg-h{display:grid;gap:1px}
@@ -1613,7 +1612,7 @@ function viewHome(){
       ${familyHTML()}
     </div>
     ${resumeHTML()}
-    ${S.admin ? `<div class="adm-timer"><div><small>Timp de studiu</small><b id="tmDisplay">00:00:00</b></div><div class="adm-timer-btns"><button class="btn btn-ghost" id="tmToggle" type="button">Start</button><button class="btn btn-ghost" id="tmReset" type="button">Reset</button></div></div>` : ""}
+    ${S.admin ? `<div class="adm-timer"><small>Timp de studiu</small><b id="tmDisplay">00:00:00</b><div class="adm-timer-btns"><button class="btn btn-ghost" id="tmToggle" type="button">Start</button><button class="btn btn-ghost" id="tmReset" type="button">Reset</button></div></div>` : ""}
   </section>
   <section class="h-verse"><div class="lamp-wrap"><div class="lamp-glow"></div>${lampSVG(46)}</div><p class="verse-quote">„Candela lui Dumnezeu nu se stinsese încă.”<span class="ref">1 Sam. 3:3</span></p></section>
 
