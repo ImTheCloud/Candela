@@ -1370,6 +1370,7 @@ function openProfile(){
   const bg = document.createElement("div"); bg.className = "sheet-bg";
   bg.innerHTML = `<div class="sheet prof" role="dialog" aria-modal="true" aria-label="Profil"></div>`;
   document.body.appendChild(bg);
+  const sheet = bg.querySelector(".sheet");
   let tInt = null;
   const close = () => { if (tInt) clearInterval(tInt); closeModal(bg); };
   bg.onclick = e => { if (e.target === bg) close(); };
