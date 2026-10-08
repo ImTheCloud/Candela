@@ -1666,7 +1666,7 @@ function viewHome(){
     </div>
   </aside>
 
-  ${HOSTED ? `<section class="h-board"><div class="section-h"><h3>Clasament</h3></div><div id="boardNotice"></div><div id="board" class="board"><div class="empty">Se încarcă clasamentul…</div></div></section>` : ""}
+  ${HOSTED ? `<section class="h-board"><div class="section-h"><h3>Clasament</h3><span class="muted" id="boardCount"></span></div><div id="boardNotice"></div><div id="board" class="board"><div class="empty">Se încarcă clasamentul…</div></div></section>` : ""}
 
   <section class="h-hist">
     <div class="section-h"><h3>Istoric</h3></div>
@@ -1759,15 +1759,18 @@ async function loadBoard(force = false){
     _boardLoading = false;
   }
 }
+const BOARD_HOME = 50;
 function renderBoard(list){
   const el = $("#board"); if (!el) return;
   renderBoardNotice();
+  const countEl = $("#boardCount");
+  if (countEl) countEl.textContent = list.length ? `${list.length} ${list.length === 1 ? "participant" : "participanți"}` : "";
   const guest = !S.player || S.player.guest;
   const note = S.player && S.player.hidden ? `<div class="empty">${S.player.child ? esc(S.player.name.split(" ")[0]) + " nu apare" : "Nu apari"} în clasament. Se poate schimba din profil.</div>` : "";
   if (!list.length){ el.innerHTML = note || `<div class="empty">Încă nimeni.</div>`; return; }
   const idx = guest ? -1 : list.findIndex(x => x.me);
   const isFull = el.classList.contains("scroll");
-  const top = isFull ? list : list.slice(0, 10);
+  const top = isFull ? list : list.slice(0, BOARD_HOME);
 
 
   const row = (x, i) => {
@@ -1784,7 +1787,7 @@ function renderBoard(list){
   const prevScroll = el.scrollTop;
   let gapHtml = "";
 
-  if (!isFull && list.length > 10) {
+  if (!isFull && list.length > BOARD_HOME) {
     const footerBtn = `<button type="button" class="board-footer-btn" onclick="viewBoard()" aria-label="Vezi tot clasamentul"><span>Vezi tot clasamentul</span><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3l5 5-5 5"/></svg></button>`;
     if (idx >= top.length) {
       const diff = idx - top.length;
@@ -2502,7 +2505,7 @@ const attemptRow = x => `<button class="hrow" type="button" data-at="${x.at}" ar
 function viewBoard(){
   S.homeScroll = window.scrollY;
   mount(`<section class="hist-page">
-    <div class="reader-h">${BACK_BTN("hBack")}<div><span class="eyebrow">Top</span><h2>Clasament</h2></div></div>
+    <div class="reader-h">${BACK_BTN("hBack")}<div><span class="eyebrow">Top</span><h2>Clasament</h2><span class="muted" id="boardCount"></span></div></div>
     <div id="boardNotice"></div>
     <div id="board" class="board scroll"><div class="empty">Se încarcă clasamentul…</div></div>
   </section>`);
