@@ -615,10 +615,6 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .past-h{margin-bottom:8px}
 .reader-h h2{font-size:26px;line-height:1.1;overflow:hidden;text-overflow:ellipsis}
 .aid{background:var(--surface);border-radius:20px;box-shadow:var(--shadow);box-sizing:border-box;width:100%;min-width:0}
-.aid > summary{list-style:none;cursor:pointer;padding:12px 18px;font-weight:600;font-size:15px;display:flex;align-items:center;justify-content:space-between;gap:12px;-webkit-tap-highlight-color:transparent}
-.aid > summary::-webkit-details-marker{display:none}
-.aid > summary::after{content:"";width:8px;height:8px;border-right:2px solid var(--ink-2);border-bottom:2px solid var(--ink-2);transform:rotate(45deg);margin-top:-4px;transition:transform .15s;flex-shrink:0}
-.aid[open] > summary::after{transform:rotate(-135deg);margin-top:4px}
 .aid-body{display:grid;gap:12px;padding:0 18px 16px}
 .aid h3{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);margin:0 0 4px}
 .aid p{margin:0;font-size:15px;line-height:1.55;overflow-wrap:break-word}
@@ -645,7 +641,13 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .tour-bar{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
 .tour-bar .btn{padding:12px 10px;font-size:14px}
 .tour-links{display:flex;justify-content:space-between;gap:12px}
-.r-bar{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center}
+.r-tools{display:grid;gap:8px}
+.r-tools2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.r-tool{height:44px;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;padding:0 14px;border:1.5px solid var(--line);border-radius:14px;background:var(--surface);color:var(--ink);font:600 15px var(--f-body);cursor:pointer;-webkit-tap-highlight-color:transparent}
+.r-tool svg{flex-shrink:0;color:var(--ink-2);transition:transform .15s}
+.r-tool[aria-expanded="true"]{border-color:var(--ink)}
+.r-tool[aria-expanded="true"] svg{transform:rotate(180deg)}
+select.r-tool{padding-right:10px}
 .arr svg{display:block}
 .map-labels{position:absolute;inset:0;pointer-events:none;z-index:600}
 .map-labels .lbl{position:absolute;left:0;top:0;display:none;font:600 12px/16px var(--f-body);color:var(--ink);white-space:nowrap;text-shadow:0 0 3px var(--surface),0 0 3px var(--surface),0 0 4px var(--surface)}
@@ -2752,12 +2754,12 @@ function mistakeHTML({q, a}){
 /* ---------- reading a chapter before the test ---------- */
 /* highlighted verses ("ch:v"): kept on the phone per player, and on the account when signed in */
 function aidHTML(a){
-  return `<details class="aid"><summary>Rezumat și puncte-cheie</summary><div class="aid-body">
+  return `<div class="aid" id="aidPanel" hidden><div class="aid-body">
     <div><h3>Rezumat</h3><p>${esc(a.s)}</p><p class="aid-refs">Versete: ${esc(a.v)}</p></div>
     <div class="aid-row"><h3>Personaje</h3><p>${esc(a.p)}</p></div>
     <div class="aid-row"><h3>Locuri</h3><p>${esc(a.l)}</p></div>
     <div><h3>Puncte-cheie</h3><ul>${a.k.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div>
-  </div></details>`;
+  </div></div>`;
 }
 
 function viewRead(c){
@@ -2768,8 +2770,13 @@ function viewRead(c){
   mount(`<section class="reader">
     <div class="reader-h">${BACK_BTN("rBack")}
       <div><span class="eyebrow">1 Samuel ${c}</span><h2>${esc(TITLES[c-1])}</h2></div></div>
-    <div class="r-bar"><select class="input" id="rPick" aria-label="Capitolul">${TITLES.map((t, i) => `<option value="${i+1}" ${i+1 === c ? "selected" : ""}>${i+1}. ${esc(t)}</option>`).join("")}</select>
-      <button class="chip" id="rBook" type="button" aria-label="Toată cartea" title="Toată cartea">Cartea</button></div>
+    <div class="r-tools">
+      <select class="input r-tool" id="rPick" aria-label="Capitolul">${TITLES.map((t, i) => `<option value="${i+1}" ${i+1 === c ? "selected" : ""}>${i+1}. ${esc(t)}</option>`).join("")}</select>
+      <div class="r-tools2">
+        <button class="r-tool" id="rSum" type="button" aria-expanded="false" aria-controls="aidPanel"><span>Rezumat</span><svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="r-tool" id="rBook" type="button"><span>Hartă și frize</span><svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+    </div>
 
     ${a ? aidHTML(a) : ""}
 
@@ -2795,6 +2802,7 @@ function viewRead(c){
   };
   $("#rPick").onchange = e => viewRead(+e.target.value);
   $("#rBook").onclick = () => viewBook();
+  $("#rSum").onclick = e => { const o = $("#aidPanel").hidden; $("#aidPanel").hidden = !o; e.currentTarget.setAttribute("aria-expanded", o); };
   if ($("#rSideP")) $("#rSideP").onclick = () => viewRead(c - 1);
   if ($("#rSideN")) $("#rSideN").onclick = () => viewRead(c + 1);
   $("#rGo").onclick = () => { S.reportBack = null; S.reportCh = null; S.sel = new Set([c]); persistPrefs(); openOptions([c]); };
@@ -2822,7 +2830,7 @@ function loadLeaflet(){
 
 function tourHTML(r, step){
   if (step < 0) return `<h3>${esc(r.n)}</h3><span class="bk-meta">Capitolele ${esc(r.c)}</span><p>${esc(r.i)}</p>
-    <button class="btn btn-oil btn-block" id="tourGo" type="button">Începe traseul</button>
+    <button class="btn btn-primary btn-block" id="tourGo" type="button">Începe traseul</button>
     <div>${r.s.map((x, i) => `<button class="ev" type="button" data-i="${i}"><span>${i + 1}. ${esc(x.p)}: ${esc(x.t)}</span><small>cap. ${x.c}</small></button>`).join("")}</div>`;
   const x = r.s[step], last = step === r.s.length - 1;
   return `<span class="bk-meta">Pasul ${step + 1} din ${r.s.length} · capitolul ${x.c}</span>
