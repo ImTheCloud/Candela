@@ -1,6 +1,6 @@
 // Candela offline support (generated from scripts/sw.template.js by scripts/build.js).
 // The page is network-first so updates arrive at once; the copy in the cache opens it without internet.
-const CACHE = "candela-d60ddaa301";
+const CACHE = "candela-322c78133c";
 const CORE = ["/", "/manifest.webmanifest", "/icons/icon-192.png", "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"];
 self.addEventListener("install", e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(CORE)).then(() => self.skipWaiting())); });
 self.addEventListener("activate", e => {
@@ -8,7 +8,7 @@ self.addEventListener("activate", e => {
 });
 self.addEventListener("fetch", e => {
   const req = e.request, url = new URL(req.url);
-  if (req.method !== "GET" || url.hostname.endsWith("supabase.co")) return;   // accounts and results always go to the server
+  if (req.method !== "GET" || url.hostname.endsWith("supabase.co") || url.hostname.endsWith("arcgisonline.com")) return;   // accounts and results always go to the server; map tiles are not cached
   if (req.mode === "navigate"){
     e.respondWith(fetch(req).then(r => { const copy = r.clone(); caches.open(CACHE).then(c => c.put("/", copy)); return r; })
       .catch(() => caches.match("/")));

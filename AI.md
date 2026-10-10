@@ -9,7 +9,7 @@ Candela est une PWA de quiz biblique (livre de 1 Samuel, traduction Cornilescu),
 
 ## Fichiers clés
 - `src/app.html` : tout le frontend (HTML, CSS, JS). C'est le seul fichier à modifier pour l'interface.
-- `content/1-samuel/intrebari/ch01..ch31.json` : questions (`easy` / `hard`). `content/1-samuel/text-cornilescu.json` : texte biblique. `content/1-samuel/ajutor-citire.json` : aides à la lecture par chapitre (résumé, personnages, lieux, points clés, sections, cartes). `content/1-samuel/carte.json` : frise, personnages, lieux et coordonnées de la carte dessinée.
+- `content/1-samuel/intrebari/ch01..ch31.json` : questions (`easy` / `hard`). `content/1-samuel/text-cornilescu.json` : texte biblique. `content/1-samuel/ajutor-citire.json` : aides à la lecture par chapitre (résumé, personnages, lieux, points clés). `content/1-samuel/carte.json` : frise, personnages, lieux avec latitude/longitude et itinéraires (`trasee`). La carte utilise Leaflet (cdnjs, chargé à la demande) et les tuiles grises Esri, sans clé.
 - `index.html` et `sw.js` : générés, ne jamais les modifier à la main.
 - `supabase/quiz_counts.sql` : généré par le build, à exécuter dans Supabase quand le nombre de questions change.
 - `supabase/migrations/` : schéma de la base. Toute modification de base passe par une nouvelle migration.

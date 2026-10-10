@@ -8,7 +8,7 @@ self.addEventListener("activate", e => {
 });
 self.addEventListener("fetch", e => {
   const req = e.request, url = new URL(req.url);
-  if (req.method !== "GET" || url.hostname.endsWith("supabase.co")) return;   // accounts and results always go to the server
+  if (req.method !== "GET" || url.hostname.endsWith("supabase.co") || url.hostname.endsWith("arcgisonline.com")) return;   // accounts and results always go to the server; map tiles are not cached
   if (req.mode === "navigate"){
     e.respondWith(fetch(req).then(r => { const copy = r.clone(); caches.open(CACHE).then(c => c.put("/", copy)); return r; })
       .catch(() => caches.match("/")));
