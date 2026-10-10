@@ -615,14 +615,14 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .past-h{margin-bottom:8px}
 .reader-h h2{font-size:26px;line-height:1.1;overflow:hidden;text-overflow:ellipsis}
 .aid{background:var(--surface);border-radius:20px;box-shadow:var(--shadow);box-sizing:border-box;width:100%;min-width:0}
-.aid > summary{list-style:none;cursor:pointer;padding:16px 20px;font-weight:600;font-size:16px;display:flex;align-items:center;justify-content:space-between;gap:12px;-webkit-tap-highlight-color:transparent}
+.aid > summary{list-style:none;cursor:pointer;padding:12px 18px;font-weight:600;font-size:15px;display:flex;align-items:center;justify-content:space-between;gap:12px;-webkit-tap-highlight-color:transparent}
 .aid > summary::-webkit-details-marker{display:none}
 .aid > summary::after{content:"";width:8px;height:8px;border-right:2px solid var(--ink-2);border-bottom:2px solid var(--ink-2);transform:rotate(45deg);margin-top:-4px;transition:transform .15s;flex-shrink:0}
 .aid[open] > summary::after{transform:rotate(-135deg);margin-top:4px}
-.aid-body{display:grid;gap:14px;padding:0 20px 20px}
+.aid-body{display:grid;gap:12px;padding:0 18px 16px}
 .aid h3{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);margin:0 0 4px}
-.aid p{margin:0;font-size:16px;line-height:1.6;overflow-wrap:break-word}
-.aid ul{margin:0;padding-left:20px;display:grid;gap:4px;font-size:16px;line-height:1.5}
+.aid p{margin:0;font-size:15px;line-height:1.55;overflow-wrap:break-word}
+.aid ul{margin:0;padding-left:20px;display:grid;gap:4px;font-size:15px;line-height:1.5}
 .aid-refs{color:var(--ink-2);font-size:14px}
 .aid-row{display:grid;gap:2px}
 .bk-tabs{display:flex;flex-wrap:wrap;gap:8px}
@@ -636,7 +636,13 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .map-box{height:min(62vh,520px);min-height:340px;border-radius:20px;overflow:hidden;box-shadow:var(--shadow);background:var(--surface-2);position:relative;z-index:0}
 .map-msg{margin:0;padding:24px;color:var(--ink-2)}
 .pin{position:absolute;transform:translate(-50%,-50%);min-width:24px;height:24px;padding:0 6px;box-sizing:border-box;border-radius:12px;background:var(--ink);color:var(--bg);border:2px solid var(--surface);display:grid;place-items:center;font:600 12px/1 var(--f-body);white-space:nowrap}
-.arr{width:14px;height:14px;margin:-7px 0 0 -7px;color:var(--ink)}
+.arr{color:var(--ink)}
+.pin{transition:transform .2s,box-shadow .2s}
+.pin.on{transform:translate(-50%,-50%) scale(1.3);box-shadow:0 0 0 5px rgba(58,39,27,.22)}
+.tour-bar{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:6px}
+.tour-bar .btn{padding:12px 10px;font-size:14px}
+.tour-links{display:flex;justify-content:space-between;gap:12px}
+.r-bar{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center}
 .arr svg{display:block}
 .leaflet-tooltip.map-lbl{background:none;border:0;box-shadow:none;padding:0;font-family:var(--f-body);font-size:11px;font-weight:600;color:var(--ink);text-shadow:0 0 3px var(--surface),0 0 3px var(--surface),0 0 3px var(--surface)}
 .leaflet-tooltip.map-lbl::before{display:none}
@@ -2760,8 +2766,8 @@ function viewRead(c){
   mount(`<section class="reader">
     <div class="reader-h">${BACK_BTN("rBack")}
       <div><span class="eyebrow">1 Samuel ${c}</span><h2>${esc(TITLES[c-1])}</h2></div></div>
-    <label class="r-pick"><span>Capitolul</span><select class="input" id="rPick">${TITLES.map((t, i) => `<option value="${i+1}" ${i+1 === c ? "selected" : ""}>${i+1}. ${esc(t)}</option>`).join("")}</select></label>
-    <button class="btn btn-ghost btn-block" id="rBook" type="button">Despre toată cartea</button>
+    <div class="r-bar"><select class="input" id="rPick" aria-label="Capitolul">${TITLES.map((t, i) => `<option value="${i+1}" ${i+1 === c ? "selected" : ""}>${i+1}. ${esc(t)}</option>`).join("")}</select>
+      <button class="chip" id="rBook" type="button" aria-label="Toată cartea" title="Toată cartea">Cartea</button></div>
 
     ${a ? aidHTML(a) : ""}
 
@@ -2812,68 +2818,100 @@ function loadLeaflet(){
   return _leaflet;
 }
 
-function routeInfoHTML(r){
-  if (!r) return `<p class="bk-meta">Atinge un loc sau apropie harta ca să vezi numele. Alege un traseu ca să vezi drumul.</p>`;
-  return `<h3>${esc(r.n)}</h3><span class="bk-meta">Capitolele ${esc(r.c)}</span>${r.s.map(([n, t, ch], i) => `<button class="ev" type="button" data-n="${esc(n)}"><span>${i + 1}. ${esc(n)}: ${esc(t)}</span><small>cap. ${ch}</small></button>`).join("")}`;
+function tourHTML(r, step){
+  if (step < 0) return `<h3>${esc(r.n)}</h3><span class="bk-meta">Capitolele ${esc(r.c)}</span><p>${esc(r.i)}</p>
+    <div>${r.s.map((x, i) => `<button class="ev" type="button" data-i="${i}"><span>${i + 1}. ${esc(x.p)}: ${esc(x.t)}</span><small>cap. ${x.c}</small></button>`).join("")}</div>
+    <button class="btn btn-primary btn-block" id="tourGo" type="button">Începe traseul</button>`;
+  const x = r.s[step], last = step === r.s.length - 1;
+  return `<span class="bk-meta">Pasul ${step + 1} din ${r.s.length} · capitolul ${x.c}</span>
+    <h3>${esc(x.p)}: ${esc(x.t)}</h3><p>${esc(x.d)}</p>
+    <span class="bk-meta">Versete: ${esc(x.v)}</span>
+    <div class="tour-bar"><button class="btn btn-ghost" id="tourPrev" type="button">Înapoi</button><button class="btn btn-primary" id="tourNext" type="button" ${last ? "disabled" : ""}>Înainte</button></div>
+    <div class="tour-links"><button class="link" id="tourRead" type="button">Citește capitolul ${x.c}</button><button class="link" id="tourAll" type="button">Tot traseul</button></div>`;
+}
+
+function openChapter(ch, back){
+  S.reportBack = back; S.reportCh = null;
+  viewRead(ch);
 }
 
 function drawMap(ri){
   const L = window.L, box = $("#map");
   if (!box) return;
   if (_map) { _map.remove(); _map = null; }
-  const ink = getComputedStyle(document.documentElement).getPropertyValue("--ink").trim();
-  const surf = getComputedStyle(document.documentElement).getPropertyValue("--surface").trim();
-  const map = _map = L.map(box, {minZoom: 7, maxZoom: 13, scrollWheelZoom: false, attributionControl: false});
+  const css = getComputedStyle(document.documentElement);
+  const ink = css.getPropertyValue("--ink").trim(), surf = css.getPropertyValue("--surface").trim();
+  const map = _map = L.map(box, {minZoom: 7, maxZoom: 13, zoomSnap: 0.5, zoomDelta: 1, scrollWheelZoom: false, attributionControl: false});
   L.control.attribution({prefix: false}).addTo(map);
-  L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}", {attribution: "Esri, HERE, Garmin, OpenStreetMap contributors", maxZoom: 13}).addTo(map);
+  L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer/tile/{z}/{y}/{x}", {attribution: "Esri, USGS, NOAA", maxZoom: 13, keepBuffer: 4}).addTo(map);
   const at = n => CARTE.locuri.find(l => l.n === n);
   const info = $("#mapInfo");
   const lblToggle = () => box.classList.toggle("lbl-off", ri < 0 && map.getZoom() < 9);
   map.on("zoomend", lblToggle);
   if (ri < 0) {
-    const pts = CARTE.locuri.map(l => [l.lat, l.lng]);
     CARTE.locuri.forEach(l => {
-      L.circleMarker([l.lat, l.lng], {radius: 6, color: surf, weight: 2, fillColor: ink, fillOpacity: 1})
+      L.circleMarker([l.lat, l.lng], {radius: 7, color: surf, weight: 2, fillColor: ink, fillOpacity: 1})
         .bindTooltip(esc(l.n), {permanent: true, direction: "right", offset: [8, 0], className: "map-lbl"})
-        .on("click", () => { info.innerHTML = `<h3>${esc(l.n)}</h3><p>${esc(l.d)}</p><span class="bk-meta">Capitole: ${esc(l.c)}</span>`; })
+        .on("click", () => {
+          info.innerHTML = `<h3>${esc(l.n)}</h3><p>${esc(l.d)}</p><span class="bk-meta">Capitole: ${esc(l.c)}</span>`;
+          map.flyTo([l.lat, l.lng], Math.max(map.getZoom(), 10), {duration: .8});
+        })
         .addTo(map);
     });
-    map.fitBounds(pts, {padding: [24, 24]});
-    info.innerHTML = routeInfoHTML(null);
-  } else {
-    const r = CARTE.trasee[ri];
-    const seq = r.s.map(x => at(x[0]));
-    const seen = {};
-    const proj = ll => L.CRS.EPSG3857.project(L.latLng(ll));
-    seq.forEach((a, i) => {
-      if (!i) return;
-      const b = seq[i - 1];
-      const key = [a.n, b.n].sort().join("|");
-      const k = seen[key] = (seen[key] || 0) + 1;
-      const p1 = proj([b.lat, b.lng]), p2 = proj([a.lat, a.lng]);
-      const dx = p2.x - p1.x, dy = p2.y - p1.y, len = Math.hypot(dx, dy) || 1;
-      const off = (k - 1) * 0.012;
-      const mid = [(a.lat + b.lat) / 2 + (dx / len) * off, (a.lng + b.lng) / 2 - (dy / len) * off];
-      L.polyline([[b.lat, b.lng], mid, [a.lat, a.lng]], {color: ink, weight: 3, opacity: .75}).addTo(map);
-      const m1 = proj(mid), deg = Math.atan2(-(p2.y - m1.y), p2.x - m1.x) * 180 / Math.PI;
-      L.marker(mid, {interactive: false, icon: L.divIcon({className: "arr", html: `<svg width="14" height="14" viewBox="0 0 10 10" style="transform:rotate(${deg}deg)"><path d="M1 1.5L9 5 1 8.5z" fill="currentColor"/></svg>`, iconSize: [14, 14]})}).addTo(map);
-    });
-    const visits = {};
-    r.s.forEach(([n], i) => (visits[n] = visits[n] || []).push(i + 1));
-    Object.keys(visits).forEach(n => {
-      const l = at(n);
-      L.marker([l.lat, l.lng], {icon: L.divIcon({className: "", html: `<div class="pin">${visits[n].join(", ")}</div>`, iconSize: [0, 0]})})
-        .bindTooltip(esc(n), {permanent: true, direction: "right", offset: [16, 0], className: "map-lbl"})
-        .addTo(map);
-    });
-    map.fitBounds(seq.map(l => [l.lat, l.lng]), {padding: [40, 40]});
-    info.innerHTML = routeInfoHTML(r);
-    info.querySelectorAll(".ev").forEach(b => b.onclick = () => {
-      const l = at(b.dataset.n);
-      $("#map").scrollIntoView({behavior: "smooth", block: "center"});
-      map.flyTo([l.lat, l.lng], 11);
-    });
+    map.fitBounds(CARTE.locuri.map(l => [l.lat, l.lng]), {padding: [24, 24]});
+    info.innerHTML = `<p class="bk-meta">Atinge un loc sau apropie harta ca să vezi numele. Alege un traseu ca să vezi drumul pas cu pas.</p>`;
+    lblToggle();
+    return;
   }
+  const r = CARTE.trasee[ri];
+  const seq = r.s.map(x => at(x.p));
+  const bounds = seq.map(l => [l.lat, l.lng]);
+  const proj = ll => L.CRS.EPSG3857.project(L.latLng(ll));
+  const seen = {}, inks = [], arrows = [];
+  seq.forEach((a, i) => {
+    if (!i) return;
+    const b = seq[i - 1];
+    const key = [a.n, b.n].sort().join("|");
+    const k = seen[key] = (seen[key] || 0) + 1;
+    const p1 = proj([b.lat, b.lng]), p2 = proj([a.lat, a.lng]);
+    const dx = p2.x - p1.x, dy = p2.y - p1.y, len = Math.hypot(dx, dy) || 1;
+    const off = (k - 1) * 0.012;
+    const mid = [(a.lat + b.lat) / 2 + (dx / len) * off, (a.lng + b.lng) / 2 - (dy / len) * off];
+    const m1 = proj(mid);
+    L.polyline([[b.lat, b.lng], mid, [a.lat, a.lng]], {color: surf, weight: 8, opacity: .95}).addTo(map);
+    inks.push([[b.lat, b.lng], mid, [a.lat, a.lng]]);
+    arrows.push([mid, Math.atan2(-(p2.y - m1.y), p2.x - m1.x) * 180 / Math.PI]);
+  });
+  inks.forEach(pts => L.polyline(pts, {color: ink, weight: 4, opacity: .8}).addTo(map));
+  arrows.forEach(([mid, deg]) => L.marker(mid, {interactive: false, icon: L.divIcon({className: "arr", html: `<svg width="16" height="16" viewBox="0 0 10 10" style="transform:rotate(${deg}deg)"><path d="M1 1.5L9 5 1 8.5z" fill="currentColor"/></svg>`, iconSize: [16, 16]})}).addTo(map));
+  const pins = {}, nums = {};
+  r.s.forEach((x, i) => (nums[x.p] = nums[x.p] || []).push(i + 1));
+  Object.keys(nums).forEach(n => {
+    const l = at(n);
+    pins[n] = L.marker([l.lat, l.lng], {icon: L.divIcon({className: "", html: `<div class="pin">${nums[n].join(", ")}</div>`, iconSize: [0, 0]})})
+      .bindTooltip(esc(n), {permanent: true, direction: "right", offset: [18, 0], className: "map-lbl"})
+      .addTo(map);
+  });
+  const overview = () => map.flyToBounds(bounds, {padding: [44, 44], maxZoom: 11, duration: 1});
+  const show = step => {
+    Object.values(pins).forEach(m => m.getElement().querySelector(".pin").classList.remove("on"));
+    info.innerHTML = tourHTML(r, step);
+    if (step < 0) {
+      overview();
+      info.querySelectorAll(".ev").forEach(b => b.onclick = () => show(+b.dataset.i));
+      $("#tourGo").onclick = () => show(0);
+      return;
+    }
+    const x = r.s[step], l = at(x.p);
+    pins[x.p].getElement().querySelector(".pin").classList.add("on");
+    map.flyTo([l.lat, l.lng], 11, {duration: 1.1});
+    $("#tourPrev").onclick = () => show(step - 1);
+    $("#tourNext").onclick = () => show(step + 1);
+    $("#tourAll").onclick = () => show(-1);
+    $("#tourRead").onclick = () => openChapter(x.c, () => viewBook("harta"));
+  };
+  map.fitBounds(bounds, {padding: [44, 44], maxZoom: 11});
+  show(-1);
   lblToggle();
 }
 
@@ -2895,7 +2933,7 @@ function viewBook(tab){
   </section>`);
   $("#bkBack").onclick = () => viewRead(lsGet("candela:read", 1));
   document.querySelectorAll("#bkTabs .chip").forEach(b => b.onclick = () => viewBook(b.dataset.tab));
-  document.querySelectorAll(".ev[data-ch]").forEach(b => b.onclick = () => viewRead(+b.dataset.ch));
+  document.querySelectorAll(".ev[data-ch]").forEach(b => b.onclick = () => openChapter(+b.dataset.ch, () => viewBook(tab)));
   if (tab === "harta") {
     const show = ri => {
       document.querySelectorAll("#mapChips .chip").forEach(b => b.setAttribute("aria-pressed", +b.dataset.r === ri));
