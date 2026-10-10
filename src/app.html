@@ -614,48 +614,51 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .reader-h > div{min-width:0}
 .past-h{margin-bottom:8px}
 .reader-h h2{font-size:26px;line-height:1.1;overflow:hidden;text-overflow:ellipsis}
+.aid{background:var(--surface);border-radius:20px;box-shadow:var(--shadow);box-sizing:border-box;width:100%;min-width:0}
+.aid > summary{list-style:none;cursor:pointer;padding:16px 20px;font-weight:600;font-size:16px;display:flex;align-items:center;justify-content:space-between;gap:12px;-webkit-tap-highlight-color:transparent}
+.aid > summary::-webkit-details-marker{display:none}
+.aid > summary::after{content:"";width:8px;height:8px;border-right:2px solid var(--ink-2);border-bottom:2px solid var(--ink-2);transform:rotate(45deg);margin-top:-4px;transition:transform .15s;flex-shrink:0}
+.aid[open] > summary::after{transform:rotate(-135deg);margin-top:4px}
+.aid-body{display:grid;gap:14px;padding:0 20px 20px}
+.aid h3{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);margin:0 0 4px}
+.aid p{margin:0;font-size:16px;line-height:1.6;overflow-wrap:break-word}
+.aid ul{margin:0;padding-left:20px;display:grid;gap:4px;font-size:16px;line-height:1.5}
+.aid-refs{color:var(--ink-2);font-size:14px}
+.aid-row{display:grid;gap:2px}
+.sec-btn{display:flex;justify-content:space-between;align-items:baseline;gap:12px;width:100%;text-align:left;border:0;border-top:1px solid var(--line);background:none;padding:12px 0;font:inherit;font-size:16px;color:var(--ink);cursor:pointer}
+.sec-btn:first-child{border-top:0}
+.sec-btn small{color:var(--ink-2);font-size:13px;white-space:nowrap;flex-shrink:0}
+.r-sec{font-family:var(--f-body);font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2);margin:18px 0 6px;scroll-margin-top:12px}
+.r-sec:first-child{margin-top:0}
+.reader-text p[data-v]{scroll-margin-top:12px}
+.reader-text p.verse-on{background:var(--surface-2)}
+.bk-tabs{display:flex;flex-wrap:wrap;gap:8px}
+.bk-card{background:var(--surface);border-radius:20px;padding:18px 20px;box-shadow:var(--shadow);display:grid;gap:6px;box-sizing:border-box;min-width:0}
+.bk-card h3{margin:0;font-size:18px}
+.bk-card p{margin:0;line-height:1.5;overflow-wrap:break-word}
+.bk-meta{font-size:13px;color:var(--ink-2)}
+.bk-list{display:grid;gap:12px}
+.ev{display:flex;justify-content:space-between;align-items:baseline;gap:12px;width:100%;text-align:left;border:0;border-top:1px solid var(--line);background:none;padding:10px 0;font:inherit;font-size:15px;color:var(--ink);cursor:pointer}
+.ev small{color:var(--ink-2);font-size:13px;white-space:nowrap;flex-shrink:0}
+.map-wrap{background:var(--surface);border-radius:20px;box-shadow:var(--shadow);padding:8px;box-sizing:border-box}
+.map-wrap svg{display:block;width:100%;height:auto}
+.map-sea{fill:var(--surface-2);stroke:var(--line)}
+.map-river{fill:none;stroke:var(--ink-2);stroke-width:1.2;stroke-dasharray:4 4}
+.map-t{font-family:var(--f-body);font-size:11px;fill:var(--ink);pointer-events:none}
+.map-sm{font-size:9px;fill:var(--ink-2)}
+.map-dot{fill:var(--ink-2);stroke:var(--surface);stroke-width:1.5}
+.map-dot.on{fill:var(--ink)}
+.map-hit{fill:transparent;cursor:pointer}
+.fc{display:grid;place-items:center;align-content:center;gap:10px;width:100%;min-height:240px;padding:24px;box-sizing:border-box;border:0;border-radius:20px;background:var(--surface);box-shadow:var(--shadow);font:inherit;color:var(--ink);text-align:center;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.fc-side{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+.fc-t{font-size:22px;line-height:1.35;overflow-wrap:break-word;max-width:100%}
+.fc.back{background:var(--ink);color:var(--bg)}
+.fc.back .fc-side{color:var(--bg);opacity:.7}
+.fc-bar{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.fc-bar .btn{padding:12px 10px;font-size:14px}
 .reader-text{background:var(--surface);border-radius:20px;padding:20px;box-shadow:var(--shadow);font-family:var(--f-bible);font-weight:400;font-size:18.5px;line-height:1.75;text-wrap:pretty;overflow-wrap:break-word;word-break:break-word;box-sizing:border-box;width:100%;max-width:100%}
 .reader-text p{margin:0 0 .45em;padding:0 4px;border-radius:6px}
 
-/* --- Bible Reader Colors Toolbar & Legend --- */
-.reader-toolbar{display:flex;align-items:flex-end;justify-content:space-between;gap:10px 8px;flex-wrap:nowrap;width:100%;max-width:100%;min-width:0;box-sizing:border-box;padding:2px 0 8px}
-.reader-legend{display:flex;align-items:center;gap:6px;flex-wrap:wrap;min-width:0;flex:1;transition:opacity .2s}
-.reader-legend.is-dimmed{opacity:.4}
-.leg-badge{font-size:11px;font-weight:500;padding:2px 6px;border-radius:4px;line-height:1.2;color:var(--ink-2);flex-shrink:0;white-space:nowrap;transition:opacity .2s}
-.leg-badge.c-person{background:rgba(167,139,250,.14);border-bottom:1px solid rgba(139,92,246,.35)}
-.leg-badge.c-place{background:rgba(74,222,128,.14);border-bottom:1px solid rgba(34,197,94,.35)}
-.leg-badge.c-number{background:rgba(251,191,36,.16);border-bottom:1px solid rgba(217,119,6,.35)}
-.leg-badge.c-object{background:rgba(56,189,248,.14);border-bottom:1px solid rgba(14,165,233,.35)}
-.leg-badge.c-animal{background:rgba(244,114,182,.14);border-bottom:1px solid rgba(236,72,153,.35)}
-
-.reader-toggle-btn{display:inline-flex;align-items:center;gap:4px;font-family:inherit;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--ink-2);cursor:pointer;flex-shrink:0;margin-left:auto;white-space:nowrap;transition:border-color .15s,background .15s,color .15s;-webkit-tap-highlight-color:transparent}
-.reader-toggle-btn:hover{border-color:var(--ink-2);color:var(--ink)}
-
-@media (max-width:380px){
-  .reader-toolbar{gap:4px}
-  .reader-legend{gap:3px}
-  .leg-badge{font-size:10px;padding:1.5px 5px}
-  .reader-toggle-btn{font-size:10.5px;padding:2.5px 7px;gap:3px}
-}
-
-/* Base highlight mark */
-.hl-entity{background:transparent;color:inherit;border-radius:3px;padding:0 2px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
-
-/* Only when colors are active - subtle and discreet */
-.show-colors .hl-entity{cursor:pointer}
-.show-colors .hl-person{background:rgba(167,139,250,.14);border-bottom:1px solid rgba(139,92,246,.35);color:inherit}
-.show-colors .hl-place{background:rgba(74,222,128,.14);border-bottom:1px solid rgba(34,197,94,.35);color:inherit}
-.show-colors .hl-number{background:rgba(251,191,36,.16);border-bottom:1px solid rgba(217,119,6,.35);color:inherit}
-.show-colors .hl-object{background:rgba(56,189,248,.14);border-bottom:1px solid rgba(14,165,233,.35);color:inherit}
-.show-colors .hl-animal{background:rgba(244,114,182,.14);border-bottom:1px solid rgba(236,72,153,.35);color:inherit}
-
-/* Entity Mini Popover on click */
-.entity-popover{position:absolute;z-index:900;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:5px 9px;box-shadow:0 6px 20px rgba(0,0,0,.15);display:inline-flex;align-items:center;gap:8px;font-family:var(--f-body);font-size:12px;color:var(--ink);animation:popIn .15s ease-out;pointer-events:auto;max-width:calc(100vw - 24px);white-space:nowrap}
-@keyframes popIn{from{opacity:0;transform:translateY(4px) scale(.95)}to{opacity:1;transform:translateY(0) scale(1)}}
-.entity-popover .pop-term{font-weight:600;max-width:160px;overflow:hidden;text-overflow:ellipsis}
-.entity-popover .leg-badge{font-size:11px;padding:2px 7px}
-.entity-popover .pop-close{border:0;background:transparent;color:var(--ink-2);cursor:pointer;padding:2px 4px;display:flex;align-items:center;justify-content:center;border-radius:4px;font-size:13px;line-height:1}
-.entity-popover @media(hover:hover) and (pointer:fine){.pop-close:hover{color:var(--ink);background:var(--line)}}
 .pf-note{font-size:13px;color:var(--ink-2);margin:0}
 .pw-wrap{position:relative}
 .pw-wrap .input{padding-right:42px}
@@ -788,6 +791,8 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 <script>
 const QUIZ = /*__QUIZ__*/{};
 const TEXT = /*__TEXT__*/{};
+const AIDS = /*__AIDS__*/{};
+const CARTE = /*__CARTE__*/{};
 const TITLES = ["Nașterea lui Samuel","Cântarea Anei / Fiii lui Eli","Chemarea lui Samuel","Chivotul luat de filisteni","Chivotul în Asdod","Chivotul se întoarce","Biruința de la Mițpa","Israel cere un împărat","Saul și măgărițele","Saul uns împărat","Biruința asupra lui Nahaș","Cuvântarea lui Samuel","Jertfa lui Saul la Ghilgal","Isprava lui Ionatan","Saul lepădat de Domnul","David uns de Samuel","David și Goliat","Ionatan și David","Saul îl urmărește pe David","Legământul cu Ionatan","David la Nob și la Gat","Peștera Adulam","David la Cheila și în pustie","David îl cruță pe Saul","Nabal și Abigail","A doua cruțare a lui Saul","David la Achiș","Saul la En-Dor","David trimis înapoi","Țiclagul ars","Moartea lui Saul"];
 const TYPE_LABEL = {tf:"Adevărat / Fals", one:"Răspuns unic", multi:"Alegere multiplă", match:"Asociere", fill:"Completează versetul"};
 const TYPE_ICON = {
@@ -2752,282 +2757,65 @@ function mistakeHTML({q, a}){
 
 /* ---------- reading a chapter before the test ---------- */
 /* highlighted verses ("ch:v"): kept on the phone per player, and on the account when signed in */
-/* ---------- reading a chapter with highlights and color toggle ---------- */
-const ENTITIES_DATA = {
-  person: [
-    "Samuel", "Samuele", "Saul", "David", "Ionatan", "Ionatane", "Eli", "Isai", "Nabal", "Achiș",
-    "Ana", "Anei", "Abner", "Ahimelec", "Mical", "Abigail", "Abigailei", "Elcana", "Fineas", "Hofni",
-    "Chiș", "Chis", "Goliat", "Doeg", "Abiatar", "Agag", "Nahaș", "I-Cabod", "Icabod", "Eliab",
-    "Abinadab", "Șama", "Malchișua", "Ișvi", "Penina", "Ahinoam", "Abișai", "Ioab", "Asael",
-    "Țeruia", "Țeruiei", "Merab", "Palti", "Paltiel", "Adriel", "Ahia", "Ahitub", "Bedan",
-    "Ieroham", "Elihu", "Tohu", "Țuf", "Laiș", "Șimea", "Ner", "Maoch", "Maoc", "Talmai",
-    "Abiel", "Țeror", "Becorat", "Afiah", "Ahimaaț", "Eleazar", "Ioel", "Dagon", "Sisera",
-    "Barac", "Iefta", "Ierubaal", "Moise", "Aaron", "Iosua", "Faraon", "Caleb", "Iacov", "Abia", "Urie"
-  ],
-  place: [
-    "Filistenii", "Filistenilor", "Filisteanul", "Amaleciții", "Amaleciți", "Amaleciților", "Amalecitul", "Amoniții", "Amoniți", "Amoniților", "Amonitul", "Edomiții", "Edomitul", "Egiptenii", "Egiptenilor", "Cheniții", "Cheniților", "Hitiții", "Hitiul", "Evreii", "Evreilor",
-    "Israelul", "Israelului", "Israel",
-    "Ramataim-Țofim", "Valea Terebinților", "valea Terebinților", "valea Elah",
-    "Sela-Hamahlecoth", "Sela-Hamahlecot", "Iabeșul Galaadului", "Iabeș din Galaad",
-    "Chiriat-Iearim", "Eben-Ezer", "Bet-Șemeș", "Bet-Șemeșului", "Bet-Șan", "Bet-Șanului",
-    "Bet-Aven", "En-Ghedi", "En-Dor", "Adulam", "Cheila", "Cheilei", "Țiclag", "Țiclagul",
-    "Țiclagului", "Ghilboa", "Betleemul", "Betleem", "Ghibea lui Saul", "Ghibea lui Beniamin",
-    "Ghibea Elohim", "Ghibea", "Ghibeea", "Ghilgal", "Ghilgalului", "Mițpa", "Mițpe", "Mițpei",
-    "Șilo", "Silo", "Rama", "Gat", "Gatului", "Nob", "Carmel", "Maon", "Zif", "Horeș",
-    "Hachila", "dealul Hachila", "Boțeț", "Sene", "Micmaș", "Micmașului", "Aialon", "Șunem",
-    "Sunem", "Afec", "Besor", "pârâul Besor", "Hebron", "Iabeș", "Iabes", "Iabesul", "Iabesului",
-    "Galaad", "Asdod", "Așdod", "Ecron", "Ecronului", "Gaza", "Ascalon", "Efraim", "Beniamin",
-    "Iuda", "Egipt", "Egiptului", "Moab", "Moabului", "Amon", "Havila", "Șur", "Naiot",
-    "Heret", "Soco", "Azecah", "Azeca", "Bet-Car", "Șen", "Bet-El", "Betel", "Betelului",
-    "stejarul din Tabor", "Tabor", "Casa Domnului", "Templul Domnului", "Templului Domnului",
-    "Locașul Domnului", "Muntele Ghilboa", "muntele Ghilboa", "muntele lui Efraim", "peștera Adulam",
-    "stânca Țapilor sălbatici", "Beer-Șeba", "Bezec",
-    "Șalișa", "Șaalim", "Țelțah", "Iordan", "Iordanul", "Ofra", "Șual", "Bet-Horon",
-    "Țeboim", "valea Țeboim", "Migron", "Secu", "piatra Ezel", "Ezel", "Efes-Damim", "Șaaraim",
-    "Ierusalim", "Abel-Mehola", "Mehola", "Galim", "Izreel", "Aroer", "Sifmot", "Iatir",
-    "Eștemoa", "Racal", "Horma", "Cor-Așan", "Atac", "Gheba", "Paran", "Țoba", "Amalec"
-  ],
-  object: [
-    "chivotul legământului Domnului oștirilor", "chivotul legământului Domnului",
-    "chivotul legământului lui Dumnezeu", "chivotul legământului",
-    "chivotul Dumnezeului lui Israel", "chivotul lui Dumnezeu", "chivotul Domnului", "chivotul",
-    "chivotului legământului Domnului", "chivotului legământului lui Dumnezeu", "chivotului legământului",
-    "chivotului Dumnezeului lui Israel", "chivotului lui Dumnezeu", "chivotului Domnului", "chivotului",
-    "pâinile pentru punerea înainte", "pâinea pentru punerea înainte", "pâinile sfinte",
-    "pâine sfințită", "pâinea sfințită",
-    "furculiță cu trei coarne", "furculița cu trei coarne", "furculița", "furculiță",
-    "sabia lui Goliat", "sabia lui Saul", "teaca sabiei", "tăișul sabiei", "sabia", "sabie", "sabiei", "săbii", "săbiile",
-    "sulița lui Saul", "sulița de aramă", "coada suliței", "vârful suliței", "sulița", "suliță", "sulițe", "suliței",
-    "coif de aramă", "coiful de aramă", "coiful", "coif",
-    "platoșă de solzi", "platoșa de solzi", "platoșă", "platoșa",
-    "zale de solzi", "apărători de aramă", "tureci de aramă", "pavăză de aramă", "pavăză", "pavăza", "scutul", "scut", "scutului",
-    "praștia", "praștie", "pietre de praștie",
-    "traista de păstor", "traista lui de păstor", "traistă", "traista",
-    "toiag de păstor", "toiagul de păstor", "toiagul", "toiag",
-    "cornul cu untdelemn", "cornul de untdelemn", "cornul", "corn",
-    "urim și tumim", "Urim și Tumim", "Urim", "Tumim",
-    "efodul de in subțire", "efodul de in", "efodul", "efod", "efodului",
-    "terafimul", "terafimi", "terafimii", "terafimilor",
-    "urciorul de apă", "urciorul cu apă", "urcior de apă", "urcior cu apă", "urciorul", "urcior",
-    "un car nou", "car nou", "carul", "carele de război", "carele",
-    "harpa", "harpă", "alăuta", "alăute",
-    "arcul lui Ionatan", "arcul", "arc", "săgețile", "săgeți", "săgeată", "săgeata",
-    "mantaua lui Saul", "mantaua", "manta", "mantia", "mantiei", "poala mantalei", "poala mantiei"
-  ],
-  number: [
-    "patruzeci de zile și patruzeci de nopți", "patruzeci de zile", "patruzeci de ani",
-    "treizeci de mii de oameni aleși", "treizeci de mii de care", "treizeci de mii de oameni", "treizeci de mii de pedestrași", "treizeci de mii",
-    "trei mii de oameni aleși", "trei mii de bărbați aleși", "trei mii de oameni", "trei mii de bărbați", "trei mii de oi", "trei mii",
-    "două sute de mii de pedestrași", "două sute de legături de smochine", "două sute de prepuțuri", "două sute de oameni", "două sute de pâini", "două sute",
-    "trei sute de mii de oameni", "trei sute de mii", "trei sute de oameni", "trei sute",
-    "patru sute de oameni", "patru sute de tineri", "patru sute",
-    "șase sute de sicli de fier", "șase sute de sicli", "șase sute de oameni", "șase sute",
-    "cincizeci de mii șaptezeci de oameni", "cincizeci de mii",
-    "cinci mii de sicli de aramă", "cinci mii de sicli", "cinci mii",
-    "patru mii de oameni", "patru mii",
-    "șase mii de călăreți", "șase mii",
-    "zece mii de oameni", "zece mii",
-    "optzeci și cinci de oameni", "șaptezeci de oameni",
-    "douăzeci de oameni", "douăzeci de ani",
-    "treizeci de oameni", "treizeci de ani",
-    "nouăzeci și opt de ani",
-    "șase coți și o palmă", "șase coți", "o palmă",
-    "un sfert de siclu de argint", "un sfert de siclu", "o treime de siclu",
-    "o sută de turte de stafide", "o sută de prepuțuri", "o sută",
-    "o mie de oameni", "o mie de capre", "o mie de care", "o mie erau cu Ionatan", "o mie",
-    "două mii erau cu Saul", "două mii",
-    "cinci domnitori ai filistenilor", "cinci domnitori", "cinci căpetenii",
-    "cinci umflături de aur", "cinci umflături",
-    "cinci șoareci de aur", "cinci șoareci",
-    "cinci măsuri de grâu prăjit", "cinci măsuri de grâu", "cinci măsuri",
-    "cinci oi pregătite", "cinci oi", "cinci pietre netede", "cinci pietre", "cinci fete", "cinci pâini",
-    "o efă de făină", "o efă de grâu prăjit", "efa aceasta de grâu prăjit", "efa de grâu prăjit", "o efă",
-    "un burduf cu vin", "două burdufuri cu vin", "două burdufuri",
-    "zece cașuri de brânză", "zece pâini", "zece tineri", "zece zile", "zece fii",
-    "opt fii", "șapte fii", "trei fii mai mari", "trei fii", "doi fii",
-    "trei tauri", "trei iezi", "trei turte de pâine", "trei oameni", "trei săgeți", "trei ori", "trei zile și trei nopți", "trei zile", "trei ani",
-    "două vaci tinere", "două vaci care dau țâță", "două vaci", "două neveste", "două fete", "două fiice", "doi oameni", "două pâini", "două legături de stafide", "două legături", "două ori", "doi ani",
-    "o bucată de turtă de smochine",
-    "șapte zile", "șapte luni", "șapte ori",
-    "patru luni", "un an și patru luni",
-    "o ceată de proroci",
-    "unu", "doi", "două", "trei", "patru", "cinci", "șase", "șapte", "opt", "nouă", "zece", "unsprezece", "doisprezece", "douăzeci", "treizeci", "patruzeci", "cincizeci", "șaizeci", "șaptezeci", "optzeci", "nouăzeci", "sută", "sute", "mie", "mii", "zeci", "primul", "al doilea", "a doua", "a treia"
-  ],
-  animal: [
-    "bou", "boi", "boii", "vacă", "vaci", "vacile", "vițel", "viței", "vițeii", 
-    "oaie", "oi", "oile", "berbec", "berbeci", "berbecii", "miel", "miei", "mieii", 
-    "capră", "capre", "caprele", "ied", "iezi", "iezii", "țap", "țapilor", "turmă", "turma", "turme", "turmele",
-    "măgar", "măgari", "măgarii", "măgăriță", "măgărițe", "măgărițele", 
-    "câine", "câini", "câinii", "purice", "puricele", "potârniche", "potârnichea", 
-    "urs", "ursul", "leu", "leul", "șoarece", "șoareci", "șoarecii", 
-    "pasăre", "păsări", "păsările", "vultur", "vulturi", "vulturii", 
-    "cămilă", "cămile", "cămilele", "pui", "puii"
-  ]
-};
-
-const TOGGLE_ICONS = {
-  on: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>`,
-  off: `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>`
-};
-
-const _entityTerms = [];
-for (const [cat, list] of Object.entries(ENTITIES_DATA)) {
-  for (const term of list) {
-    _entityTerms.push({ cat, term, len: term.length });
-  }
-}
-_entityTerms.sort((a, b) => b.len - a.len);
-
-const _termMap = new Map();
-_entityTerms.forEach(t => {
-  const k = t.term.toLowerCase();
-  if (!_termMap.has(k)) _termMap.set(k, t);
-});
-
-const _escRegex = s => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-const _entityPattern = new RegExp(
-  "(?:^|(?<=[^a-zăîâșțA-ZĂÎÂȘȚ0-9]))(" + _entityTerms.map(t => _escRegex(t.term)).join("|") + ")(?=[^a-zăîâșțA-ZĂÎÂȘȚ0-9]|$)",
-  "gi"
-);
-
-function highlightVerseEntities(text) {
-  return text.replace(_entityPattern, (match, p1, offset) => {
-    if (match.toLowerCase() === "abia" && offset === 0) return match;
-    const info = _termMap.get(match.toLowerCase());
-    const cat = info ? info.cat : "object";
-    return `<mark class="hl-entity hl-${cat}">${esc(match)}</mark>`;
+function chSet(str){
+  const out = new Set();
+  str.split(",").forEach(x => {
+    const m = x.trim().split("–").map(Number);
+    for (let i = m[0]; i <= (m[1] || m[0]); i++) out.add(i);
   });
+  return out;
 }
 
-let _popTimer = null;
-function showEntityPopover(markEl) {
-  const existing = document.getElementById("entityPopover");
-  if (existing) existing.remove();
-  if (_popTimer) { clearTimeout(_popTimer); _popTimer = null; }
-
-  const cat = markEl.classList.contains("hl-person") ? "person" :
-              markEl.classList.contains("hl-place") ? "place" :
-              markEl.classList.contains("hl-number") ? "number" : 
-              markEl.classList.contains("hl-animal") ? "animal" : "object";
-  const catLabels = {
-    person: "Nume",
-    place: "Locuri",
-    number: "Cifre & Măsuri",
-    animal: "Animale",
-    object: "Obiecte"
-  };
-  const catLabel = catLabels[cat] || "Detalii";
-
-  const pop = document.createElement("div");
-  pop.id = "entityPopover";
-  pop.className = "entity-popover";
-  pop.setAttribute("role", "tooltip");
-  pop.innerHTML = `<span class="pop-term">${esc(markEl.textContent)}</span><span class="leg-badge c-${cat}">${catLabel}</span><button type="button" class="pop-close" aria-label="Închide">✕</button>`;
-
-  document.body.appendChild(pop);
-
-  const rect = markEl.getBoundingClientRect();
-  const popRect = pop.getBoundingClientRect();
-  let top = rect.top + window.scrollY - popRect.height - 6;
-  if (top < window.scrollY + 8) {
-    top = rect.bottom + window.scrollY + 6;
-  }
-  let left = rect.left + window.scrollX + (rect.width / 2) - (popRect.width / 2);
-  left = Math.max(10, Math.min(left, window.innerWidth - popRect.width - 10));
-
-  pop.style.top = `${top}px`;
-  pop.style.left = `${left}px`;
-
-  const closePop = () => {
-    if (_popTimer) { clearTimeout(_popTimer); _popTimer = null; }
-    pop.style.transition = "opacity .15s, transform .15s";
-    pop.style.opacity = "0";
-    pop.style.transform = "translateY(4px) scale(.95)";
-    setTimeout(() => { if (pop.parentNode) pop.remove(); }, 160);
-  };
-
-  pop.querySelector(".pop-close").onclick = e => {
-    e.stopPropagation();
-    closePop();
-  };
-
-  _popTimer = setTimeout(closePop, 2500);
+function aidHTML(a){
+  return `<details class="aid"><summary>Rezumat și puncte-cheie</summary><div class="aid-body">
+    <div><h3>Rezumat</h3><p>${esc(a.s)}</p><p class="aid-refs">Versete: ${esc(a.v)}</p></div>
+    <div class="aid-row"><h3>Personaje</h3><p>${esc(a.p)}</p></div>
+    <div class="aid-row"><h3>Locuri</h3><p>${esc(a.l)}</p></div>
+    <div><h3>Puncte-cheie</h3><ul>${a.k.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div>
+  </div></details>`;
 }
 
-document.addEventListener("click", e => {
-  const pop = document.getElementById("entityPopover");
-  if (pop && !pop.contains(e.target) && !e.target.closest(".hl-entity")) {
-    pop.remove();
-  }
-}, { passive: true });
+function sectionsHTML(sec, n){
+  return `<details class="aid"><summary>Pe povești</summary><div class="aid-body">${sec.map(([v, t], i) => {
+    const end = i + 1 < sec.length ? sec[i + 1][0] - 1 : n;
+    return `<button class="sec-btn" type="button" data-v="${v}"><span>${esc(t)}</span><small>${v === end ? v : v + "-" + end}</small></button>`;
+  }).join("")}</div></details>`;
+}
 
-function viewRead(c){
+function goVerse(v){
+  const el = $(`#readerText p[data-v="${v}"]`);
+  if (!el) return;
+  el.scrollIntoView({behavior: "smooth", block: "start"});
+  el.classList.add("verse-on");
+  setTimeout(() => el.classList.remove("verse-on"), 2200);
+}
+
+function viewRead(c, v){
   c = Math.min(31, Math.max(1, +c || 1)); lsSet("candela:read", c);
   const vs = TEXT[c] || [];
-  let colorsOn = lsGet("candela:rc", true);
+  const a = AIDS[c];
+  const starts = new Map(a ? a.sec : []);
 
   mount(`<section class="reader">
     <div class="reader-h">${BACK_BTN("rBack")}
       <div><span class="eyebrow">1 Samuel ${c}</span><h2>${esc(TITLES[c-1])}</h2></div></div>
     <label class="r-pick"><span>Capitolul</span><select class="input" id="rPick">${TITLES.map((t, i) => `<option value="${i+1}" ${i+1 === c ? "selected" : ""}>${i+1}. ${esc(t)}</option>`).join("")}</select></label>
+    <button class="btn btn-ghost btn-block" id="rBook" type="button">Despre toată cartea</button>
 
-    <div class="reader-toolbar">
-      <div class="reader-legend ${colorsOn ? '' : 'is-dimmed'}" id="readerLegend">
-        <span class="leg-badge c-person">Nume</span>
-        <span class="leg-badge c-place">Locuri</span>
-        <span class="leg-badge c-number">Cifre & Măsuri</span>
-        <div style="flex-basis:100%;height:0;margin:0"></div>
-        <span class="leg-badge c-object">Obiecte</span>
-        <span class="leg-badge c-animal">Animale</span>
-      </div>
-      <button type="button" class="reader-toggle-btn" id="btnColorToggle" aria-pressed="${colorsOn}" title="${colorsOn ? 'Dezactivează culorile' : 'Activează culorile'}">
-        <span class="r-icon" id="btnColorIcon">${colorsOn ? TOGGLE_ICONS.off : TOGGLE_ICONS.on}</span>
-        <span id="btnColorLabel">${colorsOn ? "Fără culori" : "Cu culori"}</span>
-      </button>
+    ${a ? aidHTML(a) + sectionsHTML(a.sec, vs.length) : ""}
+
+    <div class="reader-text" id="readerText">
+      ${vs.map((t, i) => `${starts.has(i+1) ? `<h4 class="r-sec">${esc(starts.get(i+1))}</h4>` : ""}<p data-v="${i+1}"><sup>${i+1}</sup>${esc(t)}</p>`).join("")}
     </div>
 
-    <div class="reader-text ${colorsOn ? 'show-colors' : ''}" id="readerText">
-      ${vs.map((v, i) => `<p data-v="${i+1}"><sup>${i+1}</sup>${highlightVerseEntities(v)}</p>`).join("")}
-    </div>
-
-    <div class="startbar"><button class="btn btn-primary btn-block" id="rGo" type="button"><span class="st-main">Fă testul pe capitolul ${c}</span></button></div>
+    <button class="btn btn-ghost btn-block" id="rCards" type="button">Recapitulează capitolul</button>
+    <div class="startbar"><button class="btn btn-primary btn-block" id="rGo" type="button"><span class="st-main">Testul capitolului ${c}</span></button></div>
   </section>`);
 
   document.body.insertAdjacentHTML("beforeend", `${c > 1 ? `<button class="r-side l" id="rSideP" type="button" aria-label="Capitolul ${c-1}" title="Capitolul ${c-1}"><svg width="18" height="18" viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3L5 8l5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>` : ""}
   ${c < 31 ? `<button class="r-side r" id="rSideN" type="button" aria-label="Capitolul ${c+1}" title="Capitolul ${c+1}"><svg width="18" height="18" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>` : ""}`);
 
-  const btnToggle = $("#btnColorToggle");
-  if (btnToggle) {
-    btnToggle.onclick = () => {
-      colorsOn = !colorsOn;
-      lsSet("candela:rc", colorsOn);
-      btnToggle.setAttribute("aria-pressed", colorsOn);
-      btnToggle.setAttribute("title", colorsOn ? "Dezactivează culorile" : "Activează culorile");
-      const icon = $("#btnColorIcon");
-      if (icon) icon.innerHTML = colorsOn ? TOGGLE_ICONS.off : TOGGLE_ICONS.on;
-      const lbl = $("#btnColorLabel");
-      if (lbl) lbl.textContent = colorsOn ? "Fără culori" : "Cu culori";
-      const rLeg = $("#readerLegend");
-      if (rLeg) rLeg.classList.toggle("is-dimmed", !colorsOn);
-      const rText = $("#readerText");
-      if (rText) rText.classList.toggle("show-colors", colorsOn);
-      if (!colorsOn) {
-        const pop = document.getElementById("entityPopover");
-        if (pop) pop.remove();
-      }
-    };
-  }
-
-  const rText = $("#readerText");
-  if (rText) {
-    rText.onclick = e => {
-      const mark = e.target.closest(".hl-entity");
-      if (mark && colorsOn) {
-        showEntityPopover(mark);
-      }
-    };
-  }
-
+  document.querySelectorAll(".sec-btn").forEach(b => b.onclick = () => goVerse(b.dataset.v));
   $("#rBack").onclick = () => {
     if (S.reportBack) {
       const back = S.reportBack;
@@ -3039,9 +2827,98 @@ function viewRead(c){
     }
   };
   $("#rPick").onchange = e => viewRead(+e.target.value);
+  $("#rBook").onclick = () => viewBook();
+  $("#rCards").onclick = () => viewCards(c);
   if ($("#rSideP")) $("#rSideP").onclick = () => viewRead(c - 1);
   if ($("#rSideN")) $("#rSideN").onclick = () => viewRead(c + 1);
   $("#rGo").onclick = () => { S.reportBack = null; S.reportCh = null; S.sel = new Set([c]); persistPrefs(); openOptions([c]); };
+  if (v) setTimeout(() => goVerse(v), 60);
+}
+
+/* ---------- the whole book: timeline, people, places, map, cards ---------- */
+const BOOK_TABS = [["frize", "Frize"], ["personaje", "Personaje"], ["locuri", "Locuri"], ["harta", "Hartă"], ["carduri", "Carduri"]];
+
+function mapHTML(){
+  const pts = CARTE.locuri.map((l, i) => {
+    const left = l.a === "l";
+    return `<g data-i="${i}"><circle class="map-dot" cx="${l.x}" cy="${l.y}" r="5"/><text class="map-t" x="${l.x + (left ? -9 : 9)}" y="${l.y + 4}" text-anchor="${left ? "end" : "start"}">${esc(l.n)}</text><circle class="map-hit" cx="${l.x}" cy="${l.y}" r="15"/></g>`;
+  }).join("");
+  return `<div class="map-wrap"><svg viewBox="0 0 360 540" role="img" aria-label="Harta locurilor din 1 Samuel">
+    <rect class="map-sea" x="0" y="0" width="22" height="540"/>
+    <text class="map-t map-sm" transform="translate(13 270) rotate(-90)" text-anchor="middle">Marea Mediterană</text>
+    <path class="map-river" d="M298 120 L298 300"/>
+    <text class="map-t map-sm" x="302" y="215">Iordan</text>
+    <ellipse class="map-sea" cx="300" cy="400" rx="22" ry="85"/>
+    <text class="map-t map-sm" transform="translate(342 400) rotate(-90)" text-anchor="middle">Marea Moartă</text>
+    ${pts}</svg></div>
+  <div class="bk-card" id="mapInfo"><p class="bk-meta">Atinge un loc de pe hartă.</p></div>`;
+}
+
+function viewBook(tab){
+  tab = tab || S.bookTab || "frize"; S.bookTab = tab;
+  if (tab === "carduri") return viewCards(0);
+  const body = {
+    frize: () => `<div class="bk-list">${CARTE.frize.map(f => `<div class="bk-card"><h3>${esc(f.t)}</h3><span class="bk-meta">Capitolele ${esc(f.c)}</span>${f.d.map(([t, ch]) => `<button class="ev" type="button" data-ch="${ch}"><span>${esc(t)}</span><small>cap. ${ch}</small></button>`).join("")}</div>`).join("")}</div>`,
+    personaje: () => `<div class="bk-list">${CARTE.personaje.map(p => `<div class="bk-card"><h3>${esc(p.n)}</h3><p>${esc(p.d)}</p><span class="bk-meta">Capitole: ${esc(p.c)}</span></div>`).join("")}</div>`,
+    locuri: () => `<div class="bk-list">${CARTE.locuri.map(l => `<div class="bk-card"><h3>${esc(l.n)}</h3><p>${esc(l.d)}</p><span class="bk-meta">Capitole: ${esc(l.c)}</span></div>`).join("")}</div>`,
+    harta: mapHTML
+  }[tab]();
+  mount(`<section class="reader">
+    <div class="reader-h">${BACK_BTN("bkBack")}<div><span class="eyebrow">1 Samuel</span><h2>Toată cartea</h2></div></div>
+    <div class="bk-tabs">${BOOK_TABS.map(([k, t]) => `<button class="chip" type="button" data-tab="${k}" aria-pressed="${k === tab}">${t}</button>`).join("")}</div>
+    ${body}
+  </section>`);
+  $("#bkBack").onclick = () => viewRead(lsGet("candela:read", 1));
+  document.querySelectorAll(".bk-tabs .chip").forEach(b => b.onclick = () => viewBook(b.dataset.tab));
+  document.querySelectorAll(".ev").forEach(b => b.onclick = () => viewRead(+b.dataset.ch));
+  if (tab === "harta") {
+    document.querySelectorAll(".map-wrap g").forEach(g => g.onclick = () => {
+      const l = CARTE.locuri[+g.dataset.i];
+      document.querySelectorAll(".map-dot").forEach(d => d.classList.remove("on"));
+      g.querySelector(".map-dot").classList.add("on");
+      $("#mapInfo").innerHTML = `<h3>${esc(l.n)}</h3><p>${esc(l.d)}</p><span class="bk-meta">Capitole: ${esc(l.c)}</span>`;
+    });
+  }
+}
+
+function cardDeck(c){
+  const deck = [];
+  const chs = c ? [c] : Object.keys(AIDS).map(Number);
+  for (const ch of chs) for (const [q, a] of AIDS[ch].cd) deck.push({q, a, r: `1 Samuel ${ch}`});
+  for (const p of CARTE.personaje) if (!c || chSet(p.c).has(c)) deck.push({q: `Cine este ${p.n}?`, a: p.d, r: `Capitole: ${p.c}`});
+  for (const l of CARTE.locuri) if (!c || chSet(l.c).has(c)) deck.push({q: `Ce se întâmplă la ${l.n}?`, a: l.d, r: `Capitole: ${l.c}`});
+  return deck;
+}
+
+function viewCards(c, shuffle){
+  c = +c || 0;
+  const deck = cardDeck(c);
+  if (shuffle) for (let i = deck.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [deck[i], deck[j]] = [deck[j], deck[i]]; }
+  let i = 0, back = false;
+  mount(`<section class="reader">
+    <div class="reader-h">${BACK_BTN("fcBack")}<div><span class="eyebrow">Carduri</span><h2>${c ? esc(TITLES[c-1]) : "Toată cartea"}</h2></div></div>
+    <label class="r-pick"><span>Alege</span><select class="input" id="fcPick"><option value="0" ${c ? "" : "selected"}>Toată cartea</option>${TITLES.map((t, k) => `<option value="${k+1}" ${k+1 === c ? "selected" : ""}>${k+1}. ${esc(t)}</option>`).join("")}</select></label>
+    <span class="eyebrow" id="fcN"></span>
+    <button class="fc" id="fc" type="button"><span class="fc-side" id="fcSide"></span><span class="fc-t" id="fcT"></span><span class="bk-meta" id="fcR"></span></button>
+    <div class="fc-bar"><button class="btn btn-ghost" id="fcPrev" type="button">Înapoi</button><button class="btn btn-primary" id="fcNext" type="button">Înainte</button></div>
+    <button class="link" id="fcShuf" type="button">Amestecă</button>
+  </section>`);
+  const draw = () => {
+    const d = deck[i];
+    $("#fcN").textContent = `${i + 1} din ${deck.length}`;
+    $("#fcSide").textContent = back ? "Răspuns" : "Întrebare";
+    $("#fcT").textContent = back ? d.a : d.q;
+    $("#fcR").textContent = back ? d.r : "";
+    $("#fc").classList.toggle("back", back);
+  };
+  const go = k => { i = (i + k + deck.length) % deck.length; back = false; draw(); };
+  $("#fc").onclick = () => { back = !back; draw(); };
+  $("#fcNext").onclick = () => go(1);
+  $("#fcPrev").onclick = () => go(-1);
+  $("#fcShuf").onclick = () => viewCards(c, true);
+  $("#fcPick").onchange = e => viewCards(+e.target.value);
+  $("#fcBack").onclick = () => c ? viewRead(c) : viewBook("frize");
+  draw();
 }
 
 
