@@ -17,10 +17,14 @@ let textData = JSON.parse(fs.readFileSync(path.join(BOOK, 'text-cornilescu.json'
 let text = {};
 for (let k in textData) text[parseInt(k)] = textData[k];
 
+let aids = JSON.parse(fs.readFileSync(path.join(BOOK, 'ajutor-citire.json')));
+
+let carte = JSON.parse(fs.readFileSync(path.join(BOOK, 'carte.json')));
+
 let dump = (o) => JSON.stringify(o).replace(/<\//g, '<\\/');
 
 let s = fs.readFileSync(path.join(ROOT, 'src', 'app.html'), 'utf-8');
-s = s.replace('/*__QUIZ__*/{}', dump(quiz)).replace('/*__TEXT__*/{}', dump(text)).replace('/*__SB__*/null', JSON.stringify(SUPABASE));
+s = s.replace('/*__QUIZ__*/{}', dump(quiz)).replace('/*__TEXT__*/{}', dump(text)).replace('/*__AIDS__*/{}', dump(aids)).replace('/*__CARTE__*/{}', dump(carte)).replace('/*__SB__*/null', JSON.stringify(SUPABASE));
 
 let fav = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2c2 3 4 5 4 8a4 4 0 0 1-8 0c0-2 1.5-3.5 2-5 .5 1.5 1.2 2.2 2 2.5C11.6 5.5 12 4 12 2z' fill='%23B87A0B'/%3E%3Cpath d='M3 16c3 0 6-1.5 9-1.5s5 .8 9 0c-.7 3-4 5.5-9 5.5-3.5 0-7-1.5-9-4z' fill='%231E261D'/%3E%3C/svg%3E";
 

@@ -9,7 +9,7 @@ Candela est une PWA de quiz biblique (livre de 1 Samuel, traduction Cornilescu),
 
 ## Fichiers clés
 - `src/app.html` : tout le frontend (HTML, CSS, JS). C'est le seul fichier à modifier pour l'interface.
-- `content/1-samuel/intrebari/ch01..ch31.json` : questions (`easy` / `hard`). `content/1-samuel/text-cornilescu.json` : texte biblique.
+- `content/1-samuel/intrebari/ch01..ch31.json` : questions (`easy` / `hard`). `content/1-samuel/text-cornilescu.json` : texte biblique. `content/1-samuel/ajutor-citire.json` : aides à la lecture par chapitre (résumé, personnages, lieux, points clés, sections, cartes). `content/1-samuel/carte.json` : frise, personnages, lieux et coordonnées de la carte dessinée.
 - `index.html` et `sw.js` : générés, ne jamais les modifier à la main.
 - `supabase/quiz_counts.sql` : généré par le build, à exécuter dans Supabase quand le nombre de questions change.
 - `supabase/migrations/` : schéma de la base. Toute modification de base passe par une nouvelle migration.
@@ -30,7 +30,7 @@ Après chaque modification de `src/app.html` ou d'un fichier de questions : `npm
 - L'identifiant d'une question est `<chapitre><e|h><index>` : seul l'ajout en fin de liste garde la progression des joueurs. Après un changement du nombre de questions, mettre à jour `quiz_counts`.
 
 ## Règles de style
-- Thème clair uniquement, pas de mode sombre, aucun emoji.
+- Thème clair uniquement, pas de mode sombre, aucun emoji, pas de surlignage en couleur dans le lecteur.
 - Variables CSS de `:root` (`--bg`, `--surface`, `--ink`, `--oil`, `--cedar`...) ; pas de style inline quand une classe suffit.
 - Aucun texte ne doit passer sur deux lignes (vérifier à 320, 390 et 1280 px).
 - Sobre : pas de médailles, de séries ni de notes explicatives (seul le minuteur d'étude de l'administrateur est autorisé, sur son accueil).
