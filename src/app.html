@@ -1013,18 +1013,19 @@ function sb(){
   return sbc;
 }
 const isNetErr = e => !e || /fetch|network|failed to|load failed/i.test(String(e.message || e));
+function qExists(id){ const m = /^(\d+)([eh])(\d+)$/.exec(id); return !!m && +m[3] < ((QUIZ[+m[1]] || {})[m[2] === "e" ? "easy" : "hard"] || []).length; }
 const store = {
   uid: null,
   blank(name){ return { name, history: [], chap: {}, ok: [], seen: [], tests: 0, exams: 0 }; },
-  norm(p, name){ p = p ? JSON.parse(JSON.stringify(p)) : this.blank(name); p.name = p.name || name; p.history = p.history || []; p.chap = p.chap || {}; p.ok = p.ok || []; p.seen = [...new Set([...(p.seen || []), ...p.ok])]; p.tests = p.tests ?? p.history.length; p.exams = p.exams ?? p.history.filter(h => h.exam || (h.chs && h.chs.length === 1 && h.chs[0] === 0)).length; return p; },
+  norm(p, name){ p = p ? JSON.parse(JSON.stringify(p)) : this.blank(name); p.name = p.name || name; p.history = p.history || []; p.chap = p.chap || {}; p.ok = (p.ok || []).filter(qExists); p.seen = [...new Set([...(p.seen || []), ...p.ok])].filter(qExists); p.tests = p.tests ?? p.history.length; p.exams = p.exams ?? p.history.filter(h => h.exam || (h.chs && h.chs.length === 1 && h.chs[0] === 0)).length; return p; },
   pending(){ return lsGet("candela:pending:" + this.uid, []); },
   applyEntry(p, x){
     const isExam = !!x.exam || (x.chs && x.chs.length === 1 && x.chs[0] === 0);
     if (!p.history.some(h => h.at === x.at)){ p.history.push({at:x.at, chs:x.chs, mode:x.mode, score:x.score, total:x.total, pct:x.pct, secs:x.secs, exam: isExam}); p.tests++; if (isExam) p.exams = (p.exams || 0) + 1; }
     if (!isExam){
       for (const [k, v] of Object.entries(x.chap)){ const cur = p.chap[k] || {best:0, n:0}; p.chap[k] = {best: Math.max(cur.best||0, v), last: v, n: (cur.n||0)+1}; }
-      p.ok = [...new Set([...p.ok, ...x.ok])];
-      p.seen = [...new Set([...(p.seen || []), ...(x.seen || []), ...x.ok])];
+      p.ok = [...new Set([...p.ok, ...x.ok])].filter(qExists);
+      p.seen = [...new Set([...(p.seen || []), ...(x.seen || []), ...x.ok])].filter(qExists);
     }
   },
   async send(x){

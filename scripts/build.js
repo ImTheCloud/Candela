@@ -32,7 +32,7 @@ let n = 0;
 for (let v of Object.values(quiz)) n += v.easy.length + v.hard.length;
 const counts = Object.entries(quiz).map(([ch, v]) => `(${ch},${v.easy.length},${v.hard.length})`).join(',');
 fs.writeFileSync(path.join(ROOT, 'supabase', 'quiz_counts.sql'),
-    `insert into public.quiz_counts (ch, e, h) values ${counts}\n  on conflict (ch) do update set e = excluded.e, h = excluded.h;\n`);
+    `insert into public.quiz_counts (ch, e, h) values ${counts}\n  on conflict (ch) do update set e = excluded.e, h = excluded.h;\nselect public.prune_stale_questions();\n`);
 let n_ro = n.toLocaleString('ro-RO');
 
 let head = `<!doctype html><html lang="ro"><head><meta charset="utf-8">` +
