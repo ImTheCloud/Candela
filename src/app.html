@@ -66,11 +66,12 @@ p{margin:0}
   .btn-ghost:hover{border-color:var(--ink-2)}
 }
 .btn-oil{background:var(--oil);color:#fff;box-shadow:0 4px 0 var(--oil-ink)}
+.btn-soft{background:var(--oil-soft);color:var(--oil-ink);border-color:var(--oil-soft)}
 .btn-block{width:100%}
 .h-config{min-width:0}
 .sbar-row{display:flex;gap:10px;width:100%;min-width:0}
 .sbar-row .btn span{overflow:hidden;text-overflow:ellipsis}
-@media (max-width:360px){.sbar-row{gap:8px}.sbar-row svg{display:none}.sbar-row .btn{font-size:13px;letter-spacing:.02em;gap:6px;padding-inline:8px}}
+@media (max-width:360px){.sbar-row{gap:8px}.sbar-row .btn{font-size:13px;letter-spacing:.02em;gap:6px;padding-inline:8px}}
 .sbar-row .btn{flex:1 1 0;min-width:0;white-space:nowrap;padding-inline:10px;font-size:15px}
 .sbar-row .btn[hidden]{display:none}
 .sbar-row svg{flex:none}
@@ -1636,7 +1637,7 @@ function viewHome(){
         <span>Examen alb</span>
       </button>
       </div>
-      <div class="startbar" id="sbar" style="display:${S.sel.size ? 'block' : 'none'}"><div class="sbar-row"><button type="button" class="btn btn-ghost lg" id="sread">${BOOK}<span></span></button><button type="button" class="btn btn-primary lg" id="sbtn"></button></div></div>
+      <div class="startbar" id="sbar" style="display:${S.sel.size ? 'block' : 'none'}"><div class="sbar-row"><button type="button" class="btn btn-soft lg" id="sread">${BOOK}<span></span></button><button type="button" class="btn btn-primary lg" id="sbtn"></button></div></div>
     </div>
   </aside>
 
@@ -1658,7 +1659,7 @@ function viewHome(){
       sbar.style.display = S.sel.size ? "block" : "none";
       const one = S.sel.size === 1;
       rd.hidden = !one;
-      if (one) rd.querySelector("span").textContent = `Citește cap. ${[...S.sel][0]}`;
+      if (one) rd.querySelector("span").textContent = "Citește";
       btn.textContent = one ? "Începe testul" : S.sel.size ? `Începe ${chaptersLabel([...S.sel]).toLowerCase()}` : "";
     }
     persistPrefs();
