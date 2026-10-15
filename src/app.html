@@ -614,13 +614,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .reader-h > div{min-width:0}
 .past-h{margin-bottom:8px}
 .reader-h h2{font-size:26px;line-height:1.1;overflow:hidden;text-overflow:ellipsis}
-.aid{background:var(--surface);border-radius:20px;box-shadow:var(--shadow);box-sizing:border-box;width:100%;min-width:0}
-.aid-body{display:grid;gap:12px;padding:0 18px 16px}
-.aid h3{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);margin:0 0 4px}
-.aid p{margin:0;font-size:15px;line-height:1.55;overflow-wrap:break-word}
 .bk-group{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);margin:10px 0 0}
-.aid ul{margin:0;padding-left:20px;display:grid;gap:4px;font-size:15px;line-height:1.5}
-.aid-row{display:grid;gap:2px}
 .bk-tabs{display:flex;flex-wrap:wrap;gap:8px}
 .bk-card{background:var(--surface);border-radius:20px;padding:18px 20px;box-shadow:var(--shadow);display:grid;gap:6px;box-sizing:border-box;min-width:0}
 .bk-card h3{margin:0;font-size:18px}
@@ -642,7 +636,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .tour-bar .btn{padding:12px 10px;font-size:14px}
 .tour-links{display:flex;justify-content:space-between;gap:12px}
 .r-tools{display:grid;gap:8px}
-.r-tools2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.r-tools2{display:grid;gap:8px}
 .r-tool{height:44px;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;padding:0 14px;border:1.5px solid var(--line);border-radius:14px;background:var(--surface);color:var(--ink);font:600 15px var(--f-body);cursor:pointer;-webkit-tap-highlight-color:transparent}
 .r-tool svg{flex-shrink:0;color:var(--ink-2);transition:transform .15s}
 .r-tool[aria-expanded="true"]{border-color:var(--ink)}
@@ -787,7 +781,6 @@ select.r-tool{padding-right:10px}
 <script>
 const QUIZ = /*__QUIZ__*/{};
 const TEXT = /*__TEXT__*/{};
-const AIDS = /*__AIDS__*/{};
 const CARTE = /*__CARTE__*/{};
 const TITLES = ["Nașterea lui Samuel","Cântarea Anei / Fiii lui Eli","Chemarea lui Samuel","Chivotul luat de filisteni","Chivotul în Asdod","Chivotul se întoarce","Biruința de la Mițpa","Israel cere un împărat","Saul și măgărițele","Saul uns împărat","Biruința asupra lui Nahaș","Cuvântarea lui Samuel","Jertfa lui Saul la Ghilgal","Isprava lui Ionatan","Saul lepădat de Domnul","David uns de Samuel","David și Goliat","Ionatan și David","Saul îl urmărește pe David","Legământul cu Ionatan","David la Nob și la Gat","Peștera Adulam","David la Cheila și în pustie","David îl cruță pe Saul","Nabal și Abigail","A doua cruțare a lui Saul","David la Achiș","Saul la En-Dor","David trimis înapoi","Țiclagul ars","Moartea lui Saul"];
 const TYPE_LABEL = {tf:"Adevărat / Fals", one:"Răspuns unic", multi:"Alegere multiplă", match:"Asociere", fill:"Completează versetul"};
@@ -1691,6 +1684,7 @@ function viewHome(){
         btn.innerHTML = `Începe ${chaptersLabel([...S.sel]).toLowerCase()}`;
       }
     }
+    const rb = $("#readBook span"); if (rb) rb.textContent = S.sel.size ? `Citește Capitolul ${Math.min(...S.sel)}` : "Citește Cartea";
     persistPrefs();
   };
   app.querySelectorAll(".tile").forEach(t => t.onclick = () => {
@@ -2756,18 +2750,9 @@ function mistakeHTML({q, a}){
 
 /* ---------- reading a chapter before the test ---------- */
 /* highlighted verses ("ch:v"): kept on the phone per player, and on the account when signed in */
-function aidHTML(a){
-  return `<div class="aid" id="aidPanel" hidden><div class="aid-body">
-    <div class="aid-row"><h3>Personaje</h3><p>${esc(a.p)}</p></div>
-    <div class="aid-row"><h3>Locuri</h3><p>${esc(a.l)}</p></div>
-    <div><h3>Puncte-cheie</h3><ul>${a.k.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div>
-  </div></div>`;
-}
-
 function viewRead(c){
   c = Math.min(31, Math.max(1, +c || 1)); lsSet("candela:read", c);
   const vs = TEXT[c] || [];
-  const a = AIDS[c];
 
   mount(`<section class="reader">
     <div class="reader-h">${BACK_BTN("rBack")}
@@ -2775,12 +2760,9 @@ function viewRead(c){
     <div class="r-tools">
       <select class="input r-tool" id="rPick" aria-label="Capitolul">${TITLES.map((t, i) => `<option value="${i+1}" ${i+1 === c ? "selected" : ""}>${i+1}. ${esc(t)}</option>`).join("")}</select>
       <div class="r-tools2">
-        <button class="r-tool" id="rSum" type="button" aria-expanded="false" aria-controls="aidPanel"><span>Repere</span><svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <button class="r-tool" id="rBook" type="button"><span>Hartă și frize</span><svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       </div>
     </div>
-
-    ${a ? aidHTML(a) : ""}
 
     <div class="reader-text" id="readerText">
       ${vs.map((t, i) => `<p data-v="${i+1}"><sup>${i+1}</sup>${esc(t)}</p>`).join("")}
@@ -2804,7 +2786,6 @@ function viewRead(c){
   };
   $("#rPick").onchange = e => viewRead(+e.target.value);
   $("#rBook").onclick = () => viewBook();
-  $("#rSum").onclick = e => { const o = $("#aidPanel").hidden; $("#aidPanel").hidden = !o; e.currentTarget.setAttribute("aria-expanded", o); };
   if ($("#rSideP")) $("#rSideP").onclick = () => viewRead(c - 1);
   if ($("#rSideN")) $("#rSideN").onclick = () => viewRead(c + 1);
   $("#rGo").onclick = () => { S.reportBack = null; S.reportCh = null; S.sel = new Set([c]); persistPrefs(); openOptions([c]); };
