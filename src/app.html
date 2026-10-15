@@ -1637,7 +1637,7 @@ function viewHome(){
         <span>Examen alb</span>
       </button>
       </div>
-      <div class="startbar" id="sbar" style="display:${S.sel.size ? 'block' : 'none'}"><div class="sbar-row"><button type="button" class="btn btn-soft lg" id="sread">${BOOK}<span></span></button><button type="button" class="btn btn-primary lg" id="sbtn"></button></div></div>
+      <div class="startbar" id="sbar" style="display:${S.sel.size ? 'block' : 'none'}"><div class="sbar-row"><button type="button" class="btn btn-soft lg" id="sread">${BOOK}<span></span></button><button type="button" class="btn btn-primary lg" id="sbtn">Începe testul</button></div></div>
     </div>
   </aside>
 
@@ -1657,10 +1657,9 @@ function viewHome(){
     const btn = $("#sbtn"), rd = $("#sread"), sbar = $("#sbar");
     if (btn && sbar) {
       sbar.style.display = S.sel.size ? "block" : "none";
-      const one = S.sel.size === 1;
-      rd.hidden = !one;
-      if (one) rd.querySelector("span").textContent = "Citește";
-      btn.textContent = one ? "Începe testul" : S.sel.size ? `Începe ${chaptersLabel([...S.sel]).toLowerCase()}` : "";
+      rd.hidden = false;
+      rd.querySelector("span").textContent = "Citește";
+      btn.textContent = "Începe testul";
     }
     persistPrefs();
   };
@@ -1671,7 +1670,7 @@ function viewHome(){
     update();
   });
   if ($("#sbtn")) $("#sbtn").onclick = () => openOptions();
-  if ($("#sread")) $("#sread").onclick = () => { if (S.sel.size === 1) viewRead([...S.sel][0]); };
+  if ($("#sread")) $("#sread").onclick = () => { if (S.sel.size) viewRead(Math.min(...S.sel)); };
   if ($("#btnExam")) $("#btnExam").onclick = () => openExamOptions();
   app.querySelectorAll(".hrow[data-at]").forEach(b => b.onclick = () => { S.homeScroll = window.scrollY; openPastReport(+b.dataset.at); });
   if ($("#allHist")) $("#allHist").onclick = viewHistory;
