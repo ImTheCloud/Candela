@@ -610,7 +610,7 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
   .qtext{font-size:20px}
 }
 .reader{display:grid;gap:16px;width:100%;max-width:100%;min-width:0;box-sizing:border-box}
-.reader-h{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:12px;min-width:0}
+.reader-h{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:12px;min-width:0;position:sticky;top:0;z-index:6;background:var(--bg);padding-block:8px;margin-block:-8px}
 .reader-h > div{min-width:0}
 .past-h{margin-bottom:8px}
 .reader-h h2{font-size:26px;line-height:1.1;overflow:hidden;text-overflow:ellipsis}
@@ -618,8 +618,8 @@ footer{margin-top:40px;font-size:12.5px;color:var(--ink-2);text-align:center}
 .aid-body{display:grid;gap:12px;padding:0 18px 16px}
 .aid h3{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);margin:0 0 4px}
 .aid p{margin:0;font-size:15px;line-height:1.55;overflow-wrap:break-word}
+.bk-group{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);margin:10px 0 0}
 .aid ul{margin:0;padding-left:20px;display:grid;gap:4px;font-size:15px;line-height:1.5}
-.aid-refs{color:var(--ink-2);font-size:14px}
 .aid-row{display:grid;gap:2px}
 .bk-tabs{display:flex;flex-wrap:wrap;gap:8px}
 .bk-card{background:var(--surface);border-radius:20px;padding:18px 20px;box-shadow:var(--shadow);display:grid;gap:6px;box-sizing:border-box;min-width:0}
@@ -1600,7 +1600,7 @@ function viewSettings() {
 }
 function getSuggestedReadChapter(){
   if (S.reportBack && S.reportCh) return S.reportCh;
-  if ($("#grid") && S.sel && S.sel.size === 1) return [...S.sel][0];
+  if ($("#grid") && S.sel && S.sel.size) return Math.min(...S.sel);
 
   if (S.player && S.player.chap) {
     const tried = Object.keys(S.player.chap).map(k => parseInt(k, 10)).filter(c => c >= 1 && c <= 31);
@@ -2758,7 +2758,6 @@ function mistakeHTML({q, a}){
 /* highlighted verses ("ch:v"): kept on the phone per player, and on the account when signed in */
 function aidHTML(a){
   return `<div class="aid" id="aidPanel" hidden><div class="aid-body">
-    <div><h3>Rezumat</h3><p>${esc(a.s)}</p><p class="aid-refs">Versete: ${esc(a.v)}</p></div>
     <div class="aid-row"><h3>Personaje</h3><p>${esc(a.p)}</p></div>
     <div class="aid-row"><h3>Locuri</h3><p>${esc(a.l)}</p></div>
     <div><h3>Puncte-cheie</h3><ul>${a.k.map(x => `<li>${esc(x)}</li>`).join("")}</ul></div>
@@ -2776,7 +2775,7 @@ function viewRead(c){
     <div class="r-tools">
       <select class="input r-tool" id="rPick" aria-label="Capitolul">${TITLES.map((t, i) => `<option value="${i+1}" ${i+1 === c ? "selected" : ""}>${i+1}. ${esc(t)}</option>`).join("")}</select>
       <div class="r-tools2">
-        <button class="r-tool" id="rSum" type="button" aria-expanded="false" aria-controls="aidPanel"><span>Rezumat</span><svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="r-tool" id="rSum" type="button" aria-expanded="false" aria-controls="aidPanel"><span>Repere</span><svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 6l5 5 5-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <button class="r-tool" id="rBook" type="button"><span>Hartă și frize</span><svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
       </div>
     </div>
@@ -3008,7 +3007,7 @@ function viewBook(tab){
   if (_map) { try { _map.remove(); } catch {} _map = null; }
   const mapChips = ["Toate locurile", ...CARTE.trasee.map(t => t.n)];
   const body = {
-    frize: () => `<div class="bk-list">${CARTE.frize.map(f => `<div class="bk-card"><h3>${esc(f.t)}</h3><span class="bk-meta">Capitolele ${esc(f.c)}</span>${f.d.map(([t, ch]) => `<button class="ev" type="button" data-ch="${ch}"><span>${esc(t)}</span><small>cap. ${ch}</small></button>`).join("")}</div>`).join("")}</div>`,
+    frize: () => `<div class="bk-list">${CARTE.frize.map((f, i) => `${f.g !== (CARTE.frize[i - 1] || {}).g ? `<h3 class="bk-group">${esc(f.g)}</h3>` : ""}<div class="bk-card"><h3>${esc(f.t)}</h3><span class="bk-meta">Capitolele ${esc(f.c)}</span>${f.d.map(([t, ch]) => `<button class="ev" type="button" data-ch="${ch}"><span>${esc(t)}</span><small>cap. ${ch}</small></button>`).join("")}</div>`).join("")}</div>`,
     personaje: () => `<div class="bk-list">${CARTE.personaje.map(p => `<div class="bk-card"><h3>${esc(p.n)}</h3><p>${esc(p.d)}</p><span class="bk-meta">Capitole: ${esc(p.c)}</span></div>`).join("")}</div>`,
     locuri: () => `<div class="bk-list">${CARTE.locuri.map(l => `<div class="bk-card"><h3>${esc(l.n)}</h3><p>${esc(l.d)}</p><span class="bk-meta">Capitole: ${esc(l.c)}</span></div>`).join("")}</div>`,
     harta: () => `<div class="bk-tabs" id="mapChips">${mapChips.map((t, i) => `<button class="chip" type="button" data-r="${i - 1}" aria-pressed="${i - 1 === -1}">${esc(t)}</button>`).join("")}</div>
