@@ -1747,9 +1747,10 @@ async function loadBoard(force = false){
   if (_boardLoading) return;
   _boardLoading = true;
   try {
-    const list = await store.board();
+    const [list, cnt] = await Promise.all([store.board(), store.rpc("signup_count")]);
+    if (cnt.ok && Number.isInteger(cnt.data)) S.signups = cnt.data;
     if (list) {
-      const changed = !S.board || JSON.stringify(S.board) !== JSON.stringify(list);
+      const changed = !S.board || JSON.stringify(S.board) !== JSON.stringify(list) || S.signupsShown !== S.signups;
       S.board = list;
       if ($("#board") && (changed || force || !$("#board").querySelector(".brow-l"))) {
         renderBoard(list);
@@ -1766,7 +1767,8 @@ function renderBoard(list){
   const el = $("#board"); if (!el) return;
   renderBoardNotice();
   const countEl = $("#boardCount");
-  if (countEl) countEl.textContent = list.length ? `${list.length} ${list.length === 1 ? "participant" : "participanți"}` : "";
+  S.signupsShown = S.signups;
+  if (countEl) countEl.textContent = !list.length ? "" : S.signups > list.length ? `${list.length} în clasament · ${S.signups} înscriși` : `${list.length} ${list.length === 1 ? "participant" : "participanți"}`;
   const guest = !S.player || S.player.guest;
   const note = S.player && S.player.hidden ? `<div class="empty">${S.player.child ? esc(S.player.name.split(" ")[0]) + " nu apare" : "Nu apari"} în clasament. Se poate schimba din profil.</div>` : "";
   if (!list.length){ el.innerHTML = note || `<div class="empty">Încă nimeni.</div>`; return; }
