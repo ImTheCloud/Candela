@@ -717,7 +717,7 @@ select.r-tool{padding-right:10px}
 .ed-swap{width:100%;margin-bottom:10px}
 .temp-pw{font-family:var(--f-mono);font-size:26px;letter-spacing:.12em;background:var(--bg);border-radius:14px;padding:14px;margin:6px 0}
 .top-r{display:flex;align-items:center;gap:10px;min-width:0;flex-shrink:0}
-@media(hover:hover) and (pointer:fine){@media (max-width:420px){@media (max-width:350px){@media (max-width:360px){.grid .tile{aspect-ratio:1}}
+@media (max-width:360px){.grid .tile{aspect-ratio:1}}
 .sh-lvl{display:grid;gap:6px}
 .start-sheet{gap:12px}
 .sh-tools{display:flex;align-items:center;gap:8px;flex:none}
@@ -740,14 +740,12 @@ select.r-tool{padding-right:10px}
 .r-pick select{font-size:16px;padding:11px 14px;appearance:auto}
 .r-nav{display:flex;justify-content:space-between;gap:10px}
 .r-nav .btn{min-height:44px;padding:10px 16px;font-size:15px}
-.sbar-nav{display:flex;align-items:stretch;gap:0;border-radius:14px;overflow:hidden}
-.sbar-nav .ch-nav{flex:0 0 48px;display:grid;place-items:center;border:0;padding:0;background:var(--ink);color:var(--bg);cursor:pointer;transition:filter .18s ease;-webkit-tap-highlight-color:transparent}
-.sbar-nav .ch-nav:active{filter:brightness(.85)}
-@media (hover:hover) and (pointer:fine){.sbar-nav .ch-nav:hover{filter:brightness(1.15)}}
-.sbar-nav .ch-nav:disabled{opacity:.25;cursor:not-allowed}
-.sbar-nav .ch-nav.l{border-right:1px solid rgba(255,255,255,.15)}
-.sbar-nav .ch-nav.r{border-left:1px solid rgba(255,255,255,.15)}
-.sbar-nav #rGo{flex:1;border-radius:0;min-width:0}
+.sbar-nav{display:flex;align-items:stretch;gap:10px}
+.sbar-nav .ch-nav{flex:0 0 52px;display:grid;place-items:center;border:1.5px solid var(--line);border-radius:16px;padding:0;background:var(--surface);color:var(--ink);box-shadow:var(--shadow);cursor:pointer;transition:transform .15s,border-color .2s,background .2s;-webkit-tap-highlight-color:transparent}
+.sbar-nav .ch-nav:active{transform:translateY(2px)}
+@media (hover:hover) and (pointer:fine){.sbar-nav .ch-nav:hover{border-color:var(--ink-2)}}
+.sbar-nav .ch-nav:disabled{opacity:.3;cursor:not-allowed}
+.sbar-nav #rGo{flex:1;min-width:0;padding-inline:8px;font-size:14.5px;letter-spacing:.03em;white-space:nowrap}
 .del-link{color:var(--bad);justify-self:center;font-size:14px}
 .forgot{justify-self:end;margin-top:-8px;font-size:14px}
 @media (max-width:420px){.brow-l{gap:8px;padding:7px 8px}}
