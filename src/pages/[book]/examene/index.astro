@@ -1,0 +1,78 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { BOOKS, type Book } from '../../../lib/books';
+import { exams, type ExamFile } from '../../../lib/content';
+import { ageLabel, type AgeGroup } from '../../../lib/age';
+
+export function getStaticPaths() {
+  return BOOKS.map((book) => ({ params: { book: book.slug }, props: { book, list: exams(book.slug) } }));
+}
+const { book, list } = Astro.props as { book: Book; list: ExamFile[] };
+---
+<Base title="Examene" description={`Examenele din ${book.name}, notate din 100.`}
+  crumbs={[{ href: '/', label: 'Acasă' }, { href: `/${book.slug}`, label: book.name }]}>
+  <section class="wrap narrow page" data-book={book.slug}>
+    <h1>Examene</h1>
+
+    <a class="card exam alb" href={`/${book.slug}/examene/alb`}>
+      <span>
+        <span class="exam-title">Examen alb</span>
+        <span class="small muted">Un examen nou, ca cel adevărat: 21 de întrebări din capitolele alese, pentru vârsta ta.</span>
+      </span>
+      <span class="chev" aria-hidden="true">›</span>
+    </a>
+
+    <h2>Examene date</h2>
+    {list.length === 0 ? (
+      <p class="card empty muted">Examenele de anul acesta vor fi adăugate după ce au loc.</p>
+    ) : (
+      <ul class="exams">
+        {list.map((e) => (
+          <li>
+            <a class="card exam" href={`/${book.slug}/examene/${e.id}`} data-exam={e.id} data-age={e.age}>
+              <span>
+                <span class="exam-title">{ageLabel(e.age as AgeGroup)}</span>
+                <span class="small muted">{e.title}, {e.year} · {e.questions.length} întrebări</span>
+              </span>
+              <span class="best small" hidden></span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    )}
+  </section>
+</Base>
+
+<script>
+  import { effect } from '@preact/signals';
+  import { ageGroup } from '../../../lib/age';
+  import { player } from '../../../lib/players';
+  import { progress } from '../../../lib/progress';
+
+  const root = document.querySelector<HTMLElement>('[data-book]')!;
+  const p = progress(root.dataset.book!);
+  effect(() => {
+    const own = player.value.birthYear ? ageGroup(player.value.birthYear) : null;
+    for (const a of root.querySelectorAll<HTMLElement>('[data-exam]')) {
+      const best = p.value.exams[a.dataset.exam!]?.best;
+      const badge = a.querySelector<HTMLElement>('.best')!;
+      badge.hidden = best === undefined;
+      badge.textContent = best === undefined ? '' : `${best}/100`;
+      a.classList.toggle('mine', a.dataset.age === own);
+    }
+  });
+</script>
+
+<style>
+  .page { display: grid; gap: 16px; padding-block: 8px 32px; }
+  .exams { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .exam { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 18px; text-decoration: none; }
+  .exam > span:first-child { display: flex; flex-direction: column; gap: 2px; }
+  .exam-title { font-weight: 600; }
+  .exam.mine { border-color: var(--oil); }
+  .alb { background: var(--oil-soft); border-color: transparent; }
+  .best { flex: none; padding: 4px 10px; border-radius: 999px; background: var(--ok-soft); color: var(--ok); font-weight: 600; }
+  .chev { font-size: 1.6rem; color: var(--ink-3); line-height: 1; }
+  .empty { padding: 18px; }
+  h2 { margin-top: 8px; }
+</style>

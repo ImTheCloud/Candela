@@ -1,0 +1,18 @@
+---
+import Base from '../../../layouts/Base.astro';
+import MockExam from '../../../islands/MockExam';
+import { BOOKS, type Book } from '../../../lib/books';
+import { summary } from '../../../lib/content';
+
+export function getStaticPaths() {
+  return BOOKS.map((book) => ({ params: { book: book.slug }, props: { book } }));
+}
+const { book } = Astro.props as { book: Book };
+---
+<Base title="Examen alb" crumbs={[{ href: '/', label: 'Acasă' }, { href: `/${book.slug}`, label: book.name }, { href: `/${book.slug}/examene`, label: 'Examene' }]}>
+  <section class="wrap narrow">
+    <MockExam client:only="preact" book={book.slug} bookName={book.name} chapters={book.chapters} summary={summary(book.slug)}>
+      <div slot="fallback" class="card auth-card skeleton"></div>
+    </MockExam>
+  </section>
+</Base>

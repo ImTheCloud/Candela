@@ -104,3 +104,5 @@
 .ch-pick:disabled { opacity: .35; cursor: default; }
 .type-list { display: grid; gap: 8px; }
 .who-line { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 14px; box-shadow: none; }
+.parts { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.parts li { display: flex; justify-content: space-between; gap: 10px; padding: 10px 12px; border-radius: 10px; background: var(--bg); }
