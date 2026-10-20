@@ -1,0 +1,20 @@
+---
+import Base from '../../layouts/Base.astro';
+import Board from '../../islands/Board';
+import { BOOKS, type Book } from '../../lib/books';
+import { totals } from '../../lib/content';
+
+export function getStaticPaths() {
+  return BOOKS.map((book) => ({ params: { book: book.slug }, props: { book } }));
+}
+const { book } = Astro.props as { book: Book };
+---
+<Base title="Clasament" description={`Clasamentul ${book.name}, pe vârste.`} crumbs={[{ href: '/', label: 'Acasă' }, { href: `/${book.slug}`, label: book.name }]}>
+  <section class="wrap narrow page">
+    <h1>Clasament</h1>
+    <Board client:only="preact" book={book.slug} totals={totals(book.slug)}>
+      <div slot="fallback" class="card skeleton"></div>
+    </Board>
+  </section>
+</Base>
+<style>.page { display: grid; gap: 16px; padding-block: 8px 32px; }</style>

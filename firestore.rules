@@ -30,7 +30,8 @@ service cloud.firestore {
         allow read, delete: if owner(uid);
         allow create, update: if owner(uid)
           && request.resource.data.name is string && request.resource.data.name.size() >= 1 && request.resource.data.name.size() <= 40
-          && validYear(request.resource.data.birthYear);
+          && validYear(request.resource.data.birthYear)
+          && request.resource.data.get('hidden', false) is bool;
       }
 
       // {playerKey}~{book}: read chapters, highlights, mastered and missed questions, exam scores
@@ -43,6 +44,22 @@ service cloud.firestore {
           && request.resource.data.get('mastered', []).size() <= 5000
           && request.resource.data.get('wrong', []).size() <= 5000;
       }
+    }
+
+    // Public boards, one per book: boards/{book}/players/{uid}~{playerKey}. Everyone reads them;
+    // only the account writes its own players, and the score must equal the questions mastered in its progress.
+    match /boards/{book}/players/{key} {
+      allow read: if true;
+      allow delete: if request.auth != null && key.split('~')[0] == request.auth.uid;
+      allow create, update: if request.auth != null
+        && key.split('~')[0] == request.auth.uid
+        && book in ['1-samuel', '2-samuel']
+        && request.resource.data.keys().hasOnly(['name', 'age', 'score', 'at'])
+        && request.resource.data.name is string && request.resource.data.name.size() <= 40
+        && request.resource.data.age in ['sub12', '12-13', '14-15', '16-17', '18+']
+        && request.resource.data.score is int
+        && request.resource.data.score == getAfter(/databases/$(database)/documents/users/$(request.auth.uid)/progress/$(key.split('~')[1] + '~' + book)).data.mastered.size()
+        && request.resource.data.at == request.time;
     }
   }
 }

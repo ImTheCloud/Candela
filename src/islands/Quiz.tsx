@@ -40,7 +40,7 @@ export default function Quiz({ book, bookName, questions, mode, examId, backHref
   function check() {
     const gr = grade(q, answers[i]);
     setGrades(grades.map((x, k) => (k === i ? gr : x)));
-    recordAnswers(book, gr.right ? [q.id] : [], gr.right ? [] : [q.id]);
+    recordAnswers(book, [{ id: q.id, t: q.t, right: gr.right }]);
   }
 
   function next() {
