@@ -1,0 +1,57 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { AGE_GROUPS } from '../../../lib/age';
+import { BOOKS, type Book } from '../../../lib/books';
+import { chapterFiles, playable, type ChapterFile } from '../../../lib/content';
+import { typeInfo, type Playable } from '../../../lib/questions';
+
+export function getStaticPaths() {
+  return BOOKS.flatMap((book) => [...chapterFiles(book.slug).values()].map((file) => ({ params: { book: book.slug, ch: String(file.ch) }, props: { book, file } })));
+}
+const { book, file } = Astro.props as { book: Book; file: ChapterFile };
+const qs = file.questions.map((q) => playable(book.slug, q));
+const letters = ['a', 'b', 'c'];
+const answer = (q: Playable) => {
+  switch (q.t) {
+    case 'tf': return q.a ? 'Adevărat' : 'Fals';
+    case 'one': return `${letters[q.a]}) ${q.opts[q.a]}`;
+    case 'multi': return q.a.length ? q.a.map((i) => `${letters[i]}) ${q.opts[i]}`).join(' · ') : 'Niciun răspuns corect';
+    case 'fill': return q.a.join(', ');
+    case 'match': return '';
+  }
+};
+---
+<Base title={`Verificare ${book.name} ${file.ch}`} crumbs={[{ href: '/', label: 'Acasă' }, { href: `/${book.slug}/verificare`, label: 'Verificare' }]}>
+  <section class="wrap narrow page">
+    <h1>{book.name} {file.ch}</h1>
+    <p class="muted">{file.questions.length} întrebări · {file.reviewed ? 'verificat' : 'de verificat'} · <a class="link" href={`/${book.slug}/citire/${file.ch}`}>textul capitolului</a></p>
+    {AGE_GROUPS.map((g) => (
+      <section class="age">
+        <h2>{g.label}</h2>
+        {qs.filter((q) => q.age === g.id).map((q) => (
+          <article class="card rq">
+            <p class="small muted"><strong>{typeInfo(q.t).short}</strong> · {q.ref} · {q.id}</p>
+            {q.ctx && <p class="small muted">{q.ctx}</p>}
+            <p class="rq-q">{q.q}</p>
+            {(q.t === 'one' || q.t === 'multi') && <ol class="rq-opts" type="a">{q.opts.map((o, i) => <li class={(q.t === 'one' ? q.a === i : q.a.includes(i)) ? 'right' : ''}>{o}</li>)}</ol>}
+            {q.t === 'match' && <ul class="rq-opts">{q.pairs.map(([l, r]) => <li><strong>{l}</strong> → {r}</li>)}</ul>}
+            {q.t !== 'match' && <p class="rq-a">Răspuns: <strong>{answer(q)}</strong></p>}
+            {q.explain && <p class="small">Explicație: {q.explain}</p>}
+            <details><summary class="small">Versetele</summary>{q.cite.map(([l, t]) => <p class="rq-v"><sup>{l}</sup> {t}</p>)}</details>
+          </article>
+        ))}
+      </section>
+    ))}
+  </section>
+</Base>
+<style>
+  .page { display: grid; gap: 14px; padding-block: 8px 32px; }
+  .age { display: grid; gap: 10px; padding-top: 12px; }
+  .rq { display: grid; gap: 6px; padding: 14px 16px; box-shadow: none; }
+  .rq-q { font-weight: 500; }
+  .rq-opts { margin: 0; padding-left: 22px; display: grid; gap: 2px; }
+  .rq-opts .right { color: var(--ok); font-weight: 600; }
+  .rq-a { color: var(--ok); }
+  .rq-v { font: 400 0.98rem/1.6 var(--f-bible); margin-top: 4px; }
+  summary { cursor: pointer; color: var(--oil-ink); }
+</style>

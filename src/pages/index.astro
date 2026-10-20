@@ -23,6 +23,10 @@ import PlayerPicker from '../islands/PlayerPicker';
       </a>
     ))}
   </section>
+
+  <nav class="wrap more" aria-label="Mai mult">
+    <a class="card more-link" href="/progres"><span>Progres</span><span class="small muted">Ce ai citit și ce știi, pentru fiecare copil</span></a>
+  </nav>
 </Base>
 
 <style>
@@ -36,6 +40,8 @@ import PlayerPicker from '../islands/PlayerPicker';
     text-decoration: none; transition: border-color .15s, transform .15s;
   }
   .book:hover { border-color: var(--oil); transform: translateY(-2px); }
+  .more { padding-top: 16px; }
+  .more-link { display: flex; flex-direction: column; gap: 2px; padding: 16px 18px; text-decoration: none; font-weight: 600; box-shadow: none; }
   .book-name { font: 600 1.6rem var(--f-display); }
   .book-meta { margin-top: 8px; color: var(--oil-ink); font-weight: 600; }
   @media (prefers-reduced-motion: reduce) { .book:hover { transform: none; } }

@@ -202,3 +202,28 @@ img, svg { display: block; }
 .chip-age { font-size: 0.8rem; color: var(--ink-2); }
 .btn-reset { border: 0; background: none; padding: 0; cursor: pointer; font: inherit; }
 .nowrap { white-space: nowrap; }
+
+/* Board */
+.board { display: grid; gap: 12px; }
+.age-tabs { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; margin-inline: calc(-1 * var(--gutter)); padding-inline: var(--gutter); }
+.age-tabs .chip { min-height: 44px; justify-content: center; }
+.age-tabs .chip[aria-selected="true"] { border: 2px solid var(--oil); background: var(--oil-soft); padding: 7px 15px; }
+.rows { list-style: none; margin: 0; padding: 6px 0; }
+.rows li { display: grid; grid-template-columns: 36px 1fr auto; align-items: center; gap: 8px; min-height: 48px; padding: 0 16px; }
+.rows li + li { border-top: 1px solid var(--line); }
+.rows li.me { background: var(--oil-soft); font-weight: 600; }
+.rank { color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.who { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pts { font-weight: 600; font-variant-numeric: tabular-nums; color: var(--oil-ink); }
+.empty { padding: 18px; }
+
+/* Family progress */
+.fam { --gap: 14px; }
+.fam-card { display: grid; gap: 14px; padding: 18px; }
+.fam-book { display: grid; gap: 8px; padding-top: 12px; border-top: 1px solid var(--line); }
+.fam-title { font-weight: 600; }
+.fam-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 0; }
+.fam-stats div { padding: 10px 12px; border-radius: 10px; background: var(--bg); }
+.fam-stats .wide { grid-column: 1 / -1; }
+.fam-stats dt { font-size: 0.8rem; color: var(--ink-2); }
+.fam-stats dd { margin: 2px 0 0; font-weight: 600; }

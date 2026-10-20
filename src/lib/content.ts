@@ -58,3 +58,10 @@ export function exams(book: string): ExamFile[] {
     .map(([, e]) => e)
     .sort((a, b) => b.year - a.year || AGE_ORDER.indexOf(a.age) - AGE_ORDER.indexOf(b.age));
 }
+
+/** Number of chapter questions per age group in a book (what "all mastered" means). */
+export function totals(book: string): Record<string, number> {
+  const out: Record<string, number> = {};
+  for (const file of chapterFiles(book).values()) for (const q of file.questions) out[q.age] = (out[q.age] ?? 0) + 1;
+  return out;
+}

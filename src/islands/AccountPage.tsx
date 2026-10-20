@@ -71,6 +71,8 @@ function Profile() {
 
       {p && <Children />}
 
+      <a class="btn btn-ghost" href="/progres">Vezi progresul</a>
+
       <section class="card auth-card stack">
         <h3>Aspect</h3>
         <ThemePicker />
