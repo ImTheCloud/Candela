@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'preact/hooks';
-import { doc, onSnapshot } from 'firebase/firestore';
+import { doc, getDoc, onSnapshot } from 'firebase/firestore';
 import { ageGroup, ageLabel } from '../lib/age';
 import { db } from '../lib/firebase';
 import { players, setHidden, GUEST, type Player } from '../lib/players';
@@ -59,14 +59,26 @@ function PlayerCard({ p, books }: { p: Player; books: BookInfo[] }) {
   );
 }
 
+/** Questions mastered in v1 (kept as a record: those questions were rewritten). */
+function useV1(p: Player, book: string): number {
+  const [n, setN] = useState(0);
+  const u = user.value;
+  useEffect(() => {
+    if (!u || book !== '1-samuel') return;
+    getDoc(doc(db, 'users', u.uid, 'archive', `${p.key}~1-samuel-v1`)).then((s) => setN((s.get('count') as number) ?? 0)).catch(() => {});
+  }, [u?.uid, p.key, book]);
+  return n;
+}
+
 function BookProgress({ p, book, total }: { p: Player; book: BookInfo; total: number }) {
   const d = usePlayerProgress(p, book.slug);
+  const v1 = useV1(p, book.slug);
   const typed = TYPES.map((x) => ({ x, s: d.stats[x.t] })).filter((e) => e.s && e.s.n >= 3);
   // a weak spot only means something next to other kinds of questions
   const weakest = typed.length >= 2 ? typed.sort((a, b) => a.s!.r / a.s!.n - b.s!.r / b.s!.n)[0] : undefined;
   const exams = Object.values(d.exams);
   const bestExam = exams.length ? Math.max(...exams.map((e) => e.best)) : null;
-  const started = d.read.length || d.mastered.length || exams.length;
+  const started = d.read.length || d.mastered.length || exams.length || v1;
   return (
     <div class="fam-book">
       <p class="fam-title">{book.name}</p>
@@ -76,6 +88,7 @@ function BookProgress({ p, book, total }: { p: Player; book: BookInfo; total: nu
           <div><dt>Întrebări știute</dt><dd>{d.mastered.length}{total ? ` din ${total}` : ''}</dd></div>
           <div><dt>De reluat</dt><dd>{d.wrong.length}</dd></div>
           {bestExam !== null && <div><dt>Cel mai bun examen</dt><dd>{bestExam} din 100</dd></div>}
+          {v1 > 0 && <div class="wide"><dt>În versiunea veche</dt><dd>{v1} întrebări știute</dd></div>}
           {weakest && <div class="wide"><dt>De lucrat</dt><dd>{typeInfo(weakest.x.t).label} ({Math.round((weakest.s!.r / weakest.s!.n) * 100)}% corecte)</dd></div>}
         </dl>
       )}
