@@ -14,7 +14,7 @@ service cloud.firestore {
 
     function validUser(d) {
       return d.name is string && d.name.size() <= 80
-        && (d.birthYear == null || validYear(d.birthYear))
+        && (d.get('birthYear', null) == null || validYear(d.birthYear))
         && d.isParent is bool
         && d.hidden is bool;
     }
@@ -32,6 +32,11 @@ service cloud.firestore {
           && request.resource.data.name is string && request.resource.data.name.size() >= 1 && request.resource.data.name.size() <= 40
           && validYear(request.resource.data.birthYear)
           && request.resource.data.get('hidden', false) is bool;
+      }
+
+      // what v1 left (questions mastered before the rewrite), written by the migration only
+      match /archive/{key} {
+        allow read: if owner(uid);
       }
 
       // {playerKey}~{book}: read chapters, highlights, mastered and missed questions, exam scores
