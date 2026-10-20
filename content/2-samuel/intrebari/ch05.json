@@ -1,0 +1,1083 @@
+{
+ "ch": 5,
+ "reviewed": false,
+ "questions": [
+  {
+   "id": "2sa.5.sub12.1",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "5:3",
+   "q": "La Hebron, bătrânii lui Israel l-au uns pe David împărat peste Israel.",
+   "a": true
+  },
+  {
+   "id": "2sa.5.sub12.2",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "5:7",
+   "q": "David a pus mâna pe cetățuia Sionului, care s-a numit cetatea lui David.",
+   "a": true
+  },
+  {
+   "id": "2sa.5.sub12.3",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "5:4",
+   "q": "David avea cincizeci de ani când s-a făcut împărat.",
+   "a": false,
+   "explain": "Avea treizeci de ani (5:4)."
+  },
+  {
+   "id": "2sa.5.sub12.4",
+   "age": "sub12",
+   "t": "one",
+   "ref": "5:4",
+   "q": "Câți ani a domnit David în total?",
+   "opts": [
+    "douăzeci de ani",
+    "patruzeci de ani",
+    "șaptezeci de ani"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.5.sub12.5",
+   "age": "sub12",
+   "t": "one",
+   "ref": "5:11",
+   "q": "Ce i-a trimis lui David Hiram, împăratul Tirului?",
+   "opts": [
+    "aur și argint",
+    "lemn de cedru, tâmplari și cioplitori de piatră",
+    "cai și care"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.5.sub12.6",
+   "age": "sub12",
+   "t": "one",
+   "ref": "5:10",
+   "q": "Cine era cu David, de ajungea tot mai mare?",
+   "opts": [
+    "Saul",
+    "Domnul Dumnezeul oștirilor",
+    "Hiram"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.5.sub12.7",
+   "age": "sub12",
+   "t": "match",
+   "ref": "5:3, 7, 11",
+   "q": "David, împărat peste tot Israelul (2 Samuel 5): asociază.",
+   "pairs": [
+    [
+     "Hebron",
+     "aici a fost uns David împărat peste Israel"
+    ],
+    [
+     "Sion",
+     "cetățuia luată de David"
+    ],
+    [
+     "Tir",
+     "cetatea lui Hiram, care a trimis lemn de cedru"
+    ]
+   ]
+  },
+  {
+   "id": "2sa.5.sub12.8",
+   "age": "sub12",
+   "t": "match",
+   "ref": "5:4-5",
+   "q": "Anii lui David (2 Samuel 5:4-5): asociază.",
+   "pairs": [
+    [
+     "treizeci de ani",
+     "vârsta lui când s-a făcut împărat"
+    ],
+    [
+     "patruzeci de ani",
+     "câți ani a domnit în total"
+    ],
+    [
+     "treizeci și trei de ani",
+     "câți ani a domnit la Ierusalim"
+    ]
+   ]
+  },
+  {
+   "id": "2sa.5.sub12.9",
+   "age": "sub12",
+   "t": "match",
+   "ref": "5:6, 11, 18",
+   "q": "Vecinii lui David (2 Samuel 5): asociază.",
+   "pairs": [
+    [
+     "iebusiții",
+     "locuiau în Ierusalim"
+    ],
+    [
+     "Hiram",
+     "împăratul Tirului"
+    ],
+    [
+     "filistenii",
+     "s-au răspândit în valea Refaim"
+    ]
+   ]
+  },
+  {
+   "id": "2sa.5.sub12.10",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "5:7",
+   "a": [
+    "Sionului"
+   ],
+   "q": "Dar David a pus mâna pe cetățuia ___: aceasta este cetatea lui David.",
+   "ctx": "Când David a mers asupra Ierusalimului:"
+  },
+  {
+   "id": "2sa.5.sub12.11",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "5:10",
+   "a": [
+    "oștirilor"
+   ],
+   "q": "David ajungea tot mai mare și Domnul Dumnezeul ___ era cu el.",
+   "ctx": "După ce David s-a așezat în cetatea lui David:"
+  },
+  {
+   "id": "2sa.5.sub12.12",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "5:4",
+   "a": [
+    "treizeci"
+   ],
+   "q": "David era în vârstă de ___ de ani când s-a făcut împărat și a domnit patruzeci de ani.",
+   "ctx": "Despre domnia lui David:"
+  },
+  {
+   "id": "2sa.5.sub12.13",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "5:11",
+   "q": "Pe cine a trimis Hiram, împăratul Tirului, ca să-i zidească o casă lui David?",
+   "opts": [
+    "tâmplari",
+    "cioplitori de piatră",
+    "preoți"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "2sa.5.sub12.14",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "5:14",
+   "q": "Care dintre aceștia sunt fii ai lui David născuți la Ierusalim?",
+   "opts": [
+    "Solomon",
+    "Natan",
+    "Ionatan"
+   ],
+   "a": [
+    0,
+    1
+   ],
+   "explain": "Ionatan era fiul lui Saul."
+  },
+  {
+   "id": "2sa.5.sub12.15",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "5:20",
+   "q": "Unde i-a bătut David pe filisteni prima dată, în 2 Samuel 5?",
+   "opts": [
+    "la Hebron",
+    "la Țiclag",
+    "la Betleem"
+   ],
+   "a": [],
+   "explain": "Niciun răspuns corect: i-a bătut la Baal-Perațim (5:20)."
+  },
+  {
+   "id": "2sa.5.12-13.1",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "5:1",
+   "q": "Semințiile lui Israel i-au spus lui David: „Noi suntem os din oasele tale și carne din carnea ta.\"",
+   "a": true
+  },
+  {
+   "id": "2sa.5.12-13.2",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "5:6",
+   "q": "Iebusiții i-au spus lui David că îl vor primi cu bucurie în Ierusalim.",
+   "a": false,
+   "explain": "I-au spus: „Să nu intri aici, căci și orbii, și ologii ți se vor împotrivi!\" (5:6)."
+  },
+  {
+   "id": "2sa.5.12-13.3",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "5:21",
+   "q": "La Baal-Perațim, filistenii și-au lăsat idolii, iar David și oamenii lui i-au luat.",
+   "a": true
+  },
+  {
+   "id": "2sa.5.12-13.4",
+   "age": "12-13",
+   "t": "one",
+   "ref": "5:2",
+   "q": "Ce îi spusese Domnul lui David, după cuvintele semințiilor lui Israel?",
+   "opts": [
+    "„Tu vei zidi Templul Meu\"",
+    "„Tu vei paște pe poporul Meu Israel\"",
+    "„Tu vei bate pe filisteni\""
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.5.12-13.5",
+   "age": "12-13",
+   "t": "one",
+   "ref": "5:6",
+   "q": "Ce locuitori ai țării erau în Ierusalim când David a mers asupra cetății?",
+   "opts": [
+    "amaleciții",
+    "iebusiții",
+    "filistenii"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.5.12-13.6",
+   "age": "12-13",
+   "t": "one",
+   "ref": "5:18",
+   "q": "Unde s-au răspândit filistenii când au venit să-l caute pe David?",
+   "opts": [
+    "în valea Ilah",
+    "în valea Refaim",
+    "în câmpia Iordanului"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.5.12-13.7",
+   "age": "12-13",
+   "t": "match",
+   "ref": "5:20, 24-25",
+   "q": "Războaiele lui David cu filistenii (2 Samuel 5): asociază.",
+   "pairs": [
+    [
+     "Baal-Perațim",
+     "acolo i-a bătut David prima dată"
+    ],
+    [
+     "vârfurile duzilor",
+     "acolo trebuia să audă un vuiet de pași"
+    ],
+    [
+     "de la Gheba până la Ghezer",
+     "până unde i-a bătut a doua oară"
+    ]
+   ]
+  },
+  {
+   "id": "2sa.5.12-13.8",
+   "age": "12-13",
+   "t": "match",
+   "ref": "5:3-5",
+   "q": "Domnia lui David (2 Samuel 5): asociază.",
+   "pairs": [
+    [
+     "la Hebron",
+     "a domnit peste Iuda șapte ani și șase luni"
+    ],
+    [
+     "la Ierusalim",
+     "a domnit treizeci și trei de ani"
+    ],
+    [
+     "bătrânii lui Israel",
+     "au făcut legământ cu David la Hebron"
+    ]
+   ]
+  },
+  {
+   "id": "2sa.5.12-13.9",
+   "age": "12-13",
+   "t": "match",
+   "ref": "5:6-9",
+   "q": "Cucerirea Ierusalimului: asociază.",
+   "pairs": [
+    [
+     "iebusiții",
+     "ziceau că și orbii și ologii i se vor împotrivi lui David"
+    ],
+    [
+     "cetățuia Sionului",
+     "luată de David"
+    ],
+    [
+     "cetatea lui David",
+     "numele dat cetățuii"
+    ],
+    [
+     "Milo",
+     "acolo a făcut David întărituri"
+    ]
+   ]
+  },
+  {
+   "id": "2sa.5.12-13.10",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "5:1",
+   "a": [
+    "oasele"
+   ],
+   "q": "„Iată că noi suntem os din ___ tale și carne din carnea ta.",
+   "ctx": "Semințiile lui Israel, venite la David în Hebron:"
+  },
+  {
+   "id": "2sa.5.12-13.11",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "5:19",
+   "a": [
+    "filisteni"
+   ],
+   "q": "„Suie-te, căci voi da pe ___ în mâinile tale.\"",
+   "ctx": "Răspunsul Domnului, când David L-a întrebat în valea Refaim:"
+  },
+  {
+   "id": "2sa.5.12-13.12",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "5:12",
+   "a": [
+    "împărat"
+   ],
+   "q": "David a cunoscut că Domnul îl întărea ca ___ al lui Israel",
+   "ctx": "După ce Hiram i-a zidit o casă lui David:"
+  },
+  {
+   "id": "2sa.5.12-13.13",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "5:19, 23",
+   "q": "Ce a făcut David înainte de fiecare luptă cu filistenii, în 2 Samuel 5?",
+   "opts": [
+    "a întrebat pe Domnul",
+    "a trimis iscoade la Ghezer",
+    "a adus jertfe la Hebron"
+   ],
+   "a": [
+    0
+   ]
+  },
+  {
+   "id": "2sa.5.12-13.14",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "5:13",
+   "q": "Ce s-a întâmplat după ce David a venit din Hebron la Ierusalim?",
+   "opts": [
+    "și-a mai luat neveste",
+    "i s-au născut fii și fiice",
+    "s-a mutat la Tir"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "2sa.5.12-13.15",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "5:2",
+   "q": "Ce spun semințiile lui Israel despre David, din vremea lui Saul?",
+   "opts": [
+    "că el povățuia pe Israel",
+    "că el strângea pe Israel",
+    "că îl înlocuise pe Saul ca împărat"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "2sa.5.14-15.1",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "5:5",
+   "q": "La Ierusalim, David a domnit treizeci și trei de ani peste tot Israelul și Iuda.",
+   "a": true
+  },
+  {
+   "id": "2sa.5.14-15.2",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "5:9",
+   "q": "David a numit cetățuia pe care a luat-o „cetatea Sionului\".",
+   "a": false,
+   "explain": "A numit-o „cetatea lui David\" (5:9)."
+  },
+  {
+   "id": "2sa.5.14-15.3",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "5:23",
+   "q": "A doua oară, Domnul i-a spus lui David să nu se suie, ci să-i ia pe filisteni pe la spate.",
+   "a": true
+  },
+  {
+   "id": "2sa.5.14-15.4",
+   "age": "14-15",
+   "t": "one",
+   "ref": "5:20",
+   "q": "Ce înseamnă numele Baal-Perațim?",
+   "opts": [
+    "Locul Săbiilor",
+    "Șesul rupturii",
+    "Piatra de ajutor"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.5.14-15.5",
+   "age": "14-15",
+   "t": "one",
+   "ref": "5:24",
+   "q": "Ce semn trebuia să aștepte David înainte să atace a doua oară pe filisteni?",
+   "opts": [
+    "o ploaie",
+    "un vuiet de pași în vârfurile duzilor",
+    "sunetul trâmbiței"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.5.14-15.6",
+   "age": "14-15",
+   "t": "one",
+   "ref": "5:9",
+   "q": "Cum se numea locul unde David a făcut întărituri de jur împrejur, în cetatea lui?",
+   "opts": [
+    "Sion",
+    "Milo",
+    "Refaim"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.5.14-15.7",
+   "age": "14-15",
+   "t": "match",
+   "ref": "5:14-16",
+   "q": "Fiii lui David născuți la Ierusalim: asociază fiecare nume cu cel care îl urmează în listă.",
+   "pairs": [
+    [
+     "Șamua",
+     "Șobab"
+    ],
+    [
+     "Natan",
+     "Solomon"
+    ],
+    [
+     "Ibhar",
+     "Elișua"
+    ],
+    [
+     "Eliada",
+     "Elifelet"
+    ]
+   ]
+  },
+  {
+   "id": "2sa.5.14-15.8",
+   "age": "14-15",
+   "t": "match",
+   "ref": "5:19-25",
+   "q": "Cele două lupte cu filistenii în valea Refaim: asociază.",
+   "pairs": [
+    [
+     "prima dată",
+     "Domnul a zis: „Suie-te\""
+    ],
+    [
+     "a doua oară",
+     "Domnul a zis: „Să nu te sui\""
+    ],
+    [
+     "la Baal-Perațim",
+     "Domnul i-a risipit ca niște ape care se rup"
+    ],
+    [
+     "în dreptul duzilor",
+     "David i-a luat pe la spate"
+    ]
+   ]
+  },
+  {
+   "id": "2sa.5.14-15.9",
+   "age": "14-15",
+   "t": "match",
+   "ref": "5:1-3",
+   "q": "Ungerea lui David peste Israel: asociază.",
+   "pairs": [
+    [
+     "semințiile lui Israel",
+     "„Noi suntem os din oasele tale\""
+    ],
+    [
+     "Domnul",
+     "„Tu vei paște pe poporul Meu Israel\""
+    ],
+    [
+     "David",
+     "a făcut legământ cu bătrânii înaintea Domnului"
+    ],
+    [
+     "bătrânii lui Israel",
+     "l-au uns pe David împărat"
+    ]
+   ]
+  },
+  {
+   "id": "2sa.5.14-15.10",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "5:20",
+   "a": [
+    "ape"
+   ],
+   "q": "„Domnul a risipit pe vrăjmașii mei dinaintea mea, ca niște ___ care se rup.\"",
+   "ctx": "David, după biruința asupra filistenilor:"
+  },
+  {
+   "id": "2sa.5.14-15.11",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "5:24",
+   "a": [
+    "duzilor"
+   ],
+   "q": "Când vei auzi un vuiet de pași în vârfurile ___, atunci să te grăbești,",
+   "ctx": "Domnul îi spune lui David cum să bată pe filisteni a doua oară:"
+  },
+  {
+   "id": "2sa.5.14-15.12",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "5:2",
+   "a": [
+    "căpetenia"
+   ],
+   "q": "‘Tu vei paște pe poporul Meu Israel și vei fi ___ lui Israel.’",
+   "ctx": "Semințiile lui Israel amintesc ce îi spusese Domnul lui David:"
+  },
+  {
+   "id": "2sa.5.14-15.13",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "5:6-8",
+   "q": "Ce aflăm despre orbi și șchiopi în povestirea cuceririi Ierusalimului?",
+   "opts": [
+    "iebusiții ziceau că orbii și ologii i se vor împotrivi lui David",
+    "de aceea se zice: „Orbul și șchiopul să nu intre în Casa Domnului\"",
+    "David i-a vindecat"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "2sa.5.14-15.14",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "5:17",
+   "q": "Ce a făcut David când a aflat că filistenii s-au suit să-l caute?",
+   "opts": [
+    "s-a coborât în cetățuie",
+    "a fugit la Hebron",
+    "a cerut ajutor lui Hiram"
+   ],
+   "a": [
+    0
+   ]
+  },
+  {
+   "id": "2sa.5.14-15.15",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "5:25",
+   "q": "Între ce locuri i-a bătut David pe filisteni a doua oară?",
+   "opts": [
+    "de la Gheba",
+    "până la Ghezer",
+    "până la Gaza"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "2sa.5.16-17.1",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "5:8",
+   "q": "David zisese ca oricine va bate pe iebusiți să arunce în canal pe șchiopii și pe orbii care sunt vrăjmașii lui David.",
+   "a": true
+  },
+  {
+   "id": "2sa.5.16-17.2",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "5:13",
+   "q": "După ce a venit la Ierusalim, David nu și-a mai luat alte neveste.",
+   "a": false,
+   "explain": "David și-a mai luat țiitoare și neveste din Ierusalim (5:13)."
+  },
+  {
+   "id": "2sa.5.16-17.3",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "5:12",
+   "q": "David a cunoscut că Domnul îi ridica împărăția din pricina poporului Său, Israel.",
+   "a": true
+  },
+  {
+   "id": "2sa.5.16-17.4",
+   "age": "16-17",
+   "t": "one",
+   "ref": "5:14",
+   "q": "Care dintre acești fii ai lui David s-a născut la Ierusalim?",
+   "opts": [
+    "Amnon",
+    "Absalom",
+    "Solomon"
+   ],
+   "a": 2,
+   "explain": "Amnon și Absalom s-au născut la Hebron (3:2-3)."
+  },
+  {
+   "id": "2sa.5.16-17.5",
+   "age": "16-17",
+   "t": "one",
+   "ref": "5:3",
+   "q": "Unde a făcut David legământ cu bătrânii lui Israel, înaintea Domnului?",
+   "opts": [
+    "la Ierusalim",
+    "la Hebron",
+    "la Silo"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.5.16-17.6",
+   "age": "16-17",
+   "t": "one",
+   "ref": "5:16",
+   "q": "Cum se numea ultimul dintre fiii lui David născuți la Ierusalim, din lista din 2 Samuel 5?",
+   "opts": [
+    "Eliada",
+    "Elifelet",
+    "Elișama"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.5.16-17.7",
+   "age": "16-17",
+   "t": "match",
+   "ref": "5:14-16",
+   "q": "Fiii lui David născuți la Ierusalim: asociază fiecare nume cu locul lui în listă.",
+   "pairs": [
+    [
+     "Șamua",
+     "primul"
+    ],
+    [
+     "Solomon",
+     "al patrulea"
+    ],
+    [
+     "Ibhar",
+     "al cincilea"
+    ],
+    [
+     "Elifelet",
+     "ultimul"
+    ]
+   ]
+  },
+  {
+   "id": "2sa.5.16-17.8",
+   "age": "16-17",
+   "t": "match",
+   "ref": "5:6-12",
+   "q": "Ierusalimul în 2 Samuel 5: asociază fiecare cu ce a făcut.",
+   "pairs": [
+    [
+     "iebusiții",
+     "s-au împotrivit lui David"
+    ],
+    [
+     "David",
+     "a pus mâna pe cetățuia Sionului"
+    ],
+    [
+     "Hiram",
+     "a trimis lemn de cedru"
+    ],
+    [
+     "tâmplarii și cioplitorii",
+     "au zidit o casă lui David"
+    ]
+   ]
+  },
+  {
+   "id": "2sa.5.16-17.9",
+   "age": "16-17",
+   "t": "match",
+   "ref": "5:4-5",
+   "q": "Domnia lui David: asociază fiecare număr cu ce arată.",
+   "pairs": [
+    [
+     "șapte ani și șase luni",
+     "domnia la Hebron, peste Iuda"
+    ],
+    [
+     "treizeci și trei de ani",
+     "domnia la Ierusalim"
+    ],
+    [
+     "patruzeci de ani",
+     "toată domnia lui David"
+    ],
+    [
+     "treizeci de ani",
+     "vârsta lui la începutul domniei"
+    ]
+   ]
+  },
+  {
+   "id": "2sa.5.16-17.10",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "5:21",
+   "a": [
+    "idolii"
+   ],
+   "q": "Ei și-au lăsat ___ acolo și David și oamenii lui i-au luat.",
+   "ctx": "Filistenii, după înfrângerea de la Baal-Perațim:"
+  },
+  {
+   "id": "2sa.5.16-17.11",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "5:12",
+   "a": [
+    "Israel"
+   ],
+   "q": "că-i ridica împărăția din pricina poporului Său, ___.",
+   "ctx": "Ce a cunoscut David după ce Hiram i-a zidit o casă:"
+  },
+  {
+   "id": "2sa.5.16-17.12",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "5:9",
+   "a": [
+    "Milo"
+   ],
+   "q": "A făcut întărituri de jur împrejur, în afară și înăuntrul lui ___ (Cetățuie).",
+   "ctx": "David, după ce s-a așezat în cetățuia Sionului:"
+  },
+  {
+   "id": "2sa.5.16-17.13",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "5:22-25",
+   "q": "Ce aflăm despre a doua luptă cu filistenii din 2 Samuel 5?",
+   "opts": [
+    "filistenii s-au răspândit din nou în valea Refaim",
+    "Domnul a mers înaintea lui David",
+    "David a luptat fără să-L întrebe pe Domnul"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "2sa.5.16-17.14",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "5:14-16",
+   "q": "Care dintre aceștia sunt în lista fiilor lui David născuți la Ierusalim?",
+   "opts": [
+    "Nefeg",
+    "Iafia",
+    "Adonia"
+   ],
+   "a": [
+    0,
+    1
+   ],
+   "explain": "Adonia s-a născut la Hebron (3:4)."
+  },
+  {
+   "id": "2sa.5.16-17.15",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "5:11",
+   "q": "Ce a trimis Hiram, împăratul Tirului, la David?",
+   "opts": [
+    "lemn de chiparos",
+    "aur",
+    "cai"
+   ],
+   "a": [],
+   "explain": "Niciun răspuns corect: a trimis soli, lemn de cedru, tâmplari și cioplitori de piatră (5:11)."
+  },
+  {
+   "id": "2sa.5.18+.1",
+   "age": "18+",
+   "t": "tf",
+   "ref": "5:9",
+   "q": "David a făcut întărituri în afară și înăuntrul lui Milo.",
+   "a": true
+  },
+  {
+   "id": "2sa.5.18+.2",
+   "age": "18+",
+   "t": "tf",
+   "ref": "5:20",
+   "q": "Numele Baal-Perațim înseamnă „Locul Săbiilor\".",
+   "a": false,
+   "explain": "Înseamnă „Șesul rupturii\" (5:20); Helcat-Hațurim înseamnă „Locul Săbiilor\" (2:16)."
+  },
+  {
+   "id": "2sa.5.18+.3",
+   "age": "18+",
+   "t": "tf",
+   "ref": "5:15",
+   "q": "Ibhar, Elișua, Nefeg și Iafia sunt printre fiii lui David născuți la Ierusalim.",
+   "a": true
+  },
+  {
+   "id": "2sa.5.18+.4",
+   "age": "18+",
+   "t": "one",
+   "ref": "5:14",
+   "q": "Cine este pomenit primul în lista fiilor lui David născuți la Ierusalim?",
+   "opts": [
+    "Solomon",
+    "Șamua",
+    "Natan"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.5.18+.5",
+   "age": "18+",
+   "t": "one",
+   "ref": "5:25",
+   "q": "Până unde i-a bătut David pe filisteni, pornind de la Gheba?",
+   "opts": [
+    "până la Gat",
+    "până la Ghezer",
+    "până la Ecron"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.5.18+.6",
+   "age": "18+",
+   "t": "one",
+   "ref": "5:8",
+   "q": "Ce zicală vine, după 2 Samuel 5:8, din cuvintele lui David la luarea Ierusalimului?",
+   "opts": [
+    "„Saul și-a bătut miile lui\"",
+    "„Orbul și șchiopul să nu intre în Casa Domnului\"",
+    "„Cum au căzut vitejii\""
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.5.18+.7",
+   "age": "18+",
+   "t": "match",
+   "ref": "5:14-16",
+   "q": "Fiii lui David născuți la Ierusalim: asociază fiecare nume cu cel care îl urmează în listă.",
+   "pairs": [
+    [
+     "Șobab",
+     "Natan"
+    ],
+    [
+     "Solomon",
+     "Ibhar"
+    ],
+    [
+     "Nefeg",
+     "Iafia"
+    ],
+    [
+     "Elișama",
+     "Eliada"
+    ]
+   ]
+  },
+  {
+   "id": "2sa.5.18+.8",
+   "age": "18+",
+   "t": "match",
+   "ref": "5:17-25",
+   "q": "Filistenii în 2 Samuel 5: asociază.",
+   "pairs": [
+    [
+     "au aflat",
+     "că David fusese uns împărat peste Israel"
+    ],
+    [
+     "s-au răspândit",
+     "în valea Refaim"
+    ],
+    [
+     "și-au lăsat",
+     "idolii"
+    ],
+    [
+     "au fost bătuți",
+     "de la Gheba până la Ghezer"
+    ]
+   ]
+  },
+  {
+   "id": "2sa.5.18+.9",
+   "age": "18+",
+   "t": "match",
+   "ref": "5:2-3, 12",
+   "q": "Cuvinte despre împărăția lui David: asociază.",
+   "pairs": [
+    [
+     "„vei paște\"",
+     "pe poporul Meu Israel"
+    ],
+    [
+     "„vei fi căpetenia\"",
+     "lui Israel"
+    ],
+    [
+     "legământul",
+     "făcut la Hebron înaintea Domnului"
+    ],
+    [
+     "împărăția ridicată",
+     "din pricina poporului Său, Israel"
+    ]
+   ]
+  },
+  {
+   "id": "2sa.5.18+.10",
+   "age": "18+",
+   "t": "fill",
+   "ref": "5:8",
+   "a": [
+    "canal"
+   ],
+   "q": "„Oricine va bate pe iebusiți să arunce în ___ pe șchiopii și pe orbii aceia care sunt vrăjmașii lui David.\"",
+   "ctx": "David, în ziua în care a mers asupra Ierusalimului:"
+  },
+  {
+   "id": "2sa.5.18+.11",
+   "age": "18+",
+   "t": "fill",
+   "ref": "5:6",
+   "a": [
+    "ologii"
+   ],
+   "q": "„Să nu intri aici, căci și orbii, și ___ ți se vor împotrivi!\"",
+   "ctx": "Iebusiții, către David, când a venit asupra Ierusalimului:"
+  },
+  {
+   "id": "2sa.5.18+.12",
+   "age": "18+",
+   "t": "fill",
+   "ref": "5:20",
+   "a": [
+    "rupturii"
+   ],
+   "q": "De aceea s-a dat locului aceluia numele Baal-Perațim (Șesul ___).",
+   "ctx": "După prima biruință a lui David asupra filistenilor:"
+  },
+  {
+   "id": "2sa.5.18+.13",
+   "age": "18+",
+   "t": "multi",
+   "ref": "5:14-16",
+   "q": "Care dintre aceștia sunt în lista fiilor lui David născuți la Ierusalim?",
+   "opts": [
+    "Elișama",
+    "Eliada",
+    "Itream"
+   ],
+   "a": [
+    0,
+    1
+   ],
+   "explain": "Itream s-a născut la Hebron, din Egla (3:5)."
+  },
+  {
+   "id": "2sa.5.18+.14",
+   "age": "18+",
+   "t": "multi",
+   "ref": "5:23-24",
+   "q": "Ce i-a spus Domnul lui David înainte de a doua luptă din valea Refaim?",
+   "opts": [
+    "„Să nu te sui\"",
+    "„ia-i pe la spate\"",
+    "„Domnul merge înaintea ta\""
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "id": "2sa.5.18+.15",
+   "age": "18+",
+   "t": "multi",
+   "ref": "5:11",
+   "q": "Cine a zidit o casă lui David, la Ierusalim?",
+   "opts": [
+    "iebusiții",
+    "slujitorii lui Saul",
+    "oamenii lui Ioab"
+   ],
+   "a": [],
+   "explain": "Niciun răspuns corect: casa a fost zidită de tâmplarii și cioplitorii trimiși de Hiram, împăratul Tirului (5:11)."
+  }
+ ]
+}
