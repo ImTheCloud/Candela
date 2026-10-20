@@ -1,0 +1,19 @@
+---
+import Base from '../../layouts/Base.astro';
+import Practice from '../../islands/Practice';
+import { BOOKS, type Book } from '../../lib/books';
+import { summary } from '../../lib/content';
+
+export function getStaticPaths() {
+  return BOOKS.map((book) => ({ params: { book: book.slug }, props: { book } }));
+}
+const { book } = Astro.props as { book: Book };
+---
+<Base title="Exersează" description={`Întrebări din ${book.name}, pe capitole și pe vârste.`}
+  crumbs={[{ href: '/', label: 'Acasă' }, { href: `/${book.slug}`, label: book.name }]}>
+  <section class="wrap narrow">
+    <Practice client:only="preact" book={book.slug} bookName={book.name} chapters={book.chapters} summary={summary(book.slug)}>
+      <div slot="fallback" class="card auth-card skeleton"></div>
+    </Practice>
+  </section>
+</Base>

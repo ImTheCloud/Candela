@@ -1,0 +1,40 @@
+// Build-time only: reads the question files and attaches the verses each question cites.
+import type { Playable, Question } from './questions';
+import { firstChapter, versesOf } from './refs';
+import { getText } from './text';
+
+export interface ChapterFile {
+  ch: number;
+  /** Set once a person has read and approved the chapter's questions. */
+  reviewed: boolean;
+  questions: Question[];
+}
+
+const files = import.meta.glob<ChapterFile>('../../content/*/intrebari/ch*.json', { import: 'default', eager: true });
+
+/** Question files of a book, by chapter number. */
+export function chapterFiles(book: string): Map<number, ChapterFile> {
+  const out = new Map<number, ChapterFile>();
+  for (const [path, file] of Object.entries(files)) {
+    if (path.startsWith(`../../content/${book}/intrebari/`)) out.set(file.ch, file);
+  }
+  return out;
+}
+
+export function playable(book: string, q: Question): Playable {
+  const text = getText(book)!;
+  return { ...q, book, ch: firstChapter(q.ref), cite: versesOf(q.ref, text) };
+}
+
+/** Question counts per chapter, age group and type, for the practice screen. */
+export function summary(book: string): Record<number, Record<string, Record<string, number>>> {
+  const out: Record<number, Record<string, Record<string, number>>> = {};
+  for (const [ch, file] of chapterFiles(book)) {
+    const c = (out[ch] = {} as Record<string, Record<string, number>>);
+    for (const q of file.questions) {
+      c[q.age] ??= {};
+      c[q.age][q.t] = (c[q.age][q.t] ?? 0) + 1;
+    }
+  }
+  return out;
+}
