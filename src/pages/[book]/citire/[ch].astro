@@ -1,0 +1,47 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { BOOKS, getText, type Book } from '../../../lib/books';
+
+export function getStaticPaths() {
+  return BOOKS.flatMap((book) => {
+    const text = getText(book.slug);
+    if (!text) return [];
+    return Object.entries(text).map(([ch, verses]) => ({
+      params: { book: book.slug, ch },
+      props: { book, ch: Number(ch), verses },
+    }));
+  });
+}
+
+const { book, ch, verses } = Astro.props as { book: Book; ch: number; verses: string[] };
+const prev = ch > 1 ? ch - 1 : null;
+const next = ch < book.chapters ? ch + 1 : null;
+---
+<Base title={`${book.name} ${ch}`} crumbs={[{ href: '/', label: 'Acasă' }, { href: `/${book.slug}`, label: book.name }]}>
+  <article class="wrap narrow reader">
+    <h1>Capitolul {ch}</h1>
+    <div class="text">
+      {verses.map((v, i) => (
+        <p class="verse" id={`v${i + 1}`}><sup>{i + 1}</sup>{v}</p>
+      ))}
+    </div>
+  </article>
+
+  <nav class="wrap narrow pager" aria-label="Capitole">
+    {prev ? <a class="btn btn-ghost" href={`/${book.slug}/citire/${prev}`} rel="prev">← Capitolul {prev}</a> : <span />}
+    {next ? <a class="btn btn-primary" href={`/${book.slug}/citire/${next}`} rel="next">Capitolul {next} →</a> : <a class="btn btn-ghost" href={`/${book.slug}`}>Înapoi la carte</a>}
+  </nav>
+</Base>
+
+<style>
+  .reader { padding-block: 12px 8px; }
+  .reader h1 { margin-bottom: 20px; }
+  .text { font: 400 1.15rem/1.8 var(--f-bible); }
+  .verse { margin: 0 0 0.35em; scroll-margin-top: 80px; }
+  .verse:target { background: var(--highlight); border-radius: 4px; }
+  sup {
+    font: 600 0.7rem var(--f-body); color: var(--oil-ink);
+    margin-right: 4px; vertical-align: 0.5em; line-height: 0;
+  }
+  .pager { display: flex; justify-content: space-between; gap: 12px; padding-block: 28px 0; }
+</style>

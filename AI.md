@@ -1,42 +1,30 @@
-# Instructions pour l'IA - Projet Candela
+# Instructions pour l'IA - Candela v2 (branche `v2`)
 
-Candela est une PWA de quiz biblique (livre de 1 Samuel, traduction Cornilescu), en roumain. Public : enfants et personnes peu à l'aise avec la technique, donc l'interface reste très simple.
+Candela est une app web de quiz biblique (1 Samuel et 2 Samuel, traduction Cornilescu), en roumain. Public : enfants et personnes peu à l'aise avec la technique. Le plan complet et les décisions sont dans `docs/v2-plan.md`.
+
+`main` contient encore l'ancienne app (v1, Supabase), utilisée par des joueurs : ne jamais commiter la v2 sur `main` ni modifier la base Supabase avant la bascule.
 
 ## Stack
-- Frontend : HTML, CSS et JavaScript natifs, sans framework, dans un seul fichier.
-- Backend : Supabase (auth email + mot de passe, Postgres avec RLS, Edge Functions dans `supabase/functions/`).
-- Hébergement : Vercel, site statique (`vercel.json`).
+- Astro (site statique) + îlots Preact (`src/islands/`, montés avec `client:only="preact"` quand ils dépendent du compte), TypeScript strict.
+- Firebase (projet `candela-64d25`) : Authentication email + mot de passe, Firestore. Règles dans `firestore.rules` (`firebase deploy --only firestore:rules`).
+- Hébergement : Vercel (`vercel.json`), la branche `v2` a sa propre adresse de prévisualisation.
 
 ## Fichiers clés
-- `src/app.html` : tout le frontend (HTML, CSS, JS). C'est le seul fichier à modifier pour l'interface.
-- `content/1-samuel/intrebari/ch01..ch31.json` : questions (`easy` / `hard`). `content/1-samuel/text-cornilescu.json` : texte biblique. `content/1-samuel/carte.json` : frise, personnages, lieux avec latitude/longitude et itinéraires (`trasee`). La carte utilise Leaflet (cdnjs, chargé à la demande) et les tuiles Esri « Shaded Relief » (relief, sans noms), sans clé.
-- `index.html` et `sw.js` : générés, ne jamais les modifier à la main.
-- `supabase/quiz_counts.sql` : généré par le build, à exécuter dans Supabase quand le nombre de questions change.
-- `supabase/migrations/` : schéma de la base. Toute modification de base passe par une nouvelle migration.
+- `src/layouts/Base.astro` : en-tête, fil d'Ariane (`crumbs`), pied de page, polices.
+- `src/styles/global.css` : variables de couleur (clair et sombre), boutons, formulaires.
+- `src/lib/books.ts` (livres, texte), `src/lib/age.ts` (catégories d'âge), `src/lib/session.ts` (compte, profil), `src/lib/firebase.ts`.
+- `content/<livre>/text-cornilescu.json` : texte biblique, un tableau de versets par chapitre.
 
-## Commandes (Node.js, aucune dépendance)
+## Commandes
 ```
-npm run validate   # contrôle des questions
-npm run build      # régénère index.html, sw.js, supabase/quiz_counts.sql
-npm run serve      # http://localhost:8080
-npm run dev        # build + serve
+npm run dev     # http://localhost:4321
+npm run build   # dist/
+npm run check   # vérification des types
 ```
-Après chaque modification de `src/app.html` ou d'un fichier de questions : `npm run validate` puis `npm run build`, et commiter les fichiers générés.
 
-## Questions
-- Types (`t`) : `tf` (`a` booléen), `one` (3 `opts`, `a` = index), `multi` (3 `opts`, `a` = liste d'index), `match` (exactement 3 `pairs`), `fill` (`___` dans `q`, `a` = liste de mots, texte identique au verset).
-- Une question (vrai/faux, choix unique ou multiple, association) doit se comprendre sans avoir lu le chapitre, car elle peut tomber dans l'examen alb qui mélange tous les chapitres : nommer qui, où ou quand dans `q`. Les textes à compléter sont des versets et n'ont pas besoin de contexte.
-- Toujours 3 choix au maximum, 20 questions par chapitre et niveau au maximum, et une `ref` (ex. `"14:24"`).
-- L'identifiant d'une question est `<chapitre><e|h><index>` : seul l'ajout en fin de liste garde la progression des joueurs. Après un changement du nombre de questions, mettre à jour `quiz_counts`.
-
-## Règles de style
-- Thème clair uniquement, pas de mode sombre, aucun emoji, pas de surlignage en couleur dans le lecteur.
-- Variables CSS de `:root` (`--bg`, `--surface`, `--ink`, `--oil`, `--cedar`...) ; pas de style inline quand une classe suffit.
-- Aucun texte ne doit passer sur deux lignes (vérifier à 320, 390 et 1280 px).
-- Sobre : pas de médailles, de séries ni de notes explicatives (seul le minuteur d'étude de l'administrateur est autorisé, sur son accueil).
-
-## État
-L'objet global `S` de `app.html` contient le joueur (`S.player` : historique, questions réussies, chapitres) et la question en cours (`S.quiz`). Les vues se dessinent avec `mount(html)`.
-
-## Propreté
-Pas de code mort ni de scripts jetables dans le dépôt : tout script temporaire se supprime une fois la tâche finie.
+## Règles
+- Une vraie adresse par page (`/2-samuel/citire/5`), le bouton retour doit marcher.
+- Couleurs uniquement via les variables de `:root`, en clair et en sombre. Aucun emoji.
+- Aucun texte de bouton ou de titre court ne passe sur deux lignes (vérifier à 320, 375 et 1280 px).
+- Une question nomme toujours qui, où et quand : elle doit se comprendre seule, mélangée dans un examen.
+- Pas de code mort ni de scripts jetables dans le dépôt.

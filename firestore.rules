@@ -1,0 +1,24 @@
+rules_version = '2';
+
+// users/{uid}: the adult account's profile. Only its owner reads and writes it; admin, email and createdAt are not editable from the app.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn(uid) {
+      return request.auth != null && request.auth.uid == uid;
+    }
+
+    function validUser(d) {
+      return d.name is string && d.name.size() <= 80
+        && (d.birthYear == null || (d.birthYear is int && d.birthYear >= 1900 && d.birthYear <= 2100))
+        && d.isParent is bool
+        && d.hidden is bool;
+    }
+
+    match /users/{uid} {
+      allow read: if signedIn(uid);
+      allow create: if signedIn(uid) && validUser(request.resource.data) && !('admin' in request.resource.data);
+      allow update: if signedIn(uid) && validUser(request.resource.data)
+        && !request.resource.data.diff(resource.data).affectedKeys().hasAny(['admin', 'email', 'createdAt']);
+    }
+  }
+}

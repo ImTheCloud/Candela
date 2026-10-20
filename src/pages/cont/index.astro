@@ -1,0 +1,12 @@
+---
+import Base from '../../layouts/Base.astro';
+import AccountPage from '../../islands/AccountPage';
+---
+<Base title="Contul meu">
+  <section class="wrap narrow page">
+    <AccountPage client:only="preact">
+      <div slot="fallback" class="card auth-card skeleton"></div>
+    </AccountPage>
+  </section>
+</Base>
+<style>.page { padding-block: 32px; }</style>
