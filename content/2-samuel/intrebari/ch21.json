@@ -1,0 +1,1076 @@
+{
+ "ch": 21,
+ "reviewed": false,
+ "questions": [
+  {
+   "id": "2sa.21.sub12.1",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "21:1",
+   "q": "În vremea lui David a fost o foamete care a ținut trei ani.",
+   "a": true
+  },
+  {
+   "id": "2sa.21.sub12.2",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "21:17",
+   "q": "Abișai a venit în ajutorul lui David și l-a omorât pe uriașul Ișbi-Benob.",
+   "a": true
+  },
+  {
+   "id": "2sa.21.sub12.3",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "21:19",
+   "q": "În 2 Samuel 21, Ionatan l-a omorât pe Goliat din Gat.",
+   "a": false,
+   "explain": "În 2 Samuel 21:19, Elhanan, fiul lui Iaare-Oreghim din Betleem, a omorât pe Goliat din Gat."
+  },
+  {
+   "id": "2sa.21.sub12.4",
+   "age": "sub12",
+   "t": "one",
+   "ref": "21:1",
+   "q": "Pe cine a întrebat David de ce este foamete?",
+   "opts": [
+    "pe Natan",
+    "pe Domnul",
+    "pe gabaoniți"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.21.sub12.5",
+   "age": "sub12",
+   "t": "one",
+   "ref": "21:12",
+   "q": "Ce a luat David de la locuitorii din Iabesul Galaadului?",
+   "opts": [
+    "aurul lui Saul",
+    "oasele lui Saul și ale lui Ionatan",
+    "sabia lui Saul"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.21.sub12.6",
+   "age": "sub12",
+   "t": "one",
+   "ref": "21:17",
+   "q": "Ce i-au jurat oamenii lui David, după ce Abișai l-a scăpat?",
+   "opts": [
+    "că vor lupta pentru el",
+    "să nu mai iasă cu ei la luptă",
+    "că îl vor face din nou împărat"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.21.sub12.7",
+   "age": "sub12",
+   "t": "match",
+   "ref": "21:17-21",
+   "q": "Uriașii din neamul lui Rafa (2 Samuel 21): asociază fiecare cu cine l-a omorât.",
+   "pairs": [
+    [
+     "Ișbi-Benob",
+     "Abișai"
+    ],
+    [
+     "Saf",
+     "Sibecai"
+    ],
+    [
+     "Goliat din Gat",
+     "Elhanan"
+    ],
+    [
+     "omul cu șase degete",
+     "Ionatan, fiul lui Șimea"
+    ]
+   ]
+  },
+  {
+   "id": "2sa.21.sub12.8",
+   "age": "sub12",
+   "t": "match",
+   "ref": "21:1, 10, 14",
+   "q": "2 Samuel 21: asociază.",
+   "pairs": [
+    [
+     "foametea",
+     "a ținut trei ani"
+    ],
+    [
+     "Rițpa",
+     "a păzit trupurile fiilor ei"
+    ],
+    [
+     "Dumnezeu",
+     "a fost potolit față de țară"
+    ]
+   ]
+  },
+  {
+   "id": "2sa.21.sub12.9",
+   "age": "sub12",
+   "t": "match",
+   "ref": "21:12-14",
+   "q": "Oasele lui Saul: asociază.",
+   "pairs": [
+    [
+     "Iabesul Galaadului",
+     "de acolo le-a luat David"
+    ],
+    [
+     "Țela",
+     "acolo au fost îngropate"
+    ],
+    [
+     "Chis",
+     "în mormântul lui au fost puse"
+    ]
+   ]
+  },
+  {
+   "id": "2sa.21.sub12.10",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "21:17",
+   "a": [
+    "lumina"
+   ],
+   "q": "„Să nu mai ieși cu noi la luptă, ca să nu stingi ___ lui Israel.\"",
+   "ctx": "Oamenii lui David, după ce Abișai l-a scăpat de uriaș:"
+  },
+  {
+   "id": "2sa.21.sub12.11",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "21:1",
+   "a": [
+    "foamete"
+   ],
+   "q": "Pe vremea lui David, a fost o ___ care a ținut trei ani.",
+   "ctx": "Începutul capitolului 21:"
+  },
+  {
+   "id": "2sa.21.sub12.12",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "21:15",
+   "a": [
+    "obosit"
+   ],
+   "q": "David s-a coborât cu slujitorii lui și a luptat împotriva filistenilor. David era ___.",
+   "ctx": "Războiul cu filistenii, în bătrânețea lui David:"
+  },
+  {
+   "id": "2sa.21.sub12.13",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "21:10",
+   "q": "Ce a oprit Rițpa să se apropie de trupuri?",
+   "opts": [
+    "păsările cerului",
+    "fiarele câmpului",
+    "pe ostașii lui David"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "2sa.21.sub12.14",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "21:20",
+   "q": "Ce avea neobișnuit uriașul din Gat?",
+   "opts": [
+    "șase degete la fiecare mână",
+    "șase degete la fiecare picior",
+    "trei ochi"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "2sa.21.sub12.15",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "21:7",
+   "q": "Pe cine a cruțat David din casa lui Saul?",
+   "opts": [
+    "pe Armoni",
+    "pe fiii Merabei",
+    "pe Iș-Boșet"
+   ],
+   "a": [],
+   "explain": "Niciun răspuns corect: l-a cruțat pe Mefiboșet, fiul lui Ionatan (21:7); Iș-Boșet murise deja."
+  },
+  {
+   "id": "2sa.21.12-13.1",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "21:2",
+   "q": "Gabaoniții nu erau dintre copiii lui Israel, ci o rămășiță a amoriților.",
+   "a": true
+  },
+  {
+   "id": "2sa.21.12-13.2",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "21:4",
+   "q": "Gabaoniții au cerut argint și aur de la casa lui Saul.",
+   "a": false,
+   "explain": "Ei au spus: „Nu voim nici argint, nici aur de la Saul și de la casa lui\" (21:4)."
+  },
+  {
+   "id": "2sa.21.12-13.3",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "21:14",
+   "q": "Oasele lui Saul și ale lui Ionatan au fost îngropate în mormântul lui Chis, tatăl lui Saul.",
+   "a": true
+  },
+  {
+   "id": "2sa.21.12-13.4",
+   "age": "12-13",
+   "t": "one",
+   "ref": "21:7",
+   "q": "De ce l-a cruțat David pe Mefiboșet, fiul lui Ionatan?",
+   "opts": [
+    "pentru că era olog",
+    "pentru jurământul făcut între David și Ionatan",
+    "pentru că era mic"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.21.12-13.5",
+   "age": "12-13",
+   "t": "one",
+   "ref": "21:10",
+   "q": "Ce a întins Rițpa sub ea, peste stâncă?",
+   "opts": [
+    "o haină",
+    "un sac",
+    "o rogojină"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.21.12-13.6",
+   "age": "12-13",
+   "t": "one",
+   "ref": "21:16",
+   "q": "Cât cântărea sulița lui Ișbi-Benob?",
+   "opts": [
+    "o sută de sicli",
+    "trei sute de sicli de aramă",
+    "un talant"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.21.12-13.7",
+   "age": "12-13",
+   "t": "match",
+   "ref": "21:1-6",
+   "q": "Foametea și gabaoniții: asociază.",
+   "pairs": [
+    [
+     "Domnul",
+     "a spus că foametea este din pricina lui Saul"
+    ],
+    [
+     "Saul",
+     "voise să-i ucidă pe gabaoniți"
+    ],
+    [
+     "gabaoniții",
+     "au cerut șapte bărbați din fiii lui Saul"
+    ],
+    [
+     "David",
+     "a zis: „Vi-i voi da\""
+    ]
+   ]
+  },
+  {
+   "id": "2sa.21.12-13.8",
+   "age": "12-13",
+   "t": "match",
+   "ref": "21:8",
+   "q": "Cei șapte urmași ai lui Saul: asociază fiecare mamă cu numărul de fii.",
+   "pairs": [
+    [
+     "Rițpa",
+     "doi fii"
+    ],
+    [
+     "Merab",
+     "cinci fii"
+    ],
+    [
+     "total",
+     "șapte"
+    ]
+   ]
+  },
+  {
+   "id": "2sa.21.12-13.9",
+   "age": "12-13",
+   "t": "match",
+   "ref": "21:12",
+   "q": "Oasele lui Saul și Ionatan: asociază.",
+   "pairs": [
+    [
+     "filistenii",
+     "îi spânzuraseră în piața Bet-Șan"
+    ],
+    [
+     "Iabesul Galaadului",
+     "locuitorii au luat oasele de acolo"
+    ],
+    [
+     "Ghilboa",
+     "acolo îi bătuseră filistenii"
+    ]
+   ]
+  },
+  {
+   "id": "2sa.21.12-13.10",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "21:3",
+   "a": [
+    "ispășire"
+   ],
+   "q": "„Ce pot face eu pentru voi și cu ce să fac ___, ca să binecuvântați moștenirea Domnului?\"",
+   "ctx": "David, către gabaoniți, în vremea foametei:"
+  },
+  {
+   "id": "2sa.21.12-13.11",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "21:14",
+   "a": [
+    "potolit"
+   ],
+   "q": "După aceea, Dumnezeu a fost ___ față de țară.",
+   "ctx": "După îngroparea oaselor lui Saul și Ionatan:"
+  },
+  {
+   "id": "2sa.21.12-13.12",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "21:20",
+   "a": [
+    "degete"
+   ],
+   "q": "Acolo era un om de statură înaltă, care avea șase ___ la fiecare mână și la fiecare picior,",
+   "ctx": "Bătălia de la Gat:"
+  },
+  {
+   "id": "2sa.21.12-13.13",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "21:12-13",
+   "q": "Ale cui oase au fost strânse de David?",
+   "opts": [
+    "ale lui Saul",
+    "ale lui Ionatan",
+    "ale celor spânzurați"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "id": "2sa.21.12-13.14",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "21:18-19",
+   "q": "Unde au fost bătăliile cu filistenii în care au murit Saf și Goliat?",
+   "opts": [
+    "la Gob",
+    "la Hebron",
+    "la Mahanaim"
+   ],
+   "a": [
+    0
+   ]
+  },
+  {
+   "id": "2sa.21.12-13.15",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "21:9",
+   "q": "Când au fost omorâți cei șapte urmași ai lui Saul?",
+   "opts": [
+    "iarna",
+    "la culesul viilor",
+    "la Paști"
+   ],
+   "a": [],
+   "explain": "Niciun răspuns corect: în cele dintâi zile ale seceratului, la începutul seceratului orzurilor (21:9)."
+  },
+  {
+   "id": "2sa.21.14-15.1",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "21:6",
+   "q": "Gabaoniții au cerut să-i spânzure pe cei șapte la Ghibea lui Saul.",
+   "a": true
+  },
+  {
+   "id": "2sa.21.14-15.2",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "21:9",
+   "q": "Cei șapte urmași ai lui Saul au fost omorâți la sfârșitul seceratului.",
+   "a": false,
+   "explain": "Au fost omorâți „în cele dintâi zile ale seceratului, la începutul seceratului orzurilor\" (21:9)."
+  },
+  {
+   "id": "2sa.21.14-15.3",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "21:16",
+   "q": "Ișbi-Benob era încins cu o sabie nouă.",
+   "a": true
+  },
+  {
+   "id": "2sa.21.14-15.4",
+   "age": "14-15",
+   "t": "one",
+   "ref": "21:18",
+   "q": "Cine l-a omorât pe Saf, unul din copiii lui Rafa?",
+   "opts": [
+    "Abișai",
+    "Sibecai, Hușatitul",
+    "Elhanan"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.21.14-15.5",
+   "age": "14-15",
+   "t": "one",
+   "ref": "21:12",
+   "q": "Unde îi spânzuraseră filistenii pe Saul și pe Ionatan?",
+   "opts": [
+    "la Ghilboa",
+    "în piața Bet-Șan",
+    "la Iabes"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.21.14-15.6",
+   "age": "14-15",
+   "t": "one",
+   "ref": "21:10",
+   "q": "Până când a stat Rițpa lângă trupuri?",
+   "opts": [
+    "o săptămână",
+    "până a căzut peste ei ploaie din cer",
+    "până la sfârșitul anului"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.21.14-15.7",
+   "age": "14-15",
+   "t": "match",
+   "ref": "21:16-22",
+   "q": "Copiii lui Rafa: asociază fiecare cu ce se spune despre el.",
+   "pairs": [
+    [
+     "Ișbi-Benob",
+     "avea o suliță de trei sute de sicli"
+    ],
+    [
+     "Saf",
+     "omorât la Gob"
+    ],
+    [
+     "Goliat din Gat",
+     "sulița lui avea mânerul ca sulul de țesut"
+    ],
+    [
+     "omul din Gat",
+     "avea douăzeci și patru de degete"
+    ]
+   ]
+  },
+  {
+   "id": "2sa.21.14-15.8",
+   "age": "14-15",
+   "t": "match",
+   "ref": "21:2-7",
+   "q": "Gabaoniții: asociază.",
+   "pairs": [
+    [
+     "amoriții",
+     "din rămășița lor erau gabaoniții"
+    ],
+    [
+     "jurământul",
+     "copiii lui Israel se legaseră față de ei"
+    ],
+    [
+     "Saul",
+     "voise să-i ucidă în râvna lui"
+    ],
+    [
+     "Mefiboșet",
+     "cruțat pentru jurământul lui David cu Ionatan"
+    ]
+   ]
+  },
+  {
+   "id": "2sa.21.14-15.9",
+   "age": "14-15",
+   "t": "match",
+   "ref": "21:8-10",
+   "q": "Rițpa: asociază.",
+   "pairs": [
+    [
+     "tatăl ei",
+     "Aiia"
+    ],
+    [
+     "fiii ei",
+     "Armoni și Mefiboșet"
+    ],
+    [
+     "sacul",
+     "l-a întins peste stâncă"
+    ],
+    [
+     "ziua și noaptea",
+     "a păzit trupurile de păsări și de fiare"
+    ]
+   ]
+  },
+  {
+   "id": "2sa.21.14-15.10",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "21:22",
+   "a": [
+    "Rafa"
+   ],
+   "q": "Acești patru oameni erau copiii lui ___ născuți la Gat.",
+   "ctx": "Sfârșitul capitolului 21:"
+  },
+  {
+   "id": "2sa.21.14-15.11",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "21:19",
+   "a": [
+    "Goliat"
+   ],
+   "q": "Și Elhanan, fiul lui Iaare-Oreghim din Betleem, a omorât pe ___ din Gat,",
+   "ctx": "A doua bătălie de la Gob cu filistenii:"
+  },
+  {
+   "id": "2sa.21.14-15.12",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "21:4",
+   "a": [
+    "aur"
+   ],
+   "q": "„Nu voim nici argint, nici ___ de la Saul și de la casa lui",
+   "ctx": "Gabaoniții, către David:"
+  },
+  {
+   "id": "2sa.21.14-15.13",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "21:5",
+   "q": "Ce spuneau gabaoniții că își pusese de gând Saul?",
+   "opts": [
+    "să-i nimicească",
+    "să-i facă să piară din tot ținutul lui Israel",
+    "să-i facă robi"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "2sa.21.14-15.14",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "21:21",
+   "q": "Ce aflăm despre Ionatan, fiul lui Șimea?",
+   "opts": [
+    "era fiul fratelui lui David",
+    "l-a omorât pe uriașul care batjocorea pe Israel",
+    "era fiul lui Saul"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "2sa.21.14-15.15",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "21:14",
+   "q": "Unde au fost îngropate oasele lui Saul și Ionatan?",
+   "opts": [
+    "la Ghilboa",
+    "la Bet-Șan",
+    "la Iabes"
+   ],
+   "a": [],
+   "explain": "Niciun răspuns corect: în țara lui Beniamin, la Țela, în mormântul lui Chis (21:14)."
+  },
+  {
+   "id": "2sa.21.16-17.1",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "21:8",
+   "q": "Merab, fata lui Saul, avea cinci fii cu Adriel din Mehola.",
+   "a": true
+  },
+  {
+   "id": "2sa.21.16-17.2",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "21:2",
+   "q": "Saul voise să-i ucidă pe gabaoniți din ură față de Israel.",
+   "a": false,
+   "explain": "Saul voise să-i ucidă „în râvna lui pentru copiii lui Israel și Iuda\" (21:2)."
+  },
+  {
+   "id": "2sa.21.16-17.3",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "21:20",
+   "q": "Uriașul de la Gat avea în total douăzeci și patru de degete.",
+   "a": true
+  },
+  {
+   "id": "2sa.21.16-17.4",
+   "age": "16-17",
+   "t": "one",
+   "ref": "21:8",
+   "q": "Cum se numeau cei doi fii pe care Rițpa i-a născut lui Saul?",
+   "opts": [
+    "Ionatan și Malchișua",
+    "Armoni și Mefiboșet",
+    "Abner și Amasa"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.21.16-17.5",
+   "age": "16-17",
+   "t": "one",
+   "ref": "21:8",
+   "q": "Din ce cetate era Adriel, bărbatul Merabei?",
+   "opts": [
+    "din Gat",
+    "din Mehola",
+    "din Iabes"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.21.16-17.6",
+   "age": "16-17",
+   "t": "one",
+   "ref": "21:19",
+   "q": "Cu ce era asemănat mânerul suliței lui Goliat din Gat?",
+   "opts": [
+    "cu un copac",
+    "cu sulul de țesut",
+    "cu un stâlp"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.21.16-17.7",
+   "age": "16-17",
+   "t": "match",
+   "ref": "21:15-22",
+   "q": "Bătăliile cu filistenii din 2 Samuel 21: asociază.",
+   "pairs": [
+    [
+     "Gob",
+     "acolo au fost două bătălii"
+    ],
+    [
+     "Gat",
+     "acolo era uriașul cu șase degete"
+    ],
+    [
+     "Rafa",
+     "din el se trăgeau cei patru"
+    ],
+    [
+     "David",
+     "era obosit în prima luptă"
+    ]
+   ]
+  },
+  {
+   "id": "2sa.21.16-17.8",
+   "age": "16-17",
+   "t": "match",
+   "ref": "21:8",
+   "q": "Familia lui Saul în 2 Samuel 21:8: asociază.",
+   "pairs": [
+    [
+     "Rițpa",
+     "fata lui Aiia"
+    ],
+    [
+     "Merab",
+     "fata lui Saul"
+    ],
+    [
+     "Adriel",
+     "fiul lui Barzilai"
+    ],
+    [
+     "Mehola",
+     "cetatea lui Adriel"
+    ]
+   ]
+  },
+  {
+   "id": "2sa.21.16-17.9",
+   "age": "16-17",
+   "t": "match",
+   "ref": "21:1-3",
+   "q": "Cuvintele din vremea foametei: asociază fiecare cu cine le-a spus.",
+   "pairs": [
+    [
+     "„Din pricina lui Saul și a casei lui sângeroase\"",
+     "Domnul"
+    ],
+    [
+     "„Ce pot face eu pentru voi?\"",
+     "David"
+    ],
+    [
+     "„Nu voim nici argint, nici aur\"",
+     "gabaoniții"
+    ]
+   ]
+  },
+  {
+   "id": "2sa.21.16-17.10",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "21:9",
+   "a": [
+    "Domnului"
+   ],
+   "q": "i-a dat în mâinile gabaoniților, care i-au spânzurat pe munte, înaintea ___.",
+   "ctx": "Răzbunarea cerută de gabaoniți:"
+  },
+  {
+   "id": "2sa.21.16-17.11",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "21:16",
+   "a": [
+    "aramă"
+   ],
+   "q": "avea o suliță în greutate de trei sute de sicli de ___ și era încins cu o sabie nouă.",
+   "ctx": "Despre Ișbi-Benob, unul din copiii lui Rafa:"
+  },
+  {
+   "id": "2sa.21.16-17.12",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "21:6",
+   "a": [
+    "alesul"
+   ],
+   "q": "să ni se dea șapte bărbați din fiii lui și-i vom spânzura înaintea Domnului, la Ghibea lui Saul, ___ Domnului.\"",
+   "ctx": "Gabaoniții, către David:"
+  },
+  {
+   "id": "2sa.21.16-17.13",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "21:8",
+   "q": "Pe cine a dat David gabaoniților?",
+   "opts": [
+    "pe Armoni",
+    "pe Mefiboșet, fiul Rițpei",
+    "pe Mefiboșet, fiul lui Ionatan"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "2sa.21.16-17.14",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "21:11-12",
+   "q": "Ce a făcut David după ce a aflat ce făcuse Rițpa?",
+   "opts": [
+    "a luat oasele lui Saul și ale lui Ionatan",
+    "s-a dus la locuitorii din Iabesul Galaadului",
+    "a pedepsit-o pe Rițpa"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "2sa.21.16-17.15",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "21:1",
+   "q": "Pentru ce păcat al lui Saul a venit foametea?",
+   "opts": [
+    "pentru războiul cu filistenii",
+    "pentru vizita la En-Dor",
+    "pentru cruțarea lui Agag"
+   ],
+   "a": [],
+   "explain": "Niciun răspuns corect: pentru că Saul i-a ucis pe gabaoniți (21:1)."
+  },
+  {
+   "id": "2sa.21.18+.1",
+   "age": "18+",
+   "t": "tf",
+   "ref": "21:18",
+   "q": "Sibecai era Hușatitul.",
+   "a": true
+  },
+  {
+   "id": "2sa.21.18+.2",
+   "age": "18+",
+   "t": "tf",
+   "ref": "21:12",
+   "q": "Oasele lui Saul au fost luate din Bet-Șan de David însuși.",
+   "a": false,
+   "explain": "Locuitorii din Iabesul Galaadului le luaseră din piața Bet-Șan; David le-a luat de la ei (21:12)."
+  },
+  {
+   "id": "2sa.21.18+.3",
+   "age": "18+",
+   "t": "tf",
+   "ref": "21:22",
+   "q": "Cei patru copii ai lui Rafa erau născuți la Gat.",
+   "a": true
+  },
+  {
+   "id": "2sa.21.18+.4",
+   "age": "18+",
+   "t": "one",
+   "ref": "21:14",
+   "q": "În ce loc din țara lui Beniamin au fost îngropate oasele lui Saul și Ionatan?",
+   "opts": [
+    "Ghibea",
+    "Țela",
+    "Rama"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.21.18+.5",
+   "age": "18+",
+   "t": "one",
+   "ref": "21:19",
+   "q": "Al cui fiu era Elhanan, care l-a omorât pe Goliat din Gat?",
+   "opts": [
+    "al lui Șimea",
+    "al lui Iaare-Oreghim",
+    "al lui Țeruia"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.21.18+.6",
+   "age": "18+",
+   "t": "one",
+   "ref": "21:2",
+   "q": "Din ce popor erau gabaoniții, după 2 Samuel 21:2?",
+   "opts": [
+    "din filisteni",
+    "dintr-o rămășiță a amoriților",
+    "din edomiți"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.21.18+.7",
+   "age": "18+",
+   "t": "match",
+   "ref": "21:16-21",
+   "q": "Nume din 2 Samuel 21: asociază fiecare cu tatăl sau neamul lui.",
+   "pairs": [
+    [
+     "Ișbi-Benob",
+     "din copiii lui Rafa"
+    ],
+    [
+     "Elhanan",
+     "fiul lui Iaare-Oreghim"
+    ],
+    [
+     "Ionatan",
+     "fiul lui Șimea"
+    ],
+    [
+     "Abișai",
+     "fiul Țeruiei"
+    ]
+   ]
+  },
+  {
+   "id": "2sa.21.18+.8",
+   "age": "18+",
+   "t": "match",
+   "ref": "21:12-14",
+   "q": "Oasele lui Saul: asociază.",
+   "pairs": [
+    [
+     "piața Bet-Șan",
+     "acolo fuseseră spânzurați"
+    ],
+    [
+     "Iabesul Galaadului",
+     "locuitorii au luat oasele"
+    ],
+    [
+     "Țela",
+     "locul îngropării"
+    ],
+    [
+     "Chis",
+     "tatăl lui Saul"
+    ]
+   ]
+  },
+  {
+   "id": "2sa.21.18+.9",
+   "age": "18+",
+   "t": "match",
+   "ref": "21:1-9",
+   "q": "Foametea: asociază fiecare număr cu ce arată.",
+   "pairs": [
+    [
+     "trei ani",
+     "cât a ținut foametea"
+    ],
+    [
+     "șapte",
+     "bărbații ceruți de gabaoniți"
+    ],
+    [
+     "doi",
+     "fiii Rițpei"
+    ],
+    [
+     "cinci",
+     "fiii Merabei"
+    ]
+   ]
+  },
+  {
+   "id": "2sa.21.18+.10",
+   "age": "18+",
+   "t": "fill",
+   "ref": "21:10",
+   "a": [
+    "sac"
+   ],
+   "q": "Rițpa, fata lui Aiia, a luat un ___ și l-a întins sub ea, peste stâncă,",
+   "ctx": "Rițpa, după moartea fiilor ei:"
+  },
+  {
+   "id": "2sa.21.18+.11",
+   "age": "18+",
+   "t": "fill",
+   "ref": "21:13",
+   "a": [
+    "Ionatan"
+   ],
+   "q": "A luat de acolo oasele lui Saul și oasele fiului său ___",
+   "ctx": "David, la Iabesul Galaadului:"
+  },
+  {
+   "id": "2sa.21.18+.12",
+   "age": "18+",
+   "t": "fill",
+   "ref": "21:21",
+   "a": [
+    "Șimea"
+   ],
+   "q": "El a batjocorit pe Israel, și Ionatan, fiul lui ___, fratele lui David, l-a omorât.",
+   "ctx": "Bătălia de la Gat:"
+  },
+  {
+   "id": "2sa.21.18+.13",
+   "age": "18+",
+   "t": "multi",
+   "ref": "21:12",
+   "q": "Ce aflăm despre moartea lui Saul din 2 Samuel 21:12?",
+   "opts": [
+    "filistenii l-au bătut la Ghilboa",
+    "trupurile au fost spânzurate în piața Bet-Șan",
+    "Saul a murit la Iabes"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "2sa.21.18+.14",
+   "age": "18+",
+   "t": "multi",
+   "ref": "21:6-7",
+   "q": "Ce a promis David gabaoniților?",
+   "opts": [
+    "„Vi-i voi da\"",
+    "că-l va cruța pe Mefiboșet",
+    "aur și argint"
+   ],
+   "a": [
+    0
+   ],
+   "explain": "Mefiboșet, fiul lui Ionatan, a fost cruțat din pricina jurământului, nu ca promisiune către gabaoniți (21:7)."
+  },
+  {
+   "id": "2sa.21.18+.15",
+   "age": "18+",
+   "t": "multi",
+   "ref": "21:16",
+   "q": "Ce voia să facă Ișbi-Benob?",
+   "opts": [
+    "să ia chivotul",
+    "să ardă Ierusalimul",
+    "să-l prindă viu pe Abișai"
+   ],
+   "a": [],
+   "explain": "Niciun răspuns corect: a voit să-l omoare pe David (21:16)."
+  }
+ ]
+}
