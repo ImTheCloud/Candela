@@ -1,0 +1,1065 @@
+{
+ "ch": 2,
+ "reviewed": false,
+ "questions": [
+  {
+   "id": "2sa.2.sub12.1",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "2:1",
+   "q": "După moartea lui Saul, David L-a întrebat pe Domnul dacă să se suie în vreuna din cetățile lui Iuda.",
+   "a": true
+  },
+  {
+   "id": "2sa.2.sub12.2",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "2:4",
+   "q": "La Hebron, bărbații lui Iuda l-au uns pe David împărat peste casa lui Iuda.",
+   "a": true
+  },
+  {
+   "id": "2sa.2.sub12.3",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "2:23",
+   "q": "În lupta de lângă Gabaon, Asael l-a omorât pe Abner.",
+   "a": false,
+   "explain": "Abner l-a omorât pe Asael, fratele lui Ioab (2:23)."
+  },
+  {
+   "id": "2sa.2.sub12.4",
+   "age": "sub12",
+   "t": "one",
+   "ref": "2:1",
+   "q": "În ce cetate i-a spus Domnul lui David să se suie, după moartea lui Saul?",
+   "opts": [
+    "Ierusalim",
+    "Hebron",
+    "Betleem"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.2.sub12.5",
+   "age": "sub12",
+   "t": "one",
+   "ref": "2:18",
+   "q": "Cum era Asael, fratele lui Ioab, după cum spune Biblia?",
+   "opts": [
+    "foarte puternic",
+    "iute de picioare ca o căprioară",
+    "foarte bătrân"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.2.sub12.6",
+   "age": "sub12",
+   "t": "one",
+   "ref": "2:28",
+   "q": "Ce a făcut Ioab ca să oprească lupta dintre oamenii lui David și oamenii lui Abner?",
+   "opts": [
+    "a strigat tare",
+    "a sunat din trâmbiță",
+    "a ridicat un steag"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.2.sub12.7",
+   "age": "sub12",
+   "t": "match",
+   "ref": "2:1, 8, 18",
+   "q": "După moartea lui Saul (2 Samuel 2): asociază fiecare persoană cu ce se spune despre ea.",
+   "pairs": [
+    [
+     "David",
+     "s-a suit la Hebron"
+    ],
+    [
+     "Abner",
+     "căpetenia oștirii lui Saul"
+    ],
+    [
+     "Asael",
+     "iute de picioare ca o căprioară"
+    ]
+   ]
+  },
+  {
+   "id": "2sa.2.sub12.8",
+   "age": "sub12",
+   "t": "match",
+   "ref": "2:2",
+   "q": "Nevestele lui David care s-au suit cu el la Hebron: asociază fiecare cu locul de unde era.",
+   "pairs": [
+    [
+     "Ahinoam",
+     "din Izreel"
+    ],
+    [
+     "Abigail",
+     "din Carmel"
+    ],
+    [
+     "David",
+     "s-a suit cu ele la Hebron"
+    ]
+   ]
+  },
+  {
+   "id": "2sa.2.sub12.9",
+   "age": "sub12",
+   "t": "match",
+   "ref": "2:4, 8, 13",
+   "q": "În 2 Samuel 2: asociază fiecare cu locul unde se afla.",
+   "pairs": [
+    [
+     "David",
+     "la Hebron"
+    ],
+    [
+     "Iș-Boșet",
+     "la Mahanaim"
+    ],
+    [
+     "Ioab și Abner",
+     "la iazul din Gabaon"
+    ]
+   ]
+  },
+  {
+   "id": "2sa.2.sub12.10",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "2:1",
+   "a": [
+    "Hebron"
+   ],
+   "q": "Și Domnul a răspuns: „La ___.\"",
+   "ctx": "Unde i-a spus Domnul lui David să se suie, după moartea lui Saul:"
+  },
+  {
+   "id": "2sa.2.sub12.11",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "2:18",
+   "a": [
+    "căprioară"
+   ],
+   "q": "Asael era iute de picioare, ca o ___ de câmp.",
+   "ctx": "Despre Asael, fratele lui Ioab, în lupta de lângă Gabaon:"
+  },
+  {
+   "id": "2sa.2.sub12.12",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "2:28",
+   "a": [
+    "trâmbiță"
+   ],
+   "q": "Și Ioab a sunat din ___ și tot poporul s-a oprit;",
+   "ctx": "Cum s-a oprit lupta dintre oamenii lui David și oamenii lui Abner:"
+  },
+  {
+   "id": "2sa.2.sub12.13",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "2:2",
+   "q": "Pe cine a luat David cu el când s-a suit la Hebron?",
+   "opts": [
+    "pe Ahinoam",
+    "pe Abigail",
+    "pe Mical"
+   ],
+   "a": [
+    0,
+    1
+   ],
+   "explain": "Mical, fata lui Saul, nu era cu el; David a luat pe Ahinoam și pe Abigail."
+  },
+  {
+   "id": "2sa.2.sub12.14",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "2:18",
+   "q": "Care erau cei trei fii ai Țeruiei, care erau la lupta de lângă Gabaon?",
+   "opts": [
+    "Ioab",
+    "Abișai",
+    "Asael"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "id": "2sa.2.sub12.15",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "2:4",
+   "q": "Ce s-a întâmplat la Hebron, după ce David s-a suit acolo?",
+   "opts": [
+    "bărbații lui Iuda l-au uns pe David împărat",
+    "David a zidit un templu",
+    "Saul a venit să-l vadă"
+   ],
+   "a": [
+    0
+   ],
+   "explain": "Saul murise deja; la Hebron David a fost uns împărat peste casa lui Iuda."
+  },
+  {
+   "id": "2sa.2.12-13.1",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "2:8",
+   "q": "După moartea lui Saul, Abner l-a făcut împărat pe Iș-Boșet, fiul lui Saul.",
+   "a": true
+  },
+  {
+   "id": "2sa.2.12-13.2",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "2:11",
+   "q": "David a domnit la Hebron peste casa lui Iuda doi ani.",
+   "a": false,
+   "explain": "David a domnit la Hebron șapte ani și șase luni; Iș-Boșet a domnit doi ani (2:10-11)."
+  },
+  {
+   "id": "2sa.2.12-13.3",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "2:32",
+   "q": "Asael a fost îngropat la Betleem, în mormântul tatălui său.",
+   "a": true
+  },
+  {
+   "id": "2sa.2.12-13.4",
+   "age": "12-13",
+   "t": "one",
+   "ref": "2:4",
+   "q": "Ce au aflat la Hebron despre oamenii din Iabesul Galaadului, după ce David a fost uns împărat?",
+   "opts": [
+    "că s-au răsculat",
+    "că l-au îngropat pe Saul",
+    "că au fugit la filisteni"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.2.12-13.5",
+   "age": "12-13",
+   "t": "one",
+   "ref": "2:8",
+   "q": "Unde l-a trecut Abner pe Iș-Boșet, fiul lui Saul, ca să-l facă împărat?",
+   "opts": [
+    "la Ghibea",
+    "la Mahanaim",
+    "la Hebron"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.2.12-13.6",
+   "age": "12-13",
+   "t": "one",
+   "ref": "2:15",
+   "q": "Câți tineri din fiecare tabără s-au luptat la iazul din Gabaon?",
+   "opts": [
+    "câte zece",
+    "câte doisprezece",
+    "câte douăzeci"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.2.12-13.7",
+   "age": "12-13",
+   "t": "match",
+   "ref": "2:8-11",
+   "q": "După moartea lui Saul: asociază fiecare împărat cu ce se spune despre el.",
+   "pairs": [
+    [
+     "David",
+     "a domnit la Hebron peste casa lui Iuda"
+    ],
+    [
+     "Iș-Boșet",
+     "a fost pus împărat de Abner la Mahanaim"
+    ],
+    [
+     "casa lui Iuda",
+     "a rămas lipită de David"
+    ]
+   ]
+  },
+  {
+   "id": "2sa.2.12-13.8",
+   "age": "12-13",
+   "t": "match",
+   "ref": "2:13, 18, 23",
+   "q": "Lupta de lângă Gabaon (2 Samuel 2): asociază.",
+   "pairs": [
+    [
+     "Ioab",
+     "căpetenia oamenilor lui David"
+    ],
+    [
+     "Abner",
+     "căpetenia oamenilor lui Iș-Boșet"
+    ],
+    [
+     "Asael",
+     "a fost ucis de Abner cu sulița"
+    ]
+   ]
+  },
+  {
+   "id": "2sa.2.12-13.9",
+   "age": "12-13",
+   "t": "match",
+   "ref": "2:16, 29, 32",
+   "q": "În 2 Samuel 2: asociază fiecare loc cu ce s-a întâmplat acolo.",
+   "pairs": [
+    [
+     "Helcat-Hațurim",
+     "locul săbiilor, lângă Gabaon"
+    ],
+    [
+     "Mahanaim",
+     "acolo s-a întors Abner după luptă"
+    ],
+    [
+     "Betleem",
+     "acolo a fost îngropat Asael"
+    ]
+   ]
+  },
+  {
+   "id": "2sa.2.12-13.10",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "2:4",
+   "a": [
+    "Iuda"
+   ],
+   "q": "Bărbații lui Iuda au venit și au uns acolo pe David ca împărat peste casa lui ___.",
+   "ctx": "La Hebron, după moartea lui Saul:"
+  },
+  {
+   "id": "2sa.2.12-13.11",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "2:10",
+   "a": [
+    "lipită"
+   ],
+   "q": "Numai casa lui Iuda a rămas ___ de David.",
+   "ctx": "Când Abner l-a făcut pe Iș-Boșet împărat al lui Israel:"
+  },
+  {
+   "id": "2sa.2.12-13.12",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "2:20",
+   "a": [
+    "Asael"
+   ],
+   "q": "Abner s-a uitat înapoi și a zis: „Tu ești, ___?\"",
+   "ctx": "În lupta de lângă Gabaon, Abner era urmărit:"
+  },
+  {
+   "id": "2sa.2.12-13.13",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "2:9",
+   "q": "Peste ce ținuturi l-a pus Abner împărat pe Iș-Boșet?",
+   "opts": [
+    "peste Galaad",
+    "peste Efraim",
+    "peste Iuda"
+   ],
+   "a": [
+    0,
+    1
+   ],
+   "explain": "Casa lui Iuda a rămas lipită de David (2:10)."
+  },
+  {
+   "id": "2sa.2.12-13.14",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "2:5-6",
+   "q": "Ce le-a trimis David să spună oamenilor din Iabesul Galaadului, care îl îngropaseră pe Saul?",
+   "opts": [
+    "„Binecuvântați să fiți de Domnul!\"",
+    "că le va face și el bine",
+    "că trebuie să vină la Hebron"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "2sa.2.12-13.15",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "2:21-22",
+   "q": "Ce i-a spus Abner lui Asael, care îl urmărea?",
+   "opts": [
+    "„Abate-te la dreapta sau la stânga\"",
+    "„Cum voi ridica apoi fața înaintea fratelui tău Ioab?\"",
+    "„Du-te în pace la Ioab\""
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "2sa.2.14-15.1",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "2:10",
+   "q": "Iș-Boșet avea patruzeci de ani când s-a făcut împărat al lui Israel.",
+   "a": true
+  },
+  {
+   "id": "2sa.2.14-15.2",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "2:23",
+   "q": "Abner l-a lovit pe Asael cu sabia în coastă.",
+   "a": false,
+   "explain": "L-a lovit în pântece cu capătul de jos al suliței (2:23)."
+  },
+  {
+   "id": "2sa.2.14-15.3",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "2:29",
+   "q": "După luptă, Abner și oamenii lui au trecut Iordanul și au ajuns la Mahanaim.",
+   "a": true
+  },
+  {
+   "id": "2sa.2.14-15.4",
+   "age": "14-15",
+   "t": "one",
+   "ref": "2:16",
+   "q": "Ce înseamnă numele Helcat-Hațurim, dat locului de lângă Gabaon?",
+   "opts": [
+    "Locul Lacrimilor",
+    "Locul Săbiilor",
+    "Locul Iazului"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.2.14-15.5",
+   "age": "14-15",
+   "t": "one",
+   "ref": "2:24",
+   "q": "Unde au ajuns Ioab și Abișai, urmărindu-l pe Abner, la asfințitul soarelui?",
+   "opts": [
+    "la coasta Ama",
+    "la iazul din Gabaon",
+    "la Iordan"
+   ],
+   "a": 0
+  },
+  {
+   "id": "2sa.2.14-15.6",
+   "age": "14-15",
+   "t": "one",
+   "ref": "2:14",
+   "q": "Cine a propus ca tinerii să se bată înaintea celor două oștiri, la iazul din Gabaon?",
+   "opts": [
+    "Ioab",
+    "Abner",
+    "Asael"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.2.14-15.7",
+   "age": "14-15",
+   "t": "match",
+   "ref": "2:13-16",
+   "q": "Lupta tinerilor la iazul din Gabaon: asociază.",
+   "pairs": [
+    [
+     "din partea lui Iș-Boșet",
+     "doisprezece din Beniamin"
+    ],
+    [
+     "din partea lui David",
+     "doisprezece inși"
+    ],
+    [
+     "cum au căzut",
+     "toți deodată"
+    ],
+    [
+     "numele locului",
+     "Helcat-Hațurim"
+    ]
+   ]
+  },
+  {
+   "id": "2sa.2.14-15.8",
+   "age": "14-15",
+   "t": "match",
+   "ref": "2:20-23",
+   "q": "Abner și Asael, în lupta de lângă Gabaon: asociază fiecare cu ce a spus sau a făcut.",
+   "pairs": [
+    [
+     "Abner",
+     "a întrebat: „Tu ești, Asael?\""
+    ],
+    [
+     "Asael",
+     "n-a vrut să se abată dindărătul lui Abner"
+    ],
+    [
+     "Ioab",
+     "fratele lui Asael, înaintea căruia Abner nu voia să-și piardă fața"
+    ]
+   ]
+  },
+  {
+   "id": "2sa.2.14-15.9",
+   "age": "14-15",
+   "t": "match",
+   "ref": "2:30-31",
+   "q": "După lupta de lângă Gabaon: asociază fiecare număr cu ce înseamnă.",
+   "pairs": [
+    [
+     "nouăsprezece",
+     "oamenii lui David care lipseau, pe lângă Asael"
+    ],
+    [
+     "trei sute șaizeci",
+     "oamenii lui Abner omorâți"
+    ],
+    [
+     "doi",
+     "anii de domnie ai lui Iș-Boșet"
+    ]
+   ]
+  },
+  {
+   "id": "2sa.2.14-15.10",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "2:7",
+   "a": [
+    "viteji"
+   ],
+   "q": "Să vi se întărească mâinile și fiți ___, căci stăpânul vostru Saul a murit",
+   "ctx": "Solia lui David către oamenii din Iabesul Galaadului:"
+  },
+  {
+   "id": "2sa.2.14-15.11",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "2:26",
+   "a": [
+    "amar"
+   ],
+   "q": "„Oare mereu are să sfâșie sabia? Nu știi că la sfârșit va fi ___?",
+   "ctx": "Abner, către Ioab, după lupta de lângă Gabaon:"
+  },
+  {
+   "id": "2sa.2.14-15.12",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "2:22",
+   "a": [
+    "Ioab"
+   ],
+   "q": "Pentru ce să te lovesc și să te trântesc la pământ? Cum voi ridica apoi fața înaintea fratelui tău ___?\"",
+   "ctx": "Abner, către Asael, care îl urmărea:"
+  },
+  {
+   "id": "2sa.2.14-15.13",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "2:12-13",
+   "q": "Cine s-au întâlnit la iazul din Gabaon?",
+   "opts": [
+    "Abner și oamenii lui Iș-Boșet",
+    "Ioab și oamenii lui David",
+    "Saul și oamenii lui"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "2sa.2.14-15.14",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "2:24-25",
+   "q": "Ce s-a întâmplat la asfințitul soarelui, după moartea lui Asael?",
+   "opts": [
+    "Ioab și Abișai au ajuns la coasta Ama",
+    "fiii lui Beniamin s-au adunat în urma lui Abner",
+    "Abner s-a predat lui Ioab"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "2sa.2.14-15.15",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "2:32",
+   "q": "Unde s-au revărsat zorile peste Ioab și oamenii lui, după ce l-au îngropat pe Asael?",
+   "opts": [
+    "la Gabaon",
+    "la Mahanaim",
+    "la Betleem"
+   ],
+   "a": [],
+   "explain": "Niciun răspuns corect: zorile i-au găsit în Hebron (2:32)."
+  },
+  {
+   "id": "2sa.2.16-17.1",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "2:3",
+   "q": "David a luat cu el la Hebron și pe oamenii lui, pe fiecare cu casa lui.",
+   "a": true
+  },
+  {
+   "id": "2sa.2.16-17.2",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "2:9",
+   "q": "Abner l-a pus pe Iș-Boșet împărat și peste casa lui Iuda.",
+   "a": false,
+   "explain": "Numai casa lui Iuda a rămas lipită de David (2:10)."
+  },
+  {
+   "id": "2sa.2.16-17.3",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "2:27",
+   "q": "Ioab a spus că, dacă Abner n-ar fi vorbit, poporul ar fi urmărit pe frații lui până a doua zi dimineață.",
+   "a": true
+  },
+  {
+   "id": "2sa.2.16-17.4",
+   "age": "16-17",
+   "t": "one",
+   "ref": "2:8",
+   "q": "Al cui fiu era Abner, căpetenia oștirii lui Saul?",
+   "opts": [
+    "al lui Chis",
+    "al lui Ner",
+    "al lui Abiel"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.2.16-17.5",
+   "age": "16-17",
+   "t": "one",
+   "ref": "2:24",
+   "q": "În dreptul cărui loc este coasta Ama, unde au ajuns Ioab și Abișai urmărindu-l pe Abner?",
+   "opts": [
+    "în dreptul Ghiahului",
+    "în dreptul Gabaonului",
+    "în dreptul Bitronului"
+   ],
+   "a": 0
+  },
+  {
+   "id": "2sa.2.16-17.6",
+   "age": "16-17",
+   "t": "one",
+   "ref": "2:23",
+   "q": "Ce făceau cei care ajungeau în locul unde căzuse Asael mort?",
+   "opts": [
+    "plângeau",
+    "se opreau",
+    "îl ridicau"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.2.16-17.7",
+   "age": "16-17",
+   "t": "match",
+   "ref": "2:8-11",
+   "q": "Domnia după Saul: asociază fiecare cu numărul potrivit.",
+   "pairs": [
+    [
+     "vârsta lui Iș-Boșet când a început să domnească",
+     "patruzeci de ani"
+    ],
+    [
+     "anii de domnie ai lui Iș-Boșet",
+     "doi ani"
+    ],
+    [
+     "domnia lui David la Hebron",
+     "șapte ani și șase luni"
+    ]
+   ]
+  },
+  {
+   "id": "2sa.2.16-17.8",
+   "age": "16-17",
+   "t": "match",
+   "ref": "2:1-4",
+   "q": "David la Hebron, după moartea lui Saul: asociază.",
+   "pairs": [
+    [
+     "„Să mă sui în vreuna din cetățile lui Iuda?\"",
+     "întrebarea lui David"
+    ],
+    [
+     "„Suie-te.\"",
+     "răspunsul Domnului"
+    ],
+    [
+     "„La Hebron.\"",
+     "locul arătat de Domnul"
+    ],
+    [
+     "bărbații lui Iuda",
+     "l-au uns pe David împărat"
+    ]
+   ]
+  },
+  {
+   "id": "2sa.2.16-17.9",
+   "age": "16-17",
+   "t": "match",
+   "ref": "2:26-29",
+   "q": "Sfârșitul luptei de lângă Gabaon: asociază.",
+   "pairs": [
+    [
+     "Abner",
+     "a chemat pe Ioab și a cerut oprirea urmăririi"
+    ],
+    [
+     "Ioab",
+     "a sunat din trâmbiță"
+    ],
+    [
+     "oamenii lui Abner",
+     "au mers toată noaptea în câmpie"
+    ],
+    [
+     "Bitronul",
+     "l-au străbătut în întregime"
+    ]
+   ]
+  },
+  {
+   "id": "2sa.2.16-17.10",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "2:11",
+   "a": [
+    "luni"
+   ],
+   "q": "Timpul cât a domnit David la Hebron peste casa lui Iuda a fost de șapte ani și șase ___.",
+   "ctx": "Despre domnia lui David după moartea lui Saul:"
+  },
+  {
+   "id": "2sa.2.16-17.11",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "2:19",
+   "a": [
+    "stânga"
+   ],
+   "q": "El a urmărit pe Abner fără să se abată la dreapta sau la ___.",
+   "ctx": "Asael, fiul Țeruiei, în lupta de lângă Gabaon:"
+  },
+  {
+   "id": "2sa.2.16-17.12",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "2:29",
+   "a": [
+    "Iordanul"
+   ],
+   "q": "Abner și oamenii lui au mers toată noaptea în câmpie; au trecut ___, au străbătut în întregime Bitronul și au ajuns la Mahanaim.",
+   "ctx": "După lupta de lângă Gabaon:"
+  },
+  {
+   "id": "2sa.2.16-17.13",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "2:12, 29",
+   "q": "Ce aflăm despre Mahanaim, în 2 Samuel 2?",
+   "opts": [
+    "Abner l-a trecut acolo pe Iș-Boșet",
+    "Abner a ieșit de acolo spre Gabaon",
+    "Abner s-a întors acolo după luptă"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "id": "2sa.2.16-17.14",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "2:21",
+   "q": "Ce i-a cerut Abner lui Asael să facă, în loc să-l urmărească?",
+   "opts": [
+    "să se abată la dreapta sau la stânga",
+    "să pună mâna pe unul din tineri și să-i ia armele",
+    "să se întoarcă la Hebron"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "2sa.2.16-17.15",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "2:30",
+   "q": "Câți oameni lipseau din oamenii lui David după lupta de lângă Gabaon, afară de Asael?",
+   "opts": [
+    "doisprezece",
+    "trei sute șaizeci",
+    "douăzeci"
+   ],
+   "a": [],
+   "explain": "Niciun răspuns corect: lipseau nouăsprezece inși și Asael (2:30)."
+  },
+  {
+   "id": "2sa.2.18+.1",
+   "age": "18+",
+   "t": "tf",
+   "ref": "2:9",
+   "q": "Abner l-a pus pe Iș-Boșet împărat și peste gheșuriți.",
+   "a": true
+  },
+  {
+   "id": "2sa.2.18+.2",
+   "age": "18+",
+   "t": "tf",
+   "ref": "2:16",
+   "q": "Locul de lângă Gabaon unde au căzut cei douăzeci și patru de tineri s-a numit Eben-Ezer.",
+   "a": false,
+   "explain": "S-a numit Helcat-Hațurim (Locul Săbiilor) (2:16)."
+  },
+  {
+   "id": "2sa.2.18+.3",
+   "age": "18+",
+   "t": "tf",
+   "ref": "2:24",
+   "q": "Coasta Ama este pe drumul care duce în pustia Gabaonului.",
+   "a": true
+  },
+  {
+   "id": "2sa.2.18+.4",
+   "age": "18+",
+   "t": "one",
+   "ref": "2:29",
+   "q": "Ce ținut au străbătut în întregime Abner și oamenii lui, după ce au trecut Iordanul?",
+   "opts": [
+    "Ghiahul",
+    "Bitronul",
+    "Galaadul"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.2.18+.5",
+   "age": "18+",
+   "t": "one",
+   "ref": "2:31",
+   "q": "Câți oameni din Beniamin și ai lui Abner omorâseră oamenii lui David în lupta de lângă Gabaon?",
+   "opts": [
+    "două sute",
+    "trei sute șaizeci",
+    "patru sute"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.2.18+.6",
+   "age": "18+",
+   "t": "one",
+   "ref": "2:25",
+   "q": "Unde s-au oprit fiii lui Beniamin, adunați în urma lui Abner?",
+   "opts": [
+    "pe vârful unui deal",
+    "la iazul din Gabaon",
+    "în pustia Gabaonului"
+   ],
+   "a": 0
+  },
+  {
+   "id": "2sa.2.18+.7",
+   "age": "18+",
+   "t": "match",
+   "ref": "2:13-17",
+   "q": "Lupta de lângă Gabaon: asociază.",
+   "pairs": [
+    [
+     "iazul din Gabaon",
+     "locul unde s-au întâlnit cele două tabere"
+    ],
+    [
+     "doisprezece din Beniamin",
+     "tinerii pentru Iș-Boșet"
+    ],
+    [
+     "Helcat-Hațurim",
+     "locul unde au căzut toți deodată"
+    ],
+    [
+     "o luptă foarte aprigă",
+     "în ziua aceea, în care a fost bătut Abner"
+    ]
+   ]
+  },
+  {
+   "id": "2sa.2.18+.8",
+   "age": "18+",
+   "t": "match",
+   "ref": "2:18, 24, 27-28",
+   "q": "Fiii Țeruiei (2 Samuel 2): asociază.",
+   "pairs": [
+    [
+     "Ioab",
+     "a sunat din trâmbiță"
+    ],
+    [
+     "Abișai",
+     "l-a urmărit pe Abner împreună cu Ioab"
+    ],
+    [
+     "Asael",
+     "iute de picioare"
+    ]
+   ]
+  },
+  {
+   "id": "2sa.2.18+.9",
+   "age": "18+",
+   "t": "match",
+   "ref": "2:4-7",
+   "q": "Solia lui David către Iabesul Galaadului: asociază începutul cu sfârșitul.",
+   "pairs": [
+    [
+     "Binecuvântați să fiți de Domnul",
+     "fiindcă ați arătat bunăvoință față de Saul"
+    ],
+    [
+     "Domnul să vă arate",
+     "bunătate și credincioșie"
+    ],
+    [
+     "Să vi se întărească mâinile",
+     "și fiți viteji"
+    ],
+    [
+     "pe mine m-a uns casa lui Iuda",
+     "împărat peste ea"
+    ]
+   ]
+  },
+  {
+   "id": "2sa.2.18+.10",
+   "age": "18+",
+   "t": "fill",
+   "ref": "2:6",
+   "a": [
+    "credincioșie"
+   ],
+   "q": "Și acum, Domnul să vă arate bunătate și ___!",
+   "ctx": "David, către oamenii din Iabesul Galaadului, care îl îngropaseră pe Saul:"
+  },
+  {
+   "id": "2sa.2.18+.11",
+   "age": "18+",
+   "t": "fill",
+   "ref": "2:16",
+   "a": [
+    "Helcat-Hațurim"
+   ],
+   "q": "Și locul acela de lângă Gabaon s-a numit ___ (Locul Săbiilor).",
+   "ctx": "După lupta celor doisprezece tineri din fiecare tabără:"
+  },
+  {
+   "id": "2sa.2.18+.12",
+   "age": "18+",
+   "t": "fill",
+   "ref": "2:30",
+   "a": [
+    "nouăsprezece"
+   ],
+   "q": "Ioab s-a întors de la urmărirea lui Abner și a adunat tot poporul: lipseau ___ inși din oamenii lui David și Asael.",
+   "ctx": "După lupta de lângă Gabaon:"
+  },
+  {
+   "id": "2sa.2.18+.13",
+   "age": "18+",
+   "t": "multi",
+   "ref": "2:8-9",
+   "q": "Peste ce l-a pus Abner împărat pe Iș-Boșet, la Mahanaim?",
+   "opts": [
+    "peste Izreel",
+    "peste Beniamin",
+    "peste Efraim"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "id": "2sa.2.18+.14",
+   "age": "18+",
+   "t": "multi",
+   "ref": "2:23",
+   "q": "Ce aflăm despre moartea lui Asael?",
+   "opts": [
+    "Abner l-a lovit în pântece",
+    "sulița a ieșit pe dinapoi",
+    "a murit a doua zi"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "2sa.2.18+.15",
+   "age": "18+",
+   "t": "multi",
+   "ref": "2:2",
+   "q": "Cum este numită Abigail, nevasta lui David, în 2 Samuel 2?",
+   "opts": [
+    "din Izreel",
+    "din Ghiah",
+    "fiica lui Saul"
+   ],
+   "a": [],
+   "explain": "Niciun răspuns corect: este „Abigail din Carmel, nevasta lui Nabal\" (2:2)."
+  }
+ ]
+}
