@@ -35,10 +35,10 @@
    "q": "Cine s-a răsculat împotriva lui David după întoarcerea lui la Ierusalim?",
    "opts": [
     "Absalom",
-    "Șeba, fiul lui Bicri",
-    "Ahitofel"
+    "Ahitofel",
+    "Șeba, fiul lui Bicri"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.20.sub12.5",
@@ -169,8 +169,8 @@
    "ref": "20:15",
    "q": "Ce au făcut oamenii lui Ioab la Abel-Bet-Maaca?",
    "opts": [
-    "au împresurat cetatea",
     "au săpat zidul",
+    "au împresurat cetatea",
     "au ars porțile"
    ],
    "a": [
@@ -186,8 +186,8 @@
    "q": "Cine l-au însoțit pe David de la Iordan până la Ierusalim?",
    "opts": [
     "bărbații lui Iuda",
-    "bărbații lui Israel",
-    "filistenii"
+    "filistenii",
+    "bărbații lui Israel"
    ],
    "a": [
     0
@@ -200,9 +200,9 @@
    "ref": "20:21",
    "q": "Din ce munte era Șeba, fiul lui Bicri?",
    "opts": [
+    "din muntele Sionului",
     "din muntele Ghilboa",
-    "din muntele Carmel",
-    "din muntele Sionului"
+    "din muntele Carmel"
    ],
    "a": [],
    "explain": "Niciun răspuns corect: Șeba era „un om din muntele lui Efraim\" (20:21)."
@@ -239,11 +239,11 @@
    "ref": "20:4",
    "q": "În câte zile trebuia Amasa să-i cheme pe bărbații lui Iuda?",
    "opts": [
-    "într-o zi",
     "peste trei zile",
-    "peste o săptămână"
+    "peste o săptămână",
+    "într-o zi"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.20.12-13.5",
@@ -252,11 +252,11 @@
    "ref": "20:8",
    "q": "Lângă ce loc l-a întâlnit Ioab pe Amasa?",
    "opts": [
-    "lângă fântâna Sira",
     "lângă piatra cea mare de la Gabaon",
-    "lângă Iordan"
+    "lângă Iordan",
+    "lângă fântâna Sira"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.20.12-13.6",
@@ -265,11 +265,11 @@
    "ref": "20:9",
    "q": "Ce l-a întrebat Ioab pe Amasa înainte să-l lovească?",
    "opts": [
-    "„Unde este oștirea?\"",
     "„Ești sănătos, frate?\"",
+    "„Unde este oștirea?\"",
     "„Pentru ce ai întârziat?\""
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.20.12-13.7",
@@ -386,8 +386,8 @@
    "ref": "20:7",
    "q": "Cine a plecat din Ierusalim să-l urmărească pe Șeba?",
    "opts": [
-    "oamenii lui Ioab",
     "cheretiții și peletiții",
+    "oamenii lui Ioab",
     "toți vitejii"
    ],
    "a": [
@@ -404,12 +404,12 @@
    "q": "Ce i-a spus Ioab femeii din Abel?",
    "opts": [
     "că nu vrea să nimicească cetatea",
-    "că vrea doar pe Șeba",
-    "că va dărâma tot zidul"
+    "că va dărâma tot zidul",
+    "că vrea doar pe Șeba"
    ],
    "a": [
     0,
-    1
+    2
    ]
   },
   {
@@ -419,9 +419,9 @@
    "ref": "20:1",
    "q": "Din ce seminție era Șeba, fiul lui Bicri?",
    "opts": [
-    "din Iuda",
     "din Efraim",
-    "din Dan"
+    "din Dan",
+    "din Iuda"
    ],
    "a": [],
    "explain": "Niciun răspuns corect: Șeba era Beniamitul (20:1)."
@@ -459,10 +459,10 @@
    "q": "Cum s-a întâmplat ca sabia lui Ioab să-i fie în mână?",
    "opts": [
     "i-a dat-o Abișai",
-    "sabia a alunecat din teacă când a înaintat",
-    "a scos-o de la un ostaș"
+    "a scos-o de la un ostaș",
+    "sabia a alunecat din teacă când a înaintat"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.20.14-15.5",
@@ -484,11 +484,11 @@
    "ref": "20:18",
    "q": "Ce zicală pomenește femeia din Abel?",
    "opts": [
+    "„Cine este ca Abel?\"",
     "„Abel este mama cetăților\"",
-    "„Să întrebăm în Abel!\"",
-    "„Cine este ca Abel?\""
+    "„Să întrebăm în Abel!\""
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.20.14-15.7",
@@ -605,9 +605,9 @@
    "ref": "20:19",
    "q": "Cum își numește femeia cetatea, vorbind cu Ioab?",
    "opts": [
-    "una din cetățile liniștite și credincioase",
+    "moștenirea Domnului",
     "o mamă în Israel",
-    "moștenirea Domnului"
+    "una din cetățile liniștite și credincioase"
    ],
    "a": [
     0,
@@ -622,13 +622,13 @@
    "ref": "20:3",
    "q": "Ce a făcut David cu cele zece țiitoare?",
    "opts": [
-    "le-a pus într-o casă sub pază",
     "a îngrijit de ele",
-    "le-a dat lui Amasa"
+    "le-a dat lui Amasa",
+    "le-a pus într-o casă sub pază"
    ],
    "a": [
     0,
-    1
+    2
    ]
   },
   {
@@ -639,8 +639,8 @@
    "q": "Pe cine trebuia să cheme Amasa în trei zile?",
    "opts": [
     "pe bărbații lui Israel",
-    "pe preoți",
-    "pe cheretiți"
+    "pe cheretiți",
+    "pe preoți"
    ],
    "a": [],
    "explain": "Niciun răspuns corect: pe bărbații lui Iuda (20:4-5)."
@@ -678,10 +678,10 @@
    "q": "Cine era mai-mare peste dări în vremea lui David, după 2 Samuel 20?",
    "opts": [
     "Iosafat",
-    "Adoram",
-    "Șeia"
+    "Șeia",
+    "Adoram"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.20.16-17.5",
@@ -690,11 +690,11 @@
    "ref": "20:26",
    "q": "De unde era Ira, slujbașul de stat al lui David?",
    "opts": [
-    "din Gat",
     "din Iair",
+    "din Gat",
     "din Betleem"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.20.16-17.6",
@@ -703,11 +703,11 @@
    "ref": "20:6",
    "q": "De ce se temea David că va scăpa Șeba?",
    "opts": [
-    "că va fugi în Egipt",
     "că va găsi cetăți întărite și se va ascunde",
+    "că va fugi în Egipt",
     "că va lua Ierusalimul"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.20.16-17.7",
@@ -825,8 +825,8 @@
    "q": "Cine l-au urmat pe Ioab înspre Abel-Bet-Maaca?",
    "opts": [
     "toți bărbații de seamă",
-    "Șeba și oamenii lui",
-    "bărbații lui Amasa"
+    "bărbații lui Amasa",
+    "Șeba și oamenii lui"
    ],
    "a": [
     0
@@ -840,12 +840,12 @@
    "q": "Ce slujbe aveau Ioab și Benaia, după 2 Samuel 20:23?",
    "opts": [
     "Ioab era mai-mare peste toată oștirea",
-    "Benaia era în fruntea cheretiților și peletiților",
-    "Benaia era preot"
+    "Benaia era preot",
+    "Benaia era în fruntea cheretiților și peletiților"
    ],
    "a": [
     0,
-    1
+    2
    ]
   },
   {
@@ -856,8 +856,8 @@
    "q": "Cine erau preoți, după lista din 2 Samuel 20?",
    "opts": [
     "Ahimelec",
-    "Natan",
-    "Șeia"
+    "Șeia",
+    "Natan"
    ],
    "a": [],
    "explain": "Niciun răspuns corect: Țadoc și Abiatar erau preoți; Șeia era logofăt (20:25)."
@@ -895,10 +895,10 @@
    "q": "Cine era logofăt, după lista slujbașilor din 2 Samuel 20?",
    "opts": [
     "Seraia",
-    "Șeia",
-    "Ira"
+    "Ira",
+    "Șeia"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.20.18+.5",
@@ -921,10 +921,10 @@
    "q": "Cu ce mână l-a apucat Ioab pe Amasa de barbă?",
    "opts": [
     "cu stânga",
-    "cu dreapta",
-    "cu amândouă"
+    "cu amândouă",
+    "cu dreapta"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.20.18+.7",
@@ -1041,9 +1041,9 @@
    "ref": "20:3",
    "q": "Ce aflăm despre cele zece țiitoare ale lui David?",
    "opts": [
+    "au trăit în văduvie până la moarte",
     "le lăsase pentru paza casei",
-    "au fost puse sub pază",
-    "au trăit în văduvie până la moarte"
+    "au fost puse sub pază"
    ],
    "a": [
     0,
@@ -1058,13 +1058,13 @@
    "ref": "20:8",
    "q": "Ce s-a întâmplat cu sabia lui Ioab la Gabaon?",
    "opts": [
-    "era în teacă",
     "a alunecat când a înaintat Ioab",
-    "i-a căzut lui Amasa"
+    "i-a căzut lui Amasa",
+    "era în teacă"
    ],
    "a": [
     0,
-    1
+    2
    ]
   },
   {
@@ -1075,8 +1075,8 @@
    "q": "Cui i-a spus David să-l urmărească pe Șeba, când Amasa a întârziat?",
    "opts": [
     "lui Benaia",
-    "lui Ahimaaț",
-    "lui Itai"
+    "lui Itai",
+    "lui Ahimaaț"
    ],
    "a": [],
    "explain": "Niciun răspuns corect: David i-a spus lui Abișai (20:6)."

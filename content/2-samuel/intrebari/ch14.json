@@ -34,11 +34,11 @@
    "ref": "14:2",
    "q": "De unde a adus Ioab femeia iscusită care a vorbit cu împăratul David?",
    "opts": [
-    "din Betleem",
     "din Tecoa",
+    "din Betleem",
     "din Hebron"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.14.sub12.5",
@@ -47,11 +47,11 @@
    "ref": "14:25",
    "q": "Pentru ce era vestit Absalom în tot Israelul?",
    "opts": [
+    "pentru înțelepciune",
     "pentru putere",
-    "pentru frumusețea lui",
-    "pentru înțelepciune"
+    "pentru frumusețea lui"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.14.sub12.6",
@@ -61,10 +61,10 @@
    "q": "Ce a făcut împăratul când Absalom a venit și s-a aruncat cu fața la pământ înaintea lui?",
    "opts": [
     "l-a alungat",
-    "l-a sărutat",
-    "l-a pedepsit"
+    "l-a pedepsit",
+    "l-a sărutat"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.14.sub12.7",
@@ -169,13 +169,13 @@
    "ref": "14:27",
    "q": "Câți copii i s-au născut lui Absalom?",
    "opts": [
-    "trei fii",
     "o fiică",
-    "doisprezece fii"
+    "doisprezece fii",
+    "trei fii"
    ],
    "a": [
     0,
-    1
+    2
    ]
   },
   {
@@ -185,12 +185,12 @@
    "ref": "14:2",
    "q": "Cum a cerut Ioab femeii din Tecoa să se îmbrace?",
    "opts": [
-    "în haine de jale",
     "cu haine de sărbătoare",
-    "cu o rochie pestriță"
+    "cu o rochie pestriță",
+    "în haine de jale"
    ],
    "a": [
-    0
+    2
    ]
   },
   {
@@ -200,9 +200,9 @@
    "ref": "14:30",
    "q": "Ce era pe ogorul lui Ioab, căruia i-au dat foc slujitorii lui Absalom?",
    "opts": [
+    "măslini",
     "grâu",
-    "vii",
-    "măslini"
+    "vii"
    ],
    "a": [],
    "explain": "Niciun răspuns corect: ogorul avea orz pe el (14:30)."
@@ -239,9 +239,9 @@
    "ref": "14:19",
    "q": "Pe cine a ghicit împăratul că se ascunde în spatele cuvintelor femeii din Tecoa?",
    "opts": [
-    "pe Natan",
+    "pe Absalom",
     "pe Ioab",
-    "pe Absalom"
+    "pe Natan"
    ],
    "a": 1
   },
@@ -265,11 +265,11 @@
    "ref": "14:24",
    "q": "Ce a poruncit David când Absalom s-a întors la Ierusalim?",
    "opts": [
+    "să vină la masa lui",
     "să fie pus în închisoare",
-    "să se ducă în casa lui și să nu-i vadă fața",
-    "să vină la masa lui"
+    "să se ducă în casa lui și să nu-i vadă fața"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.14.12-13.7",
@@ -383,12 +383,12 @@
    "q": "Ce a recunoscut femeia din Tecoa în fața împăratului?",
    "opts": [
     "că Ioab i-a poruncit",
-    "că Ioab i-a pus în gură toate cuvintele",
-    "că ea este mama lui Absalom"
+    "că ea este mama lui Absalom",
+    "că Ioab i-a pus în gură toate cuvintele"
    ],
    "a": [
     0,
-    1
+    2
    ]
   },
   {
@@ -398,13 +398,13 @@
    "ref": "14:22",
    "q": "Ce a făcut Ioab când împăratul a hotărât să-l aducă înapoi pe Absalom?",
    "opts": [
-    "a căzut cu fața la pământ",
+    "s-a mâniat",
     "a binecuvântat pe împăratul",
-    "s-a mâniat"
+    "a căzut cu fața la pământ"
    ],
    "a": [
-    0,
-    1
+    1,
+    2
    ]
   },
   {
@@ -453,11 +453,11 @@
    "ref": "14:26",
    "q": "Cât cântărea părul lui Absalom când îl tundea?",
    "opts": [
-    "o sută de sicli",
     "două sute de sicli",
-    "un talant"
+    "un talant",
+    "o sută de sicli"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.14.14-15.5",
@@ -466,11 +466,11 @@
    "ref": "14:7",
    "q": "Ce spunea femeia din Tecoa că ar stinge familia, dacă i-ar omorî fiul?",
    "opts": [
-    "candela",
     "tăciunele care-i mai rămâne",
+    "candela",
     "focul de pe altar"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.14.14-15.6",
@@ -479,11 +479,11 @@
    "ref": "14:32",
    "q": "Ce i-a cerut Absalom lui Ioab să-i spună împăratului?",
    "opts": [
-    "că vrea să plece în Gheșur",
     "că dorește să vadă fața împăratului",
-    "că vrea să fie împărat"
+    "că vrea să fie împărat",
+    "că vrea să plece în Gheșur"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.14.14-15.7",
@@ -616,9 +616,9 @@
    "ref": "14:33",
    "q": "Ce s-a întâmplat la sfârșitul capitolului 14?",
    "opts": [
+    "împăratul l-a sărutat pe Absalom",
     "împăratul l-a chemat pe Absalom",
-    "Absalom s-a aruncat cu fața la pământ",
-    "împăratul l-a sărutat pe Absalom"
+    "Absalom s-a aruncat cu fața la pământ"
    ],
    "a": [
     0,
@@ -633,9 +633,9 @@
    "ref": "14:25",
    "q": "Ce cusur avea Absalom, după 2 Samuel 14?",
    "opts": [
-    "era șchiop",
+    "avea o cicatrice",
     "era orb de un ochi",
-    "avea o cicatrice"
+    "era șchiop"
    ],
    "a": [],
    "explain": "Niciun răspuns corect: „din talpa piciorului până în creștetul capului n-avea niciun cusur\" (14:25)."
@@ -672,11 +672,11 @@
    "ref": "14:14",
    "q": "Ce dorește Dumnezeu, după cuvintele femeii din Tecoa?",
    "opts": [
+    "să moară ucigașul",
     "să fie pedepsit vinovatul",
-    "ca fugarul să nu rămână izgonit dinaintea Lui",
-    "să moară ucigașul"
+    "ca fugarul să nu rămână izgonit dinaintea Lui"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.14.16-17.5",
@@ -685,9 +685,9 @@
    "ref": "14:22",
    "q": "Ce a cunoscut Ioab când împăratul i-a dat voie să-l aducă pe Absalom?",
    "opts": [
-    "că va fi căpetenie",
+    "că Absalom va fi împărat",
     "că a căpătat trecere înaintea împăratului",
-    "că Absalom va fi împărat"
+    "că va fi căpetenie"
    ],
    "a": 1
   },
@@ -698,11 +698,11 @@
    "ref": "14:32",
    "q": "Ce spunea Absalom că ar fi fost mai bine pentru el?",
    "opts": [
-    "să fie împărat",
     "să fie și acum la Gheșur",
-    "să moară în luptă"
+    "să moară în luptă",
+    "să fie împărat"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.14.16-17.7",
@@ -816,8 +816,8 @@
    "q": "Ce i-a cerut Ioab femeii din Tecoa?",
    "opts": [
     "să se facă că plânge",
-    "să nu se ungă cu untdelemn",
-    "să fie ca o femeie care plânge de multă vreme după un mort"
+    "să fie ca o femeie care plânge de multă vreme după un mort",
+    "să nu se ungă cu untdelemn"
    ],
    "a": [
     0,
@@ -832,13 +832,13 @@
    "ref": "14:16",
    "q": "De ce spunea femeia că o va scăpa împăratul?",
    "opts": [
-    "din mâna celor ce caută să o nimicească",
+    "din mâna filistenilor",
     "pe ea și pe fiul ei, din moștenirea lui Dumnezeu",
-    "din mâna filistenilor"
+    "din mâna celor ce caută să o nimicească"
    ],
    "a": [
-    0,
-    1
+    1,
+    2
    ]
   },
   {
@@ -848,9 +848,9 @@
    "ref": "14:29",
    "q": "Cine l-a refuzat pe Absalom de două ori?",
    "opts": [
-    "împăratul",
     "Ahitofel",
-    "Tamar"
+    "Tamar",
+    "împăratul"
    ],
    "a": [],
    "explain": "Niciun răspuns corect: Ioab n-a voit să vină la el, de două ori (14:29)."
@@ -887,11 +887,11 @@
    "ref": "14:11",
    "q": "Pe cine se temea femeia din Tecoa că va mări prăpădul?",
    "opts": [
-    "pe Ioab",
     "pe răzbunătorul sângelui",
+    "pe Ioab",
     "pe frații bărbatului ei"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.14.18+.5",
@@ -914,10 +914,10 @@
    "q": "De ce a făcut Ioab acest lucru, după femeia din Tecoa?",
    "opts": [
     "ca să-l pedepsească pe Absalom",
-    "ca să dea o altă înfățișare lucrului",
-    "ca să ia el împărăția"
+    "ca să ia el împărăția",
+    "ca să dea o altă înfățișare lucrului"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.14.18+.7",
@@ -1034,13 +1034,13 @@
    "ref": "14:15-16",
    "q": "De ce spune femeia că a venit la împărat?",
    "opts": [
+    "o trimisese Absalom",
     "poporul a înspăimântat-o",
-    "spera că împăratul va face ce va zice roaba sa",
-    "o trimisese Absalom"
+    "spera că împăratul va face ce va zice roaba sa"
    ],
    "a": [
-    0,
-    1
+    1,
+    2
    ]
   },
   {
@@ -1050,8 +1050,8 @@
    "ref": "14:6",
    "q": "Ce s-a întâmplat cu cei doi fii ai femeii, după povestea ei?",
    "opts": [
-    "s-au certat pe câmp",
     "n-a fost nimeni să-i despartă",
+    "s-au certat pe câmp",
     "unul l-a omorât pe celălalt"
    ],
    "a": [
@@ -1067,9 +1067,9 @@
    "ref": "14:24",
    "q": "Ce a primit Absalom când s-a întors la Ierusalim?",
    "opts": [
-    "un loc la masa împăratului",
     "o oștire",
-    "o slujbă la curte"
+    "o slujbă la curte",
+    "un loc la masa împăratului"
    ],
    "a": [],
    "explain": "Niciun răspuns corect: împăratul a zis să se ducă în casa lui și să nu-i vadă fața (14:24)."

@@ -34,9 +34,9 @@
    "ref": "3:13",
    "q": "Pe cine i-a cerut David lui Abner să-i aducă, înainte să facă legământ cu el?",
    "opts": [
-    "pe Iș-Boșet",
+    "pe Rițpa",
     "pe Mical, fata lui Saul",
-    "pe Rițpa"
+    "pe Iș-Boșet"
    ],
    "a": 1
   },
@@ -47,11 +47,11 @@
    "ref": "3:32",
    "q": "Ce a făcut împăratul David la mormântul lui Abner, la Hebron?",
    "opts": [
+    "a cântat din harpă",
     "s-a bucurat",
-    "a ridicat glasul și a plâns",
-    "a cântat din harpă"
+    "a ridicat glasul și a plâns"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.3.sub12.6",
@@ -60,9 +60,9 @@
    "ref": "3:2",
    "q": "Cum se numea întâiul născut al lui David, născut la Hebron?",
    "opts": [
-    "Absalom",
+    "Solomon",
     "Amnon",
-    "Solomon"
+    "Absalom"
    ],
    "a": 1
   },
@@ -169,13 +169,13 @@
    "ref": "3:2-3",
    "q": "Care dintre aceștia erau fii ai lui David, născuți la Hebron?",
    "opts": [
+    "Solomon",
     "Amnon",
-    "Absalom",
-    "Solomon"
+    "Absalom"
    ],
    "a": [
-    0,
-    1
+    1,
+    2
    ],
    "explain": "Solomon nu s-a născut la Hebron; Amnon și Absalom da."
   },
@@ -187,12 +187,12 @@
    "q": "Ce le-a spus David lui Ioab și poporului să facă după moartea lui Abner?",
    "opts": [
     "să-și rupă hainele",
-    "să se bocească înaintea lui Abner",
-    "să facă un ospăț"
+    "să facă un ospăț",
+    "să se bocească înaintea lui Abner"
    ],
    "a": [
     0,
-    1
+    2
    ]
   },
   {
@@ -202,13 +202,13 @@
    "ref": "3:27",
    "q": "Unde și cum l-a omorât Ioab pe Abner?",
    "opts": [
-    "la Hebron",
+    "la iazul din Gabaon",
     "în mijlocul porții",
-    "la iazul din Gabaon"
+    "la Hebron"
    ],
    "a": [
-    0,
-    1
+    1,
+    2
    ]
   },
   {
@@ -256,11 +256,11 @@
    "ref": "3:15",
    "q": "De la cine a fost luată Mical, ca să fie adusă înapoi la David?",
    "opts": [
-    "de la Abner",
     "de la Paltiel, bărbatul ei",
-    "de la Iș-Boșet"
+    "de la Iș-Boșet",
+    "de la Abner"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.3.12-13.6",
@@ -269,11 +269,11 @@
    "ref": "3:20",
    "q": "Ce a făcut David când Abner a venit la el, în Hebron, cu douăzeci de oameni?",
    "opts": [
-    "l-a pus în lanțuri",
     "a dat un ospăț în cinstea lui",
+    "l-a pus în lanțuri",
     "l-a trimis la Ioab"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.3.12-13.7",
@@ -390,8 +390,8 @@
    "ref": "3:31-32",
    "q": "Ce a făcut David la moartea lui Abner?",
    "opts": [
-    "mergea în urma sicriului",
     "a plâns la mormânt",
+    "mergea în urma sicriului",
     "l-a pedepsit pe Ioab cu moartea"
    ],
    "a": [
@@ -407,8 +407,8 @@
    "ref": "3:30",
    "q": "Cine l-au omorât pe Abner, pentru că îl omorâse pe Asael?",
    "opts": [
-    "Ioab",
     "Abișai",
+    "Ioab",
     "Iș-Boșet"
    ],
    "a": [
@@ -423,9 +423,9 @@
    "ref": "3:22",
    "q": "De unde s-a întors Ioab cu oamenii lui David, când Abner tocmai plecase din Hebron?",
    "opts": [
+    "de la Betleem",
     "de la Mahanaim",
-    "de la Gabaon",
-    "de la Betleem"
+    "de la Gabaon"
    ],
    "a": [],
    "explain": "Niciun răspuns corect: se întorceau de la urmărirea unei cete, cu o mare pradă (3:22)."
@@ -464,10 +464,10 @@
    "q": "Al cui fiu era Paltiel, bărbatul de la care a fost luată Mical?",
    "opts": [
     "al lui Ner",
-    "al lui Laiș",
-    "al lui Aiia"
+    "al lui Aiia",
+    "al lui Laiș"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.3.14-15.5",
@@ -476,11 +476,11 @@
    "ref": "3:16",
    "q": "Până unde a mers Paltiel plângând după Mical?",
    "opts": [
-    "până la Hebron",
     "până la Bahurim",
-    "până la Mahanaim"
+    "până la Mahanaim",
+    "până la Hebron"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.3.14-15.6",
@@ -489,11 +489,11 @@
    "ref": "3:26",
    "q": "De unde l-au adus înapoi pe Abner solii trimiși de Ioab?",
    "opts": [
-    "de la iazul din Gabaon",
     "de la fântâna fără apă Sira",
-    "de la poarta Hebronului"
+    "de la poarta Hebronului",
+    "de la iazul din Gabaon"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.3.14-15.7",
@@ -625,13 +625,13 @@
    "ref": "3:10",
    "q": "Potrivit lui Abner, ce jurase Domnul lui David?",
    "opts": [
-    "că împărăția va fi luată de la casa lui Saul",
     "că scaunul de domnie al lui David va fi ridicat peste Israel și peste Iuda",
-    "că David va zidi Templul"
+    "că David va zidi Templul",
+    "că împărăția va fi luată de la casa lui Saul"
    ],
    "a": [
     0,
-    1
+    2
    ]
   },
   {
@@ -641,9 +641,9 @@
    "ref": "3:8",
    "q": "Cum s-a apărat Abner când Iș-Boșet l-a mustrat?",
    "opts": [
-    "a zis că nu este cap de câine",
+    "a zis că dă dovadă de bunăvoință față de casa lui Saul",
     "a zis că nu l-a dat în mâinile lui David",
-    "a zis că dă dovadă de bunăvoință față de casa lui Saul"
+    "a zis că nu este cap de câine"
    ],
    "a": [
     0,
@@ -683,11 +683,11 @@
    "ref": "3:7",
    "q": "Cum se numea țiitoarea lui Saul, fata lui Aiia?",
    "opts": [
+    "Egla",
     "Abitala",
-    "Rițpa",
-    "Egla"
+    "Rițpa"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.3.16-17.5",
@@ -696,11 +696,11 @@
    "ref": "3:10",
    "q": "Între ce hotare va fi ridicat scaunul de domnie al lui David, după cuvintele lui Abner?",
    "opts": [
+    "de la Iordan până la mare",
     "de la Dan până la Beer-Șeba",
-    "de la Hebron până la Mahanaim",
-    "de la Iordan până la mare"
+    "de la Hebron până la Mahanaim"
    ],
-   "a": 0
+   "a": 1
   },
   {
    "id": "2sa.3.16-17.6",
@@ -847,13 +847,13 @@
    "ref": "3:19",
    "q": "Cui i-a vorbit Abner înainte să meargă la David, la Hebron?",
    "opts": [
-    "bătrânilor lui Israel",
+    "lui Ioab",
     "lui Beniamin",
-    "lui Ioab"
+    "bătrânilor lui Israel"
    ],
    "a": [
-    0,
-    1
+    1,
+    2
    ]
   },
   {
@@ -863,9 +863,9 @@
    "ref": "3:2-5",
    "q": "Care dintre aceștia erau fii ai lui David născuți din Abigail?",
    "opts": [
-    "Amnon",
     "Absalom",
-    "Adonia"
+    "Adonia",
+    "Amnon"
    ],
    "a": [],
    "explain": "Niciun răspuns corect: fiul lui David din Abigail era Chileab (3:3)."
@@ -903,10 +903,10 @@
    "q": "Al cui fiu era Adonia, al patrulea fiu al lui David născut la Hebron?",
    "opts": [
     "al Abitalei",
-    "al Haghitei",
-    "al Eglei"
+    "al Eglei",
+    "al Haghitei"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.3.18+.5",
@@ -916,8 +916,8 @@
    "q": "Cum s-a numit Abner pe sine, când s-a mâniat pe Iș-Boșet? „Oare … sunt eu?\"",
    "opts": [
     "cap de câine",
-    "câine mort",
-    "purice"
+    "purice",
+    "câine mort"
    ],
    "a": 0
   },
@@ -928,11 +928,11 @@
    "ref": "3:23",
    "q": "Ce i s-a spus lui Ioab când s-a întors la Hebron cu ceata lui?",
    "opts": [
-    "că Abner a venit la împărat și a plecat în pace",
     "că Abner l-a lovit pe David",
+    "că Abner a venit la împărat și a plecat în pace",
     "că Abner a fugit la Mahanaim"
    ],
-   "a": 0
+   "a": 1
   },
   {
    "id": "2sa.3.18+.7",
@@ -1049,13 +1049,13 @@
    "ref": "3:21",
    "q": "Ce i-a promis Abner lui David la Hebron, înainte să plece?",
    "opts": [
-    "că va strânge tot Israelul la împărat",
     "că Israel va face legământ cu David",
-    "că îl va aduce pe Iș-Boșet legat"
+    "că îl va aduce pe Iș-Boșet legat",
+    "că va strânge tot Israelul la împărat"
    ],
    "a": [
     0,
-    1
+    2
    ]
   },
   {
@@ -1066,12 +1066,12 @@
    "q": "Ce s-a întâmplat când Ioab s-a întors la Hebron cu ceata lui?",
    "opts": [
     "aduceau o mare pradă",
-    "Abner nu mai era la David",
-    "Abner îl aștepta la poartă"
+    "Abner îl aștepta la poartă",
+    "Abner nu mai era la David"
    ],
    "a": [
     0,
-    1
+    2
    ]
   },
   {
@@ -1082,12 +1082,12 @@
    "q": "Ce a făcut tot poporul în ziua înmormântării lui Abner?",
    "opts": [
     "a plâns după Abner",
-    "s-a apropiat de David ca să-l facă să mănânce",
-    "l-a alungat pe Ioab din Hebron"
+    "l-a alungat pe Ioab din Hebron",
+    "s-a apropiat de David ca să-l facă să mănânce"
    ],
    "a": [
     0,
-    1
+    2
    ]
   }
  ]

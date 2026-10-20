@@ -34,11 +34,11 @@
    "ref": "18:9",
    "q": "Pe ce animal era călare Absalom în pădurea lui Efraim?",
    "opts": [
-    "pe un cal",
     "pe un catâr",
+    "pe un cal",
     "pe o cămilă"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.18.sub12.5",
@@ -60,11 +60,11 @@
    "ref": "18:3",
    "q": "De ce nu l-a lăsat poporul pe David să iasă la luptă?",
    "opts": [
-    "pentru că era bolnav",
     "pentru că el era ca zece mii dintre ei",
-    "pentru că Ioab nu voia"
+    "pentru că Ioab nu voia",
+    "pentru că era bolnav"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.18.sub12.7",
@@ -186,13 +186,13 @@
    "ref": "18:9",
    "q": "Ce s-a întâmplat cu Absalom sub stejar?",
    "opts": [
-    "capul i s-a prins de ramuri",
+    "a căzut și a fugit",
     "catârul a trecut înainte",
-    "a căzut și a fugit"
+    "capul i s-a prins de ramuri"
    ],
    "a": [
-    0,
-    1
+    1,
+    2
    ]
   },
   {
@@ -203,8 +203,8 @@
    "q": "Câte săgeți a înfipt Ioab în inima lui Absalom?",
    "opts": [
     "una",
-    "două",
-    "zece"
+    "zece",
+    "două"
    ],
    "a": [],
    "explain": "Niciun răspuns corect: Ioab a luat trei săgeți (18:14)."
@@ -241,11 +241,11 @@
    "ref": "18:8",
    "q": "Ce a „mâncat\" mai mult popor decât sabia, în ziua bătăliei?",
    "opts": [
-    "râul",
     "pădurea",
+    "râul",
     "foamea"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.18.12-13.5",
@@ -254,9 +254,9 @@
    "ref": "18:11",
    "q": "Ce i-ar fi dat Ioab omului dacă l-ar fi omorât pe Absalom?",
    "opts": [
-    "o mie de sicli",
+    "o sabie",
     "zece sicli de argint și un brâu",
-    "o sabie"
+    "o mie de sicli"
    ],
    "a": 1
   },
@@ -267,9 +267,9 @@
    "ref": "18:15",
    "q": "Câți tineri care duceau armele lui Ioab l-au înconjurat pe Absalom?",
    "opts": [
-    "trei",
+    "douăzeci",
     "zece",
-    "douăzeci"
+    "trei"
    ],
    "a": 1
   },
@@ -404,12 +404,12 @@
    "ref": "18:4",
    "q": "Unde a stat David când poporul a ieșit la luptă?",
    "opts": [
-    "lângă poartă",
     "în pădurea lui Efraim",
-    "la Ierusalim"
+    "la Ierusalim",
+    "lângă poartă"
    ],
    "a": [
-    0
+    2
    ]
   },
   {
@@ -419,8 +419,8 @@
    "ref": "18:7",
    "q": "Câți oameni au căzut în înfrângerea lui Israel în pădurea lui Efraim?",
    "opts": [
-    "o mie",
     "două sute",
+    "o mie",
     "șase sute"
    ],
    "a": [],
@@ -459,10 +459,10 @@
    "q": "De ce își ridicase Absalom un stâlp de aducere aminte?",
    "opts": [
     "pentru o biruință",
-    "pentru că zicea că n-are fii care să-i păstreze numele",
-    "pentru tatăl său"
+    "pentru tatăl său",
+    "pentru că zicea că n-are fii care să-i păstreze numele"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.18.14-15.5",
@@ -472,10 +472,10 @@
    "q": "De ce nu voia Ioab ca Ahimaaț să ducă vestea în ziua aceea?",
    "opts": [
     "pentru că era obosit",
-    "pentru că fiul împăratului murise",
-    "pentru că alerga încet"
+    "pentru că alerga încet",
+    "pentru că fiul împăratului murise"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.18.14-15.6",
@@ -602,8 +602,8 @@
    "q": "Ce a răspuns Cuși când David l-a întrebat de Absalom?",
    "opts": [
     "a dorit ca vrăjmașii împăratului să fie ca tânărul acela",
-    "a spus că Absalom a fugit",
-    "a spus că nu știe nimic"
+    "a spus că nu știe nimic",
+    "a spus că Absalom a fugit"
    ],
    "a": [
     0
@@ -616,9 +616,9 @@
    "ref": "18:5",
    "q": "Cui i-a dat David porunca să se poarte blând cu Absalom?",
    "opts": [
+    "lui Itai",
     "lui Ioab",
-    "lui Abișai",
-    "lui Itai"
+    "lui Abișai"
    ],
    "a": [
     0,
@@ -633,9 +633,9 @@
    "ref": "18:21",
    "q": "Pe cine a trimis Ioab primul să-i ducă vestea lui David?",
    "opts": [
-    "pe Ahimaaț",
+    "pe Itai",
     "pe Abișai",
-    "pe Itai"
+    "pe Ahimaaț"
    ],
    "a": [],
    "explain": "Niciun răspuns corect: l-a trimis pe Cuși (18:21)."
@@ -672,9 +672,9 @@
    "ref": "18:12",
    "q": "Pe cine pomenea omul că a auzit porunca împăratului despre Absalom?",
    "opts": [
-    "numai pe Ioab",
+    "pe Ahimaaț",
     "pe Ioab, pe Abișai și pe Itai",
-    "pe Ahimaaț"
+    "numai pe Ioab"
    ],
    "a": 1
   },
@@ -685,11 +685,11 @@
    "ref": "18:14",
    "q": "Ce a spus Ioab înainte să ia săgețile?",
    "opts": [
-    "„Să moară vrăjmașul!\"",
     "„Nu voi zăbovi atâta cu tine!\"",
-    "„Așa a poruncit împăratul\""
+    "„Așa a poruncit împăratul\"",
+    "„Să moară vrăjmașul!\""
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.18.16-17.6",
@@ -699,10 +699,10 @@
    "q": "Ce veste voia Ahimaaț să-i ducă lui David?",
    "opts": [
     "că Absalom a murit",
-    "că Domnul i-a făcut dreptate, scăpându-l din mâna vrăjmașilor",
-    "că Ioab a fost rănit"
+    "că Ioab a fost rănit",
+    "că Domnul i-a făcut dreptate, scăpându-l din mâna vrăjmașilor"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.18.16-17.7",
@@ -820,12 +820,12 @@
    "q": "Ce a făcut caraula?",
    "opts": [
     "s-a dus pe acoperișul porții spre zid",
-    "a văzut un om alergând singur",
-    "a deschis porțile"
+    "a deschis porțile",
+    "a văzut un om alergând singur"
    ],
    "a": [
     0,
-    1
+    2
    ]
   },
   {
@@ -835,8 +835,8 @@
    "ref": "18:17",
    "q": "Ce s-a întâmplat după ce Absalom a fost aruncat în groapă?",
    "opts": [
-    "au pus peste el o grămadă de pietre",
     "Israel a fugit, fiecare în cortul lui",
+    "au pus peste el o grămadă de pietre",
     "David a venit să-l vadă"
    ],
    "a": [
@@ -851,9 +851,9 @@
    "ref": "18:9",
    "q": "Cum se afla Absalom când s-a pomenit în fața oamenilor lui David?",
    "opts": [
-    "pe jos",
+    "în cort",
     "în car",
-    "în cort"
+    "pe jos"
    ],
    "a": [],
    "explain": "Niciun răspuns corect: era călare pe un catâr (18:9)."
@@ -903,11 +903,11 @@
    "ref": "18:26",
    "q": "La cine a strigat caraula când a văzut al doilea om alergând?",
    "opts": [
-    "la împărat",
     "la portar",
-    "la Ioab"
+    "la Ioab",
+    "la împărat"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.18.18+.6",
@@ -917,10 +917,10 @@
    "q": "Ce poruncă spunea omul că a dat împăratul?",
    "opts": [
     "„Prindeți-l viu!\"",
-    "„Luați seama fiecare la tânărul Absalom!\"",
-    "„Aduceți-l la mine!\""
+    "„Aduceți-l la mine!\"",
+    "„Luați seama fiecare la tânărul Absalom!\""
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.18.18+.7",
@@ -1037,13 +1037,13 @@
    "ref": "18:11",
    "q": "Ce i-ar fi dat Ioab omului care l-ar fi omorât pe Absalom?",
    "opts": [
-    "zece sicli de argint",
+    "o căpetenie peste o mie",
     "un brâu",
-    "o căpetenie peste o mie"
+    "zece sicli de argint"
    ],
    "a": [
-    0,
-    1
+    1,
+    2
    ]
   },
   {
@@ -1053,13 +1053,13 @@
    "ref": "18:19-23",
    "q": "Ce aflăm despre alergarea lui Ahimaaț?",
    "opts": [
-    "a cerut de trei ori să alerge",
     "a luat-o pe drumul câmpiei",
-    "Ioab l-a oprit"
+    "Ioab l-a oprit",
+    "a cerut de trei ori să alerge"
    ],
    "a": [
     0,
-    1
+    2
    ],
    "explain": "Ahimaaț a cerut în 18:19, 18:22 și 18:23."
   },
@@ -1070,9 +1070,9 @@
    "ref": "18:16",
    "q": "De ce a încetat poporul să-l urmărească pe Israel?",
    "opts": [
-    "pentru că se întuneca",
     "pentru că era obosit",
-    "pentru că venea David"
+    "pentru că venea David",
+    "pentru că se întuneca"
    ],
    "a": [],
    "explain": "Niciun răspuns corect: Ioab a sunat din trâmbiță și i-a oprit (18:16)."

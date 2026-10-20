@@ -34,11 +34,11 @@
    "ref": "4:4",
    "q": "Al cui fiu era Mefiboșet, băiatul olog de picioare?",
    "opts": [
-    "al lui Saul",
     "al lui Ionatan",
+    "al lui Saul",
     "al lui Abner"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.4.sub12.5",
@@ -47,11 +47,11 @@
    "ref": "4:8",
    "q": "Ce i-au adus lui David, la Hebron, Recab și Baana?",
    "opts": [
-    "coroana lui Saul",
     "capul lui Iș-Boșet",
-    "sulița lui Abner"
+    "sulița lui Abner",
+    "coroana lui Saul"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.4.sub12.6",
@@ -60,11 +60,11 @@
    "ref": "4:4",
    "q": "Câți ani avea Mefiboșet când a venit vestea morții lui Saul și a lui Ionatan?",
    "opts": [
-    "doi ani",
     "cinci ani",
-    "zece ani"
+    "zece ani",
+    "doi ani"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.4.sub12.7",
@@ -169,8 +169,8 @@
    "ref": "4:4",
    "q": "Ce aflăm despre Mefiboșet, în 2 Samuel 4?",
    "opts": [
-    "era fiul lui Ionatan",
     "era olog de picioare",
+    "era fiul lui Ionatan",
     "era împărat la Mahanaim"
    ],
    "a": [
@@ -202,9 +202,9 @@
    "ref": "4:5",
    "q": "Când au intrat Recab și Baana în casa lui Iș-Boșet?",
    "opts": [
+    "seara, la cină",
     "noaptea, pe întuneric",
-    "dimineața devreme",
-    "seara, la cină"
+    "dimineața devreme"
    ],
    "a": [],
    "explain": "Niciun răspuns corect: au venit în timpul zădufului zilei, când Iș-Boșet își făcea somnul de amiază (4:5)."
@@ -242,10 +242,10 @@
    "q": "Ce făcea Iș-Boșet când au intrat Recab și Baana în casa lui?",
    "opts": [
     "mânca",
-    "își făcea somnul de amiază",
-    "se ruga"
+    "se ruga",
+    "își făcea somnul de amiază"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.4.12-13.5",
@@ -254,11 +254,11 @@
    "ref": "4:10",
    "q": "Pe cine pomenește David că l-a omorât la Țiclag, când i-a răspuns lui Recab și Baana?",
    "opts": [
-    "pe cel ce i-a spus că Saul a murit",
     "pe Abner",
-    "pe un filistean"
+    "pe un filistean",
+    "pe cel ce i-a spus că Saul a murit"
    ],
-   "a": 0
+   "a": 2
   },
   {
    "id": "2sa.4.12-13.6",
@@ -267,11 +267,11 @@
    "ref": "4:12",
    "q": "Unde au fost spânzurați Recab și Baana, din porunca lui David?",
    "opts": [
+    "la Țiclag",
     "la poarta Hebronului",
-    "la marginea iazului din Hebron",
-    "la Țiclag"
+    "la marginea iazului din Hebron"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.4.12-13.7",
@@ -389,12 +389,12 @@
    "q": "Ce au făcut oamenii lui David cu Recab și Baana, din porunca lui?",
    "opts": [
     "i-au omorât",
-    "le-au tăiat mâinile și picioarele",
-    "i-au trimis la Mahanaim"
+    "i-au trimis la Mahanaim",
+    "le-au tăiat mâinile și picioarele"
    ],
    "a": [
     0,
-    1
+    2
    ]
   },
   {
@@ -404,13 +404,13 @@
    "ref": "4:7",
    "q": "Ce au făcut Recab și Baana după ce l-au omorât pe Iș-Boșet?",
    "opts": [
+    "s-au ascuns în casă",
     "i-au tăiat capul",
-    "au mers toată noaptea prin câmpie",
-    "s-au ascuns în casă"
+    "au mers toată noaptea prin câmpie"
    ],
    "a": [
-    0,
-    1
+    1,
+    2
    ]
   },
   {
@@ -461,11 +461,11 @@
    "ref": "4:4",
    "q": "De unde a venit vestea morții lui Saul și a lui Ionatan, când Mefiboșet avea cinci ani?",
    "opts": [
+    "din Gabaon",
     "din Hebron",
-    "din Izreel",
-    "din Gabaon"
+    "din Izreel"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.4.14-15.5",
@@ -475,10 +475,10 @@
    "q": "Din ce cetate erau Recab și Baana, fiii lui Rimon?",
    "opts": [
     "din Ghitaim",
-    "din Beerot",
-    "din Gabaon"
+    "din Gabaon",
+    "din Beerot"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.4.14-15.6",
@@ -488,10 +488,10 @@
    "q": "De ce i-a pedepsit David pe Recab și Baana?",
    "opts": [
     "pentru că furaseră grâu",
-    "pentru că omorâseră un om nevinovat în casa și în patul lui",
-    "pentru că nu-i aduseseră și coroana"
+    "pentru că nu-i aduseseră și coroana",
+    "pentru că omorâseră un om nevinovat în casa și în patul lui"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.4.14-15.7",
@@ -600,12 +600,12 @@
    "ref": "4:4",
    "q": "Cine era olog de picioare, în 2 Samuel 4?",
    "opts": [
-    "Mefiboșet",
     "Iș-Boșet",
+    "Mefiboșet",
     "Rimon"
    ],
    "a": [
-    0
+    1
    ]
   },
   {
@@ -615,13 +615,13 @@
    "ref": "4:8",
    "q": "Ce au spus Recab și Baana despre Iș-Boșet, când au adus capul lui la Hebron?",
    "opts": [
+    "că le ceruse el să-l omoare",
     "că era vrăjmașul lui David",
-    "că voia să-i ia viața lui David",
-    "că le ceruse el să-l omoare"
+    "că voia să-i ia viața lui David"
    ],
    "a": [
-    0,
-    1
+    1,
+    2
    ]
   },
   {
@@ -631,8 +631,8 @@
    "ref": "4:2",
    "q": "Din ce seminție erau Recab și Baana?",
    "opts": [
-    "din Iuda",
     "din Efraim",
+    "din Iuda",
     "din Levi"
    ],
    "a": [],
@@ -670,11 +670,11 @@
    "ref": "4:2",
    "q": "Al cui fiu erau Recab și Baana?",
    "opts": [
-    "al lui Ner",
     "al lui Rimon",
-    "al lui Laiș"
+    "al lui Laiș",
+    "al lui Ner"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.4.16-17.5",
@@ -683,11 +683,11 @@
    "ref": "4:3",
    "q": "Unde fugiseră beerotiții, după cum spune 2 Samuel 4?",
    "opts": [
-    "la Beerot",
     "la Gabaon",
-    "la Ghitaim"
+    "la Ghitaim",
+    "la Beerot"
    ],
-   "a": 2
+   "a": 1
   },
   {
    "id": "2sa.4.16-17.6",
@@ -696,9 +696,9 @@
    "ref": "4:10",
    "q": "Ce credea omul care i-a adus lui David vestea morții lui Saul la Țiclag, după cuvintele lui David?",
    "opts": [
-    "că va fi pedepsit",
+    "că David îl va face căpetenie",
     "că-i aduce o veste bună",
-    "că David îl va face căpetenie"
+    "că va fi pedepsit"
    ],
    "a": 1
   },
@@ -809,13 +809,13 @@
    "ref": "4:5-6",
    "q": "Ce aflăm despre felul în care au intrat Recab și Baana în casa lui Iș-Boșet?",
    "opts": [
-    "au venit în zăduful zilei",
     "s-au dat drept negustori de grâu",
-    "au intrat pe fereastră"
+    "au intrat pe fereastră",
+    "au venit în zăduful zilei"
    ],
    "a": [
     0,
-    1
+    2
    ]
   },
   {
@@ -825,13 +825,13 @@
    "ref": "4:12",
    "q": "Ce s-a făcut cu capul lui Iș-Boșet, la Hebron?",
    "opts": [
-    "a fost luat de oamenii lui David",
     "a fost îngropat în mormântul lui Abner",
-    "a fost trimis la Mahanaim"
+    "a fost trimis la Mahanaim",
+    "a fost luat de oamenii lui David"
    ],
    "a": [
     0,
-    1
+    2
    ]
   },
   {
@@ -893,9 +893,9 @@
    "ref": "4:9",
    "q": "Cui i-a răspuns David: „Viu este Domnul, care m-a izbăvit din orice primejdie\"?",
    "opts": [
-    "lui Abner și lui Ioab",
+    "lui Mefiboșet",
     "lui Recab și lui Baana",
-    "lui Mefiboșet"
+    "lui Abner și lui Ioab"
    ],
    "a": 1
   },
@@ -906,11 +906,11 @@
    "ref": "4:8",
    "q": "Ce spuneau Recab și Baana că a făcut Domnul în ziua aceea, aducând capul lui Iș-Boșet?",
    "opts": [
-    "că a dat împărăția lui Iuda",
     "că a răzbunat pe împărat împotriva lui Saul și a neamului lui",
+    "că a dat împărăția lui Iuda",
     "că a pedepsit pe Abner"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.4.18+.7",
@@ -1024,8 +1024,8 @@
    "q": "Ce aflăm despre Mefiboșet în 2 Samuel 4:4?",
    "opts": [
     "avea cinci ani la moartea tatălui său",
-    "doica lui a fugit cu el",
-    "a rămas olog"
+    "a rămas olog",
+    "doica lui a fugit cu el"
    ],
    "a": [
     0,
@@ -1040,13 +1040,13 @@
    "ref": "4:2-3",
    "q": "Ce se spune despre Beerot în 2 Samuel 4?",
    "opts": [
-    "era privit ca făcând parte din Beniamin",
+    "era cetatea lui Iș-Boșet",
     "beerotiții fugiseră la Ghitaim",
-    "era cetatea lui Iș-Boșet"
+    "era privit ca făcând parte din Beniamin"
    ],
    "a": [
-    0,
-    1
+    1,
+    2
    ]
   },
   {
