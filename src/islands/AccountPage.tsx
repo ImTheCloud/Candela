@@ -1,6 +1,7 @@
 import { useState } from 'preact/hooks';
 import { ageGroup, ageLabel, validBirthYear } from '../lib/age';
 import { errorText, profile, profileError, profileLoaded, setBirthYear, signIn, signOut, user } from '../lib/session';
+import Children from './Children';
 import ThemePicker from './ThemePicker';
 
 export default function AccountPage() {
@@ -68,6 +69,8 @@ function Profile() {
         {profileLoaded.value && !profileError.value && <BirthYear current={p?.birthYear ?? null} />}
       </section>
 
+      {p && <Children />}
+
       <section class="card auth-card stack">
         <h3>Aspect</h3>
         <ThemePicker />
@@ -89,7 +92,8 @@ function BirthYear({ current }: { current: number | null }) {
       <div class="row-between">
         <div>
           <p class="small muted">Categoria de vârstă</p>
-          <p><strong>{ageLabel(ageGroup(current))}</strong> <span class="muted">· anul nașterii {current}</span></p>
+          <p><strong>{ageLabel(ageGroup(current))}</strong></p>
+          <p class="small muted">Anul nașterii: {current}</p>
         </div>
         <button class="btn btn-ghost btn-sm" onClick={() => setEditing(true)}>Schimbă</button>
       </div>

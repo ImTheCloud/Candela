@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'preact/hooks';
+import { useEffect, useRef, useState } from 'preact/hooks';
 import { validBirthYear } from '../lib/age';
 import { errorText, signUp, user } from '../lib/session';
 
@@ -6,10 +6,11 @@ export default function SignUpForm() {
   const [f, setF] = useState({ firstName: '', lastName: '', email: '', password: '', birthYear: '', isParent: false });
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
+  const submitting = useRef(false);
 
-  // Already signed in (or just created): the account page takes over.
+  // Someone already signed in has nothing to do here. During sign-up, wait until the profile is written.
   useEffect(() => {
-    if (user.value) location.replace('/cont');
+    if (user.value && !submitting.current) location.replace('/cont');
   }, [user.value]);
 
   const set = (k: keyof typeof f) => (e: Event) => {
@@ -24,9 +25,12 @@ export default function SignUpForm() {
     if (!validBirthYear(y)) return setError('Scrie anul nașterii cu patru cifre, de exemplu 1990.');
     setBusy(true);
     setError('');
+    submitting.current = true;
     try {
       await signUp({ ...f, birthYear: y });
+      location.replace('/');
     } catch (err) {
+      submitting.current = false;
       setError(errorText(err));
       setBusy(false);
     }
