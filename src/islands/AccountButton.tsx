@@ -1,3 +1,4 @@
+import { player } from '../lib/players';
 import { user } from '../lib/session';
 
 export default function AccountButton() {
@@ -9,8 +10,8 @@ export default function AccountButton() {
     return <a class="btn btn-ghost btn-sm" href="/cont">Intră în cont</a>;
   }
   return (
-    <a class="avatar" href="/cont" aria-label="Contul meu">
-      {initials(u.displayName ?? u.email ?? '?')}
+    <a class="avatar" href="/cont" aria-label={`Contul meu (joacă ${player.value.name})`}>
+      {initials(player.value.name || u.email || '?')}
     </a>
   );
 }

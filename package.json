@@ -3,7 +3,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "astro dev",
+    "dev": "firebase emulators:exec --project candela-64d25 --only auth,firestore \"PUBLIC_EMULATORS=1 astro dev --port 4321\"",
+    "dev:live": "astro dev --port 4321",
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check"

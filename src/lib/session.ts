@@ -102,6 +102,12 @@ export function setBirthYear(birthYear: number) {
   });
 }
 
+export function setParent(isParent: boolean) {
+  const u = auth.currentUser;
+  if (!u) throw new Error('not_signed_in');
+  return updateDoc(doc(db, 'users', u.uid), { isParent });
+}
+
 function clean(s: string): string {
   return s.trim().replace(/\s+/g, ' ');
 }
