@@ -1,0 +1,81 @@
+---
+import '@fontsource-variable/inter';
+import '@fontsource-variable/fraunces';
+import '@fontsource-variable/source-serif-4';
+import '../styles/global.css';
+import Flame from '../components/Flame.astro';
+import AccountButton from '../islands/AccountButton';
+
+interface Crumb { href: string; label: string }
+interface Props {
+  title: string;
+  description?: string;
+  /** Path back up the site, shown above the page title. */
+  crumbs?: Crumb[];
+}
+const { title, description = 'Teste biblice după traducerea Cornilescu: 1 Samuel și 2 Samuel.', crumbs = [] } = Astro.props;
+const fullTitle = title === 'Candela' ? title : `${title} · Candela`;
+---
+<!doctype html>
+<html lang="ro">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f7f1e8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#17120e" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="/icons/icon-192.png" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={new URL('/og.png', Astro.site)} />
+    <script is:inline>
+      try { const t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch {}
+    </script>
+  </head>
+  <body>
+    <header class="top">
+      <div class="wrap top-row">
+        <a href="/" class="brand" aria-label="Candela, acasă">
+          <Flame />
+          <span>Candela</span>
+        </a>
+        <AccountButton client:only="preact">
+          <span slot="fallback" class="account-placeholder"></span>
+        </AccountButton>
+      </div>
+    </header>
+    <main>
+      {crumbs.length > 0 && (
+        <nav class="wrap crumbs" aria-label="Unde ești">
+          {crumbs.map((c) => <><a href={c.href}>{c.label}</a><span aria-hidden="true">/</span></>)}
+          <span aria-current="page">{title}</span>
+        </nav>
+      )}
+      <slot />
+    </main>
+    <footer class="wrap foot small muted">Textul biblic: traducerea Dumitru Cornilescu.</footer>
+  </body>
+</html>
+
+<style>
+  .top {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+    padding-top: env(safe-area-inset-top);
+  }
+  .top-row { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+  .brand { display: flex; align-items: center; gap: 8px; text-decoration: none; font: 600 1.3rem var(--f-display); }
+  .account-placeholder { display: block; width: 44px; height: 44px; }
+  .crumbs {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
+    padding-top: 20px; font-size: 0.875rem; color: var(--ink-3);
+  }
+  .crumbs a { color: var(--ink-2); text-decoration: none; }
+  .crumbs a:hover { color: var(--oil-ink); text-decoration: underline; }
+  .crumbs [aria-current] { color: var(--ink-2); font-weight: 500; }
+  .foot { padding-block: 40px calc(24px + env(safe-area-inset-bottom)); text-align: center; }
+</style>

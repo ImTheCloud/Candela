@@ -1,0 +1,36 @@
+---
+import Base from '../layouts/Base.astro';
+import { BOOKS } from '../lib/books';
+---
+<Base title="Candela">
+  <section class="wrap hero">
+    <p class="eyebrow">Teste biblice · traducerea Cornilescu</p>
+    <h1>Citește cartea, apoi verifică ce ai reținut.</h1>
+    <p class="muted lead">Întrebări pe capitole, potrivite vârstei tale, ca la examen.</p>
+  </section>
+
+  <section class="wrap books" aria-label="Cărți">
+    {BOOKS.map((b) => (
+      <a class="card book" href={`/${b.slug}`}>
+        <span class="book-name">{b.name}</span>
+        <span class="muted">{b.summary}</span>
+        <span class="book-meta small">{b.chapters} de capitole</span>
+      </a>
+    ))}
+  </section>
+</Base>
+
+<style>
+  .hero { padding-block: 40px 28px; display: flex; flex-direction: column; gap: 12px; }
+  .hero h1 { max-width: 18ch; }
+  .lead { font-size: 1.1rem; max-width: 36ch; }
+  .books { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); }
+  .book {
+    display: flex; flex-direction: column; gap: 8px; padding: 24px;
+    text-decoration: none; transition: border-color .15s, transform .15s;
+  }
+  .book:hover { border-color: var(--oil); transform: translateY(-2px); }
+  .book-name { font: 600 1.6rem var(--f-display); }
+  .book-meta { margin-top: 8px; color: var(--oil-ink); font-weight: 600; }
+  @media (prefers-reduced-motion: reduce) { .book:hover { transform: none; } }
+</style>

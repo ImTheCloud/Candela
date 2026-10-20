@@ -1,0 +1,12 @@
+---
+import Base from '../../layouts/Base.astro';
+import SignUpForm from '../../islands/SignUpForm';
+---
+<Base title="Cont nou" crumbs={[{ href: '/cont', label: 'Cont' }]}>
+  <section class="wrap narrow page">
+    <SignUpForm client:only="preact">
+      <div slot="fallback" class="card auth-card skeleton"></div>
+    </SignUpForm>
+  </section>
+</Base>
+<style>.page { padding-block: 20px 32px; }</style>

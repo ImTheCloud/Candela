@@ -1,0 +1,76 @@
+---
+import Base from '../../layouts/Base.astro';
+import { BOOKS, getText, type Book } from '../../lib/books';
+
+export function getStaticPaths() {
+  return BOOKS.map((book) => ({ params: { book: book.slug }, props: { book } }));
+}
+
+const { book } = Astro.props as { book: Book };
+const text = getText(book.slug);
+const chapters = Array.from({ length: book.chapters }, (_, i) => i + 1);
+
+// Ways to practise, built one after another (see docs/v2-plan.md).
+const modes = [
+  { name: 'Pe capitol', text: 'Alegi unul sau mai multe capitole.' },
+  { name: 'Pe tip de întrebare', text: 'Doar adevărat/fals, doar completări, doar asocieri…' },
+  { name: 'Greșelile mele', text: 'Întrebările greșite revin până le știi.' },
+  { name: 'Examene date', text: 'Examenele reale din anii trecuți, notate din 100.' },
+  { name: 'Examen alb', text: 'Un examen nou, ca cel adevărat.' },
+];
+---
+<Base title={book.name} description={`${book.name}: ${book.summary}`} crumbs={[{ href: '/', label: 'Acasă' }]}>
+  <header class="wrap head stack">
+    <h1>{book.name}</h1>
+    <p class="muted">{book.summary}</p>
+  </header>
+
+  <section class="wrap block stack" aria-labelledby="read">
+    <h2 id="read">Citește</h2>
+    {text ? (
+      <ol class="chapters">
+        {chapters.map((n) => (
+          <li><a href={`/${book.slug}/citire/${n}`} aria-label={`Capitolul ${n}`}>{n}</a></li>
+        ))}
+      </ol>
+    ) : (
+      <p class="card empty muted">Textul cărții va fi adăugat în curând.</p>
+    )}
+  </section>
+
+  <section class="wrap block stack" aria-labelledby="practice">
+    <h2 id="practice">Exersează</h2>
+    <ul class="modes">
+      {modes.map((m) => (
+        <li class="card mode">
+          <div>
+            <p class="mode-name">{m.name}</p>
+            <p class="small muted">{m.text}</p>
+          </div>
+          <span class="soon small">În lucru</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+</Base>
+
+<style>
+  .head { padding-block: 12px 8px; --gap: 8px; }
+  .block { padding-top: 28px; --gap: 14px; }
+  .chapters {
+    list-style: none; margin: 0; padding: 0;
+    display: grid; gap: 8px; grid-template-columns: repeat(auto-fill, minmax(52px, 1fr));
+  }
+  .chapters a {
+    display: grid; place-items: center; aspect-ratio: 1; border-radius: var(--r-sm);
+    background: var(--surface); border: 1px solid var(--line);
+    font: 600 1.05rem var(--f-body); text-decoration: none; font-variant-numeric: tabular-nums;
+    transition: border-color .15s, background-color .15s;
+  }
+  .chapters a:hover { border-color: var(--oil); background: var(--oil-soft); }
+  .empty { padding: 20px; }
+  .modes { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .mode { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 18px; box-shadow: none; }
+  .mode-name { font-weight: 600; }
+  .soon { flex: none; padding: 4px 10px; border-radius: 999px; background: var(--surface-2); color: var(--ink-2); }
+</style>

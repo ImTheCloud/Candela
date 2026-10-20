@@ -1,0 +1,21 @@
+import { user } from '../lib/session';
+
+export default function AccountButton() {
+  const u = user.value;
+  if (u === undefined) return <span class="account-placeholder" />;
+  if (!u) {
+    // The account pages already show the sign-in form.
+    if (location.pathname.startsWith('/cont')) return <span class="account-placeholder" />;
+    return <a class="btn btn-ghost btn-sm" href="/cont">Intră în cont</a>;
+  }
+  return (
+    <a class="avatar" href="/cont" aria-label="Contul meu">
+      {initials(u.displayName ?? u.email ?? '?')}
+    </a>
+  );
+}
+
+function initials(name: string): string {
+  const parts = name.trim().split(/\s+/);
+  return ((parts[0]?.[0] ?? '') + (parts.length > 1 ? parts[parts.length - 1][0] : '')).toUpperCase();
+}
