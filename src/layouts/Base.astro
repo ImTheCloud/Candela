@@ -28,12 +28,14 @@ const fullTitle = title === 'Candela' ? title : `${title} · Candela`;
     <meta name="theme-color" content="#17120e" media="(prefers-color-scheme: dark)" />
     <link rel="icon" href="/icons/icon-192.png" />
     <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={new URL('/og.png', Astro.site)} />
     <script is:inline>
       try { const t = localStorage.getItem('theme'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch {}
     </script>
+    {import.meta.env.PROD && <script is:inline>if ('serviceWorker' in navigator) addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));</script>}
   </head>
   <body>
     <header class="top">
