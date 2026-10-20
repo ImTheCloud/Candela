@@ -34,11 +34,11 @@
    "ref": "2:1",
    "q": "În ce cetate i-a spus Domnul lui David să se suie, după moartea lui Saul?",
    "opts": [
+    "Betleem",
     "Ierusalim",
-    "Hebron",
-    "Betleem"
+    "Hebron"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.2.sub12.5",
@@ -47,11 +47,11 @@
    "ref": "2:18",
    "q": "Cum era Asael, fratele lui Ioab, după cum spune Biblia?",
    "opts": [
+    "foarte bătrân",
     "foarte puternic",
-    "iute de picioare ca o căprioară",
-    "foarte bătrân"
+    "iute de picioare ca o căprioară"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.2.sub12.6",
@@ -60,11 +60,11 @@
    "ref": "2:28",
    "q": "Ce a făcut Ioab ca să oprească lupta dintre oamenii lui David și oamenii lui Abner?",
    "opts": [
-    "a strigat tare",
     "a sunat din trâmbiță",
-    "a ridicat un steag"
+    "a ridicat un steag",
+    "a strigat tare"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.2.sub12.7",
@@ -169,8 +169,8 @@
    "ref": "2:2",
    "q": "Pe cine a luat David cu el când s-a suit la Hebron?",
    "opts": [
-    "pe Ahinoam",
     "pe Abigail",
+    "pe Ahinoam",
     "pe Mical"
    ],
    "a": [
@@ -203,12 +203,12 @@
    "ref": "2:4",
    "q": "Ce s-a întâmplat la Hebron, după ce David s-a suit acolo?",
    "opts": [
+    "Saul a venit să-l vadă",
     "bărbații lui Iuda l-au uns pe David împărat",
-    "David a zidit un templu",
-    "Saul a venit să-l vadă"
+    "David a zidit un templu"
    ],
    "a": [
-    0
+    1
    ],
    "explain": "Saul murise deja; la Hebron David a fost uns împărat peste casa lui Iuda."
   },
@@ -257,11 +257,11 @@
    "ref": "2:8",
    "q": "Unde l-a trecut Abner pe Iș-Boșet, fiul lui Saul, ca să-l facă împărat?",
    "opts": [
-    "la Ghibea",
     "la Mahanaim",
+    "la Ghibea",
     "la Hebron"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.2.12-13.6",
@@ -396,13 +396,13 @@
    "ref": "2:5-6",
    "q": "Ce le-a trimis David să spună oamenilor din Iabesul Galaadului, care îl îngropaseră pe Saul?",
    "opts": [
-    "„Binecuvântați să fiți de Domnul!\"",
+    "că trebuie să vină la Hebron",
     "că le va face și el bine",
-    "că trebuie să vină la Hebron"
+    "„Binecuvântați să fiți de Domnul!\""
    ],
    "a": [
-    0,
-    1
+    1,
+    2
    ]
   },
   {
@@ -412,13 +412,13 @@
    "ref": "2:21-22",
    "q": "Ce i-a spus Abner lui Asael, care îl urmărea?",
    "opts": [
-    "„Abate-te la dreapta sau la stânga\"",
     "„Cum voi ridica apoi fața înaintea fratelui tău Ioab?\"",
-    "„Du-te în pace la Ioab\""
+    "„Du-te în pace la Ioab\"",
+    "„Abate-te la dreapta sau la stânga\""
    ],
    "a": [
     0,
-    1
+    2
    ]
   },
   {
@@ -454,10 +454,10 @@
    "q": "Ce înseamnă numele Helcat-Hațurim, dat locului de lângă Gabaon?",
    "opts": [
     "Locul Lacrimilor",
-    "Locul Săbiilor",
-    "Locul Iazului"
+    "Locul Iazului",
+    "Locul Săbiilor"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.2.14-15.5",
@@ -466,11 +466,11 @@
    "ref": "2:24",
    "q": "Unde au ajuns Ioab și Abișai, urmărindu-l pe Abner, la asfințitul soarelui?",
    "opts": [
-    "la coasta Ama",
     "la iazul din Gabaon",
+    "la coasta Ama",
     "la Iordan"
    ],
-   "a": 0
+   "a": 1
   },
   {
    "id": "2sa.2.14-15.6",
@@ -479,11 +479,11 @@
    "ref": "2:14",
    "q": "Cine a propus ca tinerii să se bată înaintea celor două oștiri, la iazul din Gabaon?",
    "opts": [
-    "Ioab",
     "Abner",
-    "Asael"
+    "Asael",
+    "Ioab"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.2.14-15.7",
@@ -609,12 +609,12 @@
    "q": "Ce s-a întâmplat la asfințitul soarelui, după moartea lui Asael?",
    "opts": [
     "Ioab și Abișai au ajuns la coasta Ama",
-    "fiii lui Beniamin s-au adunat în urma lui Abner",
-    "Abner s-a predat lui Ioab"
+    "Abner s-a predat lui Ioab",
+    "fiii lui Beniamin s-au adunat în urma lui Abner"
    ],
    "a": [
     0,
-    1
+    2
    ]
   },
   {
@@ -624,8 +624,8 @@
    "ref": "2:32",
    "q": "Unde s-au revărsat zorile peste Ioab și oamenii lui, după ce l-au îngropat pe Asael?",
    "opts": [
-    "la Gabaon",
     "la Mahanaim",
+    "la Gabaon",
     "la Betleem"
    ],
    "a": [],
@@ -663,11 +663,11 @@
    "ref": "2:8",
    "q": "Al cui fiu era Abner, căpetenia oștirii lui Saul?",
    "opts": [
-    "al lui Chis",
     "al lui Ner",
-    "al lui Abiel"
+    "al lui Abiel",
+    "al lui Chis"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.2.16-17.5",
@@ -676,11 +676,11 @@
    "ref": "2:24",
    "q": "În dreptul cărui loc este coasta Ama, unde au ajuns Ioab și Abișai urmărindu-l pe Abner?",
    "opts": [
+    "în dreptul Bitronului",
     "în dreptul Ghiahului",
-    "în dreptul Gabaonului",
-    "în dreptul Bitronului"
+    "în dreptul Gabaonului"
    ],
-   "a": 0
+   "a": 1
   },
   {
    "id": "2sa.2.16-17.6",
@@ -689,11 +689,11 @@
    "ref": "2:23",
    "q": "Ce făceau cei care ajungeau în locul unde căzuse Asael mort?",
    "opts": [
+    "îl ridicau",
     "plângeau",
-    "se opreau",
-    "îl ridicau"
+    "se opreau"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.2.16-17.7",
@@ -807,8 +807,8 @@
    "q": "Ce aflăm despre Mahanaim, în 2 Samuel 2?",
    "opts": [
     "Abner l-a trecut acolo pe Iș-Boșet",
-    "Abner a ieșit de acolo spre Gabaon",
-    "Abner s-a întors acolo după luptă"
+    "Abner s-a întors acolo după luptă",
+    "Abner a ieșit de acolo spre Gabaon"
    ],
    "a": [
     0,
@@ -824,12 +824,12 @@
    "q": "Ce i-a cerut Abner lui Asael să facă, în loc să-l urmărească?",
    "opts": [
     "să se abată la dreapta sau la stânga",
-    "să pună mâna pe unul din tineri și să-i ia armele",
-    "să se întoarcă la Hebron"
+    "să se întoarcă la Hebron",
+    "să pună mâna pe unul din tineri și să-i ia armele"
    ],
    "a": [
     0,
-    1
+    2
    ]
   },
   {
@@ -840,8 +840,8 @@
    "q": "Câți oameni lipseau din oamenii lui David după lupta de lângă Gabaon, afară de Asael?",
    "opts": [
     "doisprezece",
-    "trei sute șaizeci",
-    "douăzeci"
+    "douăzeci",
+    "trei sute șaizeci"
    ],
    "a": [],
    "explain": "Niciun răspuns corect: lipseau nouăsprezece inși și Asael (2:30)."
@@ -879,10 +879,10 @@
    "q": "Ce ținut au străbătut în întregime Abner și oamenii lui, după ce au trecut Iordanul?",
    "opts": [
     "Ghiahul",
-    "Bitronul",
-    "Galaadul"
+    "Galaadul",
+    "Bitronul"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.2.18+.5",
@@ -891,9 +891,9 @@
    "ref": "2:31",
    "q": "Câți oameni din Beniamin și ai lui Abner omorâseră oamenii lui David în lupta de lângă Gabaon?",
    "opts": [
-    "două sute",
+    "patru sute",
     "trei sute șaizeci",
-    "patru sute"
+    "două sute"
    ],
    "a": 1
   },
@@ -1021,8 +1021,8 @@
    "ref": "2:8-9",
    "q": "Peste ce l-a pus Abner împărat pe Iș-Boșet, la Mahanaim?",
    "opts": [
-    "peste Izreel",
     "peste Beniamin",
+    "peste Izreel",
     "peste Efraim"
    ],
    "a": [
@@ -1054,9 +1054,9 @@
    "ref": "2:2",
    "q": "Cum este numită Abigail, nevasta lui David, în 2 Samuel 2?",
    "opts": [
+    "fiica lui Saul",
     "din Izreel",
-    "din Ghiah",
-    "fiica lui Saul"
+    "din Ghiah"
    ],
    "a": [],
    "explain": "Niciun răspuns corect: este „Abigail din Carmel, nevasta lui Nabal\" (2:2)."

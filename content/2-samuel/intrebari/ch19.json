@@ -34,11 +34,11 @@
    "ref": "19:32",
    "q": "Câți ani avea Barzilai, Galaaditul, care l-a ajutat pe David la Mahanaim?",
    "opts": [
-    "cincizeci",
     "optzeci",
-    "o sută"
+    "o sută",
+    "cincizeci"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.19.sub12.5",
@@ -48,10 +48,10 @@
    "q": "Până la ce râu a ajuns David când s-a întors spre Ierusalim?",
    "opts": [
     "Eufrat",
-    "Iordan",
-    "Nil"
+    "Nil",
+    "Iordan"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.19.sub12.6",
@@ -60,11 +60,11 @@
    "ref": "19:39",
    "q": "Ce a făcut David când s-a despărțit de Barzilai?",
    "opts": [
-    "i-a dat o cetate",
     "l-a sărutat și l-a binecuvântat",
+    "i-a dat o cetate",
     "l-a făcut căpetenie"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.19.sub12.7",
@@ -187,8 +187,8 @@
    "q": "Ce a mărturisit Șimei înaintea lui David?",
    "opts": [
     "că a păcătuit",
-    "că Absalom l-a trimis",
-    "că n-a blestemat"
+    "că n-a blestemat",
+    "că Absalom l-a trimis"
    ],
    "a": [
     0
@@ -202,8 +202,8 @@
    "q": "Unde l-a chemat David pe Barzilai să locuiască?",
    "opts": [
     "la Hebron",
-    "la Mahanaim",
-    "la Betleem"
+    "la Betleem",
+    "la Mahanaim"
    ],
    "a": [],
    "explain": "Niciun răspuns corect: l-a chemat la el, în Ierusalim (19:33)."
@@ -254,10 +254,10 @@
    "q": "Unde s-a dus Iuda ca să iasă înaintea împăratului?",
    "opts": [
     "la Ierusalim",
-    "la Ghilgal",
-    "la Mahanaim"
+    "la Mahanaim",
+    "la Ghilgal"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.19.12-13.6",
@@ -266,11 +266,11 @@
    "ref": "19:26",
    "q": "Pe cine a învinovățit Mefiboșet că l-a înșelat?",
    "opts": [
-    "pe Șimei",
     "pe slujitorul său",
+    "pe Șimei",
     "pe Ioab"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.19.12-13.7",
@@ -383,9 +383,9 @@
    "ref": "19:24",
    "q": "Cine s-a coborât înaintea lui David la întoarcere?",
    "opts": [
-    "Mefiboșet",
     "Șimei",
-    "Barzilai"
+    "Barzilai",
+    "Mefiboșet"
    ],
    "a": [
     0,
@@ -416,8 +416,8 @@
    "ref": "19:17",
    "q": "Câți oameni din Beniamin avea Șimei cu el?",
    "opts": [
-    "o sută",
     "cinci sute",
+    "o sută",
     "zece mii"
    ],
    "a": [],
@@ -455,11 +455,11 @@
    "ref": "19:6",
    "q": "Ce i-a reproșat Ioab lui David?",
    "opts": [
-    "că nu luptase",
     "că iubește pe cei ce-l urăsc și urăște pe cei ce-l iubesc",
+    "că nu luptase",
     "că l-a iertat pe Șimei"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.19.14-15.5",
@@ -468,11 +468,11 @@
    "ref": "19:20",
    "q": "Din ce casă spunea Șimei că vine cel dintâi înaintea împăratului?",
    "opts": [
+    "din casa lui Iuda",
     "din casa lui Saul",
-    "din toată casa lui Iosif",
-    "din casa lui Iuda"
+    "din toată casa lui Iosif"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.19.14-15.6",
@@ -481,11 +481,11 @@
    "ref": "19:37",
    "q": "Pe cine a trimis Barzilai cu împăratul în locul lui?",
    "opts": [
+    "pe Machir",
     "pe fiul său Amasa",
-    "pe robul său Chimham",
-    "pe Machir"
+    "pe robul său Chimham"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.19.14-15.7",
@@ -602,13 +602,13 @@
    "ref": "19:7",
    "q": "Ce l-a amenințat Ioab pe David că se va întâmpla dacă nu iese la popor?",
    "opts": [
-    "nu va rămâne un om cu el în noaptea aceea",
     "va fi o nenorocire mai rea decât toate",
-    "Ioab se va face împărat"
+    "Ioab se va face împărat",
+    "nu va rămâne un om cu el în noaptea aceea"
    ],
    "a": [
     0,
-    1
+    2
    ]
   },
   {
@@ -618,13 +618,13 @@
    "ref": "19:16-17",
    "q": "Cine a venit cu Șimei la Iordan?",
    "opts": [
-    "o mie de oameni din Beniamin",
+    "Ahitofel",
     "Țiba",
-    "Ahitofel"
+    "o mie de oameni din Beniamin"
    ],
    "a": [
-    0,
-    1
+    1,
+    2
    ]
   },
   {
@@ -634,9 +634,9 @@
    "ref": "19:26",
    "q": "Ce spunea Mefiboșet că voise să facă?",
    "opts": [
-    "să rămână la Ierusalim",
+    "să ia pământurile lui Țiba",
     "să-l urmeze pe Absalom",
-    "să ia pământurile lui Țiba"
+    "să rămână la Ierusalim"
    ],
    "a": [],
    "explain": "Niciun răspuns corect: voise să pună șaua pe măgar și să meargă cu împăratul (19:26)."
@@ -686,9 +686,9 @@
    "ref": "19:13",
    "q": "Ce i-a promis David lui Amasa?",
    "opts": [
-    "o cetate",
+    "că va fi preot",
     "că va fi căpetenia oștirii în locul lui Ioab",
-    "că va fi preot"
+    "o cetate"
    ],
    "a": 1
   },
@@ -699,11 +699,11 @@
    "ref": "19:18",
    "q": "Ce tocmai pornise când Șimei s-a închinat înaintea lui David?",
    "opts": [
+    "oștirea",
     "carul împăratului",
-    "luntrea care să treacă și casa împăratului",
-    "oștirea"
+    "luntrea care să treacă și casa împăratului"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.19.16-17.7",
@@ -821,12 +821,12 @@
    "q": "Ce spune Mefiboșet despre casa tatălui său?",
    "opts": [
     "că erau toți vrednici de moarte înaintea împăratului",
-    "că totuși David l-a pus la masa lui",
-    "că i s-a făcut nedreptate"
+    "că i s-a făcut nedreptate",
+    "că totuși David l-a pus la masa lui"
    ],
    "a": [
     0,
-    1
+    2
    ]
   },
   {
@@ -836,9 +836,9 @@
    "ref": "19:35",
    "q": "Ce întrebări pune Barzilai despre bătrânețea lui?",
    "opts": [
-    "dacă mai cunoaște ce este bun și ce este rău",
+    "de ce să fie o povară pentru împărat",
     "dacă mai poate auzi glasul cântăreților",
-    "de ce să fie o povară pentru împărat"
+    "dacă mai cunoaște ce este bun și ce este rău"
    ],
    "a": [
     0,
@@ -853,9 +853,9 @@
    "ref": "19:16",
    "q": "Din ce seminție era Șimei?",
    "opts": [
+    "din Levi",
     "din Iuda",
-    "din Efraim",
-    "din Levi"
+    "din Efraim"
    ],
    "a": [],
    "explain": "Niciun răspuns corect: era Beniamitul, din Bahurim (19:16)."
@@ -892,11 +892,11 @@
    "ref": "19:43",
    "q": "De câte ori spuneau bărbații lui Israel că împăratul este mai mult al lor?",
    "opts": [
-    "de două ori",
     "de zece ori",
-    "de o sută de ori"
+    "de o sută de ori",
+    "de două ori"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.19.18+.5",
@@ -905,11 +905,11 @@
    "ref": "19:24",
    "q": "Din ce zi nu-și mai spălase Mefiboșet hainele?",
    "opts": [
-    "din ziua morții lui Ionatan",
     "din ziua când plecase împăratul",
+    "din ziua morții lui Ionatan",
     "din ziua când venise Absalom"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.19.18+.6",
@@ -918,11 +918,11 @@
    "ref": "19:41",
    "q": "Cum au spus bărbații lui Israel că s-au purtat cei din Iuda?",
    "opts": [
-    "i-au mințit",
     "l-au furat pe împărat",
+    "i-au mințit",
     "l-au ascuns pe împărat"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.19.18+.7",
@@ -1039,9 +1039,9 @@
    "ref": "19:5",
    "q": "Pe cine spunea Ioab că au scăpat slujitorii lui David în ziua aceea?",
    "opts": [
+    "pe nevestele și țiitoarele lui",
     "viața împăratului",
-    "pe fiii și fetele lui",
-    "pe nevestele și țiitoarele lui"
+    "pe fiii și fetele lui"
    ],
    "a": [
     0,
@@ -1056,13 +1056,13 @@
    "ref": "19:9",
    "q": "De ce credea poporul că trebuie adus înapoi David?",
    "opts": [
+    "pentru că Ioab o ceruse",
     "îi izbăvise din mâna vrăjmașilor",
-    "îi scăpase din mâna filistenilor",
-    "pentru că Ioab o ceruse"
+    "îi scăpase din mâna filistenilor"
    ],
    "a": [
-    0,
-    1
+    1,
+    2
    ]
   },
   {
@@ -1073,8 +1073,8 @@
    "q": "Unde voia Barzilai să moară?",
    "opts": [
     "la Ierusalim",
-    "la Mahanaim",
-    "la Ghilgal"
+    "la Ghilgal",
+    "la Mahanaim"
    ],
    "a": [],
    "explain": "Niciun răspuns corect: în cetatea lui, lângă mormântul tatălui și al mamei lui (19:37)."

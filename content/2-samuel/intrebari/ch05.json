@@ -34,11 +34,11 @@
    "ref": "5:4",
    "q": "Câți ani a domnit David în total?",
    "opts": [
-    "douăzeci de ani",
     "patruzeci de ani",
+    "douăzeci de ani",
     "șaptezeci de ani"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.5.sub12.5",
@@ -47,9 +47,9 @@
    "ref": "5:11",
    "q": "Ce i-a trimis lui David Hiram, împăratul Tirului?",
    "opts": [
-    "aur și argint",
+    "cai și care",
     "lemn de cedru, tâmplari și cioplitori de piatră",
-    "cai și care"
+    "aur și argint"
    ],
    "a": 1
   },
@@ -60,11 +60,11 @@
    "ref": "5:10",
    "q": "Cine era cu David, de ajungea tot mai mare?",
    "opts": [
-    "Saul",
     "Domnul Dumnezeul oștirilor",
-    "Hiram"
+    "Hiram",
+    "Saul"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.5.sub12.7",
@@ -170,12 +170,12 @@
    "q": "Pe cine a trimis Hiram, împăratul Tirului, ca să-i zidească o casă lui David?",
    "opts": [
     "tâmplari",
-    "cioplitori de piatră",
-    "preoți"
+    "preoți",
+    "cioplitori de piatră"
    ],
    "a": [
     0,
-    1
+    2
    ]
   },
   {
@@ -185,13 +185,13 @@
    "ref": "5:14",
    "q": "Care dintre aceștia sunt fii ai lui David născuți la Ierusalim?",
    "opts": [
-    "Solomon",
+    "Ionatan",
     "Natan",
-    "Ionatan"
+    "Solomon"
    ],
    "a": [
-    0,
-    1
+    1,
+    2
    ],
    "explain": "Ionatan era fiul lui Saul."
   },
@@ -202,9 +202,9 @@
    "ref": "5:20",
    "q": "Unde i-a bătut David pe filisteni prima dată, în 2 Samuel 5?",
    "opts": [
+    "la Betleem",
     "la Hebron",
-    "la Țiclag",
-    "la Betleem"
+    "la Țiclag"
    ],
    "a": [],
    "explain": "Niciun răspuns corect: i-a bătut la Baal-Perațim (5:20)."
@@ -241,9 +241,9 @@
    "ref": "5:2",
    "q": "Ce îi spusese Domnul lui David, după cuvintele semințiilor lui Israel?",
    "opts": [
-    "„Tu vei zidi Templul Meu\"",
+    "„Tu vei bate pe filisteni\"",
     "„Tu vei paște pe poporul Meu Israel\"",
-    "„Tu vei bate pe filisteni\""
+    "„Tu vei zidi Templul Meu\""
    ],
    "a": 1
   },
@@ -254,11 +254,11 @@
    "ref": "5:6",
    "q": "Ce locuitori ai țării erau în Ierusalim când David a mers asupra cetății?",
    "opts": [
-    "amaleciții",
     "iebusiții",
-    "filistenii"
+    "filistenii",
+    "amaleciții"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.5.12-13.6",
@@ -267,11 +267,11 @@
    "ref": "5:18",
    "q": "Unde s-au răspândit filistenii când au venit să-l caute pe David?",
    "opts": [
-    "în valea Ilah",
     "în valea Refaim",
+    "în valea Ilah",
     "în câmpia Iordanului"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.5.12-13.7",
@@ -380,12 +380,12 @@
    "ref": "5:19, 23",
    "q": "Ce a făcut David înainte de fiecare luptă cu filistenii, în 2 Samuel 5?",
    "opts": [
-    "a întrebat pe Domnul",
     "a trimis iscoade la Ghezer",
-    "a adus jertfe la Hebron"
+    "a adus jertfe la Hebron",
+    "a întrebat pe Domnul"
    ],
    "a": [
-    0
+    2
    ]
   },
   {
@@ -411,8 +411,8 @@
    "ref": "5:2",
    "q": "Ce spun semințiile lui Israel despre David, din vremea lui Saul?",
    "opts": [
-    "că el povățuia pe Israel",
     "că el strângea pe Israel",
+    "că el povățuia pe Israel",
     "că îl înlocuise pe Saul ca împărat"
    ],
    "a": [
@@ -452,9 +452,9 @@
    "ref": "5:20",
    "q": "Ce înseamnă numele Baal-Perațim?",
    "opts": [
-    "Locul Săbiilor",
+    "Piatra de ajutor",
     "Șesul rupturii",
-    "Piatra de ajutor"
+    "Locul Săbiilor"
    ],
    "a": 1
   },
@@ -599,13 +599,13 @@
    "ref": "5:6-8",
    "q": "Ce aflăm despre orbi și șchiopi în povestirea cuceririi Ierusalimului?",
    "opts": [
+    "David i-a vindecat",
     "iebusiții ziceau că orbii și ologii i se vor împotrivi lui David",
-    "de aceea se zice: „Orbul și șchiopul să nu intre în Casa Domnului\"",
-    "David i-a vindecat"
+    "de aceea se zice: „Orbul și șchiopul să nu intre în Casa Domnului\""
    ],
    "a": [
-    0,
-    1
+    1,
+    2
    ]
   },
   {
@@ -615,12 +615,12 @@
    "ref": "5:17",
    "q": "Ce a făcut David când a aflat că filistenii s-au suit să-l caute?",
    "opts": [
-    "s-a coborât în cetățuie",
     "a fugit la Hebron",
+    "s-a coborât în cetățuie",
     "a cerut ajutor lui Hiram"
    ],
    "a": [
-    0
+    1
    ]
   },
   {
@@ -698,11 +698,11 @@
    "ref": "5:16",
    "q": "Cum se numea ultimul dintre fiii lui David născuți la Ierusalim, din lista din 2 Samuel 5?",
    "opts": [
+    "Elișama",
     "Eliada",
-    "Elifelet",
-    "Elișama"
+    "Elifelet"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.5.16-17.7",
@@ -819,8 +819,8 @@
    "ref": "5:22-25",
    "q": "Ce aflăm despre a doua luptă cu filistenii din 2 Samuel 5?",
    "opts": [
-    "filistenii s-au răspândit din nou în valea Refaim",
     "Domnul a mers înaintea lui David",
+    "filistenii s-au răspândit din nou în valea Refaim",
     "David a luptat fără să-L întrebe pe Domnul"
    ],
    "a": [
@@ -836,12 +836,12 @@
    "q": "Care dintre aceștia sunt în lista fiilor lui David născuți la Ierusalim?",
    "opts": [
     "Nefeg",
-    "Iafia",
-    "Adonia"
+    "Adonia",
+    "Iafia"
    ],
    "a": [
     0,
-    1
+    2
    ],
    "explain": "Adonia s-a născut la Hebron (3:4)."
   },
@@ -852,8 +852,8 @@
    "ref": "5:11",
    "q": "Ce a trimis Hiram, împăratul Tirului, la David?",
    "opts": [
-    "lemn de chiparos",
     "aur",
+    "lemn de chiparos",
     "cai"
    ],
    "a": [],
@@ -891,11 +891,11 @@
    "ref": "5:14",
    "q": "Cine este pomenit primul în lista fiilor lui David născuți la Ierusalim?",
    "opts": [
-    "Solomon",
     "Șamua",
+    "Solomon",
     "Natan"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.5.18+.5",
@@ -904,9 +904,9 @@
    "ref": "5:25",
    "q": "Până unde i-a bătut David pe filisteni, pornind de la Gheba?",
    "opts": [
-    "până la Gat",
+    "până la Ecron",
     "până la Ghezer",
-    "până la Ecron"
+    "până la Gat"
    ],
    "a": 1
   },
@@ -917,11 +917,11 @@
    "ref": "5:8",
    "q": "Ce zicală vine, după 2 Samuel 5:8, din cuvintele lui David la luarea Ierusalimului?",
    "opts": [
-    "„Saul și-a bătut miile lui\"",
     "„Orbul și șchiopul să nu intre în Casa Domnului\"",
+    "„Saul și-a bătut miile lui\"",
     "„Cum au căzut vitejii\""
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.5.18+.7",
@@ -1055,9 +1055,9 @@
    "ref": "5:23-24",
    "q": "Ce i-a spus Domnul lui David înainte de a doua luptă din valea Refaim?",
    "opts": [
+    "„Domnul merge înaintea ta\"",
     "„Să nu te sui\"",
-    "„ia-i pe la spate\"",
-    "„Domnul merge înaintea ta\""
+    "„ia-i pe la spate\""
    ],
    "a": [
     0,
@@ -1072,9 +1072,9 @@
    "ref": "5:11",
    "q": "Cine a zidit o casă lui David, la Ierusalim?",
    "opts": [
-    "iebusiții",
     "slujitorii lui Saul",
-    "oamenii lui Ioab"
+    "oamenii lui Ioab",
+    "iebusiții"
    ],
    "a": [],
    "explain": "Niciun răspuns corect: casa a fost zidită de tâmplarii și cioplitorii trimiși de Hiram, împăratul Tirului (5:11)."

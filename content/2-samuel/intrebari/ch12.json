@@ -34,9 +34,9 @@
    "ref": "12:7",
    "q": "Ce i-a spus Natan lui David, după ce David s-a mâniat pe omul bogat din pildă?",
    "opts": [
-    "„Tu ești nevinovat!\"",
+    "„Omul acela va muri!\"",
     "„Tu ești omul acesta!\"",
-    "„Omul acela va muri!\""
+    "„Tu ești nevinovat!\""
    ],
    "a": 1
   },
@@ -47,11 +47,11 @@
    "ref": "12:24",
    "q": "Cum se numea fiul născut de Bat-Șeba, care a fost iubit de Domnul?",
    "opts": [
-    "Absalom",
     "Solomon",
-    "Natan"
+    "Natan",
+    "Absalom"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.12.sub12.6",
@@ -61,10 +61,10 @@
    "q": "Ce avea omul sărac din pilda lui Natan?",
    "opts": [
     "o capră",
-    "o mielușea",
-    "un vițel"
+    "un vițel",
+    "o mielușea"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.12.sub12.7",
@@ -169,13 +169,13 @@
    "ref": "12:3",
    "q": "Cum își iubea omul sărac mielușeaua, în pilda lui Natan?",
    "opts": [
-    "o hrănea și o creștea cu copiii lui",
     "o privea ca pe fata lui",
-    "o vindea la târg"
+    "o vindea la târg",
+    "o hrănea și o creștea cu copiii lui"
    ],
    "a": [
     0,
-    1
+    2
    ]
   },
   {
@@ -186,12 +186,12 @@
    "q": "Ce a făcut David după ce a murit copilul?",
    "opts": [
     "s-a sculat de la pământ",
-    "s-a dus în Casa Domnului și s-a închinat",
-    "a plecat la război"
+    "a plecat la război",
+    "s-a dus în Casa Domnului și s-a închinat"
    ],
    "a": [
     0,
-    1
+    2
    ]
   },
   {
@@ -202,8 +202,8 @@
    "q": "Ce a gătit omul bogat pentru călător?",
    "opts": [
     "un bou de-al lui",
-    "o oaie de-a lui",
-    "un vițel gras"
+    "un vițel gras",
+    "o oaie de-a lui"
    ],
    "a": [],
    "explain": "Niciun răspuns corect: a luat oaia săracului și a gătit-o (12:4)."
@@ -240,9 +240,9 @@
    "ref": "12:6",
    "q": "Câți miei a zis David că trebuie să dea înapoi omul bogat din pildă?",
    "opts": [
-    "doi",
+    "șapte",
     "patru",
-    "șapte"
+    "doi"
    ],
    "a": 1
   },
@@ -254,10 +254,10 @@
    "q": "În a câta zi a murit copilul lui David și al Bat-Șebei?",
    "opts": [
     "a treia zi",
-    "a șaptea zi",
-    "a zecea zi"
+    "a zecea zi",
+    "a șaptea zi"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.12.12-13.6",
@@ -266,11 +266,11 @@
    "ref": "12:29",
    "q": "Ce cetate a fiilor lui Amon a luat David la sfârșitul capitolului 12?",
    "opts": [
-    "Ierihon",
     "Raba",
+    "Ierihon",
     "Helam"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.12.12-13.7",
@@ -383,8 +383,8 @@
    "ref": "12:5-6",
    "q": "Ce a zis David despre omul bogat din pildă?",
    "opts": [
-    "că este vrednic de moarte",
     "că trebuie să dea înapoi patru miei",
+    "că este vrednic de moarte",
     "că trebuie iertat"
    ],
    "a": [
@@ -399,9 +399,9 @@
    "ref": "12:30",
    "q": "Ce aflăm despre cununa împăratului Rabei?",
    "opts": [
-    "cântărea un talant de aur",
     "era împodobită cu pietre scumpe",
-    "a fost pusă pe capul lui David"
+    "a fost pusă pe capul lui David",
+    "cântărea un talant de aur"
    ],
    "a": [
     0,
@@ -455,11 +455,11 @@
    "ref": "12:7",
    "q": "De ce spune Domnul, prin Natan, că l-a scăpat pe David?",
    "opts": [
-    "din mâna filistenilor",
     "din mâna lui Saul",
-    "din mâna lui Absalom"
+    "din mâna lui Absalom",
+    "din mâna filistenilor"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.12.14-15.5",
@@ -481,9 +481,9 @@
    "ref": "12:28",
    "q": "De ce l-a chemat Ioab pe David să ia el cetatea Raba?",
    "opts": [
-    "pentru că Ioab era rănit",
+    "pentru că îi era frică",
     "ca să nu vină asupra lui Ioab cinstea",
-    "pentru că îi era frică"
+    "pentru că Ioab era rănit"
    ],
    "a": 1
   },
@@ -602,13 +602,13 @@
    "ref": "12:7-8",
    "q": "Ce îi amintește Domnul lui David că a făcut pentru el?",
    "opts": [
-    "l-a uns împărat peste Israel",
+    "l-a făcut proroc",
     "l-a scăpat din mâna lui Saul",
-    "l-a făcut proroc"
+    "l-a uns împărat peste Israel"
    ],
    "a": [
-    0,
-    1
+    1,
+    2
    ]
   },
   {
@@ -618,13 +618,13 @@
    "ref": "12:17",
    "q": "Ce a făcut David când bătrânii casei au stăruit să se scoale?",
    "opts": [
-    "n-a voit să se scoale",
     "n-a mâncat nimic cu ei",
-    "s-a sculat și a mâncat"
+    "s-a sculat și a mâncat",
+    "n-a voit să se scoale"
    ],
    "a": [
     0,
-    1
+    2
    ]
   },
   {
@@ -634,9 +634,9 @@
    "ref": "12:15",
    "q": "Ce a făcut Natan după ce i-a spus lui David cuvântul Domnului?",
    "opts": [
-    "a rămas să se roage",
     "s-a dus la Ioab",
-    "a mers la Raba"
+    "a mers la Raba",
+    "a rămas să se roage"
    ],
    "a": [],
    "explain": "Niciun răspuns corect: „Natan a plecat acasă\" (12:15)."
@@ -673,11 +673,11 @@
    "ref": "12:9",
    "q": "Cu sabia cui a fost ucis Urie, după cuvântul lui Natan?",
    "opts": [
+    "cu sabia filistenilor",
     "cu sabia lui Ioab",
-    "cu sabia fiilor lui Amon",
-    "cu sabia filistenilor"
+    "cu sabia fiilor lui Amon"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.12.16-17.5",
@@ -686,11 +686,11 @@
    "ref": "12:14",
    "q": "De ce spune Natan că fiul lui David va muri?",
    "opts": [
-    "pentru că era bolnav din naștere",
     "pentru că David a făcut pe vrăjmașii Domnului să-L hulească",
+    "pentru că era bolnav din naștere",
     "pentru că Bat-Șeba nu se rugase"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.12.16-17.6",
@@ -699,11 +699,11 @@
    "ref": "12:20",
    "q": "Ce a făcut David întâi, când s-a sculat de la pământ, după moartea copilului?",
    "opts": [
-    "a mâncat",
     "s-a spălat, s-a uns și și-a schimbat hainele",
+    "a mâncat",
     "a plâns cu slujitorii"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.12.16-17.7",
@@ -820,9 +820,9 @@
    "ref": "12:20",
    "q": "Ce a făcut David după ce a aflat că a murit copilul?",
    "opts": [
+    "s-a uns",
     "s-a dus în Casa Domnului și s-a închinat",
-    "a cerut să mănânce",
-    "s-a uns"
+    "a cerut să mănânce"
    ],
    "a": [
     0,
@@ -838,12 +838,12 @@
    "q": "Ce a luat David din cetatea Raba?",
    "opts": [
     "cununa împăratului ei",
-    "o foarte mare pradă",
-    "chivotul fiilor lui Amon"
+    "chivotul fiilor lui Amon",
+    "o foarte mare pradă"
    ],
    "a": [
     0,
-    1
+    2
    ]
   },
   {
@@ -892,11 +892,11 @@
    "ref": "12:8",
    "q": "Ce spune Domnul că ar mai fi adăugat lui David, dacă i-ar fi fost puțin?",
    "opts": [
+    "ar fi dat împărăția lui Saul",
     "n-ar fi adăugat nimic",
-    "„aș mai fi adăugat\"",
-    "ar fi dat împărăția lui Saul"
+    "„aș mai fi adăugat\""
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.12.18+.5",
@@ -905,11 +905,11 @@
    "ref": "12:11",
    "q": "În fața a ce spune Domnul că va face nenorocirea din casa lui David?",
    "opts": [
+    "în fața templului",
     "în fața Ierusalimului",
-    "în fața soarelui acestuia",
-    "în fața templului"
+    "în fața soarelui acestuia"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.12.18+.6",
@@ -919,10 +919,10 @@
    "q": "Unde i-a pus David pe locuitorii cetăților fiilor lui Amon?",
    "opts": [
     "în închisori",
-    "în cuptoarele de cărămizi",
-    "în corăbii"
+    "în corăbii",
+    "în cuptoarele de cărămizi"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.12.18+.7",
@@ -1039,13 +1039,13 @@
    "ref": "12:21",
    "q": "Ce nu înțelegeau slujitorii lui David?",
    "opts": [
-    "de ce posteau cât trăia copilul",
     "de ce mănâncă acum, când copilul a murit",
-    "de ce s-a dus la Raba"
+    "de ce s-a dus la Raba",
+    "de ce posteau cât trăia copilul"
    ],
    "a": [
     0,
-    1
+    2
    ]
   },
   {
@@ -1056,8 +1056,8 @@
    "q": "De ce l-a mustrat Domnul pe David prin Natan?",
    "opts": [
     "pentru că l-a lovit cu sabia pe Urie",
-    "pentru că a luat-o de nevastă pe nevasta lui",
-    "pentru că a disprețuit Cuvântul Domnului"
+    "pentru că a disprețuit Cuvântul Domnului",
+    "pentru că a luat-o de nevastă pe nevasta lui"
    ],
    "a": [
     0,
@@ -1072,9 +1072,9 @@
    "ref": "12:16",
    "q": "Unde a stat David toată noaptea, când copilul era bolnav?",
    "opts": [
-    "în Casa Domnului",
+    "la poarta cetății",
     "pe acoperiș",
-    "la poarta cetății"
+    "în Casa Domnului"
    ],
    "a": [],
    "explain": "Niciun răspuns corect: a stat culcat pe pământ toată noaptea (12:16)."

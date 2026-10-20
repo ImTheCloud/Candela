@@ -34,11 +34,11 @@
    "ref": "13:37",
    "q": "La cine a fugit Absalom, după moartea lui Amnon?",
    "opts": [
+    "la Hanun",
     "la Hiram",
-    "la Talmai, împăratul Gheșurului",
-    "la Hanun"
+    "la Talmai, împăratul Gheșurului"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.13.sub12.5",
@@ -48,10 +48,10 @@
    "q": "Pe ce au încălecat fiii împăratului când au fugit de la tunsul oilor?",
    "opts": [
     "pe cai",
-    "pe catâri",
-    "pe cămile"
+    "pe cămile",
+    "pe catâri"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.13.sub12.6",
@@ -60,11 +60,11 @@
    "ref": "13:38",
    "q": "Câți ani a stat Absalom la Gheșur?",
    "opts": [
+    "șapte ani",
     "un an",
-    "trei ani",
-    "șapte ani"
+    "trei ani"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.13.sub12.7",
@@ -173,13 +173,13 @@
    "ref": "13:31",
    "q": "Ce a făcut David când a auzit zvonul că toți fiii lui au fost uciși?",
    "opts": [
-    "s-a sculat și și-a rupt hainele",
     "s-a culcat pe pământ",
-    "a pornit la război"
+    "a pornit la război",
+    "s-a sculat și și-a rupt hainele"
    ],
    "a": [
     0,
-    1
+    2
    ]
   },
   {
@@ -189,12 +189,12 @@
    "ref": "13:23",
    "q": "Pe cine a poftit Absalom la tunsul oilor?",
    "opts": [
-    "pe toți fiii împăratului",
     "pe toți preoții",
-    "pe filisteni"
+    "pe filisteni",
+    "pe toți fiii împăratului"
    ],
    "a": [
-    0
+    2
    ]
   },
   {
@@ -243,11 +243,11 @@
    "ref": "13:22",
    "q": "Ce a început să simtă Absalom față de Amnon, după cele făcute Tamarei?",
    "opts": [
-    "milă",
     "ură",
-    "frică"
+    "frică",
+    "milă"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.13.12-13.5",
@@ -257,10 +257,10 @@
    "q": "După câți ani a avut loc tunsul oilor lui Absalom la Baal-Hațor?",
    "opts": [
     "după un an",
-    "după doi ani",
-    "după cinci ani"
+    "după cinci ani",
+    "după doi ani"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.13.12-13.6",
@@ -269,11 +269,11 @@
    "ref": "13:30",
    "q": "Ce zvon a ajuns la David, pe când fiii lui erau pe drum?",
    "opts": [
+    "că Amnon a fugit",
     "că Absalom a fost ucis",
-    "că Absalom a ucis pe toți fiii împăratului",
-    "că Amnon a fugit"
+    "că Absalom a ucis pe toți fiii împăratului"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.13.12-13.7",
@@ -390,13 +390,13 @@
    "ref": "13:27",
    "q": "Pe cine a lăsat David să meargă cu Absalom la tunsul oilor?",
    "opts": [
-    "pe Amnon",
     "pe toți fiii săi",
-    "pe Bat-Șeba"
+    "pe Bat-Șeba",
+    "pe Amnon"
    ],
    "a": [
     0,
-    1
+    2
    ]
   },
   {
@@ -406,12 +406,12 @@
    "ref": "13:21",
    "q": "Cum a reacționat David când a aflat ce i-a făcut Amnon Tamarei?",
    "opts": [
-    "s-a mâniat foarte tare",
+    "a plâns la Hebron",
     "l-a izgonit pe Amnon",
-    "a plâns la Hebron"
+    "s-a mâniat foarte tare"
    ],
    "a": [
-    0
+    2
    ]
   },
   {
@@ -421,9 +421,9 @@
    "ref": "13:34",
    "q": "Ce a văzut tânărul pus de strajă, după fuga lui Absalom?",
    "opts": [
-    "oștirea filistenilor",
+    "pe Absalom întorcându-se",
     "un car de foc",
-    "pe Absalom întorcându-se"
+    "oștirea filistenilor"
    ],
    "a": [],
    "explain": "Niciun răspuns corect: a văzut o mare ceată venind pe drum dinspre munte — fiii împăratului (13:34-35)."
@@ -473,11 +473,11 @@
    "ref": "13:28",
    "q": "Când le-a poruncit Absalom slujitorilor să-l lovească pe Amnon?",
    "opts": [
+    "când va pleca împăratul",
     "dimineața, înainte de tuns",
-    "când se va veseli inima lui Amnon de vin",
-    "când va pleca împăratul"
+    "când se va veseli inima lui Amnon de vin"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.13.14-15.6",
@@ -487,10 +487,10 @@
    "q": "Ce i-a cerut Amnon lui David, când David a venit să-l vadă?",
    "opts": [
     "un doctor",
-    "s-o lase pe Tamar să-i facă două turte",
-    "o casă nouă"
+    "o casă nouă",
+    "s-o lase pe Tamar să-i facă două turte"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.13.14-15.7",
@@ -607,8 +607,8 @@
    "ref": "13:3-5",
    "q": "Ce aflăm despre Ionadab?",
    "opts": [
-    "era prietenul lui Amnon",
     "era un om foarte șiret",
+    "era prietenul lui Amnon",
     "l-a sfătuit pe Amnon să se facă bolnav"
    ],
    "a": [
@@ -624,13 +624,13 @@
    "ref": "13:31",
    "q": "Ce făceau slujitorii lui David când el s-a culcat pe pământ?",
    "opts": [
-    "stăteau acolo",
     "aveau hainele sfâșiate",
-    "fugeau"
+    "fugeau",
+    "stăteau acolo"
    ],
    "a": [
     0,
-    1
+    2
    ]
   },
   {
@@ -640,9 +640,9 @@
    "ref": "13:23",
    "q": "Unde era tunsul oilor lui Absalom?",
    "opts": [
+    "la Ierusalim",
     "la Gheșur",
-    "la Hebron",
-    "la Ierusalim"
+    "la Hebron"
    ],
    "a": [],
    "explain": "Niciun răspuns corect: la Baal-Hațor, lângă Efraim (13:23)."
@@ -679,11 +679,11 @@
    "ref": "13:3",
    "q": "Al cui fiu era Ionadab, prietenul lui Amnon?",
    "opts": [
-    "al lui Ner",
     "al lui Șimea",
-    "al lui Ahitofel"
+    "al lui Ahitofel",
+    "al lui Ner"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.13.16-17.5",
@@ -693,10 +693,10 @@
    "q": "Din ce zi spunea Ionadab că era hotărârea lui Absalom de a-l omorî pe Amnon?",
    "opts": [
     "din ziua tunsului oilor",
-    "din ziua când Amnon a necinstit-o pe Tamar",
-    "din ziua nașterii lui Solomon"
+    "din ziua nașterii lui Solomon",
+    "din ziua când Amnon a necinstit-o pe Tamar"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.13.16-17.6",
@@ -705,11 +705,11 @@
    "ref": "13:15",
    "q": "Ce a simțit Amnon față de Tamar, după ce a necinstit-o?",
    "opts": [
-    "milă",
     "a urât-o mai mult decât o iubise",
-    "rușine"
+    "rușine",
+    "milă"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.13.16-17.7",
@@ -826,8 +826,8 @@
    "ref": "13:8-10",
    "q": "Ce a făcut Tamar în casa lui Amnon?",
    "opts": [
-    "a frământat plămădeala",
     "a copt turte",
+    "a frământat plămădeala",
     "a gătit un miel"
    ],
    "a": [
@@ -842,13 +842,13 @@
    "ref": "13:20",
    "q": "Ce i-a spus Absalom Tamarei?",
    "opts": [
-    "„Acum, soro, taci\"",
     "„nu te prea trece cu firea din pricina aceasta\"",
-    "„Mă duc îndată să-l omor\""
+    "„Mă duc îndată să-l omor\"",
+    "„Acum, soro, taci\""
    ],
    "a": [
     0,
-    1
+    2
    ]
   },
   {
@@ -859,8 +859,8 @@
    "q": "Pe cine a poftit Absalom, mergând la împărat?",
    "opts": [
     "pe Ioab",
-    "pe Ionadab",
-    "pe Bat-Șeba"
+    "pe Bat-Șeba",
+    "pe Ionadab"
    ],
    "a": [],
    "explain": "Niciun răspuns corect: l-a poftit pe împărat și pe slujitorii lui (13:24)."
@@ -897,11 +897,11 @@
    "ref": "13:9",
    "q": "Ce a luat Tamar ca să răstoarne turtele înaintea lui Amnon?",
    "opts": [
-    "un coș",
     "tigaia",
-    "o farfurie"
+    "o farfurie",
+    "un coș"
    ],
-   "a": 1
+   "a": 0
   },
   {
    "id": "2sa.13.18+.5",
@@ -910,11 +910,11 @@
    "ref": "13:25",
    "q": "Ce a făcut David când Absalom a stăruit să vină la tunsul oilor?",
    "opts": [
+    "s-a mâniat pe Absalom",
     "a venit cu toți slujitorii",
-    "n-a vrut să se ducă și l-a binecuvântat",
-    "s-a mâniat pe Absalom"
+    "n-a vrut să se ducă și l-a binecuvântat"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.13.18+.6",
@@ -923,11 +923,11 @@
    "ref": "13:3",
    "q": "Cum este numit Ionadab în 2 Samuel 13:3?",
    "opts": [
+    "un om viteaz",
     "un om înțelept",
-    "un om foarte șiret",
-    "un om viteaz"
+    "un om foarte șiret"
    ],
-   "a": 1
+   "a": 2
   },
   {
    "id": "2sa.13.18+.7",
@@ -1061,13 +1061,13 @@
    "ref": "13:37-39",
    "q": "Ce aflăm despre David după fuga lui Absalom?",
    "opts": [
-    "jelea în fiecare zi pe fiul său",
     "a încetat să-l mai urmărească pe Absalom",
-    "a trimis oștire la Gheșur"
+    "a trimis oștire la Gheșur",
+    "jelea în fiecare zi pe fiul său"
    ],
    "a": [
     0,
-    1
+    2
    ]
   },
   {
@@ -1077,8 +1077,8 @@
    "ref": "13:21",
    "q": "Ce a făcut David când a aflat toate cele întâmplate?",
    "opts": [
-    "l-a pedepsit pe Amnon",
     "a izgonit-o pe Tamar",
+    "l-a pedepsit pe Amnon",
     "l-a trimis pe Absalom la Gheșur"
    ],
    "a": [],
