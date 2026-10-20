@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
+import { initializeFirestore, persistentLocalCache, persistentMultipleTabManager } from 'firebase/firestore';
 
 // Public web config of the Firebase project "Candela" (safe to ship: access is enforced by firestore.rules).
 const app = initializeApp({
@@ -14,4 +14,8 @@ const app = initializeApp({
 
 export const auth = getAuth(app);
 auth.languageCode = 'ro';
-export const db = getFirestore(app);
+
+// Progress keeps working offline and syncs when the phone is back online.
+export const db = initializeFirestore(app, {
+  localCache: persistentLocalCache({ tabManager: persistentMultipleTabManager() }),
+});

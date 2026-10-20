@@ -1,6 +1,8 @@
 ---
 import Base from '../../../layouts/Base.astro';
-import { BOOKS, getText, type Book } from '../../../lib/books';
+import ChapterSheet from '../../../components/ChapterSheet.astro';
+import { BOOKS, type Book } from '../../../lib/books';
+import { getText } from '../../../lib/text';
 
 export function getStaticPaths() {
   return BOOKS.flatMap((book) => {
@@ -18,30 +20,110 @@ const prev = ch > 1 ? ch - 1 : null;
 const next = ch < book.chapters ? ch + 1 : null;
 ---
 <Base title={`${book.name} ${ch}`} crumbs={[{ href: '/', label: 'Acasă' }, { href: `/${book.slug}`, label: book.name }]}>
-  <article class="wrap narrow reader">
-    <h1>Capitolul {ch}</h1>
+  <article class="wrap narrow reader" data-book={book.slug} data-ch={ch}>
+    <header class="reader-head">
+      <h1>Capitolul {ch}</h1>
+      <p class="small muted">Atinge un verset ca să-l marchezi.</p>
+    </header>
     <div class="text">
       {verses.map((v, i) => (
-        <p class="verse" id={`v${i + 1}`}><sup>{i + 1}</sup>{v}</p>
+        <p class="verse" id={`v${i + 1}`} data-v={i + 1} role="button" tabindex="0" aria-pressed="false"><sup>{i + 1}</sup>{v}</p>
       ))}
     </div>
+
+    <section class="card done">
+      <button class="btn btn-block read-toggle" type="button" aria-pressed="false">
+        <span class="when-off">Am citit capitolul</span>
+        <span class="when-on">Capitol citit</span>
+      </button>
+      <a class="btn btn-ghost btn-block" href={`/${book.slug}/exersare?capitol=${ch}`}>Întrebări din capitolul {ch}</a>
+    </section>
   </article>
 
-  <nav class="wrap narrow pager" aria-label="Capitole">
-    {prev ? <a class="btn btn-ghost" href={`/${book.slug}/citire/${prev}`} rel="prev">← Capitolul {prev}</a> : <span />}
-    {next ? <a class="btn btn-primary" href={`/${book.slug}/citire/${next}`} rel="next">Capitolul {next} →</a> : <a class="btn btn-ghost" href={`/${book.slug}`}>Înapoi la carte</a>}
+  <nav class="pager" aria-label="Capitole">
+    <div class="wrap narrow pager-row">
+      {prev ? <a class="pager-btn" href={`/${book.slug}/citire/${prev}`} rel="prev" aria-label={`Capitolul ${prev}`}>‹</a> : <span class="pager-btn" aria-hidden="true" />}
+      <button class="pager-mid" type="button" data-open-sheet>{book.name} {ch} <span aria-hidden="true">▾</span></button>
+      {next ? <a class="pager-btn" href={`/${book.slug}/citire/${next}`} rel="next" aria-label={`Capitolul ${next}`}>›</a> : <span class="pager-btn" aria-hidden="true" />}
+    </div>
   </nav>
+
+  <ChapterSheet book={book} current={ch} />
 </Base>
 
-<style>
-  .reader { padding-block: 12px 8px; }
-  .reader h1 { margin-bottom: 20px; }
-  .text { font: 400 1.15rem/1.8 var(--f-bible); }
-  .verse { margin: 0 0 0.35em; scroll-margin-top: 80px; }
-  .verse:target { background: var(--highlight); border-radius: 4px; }
-  sup {
-    font: 600 0.7rem var(--f-body); color: var(--oil-ink);
-    margin-right: 4px; vertical-align: 0.5em; line-height: 0;
+<script>
+  import { effect } from '@preact/signals';
+  import { progress, setRead, toggleMark } from '../../../lib/progress';
+
+  const root = document.querySelector<HTMLElement>('.reader')!;
+  const book = root.dataset.book!;
+  const ch = Number(root.dataset.ch);
+  const verses = [...root.querySelectorAll<HTMLElement>('.verse')];
+  const readBtn = root.querySelector<HTMLButtonElement>('.read-toggle')!;
+  const p = progress(book);
+
+  effect(() => {
+    const marks = new Set(p.value.marks);
+    for (const el of verses) {
+      const on = marks.has(`${ch}:${el.dataset.v}`);
+      el.classList.toggle('marked', on);
+      el.setAttribute('aria-pressed', String(on));
+    }
+    const read = p.value.read.includes(ch);
+    readBtn.setAttribute('aria-pressed', String(read));
+  });
+
+  const toggle = (el: HTMLElement) => toggleMark(book, ch, Number(el.dataset.v));
+  for (const el of verses) {
+    el.addEventListener('click', () => {
+      // a long press that selects text should not also mark the verse
+      if (!getSelection()?.isCollapsed) return;
+      toggle(el);
+    });
+    el.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggle(el);
+      }
+    });
   }
-  .pager { display: flex; justify-content: space-between; gap: 12px; padding-block: 28px 0; }
+  readBtn.addEventListener('click', () => setRead(book, ch, readBtn.getAttribute('aria-pressed') !== 'true'));
+</script>
+
+<style>
+  .reader { padding-block: 8px 24px; }
+  .reader-head { display: flex; flex-direction: column; gap: 4px; margin-bottom: 18px; }
+  .text { font: 400 1.15rem/1.75 var(--f-bible); }
+  .verse {
+    margin: 0 -6px 2px; padding: 2px 6px; border-radius: 6px; cursor: pointer;
+    scroll-margin-top: 80px; transition: background-color .15s;
+  }
+  .verse.marked { background: var(--highlight); }
+  .verse:target { outline: 2px solid var(--oil); outline-offset: 1px; }
+  sup { font: 600 0.7rem var(--f-body); color: var(--oil-ink); margin-right: 4px; vertical-align: 0.5em; line-height: 0; }
+
+  .done { display: grid; gap: 10px; padding: 16px; margin-top: 28px; }
+  .read-toggle { background: var(--oil-strong); color: var(--on-oil); }
+  .read-toggle[aria-pressed="true"] { background: var(--ok-soft); color: var(--ok); }
+  .read-toggle .when-on, .read-toggle[aria-pressed="true"] .when-off { display: none; }
+  .read-toggle[aria-pressed="true"] .when-on { display: inline; }
+
+  /* Thumb-reachable chapter navigation */
+  .pager {
+    position: sticky; bottom: 0; z-index: 5;
+    background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(10px);
+    border-top: 1px solid var(--line);
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .pager-row { display: grid; grid-template-columns: 56px 1fr 56px; align-items: center; gap: 8px; height: 60px; }
+  .pager-btn {
+    display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%;
+    font-size: 1.8rem; line-height: 1; text-decoration: none; color: var(--ink);
+  }
+  a.pager-btn:active { background: var(--surface-2); }
+  .pager-btn:last-child { justify-self: end; }
+  .pager-mid {
+    justify-self: center; min-height: 44px; padding: 0 16px; border: 1px solid var(--line); border-radius: 999px;
+    background: var(--surface); color: var(--ink); font: 600 1rem var(--f-body); cursor: pointer; white-space: nowrap;
+  }
 </style>

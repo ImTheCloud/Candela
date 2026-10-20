@@ -23,10 +23,3 @@ export const BOOKS: Book[] = [
 export function getBook(slug: string): Book | undefined {
   return BOOKS.find((b) => b.slug === slug);
 }
-
-// Cornilescu text, one array of verses per chapter. A book without a file yet has no reader.
-const texts = import.meta.glob<Record<string, string[]>>('../../content/*/text-cornilescu.json', { import: 'default', eager: true });
-
-export function getText(slug: string): Record<string, string[]> | undefined {
-  return texts[`../../content/${slug}/text-cornilescu.json`];
-}

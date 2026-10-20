@@ -1,0 +1,56 @@
+---
+import type { Book } from '../lib/books';
+
+// Bottom sheet listing every chapter, opened by any [data-open-sheet] button on the page.
+interface Props { book: Book; current: number }
+const { book, current } = Astro.props;
+const chapters = Array.from({ length: book.chapters }, (_, i) => i + 1);
+---
+<dialog class="sheet" aria-label={`Capitolele din ${book.name}`}>
+  <div class="sheet-head">
+    <p class="sheet-title">{book.name}</p>
+    <form method="dialog"><button class="btn btn-ghost btn-sm">Închide</button></form>
+  </div>
+  <ol class="sheet-grid" data-book={book.slug}>
+    {chapters.map((n) => (
+      <li><a href={`/${book.slug}/citire/${n}`} data-ch={n} aria-current={n === current ? 'page' : undefined}>{n}</a></li>
+    ))}
+  </ol>
+</dialog>
+
+<script>
+  import { effect } from '@preact/signals';
+  import { progress } from '../lib/progress';
+
+  const sheet = document.querySelector<HTMLDialogElement>('dialog.sheet')!;
+  for (const b of document.querySelectorAll('[data-open-sheet]')) b.addEventListener('click', () => sheet.showModal());
+  sheet.addEventListener('click', (e) => { if (e.target === sheet) sheet.close(); });
+
+  const grid = sheet.querySelector<HTMLElement>('.sheet-grid')!;
+  const p = progress(grid.dataset.book!);
+  effect(() => {
+    const read = new Set(p.value.read);
+    for (const a of grid.querySelectorAll<HTMLElement>('a')) a.classList.toggle('is-read', read.has(Number(a.dataset.ch)));
+  });
+</script>
+
+<style>
+  .sheet {
+    width: 100%; max-width: 40rem; margin: auto auto 0; padding: 16px 16px calc(20px + env(safe-area-inset-bottom));
+    border: 0; border-radius: 20px 20px 0 0; background: var(--surface); color: var(--ink);
+    box-shadow: var(--shadow); max-height: 80dvh;
+  }
+  .sheet::backdrop { background: rgb(0 0 0 / 0.35); }
+  .sheet-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+  .sheet-title { font: 600 1.2rem var(--f-display); }
+  .sheet-grid {
+    list-style: none; margin: 0; padding: 0;
+    display: grid; gap: 8px; grid-template-columns: repeat(auto-fill, minmax(48px, 1fr));
+  }
+  .sheet-grid a {
+    display: grid; place-items: center; aspect-ratio: 1; border-radius: var(--r-sm);
+    border: 1px solid var(--line); text-decoration: none; font-weight: 600; font-variant-numeric: tabular-nums;
+  }
+  .sheet-grid a.is-read { background: var(--ok-soft); border-color: transparent; color: var(--ok); }
+  .sheet-grid a[aria-current="page"] { border: 2px solid var(--oil); }
+</style>

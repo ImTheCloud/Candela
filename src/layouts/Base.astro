@@ -1,9 +1,10 @@
 ---
 import '@fontsource-variable/inter';
+import '@fontsource-variable/outfit';
 import '@fontsource-variable/fraunces';
 import '@fontsource-variable/source-serif-4';
 import '../styles/global.css';
-import Flame from '../components/Flame.astro';
+import Lamp from '../components/Lamp.astro';
 import AccountButton from '../islands/AccountButton';
 
 interface Crumb { href: string; label: string }
@@ -23,7 +24,7 @@ const fullTitle = title === 'Candela' ? title : `${title} · Candela`;
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#f7f1e8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#f8f1e6" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#17120e" media="(prefers-color-scheme: dark)" />
     <link rel="icon" href="/icons/icon-192.png" />
     <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
@@ -38,7 +39,7 @@ const fullTitle = title === 'Candela' ? title : `${title} · Candela`;
     <header class="top">
       <div class="wrap top-row">
         <a href="/" class="brand" aria-label="Candela, acasă">
-          <Flame />
+          <Lamp />
           <span>Candela</span>
         </a>
         <AccountButton client:only="preact">
@@ -55,7 +56,7 @@ const fullTitle = title === 'Candela' ? title : `${title} · Candela`;
       )}
       <slot />
     </main>
-    <footer class="wrap foot small muted">Textul biblic: traducerea Dumitru Cornilescu.</footer>
+    <footer class="wrap foot small muted">Textul biblic: traducerea Dumitru Cornilescu, după biblia.resursecrestine.ro.</footer>
   </body>
 </html>
 
@@ -68,7 +69,8 @@ const fullTitle = title === 'Candela' ? title : `${title} · Candela`;
     padding-top: env(safe-area-inset-top);
   }
   .top-row { display: flex; align-items: center; justify-content: space-between; height: 60px; }
-  .brand { display: flex; align-items: center; gap: 8px; text-decoration: none; font: 600 1.3rem var(--f-display); }
+  .brand { display: flex; align-items: center; gap: 7px; text-decoration: none; font: 400 25px/1 var(--f-brand); }
+  .brand svg { margin: -8px -4px -3px -10px; }
   .account-placeholder { display: block; width: 44px; height: 44px; }
   .crumbs {
     display: flex; flex-wrap: wrap; align-items: center; gap: 6px;

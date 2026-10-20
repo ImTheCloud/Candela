@@ -1,25 +1,28 @@
 /* Design tokens: warm and sober (candle, oil, cedar). Dark mode follows the system unless the player picks one in Cont. */
 :root {
-  --bg: #f7f1e8;
-  --surface: #fffcf7;
-  --surface-2: #f1e7d8;
-  --ink: #2e2118;
-  --ink-2: #6f5b48;
-  --ink-3: #9a8571;
-  --line: #e6d8c4;
-  --oil: #c25f1c;
+  /* v1 palette: warm cream, lamp oil, cedar */
+  --bg: #f8f1e6;
+  --surface: #fffbf4;
+  --surface-2: #f1e6d5;
+  --ink: #3a271b;
+  --ink-2: #7b6450;
+  --ink-3: #a08a74;
+  --line: #e7d8c2;
+  --oil: #d97b26;
+  --oil-strong: #b9621a;
   --oil-ink: #8a4510;
-  --oil-soft: #f8e3cc;
+  --oil-soft: #fbe5cc;
   --on-oil: #fffaf3;
-  --cedar: #7a4e2e;
-  --cedar-soft: #efe0cf;
-  --ok: #4f7d33;
-  --ok-soft: #e6efd9;
-  --bad: #a93a2d;
-  --bad-soft: #f8e1dc;
+  --cedar: #8a5a36;
+  --cedar-soft: #f2e3d2;
+  --ok: #5e8a3a;
+  --ok-soft: #e8f0da;
+  --bad: #b23a2e;
+  --bad-soft: #fbe4df;
   --highlight: #fbe7a6;
-  --shadow: 0 1px 2px rgb(46 33 24 / 0.05), 0 8px 24px rgb(46 33 24 / 0.06);
+  --shadow: 0 4px 12px rgb(58 39 27 / 0.05), 0 10px 20px rgb(58 39 27 / 0.05);
 
+  --f-brand: "Outfit Variable", Georgia, serif;
   --f-display: "Fraunces Variable", Georgia, serif;
   --f-body: "Inter Variable", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --f-bible: "Source Serif 4 Variable", Georgia, serif;
@@ -42,6 +45,7 @@
     --ink-3: #8a7864;
     --line: #3a2f25;
     --oil: #e58a3c;
+    --oil-strong: #e58a3c;
     --oil-ink: #f2b27a;
     --oil-soft: #3b2615;
     --on-oil: #1c130c;
@@ -65,6 +69,7 @@
   --ink-3: #8a7864;
   --line: #3a2f25;
   --oil: #e58a3c;
+  --oil-strong: #e58a3c;
   --oil-ink: #f2b27a;
   --oil-soft: #3b2615;
   --on-oil: #1c130c;
@@ -128,7 +133,7 @@ img, svg { display: block; }
 }
 .btn:active { transform: scale(0.98); }
 .btn:disabled { opacity: .55; cursor: default; }
-.btn-primary { background: var(--oil); color: var(--on-oil); }
+.btn-primary { background: var(--oil-strong); color: var(--on-oil); }
 .btn-primary:hover:not(:disabled) { background: var(--oil-ink); }
 .btn-ghost { background: transparent; color: var(--ink); border-color: var(--line); }
 .btn-ghost:hover:not(:disabled) { background: var(--surface-2); }

@@ -1,24 +1,48 @@
 rules_version = '2';
 
-// users/{uid}: the adult account's profile. Only its owner reads and writes it; admin, email and createdAt are not editable from the app.
+// Everything lives under users/{uid} and only the account owner reads or writes it.
+// admin, email and createdAt on the profile are not editable from the app.
 service cloud.firestore {
   match /databases/{database}/documents {
-    function signedIn(uid) {
+    function owner(uid) {
       return request.auth != null && request.auth.uid == uid;
+    }
+
+    function validYear(y) {
+      return y is int && y >= 1900 && y <= 2100;
     }
 
     function validUser(d) {
       return d.name is string && d.name.size() <= 80
-        && (d.birthYear == null || (d.birthYear is int && d.birthYear >= 1900 && d.birthYear <= 2100))
+        && (d.birthYear == null || validYear(d.birthYear))
         && d.isParent is bool
         && d.hidden is bool;
     }
 
     match /users/{uid} {
-      allow read: if signedIn(uid);
-      allow create: if signedIn(uid) && validUser(request.resource.data) && !('admin' in request.resource.data);
-      allow update: if signedIn(uid) && validUser(request.resource.data)
+      allow read: if owner(uid);
+      allow create: if owner(uid) && validUser(request.resource.data) && !('admin' in request.resource.data);
+      allow update: if owner(uid) && validUser(request.resource.data)
         && !request.resource.data.diff(resource.data).affectedKeys().hasAny(['admin', 'email', 'createdAt']);
+
+      // children of a parent account
+      match /players/{pid} {
+        allow read, delete: if owner(uid);
+        allow create, update: if owner(uid)
+          && request.resource.data.name is string && request.resource.data.name.size() >= 1 && request.resource.data.name.size() <= 40
+          && validYear(request.resource.data.birthYear);
+      }
+
+      // {playerKey}~{book}: read chapters, highlights, mastered and missed questions, exam scores
+      match /progress/{key} {
+        allow read, delete: if owner(uid);
+        allow create, update: if owner(uid)
+          && key.matches('^[A-Za-z0-9]{1,128}~[12]-samuel$')
+          && request.resource.data.get('read', []).size() <= 31
+          && request.resource.data.get('marks', []).size() <= 3000
+          && request.resource.data.get('mastered', []).size() <= 5000
+          && request.resource.data.get('wrong', []).size() <= 5000;
+      }
     }
   }
 }
