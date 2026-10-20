@@ -38,3 +38,23 @@ export function summary(book: string): Record<number, Record<string, Record<stri
   }
   return out;
 }
+
+export interface ExamFile {
+  id: string;
+  title: string;
+  age: string;
+  year: number;
+  questions: Question[];
+}
+
+const examFiles = import.meta.glob<ExamFile>('../../content/*/examene/*.json', { import: 'default', eager: true });
+
+const AGE_ORDER = ['sub12', '12-13', '14-15', '16-17', '18+'];
+
+/** Past exams of a book, newest year first, then by age group. */
+export function exams(book: string): ExamFile[] {
+  return Object.entries(examFiles)
+    .filter(([path]) => path.startsWith(`../../content/${book}/examene/`))
+    .map(([, e]) => e)
+    .sort((a, b) => b.year - a.year || AGE_ORDER.indexOf(a.age) - AGE_ORDER.indexOf(b.age));
+}

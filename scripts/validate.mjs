@@ -51,7 +51,7 @@ function versesOf(ref, text) {
 
 const flat = (s) => s.replace(/[„“”"«»]/g, '"').replace(/[‘’']/g, "'").replace(/\s+/g, ' ').trim();
 
-function checkQuestion(q, where, text) {
+function checkQuestion(q, where, text, strictFill = true) {
   const w = `${where} ${q.id ?? '(fără id)'}`;
   if (!TYPES.includes(q.t)) return err(w, `tip necunoscut "${q.t}"`);
   if (typeof q.q !== 'string' || q.q.trim().length < 8) err(w, 'textul întrebării lipsește');
@@ -87,11 +87,18 @@ function checkQuestion(q, where, text) {
       const blanks = q.q.split('___').length - 1;
       if (!blanks) { err(w, 'lipsește ___'); break; }
       if (!Array.isArray(q.a) || q.a.length !== blanks) { err(w, `${blanks} spații dar ${q.a?.length} răspunsuri`); break; }
+      // chapter questions: always one missing word (past exams keep the paper as printed)
+      if (strictFill && (blanks !== 1 || /\s/.test(q.a[0].trim()))) err(w, 'la completare lipsește un singur cuvânt');
       if (q.a.some((x) => typeof x !== 'string' || !x.trim())) err(w, 'răspuns gol');
       let i = 0;
       const full = flat(q.q.replace(/___/g, () => q.a[i++]));
       const source = flat(cited.join(' '));
-      if (cited.length && !source.includes(full)) err(w, `textul completat nu apare exact în ${q.ref}:\n    ${full}`);
+      if (cited.length && !source.includes(full)) {
+        // past exams keep the wording of the paper, which sometimes differs a little from the verse
+        const msg = `textul completat nu apare exact în ${q.ref}:\n    ${full}`;
+        if (strictFill) err(w, msg);
+        else warn(`${w}: ${msg}`);
+      }
       break;
     }
   }
@@ -139,7 +146,7 @@ for (const slug of Object.keys(BOOKS)) {
     for (const q of exam.questions) {
       if (ids.has(q.id)) err(where, `id dublat ${q.id}`);
       ids.add(q.id);
-      checkQuestion(q, where, text);
+      checkQuestion(q, where, text, false);
     }
   }
 }

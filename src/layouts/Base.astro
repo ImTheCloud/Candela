@@ -73,10 +73,11 @@ const fullTitle = title === 'Candela' ? title : `${title} · Candela`;
   .brand svg { margin: -8px -4px -3px -10px; }
   .account-placeholder { display: block; width: 44px; height: 44px; }
   .crumbs {
-    display: flex; flex-wrap: wrap; align-items: center; gap: 6px;
+    display: flex; align-items: center; gap: 6px; white-space: nowrap;
     padding-top: 20px; font-size: 0.875rem; color: var(--ink-3);
   }
-  .crumbs a { color: var(--ink-2); text-decoration: none; }
+  .crumbs a { flex: none; color: var(--ink-2); text-decoration: none; }
+  .crumbs [aria-current] { overflow: hidden; text-overflow: ellipsis; min-width: 0; }
   .crumbs a:hover { color: var(--oil-ink); text-decoration: underline; }
   .crumbs [aria-current] { color: var(--ink-2); font-weight: 500; }
   .foot { padding-block: 40px calc(24px + env(safe-area-inset-bottom)); text-align: center; }

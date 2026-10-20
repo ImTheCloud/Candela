@@ -167,7 +167,7 @@ function Results({ bookName, questions, answers, grades, mode, backHref, onAgain
         <p class="score-num">{score}<span> din 100</span></p>
         <p class="muted">{right} din {questions.length} întrebări corecte · {pts} din {max} puncte</p>
         <div class="score-actions">
-          {onAgain && <button class="btn btn-primary btn-block" onClick={onAgain}>Încă un test</button>}
+          {onAgain && <button class="btn btn-primary btn-block" onClick={onAgain}>{mode === 'exam' ? 'Reia examenul' : 'Încă un test'}</button>}
           <a class="btn btn-ghost btn-block" href={backHref}>Înapoi</a>
         </div>
       </section>
