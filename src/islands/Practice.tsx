@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'preact/hooks';
-import { AGE_GROUPS, ageGroup, ageLabel, validBirthYear, type AgeGroup } from '../lib/age';
-import { player, setGuestBirthYear, GUEST } from '../lib/players';
+import { AGE_GROUPS, type AgeGroup } from '../lib/age';
+import { level as savedLevel, setLevel } from '../lib/level';
+import { player } from '../lib/players';
 import { shuffle, type Playable, type QType } from '../lib/questions';
 import { bookHome } from '../lib/books';
 import { loadChapters } from '../lib/load';
+import LevelPicker from './LevelPicker';
 import Quiz from './Quiz';
 
 /** How many questions each chapter has, per age group and type (computed at build). */
@@ -24,17 +26,19 @@ export default function Practice({ book, bookName, chapters, summary }: Props) {
     const c = Number(params.get('capitol'));
     return c && summary[c] ? [c] : [];
   });
-  // from a chapter's menu: ?capitol=5&start=1[&nivel=greu] starts the whole chapter test at once
+  // from a chapter's menu: ?capitol=5&start=1[&nivel=14-15] starts the whole chapter test at once
   const direct = params.get('start') === '1';
-  const [harder, setHarder] = useState(params.get('nivel') === 'greu');
+  useState(() => {
+    const asked = params.get('nivel');
+    if (asked && AGE_GROUPS.some((g) => g.id === asked)) setLevel(asked as AgeGroup);
+  });
   const [count, setCount] = useState(direct ? 0 : 10);
   const [quiz, setQuiz] = useState<{ key: number; questions: Playable[] } | null>(null);
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
 
   const p = player.value;
-  const own = p.birthYear ? ageGroup(p.birthYear) : null;
-  const level = own && harder ? next(own) : own;
+  const level = savedLevel.value;
 
   const available = (ch: number) => {
     if (!level) return 0;
@@ -69,10 +73,10 @@ export default function Practice({ book, bookName, chapters, summary }: Props) {
 
   if (quiz) {
     return <Quiz key={quiz.key} book={book} bookName={bookName} questions={quiz.questions} mode="practice"
-      backHref={bookHome(book)} onAgain={() => start()} />;
+      backHref={bookHome(book)} onAgain={() => start()}
+      scoreId={direct && chosen.length === 1 && count === 0 ? `c${chosen[0]}` : undefined} />;
   }
 
-  if (!own) return <AskAge />;
   if (direct && chosen.length) return error ? <p class="notice notice-bad" role="alert">{error}</p> : <div class="card auth-card skeleton" />;
 
   return (
@@ -80,21 +84,14 @@ export default function Practice({ book, bookName, chapters, summary }: Props) {
       <div class="card who-line">
         <div>
           <p class="small muted">Joacă</p>
-          <p><strong>{p.name.split(' ')[0]}</strong> · {ageLabel(own)}</p>
+          <p><strong>{p.name.split(' ')[0]}</strong></p>
         </div>
-        {p.key !== GUEST && <a class="link small" href="/">Schimbă</a>}
       </div>
 
-      {own !== '18+' && (
-        <div class="setup-block">
-          <p class="setup-head"><strong>Nivel</strong></p>
-          <div class="segmented" role="radiogroup" aria-label="Nivel">
-            <button type="button" role="radio" aria-checked={!harder} onClick={() => setHarder(false)}>{ageLabel(own)}</button>
-            <button type="button" role="radio" aria-checked={harder} onClick={() => setHarder(true)}>Mai greu: {ageLabel(next(own))}</button>
-          </div>
-        </div>
-      )}
-
+      <div class="setup-block">
+        <p class="setup-head"><strong>Nivel</strong></p>
+        <LevelPicker />
+      </div>
 
       <div class="setup-block">
         <div class="setup-head">
@@ -134,45 +131,5 @@ export default function Practice({ book, bookName, chapters, summary }: Props) {
         </button>
       </div>
     </div>
-  );
-}
-
-function next(g: AgeGroup): AgeGroup {
-  const i = AGE_GROUPS.findIndex((x) => x.id === g);
-  return AGE_GROUPS[Math.min(i + 1, AGE_GROUPS.length - 1)].id;
-}
-
-/** Questions depend on age: guests give their birth year here, accounts in Cont. */
-function AskAge() {
-  const p = player.value;
-  const [year, setYear] = useState('');
-  const [error, setError] = useState('');
-  if (p.key !== GUEST) {
-    return (
-      <div class="card auth-card stack">
-        <h2>Anul nașterii</h2>
-        <p class="muted">Ca să primești întrebările potrivite vârstei, spune-ne anul nașterii lui {p.name.split(' ')[0]}.</p>
-        <a class="btn btn-primary" href="/cont">Mergi la cont</a>
-      </div>
-    );
-  }
-  function save(e: Event) {
-    e.preventDefault();
-    const y = Number(year);
-    if (!validBirthYear(y)) return setError('Scrie anul nașterii cu patru cifre, de exemplu 2012.');
-    setGuestBirthYear(y);
-  }
-  return (
-    <form class="card auth-card stack" onSubmit={save}>
-      <h2>Câți ani ai?</h2>
-      <p class="muted">Întrebările sunt pe categorii de vârstă, ca la examen.</p>
-      <div class="field">
-        <label for="gy">Anul nașterii</label>
-        <input id="gy" class="input" inputMode="numeric" maxLength={4} placeholder="de exemplu 2012" value={year}
-          onInput={(e) => setYear(e.currentTarget.value.replace(/\D/g, ''))} />
-      </div>
-      {error && <p class="notice notice-bad" role="alert">{error}</p>}
-      <button class="btn btn-primary">Continuă</button>
-    </form>
   );
 }

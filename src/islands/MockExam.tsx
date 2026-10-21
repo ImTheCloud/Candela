@@ -1,9 +1,10 @@
 import { useState } from 'preact/hooks';
-import { ageGroup, ageLabel } from '../lib/age';
+import { ageLabel } from '../lib/age';
 import { loadChapters } from '../lib/load';
-import { player } from '../lib/players';
+import { level } from '../lib/level';
 import { shuffle, TYPES, type Playable, type QType } from '../lib/questions';
 import { ExamIntro } from './ExamRunner';
+import LevelPicker from './LevelPicker';
 import Quiz from './Quiz';
 import type { Summary } from './Practice';
 
@@ -19,24 +20,13 @@ const SHAPE: Record<QType, number> = { tf: 5, one: 5, match: 1, fill: 5, multi: 
 
 /** A new exam drawn from the chosen chapters, for the player's age group. */
 export default function MockExam({ book, bookName, chapters, summary }: Props) {
-  const p = player.value;
-  const own = p.birthYear ? ageGroup(p.birthYear) : null;
-  const ready = Array.from({ length: chapters }, (_, k) => k + 1).filter((c) => own && summary[c]?.[own]);
+  const own = level.value;
+  const ready = Array.from({ length: chapters }, (_, k) => k + 1).filter((c) => summary[c]?.[own]);
   const [picked, setPicked] = useState<number[]>(ready);
   const [exam, setExam] = useState<Playable[] | null>(null);
   const [run, setRun] = useState(0);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
-
-  if (!own) {
-    return (
-      <div class="card auth-card stack">
-        <h1>Examen alb</h1>
-        <p class="muted">Ca să primești un examen potrivit vârstei, alege mai întâi anul nașterii.</p>
-        <a class="btn btn-primary" href={`/${book}/exersare`}>Continuă</a>
-      </div>
-    );
-  }
 
   async function build() {
     setBusy(true);
@@ -69,7 +59,8 @@ export default function MockExam({ book, bookName, chapters, summary }: Props) {
     <div class="setup">
       <div class="card auth-card stack">
         <h1>Examen alb</h1>
-        <p class="muted">21 de întrebări noi pentru {ageLabel(own)}, împărțite ca la examen. Alege capitolele.</p>
+        <p class="muted">21 de întrebări noi, împărțite ca la examen. Alege nivelul și capitolele.</p>
+        <LevelPicker />
       </div>
       {ready.length === 0 ? (
         <p class="card notice muted">Întrebările pentru {bookName} se pregătesc. Revino în curând.</p>

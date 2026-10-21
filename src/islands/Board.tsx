@@ -1,22 +1,17 @@
 import { useEffect, useState } from 'preact/hooks';
 import { collection, getDocs, limit, orderBy, query, where } from 'firebase/firestore';
-import { AGE_GROUPS, ageGroup, ageShort, type AgeGroup } from '../lib/age';
+import { AGE_GROUPS, ageShort, type AgeGroup } from '../lib/age';
 import { db } from '../lib/firebase';
-import { player } from '../lib/players';
+import { level } from '../lib/level';
 import { user } from '../lib/session';
 
 interface Row { key: string; name: string; score: number }
 
-/** Public board of a book, one list per age group: each question counts once, ties go to whoever got there first. */
-export default function Board({ book, totals }: { book: string; totals: Record<string, number> }) {
-  const p = player.value;
-  const [age, setAge] = useState<AgeGroup>(p.birthYear ? ageGroup(p.birthYear) : '12-13');
+/** Public board of a book, one list per level: each question counts once, ties go to whoever got there first. */
+export default function Board({ book }: { book: string; totals?: Record<string, number> }) {
+  const [age, setAge] = useState<AgeGroup>(level.value);
   const [rows, setRows] = useState<Row[] | null>(null);
   const [error, setError] = useState(false);
-
-  useEffect(() => {
-    if (p.birthYear) setAge(ageGroup(p.birthYear));
-  }, [p.key, p.birthYear]);
 
   useEffect(() => {
     setRows(null);
@@ -28,11 +23,10 @@ export default function Board({ book, totals }: { book: string; totals: Record<s
   }, [book, age]);
 
   const mine = (key: string) => !!user.value && key.startsWith(`${user.value.uid}~`);
-  const total = totals[age] ?? 0;
 
   return (
     <div class="board">
-      <div class="age-tabs" role="tablist" aria-label="Categoria de vârstă">
+      <div class="age-tabs" role="tablist" aria-label="Nivel">
         {AGE_GROUPS.map((g) => (
           <button type="button" role="tab" aria-selected={age === g.id} onClick={() => setAge(g.id)}>{ageShort(g.id)}</button>
         ))}
@@ -43,13 +37,13 @@ export default function Board({ book, totals }: { book: string; totals: Record<s
           <a class="btn btn-primary btn-sm" href="/cont/inregistrare">Creează un cont</a>
         </div>
       )}
-      <p class="small muted">Fiecare întrebare contează o singură dată, prima dată când răspunzi corect.{total ? ` Sunt ${total} de întrebări pentru această vârstă.` : ''}</p>
+      <p class="small muted">Fiecare întrebare contează o singură dată, prima dată când răspunzi corect.</p>
       {error ? (
         <p class="notice notice-bad">Clasamentul nu s-a putut încărca. Verifică conexiunea la internet.</p>
       ) : rows === null ? (
         <div class="card skeleton" />
       ) : rows.length === 0 ? (
-        <p class="card empty muted">Nimeni nu este încă în clasament la această vârstă.</p>
+        <p class="card empty muted">Nimeni nu este încă în clasament la acest nivel.</p>
       ) : (
         <ol class="card rows">
           {rows.map((r, i) => (

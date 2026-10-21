@@ -58,7 +58,7 @@ export default function BookPanel({ books, initial }: { books: BookData[]; initi
         <a class="card mode" href={`/${slug}/clasament`}>
           <span>
             <span class="mode-name">Clasament</span>
-            <span class="small muted">Pe vârste: fiecare întrebare știută contează o dată.</span>
+            <span class="small muted">Pe niveluri: fiecare întrebare știută contează o dată.</span>
           </span>
           <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
         </a>

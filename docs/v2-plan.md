@@ -21,7 +21,7 @@ Nouvelle application, construite sur la branche `v2`. `main` reste l'application
 
 - Compte adulte : email + mot de passe. Il peut être parent.
 - Enfant : simple profil rattaché au parent dans Firestore, sans compte de connexion. Le parent choisit « Cine joacă? ».
-- Chaque joueur a une **année de naissance**, demandée une fois (aussi aux comptes migrés, à la première connexion). Elle donne la catégorie :
+- **Plus d'année de naissance** (décision d'octobre 2026) : le joueur choisit son niveau lui-même, parmi les catégories :
 
 | Catégorie | Âge |
 |---|---|

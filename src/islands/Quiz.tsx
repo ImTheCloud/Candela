@@ -13,11 +13,13 @@ export interface QuizProps {
   /** practice: answer, check, see the verse. exam: answer everything, then the correction. */
   mode: 'practice' | 'exam';
   examId?: string;
+  /** practice: a whole-chapter test records its score under this id ("c5"). */
+  scoreId?: string;
   backHref: string;
   onAgain?: () => void;
 }
 
-export default function Quiz({ book, bookName, questions, mode, examId, backHref, onAgain }: QuizProps) {
+export default function Quiz({ book, bookName, questions, mode, examId, scoreId, backHref, onAgain }: QuizProps) {
   const [i, setI] = useState(0);
   const [answers, setAnswers] = useState<Answer[]>(() => questions.map(emptyAnswer));
   const [grades, setGrades] = useState<(Grade | null)[]>(() => questions.map(() => null));
@@ -92,7 +94,13 @@ export default function Quiz({ book, bookName, questions, mode, examId, backHref
   function next() {
     setPin(null);
     if (i < questions.length - 1) setI(i + 1);
-    else setDone(true);
+    else {
+      if (scoreId && grades.every(Boolean)) {
+        const all = grades as Grade[];
+        recordExam(book, scoreId, percent(all.reduce((s, x) => s + x.points, 0), all.reduce((s, x) => s + x.max, 0)));
+      }
+      setDone(true);
+    }
   }
 
   function handIn() {

@@ -359,5 +359,17 @@ a.tile { text-decoration: none; }
 .oc-main { flex: 1; min-width: 0; display: grid; gap: 1px; }
 .oc-main b { font-weight: 600; }
 .oc-main small { font-size: 0.8rem; color: var(--ink-2); }
-.oc-go { flex: none; padding: 9px 18px; border-radius: 999px; background: var(--btn); color: #fff; font: 600 0.9rem var(--f-body); }
+.oc-test { display: grid; gap: 12px; padding: 14px 16px; border-top: 1px solid var(--line); }
+.oc-head { display: flex; align-items: center; gap: 12px; }
+.oc-go { margin-top: 12px; min-height: 52px; }
+.oc-more { display: block; margin-top: 12px; text-align: center; color: var(--ink-2); font-size: 0.9rem; text-decoration: underline; text-underline-offset: 3px; }
 .oc-chev { flex: none; color: var(--ink-3); }
+
+/* Level chips: five choices on one line */
+.lv-chips { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+.lv-chip {
+  min-height: 40px; padding: 0 2px; border: 1.5px solid var(--line); border-radius: 12px; background: var(--surface);
+  color: var(--ink-2); font: 600 0.85rem var(--f-body); white-space: nowrap; cursor: pointer;
+  transition: background-color .12s, color .12s, border-color .12s;
+}
+.lv-chip[aria-checked="true"] { background: var(--btn); border-color: var(--btn); color: #fff; }

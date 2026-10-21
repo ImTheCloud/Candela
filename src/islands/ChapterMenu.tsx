@@ -1,9 +1,10 @@
 import type { JSX } from 'preact';
 import { useEffect, useState } from 'preact/hooks';
-import { AGE_GROUPS, ageGroup, ageShort, type AgeGroup } from '../lib/age';
-import { player } from '../lib/players';
+import { ageShort, type AgeGroup } from '../lib/age';
+import { level } from '../lib/level';
 import { progress } from '../lib/progress';
 import type { QType } from '../lib/questions';
+import LevelPicker from './LevelPicker';
 
 /** Questions per chapter, age group and type (computed at build). */
 export type Summary = Record<number, Partial<Record<AgeGroup, Partial<Record<QType, number>>>>>;
@@ -23,14 +24,12 @@ interface Props {
 export default function ChapterMenu({ book, titles, summary, examsHref }: Props) {
   const [open, setOpen] = useState<number | null>(null);
   const prog = progress(book).value;
-  const p = player.value;
-  const age = p.birthYear ? ageGroup(p.birthYear) : null;
-  const mastered = (ch: number) => (age ? prog.mastered.filter((id) => sameChapter(id, ch, age)).length : 0);
-  const total = (ch: number) => (age ? count(summary[ch]?.[age]) : 0);
+  const score = (ch: number) => prog.exams[`c${ch}`]?.best;
+  const hasScores = Object.keys(prog.exams).some((id) => /^c\d+$/.test(id));
 
   const sheet = open !== null && (
-    <Sheet book={book} ch={open} title={titles[open - 1]} age={age}
-      done={mastered(open)} total={total(open)} wrongs={prog.wrong.filter((id) => chapterOf(id) === open).length}
+    <Sheet book={book} ch={open} title={titles[open - 1]} total={count(summary[open]?.[level.value])} best={score(open)}
+      wrongs={prog.wrong.filter((id) => chapterOf(id) === open).length}
       onClose={() => setOpen(null)} />
   );
 
@@ -39,15 +38,14 @@ export default function ChapterMenu({ book, titles, summary, examsHref }: Props)
       <ol class="tiles">
         {titles.map((t, k) => {
           const ch = k + 1;
-          const d = mastered(ch);
-          const n = total(ch);
-          const full = n > 0 && d === n;
+          const best = score(ch);
+          const full = best === 100;
           return (
             <li>
               <button type="button" class={`tile${full ? ' is-full' : ''}`} onClick={() => setOpen(ch)}
                 aria-label={`Capitolul ${ch}: ${t}`} title={t}>
                 <span class="tile-n">{ch}</span>
-                {d > 0 && <span class="tile-sc">{d}/{n}</span>}
+                {best !== undefined && <span class="tile-sc">{best}%</span>}
               </button>
             </li>
           );
@@ -61,7 +59,7 @@ export default function ChapterMenu({ book, titles, summary, examsHref }: Props)
           </li>
         )}
       </ol>
-      {prog.mastered.length > 0 && <p class="small muted">Sub număr: câte întrebări știi din capitol</p>}
+      {hasScores && <p class="small muted">Sub număr: cel mai bun scor din capitol</p>}
       {sheet}
     </>
   );
@@ -71,14 +69,13 @@ interface SheetProps {
   book: string;
   ch: number;
   title: string;
-  age: AgeGroup | null;
-  done: number;
   total: number;
+  best: number | undefined;
   wrongs: number;
   onClose: () => void;
 }
 
-function Sheet({ book, ch, title, age, done, total, wrongs, onClose }: SheetProps) {
+function Sheet({ book, ch, title, total, best, wrongs, onClose }: SheetProps) {
   useEffect(() => {
     const esc = (e: KeyboardEvent) => e.key === 'Escape' && onClose();
     addEventListener('keydown', esc);
@@ -87,7 +84,7 @@ function Sheet({ book, ch, title, age, done, total, wrongs, onClose }: SheetProp
   }, []);
 
   const base = `/${book}`;
-  const harder = age && age !== '18+' ? AGE_GROUPS[AGE_GROUPS.findIndex((g) => g.id === age) + 1].id : null;
+  const lv = level.value;
 
   return (
     <div class="sheet-back" onClick={(e) => e.target === e.currentTarget && onClose()}>
@@ -109,29 +106,23 @@ function Sheet({ book, ch, title, age, done, total, wrongs, onClose }: SheetProp
             <span class="oc-main"><b>Citește capitolul</b><small>Traducerea Cornilescu</small></span>
             <Chev />
           </a>
-          <a class="oc-row" href={`${base}/exersare?capitol=${ch}&start=1`}>
-            <span class="oc-ic"><Icon name="test" /></span>
-            <span class="oc-main">
-              <b>Testul capitolului</b>
-              <small>{total ? `${total} întrebări` : ''}{age ? `${total ? ' · ' : ''}${ageShort(age)}` : ''}{done ? ` · ${done} știute` : ''}</small>
-            </span>
-            <Chev />
-          </a>
-          {harder && (
-            <a class="oc-row" href={`${base}/exersare?capitol=${ch}&start=1&nivel=greu`}>
-              <span class="oc-ic"><Icon name="star" /></span>
-              <span class="oc-main"><b>Mai greu</b><small>{ageShort(harder)}</small></span>
-              <Chev />
-            </a>
-          )}
-          {wrongs > 0 && (
-            <a class="oc-row" href={`${base}/greseli`}>
-              <span class="oc-ic"><Icon name="redo" /></span>
-              <span class="oc-main"><b>Greșelile mele</b><small>{wrongs} de reluat</small></span>
-              <Chev />
-            </a>
-          )}
+          <div class="oc-test">
+            <div class="oc-head">
+              <span class="oc-ic"><Icon name="test" /></span>
+              <span class="oc-main">
+                <b>Testul capitolului</b>
+                <small>{total ? `${total} întrebări` : ''}{best !== undefined ? `${total ? ' · ' : ''}cel mai bun scor ${best}%` : ''}</small>
+              </span>
+            </div>
+            <LevelPicker label="Nivelul testului" />
+          </div>
         </div>
+        <a class="btn btn-primary btn-block oc-go" href={`${base}/exersare?capitol=${ch}&start=1&nivel=${lv}`}>
+          Începe testul · {ageShort(lv)}
+        </a>
+        {wrongs > 0 && (
+          <a class="oc-more" href={`${base}/greseli`}>Greșelile mele ({wrongs} de reluat)</a>
+        )}
       </div>
     </div>
   );
@@ -160,12 +151,6 @@ function examSpan(n: number): number {
 
 function count(s: Partial<Record<QType, number>> | undefined): number {
   return s ? Object.values(s).reduce((a, b) => a + (b ?? 0), 0) : 0;
-}
-
-/** "2sa.5.12-13.3": chapter 5, age 12-13. */
-function sameChapter(id: string, ch: number, age: AgeGroup): boolean {
-  const [, c, a] = id.split('.');
-  return Number(c) === ch && a === age;
 }
 
 /** Chapter of a chapter question; 0 for exam questions ("1sa-2026-12-13.4"). */
