@@ -2,7 +2,7 @@ import { useEffect, useState } from 'preact/hooks';
 import { bookHome } from '../lib/books';
 import { localGet, localSet } from '../lib/store';
 import Board from './Board';
-import ChapterMenu, { tileRows, type Summary } from './ChapterMenu';
+import ChapterMenu, { type Summary } from './ChapterMenu';
 
 export interface BookData {
   slug: string;
@@ -51,7 +51,7 @@ export default function BookPanel({ books, initial }: { books: BookData[]; initi
             ))}
           </div>
           <h2 id="chapters">Ce capitol vrei să exersezi?</h2>
-          <ChapterMenu key={slug} book={slug} titles={book.titles} summary={book.summary} examsHref={`/${slug}/examene`} rows={Math.max(...books.map((b) => tileRows(b.titles.length)))} />
+          <ChapterMenu key={slug} book={slug} titles={book.titles} summary={book.summary} examsHref={`/${slug}/examene`} />
         </div>
       </section>
 

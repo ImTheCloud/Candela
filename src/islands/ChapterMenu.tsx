@@ -19,15 +19,13 @@ interface Props {
   summary: Summary;
   /** Tile after the last chapter (as in v1). */
   examsHref?: string;
-  /** Rows the tallest book needs: a shorter book stretches its exams tile so the page keeps the same height. */
-  rows?: number;
 }
 
 /**
  * The chapters of a book as tiles (as in v1): a tap opens the chapter's menu,
  * where the player reads it or picks a test.
  */
-export default function ChapterMenu({ book, titles, summary, examsHref, rows }: Props) {
+export default function ChapterMenu({ book, titles, summary, examsHref }: Props) {
   const [open, setOpen] = useState<number | null>(null);
   const prog = progress(book).value;
   // until Firestore answers, the scores of the last visit are shown
@@ -42,7 +40,7 @@ export default function ChapterMenu({ book, titles, summary, examsHref, rows }: 
 
   return (
     <>
-      <div class="tiles-wrap"><ol class="tiles" style={{ '--rows': Math.max(rows ?? 0, tileRows(titles.length)) }}>
+      <ol class="tiles">
         {titles.map((t, k) => {
           const ch = k + 1;
           const e = entry(ch);
@@ -66,7 +64,7 @@ export default function ChapterMenu({ book, titles, summary, examsHref, rows }: 
             </a>
           </li>
         )}
-      </ol></div>
+      </ol>
       {sheet}
     </>
   );
@@ -166,16 +164,9 @@ function labelFor(e: Entry, size: number): string | undefined {
 }
 
 /** The exam tile takes what is left of the last row of the 6-column grid. */
-const COLS = 7;
-
-/** Rows of chapter tiles plus the exams tile. */
-export function tileRows(n: number): number {
-  return Math.ceil(n / COLS) + (examSpan(n) === COLS ? 1 : 0);
-}
-
 function examSpan(n: number): number {
-  const left = COLS - (n % COLS);
-  return left < 3 ? COLS : left;
+  const left = 6 - (n % 6);
+  return left < 3 ? 6 : left;
 }
 
 function count(s: Partial<Record<QType, number>> | undefined): number {
