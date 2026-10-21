@@ -25,6 +25,8 @@ export default function Profile({ books }: { books: BookInfo[] }) {
   const list = u ? players.value : [...self(p, rememberedAccount?.uid), ...rememberedKids];
   const kids = list.filter((x) => x.child).length;
   const isParent = p?.isParent === true;
+  // how many flagged questions wait (the avatar keeps this number up to date)
+  const reportsOpen = p?.admin ? localGet<number>('acctN', 0) : 0;
 
   async function toggleParent(on: boolean) {
     setParentError('');
@@ -58,18 +60,18 @@ export default function Profile({ books }: { books: BookInfo[] }) {
         {list.map((x) => (
           <PlayerBlock key={x.key} p={x} books={books} head={isParent} />
         ))}
-        {isParent && (adding
-          ? <ChildForm onDone={() => setAdding(false)} />
-          : (
-            <button type="button" class="add" onClick={() => setAdding(true)}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
-              Adaugă un copil
-            </button>
-          ))}
+        {isParent && adding && <ChildForm onDone={() => setAdding(false)} />}
       </section>
 
       <nav class="me-end">
-        {p?.admin && <a class="me-link" href="/admin">Administrare · înscriși și semnalări</a>}
+        {isParent && !adding && (
+          <button type="button" class="me-link" onClick={() => setAdding(true)}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
+            Adaugă un copil
+          </button>
+        )}
+        {p?.admin && <a class="me-link" href="/admin">Administrare</a>}
+        {p?.admin && <a class="me-link" href="/semnalari">Semnalări de greșeli{reportsOpen > 0 ? ` (${reportsOpen})` : ''}</a>}
         <button type="button" class="me-link signout" onClick={() => signOut()}>Ieși din cont</button>
       </nav>
     </div>

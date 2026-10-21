@@ -350,9 +350,8 @@ a.tile { text-decoration: none; }
 .kv dd { margin: 2px 0 0; font-weight: 700; font-variant-numeric: tabular-nums; }
 .pl-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
 .pl-actions { display: flex; gap: 18px; }
-.add { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 52px; border: 1.5px dashed var(--oil); border-radius: 16px; background: none; color: var(--oil-ink); font: 600 0.95rem var(--f-body); cursor: pointer; }
 .me-end { display: grid; gap: 8px; }
-.me-link { display: flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 16px; border: 1px solid var(--line); border-radius: 999px; background: none; color: var(--ink); font: 600 0.95rem var(--f-body); text-decoration: none; cursor: pointer; }
+.me-link { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 16px; border: 1px solid var(--line); border-radius: 999px; background: none; color: var(--ink); font: 600 0.95rem var(--f-body); text-decoration: none; cursor: pointer; }
 .me-link.signout { color: var(--bad); }
 
 /* Chapter menu: one card, a row per choice */
