@@ -45,7 +45,10 @@ let token = 'owner';
 if (!emulator) {
   const { requireAuth } = require('./lib/requireAuth.js');
   const { getAccessToken } = require('./lib/apiv2.js');
-  await requireAuth({});
+  const { getGlobalDefaultAccount } = require('./lib/auth.js');
+  const account = getGlobalDefaultAccount();
+  if (!account) throw new Error('Firebase CLI nu este conectat: rulează `firebase login`.');
+  await requireAuth({ user: account.user, tokens: account.tokens });
   token = await getAccessToken();
 }
 const base = emulator ? 'http://127.0.0.1:8080' : 'https://firestore.googleapis.com';
