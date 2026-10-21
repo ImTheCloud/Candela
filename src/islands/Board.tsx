@@ -4,7 +4,6 @@ import { AGE_GROUPS, LEVEL_KEY, ageShort, type AgeGroup } from '../lib/age';
 import { db } from '../lib/firebase';
 import { level } from '../lib/level';
 import { user } from '../lib/session';
-import Avatar from './Avatar';
 
 interface Row { key: string; name: string; score: number; at: number }
 
@@ -62,7 +61,6 @@ export default function Board({ book }: Props) {
             {rows.map((r, i) => (
               <li class={`pd${i === 0 ? ' pd-1' : ''}${mine(r.key) ? ' me' : ''}`}>
                 <span class="pd-rank">{i + 1}</span>
-                <Avatar name={r.name} size={40} />
                 <span class="pd-name">{r.name}</span>
                 <span class="pd-score">{r.score}</span>
               </li>
