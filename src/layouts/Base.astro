@@ -23,6 +23,8 @@ interface Props {
 const { title, description = 'Teste biblice după traducerea Cornilescu: 1 Samuel și 2 Samuel.', crumbs = [], home = false } = Astro.props;
 const up = crumbs.at(-1)?.href ?? '/';
 const parent = up === `/${DEFAULT_BOOK}` ? '/' : up;
+// when the way back is the main page, the button is a house and always goes there (not to the previous page in the history)
+const toHome = parent === '/' || /^\/[12]-samuel$/.test(parent);
 const fullTitle = title === 'Candela' ? title : `${title} · Candela`;
 ---
 <!doctype html>
@@ -51,8 +53,12 @@ const fullTitle = title === 'Candela' ? title : `${title} · Candela`;
     <header class="top">
       <div class="wrap top-row">
         {!home && (
-          <a class="back" href={parent} data-back aria-label="Înapoi">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6" /></svg>
+          <a class="back" href={parent} data-back={toHome ? undefined : ''} aria-label={toHome ? 'Acasă' : 'Înapoi'}>
+            {toHome ? (
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-8 9 8" /><path d="M5 10v10h5v-6h4v6h5V10" /></svg>
+            ) : (
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6" /></svg>
+            )}
           </a>
         )}
         <a href="/" class="brand" aria-label="Candela, acasă">
