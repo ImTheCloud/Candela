@@ -385,7 +385,6 @@ a.tile { text-decoration: none; }
 .exam.soon { opacity: .75; border-style: dashed; box-shadow: none; }
 
 /* Admin: accounts */
-.kv.adm-kv { grid-template-columns: repeat(3, 1fr); }
 .kv.adm-kv > div:last-child { grid-column: auto; }
 .adm-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
 .adm-row { padding: 0; overflow: hidden; box-shadow: none; }

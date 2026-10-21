@@ -32,6 +32,7 @@ function Users() {
       <dl class="kv adm-kv">
         <div><dt>Înscriși</dt><dd>{rows.length}</dd></div>
         <div><dt>Părinți</dt><dd>{rows.filter((r) => r.isParent).length}</dd></div>
+        <div><dt>Copii</dt><dd>{rows.reduce((s, r) => s + r.kids.length, 0)}</dd></div>
         <div><dt>Noi, 7 zile</dt><dd>{rows.filter((r) => (r.at?.toMillis() ?? 0) > week).length}</dd></div>
       </dl>
       <input class="input" type="search" placeholder="Caută după nume sau email" aria-label="Caută" value={q} onInput={(e) => setQ(e.currentTarget.value)} />
