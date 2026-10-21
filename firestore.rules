@@ -45,7 +45,7 @@ service cloud.firestore {
         allow read: if owner(uid) || admin();
         allow delete: if owner(uid);
         allow create, update: if owner(uid)
-          && key.matches('^[A-Za-z0-9]{1,128}~[12]-samuel$')
+          && key.matches('^[A-Za-z0-9_-]{1,128}~[12]-samuel$')
           && request.resource.data.get('read', []).size() <= 31
           && request.resource.data.get('marks', []).size() <= 3000
           && request.resource.data.get('mastered', []).size() <= 5000
