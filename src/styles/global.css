@@ -126,7 +126,7 @@ img, svg { display: block; }
 }
 .avatar {
   flex: none; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%;
-  background: var(--cedar-soft); color: var(--cedar); font: 600 0.95rem var(--f-body); text-decoration: none;
+  background: #4a3426; color: #fff; font: 600 0.95rem var(--f-body); text-decoration: none;
 }
 .auth-card { padding: 24px; --gap: 18px; }
 .auth-links { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 16px; }
