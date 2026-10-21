@@ -9,6 +9,6 @@ export function getStaticPaths() {
 
 const { book } = Astro.props as { book: Book };
 ---
-<Base title={book.name} description={`${book.name}: ${book.summary}`}>
+<Base home title={book.name} description={`${book.name}: ${book.summary}`}>
   <BookHome book={book} />
 </Base>

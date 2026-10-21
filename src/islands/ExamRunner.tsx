@@ -1,7 +1,6 @@
 import { useState } from 'preact/hooks';
 import { maxPoints, TYPES, type Playable } from '../lib/questions';
 import Quiz from './Quiz';
-import '../styles/quiz.css';
 
 interface Props {
   book: string;

@@ -6,7 +6,6 @@ import { shuffle, TYPES, type Playable, type QType } from '../lib/questions';
 import { ExamIntro } from './ExamRunner';
 import Quiz from './Quiz';
 import type { Summary } from './Practice';
-import '../styles/quiz.css';
 
 interface Props {
   book: string;

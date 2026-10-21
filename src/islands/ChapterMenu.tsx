@@ -14,13 +14,15 @@ interface Props {
   summary: Summary;
   /** On the reading page: only the button that opens the menu of this chapter. */
   single?: number;
+  /** Tile after the last chapter (as in v1). */
+  examsHref?: string;
 }
 
 /**
  * The chapters of a book as tiles (as in v1): a tap opens the chapter's menu,
  * where the player reads it or picks a test.
  */
-export default function ChapterMenu({ book, titles, summary, single }: Props) {
+export default function ChapterMenu({ book, titles, summary, single, examsHref }: Props) {
   const [open, setOpen] = useState<number | null>(null);
   const prog = progress(book).value;
   const p = player.value;
@@ -63,6 +65,14 @@ export default function ChapterMenu({ book, titles, summary, single }: Props) {
             </li>
           );
         })}
+        {examsHref && (
+          <li class="tile-wide">
+            <a class="tile tile-exam" href={examsHref}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3 8-8" /><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9" /></svg>
+              <span>Examene</span>
+            </a>
+          </li>
+        )}
       </ol>
       {(read.size > 0 || prog.mastered.length > 0) && (
         <p class="small muted tiles-legend"><span class="tile-read" aria-hidden="true" /> citit · 3/15 = întrebări știute din capitol</p>
@@ -95,7 +105,6 @@ function Sheet({ book, ch, title, age, read, reading, done, total, wrongs, onClo
 
   const base = `/${book}`;
   const harder = age && age !== '18+' ? AGE_GROUPS[AGE_GROUPS.findIndex((g) => g.id === age) + 1].id : null;
-  const minutes = (n: number) => `~${Math.max(1, Math.round((n * 40) / 60))} min`;
 
   return (
     <div class="sheet-back" onClick={(e) => e.target === e.currentTarget && onClose()}>
@@ -117,14 +126,12 @@ function Sheet({ book, ch, title, age, read, reading, done, total, wrongs, onClo
               note={read ? 'Citit' : 'Textul Cornilescu; poți marca versetele'} done={read} side="" />
           )}
           <Row href={`${base}/exersare?capitol=${ch}&start=1`} icon="test" name="Testul capitolului"
-            note={age ? (total && done === total ? `Știi tot · ${done}/${total}` : `Toate tipurile · ${ageLabel(age)}`) : 'Toate tipurile de întrebări'}
-            done={!!total && done === total} side={total ? `${total} întrebări` : ''} time={total ? minutes(total) : ''} />
+            note={age ? (total && done === total ? `Știi tot · ${done}/${total}` : `Toate întrebările · ${ageLabel(age)}`) : 'Toate întrebările capitolului'}
+            done={!!total && done === total} side={total ? `${total} întrebări` : ''} />
           {harder && (
             <Row href={`${base}/exersare?capitol=${ch}&start=1&nivel=greu`} icon="star" name="Mai greu"
               note={`Întrebările categoriei ${ageLabel(harder)}`} side="" />
           )}
-          <Row href={`${base}/exersare?mod=tip&capitol=${ch}`} icon="list" name="Pe tip de întrebare"
-            note="Doar adevărat/fals, doar completări, doar asocieri…" side="" />
           {wrongs > 0 && (
             <Row href={`${base}/greseli`} icon="redo" name="Greșelile mele" note={`${wrongs} ${wrongs === 1 ? 'întrebare' : 'întrebări'} de reluat din acest capitol`} side="" />
           )}
@@ -138,11 +145,10 @@ const ICONS: Record<string, JSX.Element> = {
   book: <path d="M2 4h7a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H2zM22 4h-7a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h8z" />,
   test: <><path d="M9 11l3 3 8-8" /><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9" /></>,
   star: <path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z" />,
-  list: <><path d="M8 6h13M8 12h13M8 18h13" /><circle cx="3.5" cy="6" r="1" /><circle cx="3.5" cy="12" r="1" /><circle cx="3.5" cy="18" r="1" /></>,
   redo: <><path d="M21 12a9 9 0 1 1-3-6.7" /><path d="M21 3v6h-6" /></>,
 };
 
-function Row({ href, icon, name, note, done, side, time }: { href: string; icon: string; name: string; note: string; done?: boolean; side: string; time?: string }) {
+function Row({ href, icon, name, note, done, side }: { href: string; icon: string; name: string; note: string; done?: boolean; side: string }) {
   return (
     <a class="lvl-row" href={href}>
       <span class="lvl-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{ICONS[icon]}</svg></span>
@@ -153,7 +159,7 @@ function Row({ href, icon, name, note, done, side, time }: { href: string; icon:
           {note}
         </span>
       </span>
-      {(side || time) && <span class="lvl-side">{time && <b>{time}</b>}{side && <small>{side}</small>}</span>}
+      {side && <span class="lvl-side"><small>{side}</small></span>}
       <svg class="lvl-chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
     </a>
   );
