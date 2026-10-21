@@ -1,6 +1,6 @@
 import { effect, signal, type Signal } from '@preact/signals';
-import { arrayRemove, arrayUnion, deleteDoc, deleteField, doc, increment, onSnapshot, serverTimestamp, setDoc, updateDoc, writeBatch } from 'firebase/firestore';
-import { removeFromBoards, writeBoard } from './board';
+import { arrayRemove, arrayUnion, deleteDoc, doc, increment, onSnapshot, serverTimestamp, setDoc, writeBatch } from 'firebase/firestore';
+import { writeBoard } from './board';
 import { BOOKS } from './books';
 import { db } from './firebase';
 import { player, shortName } from './players';
@@ -175,12 +175,3 @@ effect(() => {
     setDoc(doc(db, 'users', u.uid, 'progress', `${u.uid}~${b.slug}`), data, { merge: true }).then(() => localRemove(guestKey(b.slug)));
   }
 });
-
-/** Starts a player over: no known questions, no mistakes, no scores, and off the boards. */
-export async function resetProgress(uid: string, playerKey: string) {
-  await Promise.all(BOOKS.map((b) => updateDoc(doc(db, 'users', uid, 'progress', `${playerKey}~${b.slug}`), {
-    mastered: [], wrong: [], exams: deleteField(), stats: deleteField(), updatedAt: serverTimestamp(),
-  }).catch(() => {})));
-  await removeFromBoards(uid, playerKey);
-  for (const b of BOOKS) localRemove(boardMark(uid, playerKey, b.slug));
-}
