@@ -1,0 +1,1064 @@
+{
+ "ch": 5,
+ "reviewed": false,
+ "questions": [
+  {
+   "id": "1sa.5.sub12.1",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "5:1",
+   "q": "Filistenii au dus chivotul lui Dumnezeu de la Eben-Ezer la Asdod.",
+   "a": true
+  },
+  {
+   "id": "1sa.5.sub12.2",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "5:3",
+   "q": "La Asdod, idolul Dagon a fost găsit căzut cu fața la pământ înaintea chivotului.",
+   "a": true
+  },
+  {
+   "id": "1sa.5.sub12.3",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "5:7",
+   "q": "Oamenii din Asdod au vrut ca chivotul să rămână la ei pentru totdeauna.",
+   "a": false,
+   "explain": "Ei au zis: „Chivotul Dumnezeului lui Israel să nu rămână la noi\" (5:7)."
+  },
+  {
+   "id": "1sa.5.sub12.4",
+   "age": "sub12",
+   "t": "one",
+   "ref": "5:2",
+   "q": "În casa cărui idol au pus filistenii chivotul lui Dumnezeu, la Asdod?",
+   "opts": [
+    "Astarteea",
+    "Dagon",
+    "Baal"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.5.sub12.5",
+   "age": "sub12",
+   "t": "one",
+   "ref": "5:6",
+   "q": "Cu ce i-a lovit Domnul pe oamenii din Asdod?",
+   "opts": [
+    "cu secetă",
+    "cu bube",
+    "cu grindină"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.5.sub12.6",
+   "age": "sub12",
+   "t": "one",
+   "ref": "5:4",
+   "q": "Ce mai rămăsese din Dagon a doua dimineață?",
+   "opts": [
+    "mâinile",
+    "numai trunchiul",
+    "capul"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.5.sub12.7",
+   "age": "sub12",
+   "t": "match",
+   "ref": "5:1, 8, 10",
+   "q": "Unde a fost dus chivotul în țara filistenilor (1 Samuel 5): asociază.",
+   "pairs": [
+    [
+     "prima cetate",
+     "Asdod"
+    ],
+    [
+     "a doua cetate",
+     "Gat"
+    ],
+    [
+     "a treia cetate",
+     "Ecron"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.5.sub12.8",
+   "age": "sub12",
+   "t": "match",
+   "ref": "5:2-4",
+   "q": "Dagon și chivotul: asociază.",
+   "pairs": [
+    [
+     "prima dimineață",
+     "Dagon era căzut cu fața la pământ"
+    ],
+    [
+     "a doua dimineață",
+     "capul și mâinile lui erau tăiate"
+    ],
+    [
+     "pragul",
+     "acolo erau capul și mâinile lui Dagon"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.5.sub12.9",
+   "age": "sub12",
+   "t": "match",
+   "ref": "5:6-12",
+   "q": "Mâna Domnului asupra filistenilor: asociază.",
+   "pairs": [
+    [
+     "Asdod",
+     "oamenii au fost loviți cu bube"
+    ],
+    [
+     "Gat",
+     "a fost o mare groază"
+    ],
+    [
+     "Ecron",
+     "locuitorii au strigat că vor să-i omoare"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.5.sub12.10",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "5:3",
+   "a": [
+    "Dagon"
+   ],
+   "q": "au găsit pe ___ întins cu fața la pământ înaintea chivotului Domnului.",
+   "ctx": "Asdodenii, a doua zi după ce au adus chivotul:"
+  },
+  {
+   "id": "1sa.5.sub12.11",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "5:1",
+   "a": [
+    "Asdod"
+   ],
+   "q": "Filistenii au luat chivotul lui Dumnezeu și l-au dus din Eben-Ezer la ___.",
+   "ctx": "După lupta în care a fost luat chivotul:"
+  },
+  {
+   "id": "1sa.5.sub12.12",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "5:12",
+   "a": [
+    "cer"
+   ],
+   "q": "și țipetele cetății se înălțau până la ___.",
+   "ctx": "În Ecron, după venirea chivotului:"
+  },
+  {
+   "id": "1sa.5.sub12.13",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "5:4",
+   "q": "Ce era tăiat din Dagon, pe prag?",
+   "opts": [
+    "picioarele",
+    "capul",
+    "cele două mâini"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.5.sub12.14",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "5:8-10",
+   "q": "În ce cetăți filistene a fost dus chivotul?",
+   "opts": [
+    "Ecron",
+    "Ierihon",
+    "Gat"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.5.sub12.15",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "5:5",
+   "q": "Ce nu fac nici astăzi cei ce intră în casa lui Dagon, după 1 Samuel 5?",
+   "opts": [
+    "nu vorbesc",
+    "nu se închină",
+    "nu aprind foc"
+   ],
+   "a": [],
+   "explain": "Niciun răspuns corect: nu calcă pe prag (5:5)."
+  },
+  {
+   "id": "1sa.5.12-13.1",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "5:5",
+   "q": "Din pricina celor întâmplate cu Dagon, preoții lui nu calcă pe prag nici astăzi.",
+   "a": true
+  },
+  {
+   "id": "1sa.5.12-13.2",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "5:8",
+   "q": "Domnitorii filistenilor au hotărât să ducă chivotul la Gaza.",
+   "a": false,
+   "explain": "Au hotărât să-l ducă la Gat (5:8)."
+  },
+  {
+   "id": "1sa.5.12-13.3",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "5:12",
+   "q": "Țipetele cetății Ecron se înălțau până la cer.",
+   "a": true
+  },
+  {
+   "id": "1sa.5.12-13.4",
+   "age": "12-13",
+   "t": "one",
+   "ref": "5:2",
+   "q": "Cum este explicat numele Dagon în 1 Samuel 5:2?",
+   "opts": [
+    "Zeul pește",
+    "Zeul soarelui",
+    "Zeul ploii"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.5.12-13.5",
+   "age": "12-13",
+   "t": "one",
+   "ref": "5:3",
+   "q": "Ce au făcut asdodenii cu Dagon după ce l-au găsit căzut prima dată?",
+   "opts": [
+    "l-au aruncat",
+    "l-au pus înapoi la locul lui",
+    "l-au ars"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.5.12-13.6",
+   "age": "12-13",
+   "t": "one",
+   "ref": "5:10",
+   "q": "Ce au strigat ecroniții când a intrat chivotul în cetatea lor?",
+   "opts": [
+    "„Bine ai venit!\"",
+    "„Au adus la noi chivotul ca să ne omoare\"",
+    "„Ascundeți chivotul!\""
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.5.12-13.7",
+   "age": "12-13",
+   "t": "match",
+   "ref": "5:7-11",
+   "q": "Ce au spus filistenii despre chivot: asociază.",
+   "pairs": [
+    [
+     "oamenii din Asdod",
+     "să nu rămână la noi"
+    ],
+    [
+     "domnitorii",
+     "să se ducă la Gat"
+    ],
+    [
+     "ecroniții",
+     "au adus chivotul ca să ne omoare"
+    ],
+    [
+     "la urmă",
+     "trimiteți-l înapoi la locul lui"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.5.12-13.8",
+   "age": "12-13",
+   "t": "match",
+   "ref": "5:3-4",
+   "q": "Dagon în cele două dimineți: asociază.",
+   "pairs": [
+    [
+     "întâia oară",
+     "l-au pus înapoi la locul lui"
+    ],
+    [
+     "a doua oară",
+     "capul și mâinile erau tăiate"
+    ],
+    [
+     "trunchiul",
+     "singurul care rămăsese"
+    ],
+    [
+     "chivotul",
+     "înaintea lui căzuse Dagon"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.5.12-13.9",
+   "age": "12-13",
+   "t": "match",
+   "ref": "5:6-9",
+   "q": "Urgiile din 1 Samuel 5: asociază.",
+   "pairs": [
+    [
+     "mâna Domnului",
+     "a apăsat asupra Asdodului"
+    ],
+    [
+     "ținutul Asdodului",
+     "a fost și el lovit"
+    ],
+    [
+     "oamenii din Gat",
+     "de la mic până la mare"
+    ],
+    [
+     "groaza",
+     "a fost mare în Gat"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.5.12-13.10",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "5:4",
+   "a": [
+    "prag"
+   ],
+   "q": "capul lui Dagon și cele două mâini ale lui erau tăiate pe ___ și nu-i rămăsese decât trunchiul.",
+   "ctx": "A doua dimineață, în casa lui Dagon:"
+  },
+  {
+   "id": "1sa.5.12-13.11",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "5:7",
+   "a": [
+    "rămână"
+   ],
+   "q": "„Chivotul Dumnezeului lui Israel să nu ___ la noi,",
+   "ctx": "Oamenii din Asdod, după urgie:"
+  },
+  {
+   "id": "1sa.5.12-13.12",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "5:11",
+   "a": [
+    "locul"
+   ],
+   "q": "„Trimiteți înapoi chivotul Dumnezeului lui Israel; să se întoarcă la ___ lui,",
+   "ctx": "Domnitorii filistenilor, strânși de ecroniți:"
+  },
+  {
+   "id": "1sa.5.12-13.13",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "5:9",
+   "q": "Ce s-a întâmplat la Gat după venirea chivotului?",
+   "opts": [
+    "a fost o mare groază",
+    "oamenii s-au bucurat",
+    "mâna Domnului a apăsat asupra cetății"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.5.12-13.14",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "5:11",
+   "q": "Ce le-au cerut ecroniții domnitorilor filistenilor?",
+   "opts": [
+    "să-l întoarcă la locul lui",
+    "să-l ardă",
+    "să trimită înapoi chivotul"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.5.12-13.15",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "5:1",
+   "q": "De unde au dus filistenii chivotul la Asdod?",
+   "opts": [
+    "de la Silo",
+    "de la Afec",
+    "de la Gat"
+   ],
+   "a": [],
+   "explain": "Niciun răspuns corect: de la Eben-Ezer (5:1)."
+  },
+  {
+   "id": "1sa.5.14-15.1",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "5:6",
+   "q": "Mâna Domnului a apăsat atât asupra Asdodului, cât și asupra ținutului lui.",
+   "a": true
+  },
+  {
+   "id": "1sa.5.14-15.2",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "5:4",
+   "q": "A doua dimineață, Dagon era în picioare, la locul lui.",
+   "a": false,
+   "explain": "Era din nou căzut, cu capul și mâinile tăiate pe prag (5:4)."
+  },
+  {
+   "id": "1sa.5.14-15.3",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "5:11",
+   "q": "În Ecron era o groază de moarte, iar mâna lui Dumnezeu apăsa cu putere.",
+   "a": true
+  },
+  {
+   "id": "1sa.5.14-15.4",
+   "age": "14-15",
+   "t": "one",
+   "ref": "5:9",
+   "q": "Pe cine a lovit Domnul în Gat?",
+   "opts": [
+    "pe oamenii cetății de la mic până la mare",
+    "numai pe preoți",
+    "doar pe domnitori"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.5.14-15.5",
+   "age": "14-15",
+   "t": "one",
+   "ref": "5:7",
+   "q": "Asupra cui spuneau asdodenii că apasă mâna Dumnezeului lui Israel?",
+   "opts": [
+    "asupra Ecronului",
+    "asupra lui Gat",
+    "asupra lor și asupra lui Dagon, dumnezeul lor"
+   ],
+   "a": 2
+  },
+  {
+   "id": "1sa.5.14-15.6",
+   "age": "14-15",
+   "t": "one",
+   "ref": "5:8",
+   "q": "Pe cine au adunat oamenii din Asdod ca să hotărască ce să facă cu chivotul?",
+   "opts": [
+    "pe preoții lui Dagon",
+    "pe toți domnitorii filistenilor",
+    "pe bătrânii lui Israel"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.5.14-15.7",
+   "age": "14-15",
+   "t": "match",
+   "ref": "5:1-5",
+   "q": "Chivotul la Asdod: asociază.",
+   "pairs": [
+    [
+     "Eben-Ezer",
+     "de acolo a fost adus"
+    ],
+    [
+     "casa lui Dagon",
+     "acolo a fost așezat"
+    ],
+    [
+     "pragul",
+     "nu mai este călcat"
+    ],
+    [
+     "trunchiul",
+     "numai el rămăsese din Dagon"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.5.14-15.8",
+   "age": "14-15",
+   "t": "match",
+   "ref": "5:8-12",
+   "q": "Drumul chivotului prin cetățile filistenilor: asociază fiecare cetate cu ce s-a întâmplat.",
+   "pairs": [
+    [
+     "Gat",
+     "spuzeală de bube"
+    ],
+    [
+     "Ecron",
+     "țipete până la cer"
+    ],
+    [
+     "Asdod",
+     "Dagon căzut"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.5.14-15.9",
+   "age": "14-15",
+   "t": "match",
+   "ref": "5:10-11",
+   "q": "Strigătele ecroniților: asociază începutul cu sfârșitul.",
+   "pairs": [
+    [
+     "Au adus la noi chivotul",
+     "ca să ne omoare"
+    ],
+    [
+     "Trimiteți înapoi chivotul",
+     "Dumnezeului lui Israel"
+    ],
+    [
+     "să se întoarcă",
+     "la locul lui"
+    ],
+    [
+     "în toată cetatea",
+     "era o groază de moarte"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.5.14-15.10",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "5:9",
+   "a": [
+    "mare"
+   ],
+   "q": "a lovit pe oamenii cetății de la mic până la ___ și au avut o spuzeală de bube la șezut.",
+   "ctx": "Chivotul la Gat:"
+  },
+  {
+   "id": "1sa.5.14-15.11",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "5:6",
+   "a": [
+    "Mâna"
+   ],
+   "q": "___ Domnului a apăsat asupra celor din Asdod și i-a pustiit;",
+   "ctx": "Chivotul în cetatea Asdod:"
+  },
+  {
+   "id": "1sa.5.14-15.12",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "5:2",
+   "a": [
+    "pește"
+   ],
+   "q": "filistenii l-au dus în casa lui Dagon (Zeul ___) și l-au așezat lângă Dagon.",
+   "ctx": "După ce au pus mâna pe chivot:"
+  },
+  {
+   "id": "1sa.5.14-15.13",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "5:3",
+   "q": "Ce au făcut asdodenii a doua zi dimineața?",
+   "opts": [
+    "au dat chivotul înapoi",
+    "s-au sculat dis-de-dimineață",
+    "l-au pus pe Dagon înapoi la locul lui"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.5.14-15.14",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "5:12",
+   "q": "Ce se întâmpla cu oamenii din Ecron care nu mureau?",
+   "opts": [
+    "țipau până la cer",
+    "erau loviți cu bube",
+    "plecau din cetate"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.5.14-15.15",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "5:2",
+   "q": "Lângă cine au așezat filistenii chivotul, la Asdod?",
+   "opts": [
+    "lângă Baal",
+    "lângă Astarteea",
+    "lângă preotul lor"
+   ],
+   "a": [],
+   "explain": "Niciun răspuns corect: l-au așezat lângă Dagon (5:2)."
+  },
+  {
+   "id": "1sa.5.16-17.1",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "5:8",
+   "q": "Domnitorii filistenilor au răspuns: „Să se ducă la Gat chivotul Dumnezeului lui Israel.\"",
+   "a": true
+  },
+  {
+   "id": "1sa.5.16-17.2",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "5:3",
+   "q": "Dagon a fost găsit căzut înaintea chivotului seara, când asdodenii se culcau.",
+   "a": false,
+   "explain": "L-au găsit „a doua zi\", când „se sculaseră dis-de-dimineață\" (5:3)."
+  },
+  {
+   "id": "1sa.5.16-17.3",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "5:10",
+   "q": "Ecron a fost a treia cetate filisteană în care a fost dus chivotul.",
+   "a": true
+  },
+  {
+   "id": "1sa.5.16-17.4",
+   "age": "16-17",
+   "t": "one",
+   "ref": "5:6",
+   "q": "Unde i-a lovit Domnul pe asdodeni, după 1 Samuel 5:6?",
+   "opts": [
+    "numai în cetate",
+    "numai în casa lui Dagon",
+    "atât în Asdod, cât și în ținutul lui"
+   ],
+   "a": 2
+  },
+  {
+   "id": "1sa.5.16-17.5",
+   "age": "16-17",
+   "t": "one",
+   "ref": "5:11",
+   "q": "Ce au cerut ecroniții, după ce au strâns pe domnitori?",
+   "opts": [
+    "să mute chivotul la Gaza",
+    "să-l păzească preoții",
+    "să-l trimită înapoi la locul lui"
+   ],
+   "a": 2
+  },
+  {
+   "id": "1sa.5.16-17.6",
+   "age": "16-17",
+   "t": "one",
+   "ref": "5:4",
+   "q": "Unde erau capul și mâinile lui Dagon a doua oară?",
+   "opts": [
+    "tăiate pe prag",
+    "lângă chivot",
+    "în fața altarului"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.5.16-17.7",
+   "age": "16-17",
+   "t": "match",
+   "ref": "5:3-5",
+   "q": "Asdod și casa lui Dagon: asociază începutul cu sfârșitul.",
+   "pairs": [
+    [
+     "au găsit pe Dagon întins",
+     "cu fața la pământ înaintea chivotului"
+    ],
+    [
+     "capul lui Dagon și mâinile",
+     "erau tăiate pe prag"
+    ],
+    [
+     "preoții lui Dagon",
+     "nu calcă pe prag"
+    ],
+    [
+     "până în ziua de azi",
+     "păstrează acest obicei"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.5.16-17.8",
+   "age": "16-17",
+   "t": "match",
+   "ref": "5:7-10",
+   "q": "Cine a vorbit despre chivot: asociază.",
+   "pairs": [
+    [
+     "oamenii din Asdod",
+     "să nu rămână la noi"
+    ],
+    [
+     "domnitorii filistenilor",
+     "să se ducă la Gat"
+    ],
+    [
+     "ecroniții",
+     "ca să ne omoare"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.5.16-17.9",
+   "age": "16-17",
+   "t": "match",
+   "ref": "5:6-12",
+   "q": "Urgia de la fiecare cetate: asociază.",
+   "pairs": [
+    [
+     "Asdod",
+     "pustiire și bube"
+    ],
+    [
+     "Gat",
+     "mare groază"
+    ],
+    [
+     "Ecron",
+     "groază de moarte"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.5.16-17.10",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "5:10",
+   "a": [
+    "omoare"
+   ],
+   "q": "„Au adus la noi chivotul Dumnezeului lui Israel ca să ne ___, pe noi și poporul nostru.\"",
+   "ctx": "Ecroniții, când a intrat chivotul în cetatea lor:"
+  },
+  {
+   "id": "1sa.5.16-17.11",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "5:8",
+   "a": [
+    "domnitorii"
+   ],
+   "q": "Și au trimis și au adunat la ei pe toți ___ filistenilor",
+   "ctx": "Oamenii din Asdod, după urgie:"
+  },
+  {
+   "id": "1sa.5.16-17.12",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "5:5",
+   "a": [
+    "prag"
+   ],
+   "q": "preoții lui Dagon și toți cei ce intră în casa lui Dagon, la Asdod, nu calcă pe ___.",
+   "ctx": "Despre casa lui Dagon, după căderea idolului:"
+  },
+  {
+   "id": "1sa.5.16-17.13",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "5:7",
+   "q": "Ce au recunoscut asdodenii?",
+   "opts": [
+    "că Dagon este mai tare",
+    "că apasă și asupra lui Dagon",
+    "că mâna Dumnezeului lui Israel apasă asupra lor"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.5.16-17.14",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "5:9-12",
+   "q": "Cum îi lovea Domnul pe oamenii din Gat și din Ecron?",
+   "opts": [
+    "cu groază",
+    "cu bube la șezut",
+    "cu foc din cer"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.5.16-17.15",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "5:8",
+   "q": "Câte zile a stat chivotul la Asdod, după 1 Samuel 5?",
+   "opts": [
+    "trei",
+    "douăzeci",
+    "șapte"
+   ],
+   "a": [],
+   "explain": "Niciun răspuns corect: textul nu spune câte zile; în total chivotul a fost șapte luni în țara filistenilor (6:1)."
+  },
+  {
+   "id": "1sa.5.18+.1",
+   "age": "18+",
+   "t": "tf",
+   "ref": "5:4",
+   "q": "A doua dimineață, din Dagon nu-i rămăsese decât trunchiul.",
+   "a": true
+  },
+  {
+   "id": "1sa.5.18+.2",
+   "age": "18+",
+   "t": "tf",
+   "ref": "5:9",
+   "q": "La Gat, Domnul i-a lovit doar pe cei mari, nu și pe cei mici.",
+   "a": false,
+   "explain": "„De la mic până la mare\" (5:9)."
+  },
+  {
+   "id": "1sa.5.18+.3",
+   "age": "18+",
+   "t": "tf",
+   "ref": "5:11",
+   "q": "Ecroniții au strâns pe toți domnitorii filistenilor ca să trimită înapoi chivotul.",
+   "a": true
+  },
+  {
+   "id": "1sa.5.18+.4",
+   "age": "18+",
+   "t": "one",
+   "ref": "5:1",
+   "q": "Din ce loc a plecat chivotul spre Asdod, în 1 Samuel 5:1?",
+   "opts": [
+    "Afec",
+    "Silo",
+    "Eben-Ezer"
+   ],
+   "a": 2
+  },
+  {
+   "id": "1sa.5.18+.5",
+   "age": "18+",
+   "t": "one",
+   "ref": "5:12",
+   "q": "Până unde se înălțau țipetele cetății Ecron?",
+   "opts": [
+    "până la cer",
+    "până la Gat",
+    "până la Ierusalim"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.5.18+.6",
+   "age": "18+",
+   "t": "one",
+   "ref": "5:10",
+   "q": "Pe cine spuneau ecroniții că vrea să-i omoare chivotul?",
+   "opts": [
+    "numai pe domnitori",
+    "pe ei și poporul lor",
+    "pe preoții lui Dagon"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.5.18+.7",
+   "age": "18+",
+   "t": "match",
+   "ref": "5:1-12",
+   "q": "Ordinea chivotului în 1 Samuel 5: asociază.",
+   "pairs": [
+    [
+     "întâi",
+     "Asdod, în casa lui Dagon"
+    ],
+    [
+     "apoi",
+     "Gat"
+    ],
+    [
+     "la urmă",
+     "Ecron"
+    ],
+    [
+     "de acolo",
+     "au cerut să fie trimis înapoi"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.5.18+.8",
+   "age": "18+",
+   "t": "match",
+   "ref": "5:3-4",
+   "q": "Dagon: asociază fiecare cu momentul potrivit.",
+   "pairs": [
+    [
+     "întâia dimineață",
+     "căzut cu fața la pământ"
+    ],
+    [
+     "a doua dimineață",
+     "capul și mâinile tăiate"
+    ],
+    [
+     "după prima cădere",
+     "pus înapoi la locul lui"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.5.18+.9",
+   "age": "18+",
+   "t": "match",
+   "ref": "5:6-12",
+   "q": "Cuvinte din 1 Samuel 5: asociază fiecare cu cetatea.",
+   "pairs": [
+    [
+     "„pustiit\"",
+     "Asdod"
+    ],
+    [
+     "„o mare groază\"",
+     "Gat"
+    ],
+    [
+     "„o groază de moarte\"",
+     "Ecron"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.5.18+.10",
+   "age": "18+",
+   "t": "fill",
+   "ref": "5:6",
+   "a": [
+    "bube"
+   ],
+   "q": "i-a lovit cu ___ la șezut, atât în Asdod, cât și în ținutul lui.",
+   "ctx": "Mâna Domnului asupra Asdodului:"
+  },
+  {
+   "id": "1sa.5.18+.11",
+   "age": "18+",
+   "t": "fill",
+   "ref": "5:11",
+   "a": [
+    "moarte"
+   ],
+   "q": "Căci în toată cetatea era o groază de ___, și mâna lui Dumnezeu apăsa cu putere.",
+   "ctx": "Ecronul, după venirea chivotului:"
+  },
+  {
+   "id": "1sa.5.18+.12",
+   "age": "18+",
+   "t": "fill",
+   "ref": "5:3",
+   "a": [
+    "locul"
+   ],
+   "q": "Au luat pe Dagon și l-au pus înapoi la ___ lui.",
+   "ctx": "Asdodenii, după prima cădere a lui Dagon:"
+  },
+  {
+   "id": "1sa.5.18+.13",
+   "age": "18+",
+   "t": "multi",
+   "ref": "5:2-4",
+   "q": "Ce s-a întâmplat cu Dagon?",
+   "opts": [
+    "a căzut înaintea chivotului",
+    "a rămas doar trunchiul",
+    "i s-au tăiat capul și mâinile"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.5.18+.14",
+   "age": "18+",
+   "t": "multi",
+   "ref": "5:7-8",
+   "q": "Ce au întrebat oamenii din Asdod pe domnitori?",
+   "opts": [
+    "„Cine l-a adus?\"",
+    "„Ce să facem cu chivotul Dumnezeului lui Israel?\"",
+    "„Unde să-l ascundem?\""
+   ],
+   "a": [
+    1
+   ]
+  },
+  {
+   "id": "1sa.5.18+.15",
+   "age": "18+",
+   "t": "multi",
+   "ref": "5:10",
+   "q": "Unde a fost trimis chivotul după Gat?",
+   "opts": [
+    "înapoi la Asdod",
+    "la Gaza",
+    "la Ascalon"
+   ],
+   "a": [],
+   "explain": "Niciun răspuns corect: a fost trimis la Ecron (5:10)."
+  }
+ ]
+}
