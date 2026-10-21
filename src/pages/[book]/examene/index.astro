@@ -19,7 +19,7 @@ const { book, list } = Astro.props as { book: Book; list: ExamFile[] };
         <span class="exam-title">Examen alb</span>
         <span class="small muted">Un examen nou, ca cel adevărat: 21 de întrebări din capitolele alese, pentru vârsta ta.</span>
       </span>
-      <span class="chev" aria-hidden="true">›</span>
+      <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
     </a>
 
     <h2>Examene date</h2>
@@ -77,7 +77,7 @@ const { book, list } = Astro.props as { book: Book; list: ExamFile[] };
   .exam.mine { border-color: var(--oil); }
   .alb { background: var(--oil-soft); border-color: transparent; }
   .best { flex: none; padding: 4px 10px; border-radius: 999px; background: var(--ok-soft); color: var(--ok); font-weight: 600; }
-  .chev { font-size: 1.6rem; color: var(--ink-3); line-height: 1; }
+  .chev { flex: none; color: var(--ink-3); }
   .empty { padding: 18px; }
   h2 { margin-top: 8px; }
 </style>

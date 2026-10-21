@@ -1,6 +1,6 @@
 import type { JSX } from 'preact';
 import { useEffect, useState } from 'preact/hooks';
-import { AGE_GROUPS, ageGroup, ageLabel, type AgeGroup } from '../lib/age';
+import { AGE_GROUPS, ageGroup, ageShort, type AgeGroup } from '../lib/age';
 import { player } from '../lib/players';
 import { progress } from '../lib/progress';
 import type { QType } from '../lib/questions';
@@ -106,9 +106,9 @@ function Sheet({ book, ch, title, age, done, total, wrongs, onClose }: SheetProp
         <div class="lvl-list">
           <Row href={`${base}/citire/${ch}`} icon="book" tone="read" name="Citește capitolul" />
           <Row href={`${base}/exersare?capitol=${ch}&start=1`} icon="test" tone="test" name="Testul capitolului"
-            tag={age ? short(age) : ''} done={!!total && done === total}
+            tag={age ? ageShort(age) : ''} done={!!total && done === total}
             side={total ? (done ? `${done}/${total}` : String(total)) : ''} unit={total && !done ? 'întrebări' : ''} />
-          {harder && <Row href={`${base}/exersare?capitol=${ch}&start=1&nivel=greu`} icon="star" name="Mai greu" tag={short(harder)} />}
+          {harder && <Row href={`${base}/exersare?capitol=${ch}&start=1&nivel=greu`} icon="star" name="Mai greu" tag={ageShort(harder)} />}
           {wrongs > 0 && <Row href={`${base}/greseli`} icon="redo" name="Greșelile mele" side={`${wrongs} de reluat`} />}
         </div>
       </div>
@@ -133,11 +133,6 @@ function Row({ href, icon, name, tag, done, side, unit, tone }: { href: string; 
       <svg class="lvl-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
     </a>
   );
-}
-
-/** "18+", "12–13": the age group without "ani". */
-function short(age: AgeGroup): string {
-  return ageLabel(age).replace(/ ani$/, '').replace('Sub 12', 'sub 12');
 }
 
 function count(s: Partial<Record<QType, number>> | undefined): number {

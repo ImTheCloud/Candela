@@ -1,4 +1,4 @@
-import { useMemo } from 'preact/hooks';
+import { useMemo, useState } from 'preact/hooks';
 import { shuffle, type Answer, type Grade, type Playable } from '../lib/questions';
 
 interface Props {
@@ -95,41 +95,67 @@ function Multi({ q, answer, onChange, graded }: P<'multi'>) {
 }
 
 function Match({ q, answer, onChange, graded }: P<'match'>) {
-  // the right column is shown in a shuffled order, labelled A, B, C…; each row picks a letter
+  // left column 1, 2, 3…; right column shuffled and labelled A, B, C…
+  // Touch a left item, then the right item that goes with it. Touch a paired right item to undo.
   const order = useMemo(() => shuffle(q.pairs.map((_, i) => i)), [q.id]);
-  const letter = (i: number) => String.fromCharCode(65 + order.indexOf(i));
-  const set = (row: number, value: number) => {
+  const [active, setActive] = useState<number | null>(null);
+  const letterOf = (i: number) => String.fromCharCode(65 + order.indexOf(i));
+  const ownerOf = (i: number) => answer.v.findIndex((x) => x === i);
+
+  const pickLeft = (row: number) => setActive(active === row ? null : row);
+  const pickRight = (i: number) => {
     const v = [...answer.v];
-    v[row] = v[row] === value ? null : value;
+    const owner = ownerOf(i);
+    if (active === null) {
+      if (owner >= 0) { v[owner] = null; onChange({ t: 'match', v }); }
+      return;
+    }
+    if (owner >= 0) v[owner] = null;
+    v[active] = i;
     onChange({ t: 'match', v });
+    setActive(null);
   };
+
   return (
     <>
       <p class="q-text">{q.q}</p>
-      <ol class="match-right" aria-label="Coloana a doua">
-        {order.map((i, k) => <li key={i}><span class="opt-key">{String.fromCharCode(65 + k)}</span><span>{q.pairs[i][1]}</span></li>)}
-      </ol>
-      <ul class="match-rows">
-        {q.pairs.map(([left], row) => {
-          const ok = graded?.parts?.[row];
-          return (
-            <li class={`match-row ${graded ? (ok ? 'is-right' : 'is-wrong') : ''}`}>
-              <p class="match-left">{left}</p>
-              <div class="letters" role="radiogroup" aria-label={`Litera pentru ${left}`}>
-                {order.map((i, k) => {
-                  const chosen = answer.v[row] === i;
-                  const cls = graded ? (i === row ? 'is-right' : chosen ? 'is-wrong' : '') : chosen ? 'is-chosen' : '';
-                  return (
-                    <button type="button" role="radio" aria-checked={chosen} disabled={!!graded}
-                      class={`letter ${cls}`} onClick={() => set(row, i)}>{String.fromCharCode(65 + k)}</button>
-                  );
-                })}
-              </div>
-              {graded && !ok && <p class="small match-fix">Corect: {letter(row)}. {q.pairs[row][1]}</p>}
-            </li>
-          );
-        })}
-      </ul>
+      <div class="match">
+        <ol class="match-col" aria-label="Coloana întâi">
+          {q.pairs.map(([left], row) => {
+            const picked = answer.v[row];
+            const cls = graded ? (graded.parts?.[row] ? 'is-right' : 'is-wrong') : active === row ? 'is-active' : picked !== null ? 'is-paired' : '';
+            return (
+              <li>
+                <button type="button" class={`m-item ${cls}`} disabled={!!graded} aria-pressed={active === row} onClick={() => pickLeft(row)}>
+                  <span class="m-key">{row + 1}</span>
+                  <span class="m-text">{left}</span>
+                  {picked !== null && <span class="m-pair">{letterOf(picked)}</span>}
+                </button>
+              </li>
+            );
+          })}
+        </ol>
+        <ol class="match-col" aria-label="Coloana a doua">
+          {order.map((i, k) => {
+            const owner = ownerOf(i);
+            const cls = graded ? (owner === i ? 'is-right' : owner >= 0 ? 'is-wrong' : '') : owner >= 0 ? 'is-paired' : '';
+            return (
+              <li>
+                <button type="button" class={`m-item ${cls}`} disabled={!!graded} onClick={() => pickRight(i)}>
+                  <span class="m-key m-key-r">{String.fromCharCode(65 + k)}</span>
+                  <span class="m-text">{q.pairs[i][1]}</span>
+                  {owner >= 0 && <span class="m-pair">{owner + 1}</span>}
+                </button>
+              </li>
+            );
+          })}
+        </ol>
+      </div>
+      {graded && !graded.right && (
+        <ul class="match-fix small">
+          {q.pairs.map(([l, r], row) => !graded.parts?.[row] && <li>{row + 1}. {l} → {letterOf(row)}. {r}</li>)}
+        </ul>
+      )}
     </>
   );
 }

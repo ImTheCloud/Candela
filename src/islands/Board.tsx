@@ -1,6 +1,6 @@
-import { useEffect, useRef, useState } from 'preact/hooks';
+import { useEffect, useState } from 'preact/hooks';
 import { collection, getDocs, limit, orderBy, query, where } from 'firebase/firestore';
-import { AGE_GROUPS, ageGroup, type AgeGroup } from '../lib/age';
+import { AGE_GROUPS, ageGroup, ageShort, type AgeGroup } from '../lib/age';
 import { db } from '../lib/firebase';
 import { player } from '../lib/players';
 import { user } from '../lib/session';
@@ -13,11 +13,6 @@ export default function Board({ book, totals }: { book: string; totals: Record<s
   const [age, setAge] = useState<AgeGroup>(p.birthYear ? ageGroup(p.birthYear) : '12-13');
   const [rows, setRows] = useState<Row[] | null>(null);
   const [error, setError] = useState(false);
-  const tabs = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    tabs.current?.querySelector('[aria-selected="true"]')?.scrollIntoView({ inline: 'center', block: 'nearest' });
-  }, [age]);
 
   useEffect(() => {
     if (p.birthYear) setAge(ageGroup(p.birthYear));
@@ -37,11 +32,9 @@ export default function Board({ book, totals }: { book: string; totals: Record<s
 
   return (
     <div class="board">
-      <div class="age-tabs" ref={tabs} role="tablist" aria-label="Categoria de vârstă">
+      <div class="age-tabs" role="tablist" aria-label="Categoria de vârstă">
         {AGE_GROUPS.map((g) => (
-          <button type="button" role="tab" aria-selected={age === g.id} class="chip" onClick={() => setAge(g.id)}>
-            <span class="chip-name">{g.label}</span>
-          </button>
+          <button type="button" role="tab" aria-selected={age === g.id} onClick={() => setAge(g.id)}>{ageShort(g.id)}</button>
         ))}
       </div>
       {user.value === null && (

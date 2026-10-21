@@ -7,7 +7,8 @@ const ROOT = new URL('../content/', import.meta.url).pathname;
 const BOOKS = { '1-samuel': '1sa', '2-samuel': '2sa' };
 const AGES = ['sub12', '12-13', '14-15', '16-17', '18+'];
 const TYPES = ['tf', 'one', 'match', 'fill', 'multi'];
-const TARGET = 3;
+// A chapter test is a one-chapter exam: 5 + 5 + one matching of 5 pairs + 5 + 5, for every age group.
+const TARGET = { tf: 5, one: 5, match: 1, fill: 5, multi: 5 };
 
 let errors = 0;
 let warnings = 0;
@@ -79,6 +80,9 @@ function checkQuestion(q, where, text, strictFill = true) {
       break;
     case 'match':
       if (!Array.isArray(q.pairs) || q.pairs.length < 3 || q.pairs.length > 5) { err(w, 'între 3 și 5 perechi'); break; }
+      // chapter questions: five pairs, and never "the start of a sentence with its end" (not asked at the exam)
+      if (strictFill && q.pairs.length !== 5) warn(`${w}: la asociere trebuie 5 perechi (are ${q.pairs.length})`);
+      if (strictFill && /începutul|sfârșitul|continuarea|completează/i.test(q.q)) warn(`${w}: asocierea nu trebuie să fie de completat fraze`);
       if (q.pairs.some((p) => !Array.isArray(p) || p.length !== 2 || !p[0]?.trim() || !p[1]?.trim())) err(w, 'pereche greșită');
       if (new Set(q.pairs.map((p) => p[0])).size !== q.pairs.length) err(w, 'stânga se repetă');
       if (new Set(q.pairs.map((p) => p[1])).size !== q.pairs.length) err(w, 'dreapta se repetă');
@@ -128,7 +132,7 @@ for (const [slug, abbr] of Object.entries(BOOKS)) {
       checkQuestion(q, where, text);
       if (counts[q.age]?.[q.t] !== undefined) counts[q.age][q.t]++;
     }
-    for (const a of AGES) for (const t of TYPES) if (counts[a][t] < TARGET) warn(`${where}: ${a} are ${counts[a][t]} ${t} (ținta: ${TARGET})`);
+    for (const a of AGES) for (const t of TYPES) if (counts[a][t] !== TARGET[t]) warn(`${where}: ${a} are ${counts[a][t]} ${t} (ținta: ${TARGET[t]})`);
     table.push(`${name.padEnd(9)} ${AGES.map((a) => `${a}:${Object.values(counts[a]).reduce((x, y) => x + y, 0)}`.padEnd(9)).join(' ')} ${file.reviewed ? 'verificat' : 'neverificat'}`);
   }
   if (table.length) console.log(`\n${slug}\n${table.join('\n')}`);
