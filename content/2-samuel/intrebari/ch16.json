@@ -28,6 +28,23 @@
    "explain": "David a zis: „Lăsați-l să blesteme, căci Domnul i-a zis\" (16:11)."
   },
   {
+   "id": "2sa.16.sub12.16",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "16:14",
+   "q": "David și tot poporul care era cu el s-au odihnit la Aiefim.",
+   "a": true
+  },
+  {
+   "id": "2sa.16.sub12.17",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "16:13",
+   "q": "Șimei a mers pe drum alături de David, în pace.",
+   "a": false,
+   "explain": "Șimei mergea pe coasta muntelui, blestema, arunca cu pietre și vântura praf."
+  },
+  {
    "id": "2sa.16.sub12.4",
    "age": "sub12",
    "t": "one",
@@ -67,65 +84,57 @@
    "a": 2
   },
   {
-   "id": "2sa.16.sub12.7",
+   "id": "2sa.16.sub12.18",
+   "age": "sub12",
+   "t": "one",
+   "ref": "16:3",
+   "q": "Unde a rămas Mefiboșet, după spusele lui Țiba?",
+   "opts": [
+    "la Hebron",
+    "la Ierusalim",
+    "la Gheșur"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.16.sub12.19",
+   "age": "sub12",
+   "t": "one",
+   "ref": "16:15",
+   "q": "Cine era cu Absalom la Ierusalim, ca sfetnic?",
+   "opts": [
+    "Ioab",
+    "Ahitofel",
+    "Hușai"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.16.sub12.24",
    "age": "sub12",
    "t": "match",
-   "ref": "16:1-9",
-   "q": "Fuga lui David (2 Samuel 16): asociază fiecare cu ce a făcut.",
+   "ref": "16:1-23",
+   "q": "Asociază fiecare nume cu ce se spune despre el în 2 Samuel 16.",
    "pairs": [
     [
      "Țiba",
-     "a adus măgari și mâncare"
+     "slujitorul lui Mefiboșet, venit cu doi măgari"
     ],
     [
      "Șimei",
-     "l-a blestemat pe David"
+     "cel care l-a blestemat pe David"
     ],
     [
      "Abișai",
-     "a vrut să-l omoare pe Șimei"
-    ]
-   ]
-  },
-  {
-   "id": "2sa.16.sub12.8",
-   "age": "sub12",
-   "t": "match",
-   "ref": "16:1-2",
-   "q": "Darurile lui Țiba: asociază.",
-   "pairs": [
-    [
-     "măgarii",
-     "pentru casa împăratului, pentru călărie"
+     "cel care a vrut să-i taie capul lui Șimei"
     ],
     [
-     "pâinile",
-     "pentru hrana tinerilor"
+     "Hușai",
+     "cel care a strigat: „Trăiască împăratul!”"
     ],
     [
-     "vinul",
-     "pentru cei obosiți în pustie"
-    ]
-   ]
-  },
-  {
-   "id": "2sa.16.sub12.9",
-   "age": "sub12",
-   "t": "match",
-   "ref": "16:5, 14-15",
-   "q": "Locuri din 2 Samuel 16: asociază.",
-   "pairs": [
-    [
-     "Bahurim",
-     "acolo l-a blestemat Șimei pe David"
-    ],
-    [
-     "Aiefim",
-     "acolo s-au odihnit David și poporul"
-    ],
-    [
-     "Ierusalim",
-     "acolo intrase Absalom"
+     "Ahitofel",
+     "sfetnicul ale cărui sfaturi aveau mare putere"
     ]
    ]
   },
@@ -161,6 +170,26 @@
    ],
    "q": "și a aruncat cu ___ după David și după toți slujitorii împăratului David,",
    "ctx": "Șimei, la Bahurim:"
+  },
+  {
+   "id": "2sa.16.sub12.20",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "16:1",
+   "q": "iată că Țiba, slujitorul lui Mefiboșet, a venit înaintea lui cu doi ___ înșeuați",
+   "a": [
+    "măgari"
+   ]
+  },
+  {
+   "id": "2sa.16.sub12.21",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "16:23",
+   "q": "Sfatul dat pe vremea aceea de Ahitofel avea tot atâta putere ca și când ar fi întrebat chiar pe ___.",
+   "a": [
+    "Dumnezeu"
+   ]
   },
   {
    "id": "2sa.16.sub12.13",
@@ -210,6 +239,38 @@
    "explain": "Niciun răspuns corect: au ajuns la Aiefim și acolo s-au odihnit (16:14)."
   },
   {
+   "id": "2sa.16.sub12.22",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "16:7-8",
+   "q": "Cum l-a numit Șimei pe David, când îl blestema?",
+   "opts": [
+    "om rău",
+    "om blând",
+    "om al sângelui"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "2sa.16.sub12.23",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "16:16-18",
+   "q": "Ce a spus Hușai lui Absalom?",
+   "opts": [
+    "„Trăiască împăratul!”",
+    "„Vreau să fiu al aceluia pe care l-a ales Domnul”",
+    "„Plec la David”"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
    "id": "2sa.16.12-13.1",
    "age": "12-13",
    "t": "tf",
@@ -233,6 +294,23 @@
    "ref": "16:23",
    "q": "Sfaturile lui Ahitofel erau prețuite ca și când ar fi întrebat chiar pe Dumnezeu.",
    "a": true
+  },
+  {
+   "id": "2sa.16.12-13.16",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "16:12",
+   "q": "David a spus că poate Domnul Se va uita la necazul lui și-i va face bine.",
+   "a": true
+  },
+  {
+   "id": "2sa.16.12-13.17",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "16:14",
+   "q": "David și poporul s-au odihnit la Bahurim.",
+   "a": false,
+   "explain": "S-au odihnit la Aiefim."
   },
   {
    "id": "2sa.16.12-13.4",
@@ -274,69 +352,57 @@
    "a": 1
   },
   {
-   "id": "2sa.16.12-13.7",
+   "id": "2sa.16.12-13.18",
    "age": "12-13",
-   "t": "match",
-   "ref": "16:7-11",
-   "q": "Blestemul lui Șimei: asociază fiecare cuvânt cu cine l-a spus.",
-   "pairs": [
-    [
-     "„Du-te, du-te, om al sângelui\"",
-     "Șimei"
-    ],
-    [
-     "„Lasă-mă să mă duc să-i tai capul\"",
-     "Abișai"
-    ],
-    [
-     "„Lăsați-l să blesteme\"",
-     "David"
-    ]
-   ]
+   "t": "one",
+   "ref": "16:2",
+   "q": "Pentru ce spunea Țiba că sunt măgarii?",
+   "opts": [
+    "pentru căratul poverilor",
+    "ca dar pentru Absalom",
+    "pentru casa împăratului, pentru călărie"
+   ],
+   "a": 2
   },
   {
-   "id": "2sa.16.12-13.8",
+   "id": "2sa.16.12-13.19",
    "age": "12-13",
-   "t": "match",
-   "ref": "16:18-19",
-   "q": "Răspunsul lui Hușai către Absalom: asociază.",
-   "pairs": [
-    [
-     "vreau să fiu al aceluia",
-     "pe care l-a ales Domnul"
-    ],
-    [
-     "cu el",
-     "vreau să rămân"
-    ],
-    [
-     "cui îi voi sluji?",
-     "nu fiului său?"
-    ],
-    [
-     "cum am slujit tatălui tău",
-     "așa îți voi sluji și ție"
-    ]
-   ]
+   "t": "one",
+   "ref": "16:19",
+   "q": "Cui spunea Hușai că va sluji, după ce n-a mers cu David?",
+   "opts": [
+    "fiului lui David, Absalom",
+    "lui Ahitofel",
+    "lui Ioab"
+   ],
+   "a": 0
   },
   {
-   "id": "2sa.16.12-13.9",
+   "id": "2sa.16.12-13.24",
    "age": "12-13",
    "t": "match",
-   "ref": "16:3-4",
-   "q": "Țiba și Mefiboșet: asociază.",
+   "ref": "16:3-14",
+   "q": "Asociază fiecare nume sau loc cu ce se spune despre el în 2 Samuel 16.",
    "pairs": [
     [
-     "Țiba",
-     "slujitorul lui Mefiboșet"
+     "Bahurim",
+     "locul unde a ajuns David când a fost blestemat"
     ],
     [
-     "Mefiboșet",
-     "rămas la Ierusalim"
+     "Aiefim",
+     "locul unde s-au odihnit David și poporul"
     ],
     [
-     "David",
-     "i-a dat lui Țiba tot ce era al lui Mefiboșet"
+     "Ghera",
+     "tatăl lui Șimei"
+    ],
+    [
+     "Țeruia",
+     "mama lui Abișai"
+    ],
+    [
+     "Ierusalim",
+     "locul unde a rămas Mefiboșet"
     ]
    ]
   },
@@ -372,6 +438,26 @@
    ],
    "q": "Absalom și tot poporul, bărbații lui Israel, intraseră în Ierusalim. ___ era și el cu Absalom.",
    "ctx": "În timp ce David fugea:"
+  },
+  {
+   "id": "2sa.16.12-13.20",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "16:17",
+   "q": "Iată cât de mult ții tu la ___ tău!",
+   "a": [
+    "prietenul"
+   ]
+  },
+  {
+   "id": "2sa.16.12-13.21",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "16:8",
+   "q": "Domnul face să cadă asupra ta pedeapsa pentru tot sângele casei lui ___",
+   "a": [
+    "Saul"
+   ]
   },
   {
    "id": "2sa.16.12-13.13",
@@ -419,6 +505,38 @@
    "explain": "Niciun răspuns corect: Absalom l-a întrebat pe Ahitofel (16:20)."
   },
   {
+   "id": "2sa.16.12-13.22",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "16:1-2",
+   "q": "Ce spunea Țiba despre darurile aduse?",
+   "opts": [
+    "totul este pentru Absalom",
+    "vinul este pentru potolirea setei celor obosiți în pustie",
+    "pâinile și roadele de vară sunt pentru hrana tinerilor"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "2sa.16.12-13.23",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "16:9-10",
+   "q": "Ce s-a întâmplat între Abișai și David?",
+   "opts": [
+    "David a poruncit să-l omoare pe Șimei",
+    "David a refuzat",
+    "Abișai a cerut voie să-i taie capul lui Șimei"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
    "id": "2sa.16.14-15.1",
    "age": "14-15",
    "t": "tf",
@@ -442,6 +560,23 @@
    "ref": "16:10",
    "q": "David spunea: „Dacă blestemă, înseamnă că Domnul i-a zis: ‘Blestemă pe David!’\"",
    "a": true
+  },
+  {
+   "id": "2sa.16.14-15.16",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "16:20",
+   "q": "Absalom i-a cerut lui Ahitofel un sfat.",
+   "a": true
+  },
+  {
+   "id": "2sa.16.14-15.17",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "16:11",
+   "q": "David a poruncit să fie oprit Șimei.",
+   "a": false,
+   "explain": "A spus: „Lăsați-l să blesteme, căci Domnul i-a zis.”"
   },
   {
    "id": "2sa.16.14-15.4",
@@ -483,77 +618,57 @@
    "a": 1
   },
   {
-   "id": "2sa.16.14-15.7",
+   "id": "2sa.16.14-15.18",
    "age": "14-15",
-   "t": "match",
-   "ref": "16:1",
-   "q": "Darurile lui Țiba pentru David: asociază fiecare cu numărul.",
-   "pairs": [
-    [
-     "pâini",
-     "două sute"
-    ],
-    [
-     "turte de stafide",
-     "o sută"
-    ],
-    [
-     "burduf cu vin",
-     "unul"
-    ],
-    [
-     "măgari înșeuați",
-     "doi"
-    ]
-   ]
+   "t": "one",
+   "ref": "16:12",
+   "q": "Ce spera David, după ce a fost blestemat?",
+   "opts": [
+    "ca Domnul să-i facă bine în locul blestemelor",
+    "ca Șimei să fie pedepsit",
+    "ca Absalom să se întoarcă"
+   ],
+   "a": 0
   },
   {
-   "id": "2sa.16.14-15.8",
+   "id": "2sa.16.14-15.19",
+   "age": "14-15",
+   "t": "one",
+   "ref": "16:2",
+   "q": "Pentru ce erau, după Țiba, pâinile și roadele de vară?",
+   "opts": [
+    "pentru jertfe",
+    "pentru Absalom",
+    "pentru hrana tinerilor"
+   ],
+   "a": 2
+  },
+  {
+   "id": "2sa.16.14-15.24",
    "age": "14-15",
    "t": "match",
-   "ref": "16:15-19",
-   "q": "Hușai la Absalom: asociază.",
+   "ref": "16:1-23",
+   "q": "Asociază fiecare nume cu ce se spune despre el în 2 Samuel 16.",
    "pairs": [
+    [
+     "Șimei",
+     "fiul lui Ghera, din casa lui Saul"
+    ],
+    [
+     "Abișai",
+     "fiul Țeruiei"
+    ],
+    [
+     "Țiba",
+     "cel care a adus două sute de pâini"
+    ],
     [
      "Hușai",
-     "a strigat „Trăiască împăratul!\""
-    ],
-    [
-     "Absalom",
-     "i-a reproșat prietenia cu David"
-    ],
-    [
-     "„Pentru ce nu te-ai dus cu prietenul tău?\"",
-     "întrebarea lui Absalom"
-    ],
-    [
-     "„așa îți voi sluji și ție\"",
-     "răspunsul lui Hușai"
-    ]
-   ]
-  },
-  {
-   "id": "2sa.16.14-15.9",
-   "age": "14-15",
-   "t": "match",
-   "ref": "16:20-23",
-   "q": "Sfatul lui Ahitofel: asociază.",
-   "pairs": [
-    [
-     "Absalom",
-     "a cerut sfat"
+     "Architul, prietenul lui David"
     ],
     [
      "Ahitofel",
-     "a dat un sfat care să întărească pe cei cu Absalom"
-    ],
-    [
-     "cortul",
-     "întins pe acoperiș"
-    ],
-    [
-     "sfaturile lui Ahitofel",
-     "valorau ca un cuvânt de la Dumnezeu"
+     "cel ale cărui sfaturi erau ca și când ar fi venit de la Dumnezeu"
     ]
    ]
   },
@@ -589,6 +704,27 @@
    ],
    "q": "Cum am slujit tatălui tău, așa îți voi ___ și ție.\"",
    "ctx": "Hușai, către Absalom:"
+  },
+  {
+   "id": "2sa.16.14-15.20",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "16:6",
+   "q": "în timp ce tot poporul și toți vitejii stăteau la dreapta și la ___ împăratului.",
+   "a": [
+    "stânga"
+   ]
+  },
+  {
+   "id": "2sa.16.14-15.21",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "16:21",
+   "q": "Intră la țiitoarele pe care le-a lăsat tatăl tău pentru ___ casei",
+   "ctx": "Ahitofel, către Absalom:",
+   "a": [
+    "paza"
+   ]
   },
   {
    "id": "2sa.16.14-15.13",
@@ -636,6 +772,38 @@
    "explain": "Niciun răspuns corect: a ieșit de la Bahurim (16:5)."
   },
   {
+   "id": "2sa.16.14-15.22",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "16:8",
+   "q": "Ce spunea Șimei că a făcut Domnul?",
+   "opts": [
+    "a dat împărăția lui Abișai",
+    "a dat împărăția în mâinile lui Absalom",
+    "a făcut să cadă pedeapsa pentru sângele casei lui Saul"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "2sa.16.14-15.23",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "16:15-16",
+   "q": "Ce s-a întâmplat la Ierusalim?",
+   "opts": [
+    "Hușai a ajuns la Absalom",
+    "Absalom și bărbații lui Israel au intrat în cetate",
+    "Ioab a intrat primul în cetate"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
    "id": "2sa.16.16-17.1",
    "age": "16-17",
    "t": "tf",
@@ -659,6 +827,23 @@
    "ref": "16:23",
    "q": "Sfaturile lui Ahitofel aveau aceeași putere fie pentru David, fie pentru Absalom.",
    "a": true
+  },
+  {
+   "id": "2sa.16.16-17.16",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "16:17",
+   "q": "Absalom l-a întrebat pe Hușai de ce nu s-a dus cu prietenul său.",
+   "a": true
+  },
+  {
+   "id": "2sa.16.16-17.17",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "16:4",
+   "q": "David i-a spus lui Țiba că nu va primi nimic din ce era al lui Mefiboșet.",
+   "a": false,
+   "explain": "I-a spus: „Tot ce este al lui Mefiboșet este al tău.”"
   },
   {
    "id": "2sa.16.16-17.4",
@@ -700,73 +885,57 @@
    "a": 1
   },
   {
-   "id": "2sa.16.16-17.7",
+   "id": "2sa.16.16-17.18",
    "age": "16-17",
-   "t": "match",
-   "ref": "16:7-8",
-   "q": "Cuvintele lui Șimei: asociază începutul cu sfârșitul.",
-   "pairs": [
-    [
-     "Du-te, du-te",
-     "om al sângelui, om rău!"
-    ],
-    [
-     "Domnul face să cadă asupra ta",
-     "pedeapsa pentru tot sângele casei lui Saul"
-    ],
-    [
-     "al cărui scaun de domnie",
-     "l-ai luat"
-    ],
-    [
-     "iată-te nenorocit",
-     "căci ești un om al sângelui!"
-    ]
-   ]
+   "t": "one",
+   "ref": "16:10",
+   "q": "Ce le-a spus David lui Abișai și lui Ioab, când voiau să-l pedepsească pe Șimei?",
+   "opts": [
+    "„Ce aveți voi cu mine, fiii Țeruiei?”",
+    "„Faceți cum credeți de cuviință”",
+    "„Duceți-vă în pace”"
+   ],
+   "a": 0
   },
   {
-   "id": "2sa.16.16-17.8",
+   "id": "2sa.16.16-17.19",
    "age": "16-17",
-   "t": "match",
-   "ref": "16:9-12",
-   "q": "David și fiii Țeruiei: asociază.",
-   "pairs": [
-    [
-     "Abișai",
-     "a cerut să meargă să-i taie capul lui Șimei"
-    ],
-    [
-     "„fiii Țeruiei\"",
-     "David îi mustră"
-    ],
-    [
-     "fiul lui David",
-     "voia să-i ia viața"
-    ],
-    [
-     "nădejdea lui David",
-     "Domnul îi va face bine în locul blestemelor"
-    ]
-   ]
+   "t": "one",
+   "ref": "16:11",
+   "q": "Despre cine spunea David că vrea „să-i ia viața”, vorbind de un fiu al lui?",
+   "opts": [
+    "Amnon",
+    "Absalom",
+    "Solomon"
+   ],
+   "a": 1
   },
   {
-   "id": "2sa.16.16-17.9",
+   "id": "2sa.16.16-17.24",
    "age": "16-17",
    "t": "match",
-   "ref": "16:1-4",
-   "q": "Țiba în ziua fugii: asociază fiecare întrebare a lui David cu răspunsul lui Țiba.",
+   "ref": "16:1-14",
+   "q": "Asociază fiecare nume sau loc cu ce se spune despre el în 2 Samuel 16.",
    "pairs": [
     [
-     "„Ce vrei să faci cu acestea?\"",
-     "măgarii și hrana sunt pentru casa împăratului"
+     "Mefiboșet",
+     "fiul stăpânului lui Țiba"
     ],
     [
-     "„Unde este fiul stăpânului tău?\"",
-     "a rămas la Ierusalim"
+     "Șimei",
+     "un beniamit din casa lui Saul"
     ],
     [
-     "„Tot ce este al lui Mefiboșet este al tău\"",
-     "„Mă închin cu plecăciune!\""
+     "Hușai",
+     "Architul, prietenul lui David"
+    ],
+    [
+     "Bahurim",
+     "locul până unde ajunsese David"
+    ],
+    [
+     "Ghera",
+     "tatăl lui Șimei"
     ]
    ]
   },
@@ -802,6 +971,26 @@
    ],
    "q": "‘Astăzi, casa lui Israel îmi va da înapoi ___ tatălui meu.’\"",
    "ctx": "Țiba îi spune lui David ce zicea Mefiboșet:"
+  },
+  {
+   "id": "2sa.16.16-17.20",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "16:1",
+   "q": "iată că Țiba, slujitorul lui ___, a venit înaintea lui",
+   "a": [
+    "Mefiboșet"
+   ]
+  },
+  {
+   "id": "2sa.16.16-17.21",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "16:18",
+   "q": "Pentru că vreau să fiu al aceluia pe care l-a ales ___ și tot poporul acesta",
+   "a": [
+    "Domnul"
+   ]
   },
   {
    "id": "2sa.16.16-17.13",
@@ -850,6 +1039,38 @@
    "explain": "Niciun răspuns corect: mergea pe coasta muntelui, în dreptul lui David (16:13)."
   },
   {
+   "id": "2sa.16.16-17.22",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "16:4",
+   "q": "Ce a răspuns Țiba lui David?",
+   "opts": [
+    "„Nu merit nimic”",
+    "„Să capăt trecere înaintea ta, împărate”",
+    "„Mă închin cu plecăciune!”"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "2sa.16.16-17.23",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "16:20-23",
+   "q": "Ce se spune despre Absalom și Ahitofel?",
+   "opts": [
+    "Absalom i-a cerut sfatul lui Ahitofel",
+    "sfaturile lui Ahitofel erau socotite ca venind de la Dumnezeu",
+    "Ahitofel a refuzat să dea sfat"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
    "id": "2sa.16.18+.1",
    "age": "18+",
    "t": "tf",
@@ -873,6 +1094,23 @@
    "ref": "16:21",
    "q": "Ahitofel spunea că, urmând sfatul lui, mâinile tuturor celor cu Absalom se vor întări.",
    "a": true
+  },
+  {
+   "id": "2sa.16.18+.16",
+   "age": "18+",
+   "t": "tf",
+   "ref": "16:22",
+   "q": "Un cort a fost întins pentru Absalom pe acoperiș.",
+   "a": true
+  },
+  {
+   "id": "2sa.16.18+.17",
+   "age": "18+",
+   "t": "tf",
+   "ref": "16:2",
+   "q": "Țiba a spus că vinul este pentru casa împăratului, pentru călărie.",
+   "a": false,
+   "explain": "Măgarii erau pentru casa împăratului; vinul era pentru potolirea setei celor obosiți."
   },
   {
    "id": "2sa.16.18+.4",
@@ -914,77 +1152,57 @@
    "a": 0
   },
   {
-   "id": "2sa.16.18+.7",
+   "id": "2sa.16.18+.18",
+   "age": "18+",
+   "t": "one",
+   "ref": "16:6",
+   "q": "Cine stătea la dreapta și la stânga lui David, când Șimei arunca cu pietre?",
+   "opts": [
+    "cheretiții și peletiții",
+    "preoții și leviții",
+    "tot poporul și toți vitejii"
+   ],
+   "a": 2
+  },
+  {
+   "id": "2sa.16.18+.19",
+   "age": "18+",
+   "t": "one",
+   "ref": "16:11",
+   "q": "Pe cine a numit David „fiul meu, care a ieșit din trupul meu”?",
+   "opts": [
+    "pe Ionatan",
+    "pe Amnon",
+    "pe Absalom"
+   ],
+   "a": 2
+  },
+  {
+   "id": "2sa.16.18+.24",
    "age": "18+",
    "t": "match",
-   "ref": "16:1, 5, 14",
-   "q": "Locuri din drumul lui David: asociază.",
+   "ref": "16:1-14",
+   "q": "Asociază fiecare element cu ce se spune despre el în 2 Samuel 16.",
    "pairs": [
     [
-     "vârful dealului",
-     "acolo l-a întâlnit Țiba"
+     "pâinile",
+     "două sute"
     ],
     [
-     "Bahurim",
-     "de acolo a ieșit Șimei"
+     "măgarii",
+     "doi, înșeuați"
     ],
     [
-     "coasta muntelui",
-     "pe ea mergea Șimei"
+     "vinul",
+     "un burduf"
     ],
     [
      "Aiefim",
-     "acolo s-au odihnit"
-    ]
-   ]
-  },
-  {
-   "id": "2sa.16.18+.8",
-   "age": "18+",
-   "t": "match",
-   "ref": "16:9-11",
-   "q": "David îl apără pe Șimei: asociază începutul cu sfârșitul.",
-   "pairs": [
-    [
-     "Ce aveți voi cu mine",
-     "fiii Țeruiei?"
+     "locul unde s-au odihnit David și poporul"
     ],
     [
-     "Dacă blestemă",
-     "înseamnă că Domnul i-a zis"
-    ],
-    [
-     "Cine-i va zice dar",
-     "Pentru ce faci așa?"
-    ],
-    [
-     "Lăsați-l să blesteme",
-     "căci Domnul i-a zis"
-    ]
-   ]
-  },
-  {
-   "id": "2sa.16.18+.9",
-   "age": "18+",
-   "t": "match",
-   "ref": "16:15-23",
-   "q": "Absalom la Ierusalim: asociază.",
-   "pairs": [
-    [
-     "Hușai",
-     "s-a prefăcut că îl slujește pe Absalom"
-    ],
-    [
-     "Ahitofel",
-     "sfetnicul ascultat ca un cuvânt de la Dumnezeu"
-    ],
-    [
-     "bărbații lui Israel",
-     "intraseră cu Absalom în Ierusalim"
-    ],
-    [
-     "cortul de pe acoperiș",
-     "întins pentru Absalom"
+     "Ghera",
+     "tatăl lui Șimei"
     ]
    ]
   },
@@ -1020,6 +1238,26 @@
    ],
    "q": "pâinile și roadele de vară sunt pentru hrana ___",
    "ctx": "Țiba, către David:"
+  },
+  {
+   "id": "2sa.16.18+.20",
+   "age": "18+",
+   "t": "fill",
+   "ref": "16:1",
+   "q": "o sută de roade de vară și un burduf cu ___.",
+   "a": [
+    "vin"
+   ]
+  },
+  {
+   "id": "2sa.16.18+.21",
+   "age": "18+",
+   "t": "fill",
+   "ref": "16:5",
+   "q": "David ajunsese până la ___.",
+   "a": [
+    "Bahurim"
+   ]
   },
   {
    "id": "2sa.16.18+.13",
@@ -1067,6 +1305,38 @@
    ],
    "a": [],
    "explain": "Niciun răspuns corect: a venit cu doi măgari înșeuați (16:1)."
+  },
+  {
+   "id": "2sa.16.18+.22",
+   "age": "18+",
+   "t": "multi",
+   "ref": "16:3-4",
+   "q": "Ce s-a spus între David și Țiba?",
+   "opts": [
+    "David a spus: „Tot ce este al lui Mefiboșet este al tău”",
+    "David a întrebat unde este fiul stăpânului lui Țiba",
+    "David a hotărât ca Mefiboșet să fie pedepsit"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "2sa.16.18+.23",
+   "age": "18+",
+   "t": "multi",
+   "ref": "16:5-8",
+   "q": "Ce a făcut Șimei?",
+   "opts": [
+    "a ieșit din familia lui Saul",
+    "a atacat cu sabia pe slujitorii lui David",
+    "a aruncat cu pietre după David"
+   ],
+   "a": [
+    0,
+    2
+   ]
   }
  ]
 }

@@ -28,6 +28,23 @@
    "explain": "Împăratul s-a suit în odaia de sus a porții și a plâns: „Fiul meu Absalom!\" (18:33)."
   },
   {
+   "id": "2sa.18.sub12.16",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "18:2",
+   "q": "David a pus o treime din popor sub Ioab, o treime sub Abișai și o treime sub Itai din Gat.",
+   "a": true
+  },
+  {
+   "id": "2sa.18.sub12.17",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "18:4",
+   "q": "David a plecat la luptă împreună cu poporul.",
+   "a": false,
+   "explain": "A stat lângă poartă, în timp ce tot poporul ieșea."
+  },
+  {
    "id": "2sa.18.sub12.4",
    "age": "sub12",
    "t": "one",
@@ -67,65 +84,57 @@
    "a": 0
   },
   {
-   "id": "2sa.18.sub12.7",
+   "id": "2sa.18.sub12.18",
    "age": "sub12",
-   "t": "match",
-   "ref": "18:2",
-   "q": "Cele trei părți ale oștirii lui David: asociază.",
-   "pairs": [
-    [
-     "o treime",
-     "sub porunca lui Ioab"
-    ],
-    [
-     "altă treime",
-     "sub Abișai"
-    ],
-    [
-     "a treia treime",
-     "sub Itai din Gat"
-    ]
-   ]
+   "t": "one",
+   "ref": "18:17",
+   "q": "Cum a fost îngropat Absalom?",
+   "opts": [
+    "în cetatea lui David",
+    "într-un mormânt de piatră, la Ierusalim",
+    "într-o groapă, cu o grămadă de pietre peste el"
+   ],
+   "a": 2
   },
   {
-   "id": "2sa.18.sub12.8",
+   "id": "2sa.18.sub12.19",
+   "age": "sub12",
+   "t": "one",
+   "ref": "18:27",
+   "q": "Cum a numit David pe Ahimaaț, când caraula l-a recunoscut?",
+   "opts": [
+    "un om de bine",
+    "un mincinos",
+    "un om leneș"
+   ],
+   "a": 0
+  },
+  {
+   "id": "2sa.18.sub12.24",
    "age": "sub12",
    "t": "match",
-   "ref": "18:9, 14, 33",
-   "q": "Moartea lui Absalom: asociază.",
+   "ref": "18:1-33",
+   "q": "Asociază fiecare nume sau loc cu ce se spune despre el în 2 Samuel 18.",
    "pairs": [
-    [
-     "Absalom",
-     "a rămas prins în stejar"
-    ],
     [
      "Ioab",
-     "i-a înfipt trei săgeți în inimă"
+     "căpetenia peste o treime din popor"
     ],
     [
-     "David",
-     "a plâns în odaia de sus a porții"
-    ]
-   ]
-  },
-  {
-   "id": "2sa.18.sub12.9",
-   "age": "sub12",
-   "t": "match",
-   "ref": "18:21, 27, 31",
-   "q": "Vestitorii din 2 Samuel 18: asociază.",
-   "pairs": [
+     "Abișai",
+     "fratele lui Ioab"
+    ],
     [
-     "Ahimaaț",
-     "a ajuns primul la David"
+     "Itai",
+     "omul din Gat, căpetenie peste o treime"
+    ],
+    [
+     "Efraim",
+     "pădurea unde a avut loc bătălia"
     ],
     [
      "Cuși",
-     "a fost trimis de Ioab"
-    ],
-    [
-     "caraula",
-     "i-a văzut alergând"
+     "cel trimis să ducă vestea lui David"
     ]
    ]
   },
@@ -161,6 +170,26 @@
    ],
    "q": "Poporul a ieșit în câmp înaintea lui Israel și bătălia a avut loc în pădurea lui ___.",
    "ctx": "Lupta dintre oamenii lui David și cei ai lui Absalom:"
+  },
+  {
+   "id": "2sa.18.sub12.20",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "18:4",
+   "q": "împăratul a stat lângă ___, în timp ce tot poporul ieșea cu sutele și miile.",
+   "a": [
+    "poartă"
+   ]
+  },
+  {
+   "id": "2sa.18.sub12.21",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "18:21",
+   "q": "Și Ioab a zis lui ___: „Du-te și vestește împăratului ce ai văzut.",
+   "a": [
+    "Cuși"
+   ]
   },
   {
    "id": "2sa.18.sub12.13",
@@ -210,6 +239,38 @@
    "explain": "Niciun răspuns corect: Ioab a luat trei săgeți (18:14)."
   },
   {
+   "id": "2sa.18.sub12.22",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "18:6-7",
+   "q": "Ce s-a întâmplat în pădurea lui Efraim?",
+   "opts": [
+    "a avut loc bătălia",
+    "Israel a fost bătut de slujitorii lui David",
+    "David a pierdut lupta"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "2sa.18.sub12.23",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "18:33",
+   "q": "Ce a făcut David când a aflat vestea?",
+   "opts": [
+    "s-a suit în odaia porții și a plâns",
+    "s-a cutremurat",
+    "a dansat de bucurie"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
    "id": "2sa.18.12-13.1",
    "age": "12-13",
    "t": "tf",
@@ -233,6 +294,23 @@
    "ref": "18:17",
    "q": "Peste Absalom au pus o grămadă foarte mare de pietre.",
    "a": true
+  },
+  {
+   "id": "2sa.18.12-13.16",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "18:9",
+   "q": "Absalom era călare pe un catâr când capul lui s-a prins de un stejar.",
+   "a": true
+  },
+  {
+   "id": "2sa.18.12-13.17",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "18:16",
+   "q": "Ioab a sunat din trâmbiță ca poporul să continue urmărirea.",
+   "a": false,
+   "explain": "Poporul s-a întors, încetând să mai urmărească pe Israel."
   },
   {
    "id": "2sa.18.12-13.4",
@@ -274,77 +352,57 @@
    "a": 1
   },
   {
-   "id": "2sa.18.12-13.7",
+   "id": "2sa.18.12-13.18",
    "age": "12-13",
-   "t": "match",
-   "ref": "18:10-14",
-   "q": "Omul care l-a văzut pe Absalom și Ioab: asociază.",
-   "pairs": [
-    [
-     "omul",
-     "i-a spus lui Ioab că l-a văzut pe Absalom spânzurat"
-    ],
-    [
-     "Ioab",
-     "l-a întrebat de ce nu l-a tăiat pe loc"
-    ],
-    [
-     "„o mie de sicli\"",
-     "nici pentru atât n-ar fi pus omul mâna pe fiul împăratului"
-    ],
-    [
-     "trei săgeți",
-     "înfipte de Ioab"
-    ]
-   ]
+   "t": "one",
+   "ref": "18:7",
+   "q": "Cam câți oameni au căzut din Israel în ziua aceea, în pădurea lui Efraim?",
+   "opts": [
+    "ca o sută de mii",
+    "ca două mii",
+    "ca douăzeci de mii"
+   ],
+   "a": 2
   },
   {
-   "id": "2sa.18.12-13.8",
+   "id": "2sa.18.12-13.19",
+   "age": "12-13",
+   "t": "one",
+   "ref": "18:21",
+   "q": "Pe cine a trimis Ioab să ducă vestea împăratului?",
+   "opts": [
+    "pe Itai",
+    "pe Cuși",
+    "pe Ahimaaț"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.18.12-13.24",
    "age": "12-13",
    "t": "match",
-   "ref": "18:19-23",
-   "q": "Ahimaaț și Cuși: asociază.",
+   "ref": "18:6-27",
+   "q": "Asociază fiecare nume sau loc cu ce se spune despre el în 2 Samuel 18.",
    "pairs": [
+    [
+     "Efraim",
+     "pădurea unde a avut loc bătălia"
+    ],
     [
      "Ahimaaț",
      "fiul lui Țadoc"
     ],
     [
+     "Itai",
+     "omul din Gat"
+    ],
+    [
+     "valea împăratului",
+     "locul unde era Stâlpul lui Absalom"
+    ],
+    [
      "Cuși",
-     "trimis de Ioab să vestească"
-    ],
-    [
-     "drumul câmpiei",
-     "pe el a alergat Ahimaaț"
-    ],
-    [
-     "„Dă fuga!\"",
-     "învoirea lui Ioab"
-    ]
-   ]
-  },
-  {
-   "id": "2sa.18.12-13.9",
-   "age": "12-13",
-   "t": "match",
-   "ref": "18:16-18",
-   "q": "După moartea lui Absalom: asociază.",
-   "pairs": [
-    [
-     "trâmbița",
-     "Ioab a oprit lupta"
-    ],
-    [
-     "groapa mare",
-     "acolo l-au aruncat pe Absalom"
-    ],
-    [
-     "Stâlpul lui Absalom",
-     "în valea împăratului"
-    ],
-    [
-     "Israel",
-     "a fugit, fiecare în cortul lui"
+     "trimis de Ioab să vestească împăratului"
     ]
    ]
   },
@@ -380,6 +438,26 @@
    ],
    "q": "Ioab a sunat din ___, și poporul s-a întors,",
    "ctx": "După moartea lui Absalom:"
+  },
+  {
+   "id": "2sa.18.12-13.20",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "18:1",
+   "q": "David a numărat poporul care era cu el și a pus peste ei căpetenii peste ___ și căpetenii peste sute.",
+   "a": [
+    "mii"
+   ]
+  },
+  {
+   "id": "2sa.18.12-13.21",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "18:18",
+   "q": "Pe când trăia, Absalom își ridicase un stâlp de aducere aminte în valea ___.",
+   "a": [
+    "împăratului"
+   ]
   },
   {
    "id": "2sa.18.12-13.13",
@@ -427,6 +505,38 @@
    "explain": "Niciun răspuns corect: „ca douăzeci de mii de oameni\" (18:7)."
   },
   {
+   "id": "2sa.18.12-13.22",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "18:10-12",
+   "q": "Ce a spus omul care l-a văzut pe Absalom?",
+   "opts": [
+    "„Am văzut pe Absalom spânzurat de un stejar”",
+    "„N-aș pune mâna pe fiul împăratului”",
+    "„L-am tăiat pe loc”"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "2sa.18.12-13.23",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "18:19-20",
+   "q": "Ce s-a întâmplat cu Ahimaaț?",
+   "opts": [
+    "Ioab i-a spus să nu ducă veștile în ziua aceea",
+    "Ioab l-a trimis îndată",
+    "a vrut să ducă împăratului vestea cea bună"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
    "id": "2sa.18.14-15.1",
    "age": "14-15",
    "t": "tf",
@@ -450,6 +560,23 @@
    "ref": "18:23",
    "q": "Ahimaaț a luat-o înaintea lui Cuși, alergând pe drumul care duce în câmpie.",
    "a": true
+  },
+  {
+   "id": "2sa.18.14-15.16",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "18:28",
+   "q": "Ahimaaț s-a închinat înaintea împăratului cu fața până la pământ.",
+   "a": true
+  },
+  {
+   "id": "2sa.18.14-15.17",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "18:20",
+   "q": "Ioab i-a spus lui Ahimaaț să ducă vestea chiar în ziua aceea.",
+   "a": false,
+   "explain": "I-a spus că o va duce într-o altă zi."
   },
   {
    "id": "2sa.18.14-15.4",
@@ -491,73 +618,57 @@
    "a": 1
   },
   {
-   "id": "2sa.18.14-15.7",
+   "id": "2sa.18.14-15.18",
    "age": "14-15",
-   "t": "match",
-   "ref": "18:24-27",
-   "q": "Caraula de la poartă: asociază.",
-   "pairs": [
-    [
-     "primul om",
-     "alerga singur-singurel"
-    ],
-    [
-     "„Și el aduce vești.\"",
-     "David, despre al doilea"
-    ],
-    [
-     "alergătura celui dintâi",
-     "semăna cu a lui Ahimaaț"
-    ],
-    [
-     "„Este un om de bine\"",
-     "David, despre Ahimaaț"
-    ]
-   ]
+   "t": "one",
+   "ref": "18:30",
+   "q": "Ce i-a spus David lui Ahimaaț, după ce acesta n-a știut să-i spună despre Absalom?",
+   "opts": [
+    "„Aleargă înapoi la Ioab”",
+    "„Stai colea la o parte”",
+    "„Du-te acasă”"
+   ],
+   "a": 1
   },
   {
-   "id": "2sa.18.14-15.8",
+   "id": "2sa.18.14-15.19",
    "age": "14-15",
-   "t": "match",
-   "ref": "18:28-32",
-   "q": "Vestitorii înaintea lui David: asociază fiecare cuvânt cu cine l-a spus.",
-   "pairs": [
-    [
-     "„Este bine de tot!\"",
-     "Ahimaaț"
-    ],
-    [
-     "„Stai colea la o parte.\"",
-     "David"
-    ],
-    [
-     "„Ca tânărul acesta să fie vrăjmașii domnului meu\"",
-     "Cuși"
-    ]
-   ]
+   "t": "one",
+   "ref": "18:2",
+   "q": "Cine era Abișai, după 2 Samuel 18:2?",
+   "opts": [
+    "fiul lui Țadoc",
+    "omul din Gat",
+    "fiul Țeruiei, fratele lui Ioab"
+   ],
+   "a": 2
   },
   {
-   "id": "2sa.18.14-15.9",
+   "id": "2sa.18.14-15.24",
    "age": "14-15",
    "t": "match",
-   "ref": "18:12-13",
-   "q": "Răspunsul omului către Ioab: asociază începutul cu sfârșitul.",
+   "ref": "18:24-30",
+   "q": "Asociază fiecare persoană cu ce se spune despre ea în 2 Samuel 18.",
    "pairs": [
     [
-     "Chiar dacă aș cântări o mie de sicli",
-     "n-aș pune mâna pe fiul împăratului"
+     "Ahimaaț",
+     "fiul lui Țadoc"
     ],
     [
-     "Luați seama fiecare",
-     "la tânărul Absalom!"
+     "Cuși",
+     "cel care a adus vestea morții lui Absalom"
     ],
     [
-     "dacă l-aș fi omorât mișelește",
-     "nimic n-ar fi rămas ascuns împăratului"
+     "caraula",
+     "a văzut un om alergând singur"
     ],
     [
-     "tu însuți",
-     "ai fi fost împotriva mea"
+     "portarul",
+     "cel la care a strigat caraula"
+    ],
+    [
+     "David",
+     "ședea între cele două porți"
     ]
    ]
   },
@@ -593,6 +704,26 @@
    ],
    "q": "a rămas astfel spânzurat între cer și ___, și catârul care era sub el a trecut înainte.",
    "ctx": "Absalom, în pădurea lui Efraim:"
+  },
+  {
+   "id": "2sa.18.14-15.20",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "18:12",
+   "q": "n-aș pune mâna pe fiul ___, căci noi am auzit următoarea poruncă",
+   "a": [
+    "împăratului"
+   ]
+  },
+  {
+   "id": "2sa.18.14-15.21",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "18:19",
+   "q": "Lasă-mă să dau fuga și să duc împăratului vestea cea ___",
+   "a": [
+    "bună"
+   ]
   },
   {
    "id": "2sa.18.14-15.13",
@@ -641,6 +772,38 @@
    "explain": "Niciun răspuns corect: l-a trimis pe Cuși (18:21)."
   },
   {
+   "id": "2sa.18.14-15.22",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "18:11-12",
+   "q": "Ce a spus omul lui Ioab?",
+   "opts": [
+    "„Chiar dacă aș cântări în mâna mea o mie de sicli de argint”",
+    "„Noi am auzit porunca împăratului”",
+    "„Mi-e frică de Absalom”"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "2sa.18.14-15.23",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "18:31-32",
+   "q": "Ce a spus Cuși împăratului?",
+   "opts": [
+    "„Absalom este bine, sănătos”",
+    "„Astăzi Domnul ți-a făcut dreptate”",
+    "să fie ca tânărul acela toți vrăjmașii împăratului"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
    "id": "2sa.18.16-17.1",
    "age": "16-17",
    "t": "tf",
@@ -664,6 +827,23 @@
    "ref": "18:18",
    "q": "Stâlpul lui Absalom era în valea împăratului.",
    "a": true
+  },
+  {
+   "id": "2sa.18.16-17.16",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "18:2",
+   "q": "David a spus poporului: „Vreau să ies și eu împreună cu voi.”",
+   "a": true
+  },
+  {
+   "id": "2sa.18.16-17.17",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "18:10",
+   "q": "Omul care l-a văzut pe Absalom spânzurat a venit și i-a spus lui David.",
+   "a": false,
+   "explain": "A venit și i-a spus lui Ioab."
   },
   {
    "id": "2sa.18.16-17.4",
@@ -705,77 +885,57 @@
    "a": 2
   },
   {
-   "id": "2sa.18.16-17.7",
+   "id": "2sa.18.16-17.18",
    "age": "16-17",
-   "t": "match",
-   "ref": "18:1-5",
-   "q": "Pregătirea bătăliei: asociază.",
-   "pairs": [
-    [
-     "căpeteniile",
-     "peste mii și peste sute"
-    ],
-    [
-     "o treime",
-     "sub Itai din Gat"
-    ],
-    [
-     "„Vreau să ies și eu\"",
-     "dorința lui David"
-    ],
-    [
-     "„Voi face ce credeți\"",
-     "răspunsul lui David către popor"
-    ]
-   ]
+   "t": "one",
+   "ref": "18:13",
+   "q": "Ce spunea omul că s-ar fi întâmplat dacă l-ar fi omorât mișelește pe Absalom?",
+   "opts": [
+    "împăratul l-ar fi răsplătit",
+    "împăratul l-ar fi iertat",
+    "nimic n-ar fi rămas ascuns împăratului"
+   ],
+   "a": 2
   },
   {
-   "id": "2sa.18.16-17.8",
+   "id": "2sa.18.16-17.19",
    "age": "16-17",
-   "t": "match",
-   "ref": "18:19-23",
-   "q": "Ioab și Ahimaaț: asociază începutul cu sfârșitul.",
-   "pairs": [
-    [
-     "Nu tu ai să duci veștile azi",
-     "le vei duce într-o altă zi"
-    ],
-    [
-     "Orice s-ar întâmpla",
-     "lasă-mă să alerg după Cuși"
-    ],
-    [
-     "Pentru ce vrei să alergi, fiule?",
-     "Nu este o solie care-ți va fi de folos"
-    ],
-    [
-     "Dă fuga!",
-     "răspunsul de la urmă al lui Ioab"
-    ]
-   ]
+   "t": "one",
+   "ref": "18:22",
+   "q": "Ce i-a spus Ioab lui Ahimaaț, când acesta voia să alerge după Cuși?",
+   "opts": [
+    "„Așteaptă-l pe Cuși”",
+    "„Du-te fără grijă”",
+    "„Nu este o solie care-ți va fi de folos”"
+   ],
+   "a": 2
   },
   {
-   "id": "2sa.18.16-17.9",
+   "id": "2sa.18.16-17.24",
    "age": "16-17",
    "t": "match",
-   "ref": "18:7-8, 17",
-   "q": "Bătălia din pădurea lui Efraim: asociază.",
+   "ref": "18:7-18",
+   "q": "Asociază fiecare număr sau lucru cu ce se spune despre el în 2 Samuel 18.",
    "pairs": [
+    [
+     "zece sicli de argint",
+     "ce ar fi dat Ioab omului"
+    ],
+    [
+     "o mie de sicli de argint",
+     "ce n-ar fi luat omul"
+    ],
+    [
+     "trei săgeți",
+     "câte a luat Ioab în mână"
+    ],
+    [
+     "zece tineri",
+     "câți au înconjurat pe Absalom"
+    ],
     [
      "douăzeci de mii",
-     "cei căzuți din Israel"
-    ],
-    [
-     "pădurea",
-     "a mâncat mai mult popor decât sabia"
-    ],
-    [
-     "lupta",
-     "s-a întins pe tot ținutul"
-    ],
-    [
-     "groapa mare",
-     "în mijlocul pădurii"
+     "câți oameni au căzut din Israel"
     ]
    ]
   },
@@ -811,6 +971,26 @@
    ],
    "q": "Astăzi, Domnul ți-a făcut ___, scăpându-te din mâna tuturor celor ce se ridicau împotriva ta.\"",
    "ctx": "Cuși, către David:"
+  },
+  {
+   "id": "2sa.18.16-17.20",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "18:33",
+   "q": "Atunci, împăratul, cutremurându-se, s-a suit în odaia de sus a ___ și a plâns.",
+   "a": [
+    "porții"
+   ]
+  },
+  {
+   "id": "2sa.18.16-17.21",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "18:30",
+   "q": "Și împăratul a zis: „Stai colea la o ___.",
+   "a": [
+    "parte"
+   ]
   },
   {
    "id": "2sa.18.16-17.13",
@@ -859,6 +1039,38 @@
    "explain": "Niciun răspuns corect: era călare pe un catâr (18:9)."
   },
   {
+   "id": "2sa.18.16-17.22",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "18:3",
+   "q": "Ce i-a spus poporul lui David?",
+   "opts": [
+    "„Ia-ne pe toți la Ierusalim”",
+    "„Să nu ieși!”",
+    "„Tu ești ca zece mii dintre noi”"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "2sa.18.16-17.23",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "18:6-8",
+   "q": "Ce se spune despre bătălie?",
+   "opts": [
+    "pădurea a mâncat mai mult popor decât sabia",
+    "a avut loc în valea Refaim",
+    "a avut loc în pădurea lui Efraim"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
    "id": "2sa.18.18+.1",
    "age": "18+",
    "t": "tf",
@@ -882,6 +1094,23 @@
    "ref": "18:33",
    "q": "David s-a suit în odaia de sus a porții și plângea pe când mergea.",
    "a": true
+  },
+  {
+   "id": "2sa.18.18+.16",
+   "age": "18+",
+   "t": "tf",
+   "ref": "18:4",
+   "q": "David le-a răspuns poporului: „Voi face ce credeți că este mai bine.”",
+   "a": true
+  },
+  {
+   "id": "2sa.18.18+.17",
+   "age": "18+",
+   "t": "tf",
+   "ref": "18:1",
+   "q": "David a pus peste popor căpetenii peste cincizeci.",
+   "a": false,
+   "explain": "A pus căpetenii peste mii și peste sute."
   },
   {
    "id": "2sa.18.18+.4",
@@ -923,77 +1152,57 @@
    "a": 2
   },
   {
-   "id": "2sa.18.18+.7",
+   "id": "2sa.18.18+.18",
    "age": "18+",
-   "t": "match",
-   "ref": "18:9-15",
-   "q": "Ce l-a lovit pe Absalom: asociază.",
-   "pairs": [
-    [
-     "stejarul",
-     "capul i s-a prins în el"
-    ],
-    [
-     "trei săgeți",
-     "în inima lui"
-    ],
-    [
-     "zece tineri",
-     "l-au lovit și l-au omorât"
-    ],
-    [
-     "catârul",
-     "a trecut înainte"
-    ]
-   ]
+   "t": "one",
+   "ref": "18:9",
+   "q": "Cum a rămas Absalom, după ce catârul a trecut înainte?",
+   "opts": [
+    "prins sub un copac căzut",
+    "legat de ramurile unui măslin",
+    "spânzurat între cer și pământ"
+   ],
+   "a": 2
   },
   {
-   "id": "2sa.18.18+.8",
+   "id": "2sa.18.18+.19",
+   "age": "18+",
+   "t": "one",
+   "ref": "18:23",
+   "q": "Pe ce drum a alergat Ahimaaț, ca să ia înainte pe Cuși?",
+   "opts": [
+    "pe drumul care duce la Hebron",
+    "pe drumul de la Mahanaim",
+    "pe drumul care duce în câmpie"
+   ],
+   "a": 2
+  },
+  {
+   "id": "2sa.18.18+.24",
    "age": "18+",
    "t": "match",
-   "ref": "18:2-21",
-   "q": "Oamenii din 2 Samuel 18: asociază fiecare cu ce se spune despre el.",
+   "ref": "18:16-27",
+   "q": "Asociază fiecare persoană cu ce se spune despre ea în 2 Samuel 18.",
    "pairs": [
     [
-     "Abișai",
-     "fratele lui Ioab"
-    ],
-    [
-     "Itai",
-     "din Gat"
-    ],
-    [
-     "Ahimaaț",
-     "fiul lui Țadoc"
+     "Ioab",
+     "a sunat din trâmbiță"
     ],
     [
      "Cuși",
-     "s-a închinat înaintea lui Ioab și a dat fuga"
-    ]
-   ]
-  },
-  {
-   "id": "2sa.18.18+.9",
-   "age": "18+",
-   "t": "match",
-   "ref": "18:29-33",
-   "q": "Răspunsurile date lui David despre Absalom: asociază.",
-   "pairs": [
-    [
-     "Ahimaaț",
-     "n-a știut ce era învălmășeala"
+     "a dat fuga după ce s-a închinat înaintea lui Ioab"
     ],
     [
-     "Cuși",
-     "a dorit ca vrăjmașii să fie ca Absalom"
+     "Ahimaaț",
+     "a luat-o înaintea lui Cuși"
+    ],
+    [
+     "caraula",
+     "a recunoscut alergătura lui Ahimaaț"
     ],
     [
      "David",
-     "s-a cutremurat"
-    ],
-    [
-     "odaia de sus a porții",
-     "acolo a plâns"
+     "ședea între cele două porți"
     ]
    ]
   },
@@ -1029,6 +1238,26 @@
    ],
    "q": "„Am văzut o mare ___ când a trimis Ioab pe slujitorul împăratului și pe mine, slujitorul tău, dar nu știu ce era.\"",
    "ctx": "Ahimaaț, când David l-a întrebat de Absalom:"
+  },
+  {
+   "id": "2sa.18.18+.20",
+   "age": "18+",
+   "t": "fill",
+   "ref": "18:7",
+   "q": "a fost o mare înfrângere în ziua aceea, ca douăzeci de ___ de oameni.",
+   "a": [
+    "mii"
+   ]
+  },
+  {
+   "id": "2sa.18.18+.21",
+   "age": "18+",
+   "t": "fill",
+   "ref": "18:27",
+   "q": "Alergătura celui dintâi pare că e a lui ___, fiul lui Țadoc.",
+   "a": [
+    "Ahimaaț"
+   ]
   },
   {
    "id": "2sa.18.18+.13",
@@ -1076,6 +1305,38 @@
    ],
    "a": [],
    "explain": "Niciun răspuns corect: Ioab a sunat din trâmbiță și i-a oprit (18:16)."
+  },
+  {
+   "id": "2sa.18.18+.22",
+   "age": "18+",
+   "t": "multi",
+   "ref": "18:5",
+   "q": "Cui i-a dat David porunca să se poarte blând cu Absalom?",
+   "opts": [
+    "lui Abișai",
+    "lui Ioab",
+    "lui Hușai"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "2sa.18.18+.23",
+   "age": "18+",
+   "t": "multi",
+   "ref": "18:24-26",
+   "q": "Ce a făcut caraula?",
+   "opts": [
+    "a strigat și a dat de știre împăratului",
+    "a văzut un alt om alergând",
+    "a închis poarta cetății"
+   ],
+   "a": [
+    0,
+    1
+   ]
   }
  ]
 }

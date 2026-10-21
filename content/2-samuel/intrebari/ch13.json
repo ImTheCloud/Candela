@@ -28,6 +28,23 @@
    "explain": "Absalom a fugit la Talmai, împăratul Gheșurului (13:37)."
   },
   {
+   "id": "2sa.13.sub12.16",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "13:5",
+   "q": "Amnon s-a făcut bolnav ca să-l vadă tatăl lui.",
+   "a": true
+  },
+  {
+   "id": "2sa.13.sub12.17",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "13:31",
+   "q": "David a dansat de bucurie când a auzit zvonul că fiii lui au murit.",
+   "a": false,
+   "explain": "David și-a rupt hainele și s-a culcat pe pământ."
+  },
+  {
    "id": "2sa.13.sub12.4",
    "age": "sub12",
    "t": "one",
@@ -67,69 +84,57 @@
    "a": 2
   },
   {
-   "id": "2sa.13.sub12.7",
+   "id": "2sa.13.sub12.18",
+   "age": "sub12",
+   "t": "one",
+   "ref": "13:24",
+   "q": "Cine l-a poftit pe împărat la tunsul oilor?",
+   "opts": [
+    "Ionadab",
+    "Absalom",
+    "Amnon"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.13.sub12.19",
+   "age": "sub12",
+   "t": "one",
+   "ref": "13:39",
+   "q": "Ce a făcut David după ce s-a mângâiat de moartea lui Amnon?",
+   "opts": [
+    "l-a chemat îndată înapoi pe Absalom",
+    "l-a pedepsit pe Ionadab",
+    "a încetat să mai urmărească pe Absalom"
+   ],
+   "a": 2
+  },
+  {
+   "id": "2sa.13.sub12.24",
    "age": "sub12",
    "t": "match",
-   "ref": "13:1-3, 37",
-   "q": "Familia lui David (2 Samuel 13): asociază.",
+   "ref": "13:1-38",
+   "q": "Asociază fiecare nume sau loc cu ce se spune despre el în 2 Samuel 13.",
    "pairs": [
     [
      "Absalom",
-     "fratele Tamarei"
+     "fiul lui David, care a avut tunsul oilor"
     ],
     [
-     "Amnon",
-     "fiul lui David, ucis la tunsul oilor"
+     "Tamar",
+     "sora frumoasă a lui Absalom"
     ],
     [
      "Ionadab",
-     "prietenul lui Amnon"
-    ],
-    [
-     "Talmai",
-     "împăratul Gheșurului"
-    ]
-   ]
-  },
-  {
-   "id": "2sa.13.sub12.8",
-   "age": "sub12",
-   "t": "match",
-   "ref": "13:23, 29, 38",
-   "q": "Locuri din 2 Samuel 13: asociază.",
-   "pairs": [
-    [
-     "Baal-Hațor",
-     "acolo era tunsul oilor"
+     "prietenul șiret al lui Amnon"
     ],
     [
      "Gheșur",
-     "acolo a fugit Absalom"
+     "locul unde a fugit Absalom"
     ],
     [
-     "catârii",
-     "pe ei au fugit fiii împăratului"
-    ]
-   ]
-  },
-  {
-   "id": "2sa.13.sub12.9",
-   "age": "sub12",
-   "t": "match",
-   "ref": "13:31, 36-37",
-   "q": "Ce a făcut David în 2 Samuel 13: asociază.",
-   "pairs": [
-    [
-     "când a auzit zvonul",
-     "și-a rupt hainele"
-    ],
-    [
-     "când au venit fiii lui",
-     "a plâns mult"
-    ],
-    [
-     "după fuga lui Absalom",
-     "jelea în fiecare zi pe fiul său"
+     "Baal-Hațor",
+     "locul tunsului oilor"
     ]
    ]
   },
@@ -165,6 +170,26 @@
    ],
    "q": "Și Ionadab era un om foarte ___.",
    "ctx": "Despre prietenul lui Amnon:"
+  },
+  {
+   "id": "2sa.13.sub12.20",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "13:34",
+   "q": "Absalom a ___.",
+   "a": [
+    "fugit"
+   ]
+  },
+  {
+   "id": "2sa.13.sub12.21",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "13:1",
+   "q": "Absalom, fiul lui David, avea o soră frumoasă, numită ___, și Amnon, fiul lui David, a iubit-o.",
+   "a": [
+    "Tamar"
+   ]
   },
   {
    "id": "2sa.13.sub12.13",
@@ -212,6 +237,38 @@
    "explain": "Niciun răspuns corect: s-au întors fiii împăratului; Absalom fugise (13:34-36)."
   },
   {
+   "id": "2sa.13.sub12.22",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "13:23-24",
+   "q": "Ce a făcut Absalom?",
+   "opts": [
+    "a poftit pe Ioab",
+    "a poftit pe toți fiii împăratului",
+    "a avut tunsul oilor la Baal-Hațor"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "2sa.13.sub12.23",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "13:29",
+   "q": "Ce au făcut fiii împăratului când a fost ucis Amnon?",
+   "opts": [
+    "au încălecat pe catâri",
+    "au luptat cu Absalom",
+    "au fugit"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
    "id": "2sa.13.12-13.1",
    "age": "12-13",
    "t": "tf",
@@ -235,6 +292,23 @@
    "q": "David s-a dus cu toți slujitorii lui la tunsul oilor lui Absalom.",
    "a": false,
    "explain": "Împăratul n-a vrut să se ducă; l-a binecuvântat pe Absalom (13:25)."
+  },
+  {
+   "id": "2sa.13.12-13.16",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "13:7",
+   "q": "David a trimis să-i spună Tamarei să meargă în casa fratelui ei Amnon.",
+   "a": true
+  },
+  {
+   "id": "2sa.13.12-13.17",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "13:27",
+   "q": "David n-a lăsat pe niciunul din fiii lui să meargă la tunsul oilor.",
+   "a": false,
+   "explain": "A lăsat pe Amnon și pe toți fiii lui să meargă."
   },
   {
    "id": "2sa.13.12-13.4",
@@ -276,77 +350,57 @@
    "a": 2
   },
   {
-   "id": "2sa.13.12-13.7",
+   "id": "2sa.13.12-13.18",
    "age": "12-13",
-   "t": "match",
-   "ref": "13:28-29",
-   "q": "Moartea lui Amnon: asociază.",
-   "pairs": [
-    [
-     "Absalom",
-     "a dat porunca"
-    ],
-    [
-     "slujitorii lui Absalom",
-     "l-au lovit pe Amnon"
-    ],
-    [
-     "fiii împăratului",
-     "au fugit pe catâri"
-    ],
-    [
-     "Amnon",
-     "a murit la tunsul oilor"
-    ]
-   ]
+   "t": "one",
+   "ref": "13:24",
+   "q": "Ce avea Absalom la Baal-Hațor, când i-a poftit pe fiii împăratului?",
+   "opts": [
+    "o nuntă",
+    "o sărbătoare de naștere",
+    "tunsul oilor"
+   ],
+   "a": 2
   },
   {
-   "id": "2sa.13.12-13.8",
+   "id": "2sa.13.12-13.19",
    "age": "12-13",
-   "t": "match",
-   "ref": "13:32-35",
-   "q": "Ionadab după moartea lui Amnon: asociază.",
-   "pairs": [
-    [
-     "ce a spus",
-     "numai Amnon a murit"
-    ],
-    [
-     "despre Absalom",
-     "era urmarea unei hotărâri a lui"
-    ],
-    [
-     "străjerul",
-     "a văzut o mare ceată venind"
-    ],
-    [
-     "„Iată că vin fiii împăratului!\"",
-     "cuvintele lui Ionadab"
-    ]
-   ]
+   "t": "one",
+   "ref": "13:32",
+   "q": "Câți dintre fiii împăratului au murit, după spusele lui Ionadab?",
+   "opts": [
+    "doi",
+    "numai Amnon",
+    "toți"
+   ],
+   "a": 1
   },
   {
-   "id": "2sa.13.12-13.9",
+   "id": "2sa.13.12-13.24",
    "age": "12-13",
    "t": "match",
-   "ref": "13:37-39",
-   "q": "După fuga lui Absalom: asociază.",
+   "ref": "13:3-37",
+   "q": "Asociază fiecare nume sau lucru cu ce se spune despre el în 2 Samuel 13.",
    "pairs": [
+    [
+     "Șimea",
+     "tatăl lui Ionadab"
+    ],
+    [
+     "Amihur",
+     "tatăl lui Talmai"
+    ],
     [
      "Talmai",
-     "fiul lui Amihur"
+     "împăratul Gheșurului"
     ],
     [
-     "trei ani",
-     "cât a stat Absalom la Gheșur"
+     "Efraim",
+     "locul lângă care era Baal-Hațor"
     ],
     [
-     "David",
-     "jelea în fiecare zi"
-    ],
-    [
-     "la urmă",
-     "David se mângâiase de moartea lui Amnon"
+     "catârul",
+     "pe el au încălecat fiii împăratului"
     ]
    ]
   },
@@ -382,6 +436,26 @@
    ],
    "q": "Absalom n-a vorbit nici bine, nici rău cu Amnon, dar a început să-l ___,",
    "ctx": "După ce Amnon a necinstit-o pe Tamar:"
+  },
+  {
+   "id": "2sa.13.12-13.20",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "13:21",
+   "q": "Împăratul David a aflat toate aceste lucruri și s-a mâniat foarte ___.",
+   "a": [
+    "tare"
+   ]
+  },
+  {
+   "id": "2sa.13.12-13.21",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "13:39",
+   "q": "Împăratul David a încetat să mai urmărească pe ___, căci se mângâiase de moartea lui Amnon.",
+   "a": [
+    "Absalom"
+   ]
   },
   {
    "id": "2sa.13.12-13.13",
@@ -429,6 +503,38 @@
    "explain": "Niciun răspuns corect: a văzut o mare ceată venind pe drum dinspre munte — fiii împăratului (13:34-35)."
   },
   {
+   "id": "2sa.13.12-13.22",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "13:32-33",
+   "q": "Ce i-a spus Ionadab lui David?",
+   "opts": [
+    "că toți fiii au murit",
+    "să nu se mai muncească împăratul",
+    "că numai Amnon a murit"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "2sa.13.12-13.23",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "13:36-37",
+   "q": "Ce s-a întâmplat după ce au venit fiii împăratului?",
+   "opts": [
+    "Absalom fugise la Talmai",
+    "Absalom s-a întors la Ierusalim",
+    "au ridicat glasul și au plâns"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
    "id": "2sa.13.14-15.1",
    "age": "14-15",
    "t": "tf",
@@ -452,6 +558,23 @@
    "q": "Ionadab i-a spus lui David că toți fiii împăratului au fost uciși.",
    "a": false,
    "explain": "Ionadab a spus: „numai Amnon a murit\" (13:32-33)."
+  },
+  {
+   "id": "2sa.13.14-15.16",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "13:28",
+   "q": "Absalom le-a spus slujitorilor săi să nu se teamă de nimic.",
+   "a": true
+  },
+  {
+   "id": "2sa.13.14-15.17",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "13:35",
+   "q": "Ionadab a spus împăratului că fiii lui nu mai vin.",
+   "a": false,
+   "explain": "A spus: „Iată că vin fiii împăratului!”"
   },
   {
    "id": "2sa.13.14-15.4",
@@ -493,77 +616,57 @@
    "a": 2
   },
   {
-   "id": "2sa.13.14-15.7",
+   "id": "2sa.13.14-15.18",
    "age": "14-15",
-   "t": "match",
-   "ref": "13:19-20",
-   "q": "Tamar după ce a fost alungată: asociază.",
-   "pairs": [
-    [
-     "pe cap",
-     "și-a presărat cenușă"
-    ],
-    [
-     "haina pestriță",
-     "și-a sfâșiat-o"
-    ],
-    [
-     "Absalom",
-     "i-a spus să tacă"
-    ],
-    [
-     "casa lui Absalom",
-     "acolo a locuit nemângâiată"
-    ]
-   ]
+   "t": "one",
+   "ref": "13:31",
+   "q": "Ce a făcut David când a auzit zvonul că toți fiii lui au fost uciși?",
+   "opts": [
+    "a poruncit să fie prins Ionadab",
+    "și-a rupt hainele și s-a culcat pe pământ",
+    "a pornit în grabă la Baal-Hațor"
+   ],
+   "a": 1
   },
   {
-   "id": "2sa.13.14-15.8",
+   "id": "2sa.13.14-15.19",
    "age": "14-15",
-   "t": "match",
-   "ref": "13:24-27",
-   "q": "Invitația lui Absalom: asociază.",
-   "pairs": [
-    [
-     "Absalom",
-     "l-a poftit pe împărat la tunsul oilor"
-    ],
-    [
-     "împăratul",
-     "n-a vrut să meargă și l-a binecuvântat"
-    ],
-    [
-     "„Pentru ce să vină el cu tine?\"",
-     "întrebarea lui David despre Amnon"
-    ],
-    [
-     "în urma stăruințelor",
-     "au mers Amnon și toți fiii împăratului"
-    ]
-   ]
+   "t": "one",
+   "ref": "13:37",
+   "q": "Cum își arăta David durerea după fuga lui Absalom?",
+   "opts": [
+    "jelea în fiecare zi pe fiul său",
+    "se ascundea de popor",
+    "postea patruzeci de zile"
+   ],
+   "a": 0
   },
   {
-   "id": "2sa.13.14-15.9",
+   "id": "2sa.13.14-15.24",
    "age": "14-15",
    "t": "match",
-   "ref": "13:3, 23, 37",
-   "q": "Nume din 2 Samuel 13: asociază fiecare cu ce se spune despre el.",
+   "ref": "13:3-38",
+   "q": "Asociază fiecare nume, loc sau animal cu ce se spune despre el în 2 Samuel 13.",
    "pairs": [
     [
      "Șimea",
      "fratele lui David"
     ],
     [
-     "Amihur",
-     "tatăl lui Talmai"
-    ],
-    [
      "Baal-Hațor",
      "locul tunsului oilor, lângă Efraim"
     ],
     [
+     "Gheșur",
+     "locul unde a stat Absalom trei ani"
+    ],
+    [
      "Talmai",
-     "împăratul Gheșurului"
+     "fiul lui Amihur"
+    ],
+    [
+     "catârul",
+     "pe el au încălecat fiii împăratului"
     ]
    ]
   },
@@ -599,6 +702,28 @@
    ],
    "q": "Împăratul David a încetat să mai urmărească pe Absalom, căci se ___ de moartea lui Amnon.",
    "ctx": "Sfârșitul capitolului 13:"
+  },
+  {
+   "id": "2sa.13.14-15.20",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "13:5",
+   "q": "Culcă-te în pat și fă-te ___.",
+   "ctx": "Ionadab, către Amnon:",
+   "a": [
+    "bolnav"
+   ]
+  },
+  {
+   "id": "2sa.13.14-15.21",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "13:24",
+   "q": "Iată, robul tău are tunsul ___; să vină împăratul și slujitorii lui la robul tău.",
+   "ctx": "Absalom, către împărat:",
+   "a": [
+    "oilor"
+   ]
   },
   {
    "id": "2sa.13.14-15.13",
@@ -648,6 +773,38 @@
    "explain": "Niciun răspuns corect: la Baal-Hațor, lângă Efraim (13:23)."
   },
   {
+   "id": "2sa.13.14-15.22",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "13:25-27",
+   "q": "Ce a spus David despre invitația lui Absalom?",
+   "opts": [
+    "„Nu, fiule, nu vom veni toți”",
+    "„Vom veni cu toții”",
+    "„Ca să nu-ți fie greu”"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "2sa.13.14-15.23",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "13:34-36",
+   "q": "Ce s-a întâmplat după fuga lui Absalom?",
+   "opts": [
+    "străjerul l-a văzut pe Absalom la poartă",
+    "Ionadab a spus că vin fiii împăratului",
+    "străjerul a văzut o mare ceată venind"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
    "id": "2sa.13.16-17.1",
    "age": "16-17",
    "t": "tf",
@@ -671,6 +828,23 @@
    "ref": "13:37",
    "q": "Talmai, la care a fugit Absalom, era fiul lui Amihur.",
    "a": true
+  },
+  {
+   "id": "2sa.13.16-17.16",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "13:22",
+   "q": "Absalom a început să-l urască pe Amnon.",
+   "a": true
+  },
+  {
+   "id": "2sa.13.16-17.17",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "13:38",
+   "q": "Absalom a stat zece ani la Gheșur.",
+   "a": false,
+   "explain": "A stat trei ani."
   },
   {
    "id": "2sa.13.16-17.4",
@@ -712,77 +886,57 @@
    "a": 0
   },
   {
-   "id": "2sa.13.16-17.7",
+   "id": "2sa.13.16-17.18",
    "age": "16-17",
-   "t": "match",
-   "ref": "13:4-7",
-   "q": "Planul lui Ionadab: asociază.",
-   "pairs": [
-    [
-     "„Pentru ce te usuci din zi în zi?\"",
-     "întrebarea lui Ionadab"
-    ],
-    [
-     "„Culcă-te în pat și fă-te bolnav\"",
-     "sfatul lui Ionadab"
-    ],
-    [
-     "„să facă două turte sub ochii mei\"",
-     "cererea lui Amnon"
-    ],
-    [
-     "„pregătește-i o mâncare\"",
-     "porunca lui David către Tamar"
-    ]
-   ]
+   "t": "one",
+   "ref": "13:29",
+   "q": "Cine a făcut lui Amnon cum poruncise Absalom?",
+   "opts": [
+    "Ionadab",
+    "Ioab",
+    "slujitorii lui Absalom"
+   ],
+   "a": 2
   },
   {
-   "id": "2sa.13.16-17.8",
+   "id": "2sa.13.16-17.19",
    "age": "16-17",
-   "t": "match",
-   "ref": "13:12-16",
-   "q": "Cuvintele Tamarei: asociază începutul cu sfârșitul.",
-   "pairs": [
-    [
-     "nu se face așa",
-     "în Israel"
-    ],
-    [
-     "tu vei trece drept",
-     "un mișel în Israel"
-    ],
-    [
-     "vorbește, te rog, împăratului",
-     "și nu se va împotrivi"
-    ],
-    [
-     "nu mai mări răul",
-     "pe care l-ai făcut izgonindu-mă"
-    ]
-   ]
+   "t": "one",
+   "ref": "13:23",
+   "q": "Lângă ce loc se afla Baal-Hațor, unde Absalom avea tunsul oilor?",
+   "opts": [
+    "lângă Hebron",
+    "lângă Efraim",
+    "lângă Betleem"
+   ],
+   "a": 1
   },
   {
-   "id": "2sa.13.16-17.9",
+   "id": "2sa.13.16-17.24",
    "age": "16-17",
    "t": "match",
-   "ref": "13:29-36",
-   "q": "După moartea lui Amnon: asociază.",
+   "ref": "13:3-38",
+   "q": "Asociază fiecare nume sau număr cu ce se spune despre el în 2 Samuel 13.",
    "pairs": [
     [
-     "zvonul",
-     "toți fiii împăratului au fost uciși"
+     "Amihur",
+     "tatăl lui Talmai"
     ],
     [
-     "Ionadab",
-     "a spus că numai Amnon a murit"
+     "Șimea",
+     "tatăl lui Ionadab"
     ],
     [
-     "tânărul de strajă",
-     "a văzut o mare ceată"
+     "Talmai",
+     "împăratul Gheșurului"
     ],
     [
-     "fiii împăratului",
-     "au venit plângând"
+     "Baal-Hațor",
+     "locul tunsului oilor"
+    ],
+    [
+     "trei ani",
+     "cât a stat Absalom la Gheșur"
     ]
    ]
   },
@@ -818,6 +972,26 @@
    ],
    "q": "Ionadab a zis împăratului: „Iată că vin fiii împăratului! Astfel se ___ ce spunea robul tău.\"",
    "ctx": "Când străjerul a văzut ceata venind:"
+  },
+  {
+   "id": "2sa.13.16-17.20",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "13:36",
+   "q": "Pe când isprăvea el vorba, iată că fiii împăratului au ___.",
+   "a": [
+    "venit"
+   ]
+  },
+  {
+   "id": "2sa.13.16-17.21",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "13:27",
+   "q": "În urma stăruințelor lui Absalom, împăratul a lăsat să meargă cu el pe Amnon și toți ___ săi.",
+   "a": [
+    "fiii"
+   ]
   },
   {
    "id": "2sa.13.16-17.13",
@@ -866,6 +1040,38 @@
    "explain": "Niciun răspuns corect: l-a poftit pe împărat și pe slujitorii lui (13:24)."
   },
   {
+   "id": "2sa.13.16-17.22",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "13:37-38",
+   "q": "Ce se spune despre Absalom după ce a fugit?",
+   "opts": [
+    "a stat trei ani la Gheșur",
+    "s-a dus la Talmai",
+    "s-a ascuns la Efraim"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "2sa.13.16-17.23",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "13:24-26",
+   "q": "Ce a cerut Absalom?",
+   "opts": [
+    "să rămână Ionadab la Ierusalim",
+    "să vină măcar Amnon cu ei",
+    "să vină împăratul și slujitorii lui la tunsul oilor"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
    "id": "2sa.13.18+.1",
    "age": "18+",
    "t": "tf",
@@ -889,6 +1095,23 @@
    "ref": "13:34",
    "q": "Ceata văzută de străjer venea pe drumul dinapoia lui, dinspre munte.",
    "a": true
+  },
+  {
+   "id": "2sa.13.18+.16",
+   "age": "18+",
+   "t": "tf",
+   "ref": "13:39",
+   "q": "David se mângâiase de moartea lui Amnon când a încetat să-l mai urmărească pe Absalom.",
+   "a": true
+  },
+  {
+   "id": "2sa.13.18+.17",
+   "age": "18+",
+   "t": "tf",
+   "ref": "13:26",
+   "q": "David a încuviințat de la prima cerere ca Amnon să meargă la tunsul oilor.",
+   "a": false,
+   "explain": "I-a răspuns: „Pentru ce să vină el cu tine?”"
   },
   {
    "id": "2sa.13.18+.4",
@@ -930,77 +1153,57 @@
    "a": 2
   },
   {
-   "id": "2sa.13.18+.7",
+   "id": "2sa.13.18+.18",
+   "age": "18+",
+   "t": "one",
+   "ref": "13:37",
+   "q": "Cine era Talmai, la care a fugit Absalom?",
+   "opts": [
+    "fiul lui Amihur, împăratul Gheșurului",
+    "fiul lui Nahaș, împăratul amoniților",
+    "fiul lui Șimea, fratele lui David"
+   ],
+   "a": 0
+  },
+  {
+   "id": "2sa.13.18+.19",
+   "age": "18+",
+   "t": "one",
+   "ref": "13:22",
+   "q": "Ce a făcut Absalom față de Amnon, după ce a aflat ce s-a întâmplat?",
+   "opts": [
+    "l-a alungat din casă",
+    "n-a vorbit nici bine, nici rău cu el",
+    "l-a dat judecății"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.13.18+.24",
    "age": "18+",
    "t": "match",
-   "ref": "13:3-37",
-   "q": "Legăturile de familie din 2 Samuel 13: asociază.",
+   "ref": "13:1-38",
+   "q": "Asociază fiecare nume sau loc cu ce se spune despre el în 2 Samuel 13.",
    "pairs": [
     [
+     "Baal-Hațor",
+     "locul unde Absalom avea tunsul oilor"
+    ],
+    [
+     "Talmai",
+     "împăratul Gheșurului, fiul lui Amihur"
+    ],
+    [
      "Ionadab",
-     "fiul lui Șimea"
+     "un om foarte șiret"
     ],
     [
      "Șimea",
      "fratele lui David"
     ],
     [
-     "Talmai",
-     "fiul lui Amihur"
-    ],
-    [
      "Tamar",
-     "sora lui Absalom"
-    ]
-   ]
-  },
-  {
-   "id": "2sa.13.18+.8",
-   "age": "18+",
-   "t": "match",
-   "ref": "13:19",
-   "q": "Jalea Tamarei (2 Samuel 13:19): asociază.",
-   "pairs": [
-    [
-     "cenușa",
-     "și-a presărat-o pe cap"
-    ],
-    [
-     "haina pestriță",
-     "și-a sfâșiat-o"
-    ],
-    [
-     "mâna",
-     "a pus-o în cap"
-    ],
-    [
-     "plecarea",
-     "a plecat țipând"
-    ]
-   ]
-  },
-  {
-   "id": "2sa.13.18+.9",
-   "age": "18+",
-   "t": "match",
-   "ref": "13:23-29",
-   "q": "Tunsul oilor: asociază fiecare cu numărul sau locul potrivit.",
-   "pairs": [
-    [
-     "după doi ani",
-     "a fost tunsul oilor"
-    ],
-    [
-     "Baal-Hațor",
-     "locul, lângă Efraim"
-    ],
-    [
-     "vinul",
-     "când se va veseli inima lui Amnon"
-    ],
-    [
-     "catârii",
-     "pe ei au fugit fiii împăratului"
+     "sora frumoasă a lui Absalom"
     ]
    ]
   },
@@ -1036,6 +1239,27 @@
    ],
    "q": "Împăratul s-a sculat, și-a rupt hainele și s-a culcat pe ___,",
    "ctx": "Când a ajuns la David zvonul despre fiii lui:"
+  },
+  {
+   "id": "2sa.13.18+.20",
+   "age": "18+",
+   "t": "fill",
+   "ref": "13:31",
+   "q": "Împăratul s-a sculat, și-a rupt hainele și s-a culcat pe ___",
+   "a": [
+    "pământ"
+   ]
+  },
+  {
+   "id": "2sa.13.18+.21",
+   "age": "18+",
+   "t": "fill",
+   "ref": "13:28",
+   "q": "Luați seama, când se va veseli inima lui Amnon de ___ și când vă voi zice: ‘Loviți pe Amnon!’",
+   "ctx": "Absalom, către slujitorii săi:",
+   "a": [
+    "vin"
+   ]
   },
   {
    "id": "2sa.13.18+.13",
@@ -1083,6 +1307,38 @@
    ],
    "a": [],
    "explain": "Niciun răspuns corect: textul spune doar că „s-a mâniat foarte tare\" (13:21)."
+  },
+  {
+   "id": "2sa.13.18+.22",
+   "age": "18+",
+   "t": "multi",
+   "ref": "13:24-27",
+   "q": "Ce se spune despre invitația lui Absalom?",
+   "opts": [
+    "David a spus: „Nu, fiule, nu vom veni toți”",
+    "David l-a binecuvântat pe Absalom",
+    "David a acceptat imediat;"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "2sa.13.18+.23",
+   "age": "18+",
+   "t": "multi",
+   "ref": "13:2-3",
+   "q": "Ce se spune despre Amnon și Ionadab?",
+   "opts": [
+    "Amnon a căzut bolnav",
+    "Ionadab era un om foarte șiret",
+    "Ionadab era fiul lui Ioab"
+   ],
+   "a": [
+    0,
+    1
+   ]
   }
  ]
 }
