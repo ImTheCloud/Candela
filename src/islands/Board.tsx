@@ -3,6 +3,7 @@ import { collection, FieldPath, getCountFromServer, getDocs, limit, orderBy, que
 import { AGE_GROUPS, LEVEL_KEY, ageShort, type AgeGroup } from '../lib/age';
 import { db } from '../lib/firebase';
 import { player, setHidden } from '../lib/players';
+import { progress } from '../lib/progress';
 import { user } from '../lib/session';
 
 interface Row { key: string; name: string; score: number; at: number }
@@ -55,6 +56,9 @@ export default function Board({ book }: Props) {
     try { await setHidden(p, !p.hidden); } finally { setBusy(false); }
   }
 
+  const mastered = progress(book).value.mastered;
+  const myScore = age === 'all' ? new Set(mastered).size : new Set(mastered.filter((id) => id.split('.')[2] === age)).size;
+
   const mine = (key: string) => !!user.value && key.startsWith(`${user.value.uid}~`);
 
   return (
@@ -62,9 +66,10 @@ export default function Board({ book }: Props) {
       <div class="lb-head">
         <h2 id="lb-title">Clasament</h2>
         {user.value && (
-          <label class="check small">
-            <input type="checkbox" checked={!p.hidden} disabled={busy} onChange={toggleHidden} />
-            <span>Apar în clasament</span>
+          <label class="switch">
+            <input type="checkbox" role="switch" checked={!p.hidden} disabled={busy} onChange={toggleHidden} />
+            <span class="switch-track" aria-hidden="true"><span class="switch-thumb" /></span>
+            <span class="switch-text">{p.hidden ? 'Ascuns' : 'Vizibil'}</span>
           </label>
         )}
       </div>
@@ -74,6 +79,12 @@ export default function Board({ book }: Props) {
         ))}
         <button type="button" role="tab" aria-selected={age === 'all'} onClick={() => setAge('all')}>Toate</button>
       </div>
+      {user.value && p.hidden && (
+        <div class="lb-hidden">
+          <span class="small muted">Nu apari în clasament</span>
+          <strong>{myScore} {myScore === 1 ? 'punct' : 'puncte'}</strong>
+        </div>
+      )}
       {rows !== null && total !== null && !error && (
         <p class="lb-count small muted">{rows.length} {rows.length === 1 ? 'jucător' : 'jucători'} aici · {total} în total</p>
       )}
