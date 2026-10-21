@@ -12,7 +12,7 @@ body.in-quiz main { padding-top: 0; }
 .qt .bar { flex: 1; }
 .qt-n { flex: none; font: 600 0.85rem var(--f-body); color: var(--ink-2); font-variant-numeric: tabular-nums; }
 .bar { height: 6px; border-radius: 999px; background: var(--surface-2); overflow: hidden; }
-.bar-fill { display: block; height: 100%; width: 0; background: var(--oil); border-radius: inherit; transition: width .3s; }
+.bar-fill { display: block; height: 100%; width: 0; background: var(--flame); border-radius: inherit; transition: width .3s; }
 .part { font: 600 0.8rem var(--f-body); letter-spacing: .06em; text-transform: uppercase; color: var(--oil-ink); }
 
 .q-card { display: grid; gap: 12px; padding: 14px; }
@@ -99,7 +99,7 @@ body.in-quiz main { padding-top: 0; }
   font: inherit; text-align: left; cursor: pointer;
 }
 .verse-btn:active { background: var(--surface-2); }
-.verse-btn > svg:first-child { flex: none; color: var(--oil); }
+.verse-btn > svg:first-child { flex: none; color: var(--flame-ink); }
 .vb-main { flex: 1; min-width: 0; display: grid; gap: 1px; }
 .vb-main b { font-weight: 600; }
 .vb-main small { font-size: 0.8rem; color: var(--ink-2); }
@@ -140,7 +140,7 @@ body.in-quiz main { padding-top: 0; }
 .score-ring { position: relative; width: 150px; height: 150px; }
 .score-ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
 .ring-bg { fill: none; stroke: var(--surface-2); stroke-width: 10; }
-.ring-fill { fill: none; stroke: var(--oil); stroke-width: 10; stroke-linecap: round; transition: stroke-dashoffset .8s ease-out; }
+.ring-fill { fill: none; stroke: var(--flame); stroke-width: 10; stroke-linecap: round; transition: stroke-dashoffset .8s ease-out; }
 .score-num { position: absolute; inset: 0; display: grid; place-content: center; font: 600 2.8rem/1 var(--f-display); color: var(--ink); }
 .score-num small { font: 500 0.85rem var(--f-body); color: var(--ink-2); margin-top: 4px; }
 .score-praise { font: 600 1.25rem var(--f-display); }

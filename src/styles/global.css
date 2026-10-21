@@ -11,6 +11,8 @@
   --oil: #8a5a36;
   --oil-ink: #4a3426;
   --oil-soft: #eddcc6;
+  --flame: #d97b26;
+  --flame-ink: #b4600f;
   --btn: #4a3426;
   --btn-hover: #382619;
   --on-oil: #fffaf3;
@@ -59,7 +61,7 @@ h3 { font-size: 1.1rem; }
 p { margin: 0; }
 a { color: inherit; }
 img, svg { display: block; }
-:focus-visible { outline: 2px solid var(--oil); outline-offset: 2px; border-radius: 6px; }
+:focus-visible { outline: 2px solid var(--flame); outline-offset: 2px; border-radius: 6px; }
 
 /* Layout */
 .wrap { width: 100%; max-width: var(--wide); margin-inline: auto; padding-inline: var(--gutter); }
@@ -116,6 +118,7 @@ img, svg { display: block; }
 .btn-sm { min-height: 40px; padding: 0 16px; font-size: 0.9rem; }
 
 /* Account */
+.avatar[hidden] { display: none; }
 .avatar {
   flex: none; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%;
   background: var(--cedar-soft); color: var(--cedar); font: 600 0.95rem var(--f-body); text-decoration: none;
@@ -213,7 +216,7 @@ img, svg { display: block; }
 .tile:hover { border-color: var(--oil); }
 .tile:active { transform: scale(0.96); }
 .tile-n { line-height: 1; }
-.tile-sc { font-size: 0.68rem; font-weight: 600; color: var(--oil-ink); line-height: 1; }
+.tile-sc { font-size: 0.68rem; font-weight: 600; color: var(--flame-ink); line-height: 1; }
 .tile.is-full { background: var(--ok-soft); border-color: transparent; }
 .tile.is-full .tile-sc { color: var(--ok); }
 
@@ -352,7 +355,7 @@ a.tile { text-decoration: none; }
 .oc-row { display: flex; align-items: center; gap: 12px; min-height: 64px; padding: 12px 16px; color: var(--ink); text-decoration: none; }
 .oc-row + .oc-row { border-top: 1px solid var(--line); }
 .oc-row:active { background: var(--surface-2); }
-.oc-ic { flex: none; display: grid; place-items: center; color: var(--oil-ink); }
+.oc-ic { flex: none; display: grid; place-items: center; color: var(--flame-ink); }
 .oc-main { flex: 1; min-width: 0; display: grid; gap: 1px; }
 .oc-main b { font-weight: 600; }
 .oc-main small { font-size: 0.8rem; color: var(--ink-2); }

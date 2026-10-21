@@ -60,7 +60,7 @@ const fullTitle = title === 'Candela' ? title : `${title} · Candela`;
         </a>
         <div id="quiz-top" class="qt"></div>
         <AccountButton client:only="preact">
-          <span slot="fallback" class="account-placeholder"></span>
+          <a slot="fallback" id="acct-fb" href="/cont" class="account-placeholder" hidden></a>
         </AccountButton>
       </div>
     </header>
@@ -70,6 +70,17 @@ const fullTitle = title === 'Candela' ? title : `${title} · Candela`;
     <BirthYearGate client:only="preact" />
   </body>
 </html>
+
+<script is:inline>
+  // The account button is an island: until it loads, show what the last visit left (initials, or "Intră") so it does not pop in late.
+  try {
+    var acct = JSON.parse(localStorage.getItem('acct') || 'null'), fb = document.getElementById('acct-fb');
+    if (fb && typeof acct === 'string' && !(acct === '' && location.pathname.indexOf('/cont') === 0)) {
+      if (acct) { fb.className = 'avatar'; fb.textContent = acct; } else { fb.className = 'btn btn-ghost btn-sm'; fb.textContent = 'Intră'; }
+      fb.hidden = false;
+    }
+  } catch (e) {}
+</script>
 
 <script>
   // Back goes to the previous page of the app (no reload); with nothing behind it, up to the parent page.
@@ -91,7 +102,7 @@ const fullTitle = title === 'Candela' ? title : `${title} · Candela`;
   .top-row { display: flex; align-items: center; justify-content: space-between; height: 60px; }
   .brand { display: flex; align-items: center; gap: 7px; min-width: 0; text-decoration: none; font: 400 25px/1 var(--f-brand); }
   .brand-text { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .brand svg { margin: -8px -4px -3px -10px; }
+  .brand :global(.lamp) { margin: -8px -4px -3px -10px; }
   .account-placeholder { display: block; width: 44px; height: 44px; }
   .top-row { gap: 6px; }
   .brand { margin-right: auto; }
