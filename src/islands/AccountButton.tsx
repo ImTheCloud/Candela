@@ -22,7 +22,7 @@ export default function AccountButton() {
   // while Firebase restores the session, show what the last visit left
   const shown = initialsNow ?? localGet<string | null>('acct', null);
   if (shown === null || (shown === '' && location.pathname.startsWith('/cont'))) return <span class="account-placeholder" />;
-  if (!shown) return <a class="btn btn-ghost btn-sm" href="/cont" aria-label="Intră în cont">Intră</a>;
+  if (!shown) return <a class="btn btn-primary btn-sm" href="/cont" aria-label="Intră în cont">Intră</a>;
   return (
     <a class="avatar" href={admin && count ? '/semnalari' : '/cont'}
       aria-label={admin && count ? `${count} semnalări de verificat` : u ? `Contul meu (joacă ${player.value.name})` : 'Contul meu'}>
