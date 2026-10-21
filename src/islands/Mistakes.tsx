@@ -4,7 +4,6 @@ import { progress } from '../lib/progress';
 import { shuffle, type Playable } from '../lib/questions';
 import { user } from '../lib/session';
 import Quiz from './Quiz';
-import '../styles/quiz.css';
 
 /** Questions answered wrong come back until they are answered right. */
 export default function Mistakes({ book, bookName }: { book: string; bookName: string }) {

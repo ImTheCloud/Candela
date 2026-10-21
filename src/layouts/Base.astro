@@ -4,18 +4,24 @@ import '@fontsource-variable/outfit';
 import '@fontsource-variable/fraunces';
 import '@fontsource-variable/source-serif-4';
 import '../styles/global.css';
+import '../styles/quiz.css';
 import Lamp from '../components/Lamp.astro';
 import AccountButton from '../islands/AccountButton';
 import BirthYearGate from '../islands/BirthYearGate';
+import { DEFAULT_BOOK } from '../lib/books';
 
 interface Crumb { href: string; label: string }
 interface Props {
   title: string;
   description?: string;
-  /** Path back up the site, shown above the page title. */
+  /** Path back up the site; the last one is where the back button goes when there is no history. */
   crumbs?: Crumb[];
+  /** A home page: no back button. */
+  home?: boolean;
 }
-const { title, description = 'Teste biblice după traducerea Cornilescu: 1 Samuel și 2 Samuel.', crumbs = [] } = Astro.props;
+const { title, description = 'Teste biblice după traducerea Cornilescu: 1 Samuel și 2 Samuel.', crumbs = [], home = false } = Astro.props;
+const up = crumbs.at(-1)?.href ?? '/';
+const parent = up === `/${DEFAULT_BOOK}` ? '/' : up;
 const fullTitle = title === 'Candela' ? title : `${title} · Candela`;
 ---
 <!doctype html>
@@ -32,11 +38,17 @@ const fullTitle = title === 'Candela' ? title : `${title} · Candela`;
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={new URL('/og.png', Astro.site)} />
+    <slot name="head" />
     {import.meta.env.PROD && <script is:inline>if ('serviceWorker' in navigator) addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));</script>}
   </head>
   <body>
     <header class="top">
       <div class="wrap top-row">
+        {!home && (
+          <a class="back" href={parent} data-back aria-label="Înapoi">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6" /></svg>
+          </a>
+        )}
         <a href="/" class="brand" aria-label="Candela, acasă">
           <Lamp />
           <span>Candela</span>
@@ -47,15 +59,15 @@ const fullTitle = title === 'Candela' ? title : `${title} · Candela`;
       </div>
     </header>
     <main>
-      {crumbs.length > 0 && (
-        <nav class="wrap crumbs" aria-label="Unde ești">
-          {crumbs.map((c) => <><a href={c.href}>{c.label}</a><span aria-hidden="true">/</span></>)}
-          <span aria-current="page">{title}</span>
-        </nav>
-      )}
       <slot />
     </main>
     <BirthYearGate client:only="preact" />
+    <script is:inline>
+      // back: to the page we came from on this site, else up to the parent page
+      for (const a of document.querySelectorAll('[data-back]')) a.addEventListener('click', (e) => {
+        try { if (history.length > 1 && document.referrer && new URL(document.referrer).origin === location.origin) { e.preventDefault(); history.back(); } } catch {}
+      });
+    </script>
   </body>
 </html>
 
@@ -71,12 +83,11 @@ const fullTitle = title === 'Candela' ? title : `${title} · Candela`;
   .brand { display: flex; align-items: center; gap: 7px; text-decoration: none; font: 400 25px/1 var(--f-brand); }
   .brand svg { margin: -8px -4px -3px -10px; }
   .account-placeholder { display: block; width: 44px; height: 44px; }
-  .crumbs {
-    display: flex; align-items: center; gap: 6px; white-space: nowrap;
-    padding-top: 20px; font-size: 0.875rem; color: var(--ink-3);
+  .top-row { gap: 6px; }
+  .brand { margin-right: auto; }
+  .back {
+    flex: none; display: grid; place-items: center; width: 40px; height: 40px; margin-left: -8px;
+    border-radius: 50%; color: var(--ink); text-decoration: none;
   }
-  .crumbs a { flex: none; color: var(--ink-2); text-decoration: none; }
-  .crumbs [aria-current] { overflow: hidden; text-overflow: ellipsis; min-width: 0; }
-  .crumbs a:hover { color: var(--oil-ink); text-decoration: underline; }
-  .crumbs [aria-current] { color: var(--ink-2); font-weight: 500; }
+  .back:active { background: var(--surface-2); }
 </style>

@@ -6,8 +6,8 @@ import { DEFAULT_BOOK, getBook } from '../lib/books';
 // The home page is the default book; a player who picked the other book is sent there.
 const book = getBook(DEFAULT_BOOK)!;
 ---
-<Base title="Candela" description={`Teste biblice după traducerea Cornilescu. ${book.name}: ${book.summary}`}>
-  <script is:inline define:vars={{ def: DEFAULT_BOOK }}>
+<Base home title="Candela" description={`Teste biblice după traducerea Cornilescu. ${book.name}: ${book.summary}`}>
+  <script slot="head" is:inline define:vars={{ def: DEFAULT_BOOK }}>
     try { const b = JSON.parse(localStorage.getItem('book') || 'null'); if (b && b !== def) location.replace('/' + b); } catch {}
   </script>
   <BookHome book={book} />

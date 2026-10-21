@@ -1,22 +1,15 @@
 ---
 import ChapterMenu from '../islands/ChapterMenu';
 import PlayerPicker from '../islands/PlayerPicker';
+import Welcome from '../islands/Welcome';
 import { BOOKS, bookHome, type Book } from '../lib/books';
 import { summary } from '../lib/content';
 
-// The home of one book: switch book, who plays, the chapters (tap one for its menu), the other ways to practise.
+// The home of one book: switch book, welcome, who plays, the chapters (tap one for its menu, exams after the last), the board.
 interface Props { book: Book }
 const { book } = Astro.props;
 const base = `/${book.slug}`;
 
-const modes = [
-  { href: `${base}/exersare`, name: 'Mai multe capitole', text: 'Alegi capitolele și câte întrebări vrei.' },
-  { href: `${base}/greseli`, name: 'Greșelile mele', text: 'Întrebările greșite revin până le știi.' },
-  { href: `${base}/examene`, name: 'Examene', text: 'Examenele de anul trecut și examene noi, notate din 100.' },
-  { href: `${base}/ghid`, name: 'Ghidul cărții', text: 'Povestea pe scurt, personajele, locurile pe hartă.' },
-  { href: `${base}/clasament`, name: 'Clasament', text: 'Pe vârste: fiecare întrebare contează o singură dată.' },
-  { href: '/progres', name: 'Progres', text: 'Ce ai citit și ce știi, pentru fiecare copil.' },
-];
 ---
 <section class="wrap hb-head">
   <nav class="book-switch" aria-label="Cartea">
@@ -24,8 +17,7 @@ const modes = [
       <a href={bookHome(b.slug)} data-book={b.slug} aria-current={b.slug === book.slug ? 'page' : undefined}>{b.name}</a>
     ))}
   </nav>
-  <h1>{book.name}</h1>
-  <p class="muted">{book.summary}</p>
+  <Welcome client:only="preact"><h1 slot="fallback" class="welcome">Bun venit!</h1></Welcome>
 </section>
 
 <section class="wrap hb-who">
@@ -35,27 +27,20 @@ const modes = [
 <section class="wrap hb-block" aria-labelledby="chapters">
   <div class="card hb-chapters">
     <h2 id="chapters">Ce capitol vrei să exersezi?</h2>
-    <ChapterMenu client:only="preact" book={book.slug} titles={book.titles} summary={summary(book.slug)}>
+    <ChapterMenu client:only="preact" book={book.slug} titles={book.titles} summary={summary(book.slug)} examsHref={`${base}/examene`}>
       <div slot="fallback" class="tiles-space"></div>
     </ChapterMenu>
   </div>
 </section>
 
-<section class="wrap hb-block" aria-labelledby="more">
-  <h2 id="more" class="hb-title">Mai mult</h2>
-  <ul class="modes">
-    {modes.map((m) => (
-      <li>
-        <a class="card mode" href={m.href}>
-          <span>
-            <span class="mode-name">{m.name}</span>
-            <span class="small muted">{m.text}</span>
-          </span>
-          <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
-        </a>
-      </li>
-    ))}
-  </ul>
+<section class="wrap hb-block">
+  <a class="card mode" href={`${base}/clasament`}>
+    <span>
+      <span class="mode-name">Clasament</span>
+      <span class="small muted">Pe vârste: fiecare întrebare știută contează o dată.</span>
+    </span>
+    <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
+  </a>
 </section>
 
 <script>
@@ -70,6 +55,7 @@ const modes = [
 
 <style>
   .hb-head { display: flex; flex-direction: column; gap: 8px; padding-block: 16px 4px; }
+  .welcome { font-size: 1.7rem; }
   .book-switch {
     display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 4px; margin-bottom: 10px;
     background: var(--surface-2); border-radius: 999px;
@@ -81,11 +67,9 @@ const modes = [
   .book-switch a[aria-current] { background: var(--surface); color: var(--ink); box-shadow: 0 1px 3px rgb(58 39 27 / .12); }
   .hb-who:not(:empty) { padding-top: 14px; }
   .hb-block { padding-top: 20px; }
-  .hb-title { margin-bottom: 12px; }
   .hb-chapters { display: grid; gap: 16px; padding: 18px; }
   .hb-chapters h2 { font-size: 1.2rem; }
   .tiles-space { min-height: 240px; }
-  .modes { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
   .mode { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 18px; text-decoration: none; box-shadow: none; }
   .mode > span:first-child { display: flex; flex-direction: column; gap: 2px; }
   .mode-name { font-weight: 600; }

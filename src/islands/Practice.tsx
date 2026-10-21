@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'preact/hooks';
 import { AGE_GROUPS, ageGroup, ageLabel, validBirthYear, type AgeGroup } from '../lib/age';
 import { player, setGuestBirthYear, GUEST } from '../lib/players';
-import { shuffle, TYPES, type Playable, type QType } from '../lib/questions';
+import { shuffle, type Playable, type QType } from '../lib/questions';
 import { bookHome } from '../lib/books';
 import { loadChapters } from '../lib/load';
 import Quiz from './Quiz';
-import '../styles/quiz.css';
 
 /** How many questions each chapter has, per age group and type (computed at build). */
 export type Summary = Record<number, Partial<Record<AgeGroup, Partial<Record<QType, number>>>>>;
@@ -21,14 +20,12 @@ const COUNTS = [10, 20, 0];
 
 export default function Practice({ book, bookName, chapters, summary }: Props) {
   const params = new URLSearchParams(location.search);
-  const byType = params.get('mod') === 'tip';
   const [picked, setPicked] = useState<number[]>(() => {
     const c = Number(params.get('capitol'));
     return c && summary[c] ? [c] : [];
   });
-  const [type, setType] = useState<QType>('tf');
   // from a chapter's menu: ?capitol=5&start=1[&nivel=greu] starts the whole chapter test at once
-  const direct = params.get('start') === '1' && !byType;
+  const direct = params.get('start') === '1';
   const [harder, setHarder] = useState(params.get('nivel') === 'greu');
   const [count, setCount] = useState(direct ? 0 : 10);
   const [quiz, setQuiz] = useState<{ key: number; questions: Playable[] } | null>(null);
@@ -43,7 +40,7 @@ export default function Practice({ book, bookName, chapters, summary }: Props) {
     if (!level) return 0;
     const s = summary[ch]?.[level];
     if (!s) return 0;
-    return byType ? s[type] ?? 0 : Object.values(s).reduce((a, b) => a + (b ?? 0), 0);
+    return Object.values(s).reduce((a, b) => a + (b ?? 0), 0);
   };
   const withQuestions = Array.from({ length: chapters }, (_, k) => k + 1).filter((c) => available(c) > 0);
   const chosen = picked.filter((c) => available(c) > 0);
@@ -55,7 +52,7 @@ export default function Practice({ book, bookName, chapters, summary }: Props) {
     setError('');
     try {
       const all = await loadChapters(book, chosen);
-      const pool = all.filter((q) => q.age === level && (!byType || q.t === type));
+      const pool = all.filter((q) => q.age === level);
       setQuiz({ key: Date.now(), questions: shuffle(pool).slice(0, count === 0 ? pool.length : count) });
     } catch {
       setError('Întrebările nu s-au putut încărca. Verifică conexiunea la internet.');
@@ -98,18 +95,6 @@ export default function Practice({ book, bookName, chapters, summary }: Props) {
         </div>
       )}
 
-      {byType && (
-        <div class="setup-block">
-          <p class="setup-head"><strong>Tipul întrebărilor</strong></p>
-          <div class="type-list" role="radiogroup" aria-label="Tipul întrebărilor">
-            {TYPES.map((x) => (
-              <button type="button" role="radio" aria-checked={type === x.t} class="opt" onClick={() => setType(x.t)}>
-                <span class="opt-key">{x.part}</span><span>{x.label}</span>
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
 
       <div class="setup-block">
         <div class="setup-head">
