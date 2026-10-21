@@ -121,20 +121,12 @@ function Sheet({ book, ch, title, age, read, reading, done, total, wrongs, onClo
         </div>
         <p class="sheet-label">Alege ce vrei să faci</p>
         <div class="lvl-list">
-          {reading && (
-            <Row href={`${base}/citire/${ch}`} icon="book" name="Citește capitolul"
-              note={read ? 'Citit' : 'Textul Cornilescu; poți marca versetele'} done={read} side="" />
-          )}
+          {reading && <Row href={`${base}/citire/${ch}`} icon="book" name="Citește capitolul" done={read} />}
           <Row href={`${base}/exersare?capitol=${ch}&start=1`} icon="test" name="Testul capitolului"
-            note={age ? (total && done === total ? `Știi tot · ${done}/${total}` : `Toate întrebările · ${ageLabel(age)}`) : 'Toate întrebările capitolului'}
-            done={!!total && done === total} side={total ? `${total} întrebări` : ''} />
-          {harder && (
-            <Row href={`${base}/exersare?capitol=${ch}&start=1&nivel=greu`} icon="star" name="Mai greu"
-              note={`Întrebările categoriei ${ageLabel(harder)}`} side="" />
-          )}
-          {wrongs > 0 && (
-            <Row href={`${base}/greseli`} icon="redo" name="Greșelile mele" note={`${wrongs} ${wrongs === 1 ? 'întrebare' : 'întrebări'} de reluat din acest capitol`} side="" />
-          )}
+            tag={age ? short(age) : ''} done={!!total && done === total}
+            side={total ? (done ? `${done}/${total}` : String(total)) : ''} unit={total && !done ? 'întrebări' : ''} />
+          {harder && <Row href={`${base}/exersare?capitol=${ch}&start=1&nivel=greu`} icon="star" name="Mai greu" tag={short(harder)} />}
+          {wrongs > 0 && <Row href={`${base}/greseli`} icon="redo" name="Greșelile mele" side={`${wrongs} de reluat`} />}
         </div>
       </div>
     </div>
@@ -148,21 +140,21 @@ const ICONS: Record<string, JSX.Element> = {
   redo: <><path d="M21 12a9 9 0 1 1-3-6.7" /><path d="M21 3v6h-6" /></>,
 };
 
-function Row({ href, icon, name, note, done, side }: { href: string; icon: string; name: string; note: string; done?: boolean; side: string }) {
+function Row({ href, icon, name, tag, done, side, unit }: { href: string; icon: string; name: string; tag?: string; done?: boolean; side?: string; unit?: string }) {
   return (
-    <a class="lvl-row" href={href}>
+    <a class={`lvl-row${done ? ' is-done' : ''}`} href={href}>
       <span class="lvl-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{ICONS[icon]}</svg></span>
-      <span class="lvl-main">
-        <b>{name}</b>
-        <span class={`lvl-note${done ? ' done' : ''}`}>
-          {done && <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.3 4L6 11.3 2.7 8" /></svg>}
-          {note}
-        </span>
-      </span>
-      {side && <span class="lvl-side"><small>{side}</small></span>}
-      <svg class="lvl-chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
+      <b class="lvl-name"><span class="lvl-text">{name}</span>{tag && <span class="lvl-tag">{tag}</span>}</b>
+      {done && <svg class="lvl-done" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="făcut"><path d="M13.3 4L6 11.3 2.7 8" /></svg>}
+      {side && <small class="lvl-side">{side}{unit && <span class="lvl-unit"> {unit}</span>}</small>}
+      <svg class="lvl-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
     </a>
   );
+}
+
+/** "18+", "12–13": the age group without "ani". */
+function short(age: AgeGroup): string {
+  return ageLabel(age).replace(/ ani$/, '').replace('Sub 12', 'sub 12');
 }
 
 function count(s: Partial<Record<QType, number>> | undefined): number {
