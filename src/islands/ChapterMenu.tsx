@@ -2,7 +2,9 @@ import type { JSX } from 'preact';
 import { useEffect, useState } from 'preact/hooks';
 import { ageShort, type AgeGroup } from '../lib/age';
 import { level } from '../lib/level';
-import { progress, type Progress } from '../lib/progress';
+import { cachedExams, EMPTY, progress, type Progress } from '../lib/progress';
+import { rememberedAccount, user } from '../lib/session';
+import { player } from '../lib/players';
 import type { QType } from '../lib/questions';
 import LevelPicker from './LevelPicker';
 
@@ -24,7 +26,9 @@ interface Props {
 export default function ChapterMenu({ book, titles, summary, examsHref }: Props) {
   const [open, setOpen] = useState<number | null>(null);
   const prog = progress(book).value;
-  const entry = (ch: number) => prog.exams[`c${ch}`];
+  // until Firestore answers, the scores of the last visit are shown
+  const exams = prog === EMPTY && user.value !== null ? cachedExams(user.value?.uid ?? rememberedAccount?.uid ?? player.value.key, book) : prog.exams;
+  const entry = (ch: number) => exams[`c${ch}`];
 
   const sheet = open !== null && (
     <Sheet book={book} ch={open} title={titles[open - 1]} total={count(summary[open]?.[level.value])} best={labelFor(entry(open), count(summary[open]?.[level.value]))}
