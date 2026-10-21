@@ -2,18 +2,11 @@ import { ageGroup, ageLabel } from '../lib/age';
 import { choosePlayer, player, players } from '../lib/players';
 import { user } from '../lib/session';
 
-/** "Cine joacă?" for a parent and their children; a short note for guests. */
+/** "Cine joacă?" for a parent and their children. */
 export default function PlayerPicker() {
   const u = user.value;
-  if (u === undefined) return <div class="picker-space" />;
-  if (!u) {
-    return (
-      <div class="card picker guest">
-        <p class="small">Joci fără cont: progresul rămâne doar pe acest telefon.</p>
-        <a class="btn btn-ghost btn-sm" href="/cont">Intră în cont</a>
-      </div>
-    );
-  }
+  // guests: the board says why they are not on it
+  if (!u) return null;
   const list = players.value;
   const current = player.value;
   // a missing birth year is asked for by BirthYearGate
