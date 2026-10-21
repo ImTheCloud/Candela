@@ -66,10 +66,10 @@ export default function Board({ book }: Props) {
       <div class="lb-head">
         <h2 id="lb-title">Clasament</h2>
         {user.value && (
-          <label class="switch">
+          <label class="tgl">
             <input type="checkbox" role="switch" checked={!p.hidden} disabled={busy} onChange={toggleHidden} />
-            <span class="switch-track" aria-hidden="true"><span class="switch-thumb" /></span>
-            <span class="switch-text">{p.hidden ? 'Ascuns' : 'Vizibil'}</span>
+            <span class="tgl-track" aria-hidden="true"><span class="tgl-thumb" /></span>
+            <span class="tgl-text">{p.hidden ? 'Ascuns' : 'Vizibil'}</span>
           </label>
         )}
       </div>

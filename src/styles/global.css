@@ -440,13 +440,17 @@ a.tile { text-decoration: none; }
 .exams .card.exam { padding: 10px 14px; }
 .exams { gap: 8px; }
 
-.switch { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; white-space: nowrap; }
-.switch input { position: absolute; opacity: 0; width: 1px; height: 1px; }
-.switch-track { width: 40px; height: 24px; border-radius: 999px; background: var(--line); padding: 3px; display: block; transition: background .15s; flex: none; }
-.switch-thumb { display: block; width: 18px; height: 18px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgb(0 0 0 / .25); transition: transform .15s; }
-.switch input:checked + .switch-track { background: var(--oil); }
-.switch input:checked + .switch-track .switch-thumb { transform: translateX(16px); }
-.switch input:focus-visible + .switch-track { outline: 2px solid var(--oil); outline-offset: 2px; }
-.switch-text { font-size: 0.85rem; color: var(--ink-2); min-width: 3.4em; }
+.tgl { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; white-space: nowrap; }
+.tgl input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.tgl-track { width: 40px; height: 24px; border-radius: 999px; background: var(--line); padding: 3px; display: block; transition: background .15s; flex: none; }
+.tgl-thumb { display: block; width: 18px; height: 18px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgb(0 0 0 / .25); transition: transform .15s; }
+.tgl input:checked + .tgl-track { background: var(--oil); }
+.tgl input:checked + .tgl-track .tgl-thumb { transform: translateX(16px); }
+.tgl input:focus-visible + .tgl-track { outline: 2px solid var(--oil); outline-offset: 2px; }
+.tgl-text { font-size: 0.85rem; color: var(--ink-2);  }
 .lb-hidden { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 14px; border-radius: 14px; background: var(--bg); border: 1px dashed var(--line); }
 .lb-hidden strong { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.lb, .board, .lb-head { min-width: 0; max-width: 100%; }
+.lb-head h2 { flex: 1; min-width: 0; }
+.lb-count { white-space: normal; }
+.tgl { flex: none; }
