@@ -25,15 +25,15 @@ function Users() {
 
   const term = q.trim().toLowerCase();
   const shown = term ? rows.filter((r) => r.name.toLowerCase().includes(term) || r.email.toLowerCase().includes(term)) : rows;
-  const week = Date.now() - 7 * 864e5;
+  const kidsTotal = rows.reduce((n, r) => n + r.kids.length, 0);
 
   return (
     <div class="stack">
-      <dl class="kv adm-kv">
-        <div><dt>Înscriși</dt><dd>{rows.length}</dd></div>
+      <dl class="adm-stats">
+        <div><dt>Conturi</dt><dd>{rows.length}</dd></div>
         <div><dt>Părinți</dt><dd>{rows.filter((r) => r.isParent).length}</dd></div>
-        <div><dt>Copii</dt><dd>{rows.reduce((s, r) => s + r.kids.length, 0)}</dd></div>
-        <div><dt>Noi, 7 zile</dt><dd>{rows.filter((r) => (r.at?.toMillis() ?? 0) > week).length}</dd></div>
+        <div><dt>Copii</dt><dd>{kidsTotal}</dd></div>
+        <div><dt>Total</dt><dd>{rows.length + kidsTotal}</dd></div>
       </dl>
       <input class="input" type="search" placeholder="Caută după nume sau email" aria-label="Caută" value={q} onInput={(e) => setQ(e.currentTarget.value)} />
       <ul class="adm-list">
