@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'preact/hooks';
+import { useEffect, useRef, useState } from 'preact/hooks';
+import { createPortal } from 'preact/compat';
 import { recordAnswers, recordExam } from '../lib/progress';
 import { emptyAnswer, grade, isAnswered, percent, typeInfo, type Answer, type Grade, type Playable } from '../lib/questions';
 import QuestionView from './QuestionView';
@@ -21,6 +22,8 @@ export default function Quiz({ book, bookName, questions, mode, examId, backHref
   const [grades, setGrades] = useState<(Grade | null)[]>(() => questions.map(() => null));
   const [done, setDone] = useState(false);
   const [confirmHandIn, setConfirmHandIn] = useState(false);
+  const [leaveTo, setLeaveTo] = useState<(() => void) | null>(null);
+  const leaving = useRef(false);
 
   const q = questions[i];
   const g = grades[i];
@@ -29,12 +32,38 @@ export default function Quiz({ book, bookName, questions, mode, examId, backHref
   // leaving in the middle loses the answers: ask first
   useEffect(() => {
     if (done || !started) return;
-    const warn = (e: BeforeUnloadEvent) => e.preventDefault();
+    const warn = (e: BeforeUnloadEvent) => { if (!leaving.current) e.preventDefault(); };
     addEventListener('beforeunload', warn);
     return () => removeEventListener('beforeunload', warn);
   }, [done, started]);
 
   useEffect(() => { scrollTo({ top: 0 }); }, [i, done]);
+
+  // slim header while answering
+  useEffect(() => {
+    if (done) return;
+    document.body.classList.add('in-quiz');
+    return () => document.body.classList.remove('in-quiz');
+  }, [done]);
+
+  // the back arrow (or the logo) leaves the test: ask first
+  useEffect(() => {
+    if (done) return;
+    const onClick = (e: MouseEvent) => {
+      const a = (e.target as Element).closest?.('header.top a') as HTMLAnchorElement | null;
+      if (!a || e.button !== 0) return;
+      e.preventDefault();
+      e.stopPropagation();
+      const back = a.matches('a[data-back]');
+      setLeaveTo(() => () => {
+        leaving.current = true;
+        if (back && (history.state?.index ?? 0) > 0) history.back();
+        else location.assign(a.href);
+      });
+    };
+    addEventListener('click', onClick, true);
+    return () => removeEventListener('click', onClick, true);
+  }, [done]);
 
   const setAnswer = (a: Answer) => setAnswers(answers.map((x, k) => (k === i ? a : x)));
 
@@ -66,16 +95,17 @@ export default function Quiz({ book, bookName, questions, mode, examId, backHref
   const info = typeInfo(q.t);
   const newPart = mode === 'exam' && (i === 0 || questions[i - 1].t !== q.t);
   const unanswered = answers.filter((a) => !isAnswered(a)).length;
+  const topEl = document.getElementById('quiz-top');
 
   return (
     <div class="quiz">
-      <div class="quiz-top">
-        <div class="row-between small muted">
-          <span>Întrebarea {i + 1} din {questions.length}</span>
-          <a class="link" href={backHref}>Ieși</a>
-        </div>
-        <div class="bar" aria-hidden="true"><span class="bar-fill" style={{ width: `${((i + (g ? 1 : 0)) / questions.length) * 100}%` }} /></div>
-      </div>
+      {topEl && createPortal(
+        <>
+          <div class="bar" role="progressbar" aria-valuemin={0} aria-valuemax={questions.length} aria-valuenow={i + 1} aria-label="Progres">
+            <span class="bar-fill" style={{ width: `${((i + (g ? 1 : 0)) / questions.length) * 100}%` }} />
+          </div>
+          <span class="qt-n">{i + 1}/{questions.length}</span>
+        </>, topEl)}
 
       {newPart && <p class="part">{info.part}. {info.label}</p>}
 
@@ -98,7 +128,7 @@ export default function Quiz({ book, bookName, questions, mode, examId, backHref
                 <span class="verdict-ic" aria-hidden="true">{g.right ? <Tick /> : <Cross />}</span>
                 <span>{g.right ? 'Corect!' : g.points > 0 ? `Parțial · ${g.points} din ${g.max} puncte` : 'Greșit'}</span>
               </p>
-              <button class="btn btn-block verdict-btn" onClick={next}>{i < questions.length - 1 ? 'Mai departe' : 'Vezi rezultatul'}</button>
+              <button class="btn verdict-btn" onClick={next}>{i < questions.length - 1 ? 'Mai departe' : 'Vezi rezultatul'}</button>
             </div>
           ) : <button class="btn btn-primary btn-block" disabled={!isAnswered(answers[i])} onClick={check}>Verifică</button>
         ) : confirmHandIn ? (
@@ -118,6 +148,18 @@ export default function Quiz({ book, bookName, questions, mode, examId, backHref
           </div>
         )}
       </div>
+      {leaveTo && (
+        <div class="sheet-back" onClick={(e) => e.target === e.currentTarget && setLeaveTo(null)}>
+          <div class="sheet-panel confirm" role="alertdialog" aria-labelledby="leave-t">
+            <h2 id="leave-t">Ieși din test?</h2>
+            <p class="muted">Răspunsurile de până acum nu se păstrează.</p>
+            <div class="two">
+              <button class="btn btn-ghost" onClick={() => setLeaveTo(null)}>Rămân</button>
+              <button class="btn danger" onClick={leaveTo}>Ieși</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

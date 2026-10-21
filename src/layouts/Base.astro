@@ -58,6 +58,7 @@ const fullTitle = title === 'Candela' ? title : `${title} · Candela`;
             ? <HeaderTitle client:only="preact"><span slot="fallback" class="brand-text" aria-hidden="true">&nbsp;</span></HeaderTitle>
             : <span class="brand-text">Candela</span>}
         </a>
+        <div id="quiz-top" class="qt"></div>
         <AccountButton client:only="preact">
           <span slot="fallback" class="account-placeholder"></span>
         </AccountButton>
