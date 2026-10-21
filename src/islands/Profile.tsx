@@ -33,12 +33,12 @@ export default function Profile({ books }: { books: BookInfo[] }) {
   return (
     <div class="me">
       <header class="me-id">
-        <Avatar name={name} size={64} />
+        <Avatar name={name} size={76} />
         <div class="me-who">
           <h1>{name}</h1>
           {email && <p class="small muted">{email}</p>}
           {profileError.value && <p class="small bad">Profilul nu a putut fi încărcat. Verifică conexiunea.</p>}
-          {!profileError.value && (profileLoaded.value || p) && <BirthYear current={p?.birthYear ?? null} />}
+          {!profileError.value && (profileLoaded.value || p) && <BirthYear key={p?.birthYear ?? 'none'} current={p?.birthYear ?? null} />}
         </div>
       </header>
 
@@ -89,8 +89,8 @@ function BirthYear({ current }: { current: number | null }) {
 
   if (!editing && current) {
     return (
-      <p class="small muted me-age">
-        <strong>{ageLabel(ageGroup(current))}</strong> · născut în {current} · <button type="button" class="btn-reset link" onClick={() => setEditing(true)}>schimbă</button>
+      <p class="me-pill">
+        <strong>{ageLabel(ageGroup(current))}</strong><span>născut în {current}</span><button type="button" class="btn-reset link" onClick={() => setEditing(true)}>schimbă</button>
       </p>
     );
   }
@@ -217,19 +217,18 @@ function BookStats({ p, book, total }: { p: Player; book: BookInfo; total: numbe
   const weakest = typed.length >= 2 ? typed.sort((a, b) => a.s!.r / a.s!.n - b.s!.r / b.s!.n)[0] : undefined;
   const exams = Object.values(d.exams);
   const bestExam = exams.length ? Math.max(...exams.map((e) => e.best)) : null;
-  const started = d.read.length || d.mastered.length || exams.length || v1;
+  const started = d.mastered.length || d.wrong.length || exams.length || v1;
 
   return (
     <section class="bk">
       <h3>{book.name}</h3>
       {!loaded ? <div class="sk-rows" aria-hidden="true"><span class="sk" /><span class="sk" /><span class="sk" /></div> : !started ? <p class="small muted">Nu a început încă.</p> : (
         <dl class="kv">
-          <div><dt>Capitole citite</dt><dd>{d.read.length} din {book.chapters}</dd></div>
-          <div><dt>Întrebări știute</dt><dd>{d.mastered.length}{total ? ` din ${total}` : ''}</dd></div>
+          <div><dt>Întrebări știute</dt><dd>{d.mastered.length}{total ? ` / ${total}` : ''}</dd></div>
           <div><dt>De reluat</dt><dd>{d.wrong.length}</dd></div>
-          {bestExam !== null && <div><dt>Cel mai bun examen</dt><dd>{bestExam} din 100</dd></div>}
-          {weakest && <div><dt>De lucrat</dt><dd>{typeInfo(weakest.x.t).label} · {Math.round((weakest.s!.r / weakest.s!.n) * 100)}%</dd></div>}
-          {v1 > 0 && <div><dt>În versiunea veche</dt><dd>{v1} știute</dd></div>}
+          {bestExam !== null && <div><dt>Cel mai bun examen</dt><dd>{bestExam} / 100</dd></div>}
+          {weakest && <div><dt>De lucrat</dt><dd>{typeInfo(weakest.x.t).label}</dd></div>}
+          {v1 > 0 && <div><dt>Versiunea veche</dt><dd>{v1} știute</dd></div>}
         </dl>
       )}
     </section>

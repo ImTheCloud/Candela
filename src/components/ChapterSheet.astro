@@ -9,7 +9,7 @@ const chapters = Array.from({ length: book.chapters }, (_, i) => i + 1);
 <dialog class="sheet" aria-label={`Capitolele din ${book.name}`}>
   <div class="sheet-head">
     <p class="sheet-title">{book.name}</p>
-    <form method="dialog"><button class="btn btn-ghost btn-sm">Închide</button></form>
+    <form method="dialog"><button class="icon-btn" aria-label="Închide"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg></button></form>
   </div>
   <ol class="sheet-grid" data-book={book.slug}>
     {chapters.map((n) => (
@@ -19,23 +19,11 @@ const chapters = Array.from({ length: book.chapters }, (_, i) => i + 1);
 </dialog>
 
 <script>
-  import { effect } from '@preact/signals';
-  import { progress } from '../lib/progress';
-
-  let stop: (() => void) | undefined;
-  document.addEventListener('astro:before-swap', () => stop?.());
   document.addEventListener('astro:page-load', () => {
     const sheet = document.querySelector<HTMLDialogElement>('dialog.sheet');
     if (!sheet) return;
     for (const b of document.querySelectorAll('[data-open-sheet]')) b.addEventListener('click', () => sheet.showModal());
     sheet.addEventListener('click', (e) => { if (e.target === sheet) sheet.close(); });
-
-    const grid = sheet.querySelector<HTMLElement>('.sheet-grid')!;
-    const p = progress(grid.dataset.book!);
-    stop = effect(() => {
-      const read = new Set(p.value.read);
-      for (const a of grid.querySelectorAll<HTMLElement>('a')) a.classList.toggle('is-read', read.has(Number(a.dataset.ch)));
-    });
   });
 </script>
 
@@ -56,6 +44,5 @@ const chapters = Array.from({ length: book.chapters }, (_, i) => i + 1);
     display: grid; place-items: center; aspect-ratio: 1; border-radius: var(--r-sm);
     border: 1px solid var(--line); text-decoration: none; font-weight: 600; font-variant-numeric: tabular-nums;
   }
-  .sheet-grid a.is-read { background: var(--ok-soft); border-color: transparent; color: var(--ok); }
   .sheet-grid a[aria-current="page"] { border: 2px solid var(--oil); }
 </style>

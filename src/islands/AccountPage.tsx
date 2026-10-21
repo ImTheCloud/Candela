@@ -13,9 +13,9 @@ export default function AccountPage({ books }: { books: BookInfo[] }) {
 /** Same shape as the page fallback in cont/index.astro. */
 function Skeleton() {
   return (
-    <div class="me-skeleton" aria-hidden="true">
+    <div class="me me-skeleton" aria-hidden="true">
       <div class="me-id"><span class="sk sk-av" /><div class="sk-rows"><span class="sk" /><span class="sk" /></div></div>
-      <div class="sk-rows"><span class="sk" /><span class="sk" /><span class="sk" /></div>
+      <div class="sk-rows"><span class="sk sk-tall" /><span class="sk sk-tall" /></div>
     </div>
   );
 }
