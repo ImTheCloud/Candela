@@ -1,78 +1,66 @@
 import { useState } from 'preact/hooks';
 import { ageGroup, ageLabel, validBirthYear } from '../lib/age';
-import { addChild, players, removeChild, updateChild, type Player } from '../lib/players';
+import Avatar from './Avatar';
+import { addChild, choosePlayer, player, players, removeChild, updateChild, type Player } from '../lib/players';
 import { deleteProgress } from '../lib/progress';
-import { errorText, profile, setParent, user } from '../lib/session';
+import { errorText, profile, user } from '../lib/session';
 
-/** Parent switch and the list of children who play from this account. */
+/** The family of a parent account: the adult and the children, each with a tap-to-play row. */
 export default function Children() {
   const p = profile.value;
-  const kids = players.value.filter((x) => x.child);
+  const list = players.value;
+  const current = player.value;
   const [adding, setAdding] = useState(false);
-  const [error, setError] = useState('');
-
-  async function toggleParent(on: boolean) {
-    setError('');
-    try {
-      await setParent(on);
-    } catch (err) {
-      setError(errorText(err));
-    }
-  }
+  if (!p?.isParent) return null;
 
   return (
-    <section class="card auth-card stack">
-      <label class="check">
-        <input type="checkbox" checked={p?.isParent ?? false} disabled={kids.length > 0} onChange={(e) => toggleParent(e.currentTarget.checked)} />
-        <span>
-          Cont de părinte
-          <span class="small muted block">Copiii joacă de pe telefonul tău, fiecare cu progresul lui.</span>
-        </span>
-      </label>
-      {error && <p class="notice notice-bad" role="alert">{error}</p>}
-
-      {p?.isParent && (
-        <>
-          {kids.length > 0 && (
-            <ul class="kids">
-              {kids.map((k) => <Child key={k.key} child={k} />)}
-            </ul>
-          )}
-          {adding ? <ChildForm onDone={() => setAdding(false)} /> : (
-            <button class="btn btn-ghost" onClick={() => setAdding(true)}>Adaugă un copil</button>
-          )}
-        </>
+    <section class="card family">
+      <div class="row-between">
+        <h3>Familia</h3>
+        <span class="small muted">Atinge un nume ca să joace el</span>
+      </div>
+      <ul class="kids">
+        {list.map((k) => <Member key={k.key} m={k} active={k.key === current.key} />)}
+      </ul>
+      {adding ? <ChildForm onDone={() => setAdding(false)} /> : (
+        <button class="btn btn-ghost btn-block" onClick={() => setAdding(true)}>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
+          Adaugă un copil
+        </button>
       )}
     </section>
   );
 }
 
-function Child({ child }: { child: Player }) {
+function Member({ m, active }: { m: Player; active: boolean }) {
   const [editing, setEditing] = useState(false);
   const [confirming, setConfirming] = useState(false);
-
-  if (editing) return <li><ChildForm child={child} onDone={() => setEditing(false)} /></li>;
+  if (editing) return <li><ChildForm child={m} onDone={() => setEditing(false)} /></li>;
 
   async function remove() {
-    await deleteProgress(user.value!.uid, child.key);
-    await removeChild(child.key);
+    await deleteProgress(user.value!.uid, m.key);
+    await removeChild(m.key);
   }
 
   return (
-    <li class="kid">
-      <div class="row-between">
-        <div>
-          <p><strong>{child.name}</strong></p>
-          <p class="small muted">{child.birthYear ? ageLabel(ageGroup(child.birthYear)) : ''}</p>
-        </div>
+    <li class={`member${active ? ' is-active' : ''}`}>
+      <button type="button" class="member-main" onClick={() => choosePlayer(m.key)} aria-pressed={active}>
+        <Avatar name={m.name} />
+        <span class="member-text">
+          <strong>{m.name.split(' ')[0]}{!m.child && ' (tu)'}</strong>
+          <span class="small muted">{m.birthYear ? ageLabel(ageGroup(m.birthYear)) : ''}</span>
+        </span>
+        {active && <span class="tag-on">joacă acum</span>}
+      </button>
+      {m.child && (
         <div class="kid-actions">
           <button class="btn btn-ghost btn-sm" onClick={() => setEditing(true)}>Schimbă</button>
-          <button class="btn btn-ghost btn-sm" onClick={() => setConfirming(true)} aria-label={`Șterge pe ${child.name}`}>Șterge</button>
+          <button class="btn btn-ghost btn-sm" onClick={() => setConfirming(true)} aria-label={`Șterge pe ${m.name}`}>Șterge</button>
         </div>
-      </div>
+      )}
       {confirming && (
         <div class="notice notice-bad stack confirm">
-          <p>Ștergi profilul lui {child.name} și tot progresul lui? Nu se mai poate recupera.</p>
+          <p>Ștergi profilul lui {m.name} și tot progresul lui? Nu se mai poate recupera.</p>
           <div class="kid-actions">
             <button class="btn btn-sm danger" onClick={remove}>Da, șterge</button>
             <button class="btn btn-ghost btn-sm" onClick={() => setConfirming(false)}>Renunță</button>
