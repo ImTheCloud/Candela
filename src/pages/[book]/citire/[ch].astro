@@ -31,10 +31,7 @@ const next = ch < book.chapters ? ch + 1 : null;
       ))}
     </div>
 
-    <a class="start" href={`/${book.slug}/exersare?capitol=${ch}&start=1`}>
-      <span>Începe întrebările</span>
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6" /></svg>
-    </a>
+    <a class="btn btn-primary btn-block start" href={`/${book.slug}/exersare?capitol=${ch}&start=1`}>Începe întrebările</a>
   </article>
 
   <nav class="pager" aria-label="Capitole">
@@ -56,13 +53,7 @@ const next = ch < book.chapters ? ch + 1 : null;
   .verse:target { outline: 2px solid var(--flame); outline-offset: 1px; }
   sup { font: 600 0.7rem var(--f-body); color: var(--oil-ink); margin-right: 4px; vertical-align: 0.5em; line-height: 0; }
 
-  .start {
-    display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 54px; margin-top: 32px;
-    border-radius: 999px; background: transparent; border: 2px solid var(--btn); color: var(--btn); text-decoration: none;
-    font: 700 1.1rem var(--f-body); transition: background-color .15s, transform .1s;
-  }
-  @media (hover: hover) { .start:hover { background: var(--oil-soft); } }
-  .start:active { transform: scale(0.98); }
+  .start { margin-top: 32px; }
 
   /* Thumb-reachable chapter navigation */
   .pager {
