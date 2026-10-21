@@ -169,7 +169,6 @@ function Fill({ q, answer, onChange, graded }: P<'fill'>) {
   };
   return (
     <>
-      {q.ctx && <p class="q-ctx">{q.ctx}</p>}
       <p class="q-text fill-text">
         {parts.map((seg, i) => (
           <>

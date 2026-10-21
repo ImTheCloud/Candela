@@ -14,9 +14,10 @@ body.in-quiz main { padding-top: 0; }
 .part { font: 600 0.8rem var(--f-body); letter-spacing: .06em; text-transform: uppercase; color: var(--oil-ink); }
 
 .q-card { display: grid; gap: 12px; padding: 14px; }
-.q-meta { display: flex; justify-content: space-between; gap: 10px; font-size: 0.8rem; color: var(--ink-2); }
+.q-meta { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; font-size: 0.8rem; color: var(--ink-2); }
 .q-type { font-weight: 600; color: var(--oil-ink); }
 .q-ref { white-space: nowrap; }
+.q-ctx { font-weight: 400; color: var(--ink-2); }
 .q-text { font-size: 1.05rem; line-height: 1.4; font-weight: 500; }
 
 .opts { display: grid; gap: 8px; }
@@ -71,12 +72,11 @@ body.in-quiz main { padding-top: 0; }
 .m-item:disabled { cursor: default; }
 .match-fix { margin: 0; padding: 0; list-style: none; display: grid; gap: 4px; color: var(--ok); }
 
-.q-ctx { color: var(--ink-2); font-size: 0.95rem; }
-.fill-text { font: 400 1.12rem/2.1 var(--f-bible); }
+.fill-text { font: 400 1.3rem/2 var(--f-bible); }
 .fill-input {
-  display: inline-block; min-width: 5ch; max-width: 100%; height: 36px; margin: 0 2px; padding: 0 6px;
+  display: inline-block; min-width: 5ch; max-width: 100%; height: 40px; margin: 0 2px; padding: 0 6px;
   border: 0; border-bottom: 2px solid var(--oil); border-radius: 6px 6px 0 0; background: var(--oil-soft); color: var(--ink);
-  font: 500 1.05rem var(--f-body); vertical-align: baseline;
+  font: 500 1.15rem var(--f-body); vertical-align: baseline;
 }
 .fill-input:focus { outline: none; background: var(--surface-2); }
 .fill-input.is-right { border-color: var(--ok); background: var(--ok-soft); }

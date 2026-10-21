@@ -111,7 +111,7 @@ export default function Quiz({ book, bookName, questions, mode, examId, backHref
 
       <article class="card q-card" aria-live="polite">
         <div class="q-meta">
-          <span class="q-type">{info.short}</span>
+          <span class="q-type">{info.short}{ctxOf(q) && <span class="q-ctx"> · {ctxOf(q)}</span>}</span>
           <span class="q-ref">{bookName} {q.ref}</span>
         </div>
         {info.hint && !g && <p class="small muted">{info.hint}</p>}
@@ -206,6 +206,11 @@ function Cross() {
   return <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8" /></svg>;
 }
 
+/** Who speaks, to whom, where (fill-in questions): shown next to the type. */
+function ctxOf(q: Playable): string {
+  return q.t === 'fill' ? q.ctx ?? '' : '';
+}
+
 /** The right answer in words, for the feedback and the correction. */
 function rightAnswer(q: Playable): string {
   switch (q.t) {
@@ -266,7 +271,7 @@ function Results({ bookName, questions, answers, grades, mode, backHref, onAgain
           {questions.map((q, k) => (
             <article class="card q-card">
               {(k === 0 || questions[k - 1].t !== q.t) && <p class="part">{typeInfo(q.t).part}. {typeInfo(q.t).label}</p>}
-              <div class="q-meta"><span class="q-type">{k + 1}.</span><span class="q-ref">{bookName} {q.ref}</span></div>
+              <div class="q-meta"><span class="q-type">{k + 1}. {typeInfo(q.t).short}{ctxOf(q) && <span class="q-ctx"> · {ctxOf(q)}</span>}</span><span class="q-ref">{bookName} {q.ref}</span></div>
               <QuestionView q={q} answer={answers[k]} onChange={() => {}} graded={gs[k]} />
               <Feedback q={q} g={gs[k]} bookName={bookName} />
             </article>
