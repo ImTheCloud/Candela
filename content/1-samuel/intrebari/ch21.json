@@ -28,6 +28,23 @@
    "explain": "David a făcut pe nebunul înaintea lor (21:13)."
   },
   {
+   "id": "1sa.21.sub12.16",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "21:10",
+   "q": "Fugind de Saul, David a ajuns la Achiș, împăratul Gatului.",
+   "a": true
+  },
+  {
+   "id": "1sa.21.sub12.17",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "21:3",
+   "q": "David i-a cerut preotului cinci săbii.",
+   "a": false,
+   "explain": "I-a cerut cinci pâini."
+  },
+  {
    "id": "1sa.21.sub12.4",
    "age": "sub12",
    "t": "one",
@@ -67,11 +84,37 @@
    "a": 2
   },
   {
-   "id": "1sa.21.sub12.7",
+   "id": "1sa.21.sub12.18",
+   "age": "sub12",
+   "t": "one",
+   "ref": "21:1",
+   "q": "Unde s-a dus David, la preotul Ahimelec?",
+   "opts": [
+    "la Silo",
+    "la Nob",
+    "la Rama"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.21.sub12.19",
+   "age": "sub12",
+   "t": "one",
+   "ref": "21:7",
+   "q": "Cum se numea edomitul, căpetenia păstorilor lui Saul, aflat la Nob?",
+   "opts": [
+    "Abner",
+    "Doeg",
+    "Achiș"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.21.sub12.24",
    "age": "sub12",
    "t": "match",
-   "ref": "21:1, 7, 10",
-   "q": "Oamenii din 1 Samuel 21: asociază.",
+   "ref": "21:1-15",
+   "q": "Asociază fiecare nume sau loc cu ce se spune despre el în 1 Samuel 21.",
    "pairs": [
     [
      "Ahimelec",
@@ -79,53 +122,19 @@
     ],
     [
      "Doeg",
-     "căpetenia păstorilor lui Saul"
+     "edomitul, căpetenia păstorilor lui Saul"
     ],
     [
      "Achiș",
      "împăratul Gatului"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.21.sub12.8",
-   "age": "sub12",
-   "t": "match",
-   "ref": "21:6-9",
-   "q": "Ce a primit David la Nob: asociază.",
-   "pairs": [
-    [
-     "pâinea sfințită",
-     "pentru hrană"
     ],
     [
-     "sabia lui Goliat",
-     "ca armă"
+     "Goliat",
+     "filisteanul a cărui sabie a luat-o David"
     ],
     [
-     "covorul",
-     "sabia era învelită în el"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.21.sub12.9",
-   "age": "sub12",
-   "t": "match",
-   "ref": "21:10-13",
-   "q": "David la Gat: asociază.",
-   "pairs": [
-    [
-     "slujitorii lui Achiș",
-     "l-au recunoscut"
-    ],
-    [
-     "David",
-     "a avut o mare frică"
-    ],
-    [
-     "ușile porților",
-     "făcea zgârieturi pe ele"
+     "Nob",
+     "cetatea preotului Ahimelec"
     ]
    ]
   },
@@ -161,6 +170,26 @@
    ],
    "q": "David s-a dus la Nob, la preotul ___,",
    "ctx": "Fuga lui David de Saul:"
+  },
+  {
+   "id": "1sa.21.sub12.20",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "21:13",
+   "q": "A făcut pe ___ înaintea lor; făcea năzdrăvănii înaintea lor",
+   "a": [
+    "nebunul"
+   ]
+  },
+  {
+   "id": "1sa.21.sub12.21",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "21:10",
+   "q": "A ajuns la ___, împăratul Gatului.",
+   "a": [
+    "Achiș"
+   ]
   },
   {
    "id": "1sa.21.sub12.13",
@@ -210,6 +239,38 @@
    "explain": "Niciun răspuns corect: în Valea Terebinților (21:9)."
   },
   {
+   "id": "1sa.21.sub12.22",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "21:6",
+   "q": "Ce pâine a primit David?",
+   "opts": [
+    "pâinea pentru punerea înainte",
+    "pâine proaspătă coaptă în ziua aceea",
+    "pâinea sfințită"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.21.sub12.23",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "21:14-15",
+   "q": "Ce a spus Achiș despre David?",
+   "opts": [
+    "„Să intre David în casa mea ca oaspete”",
+    "„Omul acesta și-a pierdut mințile”",
+    "„Oare duc lipsă de nebuni?”"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
    "id": "1sa.21.12-13.1",
    "age": "12-13",
    "t": "tf",
@@ -233,6 +294,23 @@
    "ref": "21:15",
    "q": "Achiș a spus că nu duce lipsă de nebuni.",
    "a": true
+  },
+  {
+   "id": "1sa.21.12-13.16",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "21:2",
+   "q": "David a spus preotului că împăratul i-a dat o poruncă.",
+   "a": true
+  },
+  {
+   "id": "1sa.21.12-13.17",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "21:12",
+   "q": "David nu s-a temut deloc de Achiș.",
+   "a": false,
+   "explain": "A avut o mare frică de Achiș."
   },
   {
    "id": "1sa.21.12-13.4",
@@ -274,69 +352,57 @@
    "a": 2
   },
   {
-   "id": "1sa.21.12-13.7",
+   "id": "1sa.21.12-13.18",
    "age": "12-13",
-   "t": "match",
-   "ref": "21:2-5",
-   "q": "David și Ahimelec: asociază fiecare cuvânt cu cine l-a spus.",
-   "pairs": [
-    [
-     "„Pentru ce ești singur?\"",
-     "Ahimelec"
-    ],
-    [
-     "„Împăratul mi-a dat o poruncă\"",
-     "David"
-    ],
-    [
-     "„N-am pâine obișnuită\"",
-     "Ahimelec, despre pâine"
-    ],
-    [
-     "„Ne-am ferit de împreunarea cu femei\"",
-     "David, despre oamenii lui"
-    ]
-   ]
+   "t": "one",
+   "ref": "21:9",
+   "q": "Unde l-a omorât David pe Goliat, după cuvintele preotului?",
+   "opts": [
+    "lângă Nob",
+    "la Gat",
+    "în Valea Terebinților"
+   ],
+   "a": 2
   },
   {
-   "id": "1sa.21.12-13.8",
+   "id": "1sa.21.12-13.19",
    "age": "12-13",
-   "t": "match",
+   "t": "one",
    "ref": "21:11",
-   "q": "Cântecul amintit la Gat: asociază.",
-   "pairs": [
-    [
-     "Saul",
-     "miile lui"
-    ],
-    [
-     "David",
-     "zecile lui de mii"
-    ],
-    [
-     "slujitorii lui Achiș",
-     "l-au numit pe David „împăratul țării\""
-    ]
-   ]
+   "q": "Cum l-au numit slujitorii lui Achiș pe David?",
+   "opts": [
+    "stăpânul Gatului",
+    "păstorul lui Isai",
+    "împăratul țării"
+   ],
+   "a": 2
   },
   {
-   "id": "1sa.21.12-13.9",
+   "id": "1sa.21.12-13.24",
    "age": "12-13",
    "t": "match",
-   "ref": "21:13-15",
-   "q": "Achiș și „nebunul\": asociază.",
+   "ref": "21:1-15",
+   "q": "Asociază fiecare nume sau lucru cu ce se spune despre el în 1 Samuel 21.",
    "pairs": [
     [
-     "Achiș",
-     "a zis că omul și-a pierdut mințile"
+     "Valea Terebinților",
+     "locul unde a fost omorât Goliat"
     ],
     [
-     "slujitorii",
-     "i l-au adus pe David"
+     "Gat",
+     "cetatea lui Achiș"
     ],
     [
-     "casa lui Achiș",
-     "nu voia ca David să intre în ea"
+     "covorul",
+     "în el era învelită sabia lui Goliat"
+    ],
+    [
+     "efodul",
+     "în dosul lui era sabia"
+    ],
+    [
+     "Nob",
+     "cetatea unde a ajuns David"
     ]
    ]
   },
@@ -372,6 +438,26 @@
    ],
    "q": "A ajuns la Achiș, împăratul ___.",
    "ctx": "După ce David a plecat de la Nob:"
+  },
+  {
+   "id": "1sa.21.12-13.20",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "21:8",
+   "q": "N-ai la îndemână o ___ sau o sabie?",
+   "a": [
+    "suliță"
+   ]
+  },
+  {
+   "id": "1sa.21.12-13.21",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "21:15",
+   "q": "Să intre el în ___ mea?",
+   "a": [
+    "casa"
+   ]
   },
   {
    "id": "1sa.21.12-13.13",
@@ -421,6 +507,38 @@
    "explain": "Niciun răspuns corect: de trei zile (21:5)."
   },
   {
+   "id": "1sa.21.12-13.22",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "21:3-4",
+   "q": "Ce i-a spus preotul?",
+   "opts": [
+    "„Am multă pâine proaspătă”",
+    "„N-am pâine obișnuită la îndemână”",
+    "„Am numai pâine sfințită”"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.21.12-13.23",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "21:12-13",
+   "q": "Ce a făcut David la Gat?",
+   "opts": [
+    "s-a temut de Achiș",
+    "s-a luptat cu Achiș",
+    "a făcut zgârieturi pe ușile porților"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
    "id": "1sa.21.14-15.1",
    "age": "14-15",
    "t": "tf",
@@ -444,6 +562,23 @@
    "ref": "21:12",
    "q": "David a avut o mare frică de Achiș, împăratul Gatului.",
    "a": true
+  },
+  {
+   "id": "1sa.21.14-15.16",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "21:6",
+   "q": "Preotul i-a dat lui David pâinea sfințită.",
+   "a": true
+  },
+  {
+   "id": "1sa.21.14-15.17",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "21:10",
+   "q": "David a fugit de Saul abia a doua zi.",
+   "a": false,
+   "explain": "A fugit chiar în ziua aceea."
   },
   {
    "id": "1sa.21.14-15.4",
@@ -485,77 +620,57 @@
    "a": 2
   },
   {
-   "id": "1sa.21.14-15.7",
+   "id": "1sa.21.14-15.18",
+   "age": "14-15",
+   "t": "one",
+   "ref": "21:4",
+   "q": "Ce nu avea Ahimelec la îndemână?",
+   "opts": [
+    "sabie",
+    "sfeșnic",
+    "pâine obișnuită"
+   ],
+   "a": 2
+  },
+  {
+   "id": "1sa.21.14-15.19",
+   "age": "14-15",
+   "t": "one",
+   "ref": "21:14",
+   "q": "Ce a spus Achiș despre David?",
+   "opts": [
+    "că este un mincinos",
+    "că și-a pierdut mințile",
+    "că este un război viteaz"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.21.14-15.24",
    "age": "14-15",
    "t": "match",
-   "ref": "21:6",
-   "q": "Pâinea de la Nob: asociază.",
+   "ref": "21:6-13",
+   "q": "Asociază fiecare lucru sau persoană cu ce se spune despre el în 1 Samuel 21.",
    "pairs": [
     [
      "pâinea sfințită",
-     "dată lui David"
-    ],
-    [
-     "pâinea pentru punerea înainte",
-     "luată dinaintea Domnului"
+     "ce a primit David"
     ],
     [
      "pâinea caldă",
-     "pusă în loc"
+     "cu ce urma să fie înlocuită pâinea pentru punerea înainte"
     ],
     [
-     "altă pâine",
-     "nu era acolo"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.21.14-15.8",
-   "age": "14-15",
-   "t": "match",
-   "ref": "21:8-9",
-   "q": "Sabia lui Goliat: asociază începutul cu sfârșitul.",
-   "pairs": [
-    [
-     "N-ai la îndemână",
-     "o suliță sau o sabie?"
+     "sabia lui Goliat",
+     "învelită într-un covor"
     ],
     [
-     "Iată sabia lui Goliat",
-     "Filisteanul"
+     "Doeg",
+     "edomit închis înaintea Domnului"
     ],
     [
-     "Dacă vrei s-o iei",
-     "ia-o, căci nu este alta aici"
-    ],
-    [
-     "Nu-i alta ca ea",
-     "dă-mi-o"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.21.14-15.9",
-   "age": "14-15",
-   "t": "match",
-   "ref": "21:10-13",
-   "q": "Fuga la Gat: asociază.",
-   "pairs": [
-    [
-     "chiar în ziua aceea",
-     "a fugit David de Saul"
-    ],
-    [
-     "Achiș",
-     "împăratul la care a ajuns"
-    ],
-    [
-     "frica",
-     "l-a făcut să se prefacă"
-    ],
-    [
-     "barba",
-     "pe ea curgeau balele"
+     "balele",
+     "ce lăsa să-i curgă David pe barbă"
     ]
    ]
   },
@@ -591,6 +706,26 @@
    ],
    "q": "Iată sabia lui Goliat, Filisteanul, pe care l-ai omorât în Valea ___;",
    "ctx": "Preotul Ahimelec, către David:"
+  },
+  {
+   "id": "1sa.21.14-15.20",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "21:2",
+   "q": "Nimeni să nu știe nimic de ___ pentru care te trimit și de porunca pe care ți-am dat-o.",
+   "a": [
+    "pricina"
+   ]
+  },
+  {
+   "id": "1sa.21.14-15.21",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "21:12",
+   "q": "David a pus la inimă aceste ___ și a avut o mare frică de Achiș",
+   "a": [
+    "cuvinte"
+   ]
   },
   {
    "id": "1sa.21.14-15.13",
@@ -639,6 +774,38 @@
    "explain": "Niciun răspuns corect: dacă oamenii lui David s-au ferit de împreunarea cu femei (21:4)."
   },
   {
+   "id": "1sa.21.14-15.22",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "21:8-9",
+   "q": "Ce s-a spus despre arme?",
+   "opts": [
+    "David avea multe arme la el",
+    "David nu și-a luat sabia și armele",
+    "porunca împăratului era grabnică"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.21.14-15.23",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "21:11-12",
+   "q": "Ce au spus slujitorii lui Achiș?",
+   "opts": [
+    "„Pentru el se cânta: «zecile lui de mii»”",
+    "„Nu este acesta David, împăratul țării?”",
+    "„Să-l alungăm din țară”"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
    "id": "1sa.21.16-17.1",
    "age": "16-17",
    "t": "tf",
@@ -662,6 +829,23 @@
    "ref": "21:11",
    "q": "Slujitorii lui Achiș l-au numit pe David „împăratul țării\".",
    "a": true
+  },
+  {
+   "id": "1sa.21.16-17.16",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "21:1",
+   "q": "Ahimelec a alergat speriat înaintea lui David.",
+   "a": true
+  },
+  {
+   "id": "1sa.21.16-17.17",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "21:15",
+   "q": "Achiș l-a invitat pe David să intre în casa lui.",
+   "a": false,
+   "explain": "A spus: „Să intre el în casa mea?”, în batjocură."
   },
   {
    "id": "1sa.21.16-17.4",
@@ -703,73 +887,57 @@
    "a": 2
   },
   {
-   "id": "1sa.21.16-17.7",
+   "id": "1sa.21.16-17.18",
+   "age": "16-17",
+   "t": "one",
+   "ref": "21:12",
+   "q": "De cine a avut David o mare frică, la Gat?",
+   "opts": [
+    "de Achiș",
+    "de Ahimelec",
+    "de Doeg"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.21.16-17.19",
+   "age": "16-17",
+   "t": "one",
+   "ref": "21:2",
+   "q": "Ce spunea David că i-a dat împăratul?",
+   "opts": [
+    "o poruncă",
+    "o scrisoare",
+    "o armată"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.21.16-17.24",
    "age": "16-17",
    "t": "match",
    "ref": "21:1-9",
-   "q": "La Nob: asociază fiecare persoană cu ce a făcut.",
+   "q": "Asociază fiecare loc sau persoană cu ce se spune despre el în 1 Samuel 21.",
    "pairs": [
     [
-     "Ahimelec",
-     "i-a dat pâinea și sabia"
+     "Nob",
+     "locul unde era Ahimelec"
     ],
     [
-     "David",
-     "a spus că are o poruncă de la împărat"
+     "Gat",
+     "locul unde era Achiș"
+    ],
+    [
+     "Valea Terebinților",
+     "locul unde a murit Goliat"
+    ],
+    [
+     "Ahimelec",
+     "preotul care a alergat speriat"
     ],
     [
      "Doeg",
-     "era de față"
-    ],
-    [
-     "Goliat",
-     "sabia lui a fost dată lui David"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.21.16-17.8",
-   "age": "16-17",
-   "t": "match",
-   "ref": "21:4-6",
-   "q": "Pâinea sfințită: asociază începutul cu sfârșitul.",
-   "pairs": [
-    [
-     "N-am pâine obișnuită la îndemână",
-     "ci numai pâine sfințită"
-    ],
-    [
-     "Ne-am ferit",
-     "de trei zile"
-    ],
-    [
-     "preotul i-a dat",
-     "pâinea sfințită"
-    ],
-    [
-     "pâinea luată dinaintea Domnului",
-     "înlocuită cu pâine caldă"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.21.16-17.9",
-   "age": "16-17",
-   "t": "match",
-   "ref": "21:11-15",
-   "q": "La Gat: asociază fiecare cuvânt cu cine l-a spus.",
-   "pairs": [
-    [
-     "„Nu este acesta David, împăratul țării?\"",
-     "slujitorii lui Achiș"
-    ],
-    [
-     "„omul acesta și-a pierdut mințile\"",
-     "Achiș"
-    ],
-    [
-     "„Să intre el în casa mea?\"",
-     "Achiș, la urmă"
+     "căpetenia păstorilor lui Saul"
     ]
    ]
   },
@@ -805,6 +973,26 @@
    ],
    "q": "Dă-mi cinci ___ sau ce se va găsi.\"",
    "ctx": "David, către Ahimelec:"
+  },
+  {
+   "id": "1sa.21.16-17.20",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "21:5",
+   "q": "dacă aceasta este o faptă necurată, va fi sfințită negreșit azi de acela care o va ___.",
+   "a": [
+    "face"
+   ]
+  },
+  {
+   "id": "1sa.21.16-17.21",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "21:9",
+   "q": "Dacă vrei s-o iei, ia-o, căci nu este alta ___.",
+   "a": [
+    "aici"
+   ]
   },
   {
    "id": "1sa.21.16-17.13",
@@ -854,6 +1042,38 @@
    "explain": "Niciun răspuns corect: „chiar în ziua aceea\" (21:10)."
   },
   {
+   "id": "1sa.21.16-17.22",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "21:10-11",
+   "q": "Ce s-a întâmplat la Gat?",
+   "opts": [
+    "David a fost încoronat împărat",
+    "David a ajuns la Achiș",
+    "slujitorii lui Achiș l-au recunoscut"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.21.16-17.23",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "21:13-14",
+   "q": "Ce făcea David?",
+   "opts": [
+    "făcea năzdrăvănii",
+    "lăsa să-i curgă balele pe barbă",
+    "lupta cu slujitorii lui Achiș"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
    "id": "1sa.21.18+.1",
    "age": "18+",
    "t": "tf",
@@ -877,6 +1097,23 @@
    "ref": "21:2",
    "q": "David i-a spus lui Ahimelec că are un loc de întâlnire hotărât cu oamenii lui.",
    "a": true
+  },
+  {
+   "id": "1sa.21.18+.16",
+   "age": "18+",
+   "t": "tf",
+   "ref": "21:7",
+   "q": "Doeg era închis înaintea Domnului în ziua în care a venit David la Nob.",
+   "a": true
+  },
+  {
+   "id": "1sa.21.18+.17",
+   "age": "18+",
+   "t": "tf",
+   "ref": "21:13",
+   "q": "David a cântat psalmi înaintea lui Achiș, ca să-l încânte.",
+   "a": false,
+   "explain": "S-a prefăcut nebun."
   },
   {
    "id": "1sa.21.18+.4",
@@ -918,77 +1155,57 @@
    "a": 1
   },
   {
-   "id": "1sa.21.18+.7",
+   "id": "1sa.21.18+.18",
+   "age": "18+",
+   "t": "one",
+   "ref": "21:6",
+   "q": "De unde fusese luată pâinea pentru punerea înainte?",
+   "opts": [
+    "dinaintea Domnului",
+    "din casa lui Saul",
+    "din cortul lui Doeg"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.21.18+.19",
+   "age": "18+",
+   "t": "one",
+   "ref": "21:7",
+   "q": "Din ce popor era Doeg?",
+   "opts": [
+    "edomit",
+    "amonit",
+    "filistean"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.21.18+.24",
    "age": "18+",
    "t": "match",
    "ref": "21:1-10",
-   "q": "Locuri și oameni din 1 Samuel 21: asociază.",
+   "q": "Asociază fiecare persoană cu ce se spune despre ea în 1 Samuel 21.",
    "pairs": [
     [
-     "Nob",
-     "cetatea preotului Ahimelec"
+     "Ahimelec",
+     "preotul care a dat pâinea sfințită"
     ],
     [
-     "Gat",
-     "cetatea lui Achiș"
-    ],
-    [
-     "Valea Terebinților",
-     "acolo murise Goliat"
-    ],
-    [
-     "Edom",
-     "poporul lui Doeg"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.21.18+.8",
-   "age": "18+",
-   "t": "match",
-   "ref": "21:2",
-   "q": "Ce i-a spus David lui Ahimelec: asociază.",
-   "pairs": [
-    [
-     "împăratul",
-     "i-ar fi dat o poruncă"
-    ],
-    [
-     "nimeni",
-     "să nu știe pricina"
-    ],
-    [
-     "oamenii lui",
-     "un loc de întâlnire"
-    ],
-    [
-     "porunca",
-     "ar fi fost tainică"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.21.18+.9",
-   "age": "18+",
-   "t": "match",
-   "ref": "21:13-15",
-   "q": "Nebunia prefăcută: asociază.",
-   "pairs": [
-    [
-     "năzdrăvăniile",
-     "le făcea înaintea lor"
-    ],
-    [
-     "zgârieturile",
-     "pe ușile porților"
-    ],
-    [
-     "balele",
-     "pe barbă"
+     "Doeg",
+     "edomitul aflat în slujba lui Saul"
     ],
     [
      "Achiș",
-     "nu voia să fie martor"
+     "împăratul Gatului"
+    ],
+    [
+     "Goliat",
+     "filisteanul a cărui sabie era la Nob"
+    ],
+    [
+     "David",
+     "cel care a fugit de Saul chiar în ziua aceea"
     ]
    ]
   },
@@ -1024,6 +1241,26 @@
    ],
    "q": "„N-am pâine obișnuită la îndemână, ci numai pâine ___;",
    "ctx": "Preotul Ahimelec, către David:"
+  },
+  {
+   "id": "1sa.21.18+.20",
+   "age": "18+",
+   "t": "fill",
+   "ref": "21:11",
+   "q": "Saul și-a bătut ___ lui, Iar David, zecile lui de mii",
+   "a": [
+    "miile"
+   ]
+  },
+  {
+   "id": "1sa.21.18+.21",
+   "age": "18+",
+   "t": "fill",
+   "ref": "21:9",
+   "q": "este învelită într-un covor, în dosul ___.",
+   "a": [
+    "efodului"
+   ]
   },
   {
    "id": "1sa.21.18+.13",
@@ -1067,6 +1304,38 @@
     "pe preotul Ahimelec",
     "pe Abner",
     "pe Doeg, edomitul"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.21.18+.22",
+   "age": "18+",
+   "t": "multi",
+   "ref": "21:3",
+   "q": "Ce i-a cerut David lui Ahimelec?",
+   "opts": [
+    "cinci pâini",
+    "sau ce se va găsi",
+    "un burduf cu vin"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.21.18+.23",
+   "age": "18+",
+   "t": "multi",
+   "ref": "21:12-13",
+   "q": "Cum a reacționat David la Gat?",
+   "opts": [
+    "a avut o mare frică",
+    "a fugit în pustie",
+    "a făcut pe nebunul"
    ],
    "a": [
     0,

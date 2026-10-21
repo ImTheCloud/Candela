@@ -28,6 +28,23 @@
    "a": true
   },
   {
+   "id": "1sa.29.sub12.16",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "29:11",
+   "q": "David și oamenii lui s-au sculat din noapte ca să plece dimineața.",
+   "a": true
+  },
+  {
+   "id": "1sa.29.sub12.17",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "29:6",
+   "q": "Achiș a spus că David este un om rău.",
+   "a": false,
+   "explain": "A spus că este un om curat la suflet."
+  },
+  {
    "id": "1sa.29.sub12.4",
    "age": "sub12",
    "t": "one",
@@ -67,65 +84,57 @@
    "a": 0
   },
   {
-   "id": "1sa.29.sub12.7",
+   "id": "1sa.29.sub12.18",
    "age": "sub12",
-   "t": "match",
-   "ref": "29:1-2",
-   "q": "Taberele: asociază.",
-   "pairs": [
-    [
-     "filistenii",
-     "s-au strâns la Afec"
-    ],
-    [
-     "Israel",
-     "a tăbărât la fântâna lui Izreel"
-    ],
-    [
-     "David",
-     "mergea la coadă, cu Achiș"
-    ]
-   ]
+   "t": "one",
+   "ref": "29:3",
+   "q": "Cine a răspuns domnilor filistenilor despre David?",
+   "opts": [
+    "Achiș",
+    "Saul",
+    "Abner"
+   ],
+   "a": 0
   },
   {
-   "id": "1sa.29.sub12.8",
+   "id": "1sa.29.sub12.19",
+   "age": "sub12",
+   "t": "one",
+   "ref": "29:11",
+   "q": "Încotro s-au suit filistenii?",
+   "opts": [
+    "la Izreel",
+    "la Gat",
+    "la Hebron"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.29.sub12.25",
    "age": "sub12",
    "t": "match",
-   "ref": "29:3-6",
-   "q": "Ce spuneau despre David: asociază.",
+   "ref": "29:1-11",
+   "q": "Asociază fiecare nume sau loc cu ce se spune despre el în 1 Samuel 29.",
    "pairs": [
     [
-     "domnii filistenilor",
-     "„Ce caută evreii aceștia aici?\""
+     "Afec",
+     "unde și-au strâns filistenii oștile"
+    ],
+    [
+     "Izreel",
+     "fântâna unde a tăbărât Israel"
     ],
     [
      "Achiș",
-     "„n-am găsit nimic rău în tine\""
+     "cel care l-a apărat pe David"
     ],
-    [
-     "cântecul",
-     "„David, zecile lui de mii\""
-    ]
-   ]
-  },
-  {
-   "id": "1sa.29.sub12.9",
-   "age": "sub12",
-   "t": "match",
-   "ref": "29:10-11",
-   "q": "Plecarea: asociază.",
-   "pairs": [
     [
      "David",
-     "s-a întors în țara filistenilor"
+     "cel trimis înapoi"
     ],
     [
-     "filistenii",
-     "s-au suit la Izreel"
-    ],
-    [
-     "dimineața",
-     "atunci a plecat David"
+     "Saul",
+     "împăratul lui Israel"
     ]
    ]
   },
@@ -163,6 +172,26 @@
    "ctx": "Achiș, către David:"
   },
   {
+   "id": "1sa.29.sub12.20",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "29:3",
+   "q": "Acesta este David, slujitorul lui ___, împăratul lui Israel.",
+   "a": [
+    "Saul"
+   ]
+  },
+  {
+   "id": "1sa.29.sub12.21",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "29:1",
+   "q": "și Israel tăbărâse la fântâna lui ___.",
+   "a": [
+    "Izreel"
+   ]
+  },
+  {
    "id": "1sa.29.sub12.13",
    "age": "sub12",
    "t": "multi",
@@ -195,18 +224,52 @@
    ]
   },
   {
-   "id": "1sa.29.sub12.15",
+   "id": "1sa.29.sub12.22",
    "age": "sub12",
    "t": "multi",
-   "ref": "29:6",
-   "q": "Pe placul cui nu era David?",
+   "ref": "29:1-2",
+   "q": "Ce se spune la începutul capitolului?",
    "opts": [
-    "al oamenilor lui",
-    "al lui Ionatan",
-    "al lui Achiș"
+    "Israel a tăbărât la fântâna lui Izreel",
+    "Israel a tăbărât la Afec",
+    "filistenii și-au strâns oștile la Afec"
    ],
-   "a": [],
-   "explain": "Niciun răspuns corect: nu era pe placul domnitorilor filistenilor (29:6)."
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.29.sub12.23",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "29:6-7",
+   "q": "Ce i-a spus Achiș lui David?",
+   "opts": [
+    "să lupte în prima linie",
+    "să se întoarcă în pace",
+    "că este un om curat la suflet"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.29.sub12.24",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "29:10-11",
+   "q": "Ce s-a întâmplat dimineața?",
+   "opts": [
+    "David a hotărât să rămână",
+    "David s-a sculat din noapte de tot",
+    "Achiș i-a spus lui David să plece"
+   ],
+   "a": [
+    1,
+    2
+   ]
   },
   {
    "id": "1sa.29.12-13.1",
@@ -232,6 +295,23 @@
    "ref": "29:5",
    "q": "Filistenii și-au amintit de cântecul despre Saul și David.",
    "a": true
+  },
+  {
+   "id": "1sa.29.12-13.16",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "29:10",
+   "q": "Achiș i-a spus lui David să plece dis-de-dimineață.",
+   "a": true
+  },
+  {
+   "id": "1sa.29.12-13.17",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "29:2",
+   "q": "David și oamenii lui mergeau în fruntea oștirii filistenilor.",
+   "a": false,
+   "explain": "Mergeau mai la coadă, cu Achiș."
   },
   {
    "id": "1sa.29.12-13.4",
@@ -273,77 +353,57 @@
    "a": 2
   },
   {
-   "id": "1sa.29.12-13.7",
+   "id": "1sa.29.12-13.18",
+   "age": "12-13",
+   "t": "one",
+   "ref": "29:6",
+   "q": "Pe cine a luat Achiș martor când i-a vorbit lui David?",
+   "opts": [
+    "pe Domnul",
+    "pe Baal",
+    "pe Dagon"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.29.12-13.19",
+   "age": "12-13",
+   "t": "one",
+   "ref": "29:9",
+   "q": "Ce au zis domnitorii filistenilor despre David?",
+   "opts": [
+    "„Să fie ucis”",
+    "„Să meargă în frunte”",
+    "„Să nu se suie cu noi la luptă”"
+   ],
+   "a": 2
+  },
+  {
+   "id": "1sa.29.12-13.25",
    "age": "12-13",
    "t": "match",
-   "ref": "29:5",
-   "q": "Cântecul: asociază.",
+   "ref": "29:1-11",
+   "q": "Asociază fiecare nume sau loc cu ce se spune despre el în 1 Samuel 29.",
    "pairs": [
     [
-     "Saul",
-     "și-a bătut miile lui"
+     "Achiș",
+     "cel care n-a găsit nimic rău în David"
     ],
     [
      "David",
-     "zecile lui de mii"
-    ],
-    [
-     "femeile",
-     "cântau jucând"
+     "cel trimis înapoi în pace"
     ],
     [
      "domnii filistenilor",
-     "și-au adus aminte de cântec"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.29.12-13.8",
-   "age": "12-13",
-   "t": "match",
-   "ref": "29:6-9",
-   "q": "Cuvintele lui Achiș: asociază începutul cu sfârșitul.",
-   "pairs": [
-    [
-     "Viu este Domnul",
-     "că ești un om curat la suflet"
+     "cei care s-au mâniat pe Achiș"
     ],
     [
-     "n-am găsit nimic rău în tine",
-     "de la venirea ta la mine"
+     "Saul",
+     "cel cu miile din cântec"
     ],
     [
-     "dar nu ești",
-     "pe placul domnitorilor"
-    ],
-    [
-     "Știu că ești plăcut înaintea mea",
-     "ca un înger al lui Dumnezeu"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.29.12-13.9",
-   "age": "12-13",
-   "t": "match",
-   "ref": "29:8-10",
-   "q": "David și Achiș: asociază.",
-   "pairs": [
-    [
-     "David",
-     "a întrebat „Dar ce am făcut?\""
-    ],
-    [
-     "Achiș",
-     "i-a spus să plece"
-    ],
-    [
-     "domnitorii",
-     "au zis „Să nu se suie cu noi\""
-    ],
-    [
-     "zorii",
-     "să plece când se va lumina"
+     "Izreel",
+     "locul unde s-au suit filistenii"
     ]
    ]
   },
@@ -381,6 +441,26 @@
    "ctx": "Achiș, către David:"
   },
   {
+   "id": "1sa.29.12-13.20",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "29:8",
+   "q": "Dar ce am făcut și ce ai găsit în robul ___, de când sunt la tine",
+   "a": [
+    "tău"
+   ]
+  },
+  {
+   "id": "1sa.29.12-13.21",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "29:4",
+   "q": "Trimite înapoi pe omul acesta, ca să se întoarcă în locul unde l-ai ___",
+   "a": [
+    "așezat"
+   ]
+  },
+  {
    "id": "1sa.29.12-13.13",
    "age": "12-13",
    "t": "multi",
@@ -413,18 +493,52 @@
    ]
   },
   {
-   "id": "1sa.29.12-13.15",
+   "id": "1sa.29.12-13.22",
    "age": "12-13",
    "t": "multi",
-   "ref": "29:11",
-   "q": "Unde s-au suit filistenii?",
+   "ref": "29:5",
+   "q": "Ce se spune despre cântec?",
    "opts": [
-    "la Ghibea",
-    "la Betleem",
-    "la Rama"
+    "Saul și-a bătut miile lui",
+    "cântecul vorbea despre Goliat",
+    "David și-a bătut zecile lui de mii"
    ],
-   "a": [],
-   "explain": "Niciun răspuns corect: s-au suit la Izreel (29:11)."
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.29.12-13.23",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "29:8-9",
+   "q": "Ce s-a spus între David și Achiș?",
+   "opts": [
+    "David a întrebat ce a greșit",
+    "Achiș a spus că David a greșit",
+    "Achiș a spus că David e plăcut ca un înger"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.29.12-13.24",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "29:10-11",
+   "q": "Ce s-a întâmplat?",
+   "opts": [
+    "Achiș a poruncit să plece de îndată ce se luminează",
+    "filistenii s-au suit la Izreel",
+    "David a rămas cu filistenii la luptă"
+   ],
+   "a": [
+    0,
+    1
+   ]
   },
   {
    "id": "1sa.29.14-15.1",
@@ -450,6 +564,23 @@
    "ref": "29:11",
    "q": "David și oamenii lui s-au sculat din noapte ca să plece dimineața.",
    "a": true
+  },
+  {
+   "id": "1sa.29.14-15.16",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "29:1",
+   "q": "Israel tăbărâse la fântâna lui Izreel.",
+   "a": true
+  },
+  {
+   "id": "1sa.29.14-15.17",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "29:7",
+   "q": "Achiș i-a spus lui David să rămână și să lupte.",
+   "a": false,
+   "explain": "I-a spus să se întoarcă în pace."
   },
   {
    "id": "1sa.29.14-15.4",
@@ -491,77 +622,57 @@
    "a": 0
   },
   {
-   "id": "1sa.29.14-15.7",
+   "id": "1sa.29.14-15.18",
    "age": "14-15",
-   "t": "match",
-   "ref": "29:3-5",
-   "q": "Cele două păreri: asociază.",
-   "pairs": [
-    [
-     "Achiș",
-     "îl apăra pe David"
-    ],
-    [
-     "domnitorii",
-     "s-au mâniat pe Achiș"
-    ],
-    [
-     "„capetele oamenilor noștri\"",
-     "temerea domnitorilor"
-    ],
-    [
-     "„ca să nu ne fie vrăjmaș\"",
-     "altă temere"
-    ]
-   ]
+   "t": "one",
+   "ref": "29:2",
+   "q": "Cine mergea la coada oștirii filistenilor?",
+   "opts": [
+    "Ioab și Abișai",
+    "Saul și Abner",
+    "David și oamenii lui, cu Achiș"
+   ],
+   "a": 2
   },
   {
-   "id": "1sa.29.14-15.8",
+   "id": "1sa.29.14-15.19",
+   "age": "14-15",
+   "t": "one",
+   "ref": "29:5",
+   "q": "Ce cântec își aminteau domnii filistenilor?",
+   "opts": [
+    "„Saul și-a bătut miile lui, iar David, zecile lui de mii”",
+    "„Cântați Domnului un cântec nou”",
+    "„Domnul este păstorul meu”"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.29.14-15.25",
    "age": "14-15",
    "t": "match",
    "ref": "29:1-11",
-   "q": "Locuri: asociază.",
+   "q": "Asociază fiecare persoană cu ce se spune despre ea în 1 Samuel 29.",
    "pairs": [
     [
-     "Afec",
-     "locul oștilor filistene"
+     "Achiș",
+     "cel care a spus: „Viu este Domnul”"
     ],
     [
-     "fântâna lui Izreel",
-     "tabăra lui Israel"
+     "domnitorii filistenilor",
+     "cei care s-au mâniat"
     ],
     [
-     "țara filistenilor",
-     "acolo s-a întors David"
+     "David",
+     "cel care a întrebat: „Ce am făcut?”"
+    ],
+    [
+     "Saul",
+     "cel pe care îl slujea David, după Achiș"
     ],
     [
      "Izreel",
-     "acolo s-au suit filistenii"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.29.14-15.9",
-   "age": "14-15",
-   "t": "match",
-   "ref": "29:8",
-   "q": "Întrebarea lui David: asociază începutul cu sfârșitul.",
-   "pairs": [
-    [
-     "Dar ce am făcut",
-     "și ce ai găsit în robul tău"
-    ],
-    [
-     "de când sunt la tine",
-     "până în ziua de azi"
-    ],
-    [
-     "ca să nu merg să lupt",
-     "împotriva vrăjmașilor"
-    ],
-    [
-     "domnului meu",
-     "împăratul"
+     "locul unde s-au suit filistenii"
     ]
    ]
   },
@@ -599,6 +710,26 @@
    "ctx": "Achiș, către domnitorii filistenilor:"
   },
   {
+   "id": "1sa.29.14-15.20",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "29:9",
+   "q": "Să nu se suie cu noi la ___.",
+   "a": [
+    "luptă"
+   ]
+  },
+  {
+   "id": "1sa.29.14-15.21",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "29:7",
+   "q": "ca să nu faci nimic ___ înaintea domnitorilor filistenilor",
+   "a": [
+    "neplăcut"
+   ]
+  },
+  {
    "id": "1sa.29.14-15.13",
    "age": "14-15",
    "t": "multi",
@@ -631,18 +762,52 @@
    ]
   },
   {
-   "id": "1sa.29.14-15.15",
+   "id": "1sa.29.14-15.22",
    "age": "14-15",
    "t": "multi",
-   "ref": "29:9",
-   "q": "Ce au zis domnitorii filistenilor, după Achiș?",
+   "ref": "29:1-2",
+   "q": "Ce se spune despre oștiri?",
    "opts": [
-    "„Să fie omorât\"",
-    "„Să lupte în față\"",
-    "„Să rămână la Afec\""
+    "domnii au înaintat cu sutele și miile lor",
+    "filistenii s-au strâns la Afec",
+    "Israel s-a adunat la Afec"
    ],
-   "a": [],
-   "explain": "Niciun răspuns corect: „Să nu se suie cu noi la luptă\" (29:9)."
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.29.14-15.23",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "29:3-4",
+   "q": "Ce s-a întâmplat?",
+   "opts": [
+    "domnii au întrebat ce caută evreii",
+    "s-au mâniat pe Achiș",
+    "s-au bucurat de David"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.29.14-15.24",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "29:8-9",
+   "q": "Ce a spus Achiș?",
+   "opts": [
+    "că domnitorii nu l-au vrut la luptă",
+    "că David trebuie ucis",
+    "că David e plăcut ca un înger al lui Dumnezeu"
+   ],
+   "a": [
+    0,
+    2
+   ]
   },
   {
    "id": "1sa.29.16-17.1",
@@ -668,6 +833,23 @@
    "ref": "29:6",
    "q": "Achiș a jurat pe Domnul când i-a vorbit lui David.",
    "a": true
+  },
+  {
+   "id": "1sa.29.16-17.16",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "29:11",
+   "q": "Filistenii s-au suit la Izreel.",
+   "a": true
+  },
+  {
+   "id": "1sa.29.16-17.17",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "29:4",
+   "q": "Domnii filistenilor s-au bucurat că David vine cu ei la luptă.",
+   "a": false,
+   "explain": "S-au mâniat pe Achiș."
   },
   {
    "id": "1sa.29.16-17.4",
@@ -709,77 +891,57 @@
    "a": 0
   },
   {
-   "id": "1sa.29.16-17.7",
+   "id": "1sa.29.16-17.18",
+   "age": "16-17",
+   "t": "one",
+   "ref": "29:3",
+   "q": "Ce a spus Achiș că n-a găsit la David?",
+   "opts": [
+    "nici cel mai mic lucru de învinuit",
+    "nicio sabie",
+    "nicio credincioșie"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.29.16-17.19",
+   "age": "16-17",
+   "t": "one",
+   "ref": "29:7",
+   "q": "Cum trebuia să plece David?",
+   "opts": [
+    "în grabă",
+    "în lanțuri",
+    "în pace"
+   ],
+   "a": 2
+  },
+  {
+   "id": "1sa.29.16-17.25",
    "age": "16-17",
    "t": "match",
-   "ref": "29:2-4",
-   "q": "Oștirea filistenilor: asociază.",
+   "ref": "29:1-11",
+   "q": "Asociază fiecare nume sau loc cu ce se spune despre el în 1 Samuel 29.",
    "pairs": [
     [
-     "domnii filistenilor",
-     "înaintau cu sutele și miile"
+     "Afec",
+     "locul unde s-au strâns filistenii"
     ],
     [
-     "David și oamenii lui",
-     "mergeau la coadă"
+     "fântâna lui Izreel",
+     "unde a tăbărât Israel"
     ],
     [
      "Achiș",
-     "era cu David"
+     "cel care a spus că David e ca un înger"
     ],
     [
-     "câmpul de bătaie",
-     "nu voiau ca David să coboare acolo"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.29.16-17.8",
-   "age": "16-17",
-   "t": "match",
-   "ref": "29:6-7",
-   "q": "Cuvintele lui Achiș: asociază.",
-   "pairs": [
-    [
-     "„om curat la suflet\"",
-     "părerea lui Achiș"
+     "domnii filistenilor",
+     "cei care nu l-au vrut pe David"
     ],
     [
-     "„mergând și venind cu mine\"",
-     "ce-i plăcea"
-    ],
-    [
-     "„nu ești pe placul domnitorilor\"",
-     "problema"
-    ],
-    [
-     "„mergi în pace\"",
-     "sfatul lui"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.29.16-17.9",
-   "age": "16-17",
-   "t": "match",
-   "ref": "29:9-11",
-   "q": "Plecarea dimineața: asociază începutul cu sfârșitul.",
-   "pairs": [
-    [
-     "Știu că ești plăcut înaintea mea",
-     "ca un înger al lui Dumnezeu"
-    ],
-    [
-     "Să nu se suie cu noi",
-     "la luptă"
-    ],
-    [
-     "scoală-te dis-de-dimineață",
-     "tu și slujitorii stăpânului tău"
-    ],
-    [
-     "s-au sculat din noapte de tot",
-     "ca să plece dimineața"
+     "David",
+     "cel trimis înapoi"
     ]
    ]
   },
@@ -817,6 +979,26 @@
    "ctx": "După ce Achiș l-a trimis înapoi:"
   },
   {
+   "id": "1sa.29.16-17.20",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "29:3",
+   "q": "n-am găsit nici cel mai mic ___ de care să-l învinuiesc",
+   "a": [
+    "lucru"
+   ]
+  },
+  {
+   "id": "1sa.29.16-17.21",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "29:5",
+   "q": "Saul și-a bătut ___ lui",
+   "a": [
+    "miile"
+   ]
+  },
+  {
    "id": "1sa.29.16-17.13",
    "age": "16-17",
    "t": "multi",
@@ -848,18 +1030,52 @@
    ]
   },
   {
-   "id": "1sa.29.16-17.15",
+   "id": "1sa.29.16-17.22",
    "age": "16-17",
    "t": "multi",
-   "ref": "29:1",
-   "q": "Unde tăbărâse Israel înainte de luptă?",
+   "ref": "29:4-5",
+   "q": "Ce au spus domnitorii filistenilor?",
    "opts": [
-    "la Gat",
-    "la Sunem",
-    "la Afec"
+    "să fie ținut în lanțuri",
+    "să fie trimis David înapoi",
+    "să nu le fie vrăjmaș în timpul luptei"
    ],
-   "a": [],
-   "explain": "Niciun răspuns corect: la fântâna lui Izreel (29:1)."
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.29.16-17.23",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "29:8-9",
+   "q": "Ce s-a spus?",
+   "opts": [
+    "Achiș a spus că David e vinovat",
+    "Achiș a spus că domnitorii nu-l vor",
+    "David a întrebat ce a găsit Achiș în el"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.29.16-17.24",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "29:10-11",
+   "q": "Ce s-a întâmplat?",
+   "opts": [
+    "David și oamenii lui s-au sculat din noapte",
+    "se întorceau în țara filistenilor",
+    "au rămas la Izreel"
+   ],
+   "a": [
+    0,
+    1
+   ]
   },
   {
    "id": "1sa.29.18+.1",
@@ -885,6 +1101,23 @@
    "ref": "29:4",
    "q": "Domnitorii filistenilor s-au mâniat pe Achiș.",
    "a": true
+  },
+  {
+   "id": "1sa.29.18+.16",
+   "age": "18+",
+   "t": "tf",
+   "ref": "29:5",
+   "q": "Domnii filistenilor și-au amintit de cântecul cu miile și zecile de mii.",
+   "a": true
+  },
+  {
+   "id": "1sa.29.18+.17",
+   "age": "18+",
+   "t": "tf",
+   "ref": "29:9",
+   "q": "Achiș a spus că David este plăcut ca un dușman.",
+   "a": false,
+   "explain": "A spus: „ca un înger al lui Dumnezeu”."
   },
   {
    "id": "1sa.29.18+.4",
@@ -926,77 +1159,57 @@
    "a": 1
   },
   {
-   "id": "1sa.29.18+.7",
+   "id": "1sa.29.18+.18",
    "age": "18+",
-   "t": "match",
-   "ref": "29:3-9",
-   "q": "Cuvinte rostite: asociază fiecare cu cine le-a spus.",
-   "pairs": [
-    [
-     "„Ce caută evreii aceștia aici?\"",
-     "domnii filistenilor"
-    ],
-    [
-     "„De mult este cu mine\"",
-     "Achiș"
-    ],
-    [
-     "„Ce am făcut și ce ai găsit în robul tău?\"",
-     "David"
-    ],
-    [
-     "„Să nu se suie cu noi la luptă\"",
-     "domnitorii, citați de Achiș"
-    ]
-   ]
+   "t": "one",
+   "ref": "29:2",
+   "q": "Cum au înaintat domnii filistenilor?",
+   "opts": [
+    "singuri",
+    "în fugă",
+    "cu sutele și miile lor"
+   ],
+   "a": 2
   },
   {
-   "id": "1sa.29.18+.8",
+   "id": "1sa.29.18+.19",
    "age": "18+",
-   "t": "match",
-   "ref": "29:4-6",
-   "q": "Temeri și laude: asociază.",
-   "pairs": [
-    [
-     "vrăjmaș",
-     "temerea că va fi David în luptă"
-    ],
-    [
-     "capetele",
-     "prețul împăcării cu Saul"
-    ],
-    [
-     "curat la suflet",
-     "lauda lui Achiș"
-    ],
-    [
-     "zecile de mii",
-     "cântecul despre David"
-    ]
-   ]
+   "t": "one",
+   "ref": "29:6",
+   "q": "Cum l-a numit Achiș pe David?",
+   "opts": [
+    "om fricos",
+    "om viclean",
+    "om curat la suflet"
+   ],
+   "a": 2
   },
   {
-   "id": "1sa.29.18+.9",
+   "id": "1sa.29.18+.25",
    "age": "18+",
    "t": "match",
-   "ref": "29:1-2, 11",
-   "q": "Mișcările oștirilor: asociază.",
+   "ref": "29:1-11",
+   "q": "Asociază fiecare persoană cu ce se spune despre ea în 1 Samuel 29.",
    "pairs": [
     [
-     "Afec",
-     "strângerea oștilor filistene"
+     "Achiș",
+     "cel care îl numea om curat la suflet"
     ],
     [
-     "sutele și miile",
-     "cum înaintau domnii filistenilor"
+     "David",
+     "cel care a întrebat ce a făcut"
     ],
     [
-     "coada",
-     "locul lui David"
+     "domnitorii",
+     "cei care voiau ca David să nu lupte"
     ],
     [
-     "Izreel",
-     "încotro s-au suit filistenii"
+     "filistenii",
+     "cei care s-au suit la Izreel"
+    ],
+    [
+     "Israel",
+     "cei care au tăbărât la fântâna lui Izreel"
     ]
    ]
   },
@@ -1034,6 +1247,26 @@
    "ctx": "Achiș, către David:"
   },
   {
+   "id": "1sa.29.18+.20",
+   "age": "18+",
+   "t": "fill",
+   "ref": "29:5",
+   "q": "Nu este acesta David pentru care cântau ___",
+   "a": [
+    "jucând"
+   ]
+  },
+  {
+   "id": "1sa.29.18+.21",
+   "age": "18+",
+   "t": "fill",
+   "ref": "29:6",
+   "q": "căci n-am găsit nimic ___ în tine",
+   "a": [
+    "rău"
+   ]
+  },
+  {
    "id": "1sa.29.18+.13",
    "age": "18+",
    "t": "multi",
@@ -1066,18 +1299,52 @@
    ]
   },
   {
-   "id": "1sa.29.18+.15",
+   "id": "1sa.29.18+.22",
    "age": "18+",
    "t": "multi",
-   "ref": "29:2",
-   "q": "Cine mergea la coadă împreună cu David?",
+   "ref": "29:1-3",
+   "q": "Ce se spune la început?",
    "opts": [
-    "Abner",
-    "Abișai",
-    "Ioab"
+    "filistenii și-au strâns oștile la Afec",
+    "David a mers în fruntea oștirii",
+    "Achiș a răspuns domnitorilor despre David"
    ],
-   "a": [],
-   "explain": "Niciun răspuns corect: David și oamenii lui mergeau la coadă „cu Achiș\" (29:2)."
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.29.18+.23",
+   "age": "18+",
+   "t": "multi",
+   "ref": "29:4-5",
+   "q": "Ce au cerut domnitorii?",
+   "opts": [
+    "să nu le fie vrăjmaș în luptă",
+    "să fie trimis David înapoi",
+    "să fie primit cu cinste"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.29.18+.24",
+   "age": "18+",
+   "t": "multi",
+   "ref": "29:6-7",
+   "q": "Ce i-a spus Achiș lui David?",
+   "opts": [
+    "„Rămâi și luptă”",
+    "„Mergi în pace”",
+    "„Viu este Domnul”"
+   ],
+   "a": [
+    1,
+    2
+   ]
   }
  ]
 }

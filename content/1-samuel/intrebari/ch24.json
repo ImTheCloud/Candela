@@ -28,6 +28,22 @@
    "explain": "David i-a oprit și i-a împiedicat să se arunce asupra lui Saul (24:7)."
   },
   {
+   "id": "1sa.24.sub12.16",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "24:2",
+   "q": "Saul a luat trei mii de oameni aleși din tot Israelul ca să-l caute pe David.",
+   "a": true
+  },
+  {
+   "id": "1sa.24.sub12.17",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "24:8",
+   "q": "David s-a închinat cu fața la pământ înaintea lui Saul.",
+   "a": true
+  },
+  {
    "id": "1sa.24.sub12.4",
    "age": "sub12",
    "t": "one",
@@ -67,65 +83,57 @@
    "a": 1
   },
   {
-   "id": "1sa.24.sub12.7",
+   "id": "1sa.24.sub12.18",
    "age": "sub12",
-   "t": "match",
-   "ref": "24:2-4",
-   "q": "Peștera din En-Ghedi: asociază.",
-   "pairs": [
-    [
-     "Saul",
-     "a intrat să doarmă"
-    ],
-    [
-     "David",
-     "era în fundul peșterii"
-    ],
-    [
-     "colțul hainei",
-     "l-a tăiat David"
-    ]
-   ]
+   "t": "one",
+   "ref": "24:1",
+   "q": "În ce pustie era David, după cum i s-a spus lui Saul?",
+   "opts": [
+    "En-Ghedi",
+    "Maon",
+    "Zif"
+   ],
+   "a": 0
   },
   {
-   "id": "1sa.24.sub12.8",
+   "id": "1sa.24.sub12.19",
    "age": "sub12",
-   "t": "match",
-   "ref": "24:16-20",
-   "q": "Cuvintele lui Saul către David: asociază.",
-   "pairs": [
-    [
-     "„Glasul tău este, fiule David?\"",
-     "întrebarea lui Saul"
-    ],
-    [
-     "„Tu ești mai bun decât mine\"",
-     "recunoașterea lui"
-    ],
-    [
-     "„tu vei domni\"",
-     "ce a înțeles Saul"
-    ]
-   ]
+   "t": "one",
+   "ref": "24:2",
+   "q": "Câți oameni a luat Saul ca să-l caute pe David?",
+   "opts": [
+    "trei sute",
+    "trei mii",
+    "o mie"
+   ],
+   "a": 1
   },
   {
-   "id": "1sa.24.sub12.9",
+   "id": "1sa.24.sub12.25",
    "age": "sub12",
    "t": "match",
-   "ref": "24:1-2",
-   "q": "Urmărirea din En-Ghedi: asociază.",
+   "ref": "24:1-22",
+   "q": "Asociază fiecare nume sau lucru cu ce se spune despre el în 1 Samuel 24.",
    "pairs": [
     [
      "En-Ghedi",
      "pustia unde era David"
     ],
     [
-     "trei mii",
-     "oamenii aleși de Saul"
+     "Saul",
+     "cel care a luat trei mii de oameni aleși"
     ],
     [
-     "stâncile țapilor sălbatici",
-     "până acolo l-au căutat"
+     "peștera",
+     "locul unde a intrat Saul să doarmă"
+    ],
+    [
+     "colțul hainei",
+     "ce a tăiat David"
+    ],
+    [
+     "unsul Domnului",
+     "cum l-a numit David pe Saul"
     ]
    ]
   },
@@ -163,6 +171,26 @@
    "ctx": "În peștera din pustia En-Ghedi:"
   },
   {
+   "id": "1sa.24.sub12.20",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "24:1",
+   "q": "Iată că David este în pustia ___.",
+   "a": [
+    "En-Ghedi"
+   ]
+  },
+  {
+   "id": "1sa.24.sub12.21",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "24:3",
+   "q": "David și oamenii lui erau în fundul ___.",
+   "a": [
+    "peșterii"
+   ]
+  },
+  {
    "id": "1sa.24.sub12.13",
    "age": "sub12",
    "t": "multi",
@@ -195,18 +223,52 @@
    ]
   },
   {
-   "id": "1sa.24.sub12.15",
+   "id": "1sa.24.sub12.22",
    "age": "sub12",
    "t": "multi",
-   "ref": "24:2",
-   "q": "Câți oameni a luat Saul ca să-l caute pe David?",
+   "ref": "24:1-2",
+   "q": "Ce se spune despre Saul la începutul capitolului?",
    "opts": [
-    "șase sute",
-    "o sută",
-    "zece mii"
+    "a luat trei mii de oameni aleși",
+    "s-a întors de la urmărirea filistenilor",
+    "a luat o mie de călăreți"
    ],
-   "a": [],
-   "explain": "Niciun răspuns corect: trei mii de oameni aleși (24:2)."
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.24.sub12.23",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "24:3",
+   "q": "Ce aflăm despre peșteră?",
+   "opts": [
+    "era lângă niște stâne de oi",
+    "Saul a intrat acolo să doarmă",
+    "era pe malul Iordanului"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.24.sub12.24",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "24:6-7",
+   "q": "Ce a făcut David după ce a tăiat colțul hainei?",
+   "opts": [
+    "a spus că Saul este unsul Domnului",
+    "a oprit pe oamenii săi",
+    "a poruncit să-l prindă pe Saul"
+   ],
+   "a": [
+    0,
+    1
+   ]
   },
   {
    "id": "1sa.24.12-13.1",
@@ -232,6 +294,23 @@
    "ref": "24:20",
    "q": "Saul a recunoscut că David va domni peste Israel.",
    "a": true
+  },
+  {
+   "id": "1sa.24.12-13.16",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "24:16",
+   "q": "Saul a plâns după ce David a sfârșit de vorbit.",
+   "a": true
+  },
+  {
+   "id": "1sa.24.12-13.17",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "24:14",
+   "q": "David i-a spus lui Saul că urmărește un leu puternic.",
+   "a": false,
+   "explain": "A spus: „Un câine mort, un purice.”"
   },
   {
    "id": "1sa.24.12-13.4",
@@ -273,77 +352,57 @@
    "a": 1
   },
   {
-   "id": "1sa.24.12-13.7",
+   "id": "1sa.24.12-13.18",
    "age": "12-13",
-   "t": "match",
-   "ref": "24:4-7",
-   "q": "David în peșteră: asociază.",
-   "pairs": [
-    [
-     "oamenii lui David",
-     "îl îndemnau să-l omoare pe Saul"
-    ],
-    [
-     "David",
-     "a tăiat colțul hainei"
-    ],
-    [
-     "inima lui David",
-     "îi bătea"
-    ],
-    [
-     "Saul",
-     "a ieșit din peșteră"
-    ]
-   ]
+   "t": "one",
+   "ref": "24:8",
+   "q": "Cum s-a adresat David lui Saul când a ieșit din peșteră?",
+   "opts": [
+    "„Împărate, domnul meu!”",
+    "„Fiule!”",
+    "„Părinte!”"
+   ],
+   "a": 0
   },
   {
-   "id": "1sa.24.12-13.8",
+   "id": "1sa.24.12-13.19",
    "age": "12-13",
-   "t": "match",
-   "ref": "24:9-12",
-   "q": "Cuvintele lui David către Saul: asociază începutul cu sfârșitul.",
-   "pairs": [
-    [
-     "De ce asculți",
-     "de vorbele oamenilor?"
-    ],
-    [
-     "Domnul te dăduse astăzi",
-     "în mâinile mele"
-    ],
-    [
-     "uite colțul hainei tale",
-     "în mâna mea"
-    ],
-    [
-     "Judece Domnul",
-     "între mine și tine"
-    ]
-   ]
+   "t": "one",
+   "ref": "24:16",
+   "q": "Ce a întrebat Saul când a auzit glasul lui David?",
+   "opts": [
+    "„Tu ești Ioab?”",
+    "„Glasul tău este, fiule David?”",
+    "„Unde este David?”"
+   ],
+   "a": 1
   },
   {
-   "id": "1sa.24.12-13.9",
+   "id": "1sa.24.12-13.25",
    "age": "12-13",
    "t": "match",
-   "ref": "24:13-15",
-   "q": "Zicala și comparațiile lui David: asociază.",
+   "ref": "24:1-22",
+   "q": "Asociază fiecare loc sau lucru cu ce se spune despre el în 1 Samuel 24.",
    "pairs": [
     [
-     "vechea zicală",
-     "„Răul de la cei răi vine\""
+     "stâncile țapilor sălbatici",
+     "până unde l-a căutat Saul"
     ],
     [
-     "un câine mort",
-     "așa se numește David"
+     "stânele de oi",
+     "lângă ele era peștera"
     ],
     [
-     "un purice",
-     "la fel"
+     "fundul peșterii",
+     "unde stăteau David și oamenii lui"
     ],
     [
-     "Domnul",
-     "va judeca între ei"
+     "locul întărit",
+     "unde s-au suit David și oamenii lui"
+    ],
+    [
+     "En-Ghedi",
+     "pustia unde a fost vestit David"
     ]
    ]
   },
@@ -381,6 +440,26 @@
    "ctx": "Saul, către David:"
   },
   {
+   "id": "1sa.24.12-13.20",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "24:18",
+   "q": "Tu îți arăți azi ___ cu care te porți față de mine",
+   "a": [
+    "bunătatea"
+   ]
+  },
+  {
+   "id": "1sa.24.12-13.21",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "24:16",
+   "q": "Și Saul a ridicat glasul și a ___.",
+   "a": [
+    "plâns"
+   ]
+  },
+  {
    "id": "1sa.24.12-13.13",
    "age": "12-13",
    "t": "multi",
@@ -413,18 +492,52 @@
    ]
   },
   {
-   "id": "1sa.24.12-13.15",
+   "id": "1sa.24.12-13.22",
    "age": "12-13",
    "t": "multi",
-   "ref": "24:1",
-   "q": "Unde i s-a spus lui Saul că este David?",
+   "ref": "24:4",
+   "q": "Ce i-au spus oamenii lui David?",
    "opts": [
-    "în pustia Maon",
-    "în pustia Zif",
-    "la Gat"
+    "„Du-te înapoi la Ierusalim”",
+    "„Fă-i ce-ți va plăcea”",
+    "„Dau pe vrăjmașul tău în mâinile tale”"
    ],
-   "a": [],
-   "explain": "Niciun răspuns corect: în pustia En-Ghedi (24:1)."
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.24.12-13.23",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "24:20-21",
+   "q": "Ce i-a spus Saul lui David?",
+   "opts": [
+    "că va domni",
+    "că împărăția lui Israel va rămâne în mâinile lui",
+    "că el, Saul, va rămâne împărat pe vecie"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.24.12-13.24",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "24:9-10",
+   "q": "Ce i-a spus David lui Saul?",
+   "opts": [
+    "că Domnul îl dăduse în mâinile lui în peșteră",
+    "că oamenii lui îl îndemnau să-l omoare",
+    "că a luat sabia lui Saul ca dovadă"
+   ],
+   "a": [
+    0,
+    1
+   ]
   },
   {
    "id": "1sa.24.14-15.1",
@@ -449,6 +562,22 @@
    "t": "tf",
    "ref": "24:19",
    "q": "Saul a spus că Domnul să-i răsplătească lui David pentru ce i-a făcut.",
+   "a": true
+  },
+  {
+   "id": "1sa.24.14-15.16",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "24:21",
+   "q": "Saul i-a cerut lui David să jure că nu-i va nimici sămânța după el.",
+   "a": true
+  },
+  {
+   "id": "1sa.24.14-15.17",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "24:9",
+   "q": "David l-a întrebat pe Saul de ce ascultă de vorbele oamenilor care spun că David îi vrea răul.",
    "a": true
   },
   {
@@ -491,73 +620,57 @@
    "a": 2
   },
   {
-   "id": "1sa.24.14-15.7",
+   "id": "1sa.24.14-15.18",
    "age": "14-15",
-   "t": "match",
-   "ref": "24:16-21",
-   "q": "Saul după peșteră: asociază fiecare cuvânt cu ce înseamnă.",
-   "pairs": [
-    [
-     "„Glasul tău este, fiule David?\"",
-     "a recunoscut glasul"
-    ],
-    [
-     "„Tu ești mai bun decât mine\"",
-     "l-a lăudat"
-    ],
-    [
-     "„Domnul să-ți răsplătească\"",
-     "l-a binecuvântat"
-    ],
-    [
-     "„Jură-mi\"",
-     "a cerut un jurământ"
-    ]
-   ]
+   "t": "one",
+   "ref": "24:7",
+   "q": "Ce a făcut Saul după ce David a oprit pe oamenii săi?",
+   "opts": [
+    "a poruncit să-l prindă pe David",
+    "a adormit din nou",
+    "s-a sculat să iasă din peșteră"
+   ],
+   "a": 2
   },
   {
-   "id": "1sa.24.14-15.8",
+   "id": "1sa.24.14-15.19",
    "age": "14-15",
-   "t": "match",
-   "ref": "24:3-8",
-   "q": "Ordinea faptelor: asociază.",
-   "pairs": [
-    [
-     "stânele de oi",
-     "acolo era peștera"
-    ],
-    [
-     "fundul peșterii",
-     "acolo era David"
-    ],
-    [
-     "colțul hainei",
-     "tăiat de David"
-    ],
-    [
-     "„Împărate, domnul meu!\"",
-     "strigătul lui David afară"
-    ]
-   ]
+   "t": "one",
+   "ref": "24:22",
+   "q": "Unde s-au suit David și oamenii lui la sfârșit?",
+   "opts": [
+    "la Ierusalim",
+    "la Hebron",
+    "în locul întărit"
+   ],
+   "a": 2
   },
   {
-   "id": "1sa.24.14-15.9",
+   "id": "1sa.24.14-15.25",
    "age": "14-15",
    "t": "match",
-   "ref": "24:15",
-   "q": "Ce va face Domnul, după David: asociază.",
+   "ref": "24:1-22",
+   "q": "Asociază fiecare persoană cu ce se spune despre ea în 1 Samuel 24.",
    "pairs": [
     [
-     "va judeca",
-     "între mine și tine"
+     "Saul",
+     "cel care a plâns"
     ],
     [
-     "El va vedea",
-     "și-mi va apăra pricina"
+     "David",
+     "cel care a tăiat colțul hainei"
     ],
     [
-     "El îmi va face dreptate",
-     "izbăvindu-mă din mâna ta"
+     "oamenii lui David",
+     "cei care l-au îndemnat să-l omoare pe Saul"
+    ],
+    [
+     "Domnul",
+     "cel care va judeca între David și Saul"
+    ],
+    [
+     "unsul Domnului",
+     "cum l-a numit David pe Saul"
     ]
    ]
   },
@@ -595,6 +708,26 @@
    "ctx": "Saul, în urmărirea lui David:"
   },
   {
+   "id": "1sa.24.14-15.20",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "24:6",
+   "q": "Să mă ferească Domnul să fac împotriva domnului meu, care este unsul Domnului, o așa ___ ca să pun mâna pe el!",
+   "a": [
+    "faptă"
+   ]
+  },
+  {
+   "id": "1sa.24.14-15.21",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "24:5",
+   "q": "După aceea, inima îi ___, pentru că tăiase colțul hainei lui Saul.",
+   "a": [
+    "bătea"
+   ]
+  },
+  {
    "id": "1sa.24.14-15.13",
    "age": "14-15",
    "t": "multi",
@@ -627,18 +760,52 @@
    ]
   },
   {
-   "id": "1sa.24.14-15.15",
+   "id": "1sa.24.14-15.22",
    "age": "14-15",
    "t": "multi",
-   "ref": "24:22",
-   "q": "Unde s-a dus David după ce a jurat lui Saul?",
+   "ref": "24:12-13",
+   "q": "Ce a spus David?",
    "opts": [
-    "la Ghibea",
-    "la Betleem",
-    "la Rama"
+    "nu va pune mâna pe Saul",
+    "se va răzbuna singur pe Saul",
+    "Domnul să judece între el și Saul"
    ],
-   "a": [],
-   "explain": "Niciun răspuns corect: în locul întărit (24:22)."
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.24.14-15.23",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "24:19-20",
+   "q": "Ce a spus Saul?",
+   "opts": [
+    "David trebuie pedepsit pentru ce a făcut",
+    "știe că David va domni",
+    "Domnul să-i răsplătească lui David"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.24.14-15.24",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "24:14-15",
+   "q": "Ce a spus David despre sine și despre Domnul?",
+   "opts": [
+    "s-a asemănat cu un câine mort și cu un purice",
+    "a spus că Domnul l-a părăsit",
+    "a spus că Domnul îi va face dreptate"
+   ],
+   "a": [
+    0,
+    2
+   ]
   },
   {
    "id": "1sa.24.16-17.1",
@@ -663,6 +830,23 @@
    "t": "tf",
    "ref": "24:11",
    "q": "David spune că Saul îi întinde curse ca să-i ia viața.",
+   "a": true
+  },
+  {
+   "id": "1sa.24.16-17.16",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "24:17",
+   "q": "Saul a spus că el este mai bun decât David.",
+   "a": false,
+   "explain": "A spus: „Tu ești mai bun decât mine.”"
+  },
+  {
+   "id": "1sa.24.16-17.17",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "24:2",
+   "q": "Saul l-a căutat pe David până pe stâncile țapilor sălbatici.",
    "a": true
   },
   {
@@ -705,77 +889,57 @@
    "a": 1
   },
   {
-   "id": "1sa.24.16-17.7",
+   "id": "1sa.24.16-17.18",
+   "age": "16-17",
+   "t": "one",
+   "ref": "24:12",
+   "q": "Ce a cerut David ca Domnul să facă între el și Saul?",
+   "opts": [
+    "să judece între ei",
+    "să-l pedepsească pe Saul",
+    "să-l ajute să fugă"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.24.16-17.19",
+   "age": "16-17",
+   "t": "one",
+   "ref": "24:9",
+   "q": "Ce l-a întrebat David pe Saul la început?",
+   "opts": [
+    "de ce ascultă de oamenii care spun că David îi vrea răul",
+    "de ce a pornit război împotriva Moabului",
+    "de ce l-a alungat din casa lui"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.24.16-17.25",
    "age": "16-17",
    "t": "match",
-   "ref": "24:9-11",
-   "q": "Argumentele lui David: asociază.",
+   "ref": "24:1-22",
+   "q": "Asociază fiecare lucru cu ce se spune despre el în 1 Samuel 24.",
    "pairs": [
     [
-     "vorbele oamenilor",
-     "„David îți vrea răul\""
-    ],
-    [
-     "peștera",
-     "acolo Saul era în mâinile lui"
+     "câinele mort",
+     "cum s-a asemănat David"
     ],
     [
      "colțul hainei",
-     "dovada"
+     "dovada că David putea să-l ucidă"
     ],
     [
-     "cursele",
-     "Saul i le întinde"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.24.16-17.8",
-   "age": "16-17",
-   "t": "match",
-   "ref": "24:17-21",
-   "q": "Mărturisirea lui Saul: asociază începutul cu sfârșitul.",
-   "pairs": [
-    [
-     "tu mi-ai făcut bine",
-     "iar eu ți-am făcut rău"
+     "zicala veche",
+     "„Răul de la cei răi vine”"
     ],
     [
-     "Domnul mă dăduse în mâinile tale",
-     "și nu m-ai omorât"
+     "trei mii",
+     "oamenii aleși din tot Israelul"
     ],
     [
-     "știu că tu vei domni",
-     "și împărăția va rămâne în mâinile tale"
-    ],
-    [
-     "nu-mi vei nimici sămânța",
-     "după mine"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.24.16-17.9",
-   "age": "16-17",
-   "t": "match",
-   "ref": "24:5-7",
-   "q": "David și oamenii lui: asociază.",
-   "pairs": [
-    [
-     "inima lui David",
-     "îi bătea"
-    ],
-    [
-     "„Să mă ferească Domnul\"",
-     "cuvintele lui David"
-    ],
-    [
-     "oamenii lui",
-     "au fost opriți"
-    ],
-    [
-     "Saul",
-     "și-a văzut de drum"
+     "locul întărit",
+     "unde s-au suit David și oamenii lui"
     ]
    ]
   },
@@ -813,6 +977,26 @@
    "ctx": "Saul, către David:"
   },
   {
+   "id": "1sa.24.16-17.20",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "24:8",
+   "q": "David s-a plecat cu fața la pământ și s-a ___.",
+   "a": [
+    "închinat"
+   ]
+  },
+  {
+   "id": "1sa.24.16-17.21",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "24:14",
+   "q": "Împotriva cui a pornit împăratul lui Israel? Pe cine ___ tu?",
+   "a": [
+    "urmărești"
+   ]
+  },
+  {
    "id": "1sa.24.16-17.13",
    "age": "16-17",
    "t": "multi",
@@ -845,18 +1029,52 @@
    ]
   },
   {
-   "id": "1sa.24.16-17.15",
+   "id": "1sa.24.16-17.22",
    "age": "16-17",
    "t": "multi",
-   "ref": "24:5",
-   "q": "Ce a simțit David după ce a tăiat colțul hainei?",
+   "ref": "24:16-17",
+   "q": "Ce a făcut și a spus Saul?",
    "opts": [
-    "mândrie",
-    "mânie",
-    "bucurie"
+    "a spus că David e mai bun decât el",
+    "a ridicat glasul și a plâns",
+    "a spus că David este un ucigaș"
    ],
-   "a": [],
-   "explain": "Niciun răspuns corect: „inima îi bătea\" (24:5)."
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.24.16-17.23",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "24:18-19",
+   "q": "Ce a recunoscut Saul?",
+   "opts": [
+    "că Domnul îl dăduse în mâinile lui David",
+    "că David i-a făcut rău",
+    "că David nu l-a omorât"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.24.16-17.24",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "24:21-22",
+   "q": "Ce s-a întâmplat la sfârșit?",
+   "opts": [
+    "Saul a plecat acasă",
+    "David a plecat cu Saul la Ghibea",
+    "David a jurat lui Saul"
+   ],
+   "a": [
+    0,
+    2
+   ]
   },
   {
    "id": "1sa.24.18+.1",
@@ -882,6 +1100,23 @@
    "ref": "24:4",
    "q": "Oamenii lui David credeau că Domnul i l-a dat pe Saul în mâini.",
    "a": true
+  },
+  {
+   "id": "1sa.24.18+.16",
+   "age": "18+",
+   "t": "tf",
+   "ref": "24:3",
+   "q": "Peștera în care a intrat Saul era lângă niște stâne de oi.",
+   "a": true
+  },
+  {
+   "id": "1sa.24.18+.17",
+   "age": "18+",
+   "t": "tf",
+   "ref": "24:21",
+   "q": "Saul a cerut lui David să jure că îi va nimici sămânța.",
+   "a": false,
+   "explain": "A cerut să jure că nu-i va nimici sămânța."
   },
   {
    "id": "1sa.24.18+.4",
@@ -923,77 +1158,57 @@
    "a": 2
   },
   {
-   "id": "1sa.24.18+.7",
+   "id": "1sa.24.18+.18",
    "age": "18+",
-   "t": "match",
-   "ref": "24:9-15",
-   "q": "Cuvintele lui David: asociază fiecare cu partea potrivită.",
-   "pairs": [
-    [
-     "întrebarea",
-     "de ce asculți de vorbele oamenilor?"
-    ],
-    [
-     "dovada",
-     "colțul hainei"
-    ],
-    [
-     "zicala",
-     "răul de la cei răi vine"
-    ],
-    [
-     "încheierea",
-     "Domnul va judeca"
-    ]
-   ]
+   "t": "one",
+   "ref": "24:20",
+   "q": "Ce a spus Saul că va rămâne în mâinile lui David?",
+   "opts": [
+    "sabia lui Saul",
+    "cetatea Ierusalimului",
+    "împărăția lui Israel"
+   ],
+   "a": 2
   },
   {
-   "id": "1sa.24.18+.8",
+   "id": "1sa.24.18+.19",
    "age": "18+",
-   "t": "match",
-   "ref": "24:2-3",
-   "q": "Căutarea din En-Ghedi: asociază.",
-   "pairs": [
-    [
-     "trei mii",
-     "oameni aleși din tot Israelul"
-    ],
-    [
-     "stâncile",
-     "țapilor sălbatici"
-    ],
-    [
-     "stânele",
-     "de oi, lângă drum"
-    ],
-    [
-     "peștera",
-     "Saul a intrat să doarmă"
-    ]
-   ]
+   "t": "one",
+   "ref": "24:19",
+   "q": "Ce a cerut Saul ca Domnul să facă pentru David?",
+   "opts": [
+    "să-l pedepsească",
+    "să-i răsplătească pentru ce a făcut în ziua aceea",
+    "să-l ierte"
+   ],
+   "a": 1
   },
   {
-   "id": "1sa.24.18+.9",
+   "id": "1sa.24.18+.25",
    "age": "18+",
    "t": "match",
-   "ref": "24:20-22",
-   "q": "Jurământul: asociază.",
+   "ref": "24:1-22",
+   "q": "Asociază fiecare persoană sau lucru cu ce se spune despre el în 1 Samuel 24.",
    "pairs": [
     [
-     "împărăția",
-     "va rămâne în mâinile lui David"
-    ],
-    [
-     "sămânța lui Saul",
-     "să nu fie nimicită"
-    ],
-    [
-     "numele lui Saul",
-     "să nu fie șters"
+     "Saul",
+     "cel care a cerut jurământul"
     ],
     [
      "David",
-     "a jurat"
+     "cel care a jurat"
+    ],
+    [
+     "oamenii lui David",
+     "cei care l-au îndemnat să-l omoare pe Saul"
+    ],
+    [
+     "Domnul",
+     "cel care îl dăduse pe Saul în mâinile lui David"
+    ],
+    [
+     "vechea zicală",
+     "„Răul de la cei răi vine”"
     ]
    ]
   },
@@ -1031,6 +1246,26 @@
    "ctx": "În peștera din En-Ghedi:"
   },
   {
+   "id": "1sa.24.18+.20",
+   "age": "18+",
+   "t": "fill",
+   "ref": "24:21",
+   "q": "Jură-mi dar pe Domnul că nu-mi vei nimici sămânța mea după mine și că nu-mi vei șterge ___ din casa tatălui meu.",
+   "a": [
+    "numele"
+   ]
+  },
+  {
+   "id": "1sa.24.18+.21",
+   "age": "18+",
+   "t": "fill",
+   "ref": "24:2",
+   "q": "Saul a luat trei mii de oameni aleși din tot ___ și s-a dus să caute pe David",
+   "a": [
+    "Israelul"
+   ]
+  },
+  {
    "id": "1sa.24.18+.13",
    "age": "18+",
    "t": "multi",
@@ -1063,18 +1298,52 @@
    ]
   },
   {
-   "id": "1sa.24.18+.15",
+   "id": "1sa.24.18+.22",
    "age": "18+",
    "t": "multi",
-   "ref": "24:2",
-   "q": "De unde a luat Saul cei trei mii de oameni?",
+   "ref": "24:13-15",
+   "q": "Ce a spus David?",
    "opts": [
-    "din Efraim",
-    "din Beniamin",
-    "din Iuda"
+    "a spus că Domnul va judeca între el și Saul",
+    "a spus că va porni război împotriva lui Saul",
+    "a citat vechea zicală despre cei răi"
    ],
-   "a": [],
-   "explain": "Niciun răspuns corect: „din tot Israelul\" (24:2)."
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.24.18+.23",
+   "age": "18+",
+   "t": "multi",
+   "ref": "24:16-19",
+   "q": "Ce a spus Saul?",
+   "opts": [
+    "că Domnul a părăsit pe David",
+    "că el, Saul, i-a făcut rău lui David",
+    "că David i-a făcut bine"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.24.18+.24",
+   "age": "18+",
+   "t": "multi",
+   "ref": "24:20-22",
+   "q": "Ce s-a întâmplat după aceea?",
+   "opts": [
+    "Saul a recunoscut că David va domni",
+    "Saul a hotărât să renunțe pe loc la împărăție",
+    "i-a cerut să jure"
+   ],
+   "a": [
+    0,
+    2
+   ]
   }
  ]
 }
