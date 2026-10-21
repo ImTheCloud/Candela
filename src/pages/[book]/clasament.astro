@@ -11,7 +11,7 @@ const { book } = Astro.props as { book: Book };
 <Base title="Clasament" description={`Clasamentul ${book.name}, pe niveluri.`} crumbs={[{ href: '/', label: 'Acasă' }, { href: `/${book.slug}`, label: book.name }]}>
   <section class="wrap narrow page">
     <h1>Clasament</h1>
-    <Board client:only="preact" book={book.slug} bookName={book.name} titles={book.titles}>
+    <Board client:only="preact" book={book.slug}>
       <div slot="fallback" class="card skeleton"></div>
     </Board>
   </section>
