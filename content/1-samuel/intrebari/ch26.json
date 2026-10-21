@@ -1,0 +1,1082 @@
+{
+ "ch": 26,
+ "reviewed": false,
+ "questions": [
+  {
+   "id": "1sa.26.sub12.1",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "26:7",
+   "q": "Când David a intrat în tabără, Saul dormea în cort.",
+   "a": true
+  },
+  {
+   "id": "1sa.26.sub12.2",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "26:12",
+   "q": "David a luat sulița și urciorul cu apă de la căpătâiul lui Saul.",
+   "a": true
+  },
+  {
+   "id": "1sa.26.sub12.3",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "26:9",
+   "q": "David i-a dat voie lui Abișai să-l lovească pe Saul.",
+   "a": false,
+   "explain": "David a zis: „Nu-l omorî! Căci cine ar putea pune mâna pe unsul Domnului?\" (26:9)."
+  },
+  {
+   "id": "1sa.26.sub12.4",
+   "age": "sub12",
+   "t": "one",
+   "ref": "26:6",
+   "q": "Cine a coborât cu David în tabăra lui Saul?",
+   "opts": [
+    "Abner",
+    "Abișai",
+    "Ioab"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.26.sub12.5",
+   "age": "sub12",
+   "t": "one",
+   "ref": "26:7",
+   "q": "Unde era înfiptă sulița lui Saul?",
+   "opts": [
+    "lângă cort",
+    "în pământ, la capul lui",
+    "în copac"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.26.sub12.6",
+   "age": "sub12",
+   "t": "one",
+   "ref": "26:12",
+   "q": "De ce nu s-a trezit nimeni din tabără?",
+   "opts": [
+    "era zgomot mare",
+    "Domnul îi cufundase într-un somn adânc",
+    "erau beți"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.26.sub12.7",
+   "age": "sub12",
+   "t": "match",
+   "ref": "26:5-7",
+   "q": "Tabăra lui Saul: asociază.",
+   "pairs": [
+    [
+     "Saul",
+     "dormea în cort"
+    ],
+    [
+     "Abner",
+     "căpetenia oștirii"
+    ],
+    [
+     "sulița",
+     "înfiptă în pământ"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.26.sub12.8",
+   "age": "sub12",
+   "t": "match",
+   "ref": "26:11-12",
+   "q": "Ce a luat David: asociază.",
+   "pairs": [
+    [
+     "sulița",
+     "era la căpătâiul lui Saul"
+    ],
+    [
+     "urciorul",
+     "cu apă"
+    ],
+    [
+     "David și Abișai",
+     "au plecat fără să fie văzuți"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.26.sub12.9",
+   "age": "sub12",
+   "t": "match",
+   "ref": "26:14-17",
+   "q": "Strigătul lui David: asociază.",
+   "pairs": [
+    [
+     "David",
+     "a strigat de pe vârful muntelui"
+    ],
+    [
+     "Abner",
+     "a întrebat „Cine ești tu?\""
+    ],
+    [
+     "Saul",
+     "a cunoscut glasul lui David"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.26.sub12.10",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "26:9",
+   "a": [
+    "unsul"
+   ],
+   "q": "Căci cine ar putea pune mâna pe ___ Domnului și să rămână nepedepsit?\"",
+   "ctx": "David, către Abișai, în tabăra lui Saul:"
+  },
+  {
+   "id": "1sa.26.sub12.11",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "26:12",
+   "a": [
+    "urciorul"
+   ],
+   "q": "David a luat dar sulița și ___ cu apă de la căpătâiul lui Saul și au plecat.",
+   "ctx": "Noaptea, în tabăra lui Saul:"
+  },
+  {
+   "id": "1sa.26.sub12.12",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "26:21",
+   "a": [
+    "păcătuit"
+   ],
+   "q": "Saul a zis: „Am ___; întoarce-te, fiul meu David, căci nu-ți voi mai face rău",
+   "ctx": "Saul, după ce David i-a arătat sulița:"
+  },
+  {
+   "id": "1sa.26.sub12.13",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "26:11",
+   "q": "Ce i-a spus David lui Abișai să ia?",
+   "opts": [
+    "sulița",
+    "urciorul cu apă",
+    "sabia lui Saul"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.26.sub12.14",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "26:5",
+   "q": "Cine era culcat lângă Saul în tabără?",
+   "opts": [
+    "poporul",
+    "Abner",
+    "Ionatan"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.26.sub12.15",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "26:2",
+   "q": "Câți oameni avea Saul în pustia Zif?",
+   "opts": [
+    "patru sute",
+    "zece mii",
+    "o sută"
+   ],
+   "a": [],
+   "explain": "Niciun răspuns corect: trei mii de oameni aleși din Israel (26:2)."
+  },
+  {
+   "id": "1sa.26.12-13.1",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "26:1",
+   "q": "Zifiții i-au spus lui Saul că David este ascuns pe dealul Hachila.",
+   "a": true
+  },
+  {
+   "id": "1sa.26.12-13.2",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "26:13",
+   "q": "David s-a oprit chiar lângă cortul lui Saul ca să strige.",
+   "a": false,
+   "explain": "A ajuns departe, pe vârful muntelui, la o mare depărtare de tabără (26:13)."
+  },
+  {
+   "id": "1sa.26.12-13.3",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "26:25",
+   "q": "La sfârșit, Saul l-a binecuvântat pe David.",
+   "a": true
+  },
+  {
+   "id": "1sa.26.12-13.4",
+   "age": "12-13",
+   "t": "one",
+   "ref": "26:4",
+   "q": "Cum a aflat David că Saul venise?",
+   "opts": [
+    "i-a spus Ionatan",
+    "a văzut focul taberei",
+    "a trimis iscoade"
+   ],
+   "a": 2
+  },
+  {
+   "id": "1sa.26.12-13.5",
+   "age": "12-13",
+   "t": "one",
+   "ref": "26:15",
+   "q": "Pe cine a mustrat David că nu l-a păzit pe împărat?",
+   "opts": [
+    "pe Abner",
+    "pe Ioab",
+    "pe Abișai"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.26.12-13.6",
+   "age": "12-13",
+   "t": "one",
+   "ref": "26:22",
+   "q": "Ce a cerut David să vină să ia unul din oamenii lui Saul?",
+   "opts": [
+    "colțul hainei",
+    "sulița împăratului",
+    "urciorul"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.26.12-13.7",
+   "age": "12-13",
+   "t": "match",
+   "ref": "26:6",
+   "q": "Oamenii lui David: asociază.",
+   "pairs": [
+    [
+     "Ahimelec",
+     "Hetitul"
+    ],
+    [
+     "Abișai",
+     "fiul Țeruiei"
+    ],
+    [
+     "Ioab",
+     "fratele lui Abișai"
+    ],
+    [
+     "Abner",
+     "fiul lui Ner"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.26.12-13.8",
+   "age": "12-13",
+   "t": "match",
+   "ref": "26:8-11",
+   "q": "Abișai și David: asociază începutul cu sfârșitul.",
+   "pairs": [
+    [
+     "Dumnezeu dă astăzi pe vrăjmașul tău",
+     "în mâinile tale"
+    ],
+    [
+     "lasă-mă să-l lovesc",
+     "cu sulița mea"
+    ],
+    [
+     "Nu-l omorî!",
+     "Căci cine ar putea pune mâna pe unsul Domnului?"
+    ],
+    [
+     "Ia numai sulița",
+     "și urciorul cu apă"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.26.12-13.9",
+   "age": "12-13",
+   "t": "match",
+   "ref": "26:17-21",
+   "q": "Saul și David: asociază.",
+   "pairs": [
+    [
+     "„Glasul tău este, fiul meu David?\"",
+     "întrebarea lui Saul"
+    ],
+    [
+     "„Glasul meu, împărate\"",
+     "răspunsul lui David"
+    ],
+    [
+     "„Am păcătuit\"",
+     "mărturisirea lui Saul"
+    ],
+    [
+     "„Am lucrat ca un nebun\"",
+     "încă o mărturisire"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.26.12-13.10",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "26:16",
+   "a": [
+    "urciorul"
+   ],
+   "q": "Uită-te acum unde este sulița împăratului și ___ de apă, care erau la căpătâiul lui.\"",
+   "ctx": "David, către Abner, de pe vârful muntelui:"
+  },
+  {
+   "id": "1sa.26.12-13.11",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "26:20",
+   "a": [
+    "purice"
+   ],
+   "q": "Căci împăratul lui Israel a pornit să mă caute ca pe un ___, cum ar urmări o potârniche în munți.\"",
+   "ctx": "David, către Saul, a doua oară când i-a cruțat viața:"
+  },
+  {
+   "id": "1sa.26.12-13.12",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "26:25",
+   "a": [
+    "birui"
+   ],
+   "q": "Tu vei face lucruri mari și vei ___.\"",
+   "ctx": "Saul, către David:"
+  },
+  {
+   "id": "1sa.26.12-13.13",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "26:10",
+   "q": "Cum spune David că va muri Saul?",
+   "opts": [
+    "va pieri într-un câmp de bătaie",
+    "îi va veni ziua să moară",
+    "ucis de David"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.26.12-13.14",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "26:6",
+   "q": "Cui i-a vorbit David înainte să coboare în tabără?",
+   "opts": [
+    "lui Ahimelec, Hetitul",
+    "lui Abișai",
+    "lui Abner"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.26.12-13.15",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "26:1",
+   "q": "Unde era Saul când au venit zifiții la el?",
+   "opts": [
+    "la Gat",
+    "la Rama",
+    "la Betleem"
+   ],
+   "a": [],
+   "explain": "Niciun răspuns corect: la Ghibea (26:1)."
+  },
+  {
+   "id": "1sa.26.14-15.1",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "26:6",
+   "q": "Abișai era fiul Țeruiei și fratele lui Ioab.",
+   "a": true
+  },
+  {
+   "id": "1sa.26.14-15.2",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "26:14",
+   "q": "Saul a fost primul care i-a răspuns lui David când acesta a strigat.",
+   "a": false,
+   "explain": "Abner a răspuns primul: „Cine ești tu, care strigi către împăratul?\" (26:14)."
+  },
+  {
+   "id": "1sa.26.14-15.3",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "26:16",
+   "q": "David a spus că Abner și oamenii lui sunt vrednici de moarte.",
+   "a": true
+  },
+  {
+   "id": "1sa.26.14-15.4",
+   "age": "14-15",
+   "t": "one",
+   "ref": "26:8",
+   "q": "Cum voia Abișai să-l lovească pe Saul?",
+   "opts": [
+    "dintr-o singură lovitură, cu sulița",
+    "de două ori",
+    "cu sabia lui David"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.26.14-15.5",
+   "age": "14-15",
+   "t": "one",
+   "ref": "26:19",
+   "q": "Ce spune David că să primească Domnul, dacă El l-a ațâțat pe Saul?",
+   "opts": [
+    "o mie de oi",
+    "jertfa de ispășire",
+    "mirosul unui dar de mâncare"
+   ],
+   "a": 2
+  },
+  {
+   "id": "1sa.26.14-15.6",
+   "age": "14-15",
+   "t": "one",
+   "ref": "26:20",
+   "q": "Cu ce pasăre se compară David, urmărit în munți?",
+   "opts": [
+    "un porumbel",
+    "o potârniche",
+    "un vultur"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.26.14-15.7",
+   "age": "14-15",
+   "t": "match",
+   "ref": "26:15-16",
+   "q": "Mustrarea lui Abner: asociază începutul cu sfârșitul.",
+   "pairs": [
+    [
+     "Oare nu ești tu bărbat?",
+     "Și cine este ca tine în Israel?"
+    ],
+    [
+     "cineva din popor",
+     "a venit să omoare pe împăratul"
+    ],
+    [
+     "Ce ai făcut tu",
+     "nu este bine"
+    ],
+    [
+     "sunteți vrednici de moarte",
+     "căci n-ați vegheat asupra stăpânului vostru"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.26.14-15.8",
+   "age": "14-15",
+   "t": "match",
+   "ref": "26:1-4",
+   "q": "Începutul capitolului 26: asociază.",
+   "pairs": [
+    [
+     "zifiții",
+     "l-au trădat pe David"
+    ],
+    [
+     "Hachila",
+     "dealul unde era David"
+    ],
+    [
+     "trei mii",
+     "oameni aleși"
+    ],
+    [
+     "iscoadele",
+     "trimise de David"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.26.14-15.9",
+   "age": "14-15",
+   "t": "match",
+   "ref": "26:23-24",
+   "q": "Răspunsul lui David: asociază.",
+   "pairs": [
+    [
+     "dreptatea și credincioșia",
+     "după ele răsplătește Domnul"
+    ],
+    [
+     "viața lui Saul",
+     "a avut mare preț înaintea lui David"
+    ],
+    [
+     "viața lui David",
+     "va avea mare preț înaintea Domnului"
+    ],
+    [
+     "orice necaz",
+     "Domnul îl va izbăvi din el"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.26.14-15.10",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "26:10",
+   "a": [
+    "lovi"
+   ],
+   "q": "„Viu este Domnul că numai Domnul îl poate ___; fie că-i va veni ziua să moară, fie că se va coborî într-un câmp de bătaie și va pieri.",
+   "ctx": "David, către Abișai, despre Saul:"
+  },
+  {
+   "id": "1sa.26.14-15.11",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "26:23",
+   "a": [
+    "credincioșia"
+   ],
+   "q": "Domnul va răsplăti fiecăruia după dreptatea lui și după ___ lui",
+   "ctx": "David, către Saul:"
+  },
+  {
+   "id": "1sa.26.14-15.12",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "26:12",
+   "a": [
+    "adânc"
+   ],
+   "q": "căci Domnul îi cufundase pe toți într-un somn ___.",
+   "ctx": "În tabăra lui Saul, noaptea:"
+  },
+  {
+   "id": "1sa.26.14-15.13",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "26:21",
+   "q": "Ce a spus Saul după ce David i-a vorbit?",
+   "opts": [
+    "„Am păcătuit\"",
+    "„Am lucrat ca un nebun\"",
+    "„Voi pleca din Israel\""
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.26.14-15.14",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "26:19",
+   "q": "Ce spun cei care îl izgonesc pe David, după cuvintele lui?",
+   "opts": [
+    "„Du-te de slujește unor dumnezei străini!\"",
+    "„Du-te la Samuel\"",
+    "„Rămâi în Iuda\""
+   ],
+   "a": [
+    0
+   ]
+  },
+  {
+   "id": "1sa.26.14-15.15",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "26:13",
+   "q": "Unde s-a oprit David ca să strige?",
+   "opts": [
+    "la intrarea taberei",
+    "pe dealul Hachila",
+    "lângă cort"
+   ],
+   "a": [],
+   "explain": "Niciun răspuns corect: pe vârful muntelui, la mare depărtare de tabără (26:13)."
+  },
+  {
+   "id": "1sa.26.16-17.1",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "26:3",
+   "q": "Saul a tăbărât pe dealul Hachila, lângă drum.",
+   "a": true
+  },
+  {
+   "id": "1sa.26.16-17.2",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "26:24",
+   "q": "David i-a cerut lui Saul să-l izbăvească din orice necaz.",
+   "a": false,
+   "explain": "David spune că Domnul îl va izbăvi din orice necaz (26:24)."
+  },
+  {
+   "id": "1sa.26.16-17.3",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "26:19",
+   "q": "David spune că, dacă oamenii îl ațâță pe Saul, să fie blestemați înaintea Domnului.",
+   "a": true
+  },
+  {
+   "id": "1sa.26.16-17.4",
+   "age": "16-17",
+   "t": "one",
+   "ref": "26:5",
+   "q": "Unde era culcat Saul în tabără?",
+   "opts": [
+    "pe vârful muntelui",
+    "în cort, în mijlocul taberei",
+    "la marginea taberei"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.26.16-17.5",
+   "age": "16-17",
+   "t": "one",
+   "ref": "26:21",
+   "q": "De ce spune Saul că nu-i va mai face rău lui David?",
+   "opts": [
+    "pentru că l-a rugat Ionatan",
+    "pentru că s-a temut",
+    "pentru că viața lui a fost scumpă înaintea lui David"
+   ],
+   "a": 2
+  },
+  {
+   "id": "1sa.26.16-17.6",
+   "age": "16-17",
+   "t": "one",
+   "ref": "26:18",
+   "q": "Ce întrebare îi pune David lui Saul?",
+   "opts": [
+    "„Când voi fi împărat?\"",
+    "„Unde este Ionatan?\"",
+    "„Ce-am făcut și cu ce sunt vinovat?\""
+   ],
+   "a": 2
+  },
+  {
+   "id": "1sa.26.16-17.7",
+   "age": "16-17",
+   "t": "match",
+   "ref": "26:9-11",
+   "q": "Cuvintele lui David către Abișai: asociază.",
+   "pairs": [
+    [
+     "„Nu-l omorî!\"",
+     "porunca"
+    ],
+    [
+     "„Viu este Domnul\"",
+     "jurământul"
+    ],
+    [
+     "„Să mă ferească Domnul\"",
+     "hotărârea"
+    ],
+    [
+     "„Ia numai sulița\"",
+     "ce i-a cerut"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.26.16-17.8",
+   "age": "16-17",
+   "t": "match",
+   "ref": "26:19-20",
+   "q": "Rugămintea lui David: asociază începutul cu sfârșitul.",
+   "pairs": [
+    [
+     "Dacă Domnul este Cel ce te ațâță",
+     "să primească mirosul unui dar de mâncare"
+    ],
+    [
+     "dacă oamenii te ațâță",
+     "blestemați să fie"
+    ],
+    [
+     "să nu-mi cadă sângele pe pământ",
+     "departe de Fața Domnului"
+    ],
+    [
+     "cum ar urmări",
+     "o potârniche în munți"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.26.16-17.9",
+   "age": "16-17",
+   "t": "match",
+   "ref": "26:22-25",
+   "q": "Sfârșitul întâlnirii: asociază.",
+   "pairs": [
+    [
+     "sulița împăratului",
+     "să vină cineva s-o ia"
+    ],
+    [
+     "Domnul",
+     "va răsplăti fiecăruia"
+    ],
+    [
+     "Saul",
+     "l-a binecuvântat pe David"
+    ],
+    [
+     "David",
+     "și-a văzut de drum"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.26.16-17.10",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "26:19",
+   "a": [
+    "moștenirea"
+   ],
+   "q": "ei mă izgonesc azi ca să mă dezlipească de ___ Domnului",
+   "ctx": "David, către Saul, despre cei care îl ațâță:"
+  },
+  {
+   "id": "1sa.26.16-17.11",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "26:15",
+   "a": [
+    "stăpânul"
+   ],
+   "q": "Pentru ce atunci n-ai păzit pe împărat, ___ tău?",
+   "ctx": "David, către Abner:"
+  },
+  {
+   "id": "1sa.26.16-17.12",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "26:24",
+   "a": [
+    "izbăvi"
+   ],
+   "q": "tot așa și viața mea va avea un mare preț înaintea Domnului și El mă va ___ din orice necaz.\"",
+   "ctx": "David, către Saul:"
+  },
+  {
+   "id": "1sa.26.16-17.13",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "26:12",
+   "q": "Ce spune textul despre tabără când a luat David sulița?",
+   "opts": [
+    "nimeni nu i-a văzut",
+    "nimeni nu s-a deșteptat",
+    "s-a trezit Abner"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.26.16-17.14",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "26:16",
+   "q": "Ce i-a arătat David lui Abner?",
+   "opts": [
+    "urciorul de apă",
+    "unde este sulița împăratului",
+    "colțul hainei"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.26.16-17.15",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "26:25",
+   "q": "Ce i-a spus Saul lui David la sfârșit?",
+   "opts": [
+    "„Dă-mi sulița înapoi\"",
+    "„Vino la Ghibea\"",
+    "„Pleacă din țară\""
+   ],
+   "a": [],
+   "explain": "Niciun răspuns corect: „Fii binecuvântat, fiul meu David! Tu vei face lucruri mari și vei birui\" (26:25)."
+  },
+  {
+   "id": "1sa.26.18+.1",
+   "age": "18+",
+   "t": "tf",
+   "ref": "26:2",
+   "q": "Saul a coborât în pustia Zif cu trei mii de oameni aleși.",
+   "a": true
+  },
+  {
+   "id": "1sa.26.18+.2",
+   "age": "18+",
+   "t": "tf",
+   "ref": "26:8",
+   "q": "Abișai voia să-l lovească pe Saul de două ori, ca să fie sigur.",
+   "a": false,
+   "explain": "Voia să-l pironească „dintr-o lovitură\", ca să n-aibă nevoie să-i dea alta (26:8)."
+  },
+  {
+   "id": "1sa.26.18+.3",
+   "age": "18+",
+   "t": "tf",
+   "ref": "26:21",
+   "q": "Saul a recunoscut: „Am lucrat ca un nebun și am făcut o mare greșeală.\"",
+   "a": true
+  },
+  {
+   "id": "1sa.26.18+.4",
+   "age": "18+",
+   "t": "one",
+   "ref": "26:6",
+   "q": "Cum este numit Ahimelec în capitolul 26?",
+   "opts": [
+    "Amalecitul",
+    "Hetitul",
+    "Edomitul"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.26.18+.5",
+   "age": "18+",
+   "t": "one",
+   "ref": "26:14",
+   "q": "Ce a întrebat Abner când a strigat David?",
+   "opts": [
+    "„Cine ești tu, care strigi către împăratul?\"",
+    "„Ce vrei de la noi?\"",
+    "„Unde este sulița?\""
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.26.18+.6",
+   "age": "18+",
+   "t": "one",
+   "ref": "26:24",
+   "q": "Ce spune David că va avea mare preț înaintea Domnului?",
+   "opts": [
+    "jertfa lui",
+    "sulița",
+    "viața lui David"
+   ],
+   "a": 2
+  },
+  {
+   "id": "1sa.26.18+.7",
+   "age": "18+",
+   "t": "match",
+   "ref": "26:1-7",
+   "q": "Locuri și lucruri din capitolul 26: asociază.",
+   "pairs": [
+    [
+     "Ghibea",
+     "acolo era Saul când au venit zifiții"
+    ],
+    [
+     "Hachila",
+     "dealul unde a tăbărât Saul"
+    ],
+    [
+     "cortul",
+     "în mijlocul taberei"
+    ],
+    [
+     "căpătâiul",
+     "acolo era înfiptă sulița"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.26.18+.8",
+   "age": "18+",
+   "t": "match",
+   "ref": "26:6-14",
+   "q": "Personaje: asociază.",
+   "pairs": [
+    [
+     "Abișai",
+     "a coborât cu David în tabără"
+    ],
+    [
+     "Ahimelec",
+     "Hetitul"
+    ],
+    [
+     "Ner",
+     "tatăl lui Abner"
+    ],
+    [
+     "Țeruia",
+     "mama lui Abișai"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.26.18+.9",
+   "age": "18+",
+   "t": "match",
+   "ref": "26:15-21",
+   "q": "Cuvinte rostite: asociază fiecare cu cine le-a spus.",
+   "pairs": [
+    [
+     "„Oare nu ești tu bărbat?\"",
+     "David către Abner"
+    ],
+    [
+     "„Cine ești tu, care strigi?\"",
+     "Abner"
+    ],
+    [
+     "„Am lucrat ca un nebun\"",
+     "Saul"
+    ],
+    [
+     "„Cu ce sunt vinovat?\"",
+     "David către Saul"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.26.18+.10",
+   "age": "18+",
+   "t": "fill",
+   "ref": "26:8",
+   "a": [
+    "pironesc"
+   ],
+   "q": "lasă-mă, te rog, să-l lovesc cu sulița mea și să-l ___ dintr-o lovitură în pământ, ca să n-am nevoie să-i mai dau alta.\"",
+   "ctx": "Abișai, către David, lângă Saul adormit:"
+  },
+  {
+   "id": "1sa.26.18+.11",
+   "age": "18+",
+   "t": "fill",
+   "ref": "26:21",
+   "a": [
+    "greșeală"
+   ],
+   "q": "Am lucrat ca un nebun și am făcut o mare ___.\"",
+   "ctx": "Saul, către David:"
+  },
+  {
+   "id": "1sa.26.18+.12",
+   "age": "18+",
+   "t": "fill",
+   "ref": "26:13",
+   "a": [
+    "muntelui"
+   ],
+   "q": "David a trecut de cealaltă parte și a ajuns departe pe vârful ___, la o mare depărtare de tabără.",
+   "ctx": "După ce a luat sulița și urciorul:"
+  },
+  {
+   "id": "1sa.26.18+.13",
+   "age": "18+",
+   "t": "multi",
+   "ref": "26:16",
+   "q": "Pentru ce spune David că sunt vrednici de moarte Abner și oamenii lui?",
+   "opts": [
+    "n-au vegheat asupra stăpânului lor",
+    "n-au vegheat asupra unsului Domnului",
+    "au fugit de luptă"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.26.18+.14",
+   "age": "18+",
+   "t": "multi",
+   "ref": "26:10",
+   "q": "Ce spune David că poate face numai Domnul?",
+   "opts": [
+    "să-l lovească pe Saul",
+    "să-l facă pe David împărat azi",
+    "să-l trimită la filisteni"
+   ],
+   "a": [
+    0
+   ]
+  },
+  {
+   "id": "1sa.26.18+.15",
+   "age": "18+",
+   "t": "multi",
+   "ref": "26:17",
+   "q": "Cum i-a răspuns David lui Saul când acesta i-a cunoscut glasul?",
+   "opts": [
+    "„Da, eu sunt, Saule\"",
+    "„Iartă-mă\"",
+    "„Eu sunt robul tău\""
+   ],
+   "a": [],
+   "explain": "Niciun răspuns corect: „Glasul meu, împărate, domnul meu!\" (26:17)."
+  }
+ ]
+}
