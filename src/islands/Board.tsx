@@ -44,6 +44,12 @@ export default function Board({ book, totals }: { book: string; totals: Record<s
           </button>
         ))}
       </div>
+      {user.value === null && (
+        <div class="card picker guest">
+          <p class="small">Joci fără cont, așa că nu apari în clasament. Progresul rămâne doar pe acest telefon.</p>
+          <a class="btn btn-primary btn-sm" href="/cont/inregistrare">Creează un cont</a>
+        </div>
+      )}
       <p class="small muted">Fiecare întrebare contează o singură dată, prima dată când răspunzi corect.{total ? ` Sunt ${total} de întrebări pentru această vârstă.` : ''}</p>
       {error ? (
         <p class="notice notice-bad">Clasamentul nu s-a putut încărca. Verifică conexiunea la internet.</p>
