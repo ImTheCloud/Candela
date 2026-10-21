@@ -167,7 +167,7 @@ export default function Quiz({ book, bookName, questions, mode, examId, scoreId,
             <div class="verdict">
               <p class="verdict-line">
                 <span class="verdict-ic" aria-hidden="true">{g.right ? <Tick /> : <Cross />}</span>
-                <span>{g.right ? 'Corect!' : g.points > 0 ? `Parțial · ${g.points} din ${g.max} puncte` : 'Greșit'}</span>
+                <span>{g.right ? 'Corect!' : g.points > 0 ? `Parțial · ${g.points}/${g.max}` : 'Greșit'}</span>
               </p>
               <button class="btn verdict-btn" onClick={next}>{i < questions.length - 1 ? 'Mai departe' : 'Vezi rezultatul'}</button>
             </div>

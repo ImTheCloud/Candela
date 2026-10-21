@@ -46,7 +46,7 @@ const { book, list } = Astro.props as { book: Book; list: ExamFile[] };
           <li class="card exam soon">
             <span>
               <span class="exam-title">{ageLabel('sub12')}</span>
-              <span class="small muted">Examenul are loc {dates(book.slug).sub12}</span>
+              <span class="small muted">{dates(book.slug).sub12.replace(/^./, (c) => c.toUpperCase())}</span>
               <span class="small muted">Îl adăugăm aici după ce are loc.</span>
             </span>
           </li>

@@ -58,7 +58,7 @@ export default function SignUpForm() {
       </div>
       <label class="check">
         <input type="checkbox" checked={f.isParent} onChange={set('isParent')} />
-        <span>Sunt părinte și copiii mei vor juca de pe contul meu</span>
+        <span>Cont de părinte (cu copii)</span>
       </label>
       {error && <p class="notice notice-bad" role="alert">{error}</p>}
       <button class="btn btn-primary btn-block" disabled={busy}>{busy ? 'Se creează contul…' : 'Creează contul'}</button>

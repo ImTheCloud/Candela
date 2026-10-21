@@ -34,7 +34,7 @@ export default function ResetForm() {
   return (
     <form class="card auth-card stack" onSubmit={submit}>
       <h2>Parolă nouă</h2>
-      <p class="muted">Scrie emailul contului tău și îți trimitem un link ca să-ți alegi o parolă nouă.</p>
+      <p class="muted">Îți trimitem un link pentru o parolă nouă.</p>
       <div class="field">
         <label for="email">Email</label>
         <input id="email" class="input" type="email" autocomplete="email" required value={email} onInput={(e) => setEmail(e.currentTarget.value)} />

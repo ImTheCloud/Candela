@@ -45,7 +45,7 @@ export default function Profile({ books }: { books: BookInfo[] }) {
         <label class="me-row switch-row">
           <span>
             <strong>Cont de părinte</strong>
-            <span class="small muted block">{kids > 0 ? 'Șterge întâi copiii ca să-l poți opri.' : 'Copiii joacă de pe telefonul tău, fiecare cu progresul lui.'}</span>
+            <span class="small muted block">{kids > 0 ? 'Șterge întâi copiii ca să-l poți opri.' : 'Copiii joacă de pe telefonul tău.'}</span>
           </span>
           <input type="checkbox" class="switch" role="switch" checked={isParent} disabled={kids > 0 || !u} onChange={(e) => toggleParent(e.currentTarget.checked)} />
         </label>
@@ -197,7 +197,7 @@ function BookStats({ p, book }: { p: Player; book: BookInfo }) {
           {chapters > 0 && <div><dt>Capitole încercate</dt><dd>{chapters} / {book.chapters}</dd></div>}
           <div><dt>De reluat</dt><dd>{d.wrong}</dd></div>
           {bestExam !== null && <div><dt>Cel mai bun examen</dt><dd>{bestExam} / 100</dd></div>}
-          {weakest && <div><dt>De lucrat</dt><dd>{typeInfo(weakest.x.t).label}</dd></div>}
+          {weakest && <div><dt>De lucrat</dt><dd>{typeInfo(weakest.x.t).short}</dd></div>}
           {v1 > 0 && <div><dt>Versiunea veche</dt><dd>{v1} știute</dd></div>}
         </dl>
       )}
