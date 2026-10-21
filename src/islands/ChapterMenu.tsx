@@ -121,8 +121,8 @@ function Sheet({ book, ch, title, age, read, reading, done, total, wrongs, onClo
         </div>
         <p class="sheet-label">Alege ce vrei să faci</p>
         <div class="lvl-list">
-          {reading && <Row href={`${base}/citire/${ch}`} icon="book" name="Citește capitolul" done={read} />}
-          <Row href={`${base}/exersare?capitol=${ch}&start=1`} icon="test" name="Testul capitolului"
+          {reading && <Row href={`${base}/citire/${ch}`} icon="book" tone="read" name="Citește capitolul" done={read} />}
+          <Row href={`${base}/exersare?capitol=${ch}&start=1`} icon="test" tone="test" name="Testul capitolului"
             tag={age ? short(age) : ''} done={!!total && done === total}
             side={total ? (done ? `${done}/${total}` : String(total)) : ''} unit={total && !done ? 'întrebări' : ''} />
           {harder && <Row href={`${base}/exersare?capitol=${ch}&start=1&nivel=greu`} icon="star" name="Mai greu" tag={short(harder)} />}
@@ -140,9 +140,9 @@ const ICONS: Record<string, JSX.Element> = {
   redo: <><path d="M21 12a9 9 0 1 1-3-6.7" /><path d="M21 3v6h-6" /></>,
 };
 
-function Row({ href, icon, name, tag, done, side, unit }: { href: string; icon: string; name: string; tag?: string; done?: boolean; side?: string; unit?: string }) {
+function Row({ href, icon, name, tag, done, side, unit, tone }: { href: string; icon: string; name: string; tone?: 'read' | 'test'; tag?: string; done?: boolean; side?: string; unit?: string }) {
   return (
-    <a class={`lvl-row${done ? ' is-done' : ''}`} href={href}>
+    <a class={`lvl-row${done ? ' is-done' : ''}${tone ? ` tone-${tone}` : ''}`} href={href}>
       <span class="lvl-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">{ICONS[icon]}</svg></span>
       <b class="lvl-name"><span class="lvl-text">{name}</span>{tag && <span class="lvl-tag">{tag}</span>}</b>
       {done && <svg class="lvl-done" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-label="făcut"><path d="M13.3 4L6 11.3 2.7 8" /></svg>}

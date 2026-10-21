@@ -1,15 +1,14 @@
 ---
-import ChapterMenu from '../islands/ChapterMenu';
+import BookPanel from '../islands/BookPanel';
 import PlayerPicker from '../islands/PlayerPicker';
 import Welcome from '../islands/Welcome';
-import { BOOKS, bookHome, type Book } from '../lib/books';
+import { BOOKS, type Book } from '../lib/books';
 import { summary } from '../lib/content';
 
-// The home of one book: switch book, welcome, who plays, the chapters (tap one for its menu, exams after the last), the board.
+// The home page: welcome, who plays, then the books' chapters (the two books switch in place).
 interface Props { book: Book }
 const { book } = Astro.props;
-const base = `/${book.slug}`;
-
+const books = BOOKS.map((b) => ({ slug: b.slug, name: b.name, titles: b.titles, summary: summary(b.slug) }));
 ---
 <section class="wrap hb-head">
   <Welcome client:only="preact"><h1 slot="fallback" class="welcome">Bun venit!</h1></Welcome>
@@ -19,60 +18,13 @@ const base = `/${book.slug}`;
   <PlayerPicker client:only="preact" />
 </section>
 
-<section class="wrap hb-chap" aria-labelledby="chapters">
-  <div class="card hb-chapters">
-    <nav class="book-switch" aria-label="Cartea">
-      {BOOKS.map((b) => (
-        <a href={bookHome(b.slug)} data-book={b.slug} aria-current={b.slug === book.slug ? 'page' : undefined}>{b.name}</a>
-      ))}
-    </nav>
-    <h2 id="chapters">Ce capitol vrei să exersezi?</h2>
-    <ChapterMenu client:only="preact" book={book.slug} titles={book.titles} summary={summary(book.slug)} examsHref={`${base}/examene`}>
-      <div slot="fallback" class="tiles-space"></div>
-    </ChapterMenu>
-  </div>
-</section>
-
-<section class="wrap hb-block">
-  <a class="card mode" href={`${base}/clasament`}>
-    <span>
-      <span class="mode-name">Clasament</span>
-      <span class="small muted">Pe vârste: fiecare întrebare știută contează o dată.</span>
-    </span>
-    <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
-  </a>
-</section>
-
-<script>
-  import { localSet } from '../lib/store';
-  // remember the book: "/" opens it next time
-  const current = document.querySelector<HTMLElement>('.book-switch [aria-current]')?.dataset.book;
-  if (current) localSet('book', current);
-  for (const a of document.querySelectorAll<HTMLAnchorElement>('.book-switch a')) {
-    a.addEventListener('click', () => localSet('book', a.dataset.book));
-  }
-</script>
+<BookPanel client:only="preact" books={books} initial={book.slug}>
+  <section slot="fallback" class="wrap hb-chap"><div class="card hb-chapters"><div class="tiles-space"></div></div></section>
+</BookPanel>
 
 <style>
   .hb-head { padding-block: 10px 0; }
   .welcome { font-size: 1.5rem; }
-  .book-switch {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 3px; padding: 3px;
-    background: var(--surface-2); border-radius: 999px;
-  }
-  .book-switch a {
-    display: grid; place-items: center; min-height: 34px; border-radius: 999px;
-    font-size: 0.9rem; font-weight: 600; color: var(--ink-2); text-decoration: none;
-  }
-  .book-switch a[aria-current] { background: var(--surface); color: var(--ink); box-shadow: 0 1px 3px rgb(58 39 27 / .12); }
   .hb-who:has(.picker) { padding-top: 10px; }
-  .hb-chap { padding-top: 12px; }
-  .hb-block { padding-top: 12px; }
-  .hb-chapters { display: grid; gap: 14px; padding: 14px 16px 16px; }
-  .hb-chapters h2 { font-size: 1.2rem; }
-  .tiles-space { min-height: 240px; }
-  .mode { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 18px; text-decoration: none; box-shadow: none; }
-  .mode > span:first-child { display: flex; flex-direction: column; gap: 2px; }
-  .mode-name { font-weight: 600; }
-  .chev { flex: none; color: var(--ink-3); }
+  .tiles-space { min-height: 360px; }
 </style>
