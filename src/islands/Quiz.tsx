@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
+import { loadVerses } from '../lib/load';
 import { createPortal } from 'preact/compat';
 import { recordAnswers, recordExam } from '../lib/progress';
 import { emptyAnswer, grade, isAnswered, percent, typeInfo, type Answer, type Grade, type Playable } from '../lib/questions';
@@ -166,8 +167,6 @@ export default function Quiz({ book, bookName, questions, mode, examId, backHref
 
 /** answer: also write the right answer (where the question itself is not shown, as in "De recitit"). */
 function Feedback({ q, g, bookName, answer = false }: { q: Playable; g: Grade; bookName: string; answer?: boolean }) {
-  const first = q.cite[0]?.[0] ?? '';
-  const [ch, v] = first.split(':');
   // "Niciun răspuns corect: …" in the explanation already says it
   const showAnswer = answer && !g.right && !(q.explain ?? '').startsWith('Niciun răspuns corect');
   return (
@@ -184,17 +183,40 @@ function Feedback({ q, g, bookName, answer = false }: { q: Playable; g: Grade; b
           <p class="fb-explain">{q.explain}</p>
         </div>
       )}
-      <div class="fb-block">
-        <p class="fb-label">Ce spune textul · {bookName} {q.ref}</p>
-        <div class="fb-verses">
-          {q.cite.map(([label, text]) => <p><sup>{label}</sup>{text}</p>)}
-        </div>
-      </div>
+      <Passage q={q} bookName={bookName} />
       <div class="fb-links">
-        {ch && <a class="link small" href={`/${q.book}/citire/${ch}#v${v}`}>Citește capitolul {ch}</a>}
         <ReportButton q={q} />
       </div>
     </section>
+  );
+}
+
+/** The whole chapter, with the verses the question rests on highlighted and brought into view. */
+function Passage({ q, bookName }: { q: Playable; bookName: string }) {
+  const [verses, setVerses] = useState<string[] | null>(null);
+  const box = useRef<HTMLDivElement>(null);
+  const cited = new Set(q.cite.map(([label]) => Number(label.split(':')[1])));
+
+  useEffect(() => {
+    let live = true;
+    loadVerses(q.book, q.ch).then((v) => live && setVerses(v.length ? v : null), () => {});
+    return () => { live = false; };
+  }, [q.id]);
+
+  useEffect(() => {
+    const el = box.current?.querySelector<HTMLElement>('.is-cited');
+    if (el && box.current) box.current.scrollTop = el.offsetTop - 12;
+  }, [verses]);
+
+  return (
+    <div class="fb-block">
+      <p class="fb-label">{bookName} {q.ch}</p>
+      <div class="fb-verses fb-chapter" ref={box}>
+        {verses
+          ? verses.map((text, k) => <p class={cited.has(k + 1) ? 'is-cited' : ''}><sup>{k + 1}</sup>{text}</p>)
+          : q.cite.map(([label, text]) => <p class="is-cited"><sup>{label}</sup>{text}</p>)}
+      </div>
+    </div>
   );
 }
 
