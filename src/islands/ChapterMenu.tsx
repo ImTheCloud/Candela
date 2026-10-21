@@ -165,8 +165,8 @@ function labelFor(e: Entry, size: number): string | undefined {
 
 /** The exam tile takes what is left of the last row of the 6-column grid. */
 function examSpan(n: number): number {
-  const left = 7 - (n % 7);
-  return left < 3 ? 7 : left;
+  const left = 6 - (n % 6);
+  return left < 3 ? 6 : left;
 }
 
 function count(s: Partial<Record<QType, number>> | undefined): number {
