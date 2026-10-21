@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'preact/hooks';
-import { collection, FieldPath, getDocs, limit, orderBy, query } from 'firebase/firestore';
+import { collection, FieldPath, getCountFromServer, getDocs, limit, orderBy, query } from 'firebase/firestore';
 import { AGE_GROUPS, LEVEL_KEY, ageShort, type AgeGroup } from '../lib/age';
 import { db } from '../lib/firebase';
+import { player, setHidden } from '../lib/players';
 import { user } from '../lib/session';
 
 interface Row { key: string; name: string; score: number; at: number }
 
 // what each list showed last time: shown at once when the tab is opened again, then refreshed without any change on screen
 const cache = new Map<string, Row[]>();
+const totals = new Map<string, number>();
 
 interface Props {
   book: string;
@@ -21,6 +23,8 @@ export default function Board({ book }: Props) {
   const [age, setAge] = useState<AgeGroup | 'all'>('all');
   const [rows, setRows] = useState<Row[] | null>(() => cache.get(`${book}:all`) ?? null);
   const [error, setError] = useState(false);
+  const [total, setTotal] = useState<number | null>(() => totals.get(book) ?? null);
+  const [busy, setBusy] = useState(false);
 
   useEffect(() => {
     const key = `${book}:${age}`;
@@ -39,16 +43,40 @@ export default function Board({ book }: Props) {
       .catch(() => setError(true));
   }, [book, age]);
 
+  useEffect(() => {
+    getCountFromServer(collection(db, 'boards', book, 'players'))
+      .then((c) => { totals.set(book, c.data().count); setTotal(c.data().count); })
+      .catch(() => {});
+  }, [book]);
+
+  const p = player.value;
+  async function toggleHidden() {
+    setBusy(true);
+    try { await setHidden(p, !p.hidden); } finally { setBusy(false); }
+  }
+
   const mine = (key: string) => !!user.value && key.startsWith(`${user.value.uid}~`);
 
   return (
     <div class="board">
+      <div class="lb-head">
+        <h2 id="lb-title">Clasament</h2>
+        {user.value && (
+          <label class="check small">
+            <input type="checkbox" checked={!p.hidden} disabled={busy} onChange={toggleHidden} />
+            <span>Apar în clasament</span>
+          </label>
+        )}
+      </div>
       <div class="age-tabs six" role="tablist" aria-label="Nivel">
         {AGE_GROUPS.map((g) => (
           <button type="button" role="tab" aria-selected={age === g.id} onClick={() => setAge(g.id)}>{ageShort(g.id)}</button>
         ))}
         <button type="button" role="tab" aria-selected={age === 'all'} onClick={() => setAge('all')}>Toate</button>
       </div>
+      {rows !== null && total !== null && !error && (
+        <p class="lb-count small muted">{rows.length} {rows.length === 1 ? 'jucător' : 'jucători'} aici · {total} în total</p>
+      )}
       {user.value === null && (
         <div class="lb-guest">
           <p class="small">Joci fără cont, așa că nu apari în clasament. Progresul rămâne doar pe acest telefon.</p>

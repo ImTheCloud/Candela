@@ -26,7 +26,8 @@ const { book, list } = Astro.props as { book: Book; list: ExamFile[] };
       <Loader slot="fallback" />
     </MockStart>
 
-    <h2>Examene date</h2>
+    <h2>Examene reale</h2>
+    <p class="small muted real-note">Cele date pe foaie, la concursul adevărat. Examenul alb de mai sus e doar pentru exersat.</p>
     {list.length === 0 && !dates(book.slug).sub12 ? (
       <p class="card empty muted">Datele examenelor pentru {book.name} nu sunt încă cunoscute. Le adăugăm când le aflăm.</p>
     ) : (
@@ -36,8 +37,7 @@ const { book, list } = Astro.props as { book: Book; list: ExamFile[] };
             <a class="card exam" href={`/${book.slug}/examene/${e.id}`} data-exam={e.id} data-age={e.age}>
               <span>
                 <span class="exam-title">{ageLabel(e.age as AgeGroup)}</span>
-                <span class="small muted">{e.title}, {e.year} · {e.questions.length} întrebări</span>
-                {dates(book.slug)[e.age] && <span class="small muted">A avut loc {dates(book.slug)[e.age]}</span>}
+                <span class="small muted">{e.title}, {e.year}{dates(book.slug)[e.age] ? ` · ${dates(book.slug)[e.age]}` : ''}</span>
               </span>
               <span class="best small" hidden></span>
             </a>

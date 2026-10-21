@@ -430,3 +430,12 @@ a.tile { text-decoration: none; }
 .loader svg { opacity: 0; animation: loader-in .25s .35s forwards; }
 @keyframes loader-in { to { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) { .loader svg { animation-duration: .01s; } }
+
+.lb-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.lb-head h2 { margin: 0; }
+.lb-head .check { white-space: nowrap; }
+.lb-count { margin: 0; white-space: nowrap; }
+
+.real-note { margin: -6px 0 0; }
+.exams .card.exam { padding: 10px 14px; }
+.exams { gap: 8px; }

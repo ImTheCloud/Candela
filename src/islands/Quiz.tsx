@@ -101,13 +101,17 @@ export default function Quiz({ book, bookName, questions, mode, examId, scoreId,
     if (quizEl.current && cardEl.current) setPin(cardEl.current.getBoundingClientRect().top - quizEl.current.getBoundingClientRect().top);
     const gr = grade(q, answers[i]);
     setGrades(grades.map((x, k) => (k === i ? gr : x)));
-    if (record) recordAnswers(book, [{ id: q.id, t: q.t, right: gr.right }])?.catch((e) => { console.error(e); setSaveFailed(true); });
   }
 
   function next() {
     setPin(null);
     if (i < questions.length - 1) setI(i + 1);
     else {
+      // nothing counts until the whole test is finished
+      if (record && grades.every(Boolean)) {
+        const all = grades as Grade[];
+        recordAnswers(book, questions.map((x, k) => ({ id: x.id, t: x.t, right: all[k].right })))?.catch((e) => { console.error(e); setSaveFailed(true); });
+      }
       if (scoreId && grades.every(Boolean)) {
         const all = grades as Grade[];
         recordExam(book, scoreId, percent(all.reduce((s, x) => s + x.points, 0), all.reduce((s, x) => s + x.max, 0)), { right: all.filter((x) => x.right).length, n: all.length });
