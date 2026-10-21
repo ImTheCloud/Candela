@@ -2,7 +2,14 @@
 import Base from '../../../layouts/Base.astro';
 import { BOOKS, type Book } from '../../../lib/books';
 import { exams, type ExamFile } from '../../../lib/content';
+import MockStart from '../../../islands/MockStart';
 import { ageLabel, type AgeGroup } from '../../../lib/age';
+
+// When the real exams took place (they are added to the site after they happen).
+const DATES: Record<string, Record<string, string>> = {
+  '1-samuel': { 'sub12': 'sâmbătă, 24 octombrie 2026', '12-13': 'luni, 19 octombrie 2026', '14-15': 'luni, 19 octombrie 2026', '16-17': 'luni, 19 octombrie 2026', '18+': 'luni, 19 octombrie 2026' },
+};
+const dates = (slug: string) => DATES[slug] ?? {};
 
 export function getStaticPaths() {
   return BOOKS.map((book) => ({ params: { book: book.slug }, props: { book, list: exams(book.slug) } }));
@@ -14,17 +21,13 @@ const { book, list } = Astro.props as { book: Book; list: ExamFile[] };
   <section class="wrap narrow page" data-book={book.slug}>
     <h1>Examene</h1>
 
-    <a class="card exam alb" href={`/${book.slug}/examene/alb`}>
-      <span>
-        <span class="exam-title">Examen alb</span>
-        <span class="small muted">Un examen nou, ca cel adevărat: 21 de întrebări din capitolele alese, la nivelul ales.</span>
-      </span>
-      <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
-    </a>
+    <MockStart client:only="preact" book={book.slug}>
+      <div slot="fallback" class="card mock-card skeleton"></div>
+    </MockStart>
 
     <h2>Examene date</h2>
-    {list.length === 0 ? (
-      <p class="card empty muted">Examenele de anul acesta vor fi adăugate după ce au loc.</p>
+    {list.length === 0 && !dates(book.slug).sub12 ? (
+      <p class="card empty muted">Datele examenelor pentru {book.name} nu sunt încă cunoscute. Le adăugăm când le aflăm.</p>
     ) : (
       <ul class="exams">
         {list.map((e) => (
@@ -33,11 +36,21 @@ const { book, list } = Astro.props as { book: Book; list: ExamFile[] };
               <span>
                 <span class="exam-title">{ageLabel(e.age as AgeGroup)}</span>
                 <span class="small muted">{e.title}, {e.year} · {e.questions.length} întrebări</span>
+                {dates(book.slug)[e.age] && <span class="small muted">A avut loc {dates(book.slug)[e.age]}</span>}
               </span>
               <span class="best small" hidden></span>
             </a>
           </li>
         ))}
+        {dates(book.slug).sub12 && !list.some((e) => e.age === 'sub12') && (
+          <li class="card exam soon">
+            <span>
+              <span class="exam-title">{ageLabel('sub12')}</span>
+              <span class="small muted">Examenul are loc {dates(book.slug).sub12}</span>
+              <span class="small muted">Îl adăugăm aici după ce are loc.</span>
+            </span>
+          </li>
+        )}
       </ul>
     )}
   </section>
