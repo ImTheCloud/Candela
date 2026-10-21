@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'preact/hooks';
 import { doc, getDoc, onSnapshot } from 'firebase/firestore';
 import { db } from '../lib/firebase';
-import { addChild, choosePlayer, player, players, removeChild, setHidden, updateChild, type Player } from '../lib/players';
+import { addChild, choosePlayer, player, players, rememberedKids, removeChild, setHidden, updateChild, type Player } from '../lib/players';
+import { localGet, localSet } from '../lib/store';
 import { deleteProgress, EMPTY, type Progress } from '../lib/progress';
 import { typeInfo, TYPES } from '../lib/questions';
 import { errorText, profile, profileError, rememberedAccount, setParent, signOut, user } from '../lib/session';
@@ -20,7 +21,7 @@ export default function Profile({ books }: { books: BookInfo[] }) {
   const email = u?.email ?? p?.email ?? '';
   const [parentError, setParentError] = useState('');
   const [adding, setAdding] = useState(false);
-  const list = u ? players.value : self(p, rememberedAccount?.uid);
+  const list = u ? players.value : [...self(p, rememberedAccount?.uid), ...rememberedKids];
   const kids = list.filter((x) => x.child).length;
   const isParent = p?.isParent === true;
 
@@ -67,7 +68,7 @@ export default function Profile({ books }: { books: BookInfo[] }) {
       </section>
 
       <nav class="me-end">
-        {p?.admin && <a class="me-link" href="/semnalari">Semnalări de greșeli</a>}
+        {p?.admin && <a class="me-link" href="/admin">Administrare · înscriși și semnalări</a>}
         <button type="button" class="me-link signout" onClick={() => signOut()}>Ieși din cont</button>
       </nav>
     </div>
@@ -139,27 +140,44 @@ function PlayerBlock({ p, books, head }: { p: Player; books: BookInfo[]; head: b
   );
 }
 
-/** Live progress of one player in one book; `loaded` is false until the first answer from Firestore. */
-function useBookProgress(p: Player, book: string): { data: Progress; v1: number; loaded: boolean } {
-  const [state, setState] = useState<{ data: Progress; loaded: boolean }>({ data: EMPTY, loaded: false });
-  const [v1, setV1] = useState(0);
+/** What the profile shows of one player's progress in one book. */
+interface Summary { mastered: number; wrong: number; exams: Progress['exams']; stats: Progress['stats']; v1: number }
+const EMPTY_SUMMARY: Summary = { mastered: 0, wrong: 0, exams: {}, stats: {}, v1: 0 };
+
+/** Live progress of one player in one book. The last visit's numbers show at once; `loaded` is false only for a first visit. */
+function useBookProgress(p: Player, book: string): { data: Summary; loaded: boolean } {
+  const key = `pg:${p.key}~${book}`;
+  const [state, setState] = useState<{ data: Summary; loaded: boolean }>(() => {
+    const cached = localGet<Summary | null>(key, null);
+    return cached ? { data: cached, loaded: true } : { data: EMPTY_SUMMARY, loaded: false };
+  });
   const uid = user.value?.uid;
   useEffect(() => {
     if (!uid) return;
-    setState({ data: EMPTY, loaded: false });
-    const stop = onSnapshot(doc(db, 'users', uid, 'progress', `${p.key}~${book}`), (snap) => setState({ data: { ...EMPTY, ...(snap.data() as Partial<Progress>) }, loaded: true }));
+    let v1 = state.data.v1;
+    let last: Progress | null = null;
+    const publish = () => {
+      if (!last) return;
+      const data: Summary = { mastered: last.mastered.length, wrong: last.wrong.length, exams: last.exams, stats: last.stats, v1 };
+      setState({ data, loaded: true });
+      localSet(key, data);
+    };
+    const stop = onSnapshot(doc(db, 'users', uid, 'progress', `${p.key}~${book}`), (snap) => {
+      last = { ...EMPTY, ...(snap.data() as Partial<Progress>) };
+      publish();
+    });
+    // questions mastered in v1 are kept as a record: those questions were rewritten
+    if (book === '1-samuel') {
+      getDoc(doc(db, 'users', uid, 'archive', `${p.key}~1-samuel-v1`)).then((s) => { v1 = (s.get('count') as number) ?? 0; publish(); }).catch(() => {});
+    }
     return stop;
   }, [uid, p.key, book]);
-  // questions mastered in v1 are kept as a record: those questions were rewritten
-  useEffect(() => {
-    if (!uid || book !== '1-samuel') return;
-    getDoc(doc(db, 'users', uid, 'archive', `${p.key}~1-samuel-v1`)).then((s) => setV1((s.get('count') as number) ?? 0)).catch(() => {});
-  }, [uid, p.key, book]);
-  return { ...state, v1 };
+  return state;
 }
 
 function BookStats({ p, book }: { p: Player; book: BookInfo }) {
-  const { data: d, v1, loaded } = useBookProgress(p, book.slug);
+  const { data: d, loaded } = useBookProgress(p, book.slug);
+  const v1 = d.v1;
   const typed = TYPES.map((x) => ({ x, s: d.stats[x.t] })).filter((e) => e.s && e.s.n >= 3);
   // a weak spot only means something next to other kinds of questions
   const weakest = typed.length >= 2 ? typed.sort((a, b) => a.s!.r / a.s!.n - b.s!.r / b.s!.n)[0] : undefined;
@@ -168,16 +186,16 @@ function BookStats({ p, book }: { p: Player; book: BookInfo }) {
   const exams = entries.filter(([id]) => !/^c\d+$/.test(id)).map(([, e]) => e);
   const chapters = entries.filter(([id]) => /^c\d+$/.test(id)).length;
   const bestExam = exams.length ? Math.max(...exams.map((e) => e.best)) : null;
-  const started = d.mastered.length || d.wrong.length || entries.length || v1;
+  const started = d.mastered || d.wrong || entries.length || v1;
 
   return (
     <section class="bk">
       <h3>{book.name}</h3>
       {!loaded ? <div class="sk-rows" aria-hidden="true"><span class="sk" /><span class="sk" /><span class="sk" /></div> : !started ? <p class="small muted">Nu a început încă.</p> : (
         <dl class="kv">
-          <div><dt>Întrebări știute</dt><dd>{d.mastered.length}</dd></div>
+          <div><dt>Întrebări știute</dt><dd>{d.mastered}</dd></div>
           {chapters > 0 && <div><dt>Capitole încercate</dt><dd>{chapters} / {book.chapters}</dd></div>}
-          <div><dt>De reluat</dt><dd>{d.wrong.length}</dd></div>
+          <div><dt>De reluat</dt><dd>{d.wrong}</dd></div>
           {bestExam !== null && <div><dt>Cel mai bun examen</dt><dd>{bestExam} / 100</dd></div>}
           {weakest && <div><dt>De lucrat</dt><dd>{typeInfo(weakest.x.t).label}</dd></div>}
           {v1 > 0 && <div><dt>Versiunea veche</dt><dd>{v1} știute</dd></div>}
