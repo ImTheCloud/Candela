@@ -28,6 +28,22 @@
    "explain": "Ioab l-a tras deoparte în mijlocul porții și l-a omorât (3:27)."
   },
   {
+   "id": "2sa.3.sub12.16",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "3:32",
+   "q": "David a plâns la mormântul lui Abner, la Hebron, iar tot poporul plângea.",
+   "a": true
+  },
+  {
+   "id": "2sa.3.sub12.17",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "3:20",
+   "q": "Abner a venit la David, la Hebron, cu douăzeci de oameni, iar David a dat un ospăț în cinstea lor.",
+   "a": true
+  },
+  {
    "id": "2sa.3.sub12.4",
    "age": "sub12",
    "t": "one",
@@ -67,65 +83,57 @@
    "a": 1
   },
   {
-   "id": "2sa.3.sub12.7",
+   "id": "2sa.3.sub12.18",
+   "age": "sub12",
+   "t": "one",
+   "ref": "3:3",
+   "q": "Cum se numea fiul lui David născut din Maaca, fata lui Talmai, la Hebron?",
+   "opts": [
+    "Absalom",
+    "Amnon",
+    "Itream"
+   ],
+   "a": 0
+  },
+  {
+   "id": "2sa.3.sub12.19",
+   "age": "sub12",
+   "t": "one",
+   "ref": "3:27",
+   "q": "Cine l-a omorât pe Abner, la poarta Hebronului?",
+   "opts": [
+    "David",
+    "Ioab",
+    "Iș-Boșet"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.3.sub12.24",
    "age": "sub12",
    "t": "match",
-   "ref": "3:2-3",
-   "q": "Fiii lui David născuți la Hebron: asociază fiecare fiu cu mama lui.",
+   "ref": "3:2-39",
+   "q": "Asociază fiecare nume sau loc cu ce se spune despre el în 2 Samuel 3.",
    "pairs": [
     [
      "Amnon",
-     "Ahinoam"
+     "întâiul fiu al lui David, născut la Hebron"
     ],
     [
-     "Chileab",
-     "Abigail"
+     "Mical",
+     "fata lui Saul, adusă înapoi lui David"
     ],
     [
-     "Absalom",
-     "Maaca"
-    ]
-   ]
-  },
-  {
-   "id": "2sa.3.sub12.8",
-   "age": "sub12",
-   "t": "match",
-   "ref": "3:13, 27, 32",
-   "q": "Abner, David și Ioab (2 Samuel 3): asociază fiecare cu ce a făcut.",
-   "pairs": [
-    [
-     "David",
-     "a cerut să i se aducă pe Mical"
+     "Abner",
+     "căpetenia oștirii lui Saul, omorât la Hebron"
     ],
     [
      "Ioab",
-     "l-a omorât pe Abner la poarta Hebronului"
+     "cel care l-a omorât pe Abner"
     ],
     [
-     "tot poporul",
-     "a plâns la mormântul lui Abner"
-    ]
-   ]
-  },
-  {
-   "id": "2sa.3.sub12.9",
-   "age": "sub12",
-   "t": "match",
-   "ref": "3:7, 13, 15",
-   "q": "În 2 Samuel 3: asociază fiecare femeie cu ce se spune despre ea.",
-   "pairs": [
-    [
-     "Mical",
-     "fata lui Saul, nevasta lui David"
-    ],
-    [
-     "Rițpa",
-     "țiitoarea lui Saul"
-    ],
-    [
-     "Maaca",
-     "mama lui Absalom"
+     "Hebron",
+     "cetatea unde a fost îngropat Abner"
     ]
    ]
   },
@@ -161,6 +169,27 @@
    ],
    "q": "Lui David i s-au născut fii la ___.",
    "ctx": "În anii în care David domnea peste Iuda:"
+  },
+  {
+   "id": "2sa.3.sub12.20",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "3:31",
+   "q": "Rupeți-vă hainele, încingeți-vă cu ___ și bociți-vă înaintea lui Abner!",
+   "ctx": "David, după moartea lui Abner:",
+   "a": [
+    "saci"
+   ]
+  },
+  {
+   "id": "2sa.3.sub12.21",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "3:35",
+   "q": "Tot poporul s-a apropiat de David ca să-l facă să ___ ceva cât era încă ziuă",
+   "a": [
+    "mănânce"
+   ]
   },
   {
    "id": "2sa.3.sub12.13",
@@ -212,6 +241,38 @@
    ]
   },
   {
+   "id": "2sa.3.sub12.22",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "3:13-14",
+   "q": "Pe cine a cerut David să-i fie adusă înapoi, înainte de legământul cu Abner?",
+   "opts": [
+    "pe Rițpa",
+    "pe fata lui Saul",
+    "pe Mical"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "2sa.3.sub12.23",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "3:36-37",
+   "q": "Ce a înțeles tot poporul după moartea lui Abner?",
+   "opts": [
+    "că David a poruncit uciderea lui Abner",
+    "că lucrul făcut de David era bine",
+    "că Abner nu fusese ucis din porunca împăratului"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
    "id": "2sa.3.12-13.1",
    "age": "12-13",
    "t": "tf",
@@ -235,6 +296,23 @@
    "ref": "3:37",
    "q": "Tot poporul a înțeles că Abner nu fusese ucis din porunca împăratului David.",
    "a": true
+  },
+  {
+   "id": "2sa.3.12-13.16",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "3:9-10",
+   "q": "Abner a spus că Domnul jurase că scaunul de domnie al lui David va fi ridicat peste Israel și peste Iuda.",
+   "a": true
+  },
+  {
+   "id": "2sa.3.12-13.17",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "3:35",
+   "q": "David a mâncat pâine în ziua îngropării lui Abner, ca să-și ia puteri.",
+   "a": false,
+   "explain": "David a jurat că nu va gusta pâine înainte de apusul soarelui."
   },
   {
    "id": "2sa.3.12-13.4",
@@ -276,77 +354,57 @@
    "a": 0
   },
   {
-   "id": "2sa.3.12-13.7",
+   "id": "2sa.3.12-13.18",
    "age": "12-13",
-   "t": "match",
-   "ref": "3:2-5",
-   "q": "Fiii lui David născuți la Hebron: asociază fiecare cu locul lui între frați.",
-   "pairs": [
-    [
-     "Amnon",
-     "întâiul născut"
-    ],
-    [
-     "Chileab",
-     "al doilea"
-    ],
-    [
-     "Absalom",
-     "al treilea"
-    ],
-    [
-     "Adonia",
-     "al patrulea"
-    ]
-   ]
+   "t": "one",
+   "ref": "3:11",
+   "q": "De ce n-a mai îndrăznit Iș-Boșet să-i răspundă lui Abner?",
+   "opts": [
+    "pentru că nu mai avea oști",
+    "pentru că se temea de el",
+    "pentru că Abner plecase"
+   ],
+   "a": 1
   },
   {
-   "id": "2sa.3.12-13.8",
+   "id": "2sa.3.12-13.19",
+   "age": "12-13",
+   "t": "one",
+   "ref": "3:7",
+   "q": "Cum se numea țiitoarea lui Saul, de care vorbește Iș-Boșet când îl mustră pe Abner?",
+   "opts": [
+    "Abigail",
+    "Rițpa",
+    "Mical"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.3.12-13.24",
    "age": "12-13",
    "t": "match",
-   "ref": "3:7-11",
-   "q": "Cearta dintre Iș-Boșet și Abner (2 Samuel 3): asociază.",
+   "ref": "3:7-38",
+   "q": "Asociază fiecare nume sau loc cu ce se spune despre el în 2 Samuel 3.",
    "pairs": [
-    [
-     "Iș-Boșet",
-     "l-a întrebat pe Abner de ce a intrat la țiitoarea tatălui său"
-    ],
-    [
-     "Abner",
-     "s-a mâniat foarte rău"
-    ],
     [
      "Rițpa",
      "țiitoarea lui Saul, fata lui Aiia"
     ],
     [
-     "după ceartă",
-     "Iș-Boșet nu mai îndrăznea să-i răspundă lui Abner"
-    ]
-   ]
-  },
-  {
-   "id": "2sa.3.12-13.9",
-   "age": "12-13",
-   "t": "match",
-   "ref": "3:14-16",
-   "q": "Întoarcerea lui Mical la David: asociază.",
-   "pairs": [
-    [
-     "David",
-     "a cerut-o înapoi pe nevasta lui"
-    ],
-    [
-     "Iș-Boșet",
-     "a trimis s-o ia de la bărbatul ei"
-    ],
-    [
      "Paltiel",
-     "a mers după ea plângând"
+     "bărbatul lui Mical, fiul lui Laiș"
     ],
     [
-     "Abner",
-     "i-a spus lui Paltiel să se întoarcă"
+     "Bahurim",
+     "locul până unde Paltiel a mers plângând după Mical"
+    ],
+    [
+     "Sira",
+     "fântâna fără apă de unde a fost adus Abner înapoi"
+    ],
+    [
+     "Hebron",
+     "locul unde a fost îngropat Abner"
     ]
    ]
   },
@@ -382,6 +440,28 @@
    ],
    "q": "„Nu știți că o căpetenie, un om mare, a căzut astăzi în ___?",
    "ctx": "Împăratul David, către slujitorii lui, după moartea lui Abner:"
+  },
+  {
+   "id": "2sa.3.12-13.20",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "3:27",
+   "q": "l-a lovit acolo în ___ și l-a omorât, ca să răzbune moartea fratelui său Asael.",
+   "ctx": "Ioab, la Hebron:",
+   "a": [
+    "pântece"
+   ]
+  },
+  {
+   "id": "2sa.3.12-13.21",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "3:34",
+   "q": "Ai căzut cum cade cineva înaintea celor ___!",
+   "ctx": "Din cântarea de jale a lui David pentru Abner:",
+   "a": [
+    "răi"
+   ]
   },
   {
    "id": "2sa.3.12-13.13",
@@ -431,6 +511,38 @@
    "explain": "Niciun răspuns corect: se întorceau de la urmărirea unei cete, cu o mare pradă (3:22)."
   },
   {
+   "id": "2sa.3.12-13.22",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "3:2-5",
+   "q": "Care dintre aceștia sunt fii ai lui David, născuți la Hebron?",
+   "opts": [
+    "Amnon",
+    "Chileab",
+    "Solomon"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "2sa.3.12-13.23",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "3:24-25",
+   "q": "Ce a spus Ioab lui David despre Abner?",
+   "opts": [
+    "că a venit să-l înșele",
+    "că ar trebui trimis la Saul",
+    "„Pentru ce i-ai dat drumul?”"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
    "id": "2sa.3.14-15.1",
    "age": "14-15",
    "t": "tf",
@@ -455,6 +567,23 @@
    "q": "David știa că Ioab trimisese soli după Abner.",
    "a": false,
    "explain": "„David nu știa nimic\" (3:26)."
+  },
+  {
+   "id": "2sa.3.14-15.16",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "3:1",
+   "q": "Războiul dintre casa lui Saul și casa lui David a ținut puțin.",
+   "a": false,
+   "explain": "A ținut mult; David era tot mai tare."
+  },
+  {
+   "id": "2sa.3.14-15.17",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "3:38",
+   "q": "David a spus slujitorilor lui că o căpetenie, un om mare, a căzut în Israel.",
+   "a": true
   },
   {
    "id": "2sa.3.14-15.4",
@@ -496,77 +625,57 @@
    "a": 0
   },
   {
-   "id": "2sa.3.14-15.7",
+   "id": "2sa.3.14-15.18",
+   "age": "14-15",
+   "t": "one",
+   "ref": "3:20",
+   "q": "Cu câți oameni a venit Abner la David, în Hebron?",
+   "opts": [
+    "cu douăzeci de oameni",
+    "cu o sută de oameni",
+    "cu doi oameni"
+   ],
+   "a": 0
+  },
+  {
+   "id": "2sa.3.14-15.19",
+   "age": "14-15",
+   "t": "one",
+   "ref": "3:18",
+   "q": "Despre ce spusese Domnul că va izbăvi pe poporul Israel prin David, după cuvintele lui Abner?",
+   "opts": [
+    "din mâna Babilonului",
+    "din mâna filistenilor și a tuturor vrăjmașilor",
+    "din robia Egiptului"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.3.14-15.24",
    "age": "14-15",
    "t": "match",
-   "ref": "3:3-5",
-   "q": "Fiii lui David născuți la Hebron: asociază fiecare fiu cu mama lui.",
+   "ref": "3:2-30",
+   "q": "Asociază fiecare nume cu ce se spune despre el în 2 Samuel 3.",
    "pairs": [
     [
+     "Chileab",
+     "al doilea fiu al lui David, din Abigail"
+    ],
+    [
      "Absalom",
-     "Maaca"
-    ],
-    [
-     "Adonia",
-     "Haghita"
-    ],
-    [
-     "Șefatia",
-     "Abitala"
+     "fiul Maachei, fata lui Talmai"
     ],
     [
      "Itream",
-     "Egla"
-    ]
-   ]
-  },
-  {
-   "id": "2sa.3.14-15.8",
-   "age": "14-15",
-   "t": "match",
-   "ref": "3:24-27",
-   "q": "Moartea lui Abner (2 Samuel 3): asociază fiecare cu ce a spus sau a făcut.",
-   "pairs": [
-    [
-     "Ioab",
-     "i-a spus lui David că Abner a venit să-l înșele"
+     "al șaselea fiu, din Egla"
     ],
     [
-     "solii lui Ioab",
-     "l-au adus înapoi pe Abner"
+     "Abișai",
+     "fratele lui Ioab, care a ajutat la uciderea lui Abner"
     ],
     [
-     "David",
-     "nu știa nimic"
-    ],
-    [
-     "Abner",
-     "s-a întors la Hebron și a fost ucis"
-    ]
-   ]
-  },
-  {
-   "id": "2sa.3.14-15.9",
-   "age": "14-15",
-   "t": "match",
-   "ref": "3:17-21",
-   "q": "Abner aduce pe Israel la David: asociază.",
-   "pairs": [
-    [
-     "bătrânii lui Israel",
-     "odinioară doreau să-l aibă împărat pe David"
-    ],
-    [
-     "Beniamin",
-     "Abner a vorbit și cu această seminție"
-    ],
-    [
-     "douăzeci de oameni",
-     "l-au însoțit pe Abner la Hebron"
-    ],
-    [
-     "ospățul",
-     "dat de David în cinstea lui Abner"
+     "Laiș",
+     "tatăl lui Paltiel"
     ]
    ]
   },
@@ -602,6 +711,28 @@
    ],
    "q": "Lucrul acesta a fost cunoscut și ___ la tot poporul;",
    "ctx": "Când David a postit până la apusul soarelui, după moartea lui Abner:"
+  },
+  {
+   "id": "2sa.3.14-15.20",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "3:14",
+   "q": "Dă-mi pe nevastă-mea Mical, cu care m-am logodit pentru o sută de ___ de la filisteni.",
+   "ctx": "David, către Iș-Boșet:",
+   "a": [
+    "prepuțuri"
+   ]
+  },
+  {
+   "id": "2sa.3.14-15.21",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "3:39",
+   "q": "Eu sunt încă slab, măcar că am primit ungerea împărătească, și oamenii aceștia, fiii Țeruiei, sunt prea puternici pentru ___.",
+   "ctx": "David, despre fiii Țeruiei:",
+   "a": [
+    "mine"
+   ]
   },
   {
    "id": "2sa.3.14-15.13",
@@ -652,6 +783,38 @@
    ]
   },
   {
+   "id": "2sa.3.14-15.22",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "3:16-17",
+   "q": "Ce s-a întâmplat după ce Mical a fost luată de la Paltiel?",
+   "opts": [
+    "Paltiel a plecat cu ea la David",
+    "Paltiel a mers după ea plângând până la Bahurim",
+    "Abner i-a spus lui Paltiel să se întoarcă"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "2sa.3.14-15.23",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "3:31-32",
+   "q": "Ce a făcut David la moartea lui Abner?",
+   "opts": [
+    "a poruncit ca Ioab să fie izgonit",
+    "a plâns la mormântul lui Abner",
+    "a mers în urma sicriului"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
    "id": "2sa.3.16-17.1",
    "age": "16-17",
    "t": "tf",
@@ -674,6 +837,22 @@
    "t": "tf",
    "ref": "3:33-34",
    "q": "La mormântul lui Abner, David a făcut o cântare de jale în care spune că Abner nu avea mâinile legate.",
+   "a": true
+  },
+  {
+   "id": "2sa.3.16-17.16",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "3:5",
+   "q": "Itream, al șaselea fiu al lui David născut la Hebron, a fost fiul Eglei, nevasta lui David.",
+   "a": true
+  },
+  {
+   "id": "2sa.3.16-17.17",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "3:30",
+   "q": "Ioab și Abișai l-au omorât pe Abner pentru că el omorâse pe fratele lor Asael la Gabaon.",
    "a": true
   },
   {
@@ -716,77 +895,57 @@
    "a": 2
   },
   {
-   "id": "2sa.3.16-17.7",
+   "id": "2sa.3.16-17.18",
    "age": "16-17",
-   "t": "match",
-   "ref": "3:2-5",
-   "q": "Fiii lui David născuți la Hebron: asociază fiecare cu locul lui între frați.",
-   "pairs": [
-    [
-     "Chileab",
-     "al doilea"
-    ],
-    [
-     "Adonia",
-     "al patrulea"
-    ],
-    [
-     "Șefatia",
-     "al cincilea"
-    ],
-    [
-     "Itream",
-     "al șaselea"
-    ]
-   ]
+   "t": "one",
+   "ref": "3:3",
+   "q": "Din ce nevastă s-a născut al doilea fiu al lui David la Hebron, Chileab?",
+   "opts": [
+    "din Ahinoam din Izreel",
+    "din Egla",
+    "din Abigail din Carmel"
+   ],
+   "a": 2
   },
   {
-   "id": "2sa.3.16-17.8",
+   "id": "2sa.3.16-17.19",
    "age": "16-17",
-   "t": "match",
-   "ref": "3:28-29, 39",
-   "q": "Cuvintele lui David după moartea lui Abner: asociază.",
-   "pairs": [
-    [
-     "„Nevinovat sunt eu și împărăția mea\"",
-     "de sângele lui Abner"
-    ],
-    [
-     "„Sângele acesta să cadă\"",
-     "asupra lui Ioab și a casei tatălui său"
-    ],
-    [
-     "„Eu sunt încă slab\"",
-     "măcar că am primit ungerea împărătească"
-    ],
-    [
-     "„fiii Țeruiei\"",
-     "sunt prea puternici pentru mine"
-    ]
-   ]
+   "t": "one",
+   "ref": "3:19",
+   "q": "Cui i-a vorbit Abner, în afară de bătrânii lui Israel, înainte să se ducă la David?",
+   "opts": [
+    "lui Efraim",
+    "lui Manase",
+    "lui Beniamin"
+   ],
+   "a": 2
   },
   {
-   "id": "2sa.3.16-17.9",
+   "id": "2sa.3.16-17.24",
    "age": "16-17",
    "t": "match",
-   "ref": "3:16, 26-27, 32",
-   "q": "În 2 Samuel 3: asociază fiecare loc cu ce s-a întâmplat acolo.",
+   "ref": "3:2-34",
+   "q": "Asociază fiecare nume cu ce se spune despre el în 2 Samuel 3.",
    "pairs": [
     [
-     "Bahurim",
-     "până aici a mers Paltiel plângând"
+     "Talmai",
+     "împăratul Gheșurului, tatăl Maachei"
     ],
     [
-     "fântâna Sira",
-     "de aici a fost adus Abner înapoi"
+     "Haghita",
+     "mama lui Adonia"
     ],
     [
-     "poarta Hebronului",
-     "aici l-a omorât Ioab pe Abner"
+     "Abitala",
+     "mama lui Șefatia"
     ],
     [
-     "Hebron",
-     "aici a fost îngropat Abner"
+     "Aiia",
+     "tatăl Rițpei"
+    ],
+    [
+     "Ner",
+     "tatăl lui Abner"
     ]
    ]
   },
@@ -822,6 +981,28 @@
    ],
    "q": "„Să moară Abner cum moare un ___?",
    "ctx": "Cântarea de jale a lui David pentru Abner:"
+  },
+  {
+   "id": "2sa.3.16-17.20",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "3:12",
+   "q": "A cui este ___? Fă legământ cu mine, și mâna mea te va ajuta să întorci la tine pe tot Israelul.",
+   "ctx": "Abner, către David:",
+   "a": [
+    "țara"
+   ]
+  },
+  {
+   "id": "2sa.3.16-17.21",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "3:28",
+   "q": "Nevinovat sunt eu și împărăția mea pe vecie înaintea ___ de sângele lui Abner, fiul lui Ner.",
+   "ctx": "David, după moartea lui Abner:",
+   "a": [
+    "Domnului"
+   ]
   },
   {
    "id": "2sa.3.16-17.13",
@@ -871,6 +1052,38 @@
    "explain": "Niciun răspuns corect: fiul lui David din Abigail era Chileab (3:3)."
   },
   {
+   "id": "2sa.3.16-17.22",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "3:6-8",
+   "q": "Ce se spune despre Abner în timpul războiului dintre casa lui Saul și casa lui David?",
+   "opts": [
+    "s-a mâniat foarte rău pe Iș-Boșet",
+    "a ținut cu tărie la casa lui Saul",
+    "a trecut de partea lui David din prima zi"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "2sa.3.16-17.23",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "3:33-34",
+   "q": "Ce spune David în cântarea de jale pentru Abner?",
+   "opts": [
+    "„N-aveai nici mâinile legate”",
+    "„Nici picioarele puse în lanțuri”",
+    "„Ai căzut în luptă cu filistenii”"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
    "id": "2sa.3.18+.1",
    "age": "18+",
    "t": "tf",
@@ -894,6 +1107,23 @@
    "ref": "3:29",
    "q": "David a dorit ca în casa lui Ioab să fie totdeauna cineva care să cadă ucis de sabie.",
    "a": true
+  },
+  {
+   "id": "2sa.3.18+.16",
+   "age": "18+",
+   "t": "tf",
+   "ref": "3:17",
+   "q": "Abner a spus bătrânilor lui Israel că odinioară ei doreau să aibă împărat pe David.",
+   "a": true
+  },
+  {
+   "id": "2sa.3.18+.17",
+   "age": "18+",
+   "t": "tf",
+   "ref": "3:22",
+   "q": "Când Ioab s-a întors la Hebron cu oamenii lui, Abner mai era încă la David.",
+   "a": false,
+   "explain": "Abner plecase în pace, după ce David îi dăduse drumul."
   },
   {
    "id": "2sa.3.18+.4",
@@ -935,77 +1165,57 @@
    "a": 1
   },
   {
-   "id": "2sa.3.18+.7",
+   "id": "2sa.3.18+.18",
+   "age": "18+",
+   "t": "one",
+   "ref": "3:10",
+   "q": "Între ce hotare spunea Abner că va fi ridicat scaunul de domnie al lui David?",
+   "opts": [
+    "de la Hebron până la Ierusalim",
+    "de la Dan până la Beer-Șeba",
+    "de la Iordan până la mare"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.3.18+.19",
+   "age": "18+",
+   "t": "one",
+   "ref": "3:16",
+   "q": "Cum a mers Paltiel după Mical, până la Bahurim?",
+   "opts": [
+    "plângând",
+    "cântând",
+    "fugind"
+   ],
+   "a": 0
+  },
+  {
+   "id": "2sa.3.18+.24",
    "age": "18+",
    "t": "match",
-   "ref": "3:3-5",
-   "q": "Mamele fiilor lui David născuți la Hebron: asociază fiecare mamă cu ce se spune despre ea.",
+   "ref": "3:2-31",
+   "q": "Asociază fiecare nume sau loc cu ce se spune despre el în 2 Samuel 3.",
    "pairs": [
-    [
-     "Ahinoam",
-     "din Izreel"
-    ],
-    [
-     "Abigail",
-     "din Carmel, nevasta lui Nabal"
-    ],
-    [
-     "Maaca",
-     "fata lui Talmai, împăratul Gheșurului"
-    ],
     [
      "Egla",
-     "numită „nevasta lui David\""
-    ]
-   ]
-  },
-  {
-   "id": "2sa.3.18+.8",
-   "age": "18+",
-   "t": "match",
-   "ref": "3:7-15",
-   "q": "Nume din 2 Samuel 3: asociază fiecare cu tatăl lui.",
-   "pairs": [
-    [
-     "Abner",
-     "fiul lui Ner"
+     "nevasta lui David, mama lui Itream"
     ],
     [
-     "Rițpa",
-     "fata lui Aiia"
+     "Aiia",
+     "tatăl Rițpei"
     ],
     [
-     "Paltiel",
-     "fiul lui Laiș"
+     "Laiș",
+     "tatăl lui Paltiel"
     ],
     [
-     "Maaca",
-     "fata lui Talmai"
-    ]
-   ]
-  },
-  {
-   "id": "2sa.3.18+.9",
-   "age": "18+",
-   "t": "match",
-   "ref": "3:33-34",
-   "q": "Din cântarea de jale a lui David pentru Abner: asociază începutul cu sfârșitul.",
-   "pairs": [
-    [
-     "Să moară Abner",
-     "cum moare un mișel?"
+     "Talmai",
+     "împăratul Gheșurului"
     ],
     [
-     "N-aveai nici mâinile",
-     "legate"
-    ],
-    [
-     "Nici picioarele",
-     "puse în lanțuri"
-    ],
-    [
-     "Ai căzut cum cade cineva",
-     "înaintea celor răi!"
+     "Beer-Șeba",
+     "hotarul de sud al împărăției, după cuvintele lui Abner"
     ]
    ]
   },
@@ -1041,6 +1251,26 @@
    ],
    "q": "a trimis pe urmele lui Abner niște soli care l-au adus înapoi de la fântâna fără apă ___:",
    "ctx": "Ioab, după ce a plecat de la David:"
+  },
+  {
+   "id": "2sa.3.18+.20",
+   "age": "18+",
+   "t": "fill",
+   "ref": "3:3",
+   "q": "al doilea, Chileab, din Abigail din Carmel, nevasta lui ___",
+   "a": [
+    "Nabal"
+   ]
+  },
+  {
+   "id": "2sa.3.18+.21",
+   "age": "18+",
+   "t": "fill",
+   "ref": "3:37",
+   "q": "Tot poporul și tot Israelul au înțeles în ziua aceea că Abner, fiul lui ___, nu fusese ucis din porunca împăratului.",
+   "a": [
+    "Ner"
+   ]
   },
   {
    "id": "2sa.3.18+.13",
@@ -1084,6 +1314,38 @@
     "a plâns după Abner",
     "l-a alungat pe Ioab din Hebron",
     "s-a apropiat de David ca să-l facă să mănânce"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "2sa.3.18+.22",
+   "age": "18+",
+   "t": "multi",
+   "ref": "3:2-5",
+   "q": "Care dintre aceștia sunt fii ai lui David născuți la Hebron?",
+   "opts": [
+    "Natan",
+    "Șefatia",
+    "Adonia"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "2sa.3.18+.23",
+   "age": "18+",
+   "t": "multi",
+   "ref": "3:36-39",
+   "q": "Ce se spune după moartea lui Abner?",
+   "opts": [
+    "toți au găsit că era bine ce făcuse împăratul",
+    "David i-a pedepsit pe fiii Țeruiei",
+    "David a spus că este încă slab"
    ],
    "a": [
     0,
