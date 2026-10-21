@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'preact/hooks';
-import { doc, getDoc, onSnapshot } from 'firebase/firestore';
+import { doc, onSnapshot } from 'firebase/firestore';
 import { db } from '../lib/firebase';
-import { addChild, choosePlayer, player, players, rememberedKids, removeChild, setHidden, updateChild, type Player } from '../lib/players';
+import { addChild, choosePlayer, player, players, rememberedKids, removeChild, updateChild, type Player } from '../lib/players';
 import { localGet, localSet } from '../lib/store';
-import { deleteProgress, EMPTY, type Progress } from '../lib/progress';
-import { typeInfo, TYPES } from '../lib/questions';
+import { deleteProgress, EMPTY, resetProgress, type Progress } from '../lib/progress';
 import { errorText, profile, profileError, rememberedAccount, setParent, signOut, user } from '../lib/session';
 import Avatar from './Avatar';
 import Loader from './Loader';
@@ -89,12 +88,13 @@ function PlayerBlock({ p, books, head }: { p: Player; books: BookInfo[]; head: b
   const active = p.key === current.key;
   const [editing, setEditing] = useState(false);
   const [confirming, setConfirming] = useState(false);
+  const [resetting, setResetting] = useState(false);
   const [busy, setBusy] = useState(false);
   const isSelf = !p.child;
 
-  async function toggleHidden() {
+  async function doReset() {
     setBusy(true);
-    try { await setHidden(p, !p.hidden); } finally { setBusy(false); }
+    try { await resetProgress(user.value!.uid, p.key); setResetting(false); } finally { setBusy(false); }
   }
 
   async function remove() {
@@ -119,10 +119,9 @@ function PlayerBlock({ p, books, head }: { p: Player; books: BookInfo[]; head: b
       )}
       {books.map((b) => <BookStats key={b.slug} p={p} book={b} />)}
       <footer class="pl-foot">
-        <label class="check small">
-          <input type="checkbox" checked={!p.hidden} disabled={busy || !user.value} onChange={toggleHidden} />
-          <span>Apare în clasament</span>
-        </label>
+        <span class="pl-actions">
+          <button type="button" class="btn-reset link small bad" onClick={() => setResetting(true)}>Resetează punctele</button>
+        </span>
         {p.child && (
           <span class="pl-actions">
             <button type="button" class="btn-reset link small" onClick={() => setEditing(true)}>Schimbă</button>
@@ -130,6 +129,15 @@ function PlayerBlock({ p, books, head }: { p: Player; books: BookInfo[]; head: b
           </span>
         )}
       </footer>
+      {resetting && (
+        <div class="notice notice-bad stack" style="--gap: 10px">
+          <p>Ștergi toate punctele și răspunsurile lui {p.name.split(' ')[0]} din ambele cărți? Nu se mai poate recupera.</p>
+          <div class="two">
+            <button type="button" class="btn btn-ghost btn-sm" onClick={() => setResetting(false)}>Renunță</button>
+            <button type="button" class="btn btn-sm danger" disabled={busy} onClick={doReset}>Da, resetează</button>
+          </div>
+        </div>
+      )}
       {confirming && (
         <div class="notice notice-bad stack" style="--gap: 10px">
           <p>Ștergi profilul lui {p.name} și tot progresul lui? Nu se mai poate recupera.</p>
@@ -144,8 +152,8 @@ function PlayerBlock({ p, books, head }: { p: Player; books: BookInfo[]; head: b
 }
 
 /** What the profile shows of one player's progress in one book. */
-interface Summary { mastered: number; wrong: number; exams: Progress['exams']; stats: Progress['stats']; v1: number }
-const EMPTY_SUMMARY: Summary = { mastered: 0, wrong: 0, exams: {}, stats: {}, v1: 0 };
+interface Summary { mastered: number; wrong: number; exams: Progress['exams']; stats: Progress['stats'] }
+const EMPTY_SUMMARY: Summary = { mastered: 0, wrong: 0, exams: {}, stats: {} };
 
 /** Live progress of one player in one book. The last visit's numbers show at once; `loaded` is false only for a first visit. */
 function useBookProgress(p: Player, book: string): { data: Summary; loaded: boolean } {
@@ -157,11 +165,10 @@ function useBookProgress(p: Player, book: string): { data: Summary; loaded: bool
   const uid = user.value?.uid;
   useEffect(() => {
     if (!uid) return;
-    let v1 = state.data.v1;
     let last: Progress | null = null;
     const publish = () => {
       if (!last) return;
-      const data: Summary = { mastered: last.mastered.length, wrong: last.wrong.length, exams: last.exams, stats: last.stats, v1 };
+      const data: Summary = { mastered: last.mastered.length, wrong: last.wrong.length, exams: last.exams, stats: last.stats };
       setState({ data, loaded: true });
       localSet(key, data);
     };
@@ -169,10 +176,6 @@ function useBookProgress(p: Player, book: string): { data: Summary; loaded: bool
       last = { ...EMPTY, ...(snap.data() as Partial<Progress>) };
       publish();
     });
-    // questions mastered in v1 are kept as a record: those questions were rewritten
-    if (book === '1-samuel') {
-      getDoc(doc(db, 'users', uid, 'archive', `${p.key}~1-samuel-v1`)).then((s) => { v1 = (s.get('count') as number) ?? 0; publish(); }).catch(() => {});
-    }
     return stop;
   }, [uid, p.key, book]);
   return state;
@@ -180,28 +183,22 @@ function useBookProgress(p: Player, book: string): { data: Summary; loaded: bool
 
 function BookStats({ p, book }: { p: Player; book: BookInfo }) {
   const { data: d, loaded } = useBookProgress(p, book.slug);
-  const v1 = d.v1;
-  const typed = TYPES.map((x) => ({ x, s: d.stats[x.t] })).filter((e) => e.s && e.s.n >= 3);
-  // a weak spot only means something next to other kinds of questions
-  const weakest = typed.length >= 2 ? typed.sort((a, b) => a.s!.r / a.s!.n - b.s!.r / b.s!.n)[0] : undefined;
   // "c5" entries are chapter scores, the others are exams
   const entries = Object.entries(d.exams);
   const exams = entries.filter(([id]) => !/^c\d+$/.test(id)).map(([, e]) => e);
   const chapters = entries.filter(([id]) => /^c\d+$/.test(id)).length;
   const bestExam = exams.length ? Math.max(...exams.map((e) => e.best)) : null;
-  const started = d.mastered || d.wrong || entries.length || v1;
+  const started = d.mastered || d.wrong || entries.length;
 
   return (
     <section class="bk">
       <h3>{book.name}</h3>
       {!loaded ? <Loader small /> : !started ? <p class="small muted">Nu a început încă.</p> : (
         <dl class="kv">
-          <div><dt>Întrebări știute</dt><dd>{d.mastered}</dd></div>
-          {chapters > 0 && <div><dt>Capitole încercate</dt><dd>{chapters} / {book.chapters}</dd></div>}
-          <div><dt>De reluat</dt><dd>{d.wrong}</dd></div>
-          {bestExam !== null && <div><dt>Cel mai bun examen</dt><dd>{bestExam} / 100</dd></div>}
-          {weakest && <div><dt>De lucrat</dt><dd>{typeInfo(weakest.x.t).short}</dd></div>}
-          {v1 > 0 && <div><dt>Versiunea veche</dt><dd>{v1} știute</dd></div>}
+          <div><dt>Răspunsuri corecte</dt><dd>{d.mastered}</dd></div>
+          <div><dt>Greșite, de reluat</dt><dd>{d.wrong}</dd></div>
+          <div><dt>Capitole terminate</dt><dd>{chapters} / {book.chapters}</dd></div>
+          <div><dt>Cel mai bun examen</dt><dd>{bestExam !== null ? `${bestExam} / 100` : '–'}</dd></div>
         </dl>
       )}
     </section>

@@ -6,7 +6,6 @@ import AdminPage from '../islands/AdminPage';
 <Base title="Administrare" crumbs={[{ href: '/cont', label: 'Cont' }]}>
   <section class="wrap narrow page">
     <h1>Administrare</h1>
-    <a class="link" href="/semnalari">Semnalări de greșeli</a>
     <AdminPage client:only="preact">
       <Loader slot="fallback" />
     </AdminPage>

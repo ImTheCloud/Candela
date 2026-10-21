@@ -57,7 +57,6 @@ export default function BookPanel({ books, initial }: { books: BookData[]; initi
 
       <section class="wrap hb-block" aria-labelledby="lb-title">
         <div class="card lb">
-          <h2 id="lb-title">Clasament</h2>
           <Board key={slug} book={slug} />
         </div>
       </section>
