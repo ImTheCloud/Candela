@@ -28,6 +28,23 @@
    "explain": "N-a vrut s-o bea și a vărsat-o înaintea Domnului (23:16)."
   },
   {
+   "id": "2sa.23.sub12.16",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "23:8",
+   "q": "Ioșeb-Basșebet și-a învârtit sulița peste opt sute de oameni, pe care i-a omorât dintr-odată.",
+   "a": true
+  },
+  {
+   "id": "2sa.23.sub12.17",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "23:13",
+   "q": "Cei trei viteji au venit la David, în peștera Adulam, pe vreme de iarnă.",
+   "a": false,
+   "explain": "Au venit pe vremea seceratului."
+  },
+  {
    "id": "2sa.23.sub12.4",
    "age": "sub12",
    "t": "one",
@@ -67,65 +84,57 @@
    "a": 0
   },
   {
-   "id": "2sa.23.sub12.7",
+   "id": "2sa.23.sub12.18",
+   "age": "sub12",
+   "t": "one",
+   "ref": "23:15",
+   "q": "Din ce fântână a dorit David să bea apă?",
+   "opts": [
+    "din fântâna de la Hebron",
+    "din fântâna de la poarta Betleemului",
+    "din fântâna Roguel"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.23.sub12.19",
+   "age": "sub12",
+   "t": "one",
+   "ref": "23:21",
+   "q": "Cine a omorât pe egipteanul groaznic la înfățișare?",
+   "opts": [
+    "Abișai",
+    "Benaia",
+    "Eleazar"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.23.sub12.24",
    "age": "sub12",
    "t": "match",
-   "ref": "23:15-20",
-   "q": "Vitejii lui David (2 Samuel 23): asociază.",
+   "ref": "23:8-20",
+   "q": "Asociază fiecare viteaz cu ce se spune despre el în 2 Samuel 23.",
    "pairs": [
     [
-     "cei trei viteji",
-     "au adus apă de la Betleem"
+     "Ioșeb-Basșebet",
+     "și-a învârtit sulița peste opt sute de oameni"
+    ],
+    [
+     "Eleazar",
+     "cel căruia i-a rămas mâna lipită de sabie"
+    ],
+    [
+     "Șama",
+     "cel care a apărat un ogor de linte"
     ],
     [
      "Benaia",
-     "a ucis un leu"
+     "cel care a ucis un leu într-o groapă"
     ],
     [
      "Abișai",
      "căpetenia celor trei"
-    ]
-   ]
-  },
-  {
-   "id": "2sa.23.sub12.8",
-   "age": "sub12",
-   "t": "match",
-   "ref": "23:13-16",
-   "q": "Apa de la Betleem: asociază.",
-   "pairs": [
-    [
-     "David",
-     "era în peștera Adulam"
-    ],
-    [
-     "filistenii",
-     "aveau o strajă la Betleem"
-    ],
-    [
-     "apa",
-     "a fost vărsată înaintea Domnului"
-    ]
-   ]
-  },
-  {
-   "id": "2sa.23.sub12.9",
-   "age": "sub12",
-   "t": "match",
-   "ref": "23:8-12",
-   "q": "Vitejii cei dintâi: asociază.",
-   "pairs": [
-    [
-     "Ioșeb-Basșebet",
-     "a omorât opt sute de oameni dintr-odată"
-    ],
-    [
-     "Eleazar",
-     "i-a rămas mâna lipită de sabie"
-    ],
-    [
-     "Șama",
-     "a apărat ogorul de linte"
     ]
    ]
   },
@@ -161,6 +170,26 @@
    ],
    "q": "S-a coborât în mijlocul unei gropi pentru apă, unde a ucis un ___ într-o zi când căzuse zăpadă.",
    "ctx": "Despre Benaia, fiul lui Iehoiada:"
+  },
+  {
+   "id": "2sa.23.sub12.20",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "23:16",
+   "q": "dar el n-a vrut s-o bea și a vărsat-o înaintea ___.",
+   "a": [
+    "Domnului"
+   ]
+  },
+  {
+   "id": "2sa.23.sub12.21",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "23:8",
+   "q": "El și-a învârtit sulița peste opt ___ de oameni, pe care i-a omorât dintr-odată.",
+   "a": [
+    "sute"
+   ]
   },
   {
    "id": "2sa.23.sub12.13",
@@ -209,6 +238,38 @@
    "explain": "Niciun răspuns corect: s-a coborât împotriva lui cu un toiag (23:21)."
   },
   {
+   "id": "2sa.23.sub12.22",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "23:9-10",
+   "q": "Ce a făcut Eleazar, fiul lui Dodo?",
+   "opts": [
+    "a lovit pe filisteni",
+    "a fugit de filisteni",
+    "i-a rămas mâna lipită de sabie"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "2sa.23.sub12.23",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "23:11-12",
+   "q": "Ce a făcut Șama, fiul lui Aghe?",
+   "opts": [
+    "a apărat ogorul și a bătut pe filisteni",
+    "s-a așezat în mijlocul ogorului",
+    "a fugit în pădure"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
    "id": "2sa.23.12-13.1",
    "age": "12-13",
    "t": "tf",
@@ -232,6 +293,23 @@
    "ref": "23:39",
    "q": "Urie, Hetitul, este pomenit printre vitejii lui David.",
    "a": true
+  },
+  {
+   "id": "2sa.23.12-13.16",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "23:2",
+   "q": "David spune: „Duhul Domnului vorbește prin mine.”",
+   "a": true
+  },
+  {
+   "id": "2sa.23.12-13.17",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "23:18",
+   "q": "Abișai și-a învârtit sulița peste treizeci de oameni.",
+   "a": false,
+   "explain": "Peste trei sute de oameni."
   },
   {
    "id": "2sa.23.12-13.4",
@@ -273,69 +351,57 @@
    "a": 2
   },
   {
-   "id": "2sa.23.12-13.7",
+   "id": "2sa.23.12-13.18",
    "age": "12-13",
-   "t": "match",
-   "ref": "23:3-4",
-   "q": "Cel ce împărățește cu dreptate (2 Samuel 23): asociază.",
-   "pairs": [
-    [
-     "lumina dimineții",
-     "când răsare soarele"
-    ],
-    [
-     "dimineața",
-     "fără nori"
-    ],
-    [
-     "razele soarelui",
-     "după ploaie"
-    ],
-    [
-     "verdeața",
-     "încolțește din pământ"
-    ]
-   ]
+   "t": "one",
+   "ref": "23:13",
+   "q": "Unde tăbărâseră filistenii, când cei trei viteji au venit la David?",
+   "opts": [
+    "la Gat",
+    "la Hebron",
+    "în valea Refaim"
+   ],
+   "a": 2
   },
   {
-   "id": "2sa.23.12-13.8",
+   "id": "2sa.23.12-13.19",
    "age": "12-13",
-   "t": "match",
-   "ref": "23:18-23",
-   "q": "Abișai și Benaia: asociază.",
-   "pairs": [
-    [
-     "Abișai",
-     "a omorât trei sute de oameni cu sulița"
-    ],
-    [
-     "Benaia",
-     "l-a omorât pe egipteanul cu suliță"
-    ],
-    [
-     "sfetnicii de aproape",
-     "între ei l-a primit David pe Benaia"
-    ]
-   ]
+   "t": "one",
+   "ref": "23:14",
+   "q": "Unde se afla David când o strajă a filistenilor era la Betleem?",
+   "opts": [
+    "în cetățuie",
+    "la Ierusalim",
+    "la Hebron"
+   ],
+   "a": 0
   },
   {
-   "id": "2sa.23.12-13.9",
+   "id": "2sa.23.12-13.24",
    "age": "12-13",
    "t": "match",
-   "ref": "23:9, 11, 20",
-   "q": "Vitejii lui David: asociază fiecare cu tatăl lui.",
+   "ref": "23:11-37",
+   "q": "Asociază fiecare loc cu ce se spune despre el în 2 Samuel 23.",
    "pairs": [
     [
-     "Eleazar",
-     "fiul lui Dodo"
+     "Adulam",
+     "peștera unde au venit cei trei viteji"
     ],
     [
-     "Șama",
-     "fiul lui Aghe"
+     "Betleem",
+     "cetatea cu fântâna de la poartă"
     ],
     [
-     "Benaia",
-     "fiul lui Iehoiada"
+     "Lehi",
+     "locul unde se strânseseră filistenii"
+    ],
+    [
+     "Cabțeel",
+     "cetatea tatălui lui Benaia"
+    ],
+    [
+     "Țoba",
+     "cetatea lui Igheal"
     ]
    ]
   },
@@ -371,6 +437,26 @@
    ],
    "q": "Domnul a dat o mare ___ în ziua aceea.",
    "ctx": "Despre lupta lui Eleazar cu filistenii:"
+  },
+  {
+   "id": "2sa.23.12-13.20",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "23:1",
+   "q": "Cuvântul lui David, fiul lui ___, cuvântul omului care a fost înălțat sus de tot",
+   "a": [
+    "Isai"
+   ]
+  },
+  {
+   "id": "2sa.23.12-13.21",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "23:16",
+   "q": "Atunci, cei trei viteji au trecut prin tabăra ___ și au scos apă din fântâna de la poarta Betleemului.",
+   "a": [
+    "filistenilor"
+   ]
   },
   {
    "id": "2sa.23.12-13.13",
@@ -419,6 +505,38 @@
    ]
   },
   {
+   "id": "2sa.23.12-13.22",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "23:3-4",
+   "q": "Cu ce este asemănat cel ce împărățește cu dreptate?",
+   "opts": [
+    "cu vântul de iarnă",
+    "cu lumina dimineții",
+    "cu razele soarelui după ploaie"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "2sa.23.12-13.23",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "23:15-17",
+   "q": "Ce s-a întâmplat cu apa din Betleem?",
+   "opts": [
+    "David a băut-o cu bucurie",
+    "David a vărsat-o înaintea Domnului",
+    "cei trei viteji au adus-o lui David"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
    "id": "2sa.23.14-15.1",
    "age": "14-15",
    "t": "tf",
@@ -442,6 +560,23 @@
    "ref": "23:24",
    "q": "Asael, fratele lui Ioab, era din numărul celor treizeci.",
    "a": true
+  },
+  {
+   "id": "2sa.23.14-15.16",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "23:23",
+   "q": "Benaia a fost primit de David între sfetnicii lui de aproape.",
+   "a": true
+  },
+  {
+   "id": "2sa.23.14-15.17",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "23:19",
+   "q": "Abișai a ajuns la înălțimea celor trei dintâi.",
+   "a": false,
+   "explain": "N-a fost la înălțimea celor trei dintâi."
   },
   {
    "id": "2sa.23.14-15.4",
@@ -483,77 +618,57 @@
    "a": 2
   },
   {
-   "id": "2sa.23.14-15.7",
+   "id": "2sa.23.14-15.18",
    "age": "14-15",
-   "t": "match",
-   "ref": "23:1",
-   "q": "Cum este numit David în 2 Samuel 23:1: asociază.",
-   "pairs": [
-    [
-     "fiul lui Isai",
-     "David"
-    ],
-    [
-     "omul",
-     "care a fost înălțat sus de tot"
-    ],
-    [
-     "unsul",
-     "Dumnezeului lui Iacov"
-    ],
-    [
-     "cântărețul plăcut",
-     "al lui Israel"
-    ]
-   ]
+   "t": "one",
+   "ref": "23:21",
+   "q": "Cu ce s-a coborât Benaia împotriva egipteanului care avea o suliță?",
+   "opts": [
+    "cu un toiag",
+    "cu un arc",
+    "cu o sabie"
+   ],
+   "a": 0
   },
   {
-   "id": "2sa.23.14-15.8",
+   "id": "2sa.23.14-15.19",
+   "age": "14-15",
+   "t": "one",
+   "ref": "23:8",
+   "q": "Cum este numit Ioșeb-Basșebet, unul din fruntașii căpeteniilor?",
+   "opts": [
+    "Tahchemonitul",
+    "Hetitul",
+    "Ghilonitul"
+   ],
+   "a": 0
+  },
+  {
+   "id": "2sa.23.14-15.24",
    "age": "14-15",
    "t": "match",
-   "ref": "23:9-12",
-   "q": "Lupte cu filistenii: asociază.",
+   "ref": "23:9-26",
+   "q": "Asociază fiecare nume cu ce se spune despre el în 2 Samuel 23.",
    "pairs": [
     [
      "Eleazar",
-     "a ținut piept cu David când Israel se dădea înapoi"
+     "fiul lui Dodo, fiul lui Ahohi"
     ],
     [
-     "poporul",
-     "s-a întors după Eleazar numai ca să ia prada"
+     "Șama",
+     "fiul lui Aghe, din Harar"
     ],
     [
-     "Lehi",
-     "acolo se strânseseră filistenii"
+     "Abișai",
+     "fratele lui Ioab"
     ],
     [
-     "ogorul de linte",
-     "apărat de Șama"
-    ]
-   ]
-  },
-  {
-   "id": "2sa.23.14-15.9",
-   "age": "14-15",
-   "t": "match",
-   "ref": "23:24-29",
-   "q": "Vitejii din cei treizeci: asociază fiecare cu locul de unde era.",
-   "pairs": [
-    [
-     "Elhanan, fiul lui Dodo",
-     "din Betleem"
+     "Benaia",
+     "fiul lui Iehoiada"
     ],
     [
-     "Ira, fiul lui Icheș",
-     "din Tecoa"
-    ],
-    [
-     "Abiezer",
-     "din Anatot"
-    ],
-    [
-     "Itai, fiul lui Ribai",
-     "din Ghibea fiilor lui Beniamin"
+     "Ira",
+     "fiul lui Icheș, din Tecoa"
     ]
    ]
   },
@@ -589,6 +704,26 @@
    ],
    "q": "Abișai, fratele lui Ioab, fiul Țeruiei, era căpetenia celor ___.",
    "ctx": "Despre vitejii lui David:"
+  },
+  {
+   "id": "2sa.23.14-15.20",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "23:20",
+   "q": "El a ucis pe cei doi fii ai lui ___ din Moab.",
+   "a": [
+    "Ariel"
+   ]
+  },
+  {
+   "id": "2sa.23.14-15.21",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "23:17",
+   "q": "Departe de mine, ___, gândul să fac lucrul acesta!",
+   "a": [
+    "Doamne"
+   ]
   },
   {
    "id": "2sa.23.14-15.13",
@@ -638,6 +773,38 @@
    "explain": "Niciun răspuns corect: se înarmează cu un fier sau cu mânerul unei sulițe și-i arde în foc pe loc (23:7)."
   },
   {
+   "id": "2sa.23.14-15.22",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "23:6-7",
+   "q": "Ce spune David despre cei răi?",
+   "opts": [
+    "sunt ca niște spini pe care-i arunci",
+    "sunt arși în foc",
+    "vor fi răsplătiți cu pace"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "2sa.23.14-15.23",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "23:20-21",
+   "q": "Ce a făcut Benaia, fiul lui Iehoiada?",
+   "opts": [
+    "a ucis pe cei doi fii ai lui Ariel",
+    "a fugit de leu",
+    "a smuls sulița din mâna egipteanului"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
    "id": "2sa.23.16-17.1",
    "age": "16-17",
    "t": "tf",
@@ -661,6 +828,23 @@
    "ref": "23:34",
    "q": "Eliam, fiul lui Ahitofel, din Ghilo, este pomenit printre vitejii lui David.",
    "a": true
+  },
+  {
+   "id": "2sa.23.16-17.16",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "23:26",
+   "q": "Ira, fiul lui Icheș, era din Tecoa.",
+   "a": true
+  },
+  {
+   "id": "2sa.23.16-17.17",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "23:39",
+   "q": "La sfârșit sunt socotiți, de toți, treizeci și șase de viteji.",
+   "a": false,
+   "explain": "De toți: treizeci și șapte."
   },
   {
    "id": "2sa.23.16-17.4",
@@ -702,77 +886,57 @@
    "a": 1
   },
   {
-   "id": "2sa.23.16-17.7",
+   "id": "2sa.23.16-17.18",
    "age": "16-17",
-   "t": "match",
-   "ref": "23:8-18",
-   "q": "Vitejii lui David și numărul celor uciși: asociază.",
-   "pairs": [
-    [
-     "Ioșeb-Basșebet",
-     "opt sute"
-    ],
-    [
-     "Abișai",
-     "trei sute"
-    ],
-    [
-     "Benaia",
-     "cei doi fii ai lui Ariel"
-    ],
-    [
-     "Eleazar",
-     "filisteni până i-a obosit mâna"
-    ]
-   ]
+   "t": "one",
+   "ref": "23:24",
+   "q": "Cine era Elhanan, pomenit printre cei treizeci?",
+   "opts": [
+    "fiul lui Dodo, din Betleem",
+    "fiul lui Ribai, din Ghibea",
+    "fiul lui Icheș, din Tecoa"
+   ],
+   "a": 0
   },
   {
-   "id": "2sa.23.16-17.8",
+   "id": "2sa.23.16-17.19",
    "age": "16-17",
-   "t": "match",
-   "ref": "23:3-7",
-   "q": "Cele din urmă cuvinte ale lui David: asociază începutul cu sfârșitul.",
-   "pairs": [
-    [
-     "Cel ce împărățește între oameni cu dreptate",
-     "este ca lumina dimineții"
-    ],
-    [
-     "Măcar că nu este așa casa mea",
-     "totuși El a făcut cu mine un legământ veșnic"
-    ],
-    [
-     "cei răi sunt toți",
-     "ca niște spini pe care-i arunci"
-    ],
-    [
-     "cine se atinge de ei",
-     "se înarmează cu un fier"
-    ]
-   ]
+   "t": "one",
+   "ref": "23:29",
+   "q": "Din ce loc era Itai, fiul lui Ribai?",
+   "opts": [
+    "din Ghibea fiilor lui Beniamin",
+    "din Betleem",
+    "din Carmel"
+   ],
+   "a": 0
   },
   {
-   "id": "2sa.23.16-17.9",
+   "id": "2sa.23.16-17.24",
    "age": "16-17",
    "t": "match",
-   "ref": "23:24-39",
-   "q": "Vitejii din cei treizeci: asociază fiecare cu ce se spune despre el.",
+   "ref": "23:24-36",
+   "q": "Asociază fiecare nume cu locul de unde era, după 2 Samuel 23.",
    "pairs": [
     [
-     "Asael",
-     "fratele lui Ioab"
+     "Elhanan",
+     "din Betleem"
     ],
     [
-     "Naharai din Beerot",
-     "ducea armele lui Ioab"
+     "Abiezer",
+     "din Anatot"
     ],
     [
-     "Eliam",
-     "fiul lui Ahitofel"
+     "Hețrai",
+     "din Carmel"
     ],
     [
-     "Urie",
-     "Hetitul"
+     "Bani",
+     "din Gad"
+    ],
+    [
+     "Naharai",
+     "din Beerot"
     ]
    ]
   },
@@ -808,6 +972,26 @@
    ],
    "q": "a smuls ___ din mâna egipteanului și l-a omorât cu ea.",
    "ctx": "Fapta lui Benaia, fiul lui Iehoiada:"
+  },
+  {
+   "id": "2sa.23.16-17.20",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "23:5",
+   "q": "Nu va face El oare să răsară din el tot ce este spre mântuirea și ___ mea?",
+   "a": [
+    "bucuria"
+   ]
+  },
+  {
+   "id": "2sa.23.16-17.21",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "23:8",
+   "q": "Ioșeb-Basșebet, Tahchemonitul, unul din fruntașii ___.",
+   "a": [
+    "căpeteniilor"
+   ]
   },
   {
    "id": "2sa.23.16-17.13",
@@ -858,6 +1042,38 @@
    "explain": "Niciun răspuns corect: amândoi erau din Harod (23:25)."
   },
   {
+   "id": "2sa.23.16-17.22",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "23:1",
+   "q": "Cum este numit David în cele din urmă cuvinte ale lui?",
+   "opts": [
+    "unsul Dumnezeului lui Iacov",
+    "arhiereu al lui Israel",
+    "fiul lui Isai"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "2sa.23.16-17.23",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "23:9-12",
+   "q": "Ce se spune despre Eleazar și Șama?",
+   "opts": [
+    "Șama a apărat ogorul și a bătut pe filisteni",
+    "Eleazar a lovit pe filisteni până i-a obosit mâna",
+    "amândoi au fugit dinaintea filistenilor"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
    "id": "2sa.23.18+.1",
    "age": "18+",
    "t": "tf",
@@ -881,6 +1097,23 @@
    "ref": "23:37",
    "q": "Naharai din Beerot ducea armele lui Ioab, fiul Țeruiei.",
    "a": true
+  },
+  {
+   "id": "2sa.23.18+.16",
+   "age": "18+",
+   "t": "tf",
+   "ref": "23:32",
+   "q": "Eliahba era din Șaalbon.",
+   "a": true
+  },
+  {
+   "id": "2sa.23.18+.17",
+   "age": "18+",
+   "t": "tf",
+   "ref": "23:36",
+   "q": "Igheal, fiul lui Natan, era din Gat.",
+   "a": false,
+   "explain": "Era din Țoba."
   },
   {
    "id": "2sa.23.18+.4",
@@ -922,70 +1155,38 @@
    "a": 1
   },
   {
-   "id": "2sa.23.18+.7",
+   "id": "2sa.23.18+.18",
    "age": "18+",
-   "t": "match",
-   "ref": "23:24-39",
-   "q": "Vitejii din cei treizeci: asociază fiecare cu locul de unde era.",
-   "pairs": [
-    [
-     "Șama și Elica",
-     "din Harod"
-    ],
-    [
-     "Maharai",
-     "din Netofa"
-    ],
-    [
-     "Benaia",
-     "din Piraton"
-    ],
-    [
-     "Hețrai",
-     "din Carmel"
-    ]
-   ]
+   "t": "one",
+   "ref": "23:18",
+   "q": "Peste câți oameni și-a învârtit sulița Abișai, fratele lui Ioab?",
+   "opts": [
+    "peste o mie",
+    "peste trei sute",
+    "peste opt sute"
+   ],
+   "a": 1
   },
   {
-   "id": "2sa.23.18+.8",
+   "id": "2sa.23.18+.19",
    "age": "18+",
-   "t": "match",
-   "ref": "23:8-11",
-   "q": "Nume și titluri din 2 Samuel 23: asociază.",
-   "pairs": [
-    [
-     "Ioșeb-Basșebet",
-     "Tahchemonitul"
-    ],
-    [
-     "Ahohi",
-     "bunicul lui Eleazar"
-    ],
-    [
-     "Harar",
-     "locul lui Șama, fiul lui Aghe"
-    ],
-    [
-     "Lehi",
-     "acolo se strânseseră filistenii"
-    ]
-   ]
+   "t": "one",
+   "ref": "23:35",
+   "q": "Din ce loc era Hețrai?",
+   "opts": [
+    "din Carmel",
+    "din Tecoa",
+    "din Betleem"
+   ],
+   "a": 0
   },
   {
-   "id": "2sa.23.18+.9",
+   "id": "2sa.23.18+.24",
    "age": "18+",
    "t": "match",
    "ref": "23:34-39",
-   "q": "Vitejii din cei treizeci: asociază fiecare cu tatăl sau neamul lui.",
+   "q": "Asociază fiecare nume cu ce se spune despre el în 2 Samuel 23.",
    "pairs": [
-    [
-     "Elifelet",
-     "fiul lui Ahasbai"
-    ],
-    [
-     "Eliam",
-     "fiul lui Ahitofel"
-    ],
     [
      "Țelec",
      "Amonitul"
@@ -993,6 +1194,18 @@
     [
      "Urie",
      "Hetitul"
+    ],
+    [
+     "Naharai",
+     "cel care ducea armele lui Ioab"
+    ],
+    [
+     "Eliam",
+     "fiul lui Ahitofel, din Ghilo"
+    ],
+    [
+     "Igheal",
+     "fiul lui Natan, din Țoba"
     ]
    ]
   },
@@ -1028,6 +1241,26 @@
    ],
    "q": "Iată ce a făcut Benaia, fiul lui Iehoiada, și a fost vestit printre cei trei ___.",
    "ctx": "Despre faptele lui Benaia:"
+  },
+  {
+   "id": "2sa.23.18+.20",
+   "age": "18+",
+   "t": "fill",
+   "ref": "23:33",
+   "q": "Șama din Harar. ___, fiul lui Șarar, din Arar.",
+   "a": [
+    "Ahiam"
+   ]
+  },
+  {
+   "id": "2sa.23.18+.21",
+   "age": "18+",
+   "t": "fill",
+   "ref": "23:29",
+   "q": "Itai, fiul lui Ribai, din ___ fiilor lui Beniamin.",
+   "a": [
+    "Ghibea"
+   ]
   },
   {
    "id": "2sa.23.18+.13",
@@ -1073,6 +1306,38 @@
    ],
    "a": [],
    "explain": "Niciun răspuns corect: Ahiam era fiul lui Șarar (23:33)."
+  },
+  {
+   "id": "2sa.23.18+.22",
+   "age": "18+",
+   "t": "multi",
+   "ref": "23:24-25",
+   "q": "Cine erau din numărul celor treizeci?",
+   "opts": [
+    "Elhanan",
+    "Abișai",
+    "Asael"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "2sa.23.18+.23",
+   "age": "18+",
+   "t": "multi",
+   "ref": "23:37-39",
+   "q": "Cine sunt pomeniți la sfârșitul listei?",
+   "opts": [
+    "Urie, Hetitul",
+    "Țelec, Amonitul",
+    "Ioab"
+   ],
+   "a": [
+    0,
+    1
+   ]
   }
  ]
 }

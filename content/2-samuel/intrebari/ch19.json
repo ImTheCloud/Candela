@@ -28,6 +28,23 @@
    "explain": "Împăratul i-a jurat lui Șimei: „Nu vei muri!\" (19:23)."
   },
   {
+   "id": "2sa.19.sub12.16",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "19:16",
+   "q": "Șimei s-a grăbit să se coboare cu cei din Iuda înaintea împăratului David.",
+   "a": true
+  },
+  {
+   "id": "2sa.19.sub12.17",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "19:15",
+   "q": "David s-a întors la Ierusalim fără să mai ajungă la Iordan.",
+   "a": false,
+   "explain": "Împăratul a ajuns până la Iordan, unde Iuda a venit să-l facă să-l treacă."
+  },
+  {
    "id": "2sa.19.sub12.4",
    "age": "sub12",
    "t": "one",
@@ -67,65 +84,57 @@
    "a": 0
   },
   {
-   "id": "2sa.19.sub12.7",
+   "id": "2sa.19.sub12.18",
    "age": "sub12",
-   "t": "match",
-   "ref": "19:16, 24, 31",
-   "q": "Cine a venit înaintea lui David la întoarcerea lui: asociază.",
-   "pairs": [
-    [
-     "Șimei",
-     "cel care îl blestemase"
-    ],
-    [
-     "Mefiboșet",
-     "nu-și spălase hainele cât lipsise împăratul"
-    ],
-    [
-     "Barzilai",
-     "bătrânul de optzeci de ani"
-    ]
-   ]
+   "t": "one",
+   "ref": "19:33",
+   "q": "Unde a vrut David să-l ia pe Barzilai, ca să-l hrănească?",
+   "opts": [
+    "la Hebron",
+    "la Mahanaim",
+    "la Ierusalim"
+   ],
+   "a": 2
   },
   {
-   "id": "2sa.19.sub12.8",
+   "id": "2sa.19.sub12.19",
+   "age": "sub12",
+   "t": "one",
+   "ref": "19:38",
+   "q": "Cine a trecut Iordanul împreună cu David, în locul lui Barzilai?",
+   "opts": [
+    "Amasa",
+    "Chimham",
+    "Țiba"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.19.sub12.24",
    "age": "sub12",
    "t": "match",
-   "ref": "19:5-8",
-   "q": "Ioab și David după moartea lui Absalom: asociază.",
+   "ref": "19:1-39",
+   "q": "Asociază fiecare nume cu ce se spune despre el în 2 Samuel 19.",
    "pairs": [
-    [
-     "David",
-     "plângea pe Absalom"
-    ],
     [
      "Ioab",
-     "l-a mustrat pe David"
+     "i-a spus lui David să iasă la popor"
     ],
     [
-     "poporul",
-     "a venit înaintea împăratului la poartă"
-    ]
-   ]
-  },
-  {
-   "id": "2sa.19.sub12.9",
-   "age": "sub12",
-   "t": "match",
-   "ref": "19:37-40",
-   "q": "Barzilai și Chimham: asociază.",
-   "pairs": [
+     "Șimei",
+     "a cerut iertare lui David"
+    ],
     [
      "Barzilai",
-     "s-a întors acasă"
+     "om bătrân, în vârstă de optzeci de ani"
     ],
     [
      "Chimham",
-     "a mers cu împăratul"
+     "a trecut cu împăratul"
     ],
     [
-     "Ghilgal",
-     "acolo s-a îndreptat împăratul"
+     "Mefiboșet",
+     "a venit înaintea împăratului neîngrijit"
     ]
    ]
   },
@@ -161,6 +170,26 @@
    ],
    "q": "împăratul l-a sărutat pe ___ și l-a binecuvântat.",
    "ctx": "După ce tot poporul a trecut Iordanul:"
+  },
+  {
+   "id": "2sa.19.sub12.20",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "19:24",
+   "q": "Mefiboșet, fiul lui Saul, s-a coborât și el înaintea ___.",
+   "a": [
+    "împăratului"
+   ]
+  },
+  {
+   "id": "2sa.19.sub12.21",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "19:31",
+   "q": "Barzilai, Galaaditul, s-a coborât din ___ și a trecut Iordanul împreună cu împăratul",
+   "a": [
+    "Roghelim"
+   ]
   },
   {
    "id": "2sa.19.sub12.13",
@@ -209,6 +238,38 @@
    "explain": "Niciun răspuns corect: l-a chemat la el, în Ierusalim (19:33)."
   },
   {
+   "id": "2sa.19.sub12.22",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "19:2-3",
+   "q": "Ce s-a întâmplat cu poporul în ziua aceea?",
+   "opts": [
+    "biruința s-a prefăcut în jale",
+    "poporul a făcut un mare ospăț",
+    "poporul a intrat în cetate pe furiș"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "2sa.19.sub12.23",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "19:37-38",
+   "q": "Ce a spus Barzilai despre Chimham, și ce a răspuns David?",
+   "opts": [
+    "David a spus că va face pentru el ce va vrea Barzilai",
+    "Chimham va rămâne acasă",
+    "Chimham va trece cu împăratul"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
    "id": "2sa.19.12-13.1",
    "age": "12-13",
    "t": "tf",
@@ -232,6 +293,23 @@
    "ref": "19:29",
    "q": "David a hotărât ca Mefiboșet și Țiba să împartă pământurile.",
    "a": true
+  },
+  {
+   "id": "2sa.19.12-13.16",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "19:41",
+   "q": "Bărbații lui Israel s-au plâns că frații lor din Iuda l-au furat pe împărat.",
+   "a": true
+  },
+  {
+   "id": "2sa.19.12-13.17",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "19:24",
+   "q": "Mefiboșet își îngrijise cu grijă barba și hainele cât timp împăratul fusese plecat.",
+   "a": false,
+   "explain": "Nu-și îngrijise nici picioarele, nici barba, nici hainele."
   },
   {
    "id": "2sa.19.12-13.4",
@@ -273,73 +351,57 @@
    "a": 0
   },
   {
-   "id": "2sa.19.12-13.7",
+   "id": "2sa.19.12-13.18",
    "age": "12-13",
-   "t": "match",
-   "ref": "19:11-14",
-   "q": "Cum s-a întors David pe tron: asociază.",
-   "pairs": [
-    [
-     "Țadoc și Abiatar",
-     "trebuiau să vorbească bătrânilor lui Iuda"
-    ],
-    [
-     "bătrânii lui Iuda",
-     "frații lui David"
-    ],
-    [
-     "Amasa",
-     "urma să fie căpetenia oștirii"
-    ],
-    [
-     "cei din Iuda",
-     "au trimis să spună: „Întoarce-te\""
-    ]
-   ]
+   "t": "one",
+   "ref": "19:21",
+   "q": "Cine a spus că Șimei trebuie să moară pentru că a blestemat pe unsul Domnului?",
+   "opts": [
+    "Abișai",
+    "Ioab",
+    "Amasa"
+   ],
+   "a": 0
   },
   {
-   "id": "2sa.19.12-13.8",
+   "id": "2sa.19.12-13.19",
    "age": "12-13",
-   "t": "match",
-   "ref": "19:21-23",
-   "q": "Șimei la Iordan: asociază fiecare cuvânt cu cine l-a spus.",
-   "pairs": [
-    [
-     "„Nu trebuie oare să moară Șimei?\"",
-     "Abișai"
-    ],
-    [
-     "„Ce am eu cu voi, fiii Țeruiei?\"",
-     "David"
-    ],
-    [
-     "„Nu vei muri!\"",
-     "David către Șimei"
-    ]
-   ]
+   "t": "one",
+   "ref": "19:12",
+   "q": "Cum i-a numit David pe bătrânii lui Iuda?",
+   "opts": [
+    "slujitorii mei",
+    "vrăjmașii mei",
+    "frații mei"
+   ],
+   "a": 2
   },
   {
-   "id": "2sa.19.12-13.9",
+   "id": "2sa.19.12-13.24",
    "age": "12-13",
    "t": "match",
-   "ref": "19:32-38",
-   "q": "Barzilai: asociază.",
+   "ref": "19:15-37",
+   "q": "Asociază fiecare loc cu ce se spune despre el în 2 Samuel 19.",
    "pairs": [
     [
-     "vârsta lui",
-     "optzeci de ani"
+     "Ghilgal",
+     "locul unde s-a dus Iuda înaintea împăratului"
     ],
     [
-     "ce făcuse",
-     "îngrijise de împărat la Mahanaim"
+     "Iordanul",
+     "râul trecut de David și de popor"
     ],
     [
-     "unde voia să moară",
-     "în cetatea lui"
+     "Bahurim",
+     "cetatea lui Șimei"
     ],
     [
-     "Chimham",
-     "robul trimis cu împăratul"
+     "Roghelim",
+     "cetatea de unde s-a coborât Barzilai"
+    ],
+    [
+     "Ierusalim",
+     "locul unde David l-a chemat pe Barzilai"
     ]
    ]
   },
@@ -375,6 +437,26 @@
    ],
    "q": "Atunci, împăratul s-a sculat și a șezut la ___.",
    "ctx": "După cuvintele aspre ale lui Ioab:"
+  },
+  {
+   "id": "2sa.19.12-13.20",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "19:5",
+   "q": "Tu acoperi azi de ___ fața tuturor slujitorilor tăi",
+   "a": [
+    "rușine"
+   ]
+  },
+  {
+   "id": "2sa.19.12-13.21",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "19:10",
+   "q": "Și Absalom, pe care-l unsesem să domnească peste noi, a murit în ___.",
+   "a": [
+    "bătălie"
+   ]
   },
   {
    "id": "2sa.19.12-13.13",
@@ -424,6 +506,38 @@
    "explain": "Niciun răspuns corect: avea cu el o mie de oameni din Beniamin (19:17)."
   },
   {
+   "id": "2sa.19.12-13.22",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "19:11-12",
+   "q": "Ce a trimis David să spună celor din Iuda?",
+   "opts": [
+    "„Voi sunteți frații mei”",
+    "„Veniți să mă izgoniți”",
+    "„Sunteți os din oasele mele și carne din carnea mea”"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "2sa.19.12-13.23",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "19:25-26",
+   "q": "Ce a spus Mefiboșet?",
+   "opts": [
+    "că el este olog",
+    "că slujitorul lui l-a înșelat",
+    "că nu a vrut să meargă cu David"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
    "id": "2sa.19.14-15.1",
    "age": "14-15",
    "t": "tf",
@@ -447,6 +561,23 @@
    "ref": "19:32",
    "q": "Barzilai era un om foarte bogat.",
    "a": true
+  },
+  {
+   "id": "2sa.19.14-15.16",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "19:6",
+   "q": "Ioab i-a spus lui David că iubește pe cei ce-l urăsc și urăște pe cei ce-l iubesc.",
+   "a": true
+  },
+  {
+   "id": "2sa.19.14-15.17",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "19:29",
+   "q": "David a hotărât să-i dea toate pământurile lui Țiba.",
+   "a": false,
+   "explain": "A spus: „Tu și Țiba veți împărți pământurile.”"
   },
   {
    "id": "2sa.19.14-15.4",
@@ -488,77 +619,57 @@
    "a": 2
   },
   {
-   "id": "2sa.19.14-15.7",
+   "id": "2sa.19.14-15.18",
    "age": "14-15",
-   "t": "match",
-   "ref": "19:9-10",
-   "q": "Ce ziceau semințiile lui Israel: asociază.",
-   "pairs": [
-    [
-     "împăratul",
-     "ne-a izbăvit din mâna vrăjmașilor"
-    ],
-    [
-     "filistenii",
-     "din mâna lor ne-a scăpat"
-    ],
-    [
-     "Absalom",
-     "pe care-l unseserăm, a murit"
-    ],
-    [
-     "întoarcerea împăratului",
-     "de ce nu puneți o vorbă?"
-    ]
-   ]
+   "t": "one",
+   "ref": "19:22",
+   "q": "Ce a răspuns David lui Abișai, când acesta voia moartea lui Șimei?",
+   "opts": [
+    "„Duceți-l la Ierusalim”",
+    "„Astăzi să se omoare oare vreun om în Israel?”",
+    "„Să moară!”"
+   ],
+   "a": 1
   },
   {
-   "id": "2sa.19.14-15.8",
+   "id": "2sa.19.14-15.19",
    "age": "14-15",
-   "t": "match",
-   "ref": "19:24-30",
-   "q": "Mefiboșet la întoarcerea lui David: asociază.",
-   "pairs": [
-    [
-     "barba și hainele",
-     "nu le îngrijise"
-    ],
-    [
-     "slujitorul lui",
-     "l-a înșelat"
-    ],
-    [
-     "David",
-     "a zis că el și Țiba vor împărți pământurile"
-    ],
-    [
-     "Mefiboșet",
-     "a zis: „Să ia chiar totul\""
-    ]
-   ]
+   "t": "one",
+   "ref": "19:19",
+   "q": "Ce i-a cerut Șimei lui David?",
+   "opts": [
+    "să-l răsplătească",
+    "să nu țină seamă de nelegiuirea lui",
+    "să-l facă căpetenie"
+   ],
+   "a": 1
   },
   {
-   "id": "2sa.19.14-15.9",
+   "id": "2sa.19.14-15.24",
    "age": "14-15",
    "t": "match",
-   "ref": "19:41-43",
-   "q": "Cearta dintre Israel și Iuda: asociază.",
+   "ref": "19:13-37",
+   "q": "Asociază fiecare nume cu ce se spune despre el în 2 Samuel 19.",
    "pairs": [
     [
-     "bărbații lui Israel",
-     "au zis că Iuda l-a furat pe împărat"
+     "Chimham",
+     "slujitorul lui Barzilai"
     ],
     [
-     "bărbații lui Iuda",
-     "au zis că împăratul le este rudă"
+     "Țiba",
+     "mai-mare al casei lui Saul, cu cincisprezece fii"
     ],
     [
-     "„de zece ori mai mult al nostru\"",
-     "au zis cei din Israel"
+     "Abișai",
+     "cel care a cerut moartea lui Șimei"
     ],
     [
-     "mai multă asprime",
-     "au vorbit cei din Iuda"
+     "Amasa",
+     "cel pus căpetenie a oștirii în locul lui Ioab"
+    ],
+    [
+     "casa lui Iosif",
+     "casa din care venea Șimei cel dintâi"
     ]
    ]
   },
@@ -594,6 +705,26 @@
    ],
    "q": "Barzilai era foarte bătrân, în vârstă de ___ de ani.",
    "ctx": "Despre Barzilai, Galaaditul:"
+  },
+  {
+   "id": "2sa.19.14-15.20",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "19:27",
+   "q": "Dar domnul meu, împăratul, este ca un ___ al lui Dumnezeu.",
+   "a": [
+    "înger"
+   ]
+  },
+  {
+   "id": "2sa.19.14-15.21",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "19:16",
+   "q": "Șimei, fiul lui Ghera, Beniamitul, care era din ___, s-a grăbit să se coboare",
+   "a": [
+    "Bahurim"
+   ]
   },
   {
    "id": "2sa.19.14-15.13",
@@ -642,6 +773,38 @@
    "explain": "Niciun răspuns corect: voise să pună șaua pe măgar și să meargă cu împăratul (19:26)."
   },
   {
+   "id": "2sa.19.14-15.22",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "19:22-23",
+   "q": "Ce a spus David?",
+   "opts": [
+    "„Nu vei muri!”",
+    "„Să-l omoare Abișai”",
+    "„Astăzi să se omoare oare vreun om în Israel?”"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "2sa.19.14-15.23",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "19:36-37",
+   "q": "Ce a spus Barzilai?",
+   "opts": [
+    "că vrea să locuiască la Ierusalim",
+    "să se întoarcă și să moară în cetatea lui",
+    "că Chimham va trece cu împăratul"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
    "id": "2sa.19.16-17.1",
    "age": "16-17",
    "t": "tf",
@@ -665,6 +828,23 @@
    "ref": "19:40",
    "q": "Tot poporul lui Iuda și jumătate din poporul lui Israel l-au petrecut pe împărat dincolo de Iordan.",
    "a": true
+  },
+  {
+   "id": "2sa.19.16-17.16",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "19:19",
+   "q": "Șimei a recunoscut că l-a ocărât pe David în ziua când împăratul ieșea din Ierusalim.",
+   "a": true
+  },
+  {
+   "id": "2sa.19.16-17.17",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "19:27",
+   "q": "Mefiboșet a spus că Țiba îl lăudase înaintea împăratului.",
+   "a": false,
+   "explain": "A spus că Țiba l-a înnegrit înaintea împăratului."
   },
   {
    "id": "2sa.19.16-17.4",
@@ -706,77 +886,57 @@
    "a": 2
   },
   {
-   "id": "2sa.19.16-17.7",
+   "id": "2sa.19.16-17.18",
    "age": "16-17",
-   "t": "match",
-   "ref": "19:11-13",
-   "q": "Cuvintele lui David către Iuda și Amasa: asociază începutul cu sfârșitul.",
-   "pairs": [
-    [
-     "Pentru ce ați fi voi cei din urmă",
-     "pentru întoarcerea împăratului"
-    ],
-    [
-     "Voi sunteți frații mei",
-     "os din oasele mele"
-    ],
-    [
-     "Nu ești tu oare os din oasele mele",
-     "lui Amasa"
-    ],
-    [
-     "căpetenia oștirii",
-     "în locul lui Ioab"
-    ]
-   ]
+   "t": "one",
+   "ref": "19:36",
+   "q": "Cât a spus Barzilai că va merge dincolo de Iordan cu împăratul?",
+   "opts": [
+    "puțin",
+    "până la Hebron",
+    "până la Ierusalim"
+   ],
+   "a": 0
   },
   {
-   "id": "2sa.19.16-17.8",
+   "id": "2sa.19.16-17.19",
    "age": "16-17",
-   "t": "match",
-   "ref": "19:21-22",
-   "q": "David și Abișai: asociază.",
-   "pairs": [
-    [
-     "Abișai",
-     "a cerut moartea lui Șimei"
-    ],
-    [
-     "„unsul Domnului\"",
-     "pe el îl blestemase Șimei"
-    ],
-    [
-     "„fiii Țeruiei\"",
-     "David îi numește potrivnicii lui"
-    ],
-    [
-     "„Nu știu eu că împărățesc azi peste Israel?\"",
-     "întrebarea lui David"
-    ]
-   ]
+   "t": "one",
+   "ref": "19:40",
+   "q": "Încotro s-a îndreptat împăratul după ce a trecut Iordanul?",
+   "opts": [
+    "spre Hebron",
+    "spre Ghilgal",
+    "spre Betleem"
+   ],
+   "a": 1
   },
   {
-   "id": "2sa.19.16-17.9",
+   "id": "2sa.19.16-17.24",
    "age": "16-17",
    "t": "match",
-   "ref": "19:34-37",
-   "q": "Răspunsul lui Barzilai: asociază.",
+   "ref": "19:17-43",
+   "q": "Asociază fiecare număr cu ce se spune despre el în 2 Samuel 19.",
    "pairs": [
     [
-     "Câți ani voi mai trăi",
-     "ca să mă sui cu împăratul la Ierusalim?"
+     "optzeci de ani",
+     "vârsta lui Barzilai"
     ],
     [
-     "Pot eu să mai aud",
-     "glasul cântăreților și cântărețelor?"
+     "o mie",
+     "oamenii din Beniamin veniți cu Șimei"
     ],
     [
-     "Să se întoarcă robul tău",
-     "și să mor în cetatea mea"
+     "cincisprezece",
+     "fiii lui Țiba"
     ],
     [
-     "robul tău Chimham",
-     "va trece cu împăratul"
+     "douăzeci",
+     "robii lui Țiba"
+    ],
+    [
+     "zece ori",
+     "de câte ori mai mult al lor era împăratul, spuneau bărbații lui Israel"
     ]
    ]
   },
@@ -812,6 +972,26 @@
    ],
    "q": "„Fiindcă împăratul ne este ___. Și ce ați găsit aici, ca să vă mâniați?",
    "ctx": "Bărbații lui Iuda, către bărbații lui Israel:"
+  },
+  {
+   "id": "2sa.19.16-17.20",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "19:13",
+   "q": "Să mă pedepsească Dumnezeu cu toată asprimea dacă nu vei fi înaintea mea pentru totdeauna căpetenia ___ în locul lui Ioab!",
+   "a": [
+    "oștirii"
+   ]
+  },
+  {
+   "id": "2sa.19.16-17.21",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "19:28",
+   "q": "totuși tu ai pus pe robul tău în rândul celor ce mănâncă la ___ cu tine.",
+   "a": [
+    "masă"
+   ]
   },
   {
    "id": "2sa.19.16-17.13",
@@ -861,6 +1041,38 @@
    "explain": "Niciun răspuns corect: era Beniamitul, din Bahurim (19:16)."
   },
   {
+   "id": "2sa.19.16-17.22",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "19:41-42",
+   "q": "Ce s-a spus între bărbații lui Israel și cei ai lui Iuda?",
+   "opts": [
+    "Israel a spus că Iuda l-a furat pe împărat",
+    "Iuda a răspuns că împăratul le este rudă",
+    "Iuda a cerut daruri de la împărat"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "2sa.19.16-17.23",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "19:3-4",
+   "q": "Ce s-a întâmplat după ce David și-a acoperit fața?",
+   "opts": [
+    "poporul a pornit din nou la luptă",
+    "poporul a intrat în cetate pe furiș",
+    "striga: „Fiul meu Absalom!”"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
    "id": "2sa.19.18+.1",
    "age": "18+",
    "t": "tf",
@@ -884,6 +1096,23 @@
    "ref": "19:43",
    "q": "Bărbații lui Israel spuneau că ei fuseseră cei dintâi care au cerut întoarcerea împăratului.",
    "a": true
+  },
+  {
+   "id": "2sa.19.18+.16",
+   "age": "18+",
+   "t": "tf",
+   "ref": "19:8",
+   "q": "Când împăratul a stat la poartă, Israel fugise, fiecare în cortul lui.",
+   "a": true
+  },
+  {
+   "id": "2sa.19.18+.17",
+   "age": "18+",
+   "t": "tf",
+   "ref": "19:2",
+   "q": "În ziua aceea, poporul a intrat în cetate cu strigăte de biruință.",
+   "a": false,
+   "explain": "Biruința s-a prefăcut în jale pentru tot poporul."
   },
   {
    "id": "2sa.19.18+.4",
@@ -925,77 +1154,57 @@
    "a": 0
   },
   {
-   "id": "2sa.19.18+.7",
+   "id": "2sa.19.18+.18",
    "age": "18+",
-   "t": "match",
-   "ref": "19:16-18",
-   "q": "Venirea lui Șimei: asociază.",
-   "pairs": [
-    [
-     "Ghera",
-     "tatăl lui Șimei"
-    ],
-    [
-     "Bahurim",
-     "cetatea lui"
-    ],
-    [
-     "o mie",
-     "oamenii din Beniamin cu el"
-    ],
-    [
-     "luntrea",
-     "pornise să treacă și casa împăratului"
-    ]
-   ]
+   "t": "one",
+   "ref": "19:25",
+   "q": "Ce l-a întrebat David pe Mefiboșet, când acesta a venit la el?",
+   "opts": [
+    "„Pentru ce n-ai venit cu mine?”",
+    "„Cine te-a trimis?”",
+    "„Unde sunt pământurile tale?”"
+   ],
+   "a": 0
   },
   {
-   "id": "2sa.19.18+.8",
+   "id": "2sa.19.18+.19",
    "age": "18+",
-   "t": "match",
-   "ref": "19:26-27",
-   "q": "Plângerea lui Mefiboșet: asociază începutul cu sfârșitul.",
-   "pairs": [
-    [
-     "slujitorul meu",
-     "m-a înșelat"
-    ],
-    [
-     "Voi pune șaua pe măgar",
-     "voi încăleca pe el și voi merge cu împăratul"
-    ],
-    [
-     "El a înnegrit pe robul tău",
-     "la domnul meu, împăratul"
-    ],
-    [
-     "domnul meu este ca un înger",
-     "al lui Dumnezeu"
-    ]
-   ]
+   "t": "one",
+   "ref": "19:30",
+   "q": "Ce a răspuns Mefiboșet la hotărârea împăratului de a împărți pământurile?",
+   "opts": [
+    "„Împarte în trei”",
+    "„Să ia chiar totul”",
+    "„Voi cere dreptate”"
+   ],
+   "a": 1
   },
   {
-   "id": "2sa.19.18+.9",
+   "id": "2sa.19.18+.24",
    "age": "18+",
    "t": "match",
-   "ref": "19:1-8",
-   "q": "Ziua de după bătălie: asociază fiecare cu ce a făcut.",
+   "ref": "19:16-37",
+   "q": "Asociază fiecare persoană cu ce se spune despre ea în 2 Samuel 19.",
    "pairs": [
     [
-     "împăratul",
-     "își acoperise fața și striga"
+     "Barzilai",
+     "Galaaditul din Roghelim"
     ],
     [
-     "poporul",
-     "a intrat pe furiș în cetate"
+     "Mefiboșet",
+     "fiul lui Saul"
     ],
     [
-     "Ioab",
-     "a intrat în odaia împăratului"
+     "Șimei",
+     "fiul lui Ghera, Beniamitul"
     ],
     [
-     "Israel",
-     "fugise fiecare în cortul lui"
+     "Țiba",
+     "mai-mare al casei lui Saul"
+    ],
+    [
+     "Chimham",
+     "cel care a trecut cu împăratul la dorința lui Barzilai"
     ]
    ]
   },
@@ -1031,6 +1240,26 @@
    ],
    "q": "„Împăratul este de ___ ori mai mult al nostru și chiar la David avem mai mult drept decât voi.",
    "ctx": "Bărbații lui Israel, către bărbații lui Iuda:"
+  },
+  {
+   "id": "2sa.19.18+.20",
+   "age": "18+",
+   "t": "fill",
+   "ref": "19:21",
+   "q": "Nu trebuie oare să moară Șimei pentru că a blestemat pe ___ Domnului?",
+   "a": [
+    "unsul"
+   ]
+  },
+  {
+   "id": "2sa.19.18+.21",
+   "age": "18+",
+   "t": "fill",
+   "ref": "19:41",
+   "q": "Pentru ce te-au furat frații noștri, bărbații lui ___, și au trecut pe împărat peste Iordan",
+   "a": [
+    "Iuda"
+   ]
   },
   {
    "id": "2sa.19.18+.13",
@@ -1078,6 +1307,38 @@
    ],
    "a": [],
    "explain": "Niciun răspuns corect: în cetatea lui, lângă mormântul tatălui și al mamei lui (19:37)."
+  },
+  {
+   "id": "2sa.19.18+.22",
+   "age": "18+",
+   "t": "multi",
+   "ref": "19:32",
+   "q": "Ce se spune despre Barzilai?",
+   "opts": [
+    "îngrijise de împărat la Mahanaim",
+    "era sărac",
+    "era foarte bătrân"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "2sa.19.18+.23",
+   "age": "18+",
+   "t": "multi",
+   "ref": "19:16-18",
+   "q": "Ce a făcut Șimei?",
+   "opts": [
+    "s-a grăbit să se coboare",
+    "a fugit în țara Beniamin",
+    "s-a închinat înaintea împăratului"
+   ],
+   "a": [
+    0,
+    2
+   ]
   }
  ]
 }

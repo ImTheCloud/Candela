@@ -28,6 +28,23 @@
    "explain": "David a cumpărat-o cu cincizeci de sicli de argint: n-a vrut să aducă jertfe care să nu-l coste nimic (24:24)."
   },
   {
+   "id": "2sa.24.sub12.16",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "24:15",
+   "q": "Domnul a trimis ciuma în Israel și au murit șaptezeci de mii de oameni din popor.",
+   "a": true
+  },
+  {
+   "id": "2sa.24.sub12.17",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "24:25",
+   "q": "David a zidit altarul Domnului la Betleem.",
+   "a": false,
+   "explain": "L-a zidit în aria lui Aravna."
+  },
+  {
    "id": "2sa.24.sub12.4",
    "age": "sub12",
    "t": "one",
@@ -67,65 +84,57 @@
    "a": 2
   },
   {
-   "id": "2sa.24.sub12.7",
+   "id": "2sa.24.sub12.18",
+   "age": "sub12",
+   "t": "one",
+   "ref": "24:24",
+   "q": "Cu cât a cumpărat David aria și boii lui Aravna?",
+   "opts": [
+    "cu zece talanți de aur",
+    "cu o sută de oi",
+    "cu cincizeci de sicli de argint"
+   ],
+   "a": 2
+  },
+  {
+   "id": "2sa.24.sub12.19",
+   "age": "sub12",
+   "t": "one",
+   "ref": "24:16",
+   "q": "Cine întindea mâna peste Ierusalim ca să-l nimicească?",
+   "opts": [
+    "îngerul",
+    "Ioab",
+    "Gad"
+   ],
+   "a": 0
+  },
+  {
+   "id": "2sa.24.sub12.24",
    "age": "sub12",
    "t": "match",
-   "ref": "24:2, 11, 18",
-   "q": "Numărătoarea poporului: asociază.",
+   "ref": "24:2-25",
+   "q": "Asociază fiecare nume sau lucru cu ce se spune despre el în 2 Samuel 24.",
    "pairs": [
     [
      "Ioab",
-     "a făcut numărătoarea"
+     "cel care a făcut numărătoarea poporului"
     ],
     [
      "Gad",
-     "prorocul, văzătorul lui David"
+     "prorocul și văzătorul lui David"
     ],
     [
      "Aravna",
-     "avea aria unde s-a zidit altarul"
-    ]
-   ]
-  },
-  {
-   "id": "2sa.24.sub12.8",
-   "age": "sub12",
-   "t": "match",
-   "ref": "24:16-25",
-   "q": "Sfârșitul ciumei: asociază.",
-   "pairs": [
-    [
-     "îngerul",
-     "a primit porunca: „Destul!\""
-    ],
-    [
-     "David",
-     "a zidit un altar"
-    ],
-    [
-     "Domnul",
-     "a fost potolit față de țară"
-    ]
-   ]
-  },
-  {
-   "id": "2sa.24.sub12.9",
-   "age": "sub12",
-   "t": "match",
-   "ref": "24:13",
-   "q": "Cele trei nenorociri date de Domnul spre alegere: asociază.",
-   "pairs": [
-    [
-     "foamete",
-     "șapte ani"
-    ],
-    [
-     "fuga dinaintea vrăjmașilor",
-     "trei luni"
+     "iebusitul care avea o arie"
     ],
     [
      "ciuma",
-     "trei zile"
+     "nenorocirea aleasă de David, trimisă de Domnul"
+    ],
+    [
+     "altarul",
+     "ce a zidit David în aria lui Aravna"
     ]
    ]
   },
@@ -161,6 +170,26 @@
    ],
    "q": "„Destul! Trage-ți ___ acum.\"",
    "ctx": "Domnul, către îngerul care lovea poporul:"
+  },
+  {
+   "id": "2sa.24.sub12.20",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "24:24",
+   "q": "Și David a cumpărat aria și boii cu cincizeci de sicli de ___.",
+   "a": [
+    "argint"
+   ]
+  },
+  {
+   "id": "2sa.24.sub12.21",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "24:18",
+   "q": "Gad a venit la David și i-a zis: „Suie-te și înalță un ___ Domnului în aria lui Aravna, Iebusitul.",
+   "a": [
+    "altar"
+   ]
   },
   {
    "id": "2sa.24.sub12.13",
@@ -209,6 +238,38 @@
    "explain": "Niciun răspuns corect: cu cincizeci de sicli de argint (24:24)."
   },
   {
+   "id": "2sa.24.sub12.22",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "24:21-22",
+   "q": "Ce a spus Aravna lui David?",
+   "opts": [
+    "„Boii vor fi pentru arderea-de-tot”",
+    "„N-o dau pentru niciun preț”",
+    "„Să ia domnul meu împăratul aria”"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "2sa.24.sub12.23",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "24:16-18",
+   "q": "Ce aflăm despre Aravna?",
+   "opts": [
+    "avea o arie",
+    "era Iebusitul",
+    "era proroc"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
    "id": "2sa.24.12-13.1",
    "age": "12-13",
    "t": "tf",
@@ -232,6 +293,23 @@
    "ref": "24:16",
    "q": "Când îngerul își întindea mâna peste Ierusalim, Domnul S-a căit de răul acela.",
    "a": true
+  },
+  {
+   "id": "2sa.24.12-13.16",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "24:21",
+   "q": "David a vrut să cumpere aria ca să zidească în ea un altar Domnului.",
+   "a": true
+  },
+  {
+   "id": "2sa.24.12-13.17",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "24:13",
+   "q": "Gad i-a pus lui David patru nenorociri înainte.",
+   "a": false,
+   "explain": "I-a pus trei nenorociri."
   },
   {
    "id": "2sa.24.12-13.4",
@@ -273,73 +351,57 @@
    "a": 2
   },
   {
-   "id": "2sa.24.12-13.7",
+   "id": "2sa.24.12-13.18",
    "age": "12-13",
-   "t": "match",
-   "ref": "24:9",
-   "q": "Rezultatul numărătorii (2 Samuel 24:9): asociază.",
-   "pairs": [
-    [
-     "Israel",
-     "opt sute de mii de oameni de război"
-    ],
-    [
-     "Iuda",
-     "cinci sute de mii de oameni"
-    ],
-    [
-     "Ioab",
-     "i-a dat împăratului numărul"
-    ]
-   ]
+   "t": "one",
+   "ref": "24:12",
+   "q": "Câte nenorociri i-a pus Domnul înainte lui David?",
+   "opts": [
+    "trei",
+    "cinci",
+    "două"
+   ],
+   "a": 0
   },
   {
-   "id": "2sa.24.12-13.8",
+   "id": "2sa.24.12-13.19",
    "age": "12-13",
-   "t": "match",
-   "ref": "24:20-23",
-   "q": "Aravna și David: asociază.",
-   "pairs": [
-    [
-     "Aravna",
-     "s-a închinat înaintea împăratului"
-    ],
-    [
-     "David",
-     "a venit să cumpere aria"
-    ],
-    [
-     "boii",
-     "pentru arderea-de-tot"
-    ],
-    [
-     "carele",
-     "să țină loc de lemne"
-    ]
-   ]
+   "t": "one",
+   "ref": "24:20",
+   "q": "Cum s-a închinat Aravna înaintea împăratului?",
+   "opts": [
+    "cu capul acoperit",
+    "cu fața la pământ",
+    "în picioare"
+   ],
+   "a": 1
   },
   {
-   "id": "2sa.24.12-13.9",
+   "id": "2sa.24.12-13.24",
    "age": "12-13",
    "t": "match",
    "ref": "24:2-8",
-   "q": "Drumul celor care au numărat poporul: asociază.",
+   "q": "Asociază fiecare loc cu ce se spune despre el în 2 Samuel 24.",
    "pairs": [
     [
-     "de la Dan",
-     "până la Beer-Șeba"
+     "Dan",
+     "hotarul de nord al țării"
     ],
     [
-     "Iordanul",
-     "l-au trecut"
+     "Beer-Șeba",
+     "hotarul de sud al țării"
     ],
     [
-     "Tirul",
-     "au ajuns până la cetățuia lui"
+     "Aroer",
+     "locul unde au tăbărât cei trimiși la numărătoare"
     ],
     [
-     "Ierusalimul",
-     "s-au întors aici după nouă luni"
+     "Galaad",
+     "ținut pe unde au ajuns numărătorii"
+    ],
+    [
+     "Ierusalim",
+     "locul unde au ajuns după nouă luni și douăzeci de zile"
     ]
    ]
   },
@@ -375,6 +437,26 @@
    ],
    "q": "cuvântul Domnului a vorbit astfel prorocului Gad, ___ lui David:",
    "ctx": "A doua zi după numărătoarea poporului:"
+  },
+  {
+   "id": "2sa.24.12-13.20",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "24:1",
+   "q": "Domnul S-a aprins de ___ din nou împotriva lui Israel",
+   "a": [
+    "mânie"
+   ]
+  },
+  {
+   "id": "2sa.24.12-13.21",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "24:12",
+   "q": "Îți pun înainte trei ___; alege una din ele, și te voi lovi cu ea.",
+   "a": [
+    "nenorociri"
+   ]
   },
   {
    "id": "2sa.24.12-13.13",
@@ -424,6 +506,38 @@
    "explain": "Niciun răspuns corect: Domnul l-a stârnit pe David (24:1)."
   },
   {
+   "id": "2sa.24.12-13.22",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "24:9",
+   "q": "Câți oameni de război a numărat Ioab?",
+   "opts": [
+    "cinci sute de mii în Iuda",
+    "două sute de mii în Iuda",
+    "opt sute de mii în Israel"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "2sa.24.12-13.23",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "24:23",
+   "q": "Ce a făcut Aravna după ce a vorbit cu David?",
+   "opts": [
+    "a dat împăratului totul",
+    "a spus: „Domnul Dumnezeul tău să te primească!”",
+    "a cerut un preț mare"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
    "id": "2sa.24.14-15.1",
    "age": "14-15",
    "t": "tf",
@@ -447,6 +561,23 @@
    "q": "În Israel au fost numărați cinci sute de mii de oameni de război, iar în Iuda opt sute de mii.",
    "a": false,
    "explain": "În Israel opt sute de mii, iar în Iuda cinci sute de mii (24:9)."
+  },
+  {
+   "id": "2sa.24.14-15.16",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "24:23",
+   "q": "Aravna i-a dat împăratului totul.",
+   "a": true
+  },
+  {
+   "id": "2sa.24.14-15.17",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "24:17",
+   "q": "David a cerut ca mânia Domnului să cadă peste popor, nu peste el.",
+   "a": false,
+   "explain": "A cerut ca mâna Domnului să fie împotriva lui și a casei tatălui său."
   },
   {
    "id": "2sa.24.14-15.4",
@@ -488,72 +619,56 @@
    "a": 2
   },
   {
-   "id": "2sa.24.14-15.7",
+   "id": "2sa.24.14-15.18",
    "age": "14-15",
-   "t": "match",
-   "ref": "24:10-13",
-   "q": "După numărătoare: asociază fiecare moment cu ce s-a întâmplat.",
-   "pairs": [
-    [
-     "după numărătoare",
-     "lui David îi bătea inima"
-    ],
-    [
-     "a doua zi",
-     "Domnul a vorbit lui Gad"
-    ],
-    [
-     "Gad",
-     "i-a pus lui David trei nenorociri înainte"
-    ],
-    [
-     "David",
-     "trebuia să aleagă"
-    ]
-   ]
+   "t": "one",
+   "ref": "24:2",
+   "q": "Până unde trebuia străbătut Israelul, ca să se facă numărătoarea?",
+   "opts": [
+    "de la Hebron până la Ierusalim",
+    "de la Dan până la Beer-Șeba",
+    "de la Iordan până la mare"
+   ],
+   "a": 1
   },
   {
-   "id": "2sa.24.14-15.8",
+   "id": "2sa.24.14-15.19",
+   "age": "14-15",
+   "t": "one",
+   "ref": "24:15",
+   "q": "Până când a trimis Domnul ciuma în Israel?",
+   "opts": [
+    "până la vremea hotărâtă",
+    "până la seceriș",
+    "timp de patruzeci de zile"
+   ],
+   "a": 0
+  },
+  {
+   "id": "2sa.24.14-15.24",
    "age": "14-15",
    "t": "match",
-   "ref": "24:15-17",
-   "q": "Ciuma: asociază.",
+   "ref": "24:2-24",
+   "q": "Asociază fiecare nume sau număr cu ce se spune despre el în 2 Samuel 24.",
    "pairs": [
     [
-     "de dimineață",
-     "până la vremea hotărâtă"
+     "Gad",
+     "proroc și văzător al lui David"
+    ],
+    [
+     "Aravna",
+     "iebusitul stăpân al ariei"
+    ],
+    [
+     "Ioab",
+     "căpetenia oștirii"
     ],
     [
      "șaptezeci de mii",
-     "au murit"
+     "oamenii morți de ciumă"
     ],
     [
-     "Ierusalimul",
-     "Domnul l-a cruțat"
-    ],
-    [
-     "David",
-     "a cerut ca mâna Domnului să fie împotriva lui"
-    ]
-   ]
-  },
-  {
-   "id": "2sa.24.14-15.9",
-   "age": "14-15",
-   "t": "match",
-   "ref": "24:22-24",
-   "q": "Răspunsul lui David către Aravna: asociază începutul cu sfârșitul.",
-   "pairs": [
-    [
-     "Nu! Vreau s-o cumpăr de la tine",
-     "pe preț de argint"
-    ],
-    [
-     "nu voi aduce Domnului arderi-de-tot",
-     "care să nu mă coste nimic"
-    ],
-    [
-     "cincizeci de sicli de argint",
+     "cincizeci de sicli",
      "prețul ariei și al boilor"
     ]
    ]
@@ -590,6 +705,26 @@
    ],
    "q": "Au străbătut astfel toată țara și au ajuns la Ierusalim după nouă luni și douăzeci de ___.",
    "ctx": "Numărătoarea poporului:"
+  },
+  {
+   "id": "2sa.24.14-15.20",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "24:10",
+   "q": "David a simțit cum îi bătea ___ după ce făcuse numărătoarea poporului.",
+   "a": [
+    "inima"
+   ]
+  },
+  {
+   "id": "2sa.24.14-15.21",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "24:19",
+   "q": "David s-a suit, după cuvântul lui ___, cum poruncise Domnul.",
+   "a": [
+    "Gad"
+   ]
   },
   {
    "id": "2sa.24.14-15.13",
@@ -639,6 +774,38 @@
    ]
   },
   {
+   "id": "2sa.24.14-15.22",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "24:3-4",
+   "q": "Ce s-a întâmplat între Ioab și David?",
+   "opts": [
+    "David a stăruit în porunca lui",
+    "David a renunțat la numărătoare",
+    "Ioab a întrebat pentru ce vrea numărătoarea"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "2sa.24.14-15.23",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "24:18-19",
+   "q": "Ce s-a întâmplat în ziua aceea?",
+   "opts": [
+    "David s-a suit după cuvântul lui Gad",
+    "Gad a venit la David",
+    "David a plecat la Hebron"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
    "id": "2sa.24.16-17.1",
    "age": "16-17",
    "t": "tf",
@@ -662,6 +829,23 @@
    "ref": "24:19",
    "q": "David s-a suit în aria lui Aravna după cuvântul lui Gad, cum poruncise Domnul.",
    "a": true
+  },
+  {
+   "id": "2sa.24.16-17.16",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "24:17",
+   "q": "David a spus: „Iată că am păcătuit! Eu sunt vinovat.”",
+   "a": true
+  },
+  {
+   "id": "2sa.24.16-17.17",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "24:8",
+   "q": "Numărătoarea poporului a ținut două zile.",
+   "a": false,
+   "explain": "A ținut nouă luni și douăzeci de zile."
   },
   {
    "id": "2sa.24.16-17.4",
@@ -703,73 +887,57 @@
    "a": 0
   },
   {
-   "id": "2sa.24.16-17.7",
+   "id": "2sa.24.16-17.18",
+   "age": "16-17",
+   "t": "one",
+   "ref": "24:8",
+   "q": "Cât a durat până când numărătorii au ajuns la Ierusalim?",
+   "opts": [
+    "trei zile",
+    "nouă luni și douăzeci de zile",
+    "un an întreg"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.24.16-17.19",
+   "age": "16-17",
+   "t": "one",
+   "ref": "24:14",
+   "q": "Ce a ales David dintre cele trei nenorociri?",
+   "opts": [
+    "să cadă în mâinile Domnului",
+    "trei luni de fugă dinaintea vrăjmașilor",
+    "șapte ani de foamete"
+   ],
+   "a": 0
+  },
+  {
+   "id": "2sa.24.16-17.24",
    "age": "16-17",
    "t": "match",
    "ref": "24:5-7",
-   "q": "Drumul numărătorii: asociază.",
+   "q": "Asociază fiecare loc cu ce se spune despre el în 2 Samuel 24.",
    "pairs": [
     [
      "Aroer",
-     "în mijlocul văii Gad"
+     "locul primei tabere"
     ],
     [
-     "Iaezer",
-     "lângă cetatea unde au tăbărât"
+     "Tahtim-Hodși",
+     "țara de după Galaad"
     ],
     [
      "Dan-Iaan",
-     "au mers până acolo"
+     "loc străbătut, spre Sidon"
     ],
     [
-     "Sidonul",
-     "au mers în împrejurimile lui"
-    ]
-   ]
-  },
-  {
-   "id": "2sa.24.16-17.8",
-   "age": "16-17",
-   "t": "match",
-   "ref": "24:13",
-   "q": "Alegerea dată lui David: asociază fiecare nenorocire cu durata ei.",
-   "pairs": [
-    [
-     "foametea",
-     "șapte ani"
+     "Tir",
+     "cetățuia atinsă de numărători"
     ],
     [
-     "fuga",
-     "trei luni"
-    ],
-    [
-     "ciuma",
-     "trei zile"
-    ]
-   ]
-  },
-  {
-   "id": "2sa.24.16-17.9",
-   "age": "16-17",
-   "t": "match",
-   "ref": "24:18-25",
-   "q": "Altarul din aria lui Aravna: asociază.",
-   "pairs": [
-    [
-     "Gad",
-     "i-a spus lui David să zidească altarul"
-    ],
-    [
-     "Aravna",
-     "i-a oferit totul împăratului"
-    ],
-    [
-     "David",
-     "a plătit cincizeci de sicli"
-    ],
-    [
-     "urgia",
-     "a încetat de deasupra lui Israel"
+     "Beer-Șeba",
+     "locul unde au ieșit, spre miazăzi de Iuda"
     ]
    ]
   },
@@ -805,6 +973,26 @@
    ],
    "q": "„Ca să cumpăr de la tine aria și să zidesc în ea un altar Domnului, pentru ca să înceteze ___ aceasta de peste popor.\"",
    "ctx": "David, către Aravna:"
+  },
+  {
+   "id": "2sa.24.16-17.20",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "24:2",
+   "q": "Străbate toate semințiile lui Israel, de la Dan până la ___",
+   "a": [
+    "Beer-Șeba"
+   ]
+  },
+  {
+   "id": "2sa.24.16-17.21",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "24:22",
+   "q": "vezi, boii vor fi pentru arderea-de-___",
+   "a": [
+    "tot"
+   ]
   },
   {
    "id": "2sa.24.16-17.13",
@@ -854,6 +1042,38 @@
    "explain": "Niciun răspuns corect: lui Ioab, căpetenia oștirii (24:2)."
   },
   {
+   "id": "2sa.24.16-17.22",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "24:14",
+   "q": "Ce a spus David când a trebuit să aleagă?",
+   "opts": [
+    "„Mai bine să cădem în mâinile Domnului”",
+    "„Aleg foametea de șapte ani”",
+    "„Să nu cad în mâinile oamenilor”"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "2sa.24.16-17.23",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "24:10",
+   "q": "Ce s-a întâmplat cu David după numărătoare?",
+   "opts": [
+    "a cerut iertare Domnului",
+    "i-a bătut inima",
+    "s-a mândrit cu numărul poporului"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
    "id": "2sa.24.18+.1",
    "age": "18+",
    "t": "tf",
@@ -877,6 +1097,23 @@
    "ref": "24:16",
    "q": "Aravna era Iebusitul.",
    "a": true
+  },
+  {
+   "id": "2sa.24.18+.16",
+   "age": "18+",
+   "t": "tf",
+   "ref": "24:6",
+   "q": "Cei trimiși la numărătoare au ajuns până la Dan-Iaan.",
+   "a": true
+  },
+  {
+   "id": "2sa.24.18+.17",
+   "age": "18+",
+   "t": "tf",
+   "ref": "24:9",
+   "q": "Ioab a spus împăratului că în Iuda erau opt sute de mii de oameni.",
+   "a": false,
+   "explain": "Erau cinci sute de mii în Iuda și opt sute de mii în Israel."
   },
   {
    "id": "2sa.24.18+.4",
@@ -918,77 +1155,57 @@
    "a": 2
   },
   {
-   "id": "2sa.24.18+.7",
+   "id": "2sa.24.18+.18",
    "age": "18+",
-   "t": "match",
-   "ref": "24:5-8",
-   "q": "Ordinea drumului numărătorii: asociază.",
-   "pairs": [
-    [
-     "întâi",
-     "au trecut Iordanul"
-    ],
-    [
-     "apoi",
-     "Galaad și țara lui Tahtim-Hodși"
-    ],
-    [
-     "după aceea",
-     "Dan-Iaan și Sidonul"
-    ],
-    [
-     "la urmă",
-     "Beer-Șeba, apoi Ierusalimul"
-    ]
-   ]
+   "t": "one",
+   "ref": "24:9",
+   "q": "Câți oameni de război au fost numărați în Iuda?",
+   "opts": [
+    "cinci sute de mii",
+    "opt sute de mii",
+    "șaptezeci de mii"
+   ],
+   "a": 0
   },
   {
-   "id": "2sa.24.18+.8",
+   "id": "2sa.24.18+.19",
    "age": "18+",
-   "t": "match",
-   "ref": "24:9-15",
-   "q": "Numere din 2 Samuel 24: asociază.",
-   "pairs": [
-    [
-     "opt sute de mii",
-     "oameni de război în Israel"
-    ],
-    [
-     "cinci sute de mii",
-     "oameni în Iuda"
-    ],
-    [
-     "șaptezeci de mii",
-     "morți de ciumă"
-    ],
-    [
-     "nouă luni și douăzeci de zile",
-     "durata numărătorii"
-    ]
-   ]
+   "t": "one",
+   "ref": "24:24",
+   "q": "Ce a spus David că nu va aduce Domnului?",
+   "opts": [
+    "arderi-de-tot care să nu-l coste nimic",
+    "jertfe de la Aravna, fără plată",
+    "nicio jertfă"
+   ],
+   "a": 0
   },
   {
-   "id": "2sa.24.18+.9",
+   "id": "2sa.24.18+.24",
    "age": "18+",
    "t": "match",
-   "ref": "24:20-24",
-   "q": "Aravna și David: asociază fiecare cuvânt cu cine l-a spus.",
+   "ref": "24:3-22",
+   "q": "Asociază fiecare persoană cu ce a spus, după 2 Samuel 24.",
    "pairs": [
     [
-     "„Pentru ce vine domnul meu împăratul la slujitorul lui?\"",
-     "Aravna"
+     "Gad",
+     "„Suie-te și înalță un altar Domnului”"
     ],
     [
-     "„Ca să cumpăr de la tine aria\"",
-     "David"
+     "Aravna",
+     "„Să ia domnul meu împăratul aria”"
     ],
     [
-     "„Domnul Dumnezeul tău să te primească!\"",
-     "Aravna, la urmă"
+     "David",
+     "„Am lucrat în totul ca un nebun!”"
     ],
     [
-     "„Nu! Vreau s-o cumpăr\"",
-     "David, la urmă"
+     "Ioab",
+     "„Pentru ce vrea împăratul să facă lucrul acesta?”"
+    ],
+    [
+     "îngerul",
+     "cel care a întins mâna peste Ierusalim"
     ]
    ]
   },
@@ -1024,6 +1241,26 @@
    ],
    "q": "boii vor fi pentru arderea-de-tot și carele cu uneltele lor vor ține loc de ___.\"",
    "ctx": "Aravna, către împăratul David:"
+  },
+  {
+   "id": "2sa.24.18+.20",
+   "age": "18+",
+   "t": "fill",
+   "ref": "24:5",
+   "q": "Au trecut Iordanul și au tăbărât la ___, la dreapta cetății care este în mijlocul văii Gad",
+   "a": [
+    "Aroer"
+   ]
+  },
+  {
+   "id": "2sa.24.18+.21",
+   "age": "18+",
+   "t": "fill",
+   "ref": "24:11",
+   "q": "A doua zi, când s-a sculat David, cuvântul Domnului a vorbit astfel prorocului ___, văzătorul lui David:",
+   "a": [
+    "Gad"
+   ]
   },
   {
    "id": "2sa.24.18+.13",
@@ -1070,6 +1307,38 @@
    ],
    "a": [],
    "explain": "Niciun răspuns corect: trei luni (24:13)."
+  },
+  {
+   "id": "2sa.24.18+.22",
+   "age": "18+",
+   "t": "multi",
+   "ref": "24:5-7",
+   "q": "Pe unde au trecut cei trimiși să numere poporul?",
+   "opts": [
+    "prin Galaad",
+    "până la cetățuia Tir",
+    "până la Hebron"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "2sa.24.18+.23",
+   "age": "18+",
+   "t": "multi",
+   "ref": "24:20-23",
+   "q": "Ce a făcut Aravna?",
+   "opts": [
+    "a refuzat să-l primească pe împărat",
+    "a ieșit și s-a închinat cu fața la pământ",
+    "a dat împăratului totul"
+   ],
+   "a": [
+    1,
+    2
+   ]
   }
  ]
 }
