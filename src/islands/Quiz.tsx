@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'preact/hooks';
+import { useEffect, useLayoutEffect, useRef, useState } from 'preact/hooks';
 import { loadVerses } from '../lib/load';
 import { createPortal } from 'preact/compat';
 import { recordAnswers, recordExam } from '../lib/progress';
@@ -43,6 +43,16 @@ export default function Quiz({ book, bookName, questions, mode, examId, backHref
   }, [done, started]);
 
   useEffect(() => { scrollTo({ top: 0 }); }, [i, done]);
+
+  // the correction must fit on the screen: if it does not, the card moves up just enough
+  useLayoutEffect(() => {
+    if (!g || mode !== 'practice') return;
+    const fb = quizEl.current?.querySelector('.feedback');
+    const bar = document.querySelector('.actions');
+    if (!fb || !bar) return;
+    const over = fb.getBoundingClientRect().bottom - (bar.getBoundingClientRect().top - 12);
+    if (over > 0) setPin((p) => Math.max(8, (p ?? 8) - over));
+  }, [g]);
 
   // slim header while answering
   useEffect(() => {
@@ -172,32 +182,26 @@ export default function Quiz({ book, bookName, questions, mode, examId, backHref
 
 /** answer: also write the right answer (where the question itself is not shown, as in "De recitit"). */
 function Feedback({ q, g, bookName, answer = false }: { q: Playable; g: Grade; bookName: string; answer?: boolean }) {
+  const [open, setOpen] = useState(false);
   // "Niciun răspuns corect: …" in the explanation already says it
   const showAnswer = answer && !g.right && !(q.explain ?? '').startsWith('Niciun răspuns corect');
+  const verses = q.cite.map(([label]) => label.split(':')[1]).filter(Boolean);
   return (
-    <section class={`card feedback ${g.right ? 'is-right' : 'is-wrong'}`}>
-      {showAnswer && (
-        <div class="fb-block">
-          <p class="fb-label">Răspunsul corect</p>
-          <p class="fb-answer">{rightAnswer(q)}</p>
-        </div>
-      )}
-      {q.explain && (
-        <div class="fb-block">
-          <p class="fb-label">{g.right ? 'Pe scurt' : 'De ce'}</p>
-          <p class="fb-explain">{q.explain}</p>
-        </div>
-      )}
-      <Passage q={q} bookName={bookName} />
-      <div class="fb-links">
-        <ReportButton q={q} />
-      </div>
+    <section class={`feedback ${g.right ? 'is-right' : 'is-wrong'}`}>
+      {showAnswer && <p class="fb-answer"><small>Răspunsul corect</small>{rightAnswer(q)}</p>}
+      {q.explain && <p class="fb-explain">{q.explain}</p>}
+      <button type="button" class="verse-btn" onClick={() => setOpen(true)}>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4h7a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H2zM22 4h-7a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h8z" /></svg>
+        <span class="vb-main"><b>Vezi versetul</b><small>{bookName} {q.ch}:{verses.length > 1 ? `${verses[0]}–${verses[verses.length - 1]}` : verses[0]}</small></span>
+        <svg class="vb-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
+      </button>
+      {open && <VerseSheet q={q} bookName={bookName} onClose={() => setOpen(false)} />}
     </section>
   );
 }
 
-/** The whole chapter, with the verses the question rests on highlighted and brought into view. */
-function Passage({ q, bookName }: { q: Playable; bookName: string }) {
+/** The chapter in a bottom sheet, the verses of the question highlighted and brought into view. */
+function VerseSheet({ q, bookName, onClose }: { q: Playable; bookName: string; onClose: () => void }) {
   const [verses, setVerses] = useState<string[] | null>(null);
   const box = useRef<HTMLDivElement>(null);
   const cited = new Set(q.cite.map(([label]) => Number(label.split(':')[1])));
@@ -205,21 +209,33 @@ function Passage({ q, bookName }: { q: Playable; bookName: string }) {
   useEffect(() => {
     let live = true;
     loadVerses(q.book, q.ch).then((v) => live && setVerses(v.length ? v : null), () => {});
-    return () => { live = false; };
+    const esc = (e: KeyboardEvent) => e.key === 'Escape' && onClose();
+    addEventListener('keydown', esc);
+    document.body.style.overflow = 'hidden';
+    return () => { live = false; removeEventListener('keydown', esc); document.body.style.overflow = ''; };
   }, [q.id]);
 
   useEffect(() => {
     const el = box.current?.querySelector<HTMLElement>('.is-cited');
-    if (el && box.current) box.current.scrollTop = el.offsetTop - 12;
+    if (el && box.current) box.current.scrollTop = el.offsetTop - 16;
   }, [verses]);
 
   return (
-    <div class="fb-block">
-      <p class="fb-label">{bookName} {q.ch}</p>
-      <div class="fb-verses fb-chapter" ref={box}>
-        {verses
-          ? verses.map((text, k) => <p class={cited.has(k + 1) ? 'is-cited' : ''}><sup>{k + 1}</sup>{text}</p>)
-          : q.cite.map(([label, text]) => <p class="is-cited"><sup>{label}</sup>{text}</p>)}
+    <div class="sheet-back" onClick={(e) => e.target === e.currentTarget && onClose()}>
+      <div class="sheet-panel verse-sheet" role="dialog" aria-modal="true" aria-label={`${bookName} ${q.ch}`}>
+        <div class="sheet-grab" aria-hidden="true" />
+        <div class="sheet-top">
+          <h2>{bookName} {q.ch}</h2>
+          <button type="button" class="icon-btn" aria-label="Închide" onClick={onClose}>
+            <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+          </button>
+        </div>
+        <div class="vs-text" ref={box}>
+          {verses
+            ? verses.map((text, k) => <p class={cited.has(k + 1) ? 'is-cited' : ''}><sup>{k + 1}</sup>{text}</p>)
+            : q.cite.map(([label, text]) => <p class="is-cited"><sup>{label}</sup>{text}</p>)}
+        </div>
+        <div class="vs-foot"><ReportButton q={q} /></div>
       </div>
     </div>
   );
