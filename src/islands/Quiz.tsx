@@ -15,11 +15,13 @@ export interface QuizProps {
   examId?: string;
   /** practice: a whole-chapter test records its score under this id ("c5"). */
   scoreId?: string;
+  /** false: the answers do not count for the questions known or for the board (the mock exam). */
+  record?: boolean;
   backHref: string;
   onAgain?: () => void;
 }
 
-export default function Quiz({ book, bookName, questions, mode, examId, scoreId, backHref, onAgain }: QuizProps) {
+export default function Quiz({ book, bookName, questions, mode, examId, scoreId, record = true, backHref, onAgain }: QuizProps) {
   const [i, setI] = useState(0);
   const [answers, setAnswers] = useState<Answer[]>(() => questions.map(emptyAnswer));
   const [grades, setGrades] = useState<(Grade | null)[]>(() => questions.map(() => null));
@@ -88,7 +90,7 @@ export default function Quiz({ book, bookName, questions, mode, examId, scoreId,
     if (quizEl.current && cardEl.current) setPin(cardEl.current.getBoundingClientRect().top - quizEl.current.getBoundingClientRect().top);
     const gr = grade(q, answers[i]);
     setGrades(grades.map((x, k) => (k === i ? gr : x)));
-    recordAnswers(book, [{ id: q.id, t: q.t, right: gr.right }]);
+    if (record) recordAnswers(book, [{ id: q.id, t: q.t, right: gr.right }]);
   }
 
   function next() {
