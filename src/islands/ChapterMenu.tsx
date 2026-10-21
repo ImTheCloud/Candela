@@ -118,7 +118,7 @@ function Sheet({ book, ch, title, total, best, wrongs, onClose }: SheetProps) {
           </div>
         </div>
         <a class="btn btn-primary btn-block oc-go" href={`${base}/exersare?capitol=${ch}&start=1&nivel=${lv}`}>
-          Începe testul · {ageShort(lv)}
+          Începe testul · {ageShort(lv)} ani
         </a>
         {wrongs > 0 && (
           <a class="oc-more" href={`${base}/greseli`}>Greșelile mele ({wrongs} de reluat)</a>

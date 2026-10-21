@@ -198,12 +198,14 @@ function Feedback({ q, g, bookName, answer = false }: { q: Playable; g: Grade; b
     <section class={`feedback ${g.right ? 'is-right' : 'is-wrong'}`}>
       {showAnswer && <p class="fb-answer"><small>Răspunsul corect</small>{rightAnswer(q)}</p>}
       {q.explain && <p class="fb-explain">{q.explain}</p>}
-      <button type="button" class="verse-btn" onClick={() => setOpen(true)}>
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4h7a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H2zM22 4h-7a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h8z" /></svg>
-        <span class="vb-main"><b>Vezi versetul</b><small>{bookName} {q.ch}:{verses.length > 1 ? `${verses[0]}–${verses[verses.length - 1]}` : verses[0]}</small></span>
-        <svg class="vb-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
-      </button>
-      <div class="fb-report"><ReportButton q={q} /></div>
+      <div class="fb-actions">
+        <button type="button" class="verse-btn" onClick={() => setOpen(true)}>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4h7a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H2zM22 4h-7a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h8z" /></svg>
+          <span class="vb-main"><b>Vezi versetul</b><small>{bookName} {q.ch}:{verses.length > 1 ? `${verses[0]}-${verses[verses.length - 1]}` : verses[0]}</small></span>
+          <svg class="vb-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
+        </button>
+        <ReportButton q={q} />
+      </div>
       {open && <VerseSheet q={q} bookName={bookName} onClose={() => setOpen(false)} />}
     </section>
   );

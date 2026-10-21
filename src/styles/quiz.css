@@ -110,7 +110,24 @@ body.in-quiz main { padding-top: 0; }
 .vs-text p { padding: 4px 10px; border-radius: 10px; }
 .vs-text sup { font: 600 0.7rem var(--f-body); color: var(--oil-ink); margin-right: 4px; }
 .vs-text .is-cited { background: var(--oil-soft); }
-.fb-report { display: flex; justify-content: center; }
+.fb-actions { display: flex; gap: 8px; }
+.fb-actions .verse-btn { flex: 1; min-width: 0; }
+.info-btn {
+  flex: none; display: grid; place-items: center; width: 56px; border: 1.5px solid var(--line); border-radius: 16px;
+  background: var(--surface); color: var(--ink-2); cursor: pointer;
+}
+.info-btn:active { background: var(--surface-2); }
+.info-btn.is-sent { color: var(--ok); }
+.report-modal { display: grid; gap: 14px; }
+.report-modal .sheet-top p { margin-top: 4px; }
+.rp-form { display: grid; gap: 12px; }
+.rp-reasons { display: grid; gap: 8px; }
+.rp-opt { display: flex; align-items: center; min-height: 48px; padding: 8px 14px; border: 1.5px solid var(--line); border-radius: 14px; background: var(--bg); font-weight: 500; cursor: pointer; }
+.rp-opt input { position: absolute; opacity: 0; pointer-events: none; }
+.rp-opt.on { border-color: var(--btn); background: var(--oil-soft); font-weight: 600; }
+.rp-note { min-height: 64px; padding: 10px 14px; resize: none; font: inherit; }
+.rp-done { display: grid; gap: 12px; justify-items: center; text-align: center; padding: 6px 0 4px; }
+.rp-done-ic { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; background: var(--ok-soft); color: var(--ok); }
 .fb-answer { padding: 10px 12px; border-radius: 10px; background: var(--ok-soft); color: var(--ok); font-weight: 600; }
 .fb-explain { line-height: 1.5; }
 

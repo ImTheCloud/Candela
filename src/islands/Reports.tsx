@@ -28,9 +28,9 @@ function List() {
 
   return (
     <div class="stack">
-      <div class="age-tabs" role="tablist">
-        <button class="chip" role="tab" aria-selected={show === 'open'} onClick={() => setShow('open')}>De rezolvat · {open.length}</button>
-        <button class="chip" role="tab" aria-selected={show === 'done'} onClick={() => setShow('done')}>Rezolvate · {done.length}</button>
+      <div class="book-switch" role="tablist" aria-label="Semnalări">
+        <button type="button" role="tab" aria-selected={show === 'open'} onClick={() => setShow('open')}>De rezolvat · {open.length}</button>
+        <button type="button" role="tab" aria-selected={show === 'done'} onClick={() => setShow('done')}>Rezolvate · {done.length}</button>
       </div>
       {list.length === 0
         ? <p class="card empty muted">{show === 'open' ? 'Nicio semnalare nouă.' : 'Nimic rezolvat încă.'}</p>
@@ -50,18 +50,18 @@ function Item({ r }: { r: Report }) {
   }
 
   return (
-    <li class="card report-item stack">
-      <div class="row-between small muted">
-        <span>{book?.name ?? r.book} {r.ref}</span>
-        <span>{r.at ? r.at.toDate().toLocaleDateString('ro-RO') : ''}</span>
+    <li class="card ri">
+      <div class="ri-top">
+        <span class="ri-ref">{book?.name ?? r.book} {r.ref}</span>
+        <span class="ri-date">{r.at ? r.at.toDate().toLocaleDateString('ro-RO') : ''}</span>
       </div>
-      <p class="report-q">{r.q.replace(/___/g, '…')}</p>
-      <p><strong>{REASONS.find((x) => x.id === r.reason)?.label ?? r.reason}</strong></p>
-      {r.note && <p class="report-note">„{r.note}"</p>}
-      <p class="small muted">De la {r.by || 'un jucător'} · <code>{r.qid}</code></p>
-      {chapterQuestion && <a class="link small" href={`/${r.book}/verificare/${r.ch}#${r.qid}`}>Vezi întrebarea în capitolul {r.ch}</a>}
+      <p class="ri-q">{r.q.replace(/___/g, '…')}</p>
+      <p class="ri-reason">{REASONS.find((x) => x.id === r.reason)?.label ?? r.reason}</p>
+      {r.note && <blockquote class="ri-note">{r.note}</blockquote>}
+      <p class="ri-meta">De la {r.by || 'un jucător'} · <code>{r.qid}</code></p>
+      {chapterQuestion && <a class="ri-link" href={`/${r.book}/verificare/${r.ch}#${r.qid}`}>Vezi întrebarea în capitolul {r.ch}</a>}
       {error && <p class="notice notice-bad" role="alert">{error}</p>}
-      <div class="two">
+      <div class="ri-actions">
         <button class="btn btn-ghost btn-sm" onClick={() => act(() => removeReport(r.id))}>Șterge</button>
         <button class="btn btn-primary btn-sm" onClick={() => act(() => setDone(r.id, !r.done))}>{r.done ? 'Redeschide' : 'Rezolvat'}</button>
       </div>
