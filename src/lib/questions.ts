@@ -34,7 +34,7 @@ export type Answer =
 export const TYPES: { t: QType; part: string; label: string; short: string; hint: string }[] = [
   { t: 'tf', part: 'I', label: 'Adevărat sau fals', short: 'Adevărat sau fals', hint: '' },
   { t: 'one', part: 'II', label: 'Un singur răspuns corect', short: 'Un răspuns', hint: '' },
-  { t: 'match', part: 'III', label: 'Asociază cele două coloane', short: 'Asociere', hint: 'Atinge un element din stânga, apoi perechea lui din dreapta.' },
+  { t: 'match', part: 'III', label: 'Asociază cele două coloane', short: 'Asociere', hint: '' },
   { t: 'fill', part: 'IV', label: 'Completează versetul', short: 'Completare', hint: '' },
   { t: 'multi', part: 'V', label: 'Unul, mai multe sau niciunul', short: 'Mai multe răspunsuri', hint: '' },
 ];
