@@ -1,4 +1,3 @@
-import { ageGroup, ageLabel } from '../lib/age';
 import { choosePlayer, player, players } from '../lib/players';
 import { user } from '../lib/session';
 
@@ -9,7 +8,6 @@ export default function PlayerPicker() {
   if (!u) return null;
   const list = players.value;
   const current = player.value;
-  // a missing birth year is asked for by BirthYearGate
   if (list.length < 2) return null;
   return (
     <div class="picker">
@@ -18,7 +16,6 @@ export default function PlayerPicker() {
         {list.map((p) => (
           <button type="button" role="radio" aria-checked={p.key === current.key} class="chip" onClick={() => choosePlayer(p.key)}>
             <span class="chip-name">{p.name.split(' ')[0]}</span>
-            {p.birthYear && <span class="chip-age">{ageLabel(ageGroup(p.birthYear))}</span>}
           </button>
         ))}
       </div>

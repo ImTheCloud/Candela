@@ -1,11 +1,10 @@
 import { useEffect, useState } from 'preact/hooks';
 import { doc, getDoc, onSnapshot } from 'firebase/firestore';
-import { ageGroup, ageLabel, validBirthYear } from '../lib/age';
 import { db } from '../lib/firebase';
 import { addChild, choosePlayer, player, players, removeChild, setHidden, updateChild, type Player } from '../lib/players';
 import { deleteProgress, EMPTY, type Progress } from '../lib/progress';
 import { typeInfo, TYPES } from '../lib/questions';
-import { errorText, profile, profileError, profileLoaded, rememberedAccount, setBirthYear, setParent, signOut, user } from '../lib/session';
+import { errorText, profile, profileError, rememberedAccount, setParent, signOut, user } from '../lib/session';
 import Avatar from './Avatar';
 
 export interface BookInfo { slug: string; name: string; chapters: number; totals: Record<string, number> }
@@ -38,7 +37,6 @@ export default function Profile({ books }: { books: BookInfo[] }) {
           <h1>{name}</h1>
           {email && <p class="small muted">{email}</p>}
           {profileError.value && <p class="small bad">Profilul nu a putut fi încărcat. Verifică conexiunea.</p>}
-          {!profileError.value && (profileLoaded.value || p) && <BirthYear key={p?.birthYear ?? 'none'} current={p?.birthYear ?? null} />}
         </div>
       </header>
 
@@ -81,59 +79,10 @@ function self(p: ReturnType<typeof profile.peek>, uid?: string): Player[] {
   return uid && p ? [{ key: uid, name: p.name, birthYear: p.birthYear, child: false, hidden: p.hidden ?? false }] : [];
 }
 
-function BirthYear({ current }: { current: number | null }) {
-  const [editing, setEditing] = useState(current === null);
-  const [value, setValue] = useState(current ? String(current) : '');
-  const [busy, setBusy] = useState(false);
-  const [error, setError] = useState('');
-
-  if (!editing && current) {
-    return (
-      <p class="me-pill">
-        <strong>{ageLabel(ageGroup(current))}</strong><span>născut în {current}</span><button type="button" class="btn-reset link" onClick={() => setEditing(true)}>schimbă</button>
-      </p>
-    );
-  }
-
-  async function save(e: Event) {
-    e.preventDefault();
-    const y = Number(value);
-    if (!validBirthYear(y)) {
-      setError('Scrie anul nașterii cu patru cifre, de exemplu 1990.');
-      return;
-    }
-    setBusy(true);
-    setError('');
-    try {
-      await setBirthYear(y);
-      setEditing(false);
-    } catch (err) {
-      setError(errorText(err));
-    } finally {
-      setBusy(false);
-    }
-  }
-
-  return (
-    <form class="stack me-form" onSubmit={save}>
-      <div class="field">
-        <label for="birth">Anul nașterii</label>
-        <input id="birth" class="input" inputMode="numeric" maxLength={4} placeholder="de exemplu 1990" value={value} onInput={(e) => setValue(e.currentTarget.value.replace(/\D/g, ''))} />
-      </div>
-      {error && <p class="notice notice-bad" role="alert">{error}</p>}
-      <div class="two">
-        {current && <button type="button" class="btn btn-ghost" onClick={() => setEditing(false)}>Renunță</button>}
-        <button class="btn btn-primary" disabled={busy}>{busy ? 'Se salvează…' : 'Salvează'}</button>
-      </div>
-    </form>
-  );
-}
-
 /** One player: who, whether they are the one playing, progress in each book, and their settings. */
 function PlayerBlock({ p, books, head }: { p: Player; books: BookInfo[]; head: boolean }) {
   const current = player.value;
   const active = p.key === current.key;
-  const group = p.birthYear ? ageGroup(p.birthYear) : null;
   const [editing, setEditing] = useState(false);
   const [confirming, setConfirming] = useState(false);
   const [busy, setBusy] = useState(false);
@@ -158,14 +107,13 @@ function PlayerBlock({ p, books, head }: { p: Player; books: BookInfo[]; head: b
           <Avatar name={p.name} size={40} />
           <div class="pl-name">
             <strong>{p.name.split(' ')[0]}{isSelf && ' (tu)'}</strong>
-            <span class="small muted">{group ? ageLabel(group) : ''}</span>
           </div>
           {active
             ? <span class="tag-on">joacă acum</span>
             : <button type="button" class="btn btn-ghost btn-sm" onClick={() => choosePlayer(p.key)}>Alege</button>}
         </header>
       )}
-      {books.map((b) => <BookStats key={b.slug} p={p} book={b} total={group ? b.totals[group] ?? 0 : 0} />)}
+      {books.map((b) => <BookStats key={b.slug} p={p} book={b} />)}
       <footer class="pl-foot">
         <label class="check small">
           <input type="checkbox" checked={!p.hidden} disabled={busy || !user.value} onChange={toggleHidden} />
@@ -210,21 +158,25 @@ function useBookProgress(p: Player, book: string): { data: Progress; v1: number;
   return { ...state, v1 };
 }
 
-function BookStats({ p, book, total }: { p: Player; book: BookInfo; total: number }) {
+function BookStats({ p, book }: { p: Player; book: BookInfo }) {
   const { data: d, v1, loaded } = useBookProgress(p, book.slug);
   const typed = TYPES.map((x) => ({ x, s: d.stats[x.t] })).filter((e) => e.s && e.s.n >= 3);
   // a weak spot only means something next to other kinds of questions
   const weakest = typed.length >= 2 ? typed.sort((a, b) => a.s!.r / a.s!.n - b.s!.r / b.s!.n)[0] : undefined;
-  const exams = Object.values(d.exams);
+  // "c5" entries are chapter scores, the others are exams
+  const entries = Object.entries(d.exams);
+  const exams = entries.filter(([id]) => !/^c\d+$/.test(id)).map(([, e]) => e);
+  const chapters = entries.filter(([id]) => /^c\d+$/.test(id)).length;
   const bestExam = exams.length ? Math.max(...exams.map((e) => e.best)) : null;
-  const started = d.mastered.length || d.wrong.length || exams.length || v1;
+  const started = d.mastered.length || d.wrong.length || entries.length || v1;
 
   return (
     <section class="bk">
       <h3>{book.name}</h3>
       {!loaded ? <div class="sk-rows" aria-hidden="true"><span class="sk" /><span class="sk" /><span class="sk" /></div> : !started ? <p class="small muted">Nu a început încă.</p> : (
         <dl class="kv">
-          <div><dt>Întrebări știute</dt><dd>{d.mastered.length}{total ? ` / ${total}` : ''}</dd></div>
+          <div><dt>Întrebări știute</dt><dd>{d.mastered.length}</dd></div>
+          {chapters > 0 && <div><dt>Capitole încercate</dt><dd>{chapters} / {book.chapters}</dd></div>}
           <div><dt>De reluat</dt><dd>{d.wrong.length}</dd></div>
           {bestExam !== null && <div><dt>Cel mai bun examen</dt><dd>{bestExam} / 100</dd></div>}
           {weakest && <div><dt>De lucrat</dt><dd>{typeInfo(weakest.x.t).label}</dd></div>}
@@ -237,20 +189,17 @@ function BookStats({ p, book, total }: { p: Player; book: BookInfo; total: numbe
 
 function ChildForm({ child, onDone }: { child?: Player; onDone: () => void }) {
   const [name, setName] = useState(child?.name ?? '');
-  const [year, setYear] = useState(child?.birthYear ? String(child.birthYear) : '');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
 
   async function submit(e: Event) {
     e.preventDefault();
-    const y = Number(year);
     if (!name.trim()) return setError('Scrie prenumele copilului.');
-    if (!validBirthYear(y)) return setError('Scrie anul nașterii cu patru cifre, de exemplu 2014.');
     setBusy(true);
     setError('');
     try {
-      if (child) await updateChild(child.key, name, y);
-      else await addChild(name, y);
+      if (child) await updateChild(child.key, name);
+      else await addChild(name);
       onDone();
     } catch (err) {
       setError(errorText(err));
@@ -261,15 +210,9 @@ function ChildForm({ child, onDone }: { child?: Player; onDone: () => void }) {
   const id = child?.key ?? 'new';
   return (
     <form class="stack me-form" onSubmit={submit}>
-      <div class="two">
-        <div class="field">
-          <label for={`kn-${id}`}>Prenume</label>
-          <input id={`kn-${id}`} class="input" maxLength={40} value={name} onInput={(e) => setName(e.currentTarget.value)} />
-        </div>
-        <div class="field">
-          <label for={`ky-${id}`}>Anul nașterii</label>
-          <input id={`ky-${id}`} class="input" inputMode="numeric" maxLength={4} placeholder="2014" value={year} onInput={(e) => setYear(e.currentTarget.value.replace(/\D/g, ''))} />
-        </div>
+      <div class="field">
+        <label for={`kn-${id}`}>Prenume</label>
+        <input id={`kn-${id}`} class="input" maxLength={40} value={name} onInput={(e) => setName(e.currentTarget.value)} />
       </div>
       {error && <p class="notice notice-bad" role="alert">{error}</p>}
       <div class="two">

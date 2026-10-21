@@ -9,7 +9,6 @@ import { ClientRouter } from 'astro:transitions';
 import Lamp from '../components/Lamp.astro';
 import AccountButton from '../islands/AccountButton';
 import HeaderTitle from '../islands/HeaderTitle';
-import BirthYearGate from '../islands/BirthYearGate';
 import { DEFAULT_BOOK } from '../lib/books';
 
 interface Crumb { href: string; label: string }
@@ -67,7 +66,6 @@ const fullTitle = title === 'Candela' ? title : `${title} · Candela`;
     <main>
       <slot />
     </main>
-    <BirthYearGate client:only="preact" />
   </body>
 </html>
 

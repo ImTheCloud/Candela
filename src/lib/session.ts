@@ -71,7 +71,6 @@ export interface SignUp {
   lastName: string;
   email: string;
   password: string;
-  birthYear: number;
   isParent: boolean;
 }
 
@@ -82,7 +81,7 @@ export async function signUp(f: SignUp): Promise<void> {
   await setDoc(doc(db, 'users', cred.user.uid), {
     name,
     email: cred.user.email,
-    birthYear: f.birthYear,
+    birthYear: null,
     isParent: f.isParent,
     hidden: false,
     createdAt: serverTimestamp(),
@@ -99,21 +98,6 @@ export function signOut() {
 
 export function resetPassword(email: string) {
   return sendPasswordResetEmail(auth, email.trim());
-}
-
-/** Also creates the profile when it is missing (an account whose profile was never written). */
-export function setBirthYear(birthYear: number) {
-  const u = auth.currentUser;
-  if (!u) throw new Error('not_signed_in');
-  if (profile.value) return updateDoc(doc(db, 'users', u.uid), { birthYear });
-  return setDoc(doc(db, 'users', u.uid), {
-    name: u.displayName ?? '',
-    email: u.email,
-    birthYear,
-    isParent: false,
-    hidden: false,
-    createdAt: serverTimestamp(),
-  });
 }
 
 export function setParent(isParent: boolean) {

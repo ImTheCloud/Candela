@@ -1,6 +1,6 @@
 import { computed, effect, signal } from '@preact/signals';
 import { addDoc, collection, deleteDoc, doc, getDoc, onSnapshot, serverTimestamp, setDoc, updateDoc } from 'firebase/firestore';
-import { ageGroup } from './age';
+import { level } from './level';
 import { BOOKS } from './books';
 import { db } from './firebase';
 import { profile, user } from './session';
@@ -20,11 +20,10 @@ export const GUEST = 'guest';
 
 const children = signal<Player[]>([]);
 const chosen = signal<string | null>(localGet<string | null>('player', null));
-const guestBirthYear = signal<number | null>(localGet<number | null>('guestBirthYear', null));
 
 export const players = computed<Player[]>(() => {
   const u = user.value;
-  if (!u) return [{ key: GUEST, name: 'Invitat', birthYear: guestBirthYear.value, child: false, hidden: true }];
+  if (!u) return [{ key: GUEST, name: 'Invitat', birthYear: null, child: false, hidden: true }];
   const p = profile.value;
   const self: Player = { key: u.uid, name: p?.name || u.displayName || 'Eu', birthYear: p?.birthYear ?? null, child: false, hidden: p?.hidden ?? false };
   return [self, ...children.value];
@@ -46,16 +45,11 @@ effect(() => {
   if (!u) return;
   stopChildren = onSnapshot(collection(db, 'users', u.uid, 'players'), (snap) => {
     children.value = snap.docs
-      .map((d) => ({ key: d.id, name: d.get('name') as string, birthYear: d.get('birthYear') as number, child: true, hidden: d.get('hidden') === true, at: d.get('createdAt')?.toMillis?.() ?? 0 }))
+      .map((d) => ({ key: d.id, name: d.get('name') as string, birthYear: (d.get('birthYear') as number | undefined) ?? null, child: true, hidden: d.get('hidden') === true, at: d.get('createdAt')?.toMillis?.() ?? 0 }))
       .sort((a, b) => a.at - b.at)
       .map(({ at: _, ...p }) => p);
   });
 });
-
-export function setGuestBirthYear(y: number) {
-  guestBirthYear.value = y;
-  localSet('guestBirthYear', y);
-}
 
 function uid(): string {
   const u = user.value;
@@ -63,16 +57,12 @@ function uid(): string {
   return u.uid;
 }
 
-export function addChild(name: string, birthYear: number) {
-  return addDoc(collection(db, 'users', uid(), 'players'), { name: name.trim().replace(/\s+/g, ' '), birthYear, createdAt: serverTimestamp() });
+export function addChild(name: string) {
+  return addDoc(collection(db, 'users', uid(), 'players'), { name: name.trim().replace(/\s+/g, ' '), createdAt: serverTimestamp() });
 }
 
-export function updateChild(key: string, name: string, birthYear: number) {
-  return updateDoc(doc(db, 'users', uid(), 'players', key), { name: name.trim().replace(/\s+/g, ' '), birthYear });
-}
-
-export function setChildBirthYear(key: string, birthYear: number) {
-  return updateDoc(doc(db, 'users', uid(), 'players', key), { birthYear });
+export function updateChild(key: string, name: string) {
+  return updateDoc(doc(db, 'users', uid(), 'players', key), { name: name.trim().replace(/\s+/g, ' ') });
 }
 
 export async function removeChild(key: string) {
@@ -98,6 +88,6 @@ export async function setHidden(p: Player, hidden: boolean) {
     const entry = doc(db, 'boards', b.slug, 'players', `${id}~${p.key}`);
     if (hidden) return deleteDoc(entry);
     const score = ((await getDoc(doc(db, 'users', id, 'progress', `${p.key}~${b.slug}`))).get('mastered') as string[] | undefined)?.length ?? 0;
-    if (score && p.birthYear) return setDoc(entry, { name: shortName(p), age: ageGroup(p.birthYear), score, at: serverTimestamp() });
+    if (score) return setDoc(entry, { name: shortName(p), age: level.value, score, at: serverTimestamp() });
   }));
 }

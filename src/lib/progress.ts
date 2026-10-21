@@ -1,6 +1,6 @@
 import { effect, signal, type Signal } from '@preact/signals';
 import { arrayRemove, arrayUnion, deleteDoc, doc, increment, onSnapshot, serverTimestamp, setDoc, writeBatch } from 'firebase/firestore';
-import { ageGroup } from './age';
+import { level } from './level';
 import { BOOKS } from './books';
 import { db } from './firebase';
 import { player, shortName } from './players';
@@ -107,9 +107,9 @@ export async function recordAnswers(book: string, answers: Answered[]) {
   if (right.length) batch.update(r, { wrong: arrayRemove(...right) });
   const score = new Set([...before.mastered, ...right]).size;
   const p = player.value;
-  if (score > before.mastered.length && !p.hidden && p.birthYear) {
+  if (score > before.mastered.length && !p.hidden) {
     batch.set(doc(db, 'boards', book, 'players', `${user.value!.uid}~${p.key}`), {
-      name: shortName(p), age: ageGroup(p.birthYear), score, at: serverTimestamp(),
+      name: shortName(p), age: level.value, score, at: serverTimestamp(),
     });
   }
   await batch.commit();

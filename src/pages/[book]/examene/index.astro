@@ -17,7 +17,7 @@ const { book, list } = Astro.props as { book: Book; list: ExamFile[] };
     <a class="card exam alb" href={`/${book.slug}/examene/alb`}>
       <span>
         <span class="exam-title">Examen alb</span>
-        <span class="small muted">Un examen nou, ca cel adevărat: 21 de întrebări din capitolele alese, pentru vârsta ta.</span>
+        <span class="small muted">Un examen nou, ca cel adevărat: 21 de întrebări din capitolele alese, la nivelul ales.</span>
       </span>
       <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
     </a>
@@ -45,8 +45,7 @@ const { book, list } = Astro.props as { book: Book; list: ExamFile[] };
 
 <script>
   import { effect } from '@preact/signals';
-  import { ageGroup } from '../../../lib/age';
-  import { player } from '../../../lib/players';
+  import { level } from '../../../lib/level';
   import { progress } from '../../../lib/progress';
 
   let stop: (() => void) | undefined;
@@ -56,7 +55,7 @@ const { book, list } = Astro.props as { book: Book; list: ExamFile[] };
     if (!root || !root.querySelector('[data-exam]')) return;
     const p = progress(root.dataset.book!);
     stop = effect(() => {
-      const own = player.value.birthYear ? ageGroup(player.value.birthYear) : null;
+      const own = level.value;
       for (const a of root.querySelectorAll<HTMLElement>('[data-exam]')) {
         const best = p.value.exams[a.dataset.exam!]?.best;
         const badge = a.querySelector<HTMLElement>('.best')!;

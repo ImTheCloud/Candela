@@ -1,10 +1,9 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
-import { validBirthYear } from '../lib/age';
 import { errorText, signUp, user } from '../lib/session';
 import PasswordInput from './PasswordInput';
 
 export default function SignUpForm() {
-  const [f, setF] = useState({ firstName: '', lastName: '', email: '', password: '', birthYear: '', isParent: false });
+  const [f, setF] = useState({ firstName: '', lastName: '', email: '', password: '', isParent: false });
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
   const submitting = useRef(false);
@@ -21,14 +20,12 @@ export default function SignUpForm() {
 
   async function submit(e: Event) {
     e.preventDefault();
-    const y = Number(f.birthYear);
     if (!f.firstName.trim() || !f.lastName.trim()) return setError('Scrie prenumele și numele.');
-    if (!validBirthYear(y)) return setError('Scrie anul nașterii cu patru cifre, de exemplu 1990.');
     setBusy(true);
     setError('');
     submitting.current = true;
     try {
-      await signUp({ ...f, birthYear: y });
+      await signUp(f);
       location.replace('/');
     } catch (err) {
       submitting.current = false;
@@ -58,12 +55,6 @@ export default function SignUpForm() {
         <label for="password">Parolă</label>
         <PasswordInput id="password" autocomplete="new-password" minLength={6} value={f.password} onInput={set('password')} />
         <p class="small muted">Cel puțin 6 caractere.</p>
-      </div>
-      <div class="field">
-        <label for="birth">Anul nașterii</label>
-        <input id="birth" class="input" inputMode="numeric" maxLength={4} placeholder="de exemplu 1990" required value={f.birthYear}
-          onInput={(e) => setF({ ...f, birthYear: e.currentTarget.value.replace(/\D/g, '') })} />
-        <p class="small muted">Întrebările de examen sunt pe categorii de vârstă; așa știm ce categorie să-ți arătăm. Nu-l arătăm nimănui.</p>
       </div>
       <label class="check">
         <input type="checkbox" checked={f.isParent} onChange={set('isParent')} />
