@@ -28,6 +28,23 @@
    "a": true
   },
   {
+   "id": "1sa.15.sub12.16",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "15:22",
+   "q": "Samuel a spus că ascultarea face mai mult decât jertfele.",
+   "a": true
+  },
+  {
+   "id": "1sa.15.sub12.17",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "15:34",
+   "q": "Samuel și Saul s-au dus împreună la Rama.",
+   "a": false,
+   "explain": "Samuel a plecat la Rama, iar Saul s-a suit acasă la Ghibea."
+  },
+  {
    "id": "1sa.15.sub12.4",
    "age": "sub12",
    "t": "one",
@@ -67,65 +84,57 @@
    "a": 2
   },
   {
-   "id": "1sa.15.sub12.7",
+   "id": "1sa.15.sub12.18",
    "age": "sub12",
-   "t": "match",
-   "ref": "15:3, 8-9",
-   "q": "Războiul cu Amalec: asociază.",
-   "pairs": [
-    [
-     "Domnul",
-     "a poruncit să fie nimicit Amalec"
-    ],
-    [
-     "Saul",
-     "l-a cruțat pe Agag"
-    ],
-    [
-     "poporul",
-     "a păstrat oile cele mai bune"
-    ]
-   ]
+   "t": "one",
+   "ref": "15:4",
+   "q": "Unde a numărat Saul poporul înainte de războiul cu Amalec?",
+   "opts": [
+    "la Hebron",
+    "la Telaim",
+    "la Mițpa"
+   ],
+   "a": 1
   },
   {
-   "id": "1sa.15.sub12.8",
+   "id": "1sa.15.sub12.19",
+   "age": "sub12",
+   "t": "one",
+   "ref": "15:13",
+   "q": "Ce i-a spus Saul lui Samuel când acesta a ajuns la el?",
+   "opts": [
+    "„Am greșit față de Domnul”",
+    "„Am păzit Cuvântul Domnului”",
+    "„Du-te înapoi la Rama”"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.15.sub12.24",
    "age": "sub12",
    "t": "match",
-   "ref": "15:13-15",
-   "q": "Samuel și Saul la Ghilgal: asociază.",
+   "ref": "15:1-34",
+   "q": "Asociază fiecare nume sau loc cu ce se spune despre el în 1 Samuel 15.",
    "pairs": [
     [
      "Saul",
-     "a spus: „Am păzit Cuvântul Domnului\""
+     "cel care a cruțat pe Agag"
     ],
     [
      "Samuel",
-     "a auzit behăitul oilor"
+     "cel care l-a uns pe Saul împărat"
     ],
     [
-     "oile și boii",
-     "aduși de la amaleciți"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.15.sub12.9",
-   "age": "sub12",
-   "t": "match",
-   "ref": "15:27-28",
-   "q": "Haina lui Samuel: asociază.",
-   "pairs": [
-    [
-     "pulpana hainei",
-     "s-a rupt"
+     "Agag",
+     "împăratul lui Amalec"
     ],
     [
-     "Saul",
-     "a apucat-o"
+     "cheniții",
+     "cei care au plecat din mijlocul lui Amalec"
     ],
     [
-     "domnia",
-     "Domnul o rupe de la Saul"
+     "Ghilgal",
+     "locul unde l-a întâlnit Samuel pe Saul"
     ]
    ]
   },
@@ -161,6 +170,26 @@
    ],
    "q": "A prins viu pe ___, împăratul lui Amalec,",
    "ctx": "Războiul lui Saul cu amaleciții:"
+  },
+  {
+   "id": "1sa.15.sub12.20",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "15:1",
+   "q": "Pe mine m-a trimis Domnul să te ung ___ peste poporul Lui, peste Israel.",
+   "a": [
+    "împărat"
+   ]
+  },
+  {
+   "id": "1sa.15.sub12.21",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "15:13",
+   "q": "Fii binecuvântat de Domnul! Am păzit ___ Domnului.",
+   "a": [
+    "Cuvântul"
+   ]
   },
   {
    "id": "1sa.15.sub12.13",
@@ -210,6 +239,38 @@
    "explain": "Niciun răspuns corect: „o dă altuia mai bun decât tine\" (15:28)."
   },
   {
+   "id": "1sa.15.sub12.22",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "15:2-3",
+   "q": "Ce a poruncit Domnul lui Saul?",
+   "opts": [
+    "să bată pe Amalec",
+    "să facă pace cu Amalec",
+    "să nu cruțe nimic din ce-i al lui"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.15.sub12.23",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "15:14-15",
+   "q": "Ce auzea Samuel?",
+   "opts": [
+    "behăitul oilor",
+    "cântări de biruință",
+    "mugetul boilor"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
    "id": "1sa.15.12-13.1",
    "age": "12-13",
    "t": "tf",
@@ -233,6 +294,23 @@
    "ref": "15:35",
    "q": "Samuel nu s-a mai dus să-l vadă pe Saul până în ziua morții sale.",
    "a": true
+  },
+  {
+   "id": "1sa.15.12-13.16",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "15:1",
+   "q": "Samuel i-a amintit lui Saul că Domnul l-a uns împărat peste Israel.",
+   "a": true
+  },
+  {
+   "id": "1sa.15.12-13.17",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "15:9",
+   "q": "Saul și poporul au cruțat numai tot ce era prost și nebăgat în seamă.",
+   "a": false,
+   "explain": "Au cruțat pe Agag și ce era mai bun și au nimicit ce era prost."
   },
   {
    "id": "1sa.15.12-13.4",
@@ -274,73 +352,57 @@
    "a": 1
   },
   {
-   "id": "1sa.15.12-13.7",
+   "id": "1sa.15.12-13.18",
    "age": "12-13",
-   "t": "match",
-   "ref": "15:1-3",
-   "q": "Porunca Domnului: asociază.",
-   "pairs": [
-    [
-     "Samuel",
-     "l-a uns pe Saul împărat"
-    ],
-    [
-     "Amalec",
-     "îi astupase drumul lui Israel"
-    ],
-    [
-     "Saul",
-     "trebuia să-l nimicească pe Amalec"
-    ]
-   ]
+   "t": "one",
+   "ref": "15:4",
+   "q": "Câți oameni din Iuda au fost numărați la Telaim?",
+   "opts": [
+    "două sute de mii",
+    "o mie",
+    "zece mii"
+   ],
+   "a": 2
   },
   {
-   "id": "1sa.15.12-13.8",
+   "id": "1sa.15.12-13.19",
    "age": "12-13",
-   "t": "match",
-   "ref": "15:22-23",
-   "q": "Cuvintele lui Samuel: asociază începutul cu sfârșitul.",
-   "pairs": [
-    [
-     "Ascultarea face mai mult",
-     "decât jertfele"
-    ],
-    [
-     "păzirea cuvântului Său",
-     "face mai mult decât grăsimea berbecilor"
-    ],
-    [
-     "neascultarea",
-     "este tot atât de vinovată ca ghicirea"
-    ],
-    [
-     "Fiindcă ai lepădat Cuvântul Domnului",
-     "te leapădă și El ca împărat"
-    ]
-   ]
+   "t": "one",
+   "ref": "15:25",
+   "q": "Ce i-a cerut Saul lui Samuel, după ce a spus că a păcătuit?",
+   "opts": [
+    "să-i ierte păcatul",
+    "să-i dea un alt împărat",
+    "să-l lase să plece"
+   ],
+   "a": 0
   },
   {
-   "id": "1sa.15.12-13.9",
+   "id": "1sa.15.12-13.24",
    "age": "12-13",
    "t": "match",
-   "ref": "15:32-35",
-   "q": "Sfârșitul capitolului 15: asociază.",
+   "ref": "15:4-34",
+   "q": "Asociază fiecare loc cu ce se spune despre el în 1 Samuel 15.",
    "pairs": [
     [
-     "Agag",
-     "a înaintat vesel"
+     "Telaim",
+     "locul unde a numărat Saul poporul"
     ],
     [
-     "Samuel",
-     "l-a tăiat pe Agag în bucăți"
+     "Havila",
+     "locul de la care a bătut Saul pe Amalec"
+    ],
+    [
+     "Șur",
+     "locul din fața Egiptului"
+    ],
+    [
+     "Carmel",
+     "locul unde și-a înălțat Saul un semn de biruință"
     ],
     [
      "Rama",
-     "acolo a plecat Samuel"
-    ],
-    [
-     "Ghibea lui Saul",
-     "acolo s-a suit Saul"
+     "locul unde a plecat Samuel"
     ]
    ]
   },
@@ -376,6 +438,26 @@
    ],
    "q": "Dar Samuel ___ pe Saul,",
    "ctx": "După despărțirea de la Ghilgal:"
+  },
+  {
+   "id": "1sa.15.12-13.20",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "15:17",
+   "q": "și nu te-a uns Domnul ca să fii ___ peste Israel?",
+   "a": [
+    "împărat"
+   ]
+  },
+  {
+   "id": "1sa.15.12-13.21",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "15:14",
+   "q": "Ce înseamnă ___ acesta de oi care ajunge la urechile mele",
+   "a": [
+    "behăitul"
+   ]
   },
   {
    "id": "1sa.15.12-13.13",
@@ -424,6 +506,38 @@
    "explain": "Niciun răspuns corect: la Telaim (15:4)."
   },
   {
+   "id": "1sa.15.12-13.22",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "15:26-28",
+   "q": "Ce a spus Samuel lui Saul?",
+   "opts": [
+    "„Domnul te iartă și te întărește”",
+    "„Domnul te leapădă ca împărat”",
+    "„Ai lepădat Cuvântul Domnului”"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.15.12-13.23",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "15:20-21",
+   "q": "Ce a spus Saul?",
+   "opts": [
+    "„N-am văzut pe Agag”",
+    "poporul a luat din pradă oi și boi",
+    "„Am ascultat glasul Domnului”"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
    "id": "1sa.15.14-15.1",
    "age": "14-15",
    "t": "tf",
@@ -447,6 +561,23 @@
    "ref": "15:12",
    "q": "Saul și-a înălțat un semn de biruință la Carmel.",
    "a": true
+  },
+  {
+   "id": "1sa.15.14-15.16",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "15:2",
+   "q": "Domnul și-a adus aminte că Amalec i-a astupat drumul lui Israel la ieșirea din Egipt.",
+   "a": true
+  },
+  {
+   "id": "1sa.15.14-15.17",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "15:18",
+   "q": "Domnul l-a trimis pe Saul să lupte cu filistenii.",
+   "a": false,
+   "explain": "L-a trimis să nimicească pe amaleciți."
   },
   {
    "id": "1sa.15.14-15.4",
@@ -488,77 +619,57 @@
    "a": 2
   },
   {
-   "id": "1sa.15.14-15.7",
+   "id": "1sa.15.14-15.18",
+   "age": "14-15",
+   "t": "one",
+   "ref": "15:28",
+   "q": "Cui avea să dea Domnul domnia lui Israel, după cuvintele lui Samuel?",
+   "opts": [
+    "lui Abner",
+    "altuia mai bun decât Saul",
+    "fiului lui Saul"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.15.14-15.19",
+   "age": "14-15",
+   "t": "one",
+   "ref": "15:24",
+   "q": "De cine a spus Saul că s-a temut?",
+   "opts": [
+    "de Samuel",
+    "de Agag",
+    "de popor"
+   ],
+   "a": 2
+  },
+  {
+   "id": "1sa.15.14-15.24",
    "age": "14-15",
    "t": "match",
-   "ref": "15:7-9",
-   "q": "Biruința asupra lui Amalec: asociază.",
+   "ref": "15:22-34",
+   "q": "Asociază fiecare lucru cu ce se spune despre el în 1 Samuel 15.",
    "pairs": [
     [
-     "Havila",
-     "de acolo a început bătaia"
-    ],
-    [
-     "Șur",
-     "în fața Egiptului"
+     "pulpana hainei",
+     "s-a rupt când a apucat-o Saul"
     ],
     [
      "Agag",
-     "prins viu"
+     "cel care a înaintat vesel"
     ],
     [
-     "ce era prost",
-     "a fost nimicit"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.15.14-15.8",
-   "age": "14-15",
-   "t": "match",
-   "ref": "15:13-21",
-   "q": "Răspunsurile lui Saul: asociază.",
-   "pairs": [
-    [
-     "„Am păzit Cuvântul Domnului\"",
-     "la întâlnire"
+     "terafimii",
+     "cei cu care e comparată împotrivirea"
     ],
     [
-     "„poporul a cruțat oile\"",
-     "despre behăit"
+     "grăsimea berbecilor",
+     "mai puțin prețuită decât ascultarea"
     ],
     [
-     "„Am ascultat glasul Domnului\"",
-     "a repetat Saul"
-    ],
-    [
-     "„ca pârgă\"",
-     "scuza pentru vite"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.15.14-15.9",
-   "age": "14-15",
-   "t": "match",
-   "ref": "15:30-31",
-   "q": "Rugămintea lui Saul: asociază.",
-   "pairs": [
-    [
-     "„Am păcătuit!\"",
-     "mărturisirea lui"
-    ],
-    [
-     "„cinstește-mă în fața bătrânilor\"",
-     "cererea lui"
-    ],
-    [
-     "Samuel",
-     "s-a întors cu el"
-    ],
-    [
-     "Saul",
-     "s-a închinat înaintea Domnului"
+     "Rama",
+     "locul unde a plecat Samuel"
     ]
    ]
   },
@@ -594,6 +705,26 @@
    ],
    "q": "Și Agag a înaintat ___ spre el, căci zicea: „Negreșit, a trecut amărăciunea morții!\"",
    "ctx": "La Ghilgal, când Samuel l-a chemat pe Agag:"
+  },
+  {
+   "id": "1sa.15.14-15.20",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "15:25",
+   "q": "Acum, te rog, iartă-mi păcatul, întoarce-te cu mine, ca să mă închin până la ___ înaintea Domnului.",
+   "a": [
+    "pământ"
+   ]
+  },
+  {
+   "id": "1sa.15.14-15.21",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "15:9",
+   "q": "Dar Saul și poporul au cruțat pe ___ și oile cele mai bune",
+   "a": [
+    "Agag"
+   ]
   },
   {
    "id": "1sa.15.14-15.13",
@@ -642,6 +773,38 @@
    "explain": "Niciun răspuns corect: de la Havila până la Șur, în fața Egiptului (15:7)."
   },
   {
+   "id": "1sa.15.14-15.22",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "15:29",
+   "q": "Ce spune Samuel despre Cel ce este tăria lui Israel?",
+   "opts": [
+    "nu Se căiește",
+    "Se schimbă ușor",
+    "nu minte"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.15.14-15.23",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "15:27-28",
+   "q": "Ce s-a întâmplat când Samuel se întorcea să plece?",
+   "opts": [
+    "Saul l-a apucat de pulpana hainei",
+    "pulpana s-a rupt",
+    "Samuel a rămas cu Saul"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
    "id": "1sa.15.16-17.1",
    "age": "16-17",
    "t": "tf",
@@ -665,6 +828,23 @@
    "ref": "15:23",
    "q": "Samuel spune că împotrivirea nu este mai puțin vinovată decât închinarea la idoli.",
    "a": true
+  },
+  {
+   "id": "1sa.15.16-17.16",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "15:15",
+   "q": "Saul a spus că poporul a cruțat vitele ca să le jertfească Domnului.",
+   "a": true
+  },
+  {
+   "id": "1sa.15.16-17.17",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "15:31",
+   "q": "Samuel a refuzat și a doua oară să se întoarcă cu Saul.",
+   "a": false,
+   "explain": "S-a întors și a mers după Saul, iar Saul s-a închinat."
   },
   {
    "id": "1sa.15.16-17.4",
@@ -706,77 +886,57 @@
    "a": 2
   },
   {
-   "id": "1sa.15.16-17.7",
+   "id": "1sa.15.16-17.18",
    "age": "16-17",
-   "t": "match",
-   "ref": "15:2-6",
-   "q": "Amalec și cheniții: asociază.",
-   "pairs": [
-    [
-     "Amalec",
-     "astupase drumul lui Israel"
-    ],
-    [
-     "cheniții",
-     "arătaseră bunăvoință"
-    ],
-    [
-     "Telaim",
-     "locul numărătorii"
-    ],
-    [
-     "valea",
-     "acolo au pândit oamenii lui Saul"
-    ]
-   ]
+   "t": "one",
+   "ref": "15:7",
+   "q": "Până unde l-a bătut Saul pe Amalec?",
+   "opts": [
+    "de la Hebron până la Ghilgal",
+    "de la Dan până la Beer-Șeba",
+    "de la Havila până la Șur"
+   ],
+   "a": 2
   },
   {
-   "id": "1sa.15.16-17.8",
+   "id": "1sa.15.16-17.19",
    "age": "16-17",
-   "t": "match",
-   "ref": "15:22-23",
-   "q": "Comparațiile lui Samuel: asociază fiecare cu ce este mai mult sau la fel.",
-   "pairs": [
-    [
-     "ascultarea",
-     "mai mult decât jertfele"
-    ],
-    [
-     "păzirea cuvântului",
-     "mai mult decât grăsimea berbecilor"
-    ],
-    [
-     "neascultarea",
-     "la fel de vinovată ca ghicirea"
-    ],
-    [
-     "împotrivirea",
-     "ca închinarea la idoli și terafimi"
-    ]
-   ]
+   "t": "one",
+   "ref": "15:32",
+   "q": "Cum a înaintat Agag spre Samuel?",
+   "opts": [
+    "în lanțuri, plângând",
+    "vesel",
+    "înspăimântat"
+   ],
+   "a": 1
   },
   {
-   "id": "1sa.15.16-17.9",
+   "id": "1sa.15.16-17.24",
    "age": "16-17",
    "t": "match",
-   "ref": "15:9-15",
-   "q": "Cele cruțate și cele nimicite: asociază.",
+   "ref": "15:4-7",
+   "q": "Asociază fiecare număr sau loc cu ce se spune despre el în 1 Samuel 15.",
    "pairs": [
     [
-     "oile cele mai bune",
-     "Saul spunea că sunt pentru jertfă"
+     "două sute de mii",
+     "pedeștrii numărați la Telaim"
+    ],
+    [
+     "zece mii",
+     "oamenii din Iuda numărați la Telaim"
     ],
     [
      "Agag",
      "împăratul prins viu"
     ],
     [
-     "ce era prost și nebăgat în seamă",
-     "a fost nimicit"
+     "Havila",
+     "de unde a început Saul să-l bată pe Amalec"
     ],
     [
-     "behăitul oilor",
-     "l-a auzit Samuel"
+     "Șur",
+     "în fața Egiptului, unde a ajuns bătaia"
     ]
    ]
   },
@@ -812,6 +972,26 @@
    ],
    "q": "„Duceți-vă, plecați și ieșiți din mijlocul lui ___, ca să nu vă prăpădesc împreună cu el,",
    "ctx": "Saul, către cheniți:"
+  },
+  {
+   "id": "1sa.15.16-17.20",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "15:3",
+   "q": "bate pe Amalec și nimicește cu ___ tot ce-i al lui",
+   "a": [
+    "desăvârșire"
+   ]
+  },
+  {
+   "id": "1sa.15.16-17.21",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "15:28",
+   "q": "Domnul rupe astăzi domnia lui Israel de asupra ta și o dă altuia mai ___ decât tine.",
+   "a": [
+    "bun"
+   ]
   },
   {
    "id": "1sa.15.16-17.13",
@@ -860,6 +1040,38 @@
    "explain": "Niciun răspuns corect: la ieșirea lui Israel din Egipt (15:2)."
   },
   {
+   "id": "1sa.15.16-17.22",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "15:32-33",
+   "q": "Ce s-a întâmplat cu Agag?",
+   "opts": [
+    "a fost iertat de Samuel",
+    "a înaintat vesel",
+    "Samuel a spus că mama lui va fi lăsată fără copii"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.15.16-17.23",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "15:30-31",
+   "q": "Ce a cerut Saul a doua oară?",
+   "opts": [
+    "să-l facă împărat din nou",
+    "să se întoarcă Samuel cu el ca să se închine Domnului",
+    "să-l cinstească în fața bătrânilor"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
    "id": "1sa.15.18+.1",
    "age": "18+",
    "t": "tf",
@@ -883,6 +1095,23 @@
    "ref": "15:32",
    "q": "Agag spunea: „Negreșit, a trecut amărăciunea morții!\"",
    "a": true
+  },
+  {
+   "id": "1sa.15.18+.16",
+   "age": "18+",
+   "t": "tf",
+   "ref": "15:5",
+   "q": "Saul a pus niște oameni la pândă în vale, lângă cetatea lui Amalec.",
+   "a": true
+  },
+  {
+   "id": "1sa.15.18+.17",
+   "age": "18+",
+   "t": "tf",
+   "ref": "15:3",
+   "q": "Domnul i-a poruncit lui Saul să cruțe copiii și pruncii lui Amalec.",
+   "a": false,
+   "explain": "I-a poruncit să nimicească tot, fără să cruțe."
   },
   {
    "id": "1sa.15.18+.4",
@@ -924,77 +1153,57 @@
    "a": 0
   },
   {
-   "id": "1sa.15.18+.7",
+   "id": "1sa.15.18+.18",
    "age": "18+",
-   "t": "match",
-   "ref": "15:3",
-   "q": "Porunca de nimicire: asociază perechile.",
-   "pairs": [
-    [
-     "bărbații",
-     "și femeile"
-    ],
-    [
-     "copiii",
-     "și pruncii"
-    ],
-    [
-     "cămilele",
-     "și măgarii"
-    ],
-    [
-     "boii",
-     "și oile"
-    ]
-   ]
+   "t": "one",
+   "ref": "15:22",
+   "q": "Ce spune Samuel că face mai mult decât jertfele și grăsimea berbecilor?",
+   "opts": [
+    "ascultarea și păzirea cuvântului Domnului",
+    "postul și rugăciunea",
+    "darurile și zeciuiala"
+   ],
+   "a": 0
   },
   {
-   "id": "1sa.15.18+.8",
+   "id": "1sa.15.18+.19",
    "age": "18+",
-   "t": "match",
-   "ref": "15:17-19",
-   "q": "Mustrarea lui Samuel: asociază începutul cu sfârșitul.",
-   "pairs": [
-    [
-     "Când erai mic în ochii tăi",
-     "n-ai ajuns tu căpetenia semințiilor?"
-    ],
-    [
-     "Du-te și nimicește cu desăvârșire",
-     "pe păcătoșii aceia, pe amaleciți"
-    ],
-    [
-     "Pentru ce n-ai ascultat",
-     "glasul Domnului?"
-    ],
-    [
-     "Pentru ce te-ai aruncat",
-     "asupra prăzii?"
-    ]
-   ]
+   "t": "one",
+   "ref": "15:29",
+   "q": "Ce spune Samuel despre Cel ce este tăria lui Israel?",
+   "opts": [
+    "Se răzgândește des",
+    "doarme",
+    "nu minte și nu Se căiește"
+   ],
+   "a": 2
   },
   {
-   "id": "1sa.15.18+.9",
+   "id": "1sa.15.18+.24",
    "age": "18+",
    "t": "match",
-   "ref": "15:4-12",
-   "q": "Locuri din războiul cu Amalec: asociază.",
+   "ref": "15:4-34",
+   "q": "Asociază fiecare loc cu ce se spune despre el în 1 Samuel 15.",
    "pairs": [
     [
-     "Telaim",
-     "numărătoarea"
+     "Ghilgal",
+     "locul unde a fost tăiat Agag"
     ],
     [
-     "Havila",
-     "începutul bătăii"
+     "Ghibea",
+     "locul unde s-a suit Saul acasă"
+    ],
+    [
+     "Rama",
+     "locul unde a plecat Samuel"
     ],
     [
      "Carmel",
-     "semnul de biruință"
+     "locul unde Saul și-a înălțat un semn de biruință"
     ],
     [
-     "Ghilgal",
-     "întâlnirea cu Samuel"
+     "Telaim",
+     "locul numărătorii poporului"
     ]
    ]
   },
@@ -1030,6 +1239,26 @@
    ],
    "q": "erau două sute de mii de oameni pedeștri și zece mii de oameni din ___.",
    "ctx": "Numărătoarea de la Telaim:"
+  },
+  {
+   "id": "1sa.15.18+.20",
+   "age": "18+",
+   "t": "fill",
+   "ref": "15:23",
+   "q": "Căci neascultarea este tot atât de vinovată ca ___, și împotrivirea nu este mai puțin vinovată decât închinarea la idoli",
+   "a": [
+    "ghicirea"
+   ]
+  },
+  {
+   "id": "1sa.15.18+.21",
+   "age": "18+",
+   "t": "fill",
+   "ref": "15:18",
+   "q": "războiește-te cu ei până îi vei ___.",
+   "a": [
+    "nimici"
+   ]
   },
   {
    "id": "1sa.15.18+.13",
@@ -1076,6 +1305,38 @@
    ],
    "a": [],
    "explain": "Niciun răspuns corect: pentru că Domnul Se căise că pusese pe Saul împărat (15:35)."
+  },
+  {
+   "id": "1sa.15.18+.22",
+   "age": "18+",
+   "t": "multi",
+   "ref": "15:12-13",
+   "q": "Ce se spune despre Saul?",
+   "opts": [
+    "a fugit la Rama",
+    "s-a coborât la Ghilgal",
+    "și-a înălțat un semn de biruință"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.15.18+.23",
+   "age": "18+",
+   "t": "multi",
+   "ref": "15:17-19",
+   "q": "Ce i-a spus Samuel lui Saul?",
+   "opts": [
+    "„Te-a uns Domnul împărat peste Israel”",
+    "„Ai ascultat glasul Domnului”",
+    "„Erai mic în ochii tăi”"
+   ],
+   "a": [
+    0,
+    2
+   ]
   }
  ]
 }

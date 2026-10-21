@@ -28,6 +28,23 @@
    "explain": "Domnul a tunat împotriva filistenilor, care au fost bătuți dinaintea lui Israel (7:10)."
   },
   {
+   "id": "1sa.7.sub12.16",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "7:6",
+   "q": "Israeliții s-au adunat la Mițpa și au postit în ziua aceea.",
+   "a": true
+  },
+  {
+   "id": "1sa.7.sub12.17",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "7:9",
+   "q": "Samuel a adus ca ardere-de-tot un bou mare.",
+   "a": false,
+   "explain": "A adus un miel sugar."
+  },
+  {
    "id": "1sa.7.sub12.4",
    "age": "sub12",
    "t": "one",
@@ -67,65 +84,57 @@
    "a": 2
   },
   {
-   "id": "1sa.7.sub12.7",
+   "id": "1sa.7.sub12.18",
    "age": "sub12",
-   "t": "match",
-   "ref": "7:1, 5, 17",
-   "q": "Locuri din 1 Samuel 7: asociază.",
-   "pairs": [
-    [
-     "Chiriat-Iearim",
-     "acolo a stat chivotul"
-    ],
-    [
-     "Mițpa",
-     "acolo s-a strâns Israel"
-    ],
-    [
-     "Rama",
-     "acolo era casa lui Samuel"
-    ]
-   ]
+   "t": "one",
+   "ref": "7:3",
+   "q": "Ce le-a cerut Samuel israeliților, dacă se întorc la Domnul din toată inima?",
+   "opts": [
+    "să zidească un templu",
+    "să scoată din mijlocul lor dumnezeii străini",
+    "să plece din țară"
+   ],
+   "a": 1
   },
   {
-   "id": "1sa.7.sub12.8",
+   "id": "1sa.7.sub12.19",
+   "age": "sub12",
+   "t": "one",
+   "ref": "7:17",
+   "q": "Unde era casa lui Samuel?",
+   "opts": [
+    "la Rama",
+    "la Mițpa",
+    "la Silo"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.7.sub12.24",
    "age": "sub12",
    "t": "match",
-   "ref": "7:9-12",
-   "q": "Biruința de la Mițpa: asociază.",
+   "ref": "7:1-17",
+   "q": "Asociază fiecare nume sau loc cu ce se spune despre el în 1 Samuel 7.",
    "pairs": [
     [
      "Samuel",
-     "a adus un miel ca ardere-de-tot"
+     "judecător în Israel în tot timpul vieții lui"
     ],
     [
-     "Domnul",
-     "a tunat"
+     "Mițpa",
+     "locul unde s-a adunat tot Israelul"
     ],
     [
-     "piatra",
-     "Eben-Ezer"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.7.sub12.9",
-   "age": "sub12",
-   "t": "match",
-   "ref": "7:3-6",
-   "q": "Pocăința lui Israel: asociază.",
-   "pairs": [
-    [
-     "dumnezeii străini",
-     "i-au scos dintre ei"
+     "Eben-Ezer",
+     "numele pietrei, „Piatră de ajutor”"
     ],
     [
-     "apa",
-     "au vărsat-o înaintea Domnului"
+     "Rama",
+     "locul unde era casa lui Samuel"
     ],
     [
-     "postul",
-     "l-au ținut în ziua aceea"
+     "Eleazar",
+     "cel sfințit să păzească chivotul"
     ]
    ]
   },
@@ -161,6 +170,26 @@
    ],
    "q": "„Strângeți pe tot Israelul la Mițpa, și eu mă voi ___ Domnului pentru voi.\"",
    "ctx": "Samuel, către Israel:"
+  },
+  {
+   "id": "1sa.7.sub12.20",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "7:9",
+   "q": "Samuel a luat un ___ sugar și l-a adus întreg ca ardere-de-tot Domnului.",
+   "a": [
+    "miel"
+   ]
+  },
+  {
+   "id": "1sa.7.sub12.21",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "7:6",
+   "q": "Samuel judeca pe copiii lui Israel la ___.",
+   "a": [
+    "Mițpa"
+   ]
   },
   {
    "id": "1sa.7.sub12.13",
@@ -210,6 +239,38 @@
    "explain": "Niciun răspuns corect: în casa lui Abinadab, pe deal (7:1)."
   },
   {
+   "id": "1sa.7.sub12.22",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "7:10-11",
+   "q": "Ce s-a întâmplat la Mițpa?",
+   "opts": [
+    "Domnul a tunat cu mare vuiet",
+    "bărbații lui Israel i-au urmărit pe filisteni",
+    "Israel a fost bătut de filisteni"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.7.sub12.23",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "7:15-17",
+   "q": "Ce făcea Samuel?",
+   "opts": [
+    "a zidit un altar Domnului la Rama",
+    "judeca pe Israel",
+    "a plecat din țară"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
    "id": "1sa.7.12-13.1",
    "age": "12-13",
    "t": "tf",
@@ -233,6 +294,23 @@
    "ref": "7:17",
    "q": "Samuel a zidit un altar Domnului la Rama.",
    "a": true
+  },
+  {
+   "id": "1sa.7.12-13.16",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "7:4",
+   "q": "Copiii lui Israel au scos din mijlocul lor baalii și astarteele.",
+   "a": true
+  },
+  {
+   "id": "1sa.7.12-13.17",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "7:13",
+   "q": "Filistenii au continuat să atace Israelul în tot timpul lui Samuel.",
+   "a": false,
+   "explain": "Filistenii au fost smeriți și n-au mai venit pe ținutul lui Israel."
   },
   {
    "id": "1sa.7.12-13.4",
@@ -274,77 +352,57 @@
    "a": 2
   },
   {
-   "id": "1sa.7.12-13.7",
+   "id": "1sa.7.12-13.18",
    "age": "12-13",
-   "t": "match",
-   "ref": "7:6-10",
-   "q": "Mițpa: asociază.",
-   "pairs": [
-    [
-     "apa",
-     "scoasă și vărsată înaintea Domnului"
-    ],
-    [
-     "postul",
-     "ținut în ziua aceea"
-    ],
-    [
-     "filistenii",
-     "s-au suit împotriva lui Israel"
-    ],
-    [
-     "tunetul",
-     "i-a pus pe fugă"
-    ]
-   ]
+   "t": "one",
+   "ref": "7:5",
+   "q": "Ce a promis Samuel că va face la Mițpa?",
+   "opts": [
+    "să jertfească un taur",
+    "să se roage Domnului pentru ei",
+    "să lupte cu filistenii"
+   ],
+   "a": 1
   },
   {
-   "id": "1sa.7.12-13.8",
+   "id": "1sa.7.12-13.19",
    "age": "12-13",
-   "t": "match",
-   "ref": "7:12-14",
-   "q": "După biruință: asociază.",
-   "pairs": [
-    [
-     "piatra Eben-Ezer",
-     "între Mițpa și Șen"
-    ],
-    [
-     "filistenii",
-     "n-au mai venit pe ținutul lui Israel"
-    ],
-    [
-     "cetățile",
-     "s-au întors la Israel"
-    ],
-    [
-     "amoriții",
-     "era pace cu ei"
-    ]
-   ]
+   "t": "one",
+   "ref": "7:2",
+   "q": "Câți ani trecuseră de când stătea chivotul la Chiriat-Iearim?",
+   "opts": [
+    "patruzeci de ani",
+    "șapte ani",
+    "douăzeci de ani"
+   ],
+   "a": 2
   },
   {
-   "id": "1sa.7.12-13.9",
+   "id": "1sa.7.12-13.24",
    "age": "12-13",
    "t": "match",
-   "ref": "7:15-17",
-   "q": "Samuel judecător: asociază.",
+   "ref": "7:1-17",
+   "q": "Asociază fiecare nume sau loc cu ce se spune despre el în 1 Samuel 7.",
    "pairs": [
     [
-     "Betel",
-     "îl înconjura în fiecare an"
+     "Mițpa",
+     "locul unde s-a postit și s-a mărturisit păcatul"
+    ],
+    [
+     "Bet-Car",
+     "locul până unde au fost urmăriți filistenii"
+    ],
+    [
+     "Șen",
+     "locul lângă care a pus Samuel piatra"
     ],
     [
      "Rama",
-     "acolo era casa lui"
+     "locul unde a zidit Samuel un altar"
     ],
     [
-     "altarul",
-     "l-a zidit la Rama"
-    ],
-    [
-     "toată viața",
-     "a fost judecător"
+     "Chiriat-Iearim",
+     "locul unde a stat chivotul douăzeci de ani"
     ]
    ]
   },
@@ -380,6 +438,26 @@
    ],
    "q": "A strigat către Domnul pentru Israel, și Domnul l-a ___.",
    "ctx": "Samuel, la Mițpa:"
+  },
+  {
+   "id": "1sa.7.12-13.20",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "7:8",
+   "q": "Nu înceta să strigi pentru noi către Domnul ___ nostru",
+   "a": [
+    "Dumnezeul"
+   ]
+  },
+  {
+   "id": "1sa.7.12-13.21",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "7:12",
+   "q": "i-a pus numele Eben-Ezer (Piatră de ___)",
+   "a": [
+    "ajutor"
+   ]
   },
   {
    "id": "1sa.7.12-13.13",
@@ -428,6 +506,38 @@
    "explain": "Niciun răspuns corect: trecuseră douăzeci de ani (7:2)."
   },
   {
+   "id": "1sa.7.12-13.22",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "7:6",
+   "q": "Ce au făcut israeliții la Mițpa?",
+   "opts": [
+    "au jertfit un taur",
+    "au vărsat apă înaintea Domnului",
+    "au postit"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.7.12-13.23",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "7:15-16",
+   "q": "Ce aflăm despre Samuel?",
+   "opts": [
+    "a locuit la Betel",
+    "a fost judecător în tot timpul vieții lui",
+    "făcea în fiecare an înconjurul Betelului, Ghilgalului și Mițpei"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
    "id": "1sa.7.14-15.1",
    "age": "14-15",
    "t": "tf",
@@ -451,6 +561,23 @@
    "ref": "7:14",
    "q": "După biruința de la Mițpa, a fost pace între Israel și amoriți.",
    "a": true
+  },
+  {
+   "id": "1sa.7.14-15.16",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "7:15",
+   "q": "Samuel a fost judecător în Israel în tot timpul vieții lui.",
+   "a": true
+  },
+  {
+   "id": "1sa.7.14-15.17",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "7:9",
+   "q": "Domnul nu a ascultat strigătul lui Samuel.",
+   "a": false,
+   "explain": "Samuel a strigat către Domnul, și Domnul l-a ascultat."
   },
   {
    "id": "1sa.7.14-15.4",
@@ -492,77 +619,57 @@
    "a": 1
   },
   {
-   "id": "1sa.7.14-15.7",
+   "id": "1sa.7.14-15.18",
    "age": "14-15",
-   "t": "match",
-   "ref": "7:3",
-   "q": "Cuvintele lui Samuel către Israel: asociază începutul cu sfârșitul.",
-   "pairs": [
-    [
-     "Dacă din toată inima voastră",
-     "vă întoarceți la Domnul"
-    ],
-    [
-     "scoateți din mijlocul vostru",
-     "dumnezeii străini și astarteele"
-    ],
-    [
-     "îndreptați-vă inima",
-     "spre Domnul"
-    ],
-    [
-     "El vă va izbăvi",
-     "din mâna filistenilor"
-    ]
-   ]
+   "t": "one",
+   "ref": "7:14",
+   "q": "Între ce cetăți s-au întors la Israel cetățile luate de filisteni?",
+   "opts": [
+    "de la Dan până la Beer-Șeba",
+    "de la Hebron până la Ierusalim",
+    "de la Ecron până la Gat"
+   ],
+   "a": 2
   },
   {
-   "id": "1sa.7.14-15.8",
+   "id": "1sa.7.14-15.19",
+   "age": "14-15",
+   "t": "one",
+   "ref": "7:7",
+   "q": "Cine s-a suit împotriva lui Israel, când a aflat că s-au adunat la Mițpa?",
+   "opts": [
+    "domnitorii filistenilor",
+    "moabiții",
+    "amoriții"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.7.14-15.24",
    "age": "14-15",
    "t": "match",
-   "ref": "7:9-11",
-   "q": "Lupta de la Mițpa: asociază.",
+   "ref": "7:6-14",
+   "q": "Asociază fiecare lucru sau persoană cu ce se spune despre el în 1 Samuel 7.",
    "pairs": [
     [
-     "mielul sugar",
+     "un miel sugar",
      "adus întreg ca ardere-de-tot"
     ],
     [
-     "pe când aducea Samuel jertfa",
-     "s-au apropiat filistenii"
+     "tunetul",
+     "glasul Domnului împotriva filistenilor"
     ],
     [
-     "Domnul",
-     "a tunat"
+     "apa",
+     "vărsată înaintea Domnului"
     ],
     [
-     "bărbații lui Israel",
-     "i-au urmărit până sub Bet-Car"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.7.14-15.9",
-   "age": "14-15",
-   "t": "match",
-   "ref": "7:1-2",
-   "q": "Chivotul la Chiriat-Iearim: asociază.",
-   "pairs": [
-    [
-     "locuitorii",
-     "au suit chivotul"
+     "Eben-Ezer",
+     "„Piatră de ajutor”"
     ],
     [
-     "Abinadab",
-     "în casa lui, pe deal"
-    ],
-    [
-     "Eleazar",
-     "sfințit să-l păzească"
-    ],
-    [
-     "douăzeci de ani",
-     "au trecut"
+     "amoriții",
+     "cei cu care a fost pace"
     ]
    ]
   },
@@ -598,6 +705,26 @@
    ],
    "q": "Apoi se întorcea la Rama, unde era ___ lui, și acolo judeca pe Israel.",
    "ctx": "Samuel, judecătorul lui Israel:"
+  },
+  {
+   "id": "1sa.7.14-15.20",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "7:5",
+   "q": "Strângeți pe tot Israelul la Mițpa, și eu mă voi ruga ___ pentru voi.",
+   "a": [
+    "Domnului"
+   ]
+  },
+  {
+   "id": "1sa.7.14-15.21",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "7:10",
+   "q": "Au fost ___ dinaintea lui Israel.",
+   "a": [
+    "bătuți"
+   ]
   },
   {
    "id": "1sa.7.14-15.13",
@@ -647,6 +774,38 @@
    "explain": "Niciun răspuns corect: a zidit un altar Domnului (7:17)."
   },
   {
+   "id": "1sa.7.14-15.22",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "7:3-4",
+   "q": "Ce a cerut Samuel israeliților?",
+   "opts": [
+    "să scoată dumnezeii străini și astarteele",
+    "să plece la Silo",
+    "să-și îndrepte inima spre Domnul"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.7.14-15.23",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "7:7-8",
+   "q": "Ce s-a întâmplat când filistenii s-au suit împotriva lui Israel?",
+   "opts": [
+    "i-au cerut lui Samuel să strige către Domnul",
+    "israeliții au fugit în Egipt",
+    "israeliții s-au temut"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
    "id": "1sa.7.16-17.1",
    "age": "16-17",
    "t": "tf",
@@ -670,6 +829,23 @@
    "ref": "7:10",
    "q": "Filistenii s-au apropiat de Israel pe când Samuel aducea arderea-de-tot.",
    "a": true
+  },
+  {
+   "id": "1sa.7.16-17.16",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "7:11",
+   "q": "Bărbații lui Israel au ieșit din Mițpa și au bătut pe filisteni până sub Bet-Car.",
+   "a": true
+  },
+  {
+   "id": "1sa.7.16-17.17",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "7:1",
+   "q": "Chivotul a fost dus în casa lui Samuel.",
+   "a": false,
+   "explain": "A fost dus în casa lui Abinadab, pe deal."
   },
   {
    "id": "1sa.7.16-17.4",
@@ -711,73 +887,57 @@
    "a": 2
   },
   {
-   "id": "1sa.7.16-17.7",
+   "id": "1sa.7.16-17.18",
+   "age": "16-17",
+   "t": "one",
+   "ref": "7:4",
+   "q": "Cui au slujit israeliții, după ce au scos baalii și astarteele?",
+   "opts": [
+    "numai lui Samuel",
+    "numai Domnului",
+    "lui Baal și Domnului"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.7.16-17.19",
+   "age": "16-17",
+   "t": "one",
+   "ref": "7:13",
+   "q": "Cât timp a fost mâna Domnului împotriva filistenilor?",
+   "opts": [
+    "șapte ani",
+    "în tot timpul vieții lui Samuel",
+    "până la moartea lui Eli"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.7.16-17.24",
    "age": "16-17",
    "t": "match",
-   "ref": "7:11-14",
-   "q": "Urmările biruinței: asociază.",
+   "ref": "7:1-14",
+   "q": "Asociază fiecare nume sau număr cu ce se spune despre el în 1 Samuel 7.",
    "pairs": [
     [
-     "Bet-Car",
-     "până sub el au fost urmăriți filistenii"
+     "Abinadab",
+     "cel în a cărui casă, pe deal, a stat chivotul"
+    ],
+    [
+     "Eleazar",
+     "sfințit să păzească chivotul"
+    ],
+    [
+     "douăzeci de ani",
+     "cât a stat chivotul la Chiriat-Iearim"
     ],
     [
      "Șen",
-     "lângă el a fost pusă piatra"
+     "locul lângă care a stat piatra Eben-Ezer"
     ],
     [
-     "Ecron și Gat",
-     "între ele s-au întors cetățile"
-    ],
-    [
-     "amoriții",
-     "era pace cu ei"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.7.16-17.8",
-   "age": "16-17",
-   "t": "match",
-   "ref": "7:15-17",
-   "q": "Drumul lui Samuel în fiecare an: asociază.",
-   "pairs": [
-    [
-     "Betel",
-     "prima cetate pomenită"
-    ],
-    [
-     "Ghilgal",
-     "a doua cetate pomenită"
-    ],
-    [
-     "Mițpa",
-     "a treia cetate pomenită"
-    ],
-    [
-     "Rama",
-     "acolo se întorcea"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.7.16-17.9",
-   "age": "16-17",
-   "t": "match",
-   "ref": "7:5-8",
-   "q": "Cuvinte din 1 Samuel 7: asociază fiecare cu cine l-a spus.",
-   "pairs": [
-    [
-     "„Strângeți pe tot Israelul la Mițpa\"",
-     "Samuel"
-    ],
-    [
-     "„Am păcătuit împotriva Domnului!\"",
-     "israeliții, la Mițpa"
-    ],
-    [
-     "„Nu înceta să strigi pentru noi\"",
-     "israeliții, de frica filistenilor"
+     "Ecron",
+     "capătul de unde s-au întors cetățile, până la Gat"
     ]
    ]
   },
@@ -813,6 +973,26 @@
    ],
    "q": "și au sfințit pe fiul său ___ ca să păzească chivotul Domnului.",
    "ctx": "Locuitorii din Chiriat-Iearim:"
+  },
+  {
+   "id": "1sa.7.16-17.20",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "7:8",
+   "q": "ca să ne scape din mâna ___.",
+   "a": [
+    "filistenilor"
+   ]
+  },
+  {
+   "id": "1sa.7.16-17.21",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "7:16",
+   "q": "El se ducea în fiecare an de făcea înconjurul ___, Ghilgalului și Mițpei",
+   "a": [
+    "Betelului"
+   ]
   },
   {
    "id": "1sa.7.16-17.13",
@@ -860,6 +1040,38 @@
    "explain": "Niciun răspuns corect: Eben-Ezer (Piatră de ajutor) (7:12)."
   },
   {
+   "id": "1sa.7.16-17.22",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "7:12-13",
+   "q": "Ce s-a întâmplat după biruință?",
+   "opts": [
+    "filistenii au cucerit Mițpa",
+    "filistenii n-au mai venit pe ținutul lui Israel",
+    "Samuel a pus piatra Eben-Ezer"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.7.16-17.23",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "7:14",
+   "q": "Ce s-a întâmplat după aceea?",
+   "opts": [
+    "cetățile luate de filisteni s-au întors la Israel",
+    "cetățile au rămas la filisteni",
+    "a fost pace între Israel și amoriți"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
    "id": "1sa.7.18+.1",
    "age": "18+",
    "t": "tf",
@@ -883,6 +1095,23 @@
    "ref": "7:1",
    "q": "Chivotul a fost dus în casa lui Abinadab, pe deal.",
    "a": true
+  },
+  {
+   "id": "1sa.7.18+.16",
+   "age": "18+",
+   "t": "tf",
+   "ref": "7:13",
+   "q": "Mâna Domnului a fost împotriva filistenilor în tot timpul vieții lui Samuel.",
+   "a": true
+  },
+  {
+   "id": "1sa.7.18+.17",
+   "age": "18+",
+   "t": "tf",
+   "ref": "7:16",
+   "q": "Samuel judeca pe Israel fără să umble prin țară.",
+   "a": false,
+   "explain": "Se ducea în fiecare an prin Betel, Ghilgal și Mițpa."
   },
   {
    "id": "1sa.7.18+.4",
@@ -924,77 +1153,57 @@
    "a": 2
   },
   {
-   "id": "1sa.7.18+.7",
+   "id": "1sa.7.18+.18",
    "age": "18+",
-   "t": "match",
-   "ref": "7:1-17",
-   "q": "Nume din 1 Samuel 7: asociază.",
-   "pairs": [
-    [
-     "Abinadab",
-     "în casa lui a stat chivotul"
-    ],
-    [
-     "Eleazar",
-     "păzea chivotul"
-    ],
-    [
-     "Șen",
-     "lângă el e piatra Eben-Ezer"
-    ],
-    [
-     "Bet-Car",
-     "până acolo au fugit filistenii"
-    ]
-   ]
+   "t": "one",
+   "ref": "7:10",
+   "q": "Cum a tunat Domnul împotriva filistenilor?",
+   "opts": [
+    "cu mare vuiet",
+    "cu un foc din cer",
+    "cu o ploaie de piatră"
+   ],
+   "a": 0
   },
   {
-   "id": "1sa.7.18+.8",
+   "id": "1sa.7.18+.19",
    "age": "18+",
-   "t": "match",
-   "ref": "7:6-12",
-   "q": "Ordinea faptelor de la Mițpa: asociază.",
-   "pairs": [
-    [
-     "întâi",
-     "au vărsat apă și au postit"
-    ],
-    [
-     "apoi",
-     "filistenii s-au suit"
-    ],
-    [
-     "în timpul jertfei",
-     "Domnul a tunat"
-    ],
-    [
-     "la urmă",
-     "piatra Eben-Ezer"
-    ]
-   ]
+   "t": "one",
+   "ref": "7:1",
+   "q": "Cum se numea fiul lui Abinadab, sfințit să păzească chivotul?",
+   "opts": [
+    "Uza",
+    "Eleazar",
+    "Ahio"
+   ],
+   "a": 1
   },
   {
-   "id": "1sa.7.18+.9",
+   "id": "1sa.7.18+.24",
    "age": "18+",
    "t": "match",
-   "ref": "7:3-4",
-   "q": "Ce trebuia să facă Israel: asociază.",
+   "ref": "7:9-14",
+   "q": "Asociază fiecare persoană sau grup cu ce se spune despre el în 1 Samuel 7.",
    "pairs": [
     [
-     "dumnezeii străini",
-     "să fie scoși"
+     "Samuel",
+     "judecător în Israel"
     ],
     [
-     "astarteele",
-     "să fie scoase"
+     "filistenii",
+     "cei smeriți, care n-au mai venit pe ținutul lui Israel"
     ],
     [
-     "inima",
-     "îndreptată spre Domnul"
+     "amoriții",
+     "cei cu care a fost pace"
     ],
     [
-     "slujba",
-     "numai Lui"
+     "Israel",
+     "cel care a smuls cetățile din mâna filistenilor"
+    ],
+    [
+     "Domnul",
+     "cel care a tunat cu mare vuiet"
     ]
    ]
   },
@@ -1030,6 +1239,26 @@
    ],
    "q": "Israel le-a smuls din mâna ___.",
    "ctx": "Despre cetățile de la Ecron până la Gat:"
+  },
+  {
+   "id": "1sa.7.18+.20",
+   "age": "18+",
+   "t": "fill",
+   "ref": "7:3",
+   "q": "scoateți din mijlocul vostru dumnezeii străini și ___, îndreptați-vă inima spre Domnul",
+   "a": [
+    "astarteele"
+   ]
+  },
+  {
+   "id": "1sa.7.18+.21",
+   "age": "18+",
+   "t": "fill",
+   "ref": "7:2",
+   "q": "Trecuseră douăzeci de ___.",
+   "a": [
+    "ani"
+   ]
   },
   {
    "id": "1sa.7.18+.13",
@@ -1076,6 +1305,38 @@
    ],
    "a": [],
    "explain": "Niciun răspuns corect: un miel sugar (7:9)."
+  },
+  {
+   "id": "1sa.7.18+.22",
+   "age": "18+",
+   "t": "multi",
+   "ref": "7:4-6",
+   "q": "Ce au făcut israeliții?",
+   "opts": [
+    "au scos baalii și astarteele",
+    "au zidit un templu la Mițpa",
+    "au postit la Mițpa"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.7.18+.23",
+   "age": "18+",
+   "t": "multi",
+   "ref": "7:12-14",
+   "q": "Ce aflăm despre vremea lui Samuel după biruință?",
+   "opts": [
+    "Israel a smuls cetățile din mâna filistenilor",
+    "filistenii au pus stăpânire pe Ecron",
+    "Samuel a pus o piatră între Mițpa și Șen"
+   ],
+   "a": [
+    0,
+    2
+   ]
   }
  ]
 }

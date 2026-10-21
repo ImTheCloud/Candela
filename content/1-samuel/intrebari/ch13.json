@@ -28,6 +28,23 @@
    "explain": "După șapte zile, Saul n-a mai așteptat și a adus singur arderea-de-tot (13:8-9)."
   },
   {
+   "id": "1sa.13.sub12.16",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "13:9",
+   "q": "Saul a adus arderea-de-tot înainte să vină Samuel.",
+   "a": true
+  },
+  {
+   "id": "1sa.13.sub12.17",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "13:13",
+   "q": "Samuel i-a spus lui Saul că a lucrat foarte bine.",
+   "a": false,
+   "explain": "I-a spus: „Ai lucrat ca un nebun.”"
+  },
+  {
    "id": "1sa.13.sub12.4",
    "age": "sub12",
    "t": "one",
@@ -67,65 +84,57 @@
    "a": 0
   },
   {
-   "id": "1sa.13.sub12.7",
+   "id": "1sa.13.sub12.18",
+   "age": "sub12",
+   "t": "one",
+   "ref": "13:2",
+   "q": "Câți bărbați din Israel și-a ales Saul?",
+   "opts": [
+    "trei mii",
+    "treizeci",
+    "trei sute"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.13.sub12.19",
+   "age": "sub12",
+   "t": "one",
+   "ref": "13:8",
+   "q": "Câte zile l-a așteptat Saul pe Samuel la Ghilgal?",
+   "opts": [
+    "zece zile",
+    "șapte zile",
+    "trei zile"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.13.sub12.24",
    "age": "sub12",
    "t": "match",
-   "ref": "13:2-3",
-   "q": "Saul și Ionatan: asociază.",
+   "ref": "13:2-23",
+   "q": "Asociază fiecare nume sau loc cu ce se spune despre el în 1 Samuel 13.",
    "pairs": [
     [
      "Saul",
-     "avea două mii de oameni la Micmaș"
+     "cel care a adus arderea-de-tot la Ghilgal"
+    ],
+    [
+     "Samuel",
+     "cel care a venit după ce s-a adus jertfa"
     ],
     [
      "Ionatan",
-     "avea o mie de oameni la Ghibea"
+     "cel care a bătut tabăra filistenilor"
     ],
     [
-     "filistenii",
-     "aveau o tabără la Gheba"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.13.sub12.8",
-   "age": "sub12",
-   "t": "match",
-   "ref": "13:5-7",
-   "q": "Frica lui Israel: asociază.",
-   "pairs": [
-    [
-     "filistenii",
-     "erau ca nisipul de pe țărmul mării"
+     "Micmaș",
+     "locul unde au tăbărât filistenii"
     ],
     [
-     "israeliții",
-     "s-au ascuns în peșteri"
-    ],
-    [
-     "Saul",
-     "era la Ghilgal"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.13.sub12.9",
-   "age": "sub12",
-   "t": "match",
-   "ref": "13:13-14",
-   "q": "Cuvintele lui Samuel către Saul: asociază.",
-   "pairs": [
-    [
-     "Saul",
-     "n-a păzit porunca"
-    ],
-    [
-     "domnia lui Saul",
-     "nu va dăinui"
-    ],
-    [
-     "un om după inima Domnului",
-     "va fi căpetenia poporului"
+     "Ghilgal",
+     "locul unde a fost adunat poporul la Saul"
     ]
    ]
   },
@@ -161,6 +170,26 @@
    ],
    "q": "Ionatan a bătut tabăra ___ care era la Gheba,",
    "ctx": "Începutul războiului lui Saul:"
+  },
+  {
+   "id": "1sa.13.sub12.20",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "13:10",
+   "q": "Pe când sfârșea de adus arderea-de-tot, a venit ___, și Saul i-a ieșit înainte să-i ureze de bine.",
+   "a": [
+    "Samuel"
+   ]
+  },
+  {
+   "id": "1sa.13.sub12.21",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "13:9",
+   "q": "Atunci, Saul a zis: „Aduceți-mi arderea-de-tot și jertfele de ___.",
+   "a": [
+    "mulțumire"
+   ]
   },
   {
    "id": "1sa.13.sub12.13",
@@ -210,6 +239,38 @@
    "explain": "Niciun răspuns corect: aproape șase sute de oameni (13:15)."
   },
   {
+   "id": "1sa.13.sub12.22",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "13:13-14",
+   "q": "Ce i-a spus Samuel lui Saul?",
+   "opts": [
+    "„Domnia ta nu va dăinui”",
+    "„Domnul te va întări și mai mult”",
+    "„Ai lucrat ca un nebun”"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.13.sub12.23",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "13:19-20",
+   "q": "Ce se spune despre fierari?",
+   "opts": [
+    "în toată țara lui Israel nu se găsea niciun fierar",
+    "israeliții se coborau la filisteni ca să-și ascută uneltele",
+    "filistenii le dădeau săbii gratuit"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
    "id": "1sa.13.12-13.1",
    "age": "12-13",
    "t": "tf",
@@ -233,6 +294,23 @@
    "ref": "13:20",
    "q": "Israeliții se coborau la filisteni ca să-și ascută uneltele.",
    "a": true
+  },
+  {
+   "id": "1sa.13.12-13.16",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "13:4",
+   "q": "Poporul a fost adunat la Saul, în Ghilgal.",
+   "a": true
+  },
+  {
+   "id": "1sa.13.12-13.17",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "13:6",
+   "q": "Bărbații lui Israel s-au ascuns în palate de piatră.",
+   "a": false,
+   "explain": "S-au ascuns în peșteri, în tufișuri, în stânci, în turnuri și în gropile pentru apă."
   },
   {
    "id": "1sa.13.12-13.4",
@@ -274,69 +352,57 @@
    "a": 1
   },
   {
-   "id": "1sa.13.12-13.7",
+   "id": "1sa.13.12-13.18",
    "age": "12-13",
-   "t": "match",
-   "ref": "13:17-18",
-   "q": "Cetele filistenilor care pustiau: asociază.",
-   "pairs": [
-    [
-     "prima ceată",
-     "spre Ofra"
-    ],
-    [
-     "a doua ceată",
-     "spre Bet-Horon"
-    ],
-    [
-     "a treia ceată",
-     "spre valea Țeboim"
-    ]
-   ]
+   "t": "one",
+   "ref": "13:12",
+   "q": "Ce spune Saul că nu făcuse, înainte să aducă arderea-de-tot?",
+   "opts": [
+    "nu se rugase Domnului",
+    "nu dormise",
+    "nu mâncase"
+   ],
+   "a": 0
   },
   {
-   "id": "1sa.13.12-13.8",
+   "id": "1sa.13.12-13.19",
    "age": "12-13",
-   "t": "match",
-   "ref": "13:9-12",
-   "q": "Saul și Samuel la Ghilgal: asociază.",
-   "pairs": [
-    [
-     "„Aduceți-mi arderea-de-tot\"",
-     "Saul"
-    ],
-    [
-     "„Ce-ai făcut?\"",
-     "Samuel"
-    ],
-    [
-     "„am îndrăznit\"",
-     "Saul se apără"
-    ]
-   ]
+   "t": "one",
+   "ref": "13:7",
+   "q": "În ce țări au trecut unii evrei, peste Iordan?",
+   "opts": [
+    "în Moab și Edom",
+    "în țara lui Gad și Galaad",
+    "în Egipt"
+   ],
+   "a": 1
   },
   {
-   "id": "1sa.13.12-13.9",
+   "id": "1sa.13.12-13.24",
    "age": "12-13",
    "t": "match",
-   "ref": "13:19-22",
-   "q": "Fierarii: asociază.",
+   "ref": "13:2-16",
+   "q": "Asociază fiecare loc cu ce se spune despre el în 1 Samuel 13.",
    "pairs": [
     [
-     "filistenii",
-     "nu-i lăsau pe evrei să-și facă săbii"
+     "Gheba",
+     "locul taberei filistenilor, bătută de Ionatan"
     ],
     [
-     "israeliții",
-     "se coborau la filisteni"
+     "Micmaș",
+     "locul unde au tăbărât filistenii"
     ],
     [
-     "fierul plugului",
-     "îl ascuțeau la ei"
+     "Ghibea lui Beniamin",
+     "locul unde era Ionatan cu o mie de oameni"
     ],
     [
-     "ziua luptei",
-     "poporul n-avea nici sabie, nici suliță"
+     "Bet-Aven",
+     "locul la răsărit de care era Micmașul"
+    ],
+    [
+     "Gad și Galaad",
+     "țara unde au trecut unii evrei"
     ]
    ]
   },
@@ -372,6 +438,26 @@
    ],
    "q": "Aveau o mie de care și șase mii de ___;",
    "ctx": "Filistenii, strânși împotriva lui Israel:"
+  },
+  {
+   "id": "1sa.13.12-13.20",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "13:13",
+   "q": "n-ai păzit porunca pe care ți-o dăduse ___ Dumnezeul tău.",
+   "a": [
+    "Domnul"
+   ]
+  },
+  {
+   "id": "1sa.13.12-13.21",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "13:2",
+   "q": "Saul și-a ales trei mii de bărbați din ___",
+   "a": [
+    "Israel"
+   ]
   },
   {
    "id": "1sa.13.12-13.13",
@@ -421,6 +507,38 @@
    "explain": "Niciun răspuns corect: textul spune „a domnit doi ani peste Israel\" (13:1)."
   },
   {
+   "id": "1sa.13.12-13.22",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "13:5",
+   "q": "Cu ce au venit filistenii?",
+   "opts": [
+    "cu șase mii de călăreți",
+    "cu o mie de care",
+    "cu o mie de elefanți"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.13.12-13.23",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "13:6-7",
+   "q": "Ce făceau israeliții?",
+   "opts": [
+    "se luptau cu mult curaj",
+    "se ascundeau în peșteri și stânci",
+    "unii au trecut Iordanul"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
    "id": "1sa.13.14-15.1",
    "age": "14-15",
    "t": "tf",
@@ -444,6 +562,23 @@
    "ref": "13:15",
    "q": "Samuel s-a suit din Ghilgal la Ghibea lui Beniamin.",
    "a": true
+  },
+  {
+   "id": "1sa.13.14-15.16",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "13:3",
+   "q": "Saul a pus să sune cu trâmbița prin toată țara.",
+   "a": true
+  },
+  {
+   "id": "1sa.13.14-15.17",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "13:19",
+   "q": "Filistenii au lăsat pe evrei să aibă fierari.",
+   "a": false,
+   "explain": "Ziseseră: „Să împiedicăm pe evrei să-și facă săbii sau sulițe.”"
   },
   {
    "id": "1sa.13.14-15.4",
@@ -485,73 +620,57 @@
    "a": 1
   },
   {
-   "id": "1sa.13.14-15.7",
+   "id": "1sa.13.14-15.18",
+   "age": "14-15",
+   "t": "one",
+   "ref": "13:8",
+   "q": "Cine hotărâse timpul în care trebuia să vină la Ghilgal?",
+   "opts": [
+    "Domnul prin foc",
+    "Ionatan",
+    "Samuel"
+   ],
+   "a": 2
+  },
+  {
+   "id": "1sa.13.14-15.19",
+   "age": "14-15",
+   "t": "one",
+   "ref": "13:16",
+   "q": "Unde se așezaseră Saul, Ionatan și poporul?",
+   "opts": [
+    "la Betel",
+    "la Gheba lui Beniamin",
+    "la Micmaș"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.13.14-15.24",
    "age": "14-15",
    "t": "match",
-   "ref": "13:2-5",
-   "q": "Taberele: asociază.",
+   "ref": "13:17-23",
+   "q": "Asociază fiecare loc cu ce se spune despre el în 1 Samuel 13.",
    "pairs": [
     [
-     "Micmaș și muntele Betel",
-     "două mii cu Saul"
+     "Ofra",
+     "locul spre care a luat drumul prima ceată"
     ],
     [
-     "Ghibea lui Beniamin",
-     "o mie cu Ionatan"
+     "Bet-Horon",
+     "locul spre care a luat drumul a doua ceată"
+    ],
+    [
+     "valea Țeboim",
+     "valea spre al cărei hotar a luat drumul a treia ceată"
+    ],
+    [
+     "trecătoarea Micmașului",
+     "locul unde s-a așezat o ceată de filisteni"
     ],
     [
      "Gheba",
-     "tabăra filistenilor bătută de Ionatan"
-    ],
-    [
-     "la răsărit de Bet-Aven",
-     "tabăra filistenilor de la Micmaș"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.13.14-15.8",
-   "age": "14-15",
-   "t": "match",
-   "ref": "13:11-12",
-   "q": "Scuzele lui Saul: asociază începutul cu sfârșitul.",
-   "pairs": [
-    [
-     "poporul",
-     "se împrăștie de lângă mine"
-    ],
-    [
-     "tu",
-     "nu vii la timpul hotărât"
-    ],
-    [
-     "filistenii",
-     "sunt strânși la Micmaș"
-    ],
-    [
-     "eu",
-     "nu m-am rugat Domnului"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.13.14-15.9",
-   "age": "14-15",
-   "t": "match",
-   "ref": "13:5",
-   "q": "Oastea filistenilor: asociază.",
-   "pairs": [
-    [
-     "care",
-     "o mie"
-    ],
-    [
-     "călăreți",
-     "șase mii"
-    ],
-    [
-     "poporul",
-     "ca nisipul de pe țărmul mării"
+     "locul unde se așezaseră Saul și Ionatan"
     ]
    ]
   },
@@ -587,6 +706,26 @@
    ],
    "q": "nu era nici sabie, nici ___ în mâinile întregului popor care era cu Saul și Ionatan:",
    "ctx": "În ziua luptei cu filistenii:"
+  },
+  {
+   "id": "1sa.13.14-15.20",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "13:8",
+   "q": "Dar Samuel nu venea la Ghilgal, și poporul se ___ de lângă Saul.",
+   "a": [
+    "împrăștia"
+   ]
+  },
+  {
+   "id": "1sa.13.14-15.21",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "13:14",
+   "q": "dar, acum, domnia ta nu va ___.",
+   "a": [
+    "dăinui"
+   ]
   },
   {
    "id": "1sa.13.14-15.13",
@@ -636,6 +775,38 @@
    "explain": "Niciun răspuns corect: la trecătoarea Micmașului (13:23)."
   },
   {
+   "id": "1sa.13.14-15.22",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "13:11-12",
+   "q": "Ce a spus Saul lui Samuel?",
+   "opts": [
+    "că filistenii sunt strânși la Micmaș",
+    "că Samuel i-a poruncit să jertfească",
+    "că poporul se împrăștie de lângă el"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.13.14-15.23",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "13:17-18",
+   "q": "Spre ce locuri au pornit cetele de filisteni?",
+   "opts": [
+    "spre Ofra",
+    "spre Bet-Horon",
+    "spre Ierusalim"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
    "id": "1sa.13.16-17.1",
    "age": "16-17",
    "t": "tf",
@@ -659,6 +830,23 @@
    "ref": "13:17",
    "q": "Din tabăra filistenilor au ieșit trei cete ca să pustiască.",
    "a": true
+  },
+  {
+   "id": "1sa.13.16-17.16",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "13:16",
+   "q": "Saul, Ionatan și poporul care era cu ei se așezaseră la Gheba lui Beniamin.",
+   "a": true
+  },
+  {
+   "id": "1sa.13.16-17.17",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "13:1",
+   "q": "Saul a domnit peste Israel zece ani.",
+   "a": false,
+   "explain": "Textul spune că a domnit doi ani."
   },
   {
    "id": "1sa.13.16-17.4",
@@ -700,77 +888,57 @@
    "a": 1
   },
   {
-   "id": "1sa.13.16-17.7",
+   "id": "1sa.13.16-17.18",
    "age": "16-17",
-   "t": "match",
-   "ref": "13:16-18",
-   "q": "Pozițiile din războiul de la Micmaș: asociază.",
-   "pairs": [
-    [
-     "Gheba lui Beniamin",
-     "acolo erau Saul și Ionatan"
-    ],
-    [
-     "Micmaș",
-     "acolo tăbărau filistenii"
-    ],
-    [
-     "Bet-Horon",
-     "una din cetele filistenilor"
-    ],
-    [
-     "valea Țeboim",
-     "spre ea mergea a treia ceată"
-    ]
-   ]
+   "t": "one",
+   "ref": "13:20",
+   "q": "Ce își ascuțeau israeliții la filisteni?",
+   "opts": [
+    "săbiile și sulițele",
+    "fierul plugului, coasa, securea și sapa",
+    "arcurile și săgețile"
+   ],
+   "a": 1
   },
   {
-   "id": "1sa.13.16-17.8",
+   "id": "1sa.13.16-17.19",
+   "age": "16-17",
+   "t": "one",
+   "ref": "13:9",
+   "q": "Ce a cerut Saul să i se aducă?",
+   "opts": [
+    "un taur și un berbec",
+    "arderea-de-tot și jertfele de mulțumire",
+    "chivotul legământului"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.13.16-17.24",
    "age": "16-17",
    "t": "match",
-   "ref": "13:13-15",
-   "q": "Judecata lui Saul: asociază.",
+   "ref": "13:2-18",
+   "q": "Asociază fiecare număr cu ce se spune despre el în 1 Samuel 13.",
    "pairs": [
     [
-     "porunca",
-     "Saul n-a păzit-o"
+     "trei mii",
+     "bărbații aleși de Saul"
     ],
     [
-     "domnia",
-     "nu va dăinui"
+     "două mii",
+     "cei cu Saul la Micmaș"
     ],
     [
-     "căpetenia",
-     "un om după inima Domnului"
+     "o mie",
+     "cei cu Ionatan la Ghibea"
     ],
     [
      "șase sute",
-     "cei rămași cu Saul"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.13.16-17.9",
-   "age": "16-17",
-   "t": "match",
-   "ref": "13:19-21",
-   "q": "Ce făceau israeliții la filisteni: asociază.",
-   "pairs": [
-    [
-     "fierul plugului",
-     "să-l ascută"
+     "oamenii rămași cu Saul"
     ],
     [
-     "coasa",
-     "s-o ascută"
-    ],
-    [
-     "țepușul",
-     "să-i facă vârf"
-    ],
-    [
-     "sapa",
-     "s-o ascută când se toca"
+     "trei",
+     "câte cete au ieșit din tabăra filistenilor"
     ]
    ]
   },
@@ -806,6 +974,26 @@
    ],
    "q": "Bărbații lui Israel s-au văzut la ___, căci erau strânși de aproape,",
    "ctx": "Când filistenii au tăbărât la Micmaș:"
+  },
+  {
+   "id": "1sa.13.16-17.20",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "13:19",
+   "q": "Să împiedicăm pe evrei să-și facă săbii sau ___.",
+   "a": [
+    "sulițe"
+   ]
+  },
+  {
+   "id": "1sa.13.16-17.21",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "13:5",
+   "q": "și poporul acesta era fără număr: ca nisipul de pe ___ mării.",
+   "a": [
+    "țărmul"
+   ]
   },
   {
    "id": "1sa.13.16-17.13",
@@ -855,6 +1043,38 @@
    "explain": "Niciun răspuns corect: la Ghibea lui Beniamin (13:2)."
   },
   {
+   "id": "1sa.13.16-17.22",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "13:13",
+   "q": "Ce a spus Samuel despre Saul?",
+   "opts": [
+    "că Domnul ar fi întărit pe vecie domnia lui",
+    "că Saul a păzit porunca întocmai",
+    "că n-a păzit porunca Domnului"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.13.16-17.23",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "13:22-23",
+   "q": "Ce se spune despre arme și despre filisteni?",
+   "opts": [
+    "numai Saul și Ionatan aveau",
+    "nu era nici sabie, nici suliță în mâinile poporului",
+    "toți israeliții aveau arcuri"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
    "id": "1sa.13.18+.1",
    "age": "18+",
    "t": "tf",
@@ -878,6 +1098,23 @@
    "ref": "13:23",
    "q": "O ceată de filisteni s-a așezat la trecătoarea Micmașului.",
    "a": true
+  },
+  {
+   "id": "1sa.13.18+.16",
+   "age": "18+",
+   "t": "tf",
+   "ref": "13:11",
+   "q": "Saul a spus că filistenii sunt strânși la Micmaș.",
+   "a": true
+  },
+  {
+   "id": "1sa.13.18+.17",
+   "age": "18+",
+   "t": "tf",
+   "ref": "13:8",
+   "q": "Saul a așteptat patruzeci de zile pe Samuel.",
+   "a": false,
+   "explain": "A așteptat șapte zile."
   },
   {
    "id": "1sa.13.18+.4",
@@ -919,77 +1156,57 @@
    "a": 2
   },
   {
-   "id": "1sa.13.18+.7",
+   "id": "1sa.13.18+.18",
    "age": "18+",
-   "t": "match",
-   "ref": "13:17-18",
-   "q": "Cele trei cete ale filistenilor: asociază fiecare cu drumul.",
-   "pairs": [
-    [
-     "prima",
-     "Ofra, spre țara Șual"
-    ],
-    [
-     "a doua",
-     "Bet-Horon"
-    ],
-    [
-     "a treia",
-     "hotarul spre valea Țeboim"
-    ],
-    [
-     "toate trei",
-     "au ieșit ca să pustiască"
-    ]
-   ]
+   "t": "one",
+   "ref": "13:2",
+   "q": "Unde era Ionatan cu cei o mie de bărbați?",
+   "opts": [
+    "la Betel",
+    "la Micmaș",
+    "la Ghibea lui Beniamin"
+   ],
+   "a": 2
   },
   {
-   "id": "1sa.13.18+.8",
+   "id": "1sa.13.18+.19",
    "age": "18+",
-   "t": "match",
-   "ref": "13:1-2",
-   "q": "Începutul domniei lui Saul: asociază fiecare număr cu ce arată.",
-   "pairs": [
-    [
-     "treizeci",
-     "anii lui Saul la început"
-    ],
-    [
-     "doi",
-     "anii de domnie, după 13:1"
-    ],
-    [
-     "trei mii",
-     "bărbații aleși"
-    ],
-    [
-     "o mie",
-     "oamenii lui Ionatan"
-    ]
-   ]
+   "t": "one",
+   "ref": "13:18",
+   "q": "Spre ce loc a luat drumul a doua ceată de filisteni?",
+   "opts": [
+    "Bet-Horon",
+    "Ghilgal",
+    "Ofra"
+   ],
+   "a": 0
   },
   {
-   "id": "1sa.13.18+.9",
+   "id": "1sa.13.18+.24",
    "age": "18+",
    "t": "match",
-   "ref": "13:9-14",
-   "q": "Jertfa de la Ghilgal: asociază începutul cu sfârșitul.",
+   "ref": "13:2-16",
+   "q": "Asociază fiecare loc cu ce se spune despre el în 1 Samuel 13.",
    "pairs": [
     [
-     "Aduceți-mi arderea-de-tot",
-     "și jertfele de mulțumire"
+     "Bet-Aven",
+     "locul la răsărit de Micmaș"
     ],
     [
-     "Pe când sfârșea de adus arderea-de-tot",
-     "a venit Samuel"
+     "Gheba",
+     "locul unde se așezaseră Saul și Ionatan"
     ],
     [
-     "Domnul ar fi întărit pe vecie",
-     "domnia ta peste Israel"
+     "Ghilgal",
+     "locul unde s-a adunat poporul la Saul"
     ],
     [
-     "Domnul l-a rânduit",
-     "să fie căpetenia poporului Său"
+     "Betel",
+     "muntele unde au stat două mii cu Saul"
+    ],
+    [
+     "Gad și Galaad",
+     "țara unde au trecut unii evrei"
     ]
    ]
   },
@@ -1025,6 +1242,26 @@
    ],
    "q": "Și poporul a fost adunat la Saul, în ___.",
    "ctx": "După ce Ionatan a bătut tabăra filistenilor:"
+  },
+  {
+   "id": "1sa.13.18+.20",
+   "age": "18+",
+   "t": "fill",
+   "ref": "13:6",
+   "q": "s-au ascuns în peșteri, în tufișuri, în stânci, în turnuri și în gropile pentru ___.",
+   "a": [
+    "apă"
+   ]
+  },
+  {
+   "id": "1sa.13.18+.21",
+   "age": "18+",
+   "t": "fill",
+   "ref": "13:20",
+   "q": "Și fiecare om din Israel se cobora la filisteni ca să-și ascută fierul ___, coasa, securea și sapa,",
+   "a": [
+    "plugului"
+   ]
   },
   {
    "id": "1sa.13.18+.13",
@@ -1072,6 +1309,38 @@
    ],
    "a": [],
    "explain": "Niciun răspuns corect: la Micmaș și pe muntele Betel (13:2)."
+  },
+  {
+   "id": "1sa.13.18+.22",
+   "age": "18+",
+   "t": "multi",
+   "ref": "13:7-8",
+   "q": "Ce s-a întâmplat la Ghilgal?",
+   "opts": [
+    "poporul era plin de curaj",
+    "Saul era tot acolo",
+    "tot poporul de lângă el tremura"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.13.18+.23",
+   "age": "18+",
+   "t": "multi",
+   "ref": "13:20-21",
+   "q": "Ce unelte își ascuțeau israeliții?",
+   "opts": [
+    "sapa",
+    "securea",
+    "ciocanul"
+   ],
+   "a": [
+    0,
+    1
+   ]
   }
  ]
 }

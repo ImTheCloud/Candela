@@ -28,6 +28,23 @@
    "explain": "Tot poporul a strigat: „Trăiască împăratul!\" (10:24)."
   },
   {
+   "id": "1sa.10.sub12.16",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "10:23",
+   "q": "Saul îi întrecea pe toți ceilalți în înălțime, de la umăr în sus.",
+   "a": true
+  },
+  {
+   "id": "1sa.10.sub12.17",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "10:2",
+   "q": "Saul avea să găsească doi oameni la Hebron.",
+   "a": false,
+   "explain": "Avea să-i găsească la mormântul Rahelei."
+  },
+  {
    "id": "1sa.10.sub12.4",
    "age": "sub12",
    "t": "one",
@@ -67,65 +84,57 @@
    "a": 0
   },
   {
-   "id": "1sa.10.sub12.7",
+   "id": "1sa.10.sub12.18",
+   "age": "sub12",
+   "t": "one",
+   "ref": "10:6",
+   "q": "Ce avea să vină peste Saul, ca să fie prefăcut într-alt om?",
+   "opts": [
+    "Duhul Domnului",
+    "un înger",
+    "un foc din cer"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.10.sub12.19",
+   "age": "sub12",
+   "t": "one",
+   "ref": "10:8",
+   "q": "Unde trebuia Saul să-l aștepte pe Samuel șapte zile?",
+   "opts": [
+    "la Ghilgal",
+    "la Silo",
+    "la Rama"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.10.sub12.24",
    "age": "sub12",
    "t": "match",
-   "ref": "10:1, 9, 24",
-   "q": "Saul devine împărat: asociază.",
+   "ref": "10:1-26",
+   "q": "Asociază fiecare nume sau loc cu ce se spune despre el în 1 Samuel 10.",
    "pairs": [
     [
      "Samuel",
-     "l-a uns pe Saul"
+     "cel care l-a uns pe Saul"
     ],
-    [
-     "Dumnezeu",
-     "i-a dat lui Saul o altă inimă"
-    ],
-    [
-     "poporul",
-     "a strigat: „Trăiască împăratul!\""
-    ]
-   ]
-  },
-  {
-   "id": "1sa.10.sub12.8",
-   "age": "sub12",
-   "t": "match",
-   "ref": "10:10-12",
-   "q": "Saul printre proroci: asociază.",
-   "pairs": [
-    [
-     "Ghibea",
-     "acolo a întâlnit ceata de proroci"
-    ],
-    [
-     "Duhul lui Dumnezeu",
-     "a venit peste Saul"
-    ],
-    [
-     "zicala",
-     "„Oare și Saul este între proroci?\""
-    ]
-   ]
-  },
-  {
-   "id": "1sa.10.sub12.9",
-   "age": "sub12",
-   "t": "match",
-   "ref": "10:17-23",
-   "q": "Alegerea de la Mițpa: asociază.",
-   "pairs": [
     [
      "Mițpa",
-     "acolo a chemat Samuel poporul"
+     "locul unde a fost ales Saul la sorți"
     ],
     [
-     "seminția lui Beniamin",
-     "a ieșit la sorți"
+     "Ghilgal",
+     "locul unde trebuia să-l aștepte Saul șapte zile"
     ],
     [
-     "vasele",
-     "între ele se ascunsese Saul"
+     "Ghibea",
+     "locul unde s-a dus Saul acasă"
+    ],
+    [
+     "Matri",
+     "familia ieșită la sorți din Beniamin"
     ]
    ]
   },
@@ -161,6 +170,26 @@
    ],
    "q": "Dumnezeu i-a dat o altă ___,",
    "ctx": "De îndată ce Saul s-a despărțit de Samuel:"
+  },
+  {
+   "id": "1sa.10.sub12.20",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "10:1",
+   "q": "Samuel a luat sticluța cu ___ și a turnat-o pe capul lui Saul.",
+   "a": [
+    "untdelemn"
+   ]
+  },
+  {
+   "id": "1sa.10.sub12.21",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "10:24",
+   "q": "Vedeți pe cel pe care l-a ___ Domnul?",
+   "a": [
+    "ales"
+   ]
   },
   {
    "id": "1sa.10.sub12.13",
@@ -210,6 +239,38 @@
    "explain": "Niciun răspuns corect: unchiului său (10:14-16)."
   },
   {
+   "id": "1sa.10.sub12.22",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "10:10-11",
+   "q": "Ce a făcut Saul la Ghibea?",
+   "opts": [
+    "a fugit din cetate",
+    "a prorocit în mijlocul prorocilor",
+    "Duhul lui Dumnezeu a venit peste el"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.10.sub12.23",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "10:25-27",
+   "q": "Ce a făcut Samuel la sfârșit?",
+   "opts": [
+    "l-a încoronat pe Saul într-un templu",
+    "i-a trimis pe toți acasă",
+    "a scris dreptul împărăției într-o carte"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
    "id": "1sa.10.12-13.1",
    "age": "12-13",
    "t": "tf",
@@ -233,6 +294,23 @@
    "ref": "10:27",
    "q": "Unii oameni răi l-au disprețuit pe Saul și nu i-au adus niciun dar.",
    "a": true
+  },
+  {
+   "id": "1sa.10.12-13.16",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "10:9",
+   "q": "Dumnezeu i-a dat lui Saul o altă inimă.",
+   "a": true
+  },
+  {
+   "id": "1sa.10.12-13.17",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "10:1",
+   "q": "Samuel l-a uns pe Saul cu apă, nu cu untdelemn.",
+   "a": false,
+   "explain": "L-a uns cu untdelemn dintr-o sticluță."
   },
   {
    "id": "1sa.10.12-13.4",
@@ -274,77 +352,57 @@
    "a": 2
   },
   {
-   "id": "1sa.10.12-13.7",
+   "id": "1sa.10.12-13.18",
+   "age": "12-13",
+   "t": "one",
+   "ref": "10:12",
+   "q": "Ce zicală a rămas din întâmplarea de la Ghibea?",
+   "opts": [
+    "„Cine seamănă vânt culege furtună”",
+    "„Mai bine un câine viu decât un leu mort”",
+    "„Oare și Saul este între proroci?”"
+   ],
+   "a": 2
+  },
+  {
+   "id": "1sa.10.12-13.19",
+   "age": "12-13",
+   "t": "one",
+   "ref": "10:20",
+   "q": "Ce seminție a ieșit la sorți la Mițpa?",
+   "opts": [
+    "Efraim",
+    "Iuda",
+    "Beniamin"
+   ],
+   "a": 2
+  },
+  {
+   "id": "1sa.10.12-13.24",
    "age": "12-13",
    "t": "match",
    "ref": "10:2-5",
-   "q": "Semnele date de Samuel lui Saul: asociază.",
+   "q": "Asociază fiecare nume sau loc cu ce se spune despre el în 1 Samuel 10.",
    "pairs": [
     [
-     "mormântul Rahelei",
-     "doi oameni"
+     "Rahela",
+     "cea al cărei mormânt era în hotarul lui Beniamin"
     ],
     [
      "stejarul din Tabor",
-     "trei oameni care se suiau la Betel"
+     "unde avea să fie întâmpinat Saul de trei oameni"
+    ],
+    [
+     "Betel",
+     "locul spre care se suiau cei trei oameni"
     ],
     [
      "Ghibea Elohim",
-     "o ceată de proroci"
+     "locul unde era garnizoana filistenilor"
     ],
     [
-     "garnizoana",
-     "a filistenilor, la Ghibea Elohim"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.10.12-13.8",
-   "age": "12-13",
-   "t": "match",
-   "ref": "10:20-23",
-   "q": "Tragerea la sorți: asociază fiecare pas cu ce a ieșit.",
-   "pairs": [
-    [
-     "întâi",
-     "seminția lui Beniamin"
-    ],
-    [
-     "apoi",
-     "familia lui Matri"
-    ],
-    [
-     "la urmă",
-     "Saul, fiul lui Chis"
-    ],
-    [
-     "Domnul",
-     "a spus unde este ascuns"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.10.12-13.9",
-   "age": "12-13",
-   "t": "match",
-   "ref": "10:25-27",
-   "q": "După alegerea lui Saul: asociază.",
-   "pairs": [
-    [
-     "Samuel",
-     "a scris dreptul împărăției într-o carte"
-    ],
-    [
-     "ostașii",
-     "l-au însoțit pe Saul acasă"
-    ],
-    [
-     "oamenii răi",
-     "au zis: „Ce ne poate ajuta acesta?\""
-    ],
-    [
-     "Saul",
-     "s-a făcut că nu-i aude"
+     "Țelțah",
+     "locul de la hotarul lui Beniamin, lângă mormântul Rahelei"
     ]
    ]
   },
@@ -380,6 +438,26 @@
    ],
    "q": "Dar Saul s-a făcut că nu-i ___.",
    "ctx": "Când unii oameni răi l-au disprețuit pe Saul:"
+  },
+  {
+   "id": "1sa.10.12-13.20",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "10:3",
+   "q": "unde vei fi întâmpinat de trei oameni suindu-se la Dumnezeu, în ___",
+   "a": [
+    "Betel"
+   ]
+  },
+  {
+   "id": "1sa.10.12-13.21",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "10:20",
+   "q": "Samuel a apropiat toate semințiile lui Israel și a ieșit la sorți seminția lui ___.",
+   "a": [
+    "Beniamin"
+   ]
   },
   {
    "id": "1sa.10.12-13.13",
@@ -428,6 +506,38 @@
    "explain": "Niciun răspuns corect: două pâini (10:4)."
   },
   {
+   "id": "1sa.10.12-13.22",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "10:3-4",
+   "q": "Ce urma să se întâmple cu cei trei oameni de la stejarul din Tabor?",
+   "opts": [
+    "îi vor da două pâini",
+    "îl vor întreba pe Saul de sănătate",
+    "îi vor da trei iezi"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.10.12-13.23",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "10:22-24",
+   "q": "Ce s-a întâmplat la Mițpa?",
+   "opts": [
+    "Saul era ascuns între vase",
+    "poporul a strigat: „Trăiască împăratul!”",
+    "Saul a refuzat să vină"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
    "id": "1sa.10.14-15.1",
    "age": "14-15",
    "t": "tf",
@@ -451,6 +561,23 @@
    "ref": "10:19",
    "q": "Samuel le-a spus că, cerând un împărat, Îl leapădă pe Dumnezeul lor.",
    "a": true
+  },
+  {
+   "id": "1sa.10.14-15.16",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "10:6",
+   "q": "Samuel i-a spus lui Saul că va fi prefăcut într-alt om.",
+   "a": true
+  },
+  {
+   "id": "1sa.10.14-15.17",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "10:16",
+   "q": "Saul i-a povestit unchiului său tot ce i-a spus Samuel despre împărăție.",
+   "a": false,
+   "explain": "Nu i-a spus nimic despre împărăție."
   },
   {
    "id": "1sa.10.14-15.4",
@@ -492,73 +619,57 @@
    "a": 2
   },
   {
-   "id": "1sa.10.14-15.7",
+   "id": "1sa.10.14-15.18",
    "age": "14-15",
-   "t": "match",
-   "ref": "10:3",
-   "q": "Cei trei oameni de la stejarul din Tabor: asociază fiecare cu ce ducea.",
-   "pairs": [
-    [
-     "primul",
-     "trei iezi"
-    ],
-    [
-     "al doilea",
-     "trei turte de pâine"
-    ],
-    [
-     "al treilea",
-     "un burduf cu vin"
-    ]
-   ]
+   "t": "one",
+   "ref": "10:25",
+   "q": "Ce a făcut Samuel cu cartea în care a scris dreptul împărăției?",
+   "opts": [
+    "a dat-o lui Saul",
+    "a ascuns-o în Silo",
+    "a pus-o înaintea Domnului"
+   ],
+   "a": 2
   },
   {
-   "id": "1sa.10.14-15.8",
+   "id": "1sa.10.14-15.19",
    "age": "14-15",
-   "t": "match",
-   "ref": "10:14-16",
-   "q": "Saul și unchiul lui: asociază.",
-   "pairs": [
-    [
-     "„Unde v-ați dus?\"",
-     "întrebarea unchiului"
-    ],
-    [
-     "„Să căutăm măgărițele\"",
-     "răspunsul lui Saul"
-    ],
-    [
-     "„Istorisește-mi ce v-a spus Samuel\"",
-     "cererea unchiului"
-    ],
-    [
-     "împărăția",
-     "Saul n-a spus nimic despre ea"
-    ]
-   ]
+   "t": "one",
+   "ref": "10:21",
+   "q": "Cine a ieșit la sorți, după familia lui Matri?",
+   "opts": [
+    "Saul, fiul lui Chis",
+    "Samuel",
+    "Abner"
+   ],
+   "a": 0
   },
   {
-   "id": "1sa.10.14-15.9",
+   "id": "1sa.10.14-15.24",
    "age": "14-15",
    "t": "match",
-   "ref": "10:17-19",
-   "q": "Cuvântarea lui Samuel la Mițpa: asociază începutul cu sfârșitul.",
+   "ref": "10:2-21",
+   "q": "Asociază fiecare persoană sau loc cu ce se spune despre el în 1 Samuel 10.",
    "pairs": [
     [
-     "Eu am scos din Egipt pe Israel",
-     "și v-am izbăvit din mâna egiptenilor"
+     "unchiul lui Saul",
+     "cel care a vrut să afle ce a spus Samuel"
     ],
     [
-     "voi lepădați pe Dumnezeul vostru",
-     "care v-a izbăvit din toate relele"
+     "Matri",
+     "familia din care a ieșit Saul"
     ],
     [
-     "Pune un împărat",
-     "peste noi!"
+     "Egipt",
+     "țara din care Domnul a scos pe Israel"
     ],
     [
-     "Înfățișați-vă",
-     "după semințiile voastre și după miile voastre"
+     "Țelțah",
+     "locul unde era mormântul Rahelei"
+    ],
+    [
+     "Chis",
+     "tatăl lui Saul"
     ]
    ]
   },
@@ -594,6 +705,26 @@
    ],
    "q": "Și Saul s-a dus acasă, în Ghibea, însoțit de o parte din ostași, a căror ___ o mișcase Dumnezeu.",
    "ctx": "După alegerea de la Mițpa:"
+  },
+  {
+   "id": "1sa.10.14-15.20",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "10:9",
+   "q": "și toate semnele acestea s-au împlinit în aceeași ___.",
+   "a": [
+    "zi"
+   ]
+  },
+  {
+   "id": "1sa.10.14-15.21",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "10:18",
+   "q": "Eu am scos din ___ pe Israel și v-am izbăvit din mâna egiptenilor",
+   "a": [
+    "Egipt"
+   ]
   },
   {
    "id": "1sa.10.14-15.13",
@@ -642,6 +773,38 @@
    "explain": "Niciun răspuns corect: a turnat sticluța cu untdelemn pe capul lui (10:1)."
   },
   {
+   "id": "1sa.10.14-15.22",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "10:19",
+   "q": "Ce le-a spus Samuel israeliților la Mițpa?",
+   "opts": [
+    "„Voi lepădați pe Dumnezeul vostru”",
+    "„Înfățișați-vă după semințiile și după miile voastre”",
+    "„Domnul v-a lăsat singuri”"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.10.14-15.23",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "10:14-16",
+   "q": "Ce i-a spus Saul unchiului său?",
+   "opts": [
+    "că Samuel l-a uns împărat",
+    "că s-au dus să caute măgărițele",
+    "că Samuel le-a spus că măgărițele s-au găsit"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
    "id": "1sa.10.16-17.1",
    "age": "16-17",
    "t": "tf",
@@ -665,6 +828,23 @@
    "ref": "10:21",
    "q": "Saul a ieșit la sorți, dar la început nu l-au găsit.",
    "a": true
+  },
+  {
+   "id": "1sa.10.16-17.16",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "10:4",
+   "q": "Cei trei oameni urmau să-i dea lui Saul două pâini.",
+   "a": true
+  },
+  {
+   "id": "1sa.10.16-17.17",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "10:7",
+   "q": "Samuel i-a spus lui Saul să nu facă nimic după ce se vor împlini semnele.",
+   "a": false,
+   "explain": "I-a spus: „Fă ce vei găsi de făcut, căci Dumnezeu este cu tine.”"
   },
   {
    "id": "1sa.10.16-17.4",
@@ -706,77 +886,57 @@
    "a": 1
   },
   {
-   "id": "1sa.10.16-17.7",
+   "id": "1sa.10.16-17.18",
    "age": "16-17",
-   "t": "match",
-   "ref": "10:1-8",
-   "q": "Cuvintele lui Samuel către Saul: asociază începutul cu sfârșitul.",
-   "pairs": [
-    [
-     "Nu te-a uns Domnul",
-     "ca să fii căpetenia moștenirii Lui?"
-    ],
-    [
-     "Duhul Domnului va veni peste tine",
-     "vei proroci cu ei"
-    ],
-    [
-     "fă ce vei găsi de făcut",
-     "căci Dumnezeu este cu tine"
-    ],
-    [
-     "Să mă aștepți șapte zile",
-     "la Ghilgal"
-    ]
-   ]
+   "t": "one",
+   "ref": "10:3",
+   "q": "Ce ducea unul dintre cei trei oameni care se suiau la Betel?",
+   "opts": [
+    "un taur",
+    "un cort",
+    "un burduf cu vin"
+   ],
+   "a": 2
   },
   {
-   "id": "1sa.10.16-17.8",
+   "id": "1sa.10.16-17.19",
    "age": "16-17",
-   "t": "match",
-   "ref": "10:2-10",
-   "q": "Locurile semnelor: asociază fiecare loc cu ce s-a întâmplat.",
-   "pairs": [
-    [
-     "Țelțah",
-     "doi oameni, la mormântul Rahelei"
-    ],
-    [
-     "Tabor",
-     "trei oameni la stejar"
-    ],
-    [
-     "Betel",
-     "acolo se suiau cei trei"
-    ],
-    [
-     "Ghibea",
-     "Saul a prorocit"
-    ]
-   ]
+   "t": "one",
+   "ref": "10:27",
+   "q": "Ce nu i-au adus oamenii răi lui Saul?",
+   "opts": [
+    "niciun soldat",
+    "nicio veste",
+    "niciun dar"
+   ],
+   "a": 2
   },
   {
-   "id": "1sa.10.16-17.9",
+   "id": "1sa.10.16-17.24",
    "age": "16-17",
    "t": "match",
-   "ref": "10:11-13",
-   "q": "Zicala despre Saul: asociază.",
+   "ref": "10:3-5",
+   "q": "Asociază fiecare lucru cu ce se spune despre el în 1 Samuel 10.",
    "pairs": [
     [
-     "„Ce s-a întâmplat cu fiul lui Chis?\"",
-     "se întrebau cei ce-l cunoșteau"
+     "lăute, timpane, fluiere și cobze",
+     "instrumentele prorocilor"
     ],
     [
-     "„Și cine este tatăl lor?\"",
-     "cineva din Ghibea"
+     "trei iezi",
+     "ce ducea unul din cei trei oameni"
     ],
     [
-     "„Oare și Saul este între proroci?\"",
-     "zicala"
+     "trei turte de pâine",
+     "ce ducea altul"
     ],
     [
-     "înălțimea",
-     "acolo s-a dus Saul după ce a prorocit"
+     "un burduf cu vin",
+     "ce ducea al treilea"
+    ],
+    [
+     "două pâini",
+     "ce avea să primească Saul"
     ]
    ]
   },
@@ -812,6 +972,26 @@
    ],
    "q": "Ei te vor întreba de sănătate și-ți vor da două ___, pe care le vei lua din mâna lor.",
    "ctx": "Samuel, despre cei trei oameni de la stejarul din Tabor:"
+  },
+  {
+   "id": "1sa.10.16-17.20",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "10:10",
+   "q": "Duhul lui ___ a venit peste el și el a prorocit în mijlocul lor.",
+   "a": [
+    "Dumnezeu"
+   ]
+  },
+  {
+   "id": "1sa.10.16-17.21",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "10:24",
+   "q": "Nu este nimeni în tot poporul care să fie ca ___.",
+   "a": [
+    "el"
+   ]
   },
   {
    "id": "1sa.10.16-17.13",
@@ -860,6 +1040,38 @@
    "explain": "Niciun răspuns corect: o parte din ostași, a căror inimă o mișcase Dumnezeu (10:26)."
   },
   {
+   "id": "1sa.10.16-17.22",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "10:10-12",
+   "q": "Ce se spune despre Saul și proroci?",
+   "opts": [
+    "Saul a refuzat să proroceasca",
+    "oamenii au întrebat: „Oare și Saul este între proroci?”",
+    "Saul a prorocit împreună cu ei"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.10.16-17.23",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "10:15-16",
+   "q": "Ce s-a întâmplat între Saul și unchiul lui?",
+   "opts": [
+    "Saul nu i-a spus despre împărăție",
+    "unchiul i-a cerut să-i istorisească ce a spus Samuel",
+    "Saul i-a spus că a fost uns împărat"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
    "id": "1sa.10.18+.1",
    "age": "18+",
    "t": "tf",
@@ -883,6 +1095,23 @@
    "ref": "10:8",
    "q": "Samuel i-a spus lui Saul să coboare înaintea lui la Ghilgal.",
    "a": true
+  },
+  {
+   "id": "1sa.10.18+.16",
+   "age": "18+",
+   "t": "tf",
+   "ref": "10:25",
+   "q": "Samuel a scris dreptul împărăției într-o carte și a pus-o înaintea Domnului.",
+   "a": true
+  },
+  {
+   "id": "1sa.10.18+.17",
+   "age": "18+",
+   "t": "tf",
+   "ref": "10:26",
+   "q": "Saul s-a dus acasă la Betel.",
+   "a": false,
+   "explain": "S-a dus acasă la Ghibea."
   },
   {
    "id": "1sa.10.18+.4",
@@ -924,77 +1153,57 @@
    "a": 1
   },
   {
-   "id": "1sa.10.18+.7",
+   "id": "1sa.10.18+.18",
+   "age": "18+",
+   "t": "one",
+   "ref": "10:5",
+   "q": "Unde se afla garnizoana filistenilor, pe drumul lui Saul?",
+   "opts": [
+    "la Mițpa",
+    "la Ghibea Elohim",
+    "la Ghilgal"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.10.18+.19",
+   "age": "18+",
+   "t": "one",
+   "ref": "10:7",
+   "q": "Ce i-a spus Samuel lui Saul să facă după ce i se vor împlini semnele?",
+   "opts": [
+    "ce va găsi de făcut",
+    "să se întoarcă la Silo",
+    "să aștepte un an"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.10.18+.24",
    "age": "18+",
    "t": "match",
-   "ref": "10:2-5",
-   "q": "Semnele de pe drumul lui Saul: asociază fiecare loc cu ordinea lui.",
+   "ref": "10:2-24",
+   "q": "Asociază fiecare loc cu ce se spune despre el în 1 Samuel 10.",
    "pairs": [
     [
-     "mormântul Rahelei",
-     "primul semn"
+     "Țelțah",
+     "hotarul lui Beniamin, cu mormântul Rahelei"
     ],
     [
-     "stejarul din Tabor",
-     "al doilea semn"
+     "Tabor",
+     "locul stejarului unde a fost întâmpinat Saul"
     ],
     [
-     "Ghibea Elohim",
-     "al treilea semn"
+     "Betel",
+     "locul spre care se suiau cei trei oameni"
     ],
     [
      "Ghilgal",
-     "locul unde trebuia să-l aștepte pe Samuel"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.10.18+.8",
-   "age": "18+",
-   "t": "match",
-   "ref": "10:20-21",
-   "q": "Tragerea la sorți: asociază.",
-   "pairs": [
-    [
-     "toate semințiile",
-     "apropiate de Samuel"
+     "locul unde trebuia să coboare Saul"
     ],
     [
-     "Beniamin",
-     "seminția ieșită"
-    ],
-    [
-     "Matri",
-     "familia ieșită"
-    ],
-    [
-     "Saul",
-     "fiul lui Chis"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.10.18+.9",
-   "age": "18+",
-   "t": "match",
-   "ref": "10:5-6, 10",
-   "q": "Prorocii de la Ghibea: asociază.",
-   "pairs": [
-    [
-     "ceata",
-     "cobora de pe înălțimea pentru jertfă"
-    ],
-    [
-     "instrumentele",
-     "lăute, timpane, fluiere și cobze"
-    ],
-    [
-     "Duhul Domnului",
-     "a venit peste Saul"
-    ],
-    [
-     "„alt om\"",
-     "Saul a fost prefăcut"
+     "Mițpa",
+     "locul unde a ieșit Saul la sorți"
     ]
    ]
   },
@@ -1030,6 +1239,26 @@
    ],
    "q": "Când a sfârșit de prorocit, s-a dus pe ___.",
    "ctx": "Saul, după întâlnirea cu prorocii:"
+  },
+  {
+   "id": "1sa.10.18+.20",
+   "age": "18+",
+   "t": "fill",
+   "ref": "10:18",
+   "q": "v-am izbăvit din mâna egiptenilor și din mâna tuturor ___ care vă apăsau.",
+   "a": [
+    "împărățiilor"
+   ]
+  },
+  {
+   "id": "1sa.10.18+.21",
+   "age": "18+",
+   "t": "fill",
+   "ref": "10:22",
+   "q": "Au întrebat din nou pe Domnul: „A venit oare omul acesta ___?",
+   "a": [
+    "aici"
+   ]
   },
   {
    "id": "1sa.10.18+.13",
@@ -1076,6 +1305,38 @@
    ],
    "a": [],
    "explain": "Niciun răspuns corect: unchiul lui Saul (10:14)."
+  },
+  {
+   "id": "1sa.10.18+.22",
+   "age": "18+",
+   "t": "multi",
+   "ref": "10:27",
+   "q": "Ce s-a întâmplat cu oamenii răi?",
+   "opts": [
+    "au disprețuit pe Saul",
+    "nu i-au adus niciun dar",
+    "l-au răsplătit cu daruri"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.10.18+.23",
+   "age": "18+",
+   "t": "multi",
+   "ref": "10:8",
+   "q": "Ce i-a spus Samuel lui Saul?",
+   "opts": [
+    "să aștepte șapte zile până vine el",
+    "să aștepte un an la Ghilgal",
+    "să se coboare la Ghilgal"
+   ],
+   "a": [
+    0,
+    2
+   ]
   }
  ]
 }

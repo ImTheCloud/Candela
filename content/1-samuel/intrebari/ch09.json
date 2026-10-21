@@ -28,6 +28,23 @@
    "explain": "Samuel i-a spus: „Nu te neliniști de măgărițele... căci s-au găsit\" (9:20)."
   },
   {
+   "id": "1sa.9.sub12.16",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "9:14",
+   "q": "Samuel a ieșit în întâmpinarea lui Saul pe poarta cetății.",
+   "a": true
+  },
+  {
+   "id": "1sa.9.sub12.17",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "9:3",
+   "q": "Saul căuta oile tatălui său, care se rătăciseră.",
+   "a": false,
+   "explain": "Căuta măgărițele lui Chis."
+  },
+  {
    "id": "1sa.9.sub12.4",
    "age": "sub12",
    "t": "one",
@@ -67,11 +84,37 @@
    "a": 1
   },
   {
-   "id": "1sa.9.sub12.7",
+   "id": "1sa.9.sub12.18",
+   "age": "sub12",
+   "t": "one",
+   "ref": "9:4",
+   "q": "Prin ce munte a trecut Saul când căuta măgărițele?",
+   "opts": [
+    "prin muntele lui Efraim",
+    "prin muntele Ghilboa",
+    "prin muntele Carmel"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.9.sub12.19",
+   "age": "sub12",
+   "t": "one",
+   "ref": "9:11",
+   "q": "Cine le-a spus lui Saul și slugii lui că văzătorul este în cetate?",
+   "opts": [
+    "niște preoți",
+    "niște păstori",
+    "niște fete care ieșiseră să scoată apă"
+   ],
+   "a": 2
+  },
+  {
+   "id": "1sa.9.sub12.24",
    "age": "sub12",
    "t": "match",
-   "ref": "9:1-3",
-   "q": "Saul și familia lui: asociază.",
+   "ref": "9:1-27",
+   "q": "Asociază fiecare nume sau lucru cu ce se spune despre el în 1 Samuel 9.",
    "pairs": [
     [
      "Chis",
@@ -79,53 +122,19 @@
     ],
     [
      "Saul",
-     "un tânăr frumos"
+     "tânăr și frumos, mai înalt decât toți"
     ],
-    [
-     "măgărițele",
-     "s-au rătăcit"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.9.sub12.8",
-   "age": "sub12",
-   "t": "match",
-   "ref": "9:6-11",
-   "q": "Pe drumul spre văzător: asociază.",
-   "pairs": [
-    [
-     "sluga",
-     "a propus să meargă la omul lui Dumnezeu"
-    ],
-    [
-     "fetele",
-     "ieșiseră să scoată apă"
-    ],
-    [
-     "văzătorul",
-     "așa se numea odinioară prorocul"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.9.sub12.9",
-   "age": "sub12",
-   "t": "match",
-   "ref": "9:14-19",
-   "q": "Samuel și Saul: asociază.",
-   "pairs": [
     [
      "Samuel",
-     "era văzătorul"
+     "cel numit „văzătorul”"
     ],
     [
-     "Saul",
-     "a întrebat de casa văzătorului"
+     "Țuf",
+     "țara unde Saul a vrut să se întoarcă"
     ],
     [
-     "Domnul",
-     "i-a spus lui Samuel: „Iată omul\""
+     "spata",
+     "ce a primit Saul la masă"
     ]
    ]
   },
@@ -161,6 +170,26 @@
    ],
    "q": "El avea un fiu cu numele ___, tânăr și frumos,",
    "ctx": "Despre fiul lui Chis:"
+  },
+  {
+   "id": "1sa.9.sub12.20",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "9:6",
+   "q": "Iată că în cetatea aceasta este un om al lui ___, un om cu vază",
+   "a": [
+    "Dumnezeu"
+   ]
+  },
+  {
+   "id": "1sa.9.sub12.21",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "9:19",
+   "q": "Samuel a răspuns lui Saul: „Eu sunt ___.",
+   "a": [
+    "văzătorul"
+   ]
   },
   {
    "id": "1sa.9.sub12.13",
@@ -209,6 +238,38 @@
    "explain": "Niciun răspuns corect: era din Beniamin (9:1)."
   },
   {
+   "id": "1sa.9.sub12.22",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "9:3-4",
+   "q": "Ce a făcut Saul?",
+   "opts": [
+    "a luat cu el un frate",
+    "a luat cu el o slugă",
+    "a străbătut mai multe ținuturi căutând măgărițele"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.9.sub12.23",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "9:24-25",
+   "q": "Ce s-a întâmplat după masă și la masă?",
+   "opts": [
+    "Saul a refuzat să mănânce",
+    "Saul a primit spata",
+    "Samuel a stat de vorbă cu Saul pe acoperiș"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
    "id": "1sa.9.12-13.1",
    "age": "12-13",
    "t": "tf",
@@ -232,6 +293,23 @@
    "ref": "9:25",
    "q": "Samuel a stat de vorbă cu Saul pe acoperișul casei.",
    "a": true
+  },
+  {
+   "id": "1sa.9.12-13.16",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "9:9",
+   "q": "Odinioară, în Israel, prorocul se numea văzător.",
+   "a": true
+  },
+  {
+   "id": "1sa.9.12-13.17",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "9:10",
+   "q": "Saul a refuzat sfatul slugii și a vrut să se întoarcă acasă.",
+   "a": false,
+   "explain": "A zis: „Ai dreptate; haidem să mergem!”"
   },
   {
    "id": "1sa.9.12-13.4",
@@ -273,77 +351,57 @@
    "a": 2
   },
   {
-   "id": "1sa.9.12-13.7",
+   "id": "1sa.9.12-13.18",
+   "age": "12-13",
+   "t": "one",
+   "ref": "9:2",
+   "q": "Cu ce îi întrecea Saul pe toți ceilalți israeliți?",
+   "opts": [
+    "cu vârsta",
+    "cu bogăția",
+    "cu înălțimea, de la umăr în sus"
+   ],
+   "a": 2
+  },
+  {
+   "id": "1sa.9.12-13.19",
+   "age": "12-13",
+   "t": "one",
+   "ref": "9:12",
+   "q": "Unde aducea poporul jertfă, în ziua aceea?",
+   "opts": [
+    "pe înălțime",
+    "la Silo",
+    "la Hebron"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.9.12-13.24",
    "age": "12-13",
    "t": "match",
-   "ref": "9:4-5",
-   "q": "Unde a căutat Saul măgărițele: asociază.",
+   "ref": "9:4-22",
+   "q": "Asociază fiecare nume sau număr cu ce se spune despre el în 1 Samuel 9.",
    "pairs": [
     [
-     "muntele lui Efraim",
-     "l-a trecut"
-    ],
-    [
-     "Șalișa",
-     "a străbătut-o"
-    ],
-    [
-     "Șaalim",
-     "nu erau acolo"
+     "Beniamin",
+     "una din cele mai mici seminții, după Saul"
     ],
     [
      "Țuf",
-     "acolo a vrut Saul să se întoarcă"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.9.12-13.8",
-   "age": "12-13",
-   "t": "match",
-   "ref": "9:16-17",
-   "q": "Ce a spus Domnul despre Saul: asociază.",
-   "pairs": [
-    [
-     "să-l ungi",
-     "drept căpetenie a poporului Meu"
+     "țara unde au ajuns când Saul a vrut să se întoarcă"
     ],
     [
-     "El va scăpa",
-     "poporul Meu din mâna filistenilor"
+     "trei zile",
+     "de când se pierduseră măgărițele"
     ],
     [
-     "strigătul poporului",
-     "a ajuns la Domnul"
+     "aproape treizeci",
+     "câți oaspeți erau în odaia de mâncare"
     ],
     [
-     "„Iată omul\"",
-     "el va domni"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.9.12-13.9",
-   "age": "12-13",
-   "t": "match",
-   "ref": "9:22-24",
-   "q": "Masa de pe înălțime: asociază.",
-   "pairs": [
-    [
-     "cei poftiți",
-     "aproape treizeci de inși"
-    ],
-    [
-     "bucătarul",
-     "a adus porția păstrată"
-    ],
-    [
-     "spata",
-     "pusă înaintea lui Saul"
-    ],
-    [
-     "Saul",
-     "a mâncat cu Samuel în ziua aceea"
+     "un sfert de siclu de argint",
+     "ce avea sluga"
     ]
    ]
   },
@@ -379,6 +437,26 @@
    ],
    "q": "„Aici este ___?\"",
    "ctx": "Saul și sluga lui, către fetele care scoteau apă:"
+  },
+  {
+   "id": "1sa.9.12-13.20",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "9:2",
+   "q": "Și-i întrecea pe toți în înălțime de la umăr în ___.",
+   "a": [
+    "sus"
+   ]
+  },
+  {
+   "id": "1sa.9.12-13.21",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "9:18",
+   "q": "Arată-mi, te rog, unde este casa ___.",
+   "a": [
+    "văzătorului"
+   ]
   },
   {
    "id": "1sa.9.12-13.13",
@@ -427,6 +505,38 @@
    "explain": "Niciun răspuns corect: Samuel l-a chemat dimineața de pe acoperiș (9:25-26)."
   },
   {
+   "id": "1sa.9.12-13.22",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "9:6",
+   "q": "Ce a spus sluga despre omul lui Dumnezeu?",
+   "opts": [
+    "tot ce spune el se întâmplă",
+    "este un om care nu cunoaște drumurile",
+    "este un om cu vază"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.9.12-13.23",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "9:14-17",
+   "q": "Ce s-a întâmplat la poarta cetății?",
+   "opts": [
+    "Samuel ieșea să se suie pe înălțime",
+    "Domnul i-a zis: „Iată omul despre care ți-am vorbit”",
+    "Saul a ocolit cetatea"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
    "id": "1sa.9.14-15.1",
    "age": "14-15",
    "t": "tf",
@@ -450,6 +560,23 @@
    "ref": "9:27",
    "q": "La marginea cetății, Samuel i-a spus lui Saul să trimită sluga înainte.",
    "a": true
+  },
+  {
+   "id": "1sa.9.14-15.16",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "9:16",
+   "q": "Domnul i-a spus lui Samuel că omul trimis va scăpa poporul din mâna filistenilor.",
+   "a": true
+  },
+  {
+   "id": "1sa.9.14-15.17",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "9:19",
+   "q": "Samuel i-a spus lui Saul să plece imediat, fără să mănânce.",
+   "a": false,
+   "explain": "I-a spus să se suie înaintea lui pe înălțime și să mănânce cu el."
   },
   {
    "id": "1sa.9.14-15.4",
@@ -491,77 +618,57 @@
    "a": 1
   },
   {
-   "id": "1sa.9.14-15.7",
+   "id": "1sa.9.14-15.18",
+   "age": "14-15",
+   "t": "one",
+   "ref": "9:7",
+   "q": "Ce nu mai aveau Saul și sluga lui, înainte să meargă la omul lui Dumnezeu?",
+   "opts": [
+    "măgărițe",
+    "merinde în saci",
+    "haine"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.9.14-15.19",
+   "age": "14-15",
+   "t": "one",
+   "ref": "9:25",
+   "q": "Unde a stat de vorbă Samuel cu Saul, după ce s-au coborât în cetate?",
+   "opts": [
+    "la poarta cetății",
+    "pe acoperișul casei",
+    "în Templu"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.9.14-15.24",
    "age": "14-15",
    "t": "match",
-   "ref": "9:1",
-   "q": "Genealogia lui Chis: asociază fiecare cu tatăl lui.",
+   "ref": "9:6-26",
+   "q": "Asociază fiecare persoană cu ce se spune despre ea în 1 Samuel 9.",
    "pairs": [
+    [
+     "Samuel",
+     "a stat de vorbă cu Saul pe acoperiș"
+    ],
+    [
+     "bucătarul",
+     "a pus spata înaintea lui Saul"
+    ],
+    [
+     "fetele",
+     "au spus unde este văzătorul"
+    ],
+    [
+     "sluga",
+     "cea care avea un sfert de siclu"
+    ],
     [
      "Chis",
-     "Abiel"
-    ],
-    [
-     "Abiel",
-     "Țeror"
-    ],
-    [
-     "Țeror",
-     "Becorat"
-    ],
-    [
-     "Becorat",
-     "Afiah"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.9.14-15.8",
-   "age": "14-15",
-   "t": "match",
-   "ref": "9:18-21",
-   "q": "Dialogul de la poartă: asociază.",
-   "pairs": [
-    [
-     "„Arată-mi unde este casa văzătorului\"",
-     "întrebarea lui Saul"
-    ],
-    [
-     "„Eu sunt văzătorul\"",
-     "răspunsul lui Samuel"
-    ],
-    [
-     "„Oare nu sunt eu beniamit?\"",
-     "mirarea lui Saul"
-    ],
-    [
-     "„pentru cine este păstrat tot ce este mai de preț?\"",
-     "întrebarea lui Samuel"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.9.14-15.9",
-   "age": "14-15",
-   "t": "match",
-   "ref": "9:6-10",
-   "q": "Planul slugii: asociază.",
-   "pairs": [
-    [
-     "cetatea",
-     "acolo era omul lui Dumnezeu"
-    ],
-    [
-     "sfertul de siclu",
-     "darul"
-    ],
-    [
-     "drumul",
-     "omul lui Dumnezeu îl va arăta"
-    ],
-    [
-     "„Ai dreptate\"",
-     "răspunsul lui Saul"
+     "cel care i-a cerut lui Saul să caute măgărițele"
     ]
    ]
   },
@@ -597,6 +704,26 @@
    ],
    "q": "„Scoală-te, și te voi ___.\"",
    "ctx": "Samuel, către Saul, în revărsatul zorilor:"
+  },
+  {
+   "id": "1sa.9.14-15.20",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "9:5",
+   "q": "Ajunseseră în țara ___, când Saul a zis slugii care îl însoțea",
+   "a": [
+    "Țuf"
+   ]
+  },
+  {
+   "id": "1sa.9.14-15.21",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "9:8",
+   "q": "Uite, eu am la mine un sfert de ___ de argint",
+   "a": [
+    "siclu"
+   ]
   },
   {
    "id": "1sa.9.14-15.13",
@@ -646,6 +773,38 @@
    "explain": "Niciun răspuns corect: spata și ce era pe ea (9:24)."
   },
   {
+   "id": "1sa.9.14-15.22",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "9:20-21",
+   "q": "Ce a răspuns Saul?",
+   "opts": [
+    "„Sunt beniamit, din una din cele mai mici seminții”",
+    "„Familia mea este cea mai mică din seminția lui Beniamin”",
+    "„Sunt din seminția lui Iuda”"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.9.14-15.23",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "9:22-23",
+   "q": "Ce a făcut Samuel?",
+   "opts": [
+    "a luat pe Saul și pe sluga lui în odaia de mâncare",
+    "i-a trimis afară din cetate",
+    "i-a dat lui Saul locul cel dintâi între cei poftiți"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
    "id": "1sa.9.16-17.1",
    "age": "16-17",
    "t": "tf",
@@ -669,6 +828,23 @@
    "ref": "9:21",
    "q": "Saul a spus că familia lui este cea mai mică din seminția lui Beniamin.",
    "a": true
+  },
+  {
+   "id": "1sa.9.16-17.16",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "9:26",
+   "q": "Samuel l-a chemat pe Saul de pe acoperiș dis-de-dimineață, în revărsatul zorilor.",
+   "a": true
+  },
+  {
+   "id": "1sa.9.16-17.17",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "9:19",
+   "q": "Samuel i-a spus lui Saul că măgărițele pierdute nu se vor mai găsi niciodată.",
+   "a": false,
+   "explain": "I-a spus că măgărițele s-au găsit."
   },
   {
    "id": "1sa.9.16-17.4",
@@ -710,77 +886,57 @@
    "a": 1
   },
   {
-   "id": "1sa.9.16-17.7",
+   "id": "1sa.9.16-17.18",
    "age": "16-17",
-   "t": "match",
-   "ref": "9:4-5",
-   "q": "Drumul lui Saul în căutarea măgărițelor: asociază fiecare țară cu locul ei în drum.",
-   "pairs": [
-    [
-     "muntele lui Efraim",
-     "primul"
-    ],
-    [
-     "Șalișa",
-     "al doilea"
-    ],
-    [
-     "Șaalim",
-     "al treilea"
-    ],
-    [
-     "Țuf",
-     "unde au ajuns la urmă"
-    ]
-   ]
+   "t": "one",
+   "ref": "9:16",
+   "q": "Ce spune Domnul despre strigătul poporului Său?",
+   "opts": [
+    "că nu l-a auzit",
+    "că este prea slab;",
+    "că a ajuns până la El"
+   ],
+   "a": 2
   },
   {
-   "id": "1sa.9.16-17.8",
+   "id": "1sa.9.16-17.19",
    "age": "16-17",
-   "t": "match",
-   "ref": "9:24-27",
-   "q": "Dimineața ungerii: asociază.",
-   "pairs": [
-    [
-     "acoperișul casei",
-     "acolo au vorbit"
-    ],
-    [
-     "revărsatul zorilor",
-     "Samuel l-a chemat"
-    ],
-    [
-     "marginea cetății",
-     "acolo s-au oprit"
-    ],
-    [
-     "sluga",
-     "a trecut înainte"
-    ]
-   ]
+   "t": "one",
+   "ref": "9:2",
+   "q": "Cum este descris Saul în 1 Samuel 9:2?",
+   "opts": [
+    "tânăr și frumos",
+    "mic de statură",
+    "bătrân și înțelept"
+   ],
+   "a": 0
   },
   {
-   "id": "1sa.9.16-17.9",
+   "id": "1sa.9.16-17.24",
    "age": "16-17",
    "t": "match",
-   "ref": "9:16-20",
-   "q": "Cuvintele Domnului și ale lui Samuel: asociază începutul cu sfârșitul.",
+   "ref": "9:1",
+   "q": "Asociază fiecare nume cu locul lui în genealogia lui Saul, din 1 Samuel 9:1.",
    "pairs": [
     [
-     "Mâine, la ceasul acesta",
-     "îți voi trimite un om din țara lui Beniamin"
+     "Chis",
+     "tatăl lui Saul"
     ],
     [
-     "am căutat cu îndurare",
-     "spre poporul Meu"
+     "Abiel",
+     "tatăl lui Chis"
     ],
     [
-     "Suie-te înaintea mea",
-     "pe înălțime"
+     "Țeror",
+     "tatăl lui Abiel"
     ],
     [
-     "Nu te neliniști",
-     "de măgărițele pe care le-ai pierdut"
+     "Becorat",
+     "tatăl lui Țeror"
+    ],
+    [
+     "Afiah",
+     "tatăl lui Becorat"
     ]
    ]
   },
@@ -816,6 +972,26 @@
    ],
    "q": "tot ce spune el nu se poate să nu se ___.",
    "ctx": "Sluga lui Saul, despre omul lui Dumnezeu:"
+  },
+  {
+   "id": "1sa.9.16-17.20",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "9:1",
+   "q": "Era un om din ___, numit Chis, fiul lui Abiel",
+   "a": [
+    "Beniamin"
+   ]
+  },
+  {
+   "id": "1sa.9.16-17.21",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "9:10",
+   "q": "Saul a zis slugii: „Ai dreptate; haidem să ___!",
+   "a": [
+    "mergem"
+   ]
   },
   {
    "id": "1sa.9.16-17.13",
@@ -864,6 +1040,38 @@
    "explain": "Niciun răspuns corect: i-a spus să trimită sluga înainte și să se oprească, ca să-i facă cunoscut cuvântul lui Dumnezeu (9:27)."
   },
   {
+   "id": "1sa.9.16-17.22",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "9:11-13",
+   "q": "Ce au spus fetele?",
+   "opts": [
+    "„Astăzi a venit în cetate”",
+    "„Azi văzătorul nu este în cetate”",
+    "„Da, iată-l înaintea ta”"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.9.16-17.23",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "9:15-16",
+   "q": "Ce spusese Domnul lui Samuel?",
+   "opts": [
+    "să-l alunge din cetate",
+    "că îi va trimite un om din țara lui Beniamin",
+    "să-l ungă drept căpetenie a poporului"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
    "id": "1sa.9.18+.1",
    "age": "18+",
    "t": "tf",
@@ -887,6 +1095,23 @@
    "ref": "9:19",
    "q": "Samuel i-a spus lui Saul că a doua zi îi va spune tot ce se petrece în inima lui.",
    "a": true
+  },
+  {
+   "id": "1sa.9.18+.16",
+   "age": "18+",
+   "t": "tf",
+   "ref": "9:20",
+   "q": "Samuel i-a spus lui Saul că măgărițele pierdute de trei zile s-au găsit.",
+   "a": true
+  },
+  {
+   "id": "1sa.9.18+.17",
+   "age": "18+",
+   "t": "tf",
+   "ref": "9:4",
+   "q": "Saul a străbătut mai întâi țara lui Beniamin, apoi muntele lui Efraim.",
+   "a": false,
+   "explain": "A trecut întâi prin muntele lui Efraim."
   },
   {
    "id": "1sa.9.18+.4",
@@ -928,77 +1153,57 @@
    "a": 0
   },
   {
-   "id": "1sa.9.18+.7",
+   "id": "1sa.9.18+.18",
    "age": "18+",
-   "t": "match",
-   "ref": "9:1",
-   "q": "Strămoșii lui Saul: asociază fiecare nume cu locul lui în genealogie.",
-   "pairs": [
-    [
-     "Chis",
-     "tatăl"
-    ],
-    [
-     "Abiel",
-     "bunicul"
-    ],
-    [
-     "Țeror",
-     "străbunicul"
-    ],
-    [
-     "Afiah",
-     "ultimul pomenit"
-    ]
-   ]
+   "t": "one",
+   "ref": "9:22",
+   "q": "Câți erau, aproximativ, cei poftiți în odaia de mâncare?",
+   "opts": [
+    "aproape o sută",
+    "aproape zece",
+    "aproape treizeci"
+   ],
+   "a": 2
   },
   {
-   "id": "1sa.9.18+.8",
+   "id": "1sa.9.18+.19",
    "age": "18+",
-   "t": "match",
-   "ref": "9:9-14",
-   "q": "Odinioară în Israel: asociază.",
-   "pairs": [
-    [
-     "văzătorul",
-     "așa se numea prorocul"
-    ],
-    [
-     "„Haidem să mergem la văzător!\"",
-     "ziceau cei ce întrebau pe Dumnezeu"
-    ],
-    [
-     "locul înalt",
-     "acolo mânca poporul"
-    ],
-    [
-     "poarta cetății",
-     "acolo l-a întâlnit Samuel pe Saul"
-    ]
-   ]
+   "t": "one",
+   "ref": "9:27",
+   "q": "Ce a spus Samuel la marginea cetății, după ce sluga a trecut înainte?",
+   "opts": [
+    "„Întoarce-te acasă la Chis”",
+    "„Du-te în pace”",
+    "„Oprește-te acum și-ți voi face cunoscut cuvântul lui Dumnezeu”"
+   ],
+   "a": 2
   },
   {
-   "id": "1sa.9.18+.9",
+   "id": "1sa.9.18+.24",
    "age": "18+",
    "t": "match",
-   "ref": "9:20-21",
-   "q": "Răspunsul lui Saul: asociază începutul cu sfârșitul.",
+   "ref": "9:4-5",
+   "q": "Asociază fiecare ținut cu locul lui în drumul lui Saul, din 1 Samuel 9:4-5.",
    "pairs": [
     [
-     "pentru cine este păstrat",
-     "tot ce este mai de preț în Israel?"
+     "muntele lui Efraim",
+     "primul ținut străbătut"
     ],
     [
-     "Oare nu sunt eu beniamit",
-     "din una din cele mai mici seminții?"
+     "Șalișa",
+     "țara străbătută după Efraim"
     ],
     [
-     "familia mea nu este cea mai mică",
-     "dintre toate familiile din Beniamin?"
+     "Șaalim",
+     "țara străbătută după Șalișa"
     ],
     [
-     "Pentru ce dar",
-     "îmi vorbești astfel?"
+     "țara lui Beniamin",
+     "ținutul străbătut după Șaalim"
+    ],
+    [
+     "Țuf",
+     "țara unde au ajuns când Saul a vrut să se întoarcă"
     ]
    ]
   },
@@ -1034,6 +1239,26 @@
    ],
    "q": "„Haide să ne întoarcem, ca nu cumva tatăl meu, lăsând măgărițele, să fie ___ de noi.\"",
    "ctx": "Saul, către sluga lui, în țara Țuf:"
+  },
+  {
+   "id": "1sa.9.18+.20",
+   "age": "18+",
+   "t": "fill",
+   "ref": "9:9",
+   "q": "Odinioară, în Israel, când se ducea cineva să întrebe pe Dumnezeu, zicea: „Haidem să mergem la ___!",
+   "a": [
+    "văzător"
+   ]
+  },
+  {
+   "id": "1sa.9.18+.21",
+   "age": "18+",
+   "t": "fill",
+   "ref": "9:13",
+   "q": "Suiți-vă dar, căci acum îl veți ___.",
+   "a": [
+    "găsi"
+   ]
   },
   {
    "id": "1sa.9.18+.13",
@@ -1081,6 +1306,38 @@
    ],
    "a": [],
    "explain": "Niciun răspuns corect: „de la umăr în sus\" (9:2)."
+  },
+  {
+   "id": "1sa.9.18+.22",
+   "age": "18+",
+   "t": "multi",
+   "ref": "9:2",
+   "q": "Ce se spune despre Saul?",
+   "opts": [
+    "era bătrân și înțelept",
+    "îi întrecea pe toți în înălțime de la umăr în sus",
+    "era tânăr și frumos"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.9.18+.23",
+   "age": "18+",
+   "t": "multi",
+   "ref": "9:17-19",
+   "q": "Ce s-a întâmplat între Saul și Samuel?",
+   "opts": [
+    "Samuel a refuzat să-l primească",
+    "Domnul i-a spus lui Samuel: „Iată omul”",
+    "Saul a întrebat unde este casa văzătorului"
+   ],
+   "a": [
+    1,
+    2
+   ]
   }
  ]
 }
