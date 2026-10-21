@@ -404,7 +404,7 @@ a.tile { text-decoration: none; }
 /* Leaderboard: one big card per player */
 .lb { display: grid; gap: 12px; padding: 14px 14px 16px; }
 .lb h2 { font-size: 1.05rem; }
-.lb-guest { display: grid; gap: 8px; padding: 12px 14px; border-radius: 14px; background: var(--bg); justify-items: start; }
+.lb-guest { display: grid; gap: 12px; padding: 14px; border-radius: 16px; background: var(--bg); justify-items: stretch; text-align: center; }
 .lb-empty { padding: 18px 8px; text-align: center; color: var(--ink-2); white-space: nowrap; }
 .lb-note { text-align: center; }
 .lb-wait { min-height: 60px; }

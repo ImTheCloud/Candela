@@ -78,7 +78,7 @@ const fullTitle = title === 'Candela' ? title : `${title} · Candela`;
   try {
     var acct = JSON.parse(localStorage.getItem('acct') || 'null'), fb = document.getElementById('acct-fb');
     if (fb && typeof acct === 'string' && !(acct === '' && location.pathname.indexOf('/cont') === 0)) {
-      if (acct) { fb.className = 'avatar'; fb.textContent = acct; var n = parseInt(localStorage.getItem('acctN') || '0', 10); if (n > 0) { var s = document.createElement('span'); s.className = 'badge-n'; s.textContent = n > 9 ? '9+' : String(n); fb.appendChild(s); fb.href = '/semnalari'; } } else { fb.className = 'btn btn-ghost btn-sm'; fb.textContent = 'Intră'; }
+      if (acct) { fb.className = 'avatar'; fb.textContent = acct; var n = parseInt(localStorage.getItem('acctN') || '0', 10); if (n > 0) { var s = document.createElement('span'); s.className = 'badge-n'; s.textContent = n > 9 ? '9+' : String(n); fb.appendChild(s); fb.href = '/semnalari'; } } else { fb.className = 'btn btn-primary btn-sm'; fb.textContent = 'Intră'; }
       fb.hidden = false;
     }
   } catch (e) {}

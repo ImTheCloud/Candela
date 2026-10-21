@@ -89,7 +89,7 @@ export default function Board({ book }: Props) {
       {user.value === null && (
         <div class="lb-guest">
           <p class="small">Joci fără cont, așa că nu apari în clasament. Progresul rămâne doar pe acest telefon.</p>
-          <a class="btn btn-primary btn-sm" href="/cont/inregistrare">Creează un cont</a>
+          <a class="btn btn-primary btn-block" href="/cont/inregistrare">Creează un cont</a>
         </div>
       )}
       {error ? (
