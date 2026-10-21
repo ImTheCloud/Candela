@@ -150,5 +150,24 @@ for (const slug of Object.keys(BOOKS)) {
     }
   }
 }
+// Guides: every journey step is a known place and every reference exists.
+for (const slug of Object.keys(BOOKS)) {
+  const path = join(ROOT, slug, 'carte.json');
+  if (!existsSync(path)) continue;
+  const where = `${slug}/carte.json`;
+  const text = JSON.parse(readFileSync(join(ROOT, slug, 'text-cornilescu.json'), 'utf8'));
+  const guide = JSON.parse(readFileSync(path, 'utf8'));
+  const places = new Set(guide.locuri.map((l) => l.n));
+  for (const l of guide.locuri) if (typeof l.lat !== 'number' || typeof l.lng !== 'number') err(where, `${l.n}: coordonate lipsă`);
+  for (const t of guide.trasee) {
+    for (const st of t.s) {
+      if (!places.has(st.p)) err(where, `${t.n}: locul „${st.p}" nu este în locuri`);
+      try { versesOf(st.v, text); } catch (e) { err(where, `${t.n} ${st.v}: ${e.message}`); }
+      if (!text[String(st.c)]) err(where, `${t.n}: capitolul ${st.c} nu există`);
+    }
+  }
+  for (const f of guide.frize) for (const [, ch] of f.d) if (!text[String(ch)]) err(where, `${f.t}: capitolul ${ch} nu există`);
+}
+
 console.log(`\n${errors} ${errors === 1 ? 'eroare' : 'erori'}, ${warnings} ${warnings === 1 ? 'avertisment' : 'avertismente'}`);
 process.exit(errors ? 1 : 0);
