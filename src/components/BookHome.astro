@@ -12,11 +12,6 @@ const base = `/${book.slug}`;
 
 ---
 <section class="wrap hb-head">
-  <nav class="book-switch" aria-label="Cartea">
-    {BOOKS.map((b) => (
-      <a href={bookHome(b.slug)} data-book={b.slug} aria-current={b.slug === book.slug ? 'page' : undefined}>{b.name}</a>
-    ))}
-  </nav>
   <Welcome client:only="preact"><h1 slot="fallback" class="welcome">Bun venit!</h1></Welcome>
 </section>
 
@@ -24,8 +19,13 @@ const base = `/${book.slug}`;
   <PlayerPicker client:only="preact" />
 </section>
 
-<section class="wrap hb-block" aria-labelledby="chapters">
+<section class="wrap hb-chap" aria-labelledby="chapters">
   <div class="card hb-chapters">
+    <nav class="book-switch" aria-label="Cartea">
+      {BOOKS.map((b) => (
+        <a href={bookHome(b.slug)} data-book={b.slug} aria-current={b.slug === book.slug ? 'page' : undefined}>{b.name}</a>
+      ))}
+    </nav>
     <h2 id="chapters">Ce capitol vrei să exersezi?</h2>
     <ChapterMenu client:only="preact" book={book.slug} titles={book.titles} summary={summary(book.slug)} examsHref={`${base}/examene`}>
       <div slot="fallback" class="tiles-space"></div>
@@ -54,20 +54,21 @@ const base = `/${book.slug}`;
 </script>
 
 <style>
-  .hb-head { display: flex; flex-direction: column; gap: 8px; padding-block: 16px 4px; }
-  .welcome { font-size: 1.7rem; }
+  .hb-head { padding-block: 10px 0; }
+  .welcome { font-size: 1.5rem; }
   .book-switch {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 4px; margin-bottom: 10px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3px; padding: 3px;
     background: var(--surface-2); border-radius: 999px;
   }
   .book-switch a {
-    display: grid; place-items: center; min-height: 42px; border-radius: 999px;
-    font-weight: 600; color: var(--ink-2); text-decoration: none;
+    display: grid; place-items: center; min-height: 34px; border-radius: 999px;
+    font-size: 0.9rem; font-weight: 600; color: var(--ink-2); text-decoration: none;
   }
   .book-switch a[aria-current] { background: var(--surface); color: var(--ink); box-shadow: 0 1px 3px rgb(58 39 27 / .12); }
-  .hb-who:not(:empty) { padding-top: 14px; }
-  .hb-block { padding-top: 20px; }
-  .hb-chapters { display: grid; gap: 16px; padding: 18px; }
+  .hb-who:has(.picker) { padding-top: 10px; }
+  .hb-chap { padding-top: 12px; }
+  .hb-block { padding-top: 12px; }
+  .hb-chapters { display: grid; gap: 14px; padding: 14px 16px 16px; }
   .hb-chapters h2 { font-size: 1.2rem; }
   .tiles-space { min-height: 240px; }
   .mode { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 18px; text-decoration: none; box-shadow: none; }
