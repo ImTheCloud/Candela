@@ -219,7 +219,7 @@ img, svg { display: block; }
 .pw-eye[aria-pressed="true"] { color: var(--oil-ink); }
 
 /* Chapter tiles and the chapter menu (same look as v1) */
-.tiles { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; grid-template-columns: repeat(6, 1fr); }
+.tiles { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; grid-template-columns: repeat(7, 1fr); }
 .tile {
   position: relative; width: 100%; aspect-ratio: 1; display: grid; place-items: center; align-content: center; gap: 2px;
   border: 1.5px solid var(--line); border-radius: 12px; background: var(--bg); color: var(--ink);
@@ -463,5 +463,5 @@ a.tile { text-decoration: none; }
 
 
 .tiles-wrap { container-type: inline-size; }
-.tiles { grid-auto-rows: calc((100cqw - 40px) / 6); min-height: calc(var(--rows, 1) * (100cqw - 40px) / 6 + (var(--rows, 1) - 1) * 8px); align-content: start; }
+.tiles { grid-auto-rows: calc((100cqw - 48px) / 7); min-height: calc(var(--rows, 1) * (100cqw - 48px) / 7 + (var(--rows, 1) - 1) * 8px); align-content: start; }
 .tiles .tile:not(.tile-exam) { height: 100%; aspect-ratio: auto; }
