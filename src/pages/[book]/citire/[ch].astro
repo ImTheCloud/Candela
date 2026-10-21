@@ -19,7 +19,7 @@ const { book, ch, verses } = Astro.props as { book: Book; ch: number; verses: st
 const prev = ch > 1 ? ch - 1 : null;
 const next = ch < book.chapters ? ch + 1 : null;
 ---
-<Base title={`${book.name} ${ch}`} crumbs={[{ href: '/', label: 'Acasă' }, { href: `/${book.slug}`, label: book.name }]}>
+<Base title={`${book.name} ${ch}`} backUp crumbs={[{ href: '/', label: 'Acasă' }, { href: `/${book.slug}`, label: book.name }]}>
   <article class="wrap narrow reader" data-book={book.slug} data-ch={ch}>
     <header class="reader-head">
       <h1>Capitolul {ch}</h1>
