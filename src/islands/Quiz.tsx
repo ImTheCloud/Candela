@@ -110,7 +110,7 @@ export default function Quiz({ book, bookName, questions, mode, examId, scoreId,
     else {
       if (scoreId && grades.every(Boolean)) {
         const all = grades as Grade[];
-        recordExam(book, scoreId, percent(all.reduce((s, x) => s + x.points, 0), all.reduce((s, x) => s + x.max, 0)));
+        recordExam(book, scoreId, percent(all.reduce((s, x) => s + x.points, 0), all.reduce((s, x) => s + x.max, 0)), { right: all.filter((x) => x.right).length, n: all.length });
       }
       setDone(true);
     }

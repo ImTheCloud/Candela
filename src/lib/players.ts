@@ -1,6 +1,6 @@
 import { computed, effect, signal } from '@preact/signals';
-import { addDoc, collection, deleteDoc, doc, getDoc, onSnapshot, serverTimestamp, setDoc, updateDoc } from 'firebase/firestore';
-import { level } from './level';
+import { addDoc, collection, deleteDoc, doc, getDoc, onSnapshot, serverTimestamp, updateDoc } from 'firebase/firestore';
+import { removeFromBoards, writeAllBoard, writeBoard } from './board';
 import { BOOKS } from './books';
 import { db } from './firebase';
 import { profile, rememberedAccount, user } from './session';
@@ -77,7 +77,7 @@ export function updateChild(key: string, name: string) {
 export async function removeChild(key: string) {
   const id = uid();
   if (chosen.value === key) choosePlayer(id);
-  await Promise.all(BOOKS.map((b) => deleteDoc(doc(db, 'boards', b.slug, 'players', `${id}~${key}`))));
+  await removeFromBoards(id, key);
   return deleteDoc(doc(db, 'users', id, 'players', key));
 }
 
@@ -93,10 +93,10 @@ export async function setHidden(p: Player, hidden: boolean) {
   const id = uid();
   if (p.child) await updateDoc(doc(db, 'users', id, 'players', p.key), { hidden });
   else await updateDoc(doc(db, 'users', id), { hidden });
+  if (hidden) return removeFromBoards(id, p.key);
   await Promise.all(BOOKS.map(async (b) => {
-    const entry = doc(db, 'boards', b.slug, 'players', `${id}~${p.key}`);
-    if (hidden) return deleteDoc(entry);
-    const score = ((await getDoc(doc(db, 'users', id, 'progress', `${p.key}~${b.slug}`))).get('mastered') as string[] | undefined)?.length ?? 0;
-    if (score) return setDoc(entry, { name: shortName(p), age: level.value, score, at: serverTimestamp() });
+    const mastered = ((await getDoc(doc(db, 'users', id, 'progress', `${p.key}~${b.slug}`))).get('mastered') as string[] | undefined) ?? [];
+    if (mastered.length) await writeBoard(b.slug, id, p.key, shortName(p), mastered);
   }));
+  await writeAllBoard(id, p.key, shortName(p));
 }

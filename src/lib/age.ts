@@ -30,3 +30,6 @@ export function ageShort(group: AgeGroup): string {
 export function validBirthYear(y: number, year = new Date().getFullYear()): boolean {
   return Number.isInteger(y) && y >= year - 100 && y <= year - 3;
 }
+
+/** Level keys for the board maps (plain letters, safe as Firestore field names). */
+export const LEVEL_KEY: Record<AgeGroup, string> = { sub12: 'a', '12-13': 'b', '14-15': 'c', '16-17': 'd', '18+': 'e' };
