@@ -62,7 +62,7 @@ export default function SignUpForm() {
       </label>
       {error && <p class="notice notice-bad" role="alert">{error}</p>}
       <button class="btn btn-primary btn-block" disabled={busy}>{busy ? 'Se creează contul…' : 'Creează contul'}</button>
-      <p class="small muted auth-links">Ai deja un cont? <a class="link" href="/cont">Intră</a></p>
+      <p class="small auth-links"><a class="link" href="/cont">Ai deja un cont?</a></p>
     </form>
   );
 }
