@@ -13,7 +13,7 @@ const chapters = Array.from({ length: book.chapters }, (_, i) => i + 1);
   </div>
   <ol class="sheet-grid" data-book={book.slug}>
     {chapters.map((n) => (
-      <li><a href={`/${book.slug}/citire/${n}`} data-ch={n} aria-current={n === current ? 'page' : undefined}>{n}</a></li>
+      <li><a href={`/${book.slug}/citire/${n}`} data-astro-prefetch="viewport" data-ch={n} aria-current={n === current ? 'page' : undefined}>{n}</a></li>
     ))}
   </ol>
 </dialog>

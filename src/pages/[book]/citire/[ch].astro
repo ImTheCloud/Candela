@@ -31,14 +31,14 @@ const next = ch < book.chapters ? ch + 1 : null;
       ))}
     </div>
 
-    <a class="btn btn-primary btn-block start" href={`/${book.slug}/exersare?capitol=${ch}&start=1`}>Începe întrebările</a>
+    <a class="btn btn-primary btn-block start" data-astro-prefetch="load" href={`/${book.slug}/exersare?capitol=${ch}&start=1`}>Începe întrebările</a>
   </article>
 
   <nav class="pager" aria-label="Capitole">
     <div class="wrap narrow pager-row">
-      {prev ? <a class="pager-btn" href={`/${book.slug}/citire/${prev}`} rel="prev" aria-label={`Capitolul ${prev}`}><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6" /></svg></a> : <span class="pager-btn" aria-hidden="true" />}
+      {prev ? <a class="pager-btn" href={`/${book.slug}/citire/${prev}`} rel="prev" data-astro-prefetch="load" aria-label={`Capitolul ${prev}`}><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6" /></svg></a> : <span class="pager-btn" aria-hidden="true" />}
       <button class="pager-mid" type="button" data-open-sheet>{book.name} {ch}<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg></button>
-      {next ? <a class="pager-btn" href={`/${book.slug}/citire/${next}`} rel="next" aria-label={`Capitolul ${next}`}><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6" /></svg></a> : <span class="pager-btn" aria-hidden="true" />}
+      {next ? <a class="pager-btn" href={`/${book.slug}/citire/${next}`} rel="next" data-astro-prefetch="load" aria-label={`Capitolul ${next}`}><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6" /></svg></a> : <span class="pager-btn" aria-hidden="true" />}
     </div>
   </nav>
 
