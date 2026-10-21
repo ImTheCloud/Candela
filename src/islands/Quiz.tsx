@@ -35,6 +35,8 @@ export default function Quiz({ book, bookName, questions, mode, examId, scoreId,
   // where the card sat when the answer was checked: it stays there while the correction appears below
   const [pin, setPin] = useState<number | null>(null);
   const [saveFailed, setSaveFailed] = useState(false);
+  // the lamp sits above the card, only when there is room for it between the header and the card
+  const [lamp, setLamp] = useState<'full' | 'small' | null>('full');
 
   const q = questions[i];
   const g = grades[i];
@@ -49,6 +51,13 @@ export default function Quiz({ book, bookName, questions, mode, examId, scoreId,
   }, [done, started]);
 
   useEffect(() => { scrollTo({ top: 0 }); }, [i, done]);
+
+  useLayoutEffect(() => {
+    if (g || !cardEl.current) return;
+    const head = document.querySelector('header.top')?.getBoundingClientRect().bottom ?? 48;
+    const room = cardEl.current.getBoundingClientRect().top - head;
+    setLamp(room >= 124 ? 'full' : room >= 84 ? 'small' : null);
+  }, [i, g, answers[i]]);
 
   // the correction must fit on the screen: if it does not, the card moves up just enough
   useLayoutEffect(() => {
@@ -137,16 +146,17 @@ export default function Quiz({ book, bookName, questions, mode, examId, scoreId,
 
       {newPart && <p class="part">{info.part}. {info.label}</p>}
 
-      <LampMark />
-
-      <article ref={cardEl} class="card q-card" aria-live="polite">
-        <div class="q-meta">
-          <span class="q-type">{info.short}</span>
-          <span class="q-right"><span class="q-ref">{bookName} {q.ref}</span><ReportButton q={q} small /></span>
-        </div>
-        {info.hint && !g && <p class="small muted">{info.hint}</p>}
-        <QuestionView key={q.id} q={q} answer={answers[i]} onChange={setAnswer} graded={mode === 'practice' ? g : null} />
-      </article>
+      <div class="q-stage">
+        {lamp && <LampMark small={lamp === 'small'} />}
+        <article ref={cardEl} class="card q-card" aria-live="polite">
+          <div class="q-meta">
+            <span class="q-type">{info.short}</span>
+            <span class="q-right"><span class="q-ref">{bookName} {q.ref}</span><ReportButton q={q} small /></span>
+          </div>
+          {info.hint && !g && <p class="small muted">{info.hint}</p>}
+          <QuestionView key={q.id} q={q} answer={answers[i]} onChange={setAnswer} graded={mode === 'practice' ? g : null} />
+        </article>
+      </div>
 
       {saveFailed && <p class="notice notice-bad" role="alert">Răspunsurile nu se salvează acum (progresul și clasamentul nu se actualizează). Spune-i administratorului.</p>}
       {mode === 'practice' && g && <Feedback q={q} g={g} bookName={bookName} />}

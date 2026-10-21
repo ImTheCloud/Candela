@@ -208,8 +208,11 @@ body.in-quiz main { padding-top: 0; }
 .missed-card .fb-answer { display: grid; gap: 2px; padding: 10px 12px; white-space: pre-line; }
 .missed-card .fb-answer small { font-size: 0.72rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; opacity: .8; }
 
-/* The mark above the question: lamp (as in v1) and name */
-.lampmark { display: grid; justify-items: center; gap: 0; margin: 2px 0 6px; }
+/* The mark above the question: lamp (as in v1) and name. It floats above the card and never moves it. */
+.q-stage { position: relative; }
+.lampmark { position: absolute; left: 0; right: 0; bottom: 100%; margin-bottom: 10px; display: grid; justify-items: center; pointer-events: none; }
+.lampmark.is-small svg { width: 66px; height: 66px; }
+.lampmark.is-small .lampx-glow { height: 46px; inset: 2px 8px auto; }
 .lampx { position: relative; display: grid; place-items: center; }
 .lampx svg { position: relative; display: block; }
 .lampx-glow {
@@ -221,7 +224,4 @@ body.in-quiz main { padding-top: 0; }
 .lampmark-name { margin-top: -14px; font: 400 2rem/1 var(--f-brand); letter-spacing: .01em; color: var(--ink); }
 @keyframes glowx { 0%, 100% { opacity: .55; transform: scale(1); } 50% { opacity: .85; transform: scale(1.06); } }
 @keyframes flickerx { 0%, 100% { transform: scaleY(1) skewX(0); } 25% { transform: scaleY(1.06) skewX(-2deg); } 50% { transform: scaleY(.96) skewX(1.5deg); } 75% { transform: scaleY(1.04) skewX(-1deg); } }
-/* short screens keep the room for the question */
-@media (max-height: 700px) { .lampx svg { width: 64px; height: 64px; } .lampmark-name { margin-top: -10px; font-size: 1.6rem; } }
-@media (max-height: 600px) { .lampmark { display: none; } }
 @media (prefers-reduced-motion: reduce) { .lampx-glow, .flamex { animation: none; } }

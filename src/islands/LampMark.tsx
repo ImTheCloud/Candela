@@ -1,7 +1,7 @@
 /** The Candela lamp with its flickering flame and breathing glow, and the name beneath: the mark above the question. */
-export default function LampMark() {
+export default function LampMark({ small = false }: { small?: boolean }) {
   return (
-    <div class="lampmark" aria-hidden="true">
+    <div class={`lampmark${small ? ' is-small' : ''}`} aria-hidden="true">
       <span class="lampx">
         <span class="lampx-glow" />
         <svg width="92" height="92" viewBox="0 0 160 160">
@@ -14,7 +14,7 @@ export default function LampMark() {
           <ellipse cx="80" cy="96" rx="10" ry="3" fill="#7B6450" />
         </svg>
       </span>
-      <span class="lampmark-name">Candela</span>
+      {!small && <span class="lampmark-name">Candela</span>}
     </div>
   );
 }
