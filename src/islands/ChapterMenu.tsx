@@ -19,18 +19,21 @@ interface Props {
   summary: Summary;
   /** Tile after the last chapter (as in v1). */
   examsHref?: string;
+  /** Rows the tallest book needs: a shorter book stretches its exams tile so the page keeps the same height. */
+  rows?: number;
 }
 
 /**
  * The chapters of a book as tiles (as in v1): a tap opens the chapter's menu,
  * where the player reads it or picks a test.
  */
-export default function ChapterMenu({ book, titles, summary, examsHref }: Props) {
+export default function ChapterMenu({ book, titles, summary, examsHref, rows }: Props) {
   const [open, setOpen] = useState<number | null>(null);
   const prog = progress(book).value;
   // until Firestore answers, the scores of the last visit are shown
   const exams = prog === EMPTY && user.value !== null ? cachedExams(user.value?.uid ?? rememberedAccount?.uid ?? player.value.key, book) : prog.exams;
   const entry = (ch: number) => exams[`c${ch}`];
+  const extra = Math.max(0, (rows ?? 0) - tileRows(titles.length));
 
   const sheet = open !== null && (
     <Sheet book={book} ch={open} title={titles[open - 1]} total={count(summary[open]?.[level.value])} best={labelFor(entry(open), count(summary[open]?.[level.value]))}
@@ -40,7 +43,7 @@ export default function ChapterMenu({ book, titles, summary, examsHref }: Props)
 
   return (
     <>
-      <ol class="tiles">
+      <div class="tiles-wrap"><ol class="tiles">
         {titles.map((t, k) => {
           const ch = k + 1;
           const e = entry(ch);
@@ -57,14 +60,14 @@ export default function ChapterMenu({ book, titles, summary, examsHref }: Props)
           );
         })}
         {examsHref && (
-          <li style={{ gridColumn: `span ${examSpan(titles.length)}` }}>
+          <li style={{ gridColumn: `span ${examSpan(titles.length)}`, gridRow: `span ${1 + extra}` }}>
             <a class="tile tile-exam" href={examsHref}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3 8-8" /><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9" /></svg>
               <span>Examene</span>
             </a>
           </li>
         )}
-      </ol>
+      </ol></div>
       {sheet}
     </>
   );
@@ -164,6 +167,11 @@ function labelFor(e: Entry, size: number): string | undefined {
 }
 
 /** The exam tile takes what is left of the last row of the 6-column grid. */
+/** Rows of chapter tiles plus the exams tile. */
+export function tileRows(n: number): number {
+  return Math.ceil(n / 6) + (examSpan(n) === 6 ? 1 : 0);
+}
+
 function examSpan(n: number): number {
   const left = 6 - (n % 6);
   return left < 3 ? 6 : left;
