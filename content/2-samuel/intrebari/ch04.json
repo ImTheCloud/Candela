@@ -3,252 +3,199 @@
  "reviewed": false,
  "questions": [
   {
-   "id": "2sa.4.sub12.1",
-   "age": "sub12",
-   "t": "tf",
-   "ref": "4:1",
-   "q": "Când a auzit că Abner a murit la Hebron, Iș-Boșet, fiul lui Saul, s-a înspăimântat și i-au rămas mâinile fără putere.",
-   "a": true
-  },
-  {
-   "id": "2sa.4.sub12.2",
-   "age": "sub12",
-   "t": "tf",
-   "ref": "4:4",
-   "q": "Mefiboșet, fiul lui Ionatan, a rămas olog pentru că a căzut din brațele doicii lui, care fugea.",
-   "a": true
-  },
-  {
-   "id": "2sa.4.sub12.3",
-   "age": "sub12",
-   "t": "tf",
-   "ref": "4:9-12",
-   "q": "David s-a bucurat de cei care l-au omorât pe Iș-Boșet și i-a răsplătit.",
-   "a": false,
-   "explain": "David a poruncit să fie omorâți, pentru că au ucis un om nevinovat în patul lui (4:11-12)."
-  },
-  {
-   "id": "2sa.4.sub12.16",
-   "age": "sub12",
-   "t": "tf",
-   "ref": "4:12",
-   "q": "Capul lui Iș-Boșet a fost îngropat la Hebron, în mormântul lui Abner.",
-   "a": true
-  },
-  {
-   "id": "2sa.4.sub12.17",
+   "id": "2sa.4.sub12.101",
    "age": "sub12",
    "t": "tf",
    "ref": "4:5",
-   "q": "Recab și Baana au intrat în casa lui Iș-Boșet noaptea, când dormea.",
-   "a": false,
-   "explain": "Au intrat în timpul zădufului zilei, când Iș-Boșet își făcea somnul de amiază."
+   "q": "Iș-Boșet își făcea somnul de amiază când au venit ucigașii.",
+   "a": true
   },
   {
-   "id": "2sa.4.sub12.4",
+   "id": "2sa.4.sub12.102",
    "age": "sub12",
-   "t": "one",
-   "ref": "4:4",
-   "q": "Al cui fiu era Mefiboșet, băiatul olog de picioare?",
-   "opts": [
-    "al lui Ionatan",
-    "al lui Saul",
-    "al lui Abner"
-   ],
-   "a": 0
-  },
-  {
-   "id": "2sa.4.sub12.5",
-   "age": "sub12",
-   "t": "one",
-   "ref": "4:8",
-   "q": "Ce i-au adus lui David, la Hebron, Recab și Baana?",
-   "opts": [
-    "capul lui Iș-Boșet",
-    "sulița lui Abner",
-    "coroana lui Saul"
-   ],
-   "a": 0
-  },
-  {
-   "id": "2sa.4.sub12.6",
-   "age": "sub12",
-   "t": "one",
-   "ref": "4:4",
-   "q": "Câți ani avea Mefiboșet când a venit vestea morții lui Saul și a lui Ionatan?",
-   "opts": [
-    "cinci ani",
-    "zece ani",
-    "doi ani"
-   ],
-   "a": 0
-  },
-  {
-   "id": "2sa.4.sub12.18",
-   "age": "sub12",
-   "t": "one",
+   "t": "tf",
    "ref": "4:6",
-   "q": "Cum au pătruns Recab și Baana în casa lui Iș-Boșet?",
+   "q": "Ucigașii s-au dat drept negustori de grâu.",
+   "a": true
+  },
+  {
+   "id": "2sa.4.sub12.103",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "4:12",
+   "q": "David a poruncit oamenilor lui să-i pedepsească pe ucigași.",
+   "a": true
+  },
+  {
+   "id": "2sa.4.sub12.104",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "4:11",
+   "q": "David s-a bucurat de ce au făcut ucigașii.",
+   "a": false
+  },
+  {
+   "id": "2sa.4.sub12.105",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "4:4",
+   "q": "Fiul lui Ionatan putea să alerge foarte repede.",
+   "a": false
+  },
+  {
+   "id": "2sa.4.sub12.106",
+   "age": "sub12",
+   "t": "one",
+   "ref": "4:5",
+   "q": "Ce făcea Iș-Boșet când au intrat ucigașii?",
    "opts": [
-    "dându-se drept soli ai lui David",
-    "dărâmând poarta",
-    "dându-se drept negustori de grâu"
+    "se ruga",
+    "mânca",
+    "dormea"
    ],
    "a": 2
   },
   {
-   "id": "2sa.4.sub12.19",
+   "id": "2sa.4.sub12.107",
    "age": "sub12",
    "t": "one",
-   "ref": "4:12",
-   "q": "Ce a poruncit David să se facă cu Recab și Baana, ucigașii lui Iș-Boșet?",
+   "ref": "4:8",
+   "q": "La cine au adus ucigașii capul lui Iș-Boșet?",
    "opts": [
-    "să fie omorâți",
-    "să fie trimiși la Saul",
-    "să fie răsplătiți"
+    "la David",
+    "la filisteni",
+    "la Ioab"
    ],
    "a": 0
   },
   {
-   "id": "2sa.4.sub12.24",
+   "id": "2sa.4.sub12.108",
+   "age": "sub12",
+   "t": "one",
+   "ref": "4:6",
+   "q": "Cum s-au dat drept ucigașii?",
+   "opts": [
+    "pescari",
+    "păstori",
+    "negustori de grâu"
+   ],
+   "a": 2
+  },
+  {
+   "id": "2sa.4.sub12.109",
+   "age": "sub12",
+   "t": "one",
+   "ref": "4:4",
+   "q": "Cum era fiul lui Ionatan?",
+   "opts": [
+    "orb",
+    "olog de picioare",
+    "foarte bătrân"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.4.sub12.110",
+   "age": "sub12",
+   "t": "one",
+   "ref": "4:12",
+   "q": "Unde au fost spânzurați ucigașii?",
+   "opts": [
+    "la Ierusalim",
+    "la Ghilgal",
+    "la iazul din Hebron"
+   ],
+   "a": 2
+  },
+  {
+   "id": "2sa.4.sub12.121",
    "age": "sub12",
    "t": "match",
    "ref": "4:1-12",
-   "q": "Asociază fiecare nume sau loc cu ce se spune despre el.",
+   "q": "Asociază fiecare nume sau lucru cu ce se spune despre el în capitol.",
    "pairs": [
     [
      "Iș-Boșet",
-     "fiul lui Saul, omorât în somnul de amiază"
+     "fiul lui Saul omorât în somn"
     ],
     [
      "Recab și Baana",
-     "ucigașii lui Iș-Boșet, fiii lui Rimon"
-    ],
-    [
-     "Mefiboșet",
-     "fiul olog al lui Ionatan"
-    ],
-    [
-     "Hebron",
-     "cetatea unde a fost îngropat capul lui Iș-Boșet"
+     "cei care l-au omorât"
     ],
     [
      "David",
-     "cel care a poruncit să fie omorâți ucigașii"
+     "cel care i-a pedepsit pe ucigași"
+    ],
+    [
+     "Hebron",
+     "orașul unde a fost adus capul"
+    ],
+    [
+     "Ionatan",
+     "tatăl unui băiat olog"
     ]
    ]
   },
   {
-   "id": "2sa.4.sub12.10",
+   "id": "2sa.4.sub12.111",
    "age": "sub12",
    "t": "fill",
    "ref": "4:4",
+   "q": "avea un fiu olog de ___",
    "a": [
-    "Mefiboșet"
-   ],
-   "q": "numele lui era ___.",
-   "ctx": "Despre fiul olog al lui Ionatan:"
+    "picioare"
+   ]
   },
   {
-   "id": "2sa.4.sub12.11",
+   "id": "2sa.4.sub12.112",
    "age": "sub12",
    "t": "fill",
-   "ref": "4:1",
+   "ref": "4:8",
+   "q": "Au adus capul lui Iș-Boșet la David, în ___",
    "a": [
-    "Israelul"
-   ],
-   "q": "mâinile i-au rămas fără putere și tot ___ s-a înspăimântat.",
-   "ctx": "Când a auzit fiul lui Saul că Abner a murit la Hebron:"
+    "Hebron"
+   ]
   },
   {
-   "id": "2sa.4.sub12.12",
+   "id": "2sa.4.sub12.113",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "4:6",
+   "q": "dându-se drept negustori de ___",
+   "a": [
+    "grâu"
+   ]
+  },
+  {
+   "id": "2sa.4.sub12.114",
    "age": "sub12",
    "t": "fill",
    "ref": "4:5",
+   "q": "care își făcea somnul de ___",
    "a": [
-    "Iș-Boșet"
-   ],
-   "q": "Și fiii lui Rimon din Beerot, Recab și Baana, s-au dus în timpul zădufului zilei în casa lui ___, care își făcea somnul de amiază.",
-   "ctx": "Ce au făcut doi capi de oaste ai fiului lui Saul:"
+    "amiază"
+   ]
   },
   {
-   "id": "2sa.4.sub12.20",
+   "id": "2sa.4.sub12.115",
    "age": "sub12",
    "t": "fill",
-   "ref": "4:2",
-   "q": "Fiul lui Saul avea doi capi peste cetele de război, dintre care unul se numea ___, iar altul, Recab",
+   "ref": "4:12",
+   "q": "i-au spânzurat la marginea iazului din ___",
    "a": [
-    "Baana"
+    "Hebron"
    ]
   },
   {
-   "id": "2sa.4.sub12.21",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "4:7",
-   "q": "Au intrat în casă pe când el era culcat pe ___, în odaia lui de dormit",
-   "ctx": "Despre Iș-Boșet, în casa lui:",
-   "a": [
-    "pat"
-   ]
-  },
-  {
-   "id": "2sa.4.sub12.13",
+   "id": "2sa.4.sub12.116",
    "age": "sub12",
    "t": "multi",
-   "ref": "4:4",
-   "q": "Ce aflăm despre Mefiboșet?",
+   "ref": "4:5",
+   "q": "Cine au fost ucigașii lui Iș-Boșet?",
    "opts": [
-    "era olog de picioare",
-    "era fiul lui Ionatan",
-    "era împărat la Mahanaim"
-   ],
-   "a": [
-    0,
-    1
-   ]
-  },
-  {
-   "id": "2sa.4.sub12.14",
-   "age": "sub12",
-   "t": "multi",
-   "ref": "4:2",
-   "q": "Cum se numeau cei doi capi peste cetele de război ale fiului lui Saul?",
-   "opts": [
-    "Recab",
     "Baana",
-    "Ioab"
-   ],
-   "a": [
-    0,
-    1
-   ],
-   "explain": "Ioab era căpetenia oștirii lui David."
-  },
-  {
-   "id": "2sa.4.sub12.15",
-   "age": "sub12",
-   "t": "multi",
-   "ref": "4:5",
-   "q": "Când au intrat Recab și Baana în casa lui Iș-Boșet?",
-   "opts": [
-    "seara, la cină",
-    "noaptea, pe întuneric",
-    "dimineața devreme"
-   ],
-   "a": [],
-   "explain": "Niciun răspuns corect: au venit în timpul zădufului zilei, când Iș-Boșet își făcea somnul de amiază (4:5)."
-  },
-  {
-   "id": "2sa.4.sub12.22",
-   "age": "sub12",
-   "t": "multi",
-   "ref": "4:4",
-   "q": "Ce se spune despre doica lui Mefiboșet?",
-   "opts": [
-    "l-a luat și a fugit cu el",
-    "l-a dus la David",
-    "s-a grăbit și a căzut"
+    "Ioab",
+    "Recab"
    ],
    "a": [
     0,
@@ -256,15 +203,63 @@
    ]
   },
   {
-   "id": "2sa.4.sub12.23",
+   "id": "2sa.4.sub12.117",
    "age": "sub12",
    "t": "multi",
-   "ref": "4:1",
-   "q": "Ce s-a întâmplat când Iș-Boșet a auzit că Abner a murit la Hebron?",
+   "ref": "4:6-7",
+   "q": "Ce au făcut ucigașii?",
    "opts": [
-    "tot Israelul s-a înspăimântat",
-    "a plecat la război cu filistenii",
-    "i-au rămas mâinile fără putere"
+    "l-au apărat",
+    "au intrat în casă",
+    "l-au omorât pe Iș-Boșet"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "2sa.4.sub12.118",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "4:8",
+   "q": "Ce au făcut ucigașii după aceea?",
+   "opts": [
+    "au adus capul la David",
+    "au mers toată noaptea",
+    "s-au dus la Ierusalim"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "2sa.4.sub12.119",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "4:12",
+   "q": "Ce a poruncit David?",
+   "opts": [
+    "să fie răsplătiți",
+    "să fie omorâți ucigașii",
+    "să fie spânzurați lângă iaz"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "2sa.4.sub12.120",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "4:4",
+   "q": "Ce știm despre fiul lui Ionatan?",
+   "opts": [
+    "era olog de picioare",
+    "era împărat",
+    "avea cinci ani"
    ],
    "a": [
     0,

@@ -3,221 +3,247 @@
  "reviewed": false,
  "questions": [
   {
-   "id": "1sa.10.sub12.1",
+   "id": "1sa.10.sub12.101",
    "age": "sub12",
    "t": "tf",
    "ref": "10:1",
-   "q": "Samuel a turnat untdelemn pe capul lui Saul și l-a sărutat.",
+   "q": "Samuel a turnat untdelemn pe capul lui Saul.",
    "a": true
   },
   {
-   "id": "1sa.10.sub12.2",
+   "id": "1sa.10.sub12.102",
    "age": "sub12",
    "t": "tf",
    "ref": "10:22",
-   "q": "Când a fost ales la sorți, Saul s-a ascuns între vase.",
+   "q": "Saul s-a ascuns între vase.",
    "a": true
   },
   {
-   "id": "1sa.10.sub12.3",
+   "id": "1sa.10.sub12.103",
    "age": "sub12",
    "t": "tf",
    "ref": "10:24",
-   "q": "Când l-au văzut pe Saul, tot poporul a tăcut.",
-   "a": false,
-   "explain": "Tot poporul a strigat: „Trăiască împăratul!\" (10:24)."
-  },
-  {
-   "id": "1sa.10.sub12.16",
-   "age": "sub12",
-   "t": "tf",
-   "ref": "10:23",
-   "q": "Saul îi întrecea pe toți ceilalți în înălțime, de la umăr în sus.",
+   "q": "Poporul a strigat: „Trăiască împăratul!”",
    "a": true
   },
   {
-   "id": "1sa.10.sub12.17",
+   "id": "1sa.10.sub12.104",
    "age": "sub12",
    "t": "tf",
-   "ref": "10:2",
-   "q": "Saul avea să găsească doi oameni la Hebron.",
-   "a": false,
-   "explain": "Avea să-i găsească la mormântul Rahelei."
+   "ref": "10:23",
+   "q": "Saul era mic de statură.",
+   "a": false
   },
   {
-   "id": "1sa.10.sub12.4",
+   "id": "1sa.10.sub12.105",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "10:24",
+   "q": "Poporul a strigat: „Nu vrem împărat!”",
+   "a": false
+  },
+  {
+   "id": "1sa.10.sub12.106",
    "age": "sub12",
    "t": "one",
    "ref": "10:1",
-   "q": "Cu ce l-a uns Samuel pe Saul?",
+   "q": "Ce a turnat Samuel pe capul lui Saul?",
    "opts": [
-    "cu untdelemn",
-    "cu vin",
-    "cu apă"
-   ],
-   "a": 0
-  },
-  {
-   "id": "1sa.10.sub12.5",
-   "age": "sub12",
-   "t": "one",
-   "ref": "10:22",
-   "q": "Unde s-a ascuns Saul când au tras sorții la Mițpa?",
-   "opts": [
-    "într-o peșteră",
-    "între vase",
-    "în cort"
+    "lapte",
+    "untdelemn",
+    "apă"
    ],
    "a": 1
   },
   {
-   "id": "1sa.10.sub12.6",
+   "id": "1sa.10.sub12.107",
+   "age": "sub12",
+   "t": "one",
+   "ref": "10:22",
+   "q": "Unde se ascunsese Saul?",
+   "opts": [
+    "pe un munte",
+    "într-o fântână",
+    "între vase"
+   ],
+   "a": 2
+  },
+  {
+   "id": "1sa.10.sub12.108",
+   "age": "sub12",
+   "t": "one",
+   "ref": "10:23",
+   "q": "Cum era Saul?",
+   "opts": [
+    "foarte mic",
+    "mai înalt decât toți",
+    "cel mai bătrân"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.10.sub12.109",
    "age": "sub12",
    "t": "one",
    "ref": "10:24",
-   "q": "Ce a strigat poporul la Mițpa, când l-a văzut pe Saul?",
+   "q": "Ce a strigat tot poporul?",
    "opts": [
-    "„Trăiască împăratul!\"",
-    "„Ura!\"",
-    "„Saul este proroc!\""
+    "„Hai acasă!”",
+    "„Fugiți!”",
+    "„Trăiască împăratul!”"
    ],
-   "a": 0
+   "a": 2
   },
   {
-   "id": "1sa.10.sub12.18",
+   "id": "1sa.10.sub12.110",
    "age": "sub12",
    "t": "one",
-   "ref": "10:6",
-   "q": "Ce avea să vină peste Saul, ca să fie prefăcut într-alt om?",
+   "ref": "10:1",
+   "q": "Cine l-a uns pe Saul?",
    "opts": [
-    "Duhul Domnului",
-    "un înger",
-    "un foc din cer"
+    "Eli",
+    "David",
+    "Samuel"
    ],
-   "a": 0
+   "a": 2
   },
   {
-   "id": "1sa.10.sub12.19",
-   "age": "sub12",
-   "t": "one",
-   "ref": "10:8",
-   "q": "Unde trebuia Saul să-l aștepte pe Samuel șapte zile?",
-   "opts": [
-    "la Ghilgal",
-    "la Silo",
-    "la Rama"
-   ],
-   "a": 0
-  },
-  {
-   "id": "1sa.10.sub12.24",
+   "id": "1sa.10.sub12.121",
    "age": "sub12",
    "t": "match",
-   "ref": "10:1-26",
-   "q": "Asociază fiecare nume sau loc cu ce se spune despre el.",
+   "ref": "10:1-27",
+   "q": "Asociază fiecare nume sau lucru cu ce se spune despre el în capitol.",
    "pairs": [
     [
+     "Saul",
+     "a fost uns împărat"
+    ],
+    [
      "Samuel",
-     "cel care l-a uns pe Saul"
+     "l-a uns pe Saul"
     ],
     [
-     "Mițpa",
-     "locul unde a fost ales Saul la sorți"
+     "untdelemnul",
+     "l-a turnat Samuel pe capul lui Saul"
     ],
     [
-     "Ghilgal",
-     "locul unde trebuia să-l aștepte Saul șapte zile"
+     "vasele",
+     "locul unde se ascunsese Saul"
     ],
     [
-     "Ghibea",
-     "locul unde s-a dus Saul acasă"
-    ],
-    [
-     "Matri",
-     "familia ieșită la sorți din Beniamin"
+     "poporul",
+     "a strigat „Trăiască împăratul!”"
     ]
    ]
   },
   {
-   "id": "1sa.10.sub12.10",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "10:24",
-   "a": [
-    "împăratul"
-   ],
-   "q": "Și tot poporul a strigat: „Trăiască ___!\"",
-   "ctx": "La Mițpa, când Saul a fost arătat poporului:"
-  },
-  {
-   "id": "1sa.10.sub12.11",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "10:22",
-   "a": [
-    "vase"
-   ],
-   "q": "Și Domnul a zis: „Iată că este ascuns între ___.\"",
-   "ctx": "Când Saul a ieșit la sorți, dar nu era de găsit:"
-  },
-  {
-   "id": "1sa.10.sub12.12",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "10:9",
-   "a": [
-    "inimă"
-   ],
-   "q": "Dumnezeu i-a dat o altă ___,",
-   "ctx": "De îndată ce Saul s-a despărțit de Samuel:"
-  },
-  {
-   "id": "1sa.10.sub12.20",
+   "id": "1sa.10.sub12.111",
    "age": "sub12",
    "t": "fill",
    "ref": "10:1",
-   "q": "Samuel a luat sticluța cu ___ și a turnat-o pe capul lui Saul.",
+   "q": "Samuel a luat sticluța cu ___",
    "a": [
     "untdelemn"
    ]
   },
   {
-   "id": "1sa.10.sub12.21",
+   "id": "1sa.10.sub12.112",
    "age": "sub12",
    "t": "fill",
    "ref": "10:24",
-   "q": "Vedeți pe cel pe care l-a ___ Domnul?",
+   "q": "„Trăiască ___!”",
    "a": [
-    "ales"
+    "împăratul"
    ]
   },
   {
-   "id": "1sa.10.sub12.13",
+   "id": "1sa.10.sub12.113",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "10:22",
+   "q": "Iată că este ascuns între ___.",
+   "a": [
+    "vase"
+   ]
+  },
+  {
+   "id": "1sa.10.sub12.114",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "10:23",
+   "q": "Îi întrecea pe toți în ___",
+   "a": [
+    "înălțime"
+   ]
+  },
+  {
+   "id": "1sa.10.sub12.115",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "10:9",
+   "q": "Dumnezeu i-a dat o altă ___",
+   "a": [
+    "inimă"
+   ]
+  },
+  {
+   "id": "1sa.10.sub12.116",
    "age": "sub12",
    "t": "multi",
-   "ref": "10:3-4",
-   "q": "Ce duceau cei trei oameni pe care urma să-i întâlnească Saul la stejarul din Tabor?",
+   "ref": "10:1",
+   "q": "Ce a făcut Samuel?",
    "opts": [
-    "un burduf cu vin",
-    "trei turte de pâine",
-    "trei iezi"
+    "l-a sărutat",
+    "l-a certat",
+    "a turnat untdelemn pe Saul"
    ],
    "a": [
     0,
-    1,
     2
    ]
   },
   {
-   "id": "1sa.10.sub12.14",
+   "id": "1sa.10.sub12.117",
    "age": "sub12",
    "t": "multi",
-   "ref": "10:5",
-   "q": "Cu ce instrumente veneau prorocii pe care i-a întâlnit Saul?",
+   "ref": "10:21-22",
+   "q": "Ce s-a întâmplat când l-au căutat pe Saul?",
    "opts": [
-    "cu trâmbițe de argint",
-    "cu timpane",
-    "cu lăute"
+    "Domnul a spus că e ascuns între vase",
+    "l-au găsit imediat acasă",
+    "nu l-au găsit"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.10.sub12.118",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "10:23",
+   "q": "Cum a apărut Saul în fața poporului?",
+   "opts": [
+    "în mijlocul poporului",
+    "foarte mic",
+    "mai înalt decât toți"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.10.sub12.119",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "10:24",
+   "q": "Ce a spus Samuel?",
+   "opts": [
+    "că nu merită",
+    "„Vedeți pe cel pe care l-a ales Domnul?”",
+    "că nu este nimeni ca el"
    ],
    "a": [
     1,
@@ -225,45 +251,15 @@
    ]
   },
   {
-   "id": "1sa.10.sub12.15",
+   "id": "1sa.10.sub12.120",
    "age": "sub12",
    "t": "multi",
-   "ref": "10:14",
-   "q": "Cui i-a povestit Saul că s-a dus la Samuel?",
+   "ref": "10:9-10",
+   "q": "Ce s-a întâmplat cu Saul?",
    "opts": [
-    "lui Ionatan",
-    "lui Abner",
-    "lui Chis"
-   ],
-   "a": [],
-   "explain": "Niciun răspuns corect: unchiului său (10:14-16)."
-  },
-  {
-   "id": "1sa.10.sub12.22",
-   "age": "sub12",
-   "t": "multi",
-   "ref": "10:10-11",
-   "q": "Ce a făcut Saul la Ghibea?",
-   "opts": [
-    "a fugit din cetate",
-    "a prorocit în mijlocul prorocilor",
-    "Duhul lui Dumnezeu a venit peste el"
-   ],
-   "a": [
-    1,
-    2
-   ]
-  },
-  {
-   "id": "1sa.10.sub12.23",
-   "age": "sub12",
-   "t": "multi",
-   "ref": "10:25-27",
-   "q": "Ce a făcut Samuel la sfârșit?",
-   "opts": [
-    "l-a încoronat pe Saul într-un templu",
-    "i-a trimis pe toți acasă",
-    "a scris dreptul împărăției într-o carte"
+    "a plecat în Egipt",
+    "a prorocit împreună cu proroci",
+    "Dumnezeu i-a dat o altă inimă"
    ],
    "a": [
     1,

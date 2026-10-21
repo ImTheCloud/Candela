@@ -3,186 +3,171 @@
  "reviewed": false,
  "questions": [
   {
-   "id": "1sa.30.sub12.1",
+   "id": "1sa.30.sub12.101",
    "age": "sub12",
    "t": "tf",
-   "ref": "30:1",
-   "q": "Când David s-a întors la Țiclag, cetatea fusese arsă de amaleciți.",
+   "ref": "30:3",
+   "q": "Țiclagul era ars când a ajuns David.",
    "a": true
   },
   {
-   "id": "1sa.30.sub12.2",
+   "id": "1sa.30.sub12.102",
    "age": "sub12",
    "t": "tf",
-   "ref": "30:2",
-   "q": "Amaleciții i-au omorât pe toți cei din Țiclag.",
-   "a": false,
-   "explain": "„Nu omorâseră pe nimeni, dar luaseră totul și plecaseră\" (30:2)."
+   "ref": "30:8",
+   "q": "David a întrebat pe Domnul ce să facă.",
+   "a": true
   },
   {
-   "id": "1sa.30.sub12.3",
+   "id": "1sa.30.sub12.103",
    "age": "sub12",
    "t": "tf",
    "ref": "30:18",
-   "q": "David și-a scăpat cele două neveste.",
+   "q": "David a scăpat tot ce luaseră amaleciții.",
    "a": true
   },
   {
-   "id": "1sa.30.sub12.16",
+   "id": "1sa.30.sub12.104",
    "age": "sub12",
    "t": "tf",
-   "ref": "30:5",
-   "q": "Cele două neveste ale lui David fuseseră luate prinse.",
+   "ref": "30:24",
+   "q": "Partea de pradă a fost aceeași pentru toți.",
    "a": true
   },
   {
-   "id": "1sa.30.sub12.17",
+   "id": "1sa.30.sub12.105",
    "age": "sub12",
    "t": "tf",
-   "ref": "30:10",
-   "q": "Toți cei șase sute de oameni au trecut pârâul Besor.",
-   "a": false,
-   "explain": "Două sute s-au oprit, fiind prea obosiți."
-  },
-  {
-   "id": "1sa.30.sub12.4",
-   "age": "sub12",
-   "t": "one",
-   "ref": "30:7",
-   "q": "Ce i-a cerut David preotului Abiatar?",
-   "opts": [
-    "chivotul",
-    "efodul",
-    "sulița"
-   ],
-   "a": 1
-  },
-  {
-   "id": "1sa.30.sub12.5",
-   "age": "sub12",
-   "t": "one",
-   "ref": "30:11",
-   "q": "Pe cine au găsit oamenii lui David pe câmp?",
-   "opts": [
-    "un om egiptean",
-    "un amalecit",
-    "un filistean"
-   ],
-   "a": 0
-  },
-  {
-   "id": "1sa.30.sub12.6",
-   "age": "sub12",
-   "t": "one",
-   "ref": "30:4",
-   "q": "Ce au făcut David și oamenii lui când au văzut cetatea arsă?",
-   "opts": [
-    "au plâns până n-au mai putut plânge",
-    "au cântat",
-    "au fugit"
-   ],
-   "a": 0
-  },
-  {
-   "id": "1sa.30.sub12.18",
-   "age": "sub12",
-   "t": "one",
    "ref": "30:9",
-   "q": "Cum se numea pârâul unde s-au oprit unii dintre oameni?",
+   "q": "David a plecat singur după amaleciți.",
+   "a": false
+  },
+  {
+   "id": "1sa.30.sub12.106",
+   "age": "sub12",
+   "t": "one",
+   "ref": "30:3",
+   "q": "Ce a găsit David la Țiclag?",
    "opts": [
-    "Iordan",
-    "Chedron",
-    "Besor"
+    "un ospăț",
+    "o casă nouă",
+    "cetatea arsă"
    ],
    "a": 2
   },
   {
-   "id": "1sa.30.sub12.19",
+   "id": "1sa.30.sub12.107",
    "age": "sub12",
    "t": "one",
-   "ref": "30:17",
-   "q": "Pe ce au fugit tinerii amaleciți?",
+   "ref": "30:8",
+   "q": "Pe cine a întrebat David?",
    "opts": [
-    "pe cai",
-    "pe cămile",
-    "pe măgari"
+    "pe egiptean",
+    "pe Saul",
+    "pe Domnul"
+   ],
+   "a": 2
+  },
+  {
+   "id": "1sa.30.sub12.108",
+   "age": "sub12",
+   "t": "one",
+   "ref": "30:11",
+   "q": "Ce i-au dat egipteanului?",
+   "opts": [
+    "aur",
+    "pâine, apă și smochine",
+    "sabie"
    ],
    "a": 1
   },
   {
-   "id": "1sa.30.sub12.25",
+   "id": "1sa.30.sub12.109",
+   "age": "sub12",
+   "t": "one",
+   "ref": "30:10",
+   "q": "Câți oameni au rămas obosiți la pârâu?",
+   "opts": [
+    "două sute",
+    "o mie",
+    "zece"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.30.sub12.110",
+   "age": "sub12",
+   "t": "one",
+   "ref": "30:19",
+   "q": "Cine a adus înapoi totul?",
+   "opts": [
+    "filistenii",
+    "Saul",
+    "David"
+   ],
+   "a": 2
+  },
+  {
+   "id": "1sa.30.sub12.121",
    "age": "sub12",
    "t": "match",
    "ref": "30:1-31",
-   "q": "Asociază fiecare nume sau loc cu ce se spune despre el.",
+   "q": "Asociază fiecare nume sau lucru cu ce se spune despre el în capitol.",
    "pairs": [
     [
-     "Țiclag",
-     "cetatea arsă de amaleciți"
+     "David",
+     "a adus înapoi totul"
     ],
     [
-     "Besor",
-     "pârâul unde s-au oprit unii"
-    ],
-    [
-     "Abiatar",
-     "preotul care a adus efodul"
+     "Domnul",
+     "a răspuns lui David"
     ],
     [
      "egipteanul",
-     "cel găsit pe câmp"
+     "a fost găsit pe câmp"
+    ],
+    [
+     "Abiatar",
+     "a adus efodul"
     ],
     [
      "amaleciții",
-     "cei care au ars Țiclagul"
+     "au ars Țiclagul"
     ]
    ]
   },
   {
-   "id": "1sa.30.sub12.10",
+   "id": "1sa.30.sub12.111",
    "age": "sub12",
    "t": "fill",
-   "ref": "30:6",
+   "ref": "30:4",
+   "q": "au ridicat glasul și au ___ până n-au mai putut plânge.",
    "a": [
-    "îmbărbătat"
-   ],
-   "q": "Dar David s-a ___, sprijinindu-se pe Domnul Dumnezeul lui.",
-   "ctx": "David, în Țiclagul ars, când poporul vorbea să-l ucidă:"
-  },
-  {
-   "id": "1sa.30.sub12.11",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "30:8",
-   "a": [
-    "izbăvi"
-   ],
-   "q": "„Urmărește-o, căci o vei ajunge și vei ___ totul.\"",
-   "ctx": "Domnul, către David, după ce a fost adus efodul:"
-  },
-  {
-   "id": "1sa.30.sub12.12",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "30:20",
-   "a": [
-    "David"
-   ],
-   "q": "„Aceasta este prada lui ___!\"",
-   "ctx": "Cei ce mânau turma, după biruință:"
-  },
-  {
-   "id": "1sa.30.sub12.20",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "30:3",
-   "q": "David și oamenii lui au ajuns în cetate și iată că era ___",
-   "a": [
-    "arsă"
+    "plâns"
    ]
   },
   {
-   "id": "1sa.30.sub12.21",
+   "id": "1sa.30.sub12.112",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "30:8",
+   "q": "Și David a întrebat pe ___",
+   "a": [
+    "Domnul"
+   ]
+  },
+  {
+   "id": "1sa.30.sub12.113",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "30:19",
+   "q": "David a adus înapoi ___.",
+   "a": [
+    "totul"
+   ]
+  },
+  {
+   "id": "1sa.30.sub12.114",
    "age": "sub12",
    "t": "fill",
    "ref": "30:11",
@@ -192,80 +177,89 @@
    ]
   },
   {
-   "id": "1sa.30.sub12.13",
+   "id": "1sa.30.sub12.115",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "30:9",
+   "q": "David a pornit, el și cei șase sute de ___",
+   "a": [
+    "oameni"
+   ]
+  },
+  {
+   "id": "1sa.30.sub12.116",
    "age": "sub12",
    "t": "multi",
-   "ref": "30:12",
-   "q": "Ce i-au dat egipteanului să mănânce?",
+   "ref": "30:3-5",
+   "q": "Ce a găsit David?",
    "opts": [
-    "pâine",
-    "două legături de stafide",
-    "o legătură de smochine"
+    "casele întregi",
+    "familiile luate",
+    "cetatea arsă"
    ],
    "a": [
-    0,
     1,
     2
    ]
   },
   {
-   "id": "1sa.30.sub12.14",
+   "id": "1sa.30.sub12.117",
    "age": "sub12",
    "t": "multi",
-   "ref": "30:6",
-   "q": "De ce era David în mare strâmtorare?",
+   "ref": "30:11-12",
+   "q": "Ce i-au dat egipteanului?",
    "opts": [
-    "poporul vorbea să-l ucidă cu pietre",
-    "Saul îl găsise",
-    "toți erau amărâți în suflet"
+    "carne de oaie",
+    "pâine",
+    "apă"
    ],
    "a": [
-    0,
+    1,
     2
    ]
   },
   {
-   "id": "1sa.30.sub12.22",
+   "id": "1sa.30.sub12.118",
    "age": "sub12",
    "t": "multi",
-   "ref": "30:1-2",
-   "q": "Ce făcuseră amaleciții?",
-   "opts": [
-    "au luat prinși femei, mici și mari",
-    "au omorât pe toți",
-    "au ars Țiclagul"
-   ],
-   "a": [
-    0,
-    2
-   ]
-  },
-  {
-   "id": "1sa.30.sub12.23",
-   "age": "sub12",
-   "t": "multi",
-   "ref": "30:9-10",
-   "q": "Ce s-a întâmplat cu oamenii lui David?",
-   "opts": [
-    "au pornit șase sute",
-    "două sute s-au oprit la Besor",
-    "toți au trecut pârâul"
-   ],
-   "a": [
-    0,
-    1
-   ]
-  },
-  {
-   "id": "1sa.30.sub12.24",
-   "age": "sub12",
-   "t": "multi",
-   "ref": "30:19-20",
+   "ref": "30:18-19",
    "q": "Ce a făcut David?",
    "opts": [
-    "a pierdut nevestele",
-    "a luat toate oile și boii",
-    "a adus înapoi totul"
+    "a pierdut totul",
+    "a adus înapoi totul",
+    "a scăpat nevestele"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.30.sub12.119",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "30:23-24",
+   "q": "Ce a spus David?",
+   "opts": [
+    "partea să fie aceeași pentru toți",
+    "să dea totul celor mai tari",
+    "să nu facă așa"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.30.sub12.120",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "30:26",
+   "q": "Ce a trimis David?",
+   "opts": [
+    "nimic",
+    "o parte din pradă",
+    "bătrânilor lui Iuda"
    ],
    "a": [
     1,

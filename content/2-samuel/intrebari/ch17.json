@@ -3,203 +3,215 @@
  "reviewed": false,
  "questions": [
   {
-   "id": "2sa.17.sub12.1",
+   "id": "2sa.17.sub12.101",
    "age": "sub12",
    "t": "tf",
-   "ref": "17:7",
-   "q": "Hușai i-a spus lui Absalom că sfatul lui Ahitofel nu este bun de data aceasta.",
+   "ref": "17:19",
+   "q": "Ionatan și Ahimaaț s-au ascuns într-o fântână.",
    "a": true
   },
   {
-   "id": "2sa.17.sub12.2",
+   "id": "2sa.17.sub12.102",
    "age": "sub12",
    "t": "tf",
-   "ref": "17:14",
-   "q": "Absalom și oamenii lui au ales sfatul lui Ahitofel.",
-   "a": false,
-   "explain": "Ei au zis: „Sfatul lui Hușai, Architul, este mai bun decât sfatul lui Ahitofel\" (17:14)."
+   "ref": "17:19",
+   "q": "O femeie a acoperit gura fântânii.",
+   "a": true
   },
   {
-   "id": "2sa.17.sub12.3",
+   "id": "2sa.17.sub12.103",
    "age": "sub12",
    "t": "tf",
    "ref": "17:22",
-   "q": "David și tot poporul au trecut Iordanul până la ivirea zorilor.",
+   "q": "David și poporul lui au trecut Iordanul.",
    "a": true
   },
   {
-   "id": "2sa.17.sub12.16",
+   "id": "2sa.17.sub12.104",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "17:21",
+   "q": "Ionatan și Ahimaaț au fost prinși de oamenii lui Absalom.",
+   "a": false
+  },
+  {
+   "id": "2sa.17.sub12.105",
    "age": "sub12",
    "t": "tf",
    "ref": "17:27",
-   "q": "La Mahanaim, Barzilai, Machir și Șobi au adus lui David hrană și paturi.",
-   "a": true
+   "q": "Nimeni nu a adus mâncare lui David la Mahanaim.",
+   "a": false
   },
   {
-   "id": "2sa.17.sub12.17",
-   "age": "sub12",
-   "t": "tf",
-   "ref": "17:22",
-   "q": "David și poporul care era cu el au rămas pe malul Iordanului.",
-   "a": false,
-   "explain": "Au trecut Iordanul până dimineața."
-  },
-  {
-   "id": "2sa.17.sub12.4",
+   "id": "2sa.17.sub12.106",
    "age": "sub12",
    "t": "one",
-   "ref": "17:18",
-   "q": "Unde s-au ascuns Ahimaaț și Ionatan de oamenii lui Absalom?",
+   "ref": "17:14",
+   "q": "Al cui sfat a fost ales de Absalom?",
+   "opts": [
+    "al lui Natan",
+    "al lui Țiba",
+    "al lui Hușai"
+   ],
+   "a": 2
+  },
+  {
+   "id": "2sa.17.sub12.107",
+   "age": "sub12",
+   "t": "one",
+   "ref": "17:19",
+   "q": "Unde s-au ascuns Ionatan și Ahimaaț?",
    "opts": [
     "într-un cort",
     "într-o peșteră",
-    "într-o fântână din curtea unui om din Bahurim"
+    "într-o fântână"
    ],
    "a": 2
   },
   {
-   "id": "2sa.17.sub12.5",
+   "id": "2sa.17.sub12.108",
    "age": "sub12",
    "t": "one",
-   "ref": "17:8",
-   "q": "Cu ce i-a asemănat Hușai pe David și pe oamenii lui?",
+   "ref": "17:22",
+   "q": "Ce râu a trecut David?",
    "opts": [
-    "cu niște miei",
-    "cu niște vulturi",
-    "cu o ursoaică căreia i s-au răpit puii"
+    "Nilul",
+    "Iordanul",
+    "Eufratul"
    ],
-   "a": 2
+   "a": 1
   },
   {
-   "id": "2sa.17.sub12.6",
+   "id": "2sa.17.sub12.109",
    "age": "sub12",
    "t": "one",
    "ref": "17:24",
-   "q": "În ce cetate ajunsese David când Absalom a trecut Iordanul?",
+   "q": "Unde a ajuns David?",
    "opts": [
-    "Betleem",
-    "Hebron",
-    "Mahanaim"
+    "la Hebron",
+    "la Ghilgal",
+    "la Mahanaim"
    ],
    "a": 2
   },
   {
-   "id": "2sa.17.sub12.18",
+   "id": "2sa.17.sub12.110",
    "age": "sub12",
    "t": "one",
-   "ref": "17:5",
-   "q": "Pe cine a mai chemat Absalom ca să-i dea un sfat?",
+   "ref": "17:23",
+   "q": "Ce a făcut Ahitofel când sfatul lui n-a fost urmat?",
    "opts": [
-    "pe Hușai, Architul",
-    "pe Ioab",
-    "pe Natan"
+    "a mers la David",
+    "a plecat acasă",
+    "a plecat la luptă"
    ],
-   "a": 0
+   "a": 1
   },
   {
-   "id": "2sa.17.sub12.19",
-   "age": "sub12",
-   "t": "one",
-   "ref": "17:29",
-   "q": "De ce au adus oamenii mâncare lui David la Mahanaim?",
-   "opts": [
-    "ca să facă un ospăț",
-    "ca să-l cinstească pe Absalom",
-    "pentru că poporul trebuie să fi suferit de foame și sete"
-   ],
-   "a": 2
-  },
-  {
-   "id": "2sa.17.sub12.24",
+   "id": "2sa.17.sub12.121",
    "age": "sub12",
    "t": "match",
-   "ref": "17:1-24",
-   "q": "Asociază fiecare nume sau loc cu ce se spune despre el.",
+   "ref": "17:1-29",
+   "q": "Asociază fiecare nume sau lucru cu ce se spune despre el în capitol.",
    "pairs": [
     [
-     "Ahitofel",
-     "sfetnicul al cărui sfat n-a fost urmat"
+     "Hușai",
+     "prietenul lui David care a dat un sfat bun"
     ],
     [
-     "Hușai",
-     "cel care a dat un sfat mai bun, după Absalom"
+     "Ahitofel",
+     "sfetnicul care a plecat acasă"
+    ],
+    [
+     "Ahimaaț",
+     "cel care s-a ascuns în fântână"
     ],
     [
      "Mahanaim",
-     "cetatea unde ajunsese David"
+     "locul unde a ajuns David"
     ],
     [
      "Iordanul",
-     "râul trecut de David și de popor"
-    ],
-    [
-     "Bahurim",
-     "locul unde au stat ascunși Ahimaaț și Ionatan"
+     "râul trecut de David"
     ]
    ]
   },
   {
-   "id": "2sa.17.sub12.10",
+   "id": "2sa.17.sub12.111",
    "age": "sub12",
    "t": "fill",
-   "ref": "17:7",
+   "ref": "17:21",
+   "q": "Ahimaaț și Ionatan au ieșit din ___",
    "a": [
-    "bun"
-   ],
-   "q": "„De data aceasta, sfatul pe care ți l-a dat Ahitofel nu este ___.\"",
-   "ctx": "Hușai, către Absalom:"
+    "fântână"
+   ]
   },
   {
-   "id": "2sa.17.sub12.11",
+   "id": "2sa.17.sub12.112",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "17:19",
+   "q": "a întins-o peste gura ___",
+   "a": [
+    "fântânii"
+   ]
+  },
+  {
+   "id": "2sa.17.sub12.113",
    "age": "sub12",
    "t": "fill",
    "ref": "17:22",
+   "q": "s-au sculat și au trecut ___",
    "a": [
     "Iordanul"
-   ],
-   "q": "David și tot poporul care era cu el s-au sculat și au trecut ___;",
-   "ctx": "După vestea adusă de Ahimaaț și Ionatan:"
+   ]
   },
   {
-   "id": "2sa.17.sub12.12",
+   "id": "2sa.17.sub12.114",
    "age": "sub12",
    "t": "fill",
    "ref": "17:24",
+   "q": "David ajunsese la ___",
    "a": [
     "Mahanaim"
-   ],
-   "q": "David ajunsese la ___ când a trecut Absalom Iordanul, însoțit de toți bărbații lui Israel.",
-   "ctx": "Fuga lui David peste Iordan:"
-  },
-  {
-   "id": "2sa.17.sub12.20",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "17:1",
-   "q": "Ahitofel a zis lui Absalom: „Lasă-mă să aleg douăsprezece ___ de oameni!",
-   "a": [
-    "mii"
    ]
   },
   {
-   "id": "2sa.17.sub12.21",
+   "id": "2sa.17.sub12.115",
    "age": "sub12",
    "t": "fill",
-   "ref": "17:17",
-   "q": "Ionatan și Ahimaaț stăteau lângă fântâna ___.",
+   "ref": "17:29",
+   "q": "___, unt, oi și brânză de vacă",
    "a": [
-    "Roguel"
+    "miere"
    ]
   },
   {
-   "id": "2sa.17.sub12.13",
+   "id": "2sa.17.sub12.116",
    "age": "sub12",
    "t": "multi",
    "ref": "17:28-29",
-   "q": "Ce i-au adus lui David la Mahanaim?",
+   "q": "Ce au adus oamenii lui David la Mahanaim?",
    "opts": [
-    "miere și unt",
-    "grâu și făină",
+    "grâu",
+    "brânză",
+    "orz"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "id": "2sa.17.sub12.117",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "17:28",
+   "q": "Ce au mai adus?",
+   "opts": [
+    "săbii",
+    "linte",
     "paturi"
    ],
    "a": [
@@ -209,44 +221,15 @@
    ]
   },
   {
-   "id": "2sa.17.sub12.14",
-   "age": "sub12",
-   "t": "multi",
-   "ref": "17:17",
-   "q": "Unde stăteau Ionatan și Ahimaaț, ca să afle vești?",
-   "opts": [
-    "în casa lui Absalom",
-    "în templu",
-    "lângă fântâna Roguel"
-   ],
-   "a": [
-    2
-   ]
-  },
-  {
-   "id": "2sa.17.sub12.15",
-   "age": "sub12",
-   "t": "multi",
-   "ref": "17:20",
-   "q": "Ce au făcut slujitorii lui Absalom după ce n-au găsit pe Ahimaaț și Ionatan?",
-   "opts": [
-    "au rămas la Bahurim",
-    "au ars casa",
-    "au trecut Iordanul"
-   ],
-   "a": [],
-   "explain": "Niciun răspuns corect: s-au întors la Ierusalim (17:20)."
-  },
-  {
-   "id": "2sa.17.sub12.22",
+   "id": "2sa.17.sub12.118",
    "age": "sub12",
    "t": "multi",
    "ref": "17:19-20",
    "q": "Ce a făcut femeia din Bahurim?",
    "opts": [
-    "a spus că cei doi au trecut pârâul",
-    "a întins o învelitoare peste gura fântânii",
-    "i-a dat pe mâna slujitorilor lui Absalom"
+    "a spus că cei doi au trecut mai departe",
+    "a acoperit fântâna",
+    "i-a dat pe cei doi lui Absalom"
    ],
    "a": [
     0,
@@ -254,19 +237,35 @@
    ]
   },
   {
-   "id": "2sa.17.sub12.23",
+   "id": "2sa.17.sub12.119",
    "age": "sub12",
    "t": "multi",
-   "ref": "17:25",
-   "q": "Ce se spune despre Amasa?",
+   "ref": "17:21",
+   "q": "Ce au făcut Ahimaaț și Ionatan?",
    "opts": [
-    "a fost pus în fruntea oștirii în locul lui Ioab",
-    "era fiul lui Itra, Israelitul",
-    "era fiul lui Ahitofel"
+    "au ieșit din fântână",
+    "au dat de știre lui David",
+    "au rămas ascunși"
    ],
    "a": [
     0,
     1
+   ]
+  },
+  {
+   "id": "2sa.17.sub12.120",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "17:22",
+   "q": "Ce s-a întâmplat când se lumina de ziuă?",
+   "opts": [
+    "David era încă la Ierusalim",
+    "toți trecuseră Iordanul",
+    "nu rămăsese niciunul"
+   ],
+   "a": [
+    1,
+    2
    ]
   },
   {

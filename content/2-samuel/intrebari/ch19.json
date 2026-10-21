@@ -3,250 +3,231 @@
  "reviewed": false,
  "questions": [
   {
-   "id": "2sa.19.sub12.1",
+   "id": "2sa.19.sub12.101",
    "age": "sub12",
    "t": "tf",
    "ref": "19:1",
-   "q": "După moartea lui Absalom, i s-a spus lui Ioab că împăratul plânge și se jelește.",
+   "q": "Împăratul plângea din pricina lui Absalom.",
    "a": true
   },
   {
-   "id": "2sa.19.sub12.2",
+   "id": "2sa.19.sub12.102",
    "age": "sub12",
    "t": "tf",
-   "ref": "19:8",
-   "q": "La sfatul lui Ioab, împăratul s-a sculat și a șezut la poartă.",
+   "ref": "19:5",
+   "q": "Ioab i-a spus lui David să iasă la popor.",
    "a": true
   },
   {
-   "id": "2sa.19.sub12.3",
+   "id": "2sa.19.sub12.103",
    "age": "sub12",
    "t": "tf",
    "ref": "19:23",
-   "q": "David a poruncit ca Șimei să fie omorât pentru că îl blestemase.",
-   "a": false,
-   "explain": "Împăratul i-a jurat lui Șimei: „Nu vei muri!\" (19:23)."
-  },
-  {
-   "id": "2sa.19.sub12.16",
-   "age": "sub12",
-   "t": "tf",
-   "ref": "19:16",
-   "q": "Șimei s-a grăbit să se coboare cu cei din Iuda înaintea împăratului David.",
+   "q": "David i-a spus lui Șimei: „Nu vei muri!\"",
    "a": true
   },
   {
-   "id": "2sa.19.sub12.17",
+   "id": "2sa.19.sub12.104",
    "age": "sub12",
    "t": "tf",
-   "ref": "19:15",
-   "q": "David s-a întors la Ierusalim fără să mai ajungă la Iordan.",
-   "a": false,
-   "explain": "Împăratul a ajuns până la Iordan, unde Iuda a venit să-l facă să-l treacă."
+   "ref": "19:32",
+   "q": "Barzilai avea douăzeci de ani.",
+   "a": false
   },
   {
-   "id": "2sa.19.sub12.4",
+   "id": "2sa.19.sub12.105",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "19:8",
+   "q": "David a rămas ascuns în casă.",
+   "a": false
+  },
+  {
+   "id": "2sa.19.sub12.106",
+   "age": "sub12",
+   "t": "one",
+   "ref": "19:5",
+   "q": "Cine i-a spus lui David să iasă la popor?",
+   "opts": [
+    "Țiba",
+    "Șimei",
+    "Ioab"
+   ],
+   "a": 2
+  },
+  {
+   "id": "2sa.19.sub12.107",
+   "age": "sub12",
+   "t": "one",
+   "ref": "19:8",
+   "q": "Unde a șezut David?",
+   "opts": [
+    "la poartă",
+    "în pădure",
+    "pe munte"
+   ],
+   "a": 0
+  },
+  {
+   "id": "2sa.19.sub12.108",
    "age": "sub12",
    "t": "one",
    "ref": "19:32",
-   "q": "Câți ani avea Barzilai, Galaaditul, care l-a ajutat pe David la Mahanaim?",
+   "q": "Câți ani avea Barzilai?",
    "opts": [
+    "zece",
     "optzeci",
-    "o sută",
-    "cincizeci"
-   ],
-   "a": 0
-  },
-  {
-   "id": "2sa.19.sub12.5",
-   "age": "sub12",
-   "t": "one",
-   "ref": "19:15",
-   "q": "Până la ce râu a ajuns David când s-a întors spre Ierusalim?",
-   "opts": [
-    "Eufrat",
-    "Nil",
-    "Iordan"
-   ],
-   "a": 2
-  },
-  {
-   "id": "2sa.19.sub12.6",
-   "age": "sub12",
-   "t": "one",
-   "ref": "19:39",
-   "q": "Ce a făcut David când s-a despărțit de Barzilai?",
-   "opts": [
-    "l-a sărutat și l-a binecuvântat",
-    "i-a dat o cetate",
-    "l-a făcut căpetenie"
-   ],
-   "a": 0
-  },
-  {
-   "id": "2sa.19.sub12.18",
-   "age": "sub12",
-   "t": "one",
-   "ref": "19:33",
-   "q": "Unde a vrut David să-l ia pe Barzilai, ca să-l hrănească?",
-   "opts": [
-    "la Hebron",
-    "la Mahanaim",
-    "la Ierusalim"
-   ],
-   "a": 2
-  },
-  {
-   "id": "2sa.19.sub12.19",
-   "age": "sub12",
-   "t": "one",
-   "ref": "19:38",
-   "q": "Cine a trecut Iordanul împreună cu David, în locul lui Barzilai?",
-   "opts": [
-    "Amasa",
-    "Chimham",
-    "Țiba"
+    "douăzeci"
    ],
    "a": 1
   },
   {
-   "id": "2sa.19.sub12.24",
+   "id": "2sa.19.sub12.109",
+   "age": "sub12",
+   "t": "one",
+   "ref": "19:23",
+   "q": "Ce i-a spus David lui Șimei?",
+   "opts": [
+    "Pleacă de aici",
+    "Nu vei muri",
+    "Ești prizonier"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.19.sub12.110",
+   "age": "sub12",
+   "t": "one",
+   "ref": "19:38",
+   "q": "Cine a trecut cu David în locul lui Barzilai?",
+   "opts": [
+    "Chimham",
+    "Șimei",
+    "Țiba"
+   ],
+   "a": 0
+  },
+  {
+   "id": "2sa.19.sub12.121",
    "age": "sub12",
    "t": "match",
-   "ref": "19:1-39",
-   "q": "Asociază fiecare nume cu ce se spune despre el.",
+   "ref": "19:1-43",
+   "q": "Asociază fiecare nume sau lucru cu ce se spune despre el în capitol.",
    "pairs": [
     [
      "Ioab",
-     "i-a spus lui David să iasă la popor"
+     "cel care a spus lui David să iasă"
     ],
     [
      "Șimei",
-     "a cerut iertare lui David"
+     "cel care a cerut iertare"
     ],
     [
      "Barzilai",
-     "om bătrân, în vârstă de optzeci de ani"
+     "bătrânul de optzeci de ani"
     ],
     [
      "Chimham",
-     "a trecut cu împăratul"
+     "cel care a trecut cu David"
     ],
     [
      "Mefiboșet",
-     "a venit înaintea împăratului neîngrijit"
+     "fiul lui Ionatan"
     ]
    ]
   },
   {
-   "id": "2sa.19.sub12.10",
+   "id": "2sa.19.sub12.111",
    "age": "sub12",
    "t": "fill",
-   "ref": "19:4",
+   "ref": "19:8",
+   "q": "împăratul s-a sculat și a șezut la ___",
    "a": [
-    "Absalom"
-   ],
-   "q": "„Fiul meu ___! Absalom, fiul meu, fiul meu!\"",
-   "ctx": "Împăratul, cu fața acoperită, după bătălie:"
+    "poartă"
+   ]
   },
   {
-   "id": "2sa.19.sub12.11",
+   "id": "2sa.19.sub12.112",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "19:32",
+   "q": "în vârstă de ___ de ani",
+   "a": [
+    "optzeci"
+   ]
+  },
+  {
+   "id": "2sa.19.sub12.113",
    "age": "sub12",
    "t": "fill",
    "ref": "19:23",
+   "q": "Nu vei ___!",
    "a": [
     "muri"
-   ],
-   "q": "Și împăratul a zis lui Șimei: „Nu vei ___!\"",
-   "ctx": "La trecerea Iordanului, când Șimei și-a cerut iertare:"
+   ]
   },
   {
-   "id": "2sa.19.sub12.12",
+   "id": "2sa.19.sub12.114",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "19:15",
+   "q": "Împăratul s-a întors și a ajuns până la ___",
+   "a": [
+    "Iordan"
+   ]
+  },
+  {
+   "id": "2sa.19.sub12.115",
    "age": "sub12",
    "t": "fill",
    "ref": "19:39",
+   "q": "împăratul l-a sărutat pe ___ și l-a binecuvântat",
    "a": [
     "Barzilai"
-   ],
-   "q": "împăratul l-a sărutat pe ___ și l-a binecuvântat.",
-   "ctx": "După ce tot poporul a trecut Iordanul:"
-  },
-  {
-   "id": "2sa.19.sub12.20",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "19:24",
-   "q": "Mefiboșet, fiul lui Saul, s-a coborât și el înaintea ___.",
-   "a": [
-    "împăratului"
    ]
   },
   {
-   "id": "2sa.19.sub12.21",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "19:31",
-   "q": "Barzilai, Galaaditul, s-a coborât din ___ și a trecut Iordanul împreună cu împăratul",
-   "a": [
-    "Roghelim"
-   ]
-  },
-  {
-   "id": "2sa.19.sub12.13",
+   "id": "2sa.19.sub12.116",
    "age": "sub12",
    "t": "multi",
-   "ref": "19:24",
-   "q": "Ce nu-și îngrijise Mefiboșet cât timp împăratul a fost plecat?",
+   "ref": "19:4",
+   "q": "Ce făcea David?",
    "opts": [
-    "picioarele",
-    "barba",
-    "hainele"
+    "striga după Absalom",
+    "își acoperise fața",
+    "dansa"
    ],
    "a": [
     0,
-    1,
+    1
+   ]
+  },
+  {
+   "id": "2sa.19.sub12.117",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "19:8",
+   "q": "Ce a făcut David după ce a vorbit Ioab?",
+   "opts": [
+    "s-a sculat",
+    "a plecat din țară",
+    "a șezut la poartă"
+   ],
+   "a": [
+    0,
     2
    ]
   },
   {
-   "id": "2sa.19.sub12.14",
+   "id": "2sa.19.sub12.118",
    "age": "sub12",
    "t": "multi",
    "ref": "19:20",
-   "q": "Ce a mărturisit Șimei înaintea lui David?",
+   "q": "Ce a făcut Șimei?",
    "opts": [
-    "că a păcătuit",
-    "că n-a blestemat",
-    "că Absalom l-a trimis"
-   ],
-   "a": [
-    0
-   ]
-  },
-  {
-   "id": "2sa.19.sub12.15",
-   "age": "sub12",
-   "t": "multi",
-   "ref": "19:33",
-   "q": "Unde l-a chemat David pe Barzilai să locuiască?",
-   "opts": [
-    "la Hebron",
-    "la Betleem",
-    "la Mahanaim"
-   ],
-   "a": [],
-   "explain": "Niciun răspuns corect: l-a chemat la el, în Ierusalim (19:33)."
-  },
-  {
-   "id": "2sa.19.sub12.22",
-   "age": "sub12",
-   "t": "multi",
-   "ref": "19:2-3",
-   "q": "Ce s-a întâmplat cu poporul în ziua aceea?",
-   "opts": [
-    "biruința s-a prefăcut în jale",
-    "poporul a făcut un mare ospăț",
-    "poporul a intrat în cetate pe furiș"
+    "a spus că a păcătuit",
+    "a fugit",
+    "a venit înaintea împăratului"
    ],
    "a": [
     0,
@@ -254,18 +235,34 @@
    ]
   },
   {
-   "id": "2sa.19.sub12.23",
+   "id": "2sa.19.sub12.119",
    "age": "sub12",
    "t": "multi",
-   "ref": "19:37-38",
-   "q": "Ce a spus Barzilai despre Chimham, și ce a răspuns David?",
+   "ref": "19:32",
+   "q": "Ce se spune despre Barzilai?",
    "opts": [
-    "David a spus că va face pentru el ce va vrea Barzilai",
-    "Chimham va rămâne acasă",
-    "Chimham va trece cu împăratul"
+    "îngrijise de David la Mahanaim",
+    "era tânăr",
+    "avea optzeci de ani"
    ],
    "a": [
     0,
+    2
+   ]
+  },
+  {
+   "id": "2sa.19.sub12.120",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "19:39",
+   "q": "Ce a făcut David cu Barzilai?",
+   "opts": [
+    "l-a alungat",
+    "l-a binecuvântat",
+    "l-a sărutat"
+   ],
+   "a": [
+    1,
     2
    ]
   },

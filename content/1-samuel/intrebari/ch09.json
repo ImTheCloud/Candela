@@ -3,269 +3,266 @@
  "reviewed": false,
  "questions": [
   {
-   "id": "1sa.9.sub12.1",
+   "id": "1sa.9.sub12.101",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "9:3",
+   "q": "Măgărițele lui Chis s-au rătăcit.",
+   "a": true
+  },
+  {
+   "id": "1sa.9.sub12.102",
    "age": "sub12",
    "t": "tf",
    "ref": "9:2",
-   "q": "Saul era tânăr și frumos, mai înalt decât toți de la umăr în sus.",
+   "q": "Saul era tânăr și frumos.",
    "a": true
   },
   {
-   "id": "1sa.9.sub12.2",
-   "age": "sub12",
-   "t": "tf",
-   "ref": "9:3",
-   "q": "Chis l-a trimis pe Saul să caute măgărițele care se rătăciseră.",
-   "a": true
-  },
-  {
-   "id": "1sa.9.sub12.3",
+   "id": "1sa.9.sub12.103",
    "age": "sub12",
    "t": "tf",
    "ref": "9:20",
-   "q": "Samuel i-a spus lui Saul că măgărițele nu s-au mai găsit.",
-   "a": false,
-   "explain": "Samuel i-a spus: „Nu te neliniști de măgărițele... căci s-au găsit\" (9:20)."
-  },
-  {
-   "id": "1sa.9.sub12.16",
-   "age": "sub12",
-   "t": "tf",
-   "ref": "9:14",
-   "q": "Samuel a ieșit în întâmpinarea lui Saul pe poarta cetății.",
+   "q": "Samuel i-a spus lui Saul că măgărițele s-au găsit.",
    "a": true
   },
   {
-   "id": "1sa.9.sub12.17",
+   "id": "1sa.9.sub12.104",
    "age": "sub12",
    "t": "tf",
    "ref": "9:3",
-   "q": "Saul căuta oile tatălui său, care se rătăciseră.",
-   "a": false,
-   "explain": "Căuta măgărițele lui Chis."
+   "q": "Saul căuta oile tatălui său.",
+   "a": false
   },
   {
-   "id": "1sa.9.sub12.4",
+   "id": "1sa.9.sub12.105",
    "age": "sub12",
-   "t": "one",
-   "ref": "9:1-3",
-   "q": "Cum se numea tatăl lui Saul?",
-   "opts": [
-    "Chis",
-    "Ioel",
-    "Abner"
-   ],
-   "a": 0
+   "t": "tf",
+   "ref": "9:2",
+   "q": "Saul era un om foarte bătrân.",
+   "a": false
   },
   {
-   "id": "1sa.9.sub12.5",
+   "id": "1sa.9.sub12.106",
    "age": "sub12",
    "t": "one",
    "ref": "9:3",
-   "q": "Ce animale căuta Saul când l-a întâlnit pe Samuel?",
+   "q": "Ce căuta Saul?",
    "opts": [
-    "măgărițe",
-    "oi",
-    "cai"
-   ],
-   "a": 0
-  },
-  {
-   "id": "1sa.9.sub12.6",
-   "age": "sub12",
-   "t": "one",
-   "ref": "9:9",
-   "q": "Cum se numea odinioară un proroc, în Israel?",
-   "opts": [
-    "înțelept",
-    "văzător",
-    "profet"
+    "oile unui vecin",
+    "măgărițele tatălui lui",
+    "caii împăratului"
    ],
    "a": 1
   },
   {
-   "id": "1sa.9.sub12.18",
+   "id": "1sa.9.sub12.107",
    "age": "sub12",
    "t": "one",
-   "ref": "9:4",
-   "q": "Prin ce munte a trecut Saul când căuta măgărițele?",
+   "ref": "9:3",
+   "q": "Cum se numea tatăl lui Saul?",
    "opts": [
-    "prin muntele lui Efraim",
-    "prin muntele Ghilboa",
-    "prin muntele Carmel"
+    "Chis",
+    "Samuel",
+    "Eli"
    ],
    "a": 0
   },
   {
-   "id": "1sa.9.sub12.19",
+   "id": "1sa.9.sub12.108",
    "age": "sub12",
    "t": "one",
-   "ref": "9:11",
-   "q": "Cine le-a spus lui Saul și slugii lui că văzătorul este în cetate?",
+   "ref": "9:2",
+   "q": "Cum era Saul?",
    "opts": [
-    "niște preoți",
-    "niște păstori",
-    "niște fete care ieșiseră să scoată apă"
+    "bătrân",
+    "tânăr, frumos și înalt",
+    "foarte mic"
    ],
-   "a": 2
+   "a": 1
   },
   {
-   "id": "1sa.9.sub12.24",
+   "id": "1sa.9.sub12.109",
+   "age": "sub12",
+   "t": "one",
+   "ref": "9:3",
+   "q": "Cu cine a plecat Saul?",
+   "opts": [
+    "cu un leu",
+    "cu o slugă",
+    "singur"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.9.sub12.110",
+   "age": "sub12",
+   "t": "one",
+   "ref": "9:24",
+   "q": "Cu cine a mâncat Saul?",
+   "opts": [
+    "cu Samuel",
+    "cu filistenii",
+    "cu Eli"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.9.sub12.121",
    "age": "sub12",
    "t": "match",
    "ref": "9:1-27",
-   "q": "Asociază fiecare nume sau lucru cu ce se spune despre el.",
+   "q": "Asociază fiecare nume sau lucru cu ce se spune despre el în capitol.",
    "pairs": [
+    [
+     "Saul",
+     "tânărul înalt și frumos"
+    ],
     [
      "Chis",
      "tatăl lui Saul"
     ],
     [
-     "Saul",
-     "tânăr și frumos, mai înalt decât toți"
-    ],
-    [
      "Samuel",
-     "cel numit „văzătorul”"
+     "văzătorul"
     ],
     [
-     "Țuf",
-     "țara unde Saul a vrut să se întoarcă"
+     "sluga",
+     "cel care a propus să meargă la omul lui Dumnezeu"
     ],
     [
-     "spata",
-     "ce a primit Saul la masă"
+     "măgărițele",
+     "ce căuta Saul"
     ]
    ]
   },
   {
-   "id": "1sa.9.sub12.10",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "9:9",
-   "a": [
-    "văzător"
-   ],
-   "q": "Căci acela care se numește azi proroc se numea odinioară ___.",
-   "ctx": "Despre obiceiul din Israel, pe vremea lui Saul:"
-  },
-  {
-   "id": "1sa.9.sub12.11",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "9:17",
-   "a": [
-    "domni"
-   ],
-   "q": "„Iată omul despre care ți-am vorbit; el va ___ peste poporul Meu.\"",
-   "ctx": "Domnul, către Samuel, când l-a zărit pe Saul:"
-  },
-  {
-   "id": "1sa.9.sub12.12",
+   "id": "1sa.9.sub12.111",
    "age": "sub12",
    "t": "fill",
    "ref": "9:2",
+   "q": "El avea un fiu cu numele ___",
    "a": [
     "Saul"
-   ],
-   "q": "El avea un fiu cu numele ___, tânăr și frumos,",
-   "ctx": "Despre fiul lui Chis:"
-  },
-  {
-   "id": "1sa.9.sub12.20",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "9:6",
-   "q": "Iată că în cetatea aceasta este un om al lui ___, un om cu vază",
-   "a": [
-    "Dumnezeu"
    ]
   },
   {
-   "id": "1sa.9.sub12.21",
+   "id": "1sa.9.sub12.112",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "9:3",
+   "q": "Măgărițele lui Chis, tatăl lui Saul, s-au ___",
+   "a": [
+    "rătăcit"
+   ]
+  },
+  {
+   "id": "1sa.9.sub12.113",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "9:3",
+   "q": "Ia cu tine o ___",
+   "a": [
+    "slugă"
+   ]
+  },
+  {
+   "id": "1sa.9.sub12.114",
    "age": "sub12",
    "t": "fill",
    "ref": "9:19",
-   "q": "Samuel a răspuns lui Saul: „Eu sunt ___.",
+   "q": "Eu sunt ___.",
    "a": [
     "văzătorul"
    ]
   },
   {
-   "id": "1sa.9.sub12.13",
+   "id": "1sa.9.sub12.115",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "9:24",
+   "q": "Astfel, Saul a mâncat cu ___ în ziua aceea.",
+   "a": [
+    "Samuel"
+   ]
+  },
+  {
+   "id": "1sa.9.sub12.116",
    "age": "sub12",
    "t": "multi",
-   "ref": "9:2",
-   "q": "Cum era Saul?",
+   "ref": "9:3",
+   "q": "Ce a făcut Saul?",
    "opts": [
-    "frumos",
-    "tânăr",
-    "mai înalt decât toți"
+    "a plecat pe mare",
+    "a căutat măgărițele",
+    "a luat o slugă"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.9.sub12.117",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "9:6",
+   "q": "Ce a spus sluga?",
+   "opts": [
+    "că în cetate este un om al lui Dumnezeu",
+    "să se întoarcă acasă",
+    "că ne va arăta drumul"
    ],
    "a": [
     0,
-    1,
     2
    ]
   },
   {
-   "id": "1sa.9.sub12.14",
+   "id": "1sa.9.sub12.118",
    "age": "sub12",
    "t": "multi",
    "ref": "9:8",
-   "q": "Ce avea sluga lui Saul ca să-i dea omului lui Dumnezeu?",
+   "q": "Ce avea sluga?",
    "opts": [
-    "un sfert de siclu de argint",
-    "pâine",
-    "un miel"
+    "gândul să-l dea omului lui Dumnezeu",
+    "o sabie",
+    "un sfert de siclu de argint"
    ],
    "a": [
-    0
-   ]
-  },
-  {
-   "id": "1sa.9.sub12.15",
-   "age": "sub12",
-   "t": "multi",
-   "ref": "9:1",
-   "q": "Din ce seminție era Chis, tatăl lui Saul?",
-   "opts": [
-    "din Levi",
-    "din Efraim",
-    "din Iuda"
-   ],
-   "a": [],
-   "explain": "Niciun răspuns corect: era din Beniamin (9:1)."
-  },
-  {
-   "id": "1sa.9.sub12.22",
-   "age": "sub12",
-   "t": "multi",
-   "ref": "9:3-4",
-   "q": "Ce a făcut Saul?",
-   "opts": [
-    "a luat cu el un frate",
-    "a luat cu el o slugă",
-    "a străbătut mai multe ținuturi căutând măgărițele"
-   ],
-   "a": [
-    1,
+    0,
     2
    ]
   },
   {
-   "id": "1sa.9.sub12.23",
+   "id": "1sa.9.sub12.119",
    "age": "sub12",
    "t": "multi",
-   "ref": "9:24-25",
-   "q": "Ce s-a întâmplat după masă și la masă?",
+   "ref": "9:20",
+   "q": "Ce i-a spus Samuel lui Saul?",
    "opts": [
-    "Saul a refuzat să mănânce",
-    "Saul a primit spata",
-    "Samuel a stat de vorbă cu Saul pe acoperiș"
+    "să nu se neliniștească",
+    "să plece imediat",
+    "că măgărițele s-au găsit"
    ],
    "a": [
-    1,
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.9.sub12.120",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "9:22-24",
+   "q": "Ce s-a întâmplat la masă?",
+   "opts": [
+    "a mâncat cu Samuel",
+    "n-a mâncat nimic",
+    "Saul a primit locul cel dintâi"
+   ],
+   "a": [
+    0,
     2
    ]
   },

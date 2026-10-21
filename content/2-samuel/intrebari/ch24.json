@@ -3,220 +3,199 @@
  "reviewed": false,
  "questions": [
   {
-   "id": "2sa.24.sub12.1",
-   "age": "sub12",
-   "t": "tf",
-   "ref": "24:2",
-   "q": "David i-a poruncit lui Ioab să facă numărătoarea poporului.",
-   "a": true
-  },
-  {
-   "id": "2sa.24.sub12.2",
+   "id": "2sa.24.sub12.101",
    "age": "sub12",
    "t": "tf",
    "ref": "24:10",
-   "q": "După numărătoare, David a simțit că a păcătuit și I-a cerut iertare Domnului.",
+   "q": "David a recunoscut că a greșit.",
    "a": true
   },
   {
-   "id": "2sa.24.sub12.3",
+   "id": "2sa.24.sub12.102",
    "age": "sub12",
    "t": "tf",
-   "ref": "24:24",
-   "q": "David a primit aria lui Aravna fără să plătească nimic.",
-   "a": false,
-   "explain": "David a cumpărat-o cu cincizeci de sicli de argint: n-a vrut să aducă jertfe care să nu-l coste nimic (24:24)."
-  },
-  {
-   "id": "2sa.24.sub12.16",
-   "age": "sub12",
-   "t": "tf",
-   "ref": "24:15",
-   "q": "Domnul a trimis ciuma în Israel și au murit șaptezeci de mii de oameni din popor.",
+   "ref": "24:11",
+   "q": "Gad era proroc.",
    "a": true
   },
   {
-   "id": "2sa.24.sub12.17",
+   "id": "2sa.24.sub12.103",
    "age": "sub12",
    "t": "tf",
    "ref": "24:25",
-   "q": "David a zidit altarul Domnului la Betleem.",
-   "a": false,
-   "explain": "L-a zidit în aria lui Aravna."
+   "q": "David a zidit un altar Domnului.",
+   "a": true
   },
   {
-   "id": "2sa.24.sub12.4",
+   "id": "2sa.24.sub12.104",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "24:10",
+   "q": "David a spus că n-a greșit deloc.",
+   "a": false
+  },
+  {
+   "id": "2sa.24.sub12.105",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "24:24",
+   "q": "David a luat aria fără să plătească.",
+   "a": false
+  },
+  {
+   "id": "2sa.24.sub12.106",
    "age": "sub12",
    "t": "one",
    "ref": "24:11",
-   "q": "Ce proroc a fost trimis la David după numărătoarea poporului?",
+   "q": "Cine era prorocul care a vorbit cu David?",
    "opts": [
-    "Samuel",
     "Natan",
+    "Samuel",
     "Gad"
    ],
    "a": 2
   },
   {
-   "id": "2sa.24.sub12.5",
+   "id": "2sa.24.sub12.107",
    "age": "sub12",
    "t": "one",
-   "ref": "24:18",
-   "q": "Unde i-a spus Gad lui David să înalțe un altar Domnului?",
+   "ref": "24:10",
+   "q": "Ce a spus David Domnului?",
    "opts": [
-    "la Hebron",
-    "pe muntele Sion",
-    "în aria lui Aravna, Iebusitul"
-   ],
-   "a": 2
-  },
-  {
-   "id": "2sa.24.sub12.6",
-   "age": "sub12",
-   "t": "one",
-   "ref": "24:15",
-   "q": "Ce nenorocire a trimis Domnul în Israel după numărătoare?",
-   "opts": [
-    "război",
-    "foamete",
-    "ciuma"
-   ],
-   "a": 2
-  },
-  {
-   "id": "2sa.24.sub12.18",
-   "age": "sub12",
-   "t": "one",
-   "ref": "24:24",
-   "q": "Cu cât a cumpărat David aria și boii lui Aravna?",
-   "opts": [
-    "cu zece talanți de aur",
-    "cu o sută de oi",
-    "cu cincizeci de sicli de argint"
-   ],
-   "a": 2
-  },
-  {
-   "id": "2sa.24.sub12.19",
-   "age": "sub12",
-   "t": "one",
-   "ref": "24:16",
-   "q": "Cine întindea mâna peste Ierusalim ca să-l nimicească?",
-   "opts": [
-    "îngerul",
-    "Ioab",
-    "Gad"
+    "Am săvârșit un mare păcat",
+    "Nu mă interesează",
+    "N-am greșit"
    ],
    "a": 0
   },
   {
-   "id": "2sa.24.sub12.24",
+   "id": "2sa.24.sub12.108",
+   "age": "sub12",
+   "t": "one",
+   "ref": "24:18",
+   "q": "Al cui era locul unde a zidit David altarul?",
+   "opts": [
+    "al lui Ioab",
+    "al lui Aravna",
+    "al lui Absalom"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.24.sub12.109",
+   "age": "sub12",
+   "t": "one",
+   "ref": "24:25",
+   "q": "Ce a zidit David acolo?",
+   "opts": [
+    "un palat",
+    "un turn",
+    "un altar"
+   ],
+   "a": 2
+  },
+  {
+   "id": "2sa.24.sub12.110",
+   "age": "sub12",
+   "t": "one",
+   "ref": "24:24",
+   "q": "Cum a luat David aria?",
+   "opts": [
+    "a primit-o gratis",
+    "a cumpărat-o cu argint",
+    "a furat-o"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.24.sub12.121",
    "age": "sub12",
    "t": "match",
-   "ref": "24:2-25",
-   "q": "Asociază fiecare nume sau lucru cu ce se spune despre el.",
+   "ref": "24:1-25",
+   "q": "Asociază fiecare nume sau lucru cu ce se spune despre el în capitol.",
    "pairs": [
     [
-     "Ioab",
-     "cel care a făcut numărătoarea poporului"
+     "Gad",
+     "prorocul"
     ],
     [
-     "Gad",
-     "prorocul și văzătorul lui David"
+     "David",
+     "împăratul care a recunoscut păcatul"
     ],
     [
      "Aravna",
-     "iebusitul care avea o arie"
+     "cel cu aria"
     ],
     [
-     "ciuma",
-     "nenorocirea aleasă de David, trimisă de Domnul"
+     "Ioab",
+     "căpetenia oștirii"
     ],
     [
-     "altarul",
-     "ce a zidit David în aria lui Aravna"
+     "altar",
+     "ce a zidit David"
     ]
    ]
   },
   {
-   "id": "2sa.24.sub12.10",
+   "id": "2sa.24.sub12.111",
    "age": "sub12",
    "t": "fill",
    "ref": "24:10",
+   "q": "Am săvârșit un mare ___",
    "a": [
     "păcat"
-   ],
-   "q": "„Am săvârșit un mare ___ făcând lucrul acesta!",
-   "ctx": "David, după numărătoarea poporului:"
-  },
-  {
-   "id": "2sa.24.sub12.11",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "24:25",
-   "a": [
-    "altar"
-   ],
-   "q": "David a zidit acolo un ___ Domnului și a adus arderi-de-tot și jertfe de mulțumire.",
-   "ctx": "În aria lui Aravna, Iebusitul:"
-  },
-  {
-   "id": "2sa.24.sub12.12",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "24:16",
-   "a": [
-    "mâna"
-   ],
-   "q": "„Destul! Trage-ți ___ acum.\"",
-   "ctx": "Domnul, către îngerul care lovea poporul:"
-  },
-  {
-   "id": "2sa.24.sub12.20",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "24:24",
-   "q": "Și David a cumpărat aria și boii cu cincizeci de sicli de ___.",
-   "a": [
-    "argint"
    ]
   },
   {
-   "id": "2sa.24.sub12.21",
+   "id": "2sa.24.sub12.112",
    "age": "sub12",
    "t": "fill",
    "ref": "24:18",
-   "q": "Gad a venit la David și i-a zis: „Suie-te și înalță un ___ Domnului în aria lui Aravna, Iebusitul.",
+   "q": "înalță un ___ Domnului",
    "a": [
     "altar"
    ]
   },
   {
-   "id": "2sa.24.sub12.13",
+   "id": "2sa.24.sub12.113",
    "age": "sub12",
-   "t": "multi",
-   "ref": "24:14",
-   "q": "Ce a spus David când a trebuit să aleagă o nenorocire?",
-   "opts": [
-    "„Sunt într-o mare strâmtorare!\"",
-    "„mai bine să cădem în mâinile Domnului\"",
-    "„mai bine să cad în mâinile oamenilor\""
-   ],
+   "t": "fill",
+   "ref": "24:18",
+   "q": "în aria lui ___, Iebusitul",
    "a": [
-    0,
-    1
+    "Aravna"
    ]
   },
   {
-   "id": "2sa.24.sub12.14",
+   "id": "2sa.24.sub12.114",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "24:17",
+   "q": "Iată că am ___",
+   "a": [
+    "păcătuit"
+   ]
+  },
+  {
+   "id": "2sa.24.sub12.115",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "24:25",
+   "q": "a adus arderi-de-tot și jertfe de ___",
+   "a": [
+    "mulțumire"
+   ]
+  },
+  {
+   "id": "2sa.24.sub12.116",
    "age": "sub12",
    "t": "multi",
    "ref": "24:25",
-   "q": "Ce a adus David pe altarul din aria lui Aravna?",
+   "q": "Ce a făcut David la altar?",
    "opts": [
-    "arderi-de-tot",
-    "aur",
-    "jertfe de mulțumire"
+    "a adus jertfe de mulțumire",
+    "a plecat fără jertfe",
+    "a adus arderi-de-tot"
    ],
    "a": [
     0,
@@ -224,29 +203,15 @@
    ]
   },
   {
-   "id": "2sa.24.sub12.15",
+   "id": "2sa.24.sub12.117",
    "age": "sub12",
    "t": "multi",
-   "ref": "24:24",
-   "q": "Cu cât a cumpărat David aria și boii lui Aravna?",
+   "ref": "24:10",
+   "q": "Ce a spus David?",
    "opts": [
-    "o sută de sicli",
-    "zece sicli",
-    "un talant de aur"
-   ],
-   "a": [],
-   "explain": "Niciun răspuns corect: cu cincizeci de sicli de argint (24:24)."
-  },
-  {
-   "id": "2sa.24.sub12.22",
-   "age": "sub12",
-   "t": "multi",
-   "ref": "24:21-22",
-   "q": "Ce a spus Aravna lui David?",
-   "opts": [
-    "„Boii vor fi pentru arderea-de-tot”",
-    "„N-o dau pentru niciun preț”",
-    "„Să ia domnul meu împăratul aria”"
+    "iartă-mă, Doamne",
+    "n-am făcut nimic rău",
+    "am păcătuit"
    ],
    "a": [
     0,
@@ -254,19 +219,51 @@
    ]
   },
   {
-   "id": "2sa.24.sub12.23",
+   "id": "2sa.24.sub12.118",
    "age": "sub12",
    "t": "multi",
-   "ref": "24:16-18",
-   "q": "Ce aflăm despre Aravna?",
+   "ref": "24:18",
+   "q": "Ce i-a spus Gad lui David?",
    "opts": [
-    "avea o arie",
-    "era Iebusitul",
-    "era proroc"
+    "să înalțe un altar",
+    "să se suie",
+    "să fugă"
    ],
    "a": [
     0,
     1
+   ]
+  },
+  {
+   "id": "2sa.24.sub12.119",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "24:24",
+   "q": "Ce a spus David lui Aravna?",
+   "opts": [
+    "Vreau s-o cumpăr",
+    "ia-o gratis",
+    "pe preț de argint"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "2sa.24.sub12.120",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "24:25",
+   "q": "Ce s-a întâmplat după jertfă?",
+   "opts": [
+    "ciuma a crescut",
+    "urgia a încetat",
+    "Domnul a fost potolit"
+   ],
+   "a": [
+    1,
+    2
    ]
   },
   {

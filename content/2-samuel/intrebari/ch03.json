@@ -3,78 +3,64 @@
  "reviewed": false,
  "questions": [
   {
-   "id": "2sa.3.sub12.1",
+   "id": "2sa.3.sub12.101",
    "age": "sub12",
    "t": "tf",
    "ref": "3:1",
-   "q": "În războiul dintre casa lui Saul și casa lui David, David era tot mai tare.",
+   "q": "David era tot mai tare.",
    "a": true
   },
   {
-   "id": "2sa.3.sub12.2",
+   "id": "2sa.3.sub12.102",
    "age": "sub12",
    "t": "tf",
    "ref": "3:2",
-   "q": "Lui David i s-au născut fii la Hebron.",
+   "q": "David a avut fii la Hebron.",
    "a": true
   },
   {
-   "id": "2sa.3.sub12.3",
-   "age": "sub12",
-   "t": "tf",
-   "ref": "3:27",
-   "q": "Ioab l-a îmbrățișat pe Abner la poarta Hebronului și l-a lăsat să plece în pace.",
-   "a": false,
-   "explain": "Ioab l-a tras deoparte în mijlocul porții și l-a omorât (3:27)."
-  },
-  {
-   "id": "2sa.3.sub12.16",
+   "id": "2sa.3.sub12.103",
    "age": "sub12",
    "t": "tf",
    "ref": "3:32",
-   "q": "David a plâns la mormântul lui Abner, la Hebron, iar tot poporul plângea.",
+   "q": "David a plâns la mormântul lui Abner.",
    "a": true
   },
   {
-   "id": "2sa.3.sub12.17",
+   "id": "2sa.3.sub12.104",
    "age": "sub12",
    "t": "tf",
-   "ref": "3:20",
-   "q": "Abner a venit la David, la Hebron, cu douăzeci de oameni, iar David a dat un ospăț în cinstea lor.",
+   "ref": "3:36",
+   "q": "Tot poporul a găsit că era bine ce făcuse împăratul.",
    "a": true
   },
   {
-   "id": "2sa.3.sub12.4",
+   "id": "2sa.3.sub12.105",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "3:32",
+   "q": "David a dansat de bucurie la mormântul lui Abner.",
+   "a": false
+  },
+  {
+   "id": "2sa.3.sub12.106",
    "age": "sub12",
    "t": "one",
-   "ref": "3:13",
-   "q": "Pe cine i-a cerut David lui Abner să-i aducă, înainte să facă legământ cu el?",
+   "ref": "3:1",
+   "q": "Cine era tot mai tare?",
    "opts": [
-    "pe Rițpa",
-    "pe Mical, fata lui Saul",
-    "pe Iș-Boșet"
+    "casa lui Saul",
+    "David",
+    "filistenii"
    ],
    "a": 1
   },
   {
-   "id": "2sa.3.sub12.5",
-   "age": "sub12",
-   "t": "one",
-   "ref": "3:32",
-   "q": "Ce a făcut împăratul David la mormântul lui Abner, la Hebron?",
-   "opts": [
-    "a cântat din harpă",
-    "s-a bucurat",
-    "a ridicat glasul și a plâns"
-   ],
-   "a": 2
-  },
-  {
-   "id": "2sa.3.sub12.6",
+   "id": "2sa.3.sub12.107",
    "age": "sub12",
    "t": "one",
    "ref": "3:2",
-   "q": "Cum se numea întâiul născut al lui David, născut la Hebron?",
+   "q": "Cum se numea întâiul fiu al lui David?",
    "opts": [
     "Solomon",
     "Amnon",
@@ -83,141 +69,149 @@
    "a": 1
   },
   {
-   "id": "2sa.3.sub12.18",
+   "id": "2sa.3.sub12.108",
    "age": "sub12",
    "t": "one",
-   "ref": "3:3",
-   "q": "Cum se numea fiul lui David născut din Maaca, fata lui Talmai, la Hebron?",
+   "ref": "3:32",
+   "q": "Ce a făcut David la mormântul lui Abner?",
    "opts": [
-    "Absalom",
-    "Amnon",
-    "Itream"
+    "a râs",
+    "a plâns",
+    "a dansat"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.3.sub12.109",
+   "age": "sub12",
+   "t": "one",
+   "ref": "3:35",
+   "q": "Ce a jurat David?",
+   "opts": [
+    "să nu guste pâine până la apus",
+    "să construiască o casă",
+    "să plece din țară"
    ],
    "a": 0
   },
   {
-   "id": "2sa.3.sub12.19",
+   "id": "2sa.3.sub12.110",
    "age": "sub12",
    "t": "one",
-   "ref": "3:27",
-   "q": "Cine l-a omorât pe Abner, la poarta Hebronului?",
+   "ref": "3:6",
+   "q": "Cine a ținut cu casa lui Saul?",
    "opts": [
-    "David",
     "Ioab",
-    "Iș-Boșet"
+    "David",
+    "Abner"
    ],
-   "a": 1
+   "a": 2
   },
   {
-   "id": "2sa.3.sub12.24",
+   "id": "2sa.3.sub12.121",
    "age": "sub12",
    "t": "match",
-   "ref": "3:2-39",
-   "q": "Asociază fiecare nume sau loc cu ce se spune despre el.",
+   "ref": "3:1-39",
+   "q": "Asociază fiecare nume cu ce se spune despre el în capitol.",
    "pairs": [
     [
-     "Amnon",
-     "întâiul fiu al lui David, născut la Hebron"
-    ],
-    [
-     "Mical",
-     "fata lui Saul, adusă înapoi lui David"
+     "David",
+     "împăratul care a plâns"
     ],
     [
      "Abner",
-     "căpetenia oștirii lui Saul, omorât la Hebron"
+     "căpetenia oștirii lui Saul"
     ],
     [
      "Ioab",
-     "cel care l-a omorât pe Abner"
+     "fiul Țeruiei"
     ],
     [
-     "Hebron",
-     "cetatea unde a fost îngropat Abner"
+     "Iș-Boșet",
+     "fiul lui Saul"
+    ],
+    [
+     "Amnon",
+     "întâiul fiu al lui David"
     ]
    ]
   },
   {
-   "id": "2sa.3.sub12.10",
+   "id": "2sa.3.sub12.111",
    "age": "sub12",
    "t": "fill",
    "ref": "3:1",
+   "q": "David era tot mai ___",
    "a": [
     "tare"
-   ],
-   "q": "David era tot mai ___, și casa lui Saul mergea slăbind.",
-   "ctx": "În războiul dintre casa lui Saul și casa lui David:"
+   ]
   },
   {
-   "id": "2sa.3.sub12.11",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "3:32",
-   "a": [
-    "plâns"
-   ],
-   "q": "Împăratul a ridicat glasul și a ___ la mormântul lui Abner, și tot poporul plângea.",
-   "ctx": "La înmormântarea lui Abner, la Hebron:"
-  },
-  {
-   "id": "2sa.3.sub12.12",
+   "id": "2sa.3.sub12.112",
    "age": "sub12",
    "t": "fill",
    "ref": "3:2",
+   "q": "Întâiul lui născut a fost ___",
    "a": [
-    "Hebron"
-   ],
-   "q": "Lui David i s-au născut fii la ___.",
-   "ctx": "În anii în care David domnea peste Iuda:"
-  },
-  {
-   "id": "2sa.3.sub12.20",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "3:31",
-   "q": "Rupeți-vă hainele, încingeți-vă cu ___ și bociți-vă înaintea lui Abner!",
-   "ctx": "David, după moartea lui Abner:",
-   "a": [
-    "saci"
+    "Amnon"
    ]
   },
   {
-   "id": "2sa.3.sub12.21",
+   "id": "2sa.3.sub12.113",
    "age": "sub12",
    "t": "fill",
-   "ref": "3:35",
-   "q": "Tot poporul s-a apropiat de David ca să-l facă să ___ ceva cât era încă ziuă",
+   "ref": "3:32",
+   "q": "Împăratul a ridicat glasul și a ___ la mormântul lui Abner",
    "a": [
-    "mănânce"
+    "plâns"
    ]
   },
   {
-   "id": "2sa.3.sub12.13",
+   "id": "2sa.3.sub12.114",
    "age": "sub12",
-   "t": "multi",
-   "ref": "3:2-3",
-   "q": "Care dintre aceștia erau fii ai lui David, născuți la Hebron?",
-   "opts": [
-    "Solomon",
-    "Amnon",
-    "Absalom"
-   ],
+   "t": "fill",
+   "ref": "3:36",
+   "q": "toți au găsit că era ___ ce făcuse împăratul",
    "a": [
-    1,
-    2
-   ],
-   "explain": "Solomon nu s-a născut la Hebron; Amnon și Absalom da."
+    "bine"
+   ]
   },
   {
-   "id": "2sa.3.sub12.14",
+   "id": "2sa.3.sub12.115",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "3:20",
+   "q": "David a dat un ___ în cinstea lui Abner",
+   "a": [
+    "ospăț"
+   ]
+  },
+  {
+   "id": "2sa.3.sub12.116",
    "age": "sub12",
    "t": "multi",
-   "ref": "3:31",
-   "q": "Ce le-a spus David lui Ioab și poporului să facă după moartea lui Abner?",
+   "ref": "3:2-5",
+   "q": "Ce se spune despre fiii lui David?",
    "opts": [
-    "să-și rupă hainele",
-    "să facă un ospăț",
-    "să se bocească înaintea lui Abner"
+    "s-au născut la Hebron",
+    "erau șase",
+    "erau treizeci"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "2sa.3.sub12.117",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "3:20",
+   "q": "Ce a făcut David pentru Abner?",
+   "opts": [
+    "a dat un ospăț",
+    "l-a alungat",
+    "l-a primit bine"
    ],
    "a": [
     0,
@@ -225,15 +219,31 @@
    ]
   },
   {
-   "id": "2sa.3.sub12.15",
+   "id": "2sa.3.sub12.118",
    "age": "sub12",
    "t": "multi",
-   "ref": "3:27",
-   "q": "Unde și cum l-a omorât Ioab pe Abner?",
+   "ref": "3:32",
+   "q": "Ce s-a întâmplat la mormânt?",
    "opts": [
-    "la iazul din Gabaon",
-    "în mijlocul porții",
-    "la Hebron"
+    "tot poporul a plâns",
+    "au dansat",
+    "David a plâns"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "2sa.3.sub12.119",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "3:31",
+   "q": "Ce a poruncit David?",
+   "opts": [
+    "să cânte de bucurie",
+    "să-și rupă hainele",
+    "să se încingă cu saci"
    ],
    "a": [
     1,
@@ -241,31 +251,15 @@
    ]
   },
   {
-   "id": "2sa.3.sub12.22",
-   "age": "sub12",
-   "t": "multi",
-   "ref": "3:13-14",
-   "q": "Pe cine a cerut David să-i fie adusă înapoi, înainte de legământul cu Abner?",
-   "opts": [
-    "pe Rițpa",
-    "pe fata lui Saul",
-    "pe Mical"
-   ],
-   "a": [
-    1,
-    2
-   ]
-  },
-  {
-   "id": "2sa.3.sub12.23",
+   "id": "2sa.3.sub12.120",
    "age": "sub12",
    "t": "multi",
    "ref": "3:36-37",
-   "q": "Ce a înțeles tot poporul după moartea lui Abner?",
+   "q": "Ce au înțeles toți?",
    "opts": [
-    "că David a poruncit uciderea lui Abner",
-    "că lucrul făcut de David era bine",
-    "că Abner nu fusese ucis din porunca împăratului"
+    "că David era vinovat",
+    "că ce a făcut David era bine",
+    "că împăratul n-a poruncit asta"
    ],
    "a": [
     1,

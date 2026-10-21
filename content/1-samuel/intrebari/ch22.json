@@ -3,249 +3,213 @@
  "reviewed": false,
  "questions": [
   {
-   "id": "1sa.22.sub12.1",
+   "id": "1sa.22.sub12.101",
    "age": "sub12",
    "t": "tf",
    "ref": "22:1",
-   "q": "Fugind de Saul, David a scăpat în peștera Adulam.",
+   "q": "David a scăpat în peștera Adulam.",
    "a": true
   },
   {
-   "id": "1sa.22.sub12.2",
-   "age": "sub12",
-   "t": "tf",
-   "ref": "22:3",
-   "q": "David și-a dus tatăl și mama în țara Moabului.",
-   "a": true
-  },
-  {
-   "id": "1sa.22.sub12.3",
-   "age": "sub12",
-   "t": "tf",
-   "ref": "22:17",
-   "q": "Slujitorii lui Saul au ascultat îndată porunca de a-i omorî pe preoți.",
-   "a": false,
-   "explain": "Slujitorii n-au voit să întindă mâna asupra preoților Domnului (22:17)."
-  },
-  {
-   "id": "1sa.22.sub12.16",
+   "id": "1sa.22.sub12.102",
    "age": "sub12",
    "t": "tf",
    "ref": "22:2",
-   "q": "La David s-au strâns aproape patru sute de oameni.",
+   "q": "Aproape patru sute de oameni s-au strâns la David.",
    "a": true
   },
   {
-   "id": "1sa.22.sub12.17",
+   "id": "1sa.22.sub12.103",
    "age": "sub12",
    "t": "tf",
    "ref": "22:3",
-   "q": "David și-a lăsat părinții în grija lui Saul.",
-   "a": false,
-   "explain": "I-a dus în țara Moabului."
+   "q": "David și-a dus părinții în țara Moabului.",
+   "a": true
   },
   {
-   "id": "1sa.22.sub12.4",
+   "id": "1sa.22.sub12.104",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "22:20",
+   "q": "Abiatar a scăpat și a fugit la David.",
+   "a": true
+  },
+  {
+   "id": "1sa.22.sub12.105",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "22:1",
+   "q": "David s-a ascuns într-un turn înalt.",
+   "a": false
+  },
+  {
+   "id": "1sa.22.sub12.106",
    "age": "sub12",
    "t": "one",
    "ref": "22:1",
-   "q": "În ce peșteră a scăpat David după fuga de la Gat?",
+   "q": "Unde a scăpat David?",
    "opts": [
-    "peștera Adulam",
-    "peștera Macpela",
-    "peștera din En-Ghedi"
+    "pe o corabie",
+    "în peștera Adulam",
+    "în Egipt"
    ],
-   "a": 0
+   "a": 1
   },
   {
-   "id": "1sa.22.sub12.5",
+   "id": "1sa.22.sub12.107",
    "age": "sub12",
    "t": "one",
-   "ref": "22:18",
-   "q": "Cine i-a omorât pe preoții de la Nob?",
+   "ref": "22:2",
+   "q": "Câți oameni s-au strâns la David?",
    "opts": [
-    "Doeg, Edomitul",
-    "Saul însuși",
-    "Abner"
-   ],
-   "a": 0
-  },
-  {
-   "id": "1sa.22.sub12.6",
-   "age": "sub12",
-   "t": "one",
-   "ref": "22:20",
-   "q": "Care fiu al lui Ahimelec a scăpat și a fugit la David?",
-   "opts": [
-    "Abiatar",
-    "Ahimaaț",
-    "Ahitub"
-   ],
-   "a": 0
-  },
-  {
-   "id": "1sa.22.sub12.18",
-   "age": "sub12",
-   "t": "one",
-   "ref": "22:3",
-   "q": "În ce țară și-a dus David părinții?",
-   "opts": [
-    "în Edom",
-    "în Egipt",
-    "în Moab"
+    "zece",
+    "un milion",
+    "aproape patru sute"
    ],
    "a": 2
   },
   {
-   "id": "1sa.22.sub12.19",
+   "id": "1sa.22.sub12.108",
+   "age": "sub12",
+   "t": "one",
+   "ref": "22:1",
+   "q": "Cine a venit la David în peșteră?",
+   "opts": [
+    "filistenii",
+    "frații lui și casa tatălui său",
+    "leii"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.22.sub12.109",
    "age": "sub12",
    "t": "one",
    "ref": "22:5",
-   "q": "Cum se numea prorocul care i-a spus lui David să intre în țara lui Iuda?",
+   "q": "Ce proroc i-a vorbit lui David?",
    "opts": [
-    "Natan",
-    "Samuel",
-    "Gad"
+    "Gad",
+    "Eli",
+    "Nabal"
    ],
-   "a": 2
+   "a": 0
   },
   {
-   "id": "1sa.22.sub12.24",
+   "id": "1sa.22.sub12.110",
+   "age": "sub12",
+   "t": "one",
+   "ref": "22:20",
+   "q": "Cine a fugit la David?",
+   "opts": [
+    "Abiatar",
+    "Saul",
+    "Doeg"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.22.sub12.121",
    "age": "sub12",
    "t": "match",
    "ref": "22:1-23",
-   "q": "Asociază fiecare nume sau loc cu ce se spune despre el.",
+   "q": "Asociază fiecare nume sau lucru cu ce se spune despre el în capitol.",
    "pairs": [
     [
-     "Adulam",
-     "peștera unde a scăpat David"
-    ],
-    [
-     "Moab",
-     "țara unde au stat părinții lui David"
+     "David",
+     "a scăpat în peștera Adulam"
     ],
     [
      "Gad",
      "prorocul care i-a vorbit lui David"
     ],
     [
-     "Heret",
-     "pădurea unde a ajuns David"
+     "Abiatar",
+     "a fugit la David"
     ],
     [
-     "Abiatar",
-     "fiul lui Ahimelec care a scăpat"
+     "împăratul Moabului",
+     "a primit pe părinții lui David"
+    ],
+    [
+     "Saul",
+     "ședea sub tamarisc cu sulița în mână"
     ]
    ]
   },
   {
-   "id": "1sa.22.sub12.10",
+   "id": "1sa.22.sub12.111",
    "age": "sub12",
    "t": "fill",
    "ref": "22:1",
+   "q": "a scăpat în peștera ___",
    "a": [
     "Adulam"
-   ],
-   "q": "David a plecat de acolo și a scăpat în peștera ___.",
-   "ctx": "Fuga lui David de Saul:"
+   ]
   },
   {
-   "id": "1sa.22.sub12.11",
+   "id": "1sa.22.sub12.112",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "22:2",
+   "q": "s-au unit cu el aproape patru sute de ___",
+   "a": [
+    "oameni"
+   ]
+  },
+  {
+   "id": "1sa.22.sub12.113",
    "age": "sub12",
    "t": "fill",
    "ref": "22:23",
+   "q": "Rămâi cu mine, nu te ___ de nimic",
    "a": [
-    "ta"
-   ],
-   "q": "Rămâi cu mine, nu te teme de nimic, căci cel ce caută să ia viața mea caută s-o ia și pe a ___;",
-   "ctx": "David, către Abiatar:"
+    "teme"
+   ]
   },
   {
-   "id": "1sa.22.sub12.12",
+   "id": "1sa.22.sub12.114",
    "age": "sub12",
    "t": "fill",
-   "ref": "22:5",
+   "ref": "22:3",
+   "q": "tatălui meu și mamei mele să ___ la voi",
    "a": [
-    "Iuda"
-   ],
-   "q": "„Nu ședea în cetățuie, ci du-te și intră în țara lui ___.\"",
-   "ctx": "Prorocul Gad, către David:"
+    "vină"
+   ]
   },
   {
-   "id": "1sa.22.sub12.20",
+   "id": "1sa.22.sub12.115",
    "age": "sub12",
    "t": "fill",
    "ref": "22:1",
-   "q": "Frații lui și toată casa tatălui său au aflat și s-au coborât la ___.",
+   "q": "au aflat și s-au coborât la ___.",
    "a": [
     "el"
    ]
   },
   {
-   "id": "1sa.22.sub12.21",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "22:20",
-   "q": "Numele lui era Abiatar. A fugit la ___",
-   "a": [
-    "David"
-   ]
-  },
-  {
-   "id": "1sa.22.sub12.13",
+   "id": "1sa.22.sub12.116",
    "age": "sub12",
    "t": "multi",
-   "ref": "22:2",
-   "q": "Cine s-au strâns la David în peștera Adulam?",
+   "ref": "22:1-2",
+   "q": "Cine s-a strâns la David?",
    "opts": [
-    "cei aflați în nevoie",
-    "cei cu datorii",
-    "cei nemulțumiți"
+    "oameni aflați în nevoie",
+    "frații lui",
+    "filistenii"
    ],
    "a": [
     0,
-    1,
-    2
+    1
    ]
   },
   {
-   "id": "1sa.22.sub12.14",
-   "age": "sub12",
-   "t": "multi",
-   "ref": "22:1",
-   "q": "Cine au venit la David în peștera Adulam?",
-   "opts": [
-    "Saul",
-    "toată casa tatălui său",
-    "frații lui"
-   ],
-   "a": [
-    1,
-    2
-   ]
-  },
-  {
-   "id": "1sa.22.sub12.15",
-   "age": "sub12",
-   "t": "multi",
-   "ref": "22:5",
-   "q": "Ce proroc i-a spus lui David să meargă în țara lui Iuda?",
-   "opts": [
-    "Natan",
-    "Ahia",
-    "Samuel"
-   ],
-   "a": [],
-   "explain": "Niciun răspuns corect: prorocul Gad (22:5)."
-  },
-  {
-   "id": "1sa.22.sub12.22",
+   "id": "1sa.22.sub12.117",
    "age": "sub12",
    "t": "multi",
    "ref": "22:3-4",
-   "q": "Ce a făcut David cu părinții lui?",
+   "q": "Ce a făcut David pentru părinții lui?",
    "opts": [
-    "au locuit acolo cât a stat David în cetățuie",
+    "i-a lăsat la împăratul Moabului",
     "i-a dus în țara Moabului",
     "i-a lăsat la Saul"
    ],
@@ -255,19 +219,51 @@
    ]
   },
   {
-   "id": "1sa.22.sub12.23",
+   "id": "1sa.22.sub12.118",
    "age": "sub12",
    "t": "multi",
-   "ref": "22:20-23",
-   "q": "Ce s-a întâmplat cu Abiatar?",
+   "ref": "22:5",
+   "q": "Ce a spus Gad?",
    "opts": [
-    "a scăpat",
-    "a rămas cu David",
-    "a rămas cu Saul"
+    "să nu stea în cetățuie",
+    "să meargă în țara lui Iuda",
+    "să plece în Egipt"
    ],
    "a": [
     0,
     1
+   ]
+  },
+  {
+   "id": "1sa.22.sub12.119",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "22:20",
+   "q": "Ce s-a întâmplat cu Abiatar?",
+   "opts": [
+    "a scăpat",
+    "a fugit la David",
+    "a rămas la Saul"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.22.sub12.120",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "22:23",
+   "q": "Ce i-a spus David lui Abiatar?",
+   "opts": [
+    "să plece departe",
+    "să nu se teamă",
+    "să rămână cu el"
+   ],
+   "a": [
+    1,
+    2
    ]
   },
   {

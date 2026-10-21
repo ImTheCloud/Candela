@@ -3,268 +3,263 @@
  "reviewed": false,
  "questions": [
   {
-   "id": "1sa.14.sub12.1",
+   "id": "1sa.14.sub12.101",
    "age": "sub12",
    "t": "tf",
    "ref": "14:1",
-   "q": "Ionatan s-a dus la straja filistenilor doar cu tânărul care-i purta armele.",
+   "q": "Ionatan s-a dus spre filisteni împreună cu cel ce-i purta armele.",
    "a": true
   },
   {
-   "id": "1sa.14.sub12.2",
-   "age": "sub12",
-   "t": "tf",
-   "ref": "14:27",
-   "q": "Ionatan a gustat miere cu vârful toiagului și ochii i s-au luminat.",
-   "a": true
-  },
-  {
-   "id": "1sa.14.sub12.3",
-   "age": "sub12",
-   "t": "tf",
-   "ref": "14:45",
-   "q": "Saul l-a omorât pe Ionatan pentru că a mâncat miere.",
-   "a": false,
-   "explain": "Poporul l-a scăpat pe Ionatan de la moarte (14:45)."
-  },
-  {
-   "id": "1sa.14.sub12.16",
+   "id": "1sa.14.sub12.102",
    "age": "sub12",
    "t": "tf",
    "ref": "14:6",
-   "q": "Ionatan a spus: „Poate că Domnul va lucra pentru noi.”",
+   "q": "Ionatan a spus că Domnul poate izbăvi prin puțini oameni.",
    "a": true
   },
   {
-   "id": "1sa.14.sub12.17",
+   "id": "1sa.14.sub12.103",
    "age": "sub12",
    "t": "tf",
-   "ref": "14:2",
-   "q": "Saul stătea sub un măslin, la marginea cetății Ghibea.",
-   "a": false,
-   "explain": "Stătea sub rodiul din Migron."
+   "ref": "14:27",
+   "q": "Ionatan a gustat miere cu vârful toiagului.",
+   "a": true
   },
   {
-   "id": "1sa.14.sub12.4",
+   "id": "1sa.14.sub12.104",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "14:1",
+   "q": "Ionatan s-a dus singur, fără nimeni.",
+   "a": false
+  },
+  {
+   "id": "1sa.14.sub12.105",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "14:11",
+   "q": "Ionatan a fugit de filisteni.",
+   "a": false
+  },
+  {
+   "id": "1sa.14.sub12.106",
+   "age": "sub12",
+   "t": "one",
+   "ref": "14:1",
+   "q": "Cu cine s-a dus Ionatan?",
+   "opts": [
+    "cu cel ce-i purta armele",
+    "cu Samuel",
+    "cu Saul"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.14.sub12.107",
    "age": "sub12",
    "t": "one",
    "ref": "14:27",
-   "q": "Ce a gustat Ionatan în pădure, fără să știe de jurământul tatălui său?",
+   "q": "Ce a gustat Ionatan?",
    "opts": [
-    "miere",
     "pâine",
-    "lapte"
+    "carne",
+    "miere"
    ],
-   "a": 0
+   "a": 2
   },
   {
-   "id": "1sa.14.sub12.5",
+   "id": "1sa.14.sub12.108",
    "age": "sub12",
    "t": "one",
-   "ref": "14:24",
-   "q": "Ce jurământ pusese Saul pe popor?",
+   "ref": "14:27",
+   "q": "Cu ce a luat Ionatan miere?",
    "opts": [
-    "să nu vorbească",
-    "să nu mănânce pâine până seara",
-    "să nu doarmă"
+    "cu mâna",
+    "cu vârful toiagului",
+    "cu lingura"
    ],
    "a": 1
   },
   {
-   "id": "1sa.14.sub12.6",
+   "id": "1sa.14.sub12.109",
    "age": "sub12",
    "t": "one",
    "ref": "14:45",
-   "q": "Cine l-a scăpat pe Ionatan de la moarte?",
+   "q": "Cine l-a scăpat pe Ionatan?",
    "opts": [
+    "leii",
     "Samuel",
-    "poporul",
-    "Abner"
+    "poporul"
    ],
-   "a": 1
+   "a": 2
   },
   {
-   "id": "1sa.14.sub12.18",
+   "id": "1sa.14.sub12.110",
    "age": "sub12",
    "t": "one",
-   "ref": "14:2",
-   "q": "Sub ce pom stătea Saul, la marginea cetății Ghibea?",
+   "ref": "14:23",
+   "q": "Cine a izbăvit pe Israel în ziua aceea?",
    "opts": [
-    "sub rodiul din Migron",
-    "sub un cedru",
-    "sub stejarul din Tabor"
+    "filistenii",
+    "un păstor",
+    "Domnul"
    ],
-   "a": 0
+   "a": 2
   },
   {
-   "id": "1sa.14.sub12.19",
-   "age": "sub12",
-   "t": "one",
-   "ref": "14:49",
-   "q": "Cum se numea fata cea mai mare a lui Saul?",
-   "opts": [
-    "Merab",
-    "Mical",
-    "Rițpa"
-   ],
-   "a": 0
-  },
-  {
-   "id": "1sa.14.sub12.24",
+   "id": "1sa.14.sub12.121",
    "age": "sub12",
    "t": "match",
-   "ref": "14:1-50",
-   "q": "Asociază fiecare nume cu ce se spune despre el.",
+   "ref": "14:1-52",
+   "q": "Asociază fiecare nume sau lucru cu ce se spune despre el în capitol.",
    "pairs": [
     [
      "Ionatan",
-     "fiul lui Saul care a pătruns la straja filistenilor"
+     "fiul lui Saul care a luptat cu filistenii"
     ],
     [
      "Saul",
-     "cel care stătea sub rodiul din Migron"
+     "tatăl lui Ionatan"
     ],
     [
-     "Merab",
-     "fata cea mare a lui Saul"
+     "cel ce purta armele",
+     "a mers cu Ionatan"
     ],
     [
-     "Mical",
-     "fata cea mică a lui Saul"
+     "mierea",
+     "a gustat-o Ionatan"
     ],
     [
-     "Ahinoam",
-     "nevasta lui Saul"
+     "poporul",
+     "a scăpat pe Ionatan"
     ]
    ]
   },
   {
-   "id": "1sa.14.sub12.10",
+   "id": "1sa.14.sub12.111",
    "age": "sub12",
    "t": "fill",
    "ref": "14:27",
+   "q": "l-a vârât într-un fagure de ___",
    "a": [
     "miere"
-   ],
-   "q": "l-a vârât într-un fagure de ___ și a dus mâna la gură, și ochii i s-au luminat.",
-   "ctx": "Ionatan, în pădure, fără să știe de jurământul tatălui său:"
+   ]
   },
   {
-   "id": "1sa.14.sub12.11",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "14:45",
-   "a": [
-    "Ionatan"
-   ],
-   "q": "Astfel, poporul a scăpat pe ___ de la moarte.",
-   "ctx": "După ce sorțul a căzut pe fiul lui Saul:"
-  },
-  {
-   "id": "1sa.14.sub12.12",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "14:6",
-   "a": [
-    "Domnul"
-   ],
-   "q": "„Vino și să pătrundem până la straja acestor netăiați împrejur. Poate că ___ va lucra pentru noi,",
-   "ctx": "Ionatan, către tânărul care îi purta armele:"
-  },
-  {
-   "id": "1sa.14.sub12.20",
+   "id": "1sa.14.sub12.112",
    "age": "sub12",
    "t": "fill",
    "ref": "14:1",
-   "q": "Într-o zi, Ionatan, fiul lui Saul, a zis tânărului care-i purta ___",
+   "q": "Ionatan, fiul lui Saul, a zis tânărului care-i purta ___",
    "a": [
     "armele"
    ]
   },
   {
-   "id": "1sa.14.sub12.21",
+   "id": "1sa.14.sub12.113",
    "age": "sub12",
    "t": "fill",
-   "ref": "14:2",
-   "q": "Saul stătea la marginea cetății ___, sub rodiul din Migron",
+   "ref": "14:23",
+   "q": "Domnul a izbăvit pe ___ în ziua aceea",
    "a": [
-    "Ghibea"
+    "Israel"
    ]
   },
   {
-   "id": "1sa.14.sub12.13",
+   "id": "1sa.14.sub12.114",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "14:45",
+   "q": "căci cu Dumnezeu a lucrat el în ziua ___.",
+   "a": [
+    "aceasta"
+   ]
+  },
+  {
+   "id": "1sa.14.sub12.115",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "14:13",
+   "q": "Ionatan s-a suit ajutându-se cu mâinile și ___",
+   "a": [
+    "picioarele"
+   ]
+  },
+  {
+   "id": "1sa.14.sub12.116",
    "age": "sub12",
    "t": "multi",
-   "ref": "14:49",
-   "q": "Care erau fiii lui Saul?",
+   "ref": "14:1-3",
+   "q": "Ce a făcut Ionatan?",
    "opts": [
-    "Ionatan",
-    "Ișvi",
-    "Malchișua"
+    "n-a spus nimic tatălui său",
+    "a plecat cu cel ce-i purta armele",
+    "a plecat cu toată oștirea"
    ],
    "a": [
     0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.14.sub12.117",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "14:6",
+   "q": "Ce a spus Ionatan?",
+   "opts": [
+    "„Domnul poate izbăvi prin puțini”",
+    "„Hai să fugim”",
+    "„Poate că Domnul va lucra pentru noi”"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.14.sub12.118",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "14:15",
+   "q": "Ce s-a întâmplat în tabăra filistenilor?",
+   "opts": [
+    "au cântat",
+    "s-au înspăimântat",
+    "a intrat groaza"
+   ],
+   "a": [
     1,
     2
    ]
   },
   {
-   "id": "1sa.14.sub12.14",
+   "id": "1sa.14.sub12.119",
    "age": "sub12",
    "t": "multi",
-   "ref": "14:49",
-   "q": "Care erau fetele lui Saul?",
+   "ref": "14:27",
+   "q": "Ce a făcut Ionatan?",
    "opts": [
-    "Merab",
-    "Mical",
-    "Ahinoam"
+    "i s-au luminat ochii",
+    "a gustat miere",
+    "a mâncat carne"
    ],
    "a": [
     0,
     1
-   ],
-   "explain": "Ahinoam era nevasta lui Saul (14:50)."
-  },
-  {
-   "id": "1sa.14.sub12.15",
-   "age": "sub12",
-   "t": "multi",
-   "ref": "14:2",
-   "q": "Sub ce copac stătea Saul la marginea cetății Ghibea?",
-   "opts": [
-    "sub un smochin",
-    "sub un stejar",
-    "sub un măslin"
-   ],
-   "a": [],
-   "explain": "Niciun răspuns corect: sub rodiul din Migron (14:2)."
-  },
-  {
-   "id": "1sa.14.sub12.22",
-   "age": "sub12",
-   "t": "multi",
-   "ref": "14:25-27",
-   "q": "Ce s-a întâmplat în pădure?",
-   "opts": [
-    "se găsea miere pe fața pământului",
-    "poporul a mâncat toată mierea;",
-    "Ionatan a gustat miere cu vârful toiagului"
-   ],
-   "a": [
-    0,
-    2
    ]
   },
   {
-   "id": "1sa.14.sub12.23",
+   "id": "1sa.14.sub12.120",
    "age": "sub12",
    "t": "multi",
-   "ref": "14:34-35",
-   "q": "Ce a făcut Saul?",
+   "ref": "14:45",
+   "q": "Ce a spus poporul?",
    "opts": [
-    "a poruncit să mănânce carnea cu sânge",
-    "a spus oamenilor să înjunghie vitele pe piatră",
-    "a zidit un altar Domnului"
+    "„Să fie pedepsit”",
+    "că Ionatan a făcut o mare izbăvire",
+    "„Să nu moară Ionatan”"
    ],
    "a": [
     1,

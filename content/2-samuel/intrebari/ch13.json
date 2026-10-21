@@ -3,249 +3,215 @@
  "reviewed": false,
  "questions": [
   {
-   "id": "2sa.13.sub12.1",
-   "age": "sub12",
-   "t": "tf",
-   "ref": "13:1",
-   "q": "Absalom, fiul lui David, avea o soră pe nume Tamar.",
-   "a": true
-  },
-  {
-   "id": "2sa.13.sub12.2",
+   "id": "2sa.13.sub12.101",
    "age": "sub12",
    "t": "tf",
    "ref": "13:23",
-   "q": "Absalom i-a poftit pe toți fiii împăratului la tunsul oilor.",
+   "q": "Absalom a poftit pe toți fiii împăratului la tunsul oilor.",
    "a": true
   },
   {
-   "id": "2sa.13.sub12.3",
-   "age": "sub12",
-   "t": "tf",
-   "ref": "13:37",
-   "q": "După moartea lui Amnon, Absalom a rămas liniștit la Ierusalim.",
-   "a": false,
-   "explain": "Absalom a fugit la Talmai, împăratul Gheșurului (13:37)."
-  },
-  {
-   "id": "2sa.13.sub12.16",
-   "age": "sub12",
-   "t": "tf",
-   "ref": "13:5",
-   "q": "Amnon s-a făcut bolnav ca să-l vadă tatăl lui.",
-   "a": true
-  },
-  {
-   "id": "2sa.13.sub12.17",
+   "id": "2sa.13.sub12.102",
    "age": "sub12",
    "t": "tf",
    "ref": "13:31",
-   "q": "David a dansat de bucurie când a auzit zvonul că fiii lui au murit.",
-   "a": false,
-   "explain": "David și-a rupt hainele și s-a culcat pe pământ."
+   "q": "David și-a rupt hainele când a auzit vestea rea.",
+   "a": true
   },
   {
-   "id": "2sa.13.sub12.4",
+   "id": "2sa.13.sub12.103",
    "age": "sub12",
-   "t": "one",
-   "ref": "13:37",
-   "q": "La cine a fugit Absalom, după moartea lui Amnon?",
-   "opts": [
-    "la Hanun",
-    "la Hiram",
-    "la Talmai, împăratul Gheșurului"
-   ],
-   "a": 2
-  },
-  {
-   "id": "2sa.13.sub12.5",
-   "age": "sub12",
-   "t": "one",
-   "ref": "13:29",
-   "q": "Pe ce au încălecat fiii împăratului când au fugit de la tunsul oilor?",
-   "opts": [
-    "pe cai",
-    "pe cămile",
-    "pe catâri"
-   ],
-   "a": 2
-  },
-  {
-   "id": "2sa.13.sub12.6",
-   "age": "sub12",
-   "t": "one",
+   "t": "tf",
    "ref": "13:38",
-   "q": "Câți ani a stat Absalom la Gheșur?",
-   "opts": [
-    "șapte ani",
-    "un an",
-    "trei ani"
-   ],
-   "a": 2
+   "q": "Absalom a stat trei ani la Gheșur.",
+   "a": true
   },
   {
-   "id": "2sa.13.sub12.18",
+   "id": "2sa.13.sub12.104",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "13:34",
+   "q": "Absalom a fugit la Ierusalim.",
+   "a": false
+  },
+  {
+   "id": "2sa.13.sub12.105",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "13:39",
+   "q": "David s-a bucurat și a dat o petrecere.",
+   "a": false
+  },
+  {
+   "id": "2sa.13.sub12.106",
    "age": "sub12",
    "t": "one",
-   "ref": "13:24",
-   "q": "Cine l-a poftit pe împărat la tunsul oilor?",
+   "ref": "13:1",
+   "q": "Cum se numea sora frumoasă a lui Absalom?",
    "opts": [
-    "Ionadab",
-    "Absalom",
-    "Amnon"
+    "Tamar",
+    "Abigail",
+    "Mical"
+   ],
+   "a": 0
+  },
+  {
+   "id": "2sa.13.sub12.107",
+   "age": "sub12",
+   "t": "one",
+   "ref": "13:3",
+   "q": "Cum era Ionadab?",
+   "opts": [
+    "foarte bătrân",
+    "foarte șiret",
+    "foarte sărac"
    ],
    "a": 1
   },
   {
-   "id": "2sa.13.sub12.19",
+   "id": "2sa.13.sub12.108",
    "age": "sub12",
    "t": "one",
-   "ref": "13:39",
-   "q": "Ce a făcut David după ce s-a mângâiat de moartea lui Amnon?",
+   "ref": "13:37",
+   "q": "Unde a fugit Absalom?",
    "opts": [
-    "l-a chemat îndată înapoi pe Absalom",
-    "l-a pedepsit pe Ionadab",
-    "a încetat să mai urmărească pe Absalom"
+    "la Gheșur",
+    "la Țiclag",
+    "la Hebron"
    ],
-   "a": 2
+   "a": 0
   },
   {
-   "id": "2sa.13.sub12.24",
+   "id": "2sa.13.sub12.109",
+   "age": "sub12",
+   "t": "one",
+   "ref": "13:31",
+   "q": "Ce a făcut David când a auzit zvonul?",
+   "opts": [
+    "a început să cânte",
+    "și-a rupt hainele",
+    "a plecat la vânătoare"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.13.sub12.110",
+   "age": "sub12",
+   "t": "one",
+   "ref": "13:1",
+   "q": "Al cui fiu era Absalom?",
+   "opts": [
+    "al lui David",
+    "al lui Saul",
+    "al lui Ioab"
+   ],
+   "a": 0
+  },
+  {
+   "id": "2sa.13.sub12.121",
    "age": "sub12",
    "t": "match",
-   "ref": "13:1-38",
-   "q": "Asociază fiecare nume sau loc cu ce se spune despre el.",
+   "ref": "13:1-39",
+   "q": "Asociază fiecare nume sau lucru cu ce se spune despre el în capitol.",
    "pairs": [
     [
      "Absalom",
-     "fiul lui David, care a avut tunsul oilor"
+     "fiul lui David care a fugit la Gheșur"
     ],
     [
      "Tamar",
-     "sora frumoasă a lui Absalom"
+     "sora lui Absalom"
+    ],
+    [
+     "Amnon",
+     "alt fiu al lui David"
     ],
     [
      "Ionadab",
      "prietenul șiret al lui Amnon"
     ],
     [
-     "Gheșur",
-     "locul unde a fugit Absalom"
-    ],
-    [
-     "Baal-Hațor",
-     "locul tunsului oilor"
+     "Talmai",
+     "împăratul Gheșurului"
     ]
    ]
   },
   {
-   "id": "2sa.13.sub12.10",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "13:38",
-   "a": [
-    "Gheșur"
-   ],
-   "q": "Absalom a stat trei ani la ___, unde se dusese după ce fugise.",
-   "ctx": "După moartea lui Amnon:"
-  },
-  {
-   "id": "2sa.13.sub12.11",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "13:36",
-   "a": [
-    "plâns"
-   ],
-   "q": "Au ridicat glasul și au ___, și împăratul și toți slujitorii lui au plâns mult.",
-   "ctx": "Când fiii împăratului s-au întors de la tunsul oilor:"
-  },
-  {
-   "id": "2sa.13.sub12.12",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "13:3",
-   "a": [
-    "șiret"
-   ],
-   "q": "Și Ionadab era un om foarte ___.",
-   "ctx": "Despre prietenul lui Amnon:"
-  },
-  {
-   "id": "2sa.13.sub12.20",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "13:34",
-   "q": "Absalom a ___.",
-   "a": [
-    "fugit"
-   ]
-  },
-  {
-   "id": "2sa.13.sub12.21",
+   "id": "2sa.13.sub12.111",
    "age": "sub12",
    "t": "fill",
    "ref": "13:1",
-   "q": "Absalom, fiul lui David, avea o soră frumoasă, numită ___, și Amnon, fiul lui David, a iubit-o.",
+   "q": "Absalom, fiul lui David, avea o soră frumoasă, numită ___",
    "a": [
     "Tamar"
    ]
   },
   {
-   "id": "2sa.13.sub12.13",
+   "id": "2sa.13.sub12.112",
    "age": "sub12",
-   "t": "multi",
-   "ref": "13:31",
-   "q": "Ce a făcut David când a auzit zvonul că toți fiii lui au fost uciși?",
-   "opts": [
-    "s-a culcat pe pământ",
-    "a pornit la război",
-    "s-a sculat și și-a rupt hainele"
-   ],
-   "a": [
-    0,
-    2
-   ]
-  },
-  {
-   "id": "2sa.13.sub12.14",
-   "age": "sub12",
-   "t": "multi",
+   "t": "fill",
    "ref": "13:23",
-   "q": "Pe cine a poftit Absalom la tunsul oilor?",
-   "opts": [
-    "pe toți preoții",
-    "pe filisteni",
-    "pe toți fiii împăratului"
-   ],
+   "q": "pe când Absalom avea tunsul ___ la Baal-Hațor",
    "a": [
-    2
+    "oilor"
    ]
   },
   {
-   "id": "2sa.13.sub12.15",
+   "id": "2sa.13.sub12.113",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "13:38",
+   "q": "Absalom a stat trei ani la ___",
+   "a": [
+    "Gheșur"
+   ]
+  },
+  {
+   "id": "2sa.13.sub12.114",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "13:31",
+   "q": "Împăratul s-a sculat, și-a rupt ___",
+   "a": [
+    "hainele"
+   ]
+  },
+  {
+   "id": "2sa.13.sub12.115",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "13:3",
+   "q": "Ionadab era un om foarte ___",
+   "a": [
+    "șiret"
+   ]
+  },
+  {
+   "id": "2sa.13.sub12.116",
    "age": "sub12",
    "t": "multi",
    "ref": "13:36",
-   "q": "Cine s-a întors plângând la David, după tunsul oilor?",
+   "q": "Ce au făcut fiii împăratului când au venit?",
    "opts": [
-    "Absalom",
-    "Talmai",
-    "Tamar"
+    "au ridicat glasul",
+    "au plâns",
+    "au dansat"
    ],
-   "a": [],
-   "explain": "Niciun răspuns corect: s-au întors fiii împăratului; Absalom fugise (13:34-36)."
+   "a": [
+    0,
+    1
+   ]
   },
   {
-   "id": "2sa.13.sub12.22",
+   "id": "2sa.13.sub12.117",
    "age": "sub12",
    "t": "multi",
-   "ref": "13:23-24",
-   "q": "Ce a făcut Absalom?",
+   "ref": "13:31",
+   "q": "Ce a făcut David?",
    "opts": [
-    "a poftit pe Ioab",
-    "a poftit pe toți fiii împăratului",
-    "a avut tunsul oilor la Baal-Hațor"
+    "a plecat la război",
+    "s-a culcat pe pământ",
+    "și-a rupt hainele"
    ],
    "a": [
     1,
@@ -253,18 +219,50 @@
    ]
   },
   {
-   "id": "2sa.13.sub12.23",
+   "id": "2sa.13.sub12.118",
    "age": "sub12",
    "t": "multi",
-   "ref": "13:29",
-   "q": "Ce au făcut fiii împăratului când a fost ucis Amnon?",
+   "ref": "13:37",
+   "q": "Ce se spune despre Absalom?",
    "opts": [
-    "au încălecat pe catâri",
-    "au luptat cu Absalom",
-    "au fugit"
+    "a fugit",
+    "s-a dus la Talmai, împăratul Gheșurului",
+    "a rămas la Ierusalim"
    ],
    "a": [
     0,
+    1
+   ]
+  },
+  {
+   "id": "2sa.13.sub12.119",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "13:1",
+   "q": "Care erau fii ai lui David?",
+   "opts": [
+    "Amnon",
+    "Absalom",
+    "Ionadab"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "2sa.13.sub12.120",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "13:23",
+   "q": "Ce a făcut Absalom?",
+   "opts": [
+    "a plecat din țară",
+    "a poftit pe fiii împăratului",
+    "avea tunsul oilor"
+   ],
+   "a": [
+    1,
     2
    ]
   },

@@ -3,237 +3,215 @@
  "reviewed": false,
  "questions": [
   {
-   "id": "1sa.25.sub12.1",
+   "id": "1sa.25.sub12.101",
    "age": "sub12",
    "t": "tf",
    "ref": "25:1",
-   "q": "Samuel a murit și a fost îngropat la Rama.",
+   "q": "Samuel a murit și tot Israelul l-a plâns.",
    "a": true
   },
   {
-   "id": "1sa.25.sub12.2",
+   "id": "1sa.25.sub12.102",
    "age": "sub12",
    "t": "tf",
    "ref": "25:3",
-   "q": "Abigail, nevasta lui Nabal, era o femeie cu judecată și frumoasă.",
+   "q": "Abigail era o femeie cu judecată și frumoasă.",
    "a": true
   },
   {
-   "id": "1sa.25.sub12.3",
+   "id": "1sa.25.sub12.103",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "25:18",
+   "q": "Abigail a luat pâini, vin și alte daruri pentru David.",
+   "a": true
+  },
+  {
+   "id": "1sa.25.sub12.104",
    "age": "sub12",
    "t": "tf",
    "ref": "25:10",
-   "q": "Nabal i-a primit cu bucurie pe oamenii lui David și le-a dat mâncare.",
-   "a": false,
-   "explain": "Nabal a zis: „Cine este David?\" și n-a vrut să le dea nimic (25:10-11)."
+   "q": "Nabal a primit frumos pe oamenii lui David.",
+   "a": false
   },
   {
-   "id": "1sa.25.sub12.16",
+   "id": "1sa.25.sub12.105",
    "age": "sub12",
    "t": "tf",
-   "ref": "25:38",
-   "q": "Domnul a lovit pe Nabal și el a murit.",
-   "a": true
-  },
-  {
-   "id": "1sa.25.sub12.17",
-   "age": "sub12",
-   "t": "tf",
-   "ref": "25:13",
-   "q": "David a pornit după Nabal doar cu zece oameni.",
-   "a": false,
-   "explain": "Aproape patru sute de inși s-au suit după el."
-  },
-  {
-   "id": "1sa.25.sub12.4",
-   "age": "sub12",
-   "t": "one",
    "ref": "25:2",
-   "q": "Câte oi avea Nabal?",
-   "opts": [
-    "trei mii",
-    "zece mii",
-    "o sută"
-   ],
-   "a": 0
+   "q": "Nabal era un om sărac.",
+   "a": false
   },
   {
-   "id": "1sa.25.sub12.5",
+   "id": "1sa.25.sub12.106",
    "age": "sub12",
    "t": "one",
-   "ref": "25:18",
-   "q": "Ce a făcut Abigail ca să-l oprească pe David?",
+   "ref": "25:3",
+   "q": "Cum se numea nevasta lui Nabal?",
    "opts": [
-    "a fugit",
-    "i-a dus multe daruri",
-    "a chemat oaste"
-   ],
-   "a": 1
-  },
-  {
-   "id": "1sa.25.sub12.6",
-   "age": "sub12",
-   "t": "one",
-   "ref": "25:42",
-   "q": "Ce a devenit Abigail după moartea lui Nabal?",
-   "opts": [
-    "roabă",
-    "proorociță",
-    "nevasta lui David"
+    "Mical",
+    "Ana",
+    "Abigail"
    ],
    "a": 2
   },
   {
-   "id": "1sa.25.sub12.18",
+   "id": "1sa.25.sub12.107",
    "age": "sub12",
    "t": "one",
-   "ref": "25:4",
-   "q": "Ce făcea Nabal la Carmel, când a aflat David?",
+   "ref": "25:3",
+   "q": "Cum era Abigail?",
    "opts": [
-    "își tundea oile",
-    "vâna în pustie",
-    "își construia o casă"
+    "aspră și rea",
+    "cu judecată și frumoasă",
+    "foarte mică"
    ],
-   "a": 0
+   "a": 1
   },
   {
-   "id": "1sa.25.sub12.19",
+   "id": "1sa.25.sub12.108",
    "age": "sub12",
    "t": "one",
-   "ref": "25:13",
-   "q": "Câți oameni ai lui David au rămas la calabalâcuri?",
+   "ref": "25:18",
+   "q": "Ce a făcut Abigail pentru David?",
    "opts": [
-    "două sute",
-    "o sută",
-    "patru sute"
+    "a mâncat singură",
+    "a luat daruri pentru el",
+    "a fugit"
    ],
-   "a": 0
+   "a": 1
   },
   {
-   "id": "1sa.25.sub12.24",
+   "id": "1sa.25.sub12.109",
+   "age": "sub12",
+   "t": "one",
+   "ref": "25:10",
+   "q": "Cum a răspuns Nabal oamenilor lui David?",
+   "opts": [
+    "cu daruri",
+    "cu bucurie",
+    "rău, n-a vrut să dea nimic"
+   ],
+   "a": 2
+  },
+  {
+   "id": "1sa.25.sub12.110",
+   "age": "sub12",
+   "t": "one",
+   "ref": "25:20",
+   "q": "Pe ce a plecat Abigail?",
+   "opts": [
+    "pe o barcă",
+    "pe un cal",
+    "pe un măgar"
+   ],
+   "a": 2
+  },
+  {
+   "id": "1sa.25.sub12.121",
    "age": "sub12",
    "t": "match",
    "ref": "25:1-44",
-   "q": "Asociază fiecare nume sau loc cu ce se spune despre el.",
+   "q": "Asociază fiecare nume sau lucru cu ce se spune despre el în capitol.",
    "pairs": [
-    [
-     "Samuel",
-     "cel care a murit și a fost plâns de tot Israelul"
-    ],
-    [
-     "Nabal",
-     "omul bogat din Maon"
-    ],
     [
      "Abigail",
      "femeia cu judecată"
     ],
     [
-     "David",
-     "cel care a trimis zece tineri"
+     "Nabal",
+     "bărbatul bogat și rău"
     ],
     [
-     "Carmel",
-     "locul unde se tundeau oile"
+     "David",
+     "a trimis zece tineri"
+    ],
+    [
+     "măgarul",
+     "pe el a plecat Abigail"
+    ],
+    [
+     "Samuel",
+     "a murit și a fost plâns"
     ]
    ]
   },
   {
-   "id": "1sa.25.sub12.10",
+   "id": "1sa.25.sub12.111",
    "age": "sub12",
    "t": "fill",
    "ref": "25:3",
+   "q": "nevasta lui se chema ___",
    "a": [
-    "Nabal"
-   ],
-   "q": "Numele acestui om era ___ și nevasta lui se chema Abigail;",
-   "ctx": "Despre omul bogat din Maon:"
+    "Abigail"
+   ]
   },
   {
-   "id": "1sa.25.sub12.11",
+   "id": "1sa.25.sub12.112",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "25:3",
+   "q": "era o femeie cu ___ și frumoasă la chip",
+   "a": [
+    "judecată"
+   ]
+  },
+  {
+   "id": "1sa.25.sub12.113",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "25:18",
+   "q": "Abigail a luat îndată două sute de ___",
+   "a": [
+    "pâini"
+   ]
+  },
+  {
+   "id": "1sa.25.sub12.114",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "25:20",
+   "q": "Ea a încălecat pe un ___",
+   "a": [
+    "măgar"
+   ]
+  },
+  {
+   "id": "1sa.25.sub12.115",
    "age": "sub12",
    "t": "fill",
    "ref": "25:32",
+   "q": "Binecuvântat să fie Domnul Dumnezeul lui ___",
    "a": [
-    "mea"
-   ],
-   "q": "„Binecuvântat să fie Domnul Dumnezeul lui Israel, care te-a trimis astăzi înaintea ___!",
-   "ctx": "David, către Abigail:"
-  },
-  {
-   "id": "1sa.25.sub12.12",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "25:1",
-   "a": [
-    "murit"
-   ],
-   "q": "Samuel a ___. Tot Israelul s-a adunat și l-a plâns",
-   "ctx": "Începutul capitolului 25:"
-  },
-  {
-   "id": "1sa.25.sub12.20",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "25:3",
-   "q": "dar bărbatul ei era aspru și ___ în faptele lui",
-   "a": [
-    "rău"
+    "Israel"
    ]
   },
   {
-   "id": "1sa.25.sub12.21",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "25:38",
-   "q": "Cam după zece zile, Domnul a lovit pe Nabal și a ___.",
-   "a": [
-    "murit"
-   ]
-  },
-  {
-   "id": "1sa.25.sub12.13",
+   "id": "1sa.25.sub12.116",
    "age": "sub12",
    "t": "multi",
    "ref": "25:18",
-   "q": "Ce i-a adus Abigail lui David?",
+   "q": "Ce a luat Abigail?",
    "opts": [
-    "vin",
+    "o sabie",
     "pâini",
-    "turte de stafide"
+    "vin"
    ],
    "a": [
-    0,
     1,
     2
    ]
   },
   {
-   "id": "1sa.25.sub12.14",
+   "id": "1sa.25.sub12.117",
    "age": "sub12",
    "t": "multi",
-   "ref": "25:13",
-   "q": "Ce a făcut David când a auzit răspunsul lui Nabal?",
+   "ref": "25:2-3",
+   "q": "Cum era Nabal?",
    "opts": [
-    "și-a încins sabia",
-    "a pornit cu aproape patru sute de oameni",
-    "a iertat îndată"
-   ],
-   "a": [
-    0,
-    1
-   ]
-  },
-  {
-   "id": "1sa.25.sub12.22",
-   "age": "sub12",
-   "t": "multi",
-   "ref": "25:3",
-   "q": "Ce se spune despre Abigail?",
-   "opts": [
-    "era o femeie cu judecată",
-    "era aspră și rea",
-    "era frumoasă la chip"
+    "aspru și rău",
+    "foarte bun",
+    "foarte bogat"
    ],
    "a": [
     0,
@@ -241,15 +219,15 @@
    ]
   },
   {
-   "id": "1sa.25.sub12.23",
+   "id": "1sa.25.sub12.118",
    "age": "sub12",
    "t": "multi",
    "ref": "25:5-6",
    "q": "Ce a făcut David?",
    "opts": [
-    "a trimis o oaste să-l prindă pe Nabal",
-    "i-a trimis să-i ureze pace",
-    "a trimis zece tineri la Nabal"
+    "a trimis o oaste",
+    "i-a trimis să-l salute pe Nabal",
+    "a trimis zece tineri"
    ],
    "a": [
     1,
@@ -257,19 +235,35 @@
    ]
   },
   {
-   "id": "1sa.25.sub12.25",
+   "id": "1sa.25.sub12.119",
    "age": "sub12",
    "t": "multi",
-   "ref": "25:1",
-   "q": "Ce s-a întâmplat după moartea lui Samuel?",
+   "ref": "25:32-33",
+   "q": "Ce a spus David?",
    "opts": [
-    "tot Israelul l-a plâns",
-    "l-au îngropat în locuința lui, la Rama",
-    "David s-a suit la Ierusalim"
+    "„Binecuvântată să fii tu”",
+    "„Pleacă de aici”",
+    "„Binecuvântat să fie Domnul”"
    ],
    "a": [
     0,
-    1
+    2
+   ]
+  },
+  {
+   "id": "1sa.25.sub12.120",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "25:42",
+   "q": "Ce a făcut Abigail la sfârșit?",
+   "opts": [
+    "a rămas cu Nabal",
+    "a plecat pe un măgar",
+    "a fost nevasta lui David"
+   ],
+   "a": [
+    1,
+    2
    ]
   },
   {
