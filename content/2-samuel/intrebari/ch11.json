@@ -199,14 +199,16 @@
    "age": "sub12",
    "t": "multi",
    "ref": "11:3",
-   "q": "Al cui fiu era Urie?",
+   "q": "Cine era Bat-Șeba?",
    "opts": [
-    "al lui Ioab",
-    "al lui Țiba",
-    "al lui Ionatan"
+    "fata lui Eliam",
+    "sora lui Ioab",
+    "nevasta lui Urie, Hetitul"
    ],
-   "a": [],
-   "explain": "Niciun răspuns corect: textul spune doar „Urie, Hetitul\"; Eliam era tatăl Bat-Șebei (11:3)."
+   "a": [
+    0,
+    2
+   ]
   },
   {
    "id": "2sa.11.12-13.1",
@@ -1011,9 +1013,9 @@
    "t": "fill",
    "ref": "11:11",
    "a": [
-    "acesta"
+    "corturi"
    ],
-   "q": "Viu ești tu și viu este sufletul tău că nu voi face lucrul ___.\"",
+   "q": "Chivotul și Israel și Iuda locuiesc în ___, domnul meu Ioab și slujitorii domnului meu sunt tăbărâți în câmp",
    "ctx": "Urie, către David, la Ierusalim:"
   },
   {
