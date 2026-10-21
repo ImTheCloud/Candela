@@ -1,4 +1,4 @@
-const TONES = ['#d97b26', '#8a5a36', '#5e8a3a', '#b23a2e', '#7a6a9a', '#3f7f86'];
+const TONES = ['#4a3426', '#8a5a36', '#5e8a3a', '#b23a2e', '#7a6a9a', '#3f7f86'];
 
 /** Round badge with the initials, in a colour picked from the name. */
 export default function Avatar({ name, size = 44 }: { name: string; size?: number }) {
