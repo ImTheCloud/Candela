@@ -1,0 +1,85 @@
+---
+import Base from '../../layouts/Base.astro';
+import GuideMap from '../../islands/GuideMap';
+import { BOOKS, type Book } from '../../lib/books';
+import { getGuide, type Guide } from '../../lib/guide';
+
+export function getStaticPaths() {
+  return BOOKS.filter((b) => getGuide(b.slug)).map((book) => ({ params: { book: book.slug }, props: { book, guide: getGuide(book.slug)! } }));
+}
+const { book, guide } = Astro.props as { book: Book; guide: Guide };
+const groups = [...new Set(guide.frize.map((f) => f.g))];
+---
+<Base title="Ghid" description={`${book.name}: povestea, personajele și locurile.`} crumbs={[{ href: '/', label: 'Acasă' }, { href: `/${book.slug}`, label: book.name }]}>
+  <section class="wrap narrow page">
+    <h1>Ghidul cărții</h1>
+    <div class="segmented tabs" role="tablist" aria-label="Ghid">
+      <button type="button" role="tab" aria-selected="true" data-tab="povestea">Povestea</button>
+      <button type="button" role="tab" aria-selected="false" data-tab="personaje">Personaje</button>
+      <button type="button" role="tab" aria-selected="false" data-tab="harta">Hartă</button>
+    </div>
+
+    <div class="panel" id="panel-povestea">
+      {groups.map((g) => (
+        <section class="stack">
+          <h2>{g}</h2>
+          {guide.frize.filter((f) => f.g === g).map((f) => (
+            <article class="card frise">
+              <div class="row-between"><p class="frise-title">{f.t}</p><span class="small muted nowrap">cap. {f.c}</span></div>
+              <ul class="events">
+                {f.d.map(([text, ch]) => <li><a href={`/${book.slug}/citire/${ch}`}><span>{text}</span><span class="ch">{ch}</span></a></li>)}
+              </ul>
+            </article>
+          ))}
+        </section>
+      ))}
+    </div>
+
+    <div class="panel" id="panel-personaje" hidden>
+      <ul class="people">
+        {guide.personaje.map((p) => (
+          <li class="card person">
+            <p class="frise-title">{p.n}</p>
+            <p class="small">{p.d}</p>
+            <p class="small muted">cap. {p.c}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="panel" id="panel-harta" hidden>
+      <GuideMap client:only="preact" book={book.slug} places={guide.locuri} journeys={guide.trasee} />
+    </div>
+  </section>
+</Base>
+
+<script>
+  const tabs = [...document.querySelectorAll<HTMLButtonElement>('[data-tab]')];
+  function show(id: string) {
+    for (const t of tabs) {
+      const on = t.dataset.tab === id;
+      t.setAttribute('aria-selected', String(on));
+      document.getElementById(`panel-${t.dataset.tab}`)!.hidden = !on;
+    }
+  }
+  for (const t of tabs) t.addEventListener('click', () => { show(t.dataset.tab!); history.replaceState(null, '', `#${t.dataset.tab}`); });
+  const fromHash = () => {
+    const id = location.hash.slice(1);
+    if (tabs.some((t) => t.dataset.tab === id)) show(id);
+  };
+  fromHash();
+  addEventListener('hashchange', fromHash);
+</script>
+
+<style>
+  .page { display: grid; gap: 16px; padding-block: 8px 32px; }
+  .tabs button[aria-selected="true"] { background: var(--surface); color: var(--ink); box-shadow: var(--shadow); }
+  .panel { display: grid; gap: 22px; }
+  .frise { display: grid; gap: 10px; padding: 16px; box-shadow: none; }
+  .frise-title { font-weight: 600; }
+  .events { list-style: none; margin: 0; padding: 0; display: grid; }
+  .events a { display: flex; justify-content: space-between; gap: 12px; padding: 8px 0; text-decoration: none; border-top: 1px solid var(--line); }
+  .events .ch { flex: none; align-self: flex-start; line-height: 1.5; min-width: 28px; text-align: center; border-radius: 999px; background: var(--surface-2); color: var(--ink-2); font-size: 0.8rem; font-weight: 600; padding: 2px 8px; }
+  .people { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .person { display: grid; gap: 4px; padding: 14px 16px; box-shadow: none; }
+</style>
