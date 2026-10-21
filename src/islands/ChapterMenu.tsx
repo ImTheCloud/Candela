@@ -53,7 +53,7 @@ export default function ChapterMenu({ book, titles, summary, examsHref }: Props)
           );
         })}
         {examsHref && (
-          <li class="tile-wide">
+          <li style={{ gridColumn: `span ${examSpan(titles.length)}` }}>
             <a class="tile tile-exam" href={examsHref}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3 8-8" /><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9" /></svg>
               <span>Examene</span>
@@ -61,7 +61,7 @@ export default function ChapterMenu({ book, titles, summary, examsHref }: Props)
           </li>
         )}
       </ol>
-      {prog.mastered.length > 0 && <p class="small muted">3/15 = întrebări știute din capitol</p>}
+      {prog.mastered.length > 0 && <p class="small muted">Sub număr: câte întrebări știi din capitol</p>}
       {sheet}
     </>
   );
@@ -133,6 +133,12 @@ function Row({ href, icon, name, tag, done, side, unit, tone }: { href: string; 
       <svg class="lvl-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
     </a>
   );
+}
+
+/** The exam tile takes what is left of the last row of the 6-column grid. */
+function examSpan(n: number): number {
+  const left = 6 - (n % 6);
+  return left < 3 ? 6 : left;
 }
 
 function count(s: Partial<Record<QType, number>> | undefined): number {

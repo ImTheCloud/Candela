@@ -11,6 +11,8 @@
   --oil: #d97b26;
   --oil-ink: #8a4510;
   --oil-soft: #fbe5cc;
+  --btn: #cf6a1a;
+  --btn-hover: #bf5f14;
   --on-oil: #fffaf3;
   --cedar: #8a5a36;
   --cedar-soft: #f2e3d2;
@@ -84,9 +86,11 @@ img, svg { display: block; }
   cursor: pointer; transition: background-color .15s, border-color .15s, transform .1s;
 }
 .btn:active { transform: scale(0.98); }
-.btn:disabled { opacity: .55; cursor: default; }
-.btn-primary { background: var(--oil); color: var(--ink); }
-.btn-primary:hover:not(:disabled) { background: color-mix(in srgb, var(--oil) 88%, white); }
+.btn:disabled { cursor: default; }
+.btn-ghost:disabled { opacity: .55; }
+.btn-primary { background: var(--btn); color: #fff; }
+.btn-primary:hover:not(:disabled) { background: var(--btn-hover); }
+.btn-primary:disabled { background: var(--surface-2); color: var(--ink-3); opacity: 1; }
 .btn-ghost { background: transparent; color: var(--ink); border-color: var(--line); }
 .btn-ghost:hover:not(:disabled) { background: var(--surface-2); }
 .btn-block { width: 100%; }
@@ -199,11 +203,11 @@ img, svg { display: block; }
 .pw-eye[aria-pressed="true"] { color: var(--oil-ink); }
 
 /* Chapter tiles and the chapter menu (same look as v1) */
-.tiles { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; grid-template-columns: repeat(auto-fill, minmax(54px, 1fr)); }
+.tiles { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; grid-template-columns: repeat(6, 1fr); }
 .tile {
   position: relative; width: 100%; aspect-ratio: 1; display: grid; place-items: center; align-content: center; gap: 2px;
-  border: 1.5px solid var(--line); border-radius: 14px; background: var(--bg); color: var(--ink);
-  font: 600 1.05rem var(--f-body); font-variant-numeric: tabular-nums; cursor: pointer;
+  border: 1.5px solid var(--line); border-radius: 12px; background: var(--bg); color: var(--ink);
+  font: 600 1rem var(--f-body); font-variant-numeric: tabular-nums; cursor: pointer;
   transition: border-color .12s, transform .12s;
 }
 .tile:hover { border-color: var(--oil); }
@@ -254,14 +258,13 @@ img, svg { display: block; }
   .sheet-grab { display: none; }
 }
 @media (prefers-reduced-motion: reduce) { .sheet-back, .sheet-panel { animation: none; } }
-.tile-wide { grid-column: 1 / -1; }
-.tile-exam { aspect-ratio: auto; height: 100%; min-height: 54px; display: flex; gap: 8px; justify-content: center; text-decoration: none; background: var(--oil-soft); border-color: transparent; color: var(--oil-ink); font-size: 0.95rem; }
+.tile-exam { aspect-ratio: auto; height: 100%; min-height: 44px; display: flex; gap: 8px; justify-content: center; text-decoration: none; background: var(--oil-soft); border-color: transparent; color: var(--oil-ink); font-size: 0.95rem; }
 
 /* Home: book switch, chapters card, board link */
-.hb-chap { padding-top: 12px; }
+.hb-chap { padding-top: 8px; }
 .hb-block { padding-top: 12px; }
-.hb-chapters { display: grid; gap: 14px; padding: 14px 16px 16px; }
-.hb-chapters h2 { font-size: 1.2rem; }
+.hb-chapters { display: grid; gap: 10px; padding: 12px 14px 14px; }
+.hb-chapters h2 { font-size: 1.05rem; }
 .book-switch { display: grid; grid-template-columns: 1fr 1fr; gap: 3px; padding: 3px; background: var(--surface-2); border-radius: 999px; }
 .book-switch button {
   min-height: 34px; border: 0; border-radius: 999px; background: none; cursor: pointer;
