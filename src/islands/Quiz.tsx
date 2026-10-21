@@ -34,6 +34,7 @@ export default function Quiz({ book, bookName, questions, mode, examId, scoreId,
   const cardEl = useRef<HTMLElement>(null);
   // where the card sat when the answer was checked: it stays there while the correction appears below
   const [pin, setPin] = useState<number | null>(null);
+  const [saveFailed, setSaveFailed] = useState(false);
 
   const q = questions[i];
   const g = grades[i];
@@ -91,7 +92,7 @@ export default function Quiz({ book, bookName, questions, mode, examId, scoreId,
     if (quizEl.current && cardEl.current) setPin(cardEl.current.getBoundingClientRect().top - quizEl.current.getBoundingClientRect().top);
     const gr = grade(q, answers[i]);
     setGrades(grades.map((x, k) => (k === i ? gr : x)));
-    if (record) recordAnswers(book, [{ id: q.id, t: q.t, right: gr.right }]);
+    if (record) recordAnswers(book, [{ id: q.id, t: q.t, right: gr.right }])?.catch((e) => { console.error(e); setSaveFailed(true); });
   }
 
   function next() {
@@ -147,6 +148,7 @@ export default function Quiz({ book, bookName, questions, mode, examId, scoreId,
         <QuestionView key={q.id} q={q} answer={answers[i]} onChange={setAnswer} graded={mode === 'practice' ? g : null} />
       </article>
 
+      {saveFailed && <p class="notice notice-bad" role="alert">Răspunsurile nu se salvează acum (progresul și clasamentul nu se actualizează). Spune-i administratorului.</p>}
       {mode === 'practice' && g && <Feedback q={q} g={g} bookName={bookName} />}
 
       <div class={`actions${mode === 'practice' && g ? ` is-graded ${g.right ? 'is-right' : 'is-wrong'}` : ''}`}>

@@ -18,7 +18,7 @@ body.in-quiz main { padding-top: 0; }
 .q-card { display: grid; gap: 12px; padding: 14px; }
 .q-meta { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; font-size: 0.8rem; color: var(--ink-2); }
 .q-type { font-weight: 700; font-size: 1.05rem; color: var(--oil-ink); }
-.q-ref { white-space: nowrap; }
+.q-ref { white-space: nowrap; font-size: 0.95rem; font-weight: 700; color: var(--ink); }
 .q-ctx { font-weight: 400; color: var(--ink-2); }
 .q-text { font-size: 1.05rem; line-height: 1.4; font-weight: 500; }
 
