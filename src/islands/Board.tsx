@@ -62,7 +62,7 @@ export default function Board({ book }: Props) {
             {rows.map((r, i) => (
               <li class={`pd${i === 0 ? ' pd-1' : ''}${mine(r.key) ? ' me' : ''}`}>
                 <span class="pd-rank">{i + 1}</span>
-                <Avatar name={r.name} size={i === 0 ? 56 : 48} />
+                <Avatar name={r.name} size={40} />
                 <span class="pd-name">{r.name}</span>
                 <span class="pd-score">{r.score}</span>
               </li>
