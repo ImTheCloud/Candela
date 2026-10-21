@@ -106,7 +106,7 @@ function Sheet({ book, ch, title, age, done, total, wrongs, onClose }: SheetProp
         <div class="opt-card">
           <a class="oc-row" href={`${base}/citire/${ch}`}>
             <span class="oc-ic"><Icon name="book" /></span>
-            <span class="oc-main"><b>Citește capitolul</b></span>
+            <span class="oc-main"><b>Citește capitolul</b><small>Traducerea Cornilescu</small></span>
             <Chev />
           </a>
           <a class="oc-row" href={`${base}/exersare?capitol=${ch}&start=1`}>
@@ -115,7 +115,7 @@ function Sheet({ book, ch, title, age, done, total, wrongs, onClose }: SheetProp
               <b>Testul capitolului</b>
               <small>{total ? `${total} întrebări` : ''}{age ? `${total ? ' · ' : ''}${ageShort(age)}` : ''}{done ? ` · ${done} știute` : ''}</small>
             </span>
-            <span class="oc-go">Începe</span>
+            <Chev />
           </a>
           {harder && (
             <a class="oc-row" href={`${base}/exersare?capitol=${ch}&start=1&nivel=greu`}>
