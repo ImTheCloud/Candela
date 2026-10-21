@@ -4,6 +4,7 @@ import { createPortal } from 'preact/compat';
 import { recordAnswers, recordExam } from '../lib/progress';
 import { emptyAnswer, grade, isAnswered, percent, typeInfo, type Answer, type Grade, type Playable } from '../lib/questions';
 import QuestionView from './QuestionView';
+import LampMark from './LampMark';
 import ReportButton from './ReportButton';
 
 export interface QuizProps {
@@ -134,6 +135,8 @@ export default function Quiz({ book, bookName, questions, mode, examId, scoreId,
         </>, topEl)}
 
       {newPart && <p class="part">{info.part}. {info.label}</p>}
+
+      <LampMark />
 
       <article ref={cardEl} class="card q-card" aria-live="polite">
         <div class="q-meta">
