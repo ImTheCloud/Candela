@@ -61,7 +61,7 @@ const next = ch < book.chapters ? ch + 1 : null;
     border-radius: 999px; background: transparent; border: 2px solid var(--btn); color: var(--btn); text-decoration: none;
     font: 700 1.1rem var(--f-body); transition: background-color .15s, transform .1s;
   }
-  .start:hover { background: var(--oil-soft); }
+  @media (hover: hover) { .start:hover { background: var(--oil-soft); } }
   .start:active { transform: scale(0.98); }
 
   /* Thumb-reachable chapter navigation */

@@ -91,10 +91,10 @@ img, svg { display: block; }
 .btn:disabled { cursor: default; }
 .btn-ghost:disabled { opacity: .55; }
 .btn-primary { background: var(--btn); color: #fff; }
-.btn-primary:hover:not(:disabled) { background: var(--btn-hover); }
+@media (hover: hover) { .btn-primary:hover:not(:disabled) { background: var(--btn-hover); } }
 .btn-primary:disabled { background: var(--surface-2); color: var(--ink-3); opacity: 1; }
 .btn-ghost { background: transparent; color: var(--ink); border-color: var(--line); }
-.btn-ghost:hover:not(:disabled) { background: var(--surface-2); }
+@media (hover: hover) { .btn-ghost:hover:not(:disabled) { background: var(--surface-2); } }
 .btn-block { width: 100%; }
 .link { color: var(--oil-ink); font-weight: 500; text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
 
@@ -226,7 +226,7 @@ img, svg { display: block; }
   font: 600 1rem var(--f-body); font-variant-numeric: tabular-nums; cursor: pointer;
   transition: border-color .12s, transform .12s;
 }
-.tile:hover { border-color: var(--oil); }
+@media (hover: hover) { .tile:hover { border-color: var(--oil); } }
 .tile:active { transform: scale(0.96); }
 .tile-n { line-height: 1; }
 .tile-sc { font-size: 0.68rem; font-weight: 600; color: var(--flame-ink); line-height: 1; }
@@ -257,7 +257,8 @@ img, svg { display: block; }
   border: 1.5px solid var(--line); border-radius: 14px; background: var(--bg); color: var(--ink); text-decoration: none;
   transition: border-color .12s, background-color .12s;
 }
-.lvl-row:hover, .lvl-row:focus-visible { border-color: var(--oil); background: var(--oil-soft); }
+.lvl-row:focus-visible { border-color: var(--oil); background: var(--oil-soft); }
+@media (hover: hover) { .lvl-row:hover { border-color: var(--oil); background: var(--oil-soft); } }
 .lvl-ic { flex: none; display: grid; place-items: center; width: 38px; height: 38px; border-radius: 11px; background: var(--oil-soft); color: var(--oil-ink); }
 .lvl-name { flex: 1; min-width: 0; display: flex; align-items: center; gap: 8px; font-weight: 600; }
 .lvl-tag { padding: 2px 8px; border-radius: 999px; background: var(--surface-2); color: var(--ink-2); font-size: 0.75rem; font-weight: 600; white-space: nowrap; }
@@ -303,12 +304,14 @@ a.tile { text-decoration: none; }
 /* the two main choices of the chapter menu: soft tints, like the rest of the site */
 .lvl-row.tone-read { background: var(--cedar-soft); border-color: transparent; }
 .lvl-row.tone-read .lvl-ic { background: var(--surface); color: var(--cedar); }
-.lvl-row.tone-read:hover, .lvl-row.tone-read:focus-visible { background: color-mix(in srgb, var(--cedar) 14%, var(--cedar-soft)); }
+.lvl-row.tone-read:focus-visible { background: color-mix(in srgb, var(--cedar) 14%, var(--cedar-soft)); }
+@media (hover: hover) { .lvl-row.tone-read:hover { background: color-mix(in srgb, var(--cedar) 14%, var(--cedar-soft)); } }
 .lvl-row.tone-test { background: var(--oil-soft); border-color: transparent; }
 .lvl-row.tone-test .lvl-ic { background: var(--oil); color: #fff; }
 .lvl-row.tone-test .lvl-tag { background: var(--surface); color: var(--oil-ink); }
 .lvl-row.tone-test .lvl-name { color: var(--oil-ink); }
-.lvl-row.tone-test:hover, .lvl-row.tone-test:focus-visible { background: color-mix(in srgb, var(--oil) 22%, var(--oil-soft)); }
+.lvl-row.tone-test:focus-visible { background: color-mix(in srgb, var(--oil) 22%, var(--oil-soft)); }
+@media (hover: hover) { .lvl-row.tone-test:hover { background: color-mix(in srgb, var(--oil) 22%, var(--oil-soft)); } }
 
 /* Profile: one soft sheet, sections inside it */
 .av { flex: none; display: inline-grid; place-items: center; border-radius: 50%; color: #fff; font-weight: 700; letter-spacing: .02em; }
