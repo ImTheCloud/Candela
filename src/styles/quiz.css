@@ -34,9 +34,9 @@ body.in-quiz main { padding-top: 0; }
   background: var(--surface-2); color: var(--ink-2); font-size: 0.85rem; font-weight: 600;
 }
 .opt-check .opt-key { border-radius: 7px; }
-.opt-check[aria-checked="true"] .opt-key { font-size: 0; }
+.opt-check[aria-checked="true"] .opt-key { position: relative; font-size: 0; }
 .opt-check[aria-checked="true"] .opt-key::before {
-  content: ""; width: 14px; height: 14px; background: currentColor;
+  content: ""; position: absolute; inset: 0; margin: auto; width: 14px; height: 14px; background: currentColor;
   -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 8.5l3.2 3L13 4.5'/%3E%3C/svg%3E") center / contain no-repeat;
   mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 8.5l3.2 3L13 4.5'/%3E%3C/svg%3E") center / contain no-repeat;
 }
@@ -207,3 +207,21 @@ body.in-quiz main { padding-top: 0; }
 .missed-card .feedback { padding: 0; }
 .missed-card .fb-answer { display: grid; gap: 2px; padding: 10px 12px; white-space: pre-line; }
 .missed-card .fb-answer small { font-size: 0.72rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; opacity: .8; }
+
+/* The mark above the question: lamp (as in v1) and name */
+.lampmark { display: grid; justify-items: center; gap: 0; margin: 2px 0 6px; }
+.lampx { position: relative; display: grid; place-items: center; }
+.lampx svg { position: relative; display: block; }
+.lampx-glow {
+  position: absolute; inset: 4px 10px auto; height: 70px; pointer-events: none; filter: blur(8px);
+  background: radial-gradient(closest-side, color-mix(in oklab, #D97B26 42%, transparent), transparent);
+  animation: glowx 3.2s ease-in-out infinite;
+}
+.flamex { transform-origin: 50% 90%; animation: flickerx 2.4s ease-in-out infinite; }
+.lampmark-name { margin-top: -14px; font: 400 2rem/1 var(--f-brand); letter-spacing: .01em; color: var(--ink); }
+@keyframes glowx { 0%, 100% { opacity: .55; transform: scale(1); } 50% { opacity: .85; transform: scale(1.06); } }
+@keyframes flickerx { 0%, 100% { transform: scaleY(1) skewX(0); } 25% { transform: scaleY(1.06) skewX(-2deg); } 50% { transform: scaleY(.96) skewX(1.5deg); } 75% { transform: scaleY(1.04) skewX(-1deg); } }
+/* short screens keep the room for the question */
+@media (max-height: 700px) { .lampx svg { width: 64px; height: 64px; } .lampmark-name { margin-top: -10px; font-size: 1.6rem; } }
+@media (max-height: 600px) { .lampmark { display: none; } }
+@media (prefers-reduced-motion: reduce) { .lampx-glow, .flamex { animation: none; } }
