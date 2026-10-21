@@ -6,6 +6,8 @@ import { cachedExams, EMPTY, progress, type Progress } from '../lib/progress';
 import { rememberedAccount, user } from '../lib/session';
 import { player } from '../lib/players';
 import type { QType } from '../lib/questions';
+import { prefetch } from 'astro:prefetch';
+import { loadChapter } from '../lib/load';
 import LevelPicker from './LevelPicker';
 
 /** Questions per chapter, age group and type (computed at build). */
@@ -88,6 +90,12 @@ function Sheet({ book, ch, title, total, best, wrongs, onClose }: SheetProps) {
 
   const base = `/${book}`;
   const lv = level.value;
+
+  // the test starts at once: its page and the chapter's questions are fetched while the menu is open
+  useEffect(() => {
+    loadChapter(book, ch).catch(() => {});
+    prefetch(`${base}/exersare?capitol=${ch}&start=1&nivel=${lv}`, { ignoreSlowConnection: true });
+  }, [book, ch, lv]);
 
   return (
     <div class="sheet-back" onClick={(e) => e.target === e.currentTarget && onClose()}>

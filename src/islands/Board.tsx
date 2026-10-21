@@ -1,16 +1,15 @@
 import { useEffect, useState } from 'preact/hooks';
-import { collection, FieldPath, getCountFromServer, getDocs, limit, orderBy, query } from 'firebase/firestore';
+import { collection, FieldPath, getDocs, limit, orderBy, query } from 'firebase/firestore';
 import { AGE_GROUPS, LEVEL_KEY, ageShort, type AgeGroup } from '../lib/age';
 import { db } from '../lib/firebase';
 import { player, setHidden } from '../lib/players';
 import { progress } from '../lib/progress';
-import { user } from '../lib/session';
+import { profile, rememberedAccount, user } from '../lib/session';
 
 interface Row { key: string; name: string; score: number; at: number }
 
 // what each list showed last time: shown at once when the tab is opened again, then refreshed without any change on screen
 const cache = new Map<string, Row[]>();
-const totals = new Map<string, number>();
 
 interface Props {
   book: string;
@@ -24,7 +23,6 @@ export default function Board({ book }: Props) {
   const [age, setAge] = useState<AgeGroup | 'all'>('all');
   const [rows, setRows] = useState<Row[] | null>(() => cache.get(`${book}:all`) ?? null);
   const [error, setError] = useState(false);
-  const [total, setTotal] = useState<number | null>(() => totals.get(book) ?? null);
   const [busy, setBusy] = useState(false);
 
   useEffect(() => {
@@ -44,13 +42,11 @@ export default function Board({ book }: Props) {
       .catch(() => setError(true));
   }, [book, age]);
 
-  useEffect(() => {
-    getCountFromServer(collection(db, 'boards', book, 'players'))
-      .then((c) => { totals.set(book, c.data().count); setTotal(c.data().count); })
-      .catch(() => {});
-  }, [book]);
-
   const p = player.value;
+  // before the account answers, the last visit's account and choice are shown at once (nothing pops in later)
+  const waiting = user.value === undefined && !!rememberedAccount;
+  const signedIn = !!user.value || waiting;
+  const hidden = waiting ? (profile.value?.hidden ?? false) : p.hidden;
   async function toggleHidden() {
     setBusy(true);
     try { await setHidden(p, !p.hidden); } finally { setBusy(false); }
@@ -64,12 +60,17 @@ export default function Board({ book }: Props) {
   return (
     <div class="board">
       <div class="lb-head">
-        <h2 id="lb-title">Clasament</h2>
-        {user.value && (
+        <div class="lb-title">
+          <h2 id="lb-title">Clasament</h2>
+          <p class="lb-count small muted" style={rows === null || error ? { visibility: 'hidden' } : undefined}>
+            {rows ? `${rows.length} ${rows.length === 1 ? 'jucător vizibil' : 'jucători vizibili'}` : '\u00a0'}
+          </p>
+        </div>
+        {signedIn && (
           <label class="tgl">
-            <input type="checkbox" role="switch" checked={!p.hidden} disabled={busy} onChange={toggleHidden} />
+            <input type="checkbox" role="switch" checked={!hidden} disabled={busy || waiting} onChange={toggleHidden} />
             <span class="tgl-track" aria-hidden="true"><span class="tgl-thumb" /></span>
-            <span class="tgl-text">{p.hidden ? 'Ascuns' : 'Vizibil'}</span>
+            <span class="tgl-text">{hidden ? 'Ascuns' : 'Vizibil'}</span>
           </label>
         )}
       </div>
@@ -79,14 +80,11 @@ export default function Board({ book }: Props) {
         ))}
         <button type="button" role="tab" aria-selected={age === 'all'} onClick={() => setAge('all')}>Toate</button>
       </div>
-      {user.value && p.hidden && (
+      {signedIn && hidden && (
         <div class="lb-hidden">
           <span class="small muted">Nu apari în clasament</span>
           <strong>{myScore} {myScore === 1 ? 'punct' : 'puncte'}</strong>
         </div>
-      )}
-      {rows !== null && total !== null && !error && (
-        <p class="lb-count small muted">{rows.length} {rows.length === 1 ? 'jucător' : 'jucători'} aici · {total} în total</p>
       )}
       {user.value === null && (
         <div class="lb-guest">

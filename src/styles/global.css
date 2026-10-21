@@ -454,3 +454,9 @@ a.tile { text-decoration: none; }
 .lb-head h2 { flex: 1; min-width: 0; }
 .lb-count { white-space: normal; }
 .tgl { flex: none; }
+
+.me-fam { display: grid; gap: 12px; }
+.fam-add { display: flex; align-items: center; gap: 10px; width: 100%; padding-top: 12px; border-top: 1px solid var(--line); color: var(--ink); text-align: left; }
+
+.lb-title { min-width: 0; }
+.lb-title .lb-count { margin: 2px 0 0; }
