@@ -39,10 +39,10 @@ export default function Board({ book }: Props) {
   return (
     <div class="board">
       <div class="age-tabs six" role="tablist" aria-label="Nivel">
-        <button type="button" role="tab" aria-selected={age === 'all'} onClick={() => setAge('all')}>Toate</button>
         {AGE_GROUPS.map((g) => (
           <button type="button" role="tab" aria-selected={age === g.id} onClick={() => setAge(g.id)}>{ageShort(g.id)}</button>
         ))}
+        <button type="button" role="tab" aria-selected={age === 'all'} onClick={() => setAge('all')}>Toate</button>
       </div>
       {user.value === null && (
         <div class="lb-guest">
