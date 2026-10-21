@@ -90,6 +90,9 @@ body.in-quiz main { padding-top: 0; }
 .fb-answer { padding: 10px 12px; border-radius: 10px; background: var(--ok-soft); color: var(--ok); font-weight: 600; }
 .fb-explain { line-height: 1.5; }
 .fb-verses { display: grid; gap: 6px; padding: 12px 14px; border-radius: 12px; background: var(--bg); border-left: 3px solid var(--oil); font: 400 1.02rem/1.6 var(--f-bible); }
+.fb-chapter { position: relative; max-height: 46dvh; overflow-y: auto; gap: 2px; padding: 8px 6px; }
+.fb-chapter p { padding: 4px 8px; border-radius: 8px; }
+.fb-chapter .is-cited { background: var(--oil-soft); }
 .fb-verses sup { font: 600 0.7rem var(--f-body); color: var(--oil-ink); margin-right: 4px; }
 .fb-links { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 16px; padding-top: 4px; border-top: 1px solid var(--line); }
 .fb-links .report, .fb-links .report-done { flex-basis: 100%; }
