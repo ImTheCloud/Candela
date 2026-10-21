@@ -101,10 +101,18 @@ export async function recordAnswers(book: string, answers: Answered[]) {
       return { ...p, mastered: add(p.mastered, right), wrong: drop(add(p.wrong, wrong), right), stats: st };
     });
   }
-  const batch = writeBatch(db);
   const r = ref(book);
-  batch.set(r, { mastered: arrayUnion(...right), wrong: arrayUnion(...wrong), stats, updatedAt: serverTimestamp() }, { merge: true });
-  if (right.length) batch.update(r, { wrong: arrayRemove(...right) });
+  // one change per field: adding to and removing from "wrong" in the same write is refused
+  if (right.length && wrong.length) await setDoc(r, { wrong: arrayUnion(...wrong), updatedAt: serverTimestamp() }, { merge: true });
+  const data: Record<string, unknown> = { stats, updatedAt: serverTimestamp() };
+  if (right.length) {
+    data.mastered = arrayUnion(...right);
+    data.wrong = arrayRemove(...right);
+  } else if (wrong.length) {
+    data.wrong = arrayUnion(...wrong);
+  }
+  const batch = writeBatch(db);
+  batch.set(r, data, { merge: true });
   const score = new Set([...before.mastered, ...right]).size;
   const p = player.value;
   if (score > before.mastered.length && !p.hidden) {

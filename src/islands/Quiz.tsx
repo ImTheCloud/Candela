@@ -255,6 +255,17 @@ function Cross() {
   return <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8" /></svg>;
 }
 
+/** The right answer in words, for the list of missed questions. */
+function rightAnswer(q: Playable): string {
+  switch (q.t) {
+    case 'tf': return q.a ? 'Adevărat' : 'Fals';
+    case 'one': return q.opts[q.a];
+    case 'multi': return q.a.length ? q.a.map((k) => q.opts[k]).join(' · ') : 'Niciun răspuns nu era corect.';
+    case 'match': return q.pairs.map(([l, r]) => `${l} → ${r}`).join('\n');
+    case 'fill': return q.q.replace(/___/, q.a[0]);
+  }
+}
+
 interface ResultsProps {
   book: string;
   bookName: string;
@@ -275,25 +286,29 @@ function Results({ bookName, questions, answers, grades, mode, backHref, onAgain
   const missed = questions.map((q, k) => ({ q, g: gs[k], a: answers[k] })).filter((x) => !x.g.right);
   const praise = score >= 90 ? 'Excelent!' : score >= 75 ? 'Foarte bine!' : score >= 50 ? 'Bine, mai e puțin.' : 'Mai citește o dată capitolul.';
   const ring = 2 * Math.PI * 52;
+  // a chapter test reads "19/21"; an exam is marked out of 100
+  const frac = mode === 'practice' ? right / questions.length : score / 100;
 
   return (
     <div class="quiz results">
       <section class="card score">
-        <div class="score-ring" role="img" aria-label={`${score} din 100`}>
+        <div class="score-ring" role="img" aria-label={mode === 'practice' ? `${right} din ${questions.length}` : `${score} din 100`}>
           <svg viewBox="0 0 120 120" aria-hidden="true">
             <circle cx="60" cy="60" r="52" class="ring-bg" />
-            <circle cx="60" cy="60" r="52" class="ring-fill" stroke-dasharray={ring} stroke-dashoffset={ring * (1 - score / 100)} />
+            <circle cx="60" cy="60" r="52" class="ring-fill" stroke-dasharray={ring} stroke-dashoffset={ring * (1 - frac)} />
           </svg>
-          <span class="score-num">{score}<small>din 100</small></span>
+          <span class="score-num">{mode === 'practice' ? right : score}<small>/{mode === 'practice' ? questions.length : 100}</small></span>
         </div>
         <p class="score-praise">{praise}</p>
-        <dl class="score-stats">
-          <div><dt>Corecte</dt><dd class="ok">{right}</dd></div>
-          <div><dt>Greșite</dt><dd class="bad">{questions.length - right}</dd></div>
-          {max !== 100 && <div><dt>Puncte</dt><dd>{pts}/{max}</dd></div>}
-        </dl>
+        {mode === 'exam' && (
+          <dl class="score-stats">
+            <div><dt>Corecte</dt><dd class="ok">{right}</dd></div>
+            <div><dt>Greșite</dt><dd class="bad">{questions.length - right}</dd></div>
+            {max !== 100 && <div><dt>Puncte</dt><dd>{pts}/{max}</dd></div>}
+          </dl>
+        )}
         <div class="score-actions">
-          {onAgain && <button class="btn btn-primary btn-block" onClick={onAgain}>{mode === 'exam' ? 'Reia examenul' : 'Încă un test'}</button>}
+          {onAgain && <button class="btn btn-primary btn-block" onClick={onAgain}>{mode === 'exam' ? 'Reia examenul' : 'Reia testul'}</button>}
           <a class="btn btn-ghost btn-block" href={backHref}>Înapoi la capitole</a>
         </div>
       </section>
@@ -312,18 +327,16 @@ function Results({ bookName, questions, answers, grades, mode, backHref, onAgain
         </section>
       ) : missed.length > 0 ? (
         <section class="stack">
-          <div>
-            <h2>De recitit</h2>
-            <p class="small muted">Atinge o întrebare ca să vezi răspunsul și versetele.</p>
-          </div>
+          <h2>De recitit</h2>
           {missed.map(({ q, g }) => (
-            <details class="card missed">
-              <summary>
+            <article class="card missed-card">
+              <div class="mc-head">
                 <span class="missed-ic" aria-hidden="true"><Cross /></span>
                 <span class="missed-q">{q.q.replace(/___/g, '…')}<small>{bookName} {q.ref}</small></span>
-              </summary>
+              </div>
+              <p class="fb-answer"><small>Răspuns corect</small>{rightAnswer(q)}</p>
               <Feedback q={q} g={g} bookName={bookName} report />
-            </details>
+            </article>
           ))}
         </section>
       ) : (
