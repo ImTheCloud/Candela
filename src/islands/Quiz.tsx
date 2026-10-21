@@ -188,16 +188,12 @@ export default function Quiz({ book, bookName, questions, mode, examId, scoreId,
   );
 }
 
-/** answer: also write the right answer (where the question itself is not shown, as in "De recitit"). */
-function Feedback({ q, g, bookName, answer = false, report = false }: { q: Playable; g: Grade; bookName: string; answer?: boolean; report?: boolean }) {
+/** The correction never spells out the right answer: it is in the verse. report: the "i" button, for lists without a question header. */
+function Feedback({ q, g, bookName, report = false }: { q: Playable; g: Grade; bookName: string; report?: boolean }) {
   const [open, setOpen] = useState(false);
-  // "Niciun răspuns corect: …" in the explanation already says it
-  const showAnswer = answer && !g.right && !(q.explain ?? '').startsWith('Niciun răspuns corect');
   const verses = q.cite.map(([label]) => label.split(':')[1]).filter(Boolean);
   return (
     <section class={`feedback ${g.right ? 'is-right' : 'is-wrong'}`}>
-      {showAnswer && <p class="fb-answer"><small>Răspunsul corect</small>{rightAnswer(q)}</p>}
-      {q.explain && <p class="fb-explain">{q.explain}</p>}
       <div class="fb-actions">
         <button type="button" class="verse-btn" onClick={() => setOpen(true)}>
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4h7a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H2zM22 4h-7a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h8z" /></svg>
@@ -257,17 +253,6 @@ function Tick() {
 
 function Cross() {
   return <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8" /></svg>;
-}
-
-/** The right answer in words, for the feedback and the correction. */
-function rightAnswer(q: Playable): string {
-  switch (q.t) {
-    case 'tf': return q.a ? 'Adevărat' : 'Fals';
-    case 'one': return q.opts[q.a];
-    case 'multi': return q.a.length ? q.a.map((k) => q.opts[k]).join(' · ') : 'Niciun răspuns nu era corect.';
-    case 'match': return q.pairs.map(([l, r]) => `${l} → ${r}`).join(' · ');
-    case 'fill': return q.a.join(', ');
-  }
 }
 
 interface ResultsProps {
@@ -337,7 +322,7 @@ function Results({ bookName, questions, answers, grades, mode, backHref, onAgain
                 <span class="missed-ic" aria-hidden="true"><Cross /></span>
                 <span class="missed-q">{q.q.replace(/___/g, '…')}<small>{bookName} {q.ref}</small></span>
               </summary>
-              <Feedback q={q} g={g} bookName={bookName} answer report />
+              <Feedback q={q} g={g} bookName={bookName} report />
             </details>
           ))}
         </section>
