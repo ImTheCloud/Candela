@@ -28,6 +28,23 @@
    "explain": "Ei au răspuns: „Nu ne-ai apăsat, nu ne-ai năpăstuit și nici n-ai primit nimic din mâna nimănui\" (12:4)."
   },
   {
+   "id": "1sa.12.sub12.16",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "12:6",
+   "q": "Samuel a spus că Domnul i-a pus pe Moise și pe Aaron să scoată pe părinți din Egipt.",
+   "a": true
+  },
+  {
+   "id": "1sa.12.sub12.17",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "12:22",
+   "q": "Samuel a spus că Domnul va părăsi poporul Lui din pricina Numelui Său.",
+   "a": false,
+   "explain": "A spus că Domnul nu va părăsi poporul Lui."
+  },
+  {
    "id": "1sa.12.sub12.4",
    "age": "sub12",
    "t": "one",
@@ -67,65 +84,57 @@
    "a": 1
   },
   {
-   "id": "1sa.12.sub12.7",
+   "id": "1sa.12.sub12.18",
+   "age": "sub12",
+   "t": "one",
+   "ref": "12:19",
+   "q": "Ce i-a cerut poporul lui Samuel, după tunete și ploaie?",
+   "opts": [
+    "să plece din țară",
+    "să-l alunge pe Saul",
+    "să se roage Domnului pentru ei"
+   ],
+   "a": 2
+  },
+  {
+   "id": "1sa.12.sub12.19",
+   "age": "sub12",
+   "t": "one",
+   "ref": "12:11",
+   "q": "Pe cine a trimis Domnul ca izbăvitor, pe lângă Iefta și Samuel?",
+   "opts": [
+    "pe Goliat",
+    "pe Barac",
+    "pe Nahaș"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.12.sub12.24",
    "age": "sub12",
    "t": "match",
-   "ref": "12:1-4",
-   "q": "Cuvântarea lui Samuel: asociază.",
+   "ref": "12:1-18",
+   "q": "Asociază fiecare nume sau lucru cu ce se spune despre el în 1 Samuel 12.",
    "pairs": [
     [
      "Samuel",
-     "întreabă cui i-a luat boul"
+     "cel care spune că este bătrân și a albit"
     ],
     [
-     "poporul",
-     "spune că Samuel nu i-a apăsat"
+     "Moise și Aaron",
+     "cei care au scos pe părinți din Egipt"
     ],
     [
-     "împăratul",
-     "va merge înaintea lor"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.12.sub12.8",
-   "age": "sub12",
-   "t": "match",
-   "ref": "12:17-19",
-   "q": "Minunea din vremea seceratului: asociază.",
-   "pairs": [
+     "Nahaș",
+     "împăratul fiilor lui Amon"
+    ],
     [
-     "Samuel",
-     "a strigat către Domnul"
+     "tunetele și ploaia",
+     "ce a trimis Domnul la seceratul grânelor"
     ],
     [
      "Domnul",
-     "a trimis tunete și ploaie"
-    ],
-    [
-     "poporul",
-     "a avut o mare frică"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.12.sub12.9",
-   "age": "sub12",
-   "t": "match",
-   "ref": "12:20-24",
-   "q": "Îndemnurile lui Samuel: asociază.",
-   "pairs": [
-    [
-     "„Nu vă temeți!\"",
-     "le-a spus Samuel"
-    ],
-    [
-     "„slujiți Domnului\"",
-     "din toată inima"
-    ],
-    [
-     "Domnul",
-     "nu va părăsi pe poporul Lui"
+     "Împăratul adevărat al poporului"
     ]
    ]
   },
@@ -161,6 +170,26 @@
    ],
    "q": "Samuel a zis poporului: „Nu vă ___!",
    "ctx": "După ce poporul s-a speriat de tunete și ploaie:"
+  },
+  {
+   "id": "1sa.12.sub12.20",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "12:18",
+   "q": "Tot poporul a avut o mare frică de Domnul și de ___.",
+   "a": [
+    "Samuel"
+   ]
+  },
+  {
+   "id": "1sa.12.sub12.21",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "12:13",
+   "q": "iată că Domnul a pus un împărat peste ___.",
+   "a": [
+    "voi"
+   ]
   },
   {
    "id": "1sa.12.sub12.13",
@@ -210,6 +239,38 @@
    "explain": "Niciun răspuns corect: Nahaș, împăratul fiilor lui Amon (12:12)."
   },
   {
+   "id": "1sa.12.sub12.22",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "12:18",
+   "q": "Ce s-a întâmplat în ziua aceea?",
+   "opts": [
+    "poporul a avut mare frică de Domnul și de Samuel",
+    "Domnul a trimis tunete și ploaie",
+    "a căzut zăpadă"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.12.sub12.23",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "12:20",
+   "q": "Ce a spus Samuel poporului?",
+   "opts": [
+    "„Părăsiți-L pe Domnul”",
+    "„Slujiți Domnului din toată inima voastră”",
+    "„Nu vă temeți!”"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
    "id": "1sa.12.12-13.1",
    "age": "12-13",
    "t": "tf",
@@ -233,6 +294,23 @@
    "ref": "12:19",
    "q": "Poporul a recunoscut că a adăugat la păcatele lui și pe acela de a cere un împărat.",
    "a": true
+  },
+  {
+   "id": "1sa.12.12-13.16",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "12:3",
+   "q": "Samuel a întrebat: „Cui i-am luat boul sau cui i-am luat măgarul?”",
+   "a": true
+  },
+  {
+   "id": "1sa.12.12-13.17",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "12:12",
+   "q": "Poporul a cerut un împărat când a văzut că vine Sisera împotriva lor.",
+   "a": false,
+   "explain": "L-au cerut când au văzut că Nahaș, împăratul fiilor lui Amon, mergea împotriva lor."
   },
   {
    "id": "1sa.12.12-13.4",
@@ -274,69 +352,57 @@
    "a": 0
   },
   {
-   "id": "1sa.12.12-13.7",
+   "id": "1sa.12.12-13.18",
+   "age": "12-13",
+   "t": "one",
+   "ref": "12:10",
+   "q": "Cui slujiseră israeliții, înainte să strige către Domnul că au păcătuit?",
+   "opts": [
+    "lui Dagon",
+    "baalilor și astarteelor",
+    "lui Moloc"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.12.12-13.19",
+   "age": "12-13",
+   "t": "one",
+   "ref": "12:5",
+   "q": "Ce au răspuns oamenii, când Samuel a spus că Domnul și unsul Lui sunt martori?",
+   "opts": [
+    "„Ne-ai apăsat”",
+    "„Sunt martori!”",
+    "„Nu știm”"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.12.12-13.24",
    "age": "12-13",
    "t": "match",
-   "ref": "12:9-11",
-   "q": "Istoria lui Israel în cuvântarea lui Samuel: asociază.",
+   "ref": "12:6-12",
+   "q": "Asociază fiecare nume cu ce se spune despre el în 1 Samuel 12.",
    "pairs": [
     [
      "Sisera",
      "căpetenia oștirii Hațorului"
     ],
     [
-     "baalii și astarteele",
-     "poporul le-a slujit"
+     "Nahaș",
+     "împăratul fiilor lui Amon"
     ],
     [
-     "Ierubaal, Barac, Iefta",
-     "trimiși de Domnul"
+     "Moise și Aaron",
+     "cei trimiși să scoată pe Israel din Egipt"
     ],
     [
-     "liniștea",
-     "după izbăvire"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.12.12-13.8",
-   "age": "12-13",
-   "t": "match",
-   "ref": "12:14-15",
-   "q": "Cele două căi: asociază.",
-   "pairs": [
-    [
-     "dacă vă veți teme de Domnul",
-     "vă veți alipi de El"
+     "Iacov",
+     "cel care a venit în Egipt"
     ],
     [
-     "dacă nu veți asculta",
-     "mâna Domnului va fi împotriva voastră"
-    ],
-    [
-     "împăratul",
-     "va fi alături de popor în aceeași soartă"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.12.12-13.9",
-   "age": "12-13",
-   "t": "match",
-   "ref": "12:5",
-   "q": "Martorii lui Samuel: asociază.",
-   "pairs": [
-    [
-     "Domnul",
-     "martor împotriva lor"
-    ],
-    [
-     "unsul Lui",
-     "martor și el"
-    ],
-    [
-     "poporul",
-     "a răspuns: „Sunt martori!\""
+     "Ierubaal",
+     "izbăvitor trimis de Domnul"
     ]
    ]
   },
@@ -372,6 +438,26 @@
    ],
    "q": "Iată dar ___ pe care l-ați ales și pe care l-ați cerut;",
    "ctx": "Samuel, către poporul strâns la Ghilgal:"
+  },
+  {
+   "id": "1sa.12.12-13.20",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "12:10",
+   "q": "Am păcătuit, căci am părăsit pe Domnul și am slujit baalilor și ___",
+   "a": [
+    "astarteelor"
+   ]
+  },
+  {
+   "id": "1sa.12.12-13.21",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "12:16",
+   "q": "Acum mai așteptați aici, ca să vedeți ___ pe care o va face Domnul sub ochii voștri.",
+   "a": [
+    "minunea"
+   ]
   },
   {
    "id": "1sa.12.12-13.13",
@@ -420,6 +506,38 @@
    "explain": "Niciun răspuns corect: „fiii mei sunt cu voi\" (12:2)."
   },
   {
+   "id": "1sa.12.12-13.22",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "12:6-8",
+   "q": "Ce spune Samuel despre Egipt?",
+   "opts": [
+    "părinții au rămas pentru totdeauna în Egipt",
+    "Domnul a pus pe Moise și pe Aaron",
+    "părinții au strigat către Domnul"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.12.12-13.23",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "12:14-15",
+   "q": "Ce le-a spus Samuel?",
+   "opts": [
+    "dacă nu vor asculta, mâna Domnului va fi împotriva lor",
+    "dacă se vor teme de Domnul, vor fi alipiți de El",
+    "Domnul îi va ierta oricum"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
    "id": "1sa.12.14-15.1",
    "age": "14-15",
    "t": "tf",
@@ -443,6 +561,23 @@
    "ref": "12:25",
    "q": "Samuel a avertizat că, dacă vor face răul, vor pieri și ei, și împăratul lor.",
    "a": true
+  },
+  {
+   "id": "1sa.12.14-15.16",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "12:17",
+   "q": "Samuel a spus că este vremea seceratului grânelor.",
+   "a": true
+  },
+  {
+   "id": "1sa.12.14-15.17",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "12:20",
+   "q": "Samuel le-a spus să se teamă și să fugă de Domnul.",
+   "a": false,
+   "explain": "A spus: „Nu vă abateți de la Domnul.”"
   },
   {
    "id": "1sa.12.14-15.4",
@@ -484,77 +619,57 @@
    "a": 0
   },
   {
-   "id": "1sa.12.14-15.7",
+   "id": "1sa.12.14-15.18",
    "age": "14-15",
-   "t": "match",
-   "ref": "12:6-8",
-   "q": "Ieșirea din Egipt în cuvântarea lui Samuel: asociază.",
-   "pairs": [
-    [
-     "Iacov",
-     "a venit în Egipt"
-    ],
-    [
-     "părinții",
-     "au strigat către Domnul"
-    ],
-    [
-     "Moise și Aaron",
-     "au scos poporul din Egipt"
-    ],
-    [
-     "locul acesta",
-     "acolo i-au adus să locuiască"
-    ]
-   ]
+   "t": "one",
+   "ref": "12:4",
+   "q": "Ce au răspuns oamenii despre Samuel?",
+   "opts": [
+    "„Ai luat mită”",
+    "„Ne-ai luat boii”",
+    "„Nu ne-ai apăsat, nu ne-ai năpăstuit”"
+   ],
+   "a": 2
   },
   {
-   "id": "1sa.12.14-15.8",
+   "id": "1sa.12.14-15.19",
    "age": "14-15",
-   "t": "match",
-   "ref": "12:10-11",
-   "q": "Poporul și izbăvitorii: asociază.",
-   "pairs": [
-    [
-     "„Am păcătuit\"",
-     "mărturisirea poporului"
-    ],
-    [
-     "baalii și astarteele",
-     "cărora le-au slujit"
-    ],
-    [
-     "Ierubaal",
-     "un izbăvitor"
-    ],
-    [
-     "Samuel",
-     "pomenit și el printre izbăvitori"
-    ]
-   ]
+   "t": "one",
+   "ref": "12:24",
+   "q": "Cum cere Samuel să-I slujească poporul Domnului?",
+   "opts": [
+    "numai cu cântări",
+    "cu credincioșie, din toată inima",
+    "numai cu jertfe"
+   ],
+   "a": 1
   },
   {
-   "id": "1sa.12.14-15.9",
+   "id": "1sa.12.14-15.24",
    "age": "14-15",
    "t": "match",
-   "ref": "12:17-18",
-   "q": "Tunetele: asociază.",
+   "ref": "12:6-17",
+   "q": "Asociază fiecare loc sau vreme cu ce se spune despre ea în 1 Samuel 12.",
    "pairs": [
+    [
+     "Egipt",
+     "țara din care au fost scoși părinții"
+    ],
+    [
+     "Hațor",
+     "cetatea lui Sisera"
+    ],
+    [
+     "Moab",
+     "țara al cărei împărat a luptat împotriva lor"
+    ],
+    [
+     "Amon",
+     "țara lui Nahaș"
+    ],
     [
      "seceratul grânelor",
-     "vremea minunii"
-    ],
-    [
-     "tunetele și ploaia",
-     "trimise de Domnul"
-    ],
-    [
-     "frica",
-     "poporul s-a temut de Domnul și de Samuel"
-    ],
-    [
-     "scopul",
-     "să vadă cât de rău au făcut cerând un împărat"
+     "vremea când a trimis Domnul tunete"
     ]
    ]
   },
@@ -590,6 +705,26 @@
    ],
    "q": "am umblat înaintea voastră din ___ până în ziua de azi.",
    "ctx": "Samuel, la sfârșitul vieții de judecător:"
+  },
+  {
+   "id": "1sa.12.14-15.20",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "12:5",
+   "q": "Domnul este ___ împotriva voastră și unsul Lui este martor în ziua aceasta",
+   "a": [
+    "martor"
+   ]
+  },
+  {
+   "id": "1sa.12.14-15.21",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "12:17",
+   "q": "Voi striga către Domnul și va trimite tunete și ___.",
+   "a": [
+    "ploaie"
+   ]
   },
   {
    "id": "1sa.12.14-15.13",
@@ -639,6 +774,38 @@
    "explain": "Niciun răspuns corect: pe părinții poporului (12:6)."
   },
   {
+   "id": "1sa.12.14-15.22",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "12:20-22",
+   "q": "Ce a spus Samuel?",
+   "opts": [
+    "„Domnul v-a părăsit pentru totdeauna”",
+    "„Nu vă abateți de la Domnul”",
+    "„Domnul nu va părăsi poporul Lui din pricina Numelui Lui celui mare”"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.12.14-15.23",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "12:11-12",
+   "q": "Ce a făcut Domnul pentru popor?",
+   "opts": [
+    "i-a lăsat în mâna vrăjmașilor",
+    "a trimis pe Ierubaal, pe Barac, pe Iefta și pe Samuel",
+    "i-a izbăvit și au locuit în liniște"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
    "id": "1sa.12.16-17.1",
    "age": "16-17",
    "t": "tf",
@@ -662,6 +829,23 @@
    "ref": "12:15",
    "q": "Samuel spune că, dacă nu ascultă, mâna Domnului va fi împotriva lor, cum a fost împotriva părinților lor.",
    "a": true
+  },
+  {
+   "id": "1sa.12.16-17.16",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "12:13",
+   "q": "Samuel a spus: „Iată dar împăratul pe care l-ați ales și pe care l-ați cerut.”",
+   "a": true
+  },
+  {
+   "id": "1sa.12.16-17.17",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "12:23",
+   "q": "Samuel a spus că va înceta să se roage pentru popor.",
+   "a": false,
+   "explain": "A spus că departe de el gândul să înceteze."
   },
   {
    "id": "1sa.12.16-17.4",
@@ -703,77 +887,57 @@
    "a": 0
   },
   {
-   "id": "1sa.12.16-17.7",
+   "id": "1sa.12.16-17.18",
    "age": "16-17",
-   "t": "match",
-   "ref": "12:3-5",
-   "q": "Întrebările și răspunsurile din 1 Samuel 12: asociază.",
-   "pairs": [
-    [
-     "„Cui i-am luat boul?\"",
-     "întrebarea lui Samuel"
-    ],
-    [
-     "„Nu ne-ai apăsat\"",
-     "răspunsul poporului"
-    ],
-    [
-     "„Domnul este martor\"",
-     "Samuel, a doua oară"
-    ],
-    [
-     "„Sunt martori!\"",
-     "poporul, a doua oară"
-    ]
-   ]
+   "t": "one",
+   "ref": "12:1",
+   "q": "Ce spune Samuel că a pus peste popor, după ce i-a ascultat glasul?",
+   "opts": [
+    "un judecător nou",
+    "un preot nou",
+    "un împărat"
+   ],
+   "a": 2
   },
   {
-   "id": "1sa.12.16-17.8",
+   "id": "1sa.12.16-17.19",
    "age": "16-17",
-   "t": "match",
-   "ref": "12:20-25",
-   "q": "Ultimele îndemnuri ale lui Samuel: asociază începutul cu sfârșitul.",
-   "pairs": [
-    [
-     "Nu vă abateți de la Domnul",
-     "și slujiți Domnului din toată inima"
-    ],
-    [
-     "Domnul a hotărât",
-     "să facă din voi poporul Lui"
-    ],
-    [
-     "Departe iarăși de mine",
-     "să păcătuiesc împotriva Domnului"
-    ],
-    [
-     "dacă veți face răul",
-     "veți pieri, voi și împăratul vostru"
-    ]
-   ]
+   "t": "one",
+   "ref": "12:21",
+   "q": "Cum numește Samuel lucrurile după care ar merge poporul, dacă s-ar abate de la Domnul?",
+   "opts": [
+    "lucruri sfinte",
+    "lucruri de preț",
+    "lucruri de nimic"
+   ],
+   "a": 2
   },
   {
-   "id": "1sa.12.16-17.9",
+   "id": "1sa.12.16-17.24",
    "age": "16-17",
    "t": "match",
-   "ref": "12:9-12",
-   "q": "Vrăjmașii lui Israel în cuvântarea lui Samuel: asociază.",
+   "ref": "12:5-21",
+   "q": "Asociază fiecare persoană sau lucru cu ce se spune despre el în 1 Samuel 12.",
    "pairs": [
     [
-     "Sisera",
-     "Hațor"
+     "unsul Domnului",
+     "martor alături de Domnul"
     ],
     [
-     "filistenii",
-     "au luptat împotriva lor"
+     "Hațor",
+     "cetatea lui Sisera"
     ],
     [
-     "împăratul Moabului",
-     "i-a apăsat"
+     "Moise și Aaron",
+     "cei scoși de Domnul ca să-i izbăvească pe părinți din Egipt"
     ],
     [
-     "Nahaș",
-     "împăratul fiilor lui Amon"
+     "Iefta",
+     "izbăvitor trimis de Domnul"
+    ],
+    [
+     "baalii și astarteele",
+     "cei cărora li s-a slujit"
     ]
    ]
   },
@@ -809,6 +973,26 @@
    ],
    "q": "Și totuși Domnul Dumnezeul vostru era ___ vostru.",
    "ctx": "Samuel, despre cererea unui împărat:"
+  },
+  {
+   "id": "1sa.12.16-17.20",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "12:15",
+   "q": "mâna Domnului va fi împotriva voastră, cum a fost împotriva ___ voștri.",
+   "a": [
+    "părinților"
+   ]
+  },
+  {
+   "id": "1sa.12.16-17.21",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "12:5",
+   "q": "n-ați găsit nimic în ___ mele.",
+   "a": [
+    "mâinile"
+   ]
   },
   {
    "id": "1sa.12.16-17.13",
@@ -858,6 +1042,38 @@
    "explain": "Niciun răspuns corect: de Domnul și de Samuel (12:18)."
   },
   {
+   "id": "1sa.12.16-17.22",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "12:16-18",
+   "q": "Ce s-a întâmplat?",
+   "opts": [
+    "Samuel a strigat către Domnul",
+    "Domnul a trimis tunete și ploaie",
+    "poporul a fugit din țară"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.12.16-17.23",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "12:23-24",
+   "q": "Ce promite Samuel?",
+   "opts": [
+    "că îi va învăța calea cea bună și cea dreaptă",
+    "că le va da un alt împărat",
+    "că nu va înceta să se roage pentru popor"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
    "id": "1sa.12.18+.1",
    "age": "18+",
    "t": "tf",
@@ -881,6 +1097,23 @@
    "ref": "12:20",
    "q": "Samuel spune: „Ați făcut tot răul acesta, dar nu vă abateți de la Domnul.\"",
    "a": true
+  },
+  {
+   "id": "1sa.12.18+.16",
+   "age": "18+",
+   "t": "tf",
+   "ref": "12:7",
+   "q": "Samuel i-a chemat să se înfățișeze înaintea Domnului ca să-i judece pentru binefacerile Lui.",
+   "a": true
+  },
+  {
+   "id": "1sa.12.18+.17",
+   "age": "18+",
+   "t": "tf",
+   "ref": "12:14",
+   "q": "Samuel a spus că nu trebuie să se teamă de Domnul nici poporul, nici împăratul.",
+   "a": false,
+   "explain": "A spus că trebuie să se teamă de Domnul și să-I slujească."
   },
   {
    "id": "1sa.12.18+.4",
@@ -922,73 +1155,57 @@
    "a": 0
   },
   {
-   "id": "1sa.12.18+.7",
+   "id": "1sa.12.18+.18",
+   "age": "18+",
+   "t": "one",
+   "ref": "12:12",
+   "q": "Cine era împăratul fiilor lui Amon, pomenit de Samuel?",
+   "opts": [
+    "Hanun",
+    "Hadadezer",
+    "Nahaș"
+   ],
+   "a": 2
+  },
+  {
+   "id": "1sa.12.18+.19",
+   "age": "18+",
+   "t": "one",
+   "ref": "12:6",
+   "q": "Cine a pus pe Moise și pe Aaron, după cuvintele lui Samuel?",
+   "opts": [
+    "Domnul",
+    "Faraon",
+    "Iosua"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.12.18+.24",
    "age": "18+",
    "t": "match",
-   "ref": "12:6-12",
-   "q": "Oameni din istoria lui Israel pomeniți de Samuel: asociază.",
+   "ref": "12:9-11",
+   "q": "Asociază fiecare nume cu ce se spune despre el în 1 Samuel 12.",
    "pairs": [
-    [
-     "Moise și Aaron",
-     "au scos poporul din Egipt"
-    ],
-    [
-     "Iacov",
-     "a venit în Egipt"
-    ],
     [
      "Sisera",
      "căpetenia oștirii Hațorului"
     ],
     [
-     "Nahaș",
-     "a mers împotriva lui Israel"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.12.18+.8",
-   "age": "18+",
-   "t": "match",
-   "ref": "12:16-19",
-   "q": "Minunea din vremea seceratului: asociază fiecare cu cine a spus.",
-   "pairs": [
-    [
-     "„Mai așteptați aici\"",
-     "Samuel"
+     "Moab",
+     "împăratul lui a început lupta împotriva lor"
     ],
     [
-     "„Roagă-te Domnului Dumnezeului tău\"",
-     "poporul"
+     "filistenii",
+     "cei în mâinile cărora i-a vândut Domnul"
     ],
     [
-     "„Nu suntem noi la seceratul grânelor?\"",
-     "Samuel, a doua oară"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.12.18+.9",
-   "age": "18+",
-   "t": "match",
-   "ref": "12:21-25",
-   "q": "Îndemnurile de la sfârșit: asociază.",
-   "pairs": [
-    [
-     "lucrurile de nimic",
-     "n-aduc nici folos, nici izbăvire"
+     "Iefta",
+     "izbăvitor trimis de Domnul, după Barac"
     ],
     [
-     "calea cea bună",
-     "Samuel îi va învăța"
-    ],
-    [
-     "puterea Domnului",
-     "se vede printre ei"
-    ],
-    [
-     "răul",
-     "îi va face să piară"
+     "Barac",
+     "izbăvitor trimis de Domnul, după Ierubaal"
     ]
    ]
   },
@@ -1024,6 +1241,26 @@
    ],
    "q": "Acum, înfățișați-vă ca să vă ___ înaintea Domnului pentru toate binefacerile pe care vi le-a făcut Domnul,",
    "ctx": "Samuel, către popor:"
+  },
+  {
+   "id": "1sa.12.18+.20",
+   "age": "18+",
+   "t": "fill",
+   "ref": "12:8",
+   "q": "După ce a venit ___ în Egipt, părinții voștri au strigat către Domnul",
+   "a": [
+    "Iacov"
+   ]
+  },
+  {
+   "id": "1sa.12.18+.21",
+   "age": "18+",
+   "t": "fill",
+   "ref": "12:21",
+   "q": "care n-aduc nici folos, nici ___, pentru că sunt lucruri de nimic.",
+   "a": [
+    "izbăvire"
+   ]
   },
   {
    "id": "1sa.12.18+.13",
@@ -1070,6 +1307,38 @@
    ],
    "a": [],
    "explain": "Niciun răspuns corect: „eu sunt bătrân, am albit\" (12:2)."
+  },
+  {
+   "id": "1sa.12.18+.22",
+   "age": "18+",
+   "t": "multi",
+   "ref": "12:2-3",
+   "q": "Ce a spus Samuel despre el însuși?",
+   "opts": [
+    "nu a luat boul sau măgarul nimănui",
+    "a luat mită de la unii;",
+    "a umblat înaintea poporului din tinerețe"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.12.18+.23",
+   "age": "18+",
+   "t": "multi",
+   "ref": "12:10-11",
+   "q": "Ce se spune despre vremea strigătului către Domnul?",
+   "opts": [
+    "Domnul n-a mai ascultat pe nimeni",
+    "poporul a mărturisit că a slujit baalilor și astarteelor",
+    "Domnul a trimis izbăvitori"
+   ],
+   "a": [
+    1,
+    2
+   ]
   }
  ]
 }

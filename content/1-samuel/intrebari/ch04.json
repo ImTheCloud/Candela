@@ -28,6 +28,23 @@
    "explain": "Tot Israelul a scos strigăte de bucurie de s-a cutremurat pământul (4:5)."
   },
   {
+   "id": "1sa.4.sub12.16",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "4:10",
+   "q": "Israel a fost bătut din nou de filisteni și fiecare a fugit în cortul lui.",
+   "a": true
+  },
+  {
+   "id": "1sa.4.sub12.17",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "4:12",
+   "q": "Omul din Beniamin a alergat la Silo ca să anunțe o mare biruință.",
+   "a": false,
+   "explain": "A venit cu hainele sfâșiate și cu o vestire rea."
+  },
+  {
    "id": "1sa.4.sub12.4",
    "age": "sub12",
    "t": "one",
@@ -67,65 +84,57 @@
    "a": 2
   },
   {
-   "id": "1sa.4.sub12.7",
+   "id": "1sa.4.sub12.18",
    "age": "sub12",
-   "t": "match",
-   "ref": "4:11, 18, 21",
-   "q": "1 Samuel 4: asociază fiecare cu ce i s-a întâmplat.",
-   "pairs": [
-    [
-     "chivotul",
-     "a fost luat de filisteni"
-    ],
-    [
-     "Eli",
-     "a căzut de pe scaun și a murit"
-    ],
-    [
-     "I-Cabod",
-     "s-a născut în ziua aceea"
-    ]
-   ]
+   "t": "one",
+   "ref": "4:1",
+   "q": "Lângă ce loc a tăbărât Israel, înaintea luptei cu filistenii?",
+   "opts": [
+    "lângă Silo",
+    "lângă Afec",
+    "lângă Eben-Ezer"
+   ],
+   "a": 2
   },
   {
-   "id": "1sa.4.sub12.8",
+   "id": "1sa.4.sub12.19",
+   "age": "sub12",
+   "t": "one",
+   "ref": "4:4",
+   "q": "De unde au adus israeliții chivotul legământului, ca să vină în tabără?",
+   "opts": [
+    "de la Rama",
+    "de la Silo",
+    "de la Hebron"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.4.sub12.24",
    "age": "sub12",
    "t": "match",
-   "ref": "4:1, 3, 12",
-   "q": "Locuri din 1 Samuel 4: asociază.",
+   "ref": "4:1-18",
+   "q": "Asociază fiecare nume sau loc cu ce se spune despre el în 1 Samuel 4.",
    "pairs": [
     [
+     "Eli",
+     "judecător în Israel patruzeci de ani"
+    ],
+    [
+     "Hofni și Fineas",
+     "fiii lui Eli, care au murit"
+    ],
+    [
+     "filistenii",
+     "cei care au luat chivotul"
+    ],
+    [
      "Eben-Ezer",
-     "acolo tăbărâse Israel"
+     "locul unde a tăbărât Israel"
     ],
     [
      "Afec",
-     "acolo tăbărâseră filistenii"
-    ],
-    [
-     "Silo",
-     "de acolo a fost adus chivotul"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.4.sub12.9",
-   "age": "sub12",
-   "t": "match",
-   "ref": "4:6-9",
-   "q": "Filistenii când au auzit de chivot: asociază.",
-   "pairs": [
-    [
-     "strigătele",
-     "le-au auzit din tabăra evreilor"
-    ],
-    [
-     "frica",
-     "au crezut că Dumnezeu a venit în tabără"
-    ],
-    [
-     "curajul",
-     "și-au zis: „fiți oameni și luptați!\""
+     "locul unde au tăbărât filistenii"
     ]
    ]
   },
@@ -161,6 +170,26 @@
    ],
    "q": "Și Eli era în vârstă de nouăzeci și opt de ___,",
    "ctx": "Când a venit vestea la Silo:"
+  },
+  {
+   "id": "1sa.4.sub12.20",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "4:1",
+   "q": "Israel a ieșit înaintea ___ ca să lupte împotriva lor.",
+   "a": [
+    "filistenilor"
+   ]
+  },
+  {
+   "id": "1sa.4.sub12.21",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "4:13",
+   "q": "Eli aștepta stând pe un scaun lângă ___, căci inima îi era neliniștită pentru chivotul lui Dumnezeu.",
+   "a": [
+    "drum"
+   ]
   },
   {
    "id": "1sa.4.sub12.13",
@@ -210,6 +239,38 @@
    "explain": "Niciun răspuns corect: Eli aștepta stând pe un scaun lângă drum (4:13)."
   },
   {
+   "id": "1sa.4.sub12.22",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "4:2",
+   "q": "Ce s-a întâmplat în prima luptă?",
+   "opts": [
+    "au murit aproape patru mii de oameni",
+    "filistenii au fugit",
+    "Israel a fost bătut de filisteni"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.4.sub12.23",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "4:5-6",
+   "q": "Ce s-a întâmplat când chivotul a intrat în tabără?",
+   "opts": [
+    "filistenii au fugit îndată",
+    "filistenii au auzit răsunetul",
+    "tot Israelul a strigat de bucurie"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
    "id": "1sa.4.12-13.1",
    "age": "12-13",
    "t": "tf",
@@ -233,6 +294,23 @@
    "ref": "4:18",
    "q": "Eli fusese judecător în Israel patruzeci de ani.",
    "a": true
+  },
+  {
+   "id": "1sa.4.12-13.16",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "4:3",
+   "q": "Bătrânii lui Israel au propus să fie adus chivotul de la Silo.",
+   "a": true
+  },
+  {
+   "id": "1sa.4.12-13.17",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "4:15",
+   "q": "Eli avea șaizeci de ani și vedea bine.",
+   "a": false,
+   "explain": "Avea nouăzeci și opt de ani, ochii întunecați și nu mai putea să vadă."
   },
   {
    "id": "1sa.4.12-13.4",
@@ -274,73 +352,57 @@
    "a": 2
   },
   {
-   "id": "1sa.4.12-13.7",
+   "id": "1sa.4.12-13.18",
    "age": "12-13",
-   "t": "match",
-   "ref": "4:2, 10",
-   "q": "Cele două lupte de la Eben-Ezer: asociază.",
-   "pairs": [
-    [
-     "prima luptă",
-     "aproape patru mii de morți"
-    ],
-    [
-     "a doua luptă",
-     "treizeci de mii de pedeștri"
-    ],
-    [
-     "după a doua luptă",
-     "fiecare a fugit în cortul lui"
-    ]
-   ]
+   "t": "one",
+   "ref": "4:2",
+   "q": "Câți oameni au murit în prima luptă cu filistenii?",
+   "opts": [
+    "aproape o sută",
+    "aproape cincizeci de mii",
+    "aproape patru mii"
+   ],
+   "a": 2
   },
   {
-   "id": "1sa.4.12-13.8",
+   "id": "1sa.4.12-13.19",
    "age": "12-13",
-   "t": "match",
-   "ref": "4:12-18",
-   "q": "Vestea la Silo: asociază.",
-   "pairs": [
-    [
-     "omul din Beniamin",
-     "avea hainele sfâșiate și țărână pe cap"
-    ],
-    [
-     "cetatea",
-     "a strigat"
-    ],
-    [
-     "Eli",
-     "a întrebat: „Ce înseamnă zarva aceasta?\""
-    ],
-    [
-     "poarta",
-     "lângă ea a căzut Eli"
-    ]
-   ]
+   "t": "one",
+   "ref": "4:16",
+   "q": "Cum l-a numit Eli pe omul care venea de pe câmpul de bătaie?",
+   "opts": [
+    "străine",
+    "fiule",
+    "prietene"
+   ],
+   "a": 1
   },
   {
-   "id": "1sa.4.12-13.9",
+   "id": "1sa.4.12-13.24",
    "age": "12-13",
    "t": "match",
-   "ref": "4:19-22",
-   "q": "Nevasta lui Fineas: asociază.",
+   "ref": "4:1-12",
+   "q": "Asociază fiecare nume sau loc cu ce se spune despre el în 1 Samuel 4.",
    "pairs": [
     [
-     "vestea",
-     "luarea chivotului și moartea lui Eli și a lui Fineas"
+     "Beniamin",
+     "seminția omului care a adus vestea"
     ],
     [
-     "copilul",
-     "un fiu"
+     "Silo",
+     "cetatea unde a ajuns vestea"
     ],
     [
-     "numele",
-     "I-Cabod"
+     "Afec",
+     "locul unde au tăbărât filistenii"
     ],
     [
-     "ultimele ei cuvinte",
-     "„S-a dus slava din Israel\""
+     "Eben-Ezer",
+     "locul unde a tăbărât Israel"
+    ],
+    [
+     "pustia",
+     "locul unde dumnezeii lui Israel au lovit pe egipteni"
     ]
    ]
   },
@@ -376,6 +438,26 @@
    ],
    "q": "El fusese judecător în Israel ___ de ani.",
    "ctx": "Despre Eli, la moartea lui:"
+  },
+  {
+   "id": "1sa.4.12-13.20",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "4:4",
+   "q": "Poporul a trimis la ___, de unde au adus chivotul legământului Domnului oștirilor",
+   "a": [
+    "Silo"
+   ]
+  },
+  {
+   "id": "1sa.4.12-13.21",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "4:17",
+   "q": "„Israel a fugit dinaintea ___ și poporul a suferit o mare înfrângere",
+   "a": [
+    "filistenilor"
+   ]
   },
   {
    "id": "1sa.4.12-13.13",
@@ -424,6 +506,38 @@
    "explain": "Niciun răspuns corect: I-Cabod era fiul nevestei lui Fineas (4:19-21)."
   },
   {
+   "id": "1sa.4.12-13.22",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "4:6-7",
+   "q": "Ce au făcut filistenii când au auzit strigătele?",
+   "opts": [
+    "au aflat că sosise chivotul",
+    "au trimis soli de pace",
+    "s-au temut"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.4.12-13.23",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "4:13-14",
+   "q": "Ce s-a întâmplat la Silo?",
+   "opts": [
+    "Eli a întrebat ce înseamnă zarva",
+    "Eli a fugit din cetate",
+    "toată cetatea a strigat"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
    "id": "1sa.4.14-15.1",
    "age": "14-15",
    "t": "tf",
@@ -447,6 +561,23 @@
    "ref": "4:20",
    "q": "Femeile i-au spus nevestei lui Fineas: „Nu te teme, căci ai născut un fiu!\"",
    "a": true
+  },
+  {
+   "id": "1sa.4.14-15.16",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "4:5",
+   "q": "Când a intrat chivotul în tabără, tot Israelul a strigat de bucurie de s-a cutremurat pământul.",
+   "a": true
+  },
+  {
+   "id": "1sa.4.14-15.17",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "4:16",
+   "q": "Omul a spus că vine de pe câmpul de bătaie, unde Israel a fost biruitor.",
+   "a": false,
+   "explain": "A spus că a fugit de pe câmpul de bătaie."
   },
   {
    "id": "1sa.4.14-15.4",
@@ -488,73 +619,57 @@
    "a": 0
   },
   {
-   "id": "1sa.4.14-15.7",
+   "id": "1sa.4.14-15.18",
    "age": "14-15",
-   "t": "match",
-   "ref": "4:6-9",
-   "q": "Cuvintele filistenilor: asociază începutul cu sfârșitul.",
-   "pairs": [
-    [
-     "Ce înseamnă strigătele acestea",
-     "care răsună în tabăra evreilor?"
-    ],
-    [
-     "Vai de noi",
-     "căci n-a fost așa ceva până acum!"
-    ],
-    [
-     "Cine ne va izbăvi",
-     "din mâna acestor dumnezei puternici?"
-    ],
-    [
-     "fiți oameni",
-     "și luptați!"
-    ]
-   ]
+   "t": "one",
+   "ref": "4:20",
+   "q": "Ce i-au spus femeile nevestei lui Fineas, când trăgea să moară?",
+   "opts": [
+    "„Domnul a luat chivotul”",
+    "„Nu te teme, căci ai născut un fiu!”",
+    "„Du-te acasă la Silo”"
+   ],
+   "a": 1
   },
   {
-   "id": "1sa.4.14-15.8",
+   "id": "1sa.4.14-15.19",
    "age": "14-15",
-   "t": "match",
-   "ref": "4:4",
-   "q": "Chivotul în 1 Samuel 4:4: asociază.",
-   "pairs": [
-    [
-     "Silo",
-     "de acolo a fost adus"
-    ],
-    [
-     "Domnul oștirilor",
-     "șade între heruvimi"
-    ],
-    [
-     "Hofni și Fineas",
-     "erau acolo cu chivotul"
-    ]
-   ]
+   "t": "one",
+   "ref": "4:8",
+   "q": "Cu ce spuneau filistenii că au lovit dumnezeii lui Israel pe egipteni?",
+   "opts": [
+    "cu sabia, la Marea Roșie",
+    "cu ciuma, în Egipt",
+    "cu tot felul de urgii, în pustie"
+   ],
+   "a": 2
   },
   {
-   "id": "1sa.4.14-15.9",
+   "id": "1sa.4.14-15.24",
    "age": "14-15",
    "t": "match",
-   "ref": "4:15-18",
-   "q": "Eli la sfârșitul vieții: asociază.",
+   "ref": "4:2-21",
+   "q": "Asociază fiecare număr sau nume cu ce se spune despre el în 1 Samuel 4.",
    "pairs": [
     [
-     "vârsta",
-     "nouăzeci și opt de ani"
+     "treizeci de mii",
+     "pedeștrii căzuți în a doua luptă"
     ],
     [
-     "ochii",
-     "întunecați"
+     "patru mii",
+     "oamenii căzuți în prima luptă"
     ],
     [
-     "anii de judecător",
-     "patruzeci"
+     "nouăzeci și opt",
+     "vârsta lui Eli"
     ],
     [
-     "moartea",
-     "și-a rupt ceafa"
+     "patruzeci",
+     "anii de judecător ai lui Eli"
+    ],
+    [
+     "I-Cabod",
+     "„Nu mai e slavă”"
     ]
    ]
   },
@@ -590,6 +705,26 @@
    ],
    "q": "„Vin de pe câmpul de bătaie și din câmpul de bătaie am ___ astăzi.\"",
    "ctx": "Omul din Beniamin, către Eli:"
+  },
+  {
+   "id": "1sa.4.14-15.20",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "4:9",
+   "q": "ca nu cumva să fiți robi ___, cum v-au fost ei robi vouă",
+   "a": [
+    "evreilor"
+   ]
+  },
+  {
+   "id": "1sa.4.14-15.21",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "4:12",
+   "q": "cu hainele sfâșiate și cu capul acoperit cu ___.",
+   "a": [
+    "țărână"
+   ]
   },
   {
    "id": "1sa.4.14-15.13",
@@ -639,6 +774,38 @@
    "explain": "Niciun răspuns corect: fiecare a fugit în cortul lui (4:10)."
   },
   {
+   "id": "1sa.4.14-15.22",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "4:3-4",
+   "q": "Ce au spus bătrânii lui Israel?",
+   "opts": [
+    "„Să cerem pace filistenilor”",
+    "„Haidem să luăm de la Silo chivotul legământului”",
+    "„Să ne izbăvească din mâna vrăjmașilor noștri”"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.4.14-15.23",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "4:10-11",
+   "q": "Ce s-a întâmplat în a doua luptă?",
+   "opts": [
+    "Israel a câștigat lupta",
+    "chivotul lui Dumnezeu a fost luat",
+    "au căzut treizeci de mii de pedeștri"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
    "id": "1sa.4.16-17.1",
    "age": "16-17",
    "t": "tf",
@@ -662,6 +829,23 @@
    "ref": "4:21",
    "q": "Nevasta lui Fineas a spus „S-a dus slava din Israel\" și din pricina socrului și a bărbatului ei.",
    "a": true
+  },
+  {
+   "id": "1sa.4.16-17.16",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "4:14",
+   "q": "Eli, auzind strigătele, a întrebat ce înseamnă zarva aceea.",
+   "a": true
+  },
+  {
+   "id": "1sa.4.16-17.17",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "4:19",
+   "q": "Nevasta lui Fineas n-a aflat de luarea chivotului.",
+   "a": false,
+   "explain": "A auzit de luarea chivotului, de moartea socrului ei și a bărbatului ei."
   },
   {
    "id": "1sa.4.16-17.4",
@@ -703,73 +887,57 @@
    "a": 2
   },
   {
-   "id": "1sa.4.16-17.7",
+   "id": "1sa.4.16-17.18",
    "age": "16-17",
-   "t": "match",
-   "ref": "4:1-11",
-   "q": "Ordinea faptelor din 1 Samuel 4: asociază.",
-   "pairs": [
-    [
-     "prima luptă",
-     "Israel bătut, patru mii de morți"
-    ],
-    [
-     "sfatul bătrânilor",
-     "să aducă chivotul"
-    ],
-    [
-     "strigătele",
-     "de s-a cutremurat pământul"
-    ],
-    [
-     "a doua luptă",
-     "chivotul luat"
-    ]
-   ]
+   "t": "one",
+   "ref": "4:15",
+   "q": "Cum erau ochii lui Eli, când a murit?",
+   "opts": [
+    "strălucitori",
+    "închiși de tot",
+    "întunecați"
+   ],
+   "a": 2
   },
   {
-   "id": "1sa.4.16-17.8",
+   "id": "1sa.4.16-17.19",
+   "age": "16-17",
+   "t": "one",
+   "ref": "4:12",
+   "q": "Din ce seminție era omul care a adus vestea la Silo?",
+   "opts": [
+    "din Iuda",
+    "din Beniamin",
+    "din Efraim"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.4.16-17.24",
    "age": "16-17",
    "t": "match",
-   "ref": "4:12-14",
-   "q": "Sosirea vestitorului la Silo: asociază.",
+   "ref": "4:11-21",
+   "q": "Asociază fiecare nume cu ce se spune despre el în 1 Samuel 4.",
    "pairs": [
     [
-     "hainele",
-     "sfâșiate"
+     "Beniamin",
+     "seminția alergătorului venit la Silo"
     ],
     [
-     "capul",
-     "acoperit cu țărână"
+     "I-Cabod",
+     "fiul nevestei lui Fineas"
     ],
     [
-     "cetatea",
-     "a strigat"
+     "Hofni",
+     "fiul lui Eli, mort în luptă"
+    ],
+    [
+     "Fineas",
+     "bărbatul nevestei care a născut pe I-Cabod"
     ],
     [
      "Eli",
-     "a întrebat de zarvă"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.4.16-17.9",
-   "age": "16-17",
-   "t": "match",
-   "ref": "4:3, 7-8",
-   "q": "Ce credeau israeliții și filistenii despre chivot: asociază.",
-   "pairs": [
-    [
-     "bătrânii lui Israel",
-     "credeau că chivotul îi va izbăvi"
-    ],
-    [
-     "filistenii",
-     "credeau că Dumnezeu venise în tabără"
-    ],
-    [
-     "egiptenii",
-     "au fost loviți cu urgii, după filisteni"
+     "judecător în Israel patruzeci de ani"
     ]
    ]
   },
@@ -805,6 +973,26 @@
    ],
    "q": "Înfrângerea a fost foarte mare, și din Israel au căzut treizeci de mii de oameni ___.",
    "ctx": "A doua luptă cu filistenii:"
+  },
+  {
+   "id": "1sa.4.16-17.20",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "4:18",
+   "q": "Eli a căzut de pe scaun pe spate, lângă ___; și-a rupt ceafa și a murit",
+   "a": [
+    "poartă"
+   ]
+  },
+  {
+   "id": "1sa.4.16-17.21",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "4:6",
+   "q": "Ce înseamnă strigătele acestea care răsună în tabăra ___?",
+   "a": [
+    "evreilor"
+   ]
   },
   {
    "id": "1sa.4.16-17.13",
@@ -854,6 +1042,38 @@
    "explain": "Niciun răspuns corect: aproape patru mii de oameni (4:2)."
   },
   {
+   "id": "1sa.4.16-17.22",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "4:18",
+   "q": "Ce se spune despre moartea lui Eli?",
+   "opts": [
+    "și-a rupt ceafa",
+    "a murit pe câmpul de luptă",
+    "a căzut de pe scaun pe spate"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.4.16-17.23",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "4:19-20",
+   "q": "Ce s-a întâmplat cu nevasta lui Fineas?",
+   "opts": [
+    "a născut un fiu",
+    "a murit în timpul nașterii",
+    "a fugit în Beniamin"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
    "id": "1sa.4.18+.1",
    "age": "18+",
    "t": "tf",
@@ -877,6 +1097,23 @@
    "ref": "4:7",
    "q": "Filistenii ziceau că „n-a fost așa ceva până acum\".",
    "a": true
+  },
+  {
+   "id": "1sa.4.18+.16",
+   "age": "18+",
+   "t": "tf",
+   "ref": "4:20",
+   "q": "Nevasta lui Fineas n-a răspuns femeilor care i-au zis că a născut un fiu.",
+   "a": true
+  },
+  {
+   "id": "1sa.4.18+.17",
+   "age": "18+",
+   "t": "tf",
+   "ref": "4:13",
+   "q": "Eli aștepta în picioare, în poarta cetății.",
+   "a": false,
+   "explain": "Aștepta stând pe un scaun lângă drum."
   },
   {
    "id": "1sa.4.18+.4",
@@ -918,77 +1155,57 @@
    "a": 1
   },
   {
-   "id": "1sa.4.18+.7",
+   "id": "1sa.4.18+.18",
    "age": "18+",
-   "t": "match",
-   "ref": "4:19-21",
-   "q": "Moartea nevestei lui Fineas: asociază.",
-   "pairs": [
-    [
-     "socrul ei",
-     "Eli"
-    ],
-    [
-     "bărbatul ei",
-     "Fineas"
-    ],
-    [
-     "fiul ei",
-     "I-Cabod"
-    ],
-    [
-     "femeile de lângă ea",
-     "i-au spus să nu se teamă"
-    ]
-   ]
+   "t": "one",
+   "ref": "4:10",
+   "q": "Unde a fugit fiecare israelit după a doua înfrângere?",
+   "opts": [
+    "în cortul lui",
+    "la Silo",
+    "la Eben-Ezer"
+   ],
+   "a": 0
   },
   {
-   "id": "1sa.4.18+.8",
+   "id": "1sa.4.18+.19",
    "age": "18+",
-   "t": "match",
-   "ref": "4:2-18",
-   "q": "Numere din 1 Samuel 4: asociază.",
-   "pairs": [
-    [
-     "patru mii",
-     "morți în prima luptă"
-    ],
-    [
-     "treizeci de mii",
-     "pedeștri căzuți"
-    ],
-    [
-     "nouăzeci și opt",
-     "anii lui Eli"
-    ],
-    [
-     "patruzeci",
-     "anii lui Eli ca judecător"
-    ]
-   ]
+   "t": "one",
+   "ref": "4:22",
+   "q": "Ce a spus nevasta lui Fineas, din pricina luării chivotului?",
+   "opts": [
+    "„Chivotul este în siguranță”",
+    "„Domnul ne-a izbăvit”",
+    "„S-a dus slava din Israel”"
+   ],
+   "a": 2
   },
   {
-   "id": "1sa.4.18+.9",
+   "id": "1sa.4.18+.24",
    "age": "18+",
    "t": "match",
-   "ref": "4:21-22",
-   "q": "Numele I-Cabod: asociază.",
+   "ref": "4:1-22",
+   "q": "Asociază fiecare nume sau loc cu ce se spune despre el în 1 Samuel 4.",
    "pairs": [
     [
-     "înțelesul",
-     "Nu mai e slavă"
+     "Eben-Ezer",
+     "locul taberei lui Israel"
     ],
     [
-     "pricina întâi",
-     "luarea chivotului"
+     "Afec",
+     "locul taberei filistenilor"
     ],
     [
-     "pricina a doua",
-     "moartea socrului și a bărbatului"
+     "Beniamin",
+     "seminția mesagerului"
     ],
     [
-     "cuvintele de la urmă",
-     "căci chivotul lui Dumnezeu este luat"
+     "Silo",
+     "cetatea de unde a venit chivotul"
+    ],
+    [
+     "I-Cabod",
+     "numele care înseamnă „Nu mai e slavă”"
     ]
    ]
   },
@@ -1024,6 +1241,26 @@
    ],
    "q": "„Vai de noi, au zis ei, căci n-a fost așa ceva până ___!",
    "ctx": "Filistenii, la auzul strigătelor:"
+  },
+  {
+   "id": "1sa.4.18+.20",
+   "age": "18+",
+   "t": "fill",
+   "ref": "4:5",
+   "q": "Când a intrat chivotul legământului Domnului în ___, tot Israelul a scos strigăte de bucurie",
+   "a": [
+    "tabără"
+   ]
+  },
+  {
+   "id": "1sa.4.18+.21",
+   "age": "18+",
+   "t": "fill",
+   "ref": "4:3",
+   "q": "Haidem să luăm de la Silo chivotul ___ Domnului, ca să vină în mijlocul nostru",
+   "a": [
+    "legământului"
+   ]
   },
   {
    "id": "1sa.4.18+.13",
@@ -1071,6 +1308,38 @@
    ],
    "a": [],
    "explain": "Niciun răspuns corect: când trăgea să moară (4:20)."
+  },
+  {
+   "id": "1sa.4.18+.22",
+   "age": "18+",
+   "t": "multi",
+   "ref": "4:1-2",
+   "q": "Ce se spune la începutul capitolului 4?",
+   "opts": [
+    "filistenii au tăbărât la Afec",
+    "Israel a tăbărât la Silo",
+    "Israel a tăbărât lângă Eben-Ezer"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.4.18+.23",
+   "age": "18+",
+   "t": "multi",
+   "ref": "4:7-9",
+   "q": "Ce au spus filistenii?",
+   "opts": [
+    "„Să ne predăm evreilor”",
+    "„Vai de noi, căci n-a fost așa ceva până acum!”",
+    "„Fiți oameni și luptați!”"
+   ],
+   "a": [
+    1,
+    2
+   ]
   }
  ]
 }

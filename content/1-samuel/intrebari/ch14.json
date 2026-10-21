@@ -28,6 +28,23 @@
    "explain": "Poporul l-a scăpat pe Ionatan de la moarte (14:45)."
   },
   {
+   "id": "1sa.14.sub12.16",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "14:6",
+   "q": "Ionatan a spus: „Poate că Domnul va lucra pentru noi.”",
+   "a": true
+  },
+  {
+   "id": "1sa.14.sub12.17",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "14:2",
+   "q": "Saul stătea sub un măslin, la marginea cetății Ghibea.",
+   "a": false,
+   "explain": "Stătea sub rodiul din Migron."
+  },
+  {
    "id": "1sa.14.sub12.4",
    "age": "sub12",
    "t": "one",
@@ -67,65 +84,57 @@
    "a": 1
   },
   {
-   "id": "1sa.14.sub12.7",
+   "id": "1sa.14.sub12.18",
    "age": "sub12",
-   "t": "match",
-   "ref": "14:1, 13, 27",
-   "q": "Ionatan (1 Samuel 14): asociază.",
-   "pairs": [
-    [
-     "straja filistenilor",
-     "Ionatan a pătruns la ea"
-    ],
-    [
-     "mâinile și picioarele",
-     "s-a suit ajutându-se de ele"
-    ],
-    [
-     "mierea",
-     "a gustat-o cu toiagul"
-    ]
-   ]
+   "t": "one",
+   "ref": "14:2",
+   "q": "Sub ce pom stătea Saul, la marginea cetății Ghibea?",
+   "opts": [
+    "sub rodiul din Migron",
+    "sub un cedru",
+    "sub stejarul din Tabor"
+   ],
+   "a": 0
   },
   {
-   "id": "1sa.14.sub12.8",
+   "id": "1sa.14.sub12.19",
+   "age": "sub12",
+   "t": "one",
+   "ref": "14:49",
+   "q": "Cum se numea fata cea mai mare a lui Saul?",
+   "opts": [
+    "Merab",
+    "Mical",
+    "Rițpa"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.14.sub12.24",
    "age": "sub12",
    "t": "match",
-   "ref": "14:49-50",
-   "q": "Familia lui Saul: asociază.",
+   "ref": "14:1-50",
+   "q": "Asociază fiecare nume cu ce se spune despre el în 1 Samuel 14.",
    "pairs": [
     [
      "Ionatan",
-     "fiul lui Saul"
+     "fiul lui Saul care a pătruns la straja filistenilor"
+    ],
+    [
+     "Saul",
+     "cel care stătea sub rodiul din Migron"
+    ],
+    [
+     "Merab",
+     "fata cea mare a lui Saul"
     ],
     [
      "Mical",
-     "fata cea mică"
+     "fata cea mică a lui Saul"
     ],
     [
      "Ahinoam",
      "nevasta lui Saul"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.14.sub12.9",
-   "age": "sub12",
-   "t": "match",
-   "ref": "14:24-28",
-   "q": "Jurământul lui Saul: asociază.",
-   "pairs": [
-    [
-     "Saul",
-     "a pus poporul să jure"
-    ],
-    [
-     "poporul",
-     "n-a mâncat"
-    ],
-    [
-     "Ionatan",
-     "nu știa de jurământ"
     ]
    ]
   },
@@ -161,6 +170,26 @@
    ],
    "q": "„Vino și să pătrundem până la straja acestor netăiați împrejur. Poate că ___ va lucra pentru noi,",
    "ctx": "Ionatan, către tânărul care îi purta armele:"
+  },
+  {
+   "id": "1sa.14.sub12.20",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "14:1",
+   "q": "Într-o zi, Ionatan, fiul lui Saul, a zis tânărului care-i purta ___",
+   "a": [
+    "armele"
+   ]
+  },
+  {
+   "id": "1sa.14.sub12.21",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "14:2",
+   "q": "Saul stătea la marginea cetății ___, sub rodiul din Migron",
+   "a": [
+    "Ghibea"
+   ]
   },
   {
    "id": "1sa.14.sub12.13",
@@ -211,6 +240,38 @@
    "explain": "Niciun răspuns corect: sub rodiul din Migron (14:2)."
   },
   {
+   "id": "1sa.14.sub12.22",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "14:25-27",
+   "q": "Ce s-a întâmplat în pădure?",
+   "opts": [
+    "se găsea miere pe fața pământului",
+    "poporul a mâncat toată mierea;",
+    "Ionatan a gustat miere cu vârful toiagului"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.14.sub12.23",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "14:34-35",
+   "q": "Ce a făcut Saul?",
+   "opts": [
+    "a poruncit să mănânce carnea cu sânge",
+    "a spus oamenilor să înjunghie vitele pe piatră",
+    "a zidit un altar Domnului"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
    "id": "1sa.14.12-13.1",
    "age": "12-13",
    "t": "tf",
@@ -234,6 +295,23 @@
    "ref": "14:35",
    "q": "Altarul zidit de Saul după luptă a fost primul pe care l-a zidit Domnului.",
    "a": true
+  },
+  {
+   "id": "1sa.14.12-13.16",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "14:24",
+   "q": "Saul pusese poporul să jure că nu va mânca pâine până seara.",
+   "a": true
+  },
+  {
+   "id": "1sa.14.12-13.17",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "14:44",
+   "q": "Saul a spus că Ionatan nu va muri.",
+   "a": false,
+   "explain": "A spus că Ionatan va muri."
   },
   {
    "id": "1sa.14.12-13.4",
@@ -275,77 +353,57 @@
    "a": 2
   },
   {
-   "id": "1sa.14.12-13.7",
+   "id": "1sa.14.12-13.18",
    "age": "12-13",
-   "t": "match",
-   "ref": "14:6-10",
-   "q": "Ionatan și purtătorul armelor: asociază.",
-   "pairs": [
-    [
-     "Ionatan",
-     "a zis că Domnul poate da izbăvire și prin puțini"
-    ],
-    [
-     "purtătorul armelor",
-     "a zis: „iată-mă cu tine\""
-    ],
-    [
-     "„Opriți-vă\"",
-     "atunci vor rămâne pe loc"
-    ],
-    [
-     "„Suiți-vă la noi\"",
-     "semnul de luptă"
-    ]
-   ]
+   "t": "one",
+   "ref": "14:16",
+   "q": "Cine au văzut că mulțimea filistenilor se împrăștie și fuge?",
+   "opts": [
+    "oamenii lui Ionatan",
+    "străjerii lui Saul",
+    "preoții din Silo"
+   ],
+   "a": 1
   },
   {
-   "id": "1sa.14.12-13.8",
+   "id": "1sa.14.12-13.19",
    "age": "12-13",
-   "t": "match",
-   "ref": "14:31-35",
-   "q": "Poporul după luptă: asociază.",
-   "pairs": [
-    [
-     "poporul",
-     "a mâncat carne cu sânge"
-    ],
-    [
-     "Saul",
-     "a cerut o piatră mare"
-    ],
-    [
-     "piatra",
-     "pe ea au înjunghiat vitele"
-    ],
-    [
-     "altarul",
-     "primul zidit de Saul"
-    ]
-   ]
+   "t": "one",
+   "ref": "14:33",
+   "q": "Cum a mâncat poporul carnea prăzii, ceea ce era păcat?",
+   "opts": [
+    "cu sânge",
+    "fără sare",
+    "crudă și neîncălzită"
+   ],
+   "a": 0
   },
   {
-   "id": "1sa.14.12-13.9",
+   "id": "1sa.14.12-13.24",
    "age": "12-13",
    "t": "match",
-   "ref": "14:50-51",
-   "q": "Familia lui Saul: asociază.",
+   "ref": "14:3-31",
+   "q": "Asociază fiecare nume sau loc cu ce se spune despre el în 1 Samuel 14.",
    "pairs": [
     [
-     "Ahinoam",
-     "fata lui Ahimaaț"
+     "Migron",
+     "locul unde era rodiul lui Saul"
     ],
     [
-     "Abner",
-     "fiul lui Ner"
+     "Silo",
+     "locul unde slujea Eli ca preot"
     ],
     [
-     "Ner",
-     "unchiul lui Saul"
+     "Aialon",
+     "locul până unde au fost bătuți filistenii"
     ],
     [
-     "Chis",
-     "tatăl lui Saul"
+     "Bet-Aven",
+     "locul dincolo de care s-a întins lupta"
+    ],
+    [
+     "Efraim",
+     "muntele unde se ascunseseră unii israeliți"
     ]
    ]
   },
@@ -381,6 +439,26 @@
    ],
    "q": "oriîncotro se întorcea, era ___.",
    "ctx": "Despre războaiele lui Saul:"
+  },
+  {
+   "id": "1sa.14.12-13.20",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "14:10",
+   "q": "Dar, dacă vor zice: ‘Suiți-vă la noi!’, ne vom sui, căci Domnul îi dă în ___ noastre.",
+   "a": [
+    "mâinile"
+   ]
+  },
+  {
+   "id": "1sa.14.12-13.21",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "14:15",
+   "q": "țara s-a îngrozit. Era groaza lui ___.",
+   "a": [
+    "Dumnezeu"
+   ]
   },
   {
    "id": "1sa.14.12-13.13",
@@ -430,6 +508,38 @@
    "explain": "Niciun răspuns corect: până la Aialon (14:31)."
   },
   {
+   "id": "1sa.14.12-13.22",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "14:7-8",
+   "q": "Ce a răspuns purtătorul de arme al lui Ionatan?",
+   "opts": [
+    "„Iată-mă cu tine, gata să te urmez oriunde”",
+    "„Eu mă întorc acasă”",
+    "„Fă tot ce ai în inimă”"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.14.12-13.23",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "14:13-14",
+   "q": "Ce s-a întâmplat la straja filistenilor?",
+   "opts": [
+    "au fost prinși de filisteni",
+    "au ucis douăzeci de oameni",
+    "Ionatan s-a suit ajutându-se cu mâinile și picioarele"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
    "id": "1sa.14.14-15.1",
    "age": "14-15",
    "t": "tf",
@@ -453,6 +563,23 @@
    "ref": "14:39",
    "q": "Saul a jurat că, cine a păcătuit, va muri, chiar dacă ar fi fiul său Ionatan.",
    "a": true
+  },
+  {
+   "id": "1sa.14.14-15.16",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "14:18",
+   "q": "Saul i-a cerut preotului Ahia să aducă chivotul lui Dumnezeu.",
+   "a": true
+  },
+  {
+   "id": "1sa.14.14-15.17",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "14:3",
+   "q": "Poporul știa că Ionatan s-a dus la straja filistenilor.",
+   "a": false,
+   "explain": "Poporul nu știa că Ionatan s-a dus."
   },
   {
    "id": "1sa.14.14-15.4",
@@ -494,77 +621,57 @@
    "a": 0
   },
   {
-   "id": "1sa.14.14-15.7",
+   "id": "1sa.14.14-15.18",
    "age": "14-15",
-   "t": "match",
-   "ref": "14:4-5",
-   "q": "Piscurile dintre trecători: asociază.",
-   "pairs": [
-    [
-     "Boțeț",
-     "un pisc de stâncă"
-    ],
-    [
-     "Sene",
-     "celălalt pisc"
-    ],
-    [
-     "miazănoapte",
-     "față în față cu Micmaș"
-    ],
-    [
-     "miazăzi",
-     "față în față cu Gheba"
-    ]
-   ]
+   "t": "one",
+   "ref": "14:36",
+   "q": "Ce a spus preotul când Saul voia să se coboare după filisteni?",
+   "opts": [
+    "„Du-te fără grijă”",
+    "„Așteaptă până dimineața”",
+    "„Să ne apropiem aici de Dumnezeu”"
+   ],
+   "a": 2
   },
   {
-   "id": "1sa.14.14-15.8",
+   "id": "1sa.14.14-15.19",
    "age": "14-15",
-   "t": "match",
-   "ref": "14:16-23",
-   "q": "Biruința: asociază.",
-   "pairs": [
-    [
-     "străjerii lui Saul",
-     "au văzut mulțimea fugind"
-    ],
-    [
-     "Saul",
-     "a numărat poporul"
-    ],
-    [
-     "evreii de la filisteni",
-     "s-au unit cu Israel"
-    ],
-    [
-     "cei ascunși în muntele lui Efraim",
-     "au urmărit pe filisteni"
-    ]
-   ]
+   "t": "one",
+   "ref": "14:41",
+   "q": "Pe cine a căzut sorțul întâi, când Saul a cerut: „Arată adevărul!”?",
+   "opts": [
+    "pe Ahia",
+    "pe popor",
+    "pe Ionatan și pe Saul"
+   ],
+   "a": 2
   },
   {
-   "id": "1sa.14.14-15.9",
+   "id": "1sa.14.14-15.24",
    "age": "14-15",
    "t": "match",
-   "ref": "14:28-30",
-   "q": "Ionatan și jurământul: asociază.",
+   "ref": "14:3-51",
+   "q": "Asociază fiecare nume cu ce se spune despre el în 1 Samuel 14.",
    "pairs": [
     [
-     "cineva din popor",
-     "i-a spus de jurământ"
+     "Ahia",
+     "preotul care purta efodul"
     ],
     [
-     "poporul",
-     "era sleit de puteri"
+     "Abner",
+     "căpetenia oștirii lui Saul"
     ],
     [
-     "ochii lui Ionatan",
-     "s-au luminat"
+     "Ner",
+     "tatăl lui Abner"
     ],
     [
-     "prada",
-     "dacă ar fi mâncat, înfrângerea ar fi fost mai mare"
+     "Chis",
+     "tatăl lui Saul"
+    ],
+    [
+     "Abiel",
+     "tatăl lui Chis și al lui Ner"
     ]
    ]
   },
@@ -600,6 +707,26 @@
    ],
    "q": "Saul a zidit un ___ Domnului:",
    "ctx": "După lupta cu filistenii:"
+  },
+  {
+   "id": "1sa.14.14-15.20",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "14:25",
+   "q": "Tot poporul ajunsese într-o pădure, unde se găsea ___ pe fața pământului.",
+   "a": [
+    "miere"
+   ]
+  },
+  {
+   "id": "1sa.14.14-15.21",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "14:33",
+   "q": "Rostogoliți îndată o ___ mare încoace.",
+   "a": [
+    "piatră"
+   ]
   },
   {
    "id": "1sa.14.14-15.13",
@@ -649,6 +776,38 @@
    "explain": "Niciun răspuns corect: aproape o jumătate de pogon de pământ (14:14)."
   },
   {
+   "id": "1sa.14.14-15.22",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "14:36-37",
+   "q": "Ce s-a întâmplat când Saul a vrut să se coboare după filisteni?",
+   "opts": [
+    "Saul a întrebat pe Dumnezeu",
+    "Dumnezeu i-a dat un răspuns lămurit",
+    "Dumnezeu nu i-a dat niciun răspuns în clipa aceea"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.14.14-15.23",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "14:38-39",
+   "q": "Ce a spus Saul?",
+   "opts": [
+    "„Nu căutați pe nimeni”",
+    "„Chiar dacă l-ar fi săvârșit fiul meu Ionatan, va muri”",
+    "„Căutați de cine a fost săvârșit păcatul acesta”"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
    "id": "1sa.14.16-17.1",
    "age": "16-17",
    "t": "tf",
@@ -672,6 +831,23 @@
    "ref": "14:46",
    "q": "După ce poporul l-a scăpat pe Ionatan, Saul a încetat să-i mai urmărească pe filisteni.",
    "a": true
+  },
+  {
+   "id": "1sa.14.16-17.16",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "14:47",
+   "q": "Saul a făcut război cu Moab, cu amoniții, cu Edom, cu împărații din Țoba și cu filistenii.",
+   "a": true
+  },
+  {
+   "id": "1sa.14.16-17.17",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "14:35",
+   "q": "Altarul zidit de Saul era al treilea altar pe care îl zidea Domnului.",
+   "a": false,
+   "explain": "A fost cel dintâi altar pe care l-a zidit Domnului."
   },
   {
    "id": "1sa.14.16-17.4",
@@ -713,77 +889,57 @@
    "a": 2
   },
   {
-   "id": "1sa.14.16-17.7",
+   "id": "1sa.14.16-17.18",
    "age": "16-17",
-   "t": "match",
-   "ref": "14:3",
-   "q": "Genealogia preotului Ahia: asociază.",
-   "pairs": [
-    [
-     "Ahitub",
-     "tatăl lui Ahia"
-    ],
-    [
-     "I-Cabod",
-     "fratele lui Ahitub"
-    ],
-    [
-     "Fineas",
-     "tatăl lui I-Cabod"
-    ],
-    [
-     "Eli",
-     "preotul Domnului la Silo"
-    ]
-   ]
+   "t": "one",
+   "ref": "14:52",
+   "q": "Ce făcea Saul, când zărea un om tare și voinic?",
+   "opts": [
+    "îl lua cu el",
+    "îl punea judecător",
+    "îl trimitea acasă"
+   ],
+   "a": 0
   },
   {
-   "id": "1sa.14.16-17.8",
+   "id": "1sa.14.16-17.19",
    "age": "16-17",
-   "t": "match",
-   "ref": "14:38-42",
-   "q": "Căutarea vinovatului: asociază.",
-   "pairs": [
-    [
-     "căpeteniile",
-     "trebuiau să caute păcatul"
-    ],
-    [
-     "„Arată adevărul!\"",
-     "rugăciunea lui Saul"
-    ],
-    [
-     "primul sorț",
-     "a căzut pe Ionatan și Saul"
-    ],
-    [
-     "al doilea sorț",
-     "a căzut pe Ionatan"
-    ]
-   ]
+   "t": "one",
+   "ref": "14:27",
+   "q": "Cu ce a luat Ionatan miere din fagure?",
+   "opts": [
+    "cu vârful toiagului",
+    "cu mâna goală",
+    "cu o lingură"
+   ],
+   "a": 0
   },
   {
-   "id": "1sa.14.16-17.9",
+   "id": "1sa.14.16-17.24",
    "age": "16-17",
    "t": "match",
-   "ref": "14:24-27",
-   "q": "Mierea din pădure: asociază începutul cu sfârșitul.",
+   "ref": "14:2-31",
+   "q": "Asociază fiecare număr sau loc cu ce se spune despre el în 1 Samuel 14.",
    "pairs": [
     [
-     "Blestemat să fie omul",
-     "care va mânca pâine până seara"
+     "șase sute",
+     "câți oameni erau cu Saul la Ghibea"
     ],
     [
-     "mierea curgea",
-     "dar niciunul n-a dus miere la gură"
+     "douăzeci",
+     "câți filisteni au ucis Ionatan și purtătorul armelor"
     ],
     [
-     "Ionatan nu știa",
-     "de jurământ"
+     "jumătate de pogon",
+     "întinderea unde au căzut"
     ],
     [
-     "ochii",
-     "i s-au luminat"
+     "Micmaș",
+     "punctul de pornire al bătăii până la Aialon"
+    ],
+    [
+     "Aialon",
+     "capătul bătăii de la Micmaș"
     ]
    ]
   },
@@ -819,6 +975,26 @@
    ],
    "q": "„Suie-te după mine, căci Domnul îi dă în mâinile lui ___.\"",
    "ctx": "Ionatan, către cel ce-i ducea armele:"
+  },
+  {
+   "id": "1sa.14.16-17.20",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "14:13",
+   "q": "Filistenii au căzut înaintea lui Ionatan, și cel ce-i ducea armele arunca ___ în urma lui.",
+   "a": [
+    "moartea"
+   ]
+  },
+  {
+   "id": "1sa.14.16-17.21",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "14:30",
+   "q": "n-ar fi fost înfrângerea filistenilor mai ___?",
+   "a": [
+    "mare"
+   ]
   },
   {
    "id": "1sa.14.16-17.13",
@@ -867,6 +1043,38 @@
    "explain": "Niciun răspuns corect: aproape șase sute de oameni (14:2)."
   },
   {
+   "id": "1sa.14.16-17.22",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "14:28-29",
+   "q": "Ce s-a întâmplat după ce Ionatan a gustat miere?",
+   "opts": [
+    "Ionatan a spus că tatăl lui tulbură poporul",
+    "cineva i-a spus de jurământul lui Saul",
+    "Ionatan a aruncat mierea;"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.14.16-17.23",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "14:32-33",
+   "q": "Ce a făcut poporul?",
+   "opts": [
+    "a adus Domnului jertfă de mulțumire",
+    "a mâncat carnea cu sânge",
+    "s-a aruncat asupra prăzii"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
    "id": "1sa.14.18+.1",
    "age": "18+",
    "t": "tf",
@@ -890,6 +1098,23 @@
    "ref": "14:5",
    "q": "Piscul dinspre miazăzi era față în față cu Gheba.",
    "a": true
+  },
+  {
+   "id": "1sa.14.18+.16",
+   "age": "18+",
+   "t": "tf",
+   "ref": "14:49",
+   "q": "Fiii lui Saul au fost Ionatan, Ișvi și Malchișua.",
+   "a": true
+  },
+  {
+   "id": "1sa.14.18+.17",
+   "age": "18+",
+   "t": "tf",
+   "ref": "14:50",
+   "q": "Abner, căpetenia oștirii lui Saul, era fiul lui Chis.",
+   "a": false,
+   "explain": "Era fiul lui Ner, unchiul lui Saul."
   },
   {
    "id": "1sa.14.18+.4",
@@ -931,73 +1156,57 @@
    "a": 1
   },
   {
-   "id": "1sa.14.18+.7",
+   "id": "1sa.14.18+.18",
    "age": "18+",
-   "t": "match",
-   "ref": "14:47",
-   "q": "Războaiele lui Saul din 1 Samuel 14:47: asociază fiecare cu locul lui în listă.",
-   "pairs": [
-    [
-     "Moab",
-     "primul"
-    ],
-    [
-     "copiii lui Amon",
-     "al doilea"
-    ],
-    [
-     "Edom",
-     "al treilea"
-    ],
-    [
-     "filistenii",
-     "ultimii"
-    ]
-   ]
+   "t": "one",
+   "ref": "14:3",
+   "q": "Al cui fiu era Ahia, preotul care purta efodul?",
+   "opts": [
+    "al lui Eli",
+    "al lui Ahitub",
+    "al lui Fineas"
+   ],
+   "a": 1
   },
   {
-   "id": "1sa.14.18+.8",
+   "id": "1sa.14.18+.19",
    "age": "18+",
-   "t": "match",
-   "ref": "14:36-40",
-   "q": "Noaptea după luptă: asociază fiecare cuvânt cu cine l-a spus.",
-   "pairs": [
-    [
-     "„Să ne coborâm în noaptea aceasta după filisteni\"",
-     "Saul"
-    ],
-    [
-     "„Să ne apropiem aici de Dumnezeu\"",
-     "preotul"
-    ],
-    [
-     "„Fă ce vei crede\"",
-     "poporul"
-    ]
-   ]
+   "t": "one",
+   "ref": "14:50",
+   "q": "Cum se numea căpetenia oștirii lui Saul?",
+   "opts": [
+    "Ioab",
+    "Amasa",
+    "Abner"
+   ],
+   "a": 2
   },
   {
-   "id": "1sa.14.18+.9",
+   "id": "1sa.14.18+.24",
    "age": "18+",
    "t": "match",
-   "ref": "14:49-52",
-   "q": "Casa lui Saul: asociază.",
+   "ref": "14:49-51",
+   "q": "Asociază fiecare nume cu ce se spune despre el în 1 Samuel 14.",
    "pairs": [
     [
      "Merab",
-     "cea mai mare fată"
+     "fata cea mare a lui Saul"
     ],
     [
      "Mical",
-     "cea mai mică fată"
+     "fata cea mică a lui Saul"
     ],
     [
-     "Abner",
-     "căpetenia oștirii"
+     "Ahimaaț",
+     "tatăl nevestei lui Saul"
     ],
     [
-     "omul tare și voinic",
-     "Saul îl lua cu el"
+     "Abiel",
+     "tatăl lui Chis și al lui Ner"
+    ],
+    [
+     "Ner",
+     "tatăl lui Abner"
     ]
    ]
   },
@@ -1033,6 +1242,26 @@
    ],
    "q": "Numele nevestei lui Saul era Ahinoam, fata lui ___.",
    "ctx": "Familia lui Saul:"
+  },
+  {
+   "id": "1sa.14.18+.20",
+   "age": "18+",
+   "t": "fill",
+   "ref": "14:20",
+   "q": "filistenii au întors sabia unii împotriva ___ și învălmășeala era nespus de mare.",
+   "a": [
+    "altora"
+   ]
+  },
+  {
+   "id": "1sa.14.18+.21",
+   "age": "18+",
+   "t": "fill",
+   "ref": "14:52",
+   "q": "În tot timpul vieții lui Saul a fost un război înverșunat împotriva ___, și, de îndată ce Saul zărea vreun om tare și voinic, îl lua cu el.",
+   "a": [
+    "filistenilor"
+   ]
   },
   {
    "id": "1sa.14.18+.13",
@@ -1080,6 +1309,38 @@
    ],
    "a": [],
    "explain": "Niciun răspuns corect: „Iată că evreii ies din găurile în care s-au ascuns\" (14:11)."
+  },
+  {
+   "id": "1sa.14.18+.22",
+   "age": "18+",
+   "t": "multi",
+   "ref": "14:47-48",
+   "q": "Ce a făcut Saul?",
+   "opts": [
+    "a făcut pace cu filistenii",
+    "a făcut război cu Moab și cu Edom",
+    "a bătut pe Amalec"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.14.18+.23",
+   "age": "18+",
+   "t": "multi",
+   "ref": "14:3",
+   "q": "Ce aflăm despre preotul Ahia?",
+   "opts": [
+    "era fratele lui I-Cabod",
+    "era fiul lui Samuel",
+    "era fiul lui Ahitub"
+   ],
+   "a": [
+    0,
+    2
+   ]
   }
  ]
 }

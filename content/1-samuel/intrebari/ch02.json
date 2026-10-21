@@ -28,6 +28,23 @@
    "a": true
   },
   {
+   "id": "1sa.2.sub12.16",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "2:2",
+   "q": "Ana a spus în rugăciunea ei: „Nu este stâncă așa ca Dumnezeul nostru.”",
+   "a": true
+  },
+  {
+   "id": "1sa.2.sub12.17",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "2:21",
+   "q": "Ana a mai avut după Samuel numai o fiică.",
+   "a": false,
+   "explain": "A născut trei fii și două fiice."
+  },
+  {
    "id": "1sa.2.sub12.4",
    "age": "sub12",
    "t": "one",
@@ -67,65 +84,57 @@
    "a": 1
   },
   {
-   "id": "1sa.2.sub12.7",
+   "id": "1sa.2.sub12.18",
    "age": "sub12",
-   "t": "match",
-   "ref": "2:12, 18, 22",
-   "q": "La Casa Domnului din Silo: asociază.",
-   "pairs": [
-    [
-     "Samuel",
-     "făcea slujba înaintea Domnului"
-    ],
-    [
-     "fiii lui Eli",
-     "erau oameni răi"
-    ],
-    [
-     "Eli",
-     "era foarte bătrân"
-    ]
-   ]
+   "t": "one",
+   "ref": "2:11",
+   "q": "Cu cine a rămas copilul Samuel la Silo, în slujba Domnului?",
+   "opts": [
+    "cu preotul Eli",
+    "cu Penina",
+    "cu Elcana"
+   ],
+   "a": 0
   },
   {
-   "id": "1sa.2.sub12.8",
+   "id": "1sa.2.sub12.19",
    "age": "sub12",
-   "t": "match",
-   "ref": "2:1-2",
-   "q": "Cântarea Anei: asociază.",
-   "pairs": [
-    [
-     "inima Anei",
-     "se bucură în Domnul"
-    ],
-    [
-     "Domnul",
-     "nimeni nu este sfânt ca El"
-    ],
-    [
-     "stânca",
-     "nu este așa ca Dumnezeul nostru"
-    ]
-   ]
+   "t": "one",
+   "ref": "2:20",
+   "q": "Ce a dorit Eli pentru Elcana și Ana, când i-a binecuvântat?",
+   "opts": [
+    "să primească o casă nouă",
+    "să se întoarcă la Silo în fiecare lună",
+    "să aibă și alți copii din femeia aceasta"
+   ],
+   "a": 2
   },
   {
-   "id": "1sa.2.sub12.9",
+   "id": "1sa.2.sub12.24",
    "age": "sub12",
    "t": "match",
-   "ref": "2:19-21",
-   "q": "Familia lui Samuel: asociază.",
+   "ref": "2:1-26",
+   "q": "Asociază fiecare nume sau lucru cu ce se spune despre el în 1 Samuel 2.",
    "pairs": [
     [
      "Ana",
-     "îi aducea o mantie mică"
-    ],
-    [
-     "Eli",
-     "i-a binecuvântat pe Elcana și pe Ana"
+     "cea care a rostit o rugăciune de bucurie"
     ],
     [
      "Samuel",
-     "creștea înaintea Domnului"
+     "copilul îmbrăcat cu un efod de in"
+    ],
+    [
+     "Eli",
+     "preotul bătrân de la Silo"
+    ],
+    [
+     "Hofni și Fineas",
+     "fiii lui Eli, oameni răi"
+    ],
+    [
+     "Elcana",
+     "cel care s-a dus acasă, la Rama"
     ]
    ]
   },
@@ -161,6 +170,26 @@
    ],
    "q": "Ana s-a rugat și a zis: „Mi se bucură ___ în Domnul,",
    "ctx": "Începutul cântării Anei:"
+  },
+  {
+   "id": "1sa.2.sub12.20",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "2:21",
+   "q": "Și tânărul Samuel creștea înaintea ___.",
+   "a": [
+    "Domnului"
+   ]
+  },
+  {
+   "id": "1sa.2.sub12.21",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "2:19",
+   "q": "Mama sa îi făcea pe fiecare an o ___ mică",
+   "a": [
+    "mantie"
+   ]
   },
   {
    "id": "1sa.2.sub12.13",
@@ -209,6 +238,38 @@
    "explain": "Niciun răspuns corect: a rămas în slujba Domnului, înaintea preotului Eli (2:11)."
   },
   {
+   "id": "1sa.2.sub12.22",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "2:18-19",
+   "q": "Ce se spune despre Samuel?",
+   "opts": [
+    "se întorcea acasă în fiecare seară",
+    "făcea slujba înaintea Domnului",
+    "era îmbrăcat cu un efod de in"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.2.sub12.23",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "2:20-21",
+   "q": "Ce s-a întâmplat cu Ana?",
+   "opts": [
+    "n-a mai avut copii",
+    "Eli a binecuvântat-o",
+    "a născut trei fii și două fiice"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
    "id": "1sa.2.12-13.1",
    "age": "12-13",
    "t": "tf",
@@ -232,6 +293,23 @@
    "ref": "2:34",
    "q": "Omul lui Dumnezeu a spus că Hofni și Fineas vor muri amândoi într-o zi.",
    "a": true
+  },
+  {
+   "id": "1sa.2.12-13.16",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "2:19",
+   "q": "Ana îi aducea lui Samuel o mantie când se suia cu bărbatul ei, la jertfa din fiecare an.",
+   "a": true
+  },
+  {
+   "id": "1sa.2.12-13.17",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "2:13",
+   "q": "Sluga preotului ținea în mână un cuțit cu trei coarne.",
+   "a": false,
+   "explain": "Ținea în mână o furculiță cu trei coarne."
   },
   {
    "id": "1sa.2.12-13.4",
@@ -273,73 +351,57 @@
    "a": 2
   },
   {
-   "id": "1sa.2.12-13.7",
+   "id": "1sa.2.12-13.18",
    "age": "12-13",
-   "t": "match",
-   "ref": "2:12-17",
-   "q": "Păcatul fiilor lui Eli: asociază.",
-   "pairs": [
-    [
-     "sluga preotului",
-     "lua carnea cu furculița"
-    ],
-    [
-     "carnea crudă",
-     "o cerea pentru preot"
-    ],
-    [
-     "grăsimea",
-     "trebuia arsă întâi"
-    ],
-    [
-     "darurile Domnului",
-     "le nesocoteau"
-    ]
-   ]
+   "t": "one",
+   "ref": "2:35",
+   "q": "Ce fel de preot spune Domnul că Își va pune?",
+   "opts": [
+    "un preot credincios",
+    "un preot bogat",
+    "un preot tânăr"
+   ],
+   "a": 0
   },
   {
-   "id": "1sa.2.12-13.8",
+   "id": "1sa.2.12-13.19",
    "age": "12-13",
-   "t": "match",
-   "ref": "2:27, 34-35",
-   "q": "Omul lui Dumnezeu către Eli: asociază.",
-   "pairs": [
-    [
-     "Hofni și Fineas",
-     "vor muri într-o zi"
-    ],
-    [
-     "un preot credincios",
-     "Domnul Își va pune unul"
-    ],
-    [
-     "casa lui Eli",
-     "va fi pedepsită"
-    ]
-   ]
+   "t": "one",
+   "ref": "2:26",
+   "q": "Cui era plăcut tânărul Samuel?",
+   "opts": [
+    "numai lui Eli",
+    "Domnului și oamenilor",
+    "numai preoților"
+   ],
+   "a": 1
   },
   {
-   "id": "1sa.2.12-13.9",
+   "id": "1sa.2.12-13.24",
    "age": "12-13",
    "t": "match",
-   "ref": "2:4-5",
-   "q": "Cântarea Anei: asociază începutul cu sfârșitul.",
+   "ref": "2:11-35",
+   "q": "Asociază fiecare lucru sau loc cu ce se spune despre el în 1 Samuel 2.",
    "pairs": [
     [
-     "Arcul celor puternici",
-     "s-a sfărâmat"
+     "Rama",
+     "locul unde s-a dus Elcana"
     ],
     [
-     "cei slabi",
-     "sunt încinși cu putere"
+     "Silo",
+     "locul unde a rămas Samuel"
     ],
     [
-     "cei flămânzi",
-     "se odihnesc"
+     "Egipt",
+     "țara unde era casa lui Faraon"
     ],
     [
-     "cea stearpă",
-     "naște de șapte ori"
+     "efodul de in",
+     "haina lui Samuel"
+    ],
+    [
+     "mantia mică",
+     "ce-i făcea Ana pe fiecare an"
     ]
    ]
   },
@@ -375,6 +437,26 @@
    ],
    "q": "Fiii lui Eli erau niște oameni ___.",
    "ctx": "Despre preoții de la Silo:"
+  },
+  {
+   "id": "1sa.2.12-13.20",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "2:13",
+   "q": "Ținând în mână o ___ cu trei coarne,",
+   "a": [
+    "furculiță"
+   ]
+  },
+  {
+   "id": "1sa.2.12-13.21",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "2:27",
+   "q": "Nu M-am descoperit Eu casei tatălui tău când erau în ___, în casa lui Faraon?",
+   "a": [
+    "Egipt"
+   ]
   },
   {
    "id": "1sa.2.12-13.13",
@@ -424,6 +506,38 @@
    "explain": "Niciun răspuns corect: Eli le-a dorit copii care să-l înlocuiască pe cel împrumutat Domnului (2:20)."
   },
   {
+   "id": "1sa.2.12-13.22",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "2:16-17",
+   "q": "Ce spunea sluga preotului celui ce aducea jertfa?",
+   "opts": [
+    "„Altfel iau cu sila”",
+    "„Poți lua după ce se arde grăsimea”",
+    "„Nu! Dă-mi acum”"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.2.12-13.23",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "2:30-31",
+   "q": "Ce a spus Domnul prin omul lui Dumnezeu?",
+   "opts": [
+    "„Voi cinsti pe cine Mă cinstește”",
+    "casa ta va umbla totdeauna în bucurie",
+    "cei ce Mă disprețuiesc vor fi disprețuiți"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
    "id": "1sa.2.14-15.1",
    "age": "14-15",
    "t": "tf",
@@ -447,6 +561,23 @@
    "ref": "2:10",
    "q": "Cântarea Anei se încheie vorbind despre Împăratul și Unsul Domnului.",
    "a": true
+  },
+  {
+   "id": "1sa.2.14-15.16",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "2:7",
+   "q": "Cântarea Anei spune că Domnul sărăcește și El îmbogățește.",
+   "a": true
+  },
+  {
+   "id": "1sa.2.14-15.17",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "2:6",
+   "q": "Cântarea Anei spune că Domnul nu poate scoate pe nimeni din Locuința morților.",
+   "a": false,
+   "explain": "Spune că Domnul omoară și înviază."
   },
   {
    "id": "1sa.2.14-15.4",
@@ -488,77 +619,57 @@
    "a": 0
   },
   {
-   "id": "1sa.2.14-15.7",
+   "id": "1sa.2.14-15.18",
    "age": "14-15",
-   "t": "match",
-   "ref": "2:6-8",
-   "q": "Ce face Domnul, după cântarea Anei: asociază începutul cu sfârșitul.",
-   "pairs": [
-    [
-     "Domnul omoară",
-     "și înviază"
-    ],
-    [
-     "El coboară în Locuința morților",
-     "și El scoate de acolo"
-    ],
-    [
-     "Domnul sărăcește",
-     "și El îmbogățește"
-    ],
-    [
-     "El ridică din pulbere",
-     "pe cel sărac"
-    ]
-   ]
+   "t": "one",
+   "ref": "2:3",
+   "q": "Ce spune Ana că este Domnul, în cântarea ei?",
+   "opts": [
+    "un Dumnezeu care doarme",
+    "un Dumnezeu depărtat",
+    "un Dumnezeu care știe totul"
+   ],
+   "a": 2
   },
   {
-   "id": "1sa.2.14-15.8",
+   "id": "1sa.2.14-15.19",
    "age": "14-15",
-   "t": "match",
-   "ref": "2:27-29",
-   "q": "Mustrarea omului lui Dumnezeu: asociază.",
-   "pairs": [
-    [
-     "Egiptul",
-     "acolo S-a descoperit Domnul casei tatălui lui Eli"
-    ],
-    [
-     "efodul",
-     "preotul îl poartă înaintea Domnului"
-    ],
-    [
-     "jertfele",
-     "fiii lui Eli le călcau în picioare"
-    ],
-    [
-     "fiii lui Eli",
-     "Eli îi cinstea mai mult decât pe Domnul"
-    ]
-   ]
+   "t": "one",
+   "ref": "2:8",
+   "q": "Pe cine ridică Domnul din pulbere, după cântarea Anei?",
+   "opts": [
+    "pe cel sărac",
+    "pe cel puternic",
+    "pe cel mândru"
+   ],
+   "a": 0
   },
   {
-   "id": "1sa.2.14-15.9",
+   "id": "1sa.2.14-15.24",
    "age": "14-15",
    "t": "match",
-   "ref": "2:35-36",
-   "q": "Viitorul casei lui Eli: asociază.",
+   "ref": "2:4-9",
+   "q": "Asociază fiecare persoană sau lucru cu ce se spune despre el în cântarea Anei.",
    "pairs": [
     [
-     "preotul credincios",
-     "va lucra după inima Domnului"
+     "cel sărac",
+     "ridicat din pulbere"
     ],
     [
-     "casa stătătoare",
-     "Domnul i-o va zidi"
+     "cea stearpă",
+     "naște de șapte ori"
     ],
     [
-     "un ban de argint",
-     "pentru el se vor arunca la pământ urmașii lui Eli"
+     "cei slabi",
+     "încinși cu putere"
     ],
     [
-     "o bucată de pâine",
-     "o vor cere"
+     "stâlpii pământului",
+     "sunt ai Domnului"
+    ],
+    [
+     "cei răi",
+     "vor fi nimiciți în întuneric"
     ]
    ]
   },
@@ -594,6 +705,26 @@
    ],
    "q": "Tinerii aceștia se făceau vinovați înaintea Domnului de un foarte mare ___,",
    "ctx": "Despre fiii lui Eli:"
+  },
+  {
+   "id": "1sa.2.14-15.20",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "2:4",
+   "q": "Arcul celor ___ s-a sfărâmat, Și cei slabi sunt încinși cu putere.",
+   "a": [
+    "puternici"
+   ]
+  },
+  {
+   "id": "1sa.2.14-15.21",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "2:14",
+   "q": "o vâra în cazan, în căldare, în tigaie sau în ___, și tot ce apuca cu furculița lua preotul pentru el.",
+   "a": [
+    "oală"
+   ]
   },
   {
    "id": "1sa.2.14-15.13",
@@ -642,6 +773,38 @@
    "explain": "Niciun răspuns corect: slujeau afară, la ușa cortului întâlnirii (2:22)."
   },
   {
+   "id": "1sa.2.14-15.22",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "2:5-7",
+   "q": "Ce spune Ana despre Domnul?",
+   "opts": [
+    "sărăcește și îmbogățește",
+    "omoară și înviază",
+    "uită pe cei săraci"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.2.14-15.23",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "2:23-25",
+   "q": "Ce le-a spus Eli fiilor lui?",
+   "opts": [
+    "„Continuați așa”",
+    "„Ce aud spunându-se despre voi nu este bine”",
+    "„Voi faceți pe poporul Domnului să păcătuiască”"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
    "id": "1sa.2.16-17.1",
    "age": "16-17",
    "t": "tf",
@@ -665,6 +828,23 @@
    "ref": "2:28",
    "q": "Domnul spune că a ales casa tatălui lui Eli dintre toate semințiile lui Israel, pentru preoție.",
    "a": true
+  },
+  {
+   "id": "1sa.2.16-17.16",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "2:9",
+   "q": "Cântarea Anei spune că omul nu va birui prin putere.",
+   "a": true
+  },
+  {
+   "id": "1sa.2.16-17.17",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "2:36",
+   "q": "Omul lui Dumnezeu a spus că cei rămași din casa lui Eli vor ajunge bogați.",
+   "a": false,
+   "explain": "Vor cere un ban de argint și o bucată de pâine."
   },
   {
    "id": "1sa.2.16-17.4",
@@ -706,77 +886,57 @@
    "a": 0
   },
   {
-   "id": "1sa.2.16-17.7",
+   "id": "1sa.2.16-17.18",
    "age": "16-17",
-   "t": "match",
-   "ref": "2:13-16",
-   "q": "Purtarea slujitorilor preoților: asociază.",
-   "pairs": [
-    [
-     "furculița",
-     "cu trei coarne"
-    ],
-    [
-     "cazanul",
-     "în el o vâra"
-    ],
-    [
-     "carnea de fript",
-     "o cerea pentru preot"
-    ],
-    [
-     "sila",
-     "cu ea amenința sluga"
-    ]
-   ]
+   "t": "one",
+   "ref": "2:6",
+   "q": "Unde coboară Domnul, după cântarea Anei?",
+   "opts": [
+    "în Locuința morților",
+    "în Egipt",
+    "la Silo"
+   ],
+   "a": 0
   },
   {
-   "id": "1sa.2.16-17.8",
+   "id": "1sa.2.16-17.19",
    "age": "16-17",
-   "t": "match",
-   "ref": "2:9-10",
-   "q": "Sfârșitul cântării Anei: asociază.",
-   "pairs": [
-    [
-     "preaiubiții Lui",
-     "El le păzește pașii"
-    ],
-    [
-     "cei răi",
-     "vor fi nimiciți în întuneric"
-    ],
-    [
-     "vrăjmașii Domnului",
-     "vor tremura"
-    ],
-    [
-     "marginile pământului",
-     "Domnul le va judeca"
-    ]
-   ]
+   "t": "one",
+   "ref": "2:35",
+   "q": "Ce spune Domnul că va zidi preotului credincios?",
+   "opts": [
+    "un cort mare",
+    "o casă stătătoare",
+    "un turn de piatră"
+   ],
+   "a": 1
   },
   {
-   "id": "1sa.2.16-17.9",
+   "id": "1sa.2.16-17.24",
    "age": "16-17",
    "t": "match",
-   "ref": "2:30-34",
-   "q": "Judecata casei lui Eli: asociază.",
+   "ref": "2:27-35",
+   "q": "Asociază fiecare persoană sau lucru cu ce se spune despre el în 1 Samuel 2.",
    "pairs": [
     [
-     "„Spusesem\"",
-     "că și casa lui Eli va umbla totdeauna înaintea Domnului"
+     "brațul",
+     "va fi tăiat din casa lui Eli"
     ],
     [
-     "„departe de Mine lucrul acesta\"",
-     "Domnul nu mai vrea"
+     "Hofni și Fineas",
+     "vor muri într-o zi"
     ],
     [
-     "floarea vârstei",
-     "în ea vor muri cei din casa lui Eli"
+     "un preot credincios",
+     "va lucra după inima Domnului"
     ],
     [
-     "semnul",
-     "Hofni și Fineas vor muri într-o zi"
+     "omul lui Dumnezeu",
+     "a venit la Eli cu cuvântul Domnului"
+    ],
+    [
+     "casa stătătoare",
+     "ce va zidi Domnul preotului credincios"
     ]
    ]
   },
@@ -812,6 +972,26 @@
    ],
    "q": "El va da Împăratului Său putere Și El va înălța tăria ___ Lui.\"",
    "ctx": "Sfârșitul cântării Anei:"
+  },
+  {
+   "id": "1sa.2.16-17.20",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "2:8",
+   "q": "Căci ai Domnului sunt stâlpii ___ Și pe ei a așezat El lumea.",
+   "a": [
+    "pământului"
+   ]
+  },
+  {
+   "id": "1sa.2.16-17.21",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "2:2",
+   "q": "Nimeni nu este sfânt ca ___; Nu este alt Dumnezeu decât Tine",
+   "a": [
+    "Domnul"
+   ]
   },
   {
    "id": "1sa.2.16-17.13",
@@ -861,6 +1041,38 @@
    "explain": "Niciun răspuns corect: venea sluga preotului (2:13)."
   },
   {
+   "id": "1sa.2.16-17.22",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "2:31-33",
+   "q": "Ce a spus Domnul despre casa lui Eli?",
+   "opts": [
+    "va tăia brațul casei lui Eli",
+    "va avea vremuri liniștite",
+    "nu va mai fi niciun bătrân în casa lui"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.2.16-17.23",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "2:29",
+   "q": "Ce i-a reproșat Domnul lui Eli?",
+   "opts": [
+    "că își cinstește fiii mai mult decât pe Domnul",
+    "că calcă în picioare jertfele și darurile Lui",
+    "că a părăsit cortul întâlnirii"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
    "id": "1sa.2.18+.1",
    "age": "18+",
    "t": "tf",
@@ -884,6 +1096,23 @@
    "ref": "2:36",
    "q": "Omul lui Dumnezeu a spus că urmașii lui Eli vor cere o slujbă în preoție ca să aibă o bucată de pâine.",
    "a": true
+  },
+  {
+   "id": "1sa.2.18+.16",
+   "age": "18+",
+   "t": "tf",
+   "ref": "2:22",
+   "q": "Eli era foarte bătrân când a aflat cum se purtau fiii lui cu tot Israelul.",
+   "a": true
+  },
+  {
+   "id": "1sa.2.18+.17",
+   "age": "18+",
+   "t": "tf",
+   "ref": "2:33",
+   "q": "Domnul a spus că va lăsa la altar doi din casa lui Eli.",
+   "a": false,
+   "explain": "A spus că va lăsa numai unul."
   },
   {
    "id": "1sa.2.18+.4",
@@ -925,77 +1154,57 @@
    "a": 0
   },
   {
-   "id": "1sa.2.18+.7",
+   "id": "1sa.2.18+.18",
    "age": "18+",
-   "t": "match",
-   "ref": "2:1-10",
-   "q": "Cântarea Anei: asociază fiecare cuvânt cu ce spune Ana despre el.",
-   "pairs": [
-    [
-     "stânca",
-     "nu este ca Dumnezeul nostru"
-    ],
-    [
-     "tunetul",
-     "Domnul îl va arunca asupra vrăjmașilor"
-    ],
-    [
-     "scaunul de domnie",
-     "îmbrăcat cu slavă"
-    ],
-    [
-     "stâlpii pământului",
-     "sunt ai Domnului"
-    ]
-   ]
+   "t": "one",
+   "ref": "2:17",
+   "q": "De ce erau tinerii vinovați de „un foarte mare păcat” înaintea Domnului?",
+   "opts": [
+    "pentru că nu veneau la Silo",
+    "pentru că nu aduceau jertfe",
+    "pentru că nesocoteau darurile Domnului"
+   ],
+   "a": 2
   },
   {
-   "id": "1sa.2.18+.8",
+   "id": "1sa.2.18+.19",
    "age": "18+",
-   "t": "match",
-   "ref": "2:18-21",
-   "q": "Samuel copil: asociază.",
-   "pairs": [
-    [
-     "efodul",
-     "de in"
-    ],
-    [
-     "mantia",
-     "mică, adusă în fiecare an"
-    ],
-    [
-     "jertfa",
-     "adusă de părinți în fiecare an"
-    ],
-    [
-     "creșterea",
-     "înaintea Domnului"
-    ]
-   ]
+   "t": "one",
+   "ref": "2:36",
+   "q": "Ce vor cere cei rămași din casa lui Eli?",
+   "opts": [
+    "o slujbă în preoție, ca să aibă o bucată de pâine",
+    "să se întoarcă în Egipt",
+    "să fie primiți în casa lui Samuel"
+   ],
+   "a": 0
   },
   {
-   "id": "1sa.2.18+.9",
+   "id": "1sa.2.18+.24",
    "age": "18+",
    "t": "match",
-   "ref": "2:31-36",
-   "q": "Pedeapsa casei lui Eli: asociază începutul cu sfârșitul.",
+   "ref": "2:1-27",
+   "q": "Asociază fiecare persoană cu ce se spune despre ea în 1 Samuel 2.",
    "pairs": [
     [
-     "voi tăia brațul tău",
-     "și brațul casei tatălui tău"
+     "Ana",
+     "cea care a rostit o rugăciune de laudă"
     ],
     [
-     "Vei vedea un potrivnic al tău",
-     "în locașul Meu"
+     "Eli",
+     "cel care a binecuvântat pe Elcana și pe Ana"
     ],
     [
-     "ca să ți se topească ochii",
-     "de durere"
+     "omul lui Dumnezeu",
+     "cel care a vorbit lui Eli despre casa lui"
     ],
     [
-     "pentru un ban de argint",
-     "și pentru o bucată de pâine"
+     "Faraon",
+     "cel în a cărui casă fusese casa tatălui lui Eli"
+    ],
+    [
+     "Samuel",
+     "tânărul plăcut Domnului și oamenilor"
     ]
    ]
   },
@@ -1031,6 +1240,26 @@
    ],
    "q": "Nu, copii, ce aud spunându-se despre voi nu este ___;",
    "ctx": "Eli, către fiii lui:"
+  },
+  {
+   "id": "1sa.2.18+.20",
+   "age": "18+",
+   "t": "fill",
+   "ref": "2:7",
+   "q": "Domnul ___ și El îmbogățește, El smerește și El înalță,",
+   "a": [
+    "sărăcește"
+   ]
+  },
+  {
+   "id": "1sa.2.18+.21",
+   "age": "18+",
+   "t": "fill",
+   "ref": "2:3",
+   "q": "Căci Domnul este un Dumnezeu care știe ___, Și toate faptele sunt cântărite de El.",
+   "a": [
+    "totul"
+   ]
   },
   {
    "id": "1sa.2.18+.13",
@@ -1078,6 +1307,38 @@
    ],
    "a": [],
    "explain": "Niciun răspuns corect: când se suia cu bărbatul ei să aducă jertfa din fiecare an (2:19)."
+  },
+  {
+   "id": "1sa.2.18+.22",
+   "age": "18+",
+   "t": "multi",
+   "ref": "2:10",
+   "q": "Ce spune Ana că va face Domnul?",
+   "opts": [
+    "va judeca marginile pământului",
+    "va da Împăratului Său putere",
+    "va uita de vrăjmașii Lui"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.2.18+.23",
+   "age": "18+",
+   "t": "multi",
+   "ref": "2:32-33",
+   "q": "Ce a spus Domnul că se va întâmpla în casa lui Eli?",
+   "opts": [
+    "în casa lui va fi mereu pace",
+    "ochii îi vor topi de durere",
+    "Eli va vedea un potrivnic în locașul Domnului"
+   ],
+   "a": [
+    1,
+    2
+   ]
   }
  ]
 }
