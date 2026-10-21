@@ -2,7 +2,7 @@ import type { JSX } from 'preact';
 import { useEffect, useState } from 'preact/hooks';
 import { ageShort, type AgeGroup } from '../lib/age';
 import { level } from '../lib/level';
-import { progress } from '../lib/progress';
+import { progress, type Progress } from '../lib/progress';
 import type { QType } from '../lib/questions';
 import LevelPicker from './LevelPicker';
 
@@ -24,11 +24,11 @@ interface Props {
 export default function ChapterMenu({ book, titles, summary, examsHref }: Props) {
   const [open, setOpen] = useState<number | null>(null);
   const prog = progress(book).value;
-  const score = (ch: number) => prog.exams[`c${ch}`]?.best;
+  const entry = (ch: number) => prog.exams[`c${ch}`];
   const hasScores = Object.keys(prog.exams).some((id) => /^c\d+$/.test(id));
 
   const sheet = open !== null && (
-    <Sheet book={book} ch={open} title={titles[open - 1]} total={count(summary[open]?.[level.value])} best={score(open)}
+    <Sheet book={book} ch={open} title={titles[open - 1]} total={count(summary[open]?.[level.value])} best={labelFor(entry(open))}
       wrongs={prog.wrong.filter((id) => chapterOf(id) === open).length}
       onClose={() => setOpen(null)} />
   );
@@ -38,14 +38,15 @@ export default function ChapterMenu({ book, titles, summary, examsHref }: Props)
       <ol class="tiles">
         {titles.map((t, k) => {
           const ch = k + 1;
-          const best = score(ch);
-          const full = best === 100;
+          const e = entry(ch);
+          const label = labelFor(e);
+          const full = e ? (e.bestRight !== undefined && e.n ? e.bestRight === e.n : e.best === 100) : false;
           return (
             <li>
               <button type="button" class={`tile${full ? ' is-full' : ''}`} onClick={() => setOpen(ch)}
                 aria-label={`Capitolul ${ch}: ${t}`} title={t}>
                 <span class="tile-n">{ch}</span>
-                {best !== undefined && <span class="tile-sc">{best}%</span>}
+                {label && <span class="tile-sc">{label}</span>}
               </button>
             </li>
           );
@@ -70,7 +71,7 @@ interface SheetProps {
   ch: number;
   title: string;
   total: number;
-  best: number | undefined;
+  best: string | undefined;
   wrongs: number;
   onClose: () => void;
 }
@@ -111,7 +112,7 @@ function Sheet({ book, ch, title, total, best, wrongs, onClose }: SheetProps) {
               <span class="oc-ic"><Icon name="test" /></span>
               <span class="oc-main">
                 <b>Testul capitolului</b>
-                <small>{total ? `${total} întrebări` : ''}{best !== undefined ? `${total ? ' · ' : ''}cel mai bun scor ${best}%` : ''}</small>
+                <small>{total ? `${total} întrebări` : ''}{best !== undefined ? `${total ? ' · ' : ''}cel mai bun scor ${best}` : ''}</small>
               </span>
             </div>
             <LevelPicker label="Nivelul testului" />
@@ -141,6 +142,14 @@ function Icon({ name }: { name: string }) {
 
 function Chev() {
   return <svg class="oc-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>;
+}
+
+type Entry = Progress['exams'][string] | undefined;
+
+/** "4/21" for a chapter test (older entries only know a percentage). */
+function labelFor(e: Entry): string | undefined {
+  if (!e) return undefined;
+  return e.bestRight !== undefined && e.n ? `${e.bestRight}/${e.n}` : `${e.best}%`;
 }
 
 /** The exam tile takes what is left of the last row of the 6-column grid. */

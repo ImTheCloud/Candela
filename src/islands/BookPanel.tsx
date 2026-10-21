@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'preact/hooks';
 import { bookHome } from '../lib/books';
 import { localGet, localSet } from '../lib/store';
+import Board from './Board';
 import ChapterMenu, { type Summary } from './ChapterMenu';
 
 export interface BookData {
@@ -54,14 +55,11 @@ export default function BookPanel({ books, initial }: { books: BookData[]; initi
         </div>
       </section>
 
-      <section class="wrap hb-block">
-        <a class="card mode" href={`/${slug}/clasament`}>
-          <span>
-            <span class="mode-name">Clasament</span>
-            <span class="small muted">Pe niveluri: fiecare întrebare știută contează o dată.</span>
-          </span>
-          <svg class="chev" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
-        </a>
+      <section class="wrap hb-block" aria-labelledby="lb-title">
+        <div class="card lb">
+          <h2 id="lb-title">Clasament</h2>
+          <Board key={slug} book={slug} bookName={book.name} titles={book.titles} />
+        </div>
       </section>
     </>
   );

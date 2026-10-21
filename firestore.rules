@@ -76,19 +76,44 @@ service cloud.firestore {
         && request.resource.data.at == request.time;
     }
 
-    // Public boards, one per book: boards/{book}/players/{uid}~{playerKey}. Everyone reads them;
-    // only the account writes its own players, and the score must equal the questions mastered in its progress.
+    // Public boards. Everyone reads them; an account writes only its own players.
+    //   boards/{book}/players/{uid}~{playerKey}: score = questions known in the book, and it must equal the questions mastered in the progress.
+    //   lv (per level), ct (per chapter) and ch (per chapter and level) feed the boards by level and by chapter. Their total can only be bounded by the score.
+    //   boards/all/players/{uid}~{playerKey}: the same player across every book; the score is the sum of both progress documents.
+    function known(path) {
+      return existsAfter(path) ? getAfter(path).data.get('mastered', []).size() : 0;
+    }
+
     match /boards/{book}/players/{key} {
       allow read: if true;
       allow delete: if request.auth != null && key.split('~')[0] == request.auth.uid;
       allow create, update: if request.auth != null
         && key.split('~')[0] == request.auth.uid
         && book in ['1-samuel', '2-samuel']
-        && request.resource.data.keys().hasOnly(['name', 'age', 'score', 'at'])
+        && request.resource.data.keys().hasOnly(['name', 'age', 'score', 'at', 'lv', 'ct', 'ch'])
         && request.resource.data.name is string && request.resource.data.name.size() <= 40
-        && request.resource.data.age in ['sub12', '12-13', '14-15', '16-17', '18+']
+        && request.resource.data.get('age', '18+') in ['sub12', '12-13', '14-15', '16-17', '18+']
         && request.resource.data.score is int
-        && request.resource.data.score == getAfter(/databases/$(database)/documents/users/$(request.auth.uid)/progress/$(key.split('~')[1] + '~' + book)).data.mastered.size()
+        && request.resource.data.score == known(/databases/$(database)/documents/users/$(request.auth.uid)/progress/$(key.split('~')[1] + '~' + book))
+        && request.resource.data.get('lv', {}) is map
+        && request.resource.data.get('ct', {}) is map
+        && request.resource.data.get('ch', {}) is map
+        && request.resource.data.get('lv', {}).get('a', 0) + request.resource.data.get('lv', {}).get('b', 0)
+          + request.resource.data.get('lv', {}).get('c', 0) + request.resource.data.get('lv', {}).get('d', 0)
+          + request.resource.data.get('lv', {}).get('e', 0) <= request.resource.data.score
+        && request.resource.data.at == request.time;
+    }
+
+    match /boards/all/players/{key} {
+      allow read: if true;
+      allow delete: if request.auth != null && key.split('~')[0] == request.auth.uid;
+      allow create, update: if request.auth != null
+        && key.split('~')[0] == request.auth.uid
+        && request.resource.data.keys().hasOnly(['name', 'score', 'at'])
+        && request.resource.data.name is string && request.resource.data.name.size() <= 40
+        && request.resource.data.score is int
+        && request.resource.data.score == known(/databases/$(database)/documents/users/$(request.auth.uid)/progress/$(key.split('~')[1] + '~1-samuel'))
+          + known(/databases/$(database)/documents/users/$(request.auth.uid)/progress/$(key.split('~')[1] + '~2-samuel'))
         && request.resource.data.at == request.time;
     }
   }

@@ -38,3 +38,9 @@ Dernière mise à jour : 21 octobre 2026. Branche `v2` (la v1 reste sur `main`, 
 - `docs/v2-plan.md` : décisions du début. `AI.md` : consignes pour les IA. `README.md`.
 - `content/{livre}/intrebari/chNN.json` : questions (générées depuis des sources compactes hors dépôt ; modifier le JSON directement est possible, puis `node scripts/validate.mjs`).
 - `scripts/validate.mjs` : règles (un seul trou, un seul mot ; paires uniques ; versets exacts).
+
+## Classements (octobre 2026)
+- Affichés en bas de l'accueil : de toute l'app, ou d'un livre (tous niveaux ou un niveau, tous chapitres ou un chapitre).
+- Données : `boards/{livre}/players/{uid}~{joueur}` = `score` (questions connues, vérifié par les règles), `lv` (par niveau), `ct` (par chapitre), `ch` (par chapitre et niveau) ; `boards/all/players/...` = somme des deux livres. Code : `src/lib/board.ts`. Les entrées se remplissent à chaque nouvelle question réussie, et une fois pour les joueurs qui avaient déjà répondu (effet de rattrapage dans `src/lib/progress.ts`).
+- Les règles (`firestore.rules`) doivent être déployées après chaque changement : `firebase deploy --only firestore:rules`.
+- Les examens (blanc ou réels) ne comptent pas pour les classements.
