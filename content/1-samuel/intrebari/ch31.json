@@ -28,6 +28,23 @@
    "a": true
   },
   {
+   "id": "1sa.31.sub12.16",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "31:5",
+   "q": "Cel ce ducea armele lui Saul s-a aruncat și el în sabia lui.",
+   "a": true
+  },
+  {
+   "id": "1sa.31.sub12.17",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "31:8",
+   "q": "Filistenii au venit să dezbrace pe cei morți în aceeași seară.",
+   "a": false,
+   "explain": "Au venit a doua zi."
+  },
+  {
    "id": "1sa.31.sub12.4",
    "age": "sub12",
    "t": "one",
@@ -67,65 +84,57 @@
    "a": 0
   },
   {
-   "id": "1sa.31.sub12.7",
+   "id": "1sa.31.sub12.18",
    "age": "sub12",
-   "t": "match",
+   "t": "one",
    "ref": "31:2",
-   "q": "Fiii lui Saul uciși: asociază.",
-   "pairs": [
-    [
-     "Ionatan",
-     "primul numit"
-    ],
-    [
-     "Abinadab",
-     "al doilea numit"
-    ],
-    [
-     "Malchișua",
-     "al treilea numit"
-    ]
-   ]
+   "q": "Cum se numea unul dintre fiii lui Saul uciși de filisteni?",
+   "opts": [
+    "Ionatan",
+    "Abner",
+    "David"
+   ],
+   "a": 0
   },
   {
-   "id": "1sa.31.sub12.8",
+   "id": "1sa.31.sub12.19",
    "age": "sub12",
-   "t": "match",
-   "ref": "31:8-10",
-   "q": "Ce au făcut filistenii: asociază.",
-   "pairs": [
-    [
-     "capul lui Saul",
-     "l-au tăiat"
-    ],
-    [
-     "armele lui Saul",
-     "în casa astarteelor"
-    ],
-    [
-     "trupul lui Saul",
-     "pe zidurile Bet-Șanului"
-    ]
-   ]
+   "t": "one",
+   "ref": "31:10",
+   "q": "Pe zidurile cărei cetăți a fost atârnat trupul lui Saul?",
+   "opts": [
+    "Gat",
+    "Bet-Șan",
+    "Ierusalim"
+   ],
+   "a": 1
   },
   {
-   "id": "1sa.31.sub12.9",
+   "id": "1sa.31.sub12.25",
    "age": "sub12",
    "t": "match",
-   "ref": "31:11-13",
-   "q": "Vitejii din Iabes: asociază.",
+   "ref": "31:1-13",
+   "q": "Asociază fiecare nume sau loc cu ce se spune despre el în 1 Samuel 31.",
    "pairs": [
     [
-     "toată noaptea",
-     "au mers"
+     "Ghilboa",
+     "muntele unde au căzut uciși israeliții"
     ],
     [
      "Bet-Șan",
-     "au luat trupurile de pe ziduri"
+     "zidurile unde a fost atârnat trupul lui Saul"
     ],
     [
-     "stejarul",
-     "sub el au îngropat oasele"
+     "Iabes",
+     "cetatea ai cărei viteji au luat trupul"
+    ],
+    [
+     "Ionatan",
+     "fiul lui Saul ucis de filisteni"
+    ],
+    [
+     "astarteele",
+     "casa unde au fost puse armele lui Saul"
     ]
    ]
   },
@@ -163,6 +172,26 @@
    "ctx": "Sfârșitul cărții 1 Samuel:"
   },
   {
+   "id": "1sa.31.sub12.20",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "31:9",
+   "q": "Au tăiat capul lui Saul și i-au luat ___.",
+   "a": [
+    "armele"
+   ]
+  },
+  {
+   "id": "1sa.31.sub12.21",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "31:13",
+   "q": "Și au ___ șapte zile.",
+   "a": [
+    "postit"
+   ]
+  },
+  {
    "id": "1sa.31.sub12.13",
    "age": "sub12",
    "t": "multi",
@@ -196,18 +225,52 @@
    ]
   },
   {
-   "id": "1sa.31.sub12.15",
+   "id": "1sa.31.sub12.22",
    "age": "sub12",
    "t": "multi",
-   "ref": "31:13",
-   "q": "Câte zile au postit cei din Iabes?",
+   "ref": "31:3-4",
+   "q": "Ce s-a întâmplat cu Saul?",
    "opts": [
-    "zece",
-    "trei",
-    "patruzeci"
+    "a fugit la Iabes",
+    "s-a aruncat în sabia lui",
+    "arcașii l-au rănit greu"
    ],
-   "a": [],
-   "explain": "Niciun răspuns corect: șapte zile (31:13)."
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.31.sub12.23",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "31:8-9",
+   "q": "Ce au făcut filistenii a doua zi?",
+   "opts": [
+    "au găsit pe Saul căzut pe Ghilboa",
+    "au tăiat capul lui Saul",
+    "l-au îngropat cu cinste"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.31.sub12.24",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "31:12-13",
+   "q": "Ce au făcut vitejii din Iabes?",
+   "opts": [
+    "au atârnat trupul pe zid",
+    "au mers toată noaptea",
+    "au îngropat oasele sub stejar"
+   ],
+   "a": [
+    1,
+    2
+   ]
   },
   {
    "id": "1sa.31.12-13.1",
@@ -233,6 +296,23 @@
    "ref": "31:10",
    "q": "Filistenii au pus armele lui Saul în casa astarteelor.",
    "a": true
+  },
+  {
+   "id": "1sa.31.12-13.16",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "31:3",
+   "q": "Arcașii l-au ajuns și l-au rănit greu pe Saul.",
+   "a": true
+  },
+  {
+   "id": "1sa.31.12-13.17",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "31:13",
+   "q": "Oasele lui Saul au fost îngropate sub un turn.",
+   "a": false,
+   "explain": "Au fost îngropate sub stejarul din Iabes."
   },
   {
    "id": "1sa.31.12-13.4",
@@ -274,77 +354,57 @@
    "a": 2
   },
   {
-   "id": "1sa.31.12-13.7",
+   "id": "1sa.31.12-13.18",
    "age": "12-13",
-   "t": "match",
-   "ref": "31:3-5",
-   "q": "Moartea lui Saul: asociază.",
-   "pairs": [
-    [
-     "arcașii",
-     "l-au rănit greu"
-    ],
-    [
-     "„Scoate-ți sabia\"",
-     "cererea lui Saul"
-    ],
-    [
-     "teama",
-     "de aceea n-a vrut purtătorul de arme"
-    ],
-    [
-     "sabia lui Saul",
-     "s-a aruncat în ea"
-    ]
-   ]
+   "t": "one",
+   "ref": "31:5",
+   "q": "Ce a făcut cel ce ducea armele când a văzut pe Saul mort?",
+   "opts": [
+    "a fugit",
+    "s-a aruncat în sabia lui",
+    "a luat coroana"
+   ],
+   "a": 1
   },
   {
-   "id": "1sa.31.12-13.8",
+   "id": "1sa.31.12-13.19",
    "age": "12-13",
-   "t": "match",
-   "ref": "31:9-10",
-   "q": "Batjocura filistenilor: asociază.",
-   "pairs": [
-    [
-     "capul",
-     "tăiat"
-    ],
-    [
-     "armele",
-     "puse în casa astarteelor"
-    ],
-    [
-     "trupul",
-     "atârnat pe zid"
-    ],
-    [
-     "vestea",
-     "trimisă prin toată țara filistenilor"
-    ]
-   ]
+   "t": "one",
+   "ref": "31:7",
+   "q": "Cine s-au așezat în cetățile părăsite de israeliți?",
+   "opts": [
+    "amaleciții",
+    "filistenii",
+    "egiptenii"
+   ],
+   "a": 1
   },
   {
-   "id": "1sa.31.12-13.9",
+   "id": "1sa.31.12-13.25",
    "age": "12-13",
    "t": "match",
-   "ref": "31:6-7",
-   "q": "După luptă: asociază.",
+   "ref": "31:1-13",
+   "q": "Asociază fiecare persoană cu ce se spune despre ea în 1 Samuel 31.",
    "pairs": [
     [
-     "Saul și fiii lui",
-     "au pierit în aceeași zi"
-    ],
-    [
-     "cei de dincolo de Iordan",
-     "și-au părăsit cetățile"
-    ],
-    [
-     "filistenii",
-     "s-au așezat în cetăți"
+     "Saul",
+     "cel care s-a aruncat în sabie"
     ],
     [
      "purtătorul de arme",
-     "a murit cu Saul"
+     "cel care a murit împreună cu Saul"
+    ],
+    [
+     "filistenii",
+     "cei care au atârnat trupul pe zid"
+    ],
+    [
+     "vitejii din Iabes",
+     "cei care au mers toată noaptea"
+    ],
+    [
+     "fiii lui Saul",
+     "cei trei uciși"
     ]
    ]
   },
@@ -382,6 +442,26 @@
    "ctx": "Locuitorii Iabesului din Galaad:"
   },
   {
+   "id": "1sa.31.12-13.20",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "31:1",
+   "q": "au căzut uciși pe muntele ___",
+   "a": [
+    "Ghilboa"
+   ]
+  },
+  {
+   "id": "1sa.31.12-13.21",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "31:9",
+   "q": "Au tăiat ___ lui Saul și i-au luat armele.",
+   "a": [
+    "capul"
+   ]
+  },
+  {
    "id": "1sa.31.12-13.13",
    "age": "12-13",
    "t": "multi",
@@ -415,18 +495,52 @@
    ]
   },
   {
-   "id": "1sa.31.12-13.15",
+   "id": "1sa.31.12-13.22",
    "age": "12-13",
    "t": "multi",
-   "ref": "31:10",
-   "q": "Pe zidurile cărei cetăți au atârnat filistenii trupul lui Saul?",
+   "ref": "31:1-2",
+   "q": "Ce s-a întâmplat?",
    "opts": [
-    "Gat",
-    "Ghibea",
-    "Afec"
+    "israeliții au fugit dinaintea filistenilor",
+    "filistenii au ucis pe fiii lui Saul",
+    "Saul a scăpat nevătămat"
    ],
-   "a": [],
-   "explain": "Niciun răspuns corect: pe zidurile Bet-Șanului (31:10)."
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.31.12-13.23",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "31:12-13",
+   "q": "Ce au făcut vitejii din Iabes?",
+   "opts": [
+    "le-au lăsat pe zid",
+    "au luat trupurile de pe zidurile Bet-Șanului",
+    "le-au ars și le-au îngropat"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.31.12-13.24",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "31:4",
+   "q": "Ce s-a spus între Saul și purtătorul de arme?",
+   "opts": [
+    "lui i-a fost teamă și n-a voit",
+    "purtătorul de arme l-a străpuns",
+    "Saul i-a cerut să-l străpungă"
+   ],
+   "a": [
+    0,
+    2
+   ]
   },
   {
    "id": "1sa.31.14-15.1",
@@ -452,6 +566,23 @@
    "ref": "31:9",
    "q": "Filistenii au trimis vestea în casele idolilor lor și în popor.",
    "a": true
+  },
+  {
+   "id": "1sa.31.14-15.16",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "31:8",
+   "q": "Filistenii au găsit pe Saul și pe cei trei fii ai lui căzuți pe Ghilboa.",
+   "a": true
+  },
+  {
+   "id": "1sa.31.14-15.17",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "31:10",
+   "q": "Filistenii au pus trupul lui Saul în casa astarteelor.",
+   "a": false,
+   "explain": "Armele le-au pus în casa astarteelor, iar trupul pe zidurile Bet-Șanului."
   },
   {
    "id": "1sa.31.14-15.4",
@@ -493,77 +624,57 @@
    "a": 2
   },
   {
-   "id": "1sa.31.14-15.7",
+   "id": "1sa.31.14-15.18",
    "age": "14-15",
-   "t": "match",
-   "ref": "31:1-6",
-   "q": "Lupta de pe Ghilboa: asociază începutul cu sfârșitul.",
-   "pairs": [
-    [
-     "Filistenii s-au luptat cu Israel",
-     "și bărbații lui Israel au luat-o la fugă"
-    ],
-    [
-     "Filistenii au urmărit pe Saul",
-     "și pe fiii lui"
-    ],
-    [
-     "Saul a fost prins în toiul luptei",
-     "arcașii l-au ajuns"
-    ],
-    [
-     "Astfel au pierit în același timp",
-     "Saul și cei trei fii ai lui"
-    ]
-   ]
+   "t": "one",
+   "ref": "31:6",
+   "q": "Cine a pierit în aceeași zi?",
+   "opts": [
+    "doar Ionatan",
+    "Saul, cei trei fii ai lui și purtătorul de arme",
+    "doar Saul"
+   ],
+   "a": 1
   },
   {
-   "id": "1sa.31.14-15.8",
+   "id": "1sa.31.14-15.19",
+   "age": "14-15",
+   "t": "one",
+   "ref": "31:9",
+   "q": "Ce au făcut filistenii cu Saul?",
+   "opts": [
+    "l-au îmbrăcat în haine regale",
+    "i-au tăiat capul",
+    "l-au îngropat în Ghilboa"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.31.14-15.25",
    "age": "14-15",
    "t": "match",
-   "ref": "31:9-13",
-   "q": "Locuri: asociază.",
+   "ref": "31:1-13",
+   "q": "Asociază fiecare loc cu ce se spune despre el în 1 Samuel 31.",
    "pairs": [
     [
-     "casa astarteelor",
-     "locul armelor lui Saul"
+     "Galaad",
+     "ținutul din care era Iabesul"
     ],
     [
      "Bet-Șan",
-     "zidurile cu trupul lui Saul"
+     "cetatea cu zidurile unde a fost atârnat trupul"
+    ],
+    [
+     "Ghilboa",
+     "muntele unde au căzut uciși"
+    ],
+    [
+     "Iordan",
+     "râul dincolo de care au fugit cetățile"
     ],
     [
      "Iabes",
-     "locul unde au fost arse trupurile"
-    ],
-    [
-     "stejarul",
-     "locul mormântului"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.31.14-15.9",
-   "age": "14-15",
-   "t": "match",
-   "ref": "31:8-12",
-   "q": "Cine ce a făcut: asociază.",
-   "pairs": [
-    [
-     "filistenii",
-     "au venit să dezbrace pe morți"
-    ],
-    [
-     "locuitorii Iabesului",
-     "au auzit ce s-a făcut"
-    ],
-    [
-     "vitejii",
-     "au mers toată noaptea"
-    ],
-    [
-     "Saul și fiii lui",
-     "găsiți căzuți pe Ghilboa"
+     "cetatea unde au fost arse trupurile"
     ]
    ]
   },
@@ -601,6 +712,26 @@
    "ctx": "Despre cetățile părăsite de israeliți:"
   },
   {
+   "id": "1sa.31.14-15.20",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "31:12",
+   "q": "toți vitejii s-au sculat, au mers toată ___",
+   "a": [
+    "noaptea"
+   ]
+  },
+  {
+   "id": "1sa.31.14-15.21",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "31:4",
+   "q": "Cel ce-i ducea armele n-a voit, căci îi era ___.",
+   "a": [
+    "teamă"
+   ]
+  },
+  {
    "id": "1sa.31.14-15.13",
    "age": "14-15",
    "t": "multi",
@@ -633,18 +764,52 @@
    ]
   },
   {
-   "id": "1sa.31.14-15.15",
+   "id": "1sa.31.14-15.22",
    "age": "14-15",
    "t": "multi",
-   "ref": "31:2",
-   "q": "Cine i-a ucis pe fiii lui Saul?",
+   "ref": "31:8-10",
+   "q": "Ce au făcut filistenii?",
    "opts": [
-    "arcașii lui Saul",
-    "David",
-    "amaleciții"
+    "au venit să dezbrace pe cei morți",
+    "au pus armele în casa astarteelor",
+    "au trimis trupul lui Saul în Egipt"
    ],
-   "a": [],
-   "explain": "Niciun răspuns corect: filistenii (31:2)."
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.31.14-15.23",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "31:11-12",
+   "q": "Ce au făcut locuitorii Iabesului?",
+   "opts": [
+    "vitejii au mers toată noaptea",
+    "au luptat cu filistenii la Bet-Șan",
+    "au auzit ce au făcut filistenii"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.31.14-15.24",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "31:1-3",
+   "q": "Ce s-a întâmplat în luptă?",
+   "opts": [
+    "Saul a fost prins în toiul luptei",
+    "Saul a ieșit biruitor",
+    "Israel a luat-o la fugă"
+   ],
+   "a": [
+    0,
+    2
+   ]
   },
   {
    "id": "1sa.31.16-17.1",
@@ -670,6 +835,23 @@
    "ref": "31:11",
    "q": "Locuitorii Iabesului din Galaad au aflat ce au făcut filistenii lui Saul.",
    "a": true
+  },
+  {
+   "id": "1sa.31.16-17.16",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "31:2",
+   "q": "Filistenii au urmărit pe Saul și pe fiii lui.",
+   "a": true
+  },
+  {
+   "id": "1sa.31.16-17.17",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "31:4",
+   "q": "Saul i-a cerut celui ce-i ducea armele să fugă.",
+   "a": false,
+   "explain": "I-a cerut: „Scoate-ți sabia și străpunge-mă.”"
   },
   {
    "id": "1sa.31.16-17.4",
@@ -711,77 +893,57 @@
    "a": 1
   },
   {
-   "id": "1sa.31.16-17.7",
+   "id": "1sa.31.16-17.18",
    "age": "16-17",
-   "t": "match",
-   "ref": "31:4-6",
-   "q": "Moartea lui Saul și a purtătorului: asociază.",
-   "pairs": [
-    [
-     "Saul",
-     "s-a aruncat în sabia lui"
-    ],
-    [
-     "purtătorul de arme",
-     "s-a aruncat și el în sabie"
-    ],
-    [
-     "cei trei fii",
-     "au pierit în aceeași zi"
-    ],
-    [
-     "toți oamenii lui",
-     "au pierit și ei"
-    ]
-   ]
+   "t": "one",
+   "ref": "31:13",
+   "q": "Cât au postit locuitorii Iabesului?",
+   "opts": [
+    "șapte zile",
+    "patruzeci de zile",
+    "trei zile"
+   ],
+   "a": 0
   },
   {
-   "id": "1sa.31.16-17.8",
+   "id": "1sa.31.16-17.19",
    "age": "16-17",
-   "t": "match",
-   "ref": "31:9-13",
-   "q": "Trupul lui Saul: asociază începutul cu sfârșitul.",
-   "pairs": [
-    [
-     "Au tăiat capul lui Saul",
-     "și i-au luat armele"
-    ],
-    [
-     "i-au atârnat trupul",
-     "pe zidurile Bet-Șanului"
-    ],
-    [
-     "s-au întors la Iabes",
-     "unde le-au ars"
-    ],
-    [
-     "le-au luat oasele",
-     "și le-au îngropat sub stejar"
-    ]
-   ]
+   "t": "one",
+   "ref": "31:5",
+   "q": "Cine a murit împreună cu Saul?",
+   "opts": [
+    "Ioab",
+    "cel ce-i ducea armele",
+    "Abner"
+   ],
+   "a": 1
   },
   {
-   "id": "1sa.31.16-17.9",
+   "id": "1sa.31.16-17.25",
    "age": "16-17",
    "t": "match",
    "ref": "31:1-13",
-   "q": "Cifre: asociază.",
+   "q": "Asociază fiecare loc sau lucru cu ce se spune despre el în 1 Samuel 31.",
    "pairs": [
     [
-     "trei",
-     "fiii lui Saul uciși"
+     "Ghilboa",
+     "muntele unde au căzut uciși"
     ],
     [
-     "șapte",
-     "zilele de post"
+     "Iabes",
+     "locul unde au fost îngropate oasele"
     ],
     [
-     "o noapte",
-     "drumul vitejilor"
+     "stejarul",
+     "copacul sub care au fost îngropate oasele"
     ],
     [
-     "a doua zi",
-     "găsirea trupurilor"
+     "Bet-Șan",
+     "cetatea cu zidurile"
+    ],
+    [
+     "astarteele",
+     "casa unde au fost puse armele"
     ]
    ]
   },
@@ -819,6 +981,26 @@
    "ctx": "Pe muntele Ghilboa:"
   },
   {
+   "id": "1sa.31.16-17.20",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "31:7",
+   "q": "Cei din Israel care erau dincolo de vale și dincolo de ___",
+   "a": [
+    "Iordan"
+   ]
+  },
+  {
+   "id": "1sa.31.16-17.21",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "31:4",
+   "q": "Și Saul și-a luat sabia și s-a ___ în ea.",
+   "a": [
+    "aruncat"
+   ]
+  },
+  {
    "id": "1sa.31.16-17.13",
    "age": "16-17",
    "t": "multi",
@@ -851,18 +1033,52 @@
    ]
   },
   {
-   "id": "1sa.31.16-17.15",
+   "id": "1sa.31.16-17.22",
    "age": "16-17",
    "t": "multi",
-   "ref": "31:13",
-   "q": "Unde au fost îngropate oasele lui Saul?",
+   "ref": "31:1-2",
+   "q": "Ce s-a întâmplat pe muntele Ghilboa?",
    "opts": [
-    "pe Ghilboa",
-    "la Ghibea",
-    "la Bet-Șan"
+    "bărbații lui Israel au căzut uciși",
+    "fiii lui Saul au fost uciși",
+    "Saul a biruit"
    ],
-   "a": [],
-   "explain": "Niciun răspuns corect: sub stejarul din Iabes (31:13)."
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.31.16-17.23",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "31:3-4",
+   "q": "Ce s-a întâmplat cu Saul?",
+   "opts": [
+    "a fost luat prins",
+    "s-a aruncat în sabia lui",
+    "arcașii l-au rănit greu"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.31.16-17.24",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "31:8-9",
+   "q": "Ce au făcut filistenii?",
+   "opts": [
+    "i-au tăiat capul lui Saul",
+    "au trimis vestea prin toată țara lor",
+    "l-au îngropat cu cinste"
+   ],
+   "a": [
+    0,
+    1
+   ]
   },
   {
    "id": "1sa.31.18+.1",
@@ -888,6 +1104,23 @@
    "ref": "31:7",
    "q": "Filistenii s-au așezat în cetățile părăsite de israeliți.",
    "a": true
+  },
+  {
+   "id": "1sa.31.18+.16",
+   "age": "18+",
+   "t": "tf",
+   "ref": "31:13",
+   "q": "Locuitorii Iabesului au postit șapte zile.",
+   "a": true
+  },
+  {
+   "id": "1sa.31.18+.17",
+   "age": "18+",
+   "t": "tf",
+   "ref": "31:3",
+   "q": "Saul a fost prins înainte de începerea luptei.",
+   "a": false,
+   "explain": "A fost prins în toiul luptei."
   },
   {
    "id": "1sa.31.18+.4",
@@ -929,77 +1162,57 @@
    "a": 0
   },
   {
-   "id": "1sa.31.18+.7",
+   "id": "1sa.31.18+.18",
+   "age": "18+",
+   "t": "one",
+   "ref": "31:8",
+   "q": "Ce au găsit filistenii a doua zi?",
+   "opts": [
+    "doar armele lui Saul",
+    "pe Saul și pe cei trei fii ai lui căzuți pe Ghilboa",
+    "pe David ascuns"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.31.18+.19",
+   "age": "18+",
+   "t": "one",
+   "ref": "31:13",
+   "q": "Unde au fost îngropate oasele lui Saul și ale fiilor lui?",
+   "opts": [
+    "la Rama",
+    "în peștera din En-Ghedi",
+    "sub stejarul din Iabes"
+   ],
+   "a": 2
+  },
+  {
+   "id": "1sa.31.18+.25",
    "age": "18+",
    "t": "match",
    "ref": "31:1-13",
-   "q": "Locuri din capitolul 31: asociază.",
+   "q": "Asociază fiecare nume sau lucru cu ce se spune despre el în 1 Samuel 31.",
    "pairs": [
     [
-     "Ghilboa",
-     "muntele luptei"
+     "Ionatan",
+     "unul dintre fiii lui Saul uciși"
+    ],
+    [
+     "Abinadab",
+     "alt fiu al lui Saul ucis"
+    ],
+    [
+     "Malchișua",
+     "al treilea fiu ucis"
     ],
     [
      "Bet-Șan",
-     "zidurile pe care a fost atârnat Saul"
+     "zidul pe care a fost atârnat trupul"
     ],
     [
      "Iabesul din Galaad",
-     "cetatea vitejilor"
-    ],
-    [
-     "Iordanul",
-     "dincolo de el au fugit unii israeliți"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.31.18+.8",
-   "age": "18+",
-   "t": "match",
-   "ref": "31:4",
-   "q": "Cuvintele lui Saul: asociază începutul cu sfârșitul.",
-   "pairs": [
-    [
-     "Scoate-ți sabia",
-     "și străpunge-mă"
-    ],
-    [
-     "ca nu cumva acești netăiați împrejur",
-     "să vină să mă străpungă"
-    ],
-    [
-     "și să-și bată joc",
-     "de mine"
-    ],
-    [
-     "Cel ce-i ducea armele n-a voit",
-     "căci îi era teamă"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.31.18+.9",
-   "age": "18+",
-   "t": "match",
-   "ref": "31:8-13",
-   "q": "Ordinea faptelor după luptă: asociază.",
-   "pairs": [
-    [
-     "a doua zi",
-     "filistenii dezbracă morții"
-    ],
-    [
-     "vestea",
-     "trimisă în casele idolilor"
-    ],
-    [
-     "noaptea",
-     "vitejii iau trupurile"
-    ],
-    [
-     "postul",
-     "șapte zile"
+     "cetatea ai cărei viteji au venit noaptea"
     ]
    ]
   },
@@ -1037,6 +1250,26 @@
    "ctx": "Vitejii din Iabes, cu trupurile lui Saul și ale fiilor lui:"
   },
   {
+   "id": "1sa.31.18+.20",
+   "age": "18+",
+   "t": "fill",
+   "ref": "31:13",
+   "q": "le-au luat oasele și le-au îngropat sub stejarul din ___",
+   "a": [
+    "Iabes"
+   ]
+  },
+  {
+   "id": "1sa.31.18+.21",
+   "age": "18+",
+   "t": "fill",
+   "ref": "31:3",
+   "q": "arcașii l-au ajuns și l-au ___ greu",
+   "a": [
+    "rănit"
+   ]
+  },
+  {
    "id": "1sa.31.18+.13",
    "age": "18+",
    "t": "multi",
@@ -1069,18 +1302,52 @@
    ]
   },
   {
-   "id": "1sa.31.18+.15",
+   "id": "1sa.31.18+.22",
    "age": "18+",
    "t": "multi",
-   "ref": "31:13",
-   "q": "Ce au făcut cei din Iabes după îngropare?",
+   "ref": "31:11-13",
+   "q": "Ce au făcut locuitorii Iabesului?",
    "opts": [
-    "au construit un altar",
-    "au făcut o sărbătoare",
-    "au plecat la război"
+    "au luat trupurile de pe zidurile Bet-Șanului",
+    "au lăsat trupurile pe zid",
+    "toți vitejii au mers toată noaptea"
    ],
-   "a": [],
-   "explain": "Niciun răspuns corect: au postit șapte zile (31:13)."
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.31.18+.23",
+   "age": "18+",
+   "t": "multi",
+   "ref": "31:6-7",
+   "q": "Ce s-a întâmplat?",
+   "opts": [
+    "Saul și cei trei fii ai lui au pierit în aceeași zi",
+    "israeliții de dincolo de Iordan au fugit",
+    "filistenii au părăsit cetățile"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.31.18+.24",
+   "age": "18+",
+   "t": "multi",
+   "ref": "31:1-2",
+   "q": "Ce se spune despre luptă?",
+   "opts": [
+    "bărbații lui Israel au fugit",
+    "au căzut uciși pe muntele Ghilboa",
+    "filistenii au fugit"
+   ],
+   "a": [
+    0,
+    1
+   ]
   }
  ]
 }

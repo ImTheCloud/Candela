@@ -28,6 +28,23 @@
    "explain": "Ionatan i-a zis: „Du-te în pace\" și s-a întors în cetate (20:42)."
   },
   {
+   "id": "1sa.20.sub12.16",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "20:5",
+   "q": "David trebuia să mănânce cu împăratul în ziua de lună nouă.",
+   "a": true
+  },
+  {
+   "id": "1sa.20.sub12.17",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "20:20",
+   "q": "Ionatan a spus că va trage cinci săgeți înspre piatră.",
+   "a": false,
+   "explain": "A spus că va trage trei săgeți."
+  },
+  {
    "id": "1sa.20.sub12.4",
    "age": "sub12",
    "t": "one",
@@ -67,65 +84,57 @@
    "a": 0
   },
   {
-   "id": "1sa.20.sub12.7",
+   "id": "1sa.20.sub12.18",
    "age": "sub12",
-   "t": "match",
-   "ref": "20:20-22",
-   "q": "Semnul săgeților: asociază.",
-   "pairs": [
-    [
-     "săgețile dincoace de tânăr",
-     "David poate veni"
-    ],
-    [
-     "săgețile dincolo de tânăr",
-     "David trebuie să plece"
-    ],
-    [
-     "tânărul",
-     "aduna săgețile"
-    ]
-   ]
+   "t": "one",
+   "ref": "20:1",
+   "q": "La cine a fugit David din Naiot, de lângă Rama?",
+   "opts": [
+    "la Abner",
+    "la Ionatan",
+    "la Samuel"
+   ],
+   "a": 1
   },
   {
-   "id": "1sa.20.sub12.8",
+   "id": "1sa.20.sub12.19",
    "age": "sub12",
-   "t": "match",
-   "ref": "20:25-27",
-   "q": "Ospățul de lună nouă: asociază.",
-   "pairs": [
-    [
-     "Saul",
-     "ședea lângă perete"
-    ],
-    [
-     "Abner",
-     "ședea lângă Saul"
-    ],
-    [
-     "locul lui David",
-     "era gol"
-    ]
-   ]
+   "t": "one",
+   "ref": "20:20",
+   "q": "Câte săgeți a spus Ionatan că va trage înspre piatra Ezel?",
+   "opts": [
+    "una",
+    "șapte",
+    "trei"
+   ],
+   "a": 2
   },
   {
-   "id": "1sa.20.sub12.9",
+   "id": "1sa.20.sub12.24",
    "age": "sub12",
    "t": "match",
-   "ref": "20:30-33",
-   "q": "Mânia lui Saul: asociază.",
+   "ref": "20:1-42",
+   "q": "Asociază fiecare nume sau loc cu ce se spune despre el în 1 Samuel 20.",
    "pairs": [
     [
-     "Saul",
-     "l-a ocărât pe Ionatan"
-    ],
-    [
-     "sulița",
-     "Saul a îndreptat-o spre Ionatan"
+     "David",
+     "cel care a fugit la Ionatan"
     ],
     [
      "Ionatan",
-     "a înțeles că tatăl lui vrea să-l omoare pe David"
+     "cel care a tras săgeți pe câmp"
+    ],
+    [
+     "Saul",
+     "cel care s-a aprins de mânie"
+    ],
+    [
+     "Betleem",
+     "cetatea unde ar fi avut familia o jertfă"
+    ],
+    [
+     "Ezel",
+     "piatra lângă care trebuia să rămână David"
     ]
    ]
   },
@@ -161,6 +170,26 @@
    ],
    "q": "că nu este decât un ___ între mine și moarte.\"",
    "ctx": "David, către Ionatan, după fuga din Naiot:"
+  },
+  {
+   "id": "1sa.20.sub12.20",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "20:1",
+   "q": "David a fugit din Naiot, de lângă ___.",
+   "a": [
+    "Rama"
+   ]
+  },
+  {
+   "id": "1sa.20.sub12.21",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "20:19",
+   "q": "și să rămâi lângă piatra ___.",
+   "a": [
+    "Ezel"
+   ]
   },
   {
    "id": "1sa.20.sub12.13",
@@ -209,6 +238,38 @@
    ]
   },
   {
+   "id": "1sa.20.sub12.22",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "20:36-38",
+   "q": "Ce a făcut băiatul lui Ionatan?",
+   "opts": [
+    "a înțeles semnul dintre Ionatan și David",
+    "a alergat să găsească săgeata",
+    "a strâns săgețile și s-a întors la stăpânul lui"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.20.sub12.23",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "20:41-42",
+   "q": "Ce s-a întâmplat la despărțirea dintre David și Ionatan?",
+   "opts": [
+    "s-au certat",
+    "s-au îmbrățișat",
+    "au plâns împreună"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
    "id": "1sa.20.12-13.1",
    "age": "12-13",
    "t": "tf",
@@ -232,6 +293,23 @@
    "ref": "20:39",
    "q": "Băiatul care aduna săgețile nu știa nimic despre înțelegerea lui Ionatan cu David.",
    "a": true
+  },
+  {
+   "id": "1sa.20.12-13.16",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "20:12",
+   "q": "Ionatan a luat martor pe Domnul Dumnezeul lui Israel.",
+   "a": true
+  },
+  {
+   "id": "1sa.20.12-13.17",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "20:30",
+   "q": "Saul l-a lăudat pe Ionatan pentru prietenia lui cu David.",
+   "a": false,
+   "explain": "I-a zis: „Fiu rău și neascultător.”"
   },
   {
    "id": "1sa.20.12-13.4",
@@ -273,77 +351,57 @@
    "a": 2
   },
   {
-   "id": "1sa.20.12-13.7",
+   "id": "1sa.20.12-13.18",
+   "age": "12-13",
+   "t": "one",
+   "ref": "20:5",
+   "q": "Până când trebuia să se ascundă David în câmpii?",
+   "opts": [
+    "până în seara zilei a treia",
+    "până în ziua următoare",
+    "până la miezul nopții"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.20.12-13.19",
+   "age": "12-13",
+   "t": "one",
+   "ref": "20:25",
+   "q": "Unde a șezut Saul la ospăț?",
+   "opts": [
+    "pe acoperiș",
+    "pe scaunul lui, lângă perete",
+    "în fruntea mesei"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.20.12-13.24",
    "age": "12-13",
    "t": "match",
-   "ref": "20:5-7",
-   "q": "Planul lui David: asociază.",
+   "ref": "20:5-37",
+   "q": "Asociază fiecare zi sau număr cu ce se spune despre el în 1 Samuel 20.",
    "pairs": [
+    [
+     "a treia zi",
+     "când să coboare David lângă piatra Ezel"
+    ],
     [
      "luna nouă",
-     "ar fi trebuit să mănânce cu împăratul"
+     "ziua ospățului la care trebuia să fie David"
     ],
     [
-     "câmpiile",
-     "acolo se va ascunde"
+     "prima zi",
+     "ziua în care Saul n-a zis nimic"
     ],
     [
-     "Betleem",
-     "scuza lui pentru lipsă"
+     "a doua zi",
+     "ziua în care Saul a întrebat de David"
     ],
     [
-     "„Bine!\"",
-     "semn că nu are de ce să se teamă"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.20.12-13.8",
-   "age": "12-13",
-   "t": "match",
-   "ref": "20:35-40",
-   "q": "Dimineața semnului: asociază.",
-   "pairs": [
-    [
-     "Ionatan",
-     "a tras săgeata"
-    ],
-    [
-     "băiețașul",
-     "a alergat după săgeți"
-    ],
-    [
-     "„Iute, grăbește-te\"",
-     "strigătul lui Ionatan"
-    ],
-    [
-     "armele",
-     "au fost duse în cetate"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.20.12-13.9",
-   "age": "12-13",
-   "t": "match",
-   "ref": "20:12-16",
-   "q": "Legământul lui Ionatan: asociază.",
-   "pairs": [
-    [
-     "martor",
-     "Domnul Dumnezeul lui Israel"
-    ],
-    [
-     "casa lui Ionatan",
-     "David să nu-și îndepărteze bunătatea de la ea"
-    ],
-    [
-     "vrăjmașii lui David",
-     "Domnul să Se răzbune pe ei"
-    ],
-    [
-     "casa lui David",
-     "Ionatan a făcut legământ cu ea"
+     "trei săgeți",
+     "semnul stabilit între Ionatan și David"
     ]
    ]
   },
@@ -379,6 +437,26 @@
    ],
    "q": "„Iată că săgeata este ___ de tine.\"",
    "ctx": "Ionatan, către băiatul care aduna săgețile:"
+  },
+  {
+   "id": "1sa.20.12-13.20",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "20:27",
+   "q": "Pentru ce n-a venit fiul lui ___ la masă nici ieri, nici azi?",
+   "a": [
+    "Isai"
+   ]
+  },
+  {
+   "id": "1sa.20.12-13.21",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "20:33",
+   "q": "Și Saul și-a îndreptat ___ spre el, ca să-l lovească.",
+   "a": [
+    "sulița"
+   ]
   },
   {
    "id": "1sa.20.12-13.13",
@@ -427,6 +505,38 @@
    "explain": "Niciun răspuns corect: Abner a șezut lângă Saul (20:25)."
   },
   {
+   "id": "1sa.20.12-13.22",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "20:18-19",
+   "q": "Ce i-a spus Ionatan lui David?",
+   "opts": [
+    "„Vino la ospăț”",
+    "„Să rămâi lângă piatra Ezel”",
+    "„Locul tău va fi gol”"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.20.12-13.23",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "20:28-29",
+   "q": "Ce a spus Ionatan lui Saul?",
+   "opts": [
+    "„David a plecat la filisteni”",
+    "„Avem în cetate o jertfă de familie”",
+    "„David mi-a cerut voie să se ducă la Betleem”"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
    "id": "1sa.20.14-15.1",
    "age": "14-15",
    "t": "tf",
@@ -450,6 +560,23 @@
    "ref": "20:33",
    "q": "Saul și-a îndreptat sulița spre Ionatan ca să-l lovească.",
    "a": true
+  },
+  {
+   "id": "1sa.20.14-15.16",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "20:3",
+   "q": "David a spus că nu este decât un pas între el și moarte.",
+   "a": true
+  },
+  {
+   "id": "1sa.20.14-15.17",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "20:8",
+   "q": "David i-a cerut lui Ionatan să-l ducă la Saul.",
+   "a": false,
+   "explain": "I-a spus: „De ce să mă mai duci până la tatăl tău?”"
   },
   {
    "id": "1sa.20.14-15.4",
@@ -491,77 +618,57 @@
    "a": 1
   },
   {
-   "id": "1sa.20.14-15.7",
+   "id": "1sa.20.14-15.18",
    "age": "14-15",
-   "t": "match",
-   "ref": "20:1-4",
-   "q": "David și Ionatan: asociază fiecare cuvânt cu cine l-a spus.",
-   "pairs": [
-    [
-     "„Care este nelegiuirea mea?\"",
-     "David"
-    ],
-    [
-     "„Ferească Dumnezeu! Nu vei muri.\"",
-     "Ionatan"
-    ],
-    [
-     "„nu este decât un pas între mine și moarte\"",
-     "David, jurând"
-    ],
-    [
-     "„Pentru tine voi face tot ce vei vrea.\"",
-     "Ionatan, la urmă"
-    ]
-   ]
+   "t": "one",
+   "ref": "20:2",
+   "q": "Ce a răspuns Ionatan când David a zis că Saul vrea să-l omoare?",
+   "opts": [
+    "„Ferească Dumnezeu! Nu vei muri”",
+    "„Ai dreptate, fugi!”",
+    "„Du-te la Betleem”"
+   ],
+   "a": 0
   },
   {
-   "id": "1sa.20.14-15.8",
+   "id": "1sa.20.14-15.19",
    "age": "14-15",
-   "t": "match",
-   "ref": "20:30-31",
-   "q": "Cuvintele lui Saul către Ionatan: asociază începutul cu sfârșitul.",
-   "pairs": [
-    [
-     "Fiu rău",
-     "și neascultător"
-    ],
-    [
-     "ți-ai luat ca prieten pe fiul lui Isai",
-     "spre rușinea ta"
-    ],
-    [
-     "câtă vreme va trăi fiul lui Isai",
-     "nu va fi liniște"
-    ],
-    [
-     "trimite să-l caute",
-     "fiindcă este vrednic de moarte"
-    ]
-   ]
+   "t": "one",
+   "ref": "20:21",
+   "q": "Ce însemna dacă Ionatan striga tânărului: „Săgețile sunt dincoace de tine”?",
+   "opts": [
+    "că David trebuie să fugă",
+    "că Saul vine",
+    "că este pace pentru David"
+   ],
+   "a": 2
   },
   {
-   "id": "1sa.20.14-15.9",
+   "id": "1sa.20.14-15.24",
    "age": "14-15",
    "t": "match",
-   "ref": "20:24-29",
-   "q": "Lipsa lui David de la masă: asociază.",
+   "ref": "20:5-35",
+   "q": "Asociază fiecare lucru sau persoană cu ce se spune despre el în 1 Samuel 20.",
    "pairs": [
     [
-     "prima zi",
-     "Saul n-a zis nimic"
+     "Betleem",
+     "cetatea unde ar fi avut familia o jertfă"
     ],
     [
-     "a doua zi",
-     "Saul a întrebat de el"
+     "piatra Ezel",
+     "locul unde trebuia să rămână David"
     ],
     [
-     "Ionatan",
-     "a spus că David e la Betleem"
+     "câmpul",
+     "locul unde au ieșit Ionatan și David"
     ],
     [
-     "jertfa",
-     "de familie, în cetate"
+     "Abner",
+     "cel care a șezut lângă Saul"
+    ],
+    [
+     "băiețașul",
+     "cel care a mers cu Ionatan pe câmp"
     ]
    ]
   },
@@ -597,6 +704,26 @@
    ],
    "q": "„Vino, să ieșim pe ___.\"",
    "ctx": "Ionatan, către David:"
+  },
+  {
+   "id": "1sa.20.14-15.20",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "20:14",
+   "q": "Dacă voi mai trăi, să te porți față de mine cu o ___ ca a Domnului",
+   "a": [
+    "bunătate"
+   ]
+  },
+  {
+   "id": "1sa.20.14-15.21",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "20:23",
+   "q": "Domnul este martor pe ___ pentru cuvântul pe care ni l-am dat unul altuia.",
+   "a": [
+    "vecie"
+   ]
   },
   {
    "id": "1sa.20.14-15.13",
@@ -645,6 +772,38 @@
    "explain": "Niciun răspuns corect: în câmp (20:24)."
   },
   {
+   "id": "1sa.20.14-15.22",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "20:20-22",
+   "q": "Ce semn a stabilit Ionatan?",
+   "opts": [
+    "un tânăr trimis să găsească săgețile",
+    "un foc aprins pe munte",
+    "trei săgeți trase spre piatră"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.20.14-15.23",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "20:30-31",
+   "q": "Ce i-a spus Saul lui Ionatan?",
+   "opts": [
+    "„Câtă vreme va trăi fiul lui Isai, nu va fi liniște pentru tine”",
+    "„Te laud pentru prietenia ta”",
+    "„Fiu rău și neascultător”"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
    "id": "1sa.20.16-17.1",
    "age": "16-17",
    "t": "tf",
@@ -668,6 +827,23 @@
    "ref": "20:35",
    "q": "A doua zi de dimineață, Ionatan s-a dus pe câmp însoțit de un băiețaș.",
    "a": true
+  },
+  {
+   "id": "1sa.20.16-17.16",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "20:15",
+   "q": "Ionatan i-a cerut lui David să nu-și îndepărteze niciodată bunătatea față de casa lui.",
+   "a": true
+  },
+  {
+   "id": "1sa.20.16-17.17",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "20:42",
+   "q": "David a rămas cu Ionatan în cetate, după ce au jurat.",
+   "a": false,
+   "explain": "David a plecat, iar Ionatan s-a întors în cetate."
   },
   {
    "id": "1sa.20.16-17.4",
@@ -709,77 +885,57 @@
    "a": 0
   },
   {
-   "id": "1sa.20.16-17.7",
+   "id": "1sa.20.16-17.18",
+   "age": "16-17",
+   "t": "one",
+   "ref": "20:33",
+   "q": "Ce a înțeles Ionatan, când Saul și-a îndreptat sulița spre el?",
+   "opts": [
+    "că era hotărât ca David să fie omorât",
+    "că Saul voia pace cu filistenii",
+    "că Saul voia să-l laude"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.20.16-17.19",
+   "age": "16-17",
+   "t": "one",
+   "ref": "20:24",
+   "q": "Unde s-a ascuns David, când a venit luna nouă?",
+   "opts": [
+    "în câmp",
+    "în cetate",
+    "în Templu"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.20.16-17.24",
    "age": "16-17",
    "t": "match",
-   "ref": "20:18-23",
-   "q": "Planul de la piatra Ezel: asociază.",
+   "ref": "20:5-30",
+   "q": "Asociază fiecare lucru cu ce se spune despre el în 1 Samuel 20.",
    "pairs": [
     [
      "luna nouă",
-     "lipsa lui David va fi văzută"
+     "când trebuia David la masa împăratului"
     ],
     [
-     "a treia zi",
-     "David să coboare la piatră"
+     "jertfa de peste an",
+     "scuza pentru plecarea la Betleem"
     ],
     [
-     "trei săgeți",
-     "trase spre piatră"
+     "Isai",
+     "tatăl lui David"
     ],
     [
-     "Domnul",
-     "martor pe vecie"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.20.16-17.8",
-   "age": "16-17",
-   "t": "match",
-   "ref": "20:28-29",
-   "q": "Scuza spusă de Ionatan: asociază.",
-   "pairs": [
-    [
-     "Betleem",
-     "locul jertfei"
+     "Abner",
+     "cel care a șezut lângă Saul"
     ],
     [
-     "jertfa",
-     "de familie"
-    ],
-    [
-     "fratele lui David",
-     "i-a cerut să vină"
-    ],
-    [
-     "frații",
-     "David voia să-i vadă"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.20.16-17.9",
-   "age": "16-17",
-   "t": "match",
-   "ref": "20:33-34",
-   "q": "Ionatan la ospăț: asociază.",
-   "pairs": [
-    [
-     "sulița",
-     "îndreptată spre el"
-    ],
-    [
-     "mânia",
-     "aprinsă"
-    ],
-    [
-     "masa",
-     "n-a mâncat"
-    ],
-    [
-     "ocara",
-     "tatăl lui îl ocărâse"
+     "locul gol",
+     "ce a văzut Saul la masă"
     ]
    ]
   },
@@ -815,6 +971,26 @@
    ],
    "q": "Arată-ți dar ___ pentru robul tău, căci ai făcut cu robul tău un legământ înaintea Domnului.",
    "ctx": "David, către Ionatan:"
+  },
+  {
+   "id": "1sa.20.16-17.20",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "20:36",
+   "q": "Băiatul a alergat, și Ionatan a tras o ___ care a trecut dincolo de el.",
+   "a": [
+    "săgeată"
+   ]
+  },
+  {
+   "id": "1sa.20.16-17.21",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "20:25",
+   "q": "Împăratul a șezut ca de obicei pe scaunul lui, lângă ___.",
+   "a": [
+    "perete"
+   ]
   },
   {
    "id": "1sa.20.16-17.13",
@@ -863,6 +1039,38 @@
    "explain": "Niciun răspuns corect: până în seara zilei a treia (20:5)."
   },
   {
+   "id": "1sa.20.16-17.22",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "20:12-13",
+   "q": "Ce a promis Ionatan lui David?",
+   "opts": [
+    "să-l ascundă în casa lui;",
+    "să cerceteze pe tatăl său",
+    "să-i dea de știre lui David"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.20.16-17.23",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "20:28-29",
+   "q": "Ce explicație a dat Ionatan despre lipsa lui David?",
+   "opts": [
+    "că a cerut voie să meargă la Betleem",
+    "că David era bolnav",
+    "că familia lui avea o jertfă în cetate"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
    "id": "1sa.20.18+.1",
    "age": "18+",
    "t": "tf",
@@ -886,6 +1094,23 @@
    "ref": "20:38",
    "q": "Băiatul lui Ionatan a strâns săgețile și s-a întors la stăpânul lui.",
    "a": true
+  },
+  {
+   "id": "1sa.20.18+.16",
+   "age": "18+",
+   "t": "tf",
+   "ref": "20:2",
+   "q": "Ionatan a spus că tatăl lui nu face niciun lucru fără să-i dea de știre.",
+   "a": true
+  },
+  {
+   "id": "1sa.20.18+.17",
+   "age": "18+",
+   "t": "tf",
+   "ref": "20:34",
+   "q": "Ionatan a mâncat cu poftă în ziua a doua a lunii noi.",
+   "a": false,
+   "explain": "S-a sculat de la masă într-o mânie aprinsă și n-a mâncat."
   },
   {
    "id": "1sa.20.18+.4",
@@ -927,73 +1152,57 @@
    "a": 1
   },
   {
-   "id": "1sa.20.18+.7",
+   "id": "1sa.20.18+.18",
    "age": "18+",
-   "t": "match",
-   "ref": "20:21-22",
-   "q": "Cuvintele către tânăr și înțelesul lor: asociază.",
-   "pairs": [
-    [
-     "„săgețile sunt dincoace de tine\"",
-     "este pace pentru David"
-    ],
-    [
-     "„săgețile sunt dincolo de tine\"",
-     "David să plece"
-    ],
-    [
-     "„Du-te de găsește săgețile!\"",
-     "porunca dată tânărului"
-    ]
-   ]
+   "t": "one",
+   "ref": "20:13",
+   "q": "Cum a dorit Ionatan ca Domnul să fie cu David?",
+   "opts": [
+    "cum a fost cu tatăl lui, Saul",
+    "cum a fost cu Samuel",
+    "cum a fost cu Moise"
+   ],
+   "a": 0
   },
   {
-   "id": "1sa.20.18+.8",
+   "id": "1sa.20.18+.19",
    "age": "18+",
-   "t": "match",
-   "ref": "20:12-15",
-   "q": "Jurământul lui Ionatan: asociază începutul cu sfârșitul.",
-   "pairs": [
-    [
-     "Iau martor pe Domnul",
-     "că voi cerceta de aproape pe tatăl meu"
-    ],
-    [
-     "Domnul să Se poarte cu Ionatan cu toată asprimea",
-     "dacă nu voi trimite pe nimeni"
-    ],
-    [
-     "Domnul să fie cu tine",
-     "cum a fost cu tatăl meu"
-    ],
-    [
-     "să nu îți îndepărtezi niciodată bunătatea",
-     "față de casa mea"
-    ]
-   ]
+   "t": "one",
+   "ref": "20:16",
+   "q": "Cu cine a făcut Ionatan legământ, după cuvintele lui?",
+   "opts": [
+    "cu casa lui David",
+    "cu casa lui Isai",
+    "cu casa lui Abner"
+   ],
+   "a": 0
   },
   {
-   "id": "1sa.20.18+.9",
+   "id": "1sa.20.18+.24",
    "age": "18+",
    "t": "match",
-   "ref": "20:41-42",
-   "q": "Despărțirea: asociază.",
+   "ref": "20:5-41",
+   "q": "Asociază fiecare număr sau expresie cu ce se spune despre el în 1 Samuel 20.",
    "pairs": [
     [
-     "David",
-     "se prăpădea plângând"
+     "trei",
+     "câte săgeți a spus Ionatan că va trage"
     ],
     [
-     "Ionatan",
-     "s-a întors în cetate"
+     "de trei ori",
+     "de câte ori s-a închinat David"
     ],
     [
-     "jurământul",
-     "în Numele Domnului"
+     "a treia zi",
+     "când să se ducă David lângă piatra Ezel"
     ],
     [
-     "sămânța",
-     "Domnul să fie între sămânța lor pe vecie"
+     "a doua zi a lunii noi",
+     "când a întrebat Saul de David"
+    ],
+    [
+     "miazăzi",
+     "partea din care s-a sculat David"
     ]
    ]
   },
@@ -1029,6 +1238,26 @@
    ],
    "q": "Cei doi prieteni s-au îmbrățișat și au plâns împreună. David mai ales se ___ plângând.",
    "ctx": "Despărțirea lui David de Ionatan:"
+  },
+  {
+   "id": "1sa.20.18+.20",
+   "age": "18+",
+   "t": "fill",
+   "ref": "20:12",
+   "q": "Iau martor pe Domnul Dumnezeul lui ___ că voi cerceta de aproape pe tatăl meu",
+   "a": [
+    "Israel"
+   ]
+  },
+  {
+   "id": "1sa.20.18+.21",
+   "age": "18+",
+   "t": "fill",
+   "ref": "20:40",
+   "q": "Ionatan a dat băiatului ___ și i-a zis: „Du-te și du-le în cetate.",
+   "a": [
+    "armele"
+   ]
   },
   {
    "id": "1sa.20.18+.13",
@@ -1075,6 +1304,38 @@
    ],
    "a": [],
    "explain": "Niciun răspuns corect: „Iată că săgeata este dincolo de tine\" (20:37)."
+  },
+  {
+   "id": "1sa.20.18+.22",
+   "age": "18+",
+   "t": "multi",
+   "ref": "20:3-4",
+   "q": "Ce s-a spus între David și Ionatan?",
+   "opts": [
+    "Ionatan a spus: „Pentru tine voi face tot ce vei vrea”",
+    "Ionatan a refuzat să-l ajute;",
+    "David a spus că nu este decât un pas între el și moarte"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.20.18+.23",
+   "age": "18+",
+   "t": "multi",
+   "ref": "20:41",
+   "q": "Ce a făcut David după plecarea băiatului?",
+   "opts": [
+    "a fugit fără să se despartă de Ionatan",
+    "s-a închinat de trei ori",
+    "s-a sculat din partea de miazăzi"
+   ],
+   "a": [
+    1,
+    2
+   ]
   }
  ]
 }

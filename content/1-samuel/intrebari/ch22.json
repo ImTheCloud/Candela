@@ -28,6 +28,23 @@
    "explain": "Slujitorii n-au voit să întindă mâna asupra preoților Domnului (22:17)."
   },
   {
+   "id": "1sa.22.sub12.16",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "22:2",
+   "q": "La David s-au strâns aproape patru sute de oameni.",
+   "a": true
+  },
+  {
+   "id": "1sa.22.sub12.17",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "22:3",
+   "q": "David și-a lăsat părinții în grija lui Saul.",
+   "a": false,
+   "explain": "I-a dus în țara Moabului."
+  },
+  {
    "id": "1sa.22.sub12.4",
    "age": "sub12",
    "t": "one",
@@ -67,65 +84,57 @@
    "a": 0
   },
   {
-   "id": "1sa.22.sub12.7",
+   "id": "1sa.22.sub12.18",
    "age": "sub12",
-   "t": "match",
-   "ref": "22:1-5",
-   "q": "David în pribegie: asociază.",
-   "pairs": [
-    [
-     "peștera Adulam",
-     "acolo a scăpat David"
-    ],
-    [
-     "țara Moabului",
-     "acolo și-a dus părinții"
-    ],
-    [
-     "pădurea Heret",
-     "acolo a ajuns după cuvântul lui Gad"
-    ]
-   ]
+   "t": "one",
+   "ref": "22:3",
+   "q": "În ce țară și-a dus David părinții?",
+   "opts": [
+    "în Edom",
+    "în Egipt",
+    "în Moab"
+   ],
+   "a": 2
   },
   {
-   "id": "1sa.22.sub12.8",
+   "id": "1sa.22.sub12.19",
    "age": "sub12",
-   "t": "match",
-   "ref": "22:9-18",
-   "q": "Nob: asociază.",
-   "pairs": [
-    [
-     "Doeg",
-     "l-a pârât pe Ahimelec"
-    ],
-    [
-     "Ahimelec",
-     "preotul de la Nob"
-    ],
-    [
-     "Saul",
-     "a poruncit uciderea preoților"
-    ]
-   ]
+   "t": "one",
+   "ref": "22:5",
+   "q": "Cum se numea prorocul care i-a spus lui David să intre în țara lui Iuda?",
+   "opts": [
+    "Natan",
+    "Samuel",
+    "Gad"
+   ],
+   "a": 2
   },
   {
-   "id": "1sa.22.sub12.9",
+   "id": "1sa.22.sub12.24",
    "age": "sub12",
    "t": "match",
-   "ref": "22:20-23",
-   "q": "Abiatar: asociază.",
+   "ref": "22:1-23",
+   "q": "Asociază fiecare nume sau loc cu ce se spune despre el în 1 Samuel 22.",
    "pairs": [
+    [
+     "Adulam",
+     "peștera unde a scăpat David"
+    ],
+    [
+     "Moab",
+     "țara unde au stat părinții lui David"
+    ],
+    [
+     "Gad",
+     "prorocul care i-a vorbit lui David"
+    ],
+    [
+     "Heret",
+     "pădurea unde a ajuns David"
+    ],
     [
      "Abiatar",
-     "a scăpat de la Nob"
-    ],
-    [
-     "David",
-     "l-a primit la el"
-    ],
-    [
-     "„lângă mine vei fi bine păzit\"",
-     "promisiunea lui David"
+     "fiul lui Ahimelec care a scăpat"
     ]
    ]
   },
@@ -161,6 +170,26 @@
    ],
    "q": "„Nu ședea în cetățuie, ci du-te și intră în țara lui ___.\"",
    "ctx": "Prorocul Gad, către David:"
+  },
+  {
+   "id": "1sa.22.sub12.20",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "22:1",
+   "q": "Frații lui și toată casa tatălui său au aflat și s-au coborât la ___.",
+   "a": [
+    "el"
+   ]
+  },
+  {
+   "id": "1sa.22.sub12.21",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "22:20",
+   "q": "Numele lui era Abiatar. A fugit la ___",
+   "a": [
+    "David"
+   ]
   },
   {
    "id": "1sa.22.sub12.13",
@@ -210,6 +239,38 @@
    "explain": "Niciun răspuns corect: prorocul Gad (22:5)."
   },
   {
+   "id": "1sa.22.sub12.22",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "22:3-4",
+   "q": "Ce a făcut David cu părinții lui?",
+   "opts": [
+    "au locuit acolo cât a stat David în cetățuie",
+    "i-a dus în țara Moabului",
+    "i-a lăsat la Saul"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.22.sub12.23",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "22:20-23",
+   "q": "Ce s-a întâmplat cu Abiatar?",
+   "opts": [
+    "a scăpat",
+    "a rămas cu David",
+    "a rămas cu Saul"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
    "id": "1sa.22.12-13.1",
    "age": "12-13",
    "t": "tf",
@@ -233,6 +294,23 @@
    "ref": "22:22",
    "q": "David a spus că el este pricina morții celor din casa tatălui lui Abiatar.",
    "a": true
+  },
+  {
+   "id": "1sa.22.12-13.16",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "22:9",
+   "q": "Doeg, Edomitul, a spus lui Saul că l-a văzut pe David la Nob, la Ahimelec.",
+   "a": true
+  },
+  {
+   "id": "1sa.22.12-13.17",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "22:16",
+   "q": "Saul a spus că Ahimelec va fi cruțat.",
+   "a": false,
+   "explain": "A spus: „Trebuie să mori, Ahimelec, tu și toată casa tatălui tău.”"
   },
   {
    "id": "1sa.22.12-13.4",
@@ -274,73 +352,57 @@
    "a": 2
   },
   {
-   "id": "1sa.22.12-13.7",
+   "id": "1sa.22.12-13.18",
    "age": "12-13",
-   "t": "match",
-   "ref": "22:3-4",
-   "q": "David și împăratul Moabului: asociază.",
-   "pairs": [
-    [
-     "Mițpe",
-     "cetatea din țara Moabului"
-    ],
-    [
-     "tatăl și mama",
-     "lăsați la împăratul Moabului"
-    ],
-    [
-     "cetățuia",
-     "cât a stat David acolo, părinții au stat în Moab"
-    ]
-   ]
+   "t": "one",
+   "ref": "22:3",
+   "q": "Unde s-a dus David, la împăratul Moabului?",
+   "opts": [
+    "la Hebron",
+    "la Gat",
+    "la Mițpe"
+   ],
+   "a": 2
   },
   {
-   "id": "1sa.22.12-13.8",
+   "id": "1sa.22.12-13.19",
    "age": "12-13",
-   "t": "match",
-   "ref": "22:9-10",
-   "q": "Pâra lui Doeg: asociază.",
-   "pairs": [
-    [
-     "Doeg",
-     "l-a văzut pe David la Nob"
-    ],
-    [
-     "Ahimelec",
-     "a întrebat pe Domnul pentru David"
-    ],
-    [
-     "merindele",
-     "date de Ahimelec"
-    ],
-    [
-     "sabia lui Goliat",
-     "dată lui David"
-    ]
-   ]
+   "t": "one",
+   "ref": "22:12",
+   "q": "Ce a răspuns Ahimelec când Saul i-a zis: „Ascultă, fiul lui Ahitub!”?",
+   "opts": [
+    "„Vino tu aici”",
+    "„Nu știu nimic”",
+    "„Iată-mă, domnul meu!”"
+   ],
+   "a": 2
   },
   {
-   "id": "1sa.22.12-13.9",
+   "id": "1sa.22.12-13.24",
    "age": "12-13",
    "t": "match",
-   "ref": "22:16-19",
-   "q": "Pedeapsa de la Nob: asociază.",
+   "ref": "22:6-19",
+   "q": "Asociază fiecare nume sau loc cu ce se spune despre el în 1 Samuel 22.",
    "pairs": [
     [
-     "Saul",
-     "a zis: „Trebuie să mori, Ahimelec\""
+     "Ahitub",
+     "tatăl lui Ahimelec"
     ],
     [
-     "alergătorii",
-     "n-au vrut să lovească"
+     "Isai",
+     "tatăl lui David"
     ],
     [
      "Doeg",
-     "a lovit pe preoți"
+     "edomitul care a vorbit lui Saul"
     ],
     [
-     "cetatea Nob",
-     "trecută prin ascuțișul sabiei"
+     "Nob",
+     "cetatea preoțească"
+    ],
+    [
+     "tamariscul",
+     "copacul sub care ședea Saul"
     ]
    ]
   },
@@ -376,6 +438,26 @@
    ],
    "q": "Un fiu al lui Ahimelec, fiul lui Ahitub, a scăpat. Numele lui era ___.",
    "ctx": "După uciderea preoților de la Nob:"
+  },
+  {
+   "id": "1sa.22.12-13.20",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "22:11",
+   "q": "Împăratul a trimis după ___, fiul lui Ahitub, preotul, și după toată casa tatălui său",
+   "a": [
+    "Ahimelec"
+   ]
+  },
+  {
+   "id": "1sa.22.12-13.21",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "22:9",
+   "q": "Doeg, ___, care era și el printre slujitorii lui Saul, a răspuns",
+   "a": [
+    "Edomitul"
+   ]
   },
   {
    "id": "1sa.22.12-13.13",
@@ -425,6 +507,38 @@
    "explain": "Niciun răspuns corect: avea sulița în mână (22:6)."
   },
   {
+   "id": "1sa.22.12-13.22",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "22:7-8",
+   "q": "De ce se plângea Saul slujitorilor lui?",
+   "opts": [
+    "credea că fiul lui Isai le va da ogoare și vii",
+    "nimeni nu-l înștiințase despre legământul fiului său cu David",
+    "pentru că filistenii atacaseră Ghibea"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.22.12-13.23",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "22:17-18",
+   "q": "Ce s-a întâmplat când Saul a poruncit să fie loviți preoții?",
+   "opts": [
+    "Doeg, Edomitul, i-a lovit",
+    "slujitorii n-au voit să-i lovească",
+    "toți slujitorii au ascultat"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
    "id": "1sa.22.14-15.1",
    "age": "14-15",
    "t": "tf",
@@ -448,6 +562,23 @@
    "ref": "22:19",
    "q": "Saul a trecut prin ascuțișul sabiei și vitele din cetatea Nob.",
    "a": true
+  },
+  {
+   "id": "1sa.22.14-15.16",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "22:13",
+   "q": "Saul l-a întrebat pe Ahimelec de ce i-a dat lui David pâine și o sabie.",
+   "a": true
+  },
+  {
+   "id": "1sa.22.14-15.17",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "22:23",
+   "q": "David i-a spus lui Abiatar să plece departe de el.",
+   "a": false,
+   "explain": "I-a spus: „Rămâi cu mine, nu te teme de nimic.”"
   },
   {
    "id": "1sa.22.14-15.4",
@@ -489,77 +620,57 @@
    "a": 1
   },
   {
-   "id": "1sa.22.14-15.7",
+   "id": "1sa.22.14-15.18",
    "age": "14-15",
-   "t": "match",
-   "ref": "22:7-8",
-   "q": "Plângerea lui Saul: asociază începutul cu sfârșitul.",
-   "pairs": [
-    [
-     "Vă va da fiul lui Isai",
-     "la toți ogoare și vii?"
-    ],
-    [
-     "Va face el din voi",
-     "căpetenii peste o mie"
-    ],
-    [
-     "de ce v-ați unit toți",
-     "împotriva mea"
-    ],
-    [
-     "fiul meu a răsculat",
-     "pe robul meu împotriva mea"
-    ]
-   ]
+   "t": "one",
+   "ref": "22:7",
+   "q": "Cum le-a zis Saul slujitorilor săi, când i-a mustrat?",
+   "opts": [
+    "beniamiți",
+    "iudei",
+    "efraimiți"
+   ],
+   "a": 0
   },
   {
-   "id": "1sa.22.14-15.8",
+   "id": "1sa.22.14-15.19",
    "age": "14-15",
-   "t": "match",
-   "ref": "22:13-15",
-   "q": "Apărarea lui Ahimelec: asociază.",
-   "pairs": [
-    [
-     "„Pentru ce v-ați unit împotriva mea?\"",
-     "Saul"
-    ],
-    [
-     "„credinciosul David\"",
-     "Ahimelec"
-    ],
-    [
-     "„Oare de astăzi am început eu să întreb pe Dumnezeu pentru el?\"",
-     "Ahimelec, a doua oară"
-    ],
-    [
-     "„robul tău nu știe nimic\"",
-     "Ahimelec, la urmă"
-    ]
-   ]
+   "t": "one",
+   "ref": "22:15",
+   "q": "Ce a spus Ahimelec despre cele întâmplate?",
+   "opts": [
+    "„Am făcut-o din ordinul lui David”",
+    "„Saul a greșit”",
+    "„Robul tău nu știe nimic din toate acestea”"
+   ],
+   "a": 2
   },
   {
-   "id": "1sa.22.14-15.9",
+   "id": "1sa.22.14-15.24",
    "age": "14-15",
    "t": "match",
-   "ref": "22:18",
-   "q": "Uciderea preoților: asociază.",
+   "ref": "22:9-23",
+   "q": "Asociază fiecare persoană cu ce se spune despre ea în 1 Samuel 22.",
    "pairs": [
+    [
+     "Abiatar",
+     "fiul lui Ahimelec care a scăpat"
+    ],
+    [
+     "Ahimelec",
+     "preotul, fiul lui Ahitub"
+    ],
+    [
+     "Saul",
+     "cel care a poruncit uciderea preoților"
+    ],
     [
      "Doeg",
-     "Edomitul"
+     "cel care a lovit preoții"
     ],
     [
-     "optzeci și cinci",
-     "preoții uciși"
-    ],
-    [
-     "efodul de in",
-     "îl purtau"
-    ],
-    [
-     "ziua aceea",
-     "în ea au fost uciși"
+     "David",
+     "cel care a spus: „Eu sunt pricina morții”"
     ]
    ]
   },
@@ -595,6 +706,26 @@
    ],
    "q": "și au locuit cu el în tot timpul cât a stat David în ___.",
    "ctx": "Părinții lui David, în țara Moabului:"
+  },
+  {
+   "id": "1sa.22.14-15.20",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "22:14",
+   "q": "Care dintre slujitorii tăi poate fi pus alături cu credinciosul ___, ginerele împăratului",
+   "a": [
+    "David"
+   ]
+  },
+  {
+   "id": "1sa.22.14-15.21",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "22:23",
+   "q": "lângă mine vei fi bine ___.",
+   "a": [
+    "păzit"
+   ]
   },
   {
    "id": "1sa.22.14-15.13",
@@ -644,6 +775,38 @@
    "explain": "Niciun răspuns corect: la împăratul Moabului (22:3-4)."
   },
   {
+   "id": "1sa.22.14-15.22",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "22:12-13",
+   "q": "Ce a întrebat Saul pe Ahimelec?",
+   "opts": [
+    "„Pentru ce i-ai dat pâine și o sabie?”",
+    "„Pentru ce v-ați unit împotriva mea?”",
+    "„Unde s-a ascuns David?”"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.22.14-15.23",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "22:21-22",
+   "q": "Ce a spus David lui Abiatar?",
+   "opts": [
+    "„Eu sunt pricina morții tuturor din casa tatălui tău”",
+    "„Saul este nevinovat”",
+    "„Doeg nu se putea să nu spună lui Saul”"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
    "id": "1sa.22.16-17.1",
    "age": "16-17",
    "t": "tf",
@@ -667,6 +830,23 @@
    "ref": "22:12",
    "q": "Ahimelec i-a răspuns lui Saul: „Iată-mă, domnul meu!\"",
    "a": true
+  },
+  {
+   "id": "1sa.22.16-17.16",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "22:4",
+   "q": "Părinții lui David au locuit cu împăratul Moabului, cât a stat David în cetățuie.",
+   "a": true
+  },
+  {
+   "id": "1sa.22.16-17.17",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "22:6",
+   "q": "Saul ședea sub un stejar, la Ghibea.",
+   "a": false,
+   "explain": "Ședea sub un tamarisc."
   },
   {
    "id": "1sa.22.16-17.4",
@@ -708,77 +888,57 @@
    "a": 2
   },
   {
-   "id": "1sa.22.16-17.7",
+   "id": "1sa.22.16-17.18",
    "age": "16-17",
-   "t": "match",
-   "ref": "22:1-5",
-   "q": "Locurile lui David în capitolul 22: asociază.",
-   "pairs": [
-    [
-     "peștera Adulam",
-     "acolo s-au strâns la el cei nemulțumiți"
-    ],
-    [
-     "Mițpe",
-     "cetatea din țara Moabului"
-    ],
-    [
-     "cetățuia",
-     "Gad i-a spus să nu șadă acolo"
-    ],
-    [
-     "pădurea Heret",
-     "acolo a ajuns la urmă"
-    ]
-   ]
+   "t": "one",
+   "ref": "22:8",
+   "q": "Cum l-a numit Saul pe David, în cuvintele lui către slujitori?",
+   "opts": [
+    "fiul lui Isai",
+    "fiul lui Ahitub",
+    "fiul lui Chis"
+   ],
+   "a": 0
   },
   {
-   "id": "1sa.22.16-17.8",
+   "id": "1sa.22.16-17.19",
+   "age": "16-17",
+   "t": "one",
+   "ref": "22:11",
+   "q": "Pe cine a trimis Saul să cheme, pe lângă toată casa tatălui său?",
+   "opts": [
+    "pe Gad",
+    "pe Ahimelec, fiul lui Ahitub",
+    "pe Abiatar"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.22.16-17.24",
    "age": "16-17",
    "t": "match",
-   "ref": "22:2",
-   "q": "Cei strânși la David: asociază.",
+   "ref": "22:2-18",
+   "q": "Asociază fiecare număr sau lucru cu ce se spune despre el în 1 Samuel 22.",
    "pairs": [
     [
-     "nevoia",
-     "unii erau în ea"
-    ],
-    [
-     "datoriile",
-     "alții le aveau"
-    ],
-    [
-     "nemulțumirea",
-     "altora"
+     "optzeci și cinci",
+     "preoții care purtau efodul de in, omorâți de Doeg"
     ],
     [
      "patru sute",
-     "cam câți erau"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.22.16-17.9",
-   "age": "16-17",
-   "t": "match",
-   "ref": "22:20-23",
-   "q": "Abiatar și David: asociază începutul cu sfârșitul.",
-   "pairs": [
-    [
-     "Un fiu al lui Ahimelec",
-     "a scăpat"
+     "oamenii uniți cu David"
     ],
     [
-     "Eu sunt pricina",
-     "morții tuturor sufletelor din casa tatălui tău"
+     "Moab",
+     "țara unde au stat părinții lui David"
     ],
     [
-     "Rămâi cu mine",
-     "nu te teme de nimic"
+     "Heret",
+     "pădurea unde a ajuns David"
     ],
     [
-     "lângă mine",
-     "vei fi bine păzit"
+     "efodul de in",
+     "ce purtau preoții"
     ]
    ]
   },
@@ -814,6 +974,26 @@
    ],
    "q": "„Eu am văzut pe fiul lui Isai venind la Nob, la Ahimelec, fiul lui ___.",
    "ctx": "Doeg, Edomitul, către Saul:"
+  },
+  {
+   "id": "1sa.22.16-17.20",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "22:6",
+   "q": "Saul ședea sub tamarisc, la ___, pe înălțime",
+   "a": [
+    "Ghibea"
+   ]
+  },
+  {
+   "id": "1sa.22.16-17.21",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "22:22",
+   "q": "Eu sunt pricina morții tuturor ___ din casa tatălui tău.",
+   "a": [
+    "sufletelor"
+   ]
   },
   {
    "id": "1sa.22.16-17.13",
@@ -863,6 +1043,38 @@
    "explain": "Niciun răspuns corect: Abiatar era fiul lui Ahimelec, fiul lui Ahitub (22:20)."
   },
   {
+   "id": "1sa.22.16-17.22",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "22:19",
+   "q": "Ce se spune despre Nob?",
+   "opts": [
+    "a fost trecută prin ascuțișul sabiei",
+    "a fost cruțată de Saul",
+    "era cetatea preoțească"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.22.16-17.23",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "22:14-15",
+   "q": "Ce a spus Ahimelec?",
+   "opts": [
+    "că s-a unit cu David împotriva lui Saul",
+    "că robul lui nu știe nimic din toate acestea",
+    "că David este credincios"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
    "id": "1sa.22.18+.1",
    "age": "18+",
    "t": "tf",
@@ -886,6 +1098,23 @@
    "ref": "22:15",
    "q": "Ahimelec a spus că nu de atunci începuse să-L întrebe pe Dumnezeu pentru David.",
    "a": true
+  },
+  {
+   "id": "1sa.22.18+.16",
+   "age": "18+",
+   "t": "tf",
+   "ref": "22:20",
+   "q": "Abiatar era fiul lui Ahimelec, fiul lui Ahitub.",
+   "a": true
+  },
+  {
+   "id": "1sa.22.18+.17",
+   "age": "18+",
+   "t": "tf",
+   "ref": "22:2",
+   "q": "Cu David s-au unit cei bogați și mulțumiți.",
+   "a": false,
+   "explain": "S-au unit cei aflați în nevoie, cu datorii și nemulțumiți."
   },
   {
    "id": "1sa.22.18+.4",
@@ -927,73 +1156,57 @@
    "a": 0
   },
   {
-   "id": "1sa.22.18+.7",
+   "id": "1sa.22.18+.18",
    "age": "18+",
-   "t": "match",
-   "ref": "22:9-19",
-   "q": "Oamenii din 1 Samuel 22: asociază fiecare cu tatăl sau poporul lui.",
-   "pairs": [
-    [
-     "Ahimelec",
-     "fiul lui Ahitub"
-    ],
-    [
-     "Abiatar",
-     "fiul lui Ahimelec"
-    ],
-    [
-     "Doeg",
-     "Edomitul"
-    ],
-    [
-     "David",
-     "fiul lui Isai"
-    ]
-   ]
+   "t": "one",
+   "ref": "22:10",
+   "q": "Ce spunea Doeg că i-a dat Ahimelec lui David?",
+   "opts": [
+    "aur și argint",
+    "un cal și o armură",
+    "merinde și sabia lui Goliat"
+   ],
+   "a": 2
   },
   {
-   "id": "1sa.22.18+.8",
+   "id": "1sa.22.18+.19",
    "age": "18+",
-   "t": "match",
-   "ref": "22:19",
-   "q": "Ce a fost trecut prin sabie la Nob: asociază perechile.",
-   "pairs": [
-    [
-     "bărbați",
-     "și femei"
-    ],
-    [
-     "copii",
-     "și prunci"
-    ],
-    [
-     "boi",
-     "măgari și oi"
-    ]
-   ]
+   "t": "one",
+   "ref": "22:9",
+   "q": "Cui i-a vorbit Doeg despre Ahimelec?",
+   "opts": [
+    "lui Abner",
+    "lui Ionatan",
+    "lui Saul"
+   ],
+   "a": 2
   },
   {
-   "id": "1sa.22.18+.9",
+   "id": "1sa.22.18+.24",
    "age": "18+",
    "t": "match",
-   "ref": "22:13-17",
-   "q": "Acuzațiile lui Saul: asociază.",
+   "ref": "22:1-19",
+   "q": "Asociază fiecare loc cu ce se spune despre el în 1 Samuel 22.",
    "pairs": [
     [
-     "pâinea",
-     "Ahimelec i-a dat-o lui David"
+     "Mițpe",
+     "locul din Moab unde s-a dus David"
     ],
     [
-     "sabia",
-     "Ahimelec i-a dat-o"
+     "Ghibea",
+     "locul unde ședea Saul"
     ],
     [
-     "întrebarea Domnului",
-     "Ahimelec a făcut-o pentru David"
+     "Nob",
+     "cetatea preoților lovită de Saul"
     ],
     [
-     "vestea fugii",
-     "preoții n-au spus-o"
+     "Adulam",
+     "peștera unde a scăpat David"
+    ],
+    [
+     "Heret",
+     "pădurea unde a ajuns David după cuvântul lui Gad"
     ]
    ]
   },
@@ -1029,6 +1242,26 @@
    ],
    "q": "M-am gândit chiar în ziua aceea că Doeg, Edomitul, fiind acolo, nu se putea să nu spună lui ___.",
    "ctx": "David, către Abiatar:"
+  },
+  {
+   "id": "1sa.22.18+.20",
+   "age": "18+",
+   "t": "fill",
+   "ref": "22:2",
+   "q": "Toți cei ce se aflau în nevoie, care aveau ___ sau care erau nemulțumiți s-au strâns la el",
+   "a": [
+    "datorii"
+   ]
+  },
+  {
+   "id": "1sa.22.18+.21",
+   "age": "18+",
+   "t": "fill",
+   "ref": "22:5",
+   "q": "Și David a plecat și a ajuns la pădurea ___.",
+   "a": [
+    "Heret"
+   ]
   },
   {
    "id": "1sa.22.18+.13",
@@ -1076,6 +1309,38 @@
    ],
    "a": [],
    "explain": "Niciun răspuns corect: i-a promis ocrotire: „lângă mine vei fi bine păzit\" (22:23)."
+  },
+  {
+   "id": "1sa.22.18+.22",
+   "age": "18+",
+   "t": "multi",
+   "ref": "22:9-10",
+   "q": "Ce a spus Doeg despre Ahimelec?",
+   "opts": [
+    "Ahimelec s-a opus lui David",
+    "Ahimelec a întrebat pe Domnul pentru el",
+    "l-a văzut pe David venind la Nob"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.22.18+.23",
+   "age": "18+",
+   "t": "multi",
+   "ref": "22:1-2",
+   "q": "Ce s-a întâmplat la peștera Adulam?",
+   "opts": [
+    "David a rămas singur",
+    "frații lui David au venit la el",
+    "David a ajuns căpetenia celor strânși"
+   ],
+   "a": [
+    1,
+    2
+   ]
   }
  ]
 }

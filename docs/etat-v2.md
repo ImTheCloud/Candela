@@ -11,7 +11,7 @@ Dernière mise à jour : 21 octobre 2026. Branche `v2` (la v1 reste sur `main`, 
 ## Fait
 - **App :** Astro + Preact, PWA hors-ligne, mobile d'abord, toujours en clair (fond beige, lampe de la v1).
 - **Comptes :** Firebase Auth (mot de passe oublié par email, œil sur le mot de passe), invité sans compte, compte parent avec enfants, année de naissance demandée dans une fenêtre obligatoire (toi + chaque enfant), 31 comptes v1 migrés (Auth + Firestore, mots de passe conservés).
-- **Questions :** 1 Samuel 2 325 (31 ch.) et 2 Samuel 1 800 (24 ch.), 15 par chapitre et par âge (sub 12, 12–13, 14–15, 16–17, 18+), 3 par type. Relues contre le texte Cornilescu (≈ 45 corrections). 4 examens réels 1 Samuel 2026 reproduits (12–13, 14–15, 16–17, 18+), notés sur 100.
+- **Questions :** 1 Samuel 3 255 (31 ch.) et 2 Samuel 2 520 (24 ch.), soit 21 par chapitre et par âge (sub 12, 12–13, 14–15, 16–17, 18+) : 5 vrai/faux, 5 à une réponse, 1 association de 5 paires, 5 à compléter (un seul mot), 5 à plusieurs réponses. Un test de chapitre = un examen sur 100 (3, 4, 2 par paire, 5, 6 points). Relues contre le texte Cornilescu. 4 examens réels 1 Samuel 2026 reproduits (12–13, 14–15, 16–17, 18+), notés sur 100.
 - **Accueil :** « Bun venit, {prénom} », 2 Samuel par défaut, bascule 1/2 Samuel sans rechargement (retenue en mémoire locale), grille de chapitres, tuile « Examene » après le dernier chapitre, carte « Clasament ».
 - **Menu de chapitre :** « Citește capitolul » (cèdre) et « Testul capitolului » (orange, étiquette de catégorie, nombre de questions), « Mai greu » et « Greșelile mele » si utile.
 - **Quiz :** correction avec bandeau Corect/Greșit, carte « De ce / Ce spune textul », résultat avec cercle de score et « De recitit ».

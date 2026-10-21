@@ -28,6 +28,23 @@
    "a": true
   },
   {
+   "id": "1sa.28.sub12.16",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "28:4",
+   "q": "Saul și Israel au tăbărât la Ghilboa.",
+   "a": true
+  },
+  {
+   "id": "1sa.28.sub12.17",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "28:25",
+   "q": "Saul a rămas la femeie până a doua zi.",
+   "a": false,
+   "explain": "Au plecat chiar în noaptea aceea."
+  },
+  {
    "id": "1sa.28.sub12.4",
    "age": "sub12",
    "t": "one",
@@ -67,65 +84,57 @@
    "a": 2
   },
   {
-   "id": "1sa.28.sub12.7",
+   "id": "1sa.28.sub12.18",
    "age": "sub12",
-   "t": "match",
+   "t": "one",
    "ref": "28:4",
-   "q": "Taberele: asociază.",
-   "pairs": [
-    [
-     "filistenii",
-     "au tăbărât la Sunem"
-    ],
-    [
-     "Saul și Israel",
-     "au tăbărât la Ghilboa"
-    ],
-    [
-     "Saul",
-     "a fost cuprins de frică"
-    ]
-   ]
+   "q": "Unde au tăbărât filistenii?",
+   "opts": [
+    "la Sunem",
+    "la Rama",
+    "la Hebron"
+   ],
+   "a": 0
   },
   {
-   "id": "1sa.28.sub12.8",
+   "id": "1sa.28.sub12.19",
    "age": "sub12",
-   "t": "match",
-   "ref": "28:12-14",
-   "q": "Femeia din En-Dor: asociază.",
-   "pairs": [
-    [
-     "femeia",
-     "a scos un țipăt mare"
-    ],
-    [
-     "Samuel",
-     "un bătrân învelit cu o mantie"
-    ],
-    [
-     "Saul",
-     "s-a plecat cu fața la pământ"
-    ]
-   ]
+   "t": "one",
+   "ref": "28:20",
+   "q": "Ce s-a întâmplat cu Saul după cuvintele lui Samuel?",
+   "opts": [
+    "a căzut la pământ cât era de lung",
+    "a început să râdă",
+    "a fugit din tabără"
+   ],
+   "a": 0
   },
   {
-   "id": "1sa.28.sub12.9",
+   "id": "1sa.28.sub12.25",
    "age": "sub12",
    "t": "match",
-   "ref": "28:1-3",
-   "q": "Începutul capitolului 28: asociază.",
+   "ref": "28:1-25",
+   "q": "Asociază fiecare nume sau loc cu ce se spune despre el în 1 Samuel 28.",
    "pairs": [
     [
-     "Achiș",
-     "l-a luat pe David la oștire"
+     "En-Dor",
+     "locul unde era femeia"
     ],
     [
-     "Samuel",
-     "murise"
+     "Ghilboa",
+     "unde au tăbărât Saul și Israel"
+    ],
+    [
+     "Sunem",
+     "unde au tăbărât filistenii"
     ],
     [
      "Rama",
-     "acolo a fost îngropat Samuel"
+     "unde a fost îngropat Samuel"
+    ],
+    [
+     "Achiș",
+     "cel care l-a pus pe David păzitorul capului lui"
     ]
    ]
   },
@@ -163,6 +172,26 @@
    "ctx": "Femeia din En-Dor, către Saul:"
   },
   {
+   "id": "1sa.28.sub12.20",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "28:3",
+   "q": "Tot Israelul îl plânsese și-l îngropase la ___, în cetatea lui.",
+   "a": [
+    "Rama"
+   ]
+  },
+  {
+   "id": "1sa.28.sub12.21",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "28:4",
+   "q": "Saul a strâns pe tot Israelul și au tăbărât la ___.",
+   "a": [
+    "Ghilboa"
+   ]
+  },
+  {
    "id": "1sa.28.sub12.13",
    "age": "sub12",
    "t": "multi",
@@ -196,18 +225,52 @@
    ]
   },
   {
-   "id": "1sa.28.sub12.15",
+   "id": "1sa.28.sub12.22",
    "age": "sub12",
    "t": "multi",
-   "ref": "28:8",
-   "q": "Câți oameni au mers cu Saul la femeie?",
+   "ref": "28:1",
+   "q": "Ce s-a întâmplat pe vremea aceea?",
    "opts": [
-    "zece",
-    "unul",
-    "o sută"
+    "David s-a întors acasă",
+    "Achiș i-a spus lui David să vină cu el la oștire",
+    "filistenii și-au strâns taberele"
    ],
-   "a": [],
-   "explain": "Niciun răspuns corect: doi oameni (28:8)."
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.28.sub12.23",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "28:7-8",
+   "q": "Ce a făcut Saul?",
+   "opts": [
+    "a plecat cu toată oștirea",
+    "a cerut o femeie care chema morții",
+    "a plecat noaptea cu doi oameni"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.28.sub12.24",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "28:12-14",
+   "q": "Ce s-a întâmplat când femeia l-a văzut pe Samuel?",
+   "opts": [
+    "Saul a fugit",
+    "a scos un țipăt mare",
+    "Saul s-a plecat cu fața la pământ"
+   ],
+   "a": [
+    1,
+    2
+   ]
   },
   {
    "id": "1sa.28.12-13.1",
@@ -233,6 +296,23 @@
    "ref": "28:20",
    "q": "Saul nu mai avea putere, căci nu mâncase toată ziua și toată noaptea.",
    "a": true
+  },
+  {
+   "id": "1sa.28.12-13.16",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "28:9",
+   "q": "Femeia a spus că Saul a nimicit din țară pe cei ce cheamă morții.",
+   "a": true
+  },
+  {
+   "id": "1sa.28.12-13.17",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "28:10",
+   "q": "Saul i-a jurat femeii pe idoli.",
+   "a": false,
+   "explain": "I-a jurat pe Domnul."
   },
   {
    "id": "1sa.28.12-13.4",
@@ -274,77 +354,57 @@
    "a": 1
   },
   {
-   "id": "1sa.28.12-13.7",
+   "id": "1sa.28.12-13.18",
    "age": "12-13",
-   "t": "match",
-   "ref": "28:15-17",
-   "q": "Samuel și Saul: asociază.",
-   "pairs": [
-    [
-     "„Pentru ce m-ai tulburat chemându-mă?\"",
-     "întrebarea lui Samuel"
-    ],
-    [
-     "„Sunt într-o mare strâmtorare\"",
-     "răspunsul lui Saul"
-    ],
-    [
-     "Domnul S-a depărtat",
-     "de la Saul"
-    ],
-    [
-     "împărăția",
-     "dată lui David"
-    ]
-   ]
+   "t": "one",
+   "ref": "28:15",
+   "q": "Cine a întrebat: „Pentru ce m-ai tulburat chemându-mă?”",
+   "opts": [
+    "slujitorii lui Saul",
+    "Samuel",
+    "femeia"
+   ],
+   "a": 1
   },
   {
-   "id": "1sa.28.12-13.8",
+   "id": "1sa.28.12-13.19",
    "age": "12-13",
-   "t": "match",
-   "ref": "28:9-11",
-   "q": "Femeia și Saul: asociază începutul cu sfârșitul.",
-   "pairs": [
-    [
-     "Știi ce a făcut Saul",
-     "cum a nimicit din țară pe cei ce cheamă morții"
-    ],
-    [
-     "Viu este Domnul",
-     "că nu ți se va întâmpla niciun rău"
-    ],
-    [
-     "Pe cine vrei",
-     "să-ți scol?"
-    ],
-    [
-     "Scoală-mi",
-     "pe Samuel"
-    ]
-   ]
+   "t": "one",
+   "ref": "28:23",
+   "q": "Ce a răspuns Saul când i s-a oferit să mănânce?",
+   "opts": [
+    "„Aduceți vin”",
+    "„Mănânc îndată”",
+    "„Nu mănânc nimic!”"
+   ],
+   "a": 2
   },
   {
-   "id": "1sa.28.12-13.9",
+   "id": "1sa.28.12-13.25",
    "age": "12-13",
    "t": "match",
-   "ref": "28:21-25",
-   "q": "Masa de la En-Dor: asociază.",
+   "ref": "28:1-25",
+   "q": "Asociază fiecare persoană cu ce se spune despre ea în 1 Samuel 28.",
    "pairs": [
-    [
-     "femeia",
-     "l-a rugat să mănânce"
-    ],
     [
      "Saul",
-     "a zis „Nu mănânc nimic!\""
+     "cel care a întrebat pe Domnul și n-a primit răspuns"
     ],
     [
-     "slujitorii",
-     "au stăruit de el"
+     "Samuel",
+     "cel care a fost chemat din pământ"
     ],
     [
-     "vițelul gras",
-     "tăiat în grabă"
+     "Achiș",
+     "cel care l-a luat pe David la oștire"
+    ],
+    [
+     "femeia",
+     "cea din En-Dor"
+    ],
+    [
+     "David",
+     "cel care a răspuns: „Vei vedea ce va face robul tău”"
     ]
    ]
   },
@@ -382,6 +442,26 @@
    "ctx": "Saul, către slujitorii lui:"
   },
   {
+   "id": "1sa.28.12-13.20",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "28:1",
+   "q": "Să știi că vei veni cu mine la ___, tu și oamenii tăi.",
+   "a": [
+    "oștire"
+   ]
+  },
+  {
+   "id": "1sa.28.12-13.21",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "28:22",
+   "q": "lasă-mă să-ți dau o bucată de ___, ca să mănânci",
+   "a": [
+    "pâine"
+   ]
+  },
+  {
    "id": "1sa.28.12-13.13",
    "age": "12-13",
    "t": "multi",
@@ -414,18 +494,52 @@
    ]
   },
   {
-   "id": "1sa.28.12-13.15",
+   "id": "1sa.28.12-13.22",
    "age": "12-13",
    "t": "multi",
-   "ref": "28:23",
-   "q": "Pe ce a șezut Saul după ce s-a sculat de la pământ?",
+   "ref": "28:5-6",
+   "q": "Ce s-a întâmplat cu Saul?",
    "opts": [
-    "pe jos",
-    "pe o piatră",
-    "pe un scaun"
+    "Domnul i-a răspuns prin Urim",
+    "Domnul nu i-a răspuns prin vise",
+    "a fost cuprins de frică"
    ],
-   "a": [],
-   "explain": "Niciun răspuns corect: a șezut pe pat (28:23)."
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.28.12-13.23",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "28:21-22",
+   "q": "Ce a spus femeia?",
+   "opts": [
+    "și-a pus viața în primejdie",
+    "l-a rugat pe Saul să mănânce",
+    "i-a poruncit lui Saul să plece"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.28.12-13.24",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "28:13-14",
+   "q": "Ce a descris femeia?",
+   "opts": [
+    "o ființă dumnezeiască sculându-se din pământ",
+    "un bătrân învelit cu o mantie",
+    "un tânăr în zale"
+   ],
+   "a": [
+    0,
+    1
+   ]
   },
   {
    "id": "1sa.28.14-15.1",
@@ -451,6 +565,23 @@
    "q": "Femeia a spus că vede un înger coborând din cer.",
    "a": false,
    "explain": "A spus: „Văd o ființă dumnezeiască sculându-se din pământ\" (28:13)."
+  },
+  {
+   "id": "1sa.28.14-15.16",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "28:18",
+   "q": "Samuel i-a spus lui Saul că n-a ascultat de glasul Domnului.",
+   "a": true
+  },
+  {
+   "id": "1sa.28.14-15.17",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "28:22",
+   "q": "Femeia a refuzat să-i dea pâine lui Saul.",
+   "a": false,
+   "explain": "Ea l-a rugat să mănânce."
   },
   {
    "id": "1sa.28.14-15.4",
@@ -492,77 +623,57 @@
    "a": 0
   },
   {
-   "id": "1sa.28.14-15.7",
+   "id": "1sa.28.14-15.18",
+   "age": "14-15",
+   "t": "one",
+   "ref": "28:19",
+   "q": "Ce a vestit Samuel despre a doua zi?",
+   "opts": [
+    "„Saul va birui pe filisteni”",
+    "„Domnul te va vindeca”",
+    "„Tu și fiii tăi veți fi împreună cu mine”"
+   ],
+   "a": 2
+  },
+  {
+   "id": "1sa.28.14-15.19",
+   "age": "14-15",
+   "t": "one",
+   "ref": "28:16",
+   "q": "De ce nu trebuia Saul să-l întrebe pe Samuel, după acesta?",
+   "opts": [
+    "Samuel era bolnav",
+    "Domnul S-a depărtat de el",
+    "Samuel nu mai știa nimic"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.28.14-15.25",
    "age": "14-15",
    "t": "match",
-   "ref": "28:4-7",
-   "q": "Locuri din capitolul 28: asociază.",
+   "ref": "28:1-25",
+   "q": "Asociază fiecare nume sau lucru cu ce se spune despre el în 1 Samuel 28.",
    "pairs": [
     [
+     "Urim",
+     "nu a răspuns prin el Domnul"
+    ],
+    [
+     "Amalec",
+     "nu l-a făcut Saul să simtă mânia Domnului"
+    ],
+    [
      "Sunem",
-     "tabăra filistenilor"
+     "unde au tăbărât filistenii"
     ],
     [
      "Ghilboa",
-     "tabăra lui Israel"
+     "unde a tăbărât Israel"
     ],
     [
      "En-Dor",
-     "locul femeii"
-    ],
-    [
-     "Rama",
-     "mormântul lui Samuel"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.28.14-15.8",
-   "age": "14-15",
-   "t": "match",
-   "ref": "28:15-19",
-   "q": "Cuvintele lui Samuel: asociază începutul cu sfârșitul.",
-   "pairs": [
-    [
-     "Pentru ce mă întrebi pe mine",
-     "când Domnul S-a depărtat de tine?"
-    ],
-    [
-     "Domnul a rupt împărăția",
-     "din mâinile tale"
-    ],
-    [
-     "N-ai ascultat de glasul Domnului",
-     "și n-ai făcut pe Amalec să simtă mânia Lui"
-    ],
-    [
-     "Mâine, tu și fiii tăi",
-     "veți fi împreună cu mine"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.28.14-15.9",
-   "age": "14-15",
-   "t": "match",
-   "ref": "28:24-25",
-   "q": "Mâncarea pregătită de femeie: asociază.",
-   "pairs": [
-    [
-     "vițelul gras",
-     "l-a tăiat în grabă"
-    ],
-    [
-     "făina",
-     "a frământat-o"
-    ],
-    [
-     "azimile",
-     "le-a copt"
-    ],
-    [
-     "noaptea aceea",
-     "atunci au plecat"
+     "unde era o femeie care chema morții"
     ]
    ]
   },
@@ -600,6 +711,26 @@
    "ctx": "Femeia din En-Dor, pregătind masa pentru Saul:"
   },
   {
+   "id": "1sa.28.14-15.20",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "28:6",
+   "q": "Domnul nu i-a răspuns nici prin vise, nici prin Urim, nici prin ___.",
+   "a": [
+    "proroci"
+   ]
+  },
+  {
+   "id": "1sa.28.14-15.21",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "28:17",
+   "q": "Domnul a rupt ___ din mâinile tale și a dat-o altuia, lui David.",
+   "a": [
+    "împărăția"
+   ]
+  },
+  {
    "id": "1sa.28.14-15.13",
    "age": "14-15",
    "t": "multi",
@@ -632,18 +763,52 @@
    ]
   },
   {
-   "id": "1sa.28.14-15.15",
+   "id": "1sa.28.14-15.22",
    "age": "14-15",
    "t": "multi",
-   "ref": "28:4",
-   "q": "Unde au tăbărât filistenii?",
+   "ref": "28:23-25",
+   "q": "Ce s-a întâmplat la sfârșit?",
    "opts": [
-    "la Afec",
-    "la Ghilboa",
-    "la Micmaș"
+    "femeia a copt azimi",
+    "Saul a mâncat singur",
+    "Saul a șezut pe pat"
    ],
-   "a": [],
-   "explain": "Niciun răspuns corect: la Sunem (28:4)."
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.28.14-15.23",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "28:9-10",
+   "q": "Ce s-a spus între femeie și Saul?",
+   "opts": [
+    "femeia s-a temut pentru viața ei",
+    "Saul a amenințat-o cu moartea",
+    "Saul i-a jurat pe Domnul"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.28.14-15.24",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "28:7-8",
+   "q": "Ce a făcut Saul?",
+   "opts": [
+    "a venit în plină zi cu oștirea",
+    "s-a schimbat și a luat alte haine",
+    "a ajuns noaptea la femeie"
+   ],
+   "a": [
+    1,
+    2
+   ]
   },
   {
    "id": "1sa.28.16-17.1",
@@ -669,6 +834,23 @@
    "ref": "28:19",
    "q": "Samuel a vestit că tabăra lui Israel va fi dată în mâinile filistenilor.",
    "a": true
+  },
+  {
+   "id": "1sa.28.16-17.16",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "28:7",
+   "q": "Slujitorii i-au spus lui Saul că în En-Dor este o femeie care cheamă morții.",
+   "a": true
+  },
+  {
+   "id": "1sa.28.16-17.17",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "28:24",
+   "q": "Femeia a tăiat un berbec pentru Saul.",
+   "a": false,
+   "explain": "A tăiat un vițel gras."
   },
   {
    "id": "1sa.28.16-17.4",
@@ -710,77 +892,57 @@
    "a": 2
   },
   {
-   "id": "1sa.28.16-17.7",
+   "id": "1sa.28.16-17.18",
+   "age": "16-17",
+   "t": "one",
+   "ref": "28:10",
+   "q": "Ce a jurat Saul femeii?",
+   "opts": [
+    "că nu i se va întâmpla niciun rău",
+    "că o va lua de nevastă",
+    "că îi va da aur"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.28.16-17.19",
+   "age": "16-17",
+   "t": "one",
+   "ref": "28:20",
+   "q": "De ce nu mai avea Saul putere?",
+   "opts": [
+    "nu mâncase toată ziua și toată noaptea",
+    "era bolnav",
+    "fusese rănit"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.28.16-17.25",
    "age": "16-17",
    "t": "match",
-   "ref": "28:6",
-   "q": "Căile prin care Domnul nu i-a răspuns lui Saul: asociază.",
+   "ref": "28:1-25",
+   "q": "Asociază fiecare nume sau lucru cu ce se spune despre el în 1 Samuel 28.",
    "pairs": [
     [
-     "vise",
-     "noaptea, în somn"
+     "Amalec",
+     "nu l-a făcut Saul să simtă mânia Domnului"
     ],
     [
      "Urim",
-     "prin preot"
+     "prin el nu a răspuns Domnul"
     ],
     [
-     "proroci",
-     "prin oamenii lui Dumnezeu"
+     "Achiș",
+     "l-a pus pe David păzitorul capului lui"
     ],
     [
-     "tăcerea",
-     "răspunsul lui Dumnezeu"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.28.16-17.8",
-   "age": "16-17",
-   "t": "match",
-   "ref": "28:9-14",
-   "q": "Dialogul de la En-Dor: asociază fiecare cuvânt cu cine l-a spus.",
-   "pairs": [
-    [
-     "„pentru ce dar întinzi o cursă vieții mele?\"",
-     "femeia"
+     "Samuel",
+     "a fost îngropat la Rama"
     ],
     [
-     "„Nu te teme de nimic. Dar ce vezi?\"",
-     "Saul"
-    ],
-    [
-     "„Cum e la chip?\"",
-     "tot Saul"
-    ],
-    [
-     "„Pentru ce m-ai înșelat?\"",
-     "tot femeia"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.28.16-17.9",
-   "age": "16-17",
-   "t": "match",
-   "ref": "28:20-23",
-   "q": "Starea lui Saul: asociază.",
-   "pairs": [
-    [
-     "groaza",
-     "cuvintele lui Samuel l-au umplut"
-    ],
-    [
-     "puterea",
-     "nu mai avea niciuna"
-    ],
-    [
-     "foamea",
-     "nu mâncase toată ziua și noaptea"
-    ],
-    [
-     "patul",
-     "a șezut pe el"
+     "Saul",
+     "a îndepărtat din țară pe cei ce chemau morții"
     ]
    ]
   },
@@ -818,6 +980,26 @@
    "ctx": "Femeia din En-Dor, către Saul deghizat:"
   },
   {
+   "id": "1sa.28.16-17.20",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "28:5",
+   "q": "un ___ puternic i-a apucat inima",
+   "a": [
+    "tremur"
+   ]
+  },
+  {
+   "id": "1sa.28.16-17.21",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "28:21",
+   "q": "mi-am pus viața în ___ ascultând de cuvintele pe care mi le-ai spus",
+   "a": [
+    "primejdie"
+   ]
+  },
+  {
    "id": "1sa.28.16-17.13",
    "age": "16-17",
    "t": "multi",
@@ -850,18 +1032,52 @@
    ]
   },
   {
-   "id": "1sa.28.16-17.15",
+   "id": "1sa.28.16-17.22",
    "age": "16-17",
    "t": "multi",
-   "ref": "28:25",
-   "q": "Când au plecat Saul și slujitorii lui de la En-Dor?",
+   "ref": "28:16-17",
+   "q": "Ce a spus Samuel?",
    "opts": [
-    "dimineața",
-    "după trei zile",
-    "a doua zi la amiază"
+    "Domnul a dat-o altuia, lui Ionatan",
+    "Domnul S-a depărtat de Saul",
+    "Domnul a rupt împărăția din mâinile lui"
    ],
-   "a": [],
-   "explain": "Niciun răspuns corect: „chiar în noaptea aceea\" (28:25)."
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.28.16-17.23",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "28:24-25",
+   "q": "Ce a făcut femeia?",
+   "opts": [
+    "a tăiat un vițel gras",
+    "a fugit din casă",
+    "a copt azimi"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.28.16-17.24",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "28:1-2",
+   "q": "Ce s-a spus între Achiș și David?",
+   "opts": [
+    "David a refuzat să meargă",
+    "Achiș a spus că David va veni la oștire",
+    "David a răspuns: „Vei vedea ce va face robul tău”"
+   ],
+   "a": [
+    1,
+    2
+   ]
   },
   {
    "id": "1sa.28.18+.1",
@@ -887,6 +1103,23 @@
    "ref": "28:16",
    "q": "Samuel spune că Domnul S-a făcut vrăjmașul lui Saul.",
    "a": true
+  },
+  {
+   "id": "1sa.28.18+.16",
+   "age": "18+",
+   "t": "tf",
+   "ref": "28:1",
+   "q": "Filistenii și-au strâns taberele ca să pornească război împotriva lui Israel.",
+   "a": true
+  },
+  {
+   "id": "1sa.28.18+.17",
+   "age": "18+",
+   "t": "tf",
+   "ref": "28:11",
+   "q": "Saul a cerut femeii să scoale pe David.",
+   "a": false,
+   "explain": "A cerut: „Scoală-mi pe Samuel.”"
   },
   {
    "id": "1sa.28.18+.4",
@@ -928,77 +1161,57 @@
    "a": 0
   },
   {
-   "id": "1sa.28.18+.7",
+   "id": "1sa.28.18+.18",
+   "age": "18+",
+   "t": "one",
+   "ref": "28:9",
+   "q": "Ce a spus femeia că a făcut Saul în țară?",
+   "opts": [
+    "a poruncit să fie ucis Samuel",
+    "a nimicit pe cei ce cheamă morții",
+    "a alungat pe prooroci"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.28.18+.19",
+   "age": "18+",
+   "t": "one",
+   "ref": "28:22",
+   "q": "Ce a oferit femeia lui Saul?",
+   "opts": [
+    "un ospăț împărătesc",
+    "vin",
+    "o bucată de pâine"
+   ],
+   "a": 2
+  },
+  {
+   "id": "1sa.28.18+.25",
    "age": "18+",
    "t": "match",
-   "ref": "28:1-7",
-   "q": "Cine ce a făcut: asociază.",
+   "ref": "28:1-25",
+   "q": "Asociază fiecare persoană cu ce se spune despre ea în 1 Samuel 28.",
    "pairs": [
-    [
-     "Achiș",
-     "l-a chemat pe David la oștire"
-    ],
-    [
-     "slujitorii lui Saul",
-     "au găsit femeia din En-Dor"
-    ],
     [
      "Saul",
-     "a strâns tot Israelul"
+     "cel care a căzut la pământ cât era de lung"
     ],
     [
-     "filistenii",
-     "s-au strâns la Sunem"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.28.18+.8",
-   "age": "18+",
-   "t": "match",
-   "ref": "28:15-18",
-   "q": "Răspunsuri și motive: asociază.",
-   "pairs": [
-    [
-     "strâmtorarea lui Saul",
-     "filistenii îi fac război"
+     "Samuel",
+     "cel care a vestit mânia Domnului"
     ],
     [
-     "Domnul",
-     "S-a depărtat de Saul"
+     "femeia",
+     "cea care a copt azimi"
     ],
     [
-     "Amalec",
-     "Saul nu i-a făcut să simtă mânia Domnului"
+     "Achiș",
+     "cel care a pus pe David păzitorul capului lui"
     ],
     [
-     "împărăția",
-     "ruptă din mâinile lui Saul"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.28.18+.9",
-   "age": "18+",
-   "t": "match",
-   "ref": "28:8-13",
-   "q": "Întâmplările nopții: asociază începutul cu sfârșitul.",
-   "pairs": [
-    [
-     "Saul s-a schimbat",
-     "a luat alte haine"
-    ],
-    [
-     "Au ajuns la femeia aceea",
-     "noaptea"
-    ],
-    [
-     "Spune-mi viitorul",
-     "chemând un mort"
-    ],
-    [
-     "Văd o ființă dumnezeiască",
-     "sculându-se din pământ"
+     "David",
+     "cel care a spus: „Vei vedea ce va face robul tău”"
     ]
    ]
   },
@@ -1036,6 +1249,26 @@
    "ctx": "Saul, la En-Dor, după cuvintele lui Samuel:"
   },
   {
+   "id": "1sa.28.18+.20",
+   "age": "18+",
+   "t": "fill",
+   "ref": "28:15",
+   "q": "Dumnezeu S-a ___ de la mine",
+   "a": [
+    "depărtat"
+   ]
+  },
+  {
+   "id": "1sa.28.18+.21",
+   "age": "18+",
+   "t": "fill",
+   "ref": "28:12",
+   "q": "Pentru ce m-ai ___? Tu ești Saul!",
+   "a": [
+    "înșelat"
+   ]
+  },
+  {
    "id": "1sa.28.18+.13",
    "age": "18+",
    "t": "multi",
@@ -1069,18 +1302,52 @@
    ]
   },
   {
-   "id": "1sa.28.18+.15",
+   "id": "1sa.28.18+.22",
    "age": "18+",
    "t": "multi",
-   "ref": "28:10",
-   "q": "Pe ce a jurat Saul femeii?",
+   "ref": "28:6-7",
+   "q": "Ce s-a întâmplat?",
    "opts": [
-    "pe viața lui",
-    "pe coroana lui",
-    "pe capul lui Samuel"
+    "Domnul nu i-a răspuns lui Saul",
+    "Saul a căutat o femeie care chema morții",
+    "Saul a primit răspuns prin prorocii"
    ],
-   "a": [],
-   "explain": "Niciun răspuns corect: „Saul i-a jurat pe Domnul\" (28:10)."
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.28.18+.23",
+   "age": "18+",
+   "t": "multi",
+   "ref": "28:15-16",
+   "q": "Ce s-a spus între Saul și Samuel?",
+   "opts": [
+    "Samuel a spus că Domnul îl alesese iar",
+    "Saul a spus că este într-o mare strâmtorare",
+    "Samuel a spus că Domnul S-a făcut vrăjmașul lui Saul"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.28.18+.24",
+   "age": "18+",
+   "t": "multi",
+   "ref": "28:24-25",
+   "q": "Ce a făcut femeia pentru Saul și slujitorii lui?",
+   "opts": [
+    "i-a dus la David",
+    "a copt azimi",
+    "a tăiat un vițel gras"
+   ],
+   "a": [
+    1,
+    2
+   ]
   }
  ]
 }

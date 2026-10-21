@@ -28,6 +28,23 @@
    "explain": "Saul a ascultat glasul lui Ionatan și a jurat: „David nu va muri!\" (19:6)."
   },
   {
+   "id": "1sa.19.sub12.16",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "19:10",
+   "q": "Saul a lovit cu sulița în perete, pentru că David s-a ferit.",
+   "a": true
+  },
+  {
+   "id": "1sa.19.sub12.17",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "19:11",
+   "q": "Mical n-a vrut să-l ajute pe David.",
+   "a": false,
+   "explain": "I-a dat de știre și l-a ajutat să fugă."
+  },
+  {
    "id": "1sa.19.sub12.4",
    "age": "sub12",
    "t": "one",
@@ -67,65 +84,57 @@
    "a": 1
   },
   {
-   "id": "1sa.19.sub12.7",
+   "id": "1sa.19.sub12.18",
+   "age": "sub12",
+   "t": "one",
+   "ref": "19:2",
+   "q": "Cine l-a înștiințat pe David că Saul caută să-l omoare?",
+   "opts": [
+    "Abner",
+    "Ionatan",
+    "Samuel"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.19.sub12.19",
+   "age": "sub12",
+   "t": "one",
+   "ref": "19:18",
+   "q": "Unde a locuit David cu Samuel?",
+   "opts": [
+    "la Hebron",
+    "în Naiot",
+    "la Silo"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.19.sub12.24",
    "age": "sub12",
    "t": "match",
-   "ref": "19:2, 12, 18",
-   "q": "Cei care l-au ajutat pe David: asociază.",
+   "ref": "19:1-24",
+   "q": "Asociază fiecare nume sau loc cu ce se spune despre el în 1 Samuel 19.",
    "pairs": [
     [
      "Ionatan",
-     "l-a anunțat de planul lui Saul"
+     "cel care a vorbit bine de David lui Saul"
     ],
     [
      "Mical",
-     "l-a coborât pe fereastră"
+     "nevasta lui David"
+    ],
+    [
+     "Saul",
+     "cel care a lovit cu sulița în perete"
     ],
     [
      "Samuel",
-     "l-a primit la Rama"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.19.sub12.8",
-   "age": "sub12",
-   "t": "match",
-   "ref": "19:9-12",
-   "q": "Fuga lui David: asociază.",
-   "pairs": [
-    [
-     "Saul",
-     "a aruncat cu sulița"
+     "cel la care a fugit David"
     ],
     [
-     "David",
-     "a fugit noaptea"
-    ],
-    [
-     "fereastra",
-     "pe ea a fugit David"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.19.sub12.9",
-   "age": "sub12",
-   "t": "match",
-   "ref": "19:20-24",
-   "q": "Saul și prorocii: asociază.",
-   "pairs": [
-    [
-     "trimișii lui Saul",
-     "au prorocit"
-    ],
-    [
-     "Saul",
-     "a prorocit și el"
-    ],
-    [
-     "zicala",
-     "„Oare și Saul este între proroci?\""
+     "Naiot",
+     "locul de lângă Rama"
     ]
    ]
   },
@@ -161,6 +170,26 @@
    ],
    "q": "„Oare și Saul este între ___?\"",
    "ctx": "Zicala de la Naiot, lângă Rama:"
+  },
+  {
+   "id": "1sa.19.sub12.20",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "19:2",
+   "q": "Dar Ionatan, fiul lui Saul, care iubea mult pe ___, i-a dat de știre",
+   "a": [
+    "David"
+   ]
+  },
+  {
+   "id": "1sa.19.sub12.21",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "19:14",
+   "q": "Când a trimis Saul oamenii să ia pe David, ea a zis: „Este ___.",
+   "a": [
+    "bolnav"
+   ]
   },
   {
    "id": "1sa.19.sub12.13",
@@ -211,6 +240,38 @@
    "explain": "Niciun răspuns corect: a zis: „Este bolnav\" (19:14)."
   },
   {
+   "id": "1sa.19.sub12.22",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "19:11-12",
+   "q": "Ce a făcut Mical?",
+   "opts": [
+    "i-a dat de știre lui David",
+    "l-a ascuns într-o pivniță",
+    "l-a coborât pe fereastră"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.19.sub12.23",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "19:6-7",
+   "q": "Ce s-a întâmplat după cuvintele lui Ionatan?",
+   "opts": [
+    "Ionatan l-a adus pe David la Saul",
+    "Saul l-a alungat pe Ionatan",
+    "Saul a jurat că David nu va muri"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
    "id": "1sa.19.12-13.1",
    "age": "12-13",
    "t": "tf",
@@ -234,6 +295,23 @@
    "ref": "19:18",
    "q": "David a locuit cu Samuel în Naiot.",
    "a": true
+  },
+  {
+   "id": "1sa.19.12-13.16",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "19:1",
+   "q": "Saul a vorbit fiului său și slujitorilor săi să-l omoare pe David.",
+   "a": true
+  },
+  {
+   "id": "1sa.19.12-13.17",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "19:8",
+   "q": "David a fost învins de filisteni.",
+   "a": false,
+   "explain": "David le-a pricinuit o mare înfrângere."
   },
   {
    "id": "1sa.19.12-13.4",
@@ -275,77 +353,57 @@
    "a": 2
   },
   {
-   "id": "1sa.19.12-13.7",
+   "id": "1sa.19.12-13.18",
    "age": "12-13",
-   "t": "match",
-   "ref": "19:1-7",
-   "q": "Ionatan îl apără pe David: asociază.",
-   "pairs": [
-    [
-     "Saul",
-     "a poruncit să fie omorât David"
-    ],
-    [
-     "Ionatan",
-     "a vorbit bine de David"
-    ],
-    [
-     "jurământul lui Saul",
-     "David nu va muri"
-    ],
-    [
-     "David",
-     "a fost înaintea lui Saul ca mai înainte"
-    ]
-   ]
+   "t": "one",
+   "ref": "19:20",
+   "q": "Ce au început să facă trimișii lui Saul, când au văzut adunarea de proroci?",
+   "opts": [
+    "să fugă",
+    "să prorocească",
+    "să-l caute pe David"
+   ],
+   "a": 1
   },
   {
-   "id": "1sa.19.12-13.8",
+   "id": "1sa.19.12-13.19",
    "age": "12-13",
-   "t": "match",
-   "ref": "19:13-17",
-   "q": "Planul Micalei: asociază.",
-   "pairs": [
-    [
-     "terafimul",
-     "pus în pat"
-    ],
-    [
-     "pielea de capră",
-     "în jurul capului"
-    ],
-    [
-     "haina",
-     "l-a învelit"
-    ],
-    [
-     "„Este bolnav\"",
-     "vorba Micalei"
-    ]
-   ]
+   "t": "one",
+   "ref": "19:13",
+   "q": "Cu ce a învelit Mical terafimul din pat?",
+   "opts": [
+    "cu o haină",
+    "cu o piele de oaie",
+    "cu o pânză albă"
+   ],
+   "a": 0
   },
   {
-   "id": "1sa.19.12-13.9",
+   "id": "1sa.19.12-13.24",
    "age": "12-13",
    "t": "match",
-   "ref": "19:18-24",
-   "q": "Naiot: asociază.",
+   "ref": "19:10-22",
+   "q": "Asociază fiecare loc sau lucru cu ce se spune despre el în 1 Samuel 19.",
    "pairs": [
     [
      "Rama",
-     "acolo locuia Samuel"
-    ],
-    [
-     "Naiot",
-     "locuința lui David și a lui Samuel"
+     "cetatea lui Samuel"
     ],
     [
      "Secu",
-     "fântâna fără apă"
+     "locul fântânii celei mari fără apă"
     ],
     [
-     "prorocii",
-     "cu Samuel în frunte"
+     "Naiot",
+     "locul unde a locuit David cu Samuel"
+    ],
+    [
+     "fereastra",
+     "locul pe unde a fugit David"
+    ],
+    [
+     "terafimul",
+     "pus în pat în locul lui David"
     ]
    ]
   },
@@ -381,6 +439,26 @@
    ],
    "q": "David a mers împotriva filistenilor și s-a bătut cu ei, le-a pricinuit o mare ___",
    "ctx": "Războiul cu filistenii:"
+  },
+  {
+   "id": "1sa.19.12-13.20",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "19:3",
+   "q": "Eu voi ieși și voi sta lângă ___ meu în câmpul în care vei fi",
+   "a": [
+    "tatăl"
+   ]
+  },
+  {
+   "id": "1sa.19.12-13.21",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "19:18",
+   "q": "El s-a dus la ___, la Rama, și i-a istorisit tot ce-i făcuse Saul.",
+   "a": [
+    "Samuel"
+   ]
   },
   {
    "id": "1sa.19.12-13.13",
@@ -430,6 +508,38 @@
    "explain": "Niciun răspuns corect: întreba „Unde sunt Samuel și David?\" (19:22)."
   },
   {
+   "id": "1sa.19.12-13.22",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "19:14-16",
+   "q": "Ce s-a întâmplat cu oamenii trimiși de Saul?",
+   "opts": [
+    "l-au găsit pe David în pat",
+    "Mical a spus că David este bolnav",
+    "Saul i-a trimis înapoi să-l vadă"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.19.12-13.23",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "19:20-21",
+   "q": "Ce s-a întâmplat la Naiot?",
+   "opts": [
+    "trimișii au văzut o adunare de proroci",
+    "au început și ei să prorocească",
+    "l-au prins pe David"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
    "id": "1sa.19.14-15.1",
    "age": "14-15",
    "t": "tf",
@@ -453,6 +563,23 @@
    "ref": "19:21",
    "q": "Saul a trimis oameni la Naiot de trei ori, și toți au prorocit.",
    "a": true
+  },
+  {
+   "id": "1sa.19.14-15.16",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "19:4",
+   "q": "Ionatan i-a spus lui Saul că David n-a făcut niciun păcat față de el.",
+   "a": true
+  },
+  {
+   "id": "1sa.19.14-15.17",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "19:23",
+   "q": "La Naiot, Duhul lui Dumnezeu n-a venit peste Saul.",
+   "a": false,
+   "explain": "A venit și peste el, și Saul a prorocit."
   },
   {
    "id": "1sa.19.14-15.4",
@@ -494,77 +621,57 @@
    "a": 1
   },
   {
-   "id": "1sa.19.14-15.7",
+   "id": "1sa.19.14-15.18",
    "age": "14-15",
-   "t": "match",
-   "ref": "19:9-11",
-   "q": "A doua încercare a lui Saul: asociază.",
-   "pairs": [
-    [
-     "duhul cel rău",
-     "trimis de Domnul"
-    ],
-    [
-     "sulița",
-     "a lovit în perete"
-    ],
-    [
-     "noaptea",
-     "David a scăpat"
-    ],
-    [
-     "oamenii lui Saul",
-     "pândeau casa lui David"
-    ]
-   ]
+   "t": "one",
+   "ref": "19:5",
+   "q": "Ce a făcut David, după cuvintele lui Ionatan, pentru care Domnul a dat o mare izbăvire?",
+   "opts": [
+    "a zidit un altar",
+    "a scris un psalm",
+    "a ucis pe filistean"
+   ],
+   "a": 2
   },
   {
-   "id": "1sa.19.14-15.8",
+   "id": "1sa.19.14-15.19",
    "age": "14-15",
-   "t": "match",
-   "ref": "19:4-5",
-   "q": "Cuvintele lui Ionatan: asociază începutul cu sfârșitul.",
-   "pairs": [
-    [
-     "Să nu facă împăratul",
-     "un păcat față de robul său David"
-    ],
-    [
-     "Dimpotrivă",
-     "a lucrat pentru binele tău"
-    ],
-    [
-     "Tu ai văzut",
-     "și te-ai bucurat"
-    ],
-    [
-     "Pentru ce să păcătuiești",
-     "împotriva unui sânge nevinovat?"
-    ]
-   ]
+   "t": "one",
+   "ref": "19:22",
+   "q": "Unde a întrebat Saul: „Unde sunt Samuel și David?”",
+   "opts": [
+    "în Templul din Silo",
+    "la poarta Ramei",
+    "la fântâna cea mare fără apă de la Secu"
+   ],
+   "a": 2
   },
   {
-   "id": "1sa.19.14-15.9",
+   "id": "1sa.19.14-15.24",
    "age": "14-15",
    "t": "match",
-   "ref": "19:19-23",
-   "q": "Drumul spre Naiot: asociază.",
+   "ref": "19:2-24",
+   "q": "Asociază fiecare persoană cu ce se spune despre ea în 1 Samuel 19.",
    "pairs": [
     [
-     "primii trimiși",
-     "au prorocit"
+     "Ionatan",
+     "a spus: „Tatăl meu caută să te omoare”"
     ],
     [
-     "al doilea rând",
-     "au prorocit și ei"
+     "Mical",
+     "a spus: „Dacă nu fugi în noaptea aceasta, mâine vei fi omorât”"
     ],
     [
-     "al treilea rând",
-     "la fel, a treia oară"
+     "Saul",
+     "a spus: „Aduceți-l la mine, în patul lui”"
     ],
     [
-     "Saul însuși",
-     "a prorocit pe drum"
+     "trimișii lui Saul",
+     "cei care au prorocit"
+    ],
+    [
+     "Samuel",
+     "în fruntea adunării de proroci"
     ]
    ]
   },
@@ -600,6 +707,26 @@
    ],
    "q": "Apoi s-a dus cu Samuel și a locuit în ___.",
    "ctx": "David, după fuga de la Saul:"
+  },
+  {
+   "id": "1sa.19.14-15.20",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "19:9",
+   "q": "duhul cel rău, trimis de Domnul, a venit peste Saul, care ședea în casă cu ___ în mână.",
+   "a": [
+    "sulița"
+   ]
+  },
+  {
+   "id": "1sa.19.14-15.21",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "19:24",
+   "q": "S-a dezbrăcat de haine și a prorocit și el înaintea lui ___",
+   "a": [
+    "Samuel"
+   ]
   },
   {
    "id": "1sa.19.14-15.13",
@@ -648,6 +775,38 @@
    "explain": "Niciun răspuns corect: fiului său Ionatan și tuturor slujitorilor lui (19:1)."
   },
   {
+   "id": "1sa.19.14-15.22",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "19:2-3",
+   "q": "Ce i-a spus Ionatan lui David?",
+   "opts": [
+    "„Du-te la Saul și cere iertare”",
+    "„Stai într-un loc tăinuit și ascunde-te”",
+    "„Tatăl meu caută să te omoare”"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.19.14-15.23",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "19:17",
+   "q": "Ce a spus Saul lui Mical?",
+   "opts": [
+    "„Ai dat drumul vrăjmașului meu”",
+    "„Pentru ce m-ai înșelat?”",
+    "„Îți mulțumesc că l-ai păzit”"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
    "id": "1sa.19.16-17.1",
    "age": "16-17",
    "t": "tf",
@@ -671,6 +830,23 @@
    "ref": "19:23",
    "q": "Saul a prorocit pe drum până a ajuns la Naiot.",
    "a": true
+  },
+  {
+   "id": "1sa.19.16-17.16",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "19:19",
+   "q": "I s-a spus lui Saul că David este în Naiot, lângă Rama.",
+   "a": true
+  },
+  {
+   "id": "1sa.19.16-17.17",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "19:13",
+   "q": "Mical a pus terafimul pe masă, în loc de pat.",
+   "a": false,
+   "explain": "L-a pus în pat."
   },
   {
    "id": "1sa.19.16-17.4",
@@ -712,77 +888,57 @@
    "a": 2
   },
   {
-   "id": "1sa.19.16-17.7",
+   "id": "1sa.19.16-17.18",
    "age": "16-17",
-   "t": "match",
-   "ref": "19:1-3",
-   "q": "Planul lui Ionatan: asociază.",
-   "pairs": [
-    [
-     "locul tăinuit",
-     "acolo trebuia să stea David"
-    ],
-    [
-     "câmpul",
-     "acolo va fi Ionatan cu Saul"
-    ],
-    [
-     "vorba",
-     "Ionatan va vorbi despre David"
-    ],
-    [
-     "răspunsul",
-     "Ionatan îi va spune lui David"
-    ]
-   ]
+   "t": "one",
+   "ref": "19:21",
+   "q": "De câte ori a trimis Saul oameni la Naiot, care au prorocit?",
+   "opts": [
+    "o singură dată",
+    "de zece ori",
+    "de trei ori"
+   ],
+   "a": 2
   },
   {
-   "id": "1sa.19.16-17.8",
+   "id": "1sa.19.16-17.19",
    "age": "16-17",
-   "t": "match",
-   "ref": "19:14-17",
-   "q": "Mical și oamenii lui Saul: asociază fiecare cuvânt cu cine l-a spus.",
-   "pairs": [
-    [
-     "„Este bolnav.\"",
-     "Mical"
-    ],
-    [
-     "„Aduceți-l la mine, în patul lui\"",
-     "Saul"
-    ],
-    [
-     "„Pentru ce m-ai înșelat?\"",
-     "Saul, către Mical"
-    ],
-    [
-     "„Lasă-mă să plec ori te omor!\"",
-     "cuvintele puse de Mical în gura lui David"
-    ]
-   ]
+   "t": "one",
+   "ref": "19:22",
+   "q": "Cine s-a dus el însuși la Rama, după ce trimișii lui au prorocit?",
+   "opts": [
+    "Saul",
+    "Abner",
+    "Ionatan"
+   ],
+   "a": 0
   },
   {
-   "id": "1sa.19.16-17.9",
+   "id": "1sa.19.16-17.24",
    "age": "16-17",
    "t": "match",
-   "ref": "19:20-24",
-   "q": "Duhul lui Dumnezeu la Naiot: asociază.",
+   "ref": "19:12-22",
+   "q": "Asociază fiecare loc sau lucru cu ce se spune despre el în 1 Samuel 19.",
    "pairs": [
     [
-     "trimișii lui Saul",
-     "Duhul a venit peste ei"
+     "Rama",
+     "locul unde a mers Saul el însuși"
     ],
     [
-     "Saul",
-     "Duhul a venit și peste el"
+     "Naiot",
+     "locul unde a locuit David"
     ],
     [
-     "hainele",
-     "Saul s-a dezbrăcat de ele"
+     "Secu",
+     "locul fântânii celei mari fără apă"
     ],
     [
-     "pământul",
-     "s-a aruncat la el"
+     "pielea de capră",
+     "pusă în jurul capului terafimului"
+    ],
+    [
+     "haina",
+     "cu ea a fost învelit terafimul"
     ]
    ]
   },
@@ -818,6 +974,26 @@
    ],
    "q": "Duhul lui Dumnezeu a venit peste trimișii lui Saul și au început și ei să ___.",
    "ctx": "La Naiot, lângă Rama:"
+  },
+  {
+   "id": "1sa.19.16-17.20",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "19:17",
+   "q": "El mi-a zis: ‘Lasă-mă să plec ori te ___!’",
+   "a": [
+    "omor"
+   ]
+  },
+  {
+   "id": "1sa.19.16-17.21",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "19:15",
+   "q": "Aduceți-l la mine, în patul lui, ca să-l ___.",
+   "a": [
+    "omor"
+   ]
   },
   {
    "id": "1sa.19.16-17.13",
@@ -866,6 +1042,38 @@
    "explain": "Niciun răspuns corect: acasă la David (19:11)."
   },
   {
+   "id": "1sa.19.16-17.22",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "19:20-21",
+   "q": "Ce s-a întâmplat cu oamenii trimiși de Saul?",
+   "opts": [
+    "l-au prins pe David",
+    "au văzut o adunare de proroci",
+    "au prorocit și ei"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.19.16-17.23",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "19:23-24",
+   "q": "Ce a făcut Saul?",
+   "opts": [
+    "l-a omorât pe Samuel",
+    "a prorocit pe drum",
+    "s-a dezbrăcat și s-a aruncat la pământ"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
    "id": "1sa.19.18+.1",
    "age": "18+",
    "t": "tf",
@@ -889,6 +1097,23 @@
    "ref": "19:16",
    "q": "Oamenii lui Saul au găsit terafimul în pat, cu pielea de capră în jurul capului.",
    "a": true
+  },
+  {
+   "id": "1sa.19.18+.16",
+   "age": "18+",
+   "t": "tf",
+   "ref": "19:7",
+   "q": "După ce Saul a jurat, David a fost înaintea lui ca mai înainte.",
+   "a": true
+  },
+  {
+   "id": "1sa.19.18+.17",
+   "age": "18+",
+   "t": "tf",
+   "ref": "19:12",
+   "q": "Mical l-a coborât pe David pe acoperiș.",
+   "a": false,
+   "explain": "L-a coborât pe fereastră."
   },
   {
    "id": "1sa.19.18+.4",
@@ -930,73 +1155,57 @@
    "a": 1
   },
   {
-   "id": "1sa.19.18+.7",
+   "id": "1sa.19.18+.18",
    "age": "18+",
-   "t": "match",
-   "ref": "19:13",
-   "q": "Ce a folosit Mical: asociază.",
-   "pairs": [
-    [
-     "terafimul",
-     "pus în pat"
-    ],
-    [
-     "pielea de capră",
-     "în jurul capului"
-    ],
-    [
-     "haina",
-     "ca învelitoare"
-    ]
-   ]
+   "t": "one",
+   "ref": "19:1",
+   "q": "Cui i-a vorbit Saul să-l omoare pe David?",
+   "opts": [
+    "numai lui Abner",
+    "lui Ionatan și tuturor slujitorilor lui",
+    "numai lui Samuel"
+   ],
+   "a": 1
   },
   {
-   "id": "1sa.19.18+.8",
+   "id": "1sa.19.18+.19",
    "age": "18+",
-   "t": "match",
-   "ref": "19:2-7",
-   "q": "Pașii împăcării: asociază.",
-   "pairs": [
-    [
-     "mâine dimineață",
-     "David să se păzească"
-    ],
-    [
-     "în câmp",
-     "Ionatan vorbește cu Saul"
-    ],
-    [
-     "jurământul",
-     "Saul îl face"
-    ],
-    [
-     "la urmă",
-     "David e adus la Saul"
-    ]
-   ]
+   "t": "one",
+   "ref": "19:11",
+   "q": "Unde a trimis Saul niște oameni ca să-l pândească pe David?",
+   "opts": [
+    "la Silo",
+    "la Rama",
+    "acasă la David"
+   ],
+   "a": 2
   },
   {
-   "id": "1sa.19.18+.9",
+   "id": "1sa.19.18+.24",
    "age": "18+",
    "t": "match",
-   "ref": "19:20-24",
-   "q": "Naiot: asociază fiecare cu ce s-a întâmplat.",
+   "ref": "19:2-24",
+   "q": "Asociază fiecare persoană cu ce se spune despre ea în 1 Samuel 19.",
    "pairs": [
     [
-     "adunarea de proroci",
-     "Samuel în frunte"
+     "Mical",
+     "cea care i-a păcălit pe oamenii lui Saul"
     ],
     [
-     "trimișii",
-     "au prorocit"
+     "Ionatan",
+     "cel care a vorbit bine de David"
+    ],
+    [
+     "Samuel",
+     "cel în fruntea prorocilor de la Naiot"
     ],
     [
      "Saul",
-     "s-a aruncat dezbrăcat la pământ"
+     "cel care a prorocit dezbrăcat"
     ],
     [
-     "ziua și noaptea",
-     "cât a prorocit Saul"
+     "David",
+     "cel care a fugit și a scăpat noaptea"
     ]
    ]
   },
@@ -1032,6 +1241,26 @@
    ],
    "q": "„Aduceți-l la mine, în ___ lui, ca să-l omor.\"",
    "ctx": "Saul, când a aflat că David este „bolnav\":"
+  },
+  {
+   "id": "1sa.19.18+.20",
+   "age": "18+",
+   "t": "fill",
+   "ref": "19:10",
+   "q": "Saul a lovit cu sulița în perete. David a fugit și a scăpat ___.",
+   "a": [
+    "noaptea"
+   ]
+  },
+  {
+   "id": "1sa.19.18+.21",
+   "age": "18+",
+   "t": "fill",
+   "ref": "19:23",
+   "q": "Duhul lui Dumnezeu a venit și peste el și Saul și-a văzut de ___, prorocind",
+   "a": [
+    "drum"
+   ]
   },
   {
    "id": "1sa.19.18+.13",
@@ -1079,6 +1308,38 @@
    ],
    "a": [],
    "explain": "Niciun răspuns corect: în Naiot (19:18)."
+  },
+  {
+   "id": "1sa.19.18+.22",
+   "age": "18+",
+   "t": "multi",
+   "ref": "19:9-10",
+   "q": "Ce s-a întâmplat când duhul rău a venit peste Saul?",
+   "opts": [
+    "David a prins sulița;",
+    "ședea în casă cu sulița în mână",
+    "a lovit cu sulița în perete"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.19.18+.23",
+   "age": "18+",
+   "t": "multi",
+   "ref": "19:18-19",
+   "q": "Ce s-a întâmplat după fuga lui David?",
+   "opts": [
+    "David i-a istorisit lui Samuel tot ce-i făcuse Saul",
+    "David a plecat în Egipt",
+    "i s-a spus lui Saul că David este în Naiot"
+   ],
+   "a": [
+    0,
+    2
+   ]
   }
  ]
 }
