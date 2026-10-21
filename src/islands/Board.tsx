@@ -68,7 +68,6 @@ export default function Board({ book }: Props) {
               </li>
             ))}
           </ol>
-          <p class="small muted lb-note">Punctele sunt întrebările știute: fiecare contează o singură dată.</p>
         </>
       )}
     </div>
