@@ -28,6 +28,23 @@
    "a": true
   },
   {
+   "id": "2sa.1.sub12.16",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "1:2",
+   "q": "Omul din tabăra lui Saul care a venit la David, la Țiclag, s-a închinat cu fața la pământ.",
+   "a": true
+  },
+  {
+   "id": "2sa.1.sub12.17",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "1:13",
+   "q": "Tânărul care i-a adus lui David vestea morții lui Saul a spus că este israelit.",
+   "a": false,
+   "explain": "A spus că este fiul unui străin, al unui amalecit."
+  },
+  {
    "id": "2sa.1.sub12.4",
    "age": "sub12",
    "t": "one",
@@ -67,73 +84,57 @@
    "a": 0
   },
   {
-   "id": "2sa.1.sub12.7",
+   "id": "2sa.1.sub12.18",
    "age": "sub12",
-   "t": "match",
-   "ref": "1:3, 11, 14, 26",
-   "q": "După moartea lui Saul (2 Samuel 1): asociază fiecare persoană cu ce se spune despre ea.",
-   "pairs": [
-    [
-     "David",
-     "și-a sfâșiat hainele și a plâns"
-    ],
-    [
-     "Saul",
-     "este numit „unsul Domnului\""
-    ],
-    [
-     "Ionatan",
-     "David îl numește „frate\""
-    ],
-    [
-     "tânărul amalecit",
-     "a venit din tabăra lui Israel cu vestea"
-    ]
-   ]
+   "t": "one",
+   "ref": "1:13",
+   "q": "Din ce popor era tânărul care i-a adus lui David, la Țiclag, vestea morții lui Saul?",
+   "opts": [
+    "dintre moabiți",
+    "dintre amaleciți",
+    "dintre filisteni"
+   ],
+   "a": 1
   },
   {
-   "id": "2sa.1.sub12.8",
+   "id": "2sa.1.sub12.19",
+   "age": "sub12",
+   "t": "one",
+   "ref": "1:15",
+   "q": "Ce a poruncit David să se facă cu tânărul amalecit care spunea că l-a omorât pe Saul?",
+   "opts": [
+    "să fie răsplătit",
+    "să fie trimis acasă",
+    "să fie omorât"
+   ],
+   "a": 2
+  },
+  {
+   "id": "2sa.1.sub12.24",
    "age": "sub12",
    "t": "match",
-   "ref": "1:1, 6, 20",
-   "q": "După moartea lui Saul (2 Samuel 1): asociază fiecare loc cu ce s-a întâmplat acolo.",
+   "ref": "1:1-27",
+   "q": "Asociază fiecare nume sau loc cu ce se spune despre el în 2 Samuel 1.",
    "pairs": [
     [
      "Țiclag",
-     "aici a aflat David vestea"
+     "cetatea unde s-a întors David după lupta cu amaleciții"
     ],
     [
      "Ghilboa",
      "muntele unde a murit Saul"
     ],
     [
-     "Gat",
-     "cetatea filistenilor unde nu trebuia spusă vestea"
-    ]
-   ]
-  },
-  {
-   "id": "2sa.1.sub12.9",
-   "age": "sub12",
-   "t": "match",
-   "ref": "1:22-23",
-   "q": "Din cântarea de jale a lui David pentru Saul și Ionatan: asociază cuvintele care merg împreună.",
-   "pairs": [
-    [
-     "mai ușori decât",
-     "vulturii"
+     "Ionatan",
+     "prietenul lui David, numit „frate”"
     ],
     [
-     "mai tari decât",
-     "leii"
+     "tânărul amalecit",
+     "cel care a adus lui David cununa lui Saul"
     ],
     [
-     "arcul",
-     "lui Ionatan"
-    ],
-    [
-     "sabia",
-     "lui Saul"
+     "Cântarea Arcului",
+     "cântarea de jale alcătuită de David"
     ]
    ]
   },
@@ -169,6 +170,28 @@
    ],
    "q": "Au jelit, au plâns și au ___ până seara de durere pentru Saul, pentru fiul său Ionatan",
    "ctx": "După vestea morții lui Saul, la Țiclag:"
+  },
+  {
+   "id": "2sa.1.sub12.20",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "1:25",
+   "q": "Cum au căzut vitejii în mijlocul ___!",
+   "ctx": "Din cântarea de jale a lui David:",
+   "a": [
+    "luptei"
+   ]
+  },
+  {
+   "id": "2sa.1.sub12.21",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "1:26",
+   "q": "Mă doare după tine, frate Ionatane! Tu erai ___ mea",
+   "ctx": "David, despre prietenul lui Ionatan, în cântarea de jale:",
+   "a": [
+    "plăcerea"
+   ]
   },
   {
    "id": "2sa.1.sub12.13",
@@ -220,6 +243,38 @@
    "explain": "Amalecitul a adus cununa de pe capul lui Saul și brățara de la brațul lui."
   },
   {
+   "id": "2sa.1.sub12.22",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "1:17-18",
+   "q": "Ce se spune despre Cântarea Arcului, cântarea de jale a lui David?",
+   "opts": [
+    "se află scrisă în Cartea Dreptului",
+    "a alcătuit-o Samuel",
+    "David a poruncit s-o învețe copiii lui Iuda"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "2sa.1.sub12.23",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "1:23",
+   "q": "Ce spune David despre Saul și Ionatan în cântarea de jale?",
+   "opts": [
+    "s-au iubit în timpul vieții lor",
+    "s-au certat înainte de luptă",
+    "n-au fost despărțiți nici la moarte"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
    "id": "2sa.1.12-13.1",
    "age": "12-13",
    "t": "tf",
@@ -243,6 +298,23 @@
    "ref": "1:15",
    "q": "David a poruncit ca tânărul amalecit, care spunea că l-a omorât pe Saul, să fie omorât.",
    "a": true
+  },
+  {
+   "id": "2sa.1.12-13.16",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "1:3",
+   "q": "Omul venit la David, la Țiclag, a spus că a scăpat din tabăra lui Israel.",
+   "a": true
+  },
+  {
+   "id": "2sa.1.12-13.17",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "1:20",
+   "q": "În cântarea de jale, David voia ca moartea lui Saul să fie vestită în Gat și în Ascalon.",
+   "a": false,
+   "explain": "Nu voia, ca să nu se bucure fetele filistenilor."
   },
   {
    "id": "2sa.1.12-13.4",
@@ -284,73 +356,57 @@
    "a": 0
   },
   {
-   "id": "2sa.1.12-13.7",
+   "id": "2sa.1.12-13.18",
    "age": "12-13",
-   "t": "match",
-   "ref": "1:2, 10, 13, 15",
-   "q": "Despre tânărul amalecit care i-a adus lui David vestea morții lui Saul: asociază.",
-   "pairs": [
-    [
-     "ce avea pe cap",
-     "țărână"
-    ],
-    [
-     "ce i-a adus lui David",
-     "cununa și brățara lui Saul"
-    ],
-    [
-     "al cui fiu era",
-     "al unui străin, al unui amalecit"
-    ],
-    [
-     "cum s-a sfârșit",
-     "a fost omorât din porunca lui David"
-    ]
-   ]
+   "t": "one",
+   "ref": "1:12",
+   "q": "Până când au postit David și oamenii lui, la Țiclag, după vestea morții lui Saul?",
+   "opts": [
+    "până seara",
+    "până a doua zi dimineață",
+    "trei zile"
+   ],
+   "a": 0
   },
   {
-   "id": "2sa.1.12-13.8",
+   "id": "2sa.1.12-13.19",
+   "age": "12-13",
+   "t": "one",
+   "ref": "1:24",
+   "q": "Pe cine îndeamnă David, în cântarea de jale, să plângă după Saul?",
+   "opts": [
+    "preoții din Nob",
+    "fiicele lui Israel",
+    "fetele filistenilor"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.1.12-13.24",
    "age": "12-13",
    "t": "match",
-   "ref": "1:20-21, 24, 26",
-   "q": "Din Cântarea Arcului, cântarea de jale a lui David pentru Saul și Ionatan: asociază.",
+   "ref": "1:6-24",
+   "q": "Asociază fiecare nume sau lucru cu ce se spune despre el în 2 Samuel 1.",
    "pairs": [
     [
-     "fiicele lui Israel",
-     "sunt chemate să-l plângă pe Saul"
-    ],
-    [
-     "munții din Ghilboa",
-     "să nu cadă pe ei rouă și ploaie"
-    ],
-    [
-     "fetele filistenilor",
-     "să nu se bucure de vestea morții"
+     "Saul",
+     "stătea rezemat în suliță, pe muntele Ghilboa"
     ],
     [
      "Ionatan",
-     "dragostea lui era mai presus de dragostea femeiască"
-    ]
-   ]
-  },
-  {
-   "id": "2sa.1.12-13.9",
-   "age": "12-13",
-   "t": "match",
-   "ref": "1:1-2, 12",
-   "q": "După moartea lui Saul (2 Samuel 1): asociază fiecare timp cu ce s-a întâmplat atunci.",
-   "pairs": [
-    [
-     "a treia zi",
-     "a venit omul din tabăra lui Saul"
+     "David îi spune „frate”"
     ],
     [
-     "de două zile",
-     "se întorsese David la Țiclag"
+     "tânărul amalecit",
+     "a adus cununa și brățara lui Saul"
     ],
     [
-     "până seara",
-     "au plâns și au postit David și oamenii lui"
+     "Cartea Dreptului",
+     "aici se află scrisă Cântarea Arcului"
+    ],
+    [
+     "copiii lui Iuda",
+     "au trebuit să învețe cântarea de jale"
     ]
    ]
   },
@@ -386,6 +442,28 @@
    ],
    "q": "Nu spuneți lucrul acesta în ___, nu răspândiți vestea aceasta în ulițele Ascalonului",
    "ctx": "Din Cântarea Arcului, după moartea lui Saul:"
+  },
+  {
+   "id": "2sa.1.12-13.20",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "1:25",
+   "q": "Cum a murit ___ pe dealurile tale!",
+   "ctx": "Din cântarea de jale a lui David:",
+   "a": [
+    "Ionatan"
+   ]
+  },
+  {
+   "id": "2sa.1.12-13.21",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "1:15",
+   "q": "Omul acela a lovit pe ___, care a murit.",
+   "ctx": "După ce David a poruncit să fie omorât amalecitul:",
+   "a": [
+    "amalecit"
+   ]
   },
   {
    "id": "2sa.1.12-13.13",
@@ -435,6 +513,38 @@
    ]
   },
   {
+   "id": "2sa.1.12-13.22",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "1:4",
+   "q": "Ce a spus omul venit din tabăra lui Saul despre lupta de pe câmpul de bătaie?",
+   "opts": [
+    "filistenii au fost bătuți",
+    "poporul a fugit de pe câmpul de bătaie",
+    "un mare număr de oameni au căzut și au pierit"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "2sa.1.12-13.23",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "1:14-16",
+   "q": "Ce i-a spus David tânărului amalecit care pretindea că l-a omorât pe Saul?",
+   "opts": [
+    "„Du-te în pace”",
+    "„Sângele tău să cadă asupra capului tău”",
+    "„Cum nu ți-a fost frică să pui mâna pe unsul Domnului?”"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
    "id": "2sa.1.14-15.1",
    "age": "14-15",
    "t": "tf",
@@ -458,6 +568,23 @@
    "q": "David a poruncit ca Cântarea Arcului să fie învățată de copiii lui Efraim.",
    "a": false,
    "explain": "David a poruncit s-o învețe copiii lui Iuda (1:18)."
+  },
+  {
+   "id": "2sa.1.14-15.16",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "1:26",
+   "q": "În cântarea de jale, David spune că dragostea lui Ionatan pentru el era mai presus de dragostea femeiască.",
+   "a": true
+  },
+  {
+   "id": "2sa.1.14-15.17",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "1:21",
+   "q": "David a cerut ca pe munții din Ghilboa să cadă rouă și ploaie din belșug.",
+   "a": false,
+   "explain": "A cerut ca să nu cadă pe ei nici rouă, nici ploaie."
   },
   {
    "id": "2sa.1.14-15.4",
@@ -499,77 +626,57 @@
    "a": 0
   },
   {
-   "id": "2sa.1.14-15.7",
+   "id": "2sa.1.14-15.18",
    "age": "14-15",
-   "t": "match",
-   "ref": "1:19, 21-22",
-   "q": "Din Cântarea Arcului, cântarea lui David pentru Saul și Ionatan: asociază cele două părți.",
-   "pairs": [
-    [
-     "fala ta, Israele",
-     "zace ucisă pe dealurile tale"
-    ],
-    [
-     "arcul lui Ionatan",
-     "nu da înapoi niciodată"
-    ],
-    [
-     "sabia lui Saul",
-     "nu se învârtea niciodată în vânt"
-    ],
-    [
-     "scutul lui Saul",
-     "a fost aruncat pe munții din Ghilboa"
-    ]
-   ]
+   "t": "one",
+   "ref": "1:11",
+   "q": "Ce a făcut David, la Țiclag, când a auzit că Saul și Ionatan au murit?",
+   "opts": [
+    "a pornit în grabă spre Ghilboa",
+    "a cântat un psalm de biruință",
+    "și-a sfâșiat hainele"
+   ],
+   "a": 2
   },
   {
-   "id": "2sa.1.14-15.8",
+   "id": "2sa.1.14-15.19",
    "age": "14-15",
-   "t": "match",
-   "ref": "1:3, 8, 13",
-   "q": "După moartea lui Saul: asociază fiecare întrebare cu răspunsul dat de tânărul amalecit.",
-   "pairs": [
-    [
-     "„De unde vii?\" (David)",
-     "„Am scăpat din tabăra lui Israel.\""
-    ],
-    [
-     "„Cine ești?\" (Saul, după spusele tânărului)",
-     "„Eu sunt amalecit.\""
-    ],
-    [
-     "„De unde ești?\" (David)",
-     "„Sunt fiul unui străin, al unui amalecit.\""
-    ]
-   ]
+   "t": "one",
+   "ref": "1:22",
+   "q": "Despre sabia lui Saul, Cântarea Arcului spune că:",
+   "opts": [
+    "era mai ascuțită decât toate",
+    "nu se întorcea niciodată în teacă",
+    "nu se învârtea niciodată în vânt"
+   ],
+   "a": 2
   },
   {
-   "id": "2sa.1.14-15.9",
+   "id": "2sa.1.14-15.24",
    "age": "14-15",
    "t": "match",
-   "ref": "1:6, 10, 15, 18, 24",
-   "q": "După moartea lui Saul (2 Samuel 1): asociază fiecare cu ce a făcut.",
+   "ref": "1:15-24",
+   "q": "Asociază fiecare nume cu ce se spune despre el în 2 Samuel 1.",
    "pairs": [
     [
-     "David",
-     "a poruncit să se învețe Cântarea Arcului"
-    ],
-    [
-     "unul din oamenii lui David",
-     "l-a lovit pe amalecit"
+     "Ionatan",
+     "arcul lui nu dădea înapoi de la sângele celor răniți"
     ],
     [
      "Saul",
-     "stătea rezemat în sulița lui"
+     "sabia lui nu se învârtea niciodată în vânt"
     ],
     [
      "tânărul amalecit",
-     "a luat cununa împărătească"
+     "a adus cununa și brățara lui Saul"
     ],
     [
-     "Saul, pentru fiicele lui Israel",
-     "le îmbrăca în stacojiu"
+     "un om al lui David",
+     "a lovit pe amalecit, care a murit"
+    ],
+    [
+     "fiicele lui Israel",
+     "erau îmbrăcate de Saul în stacojiu"
     ]
    ]
   },
@@ -605,6 +712,27 @@
    ],
    "q": "Fiicele lui Israel, plângeți pe Saul, care vă îmbrăca în ___ și alte podoabe, care vă punea găteli de aur pe hainele voastre!",
    "ctx": "Din Cântarea Arcului, cântarea de jale a lui David:"
+  },
+  {
+   "id": "2sa.1.14-15.20",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "1:17",
+   "q": "Iată cântarea de jale pe care a alcătuit-o David pentru Saul și fiul său ___",
+   "a": [
+    "Ionatan"
+   ]
+  },
+  {
+   "id": "2sa.1.14-15.21",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "1:14",
+   "q": "Cum nu ți-a fost frică să pui mâna pe unsul Domnului și să-l ___?",
+   "ctx": "David, către tânărul amalecit:",
+   "a": [
+    "omori"
+   ]
   },
   {
    "id": "2sa.1.14-15.13",
@@ -655,6 +783,38 @@
    ]
   },
   {
+   "id": "2sa.1.14-15.22",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "1:10",
+   "q": "Ce a spus tânărul amalecit că a făcut pe muntele Ghilboa?",
+   "opts": [
+    "l-a omorât pe Saul",
+    "l-a dus viu la David",
+    "a luat cununa împărătească de pe capul lui Saul"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "2sa.1.14-15.23",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "1:20",
+   "q": "Ce nu voia David să se întâmple, după cântarea de jale?",
+   "opts": [
+    "să crească grâu în Gat",
+    "să se laude fetele celor netăiați împrejur",
+    "să se bucure fetele filistenilor"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
    "id": "2sa.1.16-17.1",
    "age": "16-17",
    "t": "tf",
@@ -679,6 +839,23 @@
    "q": "În Cântarea Arcului, David spune că sabia lui Ionatan nu da înapoi niciodată.",
    "a": false,
    "explain": "Arcul lui Ionatan nu da înapoi niciodată; sabia era a lui Saul (1:22)."
+  },
+  {
+   "id": "2sa.1.16-17.16",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "1:3",
+   "q": "Omul din tabăra lui Saul i-a spus lui David că a scăpat din tabăra filistenilor.",
+   "a": false,
+   "explain": "A spus că a scăpat din tabăra lui Israel."
+  },
+  {
+   "id": "2sa.1.16-17.17",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "1:25",
+   "q": "În Cântarea Arcului, David spune: „Cum au căzut vitejii în mijlocul luptei!”",
+   "a": true
   },
   {
    "id": "2sa.1.16-17.4",
@@ -720,85 +897,57 @@
    "a": 1
   },
   {
-   "id": "2sa.1.16-17.7",
+   "id": "2sa.1.16-17.18",
    "age": "16-17",
-   "t": "match",
-   "ref": "1:6, 9-10",
-   "q": "Din povestirea tânărului amalecit despre moartea lui Saul: asociază.",
-   "pairs": [
-    [
-     "unde l-a găsit pe Saul",
-     "pe muntele Ghilboa"
-    ],
-    [
-     "cum stătea Saul",
-     "rezemat în sulița lui"
-    ],
-    [
-     "ce l-a apucat pe Saul",
-     "amețeala"
-    ],
-    [
-     "ce a luat de pe capul lui",
-     "cununa împărătească"
-    ],
-    [
-     "ce a luat de la brațul lui",
-     "brățara"
-    ]
-   ]
+   "t": "one",
+   "ref": "1:27",
+   "q": "Cu ce cuvinte se încheie Cântarea Arcului?",
+   "opts": [
+    "„Domnul a dat și Domnul a luat”",
+    "„Cum au căzut vitejii! Cum li s-au pierdut armele!”",
+    "„Pace peste Israel!”"
+   ],
+   "a": 1
   },
   {
-   "id": "2sa.1.16-17.8",
+   "id": "2sa.1.16-17.19",
+   "age": "16-17",
+   "t": "one",
+   "ref": "1:15",
+   "q": "Cine a lovit pe tânărul amalecit, la porunca lui David?",
+   "opts": [
+    "Ioab",
+    "unul din oamenii lui David",
+    "David însuși"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.1.16-17.24",
    "age": "16-17",
    "t": "match",
-   "ref": "1:1, 18, 20-21",
-   "q": "După moartea lui Saul (2 Samuel 1): asociază fiecare nume cu ce se spune despre el.",
+   "ref": "1:1-24",
+   "q": "Asociază fiecare nume sau lucru cu ce se spune despre el în 2 Samuel 1.",
    "pairs": [
     [
-     "Țiclag",
-     "aici a primit David vestea"
+     "cununa împărătească",
+     "a fost luată de pe capul lui Saul"
     ],
     [
-     "Ghilboa",
-     "munți peste care să nu cadă rouă"
-    ],
-    [
-     "Gat",
-     "să nu se spună acolo vestea"
-    ],
-    [
-     "Ascalon",
-     "să nu se răspândească vestea în ulițele lui"
+     "brățara",
+     "a fost luată de la brațul lui Saul"
     ],
     [
      "Cartea Dreptului",
-     "aici este scrisă Cântarea Arcului"
-    ]
-   ]
-  },
-  {
-   "id": "2sa.1.16-17.9",
-   "age": "16-17",
-   "t": "match",
-   "ref": "1:21, 23, 25-26",
-   "q": "Din Cântarea Arcului (2 Samuel 1): asociază începutul cu sfârșitul fiecărui vers.",
-   "pairs": [
-    [
-     "Cum au căzut vitejii în mijlocul luptei!",
-     "Cum a murit Ionatan pe dealurile tale!"
+     "cartea în care se află scrisă Cântarea Arcului"
     ],
     [
-     "Tu erai plăcerea mea;",
-     "dragostea ta pentru mine era minunată"
+     "copiii lui Iuda",
+     "cei care au trebuit să învețe cântarea de jale"
     ],
     [
-     "Nici rouă, nici ploaie",
-     "să nu cadă pe voi!"
-    ],
-    [
-     "erau mai ușori decât vulturii,",
-     "mai tari decât leii"
+     "Țiclag",
+     "locul unde se întorsese David după ce bătuse pe amaleciți"
     ]
    ]
   },
@@ -834,6 +983,27 @@
    ],
    "q": "și pe care a poruncit s-o învețe copiii lui ___. Este numită Cântarea Arcului și se află scrisă în Cartea Dreptului.",
    "ctx": "Despre cântarea de jale alcătuită de David pentru Saul și Ionatan:"
+  },
+  {
+   "id": "2sa.1.16-17.20",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "1:1",
+   "q": "După moartea lui Saul, David, după ce bătuse pe amaleciți, se întorsese de două zile la ___.",
+   "a": [
+    "Țiclag"
+   ]
+  },
+  {
+   "id": "2sa.1.16-17.21",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "1:19",
+   "q": "Fala ta, Israele, zace ucisă pe ___ tale!",
+   "ctx": "Începutul Cântării Arcului:",
+   "a": [
+    "dealurile"
+   ]
   },
   {
    "id": "2sa.1.16-17.13",
@@ -883,6 +1053,38 @@
    "explain": "Niciun răspuns corect: în cântare sunt pomeniți pe nume doar Saul și Ionatan."
   },
   {
+   "id": "2sa.1.16-17.22",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "1:24",
+   "q": "Ce spune David despre Saul în Cântarea Arcului?",
+   "opts": [
+    "îmbrăca pe fiicele lui Israel în stacojiu",
+    "le dădea pâine din belșug",
+    "le punea găteli de aur pe haine"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "2sa.1.16-17.23",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "1:11-12",
+   "q": "Cine și-a sfâșiat hainele când David a aflat de moartea lui Saul?",
+   "opts": [
+    "Abiatar, preotul",
+    "toți oamenii care erau lângă el",
+    "David"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
    "id": "2sa.1.18+.1",
    "age": "18+",
    "t": "tf",
@@ -907,6 +1109,23 @@
    "q": "În cântarea de jale, David nu voia ca vestea morții lui Saul să se răspândească în ulițele Gazei.",
    "a": false,
    "explain": "David pomenește Gatul și ulițele Ascalonului (1:20)."
+  },
+  {
+   "id": "2sa.1.18+.16",
+   "age": "18+",
+   "t": "tf",
+   "ref": "1:8",
+   "q": "Omul din tabăra lui Saul a spus că, întrebat de Saul „Cine ești?”, a răspuns: „Eu sunt amalecit.”",
+   "a": true
+  },
+  {
+   "id": "2sa.1.18+.17",
+   "age": "18+",
+   "t": "tf",
+   "ref": "1:18",
+   "q": "Cântarea Arcului se află scrisă în Cartea Cronicilor.",
+   "a": false,
+   "explain": "Se află scrisă în Cartea Dreptului."
   },
   {
    "id": "2sa.1.18+.4",
@@ -948,81 +1167,57 @@
    "a": 1
   },
   {
-   "id": "2sa.1.18+.7",
+   "id": "2sa.1.18+.18",
    "age": "18+",
-   "t": "match",
-   "ref": "1:20-22, 24",
-   "q": "Din Cântarea Arcului, pentru Saul și Ionatan: asociază.",
-   "pairs": [
-    [
-     "scutul lui Saul",
-     "ca și când n-ar fi fost uns cu untdelemn"
-    ],
-    [
-     "sabia lui Saul",
-     "nu se învârtea niciodată în vânt"
-    ],
-    [
-     "fiicele lui Israel",
-     "Saul le punea găteli de aur pe haine"
-    ],
-    [
-     "munții din Ghilboa",
-     "fără câmpii care să dea pârgă"
-    ],
-    [
-     "fetele celor netăiați împrejur",
-     "să nu se laude"
-    ]
-   ]
+   "t": "one",
+   "ref": "1:19",
+   "q": "Cu ce cuvinte începe Cântarea Arcului: „… zace ucisă pe dealurile tale!”?",
+   "opts": [
+    "Fala ta, Israele",
+    "Puterea ta, Iuda",
+    "Mândria ta, Saule"
+   ],
+   "a": 0
   },
   {
-   "id": "2sa.1.18+.8",
+   "id": "2sa.1.18+.19",
    "age": "18+",
-   "t": "match",
-   "ref": "1:4, 8-9, 15",
-   "q": "După moartea lui Saul (2 Samuel 1): asociază fiecare cuvânt cu cel care l-a spus.",
-   "pairs": [
-    [
-     "„Apropie-te dar și omoară-mă\"",
-     "Saul, după spusele tânărului"
-    ],
-    [
-     "„Apropie-te și omoară-l!\"",
-     "David, către unul din oamenii lui"
-    ],
-    [
-     "„Eu sunt amalecit.\"",
-     "tânărul, către Saul"
-    ],
-    [
-     "„Spune-mi ce s-a întâmplat?\"",
-     "David, către tânăr"
-    ]
-   ]
+   "t": "one",
+   "ref": "1:5",
+   "q": "Ce a întrebat David pe tânărul care-i aducea vestea, la Țiclag?",
+   "opts": [
+    "unde a fost îngropat Saul",
+    "de unde știe că Saul și Ionatan au murit",
+    "cine a câștigat lupta"
+   ],
+   "a": 1
   },
   {
-   "id": "2sa.1.18+.9",
+   "id": "2sa.1.18+.24",
    "age": "18+",
    "t": "match",
-   "ref": "1:1, 3, 18-19",
-   "q": "După moartea lui Saul (2 Samuel 1): asociază.",
+   "ref": "1:1-24",
+   "q": "Asociază fiecare nume sau lucru cu ce se spune despre el în 2 Samuel 1.",
    "pairs": [
     [
-     "Țiclag",
-     "cetatea unde se afla David"
+     "Gat",
+     "cetate filisteană pomenită în Cântarea Arcului, alături de Ascalon"
     ],
     [
-     "tabăra lui Israel",
-     "de acolo spunea tânărul că a scăpat"
-    ],
-    [
-     "dealurile lui Israel",
-     "aici zace ucisă fala lui Israel"
+     "amaleciții",
+     "poporul pe care îl bătuse David înainte să se întoarcă la Țiclag"
     ],
     [
      "Cartea Dreptului",
-     "aici este scrisă cântarea"
+     "cartea în care se află Cântarea Arcului"
+    ],
+    [
+     "cununa și brățara",
+     "ce a adus lui David tânărul amalecit"
+    ],
+    [
+     "vulturi și lei",
+     "cu ei sunt asemănați Saul și Ionatan"
     ]
    ]
   },
@@ -1058,6 +1253,28 @@
    ],
    "q": "Și a zis: ‘Apropie-te dar și omoară-mă, căci m-a apucat ___, măcar că sunt încă plin de viață.’",
    "ctx": "Tânărul amalecit povestește ce i-a spus Saul pe muntele Ghilboa:"
+  },
+  {
+   "id": "2sa.1.18+.20",
+   "age": "18+",
+   "t": "fill",
+   "ref": "1:20",
+   "q": "ca să nu se bucure fetele ___, ca să nu se laude fetele celor netăiați împrejur.",
+   "ctx": "Din Cântarea Arcului:",
+   "a": [
+    "filistenilor"
+   ]
+  },
+  {
+   "id": "2sa.1.18+.21",
+   "age": "18+",
+   "t": "fill",
+   "ref": "1:16",
+   "q": "Sângele tău să cadă asupra ___ tău, căci gura ta a mărturisit împotriva ta",
+   "ctx": "David, către tânărul amalecit:",
+   "a": [
+    "capului"
+   ]
   },
   {
    "id": "2sa.1.18+.13",
@@ -1099,6 +1316,38 @@
     "arcul lui Ionatan",
     "scutul lui Saul",
     "scuturile vitejilor"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "2sa.1.18+.22",
+   "age": "18+",
+   "t": "multi",
+   "ref": "1:6-7",
+   "q": "Ce a povestit tânărul amalecit că a văzut pe muntele Ghilboa?",
+   "opts": [
+    "carele și călăreții aproape să-l ajungă",
+    "pe Ionatan trăgând cu arcul",
+    "pe Saul rezemat în sulița lui"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "2sa.1.18+.23",
+   "age": "18+",
+   "t": "multi",
+   "ref": "1:21",
+   "q": "Ce spune Cântarea Arcului despre munții din Ghilboa?",
+   "opts": [
+    "să fie pe ei îngropat Saul",
+    "să nu fie pe ei câmpii care să dea pârgă pentru darurile de mâncare",
+    "să nu cadă pe ei nici rouă, nici ploaie"
    ],
    "a": [
     1,

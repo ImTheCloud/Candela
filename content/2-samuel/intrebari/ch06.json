@@ -28,6 +28,23 @@
    "explain": "David juca din răsputeri înaintea Domnului (6:14)."
   },
   {
+   "id": "2sa.6.sub12.16",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "6:10",
+   "q": "David a dus chivotul Domnului în casa lui Obed-Edom din Gat.",
+   "a": true
+  },
+  {
+   "id": "2sa.6.sub12.17",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "6:19",
+   "q": "David nu le-a dat nimic de mâncare celor din popor, după ce a adus chivotul.",
+   "a": false,
+   "explain": "A împărțit fiecăruia o pâine, o bucată de carne și o turtă de stafide."
+  },
+  {
    "id": "2sa.6.sub12.4",
    "age": "sub12",
    "t": "one",
@@ -67,69 +84,57 @@
    "a": 2
   },
   {
-   "id": "2sa.6.sub12.7",
+   "id": "2sa.6.sub12.18",
+   "age": "sub12",
+   "t": "one",
+   "ref": "6:3",
+   "q": "În ce au pus chivotul lui Dumnezeu, ca să-l ducă din casa lui Abinadab?",
+   "opts": [
+    "pe umerii preoților",
+    "într-un car nou",
+    "într-o corabie"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.6.sub12.19",
+   "age": "sub12",
+   "t": "one",
+   "ref": "6:7",
+   "q": "Ce s-a întâmplat cu Uza după ce a apucat chivotul lui Dumnezeu?",
+   "opts": [
+    "a fugit",
+    "a fost vindecat",
+    "a murit acolo"
+   ],
+   "a": 2
+  },
+  {
+   "id": "2sa.6.sub12.24",
    "age": "sub12",
    "t": "match",
-   "ref": "6:6-16",
-   "q": "Chivotul adus la Ierusalim (2 Samuel 6): asociază fiecare cu ce a făcut.",
+   "ref": "6:1-23",
+   "q": "Asociază fiecare nume sau loc cu ce se spune despre el în 2 Samuel 6.",
    "pairs": [
     [
      "Uza",
-     "a apucat chivotul"
+     "a murit lângă chivotul lui Dumnezeu"
     ],
     [
      "Obed-Edom",
-     "a primit chivotul în casa lui"
-    ],
-    [
-     "David",
-     "juca din răsputeri înaintea Domnului"
+     "în casa lui a stat chivotul trei luni"
     ],
     [
      "Mical",
-     "l-a disprețuit pe David în inima ei"
-    ]
-   ]
-  },
-  {
-   "id": "2sa.6.sub12.8",
-   "age": "sub12",
-   "t": "match",
-   "ref": "6:3, 11, 17",
-   "q": "Unde a stat chivotul lui Dumnezeu în 2 Samuel 6? Asociază.",
-   "pairs": [
-    [
-     "la început",
-     "în casa lui Abinadab"
+     "fata lui Saul, care l-a disprețuit pe David"
     ],
     [
-     "trei luni",
-     "în casa lui Obed-Edom"
+     "Abinadab",
+     "din casa lui de pe deal a fost luat chivotul"
     ],
     [
-     "la sfârșit",
-     "în cortul ridicat de David"
-    ]
-   ]
-  },
-  {
-   "id": "2sa.6.sub12.9",
-   "age": "sub12",
-   "t": "match",
-   "ref": "6:19",
-   "q": "Ce a primit fiecare din popor de la David, după ce a fost adus chivotul? Asociază.",
-   "pairs": [
-    [
-     "pâine",
-     "o pâine"
-    ],
-    [
-     "carne",
-     "o bucată"
-    ],
-    [
-     "stafide",
-     "o turtă"
+     "Pereț-Uza",
+     "locul numit așa după moartea lui Uza"
     ]
    ]
   },
@@ -165,6 +170,26 @@
    ],
    "q": "Astfel au suit David și toată casa lui Israel chivotul Domnului în strigăte de bucurie și în sunet de ___.",
    "ctx": "Chivotul este adus în cetatea lui David:"
+  },
+  {
+   "id": "2sa.6.sub12.20",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "6:6",
+   "q": "Uza a întins mâna spre chivotul lui Dumnezeu și l-a ___, pentru că era să-l răstoarne boii.",
+   "a": [
+    "apucat"
+   ]
+  },
+  {
+   "id": "2sa.6.sub12.21",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "6:13",
+   "q": "Când cei ce duceau chivotul Domnului au făcut șase pași, au jertfit un ___ și un vițel gras.",
+   "a": [
+    "bou"
+   ]
   },
   {
    "id": "2sa.6.sub12.13",
@@ -213,6 +238,38 @@
    "explain": "Niciun răspuns corect: carul era cârmuit de Uza și Ahio, fiii lui Abinadab (6:3)."
   },
   {
+   "id": "2sa.6.sub12.22",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "6:15",
+   "q": "Cum au suit David și casa lui Israel chivotul Domnului?",
+   "opts": [
+    "în sunet de trâmbițe",
+    "în tăcere",
+    "în strigăte de bucurie"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "2sa.6.sub12.23",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "6:17",
+   "q": "Ce a adus David înaintea Domnului, după ce chivotul a fost pus în cort?",
+   "opts": [
+    "jertfe de mulțumire",
+    "arderi-de-tot",
+    "jertfe pentru păcat"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
    "id": "2sa.6.12-13.1",
    "age": "12-13",
    "t": "tf",
@@ -236,6 +293,23 @@
    "ref": "6:23",
    "q": "Mical, fata lui Saul, n-a avut copii până în ziua morții ei.",
    "a": true
+  },
+  {
+   "id": "2sa.6.12-13.16",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "6:5",
+   "q": "David și casa lui Israel cântau înaintea Domnului cu harpe, lăute, timpane, fluiere și țimbale.",
+   "a": true
+  },
+  {
+   "id": "2sa.6.12-13.17",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "6:17",
+   "q": "David a pus chivotul Domnului în templul zidit de Solomon.",
+   "a": false,
+   "explain": "L-a pus în cortul pe care-l ridicase David pentru chivot."
   },
   {
    "id": "2sa.6.12-13.4",
@@ -277,77 +351,57 @@
    "a": 1
   },
   {
-   "id": "2sa.6.12-13.7",
+   "id": "2sa.6.12-13.18",
+   "age": "12-13",
+   "t": "one",
+   "ref": "6:2",
+   "q": "De unde a pornit David ca să suie chivotul lui Dumnezeu?",
+   "opts": [
+    "de la Baale-Iuda",
+    "de la Silo",
+    "de la Hebron"
+   ],
+   "a": 0
+  },
+  {
+   "id": "2sa.6.12-13.19",
+   "age": "12-13",
+   "t": "one",
+   "ref": "6:10",
+   "q": "În casa cui din Gat a fost dus chivotul Domnului?",
+   "opts": [
+    "a lui Nacon",
+    "a lui Abinadab",
+    "a lui Obed-Edom"
+   ],
+   "a": 2
+  },
+  {
+   "id": "2sa.6.12-13.24",
    "age": "12-13",
    "t": "match",
-   "ref": "6:3-4",
-   "q": "Despre carul cu chivotul (2 Samuel 6): asociază.",
+   "ref": "6:2-17",
+   "q": "Asociază fiecare nume sau loc cu ce se spune despre el în 2 Samuel 6.",
    "pairs": [
     [
-     "Uza",
-     "mergea alături de chivot"
+     "Baale-Iuda",
+     "locul de unde a pornit David cu chivotul"
+    ],
+    [
+     "aria lui Nacon",
+     "locul unde Uza a apucat chivotul"
+    ],
+    [
+     "Gat",
+     "cetatea lui Obed-Edom"
+    ],
+    [
+     "cetatea lui David",
+     "locul unde a fost suit chivotul"
     ],
     [
      "Ahio",
-     "mergea înaintea chivotului"
-    ],
-    [
-     "Abinadab",
-     "chivotul a fost luat din casa lui"
-    ],
-    [
-     "carul",
-     "era nou"
-    ]
-   ]
-  },
-  {
-   "id": "2sa.6.12-13.8",
-   "age": "12-13",
-   "t": "match",
-   "ref": "6:20-23",
-   "q": "Mical și David (2 Samuel 6): asociază.",
-   "pairs": [
-    [
-     "Mical",
-     "i-a ieșit înainte lui David cu vorbe de dispreț"
-    ],
-    [
-     "David",
-     "a zis că a jucat înaintea Domnului"
-    ],
-    [
-     "slujnicele",
-     "David spune că va fi în cinste la ele"
-    ],
-    [
-     "sfârșitul",
-     "Mical n-a avut copii"
-    ]
-   ]
-  },
-  {
-   "id": "2sa.6.12-13.9",
-   "age": "12-13",
-   "t": "match",
-   "ref": "6:8-12",
-   "q": "După moartea lui Uza: asociază.",
-   "pairs": [
-    [
-     "David",
-     "s-a temut de Domnul"
-    ],
-    [
-     "Obed-Edom",
-     "a primit chivotul în casa lui"
-    ],
-    [
-     "Domnul",
-     "l-a binecuvântat pe Obed-Edom"
-    ],
-    [
-     "după trei luni",
-     "David a suit chivotul în cetatea lui"
+     "cel care mergea înaintea chivotului"
     ]
    ]
   },
@@ -383,6 +437,26 @@
    ],
    "q": "Domnul S-a aprins de ___ împotriva lui Uza",
    "ctx": "Când Uza a apucat chivotul lui Dumnezeu:"
+  },
+  {
+   "id": "2sa.6.12-13.20",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "6:4",
+   "q": "Uza mergea alături de chivotul lui Dumnezeu și ___ mergea înaintea chivotului.",
+   "a": [
+    "Ahio"
+   ]
+  },
+  {
+   "id": "2sa.6.12-13.21",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "6:18",
+   "q": "a binecuvântat poporul în Numele Domnului ___.",
+   "a": [
+    "oștirilor"
+   ]
   },
   {
    "id": "2sa.6.12-13.13",
@@ -432,6 +506,38 @@
    ]
   },
   {
+   "id": "2sa.6.12-13.22",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "6:11-12",
+   "q": "Ce s-a întâmplat în casa lui Obed-Edom?",
+   "opts": [
+    "chivotul a rămas acolo trei luni",
+    "Obed-Edom a fost lovit ca Uza",
+    "Domnul a binecuvântat pe Obed-Edom și casa lui"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "2sa.6.12-13.23",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "6:19",
+   "q": "Ce a primit fiecare din popor de la David?",
+   "opts": [
+    "o pâine",
+    "un ciorchine de struguri",
+    "o bucată de carne"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
    "id": "2sa.6.14-15.1",
    "age": "14-15",
    "t": "tf",
@@ -455,6 +561,23 @@
    "ref": "6:14",
    "q": "David era încins cu efodul de in subțire când juca înaintea Domnului.",
    "a": true
+  },
+  {
+   "id": "2sa.6.14-15.16",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "6:13",
+   "q": "Când cei ce duceau chivotul au făcut șase pași, au jertfit un bou și un vițel gras.",
+   "a": true
+  },
+  {
+   "id": "2sa.6.14-15.17",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "6:11",
+   "q": "Chivotul Domnului a rămas șase luni în casa lui Obed-Edom.",
+   "a": false,
+   "explain": "A rămas trei luni."
   },
   {
    "id": "2sa.6.14-15.4",
@@ -496,73 +619,57 @@
    "a": 0
   },
   {
-   "id": "2sa.6.14-15.7",
+   "id": "2sa.6.14-15.18",
    "age": "14-15",
-   "t": "match",
-   "ref": "6:2",
-   "q": "Chivotul lui Dumnezeu (2 Samuel 6:2): asociază.",
-   "pairs": [
-    [
-     "Baale-Iuda",
-     "locul de unde a pornit David"
-    ],
-    [
-     "Numele Domnului oștirilor",
-     "este chemat înaintea chivotului"
-    ],
-    [
-     "heruvimii",
-     "Domnul stă între ei, deasupra chivotului"
-    ]
-   ]
+   "t": "one",
+   "ref": "6:8",
+   "q": "Ce a simțit David când Dumnezeu l-a lovit pe Uza?",
+   "opts": [
+    "a rămas nepăsător",
+    "s-a bucurat",
+    "s-a întristat"
+   ],
+   "a": 2
   },
   {
-   "id": "2sa.6.14-15.8",
+   "id": "2sa.6.14-15.19",
+   "age": "14-15",
+   "t": "one",
+   "ref": "6:10",
+   "q": "Ce a hotărât David după moartea lui Uza?",
+   "opts": [
+    "să-l ascundă în pustie",
+    "să-l ducă înapoi la Silo",
+    "să nu aducă chivotul în cetatea lui David, ci în casa lui Obed-Edom"
+   ],
+   "a": 2
+  },
+  {
+   "id": "2sa.6.14-15.24",
    "age": "14-15",
    "t": "match",
-   "ref": "6:7-11",
-   "q": "Asociază fiecare nume cu ce înseamnă sau cu ce se spune despre el.",
+   "ref": "6:3-23",
+   "q": "Asociază fiecare nume sau lucru cu ce se spune despre el în 2 Samuel 6.",
    "pairs": [
     [
+     "Mical",
+     "n-a avut copii până în ziua morții ei"
+    ],
+    [
      "Pereț-Uza",
-     "Ruperea lui Uza"
+     "„Ruperea lui Uza”"
+    ],
+    [
+     "efodul de in subțire",
+     "cu el era încins David când juca"
     ],
     [
      "aria lui Nacon",
-     "locul unde Uza a apucat chivotul"
+     "unde a apucat Uza chivotul"
     ],
     [
-     "Obed-Edom",
-     "omul din Gat binecuvântat de Domnul"
-    ],
-    [
-     "trei luni",
-     "timpul cât chivotul a stat la el"
-    ]
-   ]
-  },
-  {
-   "id": "2sa.6.14-15.9",
-   "age": "14-15",
-   "t": "match",
-   "ref": "6:13-17",
-   "q": "Suirea chivotului în cetatea lui David: asociază.",
-   "pairs": [
-    [
-     "după șase pași",
-     "au jertfit un bou și un vițel gras"
-    ],
-    [
-     "David",
-     "juca încins cu efodul de in"
-    ],
-    [
-     "tot Israelul",
-     "suia chivotul în strigăte de bucurie"
-    ],
-    [
-     "cortul",
-     "locul unde a fost pus chivotul"
+     "casa lui Abinadab",
+     "casa de pe deal de unde a fost luat chivotul"
     ]
    ]
   },
@@ -598,6 +705,26 @@
    ],
    "q": "David a strâns iarăși pe toți aleșii lui Israel, în număr de treizeci de ___ de oameni.",
    "ctx": "Înainte de aducerea chivotului lui Dumnezeu:"
+  },
+  {
+   "id": "2sa.6.14-15.20",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "6:15",
+   "q": "Astfel au suit David și toată casa lui Israel chivotul Domnului în strigăte de ___ și în sunet de trâmbițe.",
+   "a": [
+    "bucurie"
+   ]
+  },
+  {
+   "id": "2sa.6.14-15.21",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "6:17",
+   "q": "l-au pus la locul lui, în mijlocul ___ pe care-l ridicase David pentru chivot",
+   "a": [
+    "cortului"
+   ]
   },
   {
    "id": "2sa.6.14-15.13",
@@ -649,6 +776,38 @@
    ]
   },
   {
+   "id": "2sa.6.14-15.22",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "6:2",
+   "q": "Ce se spune despre chivotul lui Dumnezeu în 2 Samuel 6:2?",
+   "opts": [
+    "este făcut din lemn de chiparos",
+    "înaintea lui este chemat Numele Domnului oștirilor",
+    "Domnul stă între heruvimi, deasupra chivotului"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "2sa.6.14-15.23",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "6:21",
+   "q": "Ce i-a răspuns David lui Mical?",
+   "opts": [
+    "„N-am vrut să te supăr”",
+    "„Domnul m-a ales mai presus de tatăl tău”",
+    "„Înaintea Domnului am jucat”"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
    "id": "2sa.6.16-17.1",
    "age": "16-17",
    "t": "tf",
@@ -672,6 +831,23 @@
    "ref": "6:22",
    "q": "David i-a spus lui Mical că vrea să se arate și mai de nimic decât de data aceea.",
    "a": true
+  },
+  {
+   "id": "2sa.6.16-17.16",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "6:21",
+   "q": "David i-a spus lui Mical că Domnul l-a ales mai presus de tatăl ei.",
+   "a": true
+  },
+  {
+   "id": "2sa.6.16-17.17",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "6:16",
+   "q": "Mical, văzându-l pe David jucând, s-a bucurat în inima ei.",
+   "a": false,
+   "explain": "L-a disprețuit în inima ei."
   },
   {
    "id": "2sa.6.16-17.4",
@@ -713,77 +889,57 @@
    "a": 2
   },
   {
-   "id": "2sa.6.16-17.7",
+   "id": "2sa.6.16-17.18",
+   "age": "16-17",
+   "t": "one",
+   "ref": "6:1",
+   "q": "Câți aleși ai lui Israel a strâns David, ca să aducă chivotul?",
+   "opts": [
+    "zece mii",
+    "treizeci de mii",
+    "o sută de mii"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.6.16-17.19",
+   "age": "16-17",
+   "t": "one",
+   "ref": "6:19",
+   "q": "Ce fel de turtă a primit fiecare din popor de la David?",
+   "opts": [
+    "o turtă de stafide",
+    "o turtă de smochine",
+    "o turtă de grâu"
+   ],
+   "a": 0
+  },
+  {
+   "id": "2sa.6.16-17.24",
    "age": "16-17",
    "t": "match",
-   "ref": "6:1-3",
-   "q": "Pornirea chivotului: asociază fiecare număr sau loc cu ce arată.",
+   "ref": "6:1-19",
+   "q": "Asociază fiecare număr sau lucru cu ce se spune despre el în 2 Samuel 6.",
    "pairs": [
     [
      "treizeci de mii",
-     "aleșii lui Israel"
+     "numărul aleșilor lui Israel strânși de David"
     ],
     [
-     "Baale-Iuda",
-     "de aici a pornit David"
+     "trei luni",
+     "cât a stat chivotul la Obed-Edom"
     ],
     [
-     "casa lui Abinadab",
-     "de aici a fost luat chivotul"
+     "șase pași",
+     "după ei s-a adus jertfă"
     ],
     [
-     "un car nou",
-     "în el a fost pus chivotul"
-    ]
-   ]
-  },
-  {
-   "id": "2sa.6.16-17.8",
-   "age": "16-17",
-   "t": "match",
-   "ref": "6:20-22",
-   "q": "Cuvintele dintre Mical și David: asociază începutul cu sfârșitul.",
-   "pairs": [
-    [
-     "Cu câtă cinste s-a purtat azi",
-     "împăratul lui Israel"
+     "chiparos",
+     "lemnul din care erau făcute instrumentele"
     ],
     [
-     "cum s-ar descoperi",
-     "un om de nimic"
-    ],
-    [
-     "înaintea Domnului",
-     "am jucat"
-    ],
-    [
-     "totuși voi fi în cinste",
-     "la slujnicele de care vorbești"
-    ]
-   ]
-  },
-  {
-   "id": "2sa.6.16-17.9",
-   "age": "16-17",
-   "t": "match",
-   "ref": "6:17-19",
-   "q": "După ce chivotul a fost pus în cort: asociază fiecare cu ce a făcut.",
-   "pairs": [
-    [
-     "David",
-     "a binecuvântat poporul"
-    ],
-    [
-     "poporul",
-     "a primit pâine, carne și stafide"
-    ],
-    [
-     "toată mulțimea",
-     "a plecat fiecare la casa lui"
-    ],
-    [
-     "chivotul",
-     "a fost pus în mijlocul cortului"
+     "stafide",
+     "turta primită de fiecare din popor"
     ]
    ]
   },
@@ -819,6 +975,26 @@
    ],
    "q": "Când cei ce duceau chivotul Domnului au făcut șase pași, au jertfit un bou și un ___ gras.",
    "ctx": "Pe drumul chivotului spre cetatea lui David:"
+  },
+  {
+   "id": "2sa.6.16-17.20",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "6:3",
+   "q": "Au pus chivotul lui Dumnezeu într-un car ___ și l-au ridicat din casa lui Abinadab, de pe deal",
+   "a": [
+    "nou"
+   ]
+  },
+  {
+   "id": "2sa.6.16-17.21",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "6:18",
+   "q": "Când a isprăvit David de adus arderile-de-tot și jertfele de ___, a binecuvântat poporul în Numele Domnului oștirilor.",
+   "a": [
+    "mulțumire"
+   ]
   },
   {
    "id": "2sa.6.16-17.13",
@@ -866,6 +1042,38 @@
    "explain": "Niciun răspuns corect: David s-a temut de Domnul în ziua aceea (6:9-10)."
   },
   {
+   "id": "2sa.6.16-17.22",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "6:6-7",
+   "q": "Ce s-a întâmplat la aria lui Nacon?",
+   "opts": [
+    "Uza a întins mâna spre chivot",
+    "Domnul S-a aprins de mânie împotriva lui Uza",
+    "boii au fugit cu chivotul"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "2sa.6.16-17.23",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "6:15-16",
+   "q": "Ce se întâmpla când chivotul intra în cetatea lui David?",
+   "opts": [
+    "Saul ieșea în întâmpinarea lui David",
+    "se auzeau strigăte de bucurie",
+    "Mical se uita pe fereastră"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
    "id": "2sa.6.18+.1",
    "age": "18+",
    "t": "tf",
@@ -889,6 +1097,23 @@
    "ref": "6:19",
    "q": "Fiecare om din popor a primit de la David o pâine, o bucată de carne și o turtă de stafide.",
    "a": true
+  },
+  {
+   "id": "2sa.6.18+.16",
+   "age": "18+",
+   "t": "tf",
+   "ref": "6:5",
+   "q": "Instrumentele cu care cântau David și casa lui Israel erau de lemn de chiparos.",
+   "a": true
+  },
+  {
+   "id": "2sa.6.18+.17",
+   "age": "18+",
+   "t": "tf",
+   "ref": "6:12",
+   "q": "David a suit chivotul din casa lui Obed-Edom în mijlocul tristeții.",
+   "a": false,
+   "explain": "L-a suit în mijlocul veseliei."
   },
   {
    "id": "2sa.6.18+.4",
@@ -930,77 +1155,57 @@
    "a": 0
   },
   {
-   "id": "2sa.6.18+.7",
+   "id": "2sa.6.18+.18",
    "age": "18+",
-   "t": "match",
-   "ref": "6:3-16",
-   "q": "Oamenii din 2 Samuel 6: asociază fiecare cu ce se spune despre el.",
-   "pairs": [
-    [
-     "Uza",
-     "fiul lui Abinadab, lovit lângă chivot"
-    ],
-    [
-     "Ahio",
-     "mergea înaintea chivotului"
-    ],
-    [
-     "Obed-Edom",
-     "din Gat"
-    ],
-    [
-     "Mical",
-     "fata lui Saul"
-    ]
-   ]
+   "t": "one",
+   "ref": "6:16",
+   "q": "Cum l-a privit Mical pe David, când chivotul intra în cetatea lui David?",
+   "opts": [
+    "l-a disprețuit în inima ei",
+    "i-a poruncit să înceteze",
+    "l-a admirat"
+   ],
+   "a": 0
   },
   {
-   "id": "2sa.6.18+.8",
+   "id": "2sa.6.18+.19",
+   "age": "18+",
+   "t": "one",
+   "ref": "6:20",
+   "q": "Cu cine l-a asemănat Mical pe David, când el s-a descoperit înaintea slujnicelor?",
+   "opts": [
+    "cu un rob fugar",
+    "cu un om de nimic",
+    "cu un nebun"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.6.18+.24",
    "age": "18+",
    "t": "match",
-   "ref": "6:2-8",
-   "q": "Nume din 2 Samuel 6: asociază.",
+   "ref": "6:2-23",
+   "q": "Asociază fiecare nume sau loc cu ce se spune despre el în 2 Samuel 6.",
    "pairs": [
     [
      "Baale-Iuda",
-     "de aici a pornit chivotul"
-    ],
-    [
-     "Nacon",
-     "aria unde a murit Uza"
+     "locul de pornire al procesiunii cu chivotul"
     ],
     [
      "Pereț-Uza",
-     "Ruperea lui Uza"
+     "numele dat locului unde a murit Uza"
     ],
     [
      "Gat",
-     "de aici era Obed-Edom"
-    ]
-   ]
-  },
-  {
-   "id": "2sa.6.18+.9",
-   "age": "18+",
-   "t": "match",
-   "ref": "6:12-18",
-   "q": "Bucuria aducerii chivotului: asociază.",
-   "pairs": [
-    [
-     "în mijlocul veseliei",
-     "a fost suit chivotul"
+     "cetatea lui Obed-Edom"
     ],
     [
-     "în strigăte de bucurie",
-     "l-au suit David și casa lui Israel"
+     "Mical",
+     "fata lui Saul, care l-a disprețuit pe David"
     ],
     [
-     "în sunet de trâmbițe",
-     "l-au adus în cetate"
-    ],
-    [
-     "în Numele Domnului oștirilor",
-     "a binecuvântat David poporul"
+     "Obed-Edom",
+     "binecuvântat de Domnul, împreună cu toată casa lui"
     ]
    ]
   },
@@ -1036,6 +1241,26 @@
    ],
    "q": "Vreau să mă arăt și mai de nimic decât de data asta și să mă ___ în ochii mei,",
    "ctx": "David, către Mical:"
+  },
+  {
+   "id": "2sa.6.18+.20",
+   "age": "18+",
+   "t": "fill",
+   "ref": "6:10",
+   "q": "N-a vrut să aducă chivotul Domnului la el, în cetatea lui David, și l-a dus în casa lui Obed-Edom din ___.",
+   "a": [
+    "Gat"
+   ]
+  },
+  {
+   "id": "2sa.6.18+.21",
+   "age": "18+",
+   "t": "fill",
+   "ref": "6:7",
+   "q": "Domnul S-a aprins de mânie împotriva lui Uza și Dumnezeu l-a lovit pe loc pentru ___ lui",
+   "a": [
+    "păcatul"
+   ]
   },
   {
    "id": "2sa.6.18+.13",
@@ -1081,6 +1306,38 @@
    ],
    "a": [],
    "explain": "Niciun răspuns corect: în 2 Samuel 6 este numită „Mical, fata lui Saul\" (6:16, 20, 23)."
+  },
+  {
+   "id": "2sa.6.18+.22",
+   "age": "18+",
+   "t": "multi",
+   "ref": "6:13-14",
+   "q": "Ce se spune despre jertfă și despre David, când chivotul a fost adus?",
+   "opts": [
+    "s-a jertfit un bou și un vițel gras",
+    "David purta haina de purpură",
+    "David era încins cu efodul de in subțire"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "2sa.6.18+.23",
+   "age": "18+",
+   "t": "multi",
+   "ref": "6:17-18",
+   "q": "Ce a făcut David după ce chivotul a fost pus în cort?",
+   "opts": [
+    "a adus arderi-de-tot",
+    "l-a numit pe Solomon următor la domnie",
+    "a binecuvântat poporul în Numele Domnului oștirilor"
+   ],
+   "a": [
+    0,
+    2
+   ]
   }
  ]
 }
