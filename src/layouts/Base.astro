@@ -55,7 +55,6 @@ const fullTitle = title === 'Candela' ? title : `${title} · Candela`;
       )}
       <slot />
     </main>
-    <footer class="wrap foot small muted">Textul biblic: traducerea Dumitru Cornilescu, după biblia.resursecrestine.ro.</footer>
     <BirthYearGate client:only="preact" />
   </body>
 </html>
@@ -80,5 +79,4 @@ const fullTitle = title === 'Candela' ? title : `${title} · Candela`;
   .crumbs [aria-current] { overflow: hidden; text-overflow: ellipsis; min-width: 0; }
   .crumbs a:hover { color: var(--oil-ink); text-decoration: underline; }
   .crumbs [aria-current] { color: var(--ink-2); font-weight: 500; }
-  .foot { padding-block: 40px calc(24px + env(safe-area-inset-bottom)); text-align: center; }
 </style>

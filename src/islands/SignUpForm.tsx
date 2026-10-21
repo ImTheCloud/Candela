@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
 import { validBirthYear } from '../lib/age';
 import { errorText, signUp, user } from '../lib/session';
+import PasswordInput from './PasswordInput';
 
 export default function SignUpForm() {
   const [f, setF] = useState({ firstName: '', lastName: '', email: '', password: '', birthYear: '', isParent: false });
@@ -55,7 +56,7 @@ export default function SignUpForm() {
       </div>
       <div class="field">
         <label for="password">Parolă</label>
-        <input id="password" class="input" type="password" autocomplete="new-password" minLength={6} required value={f.password} onInput={set('password')} />
+        <PasswordInput id="password" autocomplete="new-password" minLength={6} value={f.password} onInput={set('password')} />
         <p class="small muted">Cel puțin 6 caractere.</p>
       </div>
       <div class="field">

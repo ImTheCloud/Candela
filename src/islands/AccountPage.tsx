@@ -2,6 +2,7 @@ import { useState } from 'preact/hooks';
 import { ageGroup, ageLabel, validBirthYear } from '../lib/age';
 import { errorText, profile, profileError, profileLoaded, setBirthYear, signIn, signOut, user } from '../lib/session';
 import Children from './Children';
+import PasswordInput from './PasswordInput';
 
 export default function AccountPage() {
   const u = user.value;
@@ -38,7 +39,7 @@ function SignInForm() {
       </div>
       <div class="field">
         <label for="password">Parolă</label>
-        <input id="password" class="input" type="password" autocomplete="current-password" required value={password} onInput={(e) => setPassword(e.currentTarget.value)} />
+        <PasswordInput id="password" autocomplete="current-password" value={password} onInput={(e) => setPassword(e.currentTarget.value)} />
       </div>
       {error && <p class="notice notice-bad" role="alert">{error}</p>}
       <button class="btn btn-primary btn-block" disabled={busy}>{busy ? 'Se verifică…' : 'Intră'}</button>
