@@ -163,8 +163,8 @@ body.in-quiz main { padding-top: 0; }
 .score-ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
 .ring-bg { fill: none; stroke: var(--surface-2); stroke-width: 10; }
 .ring-fill { fill: none; stroke: var(--flame); stroke-width: 10; stroke-linecap: round; transition: stroke-dashoffset .8s ease-out; }
-.score-num { position: absolute; inset: 0; display: grid; place-content: center; font: 600 2.8rem/1 var(--f-display); color: var(--ink); }
-.score-num small { font: 500 0.85rem var(--f-body); color: var(--ink-2); margin-top: 4px; }
+.score-num { position: absolute; inset: 0; display: flex; align-items: baseline; justify-content: center; gap: 3px; padding-top: 44px; font: 600 2.8rem/1 var(--f-display); color: var(--ink); }
+.score-num small { font: 500 1.2rem var(--f-body); color: var(--ink-2); }
 .score-praise { font: 600 1.25rem var(--f-display); }
 .score-stats { width: 100%; display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 8px; margin: 0; }
 .score-stats div { padding: 10px 6px; border-radius: 12px; background: var(--bg); }
@@ -200,3 +200,10 @@ body.in-quiz main { padding-top: 0; }
 .who-line { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 14px; box-shadow: none; }
 .parts { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
 .parts li { display: flex; justify-content: space-between; gap: 10px; padding: 10px 12px; border-radius: 10px; background: var(--bg); }
+
+/* missed questions, answer in sight */
+.missed-card { display: grid; gap: 10px; padding: 14px; box-shadow: none; }
+.mc-head { display: flex; gap: 12px; align-items: flex-start; }
+.missed-card .feedback { padding: 0; }
+.missed-card .fb-answer { display: grid; gap: 2px; padding: 10px 12px; white-space: pre-line; }
+.missed-card .fb-answer small { font-size: 0.72rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; opacity: .8; }
