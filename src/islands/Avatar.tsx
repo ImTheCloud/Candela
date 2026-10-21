@@ -8,7 +8,7 @@ export default function Avatar({ name, size = 44 }: { name: string; size?: numbe
   for (const c of name) h = (h * 31 + c.charCodeAt(0)) >>> 0;
   const tone = TONES[h % TONES.length];
   return (
-    <span class="av" style={{ width: `${size}px`, height: `${size}px`, fontSize: `${size * 0.38}px`, background: `linear-gradient(135deg, ${tone}, color-mix(in srgb, ${tone} 70%, #3a271b))` }} aria-hidden="true">
+    <span class="av" style={{ width: `${size}px`, height: `${size}px`, fontSize: `${size * 0.38}px`, background: tone }} aria-hidden="true">
       {initials}
     </span>
   );

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'preact/hooks';
 import { bookHome } from '../lib/books';
-import { localSet } from '../lib/store';
+import { localGet, localSet } from '../lib/store';
 import ChapterMenu, { type Summary } from './ChapterMenu';
 
 export interface BookData {
@@ -12,10 +12,17 @@ export interface BookData {
 
 /** Book switch, chapter tiles and the leaderboard link. Switching books swaps the content in place, without loading a page. */
 export default function BookPanel({ books, initial }: { books: BookData[]; initial: string }) {
-  const [slug, setSlug] = useState(initial);
+  // the home address shows the book the player left off in
+  const [slug, setSlug] = useState(() => {
+    const saved = location.pathname === '/' ? localGet<string | null>('book', null) : null;
+    return books.some((b) => b.slug === saved) ? saved! : initial;
+  });
   const book = books.find((b) => b.slug === slug)!;
 
-  useEffect(() => { localSet('book', slug); }, [slug]);
+  useEffect(() => {
+    localSet('book', slug);
+    if (slug !== initial && location.pathname === '/') replaceUrl(bookHome(slug));
+  }, [slug]);
 
   // browser back/forward between the two book addresses
   useEffect(() => {
@@ -30,7 +37,7 @@ export default function BookPanel({ books, initial }: { books: BookData[]; initi
   function pick(next: string) {
     if (next === slug) return;
     setSlug(next);
-    try { history.replaceState(null, '', bookHome(next)); } catch {}
+    replaceUrl(bookHome(next));
   }
 
   return (
@@ -58,4 +65,9 @@ export default function BookPanel({ books, initial }: { books: BookData[]; initi
       </section>
     </>
   );
+}
+
+/** Changes the address without a page change, keeping the router's history state (the back button depends on it). */
+function replaceUrl(url: string) {
+  try { history.replaceState(history.state, '', url); } catch {}
 }

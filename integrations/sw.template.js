@@ -20,8 +20,8 @@ self.addEventListener('fetch', (event) => {
   const url = new URL(req.url);
   if (req.method !== 'GET' || url.origin !== location.origin) return;
   const path = url.pathname.replace(/(.)\/$/, '$1');
-  if (req.mode === 'navigate') {
-    // pages: the network first (fresh after an update), the copy on the phone when offline
+  if (req.mode === 'navigate' || req.headers.get('accept')?.includes('text/html')) {
+    // pages (also those the router fetches): the network first (fresh after an update), the copy on the phone when offline
     event.respondWith(
       fetch(req).catch(() => caches.match(path, { cacheName: CACHE, ignoreSearch: true }).then((r) => r || caches.match('/404.html'))),
     );

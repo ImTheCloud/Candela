@@ -16,7 +16,9 @@ Dernière mise à jour : 21 octobre 2026. Branche `v2` (la v1 reste sur `main`, 
 - **Menu de chapitre :** « Citește capitolul » (cèdre) et « Testul capitolului » (orange, étiquette de catégorie, nombre de questions), « Mai greu » et « Greșelile mele » si utile.
 - **Quiz :** correction avec bandeau Corect/Greșit, carte « De ce / Ce spune textul », résultat avec cercle de score et « De recitit ».
 - **Signalement :** bouton « Semnalează o greșeală » sous chaque correction, page admin `/semnalari` (compte avec `admin: true`).
-- **Autres :** lecture avec surlignage, clasement par livre et par âge (message pour les invités), progrès par enfant, bouton retour sur toutes les pages sauf l'accueil, page de profil refaite (avatar, famille, interrupteur parent).
+- **Autres :** lecture avec surlignage, clasement par livre et par âge (message pour les invités), bouton retour sur toutes les pages sauf l'accueil.
+- **Profil (`/cont`) :** une seule page plate, sans cartes ni dégradés : identité, interrupteur parent, puis chaque joueur avec son progrès (la page `/progres` n'existe plus). Le dernier profil connu est gardé en mémoire locale pour s'afficher tout de suite.
+- **Vitesse :** navigation sans rechargement (ClientRouter + préchargement au toucher), retour sans rechargement, prénom dans l'en-tête de l'accueil (« Bun venit, … ») à la place de « Candela ».
 - **Supprimé sur demande :** mode sombre, guide du livre et carte, mode « par type de question », durée estimée des tests, pied de page.
 
 ## À faire / à vérifier
@@ -25,7 +27,7 @@ Dernière mise à jour : 21 octobre 2026. Branche `v2` (la v1 reste sur `main`, 
 3. **Compte admin :** vérifier que ton compte a bien `admin: true` (sinon ni « Semnalări » ni la page).
 4. **Équilibre vrai/faux :** ≈ 2/3 de « vrai » dans les nouvelles questions.
 5. **Examen blanc :** page présente mais basse priorité. 2 Samuel n'a pas d'examens réels.
-6. **Dernière page touchée (profil) :** commit en cours ; le rendu des boutons « Schimbă / Șterge » des enfants était en cours de réglage.
+6. **Questions de la v1 de 1 Samuel :** à décider si elles reviennent comme source de questions (dossier `content/1-samuel/intrebari-v1`). Examens réels : 12–13 à 18+ ont eu lieu le lundi 19 octobre 2026 ; l'examen sub 12 est prévu dans environ une semaine et demie (pas encore dans le site).
 
 ## Bascule vers la production (quand tu valides)
 1. Refaire l'export Supabase (`scripts/export-supabase.sh`), puis relancer `node scripts/migrate-supabase.mjs <export.json>` (idempotent : ajoute, n'efface rien de la v2).

@@ -49,17 +49,22 @@ const { book, list } = Astro.props as { book: Book; list: ExamFile[] };
   import { player } from '../../../lib/players';
   import { progress } from '../../../lib/progress';
 
-  const root = document.querySelector<HTMLElement>('[data-book]')!;
-  const p = progress(root.dataset.book!);
-  effect(() => {
-    const own = player.value.birthYear ? ageGroup(player.value.birthYear) : null;
-    for (const a of root.querySelectorAll<HTMLElement>('[data-exam]')) {
-      const best = p.value.exams[a.dataset.exam!]?.best;
-      const badge = a.querySelector<HTMLElement>('.best')!;
-      badge.hidden = best === undefined;
-      badge.textContent = best === undefined ? '' : `${best}/100`;
-      a.classList.toggle('mine', a.dataset.age === own);
-    }
+  let stop: (() => void) | undefined;
+  document.addEventListener('astro:before-swap', () => stop?.());
+  document.addEventListener('astro:page-load', () => {
+    const root = document.querySelector<HTMLElement>('[data-book]');
+    if (!root || !root.querySelector('[data-exam]')) return;
+    const p = progress(root.dataset.book!);
+    stop = effect(() => {
+      const own = player.value.birthYear ? ageGroup(player.value.birthYear) : null;
+      for (const a of root.querySelectorAll<HTMLElement>('[data-exam]')) {
+        const best = p.value.exams[a.dataset.exam!]?.best;
+        const badge = a.querySelector<HTMLElement>('.best')!;
+        badge.hidden = best === undefined;
+        badge.textContent = best === undefined ? '' : `${best}/100`;
+        a.classList.toggle('mine', a.dataset.age === own);
+      }
+    });
   });
 </script>
 

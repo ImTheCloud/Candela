@@ -22,15 +22,20 @@ const chapters = Array.from({ length: book.chapters }, (_, i) => i + 1);
   import { effect } from '@preact/signals';
   import { progress } from '../lib/progress';
 
-  const sheet = document.querySelector<HTMLDialogElement>('dialog.sheet')!;
-  for (const b of document.querySelectorAll('[data-open-sheet]')) b.addEventListener('click', () => sheet.showModal());
-  sheet.addEventListener('click', (e) => { if (e.target === sheet) sheet.close(); });
+  let stop: (() => void) | undefined;
+  document.addEventListener('astro:before-swap', () => stop?.());
+  document.addEventListener('astro:page-load', () => {
+    const sheet = document.querySelector<HTMLDialogElement>('dialog.sheet');
+    if (!sheet) return;
+    for (const b of document.querySelectorAll('[data-open-sheet]')) b.addEventListener('click', () => sheet.showModal());
+    sheet.addEventListener('click', (e) => { if (e.target === sheet) sheet.close(); });
 
-  const grid = sheet.querySelector<HTMLElement>('.sheet-grid')!;
-  const p = progress(grid.dataset.book!);
-  effect(() => {
-    const read = new Set(p.value.read);
-    for (const a of grid.querySelectorAll<HTMLElement>('a')) a.classList.toggle('is-read', read.has(Number(a.dataset.ch)));
+    const grid = sheet.querySelector<HTMLElement>('.sheet-grid')!;
+    const p = progress(grid.dataset.book!);
+    stop = effect(() => {
+      const read = new Set(p.value.read);
+      for (const a of grid.querySelectorAll<HTMLElement>('a')) a.classList.toggle('is-read', read.has(Number(a.dataset.ch)));
+    });
   });
 </script>
 
