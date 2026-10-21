@@ -415,13 +415,13 @@ a.tile { text-decoration: none; }
 .lb-note { text-align: center; }
 .lb-skeleton { display: grid; gap: 8px; }
 .lb-skeleton span { height: 48px; border-radius: 14px; background: var(--surface-2); animation: pulse 1.4s ease-in-out infinite; }
-.lb-cards { list-style: none; margin: 4px 0 0; padding: 0; display: grid; gap: 18px; }
-.pd { position: relative; display: grid; justify-items: center; gap: 6px; padding: 26px 10px 16px; border-radius: 18px; background: var(--bg); border: 1.5px solid var(--line); text-align: center; }
-.pd-1 { padding-top: 30px; padding-bottom: 20px; background: var(--oil-soft); border-color: transparent; }
+.lb-cards { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.pd { display: grid; grid-template-columns: 28px 40px 1fr auto; align-items: center; gap: 12px; min-height: 60px; padding: 8px 14px 8px 10px; border-radius: 16px; background: var(--bg); border: 1.5px solid var(--line); }
+.pd-1 { background: var(--oil-soft); border-color: transparent; }
 .pd.me { border-color: var(--btn); }
-.pd-rank { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); display: grid; place-items: center; min-width: 26px; height: 26px; padding: 0 6px; border-radius: 999px; background: var(--btn); color: #fff; font: 700 0.85rem var(--f-body); }
-.pd-name { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 600; }
-.pd-score { font: 600 1.7rem/1 var(--f-display); color: var(--ink); font-variant-numeric: tabular-nums; }
-.pd-1 .pd-score { font-size: 2rem; }
+.pd-rank { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--surface-2); color: var(--ink-2); font: 700 0.85rem var(--f-body); font-variant-numeric: tabular-nums; }
+.pd-1 .pd-rank { background: var(--btn); color: #fff; }
+.pd-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 600; }
+.pd-score { font: 600 1.25rem/1 var(--f-display); color: var(--ink); font-variant-numeric: tabular-nums; }
 .age-tabs.six { grid-template-columns: repeat(6, 1fr); }
 .age-tabs.six button { padding: 0 2px; font-size: 0.8rem; }
