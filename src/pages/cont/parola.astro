@@ -1,11 +1,12 @@
 ---
+import Loader from '../../components/Loader.astro';
 import Base from '../../layouts/Base.astro';
 import ResetForm from '../../islands/ResetForm';
 ---
 <Base title="Parolă uitată" crumbs={[{ href: '/cont', label: 'Cont' }]}>
   <section class="wrap narrow page">
     <ResetForm client:only="preact">
-      <div slot="fallback" class="card auth-card skeleton"></div>
+      <Loader slot="fallback" />
     </ResetForm>
   </section>
 </Base>

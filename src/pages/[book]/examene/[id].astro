@@ -1,4 +1,5 @@
 ---
+import Loader from '../../../components/Loader.astro';
 import Base from '../../../layouts/Base.astro';
 import ExamRunner from '../../../islands/ExamRunner';
 import { BOOKS, type Book } from '../../../lib/books';
@@ -15,7 +16,7 @@ const title = `${exam.title}, ${ageLabel(exam.age as AgeGroup)}`;
 <Base title={title} crumbs={[{ href: '/', label: 'Acasă' }, { href: `/${book.slug}`, label: book.name }, { href: `/${book.slug}/examene`, label: 'Examene' }]}>
   <section class="wrap narrow">
     <ExamRunner client:only="preact" book={book.slug} bookName={book.name} title={`${title} (${exam.year})`} examId={exam.id} questions={questions}>
-      <div slot="fallback" class="card auth-card skeleton"></div>
+      <Loader slot="fallback" />
     </ExamRunner>
   </section>
 </Base>

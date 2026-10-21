@@ -41,7 +41,11 @@ const fullTitle = title === 'Candela' ? title : `${title} · Candela`;
     <meta property="og:image" content={new URL('/og.png', Astro.site)} />
     <ClientRouter />
     <slot name="head" />
-    {import.meta.env.PROD && <script is:inline>if ('serviceWorker' in navigator) addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));</script>}
+    <script is:inline>
+      // no offline version any more: remove what an older visit installed
+      if ('serviceWorker' in navigator) navigator.serviceWorker.getRegistrations().then((rs) => rs.forEach((r) => r.unregister())).catch(() => {});
+      if (window.caches) caches.keys().then((ks) => ks.forEach((k) => caches.delete(k))).catch(() => {});
+    </script>
   </head>
   <body>
     <header class="top">

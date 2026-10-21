@@ -1,4 +1,5 @@
 ---
+import Loader from '../../components/Loader.astro';
 import Base from '../../layouts/Base.astro';
 import Board from '../../islands/Board';
 import { BOOKS, type Book } from '../../lib/books';
@@ -12,7 +13,7 @@ const { book } = Astro.props as { book: Book };
   <section class="wrap narrow page">
     <h1>Clasament</h1>
     <Board client:only="preact" book={book.slug}>
-      <div slot="fallback" class="card skeleton"></div>
+      <Loader slot="fallback" />
     </Board>
   </section>
 </Base>

@@ -1,4 +1,5 @@
 ---
+import Loader from './Loader.astro';
 import BookPanel from '../islands/BookPanel';
 import PlayerPicker from '../islands/PlayerPicker';
 import { BOOKS, type Book } from '../lib/books';
@@ -16,10 +17,9 @@ const books = BOOKS.map((b) => ({ slug: b.slug, name: b.name, titles: b.titles, 
 </section>
 
 <BookPanel client:only="preact" books={books} initial={book.slug}>
-  <section slot="fallback" class="wrap hb-chap"><div class="card hb-chapters"><div class="tiles-space"></div></div></section>
+  <Loader slot="fallback" />
 </BookPanel>
 
 <style>
   .hb-who:has(.picker) { padding-top: 10px; }
-  .tiles-space { min-height: 360px; }
 </style>

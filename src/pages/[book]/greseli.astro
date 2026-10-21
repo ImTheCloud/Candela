@@ -1,4 +1,5 @@
 ---
+import Loader from '../../components/Loader.astro';
 import Base from '../../layouts/Base.astro';
 import Mistakes from '../../islands/Mistakes';
 import { BOOKS, type Book } from '../../lib/books';
@@ -11,7 +12,7 @@ const { book } = Astro.props as { book: Book };
 <Base title="Greșelile mele" crumbs={[{ href: '/', label: 'Acasă' }, { href: `/${book.slug}`, label: book.name }]}>
   <section class="wrap narrow">
     <Mistakes client:only="preact" book={book.slug} bookName={book.name}>
-      <div slot="fallback" class="card auth-card skeleton"></div>
+      <Loader slot="fallback" />
     </Mistakes>
   </section>
 </Base>

@@ -2,22 +2,13 @@ import { useState } from 'preact/hooks';
 import { errorText, rememberedAccount, signIn, user } from '../lib/session';
 import PasswordInput from './PasswordInput';
 import Profile, { type BookInfo } from './Profile';
+import Loader from './Loader';
 
 export default function AccountPage({ books }: { books: BookInfo[] }) {
   const u = user.value;
-  if (u === undefined && !rememberedAccount) return <Skeleton />;
+  if (u === undefined && !rememberedAccount) return <Loader />;
   if (u === null) return <SignInForm />;
   return <Profile books={books} />;
-}
-
-/** Same shape as the page fallback in cont/index.astro. */
-function Skeleton() {
-  return (
-    <div class="me me-skeleton" aria-hidden="true">
-      <div class="me-id"><span class="sk sk-av" /><div class="sk-rows"><span class="sk" /><span class="sk" /></div></div>
-      <div class="sk-rows"><span class="sk sk-tall" /><span class="sk sk-tall" /></div>
-    </div>
-  );
 }
 
 function SignInForm() {
