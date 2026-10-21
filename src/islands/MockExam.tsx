@@ -3,6 +3,7 @@ import { loadChapters } from '../lib/load';
 import { level } from '../lib/level';
 import { shuffle, TYPES, type Playable, type QType } from '../lib/questions';
 import Quiz from './Quiz';
+import Loader from './Loader';
 
 interface Props {
   book: string;
@@ -43,5 +44,5 @@ export default function MockExam({ book, bookName, chapters }: Props) {
       backHref={`/${book}/examene`} onAgain={() => { setExam(null); build(); }} />;
   }
   if (error) return <p class="notice notice-bad" role="alert">{error}</p>;
-  return <div class="card auth-card skeleton" />;
+  return <Loader />;
 }

@@ -1,4 +1,5 @@
 ---
+import Loader from '../../../components/Loader.astro';
 import Base from '../../../layouts/Base.astro';
 import { BOOKS, type Book } from '../../../lib/books';
 import { exams, type ExamFile } from '../../../lib/content';
@@ -22,7 +23,7 @@ const { book, list } = Astro.props as { book: Book; list: ExamFile[] };
     <h1>Examene</h1>
 
     <MockStart client:only="preact" book={book.slug}>
-      <div slot="fallback" class="card mock-card skeleton"></div>
+      <Loader slot="fallback" />
     </MockStart>
 
     <h2>Examene date</h2>

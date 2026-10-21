@@ -4,6 +4,7 @@ import { progress } from '../lib/progress';
 import { shuffle, type Playable } from '../lib/questions';
 import { user } from '../lib/session';
 import Quiz from './Quiz';
+import Loader from './Loader';
 
 /** Questions answered wrong come back until they are answered right. */
 export default function Mistakes({ book, bookName }: { book: string; bookName: string }) {
@@ -32,7 +33,7 @@ export default function Mistakes({ book, bookName }: { book: string; bookName: s
     return <Quiz key={quiz.key} book={book} bookName={bookName} questions={quiz.questions} mode="practice"
       backHref={`/${book}`} onAgain={progress(book).value.wrong.length ? start : undefined} />;
   }
-  if (user.value === undefined) return <div class="card auth-card skeleton" />;
+  if (user.value === undefined) return <Loader />;
 
   return (
     <div class="setup">

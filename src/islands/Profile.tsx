@@ -7,6 +7,7 @@ import { deleteProgress, EMPTY, type Progress } from '../lib/progress';
 import { typeInfo, TYPES } from '../lib/questions';
 import { errorText, profile, profileError, rememberedAccount, setParent, signOut, user } from '../lib/session';
 import Avatar from './Avatar';
+import Loader from './Loader';
 
 export interface BookInfo { slug: string; name: string; chapters: number; totals: Record<string, number> }
 
@@ -191,7 +192,7 @@ function BookStats({ p, book }: { p: Player; book: BookInfo }) {
   return (
     <section class="bk">
       <h3>{book.name}</h3>
-      {!loaded ? <div class="sk-rows" aria-hidden="true"><span class="sk" /><span class="sk" /><span class="sk" /></div> : !started ? <p class="small muted">Nu a început încă.</p> : (
+      {!loaded ? <Loader small /> : !started ? <p class="small muted">Nu a început încă.</p> : (
         <dl class="kv">
           <div><dt>Întrebări știute</dt><dd>{d.mastered}</dd></div>
           {chapters > 0 && <div><dt>Capitole încercate</dt><dd>{chapters} / {book.chapters}</dd></div>}

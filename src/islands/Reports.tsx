@@ -2,11 +2,12 @@ import { useEffect, useState } from 'preact/hooks';
 import { BOOKS } from '../lib/books';
 import { REASONS, removeReport, setDone, watchReports, type Report } from '../lib/reports';
 import { errorText, profile, profileLoaded, user } from '../lib/session';
+import Loader from './Loader';
 
 /** The questions players flagged, for admins. */
 export default function Reports() {
   const u = user.value;
-  if (u === undefined || (u && !profileLoaded.value)) return <div class="card skeleton" style="height: 120px" />;
+  if (u === undefined || (u && !profileLoaded.value)) return <Loader />;
   if (!u) return <p class="notice">Intră în cont ca să vezi semnalările. <a class="link" href="/cont">Intră</a></p>;
   if (!profile.value?.admin) return <p class="notice">Această pagină este doar pentru cei care verifică întrebările.</p>;
   return <List />;
@@ -20,7 +21,7 @@ function List() {
   useEffect(() => watchReports(setReports, () => setFailed(true)), []);
 
   if (failed) return <p class="notice notice-bad">Semnalările nu au putut fi încărcate.</p>;
-  if (!reports) return <div class="card skeleton" style="height: 120px" />;
+  if (!reports) return <Loader />;
 
   const open = reports.filter((r) => !r.done);
   const done = reports.filter((r) => r.done);

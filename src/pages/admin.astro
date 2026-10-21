@@ -1,4 +1,5 @@
 ---
+import Loader from '../components/Loader.astro';
 import Base from '../layouts/Base.astro';
 import AdminPage from '../islands/AdminPage';
 ---
@@ -7,7 +8,7 @@ import AdminPage from '../islands/AdminPage';
     <h1>Administrare</h1>
     <a class="link" href="/semnalari">Semnalări de greșeli</a>
     <AdminPage client:only="preact">
-      <div slot="fallback" class="card skeleton"></div>
+      <Loader slot="fallback" />
     </AdminPage>
   </section>
 </Base>

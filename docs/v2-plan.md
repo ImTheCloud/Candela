@@ -15,7 +15,7 @@ Nouvelle application, construite sur la branche `v2`. `main` reste l'application
 | Navigation | Une vraie adresse par page, le bouton retour fonctionne, chaque chapitre ou question a un lien partageable. |
 | Mode invité | Oui : lire et jouer sans compte, la progression passe dans le compte à l'inscription. |
 | Mot de passe oublié | Email de réinitialisation de Firebase. Plus de page de mot de passe provisoire. |
-| Hors ligne | App installable, lecture et questions sans internet. |
+| Hors ligne | Supprimé (octobre 2026) : plus de service worker, tout vient du réseau ; un loader (la lampe) s'affiche tant qu'une page n'est pas prête. |
 
 ## Joueurs et âges
 

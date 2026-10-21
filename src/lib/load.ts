@@ -1,6 +1,6 @@
 import type { Playable } from './questions';
 
-// Chapter questions are fetched once per page and kept (they are also cached offline by the service worker).
+// Chapter questions are fetched once per page and kept.
 interface ChapterData { questions: Playable[]; verses: string[] }
 const cache = new Map<string, Promise<ChapterData>>();
 

@@ -1,4 +1,5 @@
 ---
+import Loader from '../components/Loader.astro';
 import Base from '../layouts/Base.astro';
 import Reports from '../islands/Reports';
 ---
@@ -7,7 +8,7 @@ import Reports from '../islands/Reports';
     <h1>Semnalări de greșeli</h1>
     <p class="muted">Întrebările pe care jucătorii le-au semnalat din teste. Corectează întrebarea, apoi marcheaz-o „Rezolvat".</p>
     <Reports client:only="preact">
-      <div slot="fallback" class="card skeleton"></div>
+      <Loader slot="fallback" />
     </Reports>
   </section>
 </Base>

@@ -7,6 +7,7 @@ import { bookHome } from '../lib/books';
 import { loadChapters } from '../lib/load';
 import LevelPicker from './LevelPicker';
 import Quiz from './Quiz';
+import Loader from './Loader';
 
 /** How many questions each chapter has, per age group and type (computed at build). */
 export type Summary = Record<number, Partial<Record<AgeGroup, Partial<Record<QType, number>>>>>;
@@ -77,7 +78,7 @@ export default function Practice({ book, bookName, chapters, summary }: Props) {
       scoreId={direct && chosen.length === 1 && count === 0 ? `c${chosen[0]}` : undefined} />;
   }
 
-  if (direct && chosen.length) return error ? <p class="notice notice-bad" role="alert">{error}</p> : <div class="card auth-card skeleton" />;
+  if (direct && chosen.length) return error ? <p class="notice notice-bad" role="alert">{error}</p> : <Loader />;
 
   return (
     <div class="setup">
