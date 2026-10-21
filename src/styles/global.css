@@ -346,3 +346,15 @@ a.tile { text-decoration: none; }
 .sk-rows { display: grid; gap: 10px; width: 100%; }
 .me-skeleton .me-id .sk-rows { justify-items: center; }
 .me-skeleton .me-id .sk { width: 60%; }
+
+/* Chapter menu: one card, a row per choice */
+.opt-card { background: var(--bg); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
+.oc-row { display: flex; align-items: center; gap: 12px; min-height: 64px; padding: 12px 16px; color: var(--ink); text-decoration: none; }
+.oc-row + .oc-row { border-top: 1px solid var(--line); }
+.oc-row:active { background: var(--surface-2); }
+.oc-ic { flex: none; display: grid; place-items: center; color: var(--oil-ink); }
+.oc-main { flex: 1; min-width: 0; display: grid; gap: 1px; }
+.oc-main b { font-weight: 600; }
+.oc-main small { font-size: 0.8rem; color: var(--ink-2); }
+.oc-go { flex: none; padding: 9px 18px; border-radius: 999px; background: var(--btn); color: #fff; font: 600 0.9rem var(--f-body); }
+.oc-chev { flex: none; color: var(--ink-3); }
