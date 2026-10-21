@@ -35,7 +35,7 @@ Nouvelle application, construite sur la branche `v2`. `main` reste l'application
 
 ## Format des examens réels (toutes les catégories)
 
-5 parties de 5 questions, 75 points, affichés sur 100 (pourcentage).
+5 parties de 5 questions. Points par question : 3, 4, 2 par paire, 5, 6 : un examen complet vaut exactement 100 (le papier réel compte 75 ; la version du site est ramenée à 100 pour éviter les fractions).
 
 | Partie | Type | Points |
 |---|---|---|

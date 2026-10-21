@@ -7,7 +7,7 @@ export default function AccountButton() {
   if (!u) {
     // The account pages already show the sign-in form.
     if (location.pathname.startsWith('/cont')) return <span class="account-placeholder" />;
-    return <a class="btn btn-ghost btn-sm" href="/cont">Intră în cont</a>;
+    return <a class="btn btn-ghost btn-sm" href="/cont" aria-label="Intră în cont">Intră</a>;
   }
   return (
     <a class="avatar" href="/cont" aria-label={`Contul meu (joacă ${player.value.name})`}>

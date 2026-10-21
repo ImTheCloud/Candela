@@ -56,7 +56,7 @@ function Dialog({ missing, self }: { missing: Player[]; self: string }) {
         <div class="stack" style="--gap: 8px">
           <h2 id="by-title">Încă un pas</h2>
           <p>
-            Întrebările de la examen sunt diferite pentru fiecare vârstă (sub 12 ani, 12–13, 14–15, 16–17 și 18+).{' '}
+            Întrebările de la examen sunt diferite pentru fiecare vârstă (sub 12 ani, 12–13, 14–15, 16–17 și 18–99).{' '}
             {missing.length > 1
               ? 'Ca fiecare să primească exact întrebările categoriei lui, avem nevoie de anul nașterii al fiecăruia.'
               : missing[0].child

@@ -34,7 +34,7 @@ export type Answer =
 export const TYPES: { t: QType; part: string; label: string; short: string; hint: string }[] = [
   { t: 'tf', part: 'I', label: 'Adevărat sau fals', short: 'Adevărat sau fals', hint: '' },
   { t: 'one', part: 'II', label: 'Un singur răspuns corect', short: 'Un răspuns', hint: '' },
-  { t: 'match', part: 'III', label: 'Asociază cele două coloane', short: 'Asociere', hint: 'Alege pentru fiecare rând litera potrivită.' },
+  { t: 'match', part: 'III', label: 'Asociază cele două coloane', short: 'Asociere', hint: 'Atinge un element din stânga, apoi perechea lui din dreapta.' },
   { t: 'fill', part: 'IV', label: 'Completează versetul', short: 'Completare', hint: 'Scrie cuvântul care lipsește din verset.' },
   { t: 'multi', part: 'V', label: 'Unul, mai multe sau niciunul', short: 'Mai multe răspunsuri', hint: 'Pot fi corecte unul, două, trei sau niciun răspuns.' },
 ];
@@ -43,14 +43,17 @@ export function typeInfo(t: QType) {
   return TYPES.find((x) => x.t === t)!;
 }
 
-/** Points of the real exam: 2, 3, 1 per pair, 4, 5 (75 in all, shown out of 100). */
+/**
+ * Points per question: 3, 4, 2 per pair, 5, 6. A full exam (5 + 5 + one matching of 5 pairs + 5 + 5)
+ * is worth exactly 100, so the score needs no conversion.
+ */
 export function maxPoints(q: Question): number {
   switch (q.t) {
-    case 'tf': return 2;
-    case 'one': return 3;
-    case 'match': return q.pairs.length;
-    case 'fill': return 4;
-    case 'multi': return 5;
+    case 'tf': return 3;
+    case 'one': return 4;
+    case 'match': return q.pairs.length * 2;
+    case 'fill': return 5;
+    case 'multi': return 6;
   }
 }
 
@@ -124,7 +127,7 @@ export function grade(q: Question, a: Answer): Grade {
   }
 }
 
-/** Score out of 100 from points, as on the corrected exams. */
+/** Score out of 100: the points themselves on a full exam, a share of them on a shorter test. */
 export function percent(points: number, max: number): number {
   return max ? Math.round((points / max) * 100) : 0;
 }

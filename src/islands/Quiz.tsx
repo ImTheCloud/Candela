@@ -210,7 +210,7 @@ function Results({ bookName, questions, answers, grades, mode, backHref, onAgain
         <dl class="score-stats">
           <div><dt>Corecte</dt><dd class="ok">{right}</dd></div>
           <div><dt>Greșite</dt><dd class="bad">{questions.length - right}</dd></div>
-          <div><dt>Puncte</dt><dd>{pts}/{max}</dd></div>
+          {max !== 100 && <div><dt>Puncte</dt><dd>{pts}/{max}</dd></div>}
         </dl>
         <div class="score-actions">
           {onAgain && <button class="btn btn-primary btn-block" onClick={onAgain}>{mode === 'exam' ? 'Reia examenul' : 'Încă un test'}</button>}
