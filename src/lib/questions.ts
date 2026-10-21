@@ -35,7 +35,7 @@ export const TYPES: { t: QType; part: string; label: string; short: string; hint
   { t: 'tf', part: 'I', label: 'Adevărat sau fals', short: 'Adevărat sau fals', hint: '' },
   { t: 'one', part: 'II', label: 'Un singur răspuns corect', short: 'Un răspuns', hint: '' },
   { t: 'match', part: 'III', label: 'Asociază cele două coloane', short: 'Asociere', hint: 'Alege pentru fiecare rând litera potrivită.' },
-  { t: 'fill', part: 'IV', label: 'Completează spațiile libere', short: 'Completare', hint: 'Scrie cuvintele care lipsesc din verset.' },
+  { t: 'fill', part: 'IV', label: 'Completează versetul', short: 'Completare', hint: 'Scrie cuvântul care lipsește din verset.' },
   { t: 'multi', part: 'V', label: 'Unul, mai multe sau niciunul', short: 'Mai multe răspunsuri', hint: 'Pot fi corecte unul, două, trei sau niciun răspuns.' },
 ];
 

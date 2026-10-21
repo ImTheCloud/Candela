@@ -1,6 +1,8 @@
 ---
 import Base from '../../../layouts/Base.astro';
 import ChapterSheet from '../../../components/ChapterSheet.astro';
+import ChapterMenu from '../../../islands/ChapterMenu';
+import { summary } from '../../../lib/content';
 import { BOOKS, type Book } from '../../../lib/books';
 import { getText } from '../../../lib/text';
 
@@ -23,6 +25,7 @@ const next = ch < book.chapters ? ch + 1 : null;
   <article class="wrap narrow reader" data-book={book.slug} data-ch={ch}>
     <header class="reader-head">
       <h1>Capitolul {ch}</h1>
+      <p class="reader-title">{book.titles[ch - 1]}</p>
       <p class="small muted">Atinge un verset ca să-l marchezi.</p>
     </header>
     <div class="text">
@@ -36,7 +39,9 @@ const next = ch < book.chapters ? ch + 1 : null;
         <span class="when-off">Am citit capitolul</span>
         <span class="when-on">Capitol citit</span>
       </button>
-      <a class="btn btn-ghost btn-block" href={`/${book.slug}/exersare?capitol=${ch}`}>Întrebări din capitolul {ch}</a>
+      <ChapterMenu client:only="preact" book={book.slug} titles={book.titles} summary={summary(book.slug)} single={ch}>
+        <a slot="fallback" class="btn btn-ghost btn-block" href={`/${book.slug}/exersare?capitol=${ch}&start=1`}>Întrebări din capitolul {ch}</a>
+      </ChapterMenu>
     </section>
   </article>
 
@@ -93,6 +98,7 @@ const next = ch < book.chapters ? ch + 1 : null;
 <style>
   .reader { padding-block: 8px 24px; }
   .reader-head { display: flex; flex-direction: column; gap: 4px; margin-bottom: 18px; }
+  .reader-title { font: 500 1.15rem/1.3 var(--f-display); color: var(--ink-2); }
   .text { font: 400 1.15rem/1.75 var(--f-bible); }
   .verse {
     margin: 0 -6px 2px; padding: 2px 6px; border-radius: 6px; cursor: pointer;

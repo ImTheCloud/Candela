@@ -1,7 +1,8 @@
-import { useState } from 'preact/hooks';
+import { useEffect, useState } from 'preact/hooks';
 import { AGE_GROUPS, ageGroup, ageLabel, validBirthYear, type AgeGroup } from '../lib/age';
 import { player, setGuestBirthYear, GUEST } from '../lib/players';
 import { shuffle, TYPES, type Playable, type QType } from '../lib/questions';
+import { bookHome } from '../lib/books';
 import { loadChapters } from '../lib/load';
 import Quiz from './Quiz';
 import '../styles/quiz.css';
@@ -26,8 +27,10 @@ export default function Practice({ book, bookName, chapters, summary }: Props) {
     return c && summary[c] ? [c] : [];
   });
   const [type, setType] = useState<QType>('tf');
-  const [harder, setHarder] = useState(false);
-  const [count, setCount] = useState(10);
+  // from a chapter's menu: ?capitol=5&start=1[&nivel=greu] starts the whole chapter test at once
+  const direct = params.get('start') === '1' && !byType;
+  const [harder, setHarder] = useState(params.get('nivel') === 'greu');
+  const [count, setCount] = useState(direct ? 0 : 10);
   const [quiz, setQuiz] = useState<{ key: number; questions: Playable[] } | null>(null);
   const [error, setError] = useState('');
   const [busy, setBusy] = useState(false);
@@ -61,14 +64,19 @@ export default function Practice({ book, bookName, chapters, summary }: Props) {
     }
   }
 
+  useEffect(() => {
+    if (direct && level && chosen.length && !quiz && !busy) start();
+  }, [level]);
+
   const toggle = (c: number) => setPicked(picked.includes(c) ? picked.filter((x) => x !== c) : [...picked, c]);
 
   if (quiz) {
     return <Quiz key={quiz.key} book={book} bookName={bookName} questions={quiz.questions} mode="practice"
-      backHref={`/${book}`} onAgain={() => start()} />;
+      backHref={bookHome(book)} onAgain={() => start()} />;
   }
 
   if (!own) return <AskAge />;
+  if (direct && chosen.length) return error ? <p class="notice notice-bad" role="alert">{error}</p> : <div class="card auth-card skeleton" />;
 
   return (
     <div class="setup">

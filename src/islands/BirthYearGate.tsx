@@ -23,7 +23,7 @@ function Dialog({ missing, self }: { missing: Player[]; self: string }) {
 
   // nothing else on the page can be used until the years are in
   useEffect(() => {
-    const behind = [...document.querySelectorAll<HTMLElement>('body > header, body > main, body > footer')];
+    const behind = [...document.querySelectorAll<HTMLElement>('body > header, body > main')];
     document.body.style.overflow = 'hidden';
     behind.forEach((el) => { el.inert = true; });
     return () => {
