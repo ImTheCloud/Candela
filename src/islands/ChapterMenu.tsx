@@ -25,7 +25,6 @@ export default function ChapterMenu({ book, titles, summary, examsHref }: Props)
   const [open, setOpen] = useState<number | null>(null);
   const prog = progress(book).value;
   const entry = (ch: number) => prog.exams[`c${ch}`];
-  const hasScores = Object.keys(prog.exams).some((id) => /^c\d+$/.test(id));
 
   const sheet = open !== null && (
     <Sheet book={book} ch={open} title={titles[open - 1]} total={count(summary[open]?.[level.value])} best={labelFor(entry(open))}
@@ -40,7 +39,7 @@ export default function ChapterMenu({ book, titles, summary, examsHref }: Props)
           const ch = k + 1;
           const e = entry(ch);
           const label = labelFor(e);
-          const full = e ? (e.bestRight !== undefined && e.n ? e.bestRight === e.n : e.best === 100) : false;
+          const full = !!e && e.bestRight !== undefined && e.bestRight === e.n;
           return (
             <li>
               <button type="button" class={`tile${full ? ' is-full' : ''}`} onClick={() => setOpen(ch)}
@@ -60,7 +59,6 @@ export default function ChapterMenu({ book, titles, summary, examsHref }: Props)
           </li>
         )}
       </ol>
-      {hasScores && <p class="small muted">Sub număr: cel mai bun scor din capitol</p>}
       {sheet}
     </>
   );
@@ -146,10 +144,9 @@ function Chev() {
 
 type Entry = Progress['exams'][string] | undefined;
 
-/** "4/21" for a chapter test (older entries only know a percentage). */
+/** "4/21" for a chapter test. Entries from before the count was kept have only a percentage and show nothing until the test is played again. */
 function labelFor(e: Entry): string | undefined {
-  if (!e) return undefined;
-  return e.bestRight !== undefined && e.n ? `${e.bestRight}/${e.n}` : `${e.best}%`;
+  return e && e.bestRight !== undefined && e.n ? `${e.bestRight}/${e.n}` : undefined;
 }
 
 /** The exam tile takes what is left of the last row of the 6-column grid. */
