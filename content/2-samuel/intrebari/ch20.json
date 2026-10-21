@@ -3,204 +3,231 @@
  "reviewed": false,
  "questions": [
   {
-   "id": "2sa.20.sub12.1",
+   "id": "2sa.20.sub12.101",
    "age": "sub12",
    "t": "tf",
    "ref": "20:1",
-   "q": "Șeba, fiul lui Bicri, a sunat din trâmbiță și i-a îndemnat pe israeliți să se depărteze de David.",
+   "q": "Șeba a sunat din trâmbiță.",
    "a": true
   },
   {
-   "id": "2sa.20.sub12.2",
+   "id": "2sa.20.sub12.102",
    "age": "sub12",
    "t": "tf",
    "ref": "20:2",
-   "q": "Bărbații lui Iuda l-au părăsit pe David și l-au urmat pe Șeba.",
-   "a": false,
-   "explain": "Bărbații lui Iuda au rămas credincioși împăratului lor (20:2)."
+   "q": "Bărbații lui Iuda au rămas credincioși lui David.",
+   "a": true
   },
   {
-   "id": "2sa.20.sub12.3",
+   "id": "2sa.20.sub12.103",
    "age": "sub12",
    "t": "tf",
    "ref": "20:16",
-   "q": "O femeie înțeleaptă din cetatea Abel-Bet-Maaca a strigat să vorbească cu Ioab.",
+   "q": "O femeie înțeleaptă a strigat din cetate.",
    "a": true
   },
   {
-   "id": "2sa.20.sub12.16",
+   "id": "2sa.20.sub12.104",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "20:1",
+   "q": "Șeba era prieten credincios al lui David.",
+   "a": false
+  },
+  {
+   "id": "2sa.20.sub12.105",
    "age": "sub12",
    "t": "tf",
    "ref": "20:23",
-   "q": "Ioab era mai-mare peste toată oștirea lui Israel.",
-   "a": true
+   "q": "Ioab era slujitor la cuptor.",
+   "a": false
   },
   {
-   "id": "2sa.20.sub12.17",
+   "id": "2sa.20.sub12.106",
    "age": "sub12",
-   "t": "tf",
+   "t": "one",
+   "ref": "20:1",
+   "q": "Cine a sunat din trâmbiță?",
+   "opts": [
+    "Șeba",
+    "Ioab",
+    "Benaia"
+   ],
+   "a": 0
+  },
+  {
+   "id": "2sa.20.sub12.107",
+   "age": "sub12",
+   "t": "one",
+   "ref": "20:16",
+   "q": "Cine a strigat din cetate?",
+   "opts": [
+    "un copil",
+    "un soldat",
+    "o femeie înțeleaptă"
+   ],
+   "a": 2
+  },
+  {
+   "id": "2sa.20.sub12.108",
+   "age": "sub12",
+   "t": "one",
+   "ref": "20:17",
+   "q": "Cu cine a vorbit femeia?",
+   "opts": [
+    "cu Hiram",
+    "cu Ioab",
+    "cu Natan"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.20.sub12.109",
+   "age": "sub12",
+   "t": "one",
    "ref": "20:2",
-   "q": "Toți bărbații lui Israel au rămas credincioși lui David.",
-   "a": false,
-   "explain": "Au urmat pe Șeba; numai bărbații lui Iuda au rămas credincioși."
-  },
-  {
-   "id": "2sa.20.sub12.4",
-   "age": "sub12",
-   "t": "one",
-   "ref": "20:1",
-   "q": "Cine s-a răsculat împotriva lui David după întoarcerea lui la Ierusalim?",
+   "q": "Cine a rămas credincios lui David?",
    "opts": [
-    "Absalom",
-    "Ahitofel",
-    "Șeba, fiul lui Bicri"
+    "filistenii",
+    "bărbații lui Israel",
+    "bărbații lui Iuda"
    ],
    "a": 2
   },
   {
-   "id": "2sa.20.sub12.5",
+   "id": "2sa.20.sub12.110",
    "age": "sub12",
    "t": "one",
-   "ref": "20:15",
-   "q": "În ce cetate l-a împresurat Ioab pe Șeba?",
+   "ref": "20:23",
+   "q": "Cine era mai-mare peste oștire?",
    "opts": [
-    "Gabaon",
-    "Abel-Bet-Maaca",
-    "Ierihon"
-   ],
-   "a": 1
-  },
-  {
-   "id": "2sa.20.sub12.6",
-   "age": "sub12",
-   "t": "one",
-   "ref": "20:22",
-   "q": "Cum s-a încheiat răscoala lui Șeba?",
-   "opts": [
-    "Șeba a fugit în Egipt",
-    "locuitorii cetății i-au tăiat capul și l-au aruncat lui Ioab",
-    "Șeba s-a predat lui David"
-   ],
-   "a": 1
-  },
-  {
-   "id": "2sa.20.sub12.18",
-   "age": "sub12",
-   "t": "one",
-   "ref": "20:6",
-   "q": "Pe cine a trimis David să-l urmărească pe Șeba?",
-   "opts": [
-    "pe Țadoc",
-    "pe Amasa",
-    "pe Abișai"
+    "Adoram",
+    "Șeia",
+    "Ioab"
    ],
    "a": 2
   },
   {
-   "id": "2sa.20.sub12.19",
-   "age": "sub12",
-   "t": "one",
-   "ref": "20:1",
-   "q": "Din ce seminție era Șeba, fiul lui Bicri?",
-   "opts": [
-    "din Iuda",
-    "din Beniamin",
-    "din Efraim"
-   ],
-   "a": 1
-  },
-  {
-   "id": "2sa.20.sub12.24",
+   "id": "2sa.20.sub12.121",
    "age": "sub12",
    "t": "match",
-   "ref": "20:1-23",
-   "q": "Asociază fiecare nume sau loc cu ce se spune despre el.",
+   "ref": "20:1-26",
+   "q": "Asociază fiecare nume sau lucru cu ce se spune despre el în capitol.",
    "pairs": [
     [
      "Șeba",
-     "cel care a sunat din trâmbiță și a stârnit pe Israel"
-    ],
-    [
-     "Abișai",
-     "cel trimis de David să-l urmărească pe Șeba"
+     "cel care a sunat din trâmbiță"
     ],
     [
      "Ioab",
-     "mai-mare peste toată oștirea"
-    ],
-    [
-     "Abel-Bet-Maaca",
-     "cetatea unde s-a închis Șeba"
+     "căpetenia oștirii"
     ],
     [
      "femeia înțeleaptă",
-     "cea care a vorbit cu Ioab din cetate"
+     "cea care a strigat din cetate"
+    ],
+    [
+     "Țadoc",
+     "preot"
+    ],
+    [
+     "David",
+     "împăratul care s-a întors la Ierusalim"
     ]
    ]
   },
   {
-   "id": "2sa.20.sub12.10",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "20:16",
-   "a": [
-    "Ioab"
-   ],
-   "q": "„Ascultați, ascultați! Spuneți, vă rog, lui ___: ‘Apropie-te până aici, căci vreau să-ți vorbesc!’\"",
-   "ctx": "O femeie înțeleaptă, din cetatea Abel-Bet-Maaca:"
-  },
-  {
-   "id": "2sa.20.sub12.11",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "20:22",
-   "a": [
-    "înțelepciunea"
-   ],
-   "q": "Și femeia s-a dus și a înduplecat pe tot poporul cu ___ ei;",
-   "ctx": "Femeia din Abel-Bet-Maaca, după ce a vorbit cu Ioab:"
-  },
-  {
-   "id": "2sa.20.sub12.12",
+   "id": "2sa.20.sub12.111",
    "age": "sub12",
    "t": "fill",
    "ref": "20:1",
+   "q": "Acolo era un om de nimic, numit ___",
    "a": [
-    "Isai"
-   ],
-   "q": "„Noi n-avem nicio parte cu David, nicio moștenire cu fiul lui ___!",
-   "ctx": "Șeba, fiul lui Bicri, când s-a răsculat:"
+    "Șeba"
+   ]
   },
   {
-   "id": "2sa.20.sub12.20",
+   "id": "2sa.20.sub12.112",
    "age": "sub12",
    "t": "fill",
    "ref": "20:1",
-   "q": "El a sunat din ___ și a zis",
+   "q": "El a sunat din ___",
    "a": [
     "trâmbiță"
    ]
   },
   {
-   "id": "2sa.20.sub12.21",
+   "id": "2sa.20.sub12.113",
    "age": "sub12",
    "t": "fill",
-   "ref": "20:2",
-   "q": "Dar bărbații lui Iuda au rămas ___ împăratului lor",
+   "ref": "20:16",
+   "q": "o femeie înțeleaptă a început să strige din ___",
    "a": [
-    "credincioși"
+    "cetate"
    ]
   },
   {
-   "id": "2sa.20.sub12.13",
+   "id": "2sa.20.sub12.114",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "20:23",
+   "q": "Ioab era mai-mare peste toată ___ lui Israel",
+   "a": [
+    "oștirea"
+   ]
+  },
+  {
+   "id": "2sa.20.sub12.115",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "20:25",
+   "q": "Țadoc și Abiatar erau ___",
+   "a": [
+    "preoți"
+   ]
+  },
+  {
+   "id": "2sa.20.sub12.116",
    "age": "sub12",
    "t": "multi",
-   "ref": "20:15",
-   "q": "Ce au făcut oamenii lui Ioab la Abel-Bet-Maaca?",
+   "ref": "20:25",
+   "q": "Cine erau preoți?",
    "opts": [
-    "au săpat zidul",
-    "au împresurat cetatea",
-    "au ars porțile"
+    "Ioab",
+    "Abiatar",
+    "Țadoc"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "2sa.20.sub12.117",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "20:16-17",
+   "q": "Ce a făcut femeia?",
+   "opts": [
+    "a strigat din cetate",
+    "a fugit",
+    "a vorbit cu Ioab"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "2sa.20.sub12.118",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "20:2",
+   "q": "Ce au făcut bărbații lui Israel?",
+   "opts": [
+    "au urmat pe Șeba",
+    "s-au depărtat de David",
+    "au rămas cu David"
    ],
    "a": [
     0,
@@ -208,64 +235,35 @@
    ]
   },
   {
-   "id": "2sa.20.sub12.14",
+   "id": "2sa.20.sub12.119",
    "age": "sub12",
    "t": "multi",
-   "ref": "20:2",
-   "q": "Cine l-au însoțit pe David de la Iordan până la Ierusalim?",
+   "ref": "20:3",
+   "q": "Ce a făcut David?",
    "opts": [
-    "bărbații lui Iuda",
-    "filistenii",
-    "bărbații lui Israel"
+    "a plecat la Hebron",
+    "s-a întors la Ierusalim",
+    "a intrat în casa lui"
    ],
    "a": [
-    0
-   ]
-  },
-  {
-   "id": "2sa.20.sub12.15",
-   "age": "sub12",
-   "t": "multi",
-   "ref": "20:21",
-   "q": "Din ce munte era Șeba, fiul lui Bicri?",
-   "opts": [
-    "din muntele Sionului",
-    "din muntele Ghilboa",
-    "din muntele Carmel"
-   ],
-   "a": [],
-   "explain": "Niciun răspuns corect: Șeba era „un om din muntele lui Efraim\" (20:21)."
-  },
-  {
-   "id": "2sa.20.sub12.22",
-   "age": "sub12",
-   "t": "multi",
-   "ref": "20:16-17",
-   "q": "Ce a făcut femeia înțeleaptă din cetate?",
-   "opts": [
-    "a vrut să vorbească cu Ioab",
-    "a deschis poarta lui Ioab",
-    "a strigat din cetate"
-   ],
-   "a": [
-    0,
+    1,
     2
    ]
   },
   {
-   "id": "2sa.20.sub12.23",
+   "id": "2sa.20.sub12.120",
    "age": "sub12",
    "t": "multi",
    "ref": "20:22",
-   "q": "Ce s-a întâmplat după sfârșitul răscoalei?",
+   "q": "Ce a făcut femeia cu poporul?",
    "opts": [
-    "Ioab a sunat din trâmbiță",
-    "Ioab a dărâmat cetatea",
-    "oamenii s-au împrăștiat, fiecare în cortul lui"
+    "l-a înduplecat cu înțelepciunea ei",
+    "a salvat cetatea",
+    "a luptat cu sabia"
    ],
    "a": [
     0,
-    2
+    1
    ]
   },
   {

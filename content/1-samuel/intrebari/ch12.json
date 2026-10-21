@@ -3,270 +3,266 @@
  "reviewed": false,
  "questions": [
   {
-   "id": "1sa.12.sub12.1",
+   "id": "1sa.12.sub12.101",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "12:1",
+   "q": "Samuel a pus un împărat peste Israel.",
+   "a": true
+  },
+  {
+   "id": "1sa.12.sub12.102",
    "age": "sub12",
    "t": "tf",
    "ref": "12:2",
-   "q": "În cuvântarea lui, după ungerea lui Saul, Samuel spune că este bătrân și a albit.",
+   "q": "Samuel era bătrân.",
    "a": true
   },
   {
-   "id": "1sa.12.sub12.2",
+   "id": "1sa.12.sub12.103",
    "age": "sub12",
    "t": "tf",
    "ref": "12:18",
-   "q": "Când Samuel a strigat către Domnul, Domnul a trimis tunete și ploaie.",
+   "q": "Domnul a trimis tunete și ploaie.",
    "a": true
   },
   {
-   "id": "1sa.12.sub12.3",
+   "id": "1sa.12.sub12.104",
    "age": "sub12",
    "t": "tf",
-   "ref": "12:4",
-   "q": "Poporul a spus că Samuel le-a luat boii și măgarii.",
-   "a": false,
-   "explain": "Ei au răspuns: „Nu ne-ai apăsat, nu ne-ai năpăstuit și nici n-ai primit nimic din mâna nimănui\" (12:4)."
+   "ref": "12:18",
+   "q": "Poporul nu s-a speriat deloc.",
+   "a": false
   },
   {
-   "id": "1sa.12.sub12.16",
+   "id": "1sa.12.sub12.105",
    "age": "sub12",
    "t": "tf",
-   "ref": "12:6",
-   "q": "Samuel a spus că Domnul i-a pus pe Moise și pe Aaron să scoată pe părinți din Egipt.",
-   "a": true
+   "ref": "12:23",
+   "q": "Samuel a spus că nu se va mai ruga pentru popor.",
+   "a": false
   },
   {
-   "id": "1sa.12.sub12.17",
-   "age": "sub12",
-   "t": "tf",
-   "ref": "12:22",
-   "q": "Samuel a spus că Domnul va părăsi poporul Lui din pricina Numelui Său.",
-   "a": false,
-   "explain": "A spus că Domnul nu va părăsi poporul Lui."
-  },
-  {
-   "id": "1sa.12.sub12.4",
+   "id": "1sa.12.sub12.106",
    "age": "sub12",
    "t": "one",
-   "ref": "12:17",
-   "q": "Ce a trimis Domnul, la cererea lui Samuel, în vremea seceratului grânelor?",
+   "ref": "12:18",
+   "q": "Ce a trimis Domnul când a strigat Samuel?",
    "opts": [
-    "tunete și ploaie",
-    "lăcuste",
-    "zăpadă"
+    "zăpadă",
+    "foc",
+    "tunete și ploaie"
    ],
-   "a": 0
+   "a": 2
   },
   {
-   "id": "1sa.12.sub12.5",
+   "id": "1sa.12.sub12.107",
    "age": "sub12",
    "t": "one",
    "ref": "12:23",
-   "q": "Ce spune Samuel că nu va înceta să facă pentru popor?",
+   "q": "Ce a spus Samuel că nu va înceta?",
    "opts": [
-    "să le judece pricinile",
-    "să le aducă jertfe",
+    "să doarmă",
+    "să cânte",
     "să se roage pentru ei"
    ],
    "a": 2
   },
   {
-   "id": "1sa.12.sub12.6",
+   "id": "1sa.12.sub12.108",
    "age": "sub12",
    "t": "one",
-   "ref": "12:6",
-   "q": "Pe cine a pus Domnul ca să-i scoată pe părinții lui Israel din Egipt?",
+   "ref": "12:2",
+   "q": "Cum era Samuel?",
    "opts": [
-    "pe Iosua și Caleb",
-    "pe Moise și pe Aaron",
-    "pe Avraam și Isaac"
-   ],
-   "a": 1
-  },
-  {
-   "id": "1sa.12.sub12.18",
-   "age": "sub12",
-   "t": "one",
-   "ref": "12:19",
-   "q": "Ce i-a cerut poporul lui Samuel, după tunete și ploaie?",
-   "opts": [
-    "să plece din țară",
-    "să-l alunge pe Saul",
-    "să se roage Domnului pentru ei"
+    "tânăr",
+    "copil",
+    "bătrân"
    ],
    "a": 2
   },
   {
-   "id": "1sa.12.sub12.19",
+   "id": "1sa.12.sub12.109",
    "age": "sub12",
    "t": "one",
-   "ref": "12:11",
-   "q": "Pe cine a trimis Domnul ca izbăvitor, pe lângă Iefta și Samuel?",
+   "ref": "12:19",
+   "q": "Ce i-a cerut poporul lui Samuel?",
    "opts": [
-    "pe Goliat",
-    "pe Barac",
-    "pe Nahaș"
+    "să tacă",
+    "să se roage pentru ei",
+    "să plece"
    ],
    "a": 1
   },
   {
-   "id": "1sa.12.sub12.24",
+   "id": "1sa.12.sub12.110",
+   "age": "sub12",
+   "t": "one",
+   "ref": "12:6",
+   "q": "Din ce țară i-a scos Domnul pe părinții lor?",
+   "opts": [
+    "din Egipt",
+    "din Roma",
+    "din Franța"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.12.sub12.121",
    "age": "sub12",
    "t": "match",
-   "ref": "12:1-18",
-   "q": "Asociază fiecare nume sau lucru cu ce se spune despre el.",
+   "ref": "12:1-25",
+   "q": "Asociază fiecare nume sau lucru cu ce se spune despre el în capitol.",
    "pairs": [
     [
      "Samuel",
-     "cel care spune că este bătrân și a albit"
-    ],
-    [
-     "Moise și Aaron",
-     "cei care au scos pe părinți din Egipt"
-    ],
-    [
-     "Nahaș",
-     "împăratul fiilor lui Amon"
-    ],
-    [
-     "tunetele și ploaia",
-     "ce a trimis Domnul la seceratul grânelor"
+     "bătrânul care a vorbit poporului"
     ],
     [
      "Domnul",
-     "Împăratul adevărat al poporului"
+     "a trimis tunete și ploaie"
+    ],
+    [
+     "poporul",
+     "s-a temut și a cerut rugăciune"
+    ],
+    [
+     "împăratul",
+     "cel pus peste Israel"
+    ],
+    [
+     "Moise și Aaron",
+     "i-au scos pe părinți din Egipt"
     ]
    ]
   },
   {
-   "id": "1sa.12.sub12.10",
+   "id": "1sa.12.sub12.111",
    "age": "sub12",
    "t": "fill",
    "ref": "12:18",
+   "q": "Domnul a trimis chiar în ziua aceea tunete și ___.",
    "a": [
     "ploaie"
-   ],
-   "q": "Samuel a strigat către Domnul, și Domnul a trimis chiar în ziua aceea tunete și ___.",
-   "ctx": "Minunea din vremea seceratului grânelor:"
-  },
-  {
-   "id": "1sa.12.sub12.11",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "12:24",
-   "a": [
-    "inima"
-   ],
-   "q": "Temeți-vă numai de Domnul și slujiți-I cu credincioșie, din toată ___ voastră,",
-   "ctx": "Samuel, către tot Israelul:"
-  },
-  {
-   "id": "1sa.12.sub12.12",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "12:20",
-   "a": [
-    "temeți"
-   ],
-   "q": "Samuel a zis poporului: „Nu vă ___!",
-   "ctx": "După ce poporul s-a speriat de tunete și ploaie:"
-  },
-  {
-   "id": "1sa.12.sub12.20",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "12:18",
-   "q": "Tot poporul a avut o mare frică de Domnul și de ___.",
-   "a": [
-    "Samuel"
    ]
   },
   {
-   "id": "1sa.12.sub12.21",
+   "id": "1sa.12.sub12.112",
    "age": "sub12",
    "t": "fill",
-   "ref": "12:13",
-   "q": "iată că Domnul a pus un împărat peste ___.",
+   "ref": "12:23",
+   "q": "încetând să mă rog pentru ___!",
    "a": [
     "voi"
    ]
   },
   {
-   "id": "1sa.12.sub12.13",
+   "id": "1sa.12.sub12.113",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "12:20",
+   "q": "Nu vă ___!",
+   "a": [
+    "temeți"
+   ]
+  },
+  {
+   "id": "1sa.12.sub12.114",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "12:2",
+   "q": "Cât despre mine, eu sunt ___",
+   "a": [
+    "bătrân"
+   ]
+  },
+  {
+   "id": "1sa.12.sub12.115",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "12:1",
+   "q": "am pus un ___ peste voi.",
+   "a": [
+    "împărat"
+   ]
+  },
+  {
+   "id": "1sa.12.sub12.116",
    "age": "sub12",
    "t": "multi",
-   "ref": "12:3",
-   "q": "Ce a întrebat Samuel poporul?",
+   "ref": "12:17-18",
+   "q": "Ce a trimis Domnul?",
    "opts": [
-    "„De la cine am luat mită?\"",
-    "„Cui i-am luat măgarul?\"",
-    "„Cui i-am luat boul?\""
+    "tunete",
+    "zăpadă",
+    "ploaie"
    ],
    "a": [
     0,
-    1,
     2
    ]
   },
   {
-   "id": "1sa.12.sub12.14",
-   "age": "sub12",
-   "t": "multi",
-   "ref": "12:24",
-   "q": "Cum le cere Samuel să-I slujească Domnului?",
-   "opts": [
-    "din toată inima",
-    "cu frică de împărat",
-    "cu credincioșie"
-   ],
-   "a": [
-    0,
-    2
-   ]
-  },
-  {
-   "id": "1sa.12.sub12.15",
-   "age": "sub12",
-   "t": "multi",
-   "ref": "12:12",
-   "q": "Ce împărat al fiilor lui Amon pomenește Samuel?",
-   "opts": [
-    "Hanun",
-    "Agag",
-    "Achiș"
-   ],
-   "a": [],
-   "explain": "Niciun răspuns corect: Nahaș, împăratul fiilor lui Amon (12:12)."
-  },
-  {
-   "id": "1sa.12.sub12.22",
+   "id": "1sa.12.sub12.117",
    "age": "sub12",
    "t": "multi",
    "ref": "12:18",
-   "q": "Ce s-a întâmplat în ziua aceea?",
+   "q": "Ce a simțit poporul?",
    "opts": [
-    "poporul a avut mare frică de Domnul și de Samuel",
-    "Domnul a trimis tunete și ploaie",
-    "a căzut zăpadă"
+    "frică de Samuel",
+    "nicio grijă",
+    "frică de Domnul"
    ],
    "a": [
     0,
-    1
+    2
    ]
   },
   {
-   "id": "1sa.12.sub12.23",
+   "id": "1sa.12.sub12.118",
    "age": "sub12",
    "t": "multi",
    "ref": "12:20",
-   "q": "Ce a spus Samuel poporului?",
+   "q": "Ce a spus Samuel?",
    "opts": [
-    "„Părăsiți-L pe Domnul”",
-    "„Slujiți Domnului din toată inima voastră”",
-    "„Nu vă temeți!”"
+    "„Slujiți altor dumnezei”",
+    "„Nu vă temeți!”",
+    "„Slujiți Domnului din toată inima”"
    ],
    "a": [
     1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.12.sub12.119",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "12:23",
+   "q": "Ce a promis Samuel?",
+   "opts": [
+    "să-i părăsească",
+    "să-i învețe calea cea bună",
+    "să se roage pentru ei"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.12.sub12.120",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "12:6",
+   "q": "Pe cine a trimis Domnul să scoată poporul din Egipt?",
+   "opts": [
+    "Aaron",
+    "Samuel",
+    "Moise"
+   ],
+   "a": [
+    0,
     2
    ]
   },

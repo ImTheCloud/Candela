@@ -3,204 +3,199 @@
  "reviewed": false,
  "questions": [
   {
-   "id": "2sa.12.sub12.1",
+   "id": "2sa.12.sub12.101",
    "age": "sub12",
    "t": "tf",
    "ref": "12:1",
-   "q": "După fapta lui David cu Urie, Domnul l-a trimis pe prorocul Natan la David.",
+   "q": "Domnul a trimis pe Natan la David.",
    "a": true
   },
   {
-   "id": "2sa.12.sub12.2",
+   "id": "2sa.12.sub12.102",
    "age": "sub12",
    "t": "tf",
    "ref": "12:3",
-   "q": "În pilda lui Natan, omul sărac avea foarte multe oi și boi.",
-   "a": false,
-   "explain": "Săracul n-avea nimic decât o mielușea (12:3)."
+   "q": "Săracul din poveste avea o mielușea.",
+   "a": true
   },
   {
-   "id": "2sa.12.sub12.3",
+   "id": "2sa.12.sub12.103",
    "age": "sub12",
    "t": "tf",
    "ref": "12:13",
-   "q": "David i-a spus lui Natan: „Am păcătuit împotriva Domnului!\"",
+   "q": "David a recunoscut: „Am păcătuit împotriva Domnului!\"",
    "a": true
   },
   {
-   "id": "2sa.12.sub12.16",
+   "id": "2sa.12.sub12.104",
    "age": "sub12",
    "t": "tf",
-   "ref": "12:16",
-   "q": "David s-a rugat lui Dumnezeu pentru copil și a postit.",
-   "a": true
+   "ref": "12:2",
+   "q": "Bogatul din poveste avea o singură oaie.",
+   "a": false
   },
   {
-   "id": "2sa.12.sub12.17",
+   "id": "2sa.12.sub12.105",
    "age": "sub12",
    "t": "tf",
-   "ref": "12:24",
-   "q": "Fiul născut după aceea lui David și Bat-Șebei s-a numit Absalom.",
-   "a": false,
-   "explain": "S-a numit Solomon."
+   "ref": "12:18",
+   "q": "Copilul s-a făcut sănătos.",
+   "a": false
   },
   {
-   "id": "2sa.12.sub12.4",
+   "id": "2sa.12.sub12.106",
    "age": "sub12",
    "t": "one",
-   "ref": "12:7",
-   "q": "Ce i-a spus Natan lui David, după ce David s-a mâniat pe omul bogat din pildă?",
+   "ref": "12:1",
+   "q": "Cine a venit la David cu o poveste?",
    "opts": [
-    "„Omul acela va muri!\"",
-    "„Tu ești omul acesta!\"",
-    "„Tu ești nevinovat!\""
+    "Ioab",
+    "Natan",
+    "Urie"
    ],
    "a": 1
   },
   {
-   "id": "2sa.12.sub12.5",
+   "id": "2sa.12.sub12.107",
    "age": "sub12",
    "t": "one",
-   "ref": "12:24",
-   "q": "Cum se numea fiul născut de Bat-Șeba, care a fost iubit de Domnul?",
+   "ref": "12:3",
+   "q": "Ce avea săracul?",
    "opts": [
-    "Solomon",
-    "Natan",
-    "Absalom"
+    "o mielușea",
+    "o turmă",
+    "un bou"
    ],
    "a": 0
   },
   {
-   "id": "2sa.12.sub12.6",
+   "id": "2sa.12.sub12.108",
    "age": "sub12",
    "t": "one",
-   "ref": "12:3",
-   "q": "Ce avea omul sărac din pilda lui Natan?",
+   "ref": "12:7",
+   "q": "Ce i-a spus Natan lui David?",
    "opts": [
-    "o capră",
-    "un vițel",
-    "o mielușea"
+    "Ești un păstor bun",
+    "Tu ești omul acesta!",
+    "Pleacă de aici"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.12.sub12.109",
+   "age": "sub12",
+   "t": "one",
+   "ref": "12:13",
+   "q": "Ce a spus David?",
+   "opts": [
+    "N-am făcut nimic",
+    "Nu e vina mea",
+    "Am păcătuit împotriva Domnului"
    ],
    "a": 2
   },
   {
-   "id": "2sa.12.sub12.18",
+   "id": "2sa.12.sub12.110",
    "age": "sub12",
    "t": "one",
-   "ref": "12:1",
-   "q": "Cine l-a trimis pe Natan la David?",
+   "ref": "12:24",
+   "q": "Cum a numit David al doilea fiu al său și al Bat-Șebei?",
    "opts": [
-    "Domnul",
-    "Bat-Șeba",
-    "Ioab"
+    "Amnon",
+    "Solomon",
+    "Absalom"
    ],
-   "a": 0
+   "a": 1
   },
   {
-   "id": "2sa.12.sub12.19",
-   "age": "sub12",
-   "t": "one",
-   "ref": "12:2",
-   "q": "Ce avea omul bogat din pilda lui Natan?",
-   "opts": [
-    "foarte multe oi și foarte mulți boi",
-    "o singură mielușea",
-    "o cămilă"
-   ],
-   "a": 0
-  },
-  {
-   "id": "2sa.12.sub12.24",
+   "id": "2sa.12.sub12.121",
    "age": "sub12",
    "t": "match",
-   "ref": "12:1-30",
-   "q": "Asociază fiecare nume sau lucru cu ce se spune despre el.",
+   "ref": "12:1-31",
+   "q": "Asociază fiecare nume sau lucru cu ce se spune despre el în capitol.",
    "pairs": [
     [
      "Natan",
-     "prorocul trimis de Domnul la David"
+     "prorocul trimis de Domnul"
     ],
     [
-     "bogatul",
-     "omul din pildă care avea multe oi și boi"
-    ],
-    [
-     "săracul",
-     "omul din pildă care avea o mielușea"
+     "David",
+     "împăratul care a recunoscut greșeala"
     ],
     [
      "Solomon",
      "fiul iubit de Domnul"
     ],
     [
-     "Raba",
-     "cetatea luată de David"
+     "Ioab",
+     "cel care a împresurat Raba"
+    ],
+    [
+     "mielușea",
+     "singurul lucru al săracului"
     ]
    ]
   },
   {
-   "id": "2sa.12.sub12.10",
+   "id": "2sa.12.sub12.111",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "12:1",
+   "q": "Domnul a trimis pe ___ la David",
+   "a": [
+    "Natan"
+   ]
+  },
+  {
+   "id": "2sa.12.sub12.112",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "12:3",
+   "q": "Săracul n-avea nimic decât o ___",
+   "a": [
+    "mielușea"
+   ]
+  },
+  {
+   "id": "2sa.12.sub12.113",
    "age": "sub12",
    "t": "fill",
    "ref": "12:7",
+   "q": "Tu ești ___ acesta",
    "a": [
     "omul"
-   ],
-   "q": "Și Natan a zis lui David: „Tu ești ___ acesta!",
-   "ctx": "După ce David s-a mâniat pe omul bogat din pildă:"
+   ]
   },
   {
-   "id": "2sa.12.sub12.11",
+   "id": "2sa.12.sub12.114",
    "age": "sub12",
    "t": "fill",
    "ref": "12:13",
+   "q": "Am ___ împotriva Domnului",
    "a": [
     "păcătuit"
-   ],
-   "q": "David a zis lui Natan: „Am ___ împotriva Domnului!\"",
-   "ctx": "Răspunsul lui David după cuvintele prorocului Natan:"
+   ]
   },
   {
-   "id": "2sa.12.sub12.12",
+   "id": "2sa.12.sub12.115",
    "age": "sub12",
    "t": "fill",
    "ref": "12:24",
+   "q": "pe care l-a numit ___",
    "a": [
     "Solomon"
-   ],
-   "q": "Ea a născut un fiu, pe care l-a numit ___ și care a fost iubit de Domnul.",
-   "ctx": "Despre Bat-Șeba, nevasta lui David:"
-  },
-  {
-   "id": "2sa.12.sub12.20",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "12:5",
-   "q": "Viu este ___ că omul care a făcut lucrul acesta este vrednic de moarte!",
-   "a": [
-    "Domnul"
    ]
   },
   {
-   "id": "2sa.12.sub12.21",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "12:25",
-   "q": "Natan i-a pus numele Iedidia (Iubitul ___), pentru Domnul.",
-   "a": [
-    "Domnului"
-   ]
-  },
-  {
-   "id": "2sa.12.sub12.13",
+   "id": "2sa.12.sub12.116",
    "age": "sub12",
    "t": "multi",
-   "ref": "12:3",
-   "q": "Cum își iubea omul sărac mielușeaua, în pilda lui Natan?",
+   "ref": "12:2",
+   "q": "Ce avea bogatul din poveste?",
    "opts": [
-    "o privea ca pe fata lui",
-    "o vindea la târg",
-    "o hrănea și o creștea cu copiii lui"
+    "foarte mulți boi",
+    "o singură mielușea",
+    "foarte multe oi"
    ],
    "a": [
     0,
@@ -208,61 +203,63 @@
    ]
   },
   {
-   "id": "2sa.12.sub12.14",
+   "id": "2sa.12.sub12.117",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "12:3",
+   "q": "Cum se purta săracul cu mielușea?",
+   "opts": [
+    "o vindea",
+    "o hrănea",
+    "o creștea împreună cu copiii lui"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "2sa.12.sub12.118",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "12:16",
+   "q": "Ce a făcut David pentru copil?",
+   "opts": [
+    "a postit",
+    "a plecat în călătorie",
+    "s-a rugat lui Dumnezeu"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "2sa.12.sub12.119",
    "age": "sub12",
    "t": "multi",
    "ref": "12:20",
-   "q": "Ce a făcut David după ce a murit copilul?",
+   "q": "Ce a făcut David după moartea copilului?",
    "opts": [
-    "s-a sculat de la pământ",
-    "a plecat la război",
-    "s-a dus în Casa Domnului și s-a închinat"
+    "a fugit din cetate",
+    "s-a dus în Casa Domnului și s-a închinat",
+    "s-a spălat"
    ],
    "a": [
-    0,
+    1,
     2
    ]
   },
   {
-   "id": "2sa.12.sub12.15",
+   "id": "2sa.12.sub12.120",
    "age": "sub12",
    "t": "multi",
-   "ref": "12:4",
-   "q": "Ce a gătit omul bogat pentru călător?",
+   "ref": "12:24-25",
+   "q": "Ce se spune despre Solomon?",
    "opts": [
-    "un bou de-al lui",
-    "un vițel gras",
-    "o oaie din turma lui"
-   ],
-   "a": [],
-   "explain": "Niciun răspuns corect: a luat oaia săracului și a gătit-o (12:4)."
-  },
-  {
-   "id": "2sa.12.sub12.22",
-   "age": "sub12",
-   "t": "multi",
-   "ref": "12:3",
-   "q": "Ce făcea săracul cu mielușeaua lui?",
-   "opts": [
-    "dormea la sânul lui",
-    "o vindea la piață",
-    "o hrănea și o creștea"
-   ],
-   "a": [
-    0,
-    2
-   ]
-  },
-  {
-   "id": "2sa.12.sub12.23",
-   "age": "sub12",
-   "t": "multi",
-   "ref": "12:29-30",
-   "q": "Ce a făcut David la Raba?",
-   "opts": [
-    "a bătut cetatea și a luat-o",
-    "a luat o foarte mare pradă",
-    "a lăsat-o în pace"
+    "Domnul l-a iubit",
+    "Natan i-a pus numele Iedidia",
+    "era fiul lui Urie"
    ],
    "a": [
     0,

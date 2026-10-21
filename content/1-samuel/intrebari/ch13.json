@@ -3,219 +3,229 @@
  "reviewed": false,
  "questions": [
   {
-   "id": "1sa.13.sub12.1",
+   "id": "1sa.13.sub12.101",
    "age": "sub12",
    "t": "tf",
-   "ref": "13:1",
-   "q": "Saul avea treizeci de ani când a ajuns împărat.",
+   "ref": "13:2",
+   "q": "Saul și-a ales trei mii de bărbați.",
    "a": true
   },
   {
-   "id": "1sa.13.sub12.2",
+   "id": "1sa.13.sub12.102",
    "age": "sub12",
    "t": "tf",
-   "ref": "13:3",
-   "q": "Ionatan a bătut tabăra filistenilor care era la Gheba.",
+   "ref": "13:16",
+   "q": "Ionatan era fiul lui Saul.",
    "a": true
   },
   {
-   "id": "1sa.13.sub12.3",
-   "age": "sub12",
-   "t": "tf",
-   "ref": "13:8",
-   "q": "Saul l-a așteptat pe Samuel la Ghilgal până a venit.",
-   "a": false,
-   "explain": "După șapte zile, Saul n-a mai așteptat și a adus singur arderea-de-tot (13:8-9)."
-  },
-  {
-   "id": "1sa.13.sub12.16",
+   "id": "1sa.13.sub12.103",
    "age": "sub12",
    "t": "tf",
    "ref": "13:9",
-   "q": "Saul a adus arderea-de-tot înainte să vină Samuel.",
+   "q": "Saul a adus jertfa fără să mai aștepte pe Samuel.",
    "a": true
   },
   {
-   "id": "1sa.13.sub12.17",
+   "id": "1sa.13.sub12.104",
    "age": "sub12",
    "t": "tf",
-   "ref": "13:13",
-   "q": "Samuel i-a spus lui Saul că a lucrat foarte bine.",
-   "a": false,
-   "explain": "I-a spus: „Ai lucrat ca un nebun.”"
+   "ref": "13:19",
+   "q": "În Israel erau mulți fierari.",
+   "a": false
   },
   {
-   "id": "1sa.13.sub12.4",
+   "id": "1sa.13.sub12.105",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "13:5",
+   "q": "Filistenii erau foarte puțini.",
+   "a": false
+  },
+  {
+   "id": "1sa.13.sub12.106",
    "age": "sub12",
    "t": "one",
-   "ref": "13:9",
-   "q": "Ce a făcut Saul la Ghilgal, pentru că Samuel întârzia?",
+   "ref": "13:2",
+   "q": "Câți bărbați și-a ales Saul?",
    "opts": [
-    "a trimis după alt proroc",
-    "a fugit",
-    "a adus el arderea-de-tot"
+    "zece",
+    "o sută",
+    "trei mii"
    ],
    "a": 2
   },
   {
-   "id": "1sa.13.sub12.5",
+   "id": "1sa.13.sub12.107",
    "age": "sub12",
    "t": "one",
-   "ref": "13:14",
-   "q": "Ce i-a spus Samuel lui Saul după jertfa de la Ghilgal?",
+   "ref": "13:5",
+   "q": "Cum erau filistenii?",
    "opts": [
-    "„Mai așteaptă\"",
-    "„domnia ta nu va dăinui\"",
-    "„Ai făcut bine\""
-   ],
-   "a": 1
-  },
-  {
-   "id": "1sa.13.sub12.6",
-   "age": "sub12",
-   "t": "one",
-   "ref": "13:19",
-   "q": "Ce nu se găsea în toată țara lui Israel, pe vremea lui Saul?",
-   "opts": [
-    "niciun fierar",
-    "niciun preot",
-    "niciun soldat"
+    "foarte mulți, ca nisipul mării",
+    "puțini",
+    "fără arme"
    ],
    "a": 0
   },
   {
-   "id": "1sa.13.sub12.18",
+   "id": "1sa.13.sub12.108",
    "age": "sub12",
    "t": "one",
-   "ref": "13:2",
-   "q": "Câți bărbați din Israel și-a ales Saul?",
+   "ref": "13:16",
+   "q": "Cine era fiul lui Saul?",
    "opts": [
-    "trei mii",
-    "treizeci",
-    "trei sute"
+    "David",
+    "Samuel",
+    "Ionatan"
    ],
-   "a": 0
+   "a": 2
   },
   {
-   "id": "1sa.13.sub12.19",
+   "id": "1sa.13.sub12.109",
    "age": "sub12",
    "t": "one",
    "ref": "13:8",
-   "q": "Câte zile l-a așteptat Saul pe Samuel la Ghilgal?",
+   "q": "Cât l-a așteptat Saul pe Samuel?",
    "opts": [
-    "zece zile",
     "șapte zile",
-    "trei zile"
+    "zece ani",
+    "o oră"
    ],
-   "a": 1
+   "a": 0
   },
   {
-   "id": "1sa.13.sub12.24",
+   "id": "1sa.13.sub12.110",
+   "age": "sub12",
+   "t": "one",
+   "ref": "13:9",
+   "q": "Ce a făcut Saul fără să aștepte pe Samuel?",
+   "opts": [
+    "a adus jertfa",
+    "a dormit",
+    "a plecat acasă"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.13.sub12.121",
    "age": "sub12",
    "t": "match",
-   "ref": "13:2-23",
-   "q": "Asociază fiecare nume sau loc cu ce se spune despre el.",
+   "ref": "13:1-23",
+   "q": "Asociază fiecare nume sau lucru cu ce se spune despre el în capitol.",
    "pairs": [
     [
      "Saul",
-     "cel care a adus arderea-de-tot la Ghilgal"
-    ],
-    [
-     "Samuel",
-     "cel care a venit după ce s-a adus jertfa"
+     "împăratul lui Israel"
     ],
     [
      "Ionatan",
-     "cel care a bătut tabăra filistenilor"
+     "fiul lui Saul"
     ],
     [
-     "Micmaș",
-     "locul unde au tăbărât filistenii"
+     "Samuel",
+     "cel care a întârziat"
     ],
     [
-     "Ghilgal",
-     "locul unde a fost adunat poporul la Saul"
+     "filistenii",
+     "erau ca nisipul mării"
+    ],
+    [
+     "Domnul",
+     "și-a ales un om după inima Lui"
     ]
    ]
   },
   {
-   "id": "1sa.13.sub12.10",
+   "id": "1sa.13.sub12.111",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "13:5",
+   "q": "poporul acesta era fără număr: ca nisipul de pe țărmul ___",
+   "a": [
+    "mării"
+   ]
+  },
+  {
+   "id": "1sa.13.sub12.112",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "13:2",
+   "q": "Saul și-a ales trei mii de ___ din Israel",
+   "a": [
+    "bărbați"
+   ]
+  },
+  {
+   "id": "1sa.13.sub12.113",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "13:8",
+   "q": "A așteptat șapte ___",
+   "a": [
+    "zile"
+   ]
+  },
+  {
+   "id": "1sa.13.sub12.114",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "13:16",
+   "q": "Saul, fiul său ___",
+   "a": [
+    "Ionatan"
+   ]
+  },
+  {
+   "id": "1sa.13.sub12.115",
    "age": "sub12",
    "t": "fill",
    "ref": "13:14",
+   "q": "Domnul Și-a ales un om după ___ Lui",
    "a": [
     "inima"
-   ],
-   "q": "Domnul Și-a ales un om după ___ Lui",
-   "ctx": "Samuel, către Saul, la Ghilgal:"
-  },
-  {
-   "id": "1sa.13.sub12.11",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "13:19",
-   "a": [
-    "fierar"
-   ],
-   "q": "În toată țara lui Israel nu se găsea niciun ___,",
-   "ctx": "Pe vremea războiului lui Saul cu filistenii:"
-  },
-  {
-   "id": "1sa.13.sub12.12",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "13:3",
-   "a": [
-    "filistenilor"
-   ],
-   "q": "Ionatan a bătut tabăra ___ care era la Gheba,",
-   "ctx": "Începutul războiului lui Saul:"
-  },
-  {
-   "id": "1sa.13.sub12.20",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "13:10",
-   "q": "Pe când sfârșea de adus arderea-de-tot, a venit ___, și Saul i-a ieșit înainte să-i ureze de bine.",
-   "a": [
-    "Samuel"
    ]
   },
   {
-   "id": "1sa.13.sub12.21",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "13:9",
-   "q": "Atunci, Saul a zis: „Aduceți-mi arderea-de-tot și jertfele de ___.",
-   "a": [
-    "mulțumire"
-   ]
-  },
-  {
-   "id": "1sa.13.sub12.13",
+   "id": "1sa.13.sub12.116",
    "age": "sub12",
    "t": "multi",
-   "ref": "13:6",
-   "q": "Unde s-au ascuns israeliții de frica filistenilor?",
+   "ref": "13:6-7",
+   "q": "Ce făceau israeliții din frică?",
    "opts": [
-    "în stânci",
-    "în tufișuri",
-    "în peșteri"
+    "se ascundeau",
+    "dansau",
+    "tremurau"
    ],
    "a": [
     0,
-    1,
     2
    ]
   },
   {
-   "id": "1sa.13.sub12.14",
+   "id": "1sa.13.sub12.117",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "13:19",
+   "q": "Ce nu aveau israeliții?",
+   "opts": [
+    "săbii și sulițe",
+    "fierari",
+    "boi"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.13.sub12.118",
    "age": "sub12",
    "t": "multi",
    "ref": "13:22",
-   "q": "Cine aveau sabie și suliță în ziua luptei?",
+   "q": "Cine avea sabie în ziua luptei?",
    "opts": [
-    "tot poporul",
+    "toți ostașii",
     "Ionatan",
     "Saul"
    ],
@@ -225,29 +235,15 @@
    ]
   },
   {
-   "id": "1sa.13.sub12.15",
-   "age": "sub12",
-   "t": "multi",
-   "ref": "13:15",
-   "q": "Câți oameni erau cu Saul după plecarea lui Samuel?",
-   "opts": [
-    "trei mii",
-    "o sută",
-    "zece mii"
-   ],
-   "a": [],
-   "explain": "Niciun răspuns corect: aproape șase sute de oameni (13:15)."
-  },
-  {
-   "id": "1sa.13.sub12.22",
+   "id": "1sa.13.sub12.119",
    "age": "sub12",
    "t": "multi",
    "ref": "13:13-14",
    "q": "Ce i-a spus Samuel lui Saul?",
    "opts": [
-    "„Domnia ta nu va dăinui”",
-    "„Domnul te va întări și mai mult”",
-    "„Ai lucrat ca un nebun”"
+    "că domnia lui nu va dăinui",
+    "că a făcut totul bine",
+    "că n-a păzit porunca Domnului"
    ],
    "a": [
     0,
@@ -255,19 +251,19 @@
    ]
   },
   {
-   "id": "1sa.13.sub12.23",
+   "id": "1sa.13.sub12.120",
    "age": "sub12",
    "t": "multi",
-   "ref": "13:19-20",
-   "q": "Ce se spune despre fierari?",
+   "ref": "13:9",
+   "q": "Ce a adus Saul?",
    "opts": [
-    "în toată țara lui Israel nu se găsea niciun fierar",
-    "israeliții se coborau la filisteni ca să-și ascută uneltele",
-    "filistenii le dădeau săbii gratuit"
+    "daruri pentru filisteni",
+    "arderea-de-tot",
+    "jertfe de mulțumire"
    ],
    "a": [
-    0,
-    1
+    1,
+    2
    ]
   },
   {

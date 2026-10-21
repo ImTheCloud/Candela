@@ -3,24 +3,15 @@
  "reviewed": false,
  "questions": [
   {
-   "id": "1sa.2.sub12.1",
+   "id": "1sa.2.sub12.101",
    "age": "sub12",
    "t": "tf",
-   "ref": "2:1",
-   "q": "Ana s-a rugat și a zis: „Mi se bucură inima în Domnul\".",
+   "ref": "2:19",
+   "q": "Mama lui Samuel îi făcea în fiecare an o mantie mică.",
    "a": true
   },
   {
-   "id": "1sa.2.sub12.2",
-   "age": "sub12",
-   "t": "tf",
-   "ref": "2:12",
-   "q": "Fiii lui Eli erau niște oameni buni, care Îl cunoșteau pe Domnul.",
-   "a": false,
-   "explain": "Fiii lui Eli erau niște oameni răi; nu cunoșteau pe Domnul (2:12)."
-  },
-  {
-   "id": "1sa.2.sub12.3",
+   "id": "1sa.2.sub12.102",
    "age": "sub12",
    "t": "tf",
    "ref": "2:26",
@@ -28,161 +19,155 @@
    "a": true
   },
   {
-   "id": "1sa.2.sub12.16",
+   "id": "1sa.2.sub12.103",
    "age": "sub12",
    "t": "tf",
-   "ref": "2:2",
-   "q": "Ana a spus în rugăciunea ei: „Nu este stâncă așa ca Dumnezeul nostru.”",
+   "ref": "2:1",
+   "q": "Ana s-a rugat și i s-a bucurat inima în Domnul.",
    "a": true
   },
   {
-   "id": "1sa.2.sub12.17",
+   "id": "1sa.2.sub12.104",
    "age": "sub12",
    "t": "tf",
-   "ref": "2:21",
-   "q": "Ana a mai avut după Samuel numai o fiică.",
-   "a": false,
-   "explain": "A născut trei fii și două fiice."
+   "ref": "2:12",
+   "q": "Fiii lui Eli erau niște oameni buni.",
+   "a": false
   },
   {
-   "id": "1sa.2.sub12.4",
+   "id": "1sa.2.sub12.105",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "2:11",
+   "q": "Samuel a plecat acasă, la Rama, împreună cu Elcana.",
+   "a": false
+  },
+  {
+   "id": "1sa.2.sub12.106",
    "age": "sub12",
    "t": "one",
    "ref": "2:19",
-   "q": "Ce îi făcea Ana lui Samuel în fiecare an?",
+   "q": "Ce îi făcea mama lui Samuel în fiecare an?",
    "opts": [
-    "o sabie mică",
-    "o pereche de sandale",
+    "o casă",
+    "o carte",
     "o mantie mică"
    ],
    "a": 2
   },
   {
-   "id": "1sa.2.sub12.5",
+   "id": "1sa.2.sub12.107",
    "age": "sub12",
    "t": "one",
-   "ref": "2:18",
-   "q": "Cu ce era îmbrăcat copilul Samuel când slujea înaintea Domnului?",
+   "ref": "2:12",
+   "q": "Cum erau fiii lui Eli?",
    "opts": [
-    "cu un efod de in",
-    "cu o mantie de purpură",
-    "cu o haină pestriță"
-   ],
-   "a": 0
-  },
-  {
-   "id": "1sa.2.sub12.6",
-   "age": "sub12",
-   "t": "one",
-   "ref": "2:21",
-   "q": "Câți copii a mai avut Ana după Samuel?",
-   "opts": [
-    "doi fii",
-    "trei fii și două fiice",
-    "un fiu"
+    "harnici",
+    "niște oameni răi",
+    "ascultători"
    ],
    "a": 1
   },
   {
-   "id": "1sa.2.sub12.18",
+   "id": "1sa.2.sub12.108",
    "age": "sub12",
    "t": "one",
    "ref": "2:11",
-   "q": "Cu cine a rămas copilul Samuel la Silo, în slujba Domnului?",
+   "q": "Cine a rămas în slujba Domnului la Silo?",
    "opts": [
-    "cu preotul Eli",
-    "cu Penina",
-    "cu Elcana"
+    "Samuel",
+    "Elcana",
+    "Penina"
    ],
    "a": 0
   },
   {
-   "id": "1sa.2.sub12.19",
+   "id": "1sa.2.sub12.109",
    "age": "sub12",
    "t": "one",
-   "ref": "2:20",
-   "q": "Ce a dorit Eli pentru Elcana și Ana, când i-a binecuvântat?",
+   "ref": "2:26",
+   "q": "Cum era Samuel?",
    "opts": [
-    "să primească o casă nouă",
-    "să se întoarcă la Silo în fiecare lună",
-    "să aibă și alți copii din femeia aceasta"
+    "leneș",
+    "mândru și rău",
+    "plăcut Domnului și oamenilor"
    ],
    "a": 2
   },
   {
-   "id": "1sa.2.sub12.24",
+   "id": "1sa.2.sub12.110",
+   "age": "sub12",
+   "t": "one",
+   "ref": "2:21",
+   "q": "Câți fii a mai avut Ana?",
+   "opts": [
+    "niciunul",
+    "trei",
+    "zece"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.2.sub12.121",
    "age": "sub12",
    "t": "match",
-   "ref": "2:1-26",
-   "q": "Asociază fiecare nume sau lucru cu ce se spune despre el.",
+   "ref": "2:1-36",
+   "q": "Asociază fiecare nume cu ce se spune despre el în capitol.",
    "pairs": [
     [
      "Ana",
-     "cea care a rostit o rugăciune de bucurie"
-    ],
-    [
-     "Samuel",
-     "copilul îmbrăcat cu un efod de in"
-    ],
-    [
-     "Eli",
-     "preotul bătrân de la Silo"
-    ],
-    [
-     "Hofni și Fineas",
-     "fiii lui Eli, oameni răi"
+     "mama lui Samuel"
     ],
     [
      "Elcana",
-     "cel care s-a dus acasă, la Rama"
+     "tatăl lui Samuel"
+    ],
+    [
+     "Eli",
+     "preotul cel bătrân"
+    ],
+    [
+     "fiii lui Eli",
+     "cei care făceau lucruri rele"
+    ],
+    [
+     "Samuel",
+     "copilul care slujea Domnului"
     ]
    ]
   },
   {
-   "id": "1sa.2.sub12.10",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "2:2",
-   "a": [
-    "sfânt"
-   ],
-   "q": "Nimeni nu este ___ ca Domnul; Nu este alt Dumnezeu decât Tine;",
-   "ctx": "Cântarea Anei:"
-  },
-  {
-   "id": "1sa.2.sub12.11",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "2:26",
-   "a": [
-    "oamenilor"
-   ],
-   "q": "Tânărul Samuel creștea mereu și era plăcut Domnului și ___.",
-   "ctx": "Despre Samuel, la Silo:"
-  },
-  {
-   "id": "1sa.2.sub12.12",
+   "id": "1sa.2.sub12.111",
    "age": "sub12",
    "t": "fill",
    "ref": "2:1",
+   "q": "Mi se bucură inima în ___",
    "a": [
-    "inima"
-   ],
-   "q": "Ana s-a rugat și a zis: „Mi se bucură ___ în Domnul,",
-   "ctx": "Începutul cântării Anei:"
+    "Domnul"
+   ]
   },
   {
-   "id": "1sa.2.sub12.20",
+   "id": "1sa.2.sub12.112",
    "age": "sub12",
    "t": "fill",
-   "ref": "2:21",
-   "q": "Și tânărul Samuel creștea înaintea ___.",
+   "ref": "2:26",
+   "q": "era plăcut ___ și oamenilor.",
    "a": [
     "Domnului"
    ]
   },
   {
-   "id": "1sa.2.sub12.21",
+   "id": "1sa.2.sub12.113",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "2:12",
+   "q": "Fiii lui Eli erau niște oameni ___.",
+   "a": [
+    "răi"
+   ]
+  },
+  {
+   "id": "1sa.2.sub12.114",
    "age": "sub12",
    "t": "fill",
    "ref": "2:19",
@@ -192,61 +177,25 @@
    ]
   },
   {
-   "id": "1sa.2.sub12.13",
+   "id": "1sa.2.sub12.115",
    "age": "sub12",
-   "t": "multi",
+   "t": "fill",
    "ref": "2:21",
-   "q": "Ce s-a întâmplat după ce Domnul a cercetat-o pe Ana?",
-   "opts": [
-    "a născut trei fii",
-    "a născut două fiice",
-    "s-a mutat la Silo"
-   ],
+   "q": "a născut trei fii și două ___.",
    "a": [
-    0,
-    1
+    "fiice"
    ]
   },
   {
-   "id": "1sa.2.sub12.14",
-   "age": "sub12",
-   "t": "multi",
-   "ref": "2:7",
-   "q": "Ce face Domnul, după cântarea Anei?",
-   "opts": [
-    "sărăcește și îmbogățește",
-    "smerește și înalță",
-    "nu se uită la oameni"
-   ],
-   "a": [
-    0,
-    1
-   ]
-  },
-  {
-   "id": "1sa.2.sub12.15",
+   "id": "1sa.2.sub12.116",
    "age": "sub12",
    "t": "multi",
    "ref": "2:11",
-   "q": "Cu cine a rămas Samuel la Silo?",
-   "opts": [
-    "cu Elcana",
-    "cu Penina",
-    "cu Hofni"
-   ],
-   "a": [],
-   "explain": "Niciun răspuns corect: a rămas în slujba Domnului, înaintea preotului Eli (2:11)."
-  },
-  {
-   "id": "1sa.2.sub12.22",
-   "age": "sub12",
-   "t": "multi",
-   "ref": "2:18-19",
    "q": "Ce se spune despre Samuel?",
    "opts": [
-    "se întorcea acasă în fiecare seară",
-    "făcea slujba înaintea Domnului",
-    "era îmbrăcat cu un efod de in"
+    "a plecat din Silo",
+    "era în slujba Domnului",
+    "stătea înaintea preotului Eli"
    ],
    "a": [
     1,
@@ -254,15 +203,63 @@
    ]
   },
   {
-   "id": "1sa.2.sub12.23",
+   "id": "1sa.2.sub12.117",
    "age": "sub12",
    "t": "multi",
-   "ref": "2:20-21",
-   "q": "Ce s-a întâmplat cu Ana?",
+   "ref": "2:21",
+   "q": "Ce a primit Ana?",
    "opts": [
-    "n-a mai avut copii",
-    "Eli a binecuvântat-o",
-    "a născut trei fii și două fiice"
+    "trei fii",
+    "o casă nouă",
+    "două fiice"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.2.sub12.118",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "2:16",
+   "q": "Ce făceau fiii lui Eli?",
+   "opts": [
+    "luau cu sila carnea",
+    "ajutau pe săraci",
+    "nu cunoșteau pe Domnul"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.2.sub12.119",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "2:23-24",
+   "q": "Ce le-a spus Eli fiilor lui?",
+   "opts": [
+    "că sunt cei mai buni",
+    "că ce fac nu este bine",
+    "că fac poporul să păcătuiască"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.2.sub12.120",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "2:26",
+   "q": "Cum creștea Samuel?",
+   "opts": [
+    "în pustie",
+    "plăcut Domnului",
+    "mereu"
    ],
    "a": [
     1,

@@ -3,134 +3,132 @@
  "reviewed": false,
  "questions": [
   {
-   "id": "2sa.9.sub12.1",
+   "id": "2sa.9.sub12.101",
    "age": "sub12",
    "t": "tf",
    "ref": "9:1",
-   "q": "David a vrut să facă bine cuiva din casa lui Saul, din pricina lui Ionatan.",
+   "q": "David a vrut să facă bine cuiva din casa lui Saul.",
    "a": true
   },
   {
-   "id": "2sa.9.sub12.2",
-   "age": "sub12",
-   "t": "tf",
-   "ref": "9:7",
-   "q": "David i-a spus lui Mefiboșet că va mânca totdeauna la masa lui.",
-   "a": true
-  },
-  {
-   "id": "2sa.9.sub12.3",
+   "id": "2sa.9.sub12.102",
    "age": "sub12",
    "t": "tf",
    "ref": "9:6",
-   "q": "Când a venit la David, Mefiboșet a fugit de frică.",
-   "a": false,
-   "explain": "Mefiboșet a căzut cu fața la pământ și s-a închinat (9:6)."
+   "q": "Mefiboșet era fiul lui Ionatan.",
+   "a": true
   },
   {
-   "id": "2sa.9.sub12.16",
+   "id": "2sa.9.sub12.103",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "9:11",
+   "q": "Mefiboșet a mâncat la masa lui David.",
+   "a": true
+  },
+  {
+   "id": "2sa.9.sub12.104",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "9:7",
+   "q": "David a vrut să-i facă rău lui Mefiboșet.",
+   "a": false
+  },
+  {
+   "id": "2sa.9.sub12.105",
    "age": "sub12",
    "t": "tf",
    "ref": "9:13",
-   "q": "Mefiboșet locuia la Ierusalim și mânca totdeauna la masa împăratului.",
-   "a": true
+   "q": "Mefiboșet locuia la Hebron.",
+   "a": false
   },
   {
-   "id": "2sa.9.sub12.17",
-   "age": "sub12",
-   "t": "tf",
-   "ref": "9:7",
-   "q": "David a vrut să-l pedepsească pe Mefiboșet pentru ce făcuse Saul.",
-   "a": false,
-   "explain": "David a vrut să-i facă bine din pricina lui Ionatan."
-  },
-  {
-   "id": "2sa.9.sub12.4",
-   "age": "sub12",
-   "t": "one",
-   "ref": "9:3",
-   "q": "Pe cine i-a spus Țiba lui David că mai este din casa lui Saul?",
-   "opts": [
-    "un fiu al lui Ionatan, olog de picioare",
-    "o fiică a lui Saul",
-    "un frate al lui Ionatan"
-   ],
-   "a": 0
-  },
-  {
-   "id": "2sa.9.sub12.5",
-   "age": "sub12",
-   "t": "one",
-   "ref": "9:6",
-   "q": "Cum se numea fiul lui Ionatan adus la masa lui David?",
-   "opts": [
-    "Iș-Boșet",
-    "Mica",
-    "Mefiboșet"
-   ],
-   "a": 2
-  },
-  {
-   "id": "2sa.9.sub12.6",
-   "age": "sub12",
-   "t": "one",
-   "ref": "9:1",
-   "q": "Din pricina cui a vrut David să facă bine casei lui Saul?",
-   "opts": [
-    "din pricina lui Abner",
-    "din pricina lui Mical",
-    "din pricina lui Ionatan"
-   ],
-   "a": 2
-  },
-  {
-   "id": "2sa.9.sub12.18",
+   "id": "2sa.9.sub12.106",
    "age": "sub12",
    "t": "one",
    "ref": "9:2",
    "q": "Cine era Țiba?",
    "opts": [
-    "fiul lui Ionatan",
+    "un filistean",
     "un preot",
     "un slujitor din casa lui Saul"
    ],
    "a": 2
   },
   {
-   "id": "2sa.9.sub12.19",
+   "id": "2sa.9.sub12.107",
    "age": "sub12",
    "t": "one",
-   "ref": "9:4",
-   "q": "În ce cetate stătea Mefiboșet, în casa lui Machir?",
+   "ref": "9:6",
+   "q": "Al cui fiu era Mefiboșet?",
    "opts": [
-    "la Betleem",
-    "la Lodebar",
-    "la Hebron"
+    "al lui Țiba",
+    "al lui Ionatan",
+    "al lui Natan"
    ],
    "a": 1
   },
   {
-   "id": "2sa.9.sub12.24",
+   "id": "2sa.9.sub12.108",
+   "age": "sub12",
+   "t": "one",
+   "ref": "9:13",
+   "q": "Unde mânca Mefiboșet?",
+   "opts": [
+    "pe câmp",
+    "în peșteră",
+    "la masa împăratului"
+   ],
+   "a": 2
+  },
+  {
+   "id": "2sa.9.sub12.109",
+   "age": "sub12",
+   "t": "one",
+   "ref": "9:7",
+   "q": "Ce i-a spus David lui Mefiboșet?",
+   "opts": [
+    "Pleacă de aici",
+    "Nu te teme",
+    "Taci"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.9.sub12.110",
+   "age": "sub12",
+   "t": "one",
+   "ref": "9:13",
+   "q": "Cum era Mefiboșet?",
+   "opts": [
+    "olog de amândouă picioarele",
+    "foarte bătrân",
+    "orb"
+   ],
+   "a": 0
+  },
+  {
+   "id": "2sa.9.sub12.121",
    "age": "sub12",
    "t": "match",
-   "ref": "9:2-12",
-   "q": "Asociază fiecare nume sau loc cu ce se spune despre el.",
+   "ref": "9:1-13",
+   "q": "Asociază fiecare nume sau lucru cu ce se spune despre el în capitol.",
    "pairs": [
     [
+     "David",
+     "împăratul care a făcut bine"
+    ],
+    [
      "Mefiboșet",
-     "fiul lui Ionatan, olog de picioare"
+     "fiul olog al lui Ionatan"
     ],
     [
      "Țiba",
-     "slujitor din casa lui Saul"
+     "slujitorul din casa lui Saul"
     ],
     [
-     "Machir",
-     "omul în a cărui casă a stat Mefiboșet"
-    ],
-    [
-     "Lodebar",
-     "cetatea unde a stat Mefiboșet"
+     "Ionatan",
+     "prietenul lui David"
     ],
     [
      "Mica",
@@ -139,68 +137,65 @@
    ]
   },
   {
-   "id": "2sa.9.sub12.10",
+   "id": "2sa.9.sub12.111",
    "age": "sub12",
    "t": "fill",
-   "ref": "9:7",
+   "ref": "9:1",
+   "q": "ca să-i fac bine din pricina lui ___",
    "a": [
-    "bine"
-   ],
-   "q": "„Nu te teme, căci vreau să-ți fac ___ din pricina tatălui tău Ionatan.",
-   "ctx": "David, către Mefiboșet:"
+    "Ionatan"
+   ]
   },
   {
-   "id": "2sa.9.sub12.11",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "9:13",
-   "a": [
-    "picioarele"
-   ],
-   "q": "El era olog de amândouă ___.",
-   "ctx": "Despre Mefiboșet, fiul lui Ionatan:"
-  },
-  {
-   "id": "2sa.9.sub12.12",
+   "id": "2sa.9.sub12.112",
    "age": "sub12",
    "t": "fill",
    "ref": "9:2",
+   "q": "Era un slujitor din casa lui Saul, numit ___",
    "a": [
     "Țiba"
-   ],
-   "q": "Împăratul i-a zis: „Tu ești ___?\" Și el a răspuns: „Robul tău, da!\"",
-   "ctx": "Când slujitorul din casa lui Saul a fost adus la David:"
-  },
-  {
-   "id": "2sa.9.sub12.20",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "9:11",
-   "q": "Și Mefiboșet a mâncat la masa lui ___, ca unul din fiii împăratului.",
-   "a": [
-    "David"
    ]
   },
   {
-   "id": "2sa.9.sub12.21",
+   "id": "2sa.9.sub12.113",
    "age": "sub12",
    "t": "fill",
-   "ref": "9:3",
-   "q": "Mai este un fiu al lui Ionatan, olog de ___.",
+   "ref": "9:13",
+   "q": "El era olog de amândouă ___",
    "a": [
-    "picioare"
+    "picioarele"
    ]
   },
   {
-   "id": "2sa.9.sub12.13",
+   "id": "2sa.9.sub12.114",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "9:7",
+   "q": "căci vreau să-ți fac ___ din pricina tatălui tău",
+   "a": [
+    "bine"
+   ]
+  },
+  {
+   "id": "2sa.9.sub12.115",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "9:13",
+   "q": "Mefiboșet locuia la ___",
+   "a": [
+    "Ierusalim"
+   ]
+  },
+  {
+   "id": "2sa.9.sub12.116",
    "age": "sub12",
    "t": "multi",
-   "ref": "9:7",
-   "q": "Ce i-a promis David lui Mefiboșet?",
+   "ref": "9:1",
+   "q": "De ce a vrut David să facă bine?",
    "opts": [
-    "că-i va da înapoi pământurile lui Saul",
-    "că-l va face împărat",
-    "că va mânca totdeauna la masa lui"
+    "pentru casa lui Saul",
+    "pentru că era bogat",
+    "din pricina lui Ionatan"
    ],
    "a": [
     0,
@@ -208,14 +203,46 @@
    ]
   },
   {
-   "id": "2sa.9.sub12.14",
+   "id": "2sa.9.sub12.117",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "9:7",
+   "q": "Ce i-a promis David lui Mefiboșet?",
+   "opts": [
+    "să-i dea înapoi pământurile lui Saul",
+    "să nu se teamă",
+    "să-l alunge"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "2sa.9.sub12.118",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "9:7",
+   "q": "Ce a primit Mefiboșet?",
+   "opts": [
+    "o cetate nouă",
+    "pământurile tatălui său",
+    "loc la masa lui David"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "2sa.9.sub12.119",
    "age": "sub12",
    "t": "multi",
    "ref": "9:6",
-   "q": "Ce a făcut Mefiboșet când a venit înaintea lui David?",
+   "q": "Ce a făcut Mefiboșet când a venit la David?",
    "opts": [
     "a căzut cu fața la pământ",
-    "a cerut împărăția",
+    "a fugit",
     "s-a închinat"
    ],
    "a": [
@@ -224,45 +251,15 @@
    ]
   },
   {
-   "id": "2sa.9.sub12.15",
+   "id": "2sa.9.sub12.120",
    "age": "sub12",
    "t": "multi",
-   "ref": "9:3",
-   "q": "Cum era Mefiboșet, după cuvintele lui Țiba?",
+   "ref": "9:12",
+   "q": "Ce se spune despre casa lui Mefiboșet?",
    "opts": [
-    "bolnav de lepră",
-    "foarte bogat",
-    "orb"
-   ],
-   "a": [],
-   "explain": "Niciun răspuns corect: era „olog de picioare\" (9:3)."
-  },
-  {
-   "id": "2sa.9.sub12.22",
-   "age": "sub12",
-   "t": "multi",
-   "ref": "9:2",
-   "q": "Ce se spune despre Țiba?",
-   "opts": [
-    "era slujitor din casa lui Saul",
-    "a fost adus la David",
-    "era fiul lui Machir"
-   ],
-   "a": [
-    0,
-    1
-   ]
-  },
-  {
-   "id": "2sa.9.sub12.23",
-   "age": "sub12",
-   "t": "multi",
-   "ref": "9:7",
-   "q": "Ce i-a spus David lui Mefiboșet?",
-   "opts": [
-    "„Vreau să-ți fac bine din pricina tatălui tău”",
-    "„Nu te teme”",
-    "„Vei fi alungat”"
+    "cei din casa lui Țiba erau robii lui",
+    "avea un fiu mic numit Mica",
+    "era goală"
    ],
    "a": [
     0,

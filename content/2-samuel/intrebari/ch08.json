@@ -3,92 +3,103 @@
  "reviewed": false,
  "questions": [
   {
-   "id": "2sa.8.sub12.1",
+   "id": "2sa.8.sub12.101",
    "age": "sub12",
    "t": "tf",
    "ref": "8:1",
-   "q": "După ce a primit promisiunea Domnului, David i-a bătut pe filisteni și i-a smerit.",
+   "q": "David a bătut pe filisteni.",
    "a": true
   },
   {
-   "id": "2sa.8.sub12.2",
-   "age": "sub12",
-   "t": "tf",
-   "ref": "8:6",
-   "q": "Domnul îl ocrotea pe David oriunde se ducea.",
-   "a": true
-  },
-  {
-   "id": "2sa.8.sub12.3",
+   "id": "2sa.8.sub12.102",
    "age": "sub12",
    "t": "tf",
    "ref": "8:7",
-   "q": "David a lăsat scuturile de aur ale slujitorilor lui Hadadezer pe câmpul de luptă.",
-   "a": false,
-   "explain": "David le-a adus la Ierusalim (8:7)."
+   "q": "David a adus la Ierusalim scuturile de aur.",
+   "a": true
   },
   {
-   "id": "2sa.8.sub12.16",
+   "id": "2sa.8.sub12.103",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "8:14",
+   "q": "Domnul ocrotea pe David pretutindeni.",
+   "a": true
+  },
+  {
+   "id": "2sa.8.sub12.104",
    "age": "sub12",
    "t": "tf",
    "ref": "8:2",
-   "q": "David a bătut pe moabiți, iar ei au fost supuși lui David și i-au plătit un bir.",
-   "a": true
+   "q": "David a pierdut lupta cu moabiții.",
+   "a": false
   },
   {
-   "id": "2sa.8.sub12.17",
+   "id": "2sa.8.sub12.105",
    "age": "sub12",
    "t": "tf",
-   "ref": "8:7",
-   "q": "David a trimis scuturile de aur ale slujitorilor lui Hadadezer la Damasc.",
-   "a": false,
-   "explain": "Le-a adus la Ierusalim."
+   "ref": "8:14",
+   "q": "Domnul l-a părăsit pe David.",
+   "a": false
   },
   {
-   "id": "2sa.8.sub12.4",
+   "id": "2sa.8.sub12.106",
+   "age": "sub12",
+   "t": "one",
+   "ref": "8:16",
+   "q": "Cine era mai-mare peste oștire?",
+   "opts": [
+    "Natan",
+    "Țiba",
+    "Ioab"
+   ],
+   "a": 2
+  },
+  {
+   "id": "2sa.8.sub12.107",
    "age": "sub12",
    "t": "one",
    "ref": "8:7",
-   "q": "Ce a adus David la Ierusalim de la slujitorii lui Hadadezer?",
+   "q": "Unde a adus David scuturile de aur?",
    "opts": [
-    "care de luptă",
-    "scuturi de aur",
-    "săbii de argint"
+    "la Hebron",
+    "la Damasc",
+    "la Ierusalim"
    ],
-   "a": 1
+   "a": 2
   },
   {
-   "id": "2sa.8.sub12.5",
+   "id": "2sa.8.sub12.108",
    "age": "sub12",
    "t": "one",
    "ref": "8:15",
-   "q": "Ce făcea David la tot poporul lui, când împărățea peste Israel?",
+   "q": "Ce făcea David la tot poporul?",
    "opts": [
-    "ospețe în fiecare zi",
-    "războaie fără sfârșit",
+    "dar",
+    "război",
     "judecată și dreptate"
    ],
    "a": 2
   },
   {
-   "id": "2sa.8.sub12.6",
+   "id": "2sa.8.sub12.109",
    "age": "sub12",
    "t": "one",
-   "ref": "8:16",
-   "q": "Cine era mai-mare peste oștirea lui David?",
+   "ref": "8:14",
+   "q": "Cine ocrotea pe David?",
    "opts": [
-    "Abner",
-    "Benaia",
-    "Ioab, fiul Țeruiei"
+    "Hadadezer",
+    "Edom",
+    "Domnul"
    ],
    "a": 2
   },
   {
-   "id": "2sa.8.sub12.18",
+   "id": "2sa.8.sub12.110",
    "age": "sub12",
    "t": "one",
    "ref": "8:3",
-   "q": "Care împărat din Țoba a fost bătut de David?",
+   "q": "Cine era împăratul din Țoba?",
    "opts": [
     "Hadadezer",
     "Toi",
@@ -97,155 +108,94 @@
    "a": 0
   },
   {
-   "id": "2sa.8.sub12.19",
-   "age": "sub12",
-   "t": "one",
-   "ref": "8:2",
-   "q": "Care popor a fost măsurat cu o frânghie, după ce a fost bătut de David?",
-   "opts": [
-    "moabiții",
-    "edomiții",
-    "filistenii"
-   ],
-   "a": 0
-  },
-  {
-   "id": "2sa.8.sub12.24",
+   "id": "2sa.8.sub12.121",
    "age": "sub12",
    "t": "match",
-   "ref": "8:1-16",
-   "q": "Asociază fiecare nume sau loc cu ce se spune despre el.",
+   "ref": "8:1-18",
+   "q": "Asociază fiecare nume sau lucru cu ce se spune despre el în capitol.",
    "pairs": [
-    [
-     "Hadadezer",
-     "împăratul din Țoba, bătut de David"
-    ],
     [
      "Ioab",
      "mai-mare peste oștire"
     ],
     [
-     "Valea Sării",
-     "locul unde David a bătut pe edomiți"
+     "Hadadezer",
+     "împăratul din Țoba"
     ],
     [
-     "moabiții",
-     "cei măsurați cu frânghia"
+     "Țadoc",
+     "preot"
+    ],
+    [
+     "Domnul",
+     "Cel care ocrotea pe David"
     ],
     [
      "Ierusalim",
-     "locul unde David a adus scuturile de aur"
+     "orașul unde a ajuns prada"
     ]
    ]
   },
   {
-   "id": "2sa.8.sub12.10",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "8:6",
-   "a": [
-    "ocrotea"
-   ],
-   "q": "Domnul ___ pe David oriunde se ducea.",
-   "ctx": "După biruințele lui David asupra sirienilor:"
-  },
-  {
-   "id": "2sa.8.sub12.11",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "8:15",
-   "a": [
-    "dreptate"
-   ],
-   "q": "David a împărățit peste Israel și făcea judecată și ___ la tot poporul lui.",
-   "ctx": "Despre domnia lui David:"
-  },
-  {
-   "id": "2sa.8.sub12.12",
+   "id": "2sa.8.sub12.111",
    "age": "sub12",
    "t": "fill",
    "ref": "8:1",
+   "q": "David a bătut pe ___",
    "a": [
     "filisteni"
-   ],
-   "q": "După aceea, David a bătut pe ___ și i-a smerit",
-   "ctx": "Războaiele lui David după promisiunea Domnului:"
-  },
-  {
-   "id": "2sa.8.sub12.20",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "8:14",
-   "q": "Domnul ocrotea pe David pretutindeni pe unde ___.",
-   "a": [
-    "mergea"
    ]
   },
   {
-   "id": "2sa.8.sub12.21",
+   "id": "2sa.8.sub12.112",
    "age": "sub12",
    "t": "fill",
-   "ref": "8:10",
-   "q": "Ioram a adus vase de argint, vase de aur și vase de ___.",
+   "ref": "8:7",
+   "q": "David a luat scuturile de ___",
    "a": [
-    "aramă"
+    "aur"
    ]
   },
   {
-   "id": "2sa.8.sub12.13",
+   "id": "2sa.8.sub12.113",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "8:6",
+   "q": "Domnul ___ pe David oriunde se ducea",
+   "a": [
+    "ocrotea"
+   ]
+  },
+  {
+   "id": "2sa.8.sub12.114",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "8:15",
+   "q": "făcea judecată și ___",
+   "a": [
+    "dreptate"
+   ]
+  },
+  {
+   "id": "2sa.8.sub12.115",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "8:15",
+   "q": "David a împărățit peste ___",
+   "a": [
+    "Israel"
+   ]
+  },
+  {
+   "id": "2sa.8.sub12.116",
    "age": "sub12",
    "t": "multi",
    "ref": "8:11",
-   "q": "Ce a făcut David cu argintul și aurul luate de la neamurile pe care le-a biruit?",
+   "q": "Ce a închinat David Domnului?",
    "opts": [
-    "le-a îngropat",
-    "le-a închinat Domnului",
-    "le-a împărțit soldaților"
-   ],
-   "a": [
-    1
-   ]
-  },
-  {
-   "id": "2sa.8.sub12.14",
-   "age": "sub12",
-   "t": "multi",
-   "ref": "8:16-17",
-   "q": "Cine erau printre slujbașii lui David?",
-   "opts": [
-    "Țadoc",
-    "Ioab",
-    "Saul"
-   ],
-   "a": [
-    0,
-    1
-   ]
-  },
-  {
-   "id": "2sa.8.sub12.15",
-   "age": "sub12",
-   "t": "multi",
-   "ref": "8:13",
-   "q": "Unde i-a bătut David pe edomiți?",
-   "opts": [
-    "în valea Refaim",
-    "la Hebron",
-    "la Baal-Perațim"
-   ],
-   "a": [],
-   "explain": "Niciun răspuns corect: în Valea Sării (8:13)."
-  },
-  {
-   "id": "2sa.8.sub12.22",
-   "age": "sub12",
-   "t": "multi",
-   "ref": "8:1-2",
-   "q": "Pe cine a bătut David?",
-   "opts": [
-    "pe egipteni",
-    "pe moabiți",
-    "pe filisteni"
+    "caii",
+    "argintul",
+    "aurul"
    ],
    "a": [
     1,
@@ -253,15 +203,63 @@
    ]
   },
   {
-   "id": "2sa.8.sub12.23",
+   "id": "2sa.8.sub12.117",
    "age": "sub12",
    "t": "multi",
-   "ref": "8:9-10",
-   "q": "Ce a făcut Toi, împăratul Hamatului, când a auzit că David l-a bătut pe Hadadezer?",
+   "ref": "8:1-2",
+   "q": "Pe cine a bătut David?",
    "opts": [
-    "i-a declarat război lui David",
-    "a trimis la David pe fiul său Ioram",
-    "a vrut să-i ureze de bine"
+    "pe moabiți",
+    "pe egipteni",
+    "pe filisteni"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "2sa.8.sub12.118",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "8:8",
+   "q": "Ce a luat David din cetățile lui Hadadezer?",
+   "opts": [
+    "scuturi de aur",
+    "copii",
+    "aramă"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "2sa.8.sub12.119",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "8:17",
+   "q": "Cine erau preoți?",
+   "opts": [
+    "Ioab",
+    "Ahimelec",
+    "Țadoc"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "2sa.8.sub12.120",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "8:15",
+   "q": "Ce se spune despre David?",
+   "opts": [
+    "nu mai era împărat",
+    "făcea dreptate poporului",
+    "a împărățit peste Israel"
    ],
    "a": [
     1,

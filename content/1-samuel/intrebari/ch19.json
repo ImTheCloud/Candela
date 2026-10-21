@@ -3,122 +3,120 @@
  "reviewed": false,
  "questions": [
   {
-   "id": "1sa.19.sub12.1",
+   "id": "1sa.19.sub12.101",
    "age": "sub12",
    "t": "tf",
    "ref": "19:2",
-   "q": "Ionatan l-a anunțat pe David că Saul caută să-l omoare.",
+   "q": "Ionatan l-a avertizat pe David.",
    "a": true
   },
   {
-   "id": "1sa.19.sub12.2",
+   "id": "1sa.19.sub12.102",
    "age": "sub12",
    "t": "tf",
    "ref": "19:12",
-   "q": "Mical l-a coborât pe David pe fereastră ca să scape.",
+   "q": "Mical l-a coborât pe David pe fereastră.",
    "a": true
   },
   {
-   "id": "1sa.19.sub12.3",
+   "id": "1sa.19.sub12.103",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "19:13",
+   "q": "Mical a pus ceva în patul lui David, în locul lui.",
+   "a": true
+  },
+  {
+   "id": "1sa.19.sub12.104",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "19:12",
+   "q": "David a rămas acasă și a dormit.",
+   "a": false
+  },
+  {
+   "id": "1sa.19.sub12.105",
    "age": "sub12",
    "t": "tf",
    "ref": "19:6",
-   "q": "Saul n-a vrut deloc să-l asculte pe Ionatan despre David.",
-   "a": false,
-   "explain": "Saul a ascultat glasul lui Ionatan și a jurat: „David nu va muri!\" (19:6)."
+   "q": "Saul a jurat că David va muri.",
+   "a": false
   },
   {
-   "id": "1sa.19.sub12.16",
-   "age": "sub12",
-   "t": "tf",
-   "ref": "19:10",
-   "q": "Saul a lovit cu sulița în perete, pentru că David s-a ferit.",
-   "a": true
-  },
-  {
-   "id": "1sa.19.sub12.17",
-   "age": "sub12",
-   "t": "tf",
-   "ref": "19:11",
-   "q": "Mical n-a vrut să-l ajute pe David.",
-   "a": false,
-   "explain": "I-a dat de știre și l-a ajutat să fugă."
-  },
-  {
-   "id": "1sa.19.sub12.4",
-   "age": "sub12",
-   "t": "one",
-   "ref": "19:13",
-   "q": "Ce a pus Mical în pat, în locul lui David?",
-   "opts": [
-    "o pernă",
-    "terafimul",
-    "o oaie"
-   ],
-   "a": 1
-  },
-  {
-   "id": "1sa.19.sub12.5",
-   "age": "sub12",
-   "t": "one",
-   "ref": "19:18",
-   "q": "La cine a fugit David după ce a scăpat de la Saul?",
-   "opts": [
-    "la Isai",
-    "la Samuel, la Rama",
-    "la Ionatan"
-   ],
-   "a": 1
-  },
-  {
-   "id": "1sa.19.sub12.6",
-   "age": "sub12",
-   "t": "one",
-   "ref": "19:10",
-   "q": "Unde s-a înfipt sulița aruncată de Saul?",
-   "opts": [
-    "în ușă",
-    "în perete",
-    "în masă"
-   ],
-   "a": 1
-  },
-  {
-   "id": "1sa.19.sub12.18",
+   "id": "1sa.19.sub12.106",
    "age": "sub12",
    "t": "one",
    "ref": "19:2",
-   "q": "Cine l-a înștiințat pe David că Saul caută să-l omoare?",
+   "q": "Cine l-a avertizat pe David?",
    "opts": [
-    "Abner",
+    "un păstor",
     "Ionatan",
-    "Samuel"
+    "un leu"
    ],
    "a": 1
   },
   {
-   "id": "1sa.19.sub12.19",
+   "id": "1sa.19.sub12.107",
+   "age": "sub12",
+   "t": "one",
+   "ref": "19:12",
+   "q": "Pe unde l-a coborât Mical pe David?",
+   "opts": [
+    "pe ușă",
+    "pe fereastră",
+    "pe acoperiș"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.19.sub12.108",
    "age": "sub12",
    "t": "one",
    "ref": "19:18",
-   "q": "Unde a locuit David cu Samuel?",
+   "q": "La cine a fugit David?",
    "opts": [
-    "la Hebron",
-    "în Naiot",
-    "la Silo"
+    "la filisteni",
+    "la Goliat",
+    "la Samuel"
+   ],
+   "a": 2
+  },
+  {
+   "id": "1sa.19.sub12.109",
+   "age": "sub12",
+   "t": "one",
+   "ref": "19:11",
+   "q": "Cine era Mical pentru David?",
+   "opts": [
+    "mama lui",
+    "nevasta lui",
+    "sora lui"
    ],
    "a": 1
   },
   {
-   "id": "1sa.19.sub12.24",
+   "id": "1sa.19.sub12.110",
+   "age": "sub12",
+   "t": "one",
+   "ref": "19:10",
+   "q": "Cine a vrut să-l lovească pe David cu sulița?",
+   "opts": [
+    "Samuel",
+    "Ionatan",
+    "Saul"
+   ],
+   "a": 2
+  },
+  {
+   "id": "1sa.19.sub12.121",
    "age": "sub12",
    "t": "match",
    "ref": "19:1-24",
-   "q": "Asociază fiecare nume sau loc cu ce se spune despre el.",
+   "q": "Asociază fiecare nume cu ce se spune despre el în capitol.",
    "pairs": [
     [
      "Ionatan",
-     "cel care a vorbit bine de David lui Saul"
+     "prietenul care l-a apărat pe David"
     ],
     [
      "Mical",
@@ -126,129 +124,126 @@
     ],
     [
      "Saul",
-     "cel care a lovit cu sulița în perete"
+     "voia să-l prindă pe David"
+    ],
+    [
+     "David",
+     "a fugit noaptea"
     ],
     [
      "Samuel",
-     "cel la care a fugit David"
-    ],
-    [
-     "Naiot",
-     "locul de lângă Rama"
+     "la el a fugit David la Rama"
     ]
    ]
   },
   {
-   "id": "1sa.19.sub12.10",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "19:12",
-   "a": [
-    "fereastră"
-   ],
-   "q": "Ea l-a coborât pe ___ și David a plecat și a fugit.",
-   "ctx": "Mical, nevasta lui David:"
-  },
-  {
-   "id": "1sa.19.sub12.11",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "19:6",
-   "a": [
-    "muri"
-   ],
-   "q": "„Viu este Domnul că David nu va ___!\"",
-   "ctx": "Saul, după ce l-a ascultat pe Ionatan:"
-  },
-  {
-   "id": "1sa.19.sub12.12",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "19:24",
-   "a": [
-    "proroci"
-   ],
-   "q": "„Oare și Saul este între ___?\"",
-   "ctx": "Zicala de la Naiot, lângă Rama:"
-  },
-  {
-   "id": "1sa.19.sub12.20",
+   "id": "1sa.19.sub12.111",
    "age": "sub12",
    "t": "fill",
    "ref": "19:2",
-   "q": "Dar Ionatan, fiul lui Saul, care iubea mult pe ___, i-a dat de știre",
+   "q": "care iubea mult pe ___",
    "a": [
     "David"
    ]
   },
   {
-   "id": "1sa.19.sub12.21",
+   "id": "1sa.19.sub12.112",
    "age": "sub12",
    "t": "fill",
-   "ref": "19:14",
-   "q": "Când a trimis Saul oamenii să ia pe David, ea a zis: „Este ___.",
+   "ref": "19:12",
+   "q": "Ea l-a coborât pe ___",
    "a": [
-    "bolnav"
+    "fereastră"
    ]
   },
   {
-   "id": "1sa.19.sub12.13",
+   "id": "1sa.19.sub12.113",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "19:11",
+   "q": "Dar Mical, nevasta lui David, i-a dat de ___",
+   "a": [
+    "știre"
+   ]
+  },
+  {
+   "id": "1sa.19.sub12.114",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "19:6",
+   "q": "Viu este Domnul că David nu va ___!",
+   "a": [
+    "muri"
+   ]
+  },
+  {
+   "id": "1sa.19.sub12.115",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "19:18",
+   "q": "El s-a dus la ___, la Rama",
+   "a": [
+    "Samuel"
+   ]
+  },
+  {
+   "id": "1sa.19.sub12.116",
    "age": "sub12",
    "t": "multi",
-   "ref": "19:13",
-   "q": "Ce a folosit Mical ca să-i înșele pe oamenii lui Saul?",
+   "ref": "19:1-2",
+   "q": "Ce a făcut Ionatan?",
    "opts": [
-    "terafimul",
-    "o haină",
-    "o piele de capră"
+    "l-a iubit mult pe David",
+    "l-a avertizat pe David",
+    "l-a alungat pe David"
    ],
    "a": [
     0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.19.sub12.117",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "19:4",
+   "q": "Ce a spus Ionatan lui Saul?",
+   "opts": [
+    "că David este vinovat",
+    "că David n-a greșit",
+    "să nu facă rău lui David"
+   ],
+   "a": [
     1,
     2
    ]
   },
   {
-   "id": "1sa.19.sub12.14",
+   "id": "1sa.19.sub12.118",
    "age": "sub12",
    "t": "multi",
-   "ref": "19:20-24",
-   "q": "Cine au prorocit la Naiot, lângă Rama?",
+   "ref": "19:10",
+   "q": "Ce a făcut David?",
    "opts": [
-    "Saul însuși",
-    "prorocii cu Samuel în frunte",
-    "trimișii lui Saul"
+    "a luptat cu Saul",
+    "a fugit noaptea",
+    "s-a ferit de suliță"
    ],
    "a": [
-    0,
     1,
     2
    ]
   },
   {
-   "id": "1sa.19.sub12.15",
+   "id": "1sa.19.sub12.119",
    "age": "sub12",
    "t": "multi",
-   "ref": "19:14",
-   "q": "Ce le-a spus Mical oamenilor lui Saul despre David?",
-   "opts": [
-    "că a fugit",
-    "că doarme",
-    "că e la război"
-   ],
-   "a": [],
-   "explain": "Niciun răspuns corect: a zis: „Este bolnav\" (19:14)."
-  },
-  {
-   "id": "1sa.19.sub12.22",
-   "age": "sub12",
-   "t": "multi",
-   "ref": "19:11-12",
+   "ref": "19:12-13",
    "q": "Ce a făcut Mical?",
    "opts": [
-    "i-a dat de știre lui David",
-    "l-a ascuns într-o pivniță",
-    "l-a coborât pe fereastră"
+    "l-a coborât pe fereastră",
+    "a chemat soldații",
+    "a pus ceva în pat"
    ],
    "a": [
     0,
@@ -256,18 +251,18 @@
    ]
   },
   {
-   "id": "1sa.19.sub12.23",
+   "id": "1sa.19.sub12.120",
    "age": "sub12",
    "t": "multi",
-   "ref": "19:6-7",
-   "q": "Ce s-a întâmplat după cuvintele lui Ionatan?",
+   "ref": "19:6",
+   "q": "Ce a făcut Saul?",
    "opts": [
-    "Ionatan l-a adus pe David la Saul",
-    "Saul l-a alungat pe Ionatan",
-    "Saul a jurat că David nu va muri"
+    "a râs de Ionatan",
+    "a ascultat pe Ionatan",
+    "a jurat că David nu va muri"
    ],
    "a": [
-    0,
+    1,
     2
    ]
   },
