@@ -25,6 +25,10 @@ export default function Quiz({ book, bookName, questions, mode, examId, backHref
   const [confirmHandIn, setConfirmHandIn] = useState(false);
   const [leaveTo, setLeaveTo] = useState<(() => void) | null>(null);
   const leaving = useRef(false);
+  const quizEl = useRef<HTMLDivElement>(null);
+  const cardEl = useRef<HTMLElement>(null);
+  // where the card sat when the answer was checked: it stays there while the correction appears below
+  const [pin, setPin] = useState<number | null>(null);
 
   const q = questions[i];
   const g = grades[i];
@@ -69,13 +73,14 @@ export default function Quiz({ book, bookName, questions, mode, examId, backHref
   const setAnswer = (a: Answer) => setAnswers(answers.map((x, k) => (k === i ? a : x)));
 
   function check() {
+    if (quizEl.current && cardEl.current) setPin(cardEl.current.getBoundingClientRect().top - quizEl.current.getBoundingClientRect().top);
     const gr = grade(q, answers[i]);
     setGrades(grades.map((x, k) => (k === i ? gr : x)));
     recordAnswers(book, [{ id: q.id, t: q.t, right: gr.right }]);
-    setTimeout(() => document.querySelector('.feedback')?.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 60);
   }
 
   function next() {
+    setPin(null);
     if (i < questions.length - 1) setI(i + 1);
     else setDone(true);
   }
@@ -99,7 +104,7 @@ export default function Quiz({ book, bookName, questions, mode, examId, backHref
   const topEl = document.getElementById('quiz-top');
 
   return (
-    <div class={`quiz${mode === 'practice' && g ? ' has-fb' : ''}`}>
+    <div ref={quizEl} class={`quiz${mode === 'practice' && g ? ' has-fb' : ''}`} style={pin !== null && g ? { paddingTop: `${pin}px` } : undefined}>
       {topEl && createPortal(
         <>
           <div class="bar" role="progressbar" aria-valuemin={0} aria-valuemax={questions.length} aria-valuenow={i + 1} aria-label="Progres">
@@ -110,9 +115,9 @@ export default function Quiz({ book, bookName, questions, mode, examId, backHref
 
       {newPart && <p class="part">{info.part}. {info.label}</p>}
 
-      <article class="card q-card" aria-live="polite">
+      <article ref={cardEl} class="card q-card" aria-live="polite">
         <div class="q-meta">
-          <span class="q-type">{info.short}{ctxOf(q) && <span class="q-ctx"> · {ctxOf(q)}</span>}</span>
+          <span class="q-type">{info.short}</span>
           <span class="q-ref">{bookName} {q.ref}</span>
         </div>
         {info.hint && !g && <p class="small muted">{info.hint}</p>}
@@ -228,11 +233,6 @@ function Cross() {
   return <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8" /></svg>;
 }
 
-/** Who speaks, to whom, where (fill-in questions): shown next to the type. */
-function ctxOf(q: Playable): string {
-  return q.t === 'fill' ? q.ctx ?? '' : '';
-}
-
 /** The right answer in words, for the feedback and the correction. */
 function rightAnswer(q: Playable): string {
   switch (q.t) {
@@ -293,7 +293,7 @@ function Results({ bookName, questions, answers, grades, mode, backHref, onAgain
           {questions.map((q, k) => (
             <article class="card q-card">
               {(k === 0 || questions[k - 1].t !== q.t) && <p class="part">{typeInfo(q.t).part}. {typeInfo(q.t).label}</p>}
-              <div class="q-meta"><span class="q-type">{k + 1}. {typeInfo(q.t).short}{ctxOf(q) && <span class="q-ctx"> · {ctxOf(q)}</span>}</span><span class="q-ref">{bookName} {q.ref}</span></div>
+              <div class="q-meta"><span class="q-type">{k + 1}. {typeInfo(q.t).short}</span><span class="q-ref">{bookName} {q.ref}</span></div>
               <QuestionView q={q} answer={answers[k]} onChange={() => {}} graded={gs[k]} />
               <Feedback q={q} g={gs[k]} bookName={bookName} />
             </article>
