@@ -43,16 +43,6 @@ export default function Profile({ books }: { books: BookInfo[] }) {
         </div>
       </header>
 
-      {p && (
-        <label class="me-row switch-row">
-          <span>
-            <strong>Cont de părinte</strong>
-            <span class="small muted block">{kids > 0 ? 'Șterge întâi copiii ca să-l poți opri.' : 'Copiii joacă de pe telefonul tău.'}</span>
-          </span>
-          <input type="checkbox" class="switch" role="switch" checked={isParent} disabled={kids > 0 || !u} onChange={(e) => toggleParent(e.currentTarget.checked)} />
-        </label>
-      )}
-      {parentError && <p class="notice notice-bad" role="alert">{parentError}</p>}
 
       <section class="me-sect" aria-labelledby="pl-title">
         <h2 id="pl-title" class="me-label">{isParent ? 'Familia' : 'Progres'}</h2>
@@ -60,15 +50,27 @@ export default function Profile({ books }: { books: BookInfo[] }) {
           <PlayerBlock key={x.key} p={x} books={books} head={isParent} />
         ))}
         {isParent && adding && <ChildForm onDone={() => setAdding(false)} />}
+        {p && (
+          <div class="me-row me-fam">
+            <label class="switch-row">
+              <span>
+                <strong>Cont de părinte</strong>
+                <span class="small muted block">{kids > 0 ? 'Șterge întâi copiii ca să-l poți opri.' : 'Copiii joacă de pe telefonul tău.'}</span>
+              </span>
+              <input type="checkbox" class="switch" role="switch" checked={isParent} disabled={kids > 0 || !u} onChange={(e) => toggleParent(e.currentTarget.checked)} />
+            </label>
+            {isParent && !adding && (
+              <button type="button" class="fam-add btn-reset" onClick={() => setAdding(true)}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
+                <strong>Adaugă un copil</strong>
+              </button>
+            )}
+          </div>
+        )}
+        {parentError && <p class="notice notice-bad" role="alert">{parentError}</p>}
       </section>
 
       <nav class="me-end">
-        {isParent && !adding && (
-          <button type="button" class="me-link" onClick={() => setAdding(true)}>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
-            Adaugă un copil
-          </button>
-        )}
         {p?.admin && <a class="me-link" href="/admin">Administrare</a>}
         {p?.admin && <a class="me-link" href="/semnalari">Semnalări de greșeli{reportsOpen > 0 ? ` (${reportsOpen})` : ''}</a>}
         <button type="button" class="me-link signout" onClick={() => signOut()}>Ieși din cont</button>
