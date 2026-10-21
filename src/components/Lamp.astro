@@ -1,12 +1,37 @@
 ---
-// The Candela oil lamp, unchanged from v1.
+// The Candela oil lamp, as in v1: the flame flickers and a soft glow breathes behind it.
+// Flame colours are the v1 ones (orange and pale cream), whatever the site accent is.
 interface Props { size?: number }
 const { size = 28 } = Astro.props;
 ---
-<svg width={size * 1.6} height={size * 1.6} viewBox="0 0 160 160" aria-hidden="true">
-  <path d="M80 18c10 18 22 30 22 48 0 13-10 22-22 22s-22-9-22-22c0-12 8-20 12-30 2 8 6 12 10 14-2-12 0-22 0-32z" fill="var(--oil)" />
-  <path d="M80 50c5 9 10 15 10 23 0 6-4 10-10 10s-10-4-10-10c0-7 6-13 10-23z" fill="var(--oil-soft)" />
-  <path d="M28 104c18 0 34-8 52-8s30 4 52 0c-4 18-24 32-52 32-20 0-40-8-52-24z" fill="var(--ink)" />
-  <path d="M132 96c8-4 14-2 16 4-6 0-10 2-16 6z" fill="var(--ink)" />
-  <ellipse cx="80" cy="96" rx="10" ry="3" fill="var(--ink-2)" />
-</svg>
+<span class="lamp">
+  <span class="lamp-glow"></span>
+  <svg width={size * 1.6} height={size * 1.6} viewBox="0 0 160 160" aria-hidden="true">
+    <g class="flame">
+      <path d="M80 18c10 18 22 30 22 48 0 13-10 22-22 22s-22-9-22-22c0-12 8-20 12-30 2 8 6 12 10 14-2-12 0-22 0-32z" fill="#D97B26" />
+      <path d="M80 50c5 9 10 15 10 23 0 6-4 10-10 10s-10-4-10-10c0-7 6-13 10-23z" fill="#FBE5CC" />
+    </g>
+    <path d="M28 104c18 0 34-8 52-8s30 4 52 0c-4 18-24 32-52 32-20 0-40-8-52-24z" fill="#3A271B" />
+    <path d="M132 96c8-4 14-2 16 4-6 0-10 2-16 6z" fill="#3A271B" />
+    <ellipse cx="80" cy="96" rx="10" ry="3" fill="#7B6450" />
+  </svg>
+</span>
+
+<style>
+  .lamp { position: relative; display: inline-flex; flex: none; }
+  .lamp svg { position: relative; display: block; }
+  .lamp-glow {
+    position: absolute; inset: -4px 0 auto; height: 52px; pointer-events: none;
+    background: radial-gradient(closest-side, color-mix(in oklab, #D97B26 40%, transparent), transparent);
+    filter: blur(4px); animation: glow 3.2s ease-in-out infinite;
+  }
+  .flame { transform-origin: 50% 90%; animation: flicker 2.4s ease-in-out infinite; }
+  @keyframes glow { 0%, 100% { opacity: .55; transform: scale(1); } 50% { opacity: .85; transform: scale(1.06); } }
+  @keyframes flicker {
+    0%, 100% { transform: scaleY(1) skewX(0); }
+    25% { transform: scaleY(1.06) skewX(-2deg); }
+    50% { transform: scaleY(.96) skewX(1.5deg); }
+    75% { transform: scaleY(1.04) skewX(-1deg); }
+  }
+  @media (prefers-reduced-motion: reduce) { .lamp-glow, .flame { animation: none; } }
+</style>
