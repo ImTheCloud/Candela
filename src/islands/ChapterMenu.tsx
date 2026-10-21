@@ -27,7 +27,7 @@ export default function ChapterMenu({ book, titles, summary, examsHref }: Props)
   const entry = (ch: number) => prog.exams[`c${ch}`];
 
   const sheet = open !== null && (
-    <Sheet book={book} ch={open} title={titles[open - 1]} total={count(summary[open]?.[level.value])} best={labelFor(entry(open))}
+    <Sheet book={book} ch={open} title={titles[open - 1]} total={count(summary[open]?.[level.value])} best={labelFor(entry(open), count(summary[open]?.[level.value]))}
       wrongs={prog.wrong.filter((id) => chapterOf(id) === open).length}
       onClose={() => setOpen(null)} />
   );
@@ -38,8 +38,8 @@ export default function ChapterMenu({ book, titles, summary, examsHref }: Props)
         {titles.map((t, k) => {
           const ch = k + 1;
           const e = entry(ch);
-          const label = labelFor(e);
-          const full = !!e && e.bestRight !== undefined && e.bestRight === e.n;
+          const label = labelFor(e, count(summary[ch]?.[level.value]));
+          const full = !!e && (e.bestRight !== undefined ? e.bestRight === e.n : e.best === 100);
           return (
             <li>
               <button type="button" class={`tile${full ? ' is-full' : ''}`} onClick={() => setOpen(ch)}
@@ -144,9 +144,11 @@ function Chev() {
 
 type Entry = Progress['exams'][string] | undefined;
 
-/** "4/21" for a chapter test. Entries from before the count was kept have only a percentage and show nothing until the test is played again. */
-function labelFor(e: Entry): string | undefined {
-  return e && e.bestRight !== undefined && e.n ? `${e.bestRight}/${e.n}` : undefined;
+/** "4/21" for a chapter test. Entries from before the count was kept have only a percentage: the count is worked out from it until the test is played again. */
+function labelFor(e: Entry, size: number): string | undefined {
+  if (!e) return undefined;
+  if (e.bestRight !== undefined && e.n) return `${e.bestRight}/${e.n}`;
+  return size ? `${Math.round((e.best / 100) * size)}/${size}` : undefined;
 }
 
 /** The exam tile takes what is left of the last row of the 6-column grid. */

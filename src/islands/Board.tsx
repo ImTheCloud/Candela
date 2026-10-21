@@ -2,7 +2,7 @@ import { useEffect, useState } from 'preact/hooks';
 import { collection, FieldPath, getDocs, limit, orderBy, query } from 'firebase/firestore';
 import { AGE_GROUPS, LEVEL_KEY, ageShort, type AgeGroup } from '../lib/age';
 import { db } from '../lib/firebase';
-import { level } from '../lib/level';
+import { level, setLevel } from '../lib/level';
 import { user } from '../lib/session';
 
 interface Row { key: string; name: string; score: number; at: number }
@@ -16,6 +16,8 @@ interface Props {
 /** Public board of a book: all levels together or one level. Each question counts once; ties go to whoever got there first. */
 export default function Board({ book }: Props) {
   const [age, setAge] = useState<AgeGroup | 'all'>(level.value);
+  // the level of the board and the level of the tests are one and the same choice
+  useEffect(() => { setAge(level.value); }, [level.value]);
   const [rows, setRows] = useState<Row[] | null>(null);
   const [error, setError] = useState(false);
 
@@ -39,7 +41,7 @@ export default function Board({ book }: Props) {
     <div class="board">
       <div class="age-tabs six" role="tablist" aria-label="Nivel">
         {AGE_GROUPS.map((g) => (
-          <button type="button" role="tab" aria-selected={age === g.id} onClick={() => setAge(g.id)}>{ageShort(g.id)}</button>
+          <button type="button" role="tab" aria-selected={age === g.id} onClick={() => { setLevel(g.id); setAge(g.id); }}>{ageShort(g.id)}</button>
         ))}
         <button type="button" role="tab" aria-selected={age === 'all'} onClick={() => setAge('all')}>Toate</button>
       </div>
@@ -54,7 +56,7 @@ export default function Board({ book }: Props) {
       ) : rows === null ? (
         <div class="lb-skeleton" aria-hidden="true"><span /><span /><span /></div>
       ) : rows.length === 0 ? (
-        <p class="lb-empty">Nimeni nu este încă în acest clasament. Fii primul!</p>
+        <p class="lb-empty">Niciun jucător încă. Fii primul!</p>
       ) : (
         <>
           <ol class="lb-cards">

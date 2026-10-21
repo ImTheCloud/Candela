@@ -71,7 +71,7 @@ function Row({ r }: { r: UserRow }) {
             <div class="adm-player">
               <p><strong>{p.name}</strong>{p.child && <span class="muted small"> · copil</span>}{r.hidden && !p.child && <span class="muted small"> · ascuns din clasament</span>}</p>
               {p.books.map((b) => (
-                <p class="small muted">{b.name}: {b.mastered} știute · {b.wrong} de reluat · {b.chapters} capitole încercate · {b.exams} examene</p>
+                <p class="small muted adm-line">{b.name} · {b.mastered} știute · {b.wrong} de reluat · {b.chapters} cap.</p>
               ))}
             </div>
           ))}

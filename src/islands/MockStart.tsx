@@ -8,7 +8,7 @@ export default function MockStart({ book }: { book: string }) {
     <div class="card mock-card">
       <div>
         <p class="exam-title">Examen alb</p>
-        <p class="small muted">Un examen nou, ca cel adevărat: 21 de întrebări din toată cartea. Alege nivelul.</p>
+        <p class="small muted">21 de întrebări din toată cartea.</p>
       </div>
       <LevelPicker label="Nivelul examenului" />
       <a class="btn btn-primary btn-block" href={`/${book}/examene/alb`}>Începe examenul · {ageShort(level.value)} ani</a>
