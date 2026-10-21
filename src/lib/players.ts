@@ -71,6 +71,10 @@ export function updateChild(key: string, name: string, birthYear: number) {
   return updateDoc(doc(db, 'users', uid(), 'players', key), { name: name.trim().replace(/\s+/g, ' '), birthYear });
 }
 
+export function setChildBirthYear(key: string, birthYear: number) {
+  return updateDoc(doc(db, 'users', uid(), 'players', key), { birthYear });
+}
+
 export async function removeChild(key: string) {
   const id = uid();
   if (chosen.value === key) choosePlayer(id);

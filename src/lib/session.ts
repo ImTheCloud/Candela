@@ -18,6 +18,8 @@ export interface Profile {
   birthYear: number | null;
   isParent: boolean;
   hidden: boolean;
+  /** Can read the reports; set only from the Firebase console or the migration. */
+  admin?: boolean;
 }
 
 /** undefined while Firebase restores the session, null when signed out. */

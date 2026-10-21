@@ -51,6 +51,29 @@ service cloud.firestore {
       }
     }
 
+    function admin() {
+      return request.auth != null
+        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.get('admin', false) == true;
+    }
+
+    // A player flags a question as wrong. Any signed-in player sends one; only admins read, close or delete them.
+    match /reports/{id} {
+      allow read, update, delete: if admin();
+      allow create: if request.auth != null
+        && request.resource.data.keys().hasOnly(['uid', 'by', 'qid', 'book', 'ch', 'ref', 'q', 'reason', 'note', 'done', 'at'])
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.by is string && request.resource.data.by.size() <= 80
+        && request.resource.data.qid is string && request.resource.data.qid.size() <= 60
+        && request.resource.data.book in ['1-samuel', '2-samuel']
+        && request.resource.data.ch is int
+        && request.resource.data.ref is string && request.resource.data.ref.size() <= 60
+        && request.resource.data.q is string && request.resource.data.q.size() <= 500
+        && request.resource.data.reason in ['answer', 'text', 'unclear', 'typo', 'other']
+        && request.resource.data.note is string && request.resource.data.note.size() <= 1000
+        && request.resource.data.done == false
+        && request.resource.data.at == request.time;
+    }
+
     // Public boards, one per book: boards/{book}/players/{uid}~{playerKey}. Everyone reads them;
     // only the account writes its own players, and the score must equal the questions mastered in its progress.
     match /boards/{book}/players/{key} {

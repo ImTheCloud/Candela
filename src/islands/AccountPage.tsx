@@ -2,7 +2,6 @@ import { useState } from 'preact/hooks';
 import { ageGroup, ageLabel, validBirthYear } from '../lib/age';
 import { errorText, profile, profileError, profileLoaded, setBirthYear, signIn, signOut, user } from '../lib/session';
 import Children from './Children';
-import ThemePicker from './ThemePicker';
 
 export default function AccountPage() {
   const u = user.value;
@@ -72,11 +71,7 @@ function Profile() {
       {p && <Children />}
 
       <a class="btn btn-ghost" href="/progres">Vezi progresul</a>
-
-      <section class="card auth-card stack">
-        <h3>Aspect</h3>
-        <ThemePicker />
-      </section>
+      {p?.admin && <a class="btn btn-ghost" href="/semnalari">Semnalări de greșeli</a>}
 
       <button class="btn btn-ghost" onClick={() => signOut()}>Ieși din cont</button>
     </div>
@@ -126,7 +121,7 @@ function BirthYear({ current }: { current: number | null }) {
       <div class="field">
         <label for="birth">Anul nașterii</label>
         <input id="birth" class="input" inputMode="numeric" maxLength={4} placeholder="de exemplu 1990" value={value} onInput={(e) => setValue(e.currentTarget.value.replace(/\D/g, ''))} />
-        <p class="small muted">Îl folosim ca să primești întrebările potrivite vârstei tale.</p>
+        <p class="small muted">Întrebările de la examen sunt diferite pe categorii de vârstă; anul nașterii ne spune ce categorie să-ți arătăm. Nu-l arătăm nimănui.</p>
       </div>
       {error && <p class="notice notice-bad" role="alert">{error}</p>}
       <button class="btn btn-primary" disabled={busy}>{busy ? 'Se salvează…' : 'Salvează'}</button>

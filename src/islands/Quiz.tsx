@@ -2,6 +2,7 @@ import { useEffect, useState } from 'preact/hooks';
 import { recordAnswers, recordExam } from '../lib/progress';
 import { emptyAnswer, grade, isAnswered, percent, typeInfo, type Answer, type Grade, type Playable } from '../lib/questions';
 import QuestionView from './QuestionView';
+import ReportButton from './ReportButton';
 
 export interface QuizProps {
   book: string;
@@ -127,6 +128,7 @@ function Feedback({ q, g }: { q: Playable; g: Grade }) {
         {q.cite.map(([label, text]) => <p><sup>{label}</sup>{text}</p>)}
       </div>
       {ch && <a class="link small" href={`/${q.book}/citire/${ch}#v${v}`}>Citește capitolul {ch}</a>}
+      <ReportButton q={q} />
     </section>
   );
 }

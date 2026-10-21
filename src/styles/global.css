@@ -1,4 +1,4 @@
-/* Design tokens: warm and sober (candle, oil, cedar). Dark mode follows the system unless the player picks one in Cont. */
+/* Design tokens: warm and sober (candle, oil, cedar). Always light. */
 :root {
   /* v1 palette: warm cream, lamp oil, cedar */
   --bg: #f8f1e6;
@@ -33,55 +33,6 @@
   --measure: 40rem;
   --wide: 64rem;
   color-scheme: light;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #17120e;
-    --surface: #211a14;
-    --surface-2: #2b221a;
-    --ink: #f1e7da;
-    --ink-2: #b9a792;
-    --ink-3: #8a7864;
-    --line: #3a2f25;
-    --oil: #e58a3c;
-    --oil-strong: #e58a3c;
-    --oil-ink: #f2b27a;
-    --oil-soft: #3b2615;
-    --on-oil: #1c130c;
-    --cedar: #d0a27c;
-    --cedar-soft: #33261b;
-    --ok: #8dba6a;
-    --ok-soft: #22301a;
-    --bad: #e07a6c;
-    --bad-soft: #3a1f1a;
-    --highlight: #5a4a1c;
-    --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px rgb(0 0 0 / 0.25);
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #17120e;
-  --surface: #211a14;
-  --surface-2: #2b221a;
-  --ink: #f1e7da;
-  --ink-2: #b9a792;
-  --ink-3: #8a7864;
-  --line: #3a2f25;
-  --oil: #e58a3c;
-  --oil-strong: #e58a3c;
-  --oil-ink: #f2b27a;
-  --oil-soft: #3b2615;
-  --on-oil: #1c130c;
-  --cedar: #d0a27c;
-  --cedar-soft: #33261b;
-  --ok: #8dba6a;
-  --ok-soft: #22301a;
-  --bad: #e07a6c;
-  --bad-soft: #3a1f1a;
-  --highlight: #5a4a1c;
-  --shadow: 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 24px rgb(0 0 0 / 0.25);
-  color-scheme: dark;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -243,3 +194,23 @@ img, svg { display: block; }
 .step-num { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--oil-soft); color: var(--oil-ink); font-weight: 700; }
 .step-title { font-weight: 600; }
 .place { display: grid; gap: 4px; padding: 14px 16px; box-shadow: none; }
+
+/* Dialog that must be answered (birth year) */
+.modal-back {
+  position: fixed; inset: 0; z-index: 50; display: grid; place-items: end center;
+  background: rgb(58 39 27 / 0.45); padding: var(--gutter); padding-bottom: calc(var(--gutter) + env(safe-area-inset-bottom));
+  overflow-y: auto;
+}
+.modal { width: 100%; max-width: 28rem; padding: 22px 20px; }
+@media (min-width: 640px) { .modal-back { place-items: center; } }
+
+/* Report a mistake */
+.report-link { justify-self: start; color: var(--ink-2); padding: 6px 0; text-decoration: underline; }
+.report-done { padding-top: 2px; }
+.report { padding: 14px; border-radius: 12px; background: var(--bg); --gap: 12px; }
+.report-title { font-weight: 600; }
+.report-reasons { display: grid; gap: 10px; }
+.report-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.report-item { padding: 16px 18px; --gap: 8px; }
+.report-q { font-weight: 500; }
+.report-note { color: var(--ink-2); font-style: italic; }

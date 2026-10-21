@@ -1,0 +1,14 @@
+---
+import Base from '../layouts/Base.astro';
+import Reports from '../islands/Reports';
+---
+<Base title="Semnalări" crumbs={[{ href: '/', label: 'Acasă' }]}>
+  <section class="wrap narrow page">
+    <h1>Semnalări de greșeli</h1>
+    <p class="muted">Întrebările pe care jucătorii le-au semnalat din teste. Corectează întrebarea, apoi marcheaz-o „Rezolvat".</p>
+    <Reports client:only="preact">
+      <div slot="fallback" class="card skeleton"></div>
+    </Reports>
+  </section>
+</Base>
+<style>.page { display: grid; gap: 16px; padding-block: 8px 32px; }</style>
