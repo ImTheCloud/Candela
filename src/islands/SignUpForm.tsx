@@ -62,7 +62,7 @@ export default function SignUpForm() {
         <label for="birth">Anul nașterii</label>
         <input id="birth" class="input" inputMode="numeric" maxLength={4} placeholder="de exemplu 1990" required value={f.birthYear}
           onInput={(e) => setF({ ...f, birthYear: e.currentTarget.value.replace(/\D/g, '') })} />
-        <p class="small muted">Primești întrebările potrivite vârstei tale.</p>
+        <p class="small muted">Întrebările de examen sunt pe categorii de vârstă; așa știm ce categorie să-ți arătăm. Nu-l arătăm nimănui.</p>
       </div>
       <label class="check">
         <input type="checkbox" checked={f.isParent} onChange={set('isParent')} />

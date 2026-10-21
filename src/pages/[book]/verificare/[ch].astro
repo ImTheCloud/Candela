@@ -29,7 +29,7 @@ const answer = (q: Playable) => {
       <section class="age">
         <h2>{g.label}</h2>
         {qs.filter((q) => q.age === g.id).map((q) => (
-          <article class="card rq">
+          <article class="card rq" id={q.id}>
             <p class="small muted"><strong>{typeInfo(q.t).short}</strong> · {q.ref} · {q.id}</p>
             {q.ctx && <p class="small muted">{q.ctx}</p>}
             <p class="rq-q">{q.q}</p>

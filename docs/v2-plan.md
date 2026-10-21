@@ -11,7 +11,7 @@ Nouvelle application, construite sur la branche `v2`. `main` reste l'application
 | Hébergement | Vercel : la branche `v2` a sa propre adresse de prévisualisation (`*.vercel.app`). Vérifier que la protection des prévisualisations est désactivée pour les testeurs. |
 | Données | Firebase (projet `candela-64d25`) : Authentication (email + mot de passe) et Firestore (emplacement `eur3`, Europe multirégion). Supabase reste en place pour l'ancienne app jusqu'à la bascule. |
 | Langue | Interface en roumain uniquement. |
-| Design | Sobre et chaleureux (bougie, huile, cèdre), belle typographie de lecture, sans emoji, mode sombre pour lire le soir. |
+| Design | Sobre et chaleureux (bougie, huile, cèdre), belle typographie de lecture, sans emoji, toujours en clair (fond beige v1). |
 | Navigation | Une vraie adresse par page, le bouton retour fonctionne, chaque chapitre ou question a un lien partageable. |
 | Mode invité | Oui : lire et jouer sans compte, la progression passe dans le compte à l'inscription. |
 | Mot de passe oublié | Email de réinitialisation de Firebase. Plus de page de mot de passe provisoire. |
