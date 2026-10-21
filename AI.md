@@ -27,4 +27,6 @@ npm run check   # vérification des types
 - Couleurs uniquement via les variables de `:root`, en clair et en sombre. Aucun emoji.
 - Aucun texte de bouton ou de titre court ne passe sur deux lignes (vérifier à 320, 375 et 1280 px).
 - Une question nomme toujours qui, où et quand : elle doit se comprendre seule, mélangée dans un examen.
+- Navigation sans rechargement (`ClientRouter` dans `Base.astro`) : un `<script>` de page s'exécute une seule fois, donc le mettre dans un écouteur `astro:page-load` (et arrêter ses `effect` à `astro:before-swap`). Pour changer l'adresse sans changer de page : `history.replaceState(history.state, …)`.
+- Pas de dégradés, pas de cartes superposées : sections plates séparées par des filets. Un chargement affiche un squelette de la même forme que le contenu.
 - Pas de code mort ni de scripts jetables dans le dépôt.

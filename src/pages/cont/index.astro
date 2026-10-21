@@ -1,12 +1,19 @@
 ---
 import Base from '../../layouts/Base.astro';
 import AccountPage from '../../islands/AccountPage';
+import { BOOKS } from '../../lib/books';
+import { totals } from '../../lib/content';
+
+const books = BOOKS.map((b) => ({ slug: b.slug, name: b.name, chapters: b.chapters, totals: totals(b.slug) }));
 ---
-<Base title="Contul meu">
+<Base title="Contul meu" crumbs={[{ href: '/', label: 'Acasă' }]}>
   <section class="wrap narrow page">
-    <AccountPage client:only="preact">
-      <div slot="fallback" class="card auth-card skeleton"></div>
+    <AccountPage client:only="preact" books={books}>
+      <div slot="fallback" class="me-skeleton" aria-hidden="true">
+        <div class="me-id"><span class="sk sk-av"></span><div class="sk-rows"><span class="sk"></span><span class="sk"></span></div></div>
+        <div class="sk-rows"><span class="sk"></span><span class="sk"></span><span class="sk"></span></div>
+      </div>
     </AccountPage>
   </section>
 </Base>
-<style>.page { padding-block: 32px; }</style>
+<style>.page { padding-block: 16px 32px; }</style>

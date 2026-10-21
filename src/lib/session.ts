@@ -10,6 +10,7 @@ import {
 } from 'firebase/auth';
 import { doc, onSnapshot, serverTimestamp, setDoc, updateDoc } from 'firebase/firestore';
 import { auth, db } from './firebase';
+import { localGet, localRemove, localSet } from './store';
 
 // users/{uid}: the adult account. Children live in users/{uid}/players (added in a later step).
 export interface Profile {
@@ -22,9 +23,15 @@ export interface Profile {
   admin?: boolean;
 }
 
+/** What the last visit left behind: lets a page show the name and profile before Firebase has restored the session. */
+interface Remembered { uid: string; profile: Profile | null; name: string }
+const remembered = localGet<Remembered | null>('me', null);
+
 /** undefined while Firebase restores the session, null when signed out. */
 export const user = signal<User | null | undefined>(undefined);
-export const profile = signal<Profile | null>(null);
+export const profile = signal<Profile | null>(remembered?.profile ?? null);
+/** The account of the last visit, valid only while `user` is still undefined. */
+export const rememberedAccount = remembered;
 /** False until the signed-in user's profile has been read (or failed to). */
 export const profileLoaded = signal(false);
 /** True when the profile could not be read (offline, rules, Firestore unavailable). */
@@ -36,15 +43,20 @@ onAuthStateChanged(auth, (u) => {
   user.value = u;
   stopProfile?.();
   stopProfile = null;
-  profile.value = null;
+  // the remembered profile stays on screen until the real one arrives, if it is the same account
+  if (u?.uid !== remembered?.uid) profile.value = null;
   profileLoaded.value = false;
   profileError.value = false;
-  if (!u) return;
+  if (!u) {
+    localRemove('me');
+    return;
+  }
   stopProfile = onSnapshot(
     doc(db, 'users', u.uid),
     (snap) => {
       profile.value = snap.exists() ? (snap.data() as Profile) : null;
       profileLoaded.value = true;
+      localSet('me', { uid: u.uid, profile: profile.value, name: profile.value?.name || u.displayName || '' } satisfies Remembered);
     },
     () => {
       profile.value = null;

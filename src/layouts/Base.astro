@@ -5,8 +5,10 @@ import '@fontsource-variable/fraunces';
 import '@fontsource-variable/source-serif-4';
 import '../styles/global.css';
 import '../styles/quiz.css';
+import { ClientRouter } from 'astro:transitions';
 import Lamp from '../components/Lamp.astro';
 import AccountButton from '../islands/AccountButton';
+import HeaderTitle from '../islands/HeaderTitle';
 import BirthYearGate from '../islands/BirthYearGate';
 import { DEFAULT_BOOK } from '../lib/books';
 
@@ -38,6 +40,7 @@ const fullTitle = title === 'Candela' ? title : `${title} · Candela`;
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={new URL('/og.png', Astro.site)} />
+    <ClientRouter />
     <slot name="head" />
     {import.meta.env.PROD && <script is:inline>if ('serviceWorker' in navigator) addEventListener('load', () => navigator.serviceWorker.register('/sw.js'));</script>}
   </head>
@@ -51,7 +54,9 @@ const fullTitle = title === 'Candela' ? title : `${title} · Candela`;
         )}
         <a href="/" class="brand" aria-label="Candela, acasă">
           <Lamp />
-          <span>Candela</span>
+          {home
+            ? <HeaderTitle client:only="preact"><span slot="fallback" class="brand-text" aria-hidden="true">&nbsp;</span></HeaderTitle>
+            : <span class="brand-text">Candela</span>}
         </a>
         <AccountButton client:only="preact">
           <span slot="fallback" class="account-placeholder"></span>
@@ -62,14 +67,17 @@ const fullTitle = title === 'Candela' ? title : `${title} · Candela`;
       <slot />
     </main>
     <BirthYearGate client:only="preact" />
-    <script is:inline>
-      // back: to the page we came from on this site, else up to the parent page
-      for (const a of document.querySelectorAll('[data-back]')) a.addEventListener('click', (e) => {
-        try { if (history.length > 1 && document.referrer && new URL(document.referrer).origin === location.origin) { e.preventDefault(); history.back(); } } catch {}
-      });
-    </script>
   </body>
 </html>
+
+<script>
+  // Back goes to the previous page of the app (no reload); with nothing behind it, up to the parent page.
+  document.addEventListener('click', (e) => {
+    const a = (e.target as Element).closest('a[data-back]');
+    if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey) return;
+    if ((history.state?.index ?? 0) > 0) { e.preventDefault(); history.back(); }
+  }, true);
+</script>
 
 <style>
   .top {
@@ -80,7 +88,8 @@ const fullTitle = title === 'Candela' ? title : `${title} · Candela`;
     padding-top: env(safe-area-inset-top);
   }
   .top-row { display: flex; align-items: center; justify-content: space-between; height: 60px; }
-  .brand { display: flex; align-items: center; gap: 7px; text-decoration: none; font: 400 25px/1 var(--f-brand); }
+  .brand { display: flex; align-items: center; gap: 7px; min-width: 0; text-decoration: none; font: 400 25px/1 var(--f-brand); }
+  .brand-text { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .brand svg { margin: -8px -4px -3px -10px; }
   .account-placeholder { display: block; width: 44px; height: 44px; }
   .top-row { gap: 6px; }

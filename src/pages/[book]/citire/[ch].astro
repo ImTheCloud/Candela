@@ -60,39 +60,44 @@ const next = ch < book.chapters ? ch + 1 : null;
   import { effect } from '@preact/signals';
   import { progress, setRead, toggleMark } from '../../../lib/progress';
 
-  const root = document.querySelector<HTMLElement>('.reader')!;
-  const book = root.dataset.book!;
-  const ch = Number(root.dataset.ch);
-  const verses = [...root.querySelectorAll<HTMLElement>('.verse')];
-  const readBtn = root.querySelector<HTMLButtonElement>('.read-toggle')!;
-  const p = progress(book);
+  let stop: (() => void) | undefined;
+  document.addEventListener('astro:before-swap', () => stop?.());
+  document.addEventListener('astro:page-load', () => {
+    const root = document.querySelector<HTMLElement>('.reader');
+    if (!root) return;
+    const book = root.dataset.book!;
+    const ch = Number(root.dataset.ch);
+    const verses = [...root.querySelectorAll<HTMLElement>('.verse')];
+    const readBtn = root.querySelector<HTMLButtonElement>('.read-toggle')!;
+    const p = progress(book);
 
-  effect(() => {
-    const marks = new Set(p.value.marks);
-    for (const el of verses) {
-      const on = marks.has(`${ch}:${el.dataset.v}`);
-      el.classList.toggle('marked', on);
-      el.setAttribute('aria-pressed', String(on));
-    }
-    const read = p.value.read.includes(ch);
-    readBtn.setAttribute('aria-pressed', String(read));
-  });
-
-  const toggle = (el: HTMLElement) => toggleMark(book, ch, Number(el.dataset.v));
-  for (const el of verses) {
-    el.addEventListener('click', () => {
-      // a long press that selects text should not also mark the verse
-      if (!getSelection()?.isCollapsed) return;
-      toggle(el);
-    });
-    el.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') {
-        e.preventDefault();
-        toggle(el);
+    stop = effect(() => {
+      const marks = new Set(p.value.marks);
+      for (const el of verses) {
+        const on = marks.has(`${ch}:${el.dataset.v}`);
+        el.classList.toggle('marked', on);
+        el.setAttribute('aria-pressed', String(on));
       }
+      const read = p.value.read.includes(ch);
+      readBtn.setAttribute('aria-pressed', String(read));
     });
-  }
-  readBtn.addEventListener('click', () => setRead(book, ch, readBtn.getAttribute('aria-pressed') !== 'true'));
+
+    const toggle = (el: HTMLElement) => toggleMark(book, ch, Number(el.dataset.v));
+    for (const el of verses) {
+      el.addEventListener('click', () => {
+        // a long press that selects text should not also mark the verse
+        if (!getSelection()?.isCollapsed) return;
+        toggle(el);
+      });
+      el.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          toggle(el);
+        }
+      });
+    }
+    readBtn.addEventListener('click', () => setRead(book, ch, readBtn.getAttribute('aria-pressed') !== 'true'));
+  });
 </script>
 
 <style>

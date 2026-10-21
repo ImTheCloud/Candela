@@ -1,18 +1,15 @@
 ---
 import BookPanel from '../islands/BookPanel';
 import PlayerPicker from '../islands/PlayerPicker';
-import Welcome from '../islands/Welcome';
 import { BOOKS, type Book } from '../lib/books';
 import { summary } from '../lib/content';
 
-// The home page: welcome, who plays, then the books' chapters (the two books switch in place).
+// The home page: who plays, then the books' chapters (the two books switch in place).
 interface Props { book: Book }
 const { book } = Astro.props;
 const books = BOOKS.map((b) => ({ slug: b.slug, name: b.name, titles: b.titles, summary: summary(b.slug) }));
 ---
-<section class="wrap hb-head">
-  <Welcome client:only="preact"><h1 slot="fallback" class="welcome">Bun venit!</h1></Welcome>
-</section>
+<h1 class="sr-only">Candela</h1>
 
 <section class="wrap hb-who">
   <PlayerPicker client:only="preact" />
@@ -23,8 +20,6 @@ const books = BOOKS.map((b) => ({ slug: b.slug, name: b.name, titles: b.titles, 
 </BookPanel>
 
 <style>
-  .hb-head { padding-block: 10px 0; }
-  .welcome { font-size: 1.5rem; }
   .hb-who:has(.picker) { padding-top: 10px; }
   .tiles-space { min-height: 360px; }
 </style>
