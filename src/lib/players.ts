@@ -1,6 +1,6 @@
 import { computed, effect, signal } from '@preact/signals';
 import { addDoc, collection, deleteDoc, doc, getDoc, onSnapshot, serverTimestamp, updateDoc } from 'firebase/firestore';
-import { removeFromBoards, writeAllBoard, writeBoard } from './board';
+import { removeFromBoards, writeBoard } from './board';
 import { BOOKS } from './books';
 import { db } from './firebase';
 import { profile, rememberedAccount, user } from './session';
@@ -98,5 +98,4 @@ export async function setHidden(p: Player, hidden: boolean) {
     const mastered = ((await getDoc(doc(db, 'users', id, 'progress', `${p.key}~${b.slug}`))).get('mastered') as string[] | undefined) ?? [];
     if (mastered.length) await writeBoard(b.slug, id, p.key, shortName(p), mastered);
   }));
-  await writeAllBoard(id, p.key, shortName(p));
 }

@@ -1,6 +1,6 @@
 import { effect, signal, type Signal } from '@preact/signals';
 import { arrayRemove, arrayUnion, deleteDoc, doc, increment, onSnapshot, serverTimestamp, setDoc, writeBatch } from 'firebase/firestore';
-import { writeAllBoard, writeBoard } from './board';
+import { writeBoard } from './board';
 import { BOOKS } from './books';
 import { db } from './firebase';
 import { player, shortName } from './players';
@@ -121,7 +121,6 @@ export async function recordAnswers(book: string, answers: Answered[]) {
   await batch.commit();
   if (onBoard) {
     localSet(boardMark(uid, p.key, book), mastered.length);
-    writeAllBoard(uid, p.key, shortName(p)).catch((e) => console.error(e));
   }
 }
 
@@ -140,7 +139,7 @@ export function deleteProgress(uid: string, playerKey: string) {
 
 const boardMark = (uid: string, key: string, book: string) => `bd:${uid}~${key}~${book}`;
 
-// Boards by chapter, level and book are filled from the progress: a player who answered before they existed
+// The boards are filled from the progress: a player who answered before they existed
 // (or whose entry is out of date) gets their entry written once, and again whenever the number of known questions changes.
 effect(() => {
   const u = user.value;
@@ -151,7 +150,6 @@ effect(() => {
     if (!prog.mastered.length || localGet<number | null>(boardMark(u.uid, p.key, b.slug), null) === prog.mastered.length) continue;
     localSet(boardMark(u.uid, p.key, b.slug), prog.mastered.length);
     Promise.resolve(writeBoard(b.slug, u.uid, p.key, shortName(p), prog.mastered))
-      .then(() => writeAllBoard(u.uid, p.key, shortName(p)))
       .catch((e) => { console.error(e); localRemove(boardMark(u.uid, p.key, b.slug)); });
   }
 });
