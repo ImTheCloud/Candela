@@ -57,11 +57,11 @@ const next = ch < book.chapters ? ch + 1 : null;
   sup { font: 600 0.7rem var(--f-body); color: var(--oil-ink); margin-right: 4px; vertical-align: 0.5em; line-height: 0; }
 
   .start {
-    display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 60px; margin-top: 32px;
-    border-radius: 999px; background: var(--btn); color: #fff; text-decoration: none;
+    display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 54px; margin-top: 32px;
+    border-radius: 999px; background: transparent; border: 2px solid var(--btn); color: var(--oil-ink); text-decoration: none;
     font: 700 1.1rem var(--f-body); transition: background-color .15s, transform .1s;
   }
-  .start:hover { background: var(--btn-hover); }
+  .start:hover { background: var(--oil-soft); }
   .start:active { transform: scale(0.98); }
 
   /* Thumb-reachable chapter navigation */

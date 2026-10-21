@@ -42,14 +42,13 @@ export default function BookPanel({ books, initial }: { books: BookData[]; initi
 
   return (
     <>
-      <section class="wrap hb-chap" aria-labelledby="chapters">
+      <section class="wrap hb-chap" aria-label="Capitole">
         <div class="card hb-chapters">
           <div class="book-switch" role="tablist" aria-label="Cartea">
             {books.map((b) => (
               <button type="button" role="tab" aria-selected={b.slug === slug} onClick={() => pick(b.slug)}>{b.name}</button>
             ))}
           </div>
-          <h2 id="chapters">Ce capitol vrei să exersezi?</h2>
           <ChapterMenu key={slug} book={slug} titles={book.titles} summary={book.summary} examsHref={`/${slug}/examene`} />
         </div>
       </section>

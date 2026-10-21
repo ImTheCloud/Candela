@@ -271,6 +271,13 @@ img, svg { display: block; }
   font: 600 0.9rem var(--f-body); color: var(--ink-2); transition: background-color .15s, color .15s;
 }
 .book-switch button[aria-selected="true"] { background: var(--surface); color: var(--ink); box-shadow: 0 1px 3px rgb(58 39 27 / .12); }
+.mode-switch { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+.mode-switch button {
+  min-height: 40px; border: 1.5px solid var(--line); border-radius: 12px; background: none; cursor: pointer;
+  font: 600 0.95rem var(--f-body); color: var(--ink-2); transition: background-color .15s, color .15s, border-color .15s;
+}
+.mode-switch button[aria-selected="true"] { background: var(--oil-soft); border-color: transparent; color: var(--oil-ink); }
+a.tile { text-decoration: none; }
 .tiles-space { min-height: 360px; }
 .mode { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 16px 18px; text-decoration: none; box-shadow: none; }
 .mode > span:first-child { display: flex; flex-direction: column; gap: 2px; }
