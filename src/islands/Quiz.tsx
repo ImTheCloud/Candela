@@ -99,7 +99,7 @@ export default function Quiz({ book, bookName, questions, mode, examId, backHref
   const topEl = document.getElementById('quiz-top');
 
   return (
-    <div class="quiz">
+    <div class={`quiz${mode === 'practice' && g ? ' has-fb' : ''}`}>
       {topEl && createPortal(
         <>
           <div class="bar" role="progressbar" aria-valuemin={0} aria-valuemax={questions.length} aria-valuenow={i + 1} aria-label="Progres">

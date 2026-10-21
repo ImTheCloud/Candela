@@ -1,5 +1,7 @@
 /* Quiz screens, phone first: big tap targets, actions at thumb height. */
 .quiz { display: grid; gap: 10px; padding-block: 8px calc(84px + env(safe-area-inset-bottom)); }
+/* answering: the question sits in the middle of the space between the header and the button bar */
+body.in-quiz .quiz:not(.results):not(.has-fb) { min-height: calc(100dvh - 48px - 32px); align-content: center; }
 
 /* While answering: a slim header with the back arrow, the progress and the count, nothing else */
 .qt { display: none; }
