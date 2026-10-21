@@ -39,7 +39,7 @@ export default function MockExam({ book, bookName, chapters }: Props) {
   useEffect(() => { build(); }, []);
 
   if (exam) {
-    return <Quiz key={exam.key} book={book} bookName={bookName} questions={exam.questions} mode="exam" examId="alb"
+    return <Quiz key={exam.key} book={book} bookName={bookName} questions={exam.questions} mode="practice" scoreId="alb" record={false}
       backHref={`/${book}/examene`} onAgain={() => { setExam(null); build(); }} />;
   }
   if (error) return <p class="notice notice-bad" role="alert">{error}</p>;
