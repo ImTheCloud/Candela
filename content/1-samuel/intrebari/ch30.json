@@ -1,0 +1,1088 @@
+{
+ "ch": 30,
+ "reviewed": false,
+ "questions": [
+  {
+   "id": "1sa.30.sub12.1",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "30:1",
+   "q": "Când David s-a întors la Țiclag, cetatea fusese arsă de amaleciți.",
+   "a": true
+  },
+  {
+   "id": "1sa.30.sub12.2",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "30:2",
+   "q": "Amaleciții i-au omorât pe toți cei din Țiclag.",
+   "a": false,
+   "explain": "„Nu omorâseră pe nimeni, dar luaseră totul și plecaseră\" (30:2)."
+  },
+  {
+   "id": "1sa.30.sub12.3",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "30:18",
+   "q": "David și-a scăpat cele două neveste.",
+   "a": true
+  },
+  {
+   "id": "1sa.30.sub12.4",
+   "age": "sub12",
+   "t": "one",
+   "ref": "30:7",
+   "q": "Ce i-a cerut David preotului Abiatar?",
+   "opts": [
+    "chivotul",
+    "efodul",
+    "sulița"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.30.sub12.5",
+   "age": "sub12",
+   "t": "one",
+   "ref": "30:11",
+   "q": "Pe cine au găsit oamenii lui David pe câmp?",
+   "opts": [
+    "un om egiptean",
+    "un amalecit",
+    "un filistean"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.30.sub12.6",
+   "age": "sub12",
+   "t": "one",
+   "ref": "30:4",
+   "q": "Ce au făcut David și oamenii lui când au văzut cetatea arsă?",
+   "opts": [
+    "au plâns până n-au mai putut plânge",
+    "au cântat",
+    "au fugit"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.30.sub12.7",
+   "age": "sub12",
+   "t": "match",
+   "ref": "30:1-5",
+   "q": "Țiclagul ars: asociază.",
+   "pairs": [
+    [
+     "amaleciții",
+     "au ars Țiclagul"
+    ],
+    [
+     "Ahinoam",
+     "nevasta lui David, luată prinsă"
+    ],
+    [
+     "Abigail",
+     "cealaltă nevastă luată prinsă"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.30.sub12.8",
+   "age": "sub12",
+   "t": "match",
+   "ref": "30:9-10",
+   "q": "La pârâul Besor: asociază.",
+   "pairs": [
+    [
+     "patru sute",
+     "au mers mai departe cu David"
+    ],
+    [
+     "două sute",
+     "au rămas, prea obosiți"
+    ],
+    [
+     "Besor",
+     "pârâul unde s-au oprit"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.30.sub12.9",
+   "age": "sub12",
+   "t": "match",
+   "ref": "30:11-12",
+   "q": "Egipteanul: asociază.",
+   "pairs": [
+    [
+     "pâinea și apa",
+     "i le-au dat întâi"
+    ],
+    [
+     "smochinele și stafidele",
+     "i le-au dat apoi"
+    ],
+    [
+     "trei zile și trei nopți",
+     "de atât nu mâncase"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.30.sub12.10",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "30:6",
+   "a": [
+    "îmbărbătat"
+   ],
+   "q": "Dar David s-a ___, sprijinindu-se pe Domnul Dumnezeul lui.",
+   "ctx": "David, în Țiclagul ars, când poporul vorbea să-l ucidă:"
+  },
+  {
+   "id": "1sa.30.sub12.11",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "30:8",
+   "a": [
+    "izbăvi"
+   ],
+   "q": "„Urmărește-o, căci o vei ajunge și vei ___ totul.\"",
+   "ctx": "Domnul, către David, după ce a fost adus efodul:"
+  },
+  {
+   "id": "1sa.30.sub12.12",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "30:20",
+   "a": [
+    "David"
+   ],
+   "q": "„Aceasta este prada lui ___!\"",
+   "ctx": "Cei ce mânau turma, după biruință:"
+  },
+  {
+   "id": "1sa.30.sub12.13",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "30:12",
+   "q": "Ce i-au dat egipteanului să mănânce?",
+   "opts": [
+    "pâine",
+    "două legături de stafide",
+    "o legătură de smochine"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.30.sub12.14",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "30:6",
+   "q": "De ce era David în mare strâmtorare?",
+   "opts": [
+    "poporul vorbea să-l ucidă cu pietre",
+    "Saul îl găsise",
+    "toți erau amărâți în suflet"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.30.sub12.15",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "30:1",
+   "q": "În a câta zi a ajuns David la Țiclag?",
+   "opts": [
+    "în prima zi",
+    "în a șaptea zi",
+    "după o lună"
+   ],
+   "a": [],
+   "explain": "Niciun răspuns corect: a treia zi (30:1)."
+  },
+  {
+   "id": "1sa.30.12-13.1",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "30:7",
+   "q": "Abiatar era fiul lui Ahimelec.",
+   "a": true
+  },
+  {
+   "id": "1sa.30.12-13.2",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "30:8",
+   "q": "David a pornit după amaleciți fără să-L întrebe pe Domnul.",
+   "a": false,
+   "explain": "David L-a întrebat pe Domnul: „Să urmăresc oastea aceasta? O voi ajunge?\" (30:8)."
+  },
+  {
+   "id": "1sa.30.12-13.3",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "30:24",
+   "q": "David a hotărât ca cei rămași la calabalâcuri să primească aceeași parte ca luptătorii.",
+   "a": true
+  },
+  {
+   "id": "1sa.30.12-13.4",
+   "age": "12-13",
+   "t": "one",
+   "ref": "30:13",
+   "q": "Al cui slujitor era egipteanul?",
+   "opts": [
+    "al lui Achiș",
+    "al unui filistean",
+    "al unui amalecit"
+   ],
+   "a": 2
+  },
+  {
+   "id": "1sa.30.12-13.5",
+   "age": "12-13",
+   "t": "one",
+   "ref": "30:17",
+   "q": "Câți amaleciți au scăpat fugind pe cămile?",
+   "opts": [
+    "șase sute",
+    "patru sute",
+    "o sută"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.30.12-13.6",
+   "age": "12-13",
+   "t": "one",
+   "ref": "30:13",
+   "q": "De ce l-a părăsit stăpânul pe egiptean?",
+   "opts": [
+    "era bolnav",
+    "fugise",
+    "furase"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.30.12-13.7",
+   "age": "12-13",
+   "t": "match",
+   "ref": "30:7-8",
+   "q": "David și Domnul: asociază.",
+   "pairs": [
+    [
+     "Abiatar",
+     "preotul"
+    ],
+    [
+     "efodul",
+     "adus la David"
+    ],
+    [
+     "„Să urmăresc oastea aceasta?\"",
+     "întrebarea lui David"
+    ],
+    [
+     "„Urmărește-o\"",
+     "răspunsul Domnului"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.30.12-13.8",
+   "age": "12-13",
+   "t": "match",
+   "ref": "30:16-19",
+   "q": "Biruința: asociază.",
+   "pairs": [
+    [
+     "amaleciții",
+     "mâncau, beau și jucau"
+    ],
+    [
+     "David",
+     "i-a bătut din zori până a doua zi seara"
+    ],
+    [
+     "cămilele",
+     "pe ele au fugit patru sute"
+    ],
+    [
+     "nimeni",
+     "nu le-a lipsit"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.30.12-13.9",
+   "age": "12-13",
+   "t": "match",
+   "ref": "30:21-24",
+   "q": "Împărțirea prăzii: asociază.",
+   "pairs": [
+    [
+     "oamenii răi",
+     "nu voiau să dea nimic celor rămași"
+    ],
+    [
+     "David",
+     "a zis „Să nu faceți așa, fraților\""
+    ],
+    [
+     "cei de la Besor",
+     "au primit aceeași parte"
+    ],
+    [
+     "Domnul",
+     "i-a păzit"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.30.12-13.10",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "30:4",
+   "a": [
+    "plâns"
+   ],
+   "q": "Atunci, David și poporul care era cu el au ridicat glasul și au ___ până n-au mai putut plânge.",
+   "ctx": "La Țiclagul ars:"
+  },
+  {
+   "id": "1sa.30.12-13.11",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "30:16",
+   "a": [
+    "călăuză"
+   ],
+   "q": "El i-a slujit astfel de ___.",
+   "ctx": "Egipteanul, după ce David i-a jurat:"
+  },
+  {
+   "id": "1sa.30.12-13.12",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "30:25",
+   "a": [
+    "obicei"
+   ],
+   "q": "Lucrul acesta a rămas de atunci și până în ziua de azi o lege și un ___ în Israel.",
+   "ctx": "Despre împărțirea prăzii hotărâtă de David:"
+  },
+  {
+   "id": "1sa.30.12-13.13",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "30:15",
+   "q": "Ce i-a cerut egipteanul lui David să-i jure?",
+   "opts": [
+    "că-i va da aur",
+    "că nu-l va omorî",
+    "că nu-l va da pe mâna stăpânului lui"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.30.12-13.14",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "30:19",
+   "q": "Ce a adus David înapoi?",
+   "opts": [
+    "fiii și fiicele",
+    "toată prada",
+    "tot ce li se luase"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.30.12-13.15",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "30:9",
+   "q": "Câți oameni au pornit cu David după amaleciți?",
+   "opts": [
+    "două sute",
+    "patru sute",
+    "o mie"
+   ],
+   "a": [],
+   "explain": "Niciun răspuns corect: au pornit șase sute de oameni (30:9)."
+  },
+  {
+   "id": "1sa.30.14-15.1",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "30:14",
+   "q": "Egipteanul a spus că amaleciții au năvălit și în partea de miazăzi a cheretiților.",
+   "a": true
+  },
+  {
+   "id": "1sa.30.14-15.2",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "30:10",
+   "q": "Cei două sute de oameni s-au oprit la Besor pentru că se temeau de luptă.",
+   "a": false,
+   "explain": "S-au oprit „fiind prea obosiți ca să mai treacă pârâul Besor\" (30:10)."
+  },
+  {
+   "id": "1sa.30.14-15.3",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "30:26",
+   "q": "David a trimis o parte din pradă bătrânilor lui Iuda.",
+   "a": true
+  },
+  {
+   "id": "1sa.30.14-15.4",
+   "age": "14-15",
+   "t": "one",
+   "ref": "30:6",
+   "q": "Pe cine s-a sprijinit David în strâmtorare?",
+   "opts": [
+    "pe Achiș",
+    "pe oamenii lui",
+    "pe Domnul Dumnezeul lui"
+   ],
+   "a": 2
+  },
+  {
+   "id": "1sa.30.14-15.5",
+   "age": "14-15",
+   "t": "one",
+   "ref": "30:16",
+   "q": "Ce făceau amaleciții când i-a găsit David?",
+   "opts": [
+    "dormeau",
+    "se pregăteau de luptă",
+    "mâncau, beau și jucau de bucuria prăzii"
+   ],
+   "a": 2
+  },
+  {
+   "id": "1sa.30.14-15.6",
+   "age": "14-15",
+   "t": "one",
+   "ref": "30:21",
+   "q": "Ce a făcut David când a ajuns la cei de la pârâul Besor?",
+   "opts": [
+    "i-a întrebat de sănătate",
+    "i-a trimis acasă",
+    "i-a mustrat"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.30.14-15.7",
+   "age": "14-15",
+   "t": "match",
+   "ref": "30:13-15",
+   "q": "Mărturia egipteanului: asociază începutul cu sfârșitul.",
+   "pairs": [
+    [
+     "Sunt un băiat egiptean",
+     "în slujba unui amalecit"
+    ],
+    [
+     "stăpânul meu m-a părăsit",
+     "pentru că eram bolnav"
+    ],
+    [
+     "Am năvălit în partea de miazăzi a cheretiților",
+     "și am ars Țiclagul"
+    ],
+    [
+     "Jură-mi pe Numele lui Dumnezeu",
+     "că nu mă vei omorî"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.30.14-15.8",
+   "age": "14-15",
+   "t": "match",
+   "ref": "30:26-31",
+   "q": "Darurile lui David: asociază.",
+   "pairs": [
+    [
+     "bătrânii lui Iuda",
+     "prietenii lui David"
+    ],
+    [
+     "Betel",
+     "primul loc numit"
+    ],
+    [
+     "Hebron",
+     "ultimul loc numit"
+    ],
+    [
+     "prada",
+     "luată de la vrăjmașii Domnului"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.30.14-15.9",
+   "age": "14-15",
+   "t": "match",
+   "ref": "30:1-6",
+   "q": "Țiclag: asociază.",
+   "pairs": [
+    [
+     "a treia zi",
+     "atunci a ajuns David"
+    ],
+    [
+     "femeile",
+     "luate prinse"
+    ],
+    [
+     "pietrele",
+     "poporul vorbea să-l ucidă cu ele"
+    ],
+    [
+     "Domnul",
+     "sprijinul lui David"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.30.14-15.10",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "30:24",
+   "a": [
+    "calabalâcuri"
+   ],
+   "q": "Partea trebuie să fie aceeași atât pentru cel ce s-a coborât pe câmpul de bătaie, cât și pentru cel ce a rămas la ___",
+   "ctx": "David, către oamenii lui, după biruință:"
+  },
+  {
+   "id": "1sa.30.14-15.11",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "30:26",
+   "a": [
+    "vrăjmașii"
+   ],
+   "q": "„Iată darul pe care vi-l fac din prada luată de la ___ Domnului!\"",
+   "ctx": "David, către bătrânii lui Iuda:"
+  },
+  {
+   "id": "1sa.30.14-15.12",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "30:10",
+   "a": [
+    "obosiți"
+   ],
+   "q": "David i-a urmărit mai departe, cu patru sute de oameni, dar două sute de oameni s-au oprit, fiind prea ___ ca să mai treacă pârâul Besor.",
+   "ctx": "În urmărirea amaleciților:"
+  },
+  {
+   "id": "1sa.30.14-15.13",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "30:14",
+   "q": "Unde au năvălit amaleciții, după egiptean?",
+   "opts": [
+    "în partea de miazăzi a cheretiților",
+    "la miazăzi de Caleb",
+    "pe ținutul lui Iuda"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.30.14-15.14",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "30:22",
+   "q": "Ce spuneau oamenii răi despre cei de la Besor?",
+   "opts": [
+    "să le dea partea dublă",
+    "să-și ia doar nevasta și copiii și să plece",
+    "să nu le dea nimic din pradă"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.30.14-15.15",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "30:16",
+   "q": "De unde luaseră amaleciții prada cea mare?",
+   "opts": [
+    "din Edom",
+    "din Egipt",
+    "din Moab"
+   ],
+   "a": [],
+   "explain": "Niciun răspuns corect: din țara filistenilor și din țara lui Iuda (30:16)."
+  },
+  {
+   "id": "1sa.30.16-17.1",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "30:17",
+   "q": "David i-a bătut pe amaleciți din zorii zilei până a doua zi seara.",
+   "a": true
+  },
+  {
+   "id": "1sa.30.16-17.2",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "30:22",
+   "q": "Toți oamenii lui David au fost de acord să împartă prada cu cei de la Besor.",
+   "a": false,
+   "explain": "Oamenii răi și de nimic nu voiau să le dea nimic (30:22)."
+  },
+  {
+   "id": "1sa.30.16-17.3",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "30:23",
+   "q": "David a spus că prada este ce le-a dat Domnul.",
+   "a": true
+  },
+  {
+   "id": "1sa.30.16-17.4",
+   "age": "16-17",
+   "t": "one",
+   "ref": "30:12",
+   "q": "De cât timp nu mâncase egipteanul?",
+   "opts": [
+    "șapte zile",
+    "o zi",
+    "trei zile și trei nopți"
+   ],
+   "a": 2
+  },
+  {
+   "id": "1sa.30.16-17.5",
+   "age": "16-17",
+   "t": "one",
+   "ref": "30:14",
+   "q": "În ținutul cui era Caleb, pe unde au năvălit amaleciții?",
+   "opts": [
+    "al lui Beniamin",
+    "al filistenilor",
+    "la miazăzi, în ținutul lui Iuda"
+   ],
+   "a": 2
+  },
+  {
+   "id": "1sa.30.16-17.6",
+   "age": "16-17",
+   "t": "one",
+   "ref": "30:23",
+   "q": "Cum îi numește David pe oamenii care nu voiau să împartă prada?",
+   "opts": [
+    "„netrebnici\"",
+    "„fraților\"",
+    "„robilor\""
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.30.16-17.7",
+   "age": "16-17",
+   "t": "match",
+   "ref": "30:23-25",
+   "q": "Legea prăzii: asociază începutul cu sfârșitul.",
+   "pairs": [
+    [
+     "Să nu faceți așa, fraților",
+     "cu ce ne-a dat Domnul"
+    ],
+    [
+     "El ne-a păzit",
+     "și a dat în mâinile noastre ceata"
+    ],
+    [
+     "Partea trebuie să fie aceeași",
+     "pentru cel ce s-a coborât pe câmpul de bătaie"
+    ],
+    [
+     "Lucrul acesta a rămas",
+     "o lege și un obicei în Israel"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.30.16-17.8",
+   "age": "16-17",
+   "t": "match",
+   "ref": "30:27-30",
+   "q": "Locurile care au primit daruri: asociază.",
+   "pairs": [
+    [
+     "Ramot",
+     "de la miazăzi"
+    ],
+    [
+     "Aroer",
+     "după Iatir"
+    ],
+    [
+     "Horma",
+     "înainte de Cor-Așan"
+    ],
+    [
+     "Atac",
+     "după Cor-Așan"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.30.16-17.9",
+   "age": "16-17",
+   "t": "match",
+   "ref": "30:7-10",
+   "q": "Pregătirea urmăririi: asociază.",
+   "pairs": [
+    [
+     "efodul",
+     "adus de Abiatar"
+    ],
+    [
+     "Domnul",
+     "a zis „vei izbăvi totul\""
+    ],
+    [
+     "șase sute",
+     "au pornit"
+    ],
+    [
+     "patru sute",
+     "au trecut pârâul"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.30.16-17.10",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "30:13",
+   "a": [
+    "ești"
+   ],
+   "q": "„Al cui ești și de unde ___?\"",
+   "ctx": "David, către egipteanul găsit pe câmp:"
+  },
+  {
+   "id": "1sa.30.16-17.11",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "30:17",
+   "a": [
+    "cămile"
+   ],
+   "q": "n-a scăpat niciunul din ei, afară de patru sute de tineri, care au încălecat pe ___ și au fugit.",
+   "ctx": "Lupta lui David cu amaleciții:"
+  },
+  {
+   "id": "1sa.30.16-17.12",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "30:23",
+   "a": [
+    "ceata"
+   ],
+   "q": "căci El ne-a păzit și a dat în mâinile noastre ___ care venise împotriva noastră.",
+   "ctx": "David, către oamenii lui:"
+  },
+  {
+   "id": "1sa.30.16-17.13",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "30:19",
+   "q": "Ce nu le-a lipsit după biruință?",
+   "opts": [
+    "nici un lucru din pradă",
+    "nici fiu, nici fiică",
+    "nimic din ce li se luase"
+   ],
+   "a": [
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.30.16-17.14",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "30:29",
+   "q": "Celor din ce cetăți a trimis David daruri?",
+   "opts": [
+    "cetățile filistenilor",
+    "cetățile cheniților",
+    "cetățile ierahmeeliților"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.30.16-17.15",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "30:7",
+   "q": "Al cui fiu era preotul Abiatar?",
+   "opts": [
+    "al lui Țadoc",
+    "al lui Ahitub",
+    "al lui Eli"
+   ],
+   "a": [],
+   "explain": "Niciun răspuns corect: fiul lui Ahimelec (30:7)."
+  },
+  {
+   "id": "1sa.30.18+.1",
+   "age": "18+",
+   "t": "tf",
+   "ref": "30:5",
+   "q": "Ahinoam din Izreel și Abigail din Carmel fuseseră luate prinse.",
+   "a": true
+  },
+  {
+   "id": "1sa.30.18+.2",
+   "age": "18+",
+   "t": "tf",
+   "ref": "30:20",
+   "q": "Prada cu oile și boii a fost numită „prada lui Achiș\".",
+   "a": false,
+   "explain": "Cei ce mânau turma ziceau: „Aceasta este prada lui David!\" (30:20)."
+  },
+  {
+   "id": "1sa.30.18+.3",
+   "age": "18+",
+   "t": "tf",
+   "ref": "30:31",
+   "q": "David a trimis daruri și celor din Hebron.",
+   "a": true
+  },
+  {
+   "id": "1sa.30.18+.4",
+   "age": "18+",
+   "t": "one",
+   "ref": "30:9",
+   "q": "Unde s-au oprit cei ce rămâneau la coadă?",
+   "opts": [
+    "la Țiclag",
+    "la Afec",
+    "la pârâul Besor"
+   ],
+   "a": 2
+  },
+  {
+   "id": "1sa.30.18+.5",
+   "age": "18+",
+   "t": "one",
+   "ref": "30:6",
+   "q": "De ce erau oamenii amărâți în suflet?",
+   "opts": [
+    "pentru că pierduseră oile",
+    "pentru foame",
+    "fiecare din pricina fiilor și fetelor lui"
+   ],
+   "a": 2
+  },
+  {
+   "id": "1sa.30.18+.6",
+   "age": "18+",
+   "t": "one",
+   "ref": "30:15",
+   "q": "Ce i-a cerut David egipteanului?",
+   "opts": [
+    "să-i spună numele",
+    "să-l ducă la oastea amaleciților",
+    "să lupte cu el"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.30.18+.7",
+   "age": "18+",
+   "t": "match",
+   "ref": "30:27-31",
+   "q": "Darurile din pradă: asociază locurile în ordinea textului.",
+   "pairs": [
+    [
+     "Betel",
+     "primul"
+    ],
+    [
+     "Iatir",
+     "după Ramot"
+    ],
+    [
+     "Eștemoa",
+     "după Sifmot"
+    ],
+    [
+     "Racal",
+     "înainte de cetățile ierahmeeliților"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.30.18+.8",
+   "age": "18+",
+   "t": "match",
+   "ref": "30:1-20",
+   "q": "Cifre din capitolul 30: asociază.",
+   "pairs": [
+    [
+     "a treia zi",
+     "sosirea la Țiclag"
+    ],
+    [
+     "trei zile și trei nopți",
+     "foamea egipteanului"
+    ],
+    [
+     "patru sute",
+     "amaleciții scăpați pe cămile"
+    ],
+    [
+     "două",
+     "nevestele scăpate"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.30.18+.9",
+   "age": "18+",
+   "t": "match",
+   "ref": "30:13-16",
+   "q": "Egipteanul: asociază.",
+   "pairs": [
+    [
+     "stăpânul lui",
+     "un amalecit"
+    ],
+    [
+     "boala",
+     "de ea a fost părăsit"
+    ],
+    [
+     "cheretiții",
+     "la miazăzi de ei au năvălit"
+    ],
+    [
+     "călăuza",
+     "slujba lui pentru David"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.30.18+.10",
+   "age": "18+",
+   "t": "fill",
+   "ref": "30:22",
+   "a": [
+    "prada"
+   ],
+   "q": "„Fiindcă n-au venit cu noi, să nu le dăm nimic din ___ pe care am scăpat-o",
+   "ctx": "Oamenii răi dintre cei care merseseră cu David:"
+  },
+  {
+   "id": "1sa.30.18+.11",
+   "age": "18+",
+   "t": "fill",
+   "ref": "30:12",
+   "a": [
+    "puterile"
+   ],
+   "q": "După ce a mâncat, i-au venit iarăși ___, căci nu mâncase și nu băuse apă de trei zile și trei nopți.",
+   "ctx": "Egipteanul găsit pe câmp:"
+  },
+  {
+   "id": "1sa.30.18+.12",
+   "age": "18+",
+   "t": "fill",
+   "ref": "30:31",
+   "a": [
+    "străbătuse"
+   ],
+   "q": "celor din Hebron și în toate locurile pe care le ___ David cu oamenii lui.",
+   "ctx": "David, trimițând daruri din pradă:"
+  },
+  {
+   "id": "1sa.30.18+.13",
+   "age": "18+",
+   "t": "multi",
+   "ref": "30:2",
+   "q": "Ce făcuseră amaleciții la Țiclag?",
+   "opts": [
+    "omorâseră pe toți",
+    "luaseră prinși pe mici și mari",
+    "luaseră prinși pe femei"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.30.18+.14",
+   "age": "18+",
+   "t": "multi",
+   "ref": "30:21",
+   "q": "Ce au făcut cei de la pârâul Besor?",
+   "opts": [
+    "s-au ascuns",
+    "au ieșit înaintea lui David",
+    "au ieșit înaintea poporului care era cu el"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.30.18+.15",
+   "age": "18+",
+   "t": "multi",
+   "ref": "30:25",
+   "q": "Ce a devenit hotărârea lui David despre pradă?",
+   "opts": [
+    "un cântec",
+    "o poruncă a lui Saul",
+    "un jurământ"
+   ],
+   "a": [],
+   "explain": "Niciun răspuns corect: o lege și un obicei în Israel (30:25)."
+  }
+ ]
+}
