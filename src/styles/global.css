@@ -397,12 +397,13 @@ a.tile { text-decoration: none; }
 
 /* Admin: accounts */
 .kv.adm-kv { grid-template-columns: repeat(3, 1fr); }
+.kv.adm-kv > div:last-child { grid-column: auto; }
 .adm-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
 .adm-row { padding: 0; overflow: hidden; box-shadow: none; }
-.adm-head { display: flex; align-items: center; gap: 12px; width: 100%; padding: 12px 14px; border: 0; background: none; font: inherit; color: inherit; text-align: left; cursor: pointer; }
+.adm-head { display: grid; grid-template-columns: 40px 1fr; align-items: center; gap: 6px 12px; width: 100%; padding: 12px 14px; border: 0; background: none; font: inherit; color: inherit; text-align: left; cursor: pointer; }
 .adm-who { flex: 1; min-width: 0; display: grid; }
 .adm-who small { color: var(--ink-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.adm-meta { flex: none; display: grid; justify-items: end; gap: 4px; }
+.adm-meta { grid-column: 2; display: flex; align-items: center; justify-content: space-between; gap: 8px; }
 .adm-meta small { color: var(--ink-3); }
 .adm-detail { display: grid; gap: 10px; padding: 12px 14px 14px; border-top: 1px solid var(--line); background: var(--bg); }
 .adm-player { display: grid; gap: 2px; }
@@ -413,8 +414,7 @@ a.tile { text-decoration: none; }
 .lb-guest { display: grid; gap: 8px; padding: 12px 14px; border-radius: 14px; background: var(--bg); justify-items: start; }
 .lb-empty { padding: 18px 8px; text-align: center; color: var(--ink-2); white-space: nowrap; }
 .lb-note { text-align: center; }
-.lb-skeleton { display: grid; gap: 8px; }
-.lb-skeleton span { height: 48px; border-radius: 14px; background: var(--surface-2); animation: pulse 1.4s ease-in-out infinite; }
+.lb-wait { min-height: 60px; }
 .lb-cards { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
 .pd { display: grid; grid-template-columns: 28px 1fr auto; align-items: center; gap: 12px; min-height: 52px; padding: 8px 14px 8px 10px; border-radius: 16px; background: var(--bg); border: 1.5px solid var(--line); }
 .pd-1 { background: var(--oil-soft); border-color: transparent; }
@@ -426,3 +426,7 @@ a.tile { text-decoration: none; }
 .age-tabs.six { grid-template-columns: repeat(6, 1fr); }
 .age-tabs.six button { padding: 0 2px; font-size: 0.8rem; }
 .adm-line { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.adm-player { padding: 10px 12px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); }
+.adm-player.is-kid { margin-left: 14px; border-left: 3px solid var(--cedar); }
+.adm-pname { display: flex; align-items: center; justify-content: space-between; gap: 8px; white-space: nowrap; }
+.tag-kid { flex: none; padding: 4px 12px; border-radius: 999px; background: var(--cedar-soft); color: var(--cedar); font-size: 0.8rem; font-weight: 600; }

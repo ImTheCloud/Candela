@@ -10,6 +10,8 @@ export interface UserRow {
   isParent: boolean;
   hidden: boolean;
   at: Timestamp | null;
+  /** First names of the children of a parent account. */
+  kids: string[];
 }
 
 export interface PlayerDetail {
@@ -22,7 +24,7 @@ export interface PlayerDetail {
 /** Every account, newest first (accounts from the migration have no date and come last). For admins only. */
 export async function loadUsers(): Promise<UserRow[]> {
   const snap = await getDocs(collection(db, 'users'));
-  return snap.docs
+  const rows: UserRow[] = snap.docs
     .map((d) => ({
       uid: d.id,
       name: (d.get('name') as string) || '(fără nume)',
@@ -30,8 +32,14 @@ export async function loadUsers(): Promise<UserRow[]> {
       isParent: d.get('isParent') === true,
       hidden: d.get('hidden') === true,
       at: (d.get('createdAt') as Timestamp | undefined) ?? null,
+      kids: [] as string[],
     }))
     .sort((a, b) => (b.at?.toMillis() ?? 0) - (a.at?.toMillis() ?? 0));
+  await Promise.all(rows.filter((r) => r.isParent).map(async (r) => {
+    const kids = await getDocs(collection(db, 'users', r.uid, 'players'));
+    r.kids = kids.docs.map((k) => ((k.get('name') as string) || '?').split(' ')[0]);
+  }));
+  return rows;
 }
 
 /** The account and its children, with their progress in each book. */

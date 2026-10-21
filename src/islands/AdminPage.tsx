@@ -52,6 +52,7 @@ function Row({ r }: { r: UserRow }) {
     if (!detail && !failed) loadDetail(r).then(setDetail).catch(() => setFailed(true));
   }
 
+  const n = r.kids.length;
   return (
     <li class="card adm-row">
       <button type="button" class="adm-head" aria-expanded={open} onClick={toggle}>
@@ -61,15 +62,18 @@ function Row({ r }: { r: UserRow }) {
           <small>{r.email}</small>
         </span>
         <span class="adm-meta">
-          {r.isParent && <span class="tag-on">părinte</span>}
+          {r.isParent && <span class="tag-on">părinte{n > 0 ? ` · ${n} ${n === 1 ? 'copil' : 'copii'}` : ''}</span>}
           <small>{r.at ? r.at.toDate().toLocaleDateString('ro-RO') : 'cont vechi'}</small>
         </span>
       </button>
       {open && (
         <div class="adm-detail">
           {failed ? <p class="small bad">Nu s-au putut citi detaliile.</p> : !detail ? <p class="small muted">Se încarcă…</p> : detail.map((p) => (
-            <div class="adm-player">
-              <p><strong>{p.name}</strong>{p.child && <span class="muted small"> · copil</span>}{r.hidden && !p.child && <span class="muted small"> · ascuns din clasament</span>}</p>
+            <div class={`adm-player${p.child ? ' is-kid' : ''}`}>
+              <p class="adm-pname">
+                <strong>{p.name}</strong>
+                {r.isParent && <span class={p.child ? 'tag-kid' : 'tag-on'}>{p.child ? 'copil' : 'părinte'}</span>}
+              </p>
               {p.books.map((b) => (
                 <p class="small muted adm-line">{b.name} · {b.mastered} știute · {b.wrong} de reluat · {b.chapters} cap.</p>
               ))}

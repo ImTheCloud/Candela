@@ -23,6 +23,10 @@ export interface Progress {
   stats: Partial<Record<QType, { n: number; r: number }>>;
 }
 
+/** The chapter scores of the last visit, for the tiles to show at once while Firestore answers. */
+const examsKey = (playerKey: string, book: string) => `ex:${playerKey}~${book}`;
+export const cachedExams = (playerKey: string, book: string) => localGet<Progress['exams']>(examsKey(playerKey, book), {});
+
 export const EMPTY: Progress = { mastered: [], wrong: [], exams: {}, stats: {} };
 
 const signals = new Map<string, Signal<Progress>>();
@@ -52,6 +56,7 @@ export function progress(book: string): Signal<Progress> {
     sig.value = EMPTY;
     stop = onSnapshot(doc(db, 'users', u.uid, 'progress', `${p.key}~${book}`), (snap) => {
       sig.value = normalize(snap.data() as Partial<Progress> | undefined);
+      localSet(examsKey(p.key, book), sig.value.exams);
     });
   });
   return sig;
