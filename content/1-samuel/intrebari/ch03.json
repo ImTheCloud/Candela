@@ -157,9 +157,9 @@
    "t": "fill",
    "ref": "3:19",
    "a": [
-    "el"
+    "creștea"
    ],
-   "q": "Samuel creștea, Domnul era cu ___",
+   "q": "Samuel ___, Domnul era cu el",
    "ctx": "Despre Samuel, după vedenia de la Silo:"
   },
   {
@@ -417,14 +417,16 @@
    "age": "12-13",
    "t": "multi",
    "ref": "3:15",
-   "q": "Cui a deschis Samuel ușile dimineața?",
+   "q": "Ce a făcut Samuel după vedenie?",
    "opts": [
-    "Eli",
-    "poporului din Rama",
-    "filistenilor"
+    "a rămas culcat până dimineața",
+    "a alergat îndată la Eli",
+    "a deschis ușile Casei Domnului"
    ],
-   "a": [],
-   "explain": "Niciun răspuns corect: Samuel „a deschis ușile Casei Domnului\" (3:15)."
+   "a": [
+    0,
+    2
+   ]
   },
   {
    "id": "1sa.3.14-15.1",
@@ -1071,14 +1073,16 @@
    "age": "18+",
    "t": "multi",
    "ref": "3:3",
-   "q": "Ce era în Templul Domnului, unde dormea Samuel?",
+   "q": "Ce pomenește textul în Templul Domnului, unde dormea Samuel?",
    "opts": [
-    "sfeșnicul de aur",
-    "cortul întâlnirii",
-    "altarul de aramă"
+    "masa cu pâinile",
+    "chivotul lui Dumnezeu",
+    "candela lui Dumnezeu"
    ],
-   "a": [],
-   "explain": "Niciun răspuns corect: textul pomenește candela lui Dumnezeu și chivotul lui Dumnezeu (3:3)."
+   "a": [
+    1,
+    2
+   ]
   }
  ]
 }

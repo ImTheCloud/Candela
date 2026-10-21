@@ -661,7 +661,7 @@
    "ref": "1:21",
    "q": "Ana s-a suit cu Elcana la Silo imediat după nașterea lui Samuel.",
    "a": false,
-   "explain": "Ana n-a suit și a rămas acasă până l-a înțărcat (1:22-23)."
+   "explain": "Ana nu s-a suit și a rămas acasă până l-a înțărcat (1:22-23)."
   },
   {
    "id": "1sa.1.16-17.3",
@@ -853,15 +853,17 @@
    "id": "1sa.1.16-17.15",
    "age": "16-17",
    "t": "multi",
-   "ref": "1:2",
-   "q": "Câți copii avea Penina, după 1 Samuel 1?",
+   "ref": "1:4-5",
+   "q": "Ce aflăm despre părțile din jertfă date de Elcana?",
    "opts": [
-    "patru",
-    "doi",
-    "zece"
+    "Ana primea o parte îndoită",
+    "Penina și copiii ei primeau părți",
+    "Ana nu primea nimic"
    ],
-   "a": [],
-   "explain": "Niciun răspuns corect: textul nu spune câți copii avea Penina (1:2, 4)."
+   "a": [
+    0,
+    1
+   ]
   },
   {
    "id": "1sa.1.18+.1",
