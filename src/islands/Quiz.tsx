@@ -195,6 +195,7 @@ function Feedback({ q, g, bookName, answer = false }: { q: Playable; g: Grade; b
         <span class="vb-main"><b>Vezi versetul</b><small>{bookName} {q.ch}:{verses.length > 1 ? `${verses[0]}–${verses[verses.length - 1]}` : verses[0]}</small></span>
         <svg class="vb-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
       </button>
+      <div class="fb-report"><ReportButton q={q} /></div>
       {open && <VerseSheet q={q} bookName={bookName} onClose={() => setOpen(false)} />}
     </section>
   );
@@ -235,7 +236,6 @@ function VerseSheet({ q, bookName, onClose }: { q: Playable; bookName: string; o
             ? verses.map((text, k) => <p class={cited.has(k + 1) ? 'is-cited' : ''}><sup>{k + 1}</sup>{text}</p>)
             : q.cite.map(([label, text]) => <p class="is-cited"><sup>{label}</sup>{text}</p>)}
         </div>
-        <div class="vs-foot"><ReportButton q={q} /></div>
       </div>
     </div>
   );
