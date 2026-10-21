@@ -1,6 +1,6 @@
 rules_version = '2';
 
-// Everything lives under users/{uid} and only the account owner reads or writes it.
+// Everything lives under users/{uid} and only the account owner reads or writes it (admins can also read, for the admin page).
 // admin, email and createdAt on the profile are not editable from the app.
 service cloud.firestore {
   match /databases/{database}/documents {
@@ -20,14 +20,15 @@ service cloud.firestore {
     }
 
     match /users/{uid} {
-      allow read: if owner(uid);
+      allow read: if owner(uid) || admin();
       allow create: if owner(uid) && validUser(request.resource.data) && !('admin' in request.resource.data);
       allow update: if owner(uid) && validUser(request.resource.data)
         && !request.resource.data.diff(resource.data).affectedKeys().hasAny(['admin', 'email', 'createdAt']);
 
       // children of a parent account
       match /players/{pid} {
-        allow read, delete: if owner(uid);
+        allow read: if owner(uid) || admin();
+        allow delete: if owner(uid);
         allow create, update: if owner(uid)
           && request.resource.data.name is string && request.resource.data.name.size() >= 1 && request.resource.data.name.size() <= 40
           && (request.resource.data.get('birthYear', null) == null || validYear(request.resource.data.birthYear))
@@ -41,7 +42,8 @@ service cloud.firestore {
 
       // {playerKey}~{book}: read chapters, highlights, mastered and missed questions, exam scores
       match /progress/{key} {
-        allow read, delete: if owner(uid);
+        allow read: if owner(uid) || admin();
+        allow delete: if owner(uid);
         allow create, update: if owner(uid)
           && key.matches('^[A-Za-z0-9]{1,128}~[12]-samuel$')
           && request.resource.data.get('read', []).size() <= 31

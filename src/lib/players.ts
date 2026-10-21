@@ -3,8 +3,8 @@ import { addDoc, collection, deleteDoc, doc, getDoc, onSnapshot, serverTimestamp
 import { level } from './level';
 import { BOOKS } from './books';
 import { db } from './firebase';
-import { profile, user } from './session';
-import { localGet, localSet } from './store';
+import { profile, rememberedAccount, user } from './session';
+import { localGet, localRemove, localSet } from './store';
 
 /** Who is playing: the adult account itself, one of its children, or a guest without account. */
 export interface Player {
@@ -18,7 +18,10 @@ export interface Player {
 
 export const GUEST = 'guest';
 
-const children = signal<Player[]>([]);
+/** The children of the last visit, shown until Firestore answers (same account only). */
+const kidsCache = localGet<{ uid: string; list: Player[] } | null>('kids', null);
+export const rememberedKids: Player[] = kidsCache && kidsCache.uid === rememberedAccount?.uid ? kidsCache.list : [];
+const children = signal<Player[]>(rememberedKids);
 const chosen = signal<string | null>(localGet<string | null>('player', null));
 
 export const players = computed<Player[]>(() => {
@@ -41,13 +44,19 @@ effect(() => {
   const u = user.value;
   stopChildren?.();
   stopChildren = null;
-  children.value = [];
-  if (!u) return;
+  if (u === undefined) return; // Firebase is still restoring the session: keep what the last visit showed
+  if (!u) {
+    children.value = [];
+    localRemove('kids');
+    return;
+  }
+  if (u.uid !== kidsCache?.uid) children.value = [];
   stopChildren = onSnapshot(collection(db, 'users', u.uid, 'players'), (snap) => {
     children.value = snap.docs
       .map((d) => ({ key: d.id, name: d.get('name') as string, birthYear: (d.get('birthYear') as number | undefined) ?? null, child: true, hidden: d.get('hidden') === true, at: d.get('createdAt')?.toMillis?.() ?? 0 }))
       .sort((a, b) => a.at - b.at)
       .map(({ at: _, ...p }) => p);
+    localSet('kids', { uid: u.uid, list: children.value });
   });
 });
 
