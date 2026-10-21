@@ -9,9 +9,9 @@ const books = BOOKS.map((b) => ({ slug: b.slug, name: b.name, chapters: b.chapte
 <Base title="Contul meu" crumbs={[{ href: '/', label: 'Acasă' }]}>
   <section class="wrap narrow page">
     <AccountPage client:only="preact" books={books}>
-      <div slot="fallback" class="me-skeleton" aria-hidden="true">
+      <div slot="fallback" class="me me-skeleton" aria-hidden="true">
         <div class="me-id"><span class="sk sk-av"></span><div class="sk-rows"><span class="sk"></span><span class="sk"></span></div></div>
-        <div class="sk-rows"><span class="sk"></span><span class="sk"></span><span class="sk"></span></div>
+        <div class="sk-rows"><span class="sk sk-tall"></span><span class="sk sk-tall"></span></div>
       </div>
     </AccountPage>
   </section>

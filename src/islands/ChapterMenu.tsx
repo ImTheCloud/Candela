@@ -12,8 +12,6 @@ interface Props {
   book: string;
   titles: string[];
   summary: Summary;
-  /** On the reading page: only the button that opens the menu of this chapter. */
-  single?: number;
   /** Tile after the last chapter (as in v1). */
   examsHref?: string;
 }
@@ -22,29 +20,19 @@ interface Props {
  * The chapters of a book as tiles (as in v1): a tap opens the chapter's menu,
  * where the player reads it or picks a test.
  */
-export default function ChapterMenu({ book, titles, summary, single, examsHref }: Props) {
+export default function ChapterMenu({ book, titles, summary, examsHref }: Props) {
   const [open, setOpen] = useState<number | null>(null);
   const prog = progress(book).value;
   const p = player.value;
   const age = p.birthYear ? ageGroup(p.birthYear) : null;
-  const read = new Set(prog.read);
   const mastered = (ch: number) => (age ? prog.mastered.filter((id) => sameChapter(id, ch, age)).length : 0);
   const total = (ch: number) => (age ? count(summary[ch]?.[age]) : 0);
 
   const sheet = open !== null && (
-    <Sheet book={book} ch={open} title={titles[open - 1]} age={age} read={read.has(open)} reading={!single}
+    <Sheet book={book} ch={open} title={titles[open - 1]} age={age}
       done={mastered(open)} total={total(open)} wrongs={prog.wrong.filter((id) => chapterOf(id) === open).length}
       onClose={() => setOpen(null)} />
   );
-
-  if (single) {
-    return (
-      <>
-        <button type="button" class="btn btn-ghost btn-block" onClick={() => setOpen(single)}>Întrebări din capitolul {single}</button>
-        {sheet}
-      </>
-    );
-  }
 
   return (
     <>
@@ -56,11 +44,10 @@ export default function ChapterMenu({ book, titles, summary, single, examsHref }
           const full = n > 0 && d === n;
           return (
             <li>
-              <button type="button" class={`tile${full ? ' is-full' : ''}${read.has(ch) ? ' is-read' : ''}`} onClick={() => setOpen(ch)}
+              <button type="button" class={`tile${full ? ' is-full' : ''}`} onClick={() => setOpen(ch)}
                 aria-label={`Capitolul ${ch}: ${t}`} title={t}>
                 <span class="tile-n">{ch}</span>
                 {d > 0 && <span class="tile-sc">{d}/{n}</span>}
-                {read.has(ch) && <span class="tile-read" aria-hidden="true" />}
               </button>
             </li>
           );
@@ -74,9 +61,7 @@ export default function ChapterMenu({ book, titles, summary, single, examsHref }
           </li>
         )}
       </ol>
-      {(read.size > 0 || prog.mastered.length > 0) && (
-        <p class="small muted tiles-legend"><span class="tile-read" aria-hidden="true" /> citit · 3/15 = întrebări știute din capitol</p>
-      )}
+      {prog.mastered.length > 0 && <p class="small muted">3/15 = întrebări știute din capitol</p>}
       {sheet}
     </>
   );
@@ -87,15 +72,13 @@ interface SheetProps {
   ch: number;
   title: string;
   age: AgeGroup | null;
-  read: boolean;
-  reading: boolean;
   done: number;
   total: number;
   wrongs: number;
   onClose: () => void;
 }
 
-function Sheet({ book, ch, title, age, read, reading, done, total, wrongs, onClose }: SheetProps) {
+function Sheet({ book, ch, title, age, done, total, wrongs, onClose }: SheetProps) {
   useEffect(() => {
     const esc = (e: KeyboardEvent) => e.key === 'Escape' && onClose();
     addEventListener('keydown', esc);
@@ -121,7 +104,7 @@ function Sheet({ book, ch, title, age, read, reading, done, total, wrongs, onClo
         </div>
         <p class="sheet-label">Alege ce vrei să faci</p>
         <div class="lvl-list">
-          {reading && <Row href={`${base}/citire/${ch}`} icon="book" tone="read" name="Citește capitolul" done={read} />}
+          <Row href={`${base}/citire/${ch}`} icon="book" tone="read" name="Citește capitolul" />
           <Row href={`${base}/exersare?capitol=${ch}&start=1`} icon="test" tone="test" name="Testul capitolului"
             tag={age ? short(age) : ''} done={!!total && done === total}
             side={total ? (done ? `${done}/${total}` : String(total)) : ''} unit={total && !done ? 'întrebări' : ''} />
