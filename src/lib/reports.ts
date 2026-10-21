@@ -1,4 +1,4 @@
-import { addDoc, collection, deleteDoc, doc, limit, onSnapshot, orderBy, query, serverTimestamp, updateDoc, type Timestamp } from 'firebase/firestore';
+import { addDoc, collection, deleteDoc, doc, limit, onSnapshot, orderBy, query, serverTimestamp, updateDoc, where, type Timestamp } from 'firebase/firestore';
 import { db } from './firebase';
 import type { Playable } from './questions';
 import { user } from './session';
@@ -51,6 +51,11 @@ export async function sendReport(q: Playable, reason: Reason, note: string, by: 
     at: serverTimestamp(),
   });
   localSet(SENT, [...localGet<string[]>(SENT, []), q.id].slice(-500));
+}
+
+/** Number of reports still to look at, for the badge on the admin's avatar. */
+export function watchOpenCount(cb: (n: number) => void) {
+  return onSnapshot(query(collection(db, 'reports'), where('done', '==', false)), (snap) => cb(snap.size), () => {});
 }
 
 /** Newest first; for the admin page. */

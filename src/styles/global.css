@@ -119,6 +119,11 @@ img, svg { display: block; }
 
 /* Account */
 .avatar[hidden] { display: none; }
+.avatar { position: relative; }
+.badge-n {
+  position: absolute; top: -3px; right: -3px; min-width: 20px; height: 20px; padding: 0 5px; display: grid; place-items: center;
+  border-radius: 999px; background: var(--bad); color: #fff; font: 700 0.72rem/1 var(--f-body); border: 2px solid var(--bg);
+}
 .avatar {
   flex: none; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%;
   background: var(--cedar-soft); color: var(--cedar); font: 600 0.95rem var(--f-body); text-decoration: none;
@@ -191,6 +196,17 @@ img, svg { display: block; }
 .report { padding: 14px; border-radius: 12px; background: var(--bg); --gap: 12px; }
 .report-title { font-weight: 600; }
 .report-reasons { display: grid; gap: 10px; }
+.ri { display: grid; gap: 10px; padding: 16px; }
+.ri-top { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.ri-ref { font-weight: 600; font-size: 0.9rem; }
+.ri-date { font-size: 0.8rem; color: var(--ink-3); white-space: nowrap; }
+.ri-q { font-weight: 500; line-height: 1.4; }
+.ri-reason { justify-self: start; padding: 4px 12px; border-radius: 999px; background: var(--bad-soft); color: var(--bad); font-size: 0.85rem; font-weight: 600; }
+.ri-note { margin: 0; padding: 8px 12px; border-left: 3px solid var(--line); color: var(--ink-2); font-style: italic; }
+.ri-meta { font-size: 0.8rem; color: var(--ink-3); overflow-wrap: anywhere; }
+.ri-meta code { font-size: 0.75rem; }
+.ri-link { font-size: 0.9rem; color: var(--oil-ink); font-weight: 600; text-underline-offset: 3px; }
+.ri-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding-top: 4px; }
 .report-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
 .report-item { padding: 16px 18px; --gap: 8px; }
 .report-q { font-weight: 500; }

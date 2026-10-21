@@ -3,10 +3,10 @@ export type AgeGroup = 'sub12' | '12-13' | '14-15' | '16-17' | '18+';
 
 export const AGE_GROUPS: { id: AgeGroup; label: string }[] = [
   { id: 'sub12', label: 'Sub 12 ani' },
-  { id: '12-13', label: '12–13 ani' },
-  { id: '14-15', label: '14–15 ani' },
-  { id: '16-17', label: '16–17 ani' },
-  { id: '18+', label: '18–99 ani' },
+  { id: '12-13', label: '12-13 ani' },
+  { id: '14-15', label: '14-15 ani' },
+  { id: '16-17', label: '16-17 ani' },
+  { id: '18+', label: '18-99 ani' },
 ];
 
 export function ageGroup(birthYear: number, year = new Date().getFullYear()): AgeGroup {
