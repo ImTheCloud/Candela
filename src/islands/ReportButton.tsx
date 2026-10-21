@@ -5,7 +5,7 @@ import { REASONS, alreadyReported, sendReport, type Reason } from '../lib/report
 import { errorText, user } from '../lib/session';
 
 /** A small "i" button next to the correction; it opens a sheet to flag a mistake in the question. */
-export default function ReportButton({ q }: { q: Playable }) {
+export default function ReportButton({ q, small = false }: { q: Playable; small?: boolean }) {
   const [open, setOpen] = useState(false);
   const [sent, setSent] = useState(() => alreadyReported(q.id));
   const [reason, setReason] = useState<Reason | null>(null);
@@ -39,7 +39,7 @@ export default function ReportButton({ q }: { q: Playable }) {
 
   return (
     <>
-      <button type="button" class={`info-btn${sent ? ' is-sent' : ''}`} aria-label="Semnalează o greșeală în această întrebare" onClick={() => setOpen(true)}>
+      <button type="button" class={`info-btn${small ? ' sm' : ''}${sent ? ' is-sent' : ''}`} aria-label="Semnalează o greșeală în această întrebare" onClick={() => setOpen(true)}>
         {sent
           ? <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg>
           : <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5" stroke-width="1.8" /><path d="M12 11v5.5" /><circle cx="12" cy="7.6" r=".6" fill="currentColor" /></svg>}

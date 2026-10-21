@@ -136,7 +136,7 @@ export default function Quiz({ book, bookName, questions, mode, examId, scoreId,
       <article ref={cardEl} class="card q-card" aria-live="polite">
         <div class="q-meta">
           <span class="q-type">{info.short}</span>
-          <span class="q-ref">{bookName} {q.ref}</span>
+          <span class="q-right"><span class="q-ref">{bookName} {q.ref}</span><ReportButton q={q} small /></span>
         </div>
         {info.hint && !g && <p class="small muted">{info.hint}</p>}
         <QuestionView key={q.id} q={q} answer={answers[i]} onChange={setAnswer} graded={mode === 'practice' ? g : null} />
@@ -189,7 +189,7 @@ export default function Quiz({ book, bookName, questions, mode, examId, scoreId,
 }
 
 /** answer: also write the right answer (where the question itself is not shown, as in "De recitit"). */
-function Feedback({ q, g, bookName, answer = false }: { q: Playable; g: Grade; bookName: string; answer?: boolean }) {
+function Feedback({ q, g, bookName, answer = false, report = false }: { q: Playable; g: Grade; bookName: string; answer?: boolean; report?: boolean }) {
   const [open, setOpen] = useState(false);
   // "Niciun răspuns corect: …" in the explanation already says it
   const showAnswer = answer && !g.right && !(q.explain ?? '').startsWith('Niciun răspuns corect');
@@ -204,7 +204,7 @@ function Feedback({ q, g, bookName, answer = false }: { q: Playable; g: Grade; b
           <span class="vb-main"><b>Vezi versetul</b><small>{bookName} {q.ch}:{verses.length > 1 ? `${verses[0]}-${verses[verses.length - 1]}` : verses[0]}</small></span>
           <svg class="vb-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
         </button>
-        <ReportButton q={q} />
+        {report && <ReportButton q={q} />}
       </div>
       {open && <VerseSheet q={q} bookName={bookName} onClose={() => setOpen(false)} />}
     </section>
@@ -319,7 +319,7 @@ function Results({ bookName, questions, answers, grades, mode, backHref, onAgain
           {questions.map((q, k) => (
             <article class="card q-card">
               {(k === 0 || questions[k - 1].t !== q.t) && <p class="part">{typeInfo(q.t).part}. {typeInfo(q.t).label}</p>}
-              <div class="q-meta"><span class="q-type">{k + 1}. {typeInfo(q.t).short}</span><span class="q-ref">{bookName} {q.ref}</span></div>
+              <div class="q-meta"><span class="q-type">{k + 1}. {typeInfo(q.t).short}</span><span class="q-right"><span class="q-ref">{bookName} {q.ref}</span><ReportButton q={q} small /></span></div>
               <QuestionView q={q} answer={answers[k]} onChange={() => {}} graded={gs[k]} />
               <Feedback q={q} g={gs[k]} bookName={bookName} />
             </article>
@@ -337,7 +337,7 @@ function Results({ bookName, questions, answers, grades, mode, backHref, onAgain
                 <span class="missed-ic" aria-hidden="true"><Cross /></span>
                 <span class="missed-q">{q.q.replace(/___/g, '…')}<small>{bookName} {q.ref}</small></span>
               </summary>
-              <Feedback q={q} g={g} bookName={bookName} answer />
+              <Feedback q={q} g={g} bookName={bookName} answer report />
             </details>
           ))}
         </section>

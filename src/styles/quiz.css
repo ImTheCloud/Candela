@@ -118,6 +118,9 @@ body.in-quiz main { padding-top: 0; }
 }
 .info-btn:active { background: var(--surface-2); }
 .info-btn.is-sent { color: var(--ok); }
+.info-btn.sm { width: 32px; height: 32px; margin: -6px -8px -6px 0; border: 0; border-radius: 50%; background: none; color: var(--ink-3); }
+.info-btn.sm:active { background: var(--surface-2); }
+.q-right { display: flex; align-items: center; gap: 6px; }
 .report-modal { display: grid; gap: 14px; }
 .report-modal .sheet-top p { margin-top: 4px; }
 .rp-form { display: grid; gap: 12px; }
