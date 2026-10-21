@@ -461,3 +461,7 @@ a.tile { text-decoration: none; }
 .lb-title { min-width: 0; }
 .lb-title .lb-count { margin: 2px 0 0; }
 
+
+.tiles-wrap { container-type: inline-size; }
+/* the exams tile is as tall as a chapter tile, also when it sits alone on its row */
+.tile-exam { min-height: calc((100cqw - 40px) / 6); }

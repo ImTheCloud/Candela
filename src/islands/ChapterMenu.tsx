@@ -40,7 +40,7 @@ export default function ChapterMenu({ book, titles, summary, examsHref }: Props)
 
   return (
     <>
-      <ol class="tiles">
+      <div class="tiles-wrap"><ol class="tiles">
         {titles.map((t, k) => {
           const ch = k + 1;
           const e = entry(ch);
@@ -64,7 +64,7 @@ export default function ChapterMenu({ book, titles, summary, examsHref }: Props)
             </a>
           </li>
         )}
-      </ol>
+      </ol></div>
       {sheet}
     </>
   );
