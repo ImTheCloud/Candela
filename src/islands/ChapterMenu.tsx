@@ -95,6 +95,7 @@ function Sheet({ book, ch, title, total, best, wrongs, onClose }: SheetProps) {
   useEffect(() => {
     loadChapter(book, ch).catch(() => {});
     prefetch(`${base}/exersare?capitol=${ch}&start=1&nivel=${lv}`, { ignoreSlowConnection: true });
+    prefetch(`${base}/citire/${ch}`, { ignoreSlowConnection: true });
   }, [book, ch, lv]);
 
   return (
