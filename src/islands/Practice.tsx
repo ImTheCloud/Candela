@@ -30,7 +30,8 @@ export default function Practice({ book, bookName, chapters, summary }: Props) {
   // from a chapter's menu: ?capitol=5&start=1[&nivel=14-15] starts the whole chapter test at once
   const direct = params.get('start') === '1';
   useState(() => {
-    const asked = params.get('nivel');
+    // a bare "+" in the address reads as a space ("18+")
+    const asked = params.get('nivel')?.replace(' ', '+');
     if (asked && AGE_GROUPS.some((g) => g.id === asked)) setLevel(asked as AgeGroup);
   });
   const [count, setCount] = useState(direct ? 0 : 10);
