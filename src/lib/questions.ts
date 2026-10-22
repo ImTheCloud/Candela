@@ -1,6 +1,6 @@
 import type { AgeGroup } from './age';
 
-/** The five kinds of exam questions, in the order of the paper exam (parts I to V). */
+/** The five kinds of exam questions, in the order of the paper exam. */
 export type QType = 'tf' | 'one' | 'match' | 'fill' | 'multi';
 
 interface Base {
@@ -31,12 +31,12 @@ export type Answer =
   | { t: 'match'; v: (number | null)[] }
   | { t: 'fill'; v: string[] };
 
-export const TYPES: { t: QType; part: string; label: string; short: string; hint: string }[] = [
-  { t: 'tf', part: 'I', label: 'Adevărat sau fals', short: 'Adevărat sau fals', hint: '' },
-  { t: 'one', part: 'II', label: 'Un singur răspuns corect', short: 'Un răspuns', hint: '' },
-  { t: 'match', part: 'III', label: 'Asociază cele două coloane', short: 'Asociere', hint: '' },
-  { t: 'fill', part: 'IV', label: 'Completează versetul', short: 'Completare', hint: '' },
-  { t: 'multi', part: 'V', label: 'Unul, mai multe sau niciunul', short: 'Alegere multiplă', hint: '' },
+export const TYPES: { t: QType; label: string; short: string; hint: string }[] = [
+  { t: 'tf', label: 'Adevărat sau fals', short: 'Adevărat sau fals', hint: '' },
+  { t: 'one', label: 'Un singur răspuns corect', short: 'Un răspuns', hint: '' },
+  { t: 'match', label: 'Asociază cele două coloane', short: 'Asociere', hint: '' },
+  { t: 'fill', label: 'Completează versetul', short: 'Completare', hint: '' },
+  { t: 'multi', label: 'Unul, mai multe sau niciunul', short: 'Alegere multiplă', hint: '' },
 ];
 
 export function typeInfo(t: QType) {

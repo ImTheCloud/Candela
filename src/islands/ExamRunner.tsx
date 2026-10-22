@@ -10,9 +10,9 @@ interface Props {
   questions: Playable[];
 }
 
-/** A paper exam: it starts at once, the correction comes at the end. */
+/** A real exam played again: a test like any other, it starts at once. */
 export default function ExamRunner({ book, bookName, examId, questions }: Props) {
   const [run, setRun] = useState(1);
-  return <Quiz key={run} book={book} bookName={bookName} questions={questions} mode="exam" examId={examId}
+  return <Quiz key={run} book={book} bookName={bookName} questions={questions} scoreId={examId} record={false}
     backHref={`/${book}/examene`} onAgain={() => setRun(run + 1)} />;
 }

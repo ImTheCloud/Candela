@@ -1,44 +1,35 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'preact/hooks';
-import { loadVerses } from '../lib/load';
+import { useEffect, useRef, useState } from 'preact/hooks';
 import { createPortal } from 'preact/compat';
+import { loadVerses } from '../lib/load';
 import { recordAnswers, recordExam } from '../lib/progress';
 import { emptyAnswer, grade, isAnswered, percent, typeInfo, type Answer, type Grade, type Playable } from '../lib/questions';
 import QuestionView from './QuestionView';
-import LampMark from './LampMark';
 import Modal, { CloseButton } from './Modal';
 import { ageLabel } from '../lib/age';
+import { BOOKS } from '../lib/books';
 import ReportButton from './ReportButton';
 
 export interface QuizProps {
   book: string;
   bookName: string;
   questions: Playable[];
-  /** practice: answer, check, see the verse. exam: answer everything, then the correction. */
-  mode: 'practice' | 'exam';
-  examId?: string;
-  /** practice: a whole-chapter test records its score under this id ("c5"). */
+  /** The score is kept under this id: "c5" for a chapter test, "alb" for the mock exam, the id of a real exam. */
   scoreId?: string;
-  /** false: the answers do not count for the questions known or for the board (the mock exam). */
+  /** false: the answers do not count for the questions known or for the board (the exams). */
   record?: boolean;
   backHref: string;
   onAgain?: () => void;
 }
 
-export default function Quiz({ book, bookName, questions, mode, examId, scoreId, record = true, backHref, onAgain }: QuizProps) {
+/** Every set of questions is played the same way: a chapter test, the mock exam, a real exam, the mistakes. */
+export default function Quiz({ book, bookName, questions, scoreId, record = true, backHref, onAgain }: QuizProps) {
   const [i, setI] = useState(0);
   const [answers, setAnswers] = useState<Answer[]>(() => questions.map(emptyAnswer));
   const [grades, setGrades] = useState<(Grade | null)[]>(() => questions.map(() => null));
   const [done, setDone] = useState(false);
-  const [confirmHandIn, setConfirmHandIn] = useState(false);
   const [leaveTo, setLeaveTo] = useState<(() => void) | null>(null);
   const leaving = useRef(false);
-  const quizEl = useRef<HTMLDivElement>(null);
-  const cardEl = useRef<HTMLElement>(null);
-  // where the card sat when the answer was checked: it stays there while the correction appears below
-  const [pin, setPin] = useState<number | null>(null);
   const [saveFailed, setSaveFailed] = useState(false);
-  // the lamp sits above the card, only when there is room for it between the header and the card
-  const [lamp, setLamp] = useState<'full' | 'small' | null>('full');
 
   const q = questions[i];
   const g = grades[i];
@@ -53,23 +44,6 @@ export default function Quiz({ book, bookName, questions, mode, examId, scoreId,
   }, [done, started]);
 
   useEffect(() => { scrollTo({ top: 0 }); }, [i, done]);
-
-  useLayoutEffect(() => {
-    if (g || !cardEl.current) return;
-    const head = document.querySelector('header.top')?.getBoundingClientRect().bottom ?? 48;
-    const room = cardEl.current.getBoundingClientRect().top - head;
-    setLamp(room >= 124 ? 'full' : room >= 84 ? 'small' : null);
-  }, [i, g, answers[i]]);
-
-  // the correction must fit on the screen: if it does not, the card moves up just enough
-  useLayoutEffect(() => {
-    if (!g || mode !== 'practice') return;
-    const fb = quizEl.current?.querySelector('.feedback');
-    const bar = document.querySelector('.actions');
-    if (!fb || !bar) return;
-    const over = fb.getBoundingClientRect().bottom - (bar.getBoundingClientRect().top - 12);
-    if (over > 0) setPin((p) => Math.max(8, (p ?? 8) - over));
-  }, [g]);
 
   // slim header while answering
   useEffect(() => {
@@ -100,48 +74,29 @@ export default function Quiz({ book, bookName, questions, mode, examId, scoreId,
   const setAnswer = (a: Answer) => setAnswers(answers.map((x, k) => (k === i ? a : x)));
 
   function check() {
-    if (quizEl.current && cardEl.current) setPin(cardEl.current.getBoundingClientRect().top - quizEl.current.getBoundingClientRect().top);
     const gr = grade(q, answers[i]);
     setGrades(grades.map((x, k) => (k === i ? gr : x)));
   }
 
   function next() {
-    setPin(null);
-    if (i < questions.length - 1) setI(i + 1);
-    else {
-      // nothing counts until the whole test is finished
-      if (record && grades.every(Boolean)) {
-        const all = grades as Grade[];
-        recordAnswers(book, questions.map((x, k) => ({ id: x.id, t: x.t, right: all[k].right })))?.catch((e) => { console.error(e); setSaveFailed(true); });
-      }
-      if (scoreId && grades.every(Boolean)) {
-        const all = grades as Grade[];
-        recordExam(book, scoreId, percent(all.reduce((s, x) => s + x.points, 0), all.reduce((s, x) => s + x.max, 0)), { right: all.filter((x) => x.right).length, n: all.length });
-      }
-      setDone(true);
+    if (i < questions.length - 1) return setI(i + 1);
+    // nothing counts until the whole test is finished
+    if (grades.every(Boolean)) {
+      const all = grades as Grade[];
+      if (record) recordAnswers(book, questions.map((x, k) => ({ id: x.id, t: x.t, right: all[k].right })))?.catch((e) => { console.error(e); setSaveFailed(true); });
+      if (scoreId) recordExam(book, scoreId, percent(all.reduce((s, x) => s + x.points, 0), all.reduce((s, x) => s + x.max, 0)), { right: all.filter((x) => x.right).length, n: all.length });
     }
-  }
-
-  function handIn() {
-    const all = questions.map((x, k) => grade(x, answers[k]));
-    setGrades(all);
     setDone(true);
-    const pts = all.reduce((s, x) => s + x.points, 0);
-    const max = all.reduce((s, x) => s + x.max, 0);
-    if (examId) recordExam(book, examId, percent(pts, max));
   }
 
   if (done) {
-    return <Results book={book} bookName={bookName} questions={questions} answers={answers} grades={grades} mode={mode} backHref={backHref} onAgain={onAgain} />;
+    return <Results bookName={bookName} questions={questions} answers={answers} grades={grades} saveFailed={saveFailed} backHref={backHref} onAgain={onAgain} />;
   }
 
-  const info = typeInfo(q.t);
-  const newPart = mode === 'exam' && (i === 0 || questions[i - 1].t !== q.t);
-  const unanswered = answers.filter((a) => !isAnswered(a)).length;
   const topEl = document.getElementById('quiz-top');
 
   return (
-    <div ref={quizEl} class={`quiz${mode === 'practice' && g ? ' has-fb' : ''}`} style={pin !== null && g ? { paddingTop: `${pin}px` } : undefined}>
+    <div class={`quiz${g ? ' has-fb' : ''}`}>
       {topEl && createPortal(
         <>
           <div class="bar" role="progressbar" aria-valuemin={0} aria-valuemax={questions.length} aria-valuenow={i + 1} aria-label="Progres">
@@ -150,50 +105,23 @@ export default function Quiz({ book, bookName, questions, mode, examId, scoreId,
           <span class="qt-n">{i + 1}/{questions.length}</span>
         </>, topEl)}
 
-      {newPart && <p class="part">{info.part}. {info.label}</p>}
+      <QHead q={q} bookName={bookName} />
 
-      <div class="q-stage">
-        {lamp && <LampMark small={lamp === 'small'} />}
-        <article ref={cardEl} class="card q-card" aria-live="polite">
-          <QHead q={q} label={info.short} bookName={bookName} />
-          {info.hint && !g && <p class="small muted">{info.hint}</p>}
-          <QuestionView key={q.id} q={q} answer={answers[i]} onChange={setAnswer} graded={mode === 'practice' ? g : null}
-            onEnter={mode === 'practice' && !g && isAnswered(answers[i]) ? check : undefined} />
-          <div class="q-foot"><ReportButton q={q} small /></div>
-        </article>
+      <div class="q-body" aria-live="polite">
+        <QuestionView key={q.id} q={q} answer={answers[i]} onChange={setAnswer} graded={g}
+          onEnter={!g && isAnswered(answers[i]) ? check : undefined} />
       </div>
 
       {saveFailed && <p class="notice notice-bad" role="alert">Răspunsurile nu se salvează acum (progresul și clasamentul nu se actualizează). Spune-i administratorului.</p>}
-      {mode === 'practice' && g && <Feedback q={q} g={g} bookName={bookName} />}
 
-      <div class={`actions${mode === 'practice' && g ? ` is-graded ${g.right ? 'is-right' : 'is-wrong'}` : ''}`}>
-        {mode === 'practice' ? (
-          g ? (
-            <div class="verdict">
-              <p class="verdict-line">
-                <span class="verdict-ic" aria-hidden="true">{g.right ? <Tick /> : <Cross />}</span>
-                <span>{g.right ? 'Corect!' : g.points > 0 ? `Parțial · ${g.points}/${g.max}` : 'Greșit'}</span>
-              </p>
-              <button class="btn verdict-btn" onClick={next}>{i < questions.length - 1 ? 'Mai departe' : 'Vezi rezultatul'}</button>
-            </div>
-          ) : <button class="btn btn-primary btn-block" disabled={!isAnswered(answers[i])} onClick={check}>Verifică</button>
-        ) : confirmHandIn ? (
-          <div class="hand-in stack">
-            <p class="small">{unanswered ? `Mai ai ${unanswered} ${unanswered === 1 ? 'întrebare fără răspuns' : 'întrebări fără răspuns'}. ` : ''}Predai lucrarea?</p>
-            <div class="two">
-              <button class="btn btn-ghost" onClick={() => setConfirmHandIn(false)}>Nu încă</button>
-              <button class="btn btn-primary" onClick={handIn}>Predă</button>
-            </div>
-          </div>
+      <div class={`actions${g ? ` is-graded ${g.right ? 'is-right' : 'is-wrong'}` : ''}`}>
+        {g ? (
+          <Verdict q={q} g={g} bookName={bookName} last={i === questions.length - 1} onNext={next} />
         ) : (
-          <div class="two">
-            <button class="btn btn-ghost" disabled={i === 0} onClick={() => setI(i - 1)}>Înapoi</button>
-            {i < questions.length - 1
-              ? <button class="btn btn-primary" onClick={() => setI(i + 1)}>Următoarea</button>
-              : <button class="btn btn-primary" onClick={() => setConfirmHandIn(true)}>Predă lucrarea</button>}
-          </div>
+          <button class="btn btn-primary btn-block btn-3d" disabled={!isAnswered(answers[i])} onClick={check}>Verifică</button>
         )}
       </div>
+
       {leaveTo && (
         <Modal class="confirm" role="alertdialog" labelledby="leave-t" onClose={() => setLeaveTo(null)}>
           {(close) => (<>
@@ -210,35 +138,54 @@ export default function Quiz({ book, bookName, questions, mode, examId, scoreId,
   );
 }
 
-/** Above every question: its kind, the level it is meant for (a pill) and the verses it comes from. */
-function QHead({ q, label, bookName }: { q: Playable; label: string; bookName: string }) {
+/** Above the question: what to do, the level it is meant for, the report button, and where it comes from (book, verse, chapter). */
+function QHead({ q, bookName }: { q: Playable; bookName: string }) {
+  // the chapter always shows with the question, so a question drawn from any chapter (mock exam) says where it comes from
+  const title = BOOKS.find((b) => b.slug === q.book)?.titles[q.ch - 1];
   return (
-    <div class="q-meta">
-      <span class="q-tags">
-        <span class="q-type">{label}</span>
-        <span class="q-age" title="Nivelul întrebării">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.6" /><path d="M4.5 20.5c.8-4 3.8-6 7.5-6s6.7 2 7.5 6" /></svg>
-          {ageLabel(q.age)}
-        </span>
-      </span>
-      <span class="q-ref">{bookName} {q.ref}</span>
+    <header class="q-head">
+      <div class="q-row">
+        <span class="q-kind">{typeInfo(q.t).short}</span>
+        <span class="q-age" title="Nivelul întrebării">{ageLabel(q.age)}</span>
+        <span class="q-spacer" />
+        <ReportButton key={q.id} q={q} small />
+      </div>
+      <p class="q-where"><b>{bookName} {q.ref}</b>{title ? ` · ${title}` : ''}</p>
+    </header>
+  );
+}
+
+const BOOK_ICON = <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4h7a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H2zM22 4h-7a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h8z" /></svg>;
+
+/** The bottom panel once the answer is checked: the verdict, the verse, and the way on. The right answer is never spelled out: it shows in place and in the verse. */
+function Verdict({ q, g, bookName, last, onNext }: { q: Playable; g: Grade; bookName: string; last: boolean; onNext: () => void }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div class="verdict">
+      <div class="verdict-row">
+        <span class="verdict-ic" aria-hidden="true">{g.right ? <Tick /> : <Cross />}</span>
+        <span class="verdict-text">{g.right ? 'Corect!' : g.points > 0 ? `Parțial · ${g.points}/${g.max}` : 'Greșit'}</span>
+        <button type="button" class="verse-pill" onClick={() => setOpen(true)}>{BOOK_ICON}Versetul</button>
+      </div>
+      <button class="btn btn-block verdict-btn btn-3d" onClick={onNext}>{last ? 'Vezi rezultatul' : 'Mai departe'}</button>
+      {open && <VerseSheet q={q} bookName={bookName} onClose={() => setOpen(false)} />}
     </div>
   );
 }
 
-/** The correction never spells out the right answer: it is in the verse. report: the "i" button, for lists without a question header. */
-function Feedback({ q, g, bookName, report = false }: { q: Playable; g: Grade; bookName: string; report?: boolean }) {
+/** A missed question in the final list: the verse button, and the report. */
+function Feedback({ q, bookName }: { q: Playable; bookName: string }) {
   const [open, setOpen] = useState(false);
   const verses = q.cite.map(([label]) => label.split(':')[1]).filter(Boolean);
   return (
-    <section class={`feedback ${g.right ? 'is-right' : 'is-wrong'}`}>
+    <section class="feedback">
       <div class="fb-actions">
         <button type="button" class="verse-btn" onClick={() => setOpen(true)}>
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4h7a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H2zM22 4h-7a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h8z" /></svg>
+          {BOOK_ICON}
           <span class="vb-main"><b>Vezi versetul</b><small>{bookName} {q.ch}:{verses.length > 1 ? `${verses[0]}-${verses[verses.length - 1]}` : verses[0]}</small></span>
           <svg class="vb-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
         </button>
-        {report && <ReportButton q={q} />}
+        <ReportButton q={q} />
       </div>
       {open && <VerseSheet q={q} bookName={bookName} onClose={() => setOpen(false)} />}
     </section>
@@ -299,75 +246,52 @@ function rightAnswer(q: Playable): string {
 }
 
 interface ResultsProps {
-  book: string;
   bookName: string;
   questions: Playable[];
   answers: Answer[];
   grades: (Grade | null)[];
-  mode: 'practice' | 'exam';
+  saveFailed: boolean;
   backHref: string;
   onAgain?: () => void;
 }
 
-function Results({ bookName, questions, answers, grades, mode, backHref, onAgain }: ResultsProps) {
+function Results({ bookName, questions, answers, grades, saveFailed, backHref, onAgain }: ResultsProps) {
   const gs = grades.map((g, k) => g ?? grade(questions[k], answers[k]));
-  const pts = gs.reduce((s, g) => s + g.points, 0);
-  const max = gs.reduce((s, g) => s + g.max, 0);
-  const score = percent(pts, max);
   const right = gs.filter((g) => g.right).length;
-  const missed = questions.map((q, k) => ({ q, g: gs[k], a: answers[k] })).filter((x) => !x.g.right);
-  const praise = score >= 90 ? 'Excelent!' : score >= 75 ? 'Foarte bine!' : score >= 50 ? 'Bine, mai e puțin.' : 'Mai citește o dată capitolul.';
+  const missed = questions.map((q, k) => ({ q, g: gs[k] })).filter((x) => !x.g.right);
+  const share = right / questions.length;
+  const praise = share >= 0.9 ? 'Excelent!' : share >= 0.75 ? 'Foarte bine!' : share >= 0.5 ? 'Bine, mai e puțin.' : 'Mai ai de exersat.';
   const ring = 2 * Math.PI * 52;
-  // a chapter test reads "19/21"; an exam is marked out of 100
-  const frac = mode === 'practice' ? right / questions.length : score / 100;
 
   return (
     <div class="quiz results">
       <section class="card score">
-        <div class="score-ring" role="img" aria-label={mode === 'practice' ? `${right} din ${questions.length}` : `${score} din 100`}>
+        <div class="score-ring" role="img" aria-label={`${right} din ${questions.length}`}>
           <svg viewBox="0 0 120 120" aria-hidden="true">
             <circle cx="60" cy="60" r="52" class="ring-bg" />
-            <circle cx="60" cy="60" r="52" class="ring-fill" stroke-dasharray={ring} stroke-dashoffset={ring * (1 - frac)} />
+            <circle cx="60" cy="60" r="52" class="ring-fill" stroke-dasharray={ring} stroke-dashoffset={ring * (1 - share)} />
           </svg>
-          <span class="score-num">{mode === 'practice' ? right : score}<small>/{mode === 'practice' ? questions.length : 100}</small></span>
+          <span class="score-num">{right}<small>/{questions.length}</small></span>
         </div>
         <p class="score-praise">{praise}</p>
-        {mode === 'exam' && (
-          <dl class="score-stats">
-            <div><dt>Corecte</dt><dd class="ok">{right}</dd></div>
-            <div><dt>Greșite</dt><dd class="bad">{questions.length - right}</dd></div>
-            {max !== 100 && <div><dt>Puncte</dt><dd>{pts}/{max}</dd></div>}
-          </dl>
-        )}
+        {saveFailed && <p class="notice notice-bad" role="alert">Răspunsurile nu s-au salvat. Spune-i administratorului.</p>}
         <div class="score-actions">
-          {onAgain && <button class="btn btn-primary btn-block" onClick={onAgain}>{mode === 'exam' ? 'Reia examenul' : 'Reia testul'}</button>}
-          <a class="btn btn-ghost btn-block" href={backHref}>Înapoi la capitole</a>
+          {onAgain && <button class="btn btn-primary btn-block" onClick={onAgain}>Reia testul</button>}
+          <a class="btn btn-ghost btn-block" href={backHref}>Înapoi</a>
         </div>
       </section>
 
-      {mode === 'exam' ? (
-        <section class="stack">
-          <h2>Corectarea</h2>
-          {questions.map((q, k) => (
-            <article class="card q-card">
-              {(k === 0 || questions[k - 1].t !== q.t) && <p class="part">{typeInfo(q.t).part}. {typeInfo(q.t).label}</p>}
-              <QHead q={q} label={`${k + 1}. ${typeInfo(q.t).short}`} bookName={bookName} />
-              <QuestionView q={q} answer={answers[k]} onChange={() => {}} graded={gs[k]} />
-              <Feedback q={q} g={gs[k]} bookName={bookName} report />
-            </article>
-          ))}
-        </section>
-      ) : missed.length > 0 ? (
+      {missed.length > 0 ? (
         <section class="stack">
           <h2>De recitit</h2>
-          {missed.map(({ q, g }) => (
+          {missed.map(({ q }) => (
             <article class="card missed-card">
               <div class="mc-head">
                 <span class="missed-ic" aria-hidden="true"><Cross /></span>
                 <span class="missed-q">{q.q.replace(/___/g, '…')}<small>{bookName} {q.ref}</small></span>
               </div>
               <p class="fb-answer"><small>Răspuns corect</small>{rightAnswer(q)}</p>
-              <Feedback q={q} g={g} bookName={bookName} report />
+              <Feedback q={q} bookName={bookName} />
             </article>
           ))}
         </section>

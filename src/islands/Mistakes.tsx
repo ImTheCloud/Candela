@@ -30,7 +30,7 @@ export default function Mistakes({ book, bookName }: { book: string; bookName: s
   useEffect(() => { if (quiz && !quiz.questions.length) setQuiz(null); }, [quiz]);
 
   if (quiz?.questions.length) {
-    return <Quiz key={quiz.key} book={book} bookName={bookName} questions={quiz.questions} mode="practice"
+    return <Quiz key={quiz.key} book={book} bookName={bookName} questions={quiz.questions}
       backHref={`/${book}`} onAgain={progress(book).value.wrong.length ? start : undefined} />;
   }
   if (user.value === undefined) return <Loader />;

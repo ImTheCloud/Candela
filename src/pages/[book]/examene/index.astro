@@ -13,7 +13,7 @@ export function getStaticPaths() {
 }
 const { book, list } = Astro.props as { book: Book; list: ExamFile[] };
 ---
-<Base title="Examene" description={`Examenele din ${book.name}, notate din 100.`}
+<Base title="Examene" description={`Examenele din ${book.name}, jucate ca un test obișnuit.`}
   crumbs={[{ href: '/', label: 'Acasă' }, { href: `/${book.slug}`, label: book.name }]}>
   <section class="wrap narrow page" data-book={book.slug}>
     <h1>Examene</h1>
@@ -56,7 +56,7 @@ const { book, list } = Astro.props as { book: Book; list: ExamFile[] };
 <script>
   import { effect } from '@preact/signals';
   import { level } from '../../../lib/level';
-  import { progress } from '../../../lib/progress';
+  import { progress, scoreLabel } from '../../../lib/progress';
 
   let stop: (() => void) | undefined;
   document.addEventListener('astro:before-swap', () => stop?.());
@@ -67,10 +67,10 @@ const { book, list } = Astro.props as { book: Book; list: ExamFile[] };
     stop = effect(() => {
       const own = level.value;
       for (const a of root.querySelectorAll<HTMLElement>('[data-exam]')) {
-        const best = p.value.exams[a.dataset.exam!]?.best;
+        const label = scoreLabel(p.value.exams[a.dataset.exam!], 21);
         const badge = a.querySelector<HTMLElement>('.best')!;
-        badge.hidden = best === undefined;
-        badge.textContent = best === undefined ? '' : `${best}/100`;
+        badge.hidden = label === undefined;
+        badge.textContent = label ?? '';
         a.classList.toggle('mine', a.dataset.age === own);
       }
     });
