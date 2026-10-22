@@ -2,15 +2,11 @@
 import Loader from '../../../components/Loader.astro';
 import Base from '../../../layouts/Base.astro';
 import { BOOKS, type Book } from '../../../lib/books';
-import { exams, type ExamFile } from '../../../lib/content';
+import { exams, EXAM_DATES, type ExamFile } from '../../../lib/content';
 import MockStart from '../../../islands/MockStart';
 import { ageLabel, type AgeGroup } from '../../../lib/age';
 
-// When the real exams took place (they are added to the site after they happen).
-const DATES: Record<string, Record<string, string>> = {
-  '1-samuel': { 'sub12': 'sâmbătă, 24 octombrie 2026', '12-13': 'luni, 19 octombrie 2026', '14-15': 'luni, 19 octombrie 2026', '16-17': 'luni, 19 octombrie 2026', '18+': 'luni, 19 octombrie 2026' },
-};
-const dates = (slug: string) => DATES[slug] ?? {};
+const dates = (slug: string) => EXAM_DATES[slug] ?? {};
 
 export function getStaticPaths() {
   return BOOKS.map((book) => ({ params: { book: book.slug }, props: { book, list: exams(book.slug) } }));

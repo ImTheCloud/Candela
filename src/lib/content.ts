@@ -1,4 +1,5 @@
 // Build-time only: reads the question files and attaches the verses each question cites.
+import type { AgeGroup } from './age';
 import type { Playable, Question } from './questions';
 import { firstChapter, versesOf } from './refs';
 import { getText } from './text';
@@ -57,6 +58,16 @@ export function exams(book: string): ExamFile[] {
     .filter(([path]) => path.startsWith(`../../content/${book}/examene/`))
     .map(([, e]) => e)
     .sort((a, b) => b.year - a.year || AGE_ORDER.indexOf(a.age) - AGE_ORDER.indexOf(b.age));
+}
+
+/** When the real exams took place (they are added to the site after they happen). */
+export const EXAM_DATES: Record<string, Record<string, string>> = {
+  '1-samuel': { 'sub12': 'sâmbătă, 24 octombrie 2026', '12-13': 'luni, 19 octombrie 2026', '14-15': 'luni, 19 octombrie 2026', '16-17': 'luni, 19 octombrie 2026', '18+': 'luni, 19 octombrie 2026' },
+};
+
+/** The real exams of a book as the exam sheet lists them. */
+export function examList(book: string) {
+  return exams(book).map((e) => ({ id: e.id, age: e.age as AgeGroup, title: e.title, year: e.year, date: EXAM_DATES[book]?.[e.age] }));
 }
 
 /** Number of chapter questions per age group in a book (what "all mastered" means). */

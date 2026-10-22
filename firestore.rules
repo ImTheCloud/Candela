@@ -70,7 +70,7 @@ service cloud.firestore {
         && request.resource.data.ch is int
         && request.resource.data.ref is string && request.resource.data.ref.size() <= 60
         && request.resource.data.q is string && request.resource.data.q.size() <= 500
-        && request.resource.data.reason in ['answer', 'text', 'unclear', 'typo', 'other']
+        && request.resource.data.reason in ['answer', 'text', 'unclear', 'hard', 'typo', 'other']
         && request.resource.data.note is string && request.resource.data.note.size() <= 1000
         && request.resource.data.done == false
         && request.resource.data.at == request.time;

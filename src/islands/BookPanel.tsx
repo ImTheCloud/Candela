@@ -3,12 +3,14 @@ import { bookHome } from '../lib/books';
 import { localGet, localSet } from '../lib/store';
 import Board from './Board';
 import ChapterMenu, { type Summary } from './ChapterMenu';
+import type { ExamInfo } from './ExamSheet';
 
 export interface BookData {
   slug: string;
   name: string;
   titles: string[];
   summary: Summary;
+  exams: ExamInfo[];
 }
 
 /** Book switch, chapter tiles and the leaderboard link. Switching books swaps the content in place, without loading a page. */
@@ -51,7 +53,7 @@ export default function BookPanel({ books, initial }: { books: BookData[]; initi
             ))}
           </div>
           <h2 id="chapters">Ce capitol vrei să exersezi?</h2>
-          <ChapterMenu key={slug} book={slug} titles={book.titles} summary={book.summary} examsHref={`/${slug}/examene`} />
+          <ChapterMenu key={slug} book={slug} titles={book.titles} summary={book.summary} exams={book.exams} />
         </div>
       </section>
 

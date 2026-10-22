@@ -7,17 +7,19 @@ interface Props {
   onChange: (a: Answer) => void;
   /** Set once checked: inputs lock and show right and wrong. */
   graded: Grade | null;
+  /** Enter in a typed answer: check it (the button bar can be hidden behind the keyboard). */
+  onEnter?: () => void;
 }
 
 const LETTERS = ['a', 'b', 'c', 'd', 'e'];
 
-export default function QuestionView({ q, answer, onChange, graded }: Props) {
+export default function QuestionView({ q, answer, onChange, graded, onEnter }: Props) {
   switch (q.t) {
     case 'tf': return <TrueFalse q={q} answer={answer as Extract<Answer, { t: 'tf' }>} onChange={onChange} graded={graded} />;
     case 'one': return <One q={q} answer={answer as Extract<Answer, { t: 'one' }>} onChange={onChange} graded={graded} />;
     case 'multi': return <Multi q={q} answer={answer as Extract<Answer, { t: 'multi' }>} onChange={onChange} graded={graded} />;
     case 'match': return <Match q={q} answer={answer as Extract<Answer, { t: 'match' }>} onChange={onChange} graded={graded} />;
-    case 'fill': return <Fill q={q} answer={answer as Extract<Answer, { t: 'fill' }>} onChange={onChange} graded={graded} />;
+    case 'fill': return <Fill q={q} answer={answer as Extract<Answer, { t: 'fill' }>} onChange={onChange} graded={graded} onEnter={onEnter} />;
   }
 }
 
@@ -26,6 +28,7 @@ type P<T extends Playable['t']> = {
   answer: Extract<Answer, { t: T }>;
   onChange: (a: Answer) => void;
   graded: Grade | null;
+  onEnter?: () => void;
 };
 
 function state(graded: Grade | null, isRight: boolean, chosen: boolean): string {
@@ -96,25 +99,38 @@ function Multi({ q, answer, onChange, graded }: P<'multi'>) {
 
 function Match({ q, answer, onChange, graded }: P<'match'>) {
   // left column 1, 2, 3…; right column shuffled and labelled A, B, C…
-  // Touch a left item, then the right item that goes with it. Touch a paired right item to undo.
+  // Touch an item in either column, then the one that goes with it in the other. Touch a paired item in the right column alone to undo.
   const order = useMemo(() => shuffle(q.pairs.map((_, i) => i)), [q.id]);
-  const [active, setActive] = useState<number | null>(null);
+  const [left, setLeft] = useState<number | null>(null);
+  const [right, setRight] = useState<number | null>(null);
   const letterOf = (i: number) => String.fromCharCode(65 + order.indexOf(i));
   const ownerOf = (i: number) => answer.v.findIndex((x) => x === i);
 
-  const pickLeft = (row: number) => setActive(active === row ? null : row);
-  const pickRight = (i: number) => {
+  function link(row: number, i: number) {
     const v = [...answer.v];
     const owner = ownerOf(i);
-    if (active === null) {
-      if (owner >= 0) { v[owner] = null; onChange({ t: 'match', v }); }
-      return;
-    }
     if (owner >= 0) v[owner] = null;
-    v[active] = i;
+    v[row] = i;
     onChange({ t: 'match', v });
-    setActive(null);
+    setLeft(null);
+    setRight(null);
+  }
+
+  const pickLeft = (row: number) => {
+    if (right !== null) return link(row, right);
+    setLeft(left === row ? null : row);
   };
+  const pickRight = (i: number) => {
+    if (left !== null) return link(left, i);
+    const owner = ownerOf(i);
+    if (right === null && owner >= 0) {
+      const v = [...answer.v];
+      v[owner] = null;
+      return onChange({ t: 'match', v });
+    }
+    setRight(right === i ? null : i);
+  };
+  const active = left;
 
   return (
     <>
@@ -138,10 +154,10 @@ function Match({ q, answer, onChange, graded }: P<'match'>) {
         <ol class="match-col" aria-label="Coloana a doua">
           {order.map((i, k) => {
             const owner = ownerOf(i);
-            const cls = graded ? (owner === i ? 'is-right' : owner >= 0 ? 'is-wrong' : '') : owner >= 0 ? 'is-paired' : '';
+            const cls = graded ? (owner === i ? 'is-right' : owner >= 0 ? 'is-wrong' : '') : right === i ? 'is-active' : owner >= 0 ? 'is-paired' : '';
             return (
               <li>
-                <button type="button" class={`m-item ${cls}`} disabled={!!graded} onClick={() => pickRight(i)}>
+                <button type="button" class={`m-item ${cls}`} disabled={!!graded} aria-pressed={right === i} onClick={() => pickRight(i)}>
                   <span class="m-key m-key-r">{String.fromCharCode(65 + k)}</span>
                   <span class="m-text">{q.pairs[i][1]}</span>
                   {owner >= 0 && <span class="m-pair">{owner + 1}</span>}
@@ -160,7 +176,7 @@ function Match({ q, answer, onChange, graded }: P<'match'>) {
   );
 }
 
-function Fill({ q, answer, onChange, graded }: P<'fill'>) {
+function Fill({ q, answer, onChange, graded, onEnter }: P<'fill'>) {
   const parts = q.q.split('___');
   const set = (i: number, value: string) => {
     const v = [...answer.v];
@@ -178,7 +194,10 @@ function Fill({ q, answer, onChange, graded }: P<'fill'>) {
                 aria-label={`Cuvântul ${i + 1}`} value={answer.v[i]} disabled={!!graded}
                 autocomplete="off" autocapitalize="off" spellcheck={false}
                 style={{ width: `${Math.max(5, q.a[i].length + 2)}ch` }}
-                onInput={(e) => set(i, e.currentTarget.value)} />
+                enterkeyhint="done"
+                onInput={(e) => set(i, e.currentTarget.value)}
+                onFocus={(e) => keepInView(e.currentTarget)}
+                onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); e.currentTarget.blur(); onEnter?.(); } }} />
             )}
           </>
         ))}
@@ -192,4 +211,26 @@ function Fill({ q, answer, onChange, graded }: P<'fill'>) {
       )}
     </>
   );
+}
+
+/**
+ * The phone keyboard covers the lower half of the screen: while a field is focused, the page makes room
+ * under it and scrolls so that the field stays in the visible part, above the keyboard.
+ */
+function keepInView(el: HTMLElement) {
+  const vv = window.visualViewport;
+  const reveal = () => {
+    const head = document.querySelector('header.top')?.getBoundingClientRect().bottom ?? 48;
+    const top = (vv?.offsetTop ?? 0) + Math.max(head + 24, (vv?.height ?? innerHeight) * 0.3);
+    const by = el.getBoundingClientRect().top - top;
+    if (Math.abs(by) > 4) scrollBy({ top: by, behavior: 'smooth' });
+  };
+  document.body.classList.add('kb-open');
+  const timers = [setTimeout(reveal, 60), setTimeout(reveal, 350), setTimeout(reveal, 800)];
+  vv?.addEventListener('resize', reveal);
+  el.addEventListener('blur', () => {
+    timers.forEach(clearTimeout);
+    vv?.removeEventListener('resize', reveal);
+    document.body.classList.remove('kb-open');
+  }, { once: true });
 }

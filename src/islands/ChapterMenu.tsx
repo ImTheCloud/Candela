@@ -9,6 +9,8 @@ import type { QType } from '../lib/questions';
 import { prefetch } from 'astro:prefetch';
 import { loadChapter } from '../lib/load';
 import LevelPicker from './LevelPicker';
+import Modal, { CloseButton } from './Modal';
+import ExamSheet, { type ExamInfo } from './ExamSheet';
 
 /** Questions per chapter, age group and type (computed at build). */
 export type Summary = Record<number, Partial<Record<AgeGroup, Partial<Record<QType, number>>>>>;
@@ -17,16 +19,17 @@ interface Props {
   book: string;
   titles: string[];
   summary: Summary;
-  /** Tile after the last chapter (as in v1). */
-  examsHref?: string;
+  /** The exams tile after the last chapter (as in v1): it opens a sheet to pick the level and the exam. */
+  exams?: ExamInfo[];
 }
 
 /**
  * The chapters of a book as tiles (as in v1): a tap opens the chapter's menu,
  * where the player reads it or picks a test.
  */
-export default function ChapterMenu({ book, titles, summary, examsHref }: Props) {
+export default function ChapterMenu({ book, titles, summary, exams: realExams }: Props) {
   const [open, setOpen] = useState<number | null>(null);
+  const [examOpen, setExamOpen] = useState(false);
   const prog = progress(book).value;
   // until Firestore answers, the scores of the last visit are shown
   const exams = prog === EMPTY && user.value !== null ? cachedExams(user.value?.uid ?? rememberedAccount?.uid ?? player.value.key, book) : prog.exams;
@@ -56,16 +59,17 @@ export default function ChapterMenu({ book, titles, summary, examsHref }: Props)
             </li>
           );
         })}
-        {examsHref && (
+        {realExams && (
           <li style={{ gridColumn: `span ${examSpan(titles.length)}` }}>
-            <a class="tile tile-exam" href={examsHref}>
+            <button type="button" class="tile tile-exam" onClick={() => setExamOpen(true)}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3 8-8" /><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9" /></svg>
               <span>Examene</span>
-            </a>
+            </button>
           </li>
         )}
       </ol></div>
       {sheet}
+      {examOpen && realExams && <ExamSheet book={book} exams={realExams} onClose={() => setExamOpen(false)} />}
     </>
   );
 }
@@ -81,13 +85,6 @@ interface SheetProps {
 }
 
 function Sheet({ book, ch, title, total, best, wrongs, onClose }: SheetProps) {
-  useEffect(() => {
-    const esc = (e: KeyboardEvent) => e.key === 'Escape' && onClose();
-    addEventListener('keydown', esc);
-    document.body.style.overflow = 'hidden';
-    return () => { removeEventListener('keydown', esc); document.body.style.overflow = ''; };
-  }, []);
-
   const base = `/${book}`;
   const lv = level.value;
 
@@ -99,17 +96,14 @@ function Sheet({ book, ch, title, total, best, wrongs, onClose }: SheetProps) {
   }, [book, ch, lv]);
 
   return (
-    <div class="sheet-back" onClick={(e) => e.target === e.currentTarget && onClose()}>
-      <div class="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="cm-title">
-        <div class="sheet-grab" aria-hidden="true" />
+    <Modal labelledby="cm-title" onClose={onClose}>
+      {(close) => (<>
         <div class="sheet-top">
           <div>
             <h2 id="cm-title">Capitolul {ch}</h2>
             <p class="muted">{title}</p>
           </div>
-          <button type="button" class="icon-btn" aria-label="Închide" onClick={onClose}>
-            <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
-          </button>
+          <CloseButton onClick={close} />
         </div>
         <p class="sheet-label">Alege ce vrei să faci</p>
         <div class="opt-card">
@@ -135,8 +129,8 @@ function Sheet({ book, ch, title, total, best, wrongs, onClose }: SheetProps) {
         {wrongs > 0 && (
           <a class="oc-more" href={`${base}/greseli`}>Greșelile mele ({wrongs} de reluat)</a>
         )}
-      </div>
-    </div>
+      </>)}
+    </Modal>
   );
 }
 

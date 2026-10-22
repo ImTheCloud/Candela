@@ -115,14 +115,24 @@ body.in-quiz main { padding-top: 0; }
 .fb-actions { display: flex; gap: 8px; }
 .fb-actions .verse-btn { flex: 1; min-width: 0; }
 .info-btn {
-  flex: none; display: grid; place-items: center; width: 56px; border: 1.5px solid var(--line); border-radius: 16px;
-  background: var(--surface); color: var(--ink-2); cursor: pointer;
+  flex: none; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; width: 76px;
+  border: 1.5px solid var(--line); border-radius: 16px; background: var(--surface); color: var(--ink-2);
+  font: 600 0.72rem/1 var(--f-body); cursor: pointer;
 }
 .info-btn:active { background: var(--surface-2); }
 .info-btn.is-sent { color: var(--ok); }
-.info-btn.sm { width: 32px; height: 32px; margin: -6px -8px -6px 0; border: 0; border-radius: 50%; background: none; color: var(--ink-3); }
-.info-btn.sm:active { background: var(--surface-2); }
-.q-right { display: flex; align-items: center; gap: 6px; }
+/* at the foot of the question: a flag and a word, so nobody has to guess what it does */
+.info-btn.sm {
+  flex-direction: row; gap: 7px; width: auto; min-height: 36px; padding: 0 14px 0 11px; border-radius: 999px;
+  background: none; font-size: 0.85rem;
+}
+.q-foot { display: flex; justify-content: flex-end; margin: -2px 0 -4px; }
+.q-tags { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 10px; min-width: 0; }
+.q-age {
+  display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px 3px 8px; border-radius: 999px;
+  background: var(--oil-soft); color: var(--oil-ink); font-size: 0.8rem; font-weight: 600; white-space: nowrap;
+}
+.q-meta { align-items: center; }
 .report-modal { display: grid; gap: 14px; }
 .report-modal .sheet-top p { margin-top: 4px; }
 .rp-form { display: grid; gap: 12px; }
@@ -225,3 +235,22 @@ body.in-quiz main { padding-top: 0; }
 @keyframes glowx { 0%, 100% { opacity: .55; transform: scale(1); } 50% { opacity: .85; transform: scale(1.06); } }
 @keyframes flickerx { 0%, 100% { transform: scaleY(1) skewX(0); } 25% { transform: scaleY(1.06) skewX(-2deg); } 50% { transform: scaleY(.96) skewX(1.5deg); } 75% { transform: scaleY(1.04) skewX(-1deg); } }
 @media (prefers-reduced-motion: reduce) { .lampx-glow, .flamex { animation: none; } }
+
+/* The phone keyboard covers the lower half: leave room under the field so the page can scroll it into view */
+body.kb-open .quiz:not(.results) { min-height: 0; align-content: start; padding-bottom: 60dvh; }
+body.kb-open .quiz .lampmark { display: none; }
+
+/* Test sheet (from the reader and the exam tile) */
+.ts-block { display: grid; gap: 12px; padding: 14px; border: 1.5px solid var(--line); border-radius: 16px; background: var(--bg); }
+.ts-block + .ts-block { margin-top: 12px; }
+.ts-list { display: grid; gap: 8px; }
+.ts-exam {
+  display: flex; align-items: center; gap: 12px; min-height: 58px; padding: 9px 12px; border: 1.5px solid var(--line); border-radius: 14px;
+  background: var(--surface); color: var(--ink); text-decoration: none;
+}
+.ts-exam.is-mine { border-color: var(--oil); background: var(--oil-soft); }
+.ts-exam > span:first-child { flex: 1; min-width: 0; display: grid; gap: 1px; }
+.ts-exam b { font-weight: 600; }
+.ts-exam small { color: var(--ink-2); font-size: 0.8rem; }
+.ts-best { flex: none; padding: 3px 9px; border-radius: 999px; background: var(--ok-soft); color: var(--ok); font-size: 0.8rem; font-weight: 600; }
+.ts-redo { flex: none; color: var(--ink-3); }

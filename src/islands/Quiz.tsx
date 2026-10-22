@@ -5,6 +5,8 @@ import { recordAnswers, recordExam } from '../lib/progress';
 import { emptyAnswer, grade, isAnswered, percent, typeInfo, type Answer, type Grade, type Playable } from '../lib/questions';
 import QuestionView from './QuestionView';
 import LampMark from './LampMark';
+import Modal, { CloseButton } from './Modal';
+import { ageLabel } from '../lib/age';
 import ReportButton from './ReportButton';
 
 export interface QuizProps {
@@ -153,12 +155,11 @@ export default function Quiz({ book, bookName, questions, mode, examId, scoreId,
       <div class="q-stage">
         {lamp && <LampMark small={lamp === 'small'} />}
         <article ref={cardEl} class="card q-card" aria-live="polite">
-          <div class="q-meta">
-            <span class="q-type">{info.short}</span>
-            <span class="q-right"><span class="q-ref">{bookName} {q.ref}</span><ReportButton q={q} small /></span>
-          </div>
+          <QHead q={q} label={info.short} bookName={bookName} />
           {info.hint && !g && <p class="small muted">{info.hint}</p>}
-          <QuestionView key={q.id} q={q} answer={answers[i]} onChange={setAnswer} graded={mode === 'practice' ? g : null} />
+          <QuestionView key={q.id} q={q} answer={answers[i]} onChange={setAnswer} graded={mode === 'practice' ? g : null}
+            onEnter={mode === 'practice' && !g && isAnswered(answers[i]) ? check : undefined} />
+          <div class="q-foot"><ReportButton q={q} small /></div>
         </article>
       </div>
 
@@ -194,17 +195,33 @@ export default function Quiz({ book, bookName, questions, mode, examId, scoreId,
         )}
       </div>
       {leaveTo && (
-        <div class="sheet-back" onClick={(e) => e.target === e.currentTarget && setLeaveTo(null)}>
-          <div class="sheet-panel confirm" role="alertdialog" aria-labelledby="leave-t">
+        <Modal class="confirm" role="alertdialog" labelledby="leave-t" onClose={() => setLeaveTo(null)}>
+          {(close) => (<>
             <h2 id="leave-t">Ieși din test?</h2>
             <p class="muted">Răspunsurile de până acum nu se păstrează.</p>
             <div class="two">
-              <button class="btn btn-ghost" onClick={() => setLeaveTo(null)}>Rămân</button>
+              <button class="btn btn-ghost" onClick={close}>Rămân</button>
               <button class="btn danger" onClick={leaveTo}>Ieși</button>
             </div>
-          </div>
-        </div>
+          </>)}
+        </Modal>
       )}
+    </div>
+  );
+}
+
+/** Above every question: its kind, the level it is meant for (a pill) and the verses it comes from. */
+function QHead({ q, label, bookName }: { q: Playable; label: string; bookName: string }) {
+  return (
+    <div class="q-meta">
+      <span class="q-tags">
+        <span class="q-type">{label}</span>
+        <span class="q-age" title="Nivelul întrebării">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.6" /><path d="M4.5 20.5c.8-4 3.8-6 7.5-6s6.7 2 7.5 6" /></svg>
+          {ageLabel(q.age)}
+        </span>
+      </span>
+      <span class="q-ref">{bookName} {q.ref}</span>
     </div>
   );
 }
@@ -237,10 +254,7 @@ function VerseSheet({ q, bookName, onClose }: { q: Playable; bookName: string; o
   useEffect(() => {
     let live = true;
     loadVerses(q.book, q.ch).then((v) => live && setVerses(v.length ? v : null), () => {});
-    const esc = (e: KeyboardEvent) => e.key === 'Escape' && onClose();
-    addEventListener('keydown', esc);
-    document.body.style.overflow = 'hidden';
-    return () => { live = false; removeEventListener('keydown', esc); document.body.style.overflow = ''; };
+    return () => { live = false; };
   }, [q.id]);
 
   useEffect(() => {
@@ -249,22 +263,19 @@ function VerseSheet({ q, bookName, onClose }: { q: Playable; bookName: string; o
   }, [verses]);
 
   return (
-    <div class="sheet-back" onClick={(e) => e.target === e.currentTarget && onClose()}>
-      <div class="sheet-panel verse-sheet" role="dialog" aria-modal="true" aria-label={`${bookName} ${q.ch}`}>
-        <div class="sheet-grab" aria-hidden="true" />
+    <Modal class="verse-sheet" label={`${bookName} ${q.ch}`} onClose={onClose}>
+      {(close) => (<>
         <div class="sheet-top">
           <h2>{bookName} {q.ch}</h2>
-          <button type="button" class="icon-btn" aria-label="Închide" onClick={onClose}>
-            <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
-          </button>
+          <CloseButton onClick={close} />
         </div>
         <div class="vs-text" ref={box}>
           {verses
             ? verses.map((text, k) => <p class={cited.has(k + 1) ? 'is-cited' : ''}><sup>{k + 1}</sup>{text}</p>)
             : q.cite.map(([label, text]) => <p class="is-cited"><sup>{label}</sup>{text}</p>)}
         </div>
-      </div>
-    </div>
+      </>)}
+    </Modal>
   );
 }
 
@@ -340,9 +351,9 @@ function Results({ bookName, questions, answers, grades, mode, backHref, onAgain
           {questions.map((q, k) => (
             <article class="card q-card">
               {(k === 0 || questions[k - 1].t !== q.t) && <p class="part">{typeInfo(q.t).part}. {typeInfo(q.t).label}</p>}
-              <div class="q-meta"><span class="q-type">{k + 1}. {typeInfo(q.t).short}</span><span class="q-right"><span class="q-ref">{bookName} {q.ref}</span><ReportButton q={q} small /></span></div>
+              <QHead q={q} label={`${k + 1}. ${typeInfo(q.t).short}`} bookName={bookName} />
               <QuestionView q={q} answer={answers[k]} onChange={() => {}} graded={gs[k]} />
-              <Feedback q={q} g={gs[k]} bookName={bookName} />
+              <Feedback q={q} g={gs[k]} bookName={bookName} report />
             </article>
           ))}
         </section>
