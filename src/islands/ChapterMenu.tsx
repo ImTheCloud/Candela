@@ -1,7 +1,7 @@
 import type { JSX } from 'preact';
 import { useEffect, useState } from 'preact/hooks';
-import { ageShort, type AgeGroup } from '../lib/age';
-import { level } from '../lib/level';
+import { AGE_GROUPS, ageShort, type AgeGroup } from '../lib/age';
+import { level, scoreView } from '../lib/level';
 import { cachedExams, EMPTY, progress, scoreLabel } from '../lib/progress';
 import { rememberedAccount, user } from '../lib/session';
 import { player } from '../lib/players';
@@ -35,7 +35,15 @@ export default function ChapterMenu({ book, titles, summary, exams: realExams }:
   const exams = prog === EMPTY && user.value !== null ? cachedExams(user.value?.uid ?? rememberedAccount?.uid ?? player.value.key, book) : prog.exams;
   // a chapter's score belongs to a level: the tiles and the sheet show the score of the level picked now
   // scores from before levels were kept ("c5", no level) count for the top level (18+) until it is played again
-  const entry = (ch: number) => exams[`c${ch}@${level.value}`] ?? (level.value === '18+' ? exams[`c${ch}`] : undefined);
+  const at = (ch: number, lv: string) => exams[`c${ch}@${lv}`] ?? (lv === '18+' ? exams[`c${ch}`] : undefined);
+  const entry = (ch: number) => at(ch, level.value);
+  // the tiles follow the tabs of the board: "Toate" = the best score of any level
+  const view = scoreView.value;
+  const tileEntry = (ch: number) => {
+    if (view !== 'all') return at(ch, view);
+    const all = AGE_GROUPS.map((g) => at(ch, g.id)).filter(Boolean) as NonNullable<ReturnType<typeof entry>>[];
+    return all.sort((a, b) => (b.bestRight ?? Math.round(b.best / 100 * 21)) - (a.bestRight ?? Math.round(a.best / 100 * 21)))[0];
+  };
 
   const sheet = open !== null && (
     <Sheet book={book} ch={open} title={titles[open - 1]} total={count(summary[open]?.[level.value])} best={scoreLabel(entry(open), count(summary[open]?.[level.value]))}
@@ -48,8 +56,8 @@ export default function ChapterMenu({ book, titles, summary, exams: realExams }:
       <div class="tiles-wrap"><ol class="tiles">
         {titles.map((t, k) => {
           const ch = k + 1;
-          const e = entry(ch);
-          const label = scoreLabel(e, count(summary[ch]?.[level.value]));
+          const e = tileEntry(ch);
+          const label = scoreLabel(e, 21);
           const full = !!e && (e.bestRight !== undefined ? e.bestRight === e.n : e.best === 100);
           return (
             <li>

@@ -4,6 +4,7 @@ import { AGE_GROUPS, LEVEL_KEY, ageShort, type AgeGroup } from '../lib/age';
 import { db } from '../lib/firebase';
 import { player, setHidden } from '../lib/players';
 import { progress } from '../lib/progress';
+import { scoreView } from '../lib/level';
 import { profile, rememberedAccount, user } from '../lib/session';
 
 interface Row { key: string; name: string; score: number; at: number }
@@ -19,8 +20,9 @@ interface Props {
 
 /** Public board of a book: all levels together or one level. Each question counts once; ties go to whoever got there first. */
 export default function Board({ book }: Props) {
-  // always opens on "Toate"; this choice is only for the board and does not change the level of the tests
-  const [age, setAge] = useState<AgeGroup | 'all'>('all');
+  // the tabs also pick which scores the chapter tiles show; they do not change the level of the tests
+  const [age, setAgeState] = useState<AgeGroup | 'all'>(scoreView.value);
+  const setAge = (a: AgeGroup | 'all') => { scoreView.value = a; setAgeState(a); };
   const [rows, setRows] = useState<Row[] | null>(() => cache.get(`${book}:all`) ?? null);
   const [error, setError] = useState(false);
   const [busy, setBusy] = useState(false);
