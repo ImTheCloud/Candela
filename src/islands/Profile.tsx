@@ -186,11 +186,11 @@ function BookStats({ p, book }: { p: Player; book: BookInfo }) {
   return (
     <section class="bk">
       <h3>{book.name}</h3>
-      <p class="small muted nowrap">{t} întrebări pe fiecare din cele {levels.length} niveluri</p>
+      <p class="small muted nowrap">{t} întrebări pentru fiecare grupă de vârstă</p>
       {!loaded ? <Loader small /> : !started ? <p class="small muted">Nu a început încă.</p> : (
         <>
           <p class="bk-head">Întrebări știute <small>(răspunse corect cel puțin o dată)</small></p>
-          <div class="lv-chips" role="radiogroup" aria-label="Nivelul">
+          <div class="lv-chips" role="radiogroup" aria-label="Grupa de vârstă">
             {levels.map((g) => (
               <button type="button" role="radio" aria-checked={lv === g.id} class="lv-chip" onClick={() => setPicked(g.id)}>{ageShort(g.id)}</button>
             ))}

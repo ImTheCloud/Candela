@@ -53,7 +53,7 @@ export default function BookPanel({ books, initial }: { books: BookData[]; initi
             ))}
           </div>
           <h2 id="chapters">Ce capitol vrei să exersezi?</h2>
-          <p class="small muted nowrap">{perLevel(book)} întrebări pe fiecare din cele 5 niveluri</p>
+          <p class="small muted nowrap">{perLevel(book)} întrebări pentru fiecare grupă de vârstă</p>
           <ChapterMenu key={slug} book={slug} titles={book.titles} summary={book.summary} exams={book.exams} />
         </div>
       </section>

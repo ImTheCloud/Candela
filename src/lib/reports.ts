@@ -9,7 +9,7 @@ export const REASONS = [
   { id: 'answer', label: 'Răspunsul corect nu este bun' },
   { id: 'text', label: 'Întrebarea nu se potrivește cu textul biblic' },
   { id: 'unclear', label: 'Întrebarea nu este clară' },
-  { id: 'hard', label: 'Prea grea pentru acest nivel' },
+  { id: 'hard', label: 'Prea grea pentru această grupă de vârstă' },
   { id: 'typo', label: 'Greșeală de scriere' },
   { id: 'other', label: 'Altceva' },
 ] as const;

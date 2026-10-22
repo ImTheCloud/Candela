@@ -132,7 +132,7 @@ function Sheet({ book, ch, title, total, best, wrongs, onClose }: SheetProps) {
                 <small>{total ? `${total} întrebări` : ''}{best !== undefined ? `${total ? ' · ' : ''}cel mai bun scor ${best}` : ''}</small>
               </span>
             </div>
-            <LevelPicker label="Nivelul testului" />
+            <LevelPicker label="Grupa de vârstă" />
           </div>
         </div>
         <a class="btn btn-primary btn-block oc-go" href={`${base}/exersare?capitol=${ch}&start=1&nivel=${encodeURIComponent(lv)}`}>

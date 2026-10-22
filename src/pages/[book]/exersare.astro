@@ -10,7 +10,7 @@ export function getStaticPaths() {
 }
 const { book } = Astro.props as { book: Book };
 ---
-<Base title="Exersează" description={`Întrebări din ${book.name}, pe capitole și pe niveluri.`}
+<Base title="Exersează" description={`Întrebări din ${book.name}, pe capitole și pe grupe de vârstă.`}
   crumbs={[{ href: '/', label: 'Acasă' }, { href: `/${book.slug}`, label: book.name }]}>
   <section class="wrap narrow">
     <Practice client:only="preact" book={book.slug} bookName={book.name} chapters={book.chapters} summary={summary(book.slug)}>
