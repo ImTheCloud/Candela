@@ -3,141 +3,151 @@
  "reviewed": false,
  "questions": [
   {
-   "id": "1sa.27.sub12.101",
-   "age": "sub12",
-   "t": "tf",
-   "ref": "27:2",
-   "q": "David a trecut la Achiș împreună cu șase sute de oameni.",
-   "a": true
-  },
-  {
-   "id": "1sa.27.sub12.102",
-   "age": "sub12",
-   "t": "tf",
-   "ref": "27:6",
-   "q": "Achiș i-a dat lui David cetatea Țiclag.",
-   "a": true
-  },
-  {
-   "id": "1sa.27.sub12.103",
-   "age": "sub12",
-   "t": "tf",
-   "ref": "27:7",
-   "q": "David a locuit un an și patru luni în țara filistenilor.",
-   "a": true
-  },
-  {
-   "id": "1sa.27.sub12.104",
+   "id": "1sa.27.sub12.201",
    "age": "sub12",
    "t": "tf",
    "ref": "27:4",
-   "q": "Saul a continuat să-l caute pe David.",
+   "q": "Saul a încetat să-l mai caute pe David.",
+   "a": true
+  },
+  {
+   "id": "1sa.27.sub12.202",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "27:12",
+   "q": "Achiș se încredea în David.",
+   "a": true
+  },
+  {
+   "id": "1sa.27.sub12.203",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "27:1",
+   "q": "David a vrut să fugă în țara filistenilor.",
+   "a": true
+  },
+  {
+   "id": "1sa.27.sub12.204",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "27:6",
+   "q": "Achiș i-a dat lui David cetatea Gat.",
    "a": false
   },
   {
-   "id": "1sa.27.sub12.105",
+   "id": "1sa.27.sub12.205",
    "age": "sub12",
    "t": "tf",
    "ref": "27:2",
-   "q": "David a plecat singur la Achiș.",
+   "q": "David a fugit singur, fără oamenii lui.",
    "a": false
   },
   {
-   "id": "1sa.27.sub12.106",
+   "id": "1sa.27.sub12.206",
    "age": "sub12",
    "t": "one",
    "ref": "27:2",
-   "q": "La cine a trecut David?",
+   "q": "Câți oameni avea David?",
+   "opts": [
+    "șase sute",
+    "șase",
+    "șase mii"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.27.sub12.207",
+   "age": "sub12",
+   "t": "one",
+   "ref": "27:3",
+   "q": "Cum se numeau cele două neveste ale lui David?",
+   "opts": [
+    "Penina și Ana",
+    "Mical și Merab",
+    "Ahinoam și Abigail"
+   ],
+   "a": 2
+  },
+  {
+   "id": "1sa.27.sub12.208",
+   "age": "sub12",
+   "t": "one",
+   "ref": "27:9",
+   "q": "Ce lua David de la cei învinși?",
+   "opts": [
+    "oile, boii și cămilele",
+    "cărțile și săbiile",
+    "pâinea și vinul"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.27.sub12.209",
+   "age": "sub12",
+   "t": "one",
+   "ref": "27:2",
+   "q": "La cine a mers David?",
    "opts": [
     "la Achiș",
     "la Samuel",
-    "la Saul"
+    "la Nabal"
    ],
    "a": 0
   },
   {
-   "id": "1sa.27.sub12.107",
-   "age": "sub12",
-   "t": "one",
-   "ref": "27:2",
-   "q": "Câți oameni erau cu David?",
-   "opts": [
-    "șase sute",
-    "o mie",
-    "zece"
-   ],
-   "a": 0
-  },
-  {
-   "id": "1sa.27.sub12.108",
+   "id": "1sa.27.sub12.210",
    "age": "sub12",
    "t": "one",
    "ref": "27:6",
    "q": "Ce cetate i-a dat Achiș lui David?",
    "opts": [
-    "Ierusalimul",
-    "Betleemul",
+    "Silo",
+    "Betleem",
     "Țiclagul"
    ],
    "a": 2
   },
   {
-   "id": "1sa.27.sub12.109",
-   "age": "sub12",
-   "t": "one",
-   "ref": "27:4",
-   "q": "Cine a încetat să-l caute pe David?",
-   "opts": [
-    "Saul",
-    "Ionatan",
-    "Achiș"
-   ],
-   "a": 0
-  },
-  {
-   "id": "1sa.27.sub12.110",
-   "age": "sub12",
-   "t": "one",
-   "ref": "27:7",
-   "q": "Cât a locuit David la filisteni?",
-   "opts": [
-    "zece ani",
-    "o zi",
-    "un an și patru luni"
-   ],
-   "a": 2
-  },
-  {
-   "id": "1sa.27.sub12.121",
+   "id": "1sa.27.sub12.211",
    "age": "sub12",
    "t": "match",
    "ref": "27:1-12",
-   "q": "Asociază fiecare nume sau lucru cu ce se spune despre el în capitol.",
+   "q": "Asociază fiecare nume cu ce se spune despre el.",
    "pairs": [
     [
      "David",
-     "a fugit în țara filistenilor"
+     "cel care a fugit la filisteni"
     ],
     [
      "Achiș",
-     "i-a dat Țiclagul"
+     "împăratul Gatului"
     ],
     [
      "Saul",
-     "a încetat să-l caute"
+     "cel care a încetat să-l caute"
     ],
     [
      "Țiclag",
-     "cetatea dată lui David"
+     "cetatea primită de David"
     ],
     [
-     "cei șase sute",
-     "oamenii care erau cu David"
+     "Ahinoam",
+     "una din nevestele lui David"
     ]
    ]
   },
   {
-   "id": "1sa.27.sub12.111",
+   "id": "1sa.27.sub12.212",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "27:7",
+   "q": "Timpul cât a locuit David în țara filistenilor a fost de un an și ___ luni.",
+   "a": [
+    "patru"
+   ]
+  },
+  {
+   "id": "1sa.27.sub12.213",
    "age": "sub12",
    "t": "fill",
    "ref": "27:2",
@@ -147,95 +157,69 @@
    ]
   },
   {
-   "id": "1sa.27.sub12.112",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "27:6",
-   "q": "Și chiar în ziua aceea, Achiș i-a dat Țiclagul. De aceea, Țiclagul a fost al ___ lui Iuda până în ziua de azi.",
-   "a": [
-    "împăraților"
-   ]
-  },
-  {
-   "id": "1sa.27.sub12.113",
+   "id": "1sa.27.sub12.214",
    "age": "sub12",
    "t": "fill",
    "ref": "27:4",
-   "q": "Saul, când a aflat că David fugise la Gat, a încetat să-l mai ___.",
+   "q": "Saul, când a aflat că David fugise la ___, a încetat să-l mai caute.",
    "a": [
-    "caute"
+    "Gat"
    ]
   },
   {
-   "id": "1sa.27.sub12.114",
+   "id": "1sa.27.sub12.215",
    "age": "sub12",
    "t": "fill",
-   "ref": "27:7",
-   "q": "Timpul cât a locuit David în țara filistenilor a fost de un an și patru ___.",
+   "ref": "27:3",
+   "q": "David și oamenii lui au rămas în Gat, la Achiș; își avea fiecare familia lui și David își avea cele două neveste: ___ din Izreel și Abigail din Carmel, nevasta lui Nabal.",
    "a": [
-    "luni"
+    "Ahinoam"
    ]
   },
   {
-   "id": "1sa.27.sub12.115",
+   "id": "1sa.27.sub12.216",
    "age": "sub12",
    "t": "fill",
-   "ref": "27:12",
-   "q": "Achiș se încredea în David și zicea: „S-a făcut urât poporului său Israel și va rămâne în slujba mea pe ___.\"",
+   "ref": "27:6",
+   "q": "Și chiar în ziua aceea, Achiș i-a dat ___.",
    "a": [
-    "vecie"
+    "Țiclagul"
    ]
   },
   {
-   "id": "1sa.27.sub12.116",
+   "id": "1sa.27.sub12.217",
    "age": "sub12",
    "t": "multi",
    "ref": "27:3",
-   "q": "Cine era cu David la Gat?",
+   "q": "Cine a rămas cu David în Gat?",
    "opts": [
-    "cele două neveste ale lui",
-    "Saul",
-    "familiile oamenilor lui"
+    "oamenii lui",
+    "cele două neveste",
+    "Saul"
    ],
    "a": [
     0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.27.sub12.218",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "27:2",
+   "q": "Ce a făcut David?",
+   "opts": [
+    "a rămas în Iuda",
+    "s-a sculat",
+    "a trecut la Achiș"
+   ],
+   "a": [
+    1,
     2
    ]
   },
   {
-   "id": "1sa.27.sub12.117",
-   "age": "sub12",
-   "t": "multi",
-   "ref": "27:4",
-   "q": "Ce s-a întâmplat?",
-   "opts": [
-    "Saul a aflat că David a fugit",
-    "Saul a încetat să-l caute",
-    "Saul l-a prins"
-   ],
-   "a": [
-    0,
-    1
-   ]
-  },
-  {
-   "id": "1sa.27.sub12.118",
-   "age": "sub12",
-   "t": "multi",
-   "ref": "27:5-6",
-   "q": "Ce a cerut și a primit David?",
-   "opts": [
-    "cetatea Țiclag",
-    "un loc unde să locuiască",
-    "un palat"
-   ],
-   "a": [
-    0,
-    1
-   ]
-  },
-  {
-   "id": "1sa.27.sub12.119",
+   "id": "1sa.27.sub12.219",
    "age": "sub12",
    "t": "multi",
    "ref": "27:9",
@@ -251,15 +235,15 @@
    ]
   },
   {
-   "id": "1sa.27.sub12.120",
+   "id": "1sa.27.sub12.220",
    "age": "sub12",
    "t": "multi",
-   "ref": "27:12",
-   "q": "Ce credea Achiș?",
+   "ref": "27:8",
+   "q": "Pe cine a atacat David?",
    "opts": [
-    "că David va rămâne în slujba lui",
-    "că se poate încrede în David",
-    "că David este vrăjmașul lui"
+    "amaleciții",
+    "gheșuriții",
+    "israeliții"
    ],
    "a": [
     0,
@@ -267,761 +251,231 @@
    ]
   },
   {
-   "id": "1sa.27.12-13.1",
+   "id": "1sa.27.sub12.221",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "27:12",
+   "q": "Ce zicea Achiș?",
+   "opts": [
+    "va rămâne în slujba mea",
+    "David s-a făcut urât poporului lui",
+    "David va fugi"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.27.12-13.201",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "27:5",
+   "q": "David a cerut lui Achiș să locuiască în cetatea împărătească.",
+   "a": false
+  },
+  {
+   "id": "1sa.27.12-13.202",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "27:11",
+   "q": "David nu lăsa cu viață nici bărbat, nici femeie.",
+   "a": true
+  },
+  {
+   "id": "1sa.27.12-13.203",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "27:7",
+   "q": "David a locuit în țara filistenilor un an și patru luni.",
+   "a": true
+  },
+  {
+   "id": "1sa.27.12-13.204",
    "age": "12-13",
    "t": "tf",
    "ref": "27:3",
-   "q": "Fiecare din oamenii lui David își avea familia lui la Gat.",
+   "q": "David avea cu el cele două neveste: Ahinoam și Abigail.",
    "a": true
   },
   {
-   "id": "1sa.27.12-13.2",
+   "id": "1sa.27.12-13.205",
    "age": "12-13",
    "t": "tf",
    "ref": "27:10",
-   "q": "David îi spunea lui Achiș adevărul despre unde năvălea.",
-   "a": false,
-   "explain": "Îi spunea că năvălea „spre miazăzi de Iuda\", deși lovea pe gheșuriți, ghirziți și amaleciți (27:8-10)."
+   "q": "David i-a spus lui Achiș că a năvălit asupra lui Iuda.",
+   "a": false
   },
   {
-   "id": "1sa.27.12-13.3",
-   "age": "12-13",
-   "t": "tf",
-   "ref": "27:6",
-   "q": "De atunci, Țiclagul a fost al împăraților lui Iuda.",
-   "a": true
-  },
-  {
-   "id": "1sa.27.12-13.16",
-   "age": "12-13",
-   "t": "tf",
-   "ref": "27:12",
-   "q": "Achiș se încredea în David.",
-   "a": true
-  },
-  {
-   "id": "1sa.27.12-13.17",
-   "age": "12-13",
-   "t": "tf",
-   "ref": "27:7",
-   "q": "David a stat în țara filistenilor trei ani.",
-   "a": false,
-   "explain": "A stat un an și patru luni."
-  },
-  {
-   "id": "1sa.27.12-13.4",
+   "id": "1sa.27.12-13.206",
    "age": "12-13",
    "t": "one",
    "ref": "27:2",
-   "q": "Al cui fiu era Achiș?",
+   "q": "Fiul cui era Achiș?",
    "opts": [
-    "al lui Nahaș",
+    "al lui Isai",
     "al lui Maoc",
-    "al lui Ner"
+    "al lui Nahaș"
    ],
    "a": 1
   },
   {
-   "id": "1sa.27.12-13.5",
+   "id": "1sa.27.12-13.207",
    "age": "12-13",
    "t": "one",
    "ref": "27:7",
-   "q": "Cât timp a locuit David în țara filistenilor?",
+   "q": "Cât a locuit David la filisteni?",
    "opts": [
-    "trei ani",
-    "un an și patru luni",
-    "șapte ani și șase luni"
+    "patru ani",
+    "o lună",
+    "un an și patru luni"
    ],
-   "a": 1
+   "a": 2
   },
   {
-   "id": "1sa.27.12-13.6",
+   "id": "1sa.27.12-13.208",
    "age": "12-13",
    "t": "one",
    "ref": "27:11",
    "q": "De ce nu lăsa David pe nimeni cu viață?",
    "opts": [
-    "ca să nu vorbească împotriva lui la Gat",
-    "din mânie",
-    "ca să-i facă plăcere lui Saul"
+    "ca să nu vorbească împotriva lor",
+    "ca să nu ceară pâine",
+    "ca să nu fugă la Saul"
    ],
    "a": 0
   },
   {
-   "id": "1sa.27.12-13.18",
+   "id": "1sa.27.12-13.209",
+   "age": "12-13",
+   "t": "one",
+   "ref": "27:1",
+   "q": "Ce și-a zis David în sine?",
+   "opts": [
+    "Voi pieri într-o zi ucis de Saul",
+    "Voi birui într-o zi pe Saul",
+    "Voi domni într-o zi în Iuda"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.27.12-13.210",
    "age": "12-13",
    "t": "one",
    "ref": "27:5",
    "q": "Ce a cerut David lui Achiș?",
    "opts": [
-    "o oaste",
-    "o sută de oi",
-    "un loc într-una din cetățile țării"
-   ],
-   "a": 2
-  },
-  {
-   "id": "1sa.27.12-13.19",
-   "age": "12-13",
-   "t": "one",
-   "ref": "27:9",
-   "q": "Unde se ducea David după ce pustia ținutul?",
-   "opts": [
-    "la Achiș",
-    "la Saul",
-    "la Hebron"
+    "un loc într-o cetate a țării",
+    "o sabie scumpă",
+    "un cal de luptă"
    ],
    "a": 0
   },
   {
-   "id": "1sa.27.12-13.25",
+   "id": "1sa.27.12-13.211",
    "age": "12-13",
    "t": "match",
    "ref": "27:1-12",
-   "q": "Asociază fiecare loc cu ce se spune despre el.",
+   "q": "Asociază fiecare nume sau loc cu ce se spune despre el.",
    "pairs": [
     [
-     "Gat",
-     "cetatea lui Achiș"
-    ],
-    [
-     "Țiclag",
-     "cetatea dată lui David"
-    ],
-    [
-     "Șur",
-     "până unde locuiau neamurile lovite"
-    ],
-    [
-     "Carmel",
-     "locul de unde era Abigail"
+     "Maoc",
+     "tatăl lui Achiș"
     ],
     [
      "Izreel",
-     "locul de unde era Ahinoam"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.27.12-13.10",
-   "age": "12-13",
-   "t": "fill",
-   "ref": "27:1",
-   "a": [
-    "filistenilor"
-   ],
-   "q": "David și-a zis în sine: „Voi pieri într-o zi ucis de mâna lui Saul; nu este nimic mai bine pentru mine decât să fug în țara ___, pentru ca Saul să înceteze să mă mai caute în tot ținutul lui Israel; așa voi scăpa de mâna lui.\"",
-   "ctx": "David, în sine, după ce Saul s-a întors acasă:"
-  },
-  {
-   "id": "1sa.27.12-13.11",
-   "age": "12-13",
-   "t": "fill",
-   "ref": "27:12",
-   "a": [
-    "Israel"
-   ],
-   "q": "Achiș se încredea în David și zicea: „S-a făcut urât poporului său ___ și va rămâne în slujba mea pe vecie.\"",
-   "ctx": "Achiș, despre David:"
-  },
-  {
-   "id": "1sa.27.12-13.12",
-   "age": "12-13",
-   "t": "fill",
-   "ref": "27:9",
-   "a": [
-    "femeie"
-   ],
-   "q": "David pustia ținutul acesta; nu lăsa cu viață nici bărbat, nici ___, le lua oile, boii, măgarii, cămilele, hainele și apoi se întorcea și se ducea la Achiș.",
-   "ctx": "David, în timp ce locuia la Țiclag:"
-  },
-  {
-   "id": "1sa.27.12-13.20",
-   "age": "12-13",
-   "t": "fill",
-   "ref": "27:10",
-   "q": "Achiș zicea: „Unde ați ___ azi?\" Și David răspundea: „Spre miazăzi de Iuda, spre miazăzi de ierahmeeliți și spre miazăzi de cheniți.\"",
-   "a": [
-    "năvălit"
-   ]
-  },
-  {
-   "id": "1sa.27.12-13.21",
-   "age": "12-13",
-   "t": "fill",
-   "ref": "27:6",
-   "q": "Și chiar în ziua aceea, Achiș i-a dat Țiclagul. De aceea, Țiclagul a fost al împăraților lui ___ până în ziua de azi.",
-   "a": [
-    "Iuda"
-   ]
-  },
-  {
-   "id": "1sa.27.12-13.13",
-   "age": "12-13",
-   "t": "multi",
-   "ref": "27:9",
-   "q": "Ce lua David din ținutul pustiit?",
-   "opts": [
-    "măgarii și cămilele",
-    "hainele",
-    "oile și boii"
-   ],
-   "a": [
-    0,
-    1,
-    2
-   ]
-  },
-  {
-   "id": "1sa.27.12-13.14",
-   "age": "12-13",
-   "t": "multi",
-   "ref": "27:3",
-   "q": "Cine era Abigail?",
-   "opts": [
-    "nevasta lui Nabal, din Carmel",
-    "nevasta lui David",
-    "fiica lui Achiș"
-   ],
-   "a": [
-    0,
-    1
-   ]
-  },
-  {
-   "id": "1sa.27.12-13.22",
-   "age": "12-13",
-   "t": "multi",
-   "ref": "27:1-2",
-   "q": "Ce a făcut David?",
-   "opts": [
-    "a hotărât să se predea lui Saul",
-    "a fugit în țara filistenilor",
-    "și-a zis în sine că va pieri ucis de Saul"
-   ],
-   "a": [
-    1,
-    2
-   ]
-  },
-  {
-   "id": "1sa.27.12-13.23",
-   "age": "12-13",
-   "t": "multi",
-   "ref": "27:11-12",
-   "q": "Ce se spune despre David și Achiș?",
-   "opts": [
-    "David nu lăsa pe nimeni cu viață",
-    "Achiș se încredea în David",
-    "Achiș l-a alungat pe David"
-   ],
-   "a": [
-    0,
-    1
-   ]
-  },
-  {
-   "id": "1sa.27.12-13.24",
-   "age": "12-13",
-   "t": "multi",
-   "ref": "27:5-6",
-   "q": "Ce s-a întâmplat?",
-   "opts": [
-    "David a cerut un loc",
-    "Achiș i-a dat Țiclagul chiar în ziua aceea",
-    "Achiș a refuzat"
-   ],
-   "a": [
-    0,
-    1
-   ]
-  },
-  {
-   "id": "1sa.27.14-15.1",
-   "age": "14-15",
-   "t": "tf",
-   "ref": "27:5",
-   "q": "David i-a cerut lui Achiș un loc într-una din cetățile țării.",
-   "a": true
-  },
-  {
-   "id": "1sa.27.14-15.2",
-   "age": "14-15",
-   "t": "tf",
-   "ref": "27:12",
-   "q": "Achiș nu se încredea în David.",
-   "a": false,
-   "explain": "„Achiș se încredea în David\" (27:12)."
-  },
-  {
-   "id": "1sa.27.14-15.3",
-   "age": "14-15",
-   "t": "tf",
-   "ref": "27:8",
-   "q": "Neamurile lovite de David locuiau din vremuri vechi până la Șur și până în țara Egiptului.",
-   "a": true
-  },
-  {
-   "id": "1sa.27.14-15.16",
-   "age": "14-15",
-   "t": "tf",
-   "ref": "27:6",
-   "q": "Achiș i-a dat Țiclagul lui David chiar în ziua aceea.",
-   "a": true
-  },
-  {
-   "id": "1sa.27.14-15.17",
-   "age": "14-15",
-   "t": "tf",
-   "ref": "27:2",
-   "q": "David a trecut la Achiș împreună cu trei sute de oameni.",
-   "a": false,
-   "explain": "Cu cei șase sute de oameni."
-  },
-  {
-   "id": "1sa.27.14-15.4",
-   "age": "14-15",
-   "t": "one",
-   "ref": "27:1",
-   "q": "Ce spunea David în sine despre Saul?",
-   "opts": [
-    "că Saul va muri curând",
-    "că se va împăca cu el",
-    "că va pieri într-o zi ucis de mâna lui"
-   ],
-   "a": 2
-  },
-  {
-   "id": "1sa.27.14-15.5",
-   "age": "14-15",
-   "t": "one",
-   "ref": "27:5",
-   "q": "De ce nu voia David să locuiască în Gat?",
-   "opts": [
-    "nu voia ca robul să locuiască cu împăratul în cetatea împărătească",
-    "era prea mic",
-    "se temea de Goliat"
-   ],
-   "a": 0
-  },
-  {
-   "id": "1sa.27.14-15.6",
-   "age": "14-15",
-   "t": "one",
-   "ref": "27:10",
-   "q": "Spre ce le spunea David că a năvălit?",
-   "opts": [
-    "spre miazăzi de Iuda",
-    "spre Moab",
-    "spre Filistia"
-   ],
-   "a": 0
-  },
-  {
-   "id": "1sa.27.14-15.18",
-   "age": "14-15",
-   "t": "one",
-   "ref": "27:7",
-   "q": "Cât timp a locuit David în țara filistenilor?",
-   "opts": [
-    "un an și patru luni",
-    "doi ani",
-    "șase luni"
-   ],
-   "a": 0
-  },
-  {
-   "id": "1sa.27.14-15.19",
-   "age": "14-15",
-   "t": "one",
-   "ref": "27:9",
-   "q": "Ce nu lăsa David în ținutul pustiit?",
-   "opts": [
-    "nici bărbat, nici femeie",
-    "nici păstori",
-    "nici copii"
-   ],
-   "a": 0
-  },
-  {
-   "id": "1sa.27.14-15.25",
-   "age": "14-15",
-   "t": "match",
-   "ref": "27:1-12",
-   "q": "Asociază fiecare persoană cu ce se spune despre ea.",
-   "pairs": [
-    [
-     "David",
-     "cel care pustia ținutul"
+     "cetatea lui Ahinoam"
     ],
     [
-     "Achiș",
-     "fiul lui Maoc"
-    ],
-    [
-     "Saul",
-     "cel care a încetat să-l caute"
-    ],
-    [
-     "Ahinoam",
-     "cea din Izreel"
-    ],
-    [
-     "Abigail",
-     "nevasta lui Nabal"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.27.14-15.10",
-   "age": "14-15",
-   "t": "fill",
-   "ref": "27:11",
-   "a": [
-    "Gat"
-   ],
-   "q": "David nu lăsa cu viață nici bărbat, nici femeie ca să vină la ___, „căci\", se gândea el, „ei ar putea să vorbească împotriva noastră și să zică: ‘Așa a făcut David’\". Și acesta a fost felul lui de purtare în tot timpul cât a locuit în țara filistenilor.",
-   "ctx": "Gândul lui David, la Țiclag:"
-  },
-  {
-   "id": "1sa.27.14-15.11",
-   "age": "14-15",
-   "t": "fill",
-   "ref": "27:5",
-   "a": [
-    "locui"
-   ],
-   "q": "David a zis lui Achiș: „Dacă am căpătat trecere înaintea ta, rogu-te să mi se dea într-una din cetățile țării un loc unde să pot ___, căci pentru ce să locuiască robul tău cu tine în cetatea împărătească?\"",
-   "ctx": "David, către Achiș:"
-  },
-  {
-   "id": "1sa.27.14-15.12",
-   "age": "14-15",
-   "t": "fill",
-   "ref": "27:2",
-   "a": [
-    "Gatului"
-   ],
-   "q": "Și David s-a sculat, el și cei șase sute de oameni care erau împreună cu el, și au trecut la Achiș, fiul lui Maoc, împăratul ___.",
-   "ctx": "David și cei șase sute de oameni:"
-  },
-  {
-   "id": "1sa.27.14-15.20",
-   "age": "14-15",
-   "t": "fill",
-   "ref": "27:9",
-   "q": "David pustia ținutul acesta; nu lăsa cu viață nici bărbat, nici femeie, le lua oile, boii, măgarii, ___, hainele și apoi se întorcea și se ducea la Achiș.",
-   "a": [
-    "cămilele"
-   ]
-  },
-  {
-   "id": "1sa.27.14-15.21",
-   "age": "14-15",
-   "t": "fill",
-   "ref": "27:8",
-   "q": "David și oamenii lui se suiau și năvăleau asupra gheșuriților, ghirziților și ___, căci neamurile acestea locuiau din vremuri vechi în ținutul acela până la Șur și până în țara Egiptului.",
-   "a": [
-    "amaleciților"
-   ]
-  },
-  {
-   "id": "1sa.27.14-15.13",
-   "age": "14-15",
-   "t": "multi",
-   "ref": "27:10",
-   "q": "Ce spunea David că a lovit, când îl întreba Achiș?",
-   "opts": [
-    "miazăzi de ierahmeeliți",
-    "miazăzi de cheniți",
-    "miazăzi de Iuda"
-   ],
-   "a": [
-    0,
-    1,
-    2
-   ]
-  },
-  {
-   "id": "1sa.27.14-15.14",
-   "age": "14-15",
-   "t": "multi",
-   "ref": "27:1",
-   "q": "Ce voia David să obțină fugind la filisteni?",
-   "opts": [
-    "să devină împărat al filistenilor",
-    "ca Saul să înceteze să-l caute",
-    "să scape de mâna lui Saul"
-   ],
-   "a": [
-    1,
-    2
-   ]
-  },
-  {
-   "id": "1sa.27.14-15.22",
-   "age": "14-15",
-   "t": "multi",
-   "ref": "27:11-12",
-   "q": "Ce se spune despre Achiș?",
-   "opts": [
-    "se încredea în David",
-    "credea că David s-a făcut urât lui Israel",
-    "credea că David va pleca"
-   ],
-   "a": [
-    0,
-    1
-   ]
-  },
-  {
-   "id": "1sa.27.14-15.23",
-   "age": "14-15",
-   "t": "multi",
-   "ref": "27:8-9",
-   "q": "Ce făcea David?",
-   "opts": [
-    "lua oile, boii și măgarii",
-    "pustia ținutul",
-    "lăsa pe toți cu viață"
-   ],
-   "a": [
-    0,
-    1
-   ]
-  },
-  {
-   "id": "1sa.27.14-15.24",
-   "age": "14-15",
-   "t": "multi",
-   "ref": "27:3-4",
-   "q": "Ce s-a întâmplat la Gat?",
-   "opts": [
-    "David și-a pierdut nevestele",
-    "David și oamenii lui au rămas la Gat",
-    "Saul a încetat să-l mai caute"
-   ],
-   "a": [
-    1,
-    2
-   ]
-  },
-  {
-   "id": "1sa.27.16-17.1",
-   "age": "16-17",
-   "t": "tf",
-   "ref": "27:9",
-   "q": "După năvăliri, David se întorcea și se ducea la Achiș.",
-   "a": true
-  },
-  {
-   "id": "1sa.27.16-17.2",
-   "age": "16-17",
-   "t": "tf",
-   "ref": "27:4",
-   "q": "Saul a continuat să-l caute pe David și în țara filistenilor.",
-   "a": false,
-   "explain": "Când a aflat că David fugise la Gat, a încetat să-l mai caute (27:4)."
-  },
-  {
-   "id": "1sa.27.16-17.3",
-   "age": "16-17",
-   "t": "tf",
-   "ref": "27:11",
-   "q": "David nu lăsa pe nimeni cu viață ca să vină la Gat să spună ce a făcut.",
-   "a": true
-  },
-  {
-   "id": "1sa.27.16-17.16",
-   "age": "16-17",
-   "t": "tf",
-   "ref": "27:12",
-   "q": "Achiș a spus că David va rămâne în slujba lui doar un an.",
-   "a": false,
-   "explain": "A spus că va rămâne în slujba lui pe vecie."
-  },
-  {
-   "id": "1sa.27.16-17.17",
-   "age": "16-17",
-   "t": "tf",
-   "ref": "27:1",
-   "q": "David și-a zis în sine că va pieri într-o zi ucis de mâna lui Saul.",
-   "a": true
-  },
-  {
-   "id": "1sa.27.16-17.4",
-   "age": "16-17",
-   "t": "one",
-   "ref": "27:6",
-   "q": "Când i-a dat Achiș Țiclagul?",
-   "opts": [
-    "după un an",
-    "chiar în ziua aceea",
-    "după prima năvălire"
-   ],
-   "a": 1
-  },
-  {
-   "id": "1sa.27.16-17.5",
-   "age": "16-17",
-   "t": "one",
-   "ref": "27:12",
-   "q": "Cât credea Achiș că va rămâne David în slujba lui?",
-   "opts": [
-    "un an",
-    "pe vecie",
-    "până la moartea lui Saul"
-   ],
-   "a": 1
-  },
-  {
-   "id": "1sa.27.16-17.6",
-   "age": "16-17",
-   "t": "one",
-   "ref": "27:8",
-   "q": "Până unde locuiau neamurile lovite de David?",
-   "opts": [
-    "până la Gaza",
-    "până la Șur și până în țara Egiptului",
-    "până la Iordan"
-   ],
-   "a": 1
-  },
-  {
-   "id": "1sa.27.16-17.18",
-   "age": "16-17",
-   "t": "one",
-   "ref": "27:6",
-   "q": "A cui a ajuns Țiclagul de atunci?",
-   "opts": [
-    "a împăraților lui Iuda",
-    "a filistenilor",
-    "a lui Achiș pentru totdeauna"
-   ],
-   "a": 0
-  },
-  {
-   "id": "1sa.27.16-17.19",
-   "age": "16-17",
-   "t": "one",
-   "ref": "27:5",
-   "q": "Cum a numit David Gatul, când a cerut un loc?",
-   "opts": [
-    "cetatea împărătească",
-    "cetatea întărită",
-    "cetatea mare"
-   ],
-   "a": 0
-  },
-  {
-   "id": "1sa.27.16-17.25",
-   "age": "16-17",
-   "t": "match",
-   "ref": "27:1-12",
-   "q": "Asociază fiecare loc sau număr cu ce se spune despre el.",
-   "pairs": [
-    [
-     "Gat",
-     "cetatea împărătească"
+     "Carmel",
+     "cetatea lui Abigail"
     ],
     [
      "Țiclag",
-     "cetatea care a ajuns a împăraților lui Iuda"
+     "cetatea dată de Achiș"
     ],
     [
      "Șur",
      "până unde locuiau neamurile"
-    ],
-    [
-     "șase sute",
-     "oamenii care erau cu David"
-    ],
-    [
-     "un an și patru luni",
-     "timpul petrecut în țara filistenilor"
     ]
    ]
   },
   {
-   "id": "1sa.27.16-17.10",
-   "age": "16-17",
+   "id": "1sa.27.12-13.212",
+   "age": "12-13",
    "t": "fill",
-   "ref": "27:8",
+   "ref": "27:9",
+   "q": "David ___ ținutul acesta; nu lăsa cu viață nici bărbat, nici femeie, le lua oile, boii, măgarii, cămilele, hainele și apoi se întorcea și se ducea la Achiș.",
    "a": [
-    "vechi"
-   ],
-   "q": "David și oamenii lui se suiau și năvăleau asupra gheșuriților, ghirziților și amaleciților, căci neamurile acestea locuiau din vremuri ___ în ținutul acela până la Șur și până în țara Egiptului.",
-   "ctx": "Despre gheșuriți, ghirziți și amaleciți:"
-  },
-  {
-   "id": "1sa.27.16-17.11",
-   "age": "16-17",
-   "t": "fill",
-   "ref": "27:3",
-   "a": [
-    "familia"
-   ],
-   "q": "David și oamenii lui au rămas în Gat, la Achiș; își avea fiecare ___ lui și David își avea cele două neveste: Ahinoam din Izreel și Abigail din Carmel, nevasta lui Nabal.",
-   "ctx": "David, în țara filistenilor:"
-  },
-  {
-   "id": "1sa.27.16-17.12",
-   "age": "16-17",
-   "t": "fill",
-   "ref": "27:12",
-   "a": [
-    "slujba"
-   ],
-   "q": "Achiș se încredea în David și zicea: „S-a făcut urât poporului său Israel și va rămâne în ___ mea pe vecie.\"",
-   "ctx": "Achiș, despre David:"
-  },
-  {
-   "id": "1sa.27.16-17.20",
-   "age": "16-17",
-   "t": "fill",
-   "ref": "27:10",
-   "q": "Achiș zicea: „Unde ați năvălit azi?\" Și David răspundea: „Spre miazăzi de Iuda, spre miazăzi de ierahmeeliți și spre miazăzi de ___.\"",
-   "a": [
-    "cheniți"
+    "pustia"
    ]
   },
   {
-   "id": "1sa.27.16-17.21",
-   "age": "16-17",
+   "id": "1sa.27.12-13.213",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "27:7",
+   "q": "Timpul cât a locuit David în țara filistenilor a fost de un an și patru ___.",
+   "a": [
+    "luni"
+   ]
+  },
+  {
+   "id": "1sa.27.12-13.214",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "27:5",
+   "q": "David a zis lui Achiș: „Dacă am căpătat ___ înaintea ta, rogu-te să mi se dea într-una din cetățile țării un loc unde să pot locui, căci pentru ce să locuiască robul tău cu tine în cetatea împărătească?\"",
+   "a": [
+    "trecere"
+   ]
+  },
+  {
+   "id": "1sa.27.12-13.215",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "27:1",
+   "q": "David și-a zis în sine: „Voi ___ într-o zi ucis de mâna lui Saul; nu este nimic mai bine pentru mine decât să fug în țara filistenilor, pentru ca Saul să înceteze să mă mai caute în tot ținutul lui Israel; așa voi scăpa de mâna lui.\"",
+   "a": [
+    "pieri"
+   ]
+  },
+  {
+   "id": "1sa.27.12-13.216",
+   "age": "12-13",
    "t": "fill",
    "ref": "27:11",
-   "q": "David nu lăsa cu viață nici bărbat, nici femeie ca să vină la Gat, „căci\", se gândea el, „ei ar putea să vorbească ___ noastră și să zică: ‘Așa a făcut David’\". Și acesta a fost felul lui de purtare în tot timpul cât a locuit în țara filistenilor.",
+   "q": "Și acesta a fost felul lui de ___ în tot timpul cât a locuit în țara filistenilor.",
    "a": [
-    "împotriva"
+    "purtare"
    ]
   },
   {
-   "id": "1sa.27.16-17.13",
-   "age": "16-17",
+   "id": "1sa.27.12-13.217",
+   "age": "12-13",
    "t": "multi",
-   "ref": "27:8",
-   "q": "Ce neamuri a lovit David din Țiclag?",
+   "ref": "27:9",
+   "q": "Ce făcea David?",
    "opts": [
-    "gheșuriții",
-    "ghirziții",
-    "amaleciții"
+    "pustia ținutul",
+    "rămânea în Țiclag",
+    "se ducea la Achiș"
    ],
    "a": [
     0,
-    1,
     2
    ]
   },
   {
-   "id": "1sa.27.16-17.14",
-   "age": "16-17",
+   "id": "1sa.27.12-13.218",
+   "age": "12-13",
    "t": "multi",
-   "ref": "27:11",
-   "q": "De ce nu lăsa David supraviețuitori?",
+   "ref": "27:1",
+   "q": "Ce s-a gândit David?",
    "opts": [
-    "ca să aibă mai multe robi",
-    "ca să nu spună „Așa a făcut David\"",
-    "ca să nu vorbească împotriva lor"
+    "să se ducă în Egipt",
+    "ca Saul să înceteze să-l caute",
+    "să fugă în țara filistenilor"
    ],
    "a": [
     1,
@@ -1029,225 +483,484 @@
    ]
   },
   {
-   "id": "1sa.27.16-17.22",
-   "age": "16-17",
+   "id": "1sa.27.12-13.219",
+   "age": "12-13",
    "t": "multi",
-   "ref": "27:6-7",
-   "q": "Ce se spune despre Țiclag și despre David?",
+   "ref": "27:3",
+   "q": "Ce se spune în Gat?",
    "opts": [
-    "Țiclagul a fost dat altor neamuri",
-    "Țiclagul a fost al împăraților lui Iuda",
-    "David a stat un an și patru luni în țara filistenilor"
+    "fiecare avea familia lui",
+    "David avea două neveste",
+    "David era singur"
    ],
    "a": [
-    1,
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.27.12-13.220",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "27:10",
+   "q": "Ce spunea David?",
+   "opts": [
+    "spre miazăzi de cheniți",
+    "spre miazăzi de Gat",
+    "spre miazăzi de Iuda"
+   ],
+   "a": [
+    0,
     2
    ]
   },
   {
-   "id": "1sa.27.16-17.23",
-   "age": "16-17",
+   "id": "1sa.27.12-13.221",
+   "age": "12-13",
    "t": "multi",
-   "ref": "27:1-2",
-   "q": "Ce a făcut David?",
+   "ref": "27:8",
+   "q": "Ce se spune despre neamuri?",
    "opts": [
-    "a lăsat pe oamenii lui la Saul",
-    "a trecut la Achiș",
-    "a vorbit în sine"
+    "locuiau acolo din vremuri vechi",
+    "până la Șur",
+    "erau prieteni cu Israel"
    ],
    "a": [
-    1,
-    2
+    0,
+    1
    ]
   },
   {
-   "id": "1sa.27.16-17.24",
-   "age": "16-17",
-   "t": "multi",
-   "ref": "27:11-12",
-   "q": "Ce se spune despre purtarea lui David?",
-   "opts": [
-    "Achiș a aflat adevărul",
-    "Achiș se încredea în el",
-    "nu lăsa pe nimeni cu viață"
-   ],
-   "a": [
-    1,
-    2
-   ]
+   "id": "1sa.27.14-15.201",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "27:12",
+   "q": "Achiș credea că David s-a făcut urât poporului său.",
+   "a": true
   },
   {
-   "id": "1sa.27.18+.1",
-   "age": "18+",
+   "id": "1sa.27.14-15.202",
+   "age": "14-15",
    "t": "tf",
    "ref": "27:1",
-   "q": "Hotărârea lui David de a fugi la filisteni a pornit dintr-un gând „în sine\".",
+   "q": "David a gândit că dacă fuge la filisteni, Saul va înceta să-l caute.",
    "a": true
   },
   {
-   "id": "1sa.27.18+.2",
-   "age": "18+",
+   "id": "1sa.27.14-15.203",
+   "age": "14-15",
    "t": "tf",
-   "ref": "27:2",
-   "q": "Achiș era fiul lui Nahaș.",
-   "a": false,
-   "explain": "Achiș era fiul lui Maoc (27:2)."
+   "ref": "27:4",
+   "q": "Saul a aflat că David a fugit la Gat și l-a urmărit mai departe.",
+   "a": false
   },
   {
-   "id": "1sa.27.18+.3",
-   "age": "18+",
-   "t": "tf",
-   "ref": "27:10",
-   "q": "Între cei pomeniți de David lui Achiș erau ierahmeeliții și cheniții.",
-   "a": true
-  },
-  {
-   "id": "1sa.27.18+.16",
-   "age": "18+",
+   "id": "1sa.27.14-15.204",
+   "age": "14-15",
    "t": "tf",
    "ref": "27:8",
    "q": "David năvălea asupra gheșuriților, ghirziților și amaleciților.",
    "a": true
   },
   {
-   "id": "1sa.27.18+.17",
-   "age": "18+",
+   "id": "1sa.27.14-15.205",
+   "age": "14-15",
    "t": "tf",
-   "ref": "27:6",
-   "q": "Achiș i-a dat Țiclagul lui David după un an.",
-   "a": false,
-   "explain": "I l-a dat chiar în ziua aceea."
+   "ref": "27:11",
+   "q": "David lăsa pe unii cu viață ca să vină la Gat.",
+   "a": false
   },
   {
-   "id": "1sa.27.18+.4",
-   "age": "18+",
+   "id": "1sa.27.14-15.206",
+   "age": "14-15",
    "t": "one",
-   "ref": "27:3",
-   "q": "Ce se spune despre Abigail la Gat?",
+   "ref": "27:12",
+   "q": "Ce credea Achiș despre David?",
    "opts": [
-    "că a rămas la Maon",
-    "că era bolnavă",
-    "că era din Carmel, nevasta lui Nabal"
+    "se va întoarce curând la Saul, la Ghibea",
+    "îl va părăsi în luptă, în Sunem",
+    "va rămâne slujitor pe vecie"
    ],
    "a": 2
   },
   {
-   "id": "1sa.27.18+.5",
-   "age": "18+",
+   "id": "1sa.27.14-15.207",
+   "age": "14-15",
    "t": "one",
-   "ref": "27:9",
-   "q": "Ce făcea David după ce pustia ținutul?",
+   "ref": "27:6",
+   "q": "Cui a fost al Țiclagul până astăzi?",
    "opts": [
-    "rămânea acolo",
-    "se întorcea și se ducea la Achiș",
-    "mergea la Saul"
+    "filistenilor din Gat și Ecron",
+    "împăraților lui Iuda",
+    "lui Saul și urmașilor lui"
    ],
    "a": 1
   },
   {
-   "id": "1sa.27.18+.6",
-   "age": "18+",
+   "id": "1sa.27.14-15.208",
+   "age": "14-15",
    "t": "one",
-   "ref": "27:11",
-   "q": "Cât a ținut felul acesta de purtare al lui David?",
+   "ref": "27:1",
+   "q": "De ce a vrut David să fugă la filisteni?",
    "opts": [
-    "tot timpul cât a locuit în țara filistenilor",
-    "până la moartea lui Achiș",
-    "o lună"
+    "ca să se facă împărat peste filisteni",
+    "ca Saul să înceteze să-l caute",
+    "ca să se alieze cu filistenii împotriva lui Saul"
    ],
-   "a": 0
+   "a": 1
   },
   {
-   "id": "1sa.27.18+.18",
-   "age": "18+",
+   "id": "1sa.27.14-15.209",
+   "age": "14-15",
    "t": "one",
-   "ref": "27:4",
-   "q": "Ce a făcut Saul când a aflat că David fugise la Gat?",
+   "ref": "27:5",
+   "q": "De ce a cerut David un loc?",
    "opts": [
-    "a trimis o oaste",
-    "s-a dus la Gat",
-    "a încetat să-l mai caute"
+    "nu avea unde să-și ascundă oamenii în Gat",
+    "nu voia să locuiască în cetatea împărătească cu Achiș",
+    "avea nevoie de pășuni pentru oile lui"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.27.14-15.210",
+   "age": "14-15",
+   "t": "one",
+   "ref": "27:10",
+   "q": "Ce spunea David lui Achiș despre locul năvălirilor?",
+   "opts": [
+    "spre miazăzi de Gat, de Ecron și de Asdod",
+    "spre nord de Iuda, de Efraim și de Beniamin",
+    "spre miazăzi de Iuda, de ierahmeeliți și de cheniți"
    ],
    "a": 2
   },
   {
-   "id": "1sa.27.18+.19",
-   "age": "18+",
-   "t": "one",
+   "id": "1sa.27.14-15.211",
+   "age": "14-15",
+   "t": "match",
+   "ref": "27:1-12",
+   "q": "Asociază fiecare spusă cu cel care a rostit-o și cu momentul.",
+   "pairs": [
+    [
+     "„Voi pieri într-o zi ucis de mâna lui Saul”",
+     "David, în sine"
+    ],
+    [
+     "„Rogu-te să mi se dea un loc”",
+     "David, către Achiș"
+    ],
+    [
+     "„Unde ați năvălit azi?”",
+     "Achiș, la întoarcerea lui David"
+    ],
+    [
+     "„Așa a făcut David”",
+     "ce se temea David să se spună"
+    ],
+    [
+     "„va rămâne în slujba mea pe vecie”",
+     "Achiș, încrezător"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.27.14-15.212",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "27:1",
+   "q": "David și-a zis în sine: „Voi pieri într-o zi ucis de mâna lui Saul; nu este nimic mai bine pentru mine decât să fug în țara filistenilor, pentru ca Saul să înceteze să mă mai caute în tot ținutul lui Israel; așa voi ___ de mâna lui.\"",
+   "a": [
+    "scăpa"
+   ]
+  },
+  {
+   "id": "1sa.27.14-15.213",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "27:10",
+   "q": "Și David răspundea: „Spre miazăzi de Iuda, spre miazăzi de ierahmeeliți și spre miazăzi de ___.\"",
+   "a": [
+    "cheniți"
+   ]
+  },
+  {
+   "id": "1sa.27.14-15.214",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "27:5",
+   "q": "David a zis lui Achiș: „Dacă am căpătat trecere înaintea ta, rogu-te să mi se dea într-una din cetățile țării un loc unde să pot locui, căci pentru ce să locuiască robul tău cu tine în ___ împărătească?\"",
+   "a": [
+    "cetatea"
+   ]
+  },
+  {
+   "id": "1sa.27.14-15.215",
+   "age": "14-15",
+   "t": "fill",
    "ref": "27:12",
-   "q": "Ce zicea Achiș despre David?",
+   "q": "Achiș se ___ în David și zicea: „S-a făcut urât poporului său Israel și va rămâne în slujba mea pe vecie.\"",
+   "a": [
+    "încredea"
+   ]
+  },
+  {
+   "id": "1sa.27.14-15.216",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "27:8",
+   "q": "David și oamenii lui se suiau și năvăleau asupra ___, ghirziților și amaleciților, căci neamurile acestea locuiau din vremuri vechi în ținutul acela până la Șur și până în țara Egiptului.",
+   "a": [
+    "gheșuriților"
+   ]
+  },
+  {
+   "id": "1sa.27.14-15.217",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "27:5",
+   "q": "Ce a cerut David?",
    "opts": [
-    "„S-a făcut urât poporului său Israel”",
-    "„David se va întoarce la Saul”",
-    "„David ne va trăda”"
+    "o sabie",
+    "un loc în țară",
+    "să nu locuiască în cetatea împărătească"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.27.14-15.218",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "27:9",
+   "q": "Ce a luat David?",
+   "opts": [
+    "caii și carele",
+    "cămilele și hainele",
+    "oile, boii, măgarii"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.27.14-15.219",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "27:2",
+   "q": "Cine l-a însoțit?",
+   "opts": [
+    "cei șase sute",
+    "David",
+    "Saul"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.27.14-15.220",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "27:6",
+   "q": "Ce a făcut Achiș?",
+   "opts": [
+    "i-a dat Țiclagul",
+    "în ziua aceea",
+    "l-a alungat"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.27.14-15.221",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "27:11",
+   "q": "Ce se gândea David?",
+   "opts": [
+    "nimeni nu va afla",
+    "Așa a făcut David",
+    "ei ar putea vorbi împotriva noastră"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.27.16-17.201",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "27:3",
+   "q": "Ahinoam era din Carmel și Abigail din Izreel.",
+   "a": false
+  },
+  {
+   "id": "1sa.27.16-17.202",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "27:8",
+   "q": "David năvălea asupra amoniților și moabiților.",
+   "a": false
+  },
+  {
+   "id": "1sa.27.16-17.203",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "27:2",
+   "q": "David avea șase sute de oameni cu el.",
+   "a": true
+  },
+  {
+   "id": "1sa.27.16-17.204",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "27:7",
+   "q": "Timpul cât a locuit în țara filistenilor a fost de un an și patru luni.",
+   "a": true
+  },
+  {
+   "id": "1sa.27.16-17.205",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "27:10",
+   "q": "David i-a zis lui Achiș că a năvălit spre miazănoapte de Iuda.",
+   "a": false
+  },
+  {
+   "id": "1sa.27.16-17.206",
+   "age": "16-17",
+   "t": "one",
+   "ref": "27:2",
+   "q": "Fiul cui era Achiș?",
+   "opts": [
+    "al lui Maoc",
+    "al lui Isai",
+    "al lui Nahaș"
    ],
    "a": 0
   },
   {
-   "id": "1sa.27.18+.25",
-   "age": "18+",
+   "id": "1sa.27.16-17.207",
+   "age": "16-17",
+   "t": "one",
+   "ref": "27:3",
+   "q": "Din ce cetate era Abigail?",
+   "opts": [
+    "din Carmel",
+    "din Maon",
+    "din Izreel"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.27.16-17.208",
+   "age": "16-17",
+   "t": "one",
+   "ref": "27:8",
+   "q": "Până unde locuiau neamurile?",
+   "opts": [
+    "până la Hebron și până la Iordan",
+    "până la Gat și până la Ecron",
+    "până la Șur și până în Egipt"
+   ],
+   "a": 2
+  },
+  {
+   "id": "1sa.27.16-17.209",
+   "age": "16-17",
+   "t": "one",
+   "ref": "27:7",
+   "q": "Cât timp a locuit David la filisteni?",
+   "opts": [
+    "un an și patru luni",
+    "un an și opt luni",
+    "doi ani și patru luni"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.27.16-17.210",
+   "age": "16-17",
+   "t": "one",
+   "ref": "27:3",
+   "q": "Din ce cetate era Ahinoam?",
+   "opts": [
+    "din Izreel",
+    "din Carmel",
+    "din Gat"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.27.16-17.211",
+   "age": "16-17",
    "t": "match",
    "ref": "27:1-12",
    "q": "Asociază fiecare nume sau loc cu ce se spune despre el.",
    "pairs": [
     [
-     "Achiș",
-     "fiul lui Maoc"
+     "Maoc",
+     "tatăl lui Achiș"
     ],
     [
      "Țiclag",
-     "cetatea rămasă a împăraților lui Iuda"
+     "cetatea dată de Achiș"
     ],
     [
-     "Șur",
-     "hotarul neamurilor lovite de David"
+     "Izreel",
+     "cetatea lui Ahinoam"
     ],
     [
-     "David",
-     "cel care și-a zis în sine că va pieri"
+     "Carmel",
+     "cetatea lui Abigail"
     ],
     [
-     "Ahinoam",
-     "cea din Izreel"
+     "ierahmeeliți",
+     "cei de la miazăzi ale căror ținuturi le năvălea"
     ]
    ]
   },
   {
-   "id": "1sa.27.18+.10",
-   "age": "18+",
+   "id": "1sa.27.16-17.212",
+   "age": "16-17",
    "t": "fill",
-   "ref": "27:1",
+   "ref": "27:3",
+   "q": "David și oamenii lui au rămas în Gat, la Achiș; își avea fiecare familia lui și David își avea cele două neveste: Ahinoam din ___ și Abigail din Carmel, nevasta lui Nabal.",
    "a": [
-    "ținutul"
-   ],
-   "q": "David și-a zis în sine: „Voi pieri într-o zi ucis de mâna lui Saul; nu este nimic mai bine pentru mine decât să fug în țara filistenilor, pentru ca Saul să înceteze să mă mai caute în tot ___ lui Israel; așa voi scăpa de mâna lui.\"",
-   "ctx": "David, în sine:"
+    "Izreel"
+   ]
   },
   {
-   "id": "1sa.27.18+.11",
-   "age": "18+",
+   "id": "1sa.27.16-17.213",
+   "age": "16-17",
    "t": "fill",
-   "ref": "27:5",
+   "ref": "27:8",
+   "q": "David și oamenii lui se suiau și năvăleau asupra gheșuriților, ___ și amaleciților, căci neamurile acestea locuiau din vremuri vechi în ținutul acela până la Șur și până în țara Egiptului.",
    "a": [
-    "împărătească"
-   ],
-   "q": "David a zis lui Achiș: „Dacă am căpătat trecere înaintea ta, rogu-te să mi se dea într-una din cetățile țării un loc unde să pot locui, căci pentru ce să locuiască robul tău cu tine în cetatea ___?\"",
-   "ctx": "David, către Achiș:"
+    "ghirziților"
+   ]
   },
   {
-   "id": "1sa.27.18+.12",
-   "age": "18+",
+   "id": "1sa.27.16-17.214",
+   "age": "16-17",
    "t": "fill",
-   "ref": "27:11",
+   "ref": "27:6",
+   "q": "Și chiar în ziua aceea, Achiș i-a dat ___.",
    "a": [
-    "purtare"
-   ],
-   "q": "David nu lăsa cu viață nici bărbat, nici femeie ca să vină la Gat, „căci\", se gândea el, „ei ar putea să vorbească împotriva noastră și să zică: ‘Așa a făcut David’\". Și acesta a fost felul lui de ___ în tot timpul cât a locuit în țara filistenilor.",
-   "ctx": "Despre David la Țiclag:"
+    "Țiclagul"
+   ]
   },
   {
-   "id": "1sa.27.18+.20",
-   "age": "18+",
+   "id": "1sa.27.16-17.215",
+   "age": "16-17",
    "t": "fill",
    "ref": "27:2",
    "q": "Și David s-a sculat, el și cei șase sute de oameni care erau împreună cu el, și au trecut la Achiș, fiul lui ___, împăratul Gatului.",
@@ -1256,42 +969,25 @@
    ]
   },
   {
-   "id": "1sa.27.18+.21",
-   "age": "18+",
+   "id": "1sa.27.16-17.216",
+   "age": "16-17",
    "t": "fill",
    "ref": "27:10",
-   "q": "Achiș zicea: „Unde ați ___ azi?\" Și David răspundea: „Spre miazăzi de Iuda, spre miazăzi de ierahmeeliți și spre miazăzi de cheniți.\"",
+   "q": "Și David răspundea: „Spre miazăzi de Iuda, spre miazăzi de ___ și spre miazăzi de cheniți.\"",
    "a": [
-    "năvălit"
+    "ierahmeeliți"
    ]
   },
   {
-   "id": "1sa.27.18+.13",
-   "age": "18+",
-   "t": "multi",
-   "ref": "27:9",
-   "q": "Ce lucruri lua David ca pradă?",
-   "opts": [
-    "măgarii",
-    "hainele",
-    "cămilele"
-   ],
-   "a": [
-    0,
-    1,
-    2
-   ]
-  },
-  {
-   "id": "1sa.27.18+.14",
-   "age": "18+",
+   "id": "1sa.27.16-17.217",
+   "age": "16-17",
    "t": "multi",
    "ref": "27:3",
-   "q": "Pe cine avea David cu el la Gat?",
+   "q": "Ce se spune despre nevestele lui David?",
    "opts": [
-    "cei șase sute de oameni cu familiile lor",
-    "pe Ionatan",
-    "cele două neveste"
+    "David avea două neveste",
+    "Ahinoam fusese nevasta lui Nabal",
+    "Abigail fusese nevasta lui Nabal"
    ],
    "a": [
     0,
@@ -1299,15 +995,15 @@
    ]
   },
   {
-   "id": "1sa.27.18+.22",
-   "age": "18+",
+   "id": "1sa.27.16-17.218",
+   "age": "16-17",
    "t": "multi",
-   "ref": "27:4-6",
-   "q": "Ce a urmat?",
+   "ref": "27:10",
+   "q": "Ce spunea David?",
    "opts": [
-    "Saul a încetat să-l mai caute",
-    "Achiș i-a dat Țiclagul",
-    "Achiș l-a trimis înapoi la Saul"
+    "spre miazăzi de ierahmeeliți",
+    "spre miazăzi de Iuda",
+    "spre miazăzi de Gat"
    ],
    "a": [
     0,
@@ -1315,15 +1011,15 @@
    ]
   },
   {
-   "id": "1sa.27.18+.23",
-   "age": "18+",
+   "id": "1sa.27.16-17.219",
+   "age": "16-17",
    "t": "multi",
-   "ref": "27:7-8",
-   "q": "Ce se spune despre David?",
+   "ref": "27:9",
+   "q": "Ce lua David?",
    "opts": [
-    "a trăit în pace tot timpul",
-    "năvălea peste neamuri de demult",
-    "a locuit un an și patru luni în țara filistenilor"
+    "caii",
+    "cămilele",
+    "oile"
    ],
    "a": [
     1,
@@ -1331,19 +1027,299 @@
    ]
   },
   {
-   "id": "1sa.27.18+.24",
-   "age": "18+",
+   "id": "1sa.27.16-17.220",
+   "age": "16-17",
    "t": "multi",
-   "ref": "27:11-12",
-   "q": "Ce se spune despre David și Achiș?",
+   "ref": "27:8",
+   "q": "Pe cine a atacat?",
    "opts": [
-    "David nu lăsa pe nimeni cu viață",
-    "Achiș credea că David va rămâne în slujba lui pe vecie",
-    "Achiș l-a dat în mâinile lui Saul"
+    "gheșuriții",
+    "filistenii",
+    "ghirziții"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.27.16-17.221",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "27:6",
+   "q": "Ce se spune despre Țiclag?",
+   "opts": [
+    "a fost al împăraților lui Iuda",
+    "Achiș i l-a dat lui David",
+    "a fost al amaleciților"
    ],
    "a": [
     0,
     1
+   ]
+  },
+  {
+   "id": "1sa.27.18+.201",
+   "age": "18+",
+   "t": "tf",
+   "ref": "27:9",
+   "q": "David lăsa cu viață femeile din ținut.",
+   "a": false
+  },
+  {
+   "id": "1sa.27.18+.202",
+   "age": "18+",
+   "t": "tf",
+   "ref": "27:5",
+   "q": "David a cerut un loc, ca să nu locuiască în cetatea împărătească.",
+   "a": true
+  },
+  {
+   "id": "1sa.27.18+.203",
+   "age": "18+",
+   "t": "tf",
+   "ref": "27:1",
+   "q": "David și-a zis în sine că nu este nimic mai bine decât să fugă la filisteni.",
+   "a": true
+  },
+  {
+   "id": "1sa.27.18+.204",
+   "age": "18+",
+   "t": "tf",
+   "ref": "27:12",
+   "q": "Achiș a spus că David va rămâne în slujba lui pe vecie.",
+   "a": true
+  },
+  {
+   "id": "1sa.27.18+.205",
+   "age": "18+",
+   "t": "tf",
+   "ref": "27:3",
+   "q": "David și oamenii lui au rămas în Gat fără familiile lor.",
+   "a": false
+  },
+  {
+   "id": "1sa.27.18+.206",
+   "age": "18+",
+   "t": "one",
+   "ref": "27:11",
+   "q": "Ce se gândea David că vor zice dacă ar fi lăsat unii cu viață?",
+   "opts": [
+    "Așa a făcut David",
+    "Așa a poruncit Saul",
+    "Așa a vrut Achiș"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.27.18+.207",
+   "age": "18+",
+   "t": "one",
+   "ref": "27:1",
+   "q": "Cum a gândit David despre Saul?",
+   "opts": [
+    "voi birui într-o zi",
+    "voi pieri într-o zi",
+    "voi fi uitat într-o zi"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.27.18+.208",
+   "age": "18+",
+   "t": "one",
+   "ref": "27:4",
+   "q": "Ce a făcut Saul când a aflat?",
+   "opts": [
+    "a încetat să-l mai caute",
+    "a trimis soli",
+    "a pornit după el"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.27.18+.209",
+   "age": "18+",
+   "t": "one",
+   "ref": "27:6",
+   "q": "Cui a fost al Țiclagul?",
+   "opts": [
+    "împăraților lui Iuda",
+    "filistenilor",
+    "lui Saul"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.27.18+.210",
+   "age": "18+",
+   "t": "one",
+   "ref": "27:9",
+   "q": "Ce nu lăsa David cu viață?",
+   "opts": [
+    "nici copii, nici bătrâni",
+    "nici bărbat, nici femeie",
+    "nici păstori, nici ostași"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.27.18+.211",
+   "age": "18+",
+   "t": "match",
+   "ref": "27:1-12",
+   "q": "Asociază fiecare lucru cu ce se spune despre el.",
+   "pairs": [
+    [
+     "„un an și patru luni”",
+     "cât a locuit David la filisteni"
+    ],
+    [
+     "„cetatea împărătească”",
+     "unde n-a vrut să locuiască"
+    ],
+    [
+     "„Țiclagul”",
+     "dat de Achiș în ziua aceea"
+    ],
+    [
+     "„oile, boii, măgarii”",
+     "ce lua David"
+    ],
+    [
+     "„urât poporului”",
+     "cum credea Achiș că s-a făcut David"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.27.18+.212",
+   "age": "18+",
+   "t": "fill",
+   "ref": "27:1",
+   "q": "David și-a zis în sine: „Voi pieri într-o zi ucis de mâna lui Saul; nu este nimic mai bine pentru mine decât să fug în țara filistenilor, pentru ca Saul să înceteze să mă mai caute în tot ținutul lui Israel; așa voi ___ de mâna lui.\"",
+   "a": [
+    "scăpa"
+   ]
+  },
+  {
+   "id": "1sa.27.18+.213",
+   "age": "18+",
+   "t": "fill",
+   "ref": "27:6",
+   "q": "De aceea, Țiclagul a fost al ___ lui Iuda până în ziua de azi.",
+   "a": [
+    "împăraților"
+   ]
+  },
+  {
+   "id": "1sa.27.18+.214",
+   "age": "18+",
+   "t": "fill",
+   "ref": "27:4",
+   "q": "Saul, când a aflat că David fugise la Gat, a ___ să-l mai caute.",
+   "a": [
+    "încetat"
+   ]
+  },
+  {
+   "id": "1sa.27.18+.215",
+   "age": "18+",
+   "t": "fill",
+   "ref": "27:12",
+   "q": "Achiș se încredea în David și zicea: „S-a făcut urât poporului său Israel și va rămâne în slujba mea pe ___.\"",
+   "a": [
+    "vecie"
+   ]
+  },
+  {
+   "id": "1sa.27.18+.216",
+   "age": "18+",
+   "t": "fill",
+   "ref": "27:9",
+   "q": "David pustia ținutul acesta; nu lăsa cu viață nici bărbat, nici femeie, le lua oile, ___, măgarii, cămilele, hainele și apoi se întorcea și se ducea la Achiș.",
+   "a": [
+    "boii"
+   ]
+  },
+  {
+   "id": "1sa.27.18+.217",
+   "age": "18+",
+   "t": "multi",
+   "ref": "27:11",
+   "q": "De ce nu lăsa pe nimeni?",
+   "opts": [
+    "ei ar putea vorbi",
+    "împotriva noastră",
+    "ca să nu se răzbune"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.27.18+.218",
+   "age": "18+",
+   "t": "multi",
+   "ref": "27:10",
+   "q": "Ce a întrebat Achiș?",
+   "opts": [
+    "unde ați năvălit azi",
+    "David răspundea cu miazăzi",
+    "când ați plecat"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.27.18+.219",
+   "age": "18+",
+   "t": "multi",
+   "ref": "27:8",
+   "q": "Cine erau?",
+   "opts": [
+    "gheșuriții",
+    "amaleciții",
+    "edomiții"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.27.18+.220",
+   "age": "18+",
+   "t": "multi",
+   "ref": "27:1",
+   "q": "Ce a zis David?",
+   "opts": [
+    "voi domni în Gat",
+    "voi pieri ucis de Saul",
+    "voi scăpa de mâna lui"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.27.18+.221",
+   "age": "18+",
+   "t": "multi",
+   "ref": "27:5",
+   "q": "Ce a cerut David?",
+   "opts": [
+    "un rang la curte",
+    "trecere înaintea lui Achiș",
+    "un loc unde să locuiască"
+   ],
+   "a": [
+    1,
+    2
    ]
   }
  ]
