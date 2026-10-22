@@ -76,7 +76,7 @@ export default function Board({ book }: Props) {
           </label>
         )}
       </div>
-      <div class="age-tabs six" role="tablist" aria-label="Nivel">
+      <div class="age-tabs six" role="tablist" aria-label="Grupa de vârstă">
         {AGE_GROUPS.map((g) => (
           <button type="button" role="tab" aria-selected={age === g.id} onClick={() => setAge(g.id)}>{ageShort(g.id)}</button>
         ))}

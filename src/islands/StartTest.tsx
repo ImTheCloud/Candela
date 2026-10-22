@@ -42,8 +42,8 @@ export default function StartTest({ book, ch, title, counts }: Props) {
               <CloseButton onClick={close} />
             </div>
             <div class="ts-block" style={{ marginTop: '14px' }}>
-              <p class="sheet-label" style={{ margin: 0 }}>Nivelul testului{total ? ` · ${total} întrebări` : ''}</p>
-              <LevelPicker label="Nivelul testului" />
+              <p class="sheet-label" style={{ margin: 0 }}>Grupa de vârstă{total ? ` · ${total} întrebări` : ''}</p>
+              <LevelPicker label="Grupa de vârstă" />
             </div>
             <a class="btn btn-primary btn-block oc-go" href={href}>Începe testul · {ageShort(lv)} ani</a>
           </>)}

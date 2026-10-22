@@ -166,7 +166,7 @@ function QHead({ q, bookName }: { q: Playable; bookName: string }) {
     <header class="q-head">
       <div class="q-row">
         <span class="q-kind">{typeInfo(q.t).short}</span>
-        <span class="q-age" title="Nivelul întrebării">{ageLabel(q.age)}</span>
+        <span class="q-age" title="Grupa de vârstă a întrebării">{ageLabel(q.age)}</span>
         <span class="q-spacer" />
         <ReportButton key={q.id} q={q} small />
       </div>

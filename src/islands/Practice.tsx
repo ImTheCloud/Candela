@@ -95,7 +95,7 @@ export default function Practice({ book, bookName, chapters, summary }: Props) {
       </div>
 
       <div class="setup-block">
-        <p class="setup-head"><strong>Nivel</strong></p>
+        <p class="setup-head"><strong>Grupa de vârstă</strong></p>
         <LevelPicker />
       </div>
 
