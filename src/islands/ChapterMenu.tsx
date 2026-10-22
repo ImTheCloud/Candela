@@ -101,7 +101,7 @@ function Sheet({ book, ch, title, total, best, wrongs, onClose }: SheetProps) {
   // the test starts at once: its page and the chapter's questions are fetched while the menu is open
   useEffect(() => {
     loadChapter(book, ch).catch(() => {});
-    prefetch(`${base}/exersare?capitol=${ch}&start=1&nivel=${lv}`, { ignoreSlowConnection: true });
+    prefetch(`${base}/exersare?capitol=${ch}&start=1&nivel=${encodeURIComponent(lv)}`, { ignoreSlowConnection: true });
     prefetch(`${base}/citire/${ch}`, { ignoreSlowConnection: true });
   }, [book, ch, lv]);
 
@@ -133,7 +133,7 @@ function Sheet({ book, ch, title, total, best, wrongs, onClose }: SheetProps) {
             <LevelPicker label="Nivelul testului" />
           </div>
         </div>
-        <a class="btn btn-primary btn-block oc-go" href={`${base}/exersare?capitol=${ch}&start=1&nivel=${lv}`}>
+        <a class="btn btn-primary btn-block oc-go" href={`${base}/exersare?capitol=${ch}&start=1&nivel=${encodeURIComponent(lv)}`}>
           Începe testul · {ageShort(lv)} ani
         </a>
         {wrongs > 0 && (

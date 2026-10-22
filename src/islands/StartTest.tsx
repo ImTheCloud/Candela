@@ -20,7 +20,7 @@ export default function StartTest({ book, ch, title, counts }: Props) {
   const [open, setOpen] = useState(false);
   const lv = level.value;
   const total = Object.values(counts[lv] ?? {}).reduce((a, b) => a + (b ?? 0), 0);
-  const href = `/${book}/exersare?capitol=${ch}&start=1&nivel=${lv}`;
+  const href = `/${book}/exersare?capitol=${ch}&start=1&nivel=${encodeURIComponent(lv)}`;
 
   // the test then starts at once: its page and the chapter's questions are fetched beforehand
   useEffect(() => {
