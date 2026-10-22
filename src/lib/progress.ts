@@ -18,7 +18,7 @@ export interface Progress {
   /** Questions answered wrong and not yet answered right since. */
   wrong: string[];
   /** Best and last score (0–100) per past exam. */
-  exams: Record<string, { best: number; last: number; at: number; /** chapter tests: most right answers and test size */ bestRight?: number; n?: number }>;
+  exams: Record<string, { best: number; last: number; at: number; /** chapter tests: most right answers and test size */ bestRight?: number; n?: number; /** how many times it was played */ plays?: number }>;
   /** Answers per question type: n given, r fully right (shows the weak spots). */
   stats: Partial<Record<QType, { n: number; r: number }>>;
 }
@@ -133,7 +133,7 @@ export async function recordAnswers(book: string, answers: Answered[], points = 
 
 export function recordExam(book: string, examId: string, score: number, count?: { right: number; n: number }) {
   const prev = progress(book).value.exams[examId];
-  const entry: Progress['exams'][string] = { best: Math.max(prev?.best ?? 0, score), last: score, at: Date.now() };
+  const entry: Progress['exams'][string] = { best: Math.max(prev?.best ?? 0, score), last: score, at: Date.now(), plays: (prev?.plays ?? (prev ? 1 : 0)) + 1 };
   if (count) { entry.bestRight = Math.max(prev?.bestRight ?? 0, count.right); entry.n = count.n; }
   if (isGuest()) return guestUpdate(book, (p) => ({ ...p, exams: { ...p.exams, [examId]: entry } }));
   return setDoc(ref(book), { exams: { [examId]: entry }, updatedAt: serverTimestamp() }, { merge: true });
