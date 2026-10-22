@@ -9,9 +9,10 @@ Quatre leviers montent ensemble d'un niveau au suivant :
 | **Fait demandé** | l'histoire centrale du chapitre | tous les événements | paroles, causes, conséquences | détails : noms, lieux, chiffres, ordre | détails les plus fins, mot exact, versets moins en vue |
 | **Distance au texte** | presque les mots du verset | paraphrase simple | paraphrase | reformulation | reformulation, nuances |
 | **Propositions** (3) | deux fausses évidemment hors sujet | une absurde, une plausible | deux plausibles, même scène | trois plausibles | trois proches : mêmes personnages, même détail changé |
-| **Compléter** (un mot) | nom ou mot guidé par la phrase | mot clé | mot d'un discours | mot peu prévisible | mot précis, impossible à deviner du contexte |
+| **Compléter** (un mot) | mot très connu du verset entier (nom, Domnul, chivotul…) | idem | idem | idem, un peu moins en vue | idem, un peu moins en vue |
 
 Règles communes :
+- Compléter : le verset est toujours donné en entier ; le mot manquant est un nom propre ou un mot courant de l'histoire (choisi par fréquence dans le texte), jamais un mot technique ni un mot qui revient dans le verset. Les nombres écrits en chiffres sont acceptés.
 - 21 questions par chapitre et par niveau : 5 vrai/faux, 5 à une réponse, 1 association de 5 paires (colonne de droite sans doublons), 5 à compléter (un seul mot, jamais présent ailleurs dans la phrase), 5 à plusieurs réponses (0, 1, 2 ou 3 justes).
 - Vrai/faux : 2 ou 3 « vrai » sur 5 ; les faux changent un nom, un chiffre, un lieu ou un sens, jamais un détail douteux.
 - Contexte : chaque énoncé porte sa scène (qui, où, à quel moment : « la nuit de l'appel à Silo », « après la première défaite d'Eben-Ezer »), même pour les adultes. Un examen blanc pioche dans tous les chapitres : on doit toujours comprendre de quel passage parle la question sans rien ajouter. L'écran de question affiche aussi le chapitre (livre, verset, titre).

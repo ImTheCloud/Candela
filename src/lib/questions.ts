@@ -91,6 +91,7 @@ export function normalizeWords(s: string): string {
 /** Words that mean the same thing in the text: any of them is accepted for the others. */
 const SAME_WORD: string[][] = [
   ['domnul', 'dumnezeu', 'doamne', 'dumnezeul'],
+  ['domnului', 'dumnezeului'],
   ['imparat', 'imparatul', 'rege', 'regele'],
 ];
 
