@@ -3,7 +3,7 @@ import { doc, onSnapshot } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 import { addChild, choosePlayer, player, players, rememberedKids, removeChild, updateChild, type Player } from '../lib/players';
 import { localGet, localSet } from '../lib/store';
-import { deleteProgress, EMPTY, type Progress } from '../lib/progress';
+import { deleteProgress, EMPTY, resetProgress, scoreLabel, type Progress } from '../lib/progress';
 import { errorText, profile, profileError, rememberedAccount, setParent, signOut, user } from '../lib/session';
 import Avatar from './Avatar';
 import Loader from './Loader';
@@ -90,8 +90,14 @@ function PlayerBlock({ p, books, head }: { p: Player; books: BookInfo[]; head: b
   const active = p.key === current.key;
   const [editing, setEditing] = useState(false);
   const [confirming, setConfirming] = useState(false);
+  const [resetting, setResetting] = useState(false);
   const [busy, setBusy] = useState(false);
   const isSelf = !p.child;
+
+  async function reset() {
+    setBusy(true);
+    try { await resetProgress(user.value!.uid, p.key); setResetting(false); } finally { setBusy(false); }
+  }
 
   async function remove() {
     await deleteProgress(user.value!.uid, p.key);
@@ -115,6 +121,9 @@ function PlayerBlock({ p, books, head }: { p: Player; books: BookInfo[]; head: b
       )}
       {books.map((b) => <BookStats key={b.slug} p={p} book={b} />)}
       <footer class="pl-foot">
+        <span class="pl-actions">
+          <button type="button" class="btn-reset link small bad" onClick={() => setResetting(true)}>Resetează punctele</button>
+        </span>
         {p.child && (
           <span class="pl-actions">
             <button type="button" class="btn-reset link small" onClick={() => setEditing(true)}>Schimbă</button>
@@ -122,6 +131,15 @@ function PlayerBlock({ p, books, head }: { p: Player; books: BookInfo[]; head: b
           </span>
         )}
       </footer>
+      {resetting && (
+        <div class="notice notice-bad stack" style="--gap: 10px">
+          <p>Pui la zero toate punctele {isSelf ? 'tale' : `lui ${p.name.split(' ')[0]}`}: răspunsurile corecte, greșelile, scorurile și clasamentul? Nu se mai poate recupera.</p>
+          <div class="two">
+            <button type="button" class="btn btn-ghost btn-sm" onClick={() => setResetting(false)}>Renunță</button>
+            <button type="button" class="btn btn-sm danger" disabled={busy} onClick={reset}>{busy ? 'Se resetează…' : 'Da, resetează'}</button>
+          </div>
+        </div>
+      )}
       {confirming && (
         <div class="notice notice-bad stack" style="--gap: 10px">
           <p>Ștergi profilul lui {p.name} și tot progresul lui? Nu se mai poate recupera.</p>
@@ -171,7 +189,7 @@ function BookStats({ p, book }: { p: Player; book: BookInfo }) {
   const entries = Object.entries(d.exams);
   const exams = entries.filter(([id]) => !/^c\d+$/.test(id)).map(([, e]) => e);
   const chapters = entries.filter(([id]) => /^c\d+$/.test(id)).length;
-  const bestExam = exams.length ? Math.max(...exams.map((e) => e.best)) : null;
+  const bestExam = exams.length ? scoreLabel(exams.reduce((a, b) => (b.best > a.best ? b : a)), 21) ?? null : null;
   const started = d.mastered || d.wrong || entries.length;
 
   return (
@@ -182,7 +200,7 @@ function BookStats({ p, book }: { p: Player; book: BookInfo }) {
           <div><dt>Răspunsuri corecte</dt><dd>{d.mastered}</dd></div>
           <div><dt>Greșite, de reluat</dt><dd>{d.wrong}</dd></div>
           <div><dt>Capitole terminate</dt><dd>{chapters} / {book.chapters}</dd></div>
-          <div><dt>Cel mai bun examen</dt><dd>{bestExam !== null ? `${bestExam} / 100` : '–'}</dd></div>
+          <div><dt>Cel mai bun examen</dt><dd>{bestExam ?? '–'}</dd></div>
         </dl>
       )}
     </section>

@@ -2,7 +2,7 @@ import type { JSX } from 'preact';
 import { useEffect, useState } from 'preact/hooks';
 import { ageShort, type AgeGroup } from '../lib/age';
 import { level } from '../lib/level';
-import { cachedExams, EMPTY, progress, type Progress } from '../lib/progress';
+import { cachedExams, EMPTY, progress, scoreLabel } from '../lib/progress';
 import { rememberedAccount, user } from '../lib/session';
 import { player } from '../lib/players';
 import type { QType } from '../lib/questions';
@@ -36,7 +36,7 @@ export default function ChapterMenu({ book, titles, summary, exams: realExams }:
   const entry = (ch: number) => exams[`c${ch}`];
 
   const sheet = open !== null && (
-    <Sheet book={book} ch={open} title={titles[open - 1]} total={count(summary[open]?.[level.value])} best={labelFor(entry(open), count(summary[open]?.[level.value]))}
+    <Sheet book={book} ch={open} title={titles[open - 1]} total={count(summary[open]?.[level.value])} best={scoreLabel(entry(open), count(summary[open]?.[level.value]))}
       wrongs={prog.wrong.filter((id) => chapterOf(id) === open).length}
       onClose={() => setOpen(null)} />
   );
@@ -47,7 +47,7 @@ export default function ChapterMenu({ book, titles, summary, exams: realExams }:
         {titles.map((t, k) => {
           const ch = k + 1;
           const e = entry(ch);
-          const label = labelFor(e, count(summary[ch]?.[level.value]));
+          const label = scoreLabel(e, count(summary[ch]?.[level.value]));
           const full = !!e && (e.bestRight !== undefined ? e.bestRight === e.n : e.best === 100);
           return (
             <li>
@@ -147,15 +147,6 @@ function Icon({ name }: { name: string }) {
 
 function Chev() {
   return <svg class="oc-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>;
-}
-
-type Entry = Progress['exams'][string] | undefined;
-
-/** "4/21" for a chapter test. Entries from before the count was kept have only a percentage: the count is worked out from it until the test is played again. */
-function labelFor(e: Entry, size: number): string | undefined {
-  if (!e) return undefined;
-  if (e.bestRight !== undefined && e.n) return `${e.bestRight}/${e.n}`;
-  return size ? `${Math.round((e.best / 100) * size)}/${size}` : undefined;
 }
 
 /** The exam tile takes what is left of the last row of the 6-column grid. */

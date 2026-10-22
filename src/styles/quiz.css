@@ -1,7 +1,8 @@
-/* Quiz screens, phone first: big tap targets, actions at thumb height. */
-.quiz { display: grid; gap: 10px; padding-block: 8px calc(84px + env(safe-area-inset-bottom)); }
-/* answering: the question sits in the middle of the space between the header and the button bar */
-body.in-quiz .quiz:not(.results):not(.has-fb) { min-height: calc(100dvh - 48px - 32px); align-content: center; }
+/* Quiz screens, phone first: the question starts right under the slim header, the actions sit at thumb height. */
+.quiz { display: grid; align-content: start; gap: 12px; padding-block: 4px calc(96px + env(safe-area-inset-bottom)); }
+.quiz.has-fb { padding-bottom: calc(168px + env(safe-area-inset-bottom)); }
+/* a typed answer: leave room under the field so the page can bring it above the keyboard */
+body:has(.fill-input:focus) .quiz { padding-bottom: 45dvh; }
 
 /* While answering: a slim header with the back arrow, the progress and the count, nothing else */
 .qt { display: none; }
@@ -10,28 +11,33 @@ body.in-quiz .top .brand, body.in-quiz .top .avatar, body.in-quiz .top .account-
 body.in-quiz .top-row { height: 48px; }
 body.in-quiz main { padding-top: 0; }
 .qt .bar { flex: 1; }
-.qt-n { flex: none; font: 600 0.85rem var(--f-body); color: var(--ink-2); font-variant-numeric: tabular-nums; }
-.bar { height: 6px; border-radius: 999px; background: var(--surface-2); overflow: hidden; }
-.bar-fill { display: block; height: 100%; width: 0; background: var(--btn); border-radius: inherit; transition: width .3s; }
-.part { font: 600 0.8rem var(--f-body); letter-spacing: .06em; text-transform: uppercase; color: var(--oil-ink); }
+.qt-n { flex: none; font: 700 0.85rem var(--f-body); color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.bar { height: 12px; border-radius: 999px; background: var(--surface-2); overflow: hidden; }
+.bar-fill { display: block; height: 100%; width: 0; background: var(--flame); border-radius: inherit; transition: width .3s; }
 
-.q-card { display: grid; gap: 12px; padding: 14px; }
-.q-meta { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; font-size: 0.8rem; color: var(--ink-2); }
-.q-type { font-weight: 700; font-size: 1.05rem; color: var(--oil-ink); white-space: nowrap; }
-.q-ref { white-space: nowrap; font-size: 0.95rem; font-weight: 700; color: var(--ink); }
-.q-ctx { font-weight: 400; color: var(--ink-2); }
-.q-text { font-size: 1.05rem; line-height: 1.4; font-weight: 500; }
+/* Above the question: what to do, the level, the report button; then where it comes from */
+.q-head { display: grid; gap: 3px; }
+.q-row { display: flex; align-items: center; gap: 8px; min-height: 34px; }
+.q-kind { font: 700 0.72rem var(--f-body); letter-spacing: .07em; text-transform: uppercase; color: var(--oil-ink); white-space: nowrap; }
+.q-age { padding: 2px 9px; border-radius: 999px; background: var(--oil-soft); color: var(--oil-ink); font: 600 0.78rem var(--f-body); white-space: nowrap; }
+.q-spacer { flex: 1; }
+.q-where { margin: 0; font-size: 0.85rem; line-height: 1.35; color: var(--ink-2); }
+.q-where b { color: var(--ink); font-weight: 600; }
+.q-body { display: grid; gap: 14px; margin-top: 4px; }
+.q-text { font: 600 1.25rem/1.35 var(--f-body); letter-spacing: -0.005em; }
 
-.opts { display: grid; gap: 8px; }
+.opts { display: grid; gap: 12px; }
+/* tactile answers: a solid lip under each one, pressed down when touched */
 .opt {
-  display: flex; align-items: center; gap: 12px; width: 100%; min-height: 48px; padding: 9px 12px;
-  border: 1.5px solid var(--line); border-radius: 14px; background: var(--bg); color: var(--ink);
-  font: 500 1rem/1.35 var(--f-body); text-align: left; cursor: pointer; transition: border-color .12s, background-color .12s;
+  display: flex; align-items: center; gap: 12px; width: 100%; min-height: 54px; padding: 10px 14px;
+  border: 2px solid var(--line); border-radius: 16px; background: var(--surface); color: var(--ink); box-shadow: 0 3px 0 var(--line);
+  font: 500 1rem/1.35 var(--f-body); text-align: left; cursor: pointer; transition: border-color .12s, background-color .12s, transform .06s, box-shadow .06s;
 }
+.opt:active:not(:disabled) { transform: translateY(3px); box-shadow: 0 0 0 var(--line); }
 .opt:disabled { cursor: default; }
 .opt-key {
   flex: none; display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%;
-  background: var(--surface-2); color: var(--ink-2); font-size: 0.85rem; font-weight: 600;
+  background: var(--surface-2); color: var(--ink-2); font-size: 0.85rem; font-weight: 700;
 }
 .opt-check .opt-key { border-radius: 7px; }
 .opt-check[aria-checked="true"] .opt-key { position: relative; font-size: 0; }
@@ -40,16 +46,16 @@ body.in-quiz main { padding-top: 0; }
   -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 8.5l3.2 3L13 4.5'/%3E%3C/svg%3E") center / contain no-repeat;
   mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 8.5l3.2 3L13 4.5'/%3E%3C/svg%3E") center / contain no-repeat;
 }
-.opt.is-chosen, .opt[aria-checked="true"] { border-color: var(--oil); background: var(--oil-soft); }
+.opt.is-chosen, .opt[aria-checked="true"] { border-color: var(--oil); background: var(--oil-soft); box-shadow: 0 3px 0 var(--oil); }
 .opt.is-chosen .opt-key, .opt[aria-checked="true"] .opt-key { background: var(--oil); color: var(--on-oil); }
-.opt.is-right { border-color: var(--ok); background: var(--ok-soft); }
+.opt.is-right { border-color: var(--ok); background: var(--ok-soft); box-shadow: 0 3px 0 var(--ok); }
 .opt.is-right .opt-key { background: var(--ok); color: #fff; }
-.opt.is-wrong { border-color: var(--bad); background: var(--bad-soft); }
+.opt.is-wrong { border-color: var(--bad); background: var(--bad-soft); box-shadow: 0 3px 0 var(--bad); }
 .opt.is-wrong .opt-key { background: var(--bad); color: #fff; }
-.opt.is-dim { opacity: .6; }
-.opt-none { justify-content: center; font-weight: 600; border-style: dashed; min-height: 44px; }
-.tf { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.tf-opt { justify-content: center; font-weight: 600; min-height: 56px; }
+.opt.is-dim { opacity: .55; }
+.opt-none { justify-content: center; font-weight: 600; border-style: dashed; min-height: 48px; }
+.tf { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.tf-opt { justify-content: center; font-weight: 700; min-height: 68px; font-size: 1.05rem; }
 
 .match { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: stretch; }
 /* every item has the same height: the rows share the tallest one */
@@ -57,7 +63,7 @@ body.in-quiz main { padding-top: 0; }
 .match-col li { display: grid; }
 .m-item {
   position: relative; display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 8px; width: 100%; height: 100%; min-height: 56px;
-  padding: 10px 10px; text-align: left; border: 1.5px solid var(--line); border-radius: 14px; background: var(--bg);
+  padding: 10px 10px; text-align: left; border: 2px solid var(--line); border-radius: 14px; background: var(--surface);
   color: var(--ink); font: 500 0.88rem/1.3 var(--f-body); cursor: pointer;
 }
 .m-key {
@@ -81,6 +87,7 @@ body.in-quiz main { padding-top: 0; }
 .match-fix { margin: 0; padding: 0; list-style: none; display: grid; gap: 4px; color: var(--ok); }
 
 .fill-text { font: 400 1.3rem/2 var(--f-bible); }
+.fill-input { scroll-margin-block: 90px 140px; }
 .fill-input {
   display: inline-block; min-width: 5ch; max-width: 100%; height: 40px; margin: 0 2px; padding: 0 6px;
   border: 0; border-bottom: 2px solid var(--oil); border-radius: 6px 6px 0 0; background: var(--oil-soft); color: var(--ink);
@@ -92,7 +99,6 @@ body.in-quiz main { padding-top: 0; }
 .fill-fix .strong { font-weight: 700; }
 
 .feedback { display: grid; gap: 10px; }
-.feedback .fb-explain { padding: 0 4px; font-size: 0.95rem; line-height: 1.45; color: var(--ink); }
 .feedback .fb-answer { display: grid; gap: 2px; padding: 10px 12px; }
 .feedback .fb-answer small { font-size: 0.72rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; opacity: .8; }
 .verse-btn {
@@ -106,7 +112,6 @@ body.in-quiz main { padding-top: 0; }
 .vb-main b { font-weight: 600; }
 .vb-main small { font-size: 0.8rem; color: var(--ink-2); }
 .vb-chev { flex: none; color: var(--ink-3); }
-.missed .feedback, .results .feedback { padding: 14px; }
 .verse-sheet { display: grid; gap: 12px; }
 .vs-text { position: relative; max-height: 56dvh; overflow-y: auto; padding: 4px 2px; font: 400 1.08rem/1.65 var(--f-bible); }
 .vs-text p { padding: 4px 10px; border-radius: 10px; }
@@ -121,50 +126,55 @@ body.in-quiz main { padding-top: 0; }
 }
 .info-btn:active { background: var(--surface-2); }
 .info-btn.is-sent { color: var(--ok); }
-/* at the foot of the question: a flag and a word, so nobody has to guess what it does */
+/* beside the question: a flag and a word, so nobody has to guess what it does */
 .info-btn.sm {
-  flex-direction: row; gap: 7px; width: auto; min-height: 36px; padding: 0 14px 0 11px; border-radius: 999px;
-  background: none; font-size: 0.85rem;
+  flex-direction: row; gap: 6px; width: auto; min-height: 34px; padding: 0 12px 0 9px; border-radius: 999px;
+  background: none; font-size: 0.82rem;
 }
-.q-foot { display: flex; justify-content: flex-end; margin: -2px 0 -4px; }
-.q-tags { display: flex; align-items: center; flex-wrap: wrap; gap: 6px 10px; min-width: 0; }
-.q-age {
-  display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px 3px 8px; border-radius: 999px;
-  background: var(--oil-soft); color: var(--oil-ink); font-size: 0.8rem; font-weight: 600; white-space: nowrap;
-}
-.q-meta { align-items: center; }
-.report-modal { display: grid; gap: 14px; }
-.report-modal .sheet-top p { margin-top: 4px; }
-.rp-form { display: grid; gap: 12px; }
-.rp-reasons { display: grid; gap: 8px; }
-.rp-opt { display: flex; align-items: center; min-height: 48px; padding: 8px 14px; border: 1.5px solid var(--line); border-radius: 14px; background: var(--bg); font-weight: 500; cursor: pointer; }
+/* the report sheet is short enough to show every button at once, no scrolling */
+.report-modal { display: grid; gap: 10px; }
+.report-modal .sheet-top { align-items: center; }
+.report-modal .sheet-top h2 { font-size: 1.25rem; }
+.rp-form { display: grid; gap: 8px; }
+.rp-reasons { display: grid; gap: 6px; }
+.rp-opt { display: flex; align-items: center; min-height: 42px; padding: 6px 14px; border: 1.5px solid var(--line); border-radius: 12px; background: var(--bg); font-size: 0.95rem; font-weight: 500; cursor: pointer; }
 .rp-opt input { position: absolute; opacity: 0; pointer-events: none; }
 .rp-opt.on { border-color: var(--btn); background: var(--oil-soft); font-weight: 600; }
-.rp-note { min-height: 64px; padding: 10px 14px; resize: none; font: inherit; }
+.rp-note { min-height: 56px; padding: 8px 12px; resize: none; font: inherit; }
 .rp-done { display: grid; gap: 12px; justify-items: center; text-align: center; padding: 6px 0 4px; }
 .rp-done-ic { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; background: var(--ok-soft); color: var(--ok); }
 .fb-answer { padding: 10px 12px; border-radius: 10px; background: var(--ok-soft); color: var(--ok); font-weight: 600; }
-.fb-explain { line-height: 1.5; }
 
+/* The bar at the foot of the screen: "Verifică", then the verdict and the way on */
 .actions {
   position: fixed; left: 0; right: 0; bottom: 0; z-index: 6;
   padding: 10px var(--gutter) calc(10px + env(safe-area-inset-bottom));
-  background: color-mix(in srgb, var(--bg) 94%, transparent); backdrop-filter: blur(10px);
+  background: color-mix(in srgb, var(--bg) 96%, transparent); backdrop-filter: blur(10px);
   border-top: 1px solid var(--line);
 }
 .actions > * { max-width: var(--measure); margin-inline: auto; }
-.hand-in { --gap: 10px; text-align: center; }
-
-.verdict { display: flex; align-items: center; gap: 12px; }
-.verdict-line { flex: 1; min-width: 0; display: flex; align-items: center; gap: 10px; font: 700 1.05rem/1.2 var(--f-body); }
-.verdict-btn { flex: none; min-width: 148px; background: var(--btn); color: #fff; }
-.verdict-ic { flex: none; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--surface); }
-.actions.is-graded { animation: rise .25s cubic-bezier(.2,.8,.2,1); }
+.btn-3d { min-height: 52px; border-radius: 16px; font-size: 1.05rem; box-shadow: 0 3px 0 rgb(0 0 0 / .25); transition: transform .06s, box-shadow .06s; }
+.btn-3d:active:not(:disabled) { transform: translateY(3px); box-shadow: none; }
+.btn-3d:disabled { box-shadow: 0 3px 0 var(--line); }
+.verdict { display: grid; gap: 10px; }
+.verdict-row { display: flex; align-items: center; gap: 10px; }
+.verdict-ic { flex: none; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--surface); }
+.verdict-text { flex: 1; min-width: 0; font: 800 1.2rem/1.2 var(--f-body); }
+.verse-pill {
+  flex: none; display: inline-flex; align-items: center; gap: 6px; min-height: 38px; padding: 0 14px 0 11px; border: 2px solid currentColor; border-radius: 999px;
+  background: var(--surface); color: inherit; font: 700 0.9rem var(--f-body); cursor: pointer;
+}
+.verse-pill:active { transform: translateY(2px); }
 .verdict-btn { color: #fff; }
 .confirm { text-align: center; display: grid; gap: 14px; padding-top: 22px; }
 .confirm .two { grid-template-columns: 1fr 1fr; }
-.actions.is-right .verdict-ic { background: var(--ok-soft); color: var(--ok); }
-.actions.is-wrong .verdict-ic { background: var(--bad-soft); color: var(--bad); }
+.actions.is-graded { animation: rise .25s cubic-bezier(.2,.8,.2,1); }
+.actions.is-right { background: var(--ok-soft); border-top-color: color-mix(in srgb, var(--ok) 40%, transparent); color: var(--ok); }
+.actions.is-wrong { background: var(--bad-soft); border-top-color: color-mix(in srgb, var(--bad) 40%, transparent); color: var(--bad); }
+.actions.is-right .verdict-ic { color: var(--ok); }
+.actions.is-wrong .verdict-ic { color: var(--bad); }
+.actions.is-right .verdict-btn { background: var(--ok); }
+.actions.is-wrong .verdict-btn { background: var(--bad); }
 @keyframes rise { from { transform: translateY(30%); opacity: .4; } }
 @media (prefers-reduced-motion: reduce) { .actions.is-graded { animation: none; } }
 
@@ -176,22 +186,11 @@ body.in-quiz main { padding-top: 0; }
 .score-num { position: absolute; inset: 0; display: flex; align-items: baseline; justify-content: center; gap: 3px; padding-top: 44px; font: 600 2.8rem/1 var(--f-display); color: var(--ink); }
 .score-num small { font: 500 1.2rem var(--f-body); color: var(--ink-2); }
 .score-praise { font: 600 1.25rem var(--f-display); }
-.score-stats { width: 100%; display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 8px; margin: 0; }
-.score-stats div { padding: 10px 6px; border-radius: 12px; background: var(--bg); }
-.score-stats dt { font-size: 0.75rem; color: var(--ink-2); }
-.score-stats dd { margin: 2px 0 0; font-weight: 700; font-size: 1.15rem; font-variant-numeric: tabular-nums; }
-.score-stats .ok { color: var(--ok); }
-.score-stats .bad { color: var(--bad); }
 .score-actions { width: 100%; display: grid; gap: 10px; }
 .results h2 { margin-top: 8px; }
-.missed { padding: 0; box-shadow: none; overflow: hidden; }
-.missed summary { display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; cursor: pointer; list-style: none; }
-.missed summary::-webkit-details-marker { display: none; }
 .missed-ic { flex: none; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--bad-soft); color: var(--bad); }
 .missed-q { display: grid; gap: 2px; font-weight: 500; }
 .missed-q small { font-weight: 400; color: var(--ink-3); font-size: 0.8rem; }
-.missed[open] summary { border-bottom: 1px solid var(--line); }
-.missed .feedback { border: 0; border-radius: 0; }
 .all-right { display: flex; align-items: center; gap: 10px; padding: 16px; color: var(--ok); font-weight: 600; box-shadow: none; }
 .all-right .verdict-ic { background: var(--ok-soft); }
 
@@ -217,28 +216,6 @@ body.in-quiz main { padding-top: 0; }
 .missed-card .feedback { padding: 0; }
 .missed-card .fb-answer { display: grid; gap: 2px; padding: 10px 12px; white-space: pre-line; }
 .missed-card .fb-answer small { font-size: 0.72rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; opacity: .8; }
-
-/* The mark above the question: lamp (as in v1) and name. It floats above the card and never moves it. */
-.q-stage { position: relative; }
-.lampmark { position: absolute; left: 0; right: 0; bottom: 100%; margin-bottom: 10px; display: grid; justify-items: center; pointer-events: none; }
-.lampmark.is-small svg { width: 66px; height: 66px; }
-.lampmark.is-small .lampx-glow { height: 46px; inset: 2px 8px auto; }
-.lampx { position: relative; display: grid; place-items: center; }
-.lampx svg { position: relative; display: block; }
-.lampx-glow {
-  position: absolute; inset: 4px 10px auto; height: 70px; pointer-events: none; filter: blur(8px);
-  background: radial-gradient(closest-side, color-mix(in oklab, #D97B26 42%, transparent), transparent);
-  animation: glowx 3.2s ease-in-out infinite;
-}
-.flamex { transform-origin: 50% 90%; animation: flickerx 2.4s ease-in-out infinite; }
-.lampmark-name { margin-top: -14px; font: 400 2rem/1 var(--f-brand); letter-spacing: .01em; color: var(--ink); }
-@keyframes glowx { 0%, 100% { opacity: .55; transform: scale(1); } 50% { opacity: .85; transform: scale(1.06); } }
-@keyframes flickerx { 0%, 100% { transform: scaleY(1) skewX(0); } 25% { transform: scaleY(1.06) skewX(-2deg); } 50% { transform: scaleY(.96) skewX(1.5deg); } 75% { transform: scaleY(1.04) skewX(-1deg); } }
-@media (prefers-reduced-motion: reduce) { .lampx-glow, .flamex { animation: none; } }
-
-/* The phone keyboard covers the lower half: leave room under the field so the page can scroll it into view */
-body.kb-open .quiz:not(.results) { min-height: 0; align-content: start; padding-bottom: 60dvh; }
-body.kb-open .quiz .lampmark { display: none; }
 
 /* Test sheet (from the reader and the exam tile) */
 .ts-block { display: grid; gap: 12px; padding: 14px; border: 1.5px solid var(--line); border-radius: 16px; background: var(--bg); }

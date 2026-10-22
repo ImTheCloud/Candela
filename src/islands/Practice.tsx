@@ -73,7 +73,7 @@ export default function Practice({ book, bookName, chapters, summary }: Props) {
   const toggle = (c: number) => setPicked(picked.includes(c) ? picked.filter((x) => x !== c) : [...picked, c]);
 
   if (quiz) {
-    return <Quiz key={quiz.key} book={book} bookName={bookName} questions={quiz.questions} mode="practice"
+    return <Quiz key={quiz.key} book={book} bookName={bookName} questions={quiz.questions}
       backHref={bookHome(book)} onAgain={() => start()}
       scoreId={direct && chosen.length === 1 && count === 0 ? `c${chosen[0]}` : undefined} />;
   }

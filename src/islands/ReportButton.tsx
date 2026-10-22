@@ -46,10 +46,7 @@ export default function ReportButton({ q, small = false }: { q: Playable; small?
         <Modal class="report-modal" labelledby={`rp-${q.id}`} onClose={() => setOpen(false)}>
           {(close) => (<>
             <div class="sheet-top">
-              <div>
-                <h2 id={`rp-${q.id}`}>Semnalează o problemă</h2>
-                <p class="muted small">{q.q.replace(/___/g, '…')}</p>
-              </div>
+              <h2 id={`rp-${q.id}`}>Semnalează o problemă</h2>
               <CloseButton onClick={close} />
             </div>
 
@@ -76,7 +73,7 @@ export default function ReportButton({ q, small = false }: { q: Playable; small?
                   ))}
                 </div>
                 <textarea class="input rp-note" rows={2} maxLength={1000} value={note}
-                  placeholder={reason === 'other' ? 'Scrie pe scurt ce nu este în regulă' : 'Detalii (dacă vrei): în versetul 12 scrie altfel.'}
+                  placeholder={reason === 'other' ? 'Scrie pe scurt ce nu este în regulă' : 'Detalii (dacă vrei)'}
                   aria-label="Detalii" onInput={(e) => setNote(e.currentTarget.value)} />
                 {error && <p class="notice notice-bad" role="alert">{error}</p>}
                 <button class="btn btn-primary btn-block" disabled={busy}>{busy ? 'Se trimite…' : 'Trimite'}</button>

@@ -196,7 +196,7 @@ function Fill({ q, answer, onChange, graded, onEnter }: P<'fill'>) {
                 style={{ width: `${Math.max(5, q.a[i].length + 2)}ch` }}
                 enterkeyhint="done"
                 onInput={(e) => set(i, e.currentTarget.value)}
-                onFocus={(e) => keepInView(e.currentTarget)}
+                onFocus={(e) => ensureVisible(e.currentTarget)}
                 onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); e.currentTarget.blur(); onEnter?.(); } }} />
             )}
           </>
@@ -214,23 +214,16 @@ function Fill({ q, answer, onChange, graded, onEnter }: P<'fill'>) {
 }
 
 /**
- * The phone keyboard covers the lower half of the screen: while a field is focused, the page makes room
- * under it and scrolls so that the field stays in the visible part, above the keyboard.
+ * The phone keyboard may cover the field. Once it is up, and only if the field really is hidden or under the header,
+ * the page moves just enough to show it, in one step and without animation.
  */
-function keepInView(el: HTMLElement) {
-  const vv = window.visualViewport;
-  const reveal = () => {
-    const head = document.querySelector('header.top')?.getBoundingClientRect().bottom ?? 48;
-    const top = (vv?.offsetTop ?? 0) + Math.max(head + 24, (vv?.height ?? innerHeight) * 0.3);
-    const by = el.getBoundingClientRect().top - top;
-    if (Math.abs(by) > 4) scrollBy({ top: by, behavior: 'smooth' });
-  };
-  document.body.classList.add('kb-open');
-  const timers = [setTimeout(reveal, 60), setTimeout(reveal, 350), setTimeout(reveal, 800)];
-  vv?.addEventListener('resize', reveal);
-  el.addEventListener('blur', () => {
-    timers.forEach(clearTimeout);
-    vv?.removeEventListener('resize', reveal);
-    document.body.classList.remove('kb-open');
-  }, { once: true });
+function ensureVisible(el: HTMLElement) {
+  setTimeout(() => {
+    const vv = window.visualViewport;
+    const top = (vv?.offsetTop ?? 0) + (document.querySelector('header.top')?.getBoundingClientRect().bottom ?? 48) + 8;
+    const bottom = (vv?.offsetTop ?? 0) + (vv?.height ?? innerHeight) - 80;
+    const r = el.getBoundingClientRect();
+    if (r.bottom > bottom) scrollBy(0, r.bottom - bottom);
+    else if (r.top < top) scrollBy(0, r.top - top);
+  }, 350);
 }

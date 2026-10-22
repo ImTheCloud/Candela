@@ -2,7 +2,7 @@ import { useEffect } from 'preact/hooks';
 import { prefetch } from 'astro:prefetch';
 import { ageLabel, ageShort, type AgeGroup } from '../lib/age';
 import { level } from '../lib/level';
-import { progress } from '../lib/progress';
+import { progress, scoreLabel } from '../lib/progress';
 import LevelPicker from './LevelPicker';
 import Modal, { CloseButton } from './Modal';
 
@@ -31,7 +31,7 @@ export default function ExamSheet({ book, exams, onClose }: { book: string; exam
         <div class="sheet-top">
           <div>
             <h2 id="ex-title">Examene</h2>
-            <p class="muted">Notate din 100</p>
+            <p class="muted">21 de întrebări, ca la un test obișnuit</p>
           </div>
           <CloseButton onClick={close} />
         </div>
@@ -43,7 +43,7 @@ export default function ExamSheet({ book, exams, onClose }: { book: string; exam
 
         <p class="sheet-label">Examen nou</p>
         <a class="btn btn-primary btn-block" href={`/${book}/examene/alb`}>Începe examenul alb · {ageShort(lv)} ani</a>
-        <p class="small muted" style={{ marginTop: '6px' }}>21 de întrebări din toată cartea, ca la examenul adevărat.</p>
+        <p class="small muted" style={{ marginTop: '6px' }}>Întrebări din toată cartea.</p>
 
         {list.length > 0 && (
           <>
@@ -55,7 +55,7 @@ export default function ExamSheet({ book, exams, onClose }: { book: string; exam
                     <b>{ageLabel(e.age)}</b>
                     <small>{e.title}, {e.year}{e.date ? ` · ${e.date}` : ''}</small>
                   </span>
-                  {best[e.id] && <span class="ts-best">{best[e.id].best}/100</span>}
+                  {best[e.id] && <span class="ts-best">{scoreLabel(best[e.id], 21)}</span>}
                   <svg class="ts-redo" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
                 </a>
               ))}
