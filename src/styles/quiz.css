@@ -246,3 +246,8 @@ body.in-quiz main { padding-top: 0; }
 .ex-real .oc-row { min-height: 52px; padding-block: 8px; }
 .ex-real .oc-row.is-mine { background: var(--oil-soft); }
 .ts-todo { flex: none; font-size: 0.8rem; font-weight: 600; color: var(--flame-ink); }
+.bk-head { margin: 14px 0 6px; font-weight: 600; font-size: 0.92rem; }
+.bk-head small { font-weight: 400; color: var(--ink-3); }
+.kinds-sum { padding-top: 8px; border-top: 1px solid var(--line); }
+.kinds-sum .kind-bar span { background: var(--btn); }
+.kinds .kind-n { white-space: nowrap; }
