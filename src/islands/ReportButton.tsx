@@ -1,10 +1,17 @@
-import { useEffect, useState } from 'preact/hooks';
+import { useState } from 'preact/hooks';
 import { player } from '../lib/players';
 import type { Playable } from '../lib/questions';
 import { REASONS, alreadyReported, sendReport, type Reason } from '../lib/reports';
 import { errorText, user } from '../lib/session';
+import Modal, { CloseButton } from './Modal';
 
-/** A small "i" button next to the correction; it opens a sheet to flag a mistake in the question. */
+const FLAG = <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V4" /><path d="M5 4h11l-2 4 2 4H5" /></svg>;
+const CHECK = <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg>;
+
+/**
+ * "Semnalează": says out loud what it is (a flag and a word), and opens a sheet to report a problem with the question:
+ * a mistake, or a question too hard for the level. small: a pill at the foot of the question; otherwise a tile beside "Vezi versetul".
+ */
 export default function ReportButton({ q, small = false }: { q: Playable; small?: boolean }) {
   const [open, setOpen] = useState(false);
   const [sent, setSent] = useState(() => alreadyReported(q.id));
@@ -12,14 +19,6 @@ export default function ReportButton({ q, small = false }: { q: Playable; small?
   const [note, setNote] = useState('');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
-
-  useEffect(() => {
-    if (!open) return;
-    const esc = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false);
-    addEventListener('keydown', esc);
-    document.body.style.overflow = 'hidden';
-    return () => { removeEventListener('keydown', esc); document.body.style.overflow = ''; };
-  }, [open]);
 
   async function send(e: Event) {
     e.preventDefault();
@@ -39,23 +38,19 @@ export default function ReportButton({ q, small = false }: { q: Playable; small?
 
   return (
     <>
-      <button type="button" class={`info-btn${small ? ' sm' : ''}${sent ? ' is-sent' : ''}`} aria-label="Semnalează o greșeală în această întrebare" onClick={() => setOpen(true)}>
-        {sent
-          ? <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg>
-          : <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5" stroke-width="1.8" /><path d="M12 11v5.5" /><circle cx="12" cy="7.6" r=".6" fill="currentColor" /></svg>}
+      <button type="button" class={`info-btn${small ? ' sm' : ''}${sent ? ' is-sent' : ''}`} aria-label="Semnalează o problemă în această întrebare" onClick={() => setOpen(true)}>
+        {sent ? CHECK : FLAG}
+        <span>{sent ? 'Semnalat' : 'Semnalează'}</span>
       </button>
       {open && (
-        <div class="sheet-back" onClick={(e) => e.target === e.currentTarget && setOpen(false)}>
-          <div class="sheet-panel report-modal" role="dialog" aria-modal="true" aria-labelledby={`rp-${q.id}`}>
-            <div class="sheet-grab" aria-hidden="true" />
+        <Modal class="report-modal" labelledby={`rp-${q.id}`} onClose={() => setOpen(false)}>
+          {(close) => (<>
             <div class="sheet-top">
               <div>
-                <h2 id={`rp-${q.id}`}>Semnalează o greșeală</h2>
+                <h2 id={`rp-${q.id}`}>Semnalează o problemă</h2>
                 <p class="muted small">{q.q.replace(/___/g, '…')}</p>
               </div>
-              <button type="button" class="icon-btn" aria-label="Închide" onClick={() => setOpen(false)}>
-                <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
-              </button>
+              <CloseButton onClick={close} />
             </div>
 
             {sent ? (
@@ -63,7 +58,7 @@ export default function ReportButton({ q, small = false }: { q: Playable; small?
                 <span class="rp-done-ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5" /></svg></span>
                 <p><strong>Mulțumim!</strong></p>
                 <p class="muted small">Ai semnalat această întrebare; o vom verifica.</p>
-                <button type="button" class="btn btn-primary btn-block" onClick={() => setOpen(false)}>Gata</button>
+                <button type="button" class="btn btn-primary btn-block" onClick={close}>Gata</button>
               </div>
             ) : !user.value ? (
               <div class="rp-done">
@@ -87,8 +82,8 @@ export default function ReportButton({ q, small = false }: { q: Playable; small?
                 <button class="btn btn-primary btn-block" disabled={busy}>{busy ? 'Se trimite…' : 'Trimite'}</button>
               </form>
             )}
-          </div>
-        </div>
+          </>)}
+        </Modal>
       )}
     </>
   );

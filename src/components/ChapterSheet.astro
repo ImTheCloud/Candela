@@ -9,7 +9,7 @@ const chapters = Array.from({ length: book.chapters }, (_, i) => i + 1);
 <dialog class="sheet" aria-label={`Capitolele din ${book.name}`}>
   <div class="sheet-head">
     <p class="sheet-title">{book.name}</p>
-    <form method="dialog"><button class="icon-btn" aria-label="Închide"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg></button></form>
+    <button type="button" class="icon-btn" data-close aria-label="Închide"><svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3l10 10M13 3L3 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg></button>
   </div>
   <ol class="sheet-grid" data-book={book.slug}>
     {chapters.map((n) => (
@@ -22,8 +22,18 @@ const chapters = Array.from({ length: book.chapters }, (_, i) => i + 1);
   document.addEventListener('astro:page-load', () => {
     const sheet = document.querySelector<HTMLDialogElement>('dialog.sheet');
     if (!sheet) return;
+    // closing slides the sheet back down before the dialog really closes
+    let closing = false;
+    const slideOut = () => {
+      if (closing || !sheet.open) return;
+      closing = true;
+      sheet.classList.add('is-closing');
+      setTimeout(() => { sheet.close(); sheet.classList.remove('is-closing'); closing = false; }, 230);
+    };
     for (const b of document.querySelectorAll('[data-open-sheet]')) b.addEventListener('click', () => sheet.showModal());
-    sheet.addEventListener('click', (e) => { if (e.target === sheet) sheet.close(); });
+    sheet.addEventListener('click', (e) => { if (e.target === sheet) slideOut(); });
+    sheet.querySelector('[data-close]')?.addEventListener('click', slideOut);
+    sheet.addEventListener('cancel', (e) => { e.preventDefault(); slideOut(); });
   });
 </script>
 
@@ -33,7 +43,15 @@ const chapters = Array.from({ length: book.chapters }, (_, i) => i + 1);
     border: 0; border-radius: 20px 20px 0 0; background: var(--surface); color: var(--ink);
     box-shadow: var(--shadow); max-height: 80dvh;
   }
-  .sheet::backdrop { background: rgb(0 0 0 / 0.35); }
+  .sheet[open] { animation: sheet-up .26s cubic-bezier(.2,.8,.2,1); }
+  .sheet[open]::backdrop { background: rgb(58 39 27 / 0.4); animation: fade .18s ease-out; }
+  .sheet.is-closing { animation: sheet-down .23s cubic-bezier(.4,0,1,1) forwards; }
+  .sheet.is-closing::backdrop { animation: fade-out .23s ease-in forwards; }
+  @keyframes sheet-up { from { transform: translateY(100%); } }
+  @keyframes sheet-down { to { transform: translateY(100%); } }
+  @keyframes fade { from { opacity: 0; } }
+  @keyframes fade-out { to { opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) { .sheet, .sheet::backdrop { animation: none !important; } }
   .sheet-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
   .sheet-title { font: 600 1.2rem var(--f-display); }
   .sheet-grid {

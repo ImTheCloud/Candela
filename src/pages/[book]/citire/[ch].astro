@@ -3,6 +3,8 @@ import Base from '../../../layouts/Base.astro';
 import ChapterSheet from '../../../components/ChapterSheet.astro';
 import { BOOKS, type Book } from '../../../lib/books';
 import { getText } from '../../../lib/text';
+import { summary } from '../../../lib/content';
+import StartTest from '../../../islands/StartTest';
 
 export function getStaticPaths() {
   return BOOKS.flatMap((book) => {
@@ -18,6 +20,7 @@ export function getStaticPaths() {
 const { book, ch, verses } = Astro.props as { book: Book; ch: number; verses: string[] };
 const prev = ch > 1 ? ch - 1 : null;
 const next = ch < book.chapters ? ch + 1 : null;
+const counts = summary(book.slug)[ch] ?? {};
 ---
 <Base title={`${book.name} ${ch}`} backUp crumbs={[{ href: '/', label: 'Acasă' }, { href: `/${book.slug}`, label: book.name }]}>
   <article class="wrap narrow reader" data-book={book.slug} data-ch={ch}>
@@ -30,15 +33,18 @@ const next = ch < book.chapters ? ch + 1 : null;
         <p class="verse" id={`v${i + 1}`}><sup>{i + 1}</sup>{v}</p>
       ))}
     </div>
-
-    <a class="btn btn-primary btn-block start" data-astro-prefetch="load" href={`/${book.slug}/exersare?capitol=${ch}&start=1`}>Începe întrebările</a>
   </article>
 
   <nav class="pager" aria-label="Capitole">
-    <div class="wrap narrow pager-row">
+    <div class="wrap narrow pager-stack">
+    <div class="pager-row">
       {prev ? <a class="pager-btn" href={`/${book.slug}/citire/${prev}`} rel="prev" data-astro-prefetch="load" aria-label={`Capitolul ${prev}`}><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6" /></svg></a> : <span class="pager-btn" aria-hidden="true" />}
-      <button class="pager-mid" type="button" data-open-sheet>{book.name} {ch}<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg></button>
+      <button class="pager-mid" type="button" data-open-sheet><span class="pm-main">{book.name} {ch}<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg></span><span class="pm-sub">{verses.length} versete</span></button>
       {next ? <a class="pager-btn" href={`/${book.slug}/citire/${next}`} rel="next" data-astro-prefetch="load" aria-label={`Capitolul ${next}`}><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6" /></svg></a> : <span class="pager-btn" aria-hidden="true" />}
+    </div>
+    <StartTest client:only="preact" book={book.slug} ch={ch} title={book.titles[ch - 1]} counts={counts}>
+      <button slot="fallback" type="button" class="btn btn-primary btn-block">Începe întrebările</button>
+    </StartTest>
     </div>
   </nav>
 
@@ -53,8 +59,6 @@ const next = ch < book.chapters ? ch + 1 : null;
   .verse:target { outline: 2px solid var(--flame); outline-offset: 1px; }
   sup { font: 600 0.7rem var(--f-body); color: var(--oil-ink); margin-right: 4px; vertical-align: 0.5em; line-height: 0; }
 
-  .start { margin-top: 32px; }
-
   /* Thumb-reachable chapter navigation */
   .pager {
     position: sticky; bottom: 0; z-index: 5;
@@ -62,7 +66,8 @@ const next = ch < book.chapters ? ch + 1 : null;
     border-top: 1px solid var(--line);
     padding-bottom: env(safe-area-inset-bottom);
   }
-  .pager-row { display: grid; grid-template-columns: 56px 1fr 56px; align-items: center; gap: 8px; height: 60px; }
+  .pager-stack { display: grid; gap: 6px; padding-block: 6px 10px; }
+  .pager-row { display: grid; grid-template-columns: 56px 1fr 56px; align-items: center; gap: 8px; height: 52px; }
   .pager-btn {
     display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%;
     text-decoration: none; color: var(--ink);
@@ -70,7 +75,9 @@ const next = ch < book.chapters ? ch + 1 : null;
   a.pager-btn:active { background: var(--surface-2); }
   .pager-btn:last-child { justify-self: end; }
   .pager-mid {
-    justify-self: center; display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px 0 18px; border: 1px solid var(--line); border-radius: 999px;
-    background: var(--surface); color: var(--ink); font: 600 1rem var(--f-body); cursor: pointer; white-space: nowrap;
+    justify-self: center; display: grid; justify-items: center; gap: 1px; min-height: 48px; padding: 5px 20px; border: 1px solid var(--line); border-radius: 999px;
+    background: var(--surface); color: var(--ink); font: 600 1rem/1.2 var(--f-body); cursor: pointer; white-space: nowrap;
   }
+  .pm-main { display: inline-flex; align-items: center; gap: 7px; }
+  .pm-sub { font: 500 0.78rem/1 var(--f-body); color: var(--ink-2); }
 </style>

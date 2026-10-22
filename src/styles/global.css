@@ -268,13 +268,18 @@ img, svg { display: block; }
 .lvl-side { flex: none; font-size: 0.75rem; color: var(--ink-3); white-space: nowrap; font-variant-numeric: tabular-nums; }
 .lvl-chev { flex: none; color: var(--ink-3); }
 @keyframes sheet-up { from { transform: translateY(100%); } }
+@keyframes sheet-down { to { transform: translateY(100%); } }
 @keyframes fade { from { opacity: 0; } }
+@keyframes fade-out { to { opacity: 0; } }
+/* closing: the panel slides back down before it is removed */
+.sheet-back.is-closing { pointer-events: none; animation: fade-out .23s ease-in forwards; }
+.sheet-back.is-closing .sheet-panel { animation: sheet-down .23s cubic-bezier(.4,0,1,1) forwards; }
 @media (min-width: 640px) {
   .sheet-back { align-items: center; padding: 24px; }
   .sheet-panel { border-radius: 22px; }
   .sheet-grab { display: none; }
 }
-@media (prefers-reduced-motion: reduce) { .sheet-back, .sheet-panel { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .sheet-back, .sheet-panel, .sheet-back.is-closing, .sheet-back.is-closing .sheet-panel { animation: none; } .sheet-back.is-closing { opacity: 0; } }
 .tile-exam { aspect-ratio: auto; height: 100%; min-height: 0; display: flex; gap: 8px; justify-content: center; text-decoration: none; background: var(--oil-soft); border-color: transparent; color: var(--oil-ink); font-size: 0.95rem; }
 
 /* Home: book switch, chapters card, board link */

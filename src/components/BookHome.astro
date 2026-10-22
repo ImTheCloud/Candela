@@ -3,12 +3,12 @@ import Loader from './Loader.astro';
 import BookPanel from '../islands/BookPanel';
 import PlayerPicker from '../islands/PlayerPicker';
 import { BOOKS, type Book } from '../lib/books';
-import { summary } from '../lib/content';
+import { examList, summary } from '../lib/content';
 
 // The home page: who plays, then the books' chapters (the two books switch in place).
 interface Props { book: Book }
 const { book } = Astro.props;
-const books = BOOKS.map((b) => ({ slug: b.slug, name: b.name, titles: b.titles, summary: summary(b.slug) }));
+const books = BOOKS.map((b) => ({ slug: b.slug, name: b.name, titles: b.titles, summary: summary(b.slug), exams: examList(b.slug) }));
 ---
 <h1 class="sr-only">Candela</h1>
 

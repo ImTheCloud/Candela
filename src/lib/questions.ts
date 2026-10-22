@@ -88,6 +88,40 @@ export function normalizeWords(s: string): string {
     .trim();
 }
 
+/** Words that mean the same thing in the text: any of them is accepted for the others. */
+const SAME_WORD: string[][] = [
+  ['domnul', 'dumnezeu', 'doamne', 'dumnezeul'],
+  ['imparat', 'imparatul', 'rege', 'regele'],
+];
+
+/** Edit distance with a swap of two neighbouring letters counting as one mistake. */
+function distance(a: string, b: string): number {
+  const d: number[][] = Array.from({ length: a.length + 1 }, (_, i) => [i, ...Array(b.length).fill(0)]);
+  for (let j = 1; j <= b.length; j++) d[0][j] = j;
+  for (let i = 1; i <= a.length; i++) {
+    for (let j = 1; j <= b.length; j++) {
+      d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+      if (i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1]) d[i][j] = Math.min(d[i][j], d[i - 2][j - 2] + 1);
+    }
+  }
+  return d[a.length][b.length];
+}
+
+/**
+ * A typed word is right when it is the expected word without accents or case, when it has a slip of the keys
+ * (a letter missing, added, changed or swapped), or when it is another word for the same thing ("Domnul" for "Dumnezeu").
+ */
+export function sameWord(typed: string, expected: string): boolean {
+  const t = normalizeWords(typed);
+  const e = normalizeWords(expected);
+  if (!t) return false;
+  if (t === e) return true;
+  if (SAME_WORD.some((g) => g.includes(t) && g.includes(e))) return true;
+  // very short words are too easy to confuse with another one: no slip allowed
+  if (e.length < 4 || t.length < 4) return false;
+  return distance(t, e) <= (e.length >= 10 ? 2 : 1);
+}
+
 export interface Grade {
   points: number;
   max: number;
@@ -120,7 +154,7 @@ export function grade(q: Question, a: Answer): Grade {
       return { points: n, max, right: n === parts.length, parts };
     }
     case 'fill': {
-      const parts = q.a.map((w, i) => a.t === 'fill' && normalizeWords(a.v[i] ?? '') === normalizeWords(w));
+      const parts = q.a.map((w, i) => a.t === 'fill' && sameWord(a.v[i] ?? '', w));
       const n = parts.filter(Boolean).length;
       return { points: Math.round((max * n * 2) / parts.length) / 2, max, right: n === parts.length, parts };
     }
