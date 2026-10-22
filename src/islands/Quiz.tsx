@@ -8,7 +8,6 @@ import Modal, { CloseButton } from './Modal';
 import { ageLabel } from '../lib/age';
 import { BOOKS } from '../lib/books';
 import ReportButton from './ReportButton';
-import LampMark from './LampMark';
 
 export interface QuizProps {
   book: string;
@@ -109,7 +108,6 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
           <span class="qt-n">{i + 1}/{questions.length}</span>
         </>, topEl)}
 
-      <LampMark small />
       <QHead q={q} bookName={bookName} />
 
       <div class="q-body" aria-live="polite">

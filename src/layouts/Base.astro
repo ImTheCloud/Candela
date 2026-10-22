@@ -21,8 +21,10 @@ interface Props {
   home?: boolean;
   /** The back button always goes to the page above (never back in the history): the Bible reader, where history is only chapters. */
   backUp?: boolean;
+  /** "Bun venit, {prenume}" in the header instead of the site name (as on the home page). */
+  greet?: boolean;
 }
-const { title, description = 'Teste biblice după traducerea Cornilescu: 1 Samuel și 2 Samuel.', crumbs = [], home = false, backUp = false } = Astro.props;
+const { title, description = 'Teste biblice după traducerea Cornilescu: 1 Samuel și 2 Samuel.', crumbs = [], home = false, backUp = false, greet = false } = Astro.props;
 const up = crumbs.at(-1)?.href ?? '/';
 const parent = up === `/${DEFAULT_BOOK}` ? '/' : up;
 const fullTitle = title === 'Candela' ? title : `${title} · Candela`;
@@ -66,7 +68,7 @@ const fullTitle = title === 'Candela' ? title : `${title} · Candela`;
         )}
         <a href="/" class="brand" aria-label="Candela, acasă">
           <Lamp />
-          {home
+          {home || greet
             ? <HeaderTitle client:only="preact"><span slot="fallback" class="brand-text" aria-hidden="true">&nbsp;</span></HeaderTitle>
             : <span class="brand-text">Candela</span>}
         </a>
