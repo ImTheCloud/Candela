@@ -2,12 +2,13 @@ import { useEffect, useRef, useState } from 'preact/hooks';
 import { createPortal } from 'preact/compat';
 import { loadVerses } from '../lib/load';
 import { recordAnswers, recordExam } from '../lib/progress';
-import { emptyAnswer, grade, isAnswered, percent, typeInfo, type Answer, type Grade, type Playable } from '../lib/questions';
+import { emptyAnswer, grade, isAnswered, percent, TYPES, typeInfo, type Answer, type Grade, type Playable } from '../lib/questions';
 import QuestionView from './QuestionView';
 import Modal, { CloseButton } from './Modal';
 import { ageLabel } from '../lib/age';
 import { BOOKS } from '../lib/books';
 import ReportButton from './ReportButton';
+import LampMark from './LampMark';
 
 export interface QuizProps {
   book: string;
@@ -17,12 +18,14 @@ export interface QuizProps {
   scoreId?: string;
   /** false: the answers do not count for the questions known or for the board (the exams). */
   record?: boolean;
+  /** false: right answers do not count for the player (the mistakes list). */
+  points?: boolean;
   backHref: string;
   onAgain?: () => void;
 }
 
 /** Every set of questions is played the same way: a chapter test, the mock exam, a real exam, the mistakes. */
-export default function Quiz({ book, bookName, questions, scoreId, record = true, backHref, onAgain }: QuizProps) {
+export default function Quiz({ book, bookName, questions, scoreId, record = true, points = true, backHref, onAgain }: QuizProps) {
   const [i, setI] = useState(0);
   const [answers, setAnswers] = useState<Answer[]>(() => questions.map(emptyAnswer));
   const [grades, setGrades] = useState<(Grade | null)[]>(() => questions.map(() => null));
@@ -30,6 +33,7 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
   const [leaveTo, setLeaveTo] = useState<(() => void) | null>(null);
   const leaving = useRef(false);
   const [saveFailed, setSaveFailed] = useState(false);
+  const [verse, setVerse] = useState(false);
 
   const q = questions[i];
   const g = grades[i];
@@ -83,7 +87,7 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
     // nothing counts until the whole test is finished
     if (grades.every(Boolean)) {
       const all = grades as Grade[];
-      if (record) recordAnswers(book, questions.map((x, k) => ({ id: x.id, t: x.t, right: all[k].right })))?.catch((e) => { console.error(e); setSaveFailed(true); });
+      if (record) recordAnswers(book, questions.map((x, k) => ({ id: x.id, t: x.t, right: all[k].right })), points)?.catch((e) => { console.error(e); setSaveFailed(true); });
       if (scoreId) recordExam(book, scoreId, percent(all.reduce((s, x) => s + x.points, 0), all.reduce((s, x) => s + x.max, 0)), { right: all.filter((x) => x.right).length, n: all.length });
     }
     setDone(true);
@@ -105,6 +109,7 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
           <span class="qt-n">{i + 1}/{questions.length}</span>
         </>, topEl)}
 
+      <LampMark small />
       <QHead q={q} bookName={bookName} />
 
       <div class="q-body" aria-live="polite">
@@ -116,11 +121,13 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
 
       <div class={`actions${g ? ` is-graded ${g.right ? 'is-right' : 'is-wrong'}` : ''}`}>
         {g ? (
-          <Verdict q={q} g={g} bookName={bookName} last={i === questions.length - 1} onNext={next} />
+          <Verdict g={g} last={i === questions.length - 1} onVerse={() => setVerse(true)} onNext={next} />
         ) : (
           <button class="btn btn-primary btn-block btn-3d" disabled={!isAnswered(answers[i])} onClick={check}>Verifică</button>
         )}
       </div>
+
+      {verse && <VerseSheet q={q} bookName={bookName} onClose={() => setVerse(false)} />}
 
       {leaveTo && (
         <Modal class="confirm" role="alertdialog" labelledby="leave-t" onClose={() => setLeaveTo(null)}>
@@ -138,10 +145,8 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
   );
 }
 
-/** Above the question: what to do, the level it is meant for, the report button, and where it comes from (book, verse, chapter). */
+/** Above the question: what to do, the level it is meant for, the report button, and the verse it comes from. */
 function QHead({ q, bookName }: { q: Playable; bookName: string }) {
-  // the chapter always shows with the question, so a question drawn from any chapter (mock exam) says where it comes from
-  const title = BOOKS.find((b) => b.slug === q.book)?.titles[q.ch - 1];
   return (
     <header class="q-head">
       <div class="q-row">
@@ -150,7 +155,7 @@ function QHead({ q, bookName }: { q: Playable; bookName: string }) {
         <span class="q-spacer" />
         <ReportButton key={q.id} q={q} small />
       </div>
-      <p class="q-where"><b>{bookName} {q.ref}</b>{title ? ` · ${title}` : ''}</p>
+      <p class="q-where"><b>{bookName} {q.ref}</b></p>
     </header>
   );
 }
@@ -158,37 +163,16 @@ function QHead({ q, bookName }: { q: Playable; bookName: string }) {
 const BOOK_ICON = <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4h7a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H2zM22 4h-7a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h8z" /></svg>;
 
 /** The bottom panel once the answer is checked: the verdict, the verse, and the way on. The right answer is never spelled out: it shows in place and in the verse. */
-function Verdict({ q, g, bookName, last, onNext }: { q: Playable; g: Grade; bookName: string; last: boolean; onNext: () => void }) {
-  const [open, setOpen] = useState(false);
+function Verdict({ g, last, onVerse, onNext }: { g: Grade; last: boolean; onVerse: () => void; onNext: () => void }) {
   return (
     <div class="verdict">
       <div class="verdict-row">
         <span class="verdict-ic" aria-hidden="true">{g.right ? <Tick /> : <Cross />}</span>
         <span class="verdict-text">{g.right ? 'Corect!' : g.points > 0 ? `Parțial · ${g.points}/${g.max}` : 'Greșit'}</span>
-        <button type="button" class="verse-pill" onClick={() => setOpen(true)}>{BOOK_ICON}Versetul</button>
+        <button type="button" class="verse-pill" onClick={onVerse}>{BOOK_ICON}Versetul</button>
       </div>
       <button class="btn btn-block verdict-btn btn-3d" onClick={onNext}>{last ? 'Vezi rezultatul' : 'Mai departe'}</button>
-      {open && <VerseSheet q={q} bookName={bookName} onClose={() => setOpen(false)} />}
     </div>
-  );
-}
-
-/** A missed question in the final list: the verse button, and the report. */
-function Feedback({ q, bookName }: { q: Playable; bookName: string }) {
-  const [open, setOpen] = useState(false);
-  const verses = q.cite.map(([label]) => label.split(':')[1]).filter(Boolean);
-  return (
-    <section class="feedback">
-      <div class="fb-actions">
-        <button type="button" class="verse-btn" onClick={() => setOpen(true)}>
-          {BOOK_ICON}
-          <span class="vb-main"><b>Vezi versetul</b><small>{bookName} {q.ch}:{verses.length > 1 ? `${verses[0]}-${verses[verses.length - 1]}` : verses[0]}</small></span>
-          <svg class="vb-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
-        </button>
-        <ReportButton q={q} />
-      </div>
-      {open && <VerseSheet q={q} bookName={bookName} onClose={() => setOpen(false)} />}
-    </section>
   );
 }
 
@@ -256,12 +240,19 @@ interface ResultsProps {
 }
 
 function Results({ bookName, questions, answers, grades, saveFailed, backHref, onAgain }: ResultsProps) {
+  const [verseOf, setVerseOf] = useState<Playable | null>(null);
   const gs = grades.map((g, k) => g ?? grade(questions[k], answers[k]));
   const right = gs.filter((g) => g.right).length;
-  const missed = questions.map((q, k) => ({ q, g: gs[k] })).filter((x) => !x.g.right);
+  const missed = questions.filter((_, k) => !gs[k].right);
   const share = right / questions.length;
   const praise = share >= 0.9 ? 'Excelent!' : share >= 0.75 ? 'Foarte bine!' : share >= 0.5 ? 'Bine, mai e puțin.' : 'Mai ai de exersat.';
   const ring = 2 * Math.PI * 52;
+  // right answers per kind of question, in the order of the paper exam
+  const kinds = TYPES.map((t) => {
+    const idx = questions.map((q, k) => (q.t === t.t ? k : -1)).filter((k) => k >= 0);
+    return { ...t, n: idx.length, ok: idx.filter((k) => gs[k].right).length };
+  }).filter((x) => x.n > 0);
+  const back = backHref.endsWith('/examene') ? 'Înapoi la examene' : 'Înapoi la capitole';
 
   return (
     <div class="quiz results">
@@ -275,29 +266,47 @@ function Results({ bookName, questions, answers, grades, saveFailed, backHref, o
         </div>
         <p class="score-praise">{praise}</p>
         {saveFailed && <p class="notice notice-bad" role="alert">Răspunsurile nu s-au salvat. Spune-i administratorului.</p>}
+
+        {kinds.length > 1 && (
+          <ul class="kinds" aria-label="Pe tipuri de întrebări">
+            {kinds.map((k) => (
+              <li class={k.ok === k.n ? 'is-full' : k.ok === 0 ? 'is-zero' : ''}>
+                <span class="kind-name">{k.short}</span>
+                <span class="kind-bar" aria-hidden="true"><span style={{ width: `${(k.ok / k.n) * 100}%` }} /></span>
+                <span class="kind-n">{k.ok}/{k.n}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+
         <div class="score-actions">
           {onAgain && <button class="btn btn-primary btn-block" onClick={onAgain}>Reia testul</button>}
-          <a class="btn btn-ghost btn-block" href={backHref}>Înapoi</a>
+          <a class="btn btn-ghost btn-block" href={backHref}>{back}</a>
         </div>
       </section>
 
       {missed.length > 0 ? (
         <section class="stack">
           <h2>De recitit</h2>
-          {missed.map(({ q }) => (
+          {missed.map((q) => (
             <article class="card missed-card">
               <div class="mc-head">
                 <span class="missed-ic" aria-hidden="true"><Cross /></span>
                 <span class="missed-q">{q.q.replace(/___/g, '…')}<small>{bookName} {q.ref}</small></span>
               </div>
               <p class="fb-answer"><small>Răspuns corect</small>{rightAnswer(q)}</p>
-              <Feedback q={q} bookName={bookName} />
+              <button type="button" class="verse-btn" onClick={() => setVerseOf(q)}>
+                {BOOK_ICON}
+                <span class="vb-main"><b>Vezi versetul</b><small>{bookName} {q.ref}</small></span>
+                <svg class="vb-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
+              </button>
             </article>
           ))}
         </section>
       ) : (
         <p class="card all-right"><span class="verdict-ic" aria-hidden="true"><Tick /></span>Toate răspunsurile au fost corecte.</p>
       )}
+      {verseOf && <VerseSheet q={verseOf} bookName={bookName} onClose={() => setVerseOf(null)} />}
     </div>
   );
 }

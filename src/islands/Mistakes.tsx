@@ -30,7 +30,7 @@ export default function Mistakes({ book, bookName }: { book: string; bookName: s
   useEffect(() => { if (quiz && !quiz.questions.length) setQuiz(null); }, [quiz]);
 
   if (quiz?.questions.length) {
-    return <Quiz key={quiz.key} book={book} bookName={bookName} questions={quiz.questions}
+    return <Quiz key={quiz.key} book={book} bookName={bookName} questions={quiz.questions} points={false}
       backHref={`/${book}`} onAgain={progress(book).value.wrong.length ? start : undefined} />;
   }
   if (user.value === undefined) return <Loader />;
@@ -41,7 +41,7 @@ export default function Mistakes({ book, bookName }: { book: string; bookName: s
         <h1>Greșelile mele</h1>
         {wrong.length ? (
           <>
-            <p class="muted">Ai {wrong.length} {wrong.length === 1 ? 'întrebare greșită' : 'întrebări greșite'} în {bookName}. Când răspunzi corect, întrebarea iese din listă.</p>
+            <p class="muted">Ai {wrong.length} {wrong.length === 1 ? 'întrebare greșită' : 'întrebări greșite'} în {bookName}. Când răspunzi corect, întrebarea iese din listă, dar <strong>nu primești puncte</strong> pentru ea.</p>
             {error && <p class="notice notice-bad" role="alert">{error}</p>}
             <button class="btn btn-primary btn-block" disabled={busy} onClick={start}>
               {busy ? 'Se încarcă…' : `Reia ${Math.min(wrong.length, 20)} ${Math.min(wrong.length, 20) === 1 ? 'întrebare' : 'întrebări'}`}

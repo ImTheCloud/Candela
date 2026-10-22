@@ -33,7 +33,8 @@ export default function ChapterMenu({ book, titles, summary, exams: realExams }:
   const prog = progress(book).value;
   // until Firestore answers, the scores of the last visit are shown
   const exams = prog === EMPTY && user.value !== null ? cachedExams(user.value?.uid ?? rememberedAccount?.uid ?? player.value.key, book) : prog.exams;
-  const entry = (ch: number) => exams[`c${ch}`];
+  // a chapter's score belongs to a level: the tiles and the sheet show the score of the level picked now
+  const entry = (ch: number) => exams[`c${ch}@${level.value}`];
 
   const sheet = open !== null && (
     <Sheet book={book} ch={open} title={titles[open - 1]} total={count(summary[open]?.[level.value])} best={scoreLabel(entry(open), count(summary[open]?.[level.value]))}
