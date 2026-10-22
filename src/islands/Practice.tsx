@@ -73,10 +73,14 @@ export default function Practice({ book, bookName, chapters, summary }: Props) {
 
   const toggle = (c: number) => setPicked(picked.includes(c) ? picked.filter((x) => x !== c) : [...picked, c]);
 
+  // points count only for a whole chapter test, not for a few questions picked or taken again
+  const wholeTest = direct && chosen.length === 1 && count === 0;
+
   if (quiz) {
     return <Quiz key={quiz.key} book={book} bookName={bookName} questions={quiz.questions}
+      points={wholeTest}
       backHref={bookHome(book)} onAgain={() => start()}
-      scoreId={direct && chosen.length === 1 && count === 0 ? `c${chosen[0]}@${level}` : undefined} />;
+      scoreId={wholeTest ? `c${chosen[0]}@${level}` : undefined} />;
   }
 
   if (direct && chosen.length) return error ? <p class="notice notice-bad" role="alert">{error}</p> : <Loader />;

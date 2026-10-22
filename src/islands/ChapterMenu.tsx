@@ -34,8 +34,7 @@ export default function ChapterMenu({ book, titles, summary, exams: realExams }:
   // until Firestore answers, the scores of the last visit are shown
   const exams = prog === EMPTY && user.value !== null ? cachedExams(user.value?.uid ?? rememberedAccount?.uid ?? player.value.key, book) : prog.exams;
   // a chapter's score belongs to a level: the tiles and the sheet show the score of the level picked now
-  // scores from before levels were kept ("c5", no level) count for the top level (18+) until it is played again
-  const at = (ch: number, lv: string) => exams[`c${ch}@${lv}`] ?? (lv === '18+' ? exams[`c${ch}`] : undefined);
+  const at = (ch: number, lv: string) => exams[`c${ch}@${lv}`];
   const entry = (ch: number) => at(ch, level.value);
   // the tiles follow the tabs of the board: "Toate" = the best score of any level
   const view = scoreView.value;

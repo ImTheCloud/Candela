@@ -1,6 +1,6 @@
 import { effect, signal, type Signal } from '@preact/signals';
 import { arrayRemove, arrayUnion, deleteDoc, doc, increment, onSnapshot, serverTimestamp, setDoc, writeBatch } from 'firebase/firestore';
-import { writeBoard } from './board';
+import { removeFromBoards, writeBoard } from './board';
 import { BOOKS } from './books';
 import { db } from './firebase';
 import { player, shortName } from './players';
@@ -152,6 +152,17 @@ export function deleteProgress(uid: string, playerKey: string) {
 }
 
 const boardMark = (uid: string, key: string, book: string) => `bd:${uid}~${key}~${book}`;
+
+/** All the points of a player back to zero: progress, scores and the board entries (the player stays). */
+export async function resetProgress(uid: string, playerKey: string) {
+  await deleteProgress(uid, playerKey);
+  await removeFromBoards(uid, playerKey);
+  for (const b of BOOKS) {
+    localRemove(boardMark(uid, playerKey, b.slug));
+    localRemove(`pg:${playerKey}~${b.slug}`);
+    localRemove(examsKey(playerKey, b.slug));
+  }
+}
 
 // The boards are filled from the progress: a player who answered before they existed
 // (or whose entry is out of date) gets their entry written once, and again whenever the number of known questions changes.

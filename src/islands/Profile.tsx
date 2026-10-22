@@ -3,7 +3,7 @@ import { doc, onSnapshot } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 import { addChild, choosePlayer, player, players, rememberedKids, removeChild, updateChild, type Player } from '../lib/players';
 import { localGet, localSet } from '../lib/store';
-import { deleteProgress, EMPTY, scoreLabel, type Progress } from '../lib/progress';
+import { deleteProgress, EMPTY, resetProgress, scoreLabel, type Progress } from '../lib/progress';
 import { errorText, profile, profileError, rememberedAccount, setParent, signOut, user } from '../lib/session';
 import Avatar from './Avatar';
 import Loader from './Loader';
@@ -90,7 +90,14 @@ function PlayerBlock({ p, books, head }: { p: Player; books: BookInfo[]; head: b
   const active = p.key === current.key;
   const [editing, setEditing] = useState(false);
   const [confirming, setConfirming] = useState(false);
+  const [resetting, setResetting] = useState(false);
+  const [busy, setBusy] = useState(false);
   const isSelf = !p.child;
+
+  async function reset() {
+    setBusy(true);
+    try { await resetProgress(user.value!.uid, p.key); setResetting(false); } finally { setBusy(false); }
+  }
 
   async function remove() {
     await deleteProgress(user.value!.uid, p.key);
@@ -114,6 +121,9 @@ function PlayerBlock({ p, books, head }: { p: Player; books: BookInfo[]; head: b
       )}
       {books.map((b) => <BookStats key={b.slug} p={p} book={b} />)}
       <footer class="pl-foot">
+        <span class="pl-actions">
+          <button type="button" class="btn-reset link small bad" onClick={() => setResetting(true)}>Resetează punctele</button>
+        </span>
         {p.child && (
           <span class="pl-actions">
             <button type="button" class="btn-reset link small" onClick={() => setEditing(true)}>Schimbă</button>
@@ -121,6 +131,15 @@ function PlayerBlock({ p, books, head }: { p: Player; books: BookInfo[]; head: b
           </span>
         )}
       </footer>
+      {resetting && (
+        <div class="notice notice-bad stack" style="--gap: 10px">
+          <p>Pui la zero toate punctele {isSelf ? 'tale' : `lui ${p.name.split(' ')[0]}`}: răspunsurile corecte, greșelile, scorurile și clasamentul? Nu se mai poate recupera.</p>
+          <div class="two">
+            <button type="button" class="btn btn-ghost btn-sm" onClick={() => setResetting(false)}>Renunță</button>
+            <button type="button" class="btn btn-sm danger" disabled={busy} onClick={reset}>{busy ? 'Se resetează…' : 'Da, resetează'}</button>
+          </div>
+        </div>
+      )}
       {confirming && (
         <div class="notice notice-bad stack" style="--gap: 10px">
           <p>Ștergi profilul lui {p.name} și tot progresul lui? Nu se mai poate recupera.</p>
