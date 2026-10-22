@@ -115,9 +115,7 @@ function PlayerBlock({ p, books, head }: { p: Player; books: BookInfo[]; head: b
             : <button type="button" class="btn btn-ghost btn-sm" onClick={() => choosePlayer(p.key)}>Alege</button>}
         </header>
       )}
-      <ul class="kinds bk-brief" aria-label="Progres pe cărți">
-        {books.map((b) => <BookBrief key={b.slug} p={p} book={b} />)}
-      </ul>
+      <TypeBars p={p} books={books} />
       <button type="button" class="btn-reset link small bk-toggle" aria-expanded={details} onClick={() => setDetails(!details)}>{details ? 'Ascunde detaliile' : 'Vezi detaliile'}</button>
       {details && books.map((b) => <BookStats key={b.slug} p={p} book={b} />)}
       <footer class="pl-foot">
@@ -173,19 +171,27 @@ function useBookProgress(p: Player, book: string): { data: Summary; loaded: bool
   return state;
 }
 
-/** One line per book: the questions known in the age group the player works on most. Everything else is behind "Vezi detaliile". */
-function BookBrief({ p, book }: { p: Player; book: BookInfo }) {
-  const { data: d, loaded } = useBookProgress(p, book.slug);
-  const levels = AGE_GROUPS.filter((g) => (book.totals[g.id] ?? 0) > 0);
-  const top = levels.reduce((a, g) => ((d.byLevel?.[g.id] ?? 0) > (d.byLevel?.[a.id] ?? 0) ? g : a), levels[0]);
-  const t = book.totals[top.id] ?? 0;
-  const m = d.byLevel?.[top.id] ?? 0;
+/** How well a player answers, per kind of question, over all the books. It is a share of the answers given, so the number of questions does not matter. */
+function TypeBars({ p, books }: { p: Player; books: BookInfo[] }) {
+  const all = books.map((b) => useBookProgress(p, b.slug));
+  const loaded = all.every((x) => x.loaded);
+  const kinds = TYPES.map((t) => ({
+    ...t,
+    n: all.reduce((s, x) => s + (x.data.stats[t.t]?.n ?? 0), 0),
+    r: all.reduce((s, x) => s + (x.data.stats[t.t]?.r ?? 0), 0),
+  })).filter((k) => k.n > 0);
+  if (!loaded) return <Loader small />;
+  if (!kinds.length) return <p class="small muted">Nu a început încă.</p>;
   return (
-    <li>
-      <span class="kind-name">{book.name}{m > 0 ? ` · ${ageShort(top.id)}` : ''}</span>
-      <span class="kind-bar" aria-hidden="true"><span style={{ width: loaded && t ? `${(m / t) * 100}%` : '0%' }} /></span>
-      <span class="kind-n">{loaded ? `${m}/${t}` : '–'}</span>
-    </li>
+    <ul class="kinds bk-brief" aria-label="Cât de bine răspunde, pe tipuri de întrebări">
+      {kinds.map((k) => (
+        <li class={k.r === k.n ? 'is-full' : k.r === 0 ? 'is-zero' : ''}>
+          <span class="kind-name">{k.t === 'fill' ? 'Completare versete' : k.short}</span>
+          <span class="kind-bar" aria-hidden="true"><span style={{ width: `${(k.r / k.n) * 100}%` }} /></span>
+          <span class="kind-n">{Math.round((k.r / k.n) * 100)}%</span>
+        </li>
+      ))}
+    </ul>
   );
 }
 
@@ -202,7 +208,6 @@ function BookStats({ p, book }: { p: Player; book: BookInfo }) {
   const lv = picked && levels.some((g) => g.id === picked) ? picked : top.id;
   const t = book.totals[lv] ?? 0;
   const m = d.byLevel?.[lv] ?? 0;
-  const kinds = TYPES.map((k) => ({ ...k, n: d.stats[k.t]?.n ?? 0, r: d.stats[k.t]?.r ?? 0 })).filter((k) => k.n > 0);
 
   return (
     <section class="bk">
@@ -223,23 +228,7 @@ function BookStats({ p, book }: { p: Player; book: BookInfo }) {
               <span class="kind-n">{m}/{t}</span>
             </li>
           </ul>
-          {kinds.length > 0 && (
-            <>
-              <p class="bk-head">Cât de bine răspunzi <small>(pe tipuri de întrebări)</small></p>
-              <ul class="kinds" aria-label="Pe tipuri de întrebări">
-                {kinds.map((k) => (
-                  <li class={k.r === k.n ? 'is-full' : k.r === 0 ? 'is-zero' : ''}>
-                    <span class="kind-name">{k.t === 'fill' ? 'Completare versete' : k.short}</span>
-                    <span class="kind-bar" aria-hidden="true"><span style={{ width: `${(k.r / k.n) * 100}%` }} /></span>
-                    <span class="kind-n">{Math.round((k.r / k.n) * 100)}%</span>
-                  </li>
-                ))}
-              </ul>
-            </>
-          )}
-          <dl class="kv">
-            <div><dt>Examene făcute</dt><dd>{examsDone}</dd></div>
-          </dl>
+          <p class="small muted">Examene făcute: <strong>{examsDone}</strong></p>
         </>
       )}
     </section>
