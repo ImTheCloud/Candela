@@ -60,7 +60,7 @@
    "age": "sub12",
    "t": "one",
    "ref": "2:12",
-   "q": "Cum erau fiii lui Eli?",
+   "q": "Cum erau fiii lui Eli, preotul de la Silo?",
    "opts": [
     "niște oameni mici de tot",
     "niște oameni blânzi",
@@ -191,7 +191,7 @@
    "age": "sub12",
    "t": "multi",
    "ref": "2:12",
-   "q": "Ce se spune despre fiii lui Eli?",
+   "q": "Ce se spune despre fiii preotului Eli?",
    "opts": [
     "slujeau cu bucurie",
     "erau oameni răi",
@@ -207,7 +207,7 @@
    "age": "sub12",
    "t": "multi",
    "ref": "2:18",
-   "q": "Ce se spune despre Samuel?",
+   "q": "Ce se spune despre micul Samuel, slujitorul din Silo?",
    "opts": [
     "stătea toată ziua pe câmp",
     "făcea slujba înaintea Domnului",
@@ -487,9 +487,9 @@
    "age": "12-13",
    "t": "multi",
    "ref": "2:21",
-   "q": "Ce se spune despre Ana?",
+   "q": "Ce se spune despre Ana după nașterea lui Samuel?",
    "opts": [
-    "a rămas fără copii",
+    "a rămas fără alți copii",
     "Domnul a cercetat-o",
     "a născut trei fii și două fiice"
    ],
@@ -503,7 +503,7 @@
    "age": "12-13",
    "t": "multi",
    "ref": "2:22",
-   "q": "Ce a aflat Eli despre fiii lui?",
+   "q": "Ce a aflat bătrânul Eli despre fiii lui, preoții de la Silo?",
    "opts": [
     "că greșeau la ușa cortului întâlnirii",
     "că se închinau la idoli",
@@ -551,7 +551,7 @@
    "age": "14-15",
    "t": "tf",
    "ref": "2:25",
-   "q": "Fiii lui Eli au ascultat de sfatul tatălui lor.",
+   "q": "Când Eli i-a mustrat la Silo, fiii lui au ascultat de sfatul tatălui lor.",
    "a": false
   },
   {
@@ -601,11 +601,11 @@
    "age": "14-15",
    "t": "one",
    "ref": "2:20",
-   "q": "Pe cine vor înlocui copiii pe care îi va avea Ana?",
+   "q": "Pe cine vor înlocui copiii pe care îi va avea Ana, după binecuvântarea lui Eli?",
    "opts": [
-    "pe fiii lui Eli",
+    "pe fiii lui Eli, preoții",
     "pe cel împrumutat Domnului",
-    "pe Elcana"
+    "pe Elcana, bărbatul ei"
    ],
    "a": 1
   },
@@ -732,9 +732,9 @@
    "age": "14-15",
    "t": "multi",
    "ref": "2:29",
-   "q": "De ce l-a mustrat Domnul pe Eli?",
+   "q": "De ce l-a mustrat Domnul pe Eli, prin omul lui Dumnezeu?",
    "opts": [
-    "a oprit jertfele",
+    "a oprit jertfele aduse la Silo",
     "a călcat în picioare jertfele Lui",
     "și-a cinstit fiii mai mult decât pe Domnul"
    ],
@@ -748,10 +748,10 @@
    "age": "14-15",
    "t": "multi",
    "ref": "2:25",
-   "q": "Ce a întrebat Eli pe fiii lui?",
+   "q": "Ce a întrebat Eli pe fiii lui, când i-a mustrat la Silo?",
    "opts": [
-    "cine va judeca pe cel ce păcătuiește împotriva unui om",
-    "cine va aduce jertfa în locul lor",
+    "cine va judeca pe cel ce păcătuiește împotriva altui om",
+    "cine va aduce jertfele pentru ei, în locul preoților de la Silo",
     "cine se va ruga pentru cel ce păcătuiește împotriva Domnului"
    ],
    "a": [
@@ -764,11 +764,11 @@
    "age": "14-15",
    "t": "multi",
    "ref": "2:27",
-   "q": "Ce a spus omul lui Dumnezeu despre casa tatălui lui Eli?",
+   "q": "Ce a spus omul lui Dumnezeu lui Eli despre casa tatălui lui?",
    "opts": [
     "Domnul a ales-o ca să fie în preoție",
     "Domnul S-a descoperit ei în Egipt",
-    "Domnul i-a poruncit să plece"
+    "Domnul i-a poruncit să plece din Silo"
    ],
    "a": [
     0,
@@ -780,11 +780,11 @@
    "age": "14-15",
    "t": "multi",
    "ref": "2:7",
-   "q": "Ce a spus Ana că face Domnul?",
+   "q": "Ce a spus Ana în cântarea ei despre ce face Domnul cu oamenii?",
    "opts": [
-    "îmbogățește",
-    "pedepsește pe cei săraci",
-    "sărăcește"
+    "îmbogățește pe alții",
+    "pedepsește pe toți cei săraci",
+    "sărăcește pe unii"
    ],
    "a": [
     0,
@@ -849,7 +849,7 @@
    "age": "16-17",
    "t": "one",
    "ref": "2:36",
-   "q": "Ce cereau cei rămași din casa lui Eli, pentru un ban de argint?",
+   "q": "Ce cereau cei rămași din casa lui Eli, după vestirea omului lui Dumnezeu?",
    "opts": [
     "să li se dea o bucată de pământ",
     "să li se dea o turmă de oi",
@@ -875,7 +875,7 @@
    "age": "16-17",
    "t": "one",
    "ref": "2:22",
-   "q": "Unde slujeau femeile de care se culcau fiii lui Eli?",
+   "q": "Unde slujeau femeile de care vorbește capitolul despre fiii lui Eli?",
    "opts": [
     "la poarta cetății Silo",
     "la ușa cortului întâlnirii",
@@ -892,7 +892,7 @@
    "opts": [
     "pieptarul de judecată",
     "toiagul lui Aaron",
-    "efodul"
+    "efodul preoțesc"
    ],
    "a": 2
   },
@@ -1012,11 +1012,11 @@
    "age": "16-17",
    "t": "multi",
    "ref": "2:8",
-   "q": "Ce face Domnul pentru cel sărac?",
+   "q": "Ce spune cântarea Anei despre ce face Domnul pentru cel sărac?",
    "opts": [
     "îl ridică din pulbere",
-    "îl pune stăpân peste toți",
-    "îl pune să șadă alături cu cei mari"
+    "îl face stăpân peste toți",
+    "îl așază alături de cei mari"
    ],
    "a": [
     0,
@@ -1028,10 +1028,10 @@
    "age": "16-17",
    "t": "multi",
    "ref": "2:33",
-   "q": "Ce se va întâmpla cu casa lui Eli?",
+   "q": "Ce a vestit omul lui Dumnezeu că se va întâmpla cu casa lui Eli?",
    "opts": [
     "ochii lui se vor topi de durere",
-    "toți vor fi iertați",
+    "toți vor fi iertați de Domnul",
     "unul va rămâne la altar"
    ],
    "a": [
@@ -1044,7 +1044,7 @@
    "age": "16-17",
    "t": "multi",
    "ref": "2:31",
-   "q": "Ce va tăia Domnul?",
+   "q": "Ce a vestit omul lui Dumnezeu că va tăia Domnul din casa lui Eli?",
    "opts": [
     "brațul casei tatălui lui",
     "brațul lui Eli",
@@ -1116,7 +1116,7 @@
    "q": "Ce a așezat Domnul pe stâlpii pământului?",
    "opts": [
     "cetatea Ierusalim",
-    "lumea",
+    "lumea întreagă",
     "cortul întâlnirii"
    ],
    "a": 1
@@ -1139,7 +1139,7 @@
    "age": "18+",
    "t": "one",
    "ref": "2:30",
-   "q": "Ce spusese Domnul înainte despre casa lui Eli?",
+   "q": "Ce spusese Domnul înainte despre casa lui Eli, prin omul lui Dumnezeu?",
    "opts": [
     "că va locui totdeauna în Silo",
     "că va umbla totdeauna înaintea Lui",
@@ -1244,7 +1244,7 @@
    "age": "18+",
    "t": "multi",
    "ref": "2:34",
-   "q": "Ce semn a dat Domnul lui Eli?",
+   "q": "Ce semn i-a dat Domnul lui Eli, prin omul lui Dumnezeu?",
    "opts": [
     "Hofni și Fineas vor muri",
     "amândoi într-o zi",
@@ -1260,7 +1260,7 @@
    "age": "18+",
    "t": "multi",
    "ref": "2:36",
-   "q": "Ce vor cere cei rămași din casa lui Eli?",
+   "q": "Ce vor cere cei rămași din casa lui Eli, după căderea casei?",
    "opts": [
     "pentru un ban de aur",
     "să fie puși într-o slujbă a preoției",
@@ -1276,7 +1276,7 @@
    "age": "18+",
    "t": "multi",
    "ref": "2:6",
-   "q": "Ce spune Ana despre Domnul?",
+   "q": "Ce spune Ana în cântarea ei despre puterea Domnului?",
    "opts": [
     "zidește cetăți și le dărâmă",
     "coboară în Locuința morților și scoate de acolo",
@@ -1292,11 +1292,11 @@
    "age": "18+",
    "t": "multi",
    "ref": "2:16",
-   "q": "Ce zicea sluga dacă omul voia să aștepte arderea grăsimii?",
+   "q": "Ce zicea sluga preotului, dacă omul care aducea jertfa voia să aștepte arderea grăsimii?",
    "opts": [
-    "Dă-mi acum",
-    "Așteaptă până dimineață",
-    "Nu!"
+    "Dă-mi carnea acum",
+    "Așteaptă până seara",
+    "Nu, dă-mi-o chiar acum"
    ],
    "a": [
     0,
