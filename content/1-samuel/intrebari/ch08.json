@@ -3,23 +3,23 @@
  "reviewed": false,
  "questions": [
   {
-   "id": "1sa.8.sub12.101",
+   "id": "1sa.8.sub12.201",
    "age": "sub12",
    "t": "tf",
    "ref": "8:5",
-   "q": "Poporul a cerut un împărat.",
+   "q": "Bătrânii lui Israel au cerut un împărat.",
    "a": true
   },
   {
-   "id": "1sa.8.sub12.102",
+   "id": "1sa.8.sub12.202",
    "age": "sub12",
    "t": "tf",
-   "ref": "8:1",
-   "q": "Samuel a îmbătrânit.",
-   "a": true
+   "ref": "8:3",
+   "q": "Fiii lui Samuel mergeau pe urmele lui și erau drepți.",
+   "a": false
   },
   {
-   "id": "1sa.8.sub12.103",
+   "id": "1sa.8.sub12.203",
    "age": "sub12",
    "t": "tf",
    "ref": "8:6",
@@ -27,117 +27,127 @@
    "a": true
   },
   {
-   "id": "1sa.8.sub12.104",
+   "id": "1sa.8.sub12.204",
    "age": "sub12",
    "t": "tf",
-   "ref": "8:3",
-   "q": "Fiii lui Samuel erau drepți ca tatăl lor.",
-   "a": false
+   "ref": "8:1",
+   "q": "Samuel a pus pe fiii lui judecători peste Israel.",
+   "a": true
   },
   {
-   "id": "1sa.8.sub12.105",
+   "id": "1sa.8.sub12.205",
    "age": "sub12",
    "t": "tf",
    "ref": "8:19",
-   "q": "Poporul a ascultat de Samuel și nu a mai cerut împărat.",
+   "q": "Poporul a ascultat de Samuel și n-a mai cerut împărat.",
    "a": false
   },
   {
-   "id": "1sa.8.sub12.106",
+   "id": "1sa.8.sub12.206",
    "age": "sub12",
    "t": "one",
-   "ref": "8:5",
-   "q": "Ce a cerut poporul de la Samuel?",
+   "ref": "8:7",
+   "q": "Ce i-a zis Domnul lui Samuel despre popor?",
    "opts": [
-    "un împărat",
-    "mai multă ploaie",
-    "o casă"
-   ],
-   "a": 0
-  },
-  {
-   "id": "1sa.8.sub12.107",
-   "age": "sub12",
-   "t": "one",
-   "ref": "8:4",
-   "q": "La cine au venit bătrânii lui Israel?",
-   "opts": [
-    "la Eli",
-    "la Saul",
-    "la Samuel"
+    "să-i alunge din țară",
+    "să-i închidă în cetate",
+    "să le asculte glasul"
    ],
    "a": 2
   },
   {
-   "id": "1sa.8.sub12.108",
+   "id": "1sa.8.sub12.207",
    "age": "sub12",
    "t": "one",
-   "ref": "8:6",
-   "q": "Ce a făcut Samuel când nu i-a plăcut cererea poporului?",
+   "ref": "8:5",
+   "q": "Ce au cerut bătrânii lui Israel?",
    "opts": [
-    "s-a rugat Domnului",
-    "a râs",
-    "a fugit"
+    "un împărat",
+    "o armată nouă",
+    "un templu nou"
    ],
    "a": 0
   },
   {
-   "id": "1sa.8.sub12.109",
+   "id": "1sa.8.sub12.208",
+   "age": "sub12",
+   "t": "one",
+   "ref": "8:2",
+   "q": "Cum se numeau fiii lui Samuel?",
+   "opts": [
+    "Ioel și Abia",
+    "Hofni și Fineas",
+    "Chis și Saul"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.8.sub12.209",
    "age": "sub12",
    "t": "one",
    "ref": "8:3",
-   "q": "Cum s-au purtat fiii lui Samuel?",
+   "q": "Ce făceau fiii lui Samuel?",
    "opts": [
-    "ca niște păstori",
-    "rău, luau mită",
-    "ca tatăl lor"
+    "ajutau pe cei săraci",
+    "păzeau chivotul",
+    "luau mită de la oameni"
    ],
-   "a": 1
+   "a": 2
   },
   {
-   "id": "1sa.8.sub12.110",
+   "id": "1sa.8.sub12.210",
    "age": "sub12",
    "t": "one",
-   "ref": "8:7",
-   "q": "Ce i-a zis Domnul lui Samuel?",
+   "ref": "8:4",
+   "q": "Unde au venit bătrânii la Samuel?",
    "opts": [
-    "„Nu asculta”",
-    "„Ascultă glasul poporului”",
-    "„Pleacă din țară”"
+    "la Rama, acasă la el",
+    "la Ierihon, lângă ziduri",
+    "în Egipt, la Faraon"
    ],
-   "a": 1
+   "a": 0
   },
   {
-   "id": "1sa.8.sub12.121",
+   "id": "1sa.8.sub12.211",
    "age": "sub12",
    "t": "match",
    "ref": "8:1-22",
-   "q": "Asociază fiecare nume sau lucru cu ce se spune despre el în capitol.",
+   "q": "Asociază fiecare nume cu ce se spune despre el.",
    "pairs": [
     [
      "Samuel",
-     "judecătorul cel bătrân"
+     "judecătorul bătrân"
     ],
     [
-     "fiii lui Samuel",
-     "nu au mers pe urmele lui"
+     "Ioel și Abia",
+     "fiii lui Samuel"
     ],
     [
      "bătrânii",
-     "au cerut un împărat"
+     "cei care au cerut un împărat"
+    ],
+    [
+     "Rama",
+     "unde au venit bătrânii"
     ],
     [
      "Domnul",
-     "i-a zis lui Samuel să asculte poporul"
-    ],
-    [
-     "împăratul",
-     "cel pe care îl voia poporul"
+     "cel care a zis „Ascultă-le glasul”"
     ]
    ]
   },
   {
-   "id": "1sa.8.sub12.111",
+   "id": "1sa.8.sub12.212",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "8:3",
+   "q": "Fiii lui Samuel n-au călcat pe urmele lui, ci se dădeau la lăcomie, luau ___ și călcau dreptatea.",
+   "a": [
+    "mită"
+   ]
+  },
+  {
+   "id": "1sa.8.sub12.213",
    "age": "sub12",
    "t": "fill",
    "ref": "8:5",
@@ -147,7 +157,27 @@
    ]
   },
   {
-   "id": "1sa.8.sub12.112",
+   "id": "1sa.8.sub12.214",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "8:22",
+   "q": "Și Samuel a zis bărbaților lui Israel: „Duceți-vă fiecare în ___ lui.\"",
+   "a": [
+    "cetatea"
+   ]
+  },
+  {
+   "id": "1sa.8.sub12.215",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "8:2",
+   "q": "Fiul său întâi născut se numea Ioel și al doilea, Abia; ei erau judecători la ___.",
+   "a": [
+    "Beer-Șeba"
+   ]
+  },
+  {
+   "id": "1sa.8.sub12.216",
    "age": "sub12",
    "t": "fill",
    "ref": "8:1",
@@ -157,45 +187,15 @@
    ]
   },
   {
-   "id": "1sa.8.sub12.113",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "8:6",
-   "q": "Samuel n-a văzut cu plăcere faptul că ziceau: „Dă-ne un împărat ca să ne judece.\" Și Samuel s-a rugat ___.",
-   "a": [
-    "Domnului"
-   ]
-  },
-  {
-   "id": "1sa.8.sub12.114",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "8:22",
-   "q": "Și Domnul a zis lui Samuel: „Ascultă-le glasul și pune un împărat peste ___.\" Și Samuel a zis bărbaților lui Israel: „Duceți-vă fiecare în cetatea lui.\"",
-   "a": [
-    "ei"
-   ]
-  },
-  {
-   "id": "1sa.8.sub12.115",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "8:20",
-   "q": "ca să fim și noi ca toate ___; împăratul nostru ne va judeca, va merge în fruntea noastră și ne va cârmui în războaiele noastre.\"",
-   "a": [
-    "neamurile"
-   ]
-  },
-  {
-   "id": "1sa.8.sub12.116",
+   "id": "1sa.8.sub12.217",
    "age": "sub12",
    "t": "multi",
-   "ref": "8:4",
-   "q": "Cine au venit la Samuel?",
+   "ref": "8:22",
+   "q": "Ce a zis Domnul lui Samuel?",
    "opts": [
-    "ei s-au strâns la Rama",
-    "bătrânii lui Israel",
-    "copiii din școală"
+    "pune un împărat peste ei",
+    "ascultă-le glasul",
+    "pune un judecător nou"
    ],
    "a": [
     0,
@@ -203,15 +203,47 @@
    ]
   },
   {
-   "id": "1sa.8.sub12.117",
+   "id": "1sa.8.sub12.218",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "8:19",
+   "q": "Ce au zis oamenii?",
+   "opts": [
+    "să fim ca toate neamurile",
+    "vrem un împărat",
+    "vrem un judecător nou"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.8.sub12.219",
    "age": "sub12",
    "t": "multi",
    "ref": "8:3",
-   "q": "Cum s-au purtat fiii lui Samuel?",
+   "q": "Ce făceau fiii lui Samuel?",
    "opts": [
-    "erau drepți",
     "luau mită",
-    "nu mergeau pe urmele lui"
+    "se dădeau la lăcomie",
+    "ascultau de tatăl lor"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.8.sub12.220",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "8:6",
+   "q": "Ce a făcut Samuel?",
+   "opts": [
+    "a dat o petrecere",
+    "n-a văzut cu plăcere cererea",
+    "s-a rugat Domnului"
    ],
    "a": [
     1,
@@ -219,493 +251,198 @@
    ]
   },
   {
-   "id": "1sa.8.sub12.118",
+   "id": "1sa.8.sub12.221",
    "age": "sub12",
    "t": "multi",
-   "ref": "8:11",
-   "q": "Ce va face împăratul, după Samuel?",
+   "ref": "8:5",
+   "q": "Ce au zis bătrânii lui Samuel?",
    "opts": [
-    "va lua din câmpiile lor",
-    "va ridica școli",
-    "va lua pe fiii lor la carele lui"
+    "tu ești prea slab",
+    "copiii tăi nu calcă pe urmele tale",
+    "tu ești bătrân"
    ],
    "a": [
-    0,
+    1,
     2
    ]
   },
   {
-   "id": "1sa.8.sub12.119",
-   "age": "sub12",
-   "t": "multi",
-   "ref": "8:7",
-   "q": "Ce i-a zis Domnul lui Samuel?",
-   "opts": [
-    "că nu pe el îl leapădă",
-    "să asculte glasul poporului",
-    "să plece"
-   ],
-   "a": [
-    0,
-    1
-   ]
-  },
-  {
-   "id": "1sa.8.sub12.120",
-   "age": "sub12",
-   "t": "multi",
-   "ref": "8:5",
-   "q": "De ce au cerut un împărat?",
-   "opts": [
-    "fiii lui nu mergeau pe urmele lui",
-    "Samuel era bătrân",
-    "pentru că era iarnă"
-   ],
-   "a": [
-    0,
-    1
-   ]
-  },
-  {
-   "id": "1sa.8.12-13.1",
+   "id": "1sa.8.12-13.201",
    "age": "12-13",
    "t": "tf",
    "ref": "8:2",
-   "q": "Fiii lui Samuel erau judecători la Beer-Șeba.",
+   "q": "Ioel și Abia erau judecători la Beer-Șeba.",
    "a": true
   },
   {
-   "id": "1sa.8.12-13.2",
+   "id": "1sa.8.12-13.202",
    "age": "12-13",
    "t": "tf",
-   "ref": "8:6",
-   "q": "Samuel s-a bucurat când poporul a cerut un împărat.",
-   "a": false,
-   "explain": "Samuel n-a văzut cu plăcere cererea lor și s-a rugat Domnului (8:6)."
+   "ref": "8:4",
+   "q": "Bătrânii au venit la Samuel la Silo.",
+   "a": false
   },
   {
-   "id": "1sa.8.12-13.3",
+   "id": "1sa.8.12-13.203",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "8:22",
+   "q": "Samuel a trimis pe bărbați fiecare în cetatea lui.",
+   "a": true
+  },
+  {
+   "id": "1sa.8.12-13.204",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "8:7",
+   "q": "Domnul a zis că nu pe Samuel îl leapădă poporul, ci pe El.",
+   "a": true
+  },
+  {
+   "id": "1sa.8.12-13.205",
    "age": "12-13",
    "t": "tf",
    "ref": "8:19",
-   "q": "Poporul n-a vrut să asculte glasul lui Samuel despre dreptul împăratului.",
-   "a": true
+   "q": "Poporul a primit cu bucurie sfatul lui Samuel.",
+   "a": false
   },
   {
-   "id": "1sa.8.12-13.16",
-   "age": "12-13",
-   "t": "tf",
-   "ref": "8:5",
-   "q": "Bătrânii au spus: „Tu ești bătrân și copiii tăi nu calcă pe urmele tale.”",
-   "a": true
-  },
-  {
-   "id": "1sa.8.12-13.17",
-   "age": "12-13",
-   "t": "tf",
-   "ref": "8:22",
-   "q": "Domnul i-a spus lui Samuel să nu pună împărat peste popor.",
-   "a": false,
-   "explain": "I-a spus: „Ascultă-le glasul și pune un împărat peste ei.”"
-  },
-  {
-   "id": "1sa.8.12-13.4",
+   "id": "1sa.8.12-13.206",
    "age": "12-13",
    "t": "one",
-   "ref": "8:9",
-   "q": "Ce i-a cerut Domnul lui Samuel să le facă cunoscut celor care cereau un împărat?",
+   "ref": "8:3",
+   "q": "Cum se purtau fiii lui Samuel?",
    "opts": [
-    "ziua ungerii",
-    "numele împăratului",
-    "dreptul împăratului care va domni peste ei"
-   ],
-   "a": 2
-  },
-  {
-   "id": "1sa.8.12-13.5",
-   "age": "12-13",
-   "t": "one",
-   "ref": "8:18",
-   "q": "Ce spunea Samuel că se va întâmpla când vor striga împotriva împăratului?",
-   "opts": [
-    "Domnul nu-i va asculta",
-    "împăratul va pleca",
-    "Domnul îi va scăpa"
-   ],
-   "a": 0
-  },
-  {
-   "id": "1sa.8.12-13.6",
-   "age": "12-13",
-   "t": "one",
-   "ref": "8:22",
-   "q": "Ce le-a spus Samuel bărbaților lui Israel la sfârșit?",
-   "opts": [
-    "„Duceți-vă fiecare în cetatea lui.\"",
-    "„Mâine vă dau un împărat\"",
-    "„Rămâneți aici\""
-   ],
-   "a": 0
-  },
-  {
-   "id": "1sa.8.12-13.18",
-   "age": "12-13",
-   "t": "one",
-   "ref": "8:11",
-   "q": "Unde spunea Samuel că împăratul va pune pe fiii poporului?",
-   "opts": [
-    "la păzirea cortului",
-    "la zidirea cetăților",
-    "la carele sale și între călăreții lui"
-   ],
-   "a": 2
-  },
-  {
-   "id": "1sa.8.12-13.19",
-   "age": "12-13",
-   "t": "one",
-   "ref": "8:16",
-   "q": "Ce va lua împăratul, pe lângă robi și roabe?",
-   "opts": [
-    "toate caprele",
-    "cei mai buni boi și măgari",
-    "toți caii"
+    "apărau pe cei săraci și pe văduve",
+    "luau mită și călcau dreptatea",
+    "ascultau de poruncile Legii și ale tatălui lor"
    ],
    "a": 1
   },
   {
-   "id": "1sa.8.12-13.24",
+   "id": "1sa.8.12-13.207",
    "age": "12-13",
-   "t": "match",
-   "ref": "8:8-17",
-   "q": "Asociază fiecare lucru cu ce se spune despre el.",
-   "pairs": [
-    [
-     "zeciuiala din oi",
-     "ce va lua împăratul"
-    ],
-    [
-     "miresme, mâncare și pâine",
-     "ce vor face fetele pentru împărat"
-    ],
-    [
-     "căpetenii peste o mie",
-     "puse de împărat"
-    ],
-    [
-     "Egipt",
-     "țara din care Domnul i-a scos pe israeliți"
-    ],
-    [
-     "dreptul împăratului",
-     "ce a trebuit să le spună Samuel"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.8.12-13.10",
-   "age": "12-13",
-   "t": "fill",
-   "ref": "8:7",
-   "a": [
-    "Mine"
-   ],
-   "q": "Domnul a zis lui Samuel: „Ascultă glasul poporului în tot ce-ți va spune, căci nu pe tine te leapădă, ci pe ___ mă leapădă, ca să nu mai domnesc peste ei.",
-   "ctx": "Domnul, către Samuel:"
-  },
-  {
-   "id": "1sa.8.12-13.11",
-   "age": "12-13",
-   "t": "fill",
-   "ref": "8:3",
-   "a": [
-    "mită"
-   ],
-   "q": "Fiii lui Samuel n-au călcat pe urmele lui, ci se dădeau la lăcomie, luau ___ și călcau dreptatea.",
-   "ctx": "Despre fiii lui Samuel, judecători:"
-  },
-  {
-   "id": "1sa.8.12-13.12",
-   "age": "12-13",
-   "t": "fill",
-   "ref": "8:17",
-   "a": [
-    "slugile"
-   ],
-   "q": "Va lua zeciuială din oile voastre și voi înșivă veți fi ___ lui.",
-   "ctx": "Samuel, despre dreptul împăratului:"
-  },
-  {
-   "id": "1sa.8.12-13.20",
-   "age": "12-13",
-   "t": "fill",
-   "ref": "8:11",
-   "q": "El a zis: „Iată care va fi dreptul împăratului care va domni peste voi. El va lua pe fiii voștri, îi va pune la carele sale și între ___ lui, ca să alerge înaintea carului lui;",
-   "a": [
-    "călăreții"
-   ]
-  },
-  {
-   "id": "1sa.8.12-13.21",
-   "age": "12-13",
-   "t": "fill",
-   "ref": "8:1",
-   "q": "Când a îmbătrânit, Samuel a pus pe fiii săi ___ peste Israel.",
-   "a": [
-    "judecători"
-   ]
-  },
-  {
-   "id": "1sa.8.12-13.13",
-   "age": "12-13",
-   "t": "multi",
-   "ref": "8:12",
-   "q": "La ce îi va folosi împăratul pe fiii poporului?",
-   "opts": [
-    "la seceratul bucatelor",
-    "la aratul pământurilor",
-    "la facerea armelor de război"
-   ],
-   "a": [
-    0,
-    1,
-    2
-   ]
-  },
-  {
-   "id": "1sa.8.12-13.14",
-   "age": "12-13",
-   "t": "multi",
-   "ref": "8:5",
-   "q": "Ce motive au dat bătrânii pentru cererea lor?",
-   "opts": [
-    "Samuel nu mai voia să judece",
-    "fiii lui nu călcau pe urmele lui",
-    "Samuel era bătrân"
-   ],
-   "a": [
-    1,
-    2
-   ]
-  },
-  {
-   "id": "1sa.8.12-13.15",
-   "age": "12-13",
-   "t": "multi",
-   "ref": "8:13",
-   "q": "Ce va face împăratul cu fetele poporului?",
-   "opts": [
-    "le va da de neveste străinilor",
-    "le va face prorocițe",
-    "le va trimite la război"
-   ],
-   "a": [],
-   "explain": "Niciun răspuns corect: le va lua să-i facă miresme, de mâncare și pâine (8:13)."
-  },
-  {
-   "id": "1sa.8.12-13.22",
-   "age": "12-13",
-   "t": "multi",
-   "ref": "8:14-15",
-   "q": "Ce va lua împăratul?",
-   "opts": [
-    "doar o oaie de la fiecare",
-    "cea mai bună parte din câmpii, vii și măslini",
-    "zeciuială din rodul semințelor și viilor"
-   ],
-   "a": [
-    1,
-    2
-   ]
-  },
-  {
-   "id": "1sa.8.12-13.23",
-   "age": "12-13",
-   "t": "multi",
-   "ref": "8:17-18",
-   "q": "Ce spunea Samuel că se va întâmpla?",
-   "opts": [
-    "vor striga împotriva împăratului și Domnul nu-i va asculta",
-    "poporul va fi slugile împăratului",
-    "vor deveni bogați"
-   ],
-   "a": [
-    0,
-    1
-   ]
-  },
-  {
-   "id": "1sa.8.14-15.1",
-   "age": "14-15",
-   "t": "tf",
-   "ref": "8:8",
-   "q": "Domnul spune că poporul s-a purtat așa de când l-a scos din Egipt.",
-   "a": true
-  },
-  {
-   "id": "1sa.8.14-15.2",
-   "age": "14-15",
-   "t": "tf",
-   "ref": "8:15",
-   "q": "Samuel a spus că împăratul va lua o treime din rodul semințelor și viilor.",
-   "a": false,
-   "explain": "Va lua zeciuială (8:15)."
-  },
-  {
-   "id": "1sa.8.14-15.3",
-   "age": "14-15",
-   "t": "tf",
-   "ref": "8:21",
-   "q": "Samuel a spus în auzul Domnului toate cuvintele poporului.",
-   "a": true
-  },
-  {
-   "id": "1sa.8.14-15.16",
-   "age": "14-15",
-   "t": "tf",
-   "ref": "8:20",
-   "q": "Poporul voia un împărat care să meargă în fruntea lui și să-l cârmuiască în războaie.",
-   "a": true
-  },
-  {
-   "id": "1sa.8.14-15.17",
-   "age": "14-15",
-   "t": "tf",
-   "ref": "8:7",
-   "q": "Domnul a spus că poporul îl leapădă pe Samuel, nu pe El.",
-   "a": false,
-   "explain": "A spus: „Nu pe tine te leapădă, ci pe Mine mă leapădă.”"
-  },
-  {
-   "id": "1sa.8.14-15.4",
-   "age": "14-15",
    "t": "one",
-   "ref": "8:11",
-   "q": "Unde spunea Samuel că va pune împăratul pe fiii poporului?",
+   "ref": "8:20",
+   "q": "Ce au zis că va face împăratul lor?",
    "opts": [
-    "la carele lui și între călăreții lui",
-    "la paza cetății",
-    "în templu"
+    "va merge în fruntea lor",
+    "va zidi un templu mare",
+    "va aduce pace fără luptă"
    ],
    "a": 0
   },
   {
-   "id": "1sa.8.14-15.5",
-   "age": "14-15",
+   "id": "1sa.8.12-13.208",
+   "age": "12-13",
    "t": "one",
-   "ref": "8:12",
-   "q": "Ce căpetenii va pune împăratul?",
+   "ref": "8:5",
+   "q": "De ce au cerut bătrânii un împărat?",
    "opts": [
-    "peste zece mii",
-    "peste o sută și peste zece",
-    "peste o mie și peste cincizeci"
+    "Samuel era bolnav și plecase din țară",
+    "Samuel era bătrân, iar fiii lui nu-i urmau",
+    "Samuel nu mai voia să judece"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.8.12-13.209",
+   "age": "12-13",
+   "t": "one",
+   "ref": "8:8",
+   "q": "De când s-au purtat așa cu Domnul?",
+   "opts": [
+    "de când au intrat în Canaan",
+    "de când a murit Eli",
+    "de când i-a scos din Egipt"
    ],
    "a": 2
   },
   {
-   "id": "1sa.8.14-15.6",
-   "age": "14-15",
+   "id": "1sa.8.12-13.210",
+   "age": "12-13",
    "t": "one",
-   "ref": "8:6",
-   "q": "Ce a făcut Samuel când n-a văzut cu plăcere cererea poporului?",
+   "ref": "8:2",
+   "q": "Cum se numea fiul întâi născut al lui Samuel?",
    "opts": [
-    "a plecat la Beer-Șeba",
-    "s-a mâniat",
-    "s-a rugat Domnului"
+    "Elcana",
+    "Abia",
+    "Ioel"
    ],
    "a": 2
   },
   {
-   "id": "1sa.8.14-15.18",
-   "age": "14-15",
-   "t": "one",
-   "ref": "8:19",
-   "q": "Ce a răspuns poporul când Samuel i-a spus dreptul împăratului?",
-   "opts": [
-    "„Ne întoarcem la Silo”",
-    "„Să ne ia Domnul înapoi”",
-    "„Nu, ci să fie un împărat peste noi”"
-   ],
-   "a": 2
-  },
-  {
-   "id": "1sa.8.14-15.19",
-   "age": "14-15",
-   "t": "one",
-   "ref": "8:21",
-   "q": "Cui a spus Samuel cuvintele poporului?",
-   "opts": [
-    "lui Abia",
-    "lui Ioel",
-    "Domnului"
-   ],
-   "a": 2
-  },
-  {
-   "id": "1sa.8.14-15.24",
-   "age": "14-15",
+   "id": "1sa.8.12-13.211",
+   "age": "12-13",
    "t": "match",
-   "ref": "8:3-22",
-   "q": "Asociază fiecare lucru cu ce se spune despre el.",
+   "ref": "8:1-22",
+   "q": "Asociază fiecare nume sau lucru cu ce se spune despre el.",
    "pairs": [
     [
-     "mita",
-     "ce luau fiii lui Samuel"
+     "Beer-Șeba",
+     "unde judecau fiii lui Samuel"
+    ],
+    [
+     "Rama",
+     "unde s-au strâns bătrânii"
     ],
     [
      "Egipt",
-     "țara din care Domnul i-a scos pe israeliți"
+     "de unde i-a scos Domnul"
     ],
     [
-     "alți dumnezei",
-     "cei cărora le-a slujit poporul"
+     "neamurile",
+     "cele după care voiau să fie"
     ],
     [
-     "zeciuiala din oi",
-     "ce va lua împăratul"
-    ],
-    [
-     "cetatea lui",
-     "locul unde s-a dus fiecare, după porunca lui Samuel"
+     "Samuel",
+     "judecătorul care îmbătrânise"
     ]
    ]
   },
   {
-   "id": "1sa.8.14-15.10",
-   "age": "14-15",
+   "id": "1sa.8.12-13.212",
+   "age": "12-13",
    "t": "fill",
-   "ref": "8:18",
+   "ref": "8:6",
+   "q": "Samuel n-a văzut cu plăcere faptul că ziceau: „Dă-ne un împărat ca să ne judece.\" Și Samuel s-a ___ Domnului.",
    "a": [
-    "asculta"
-   ],
-   "q": "Și atunci veți striga împotriva împăratului vostru pe care-l veți alege, dar Domnul nu vă va ___.\"",
-   "ctx": "Samuel, către poporul care cerea un împărat:"
+    "rugat"
+   ]
   },
   {
-   "id": "1sa.8.14-15.11",
-   "age": "14-15",
-   "t": "fill",
-   "ref": "8:20",
-   "a": [
-    "neamurile"
-   ],
-   "q": "ca să fim și noi ca toate ___; împăratul nostru ne va judeca, va merge în fruntea noastră și ne va cârmui în războaiele noastre.\"",
-   "ctx": "Poporul, către Samuel:"
-  },
-  {
-   "id": "1sa.8.14-15.12",
-   "age": "14-15",
+   "id": "1sa.8.12-13.213",
+   "age": "12-13",
    "t": "fill",
    "ref": "8:8",
+   "q": "Ei se poartă cu tine cum s-au purtat totdeauna, de când i-am scos din ___ până în ziua de astăzi; M-au părăsit și au slujit altor dumnezei.",
    "a": [
-    "dumnezei"
-   ],
-   "q": "Ei se poartă cu tine cum s-au purtat totdeauna, de când i-am scos din Egipt până în ziua de astăzi; M-au părăsit și au slujit altor ___.",
-   "ctx": "Domnul, despre poporul lui Israel:"
+    "Egipt"
+   ]
   },
   {
-   "id": "1sa.8.14-15.20",
-   "age": "14-15",
+   "id": "1sa.8.12-13.214",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "8:20",
+   "q": "ca să fim și noi ca toate neamurile; împăratul nostru ne va judeca, va merge în fruntea noastră și ne va cârmui în ___ noastre.\"",
+   "a": [
+    "războaiele"
+   ]
+  },
+  {
+   "id": "1sa.8.12-13.215",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "8:3",
+   "q": "Fiii lui Samuel n-au călcat pe urmele lui, ci se dădeau la ___, luau mită și călcau dreptatea.",
+   "a": [
+    "lăcomie"
+   ]
+  },
+  {
+   "id": "1sa.8.12-13.216",
+   "age": "12-13",
    "t": "fill",
    "ref": "8:5",
    "q": "Ei au zis: „Iată că tu ești ___ și copiii tăi nu calcă pe urmele tale; acum pune un împărat peste noi să ne judece, cum au toate neamurile.\"",
@@ -714,24 +451,278 @@
    ]
   },
   {
-   "id": "1sa.8.14-15.21",
-   "age": "14-15",
-   "t": "fill",
-   "ref": "8:10",
-   "q": "Samuel a spus toate cuvintele ___ poporului care-i cerea un împărat.",
+   "id": "1sa.8.12-13.217",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "8:4",
+   "q": "Ce au făcut bătrânii?",
+   "opts": [
+    "au venit la Samuel, la Rama",
+    "s-au strâns",
+    "au mers la Silo"
+   ],
    "a": [
-    "Domnului"
+    0,
+    1
    ]
   },
   {
-   "id": "1sa.8.14-15.13",
+   "id": "1sa.8.12-13.218",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "8:2",
+   "q": "Ce se spune despre fiii lui Samuel?",
+   "opts": [
+    "unul se numea Ioel",
+    "unul se numea Saul",
+    "erau judecători"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.8.12-13.219",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "8:7",
+   "q": "Ce a zis Domnul despre popor?",
+   "opts": [
+    "pe Domnul L-au lepădat",
+    "au ascultat de Domnul",
+    "nu pe Samuel îl leapădă"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.8.12-13.220",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "8:9",
+   "q": "Ce trebuia să facă Samuel?",
+   "opts": [
+    "să le facă cunoscut dreptul împăratului",
+    "să-i alunge",
+    "să le asculte glasul"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.8.12-13.221",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "8:19",
+   "q": "Ce a făcut poporul?",
+   "opts": [
+    "n-a vrut să asculte",
+    "a plecat acasă",
+    "a cerut un împărat"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.8.14-15.201",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "8:7",
+   "q": "Domnul a zis că poporul L-a lepădat pe El, nu pe Samuel.",
+   "a": true
+  },
+  {
+   "id": "1sa.8.14-15.202",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "8:20",
+   "q": "Poporul a vrut un împărat care să-i cârmuiască în războaie.",
+   "a": true
+  },
+  {
+   "id": "1sa.8.14-15.203",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "8:18",
+   "q": "Samuel a spus că Domnul îi va asculta când vor striga împotriva împăratului.",
+   "a": false
+  },
+  {
+   "id": "1sa.8.14-15.204",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "8:9",
+   "q": "Domnul a spus să-i înștiințeze despre dreptul împăratului.",
+   "a": true
+  },
+  {
+   "id": "1sa.8.14-15.205",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "8:6",
+   "q": "Samuel s-a bucurat foarte mult de cererea poporului.",
+   "a": false
+  },
+  {
+   "id": "1sa.8.14-15.206",
+   "age": "14-15",
+   "t": "one",
+   "ref": "8:5",
+   "q": "Ce motiv au dat bătrânii cererii lor?",
+   "opts": [
+    "Samuel e bătrân, iar copiii lui nu-l urmează",
+    "filistenii se apropie de Rama",
+    "Samuel e bolnav și obosit de drum"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.8.14-15.207",
+   "age": "14-15",
+   "t": "one",
+   "ref": "8:18",
+   "q": "Ce se va întâmpla când vor striga împotriva împăratului?",
+   "opts": [
+    "Domnul îi va izbăvi",
+    "Domnul nu-i va asculta",
+    "Domnul va trimite alt împărat"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.8.14-15.208",
+   "age": "14-15",
+   "t": "one",
+   "ref": "8:20",
+   "q": "De ce voiau un împărat?",
+   "opts": [
+    "să-i aducă pace fără războaie",
+    "să-i judece și să-i cârmuiască în războaie",
+    "să-i ducă din nou în Egipt"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.8.14-15.209",
+   "age": "14-15",
+   "t": "one",
+   "ref": "8:8",
+   "q": "Ce au făcut israeliții de când i-a scos Domnul din Egipt?",
+   "opts": [
+    "L-au ascultat și au slujit numai Lui",
+    "L-au părăsit și au slujit altor dumnezei",
+    "au cerut doar judecători drepți"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.8.14-15.210",
+   "age": "14-15",
+   "t": "one",
+   "ref": "8:3",
+   "q": "Ce făceau fiii lui Samuel cu dreptatea?",
+   "opts": [
+    "o călcau",
+    "o învățau",
+    "o apărau"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.8.14-15.211",
+   "age": "14-15",
+   "t": "match",
+   "ref": "8:5-22",
+   "q": "Asociază fiecare spusă cu cine a rostit-o sau cu ce înseamnă.",
+   "pairs": [
+    [
+     "„nu pe tine te leapădă”",
+     "Domnul către Samuel"
+    ],
+    [
+     "„Dă-ne un împărat ca să ne judece”",
+     "bătrânii"
+    ],
+    [
+     "„dreptul împăratului”",
+     "ce trebuia spus poporului"
+    ],
+    [
+     "„Duceți-vă fiecare în cetatea lui”",
+     "Samuel către bărbați"
+    ],
+    [
+     "„ca toate neamurile”",
+     "dorința poporului"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.8.14-15.212",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "8:20",
+   "q": "ca să fim și noi ca toate neamurile; împăratul nostru ne va judeca, va merge în fruntea noastră și ne va ___ în războaiele noastre.\"",
+   "a": [
+    "cârmui"
+   ]
+  },
+  {
+   "id": "1sa.8.14-15.213",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "8:9",
+   "q": "Ascultă-le glasul deci, dar ___-i și fă-le cunoscut dreptul împăratului care va domni peste ei.\"",
+   "a": [
+    "înștiințează"
+   ]
+  },
+  {
+   "id": "1sa.8.14-15.214",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "8:8",
+   "q": "Ei se poartă cu tine cum s-au purtat totdeauna, de când i-am scos din Egipt până în ziua de astăzi; M-au ___ și au slujit altor dumnezei.",
+   "a": [
+    "părăsit"
+   ]
+  },
+  {
+   "id": "1sa.8.14-15.215",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "8:18",
+   "q": "Și atunci veți ___ împotriva împăratului vostru pe care-l veți alege, dar Domnul nu vă va asculta.\"",
+   "a": [
+    "striga"
+   ]
+  },
+  {
+   "id": "1sa.8.14-15.216",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "8:7",
+   "q": "Domnul a zis lui Samuel: „Ascultă glasul poporului în tot ce-ți va spune, căci nu pe tine te leapădă, ci pe Mine mă leapădă, ca să nu mai ___ peste ei.",
+   "a": [
+    "domnesc"
+   ]
+  },
+  {
+   "id": "1sa.8.14-15.217",
    "age": "14-15",
    "t": "multi",
    "ref": "8:11",
-   "q": "Ce va face împăratul cu fiii poporului?",
+   "q": "Ce va face împăratul cu fiii voștri?",
    "opts": [
-    "îi va pune între călăreții lui",
-    "îi va trimite acasă",
+    "îi va face călăreți",
+    "îi va trimite să zidească templul",
     "îi va pune la carele lui"
    ],
    "a": [
@@ -740,284 +731,31 @@
    ]
   },
   {
-   "id": "1sa.8.14-15.14",
+   "id": "1sa.8.14-15.218",
    "age": "14-15",
    "t": "multi",
-   "ref": "8:14",
-   "q": "Din ce va lua împăratul cea mai bună parte?",
-   "opts": [
-    "din câmpii",
-    "din vii",
-    "din măslini"
-   ],
-   "a": [
-    0,
-    1,
-    2
-   ]
-  },
-  {
-   "id": "1sa.8.14-15.15",
-   "age": "14-15",
-   "t": "multi",
-   "ref": "8:2",
-   "q": "Unde judecau fiii lui Samuel?",
-   "opts": [
-    "la Rama",
-    "la Betel",
-    "la Mițpa"
-   ],
-   "a": [],
-   "explain": "Niciun răspuns corect: la Beer-Șeba (8:2)."
-  },
-  {
-   "id": "1sa.8.14-15.22",
-   "age": "14-15",
-   "t": "multi",
-   "ref": "8:7-8",
-   "q": "Ce spune Domnul lui Samuel?",
-   "opts": [
-    "„M-au părăsit și au slujit altor dumnezei”",
-    "„Nu pe tine te leapădă”",
-    "„Tu ești vinovat, Samuele”"
-   ],
-   "a": [
-    0,
-    1
-   ]
-  },
-  {
-   "id": "1sa.8.14-15.23",
-   "age": "14-15",
-   "t": "multi",
-   "ref": "8:18-19",
-   "q": "Ce s-a întâmplat după avertismentul lui Samuel?",
-   "opts": [
-    "poporul n-a vrut să asculte glasul lui Samuel",
-    "Samuel a spus că Domnul nu-i va asculta",
-    "poporul a renunțat la cerere"
-   ],
-   "a": [
-    0,
-    1
-   ]
-  },
-  {
-   "id": "1sa.8.16-17.1",
-   "age": "16-17",
-   "t": "tf",
    "ref": "8:13",
-   "q": "Samuel a spus că împăratul va lua fetele poporului să-i facă miresme.",
-   "a": true
-  },
-  {
-   "id": "1sa.8.16-17.2",
-   "age": "16-17",
-   "t": "tf",
-   "ref": "8:7",
-   "q": "Domnul i-a spus lui Samuel să nu asculte glasul poporului.",
-   "a": false,
-   "explain": "„Ascultă glasul poporului în tot ce-ți va spune\" (8:7)."
-  },
-  {
-   "id": "1sa.8.16-17.3",
-   "age": "16-17",
-   "t": "tf",
-   "ref": "8:16",
-   "q": "Samuel a spus că împăratul va lua cei mai buni boi și măgari ai poporului.",
-   "a": true
-  },
-  {
-   "id": "1sa.8.16-17.16",
-   "age": "16-17",
-   "t": "tf",
-   "ref": "8:14",
-   "q": "Împăratul va lua cea mai bună parte din câmpii, vii și măslini și o va da slujitorilor lui.",
-   "a": true
-  },
-  {
-   "id": "1sa.8.16-17.17",
-   "age": "16-17",
-   "t": "tf",
-   "ref": "8:12",
-   "q": "Samuel a spus că împăratul nu va pune căpetenii peste mii.",
-   "a": false,
-   "explain": "Va pune căpetenii peste o mie și peste cincizeci."
-  },
-  {
-   "id": "1sa.8.16-17.4",
-   "age": "16-17",
-   "t": "one",
-   "ref": "8:15",
-   "q": "Cui va da împăratul zeciuiala din rodul semințelor și al viilor?",
+   "q": "Ce va face cu fetele voastre?",
    "opts": [
-    "săracilor",
-    "preoților",
-    "famenilor și slujitorilor lui"
-   ],
-   "a": 2
-  },
-  {
-   "id": "1sa.8.16-17.5",
-   "age": "16-17",
-   "t": "one",
-   "ref": "8:10",
-   "q": "Cui a spus Samuel toate cuvintele Domnului?",
-   "opts": [
-    "numai bătrânilor",
-    "poporului care-i cerea un împărat",
-    "fiilor lui"
-   ],
-   "a": 1
-  },
-  {
-   "id": "1sa.8.16-17.6",
-   "age": "16-17",
-   "t": "one",
-   "ref": "8:3",
-   "q": "Ce călcau fiii lui Samuel?",
-   "opts": [
-    "legea Sabatului",
-    "dreptatea",
-    "porunca preoților"
-   ],
-   "a": 1
-  },
-  {
-   "id": "1sa.8.16-17.18",
-   "age": "16-17",
-   "t": "one",
-   "ref": "8:12",
-   "q": "La ce va întrebuința împăratul pe fiii poporului, pe lângă călărie?",
-   "opts": [
-    "la zidirea Templului",
-    "la păzirea oilor poporului",
-    "la aratul pământurilor și la seceratul bucatelor lui"
-   ],
-   "a": 2
-  },
-  {
-   "id": "1sa.8.16-17.19",
-   "age": "16-17",
-   "t": "one",
-   "ref": "8:2",
-   "q": "Cum se numea al doilea fiu al lui Samuel?",
-   "opts": [
-    "Ioel",
-    "Eleazar",
-    "Abia"
-   ],
-   "a": 2
-  },
-  {
-   "id": "1sa.8.16-17.24",
-   "age": "16-17",
-   "t": "match",
-   "ref": "8:1-22",
-   "q": "Asociază fiecare persoană sau grup cu ce se spune despre el.",
-   "pairs": [
-    [
-     "Samuel",
-     "a spus cuvintele poporului în auzul Domnului"
-    ],
-    [
-     "Domnul",
-     "a spus: „Ascultă-le glasul”"
-    ],
-    [
-     "bătrânii",
-     "au venit la Samuel, la Rama"
-    ],
-    [
-     "fiii lui Samuel",
-     "luau mită"
-    ],
-    [
-     "împăratul",
-     "va lua zeciuială din oile poporului"
-    ]
-   ]
-  },
-  {
-   "id": "1sa.8.16-17.10",
-   "age": "16-17",
-   "t": "fill",
-   "ref": "8:9",
-   "a": [
-    "dreptul"
-   ],
-   "q": "Ascultă-le glasul deci, dar înștiințează-i și fă-le cunoscut ___ împăratului care va domni peste ei.\"",
-   "ctx": "Domnul, către Samuel:"
-  },
-  {
-   "id": "1sa.8.16-17.11",
-   "age": "16-17",
-   "t": "fill",
-   "ref": "8:16",
-   "a": [
-    "măgari"
-   ],
-   "q": "Va lua pe robii și roabele voastre, cei mai buni boi și ___ ai voștri și-i va întrebuința la lucrările lui.",
-   "ctx": "Samuel, despre dreptul împăratului:"
-  },
-  {
-   "id": "1sa.8.16-17.12",
-   "age": "16-17",
-   "t": "fill",
-   "ref": "8:6",
-   "a": [
-    "plăcere"
-   ],
-   "q": "Samuel n-a văzut cu ___ faptul că ziceau: „Dă-ne un împărat ca să ne judece.\" Și Samuel s-a rugat Domnului.",
-   "ctx": "La Rama, când bătrânii au cerut un împărat:"
-  },
-  {
-   "id": "1sa.8.16-17.20",
-   "age": "16-17",
-   "t": "fill",
-   "ref": "8:4",
-   "q": "Toți bătrânii lui ___ s-au strâns și au venit la Samuel, la Rama.",
-   "a": [
-    "Israel"
-   ]
-  },
-  {
-   "id": "1sa.8.16-17.21",
-   "age": "16-17",
-   "t": "fill",
-   "ref": "8:14",
-   "q": "Va lua cea mai bună parte din câmpiile voastre, din viile voastre și din măslinii voștri și o va da ___ lui.",
-   "a": [
-    "slujitorilor"
-   ]
-  },
-  {
-   "id": "1sa.8.16-17.13",
-   "age": "16-17",
-   "t": "multi",
-   "ref": "8:20",
-   "q": "Ce spera poporul că va face împăratul?",
-   "opts": [
-    "îi va cârmui în războaie",
-    "îi va judeca",
-    "va merge în fruntea lor"
+    "le va da în căsătorie slujitorilor",
+    "să-i gătească de mâncare și pâine",
+    "să-i facă miresme"
    ],
    "a": [
-    0,
     1,
     2
    ]
   },
   {
-   "id": "1sa.8.16-17.14",
-   "age": "16-17",
+   "id": "1sa.8.14-15.219",
+   "age": "14-15",
    "t": "multi",
-   "ref": "8:12",
-   "q": "Ce va face împăratul?",
+   "ref": "8:16",
+   "q": "Ce va lua?",
    "opts": [
-    "va pune căpetenii peste o mie",
-    "va pune căpetenii peste cincizeci",
-    "va zidi cetăți noi"
+    "robii și roabele",
+    "cei mai buni boi și măgari",
+    "cămilele și caii"
    ],
    "a": [
     0,
@@ -1025,45 +763,31 @@
    ]
   },
   {
-   "id": "1sa.8.16-17.15",
-   "age": "16-17",
+   "id": "1sa.8.14-15.220",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "8:14",
+   "q": "Ce va lua?",
+   "opts": [
+    "viile și măslinii",
+    "cea mai bună parte din câmpii",
+    "casele și turmele"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.8.14-15.221",
+   "age": "14-15",
    "t": "multi",
    "ref": "8:22",
-   "q": "Ce a făcut Samuel imediat după ce Domnul i-a spus să le pună un împărat?",
+   "q": "Ce a zis Domnul lui Samuel?",
    "opts": [
-    "a tras la sorți",
-    "a adunat poporul la Mițpa",
-    "l-a uns pe Saul"
-   ],
-   "a": [],
-   "explain": "Niciun răspuns corect: le-a spus: „Duceți-vă fiecare în cetatea lui\" (8:22)."
-  },
-  {
-   "id": "1sa.8.16-17.22",
-   "age": "16-17",
-   "t": "multi",
-   "ref": "8:16-17",
-   "q": "Ce va lua împăratul?",
-   "opts": [
-    "numai caii poporului",
-    "pe robii și roabele poporului",
-    "cei mai buni boi și măgari"
-   ],
-   "a": [
-    1,
-    2
-   ]
-  },
-  {
-   "id": "1sa.8.16-17.23",
-   "age": "16-17",
-   "t": "multi",
-   "ref": "8:21-22",
-   "q": "Ce a făcut Samuel?",
-   "opts": [
-    "le-a spus bărbaților să se ducă fiecare în cetatea lui",
-    "i-a certat pe bătrâni",
-    "a spus cuvintele poporului în auzul Domnului"
+    "pune un împărat peste ei",
+    "pune un judecător nou",
+    "ascultă-le glasul"
    ],
    "a": [
     0,
@@ -1071,118 +795,116 @@
    ]
   },
   {
-   "id": "1sa.8.18+.1",
-   "age": "18+",
-   "t": "tf",
-   "ref": "8:2",
-   "q": "Abia era al doilea fiu al lui Samuel.",
-   "a": true
-  },
-  {
-   "id": "1sa.8.18+.2",
-   "age": "18+",
-   "t": "tf",
-   "ref": "8:12",
-   "q": "Samuel a spus că împăratul va pune căpetenii peste o sută și peste zece.",
-   "a": false,
-   "explain": "„Căpetenii peste o mie și căpetenii peste cincizeci\" (8:12)."
-  },
-  {
-   "id": "1sa.8.18+.3",
-   "age": "18+",
+   "id": "1sa.8.16-17.201",
+   "age": "16-17",
    "t": "tf",
    "ref": "8:15",
-   "q": "Samuel a spus că zeciuiala va fi dată famenilor și slujitorilor împăratului.",
+   "q": "Împăratul va lua zeciuială din rodul semințelor și al viilor.",
    "a": true
   },
   {
-   "id": "1sa.8.18+.16",
-   "age": "18+",
+   "id": "1sa.8.16-17.202",
+   "age": "16-17",
    "t": "tf",
-   "ref": "8:1",
-   "q": "Samuel a pus pe fiii săi judecători peste Israel când a îmbătrânit.",
+   "ref": "8:12",
+   "q": "Împăratul va pune căpetenii peste o sută și peste zece.",
+   "a": false
+  },
+  {
+   "id": "1sa.8.16-17.203",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "8:17",
+   "q": "Împăratul va lua zeciuială din oile voastre.",
    "a": true
   },
   {
-   "id": "1sa.8.18+.17",
-   "age": "18+",
+   "id": "1sa.8.16-17.204",
+   "age": "16-17",
    "t": "tf",
    "ref": "8:2",
-   "q": "Ioel era al doilea fiu al lui Samuel.",
-   "a": false,
-   "explain": "Ioel era întâiul născut; al doilea era Abia."
+   "q": "Fiul întâi născut al lui Samuel se numea Ioel, iar al doilea, Abia.",
+   "a": true
   },
   {
-   "id": "1sa.8.18+.4",
-   "age": "18+",
-   "t": "one",
-   "ref": "8:11",
-   "q": "Ce vor face fiii poporului înaintea carului împăratului?",
-   "opts": [
-    "vor purta steaguri",
-    "vor alerga",
-    "vor cânta"
-   ],
-   "a": 1
+   "id": "1sa.8.16-17.205",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "8:16",
+   "q": "Împăratul va lua cei mai buni cai și catâri.",
+   "a": false
   },
   {
-   "id": "1sa.8.18+.5",
-   "age": "18+",
+   "id": "1sa.8.16-17.206",
+   "age": "16-17",
    "t": "one",
-   "ref": "8:13",
-   "q": "Ce trei lucruri va cere împăratul fetelor poporului?",
+   "ref": "8:15",
+   "q": "Cui va da împăratul zeciuiala?",
    "opts": [
-    "miresme, mâncare, pâine",
-    "vin, untdelemn, miere",
-    "haine, covoare, vase"
+    "famenilor și slujitorilor",
+    "căpeteniilor de oaste ale țării",
+    "preoților și leviților lui Dumnezeu"
    ],
    "a": 0
   },
   {
-   "id": "1sa.8.18+.6",
-   "age": "18+",
-   "t": "one",
-   "ref": "8:8",
-   "q": "De când spune Domnul că se poartă astfel poporul?",
-   "opts": [
-    "din zilele lui Eli",
-    "de când i-a scos din Egipt",
-    "de la Sinai"
-   ],
-   "a": 1
-  },
-  {
-   "id": "1sa.8.18+.18",
-   "age": "18+",
+   "id": "1sa.8.16-17.207",
+   "age": "16-17",
    "t": "one",
    "ref": "8:20",
-   "q": "Cine voia poporul că va merge în fruntea lui?",
+   "q": "Ce motiv au dat pentru împărat?",
    "opts": [
-    "Samuel",
-    "fiii lui Samuel",
-    "împăratul"
-   ],
-   "a": 2
-  },
-  {
-   "id": "1sa.8.18+.19",
-   "age": "18+",
-   "t": "one",
-   "ref": "8:14",
-   "q": "Cui va da împăratul cea mai bună parte din câmpiile, viile și măslinii poporului?",
-   "opts": [
-    "preoților",
-    "slujitorilor lui",
-    "săracilor"
+    "să aibă o pace desăvârșită în țară",
+    "să fie ca toate neamurile din jur",
+    "să scape de dări și de război"
    ],
    "a": 1
   },
   {
-   "id": "1sa.8.18+.24",
-   "age": "18+",
+   "id": "1sa.8.16-17.208",
+   "age": "16-17",
+   "t": "one",
+   "ref": "8:12",
+   "q": "Peste câți va pune căpetenii împăratul?",
+   "opts": [
+    "peste o mie și peste cincizeci de oameni",
+    "peste o sută și peste zece zeci",
+    "peste zece mii și peste o sută"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.8.16-17.209",
+   "age": "16-17",
+   "t": "one",
+   "ref": "8:2",
+   "q": "Unde erau judecători Ioel și Abia?",
+   "opts": [
+    "la Mițpa, lângă Ghilgal",
+    "la Beer-Șeba",
+    "la Betel, lângă Rama"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.8.16-17.210",
+   "age": "16-17",
+   "t": "one",
+   "ref": "8:14",
+   "q": "Ce va lua împăratul pentru slujitorii lui?",
+   "opts": [
+    "aurul, argintul și pietrele scumpe",
+    "câmpiile, viile și măslinii",
+    "turmele, cirezile și grajdurile"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.8.16-17.211",
+   "age": "16-17",
    "t": "match",
-   "ref": "8:2-17",
-   "q": "Asociază fiecare persoană sau loc cu ce se spune despre el.",
+   "ref": "8:2-13",
+   "q": "Asociază fiecare nume sau lucru cu ce se spune despre el.",
    "pairs": [
     [
      "Ioel",
@@ -1190,57 +912,318 @@
     ],
     [
      "Abia",
-     "al doilea fiu al lui Samuel"
-    ],
-    [
-     "famenii",
-     "cei care primesc zeciuiala împăratului"
-    ],
-    [
-     "Egipt",
-     "țara din care Domnul a scos poporul"
+     "al doilea fiu"
     ],
     [
      "Beer-Șeba",
-     "locul unde judecau fiii lui Samuel"
+     "locul lor de judecată"
+    ],
+    [
+     "carele și călăreții",
+     "unde va pune împăratul fiii"
+    ],
+    [
+     "miresme, mâncare și pâine",
+     "ce vor face fetele"
     ]
    ]
   },
   {
-   "id": "1sa.8.18+.10",
-   "age": "18+",
+   "id": "1sa.8.16-17.212",
+   "age": "16-17",
    "t": "fill",
-   "ref": "8:12",
+   "ref": "8:17",
+   "q": "Va lua zeciuială din ___ voastre și voi înșivă veți fi slugile lui.",
    "a": [
-    "cincizeci"
-   ],
-   "q": "îi va pune căpetenii peste o mie și căpetenii peste ___ și-i va întrebuința la aratul pământurilor lui, la seceratul bucatelor lui, la facerea armelor lui de război și a uneltelor carelor lui.",
-   "ctx": "Samuel, despre dreptul împăratului:"
+    "oile"
+   ]
   },
   {
-   "id": "1sa.8.18+.11",
-   "age": "18+",
+   "id": "1sa.8.16-17.213",
+   "age": "16-17",
    "t": "fill",
-   "ref": "8:21",
+   "ref": "8:16",
+   "q": "Va lua pe robii și roabele voastre, cei mai buni boi și ___ ai voștri și-i va întrebuința la lucrările lui.",
    "a": [
-    "auzul"
-   ],
-   "q": "Samuel, după ce a auzit toate cuvintele poporului, le-a spus în ___ Domnului.",
-   "ctx": "După refuzul poporului:"
+    "măgari"
+   ]
   },
   {
-   "id": "1sa.8.18+.12",
-   "age": "18+",
+   "id": "1sa.8.16-17.214",
+   "age": "16-17",
    "t": "fill",
    "ref": "8:13",
+   "q": "Va lua pe fetele voastre să-i facă ___, de mâncare și pâine.",
    "a": [
     "miresme"
-   ],
-   "q": "Va lua pe fetele voastre să-i facă ___, de mâncare și pâine.",
-   "ctx": "Samuel, despre dreptul împăratului:"
+   ]
   },
   {
-   "id": "1sa.8.18+.20",
+   "id": "1sa.8.16-17.215",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "8:2",
+   "q": "Fiul său întâi născut se numea ___ și al doilea, Abia; ei erau judecători la Beer-Șeba.",
+   "a": [
+    "Ioel"
+   ]
+  },
+  {
+   "id": "1sa.8.16-17.216",
+   "age": "16-17",
+   "t": "fill",
+   "ref": "8:12",
+   "q": "îi va pune căpetenii peste o mie și căpetenii peste ___ și-i va întrebuința la aratul pământurilor lui, la seceratul bucatelor lui, la facerea armelor lui de război și a uneltelor carelor lui.",
+   "a": [
+    "cincizeci"
+   ]
+  },
+  {
+   "id": "1sa.8.16-17.217",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "8:12",
+   "q": "La ce îi va întrebuința?",
+   "opts": [
+    "aratul pământurilor lui",
+    "zidirea cetăților lui",
+    "facerea armelor de război"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.8.16-17.218",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "8:4",
+   "q": "Ce se spune despre bătrâni?",
+   "opts": [
+    "au venit la Beer-Șeba",
+    "toți s-au strâns",
+    "au venit la Rama"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.8.16-17.219",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "8:1",
+   "q": "Ce se spune la începutul capitolului?",
+   "opts": [
+    "și-a pus fiii judecători",
+    "Samuel a îmbătrânit",
+    "fiii au mers pe urmele lui"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.8.16-17.220",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "8:21",
+   "q": "Ce a făcut Samuel după ce a auzit poporul?",
+   "opts": [
+    "a plecat din Rama",
+    "a spus cuvintele în auzul Domnului",
+    "a trimis bărbații în cetățile lor"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "1sa.8.16-17.221",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "8:11",
+   "q": "Ce va face împăratul cu fiii voștri?",
+   "opts": [
+    "între călăreții lui",
+    "îi va pune la carele lui",
+    "îi va trimite la templu"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "1sa.8.18+.201",
+   "age": "18+",
+   "t": "tf",
+   "ref": "8:13",
+   "q": "Împăratul va lua pe fiii voștri să-i facă miresme.",
+   "a": false
+  },
+  {
+   "id": "1sa.8.18+.202",
+   "age": "18+",
+   "t": "tf",
+   "ref": "8:6",
+   "q": "Samuel a văzut cu plăcere cererea poporului.",
+   "a": false
+  },
+  {
+   "id": "1sa.8.18+.203",
+   "age": "18+",
+   "t": "tf",
+   "ref": "8:1",
+   "q": "Samuel a pus pe fiii săi judecători când a îmbătrânit.",
+   "a": true
+  },
+  {
+   "id": "1sa.8.18+.204",
+   "age": "18+",
+   "t": "tf",
+   "ref": "8:20",
+   "q": "Poporul a zis că împăratul va merge în fruntea lor.",
+   "a": true
+  },
+  {
+   "id": "1sa.8.18+.205",
+   "age": "18+",
+   "t": "tf",
+   "ref": "8:9",
+   "q": "Domnul a spus: „Ascultă-le glasul deci, dar înștiințează-i.”",
+   "a": true
+  },
+  {
+   "id": "1sa.8.18+.206",
+   "age": "18+",
+   "t": "one",
+   "ref": "8:2",
+   "q": "Cum se numea al doilea fiu al lui Samuel?",
+   "opts": [
+    "Abiatar",
+    "Ioel",
+    "Abia"
+   ],
+   "a": 2
+  },
+  {
+   "id": "1sa.8.18+.207",
+   "age": "18+",
+   "t": "one",
+   "ref": "8:7",
+   "q": "Ce a zis Domnul despre domnia Lui?",
+   "opts": [
+    "ca să nu mai domnesc peste ei",
+    "ca să domnesc prin împărat",
+    "ca să domnesc mai mult peste ei"
+   ],
+   "a": 0
+  },
+  {
+   "id": "1sa.8.18+.208",
+   "age": "18+",
+   "t": "one",
+   "ref": "8:18",
+   "q": "Ce se va întâmpla când vor striga?",
+   "opts": [
+    "Domnul va întârzia",
+    "Domnul nu-i va asculta",
+    "Domnul îi va pedepsi"
+   ],
+   "a": 1
+  },
+  {
+   "id": "1sa.8.18+.209",
+   "age": "18+",
+   "t": "one",
+   "ref": "8:3",
+   "q": "Ce spune textul despre fiii lui Samuel?",
+   "opts": [
+    "luau jertfe și ocoleau legea",
+    "luau dări și ocoleau legea",
+    "luau mită și călcau dreptatea"
+   ],
+   "a": 2
+  },
+  {
+   "id": "1sa.8.18+.210",
+   "age": "18+",
+   "t": "one",
+   "ref": "8:22",
+   "q": "Ce a zis Samuel la sfârșit?",
+   "opts": [
+    "„Aduceți jertfe fiecare acasă.”",
+    "„Rămâneți fiecare în Rama.”",
+    "„Duceți-vă fiecare în cetatea lui.”"
+   ],
+   "a": 2
+  },
+  {
+   "id": "1sa.8.18+.211",
+   "age": "18+",
+   "t": "match",
+   "ref": "8:5-17",
+   "q": "Asociază fiecare spusă cu ce înseamnă.",
+   "pairs": [
+    [
+     "„cum au toate neamurile”",
+     "ce au zis bătrânii"
+    ],
+    [
+     "„cum s-au purtat totdeauna”",
+     "ce a zis Domnul despre ei"
+    ],
+    [
+     "„măslinii voștri”",
+     "ce va lua împăratul"
+    ],
+    [
+     "„zeciuială din oile voastre”",
+     "ce va lua în plus"
+    ],
+    [
+     "„veți fi slugile lui”",
+     "urmarea finală"
+    ]
+   ]
+  },
+  {
+   "id": "1sa.8.18+.212",
+   "age": "18+",
+   "t": "fill",
+   "ref": "8:11",
+   "q": "El va lua pe fiii voștri, îi va pune la carele sale și între ___ lui, ca să alerge înaintea carului lui;",
+   "a": [
+    "călăreții"
+   ]
+  },
+  {
+   "id": "1sa.8.18+.213",
+   "age": "18+",
+   "t": "fill",
+   "ref": "8:19",
+   "q": "Poporul n-a vrut să ___ glasul lui Samuel.",
+   "a": [
+    "asculte"
+   ]
+  },
+  {
+   "id": "1sa.8.18+.214",
+   "age": "18+",
+   "t": "fill",
+   "ref": "8:14",
+   "q": "Va lua cea mai bună parte din câmpiile voastre, din viile voastre și din ___ voștri și o va da slujitorilor lui.",
+   "a": [
+    "măslinii"
+   ]
+  },
+  {
+   "id": "1sa.8.18+.215",
    "age": "18+",
    "t": "fill",
    "ref": "8:3",
@@ -1250,25 +1233,57 @@
    ]
   },
   {
-   "id": "1sa.8.18+.21",
+   "id": "1sa.8.18+.216",
    "age": "18+",
    "t": "fill",
-   "ref": "8:19",
-   "q": "Poporul n-a vrut să asculte glasul lui ___. „Nu, au zis ei, ci să fie un împărat peste noi,",
+   "ref": "8:6",
+   "q": "Samuel n-a văzut cu ___ faptul că ziceau: „Dă-ne un împărat ca să ne judece.\"",
    "a": [
-    "Samuel"
+    "plăcere"
    ]
   },
   {
-   "id": "1sa.8.18+.13",
+   "id": "1sa.8.18+.217",
    "age": "18+",
    "t": "multi",
    "ref": "8:12",
-   "q": "La ce va întrebuința împăratul pe fiii poporului?",
+   "q": "Ce va face împăratul?",
    "opts": [
-    "la facerea uneltelor carelor",
-    "la facerea armelor de război",
-    "la paza templului"
+    "căpetenii peste cincizeci",
+    "căpetenii peste o sută",
+    "căpetenii peste o mie"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.8.18+.218",
+   "age": "18+",
+   "t": "multi",
+   "ref": "8:10",
+   "q": "Ce a făcut Samuel?",
+   "opts": [
+    "poporului care cerea un împărat",
+    "a plecat fără să vorbească",
+    "a spus toate cuvintele Domnului"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "1sa.8.18+.219",
+   "age": "18+",
+   "t": "multi",
+   "ref": "8:8",
+   "q": "Ce se spune despre popor?",
+   "opts": [
+    "au slujit altor dumnezei",
+    "de când i-am scos din Egipt",
+    "au slujit numai Domnului"
    ],
    "a": [
     0,
@@ -1276,66 +1291,35 @@
    ]
   },
   {
-   "id": "1sa.8.18+.14",
+   "id": "1sa.8.18+.220",
    "age": "18+",
    "t": "multi",
-   "ref": "8:15-17",
-   "q": "Din ce va lua împăratul zeciuială?",
+   "ref": "8:3",
+   "q": "Ce făceau fiii lui Samuel?",
    "opts": [
-    "din rodul semințelor",
-    "din vii",
-    "din oi"
+    "luau mită",
+    "se dădeau la lăcomie",
+    "făceau jertfe false"
    ],
    "a": [
     0,
-    1,
-    2
+    1
    ]
   },
   {
-   "id": "1sa.8.18+.15",
+   "id": "1sa.8.18+.221",
    "age": "18+",
    "t": "multi",
-   "ref": "8:1",
-   "q": "Pe cine a pus Samuel judecători când a îmbătrânit?",
+   "ref": "8:7",
+   "q": "Ce a zis Domnul?",
    "opts": [
-    "pe bătrânii din Rama",
-    "pe leviți",
-    "pe Saul și Ionatan"
-   ],
-   "a": [],
-   "explain": "Niciun răspuns corect: pe fiii săi (8:1)."
-  },
-  {
-   "id": "1sa.8.18+.22",
-   "age": "18+",
-   "t": "multi",
-   "ref": "8:11",
-   "q": "Ce va face împăratul cu fiii poporului?",
-   "opts": [
-    "îi va lăsa acasă la părinți",
-    "îi va pune la carele lui",
-    "îi va pune între călăreții lui, ca să alerge înaintea carului"
-   ],
-   "a": [
-    1,
-    2
-   ]
-  },
-  {
-   "id": "1sa.8.18+.23",
-   "age": "18+",
-   "t": "multi",
-   "ref": "8:5-6",
-   "q": "Ce s-a întâmplat când bătrânii au cerut un împărat?",
-   "opts": [
-    "Samuel s-a rugat Domnului",
-    "Samuel i-a certat pe bătrâni și i-a alungat",
-    "Samuel n-a văzut cu plăcere cererea"
+    "pe Mine mă leapădă",
+    "nu pe tine te leapădă",
+    "pe Eli îl leapădă"
    ],
    "a": [
     0,
-    2
+    1
    ]
   }
  ]
