@@ -3,7 +3,8 @@ import { doc, onSnapshot } from 'firebase/firestore';
 import { db } from '../lib/firebase';
 import { addChild, choosePlayer, player, players, rememberedKids, removeChild, updateChild, type Player } from '../lib/players';
 import { localGet, localSet } from '../lib/store';
-import { deleteProgress, EMPTY, scoreLabel, type Progress } from '../lib/progress';
+import { TYPES } from '../lib/questions';
+import { deleteProgress, EMPTY, type Progress } from '../lib/progress';
 import { errorText, profile, profileError, rememberedAccount, setParent, signOut, user } from '../lib/session';
 import Avatar from './Avatar';
 import Loader from './Loader';
@@ -168,10 +169,11 @@ function BookStats({ p, book }: { p: Player; book: BookInfo }) {
   const { data: d, loaded } = useBookProgress(p, book.slug);
   // "c5" entries are chapter scores, the others are exams
   const entries = Object.entries(d.exams);
-  const exams = entries.filter(([id]) => !/^c\d+/.test(id)).map(([, e]) => e);
-  const chapters = entries.filter(([id]) => /^c\d+/.test(id)).length;
-  const bestExam = exams.length ? scoreLabel(exams.reduce((a, b) => (b.best > a.best ? b : a)), 21) ?? null : null;
+  // chapters finished, whatever the level; exams are only counted (they bring no points and no statistics)
+  const chapters = new Set(entries.filter(([id]) => /^c\d+/.test(id)).map(([id]) => id.split('@')[0])).size;
+  const examsDone = entries.filter(([id]) => !/^c\d+/.test(id)).reduce((s, [, e]) => s + (e.plays ?? 1), 0);
   const started = d.mastered || d.wrong || entries.length;
+  const kinds = TYPES.map((t) => ({ ...t, n: d.stats[t.t]?.n ?? 0, r: d.stats[t.t]?.r ?? 0 })).filter((k) => k.n > 0);
 
   return (
     <section class="bk">
@@ -181,8 +183,19 @@ function BookStats({ p, book }: { p: Player; book: BookInfo }) {
           <div><dt>Răspunsuri corecte</dt><dd>{d.mastered}</dd></div>
           <div><dt>Greșite, de reluat</dt><dd>{d.wrong}</dd></div>
           <div><dt>Capitole terminate</dt><dd>{chapters} / {book.chapters}</dd></div>
-          <div><dt>Cel mai bun examen</dt><dd>{bestExam ?? '–'}</dd></div>
+          <div><dt>Examene făcute</dt><dd>{examsDone}</dd></div>
         </dl>
+      )}
+      {loaded && kinds.length > 0 && (
+        <ul class="kinds" aria-label="Pe tipuri de întrebări">
+          {kinds.map((k) => (
+            <li class={k.r === k.n ? 'is-full' : k.r === 0 ? 'is-zero' : ''}>
+              <span class="kind-name">{k.t === 'fill' ? 'Completare versete' : k.short}</span>
+              <span class="kind-bar" aria-hidden="true"><span style={{ width: `${(k.r / k.n) * 100}%` }} /></span>
+              <span class="kind-n">{Math.round((k.r / k.n) * 100)}%</span>
+            </li>
+          ))}
+        </ul>
       )}
     </section>
   );

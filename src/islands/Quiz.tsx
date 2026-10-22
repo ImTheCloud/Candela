@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
 import { createPortal } from 'preact/compat';
+import { navigate } from 'astro:transitions/client';
 import { loadVerses } from '../lib/load';
 import { recordAnswers, recordExam } from '../lib/progress';
 import { emptyAnswer, grade, isAnswered, percent, TYPES, typeInfo, type Answer, type Grade, type Playable } from '../lib/questions';
@@ -47,6 +48,22 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
   }, [done, started]);
 
   useEffect(() => { scrollTo({ top: 0 }); }, [i, done]);
+
+  // a finished test is never played again by going back: this entry of the history now points to the list,
+  // and the back arrow goes there too
+  useEffect(() => {
+    if (!done) return;
+    try { history.replaceState(history.state, '', backHref); } catch { /* keep the page as it is */ }
+    const onClick = (e: MouseEvent) => {
+      const a = (e.target as Element).closest?.('header.top a[data-back]');
+      if (!a || e.button !== 0) return;
+      e.preventDefault();
+      e.stopPropagation();
+      navigate(backHref);
+    };
+    addEventListener('click', onClick, true);
+    return () => removeEventListener('click', onClick, true);
+  }, [done]);
 
   // slim header while answering
   useEffect(() => {
