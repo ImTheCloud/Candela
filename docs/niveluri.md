@@ -14,7 +14,8 @@ Quatre leviers montent ensemble d'un niveau au suivant :
 Règles communes :
 - 21 questions par chapitre et par niveau : 5 vrai/faux, 5 à une réponse, 1 association de 5 paires (colonne de droite sans doublons), 5 à compléter (un seul mot, jamais présent ailleurs dans la phrase), 5 à plusieurs réponses (0, 1, 2 ou 3 justes).
 - Vrai/faux : 2 ou 3 « vrai » sur 5 ; les faux changent un nom, un chiffre, un lieu ou un sens, jamais un détail douteux.
-- À une réponse : l'ordre des propositions est mélangé à la génération ; la bonne n'est pas systématiquement la plus longue ni la plus courte.
+- Contexte : chaque énoncé porte sa scène (qui, où, à quel moment : « la nuit de l'appel à Silo », « après la première défaite d'Eben-Ezer »), même pour les adultes. Un examen blanc pioche dans tous les chapitres : on doit toujours comprendre de quel passage parle la question sans rien ajouter. L'écran de question affiche aussi le chapitre (livre, verset, titre).
+- À une réponse : l'ordre des propositions est mélangé à la génération ; la bonne n'est pas systématiquement la plus longue ni la plus courte. À partir de 14–15 ans, les propositions ont une longueur proche de la bonne réponse (pas d'indice par la longueur) ; pour les enfants, on s'en moque.
 - Sujets sensibles (Samuel 11, 13) : rien de cru pour les plus jeunes ; on garde l'événement et la leçon.
 - La correction du mot à compléter accepte une faute de frappe (une lettre en trop, en moins, changée ou deux lettres inversées) et les mots de même sens (Domnul, Dumnezeu, Doamne ; împărat, rege).
 

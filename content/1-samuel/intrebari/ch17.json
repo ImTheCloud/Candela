@@ -191,9 +191,9 @@
    "age": "sub12",
    "t": "multi",
    "ref": "17:36",
-   "q": "Ce a spus David?",
+   "q": "Ce a spus David lui Saul, despre filisteanul Goliat din Valea Elah?",
    "opts": [
-    "Saul să plece",
+    "Saul să plece din tabără",
     "Goliat va fi ca leul și ursul",
     "a ocărât oștirea Dumnezeului celui viu"
    ],
@@ -223,9 +223,9 @@
    "age": "sub12",
    "t": "multi",
    "ref": "17:52",
-   "q": "Ce au făcut bărbații lui Israel?",
+   "q": "Ce au făcut bărbații lui Israel și Iuda, după căderea lui Goliat?",
    "opts": [
-    "au fugit",
+    "au fugit din Valea Elah",
     "au urmărit pe filisteni",
     "au dat chiote"
    ],
@@ -255,7 +255,7 @@
    "age": "sub12",
    "t": "multi",
    "ref": "17:40",
-   "q": "Ce a luat David?",
+   "q": "Ce a luat David cu el, când a înaintat împotriva lui Goliat?",
    "opts": [
     "sabia lui Saul",
     "praștia",
@@ -295,7 +295,7 @@
    "age": "12-13",
    "t": "tf",
    "ref": "17:12",
-   "q": "Isai avea opt fii.",
+   "q": "David, păstorul din Betleem, era fiul lui Isai, care avea opt fii.",
    "a": true
   },
   {
@@ -589,11 +589,11 @@
    "age": "14-15",
    "t": "one",
    "ref": "17:28",
-   "q": "De ce s-a aprins Eliab de mânie?",
+   "q": "De ce s-a aprins Eliab, fratele lui David, de mânie în tabăra din Valea Elah?",
    "opts": [
-    "credea că David a venit să vadă lupta",
-    "David vorbise cu Saul",
-    "David luase mâncarea fraților"
+    "credea că David a venit doar să vadă lupta",
+    "David vorbise cu Saul fără voia lui",
+    "David luase mâncarea fraților din tabără"
    ],
    "a": 0
   },
@@ -602,10 +602,10 @@
    "age": "14-15",
    "t": "one",
    "ref": "17:33",
-   "q": "De ce a zis Saul că David nu poate lupta?",
+   "q": "De ce a zis Saul că David nu poate lupta cu Goliat?",
    "opts": [
-    "nu are nicio sabie în mână",
-    "nu este din seminția lui Iuda",
+    "nu are nicio sabie în mână, ca ostașii",
+    "nu este din seminția lui Iuda, ci din Beniamin",
     "este copil, iar Goliat e războinic din tinerețe"
    ],
    "a": 2
@@ -615,10 +615,10 @@
    "age": "14-15",
    "t": "one",
    "ref": "17:37",
-   "q": "Ce a zis David despre izbăvire?",
+   "q": "Ce a zis David lui Saul despre izbăvirea din mâna filisteanului?",
    "opts": [
-    "Saul mă va izbăvi din filistean",
-    "frații mei mă vor izbăvi",
+    "Saul, regele nostru, mă va izbăvi",
+    "frații mei din tabără mă vor izbăvi",
     "Domnul care m-a izbăvit din leu mă va izbăvi"
    ],
    "a": 2
@@ -628,7 +628,7 @@
    "age": "14-15",
    "t": "one",
    "ref": "17:45",
-   "q": "În Numele cui vine David?",
+   "q": "În Numele cui a venit David împotriva lui Goliat?",
    "opts": [
     "al Domnului oștirilor",
     "al împăratului Saul",
@@ -736,11 +736,11 @@
    "age": "14-15",
    "t": "multi",
    "ref": "17:39",
-   "q": "Ce a făcut David?",
+   "q": "Ce a făcut David cu armura lui Saul?",
    "opts": [
-    "a luptat cu ea",
-    "a încins sabia",
-    "s-a dezbrăcat de armătură"
+    "a luptat cu ea, ca ostașii lui Saul",
+    "a încins sabia lui Saul peste haine",
+    "s-a dezbrăcat de armura lui Saul"
    ],
    "a": [
     1,
@@ -752,11 +752,11 @@
    "age": "14-15",
    "t": "multi",
    "ref": "17:25",
-   "q": "Ce zicea poporul?",
+   "q": "Ce zicea poporul despre cel care îl va omorî pe Goliat?",
    "opts": [
-    "îi va da pe fiică-sa",
+    "îi va da de nevastă pe fiica lui",
     "împăratul îl va umple de bogății",
-    "îl va face împărat"
+    "îl va face împărat în locul lui Saul"
    ],
    "a": [
     0,
@@ -768,9 +768,9 @@
    "age": "14-15",
    "t": "multi",
    "ref": "17:46",
-   "q": "Ce a zis David?",
+   "q": "Ce a zis David lui Goliat, înainte de luptă?",
    "opts": [
-    "tu vei birui",
+    "tu vei birui, căci ai sabie și suliță",
     "tot pământul va ști că Israel are un Dumnezeu",
     "Domnul te va da în mâinile mele"
    ],
@@ -784,10 +784,10 @@
    "age": "14-15",
    "t": "multi",
    "ref": "17:9",
-   "q": "Ce a zis Goliat?",
+   "q": "Ce a zis Goliat israeliților, în Valea Elah?",
    "opts": [
     "dacă mă omoară, vom fi robii voștri",
-    "veți pleca liberi",
+    "veți pleca liberi de la noi",
     "dacă îl biruiesc, voi ne veți sluji"
    ],
    "a": [
@@ -1016,7 +1016,7 @@
    "age": "16-17",
    "t": "multi",
    "ref": "17:52",
-   "q": "Unde au căzut filistenii?",
+   "q": "Unde au căzut filistenii, după moartea lui Goliat?",
    "opts": [
     "până la Betel",
     "până la porțile Ecronului",
@@ -1032,11 +1032,11 @@
    "age": "16-17",
    "t": "multi",
    "ref": "17:40",
-   "q": "Ce a luat David?",
+   "q": "Ce a luat David din pârâu, înainte de a înainta împotriva lui Goliat?",
    "opts": [
-    "cinci pietre",
-    "trei pietre",
-    "praștia"
+    "cinci pietre netede",
+    "trei pietre mari",
+    "praștia pentru lupta"
    ],
    "a": [
     0,
@@ -1048,11 +1048,11 @@
    "age": "16-17",
    "t": "multi",
    "ref": "17:6",
-   "q": "Ce mai avea?",
+   "q": "Ce mai purta Goliat, pe lângă coif și zale?",
    "opts": [
-    "tureci",
-    "sabie de fier",
-    "pavăză"
+    "tureci de aramă",
+    "o sabie de fier la brâu",
+    "o pavăză de aramă între umeri"
    ],
    "a": [
     0,
@@ -1143,11 +1143,11 @@
    "age": "18+",
    "t": "one",
    "ref": "17:42",
-   "q": "Cum a văzut Goliat pe David?",
+   "q": "Cum l-a văzut Goliat pe David, când acesta a înaintat spre el?",
    "opts": [
     "un copil cu păr bălai și față frumoasă",
-    "un om în putere cu sabie",
-    "un păstor bătrân cu toiag"
+    "un om în putere, cu sabie la brâu",
+    "un păstor bătrân, cu toiag în mână"
    ],
    "a": 0
   },
@@ -1156,7 +1156,7 @@
    "age": "18+",
    "t": "one",
    "ref": "17:50",
-   "q": "Ce n-avea David în mână?",
+   "q": "Ce nu avea David în mână, când a doborât pe Goliat?",
    "opts": [
     "toiag",
     "praștie",
@@ -1248,7 +1248,7 @@
    "age": "18+",
    "t": "multi",
    "ref": "17:12",
-   "q": "Ce se spune despre Isai?",
+   "q": "Ce se spune despre Isai, tatăl lui David, la Betleem?",
    "opts": [
     "era fiu de împărat",
     "avea opt fii",
@@ -1264,7 +1264,7 @@
    "age": "18+",
    "t": "multi",
    "ref": "17:51",
-   "q": "Ce a făcut David?",
+   "q": "Ce a făcut David după ce l-a doborât pe Goliat?",
    "opts": [
     "l-a omorât",
     "a luat sabia filisteanului",
@@ -1280,10 +1280,10 @@
    "age": "18+",
    "t": "multi",
    "ref": "17:57",
-   "q": "Cum a ajuns David la Saul?",
+   "q": "Cum a ajuns David la Saul, după lupta cu Goliat?",
    "opts": [
     "avea capul filisteanului în mână",
-    "a venit singur fără capul filisteanului",
+    "a venit singur, fără capul filisteanului",
     "Abner l-a luat"
    ],
    "a": [
@@ -1296,10 +1296,10 @@
    "age": "18+",
    "t": "multi",
    "ref": "17:6",
-   "q": "Ce purta Goliat?",
+   "q": "Ce purta Goliat pe corp, în Valea Elah?",
    "opts": [
-    "un coif de fier",
-    "o pavăză între umeri",
+    "un coif de fier, cu pene de struț",
+    "o pavăză de aramă între umeri",
     "tureci de aramă peste fluiere"
    ],
    "a": [
