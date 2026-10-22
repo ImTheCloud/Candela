@@ -92,6 +92,7 @@ function PlayerBlock({ p, books, head }: { p: Player; books: BookInfo[]; head: b
   const active = p.key === current.key;
   const [editing, setEditing] = useState(false);
   const [confirming, setConfirming] = useState(false);
+  const [details, setDetails] = useState(false);
   const isSelf = !p.child;
 
   async function remove() {
@@ -114,7 +115,11 @@ function PlayerBlock({ p, books, head }: { p: Player; books: BookInfo[]; head: b
             : <button type="button" class="btn btn-ghost btn-sm" onClick={() => choosePlayer(p.key)}>Alege</button>}
         </header>
       )}
-      {books.map((b) => <BookStats key={b.slug} p={p} book={b} />)}
+      <ul class="kinds bk-brief" aria-label="Progres pe cărți">
+        {books.map((b) => <BookBrief key={b.slug} p={p} book={b} />)}
+      </ul>
+      <button type="button" class="btn-reset link small bk-toggle" aria-expanded={details} onClick={() => setDetails(!details)}>{details ? 'Ascunde detaliile' : 'Vezi detaliile'}</button>
+      {details && books.map((b) => <BookStats key={b.slug} p={p} book={b} />)}
       <footer class="pl-foot">
         {p.child && (
           <span class="pl-actions">
@@ -166,6 +171,22 @@ function useBookProgress(p: Player, book: string): { data: Summary; loaded: bool
     return stop;
   }, [uid, p.key, book]);
   return state;
+}
+
+/** One line per book: the questions known in the age group the player works on most. Everything else is behind "Vezi detaliile". */
+function BookBrief({ p, book }: { p: Player; book: BookInfo }) {
+  const { data: d, loaded } = useBookProgress(p, book.slug);
+  const levels = AGE_GROUPS.filter((g) => (book.totals[g.id] ?? 0) > 0);
+  const top = levels.reduce((a, g) => ((d.byLevel?.[g.id] ?? 0) > (d.byLevel?.[a.id] ?? 0) ? g : a), levels[0]);
+  const t = book.totals[top.id] ?? 0;
+  const m = d.byLevel?.[top.id] ?? 0;
+  return (
+    <li>
+      <span class="kind-name">{book.name}{m > 0 ? ` · ${ageShort(top.id)}` : ''}</span>
+      <span class="kind-bar" aria-hidden="true"><span style={{ width: loaded && t ? `${(m / t) * 100}%` : '0%' }} /></span>
+      <span class="kind-n">{loaded ? `${m}/${t}` : '–'}</span>
+    </li>
+  );
 }
 
 function BookStats({ p, book }: { p: Player; book: BookInfo }) {
