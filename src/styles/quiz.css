@@ -251,3 +251,7 @@ body.in-quiz main { padding-top: 0; }
 .kinds-sum { padding-top: 8px; border-top: 1px solid var(--line); }
 .kinds-sum .kind-bar span { background: var(--btn); }
 .kinds .kind-n { white-space: nowrap; }
+.nowrap { white-space: nowrap; }
+.bk-level { margin-top: 10px; }
+.bk .lv-chips { margin-top: 2px; }
+.tile-done { margin-left: 8px; padding: 2px 8px; border-radius: 999px; background: var(--ok-soft); color: var(--ok); font: 600 0.75rem var(--f-body); }

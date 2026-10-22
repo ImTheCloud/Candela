@@ -37,6 +37,8 @@ export default function ChapterMenu({ book, titles, summary, exams: realExams }:
   const at = (ch: number, lv: string) => exams[`c${ch}@${lv}`];
   const entry = (ch: number) => at(ch, level.value);
   // the tiles follow the tabs of the board: "Toate" = the best score of any level
+  // exams only count how many were played
+  const examsDone = Object.entries(exams).filter(([id]) => !/^c\d+/.test(id)).reduce((s, [, e]) => s + (e.plays ?? 1), 0);
   const view = scoreView.value;
   const tileEntry = (ch: number) => {
     if (view !== 'all') return at(ch, view);
@@ -73,6 +75,7 @@ export default function ChapterMenu({ book, titles, summary, exams: realExams }:
             <button type="button" class="tile tile-exam" onClick={() => setExamOpen(true)}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3 8-8" /><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9" /></svg>
               <span>Examene</span>
+              {examsDone > 0 && <small class="tile-done">{examsDone} {examsDone === 1 ? 'făcut' : 'făcute'}</small>}
             </button>
           </li>
         )}
