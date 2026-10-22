@@ -3,799 +3,231 @@
  "reviewed": false,
  "questions": [
   {
-   "id": "2sa.20.sub12.101",
-   "age": "sub12",
-   "t": "tf",
-   "ref": "20:1",
-   "q": "Șeba a sunat din trâmbiță.",
-   "a": true
-  },
-  {
-   "id": "2sa.20.sub12.102",
-   "age": "sub12",
-   "t": "tf",
-   "ref": "20:2",
-   "q": "Bărbații lui Iuda au rămas credincioși lui David.",
-   "a": true
-  },
-  {
-   "id": "2sa.20.sub12.103",
+   "id": "2sa.20.sub12.201",
    "age": "sub12",
    "t": "tf",
    "ref": "20:16",
-   "q": "O femeie înțeleaptă a strigat din cetate.",
+   "q": "O femeie nebună a strigat din cetate.",
+   "a": false
+  },
+  {
+   "id": "2sa.20.sub12.202",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "20:10",
+   "q": "Ioab a lovit pe Amasa cu sabia.",
    "a": true
   },
   {
-   "id": "2sa.20.sub12.104",
+   "id": "2sa.20.sub12.203",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "20:2",
+   "q": "Toți bărbații lui Iuda au urmat pe Șeba.",
+   "a": false
+  },
+  {
+   "id": "2sa.20.sub12.204",
+   "age": "sub12",
+   "t": "tf",
+   "ref": "20:22",
+   "q": "Capul lui Șeba a fost aruncat lui Ioab.",
+   "a": true
+  },
+  {
+   "id": "2sa.20.sub12.205",
    "age": "sub12",
    "t": "tf",
    "ref": "20:1",
-   "q": "Șeba era prieten credincios al lui David.",
-   "a": false
+   "q": "Șeba a sunat din trâmbiță și a zis că nu au parte cu David.",
+   "a": true
   },
   {
-   "id": "2sa.20.sub12.105",
-   "age": "sub12",
-   "t": "tf",
-   "ref": "20:23",
-   "q": "Ioab era slujitor la cuptor.",
-   "a": false
-  },
-  {
-   "id": "2sa.20.sub12.106",
+   "id": "2sa.20.sub12.206",
    "age": "sub12",
    "t": "one",
-   "ref": "20:1",
-   "q": "Cine a sunat din trâmbiță?",
+   "ref": "20:22",
+   "q": "Cine a înduplecat poporul?",
    "opts": [
-    "Șeba",
-    "Ioab",
-    "Benaia"
+    "o femeie înțeleaptă",
+    "un bătrân",
+    "un copil"
    ],
    "a": 0
   },
   {
-   "id": "2sa.20.sub12.107",
+   "id": "2sa.20.sub12.207",
    "age": "sub12",
    "t": "one",
-   "ref": "20:16",
-   "q": "Cine a strigat din cetate?",
+   "ref": "20:15",
+   "q": "Ce cetate au împresurat?",
    "opts": [
-    "un copil",
-    "un soldat",
-    "o femeie înțeleaptă"
+    "Betleem",
+    "Gat",
+    "Abel-Bet-Maaca"
    ],
    "a": 2
   },
   {
-   "id": "2sa.20.sub12.108",
+   "id": "2sa.20.sub12.208",
    "age": "sub12",
    "t": "one",
-   "ref": "20:17",
-   "q": "Cu cine a vorbit femeia?",
+   "ref": "20:1",
+   "q": "Cum se numea omul care s-a răsculat?",
    "opts": [
-    "cu Hiram",
-    "cu Ioab",
-    "cu Natan"
+    "Ahitofel",
+    "Amasa",
+    "Șeba"
    ],
-   "a": 1
+   "a": 2
   },
   {
-   "id": "2sa.20.sub12.109",
+   "id": "2sa.20.sub12.209",
+   "age": "sub12",
+   "t": "one",
+   "ref": "20:9",
+   "q": "Pe cine a salutat Ioab?",
+   "opts": [
+    "pe Amasa",
+    "pe Benaia",
+    "pe Abișai"
+   ],
+   "a": 0
+  },
+  {
+   "id": "2sa.20.sub12.210",
    "age": "sub12",
    "t": "one",
    "ref": "20:2",
-   "q": "Cine a rămas credincios lui David?",
+   "q": "Cine au rămas credincioși lui David?",
    "opts": [
-    "filistenii",
-    "bărbații lui Israel",
-    "bărbații lui Iuda"
+    "bărbații lui Iuda",
+    "bărbații lui Efraim",
+    "bărbații din Moab"
    ],
-   "a": 2
+   "a": 0
   },
   {
-   "id": "2sa.20.sub12.110",
-   "age": "sub12",
-   "t": "one",
-   "ref": "20:23",
-   "q": "Cine era mai-mare peste oștire?",
-   "opts": [
-    "Adoram",
-    "Șeia",
-    "Ioab"
-   ],
-   "a": 2
-  },
-  {
-   "id": "2sa.20.sub12.121",
+   "id": "2sa.20.sub12.211",
    "age": "sub12",
    "t": "match",
    "ref": "20:1-26",
-   "q": "Asociază fiecare nume sau lucru cu ce se spune despre el în capitol.",
+   "q": "Asociază fiecare nume cu ce se spune despre el.",
    "pairs": [
     [
      "Șeba",
-     "cel care a sunat din trâmbiță"
+     "cel răsculat"
+    ],
+    [
+     "Amasa",
+     "cel lovit de Ioab"
     ],
     [
      "Ioab",
      "căpetenia oștirii"
     ],
     [
-     "femeia înțeleaptă",
-     "cea care a strigat din cetate"
-    ],
-    [
-     "Țadoc",
-     "preot"
+     "femeia",
+     "cea înțeleaptă"
     ],
     [
      "David",
-     "împăratul care s-a întors la Ierusalim"
+     "împăratul"
     ]
    ]
   },
   {
-   "id": "2sa.20.sub12.111",
+   "id": "2sa.20.sub12.212",
    "age": "sub12",
    "t": "fill",
    "ref": "20:1",
-   "q": "Acolo era un om de nimic, numit ___, fiul lui Bicri, Beniamitul. El a sunat din trâmbiță și a zis: „Noi n-avem nicio parte cu David, nicio moștenire cu fiul lui Isai! Fiecare la cortul său, Israele!\"",
+   "q": "Acolo era un om de nimic, numit ___, fiul lui Bicri, Beniamitul.",
    "a": [
     "Șeba"
    ]
   },
   {
-   "id": "2sa.20.sub12.112",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "20:1",
-   "q": "Acolo era un om de nimic, numit Șeba, fiul lui Bicri, Beniamitul. El a sunat din ___ și a zis: „Noi n-avem nicio parte cu David, nicio moștenire cu fiul lui Isai! Fiecare la cortul său, Israele!\"",
-   "a": [
-    "trâmbiță"
-   ]
-  },
-  {
-   "id": "2sa.20.sub12.113",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "20:16",
-   "q": "Atunci, o femeie înțeleaptă a început să strige din ___: „Ascultați, ascultați! Spuneți, vă rog, lui Ioab: ‘Apropie-te până aici, căci vreau să-ți vorbesc!’\"",
-   "a": [
-    "cetate"
-   ]
-  },
-  {
-   "id": "2sa.20.sub12.114",
+   "id": "2sa.20.sub12.213",
    "age": "sub12",
    "t": "fill",
    "ref": "20:23",
-   "q": "Ioab era mai-mare peste toată ___ lui Israel; Benaia, fiul lui Iehoiada, era în fruntea cheretiților și a peletiților;",
-   "a": [
-    "oștirea"
-   ]
-  },
-  {
-   "id": "2sa.20.sub12.115",
-   "age": "sub12",
-   "t": "fill",
-   "ref": "20:25",
-   "q": "Șeia era logofăt; Țadoc și Abiatar erau ___",
-   "a": [
-    "preoți"
-   ]
-  },
-  {
-   "id": "2sa.20.sub12.116",
-   "age": "sub12",
-   "t": "multi",
-   "ref": "20:25",
-   "q": "Cine erau preoți?",
-   "opts": [
-    "Ioab",
-    "Abiatar",
-    "Țadoc"
-   ],
-   "a": [
-    1,
-    2
-   ]
-  },
-  {
-   "id": "2sa.20.sub12.117",
-   "age": "sub12",
-   "t": "multi",
-   "ref": "20:16-17",
-   "q": "Ce a făcut femeia?",
-   "opts": [
-    "a strigat din cetate",
-    "a fugit",
-    "a vorbit cu Ioab"
-   ],
-   "a": [
-    0,
-    2
-   ]
-  },
-  {
-   "id": "2sa.20.sub12.118",
-   "age": "sub12",
-   "t": "multi",
-   "ref": "20:2",
-   "q": "Ce au făcut bărbații lui Israel?",
-   "opts": [
-    "au urmat pe Șeba",
-    "s-au depărtat de David",
-    "au rămas cu David"
-   ],
-   "a": [
-    0,
-    1
-   ]
-  },
-  {
-   "id": "2sa.20.sub12.119",
-   "age": "sub12",
-   "t": "multi",
-   "ref": "20:3",
-   "q": "Ce a făcut David?",
-   "opts": [
-    "a plecat la Hebron",
-    "s-a întors la Ierusalim",
-    "a intrat în casa lui"
-   ],
-   "a": [
-    1,
-    2
-   ]
-  },
-  {
-   "id": "2sa.20.sub12.120",
-   "age": "sub12",
-   "t": "multi",
-   "ref": "20:22",
-   "q": "Ce a făcut femeia cu poporul?",
-   "opts": [
-    "l-a înduplecat cu înțelepciunea ei",
-    "a salvat cetatea",
-    "a luptat cu sabia"
-   ],
-   "a": [
-    0,
-    1
-   ]
-  },
-  {
-   "id": "2sa.20.12-13.1",
-   "age": "12-13",
-   "t": "tf",
-   "ref": "20:3",
-   "q": "Când s-a întors la Ierusalim, David a pus sub pază cele zece țiitoare lăsate pentru paza casei.",
-   "a": true
-  },
-  {
-   "id": "2sa.20.12-13.2",
-   "age": "12-13",
-   "t": "tf",
-   "ref": "20:5",
-   "q": "Amasa i-a adunat pe bărbații lui Iuda mai repede decât îi poruncise împăratul.",
-   "a": false,
-   "explain": "Amasa a zăbovit peste vremea hotărâtă de împărat (20:5)."
-  },
-  {
-   "id": "2sa.20.12-13.3",
-   "age": "12-13",
-   "t": "tf",
-   "ref": "20:10",
-   "q": "Ioab și Abișai l-au urmărit pe Șeba după moartea lui Amasa.",
-   "a": true
-  },
-  {
-   "id": "2sa.20.12-13.16",
-   "age": "12-13",
-   "t": "tf",
-   "ref": "20:4",
-   "q": "David i-a spus lui Amasa să cheme pe bărbații lui Iuda peste trei zile.",
-   "a": true
-  },
-  {
-   "id": "2sa.20.12-13.17",
-   "age": "12-13",
-   "t": "tf",
-   "ref": "20:3",
-   "q": "Întors la Ierusalim, David a intrat la cele zece țiitoare lăsate pentru paza casei.",
-   "a": false,
-   "explain": "I-a pus într-o casă sub pază și n-a intrat la ele."
-  },
-  {
-   "id": "2sa.20.12-13.4",
-   "age": "12-13",
-   "t": "one",
-   "ref": "20:4",
-   "q": "În câte zile trebuia Amasa să-i cheme pe bărbații lui Iuda?",
-   "opts": [
-    "peste trei zile",
-    "peste o săptămână",
-    "într-o zi"
-   ],
-   "a": 0
-  },
-  {
-   "id": "2sa.20.12-13.5",
-   "age": "12-13",
-   "t": "one",
-   "ref": "20:8",
-   "q": "Lângă ce loc l-a întâlnit Ioab pe Amasa?",
-   "opts": [
-    "lângă piatra cea mare de la Gabaon",
-    "lângă Iordan",
-    "lângă fântâna Sira"
-   ],
-   "a": 0
-  },
-  {
-   "id": "2sa.20.12-13.6",
-   "age": "12-13",
-   "t": "one",
-   "ref": "20:9",
-   "q": "Ce l-a întrebat Ioab pe Amasa înainte să-l lovească?",
-   "opts": [
-    "„Ești sănătos, frate?\"",
-    "„Unde este oștirea?\"",
-    "„Pentru ce ai întârziat?\""
-   ],
-   "a": 0
-  },
-  {
-   "id": "2sa.20.12-13.18",
-   "age": "12-13",
-   "t": "one",
-   "ref": "20:1",
-   "q": "Al cui fiu era Șeba, cel care a stârnit pe Israel?",
-   "opts": [
-    "al lui Isai",
-    "al lui Ghera",
-    "al lui Bicri"
-   ],
-   "a": 2
-  },
-  {
-   "id": "2sa.20.12-13.19",
-   "age": "12-13",
-   "t": "one",
-   "ref": "20:15",
-   "q": "Ce făcea poporul lui Ioab la zidul cetății Abel-Bet-Maaca?",
-   "opts": [
-    "săpa zidul ca să-l facă să cadă",
-    "aducea daruri cetății",
-    "urca zidul cu scări"
-   ],
-   "a": 0
-  },
-  {
-   "id": "2sa.20.12-13.24",
-   "age": "12-13",
-   "t": "match",
-   "ref": "20:1-26",
-   "q": "Asociază fiecare nume sau loc cu ce se spune despre el.",
-   "pairs": [
-    [
-     "Șeba",
-     "fiul lui Bicri, Beniamitul"
-    ],
-    [
-     "Amasa",
-     "a zăbovit peste vremea hotărâtă"
-    ],
-    [
-     "Gabaon",
-     "locul unde era piatra cea mare"
-    ],
-    [
-     "Abel",
-     "cetatea unde se zicea: „Să întrebăm în Abel!”"
-    ],
-    [
-     "Ierusalim",
-     "locul unde s-a întors David"
-    ]
-   ]
-  },
-  {
-   "id": "2sa.20.12-13.10",
-   "age": "12-13",
-   "t": "fill",
-   "ref": "20:9",
-   "a": [
-    "sănătos"
-   ],
-   "q": "Ioab a zis lui Amasa: „Ești ___, frate?\" Și, cu mâna dreaptă, a apucat pe Amasa de barbă să-l sărute.",
-   "ctx": "Ioab, când l-a întâlnit pe Amasa la Gabaon:"
-  },
-  {
-   "id": "2sa.20.12-13.11",
-   "age": "12-13",
-   "t": "fill",
-   "ref": "20:19",
-   "a": [
-    "mamă"
-   ],
-   "q": "Eu sunt una din cetățile liniștite și credincioase din Israel, și tu cauți să pierzi o cetate care este o ___ în Israel! Pentru ce ai nimici tu moștenirea Domnului?\"",
-   "ctx": "Femeia înțeleaptă din Abel, către Ioab:"
-  },
-  {
-   "id": "2sa.20.12-13.12",
-   "age": "12-13",
-   "t": "fill",
-   "ref": "20:6",
-   "a": [
-    "Absalom"
-   ],
-   "q": "David a zis atunci lui Abișai: „Șeba, fiul lui Bicri, ne va face acum mai mult rău decât ___. Ia tu însuți pe slujitorii stăpânului tău și urmărește-l, ca nu cumva să găsească cetăți întărite și să se ascundă dinaintea noastră.\"",
-   "ctx": "David, către Abișai:"
-  },
-  {
-   "id": "2sa.20.12-13.20",
-   "age": "12-13",
-   "t": "fill",
-   "ref": "20:4",
-   "q": "Împăratul a zis lui Amasa: „Cheamă-mi peste trei zile pe bărbații lui ___, și tu să fii de față aici.\"",
-   "a": [
-    "Iuda"
-   ]
-  },
-  {
-   "id": "2sa.20.12-13.21",
-   "age": "12-13",
-   "t": "fill",
-   "ref": "20:16",
-   "q": "Atunci, o femeie ___ a început să strige din cetate: „Ascultați, ascultați! Spuneți, vă rog, lui Ioab: ‘Apropie-te până aici, căci vreau să-ți vorbesc!’\"",
-   "a": [
-    "înțeleaptă"
-   ]
-  },
-  {
-   "id": "2sa.20.12-13.13",
-   "age": "12-13",
-   "t": "multi",
-   "ref": "20:7",
-   "q": "Cine a plecat din Ierusalim să-l urmărească pe Șeba?",
-   "opts": [
-    "cheretiții și peletiții",
-    "oamenii lui Ioab",
-    "toți vitejii"
-   ],
-   "a": [
-    0,
-    1,
-    2
-   ]
-  },
-  {
-   "id": "2sa.20.12-13.14",
-   "age": "12-13",
-   "t": "multi",
-   "ref": "20:20-21",
-   "q": "Ce i-a spus Ioab femeii din Abel?",
-   "opts": [
-    "că nu vrea să nimicească cetatea",
-    "că va dărâma tot zidul",
-    "că vrea doar pe Șeba"
-   ],
-   "a": [
-    0,
-    2
-   ]
-  },
-  {
-   "id": "2sa.20.12-13.15",
-   "age": "12-13",
-   "t": "multi",
-   "ref": "20:1",
-   "q": "Din ce seminție era Șeba, fiul lui Bicri?",
-   "opts": [
-    "din Efraim",
-    "din Dan",
-    "din Iuda"
-   ],
-   "a": [],
-   "explain": "Niciun răspuns corect: Șeba era Beniamitul (20:1)."
-  },
-  {
-   "id": "2sa.20.12-13.22",
-   "age": "12-13",
-   "t": "multi",
-   "ref": "20:6-7",
-   "q": "Ce a spus David lui Abișai?",
-   "opts": [
-    "„Lasă-l în pace”",
-    "„Ia pe slujitorii stăpânului tău și urmărește-l”",
-    "„Șeba ne va face mai mult rău decât Absalom”"
-   ],
-   "a": [
-    1,
-    2
-   ]
-  },
-  {
-   "id": "2sa.20.12-13.23",
-   "age": "12-13",
-   "t": "multi",
-   "ref": "20:23-26",
-   "q": "Ce slujbe aveau oamenii din jurul lui David?",
-   "opts": [
-    "Țadoc: logofăt",
-    "Adoram: mai-mare peste dări",
-    "Iosafat: scriitor"
-   ],
-   "a": [
-    1,
-    2
-   ]
-  },
-  {
-   "id": "2sa.20.14-15.1",
-   "age": "14-15",
-   "t": "tf",
-   "ref": "20:6",
-   "q": "David spunea că Șeba le va face mai mult rău decât Absalom.",
-   "a": true
-  },
-  {
-   "id": "2sa.20.14-15.2",
-   "age": "14-15",
-   "t": "tf",
-   "ref": "20:10",
-   "q": "Ioab l-a lovit pe Amasa de două ori.",
-   "a": false,
-   "explain": "L-a lovit „fără să-i mai dea o a doua lovitură\" (20:10)."
-  },
-  {
-   "id": "2sa.20.14-15.3",
-   "age": "14-15",
-   "t": "tf",
-   "ref": "20:14",
-   "q": "Ioab a străbătut toate semințiile lui Israel înspre Abel-Bet-Maaca.",
-   "a": true
-  },
-  {
-   "id": "2sa.20.14-15.16",
-   "age": "14-15",
-   "t": "tf",
-   "ref": "20:13",
-   "q": "După ce Amasa a fost luat din drum, fiecare a urmat pe Ioab ca să-l urmărească pe Șeba.",
-   "a": true
-  },
-  {
-   "id": "2sa.20.14-15.17",
-   "age": "14-15",
-   "t": "tf",
-   "ref": "20:3",
-   "q": "După întoarcerea la Ierusalim, David a intrat la țiitoarele lui.",
-   "a": false,
-   "explain": "N-a intrat la ele; le-a pus într-o casă sub pază."
-  },
-  {
-   "id": "2sa.20.14-15.4",
-   "age": "14-15",
-   "t": "one",
-   "ref": "20:8",
-   "q": "Cum s-a întâmplat ca sabia lui Ioab să-i fie în mână?",
-   "opts": [
-    "i-a dat-o Abișai",
-    "a scos-o de la un ostaș",
-    "sabia a alunecat din teacă când a înaintat"
-   ],
-   "a": 2
-  },
-  {
-   "id": "2sa.20.14-15.5",
-   "age": "14-15",
-   "t": "one",
-   "ref": "20:12",
-   "q": "De ce a tras omul lui Ioab trupul lui Amasa din drum?",
-   "opts": [
-    "ca să-l îngroape",
-    "pentru că tot poporul se oprea lângă el",
-    "ca să-l ducă la David"
-   ],
-   "a": 1
-  },
-  {
-   "id": "2sa.20.14-15.6",
-   "age": "14-15",
-   "t": "one",
-   "ref": "20:18",
-   "q": "Ce zicală pomenește femeia din Abel?",
-   "opts": [
-    "„Cine este ca Abel?\"",
-    "„Abel este mama cetăților\"",
-    "„Să întrebăm în Abel!\""
-   ],
-   "a": 2
-  },
-  {
-   "id": "2sa.20.14-15.18",
-   "age": "14-15",
-   "t": "one",
-   "ref": "20:21",
-   "q": "Ce cerea Ioab de la cetatea Abel-Bet-Maaca, ca să se depărteze?",
-   "opts": [
-    "pe Șeba",
-    "pe femeia înțeleaptă",
-    "o sută de talanți"
-   ],
-   "a": 0
-  },
-  {
-   "id": "2sa.20.14-15.19",
-   "age": "14-15",
-   "t": "one",
-   "ref": "20:7",
-   "q": "Cine a plecat din Ierusalim împreună cu Abișai?",
-   "opts": [
-    "oamenii lui Ioab, cheretiții și peletiții",
-    "filistenii",
-    "gatiții"
-   ],
-   "a": 0
-  },
-  {
-   "id": "2sa.20.14-15.24",
-   "age": "14-15",
-   "t": "match",
-   "ref": "20:1-26",
-   "q": "Asociază fiecare nume sau loc cu ce se spune despre el.",
-   "pairs": [
-    [
-     "Abel-Bet-Maaca",
-     "cetatea împresurată de Ioab"
-    ],
-    [
-     "Bicri",
-     "tatăl lui Șeba"
-    ],
-    [
-     "Iehoiada",
-     "tatăl lui Benaia"
-    ],
-    [
-     "Ahilud",
-     "tatăl lui Iosafat"
-    ],
-    [
-     "Iair",
-     "cetatea de unde era Ira"
-    ]
-   ]
-  },
-  {
-   "id": "2sa.20.14-15.10",
-   "age": "14-15",
-   "t": "fill",
-   "ref": "20:20",
-   "a": [
-    "dărâm"
-   ],
-   "q": "Ioab a răspuns: „Departe, departe de mine gândul să nimicesc sau să ___!",
-   "ctx": "Ioab, către femeia din Abel-Bet-Maaca:"
-  },
-  {
-   "id": "2sa.20.14-15.11",
-   "age": "14-15",
-   "t": "fill",
-   "ref": "20:3",
-   "a": [
-    "văduvie"
-   ],
-   "q": "David a intrat iarăși în casa lui, la Ierusalim. Împăratul a luat cele zece țiitoare pe care le lăsase pentru paza casei și le-a pus într-o casă sub pază; a îngrijit de ele, dar n-a intrat la ele. Și au fost închise până în ziua morții lor, trăind în ___.",
-   "ctx": "Despre cele zece țiitoare ale lui David:"
-  },
-  {
-   "id": "2sa.20.14-15.12",
-   "age": "14-15",
-   "t": "fill",
-   "ref": "20:21",
-   "a": [
-    "zid"
-   ],
-   "q": "Nu este așa! Dar un om din muntele lui Efraim, numit Șeba, fiul lui Bicri, a ridicat mâna împotriva împăratului David; dați-l încoace numai pe el, și mă voi depărta de cetate.\" Femeia a zis lui Ioab: „Iată, capul lui îți va fi aruncat peste ___.\"",
-   "ctx": "Răspunsul femeii din Abel-Bet-Maaca:"
-  },
-  {
-   "id": "2sa.20.14-15.20",
-   "age": "14-15",
-   "t": "fill",
-   "ref": "20:17",
-   "q": "El s-a apropiat de ea, și femeia a zis: „Tu ești ___?\" El a răspuns: „Eu sunt.\" Și ea i-a zis: „Ascultă vorbele roabei tale.\" El i-a răspuns: „Ascult.\"",
+   "q": "___ era mai-mare peste toată oștirea lui Israel; Benaia, fiul lui Iehoiada, era în fruntea cheretiților și a peletiților;",
    "a": [
     "Ioab"
    ]
   },
   {
-   "id": "2sa.20.14-15.21",
-   "age": "14-15",
+   "id": "2sa.20.sub12.214",
+   "age": "sub12",
    "t": "fill",
-   "ref": "20:11",
-   "q": "Un bărbat dintre oamenii lui Ioab a rămas lângă Amasa și zicea: „Cine vrea pe Ioab și cine este pentru ___? Să urmeze pe Ioab!\"",
+   "ref": "20:15",
+   "q": "Tot poporul care era cu Ioab săpa ___ ca să-l facă să cadă.",
    "a": [
-    "David"
+    "zidul"
    ]
   },
   {
-   "id": "2sa.20.14-15.13",
-   "age": "14-15",
+   "id": "2sa.20.sub12.215",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "20:9",
+   "q": "Ioab a zis lui Amasa: „Ești ___, frate?\"",
+   "a": [
+    "sănătos"
+   ]
+  },
+  {
+   "id": "2sa.20.sub12.216",
+   "age": "sub12",
+   "t": "fill",
+   "ref": "20:22",
+   "q": "Ioab a sunat din ___; s-au împrăștiat de lângă cetate și fiecare s-a dus în cortul lui.",
+   "a": [
+    "trâmbiță"
+   ]
+  },
+  {
+   "id": "2sa.20.sub12.217",
+   "age": "sub12",
    "t": "multi",
-   "ref": "20:19",
-   "q": "Cum își numește femeia cetatea, vorbind cu Ioab?",
+   "ref": "20:2",
+   "q": "Ce au făcut bărbații?",
    "opts": [
-    "moștenirea Domnului",
-    "o mamă în Israel",
-    "una din cetățile liniștite și credincioase"
+    "Israel s-a depărtat de David",
+    "Iuda l-a părăsit",
+    "Iuda a rămas credincios"
    ],
    "a": [
     0,
+    2
+   ]
+  },
+  {
+   "id": "2sa.20.sub12.218",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "20:1",
+   "q": "Ce a zis Șeba?",
+   "opts": [
+    "toți cu David",
+    "noi n-avem parte cu David",
+    "fiecare la cortul său"
+   ],
+   "a": [
     1,
     2
    ]
   },
   {
-   "id": "2sa.20.14-15.14",
-   "age": "14-15",
+   "id": "2sa.20.sub12.219",
+   "age": "sub12",
    "t": "multi",
-   "ref": "20:3",
-   "q": "Ce a făcut David cu cele zece țiitoare?",
+   "ref": "20:22",
+   "q": "Ce a făcut femeia?",
    "opts": [
-    "a îngrijit de ele",
-    "le-a dat lui Amasa",
-    "le-a pus într-o casă sub pază"
-   ],
-   "a": [
-    0,
-    2
-   ]
-  },
-  {
-   "id": "2sa.20.14-15.15",
-   "age": "14-15",
-   "t": "multi",
-   "ref": "20:5",
-   "q": "Pe cine trebuia să cheme Amasa în trei zile?",
-   "opts": [
-    "pe bărbații lui Israel",
-    "pe cheretiți",
-    "pe preoți"
-   ],
-   "a": [],
-   "explain": "Niciun răspuns corect: pe bărbații lui Iuda (20:4-5)."
-  },
-  {
-   "id": "2sa.20.14-15.22",
-   "age": "14-15",
-   "t": "multi",
-   "ref": "20:21-22",
-   "q": "Ce s-a întâmplat după cuvintele femeii?",
-   "opts": [
-    "capul lui Șeba i-a fost aruncat lui Ioab",
-    "Ioab a dărâmat cetatea",
-    "femeia a înduplecat poporul cu înțelepciunea ei"
-   ],
-   "a": [
-    0,
-    2
-   ]
-  },
-  {
-   "id": "2sa.20.14-15.23",
-   "age": "14-15",
-   "t": "multi",
-   "ref": "20:15",
-   "q": "Ce au făcut oamenii lui Ioab la Abel-Bet-Maaca?",
-   "opts": [
-    "au ridicat un val care atingea întăritura",
-    "au împresurat cetatea",
-    "au încheiat pace"
+    "au tăiat capul lui Șeba",
+    "a înduplecat poporul",
+    "l-au ocrotit"
    ],
    "a": [
     0,
@@ -803,265 +235,759 @@
    ]
   },
   {
-   "id": "2sa.20.16-17.1",
-   "age": "16-17",
-   "t": "tf",
+   "id": "2sa.20.sub12.220",
+   "age": "sub12",
+   "t": "multi",
+   "ref": "20:12",
+   "q": "Ce s-a întâmplat cu Amasa?",
+   "opts": [
+    "se rostogolea în sânge",
+    "a fost tras din drum",
+    "s-a ridicat"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "2sa.20.sub12.221",
+   "age": "sub12",
+   "t": "multi",
    "ref": "20:7",
-   "q": "Abișai a ieșit din Ierusalim după Șeba urmat de oamenii lui Ioab.",
+   "q": "Cine a plecat?",
+   "opts": [
+    "Abișai",
+    "Itai",
+    "cheretiții și peletiții"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "2sa.20.12-13.201",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "20:8",
+   "q": "Ioab și Amasa s-au întâlnit lângă piatra cea mare din Gabaon.",
    "a": true
   },
   {
-   "id": "2sa.20.16-17.2",
-   "age": "16-17",
+   "id": "2sa.20.12-13.202",
+   "age": "12-13",
    "t": "tf",
+   "ref": "20:3",
+   "q": "David a pus cele zece țiitoare într-o casă sub pază.",
+   "a": true
+  },
+  {
+   "id": "2sa.20.12-13.203",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "20:18",
+   "q": "Femeia a spus că cetatea ei este o cetate de război.",
+   "a": false
+  },
+  {
+   "id": "2sa.20.12-13.204",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "20:5",
+   "q": "Amasa a venit mai devreme decât a hotărât împăratul.",
+   "a": false
+  },
+  {
+   "id": "2sa.20.12-13.205",
+   "age": "12-13",
+   "t": "tf",
+   "ref": "20:26",
+   "q": "Ira din Iair era slujbaș de stat al lui David.",
+   "a": true
+  },
+  {
+   "id": "2sa.20.12-13.206",
+   "age": "12-13",
+   "t": "one",
+   "ref": "20:21",
+   "q": "Ce a cerut Ioab?",
+   "opts": [
+    "să-i dea pe Șeba",
+    "să-i dea hrană",
+    "să-i dea aur"
+   ],
+   "a": 0
+  },
+  {
+   "id": "2sa.20.12-13.207",
+   "age": "12-13",
+   "t": "one",
+   "ref": "20:15",
+   "q": "Ce au ridicat împotriva cetății?",
+   "opts": [
+    "un cort",
+    "un turn",
+    "un val"
+   ],
+   "a": 2
+  },
+  {
+   "id": "2sa.20.12-13.208",
+   "age": "12-13",
+   "t": "one",
+   "ref": "20:6",
+   "q": "Pe cine a trimis David să urmărească pe Șeba?",
+   "opts": [
+    "pe Țiba",
+    "pe Hușai",
+    "pe Abișai"
+   ],
+   "a": 2
+  },
+  {
+   "id": "2sa.20.12-13.209",
+   "age": "12-13",
+   "t": "one",
+   "ref": "20:4",
+   "q": "Ce a poruncit David lui Amasa?",
+   "opts": [
+    "să plece în Egipt",
+    "să cheme pe bărbații lui Iuda în trei zile",
+    "să se ascundă"
+   ],
+   "a": 1
+  },
+  {
+   "id": "2sa.20.12-13.210",
+   "age": "12-13",
+   "t": "one",
+   "ref": "20:9",
+   "q": "De ce a apucat Ioab pe Amasa de barbă?",
+   "opts": [
+    "să-l lovească",
+    "să-l înjosească",
+    "să-l sărute"
+   ],
+   "a": 2
+  },
+  {
+   "id": "2sa.20.12-13.211",
+   "age": "12-13",
+   "t": "match",
+   "ref": "20:1-26",
+   "q": "Asociază fiecare nume sau loc cu ce se spune despre el.",
+   "pairs": [
+    [
+     "Bicri",
+     "tatăl lui Șeba"
+    ],
+    [
+     "Gabaon",
+     "piatra cea mare"
+    ],
+    [
+     "Abel-Bet-Maaca",
+     "cetatea împresurată"
+    ],
+    [
+     "Efraim",
+     "muntele lui Șeba"
+    ],
+    [
+     "Iair",
+     "cetatea lui Ira"
+    ]
+   ]
+  },
+  {
+   "id": "2sa.20.12-13.212",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "20:1",
+   "q": "Acolo era un om de nimic, numit Șeba, fiul lui ___, Beniamitul.",
+   "a": [
+    "Bicri"
+   ]
+  },
+  {
+   "id": "2sa.20.12-13.213",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "20:19",
+   "q": "Eu sunt una din cetățile liniștite și credincioase din Israel, și tu cauți să pierzi o cetate care este o ___ în Israel!",
+   "a": [
+    "mamă"
+   ]
+  },
+  {
+   "id": "2sa.20.12-13.214",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "20:6",
+   "q": "Ia tu însuți pe slujitorii stăpânului tău și urmărește-l, ca nu cumva să găsească ___ întărite și să se ascundă dinaintea noastră.\"",
+   "a": [
+    "cetăți"
+   ]
+  },
+  {
+   "id": "2sa.20.12-13.215",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "20:21",
+   "q": "Dar un om din muntele lui ___, numit Șeba, fiul lui Bicri, a ridicat mâna împotriva împăratului David; dați-l încoace numai pe el, și mă voi depărta de cetate.\"",
+   "a": [
+    "Efraim"
+   ]
+  },
+  {
+   "id": "2sa.20.12-13.216",
+   "age": "12-13",
+   "t": "fill",
+   "ref": "20:8",
+   "q": "Când au fost lângă ___ cea mare care este la Gabaon, Amasa a ajuns înaintea lor.",
+   "a": [
+    "piatra"
+   ]
+  },
+  {
+   "id": "2sa.20.12-13.217",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "20:4",
+   "q": "Ce a poruncit?",
+   "opts": [
+    "chemați bărbații Iuda",
+    "peste trei zile",
+    "peste zece zile"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "2sa.20.12-13.218",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "20:3",
+   "q": "Ce a făcut David?",
+   "opts": [
+    "le-a pus sub pază",
+    "a luat cele zece țiitoare",
+    "le-a trimis acasă"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "2sa.20.12-13.219",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "20:23",
+   "q": "Cine era cine?",
+   "opts": [
+    "Adoram peste oaste",
+    "Benaia peste cheretiți",
+    "Ioab peste oștire"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "2sa.20.12-13.220",
+   "age": "12-13",
+   "t": "multi",
+   "ref": "20:10",
+   "q": "Ce a făcut Ioab?",
+   "opts": [
+    "n-a mai dat a doua lovitură",
+    "a salvat pe Amasa",
+    "a lovit pe Amasa"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "2sa.20.12-13.221",
+   "age": "12-13",
+   "t": "multi",
    "ref": "20:11",
-   "q": "Omul lui Ioab, rămas lângă Amasa, striga: „Cine este pentru Absalom?\"",
-   "a": false,
-   "explain": "Striga: „Cine vrea pe Ioab și cine este pentru David? Să urmeze pe Ioab!\" (20:11)."
+   "q": "Ce a zis un om al lui Ioab?",
+   "opts": [
+    "cine vrea pe Ioab",
+    "cine e pentru David",
+    "nu urmați pe Ioab"
+   ],
+   "a": [
+    0,
+    1
+   ]
   },
   {
-   "id": "2sa.20.16-17.3",
-   "age": "16-17",
+   "id": "2sa.20.14-15.201",
+   "age": "14-15",
    "t": "tf",
-   "ref": "20:22",
-   "q": "După sfârșitul lui Șeba, fiecare s-a dus în cortul lui, iar Ioab s-a întors la Ierusalim.",
+   "ref": "20:2",
+   "q": "Bărbații lui Iuda au însoțit pe David de la Iordan la Ierusalim.",
    "a": true
   },
   {
-   "id": "2sa.20.16-17.16",
+   "id": "2sa.20.14-15.202",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "20:10",
+   "q": "Amasa n-a luat seama la sabia din mâna lui Ioab.",
+   "a": true
+  },
+  {
+   "id": "2sa.20.14-15.203",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "20:21",
+   "q": "Femeia a spus că capul lui Șeba va fi aruncat peste zid.",
+   "a": true
+  },
+  {
+   "id": "2sa.20.14-15.204",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "20:6",
+   "q": "David a zis că Șeba va face mai puțin rău decât Absalom.",
+   "a": false
+  },
+  {
+   "id": "2sa.20.14-15.205",
+   "age": "14-15",
+   "t": "tf",
+   "ref": "20:19",
+   "q": "Femeia a spus că cetatea ei nu este credincioasă.",
+   "a": false
+  },
+  {
+   "id": "2sa.20.14-15.206",
+   "age": "14-15",
+   "t": "one",
+   "ref": "20:18",
+   "q": "Ce se spunea odinioară?",
+   "opts": [
+    "Să fugim din Abel",
+    "Să ne ducem în Abel",
+    "Să întrebăm în Abel"
+   ],
+   "a": 2
+  },
+  {
+   "id": "2sa.20.14-15.207",
+   "age": "14-15",
+   "t": "one",
+   "ref": "20:3",
+   "q": "Ce făcea David cu țiitoarele?",
+   "opts": [
+    "le-a luat cu el",
+    "le-a alungat",
+    "a îngrijit de ele, dar n-a intrat la ele"
+   ],
+   "a": 2
+  },
+  {
+   "id": "2sa.20.14-15.208",
+   "age": "14-15",
+   "t": "one",
+   "ref": "20:6",
+   "q": "De ce să urmărească pe Șeba repede?",
+   "opts": [
+    "ca să nu găsească cetăți întărite",
+    "ca să-l ierte",
+    "ca să-l prindă la Ierusalim"
+   ],
+   "a": 0
+  },
+  {
+   "id": "2sa.20.14-15.209",
+   "age": "14-15",
+   "t": "one",
+   "ref": "20:20",
+   "q": "Ce a zis Ioab?",
+   "opts": [
+    "Voi nimici cetatea",
+    "Voi arde zidul",
+    "Departe de mine gândul să nimicesc"
+   ],
+   "a": 2
+  },
+  {
+   "id": "2sa.20.14-15.210",
+   "age": "14-15",
+   "t": "one",
+   "ref": "20:11",
+   "q": "Ce a zis un om al lui Ioab?",
+   "opts": [
+    "Să urmeze pe Șeba",
+    "Să urmeze pe Amasa",
+    "Să urmeze pe Ioab"
+   ],
+   "a": 2
+  },
+  {
+   "id": "2sa.20.14-15.211",
+   "age": "14-15",
+   "t": "match",
+   "ref": "20:2-23",
+   "q": "Asociază fiecare spusă cu cel care a rostit-o și cu momentul.",
+   "pairs": [
+    [
+     "„Noi n-avem nicio parte cu David”",
+     "Șeba, cu trâmbița"
+    ],
+    [
+     "„Șeba ne va face mai mult rău decât Absalom”",
+     "David, către Abișai"
+    ],
+    [
+     "„Ești sănătos, frate?”",
+     "Ioab, către Amasa"
+    ],
+    [
+     "„Tu ești Ioab?”",
+     "femeia, din cetate"
+    ],
+    [
+     "„Capul lui îți va fi aruncat peste zid”",
+     "femeia, către Ioab"
+    ]
+   ]
+  },
+  {
+   "id": "2sa.20.14-15.212",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "20:2",
+   "q": "Dar bărbații lui Iuda au rămas ___ împăratului lor și l-au însoțit de la Iordan până la Ierusalim.",
+   "a": [
+    "credincioși"
+   ]
+  },
+  {
+   "id": "2sa.20.14-15.213",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "20:10",
+   "q": "Amasa n-a luat seama la sabia care era în mâna lui Ioab, și Ioab l-a lovit cu ea în pântece și i-a vărsat ___ pe pământ, fără să-i mai dea o a doua lovitură.",
+   "a": [
+    "măruntaiele"
+   ]
+  },
+  {
+   "id": "2sa.20.14-15.214",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "20:19",
+   "q": "Eu sunt una din cetățile ___ și credincioase din Israel, și tu cauți să pierzi o cetate care este o mamă în Israel!",
+   "a": [
+    "liniștite"
+   ]
+  },
+  {
+   "id": "2sa.20.14-15.215",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "20:6",
+   "q": "Ia tu însuți pe slujitorii stăpânului tău și urmărește-l, ca nu cumva să găsească cetăți ___ și să se ascundă dinaintea noastră.\"",
+   "a": [
+    "întărite"
+   ]
+  },
+  {
+   "id": "2sa.20.14-15.216",
+   "age": "14-15",
+   "t": "fill",
+   "ref": "20:20",
+   "q": "Ioab a răspuns: „Departe, departe de mine gândul să nimicesc sau să ___!",
+   "a": [
+    "dărâm"
+   ]
+  },
+  {
+   "id": "2sa.20.14-15.217",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "20:5",
+   "q": "Ce a făcut Amasa?",
+   "opts": [
+    "s-a întors devreme",
+    "a zăbovit peste vreme",
+    "a plecat să cheme pe Iuda"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "2sa.20.14-15.218",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "20:22",
+   "q": "Ce a făcut Ioab?",
+   "opts": [
+    "a sunat din trâmbiță",
+    "s-a întors la Ierusalim",
+    "a rămas în Abel"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "2sa.20.14-15.219",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "20:8",
+   "q": "Ce s-a întâmplat?",
+   "opts": [
+    "Amasa a fugit",
+    "sabia lui Ioab a alunecat",
+    "Amasa a ajuns înaintea lor"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "2sa.20.14-15.220",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "20:3",
+   "q": "Ce s-a întâmplat cu țiitoarele?",
+   "opts": [
+    "au trăit în văduvie",
+    "au fost închise",
+    "au fost eliberate"
+   ],
+   "a": [
+    0,
+    1
+   ]
+  },
+  {
+   "id": "2sa.20.14-15.221",
+   "age": "14-15",
+   "t": "multi",
+   "ref": "20:15",
+   "q": "Ce au făcut?",
+   "opts": [
+    "au împresurat pe Șeba",
+    "au plecat",
+    "au ridicat un val"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "2sa.20.16-17.201",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "20:14",
+   "q": "Ioab a mers spre Abel-Bet-Maaca.",
+   "a": true
+  },
+  {
+   "id": "2sa.20.16-17.202",
    "age": "16-17",
    "t": "tf",
    "ref": "20:23",
-   "q": "Benaia, fiul lui Iehoiada, era în fruntea cheretiților și a peletiților.",
+   "q": "Adoram era căpetenia cheretiților.",
+   "a": false
+  },
+  {
+   "id": "2sa.20.16-17.203",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "20:1",
+   "q": "Șeba era fiul lui Bicri, Beniamitul.",
    "a": true
   },
   {
-   "id": "2sa.20.16-17.17",
+   "id": "2sa.20.16-17.204",
    "age": "16-17",
    "t": "tf",
    "ref": "20:25",
-   "q": "Șeia era mai-mare peste dări.",
-   "a": false,
-   "explain": "Șeia era logofăt; Adoram era mai-mare peste dări."
+   "q": "Țadoc și Abiatar erau logofeți.",
+   "a": false
   },
   {
-   "id": "2sa.20.16-17.4",
+   "id": "2sa.20.16-17.205",
+   "age": "16-17",
+   "t": "tf",
+   "ref": "20:4",
+   "q": "David a zis lui Amasa să cheme pe bărbații lui Iuda peste zece zile.",
+   "a": false
+  },
+  {
+   "id": "2sa.20.16-17.206",
    "age": "16-17",
    "t": "one",
-   "ref": "20:24",
-   "q": "Cine era mai-mare peste dări în vremea lui David?",
+   "ref": "20:4",
+   "q": "După câte zile să cheme Amasa pe Iuda?",
    "opts": [
-    "Iosafat",
-    "Șeia",
-    "Adoram"
+    "șapte zile",
+    "zece zile",
+    "trei zile"
    ],
    "a": 2
   },
   {
-   "id": "2sa.20.16-17.5",
-   "age": "16-17",
-   "t": "one",
-   "ref": "20:26",
-   "q": "De unde era Ira, slujbașul de stat al lui David?",
-   "opts": [
-    "din Iair",
-    "din Gat",
-    "din Betleem"
-   ],
-   "a": 0
-  },
-  {
-   "id": "2sa.20.16-17.6",
-   "age": "16-17",
-   "t": "one",
-   "ref": "20:6",
-   "q": "De ce se temea David că va scăpa Șeba?",
-   "opts": [
-    "că va găsi cetăți întărite și se va ascunde",
-    "că va fugi în Egipt",
-    "că va lua Ierusalimul"
-   ],
-   "a": 0
-  },
-  {
-   "id": "2sa.20.16-17.18",
+   "id": "2sa.20.16-17.207",
    "age": "16-17",
    "t": "one",
    "ref": "20:24",
-   "q": "Cine era scriitor (arhivar) în vremea lui David?",
+   "q": "Peste ce era Adoram?",
+   "opts": [
+    "peste oaste",
+    "peste scriitori",
+    "peste dări"
+   ],
+   "a": 2
+  },
+  {
+   "id": "2sa.20.16-17.208",
+   "age": "16-17",
+   "t": "one",
+   "ref": "20:25",
+   "q": "Cine era logofăt?",
+   "opts": [
+    "Șeia",
+    "Benaia",
+    "Iosafat"
+   ],
+   "a": 0
+  },
+  {
+   "id": "2sa.20.16-17.209",
+   "age": "16-17",
+   "t": "one",
+   "ref": "20:1",
+   "q": "Fiul cui era Șeba?",
+   "opts": [
+    "al lui Bicri",
+    "al lui Ghera",
+    "al lui Isai"
+   ],
+   "a": 0
+  },
+  {
+   "id": "2sa.20.16-17.210",
+   "age": "16-17",
+   "t": "one",
+   "ref": "20:24",
+   "q": "Cine era arhivar?",
    "opts": [
     "Iosafat, fiul lui Ahilud",
-    "Benaia",
-    "Adoram"
+    "Ira",
+    "Șeia"
    ],
    "a": 0
   },
   {
-   "id": "2sa.20.16-17.19",
-   "age": "16-17",
-   "t": "one",
-   "ref": "20:19",
-   "q": "Ce spunea femeia că ar nimici Ioab, dacă ar pierde cetatea ei?",
-   "opts": [
-    "cetatea Hebron",
-    "cortul întâlnirii",
-    "moștenirea Domnului"
-   ],
-   "a": 2
-  },
-  {
-   "id": "2sa.20.16-17.24",
+   "id": "2sa.20.16-17.211",
    "age": "16-17",
    "t": "match",
    "ref": "20:23-26",
-   "q": "Asociază fiecare nume cu slujba lui.",
+   "q": "Asociază fiecare nume cu funcția lui.",
    "pairs": [
+    [
+     "Ioab",
+     "mai-mare peste oștire"
+    ],
+    [
+     "Benaia",
+     "în fruntea cheretiților"
+    ],
     [
      "Adoram",
      "mai-mare peste dări"
     ],
     [
      "Iosafat",
-     "scriitor (arhivar)"
+     "scriitor"
     ],
     [
      "Șeia",
      "logofăt"
-    ],
-    [
-     "Ira",
-     "slujbaș de stat din Iair"
-    ],
-    [
-     "Benaia",
-     "în fruntea cheretiților și a peletiților"
     ]
    ]
   },
   {
-   "id": "2sa.20.16-17.10",
-   "age": "16-17",
-   "t": "fill",
-   "ref": "20:5",
-   "a": [
-    "zăbovit"
-   ],
-   "q": "Amasa a plecat să cheme pe Iuda, dar a ___ peste vremea pe care i-o hotărâse împăratul.",
-   "ctx": "Porunca lui David către Amasa:"
-  },
-  {
-   "id": "2sa.20.16-17.11",
-   "age": "16-17",
-   "t": "fill",
-   "ref": "20:15",
-   "a": [
-    "zidul"
-   ],
-   "q": "Au venit și au împresurat pe Șeba în Abel-Bet-Maaca și au ridicat împotriva cetății un val care atingea întăritura. Tot poporul care era cu Ioab săpa ___ ca să-l facă să cadă.",
-   "ctx": "Asediul cetății Abel-Bet-Maaca:"
-  },
-  {
-   "id": "2sa.20.16-17.12",
-   "age": "16-17",
-   "t": "fill",
-   "ref": "20:10",
-   "a": [
-    "sabia"
-   ],
-   "q": "Amasa n-a luat seama la ___ care era în mâna lui Ioab, și Ioab l-a lovit cu ea în pântece și i-a vărsat măruntaiele pe pământ, fără să-i mai dea o a doua lovitură. Și Amasa a murit. Ioab și fratele său Abișai au urmărit pe Șeba, fiul lui Bicri.",
-   "ctx": "Întâlnirea lui Ioab cu Amasa:"
-  },
-  {
-   "id": "2sa.20.16-17.20",
+   "id": "2sa.20.16-17.212",
    "age": "16-17",
    "t": "fill",
    "ref": "20:1",
-   "q": "Acolo era un om de nimic, numit Șeba, fiul lui Bicri, Beniamitul. El a sunat din trâmbiță și a zis: „Noi n-avem nicio parte cu David, nicio moștenire cu fiul lui Isai! Fiecare la ___ său, Israele!\"",
+   "q": "Acolo era un om de nimic, numit Șeba, fiul lui Bicri, ___.",
    "a": [
-    "cortul"
+    "Beniamitul"
    ]
   },
   {
-   "id": "2sa.20.16-17.21",
+   "id": "2sa.20.16-17.213",
    "age": "16-17",
    "t": "fill",
-   "ref": "20:8",
-   "q": "Când au fost lângă piatra cea mare care este la Gabaon, Amasa a ajuns înaintea lor. Ioab era încins cu o sabie pe deasupra hainelor de ___ cu care era îmbrăcat; ea era legată la coapsă și stătea în teacă și, când a înaintat Ioab, sabia a alunecat.",
+   "ref": "20:26",
+   "q": "și Ira din ___ era slujbaș de stat al lui David.",
    "a": [
-    "război"
+    "Iair"
    ]
   },
   {
-   "id": "2sa.20.16-17.13",
+   "id": "2sa.20.16-17.214",
    "age": "16-17",
-   "t": "multi",
+   "t": "fill",
    "ref": "20:14",
-   "q": "Cine l-au urmat pe Ioab înspre Abel-Bet-Maaca?",
-   "opts": [
-    "toți bărbații de seamă",
-    "bărbații lui Amasa",
-    "Șeba și oamenii lui"
-   ],
+   "q": "Ioab a străbătut toate semințiile lui Israel înspre ___ și toți bărbații de seamă s-au strâns și l-au urmat.",
    "a": [
-    0
+    "Abel-Bet-Maaca"
    ]
   },
   {
-   "id": "2sa.20.16-17.14",
+   "id": "2sa.20.16-17.215",
    "age": "16-17",
-   "t": "multi",
-   "ref": "20:23",
-   "q": "Ce slujbe aveau Ioab și Benaia?",
-   "opts": [
-    "Ioab era mai-mare peste toată oștirea",
-    "Benaia era preot",
-    "Benaia era în fruntea cheretiților și peletiților"
-   ],
+   "t": "fill",
+   "ref": "20:24",
+   "q": "Adoram era mai-mare peste dări; Iosafat, fiul lui Ahilud, era scriitor (___);",
    "a": [
-    0,
-    2
+    "arhivar"
    ]
   },
   {
-   "id": "2sa.20.16-17.15",
+   "id": "2sa.20.16-17.216",
    "age": "16-17",
-   "t": "multi",
-   "ref": "20:25",
-   "q": "Cine erau preoți, după lista?",
-   "opts": [
-    "Ahimelec",
-    "Șeia",
-    "Natan"
-   ],
-   "a": [],
-   "explain": "Niciun răspuns corect: Țadoc și Abiatar erau preoți; Șeia era logofăt (20:25)."
-  },
-  {
-   "id": "2sa.20.16-17.22",
-   "age": "16-17",
-   "t": "multi",
-   "ref": "20:2-3",
-   "q": "Ce s-a întâmplat după întoarcerea lui David?",
-   "opts": [
-    "bărbații lui Iuda au rămas credincioși împăratului",
-    "toți bărbații lui Israel l-au urmat pe David",
-    "David a intrat iarăși în casa lui, la Ierusalim"
-   ],
+   "t": "fill",
+   "ref": "20:24",
+   "q": "___ era mai-mare peste dări; Iosafat, fiul lui Ahilud, era scriitor (arhivar);",
    "a": [
-    0,
-    2
+    "Adoram"
    ]
   },
   {
-   "id": "2sa.20.16-17.23",
+   "id": "2sa.20.16-17.217",
    "age": "16-17",
    "t": "multi",
-   "ref": "20:18-19",
-   "q": "Ce spune femeia despre cetatea ei?",
+   "ref": "20:26",
+   "q": "Cine era slujbaș?",
    "opts": [
-    "este cetatea lui Șeba",
-    "este o cetate liniștită și credincioasă",
-    "este o mamă în Israel"
+    "Benaia",
+    "Ira",
+    "din Iair"
    ],
    "a": [
     1,
@@ -1069,221 +995,263 @@
    ]
   },
   {
-   "id": "2sa.20.18+.1",
-   "age": "18+",
-   "t": "tf",
-   "ref": "20:8",
-   "q": "Ioab avea sabia legată la coapsă, pe deasupra hainelor de război.",
-   "a": true
-  },
-  {
-   "id": "2sa.20.18+.2",
-   "age": "18+",
-   "t": "tf",
+   "id": "2sa.20.16-17.218",
+   "age": "16-17",
+   "t": "multi",
    "ref": "20:24",
-   "q": "Iosafat, fiul lui Ahilud, era mai-mare peste dări.",
-   "a": false,
-   "explain": "Iosafat era scriitor (arhivar); Adoram era mai-mare peste dări (20:24)."
+   "q": "Cine ce funcție avea?",
+   "opts": [
+    "Adoram era peste dări",
+    "Ira era peste dări",
+    "Iosafat era scriitor"
+   ],
+   "a": [
+    0,
+    2
+   ]
   },
   {
-   "id": "2sa.20.18+.3",
+   "id": "2sa.20.16-17.219",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "20:23",
+   "q": "Cine ce funcție avea?",
+   "opts": [
+    "Șeia era în fruntea cheretiților",
+    "Ioab era mai-mare peste oștire",
+    "Benaia era în fruntea cheretiților"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "2sa.20.16-17.220",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "20:25",
+   "q": "Cine erau preoții?",
+   "opts": [
+    "Țadoc",
+    "Ioab",
+    "Abiatar"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "2sa.20.16-17.221",
+   "age": "16-17",
+   "t": "multi",
+   "ref": "20:25",
+   "q": "Cine ce funcție avea?",
+   "opts": [
+    "Șeia era logofăt",
+    "Adoram era logofăt",
+    "Țadoc era preot"
+   ],
+   "a": [
+    0,
+    2
+   ]
+  },
+  {
+   "id": "2sa.20.18+.201",
    "age": "18+",
    "t": "tf",
    "ref": "20:12",
-   "q": "Omul lui Ioab a aruncat o haină peste Amasa, pentru că toți cei ce ajungeau lângă el se opreau.",
+   "q": "Omul lui Ioab a lăsat pe Amasa în drum, în vedere.",
+   "a": false
+  },
+  {
+   "id": "2sa.20.18+.202",
+   "age": "18+",
+   "t": "tf",
+   "ref": "20:22",
+   "q": "Femeia a înduplecat poporul cu înțelepciunea ei.",
    "a": true
   },
   {
-   "id": "2sa.20.18+.16",
+   "id": "2sa.20.18+.203",
+   "age": "18+",
+   "t": "tf",
+   "ref": "20:9",
+   "q": "Ioab a apucat pe Amasa de barbă cu mâna dreaptă.",
+   "a": true
+  },
+  {
+   "id": "2sa.20.18+.204",
+   "age": "18+",
+   "t": "tf",
+   "ref": "20:3",
+   "q": "David a intrat la țiitoarele pe care le-a păstrat.",
+   "a": false
+  },
+  {
+   "id": "2sa.20.18+.205",
    "age": "18+",
    "t": "tf",
    "ref": "20:1",
-   "q": "Șeba, fiul lui Bicri, era din seminția lui Beniamin.",
+   "q": "Șeba a zis: „Fiecare la cortul său, Israele!”",
    "a": true
   },
   {
-   "id": "2sa.20.18+.17",
-   "age": "18+",
-   "t": "tf",
-   "ref": "20:21",
-   "q": "Șeba era dintr-un munte al lui Iuda.",
-   "a": false,
-   "explain": "Era din muntele lui Efraim."
-  },
-  {
-   "id": "2sa.20.18+.4",
+   "id": "2sa.20.18+.206",
    "age": "18+",
    "t": "one",
-   "ref": "20:25",
-   "q": "Cine era logofăt, după lista slujbașilor?",
+   "ref": "20:8",
+   "q": "Unde era sabia lui Ioab?",
    "opts": [
-    "Seraia",
-    "Ira",
-    "Șeia"
+    "pe cal",
+    "în mână",
+    "legată la coapsă, în teacă"
    ],
    "a": 2
   },
   {
-   "id": "2sa.20.18+.5",
+   "id": "2sa.20.18+.207",
    "age": "18+",
    "t": "one",
    "ref": "20:15",
-   "q": "Ce au ridicat oamenii lui Ioab împotriva cetății Abel-Bet-Maaca?",
+   "q": "Ce făcea poporul lui Ioab la zid?",
    "opts": [
-    "un turn",
-    "un val care atingea întăritura",
-    "o scară mare"
+    "săpa ca să cadă",
+    "ridica scări",
+    "arunca pietre"
+   ],
+   "a": 0
+  },
+  {
+   "id": "2sa.20.18+.208",
+   "age": "18+",
+   "t": "one",
+   "ref": "20:1",
+   "q": "Cum este numit Șeba?",
+   "opts": [
+    "un om drept",
+    "un om de nimic",
+    "un om mare"
    ],
    "a": 1
   },
   {
-   "id": "2sa.20.18+.6",
+   "id": "2sa.20.18+.209",
    "age": "18+",
    "t": "one",
-   "ref": "20:9",
-   "q": "Cu ce mână l-a apucat Ioab pe Amasa de barbă?",
+   "ref": "20:19",
+   "q": "Ce este cetatea după femeie?",
    "opts": [
-    "cu stânga",
-    "cu amândouă",
-    "cu dreapta"
+    "o fiică în Israel",
+    "o soră în Israel",
+    "o mamă în Israel"
    ],
    "a": 2
   },
   {
-   "id": "2sa.20.18+.18",
+   "id": "2sa.20.18+.210",
    "age": "18+",
    "t": "one",
-   "ref": "20:21",
-   "q": "Din ce munte era Șeba, fiul lui Bicri, după cuvintele lui Ioab?",
+   "ref": "20:12",
+   "q": "Ce a aruncat omul pe Amasa?",
    "opts": [
-    "din muntele Carmel",
-    "din muntele Tabor",
-    "din muntele lui Efraim"
+    "o pânză",
+    "o haină",
+    "un sac"
    ],
-   "a": 2
+   "a": 1
   },
   {
-   "id": "2sa.20.18+.19",
-   "age": "18+",
-   "t": "one",
-   "ref": "20:23",
-   "q": "Cine era mai-mare peste toată oștirea lui Israel?",
-   "opts": [
-    "Abișai",
-    "Benaia",
-    "Ioab"
-   ],
-   "a": 2
-  },
-  {
-   "id": "2sa.20.18+.24",
+   "id": "2sa.20.18+.211",
    "age": "18+",
    "t": "match",
-   "ref": "20:1-24",
-   "q": "Asociază fiecare nume sau loc cu ce se spune despre el.",
+   "ref": "20:3-26",
+   "q": "Asociază fiecare lucru cu ce se spune despre el.",
    "pairs": [
     [
-     "Șeba",
-     "a strigat: „Fiecare la cortul său, Israele!”"
+     "„văduvie”",
+     "cum au trăit țiitoarele"
     ],
     [
-     "Ioab",
-     "mai-mare peste toată oștirea"
+     "„teacă”",
+     "unde era sabia"
     ],
     [
-     "Adoram",
-     "mai-mare peste dări"
+     "„haină”",
+     "aruncată pe Amasa"
     ],
     [
-     "Abel",
-     "cetatea numită „mamă în Israel”"
+     "„val”",
+     "ridicat împotriva cetății"
     ],
     [
-     "Amasa",
-     "cel care a zăbovit peste vremea hotărâtă"
+     "„moștenirea Domnului”",
+     "ce a zis femeia că nimicește Ioab"
     ]
    ]
   },
   {
-   "id": "2sa.20.18+.10",
+   "id": "2sa.20.18+.212",
    "age": "18+",
    "t": "fill",
-   "ref": "20:18",
-   "a": [
-    "Abel"
-   ],
-   "q": "Și ea a zis: „Odinioară era obiceiul să se spună: ‘Să întrebăm în ___!’ Și totul se isprăvea astfel.",
-   "ctx": "Femeia înțeleaptă, către Ioab:"
-  },
-  {
-   "id": "2sa.20.18+.11",
-   "age": "18+",
-   "t": "fill",
-   "ref": "20:26",
-   "a": [
-    "stat"
-   ],
-   "q": "și Ira din Iair era slujbaș de ___ al lui David.",
-   "ctx": "Lista slujbașilor lui David:"
-  },
-  {
-   "id": "2sa.20.18+.12",
-   "age": "18+",
-   "t": "fill",
-   "ref": "20:14",
-   "a": [
-    "Abel-Bet-Maaca"
-   ],
-   "q": "Ioab a străbătut toate semințiile lui Israel înspre ___ și toți bărbații de seamă s-au strâns și l-au urmat.",
-   "ctx": "Urmărirea lui Șeba:"
-  },
-  {
-   "id": "2sa.20.18+.20",
-   "age": "18+",
-   "t": "fill",
-   "ref": "20:7",
-   "q": "Și Abișai a plecat, urmat de oamenii lui Ioab, de cheretiți și de peletiți, și de toți vitejii; au ieșit din Ierusalim ca să urmărească pe Șeba, fiul lui ___.",
-   "a": [
-    "Bicri"
-   ]
-  },
-  {
-   "id": "2sa.20.18+.21",
-   "age": "18+",
-   "t": "fill",
-   "ref": "20:24",
-   "q": "Adoram era mai-mare peste ___; Iosafat, fiul lui Ahilud, era scriitor (arhivar);",
-   "a": [
-    "dări"
-   ]
-  },
-  {
-   "id": "2sa.20.18+.13",
-   "age": "18+",
-   "t": "multi",
-   "ref": "20:3",
-   "q": "Ce aflăm despre cele zece țiitoare ale lui David?",
-   "opts": [
-    "au trăit în văduvie până la moarte",
-    "le lăsase pentru paza casei",
-    "au fost puse sub pază"
-   ],
-   "a": [
-    0,
-    1,
-    2
-   ]
-  },
-  {
-   "id": "2sa.20.18+.14",
-   "age": "18+",
-   "t": "multi",
    "ref": "20:8",
-   "q": "Ce s-a întâmplat cu sabia lui Ioab la Gabaon?",
+   "q": "Ioab era încins cu o sabie pe deasupra hainelor de război cu care era îmbrăcat; ea era legată la coapsă și stătea în teacă și, când a înaintat Ioab, sabia a ___.",
+   "a": [
+    "alunecat"
+   ]
+  },
+  {
+   "id": "2sa.20.18+.213",
+   "age": "18+",
+   "t": "fill",
+   "ref": "20:3",
+   "q": "Împăratul a luat cele zece țiitoare pe care le lăsase pentru paza casei și le-a pus într-o casă sub pază; a ___ de ele, dar n-a intrat la ele.",
+   "a": [
+    "îngrijit"
+   ]
+  },
+  {
+   "id": "2sa.20.18+.214",
+   "age": "18+",
+   "t": "fill",
+   "ref": "20:12",
+   "q": "Amasa se ___ în sânge în mijlocul drumului, și omul acela, văzând că tot poporul se oprește, a tras pe Amasa din drum, pe un câmp, și a aruncat o haină pe el când a văzut că toți cei ce ajungeau lângă el se opreau.",
+   "a": [
+    "rostogolea"
+   ]
+  },
+  {
+   "id": "2sa.20.18+.215",
+   "age": "18+",
+   "t": "fill",
+   "ref": "20:16",
+   "q": "Atunci, o femeie înțeleaptă a început să strige din ___: „Ascultați, ascultați!",
+   "a": [
+    "cetate"
+   ]
+  },
+  {
+   "id": "2sa.20.18+.216",
+   "age": "18+",
+   "t": "fill",
+   "ref": "20:21",
+   "q": "Femeia a zis lui Ioab: „Iată, capul lui îți va fi ___ peste zid.\"",
+   "a": [
+    "aruncat"
+   ]
+  },
+  {
+   "id": "2sa.20.18+.217",
+   "age": "18+",
+   "t": "multi",
+   "ref": "20:19",
+   "q": "Ce a zis femeia?",
    "opts": [
-    "a alunecat când a înaintat Ioab",
-    "i-a căzut lui Amasa",
-    "era în teacă"
+    "credincioasă",
+    "sunt o cetate de război",
+    "sunt o cetate liniștită"
    ],
    "a": [
     0,
@@ -1291,29 +1259,31 @@
    ]
   },
   {
-   "id": "2sa.20.18+.15",
+   "id": "2sa.20.18+.218",
    "age": "18+",
    "t": "multi",
-   "ref": "20:5-6",
-   "q": "Cui i-a spus David să-l urmărească pe Șeba, când Amasa a întârziat?",
+   "ref": "20:18",
+   "q": "Ce a zis femeia?",
    "opts": [
-    "lui Benaia",
-    "lui Itai",
-    "lui Ahimaaț"
+    "să întrebăm în Abel",
+    "să ne luptăm",
+    "totul se isprăvea astfel"
    ],
-   "a": [],
-   "explain": "Niciun răspuns corect: David i-a spus lui Abișai (20:6)."
+   "a": [
+    0,
+    2
+   ]
   },
   {
-   "id": "2sa.20.18+.22",
+   "id": "2sa.20.18+.219",
    "age": "18+",
    "t": "multi",
-   "ref": "20:4-5",
-   "q": "Ce s-a întâmplat cu Amasa?",
+   "ref": "20:7",
+   "q": "Ce a făcut Abișai?",
    "opts": [
-    "a zăbovit peste vremea hotărâtă",
-    "a primit porunca să cheme pe bărbații lui Iuda",
-    "a refuzat porunca împăratului"
+    "a plecat",
+    "urmat de oamenii lui Ioab",
+    "a rămas"
    ],
    "a": [
     0,
@@ -1321,15 +1291,31 @@
    ]
   },
   {
-   "id": "2sa.20.18+.23",
+   "id": "2sa.20.18+.220",
    "age": "18+",
    "t": "multi",
-   "ref": "20:25",
-   "q": "Cine erau preoți?",
+   "ref": "20:2",
+   "q": "Ce s-a întâmplat?",
    "opts": [
-    "Țadoc",
-    "Abiatar",
-    "Șeia"
+    "toți au urmat pe David",
+    "Iuda a rămas credincios",
+    "au urmat pe Șeba"
+   ],
+   "a": [
+    1,
+    2
+   ]
+  },
+  {
+   "id": "2sa.20.18+.221",
+   "age": "18+",
+   "t": "multi",
+   "ref": "20:9",
+   "q": "Ce a făcut Ioab?",
+   "opts": [
+    "a zis ești sănătos",
+    "a apucat de barbă",
+    "a dat un dar"
    ],
    "a": [
     0,
