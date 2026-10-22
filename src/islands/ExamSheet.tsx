@@ -41,9 +41,9 @@ export default function ExamSheet({ book, exams, onClose }: { book: string; exam
             <p class="sheet-label">Examenele reale de la concurs{dates.length === 1 ? ` · ${dates[0]}` : ''}</p>
             <div class="opt-card ex-real">
               {exams.map((e) => (
-                <a class={`oc-row${e.age === lv ? ' is-mine' : ''}`} href={`/${book}/examene/${e.id}`}>
+                <a class="oc-row" href={`/${book}/examene/${e.id}`}>
                   <span class="oc-main"><b>{ageLabel(e.age)}</b></span>
-                  {best[e.id] ? <span class="ts-best">{scoreLabel(best[e.id], 21)}</span> : <span class="ts-todo">de refăcut</span>}
+                  {best[e.id] ? <span class="ts-best">{scoreLabel(best[e.id], 21)}</span> : <span class="ts-todo">Încearcă-l</span>}
                   <svg class="oc-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
                 </a>
               ))}
