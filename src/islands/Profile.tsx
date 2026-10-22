@@ -4,6 +4,7 @@ import { db } from '../lib/firebase';
 import { addChild, choosePlayer, player, players, rememberedKids, removeChild, updateChild, type Player } from '../lib/players';
 import { localGet, localSet } from '../lib/store';
 import { TYPES } from '../lib/questions';
+import { AGE_GROUPS } from '../lib/age';
 import { deleteProgress, EMPTY, type Progress } from '../lib/progress';
 import { errorText, profile, profileError, rememberedAccount, setParent, signOut, user } from '../lib/session';
 import Avatar from './Avatar';
@@ -136,8 +137,8 @@ function PlayerBlock({ p, books, head }: { p: Player; books: BookInfo[]; head: b
 }
 
 /** What the profile shows of one player's progress in one book. */
-interface Summary { mastered: number; wrong: number; exams: Progress['exams']; stats: Progress['stats'] }
-const EMPTY_SUMMARY: Summary = { mastered: 0, wrong: 0, exams: {}, stats: {} };
+interface Summary { mastered: number; /** known questions per level */ byLevel?: Record<string, number>; wrong: number; exams: Progress['exams']; stats: Progress['stats'] }
+const EMPTY_SUMMARY: Summary = { mastered: 0, byLevel: {}, wrong: 0, exams: {}, stats: {} };
 
 /** Live progress of one player in one book. The last visit's numbers show at once; `loaded` is false only for a first visit. */
 function useBookProgress(p: Player, book: string): { data: Summary; loaded: boolean } {
@@ -152,7 +153,9 @@ function useBookProgress(p: Player, book: string): { data: Summary; loaded: bool
     let last: Progress | null = null;
     const publish = () => {
       if (!last) return;
-      const data: Summary = { mastered: last.mastered.length, wrong: last.wrong.length, exams: last.exams, stats: last.stats };
+      const byLevel: Record<string, number> = {};
+      for (const id of new Set(last.mastered)) byLevel[id.split('.')[2]] = (byLevel[id.split('.')[2]] ?? 0) + 1;
+      const data: Summary = { mastered: new Set(last.mastered).size, byLevel, wrong: last.wrong.length, exams: last.exams, stats: last.stats };
       setState({ data, loaded: true });
       localSet(key, data);
     };
@@ -167,35 +170,57 @@ function useBookProgress(p: Player, book: string): { data: Summary; loaded: bool
 
 function BookStats({ p, book }: { p: Player; book: BookInfo }) {
   const { data: d, loaded } = useBookProgress(p, book.slug);
-  // "c5" entries are chapter scores, the others are exams
   const entries = Object.entries(d.exams);
-  // chapters finished, whatever the level; exams are only counted (they bring no points and no statistics)
-  const chapters = new Set(entries.filter(([id]) => /^c\d+/.test(id)).map(([id]) => id.split('@')[0])).size;
+  // exams only count how many were played: they bring no points and no statistics
   const examsDone = entries.filter(([id]) => !/^c\d+/.test(id)).reduce((s, [, e]) => s + (e.plays ?? 1), 0);
   const started = d.mastered || d.wrong || entries.length;
+  const total = Object.values(book.totals).reduce((a, b) => a + b, 0);
+  const known = d.mastered;
+  // known questions per level: the level is in the question id ("1sa.5.14-15.205")
+  const perLevel = AGE_GROUPS.map((g) => ({ ...g, t: book.totals[g.id] ?? 0, m: d.byLevel?.[g.id] ?? 0 })).filter((g) => g.t > 0);
   const kinds = TYPES.map((t) => ({ ...t, n: d.stats[t.t]?.n ?? 0, r: d.stats[t.t]?.r ?? 0 })).filter((k) => k.n > 0);
+  const fmt = (n: number) => n.toLocaleString('ro-RO');
 
   return (
     <section class="bk">
       <h3>{book.name}</h3>
+      <p class="small muted">{fmt(total)} de întrebări în total, câte {fmt(Math.round(total / Math.max(1, perLevel.length)))} pentru fiecare nivel.</p>
       {!loaded ? <Loader small /> : !started ? <p class="small muted">Nu a început încă.</p> : (
-        <dl class="kv">
-          <div><dt>Răspunsuri corecte</dt><dd>{d.mastered}</dd></div>
-          <div><dt>Greșite, de reluat</dt><dd>{d.wrong}</dd></div>
-          <div><dt>Capitole terminate</dt><dd>{chapters} / {book.chapters}</dd></div>
-          <div><dt>Examene făcute</dt><dd>{examsDone}</dd></div>
-        </dl>
-      )}
-      {loaded && kinds.length > 0 && (
-        <ul class="kinds" aria-label="Pe tipuri de întrebări">
-          {kinds.map((k) => (
-            <li class={k.r === k.n ? 'is-full' : k.r === 0 ? 'is-zero' : ''}>
-              <span class="kind-name">{k.t === 'fill' ? 'Completare versete' : k.short}</span>
-              <span class="kind-bar" aria-hidden="true"><span style={{ width: `${(k.r / k.n) * 100}%` }} /></span>
-              <span class="kind-n">{Math.round((k.r / k.n) * 100)}%</span>
+        <>
+          <p class="bk-head">Întrebări știute <small>(răspunse corect cel puțin o dată)</small></p>
+          <ul class="kinds">
+            {perLevel.map((g) => (
+              <li class={g.m === g.t ? 'is-full' : ''}>
+                <span class="kind-name">{g.label}</span>
+                <span class="kind-bar" aria-hidden="true"><span style={{ width: `${(g.m / g.t) * 100}%` }} /></span>
+                <span class="kind-n">{g.m}/{fmt(g.t)}</span>
+              </li>
+            ))}
+            <li class="kinds-sum">
+              <span class="kind-name">Toate nivelurile</span>
+              <span class="kind-bar" aria-hidden="true"><span style={{ width: `${(known / total) * 100}%` }} /></span>
+              <span class="kind-n">{known}/{fmt(total)}</span>
             </li>
-          ))}
-        </ul>
+          </ul>
+          {kinds.length > 0 && (
+            <>
+              <p class="bk-head">Cât de bine răspunzi <small>(pe tipuri de întrebări)</small></p>
+              <ul class="kinds" aria-label="Pe tipuri de întrebări">
+                {kinds.map((k) => (
+                  <li class={k.r === k.n ? 'is-full' : k.r === 0 ? 'is-zero' : ''}>
+                    <span class="kind-name">{k.t === 'fill' ? 'Completare versete' : k.short}</span>
+                    <span class="kind-bar" aria-hidden="true"><span style={{ width: `${(k.r / k.n) * 100}%` }} /></span>
+                    <span class="kind-n">{Math.round((k.r / k.n) * 100)}%</span>
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
+          <dl class="kv">
+            <div><dt>Greșeli de reluat</dt><dd>{d.wrong}</dd></div>
+            <div><dt>Examene făcute</dt><dd>{examsDone}</dd></div>
+          </dl>
+        </>
       )}
     </section>
   );

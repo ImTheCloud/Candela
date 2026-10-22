@@ -33,7 +33,7 @@ export type Answer =
 
 export const TYPES: { t: QType; label: string; short: string; hint: string }[] = [
   { t: 'tf', label: 'Adevărat sau fals', short: 'Adevărat sau fals', hint: '' },
-  { t: 'one', label: 'Un singur răspuns corect', short: 'Un răspuns', hint: '' },
+  { t: 'one', label: 'Un singur răspuns corect', short: 'Alegere unică', hint: '' },
   { t: 'match', label: 'Asociază cele două coloane', short: 'Asociere', hint: '' },
   { t: 'fill', label: 'Completează versetul', short: 'Completare', hint: '' },
   { t: 'multi', label: 'Unul, mai multe sau niciunul', short: 'Alegere multiplă', hint: '' },

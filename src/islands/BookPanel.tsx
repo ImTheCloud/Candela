@@ -53,6 +53,7 @@ export default function BookPanel({ books, initial }: { books: BookData[]; initi
             ))}
           </div>
           <h2 id="chapters">Ce capitol vrei să exersezi?</h2>
+          <p class="small muted hb-count">{total(book).toLocaleString('ro-RO')} de întrebări în {book.name}, câte {perLevel(book).toLocaleString('ro-RO')} pentru fiecare dintre cele 5 niveluri.</p>
           <ChapterMenu key={slug} book={slug} titles={book.titles} summary={book.summary} exams={book.exams} />
         </div>
       </section>
@@ -65,6 +66,10 @@ export default function BookPanel({ books, initial }: { books: BookData[]; initi
     </>
   );
 }
+
+/** All the questions of a book, and those of one level (every level has the same number). */
+const total = (b: BookData) => Object.values(b.summary).reduce((s, ch) => s + Object.values(ch['14-15'] ?? {}).reduce((a, n) => a + (n ?? 0), 0) * 5, 0);
+const perLevel = (b: BookData) => total(b) / 5;
 
 /** Changes the address without a page change, keeping the router's history state (the back button depends on it). */
 function replaceUrl(url: string) {
