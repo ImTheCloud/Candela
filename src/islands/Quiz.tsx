@@ -269,7 +269,7 @@ function Results({ bookName, questions, answers, grades, saveFailed, backHref, o
           <ul class="kinds" aria-label="Pe tipuri de întrebări">
             {kinds.map((k) => (
               <li class={k.ok === k.n ? 'is-full' : k.ok === 0 ? 'is-zero' : ''}>
-                <span class="kind-name">{k.short}</span>
+                <span class="kind-name">{k.t === 'fill' ? 'Completare versete' : k.short}</span>
                 <span class="kind-bar" aria-hidden="true"><span style={{ width: `${(k.ok / k.n) * 100}%` }} /></span>
                 <span class="kind-n">{k.ok}/{k.n}</span>
               </li>

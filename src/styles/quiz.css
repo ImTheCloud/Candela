@@ -235,8 +235,8 @@ body.in-quiz main { padding-top: 0; }
 
 /* End of a test: right answers per kind of question */
 .kinds { width: 100%; list-style: none; margin: 4px 0 0; padding: 0; display: grid; gap: 10px; text-align: left; }
-.kinds li { display: grid; grid-template-columns: minmax(0, 8.5rem) 1fr auto; align-items: center; gap: 10px; }
-.kind-name { font-size: 0.88rem; font-weight: 600; color: var(--ink); }
+.kinds li { display: grid; grid-template-columns: 10.6rem minmax(2rem, 1fr) auto; align-items: center; gap: 10px; }
+.kind-name { font-size: 0.88rem; font-weight: 600; color: var(--ink); white-space: nowrap; }
 .kind-bar { height: 10px; border-radius: 999px; background: var(--surface-2); overflow: hidden; }
 .kind-bar span { display: block; height: 100%; border-radius: inherit; background: var(--flame); }
 .kind-n { font: 700 0.88rem var(--f-body); font-variant-numeric: tabular-nums; color: var(--ink-2); min-width: 2.2rem; text-align: right; }
