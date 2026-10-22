@@ -94,6 +94,14 @@ const SAME_WORD: string[][] = [
   ['imparat', 'imparatul', 'rege', 'regele'],
 ];
 
+/** Numbers written as one word, so that "40" is as good as "patruzeci". */
+const NUMBER_WORDS: Record<string, number> = {
+  zero: 0, unu: 1, un: 1, o: 1, doi: 2, doua: 2, trei: 3, patru: 4, cinci: 5, sase: 6, sapte: 7, opt: 8, noua: 9, zece: 10,
+  unsprezece: 11, doisprezece: 12, douasprezece: 12, treisprezece: 13, paisprezece: 14, cincisprezece: 15, saisprezece: 16,
+  saptesprezece: 17, optsprezece: 18, nouasprezece: 19, douazeci: 20, treizeci: 30, patruzeci: 40, cincizeci: 50, saizeci: 60,
+  saptezeci: 70, optzeci: 80, nouazeci: 90, suta: 100, mie: 1000,
+};
+
 /** Edit distance with a swap of two neighbouring letters counting as one mistake. */
 function distance(a: string, b: string): number {
   const d: number[][] = Array.from({ length: a.length + 1 }, (_, i) => [i, ...Array(b.length).fill(0)]);
@@ -116,6 +124,8 @@ export function sameWord(typed: string, expected: string): boolean {
   const e = normalizeWords(expected);
   if (!t) return false;
   if (t === e) return true;
+  // a number typed in digits
+  if (/^\d+$/.test(t) && NUMBER_WORDS[e] === Number(t)) return true;
   if (SAME_WORD.some((g) => g.includes(t) && g.includes(e))) return true;
   // very short words are too easy to confuse with another one: no slip allowed
   if (e.length < 4 || t.length < 4) return false;
