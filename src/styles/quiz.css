@@ -13,7 +13,7 @@ body.in-quiz main { padding-top: 0; }
 .qt .bar { flex: 1; }
 .qt-n { flex: none; font: 700 0.85rem var(--f-body); color: var(--ink-2); font-variant-numeric: tabular-nums; }
 .bar { height: 12px; border-radius: 999px; background: var(--surface-2); overflow: hidden; }
-.bar-fill { display: block; height: 100%; width: 0; background: var(--flame); border-radius: inherit; transition: width .3s; }
+.bar-fill { display: block; height: 100%; width: 0; background: var(--btn); border-radius: inherit; transition: width .3s; }
 
 /* Above the question: what to do, the level, the report button; then where it comes from */
 .q-head { display: grid; gap: 3px; }
@@ -112,7 +112,7 @@ body.in-quiz main { padding-top: 0; }
 .vb-main b { font-weight: 600; }
 .vb-main small { font-size: 0.8rem; color: var(--ink-2); }
 .vb-chev { flex: none; color: var(--ink-3); }
-.verse-sheet { display: grid; gap: 12px; }
+.verse-sheet { display: grid; gap: 12px; color: var(--ink); }
 .vs-text { position: relative; max-height: 56dvh; overflow-y: auto; padding: 4px 2px; font: 400 1.08rem/1.65 var(--f-bible); }
 .vs-text p { padding: 4px 10px; border-radius: 10px; }
 .vs-text sup { font: 600 0.7rem var(--f-body); color: var(--oil-ink); margin-right: 4px; }
@@ -231,3 +231,34 @@ body.in-quiz main { padding-top: 0; }
 .ts-exam small { color: var(--ink-2); font-size: 0.8rem; }
 .ts-best { flex: none; padding: 3px 9px; border-radius: 999px; background: var(--ok-soft); color: var(--ok); font-size: 0.8rem; font-weight: 600; }
 .ts-redo { flex: none; color: var(--ink-3); }
+
+/* The lamp above every question: small, so the question keeps its room */
+.lampmark { display: grid; justify-items: center; margin: -2px 0 -6px; pointer-events: none; }
+.lampmark.is-small svg { width: 58px; height: 58px; }
+.lampmark.is-small .lampx-glow { height: 40px; inset: 2px 8px auto; }
+.lampx { position: relative; display: grid; place-items: center; }
+.lampx svg { position: relative; display: block; }
+.lampx-glow {
+  position: absolute; inset: 4px 10px auto; height: 70px; pointer-events: none; filter: blur(8px);
+  background: radial-gradient(closest-side, color-mix(in oklab, #D97B26 42%, transparent), transparent);
+  animation: glowx 3.2s ease-in-out infinite;
+}
+.flamex { transform-origin: 50% 90%; animation: flickerx 2.4s ease-in-out infinite; }
+@keyframes glowx { 0%, 100% { opacity: .55; transform: scale(1); } 50% { opacity: .85; transform: scale(1.06); } }
+@keyframes flickerx { 0%, 100% { transform: scaleY(1) skewX(0); } 25% { transform: scaleY(1.06) skewX(-2deg); } 50% { transform: scaleY(.96) skewX(1.5deg); } 75% { transform: scaleY(1.04) skewX(-1deg); } }
+@media (prefers-reduced-motion: reduce) { .lampx-glow, .flamex { animation: none; } }
+body:has(.fill-input:focus) .lampmark { display: none; }
+
+/* End of a test: right answers per kind of question */
+.kinds { width: 100%; list-style: none; margin: 4px 0 0; padding: 0; display: grid; gap: 10px; text-align: left; }
+.kinds li { display: grid; grid-template-columns: minmax(0, 8.5rem) 1fr auto; align-items: center; gap: 10px; }
+.kind-name { font-size: 0.88rem; font-weight: 600; color: var(--ink); }
+.kind-bar { height: 10px; border-radius: 999px; background: var(--surface-2); overflow: hidden; }
+.kind-bar span { display: block; height: 100%; border-radius: inherit; background: var(--flame); }
+.kind-n { font: 700 0.88rem var(--f-body); font-variant-numeric: tabular-nums; color: var(--ink-2); min-width: 2.2rem; text-align: right; }
+.kinds .is-full .kind-bar span { background: var(--ok); }
+.kinds .is-full .kind-n { color: var(--ok); }
+.kinds .is-zero .kind-n { color: var(--bad); }
+.ex-real .oc-row { min-height: 52px; padding-block: 8px; }
+.ex-real .oc-row.is-mine { background: var(--oil-soft); }
+.ts-todo { flex: none; font-size: 0.8rem; color: var(--ink-3); }

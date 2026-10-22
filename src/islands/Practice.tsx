@@ -75,7 +75,7 @@ export default function Practice({ book, bookName, chapters, summary }: Props) {
   if (quiz) {
     return <Quiz key={quiz.key} book={book} bookName={bookName} questions={quiz.questions}
       backHref={bookHome(book)} onAgain={() => start()}
-      scoreId={direct && chosen.length === 1 && count === 0 ? `c${chosen[0]}` : undefined} />;
+      scoreId={direct && chosen.length === 1 && count === 0 ? `c${chosen[0]}@${level}` : undefined} />;
   }
 
   if (direct && chosen.length) return error ? <p class="notice notice-bad" role="alert">{error}</p> : <Loader />;

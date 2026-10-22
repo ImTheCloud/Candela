@@ -1,6 +1,6 @@
 import { effect, signal, type Signal } from '@preact/signals';
 import { arrayRemove, arrayUnion, deleteDoc, doc, increment, onSnapshot, serverTimestamp, setDoc, writeBatch } from 'firebase/firestore';
-import { removeFromBoards, writeBoard } from './board';
+import { writeBoard } from './board';
 import { BOOKS } from './books';
 import { db } from './firebase';
 import { player, shortName } from './players';
@@ -83,8 +83,10 @@ export interface Answered { id: string; t: QType; right: boolean }
  * After each answer: a right one becomes mastered and leaves the mistakes list, a wrong one joins it.
  * A newly mastered question also moves the player up on the public board (same batch, checked by the rules).
  */
-export async function recordAnswers(book: string, answers: Answered[]) {
+/** points: false (the mistakes list) takes right answers off the list without making them count for the player. */
+export async function recordAnswers(book: string, answers: Answered[], points = true) {
   const right = answers.filter((a) => a.right).map((a) => a.id);
+  const gain = points ? right : [];
   const wrong = answers.filter((a) => !a.right).map((a) => a.id);
   const stats: Record<string, { n: ReturnType<typeof increment>; r: ReturnType<typeof increment> }> = {};
   const counts: Record<string, { n: number; r: number }> = {};
@@ -103,7 +105,7 @@ export async function recordAnswers(book: string, answers: Answered[]) {
         const k = t as QType;
         st[k] = { n: (st[k]?.n ?? 0) + c.n, r: (st[k]?.r ?? 0) + c.r };
       }
-      return { ...p, mastered: add(p.mastered, right), wrong: drop(add(p.wrong, wrong), right), stats: st };
+      return { ...p, mastered: add(p.mastered, gain), wrong: drop(add(p.wrong, wrong), right), stats: st };
     });
   }
   const r = ref(book);
@@ -111,14 +113,14 @@ export async function recordAnswers(book: string, answers: Answered[]) {
   if (right.length && wrong.length) await setDoc(r, { wrong: arrayUnion(...wrong), updatedAt: serverTimestamp() }, { merge: true });
   const data: Record<string, unknown> = { stats, updatedAt: serverTimestamp() };
   if (right.length) {
-    data.mastered = arrayUnion(...right);
+    if (gain.length) data.mastered = arrayUnion(...gain);
     data.wrong = arrayRemove(...right);
   } else if (wrong.length) {
     data.wrong = arrayUnion(...wrong);
   }
   const batch = writeBatch(db);
   batch.set(r, data, { merge: true });
-  const mastered = [...new Set([...before.mastered, ...right])];
+  const mastered = [...new Set([...before.mastered, ...gain])];
   const p = player.value;
   const uid = user.value!.uid;
   const onBoard = mastered.length > before.mastered.length && !p.hidden;
@@ -150,17 +152,6 @@ export function deleteProgress(uid: string, playerKey: string) {
 }
 
 const boardMark = (uid: string, key: string, book: string) => `bd:${uid}~${key}~${book}`;
-
-/** All the points of a player back to zero: progress, scores and the board entries (the player stays). */
-export async function resetProgress(uid: string, playerKey: string) {
-  await deleteProgress(uid, playerKey);
-  await removeFromBoards(uid, playerKey);
-  for (const b of BOOKS) {
-    localRemove(boardMark(uid, playerKey, b.slug));
-    localRemove(`pg:${playerKey}~${b.slug}`);
-    localRemove(examsKey(playerKey, b.slug));
-  }
-}
 
 // The boards are filled from the progress: a player who answered before they existed
 // (or whose entry is out of date) gets their entry written once, and again whenever the number of known questions changes.
