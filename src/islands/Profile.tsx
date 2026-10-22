@@ -4,7 +4,7 @@ import { db } from '../lib/firebase';
 import { addChild, choosePlayer, player, players, rememberedKids, removeChild, updateChild, type Player } from '../lib/players';
 import { localGet, localSet } from '../lib/store';
 import { TYPES } from '../lib/questions';
-import { AGE_GROUPS } from '../lib/age';
+import { AGE_GROUPS, ageLabel, ageShort, type AgeGroup } from '../lib/age';
 import { deleteProgress, EMPTY, type Progress } from '../lib/progress';
 import { errorText, profile, profileError, rememberedAccount, setParent, signOut, user } from '../lib/session';
 import Avatar from './Avatar';
@@ -170,36 +170,36 @@ function useBookProgress(p: Player, book: string): { data: Summary; loaded: bool
 
 function BookStats({ p, book }: { p: Player; book: BookInfo }) {
   const { data: d, loaded } = useBookProgress(p, book.slug);
+  // the level shown: the one with the most known questions, unless the player picks another
+  const [picked, setPicked] = useState<AgeGroup | null>(null);
   const entries = Object.entries(d.exams);
   // exams only count how many were played: they bring no points and no statistics
   const examsDone = entries.filter(([id]) => !/^c\d+/.test(id)).reduce((s, [, e]) => s + (e.plays ?? 1), 0);
   const started = d.mastered || d.wrong || entries.length;
-  const total = Object.values(book.totals).reduce((a, b) => a + b, 0);
-  const known = d.mastered;
-  // known questions per level: the level is in the question id ("1sa.5.14-15.205")
-  const perLevel = AGE_GROUPS.map((g) => ({ ...g, t: book.totals[g.id] ?? 0, m: d.byLevel?.[g.id] ?? 0 })).filter((g) => g.t > 0);
-  const kinds = TYPES.map((t) => ({ ...t, n: d.stats[t.t]?.n ?? 0, r: d.stats[t.t]?.r ?? 0 })).filter((k) => k.n > 0);
-  const fmt = (n: number) => n.toLocaleString('ro-RO');
+  const levels = AGE_GROUPS.filter((g) => (book.totals[g.id] ?? 0) > 0);
+  const top = levels.reduce((a, g) => ((d.byLevel?.[g.id] ?? 0) > (d.byLevel?.[a.id] ?? 0) ? g : a), levels[0]);
+  const lv = picked && levels.some((g) => g.id === picked) ? picked : top.id;
+  const t = book.totals[lv] ?? 0;
+  const m = d.byLevel?.[lv] ?? 0;
+  const kinds = TYPES.map((k) => ({ ...k, n: d.stats[k.t]?.n ?? 0, r: d.stats[k.t]?.r ?? 0 })).filter((k) => k.n > 0);
 
   return (
     <section class="bk">
       <h3>{book.name}</h3>
-      <p class="small muted">{fmt(total)} de întrebări în total, câte {fmt(Math.round(total / Math.max(1, perLevel.length)))} pentru fiecare nivel.</p>
+      <p class="small muted nowrap">{t} întrebări pe fiecare din cele {levels.length} niveluri</p>
       {!loaded ? <Loader small /> : !started ? <p class="small muted">Nu a început încă.</p> : (
         <>
           <p class="bk-head">Întrebări știute <small>(răspunse corect cel puțin o dată)</small></p>
-          <ul class="kinds">
-            {perLevel.map((g) => (
-              <li class={g.m === g.t ? 'is-full' : ''}>
-                <span class="kind-name">{g.label}</span>
-                <span class="kind-bar" aria-hidden="true"><span style={{ width: `${(g.m / g.t) * 100}%` }} /></span>
-                <span class="kind-n">{g.m}/{fmt(g.t)}</span>
-              </li>
+          <div class="lv-chips" role="radiogroup" aria-label="Nivelul">
+            {levels.map((g) => (
+              <button type="button" role="radio" aria-checked={lv === g.id} class="lv-chip" onClick={() => setPicked(g.id)}>{ageShort(g.id)}</button>
             ))}
-            <li class="kinds-sum">
-              <span class="kind-name">Toate nivelurile</span>
-              <span class="kind-bar" aria-hidden="true"><span style={{ width: `${(known / total) * 100}%` }} /></span>
-              <span class="kind-n">{known}/{fmt(total)}</span>
+          </div>
+          <ul class="kinds bk-level">
+            <li class={m === t ? 'is-full' : ''}>
+              <span class="kind-name">{ageLabel(lv)}</span>
+              <span class="kind-bar" aria-hidden="true"><span style={{ width: `${(m / t) * 100}%` }} /></span>
+              <span class="kind-n">{m}/{t}</span>
             </li>
           </ul>
           {kinds.length > 0 && (
@@ -217,7 +217,6 @@ function BookStats({ p, book }: { p: Player; book: BookInfo }) {
             </>
           )}
           <dl class="kv">
-            <div><dt>Greșeli de reluat</dt><dd>{d.wrong}</dd></div>
             <div><dt>Examene făcute</dt><dd>{examsDone}</dd></div>
           </dl>
         </>
