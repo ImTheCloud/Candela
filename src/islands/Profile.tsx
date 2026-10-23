@@ -212,7 +212,7 @@ function BookStats({ p, book }: { p: Player; book: BookInfo }) {
   return (
     <section class="bk">
       <h3>{book.name}</h3>
-      <p class="small muted nowrap">{t} întrebări pentru fiecare grupă de vârstă</p>
+      <p class="hb-sub muted nowrap">{t} întrebări pentru fiecare grupă de vârstă · 21 pe capitol</p>
       {!loaded ? <Loader small /> : !started ? <p class="small muted">Nu a început încă.</p> : (
         <>
           <p class="bk-head">Întrebări știute <small>(răspunse corect cel puțin o dată)</small></p>
