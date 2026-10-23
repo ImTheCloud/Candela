@@ -4,10 +4,11 @@ import { db } from '../lib/firebase';
 import { addChild, choosePlayer, player, players, rememberedKids, removeChild, updateChild, type Player } from '../lib/players';
 import { localGet, localSet } from '../lib/store';
 import { TYPES } from '../lib/questions';
-import { AGE_GROUPS, ageLabel, ageShort, type AgeGroup } from '../lib/age';
+import { AGE_GROUPS, ageLabel, type AgeGroup } from '../lib/age';
 import { deleteProgress, EMPTY, type Progress } from '../lib/progress';
 import { errorText, profile, profileError, rememberedAccount, setParent, signOut, user } from '../lib/session';
 import Avatar from './Avatar';
+import LevelPicker from './LevelPicker';
 import Loader from './Loader';
 
 export interface BookInfo { slug: string; name: string; chapters: number; totals: Record<string, number> }
@@ -216,11 +217,7 @@ function BookStats({ p, book }: { p: Player; book: BookInfo }) {
       {!loaded ? <Loader small /> : !started ? <p class="small muted">Nu a început încă.</p> : (
         <>
           <p class="bk-head">Întrebări știute <small>(răspunse corect cel puțin o dată)</small></p>
-          <div class="lv-chips" role="radiogroup" aria-label="Grupa de vârstă">
-            {levels.map((g) => (
-              <button type="button" role="radio" aria-checked={lv === g.id} class="lv-chip" onClick={() => setPicked(g.id)}>{ageShort(g.id)}</button>
-            ))}
-          </div>
+          <LevelPicker value={lv} onChange={setPicked} groups={levels} />
           <ul class="kinds bk-level">
             <li class={m === t ? 'is-full' : ''}>
               <span class="kind-name">{ageLabel(lv)}</span>

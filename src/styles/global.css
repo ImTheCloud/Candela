@@ -162,13 +162,6 @@ img, svg { display: block; }
 
 /* Board */
 .board { display: grid; gap: 12px; }
-/* age groups: one segmented control that always fits the width */
-.age-tabs { display: grid; grid-template-columns: repeat(5, 1fr); gap: 3px; padding: 3px; background: var(--surface-2); border-radius: 999px; }
-.age-tabs button {
-  min-height: 38px; padding: 0; border: 0; border-radius: 999px; background: none; color: var(--ink-2);
-  font: 600 0.82rem var(--f-body); white-space: nowrap; cursor: pointer; transition: background-color .15s, color .15s;
-}
-.age-tabs button[aria-selected="true"] { background: var(--surface); color: var(--ink); box-shadow: 0 1px 3px rgb(58 39 27 / .12); }
 .rows { list-style: none; margin: 0; padding: 6px 0; }
 .rows li { display: grid; grid-template-columns: 36px 1fr auto; align-items: center; gap: 8px; min-height: 48px; padding: 0 16px; }
 .rows li + li { border-top: 1px solid var(--line); }
@@ -378,14 +371,27 @@ a.tile { text-decoration: none; }
 .oc-more { display: block; margin-top: 12px; text-align: center; color: var(--ink-2); font-size: 0.9rem; text-decoration: underline; text-underline-offset: 3px; }
 .oc-chev { flex: none; color: var(--ink-3); }
 
-/* Level chips: five choices on one line */
+/* Level chips: choices on one line (modals, sheets, profile, leaderboard) */
 .lv-chips { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+.lv-chips.six { grid-template-columns: repeat(6, 1fr); gap: 4px; }
 .lv-chip {
   min-height: 40px; padding: 0 2px; border: 1.5px solid var(--line); border-radius: 12px; background: var(--surface);
   color: var(--ink-2); font: 600 0.85rem var(--f-body); white-space: nowrap; cursor: pointer;
-  transition: background-color .12s, color .12s, border-color .12s;
+  transition: background-color .12s, color .12s, border-color .12s, transform .08s;
 }
-.lv-chip[aria-checked="true"] { background: var(--btn); border-color: var(--btn); color: #fff; }
+.lv-chip:active { transform: scale(0.98); }
+.lv-chip[aria-checked="true"],
+.lv-chip[aria-selected="true"] { background: var(--btn); border-color: var(--btn); color: #fff; }
+.lv-chips.six .lv-chip {
+  padding: 0 1px;
+  font-size: 0.78rem;
+  min-height: 38px;
+  letter-spacing: -0.01em;
+}
+@media (min-width: 360px) {
+  .lv-chips.six { gap: 6px; }
+  .lv-chips.six .lv-chip { font-size: 0.82rem; min-height: 40px; letter-spacing: normal; }
+}
 
 /* Exams page */
 .mock-card { display: grid; gap: 14px; padding: 16px; background: var(--surface-2); border-color: transparent; }
@@ -418,6 +424,11 @@ a.tile { text-decoration: none; }
 .lb-note { text-align: center; }
 .lb-wait { min-height: 60px; }
 .lb-cards { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.lb-cards > li { animation: lbIn .15s ease-out; }
+@keyframes lbIn {
+  from { opacity: 0; transform: translateY(3px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 .pd { display: grid; grid-template-columns: 28px 1fr auto; align-items: center; gap: 12px; min-height: 52px; padding: 8px 14px 8px 10px; border-radius: 16px; background: var(--bg); border: 1.5px solid var(--line); }
 .pd-1 { background: var(--oil-soft); border-color: transparent; }
 .pd.me { border-color: var(--btn); }
@@ -425,8 +436,17 @@ a.tile { text-decoration: none; }
 .pd-1 .pd-rank { background: var(--btn); color: #fff; }
 .pd-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 600; }
 .pd-score { font: 600 1.25rem/1 var(--f-display); color: var(--ink); font-variant-numeric: tabular-nums; }
-.age-tabs.six { grid-template-columns: repeat(6, 1fr); }
-.age-tabs.six button { padding: 0 2px; font-size: 0.8rem; }
+
+/* Skeleton placeholder for smooth loading */
+.pd-skel { pointer-events: none; border-color: var(--line); }
+.pd-skel .pd-rank { background: var(--surface-2); animation: lbPulse 1.4s ease-in-out infinite; }
+.skel-bar { display: block; border-radius: 6px; background: var(--surface-2); animation: lbPulse 1.4s ease-in-out infinite; }
+.skel-bar.name { height: 14px; width: 45%; max-width: 140px; }
+.skel-bar.score { height: 18px; width: 28px; }
+@keyframes lbPulse {
+  0%, 100% { opacity: .45; }
+  50% { opacity: .9; }
+}
 .adm-line { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .adm-player { padding: 10px 12px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); }
 .adm-player.is-kid { border-left: 3px solid var(--cedar); }
