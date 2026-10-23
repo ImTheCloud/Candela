@@ -32,6 +32,7 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
   const [done, setDone] = useState(false);
   const [leaveTo, setLeaveTo] = useState<(() => void) | null>(null);
   const leaving = useRef(false);
+  const barEl = useRef<HTMLDivElement>(null);
   const [saveFailed, setSaveFailed] = useState(false);
   const [verse, setVerse] = useState(false);
 
@@ -48,6 +49,17 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
   }, [done, started]);
 
   useEffect(() => { scrollTo({ top: 0 }); }, [i, done]);
+
+  // the page always leaves room under the answers for the bar at the foot, whatever its height
+  useEffect(() => {
+    const el = barEl.current;
+    if (!el) return;
+    const set = () => document.documentElement.style.setProperty('--bar-h', `${el.offsetHeight}px`);
+    set();
+    const ro = new ResizeObserver(set);
+    ro.observe(el);
+    return () => { ro.disconnect(); document.documentElement.style.removeProperty('--bar-h'); };
+  }, [done]);
 
   // a finished test is never played again by going back: this entry of the history now points to the list,
   // and the back arrow goes there too
@@ -134,7 +146,7 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
 
       {saveFailed && <p class="notice notice-bad" role="alert">Răspunsurile nu se salvează acum (progresul și clasamentul nu se actualizează). Spune-i administratorului.</p>}
 
-      <div class={`actions${g ? ` is-graded ${g.right ? 'is-right' : 'is-wrong'}` : ''}`}>
+      <div ref={barEl} class={`actions${g ? ` is-graded ${g.right ? 'is-right' : 'is-wrong'}` : ''}`}>
         {g ? (
           <Verdict g={g} last={i === questions.length - 1} onVerse={() => setVerse(true)} onNext={next} />
         ) : (
