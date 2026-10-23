@@ -21,10 +21,10 @@ interface Props {
   home?: boolean;
   /** The back button always goes to the page above (never back in the history): the Bible reader, where history is only chapters. */
   backUp?: boolean;
-  /** "Bun venit, {prenume}" in the header instead of the site name (as on the home page). */
+  /** "Bun venit, {prenume}" in the header instead of the site name (enabled on all pages by default). */
   greet?: boolean;
 }
-const { title, description = 'Teste biblice după traducerea Cornilescu: 1 Samuel și 2 Samuel.', crumbs = [], home = false, backUp = false, greet = false } = Astro.props;
+const { title, description = 'Teste biblice după traducerea Cornilescu: 1 Samuel și 2 Samuel.', crumbs = [], home = false, backUp = false, greet = true } = Astro.props;
 const up = crumbs.at(-1)?.href ?? '/';
 const parent = up === `/${DEFAULT_BOOK}` ? '/' : up;
 const fullTitle = title === 'Candela' ? title : `${title} · Candela`;
@@ -68,8 +68,8 @@ const fullTitle = title === 'Candela' ? title : `${title} · Candela`;
         )}
         <a href="/" class="brand" aria-label="Candela, acasă">
           <Lamp />
-          {home || greet
-            ? <HeaderTitle client:only="preact"><span slot="fallback" class="brand-text" aria-hidden="true">&nbsp;</span></HeaderTitle>
+          {greet
+            ? <HeaderTitle client:only="preact"><span slot="fallback" id="brand-fb" class="brand-text">Candela</span></HeaderTitle>
             : <span class="brand-text">Candela</span>}
         </a>
         <div id="quiz-top" class="qt"></div>
@@ -85,12 +85,17 @@ const fullTitle = title === 'Candela' ? title : `${title} · Candela`;
 </html>
 
 <script is:inline>
-  // The account button is an island: until it loads, show what the last visit left (initials, or "Intră") so it does not pop in late.
+  // The account button & brand title are islands: until they load, show what the last visit left so they do not pop in late.
   try {
     var acct = JSON.parse(localStorage.getItem('acct') || 'null'), fb = document.getElementById('acct-fb');
     if (fb && typeof acct === 'string' && !(acct === '' && location.pathname.indexOf('/cont') === 0)) {
       if (acct) { fb.className = 'avatar'; fb.textContent = acct; var n = parseInt(localStorage.getItem('acctN') || '0', 10); if (n > 0) { var s = document.createElement('span'); s.className = 'badge-n'; s.textContent = n > 9 ? '9+' : String(n); fb.appendChild(s); fb.href = '/semnalari'; } } else { fb.className = 'btn btn-primary btn-sm'; fb.textContent = 'Intră'; }
       fb.hidden = false;
+    }
+    var me = JSON.parse(localStorage.getItem('me') || 'null'), bfb = document.getElementById('brand-fb');
+    if (bfb && me && me.name) {
+      var f = me.name.trim().split(/\s+/)[0];
+      if (f) bfb.textContent = 'Bun venit, ' + f;
     }
   } catch (e) {}
 </script>
@@ -102,6 +107,16 @@ const fullTitle = title === 'Candela' ? title : `${title} · Candela`;
     if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey) return;
     if ((history.state?.index ?? 0) > 0) { e.preventDefault(); history.back(); }
   }, true);
+
+  document.addEventListener('astro:page-load', () => {
+    try {
+      var me = JSON.parse(localStorage.getItem('me') || 'null'), bfb = document.getElementById('brand-fb');
+      if (bfb && me && me.name) {
+        var f = me.name.trim().split(/\s+/)[0];
+        if (f) bfb.textContent = 'Bun venit, ' + f;
+      }
+    } catch (e) {}
+  });
 </script>
 
 <style>
