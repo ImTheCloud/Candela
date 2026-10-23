@@ -1,6 +1,5 @@
 /* Quiz screens, phone first: the question starts right under the slim header, the actions sit at thumb height. */
-.quiz { display: grid; align-content: start; gap: 12px; padding-block: 4px calc(96px + env(safe-area-inset-bottom)); }
-.quiz.has-fb { padding-bottom: calc(168px + env(safe-area-inset-bottom)); }
+.quiz { display: grid; align-content: start; gap: 12px; padding-block: 4px calc(var(--bar-h, 96px) + 16px); }
 /* a typed answer: leave room under the field so the page can bring it above the keyboard */
 body:has(.fill-input:focus) .quiz { padding-bottom: 45dvh; }
 
@@ -148,7 +147,7 @@ body.in-quiz main { padding-top: 0; }
 /* The bar at the foot of the screen: "Verifică", then the verdict and the way on */
 .actions {
   position: fixed; left: 0; right: 0; bottom: 0; z-index: 6;
-  padding: 10px var(--gutter) calc(10px + env(safe-area-inset-bottom));
+  padding: 8px var(--gutter) calc(8px + env(safe-area-inset-bottom));
   background: color-mix(in srgb, var(--bg) 96%, transparent); backdrop-filter: blur(10px);
   border-top: 1px solid var(--line);
 }
@@ -156,12 +155,13 @@ body.in-quiz main { padding-top: 0; }
 .btn-3d { min-height: 52px; border-radius: 16px; font-size: 1.05rem; box-shadow: 0 3px 0 rgb(0 0 0 / .25); transition: transform .06s, box-shadow .06s; }
 .btn-3d:active:not(:disabled) { transform: translateY(3px); box-shadow: none; }
 .btn-3d:disabled { box-shadow: 0 3px 0 var(--line); }
-.verdict { display: grid; gap: 10px; }
+.verdict { display: grid; gap: 8px; }
+.verdict .btn-3d { min-height: 46px; font-size: 1rem; }
 .verdict-row { display: flex; align-items: center; gap: 10px; }
-.verdict-ic { flex: none; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--surface); }
+.verdict-ic { flex: none; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--surface); }
 .verdict-text { flex: 1; min-width: 0; font: 800 1.2rem/1.2 var(--f-body); }
 .verse-pill {
-  flex: none; display: inline-flex; align-items: center; gap: 6px; min-height: 38px; padding: 0 14px 0 11px; border: 2px solid currentColor; border-radius: 999px;
+  flex: none; display: inline-flex; align-items: center; gap: 6px; min-height: 34px; padding: 0 12px 0 10px; border: 2px solid currentColor; border-radius: 999px;
   background: var(--surface); color: inherit; font: 700 0.9rem var(--f-body); cursor: pointer;
 }
 .verse-pill:active { transform: translateY(2px); }
