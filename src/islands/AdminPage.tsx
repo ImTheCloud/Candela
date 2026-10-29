@@ -72,7 +72,7 @@ function Row({ r }: { r: UserRow }) {
           {kids.map((p) => (
             <div class="adm-player is-kid">
               <p class="adm-pname"><strong>{p.name}</strong><span class="tag-kid">copil</span></p>
-              {p.books.map((b) => <p class="small muted adm-line">{b.name}: {b.mastered} știute, {b.wrong} de reluat, {b.chapters} cap.</p>)}
+              {p.books.map((b) => <p class="small muted adm-line">{b.name}: {b.mastered} știute, {b.wrong} greșite, {b.chapters} cap.</p>)}
             </div>
           ))}
         </div>
@@ -80,7 +80,7 @@ function Row({ r }: { r: UserRow }) {
       {!r.isParent && open && (
         <div class="adm-detail">
           {failed ? <p class="small bad">Nu s-au putut citi detaliile.</p> : !own ? <p class="small muted">Se încarcă…</p> : own.books.map((b) => (
-            <p class="small muted adm-line">{b.name}: {b.mastered} știute, {b.wrong} de reluat, {b.chapters} cap.</p>
+            <p class="small muted adm-line">{b.name}: {b.mastered} știute, {b.wrong} greșite, {b.chapters} cap.</p>
           ))}
         </div>
       )}

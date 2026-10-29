@@ -5,7 +5,7 @@ import { level, scoreView } from '../lib/level';
 import { cachedExams, EMPTY, progress, scoreLabel } from '../lib/progress';
 import { rememberedAccount, user } from '../lib/session';
 import { player } from '../lib/players';
-import { PER_TEST, type QType } from '../lib/questions';
+import { PER_TEST, SHAPE_TEXT, type QType } from '../lib/questions';
 import { prefetch } from 'astro:prefetch';
 import { loadChapter } from '../lib/load';
 import LevelPicker from './LevelPicker';
@@ -48,7 +48,6 @@ export default function ChapterMenu({ book, titles, summary, exams: realExams }:
 
   const sheet = open !== null && (
     <Sheet book={book} ch={open} title={titles[open - 1]} total={count(summary[open]?.[level.value])} best={scoreLabel(entry(open), count(summary[open]?.[level.value]))}
-      wrongs={prog.wrong.filter((id) => chapterOf(id) === open).length}
       onClose={() => setOpen(null)} />
   );
 
@@ -92,11 +91,10 @@ interface SheetProps {
   title: string;
   total: number;
   best: string | undefined;
-  wrongs: number;
   onClose: () => void;
 }
 
-function Sheet({ book, ch, title, total, best, wrongs, onClose }: SheetProps) {
+function Sheet({ book, ch, title, total, best, onClose }: SheetProps) {
   const base = `/${book}`;
   const lv = level.value;
 
@@ -132,15 +130,13 @@ function Sheet({ book, ch, title, total, best, wrongs, onClose }: SheetProps) {
                 <small>{total ? `${total} întrebări` : ''}{best !== undefined ? `${total ? ', ' : ''}cel mai bun scor ${best}` : ''}</small>
               </span>
             </div>
+            <p class="oc-shape small muted">{SHAPE_TEXT}</p>
             <LevelPicker />
           </div>
         </div>
         <a class="btn btn-primary btn-block oc-go" href={`${base}/exersare?capitol=${ch}&start=1&nivel=${encodeURIComponent(lv)}`}>
           Începe testul de nivel {levelLabel(lv).toLowerCase()}
         </a>
-        {wrongs > 0 && (
-          <a class="oc-more" href={`${base}/greseli`}>Greșelile mele ({wrongs} de reluat)</a>
-        )}
       </>)}
     </Modal>
   );
@@ -169,9 +165,4 @@ function examSpan(n: number): number {
 
 function count(s: Partial<Record<QType, number>> | undefined): number {
   return s ? Object.values(s).reduce((a, b) => a + (b ?? 0), 0) : 0;
-}
-
-/** Chapter of a chapter question; 0 for exam questions ("1sa-2026-12-13.4"). */
-function chapterOf(id: string): number {
-  return /^[a-z0-9]+\.\d+\./.test(id) ? Number(id.split('.')[1]) : 0;
 }

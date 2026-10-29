@@ -36,7 +36,7 @@ Soit 24 questions par niveau et 72 par chapitre. Un test de chapitre suit l'ordr
 
 ### La scène (contexte)
 
-Chaque chapitre a une phrase de scène (`scene: …` en tête de la source), par exemple « La Hebron, la uciderea lui Iș-Boșet ». Elle n'est **pas** répétée dans les énoncés. Le quiz l'affiche au-dessus de la question seulement quand les questions viennent de plusieurs chapitres (examen blanc, « Greșelile mele ») ; dans un test de chapitre, ce serait la même phrase à chaque fois. Le code : `scene` dans `src/lib/content.ts`, affichage dans `QHead` de `src/islands/Quiz.tsx`.
+Chaque chapitre a une phrase de scène (`scene: …` en tête de la source), par exemple « La Hebron, la uciderea lui Iș-Boșet ». Elle n'est **pas** répétée dans les énoncés. Le quiz l'affiche au-dessus de la question seulement quand les questions viennent de plusieurs chapitres (examen blanc) ; dans un test de chapitre, ce serait la même phrase à chaque fois. Le code : `scene` dans `src/lib/content.ts`, affichage dans `QHead` de `src/islands/Quiz.tsx`.
 
 ### Le format source (`sursa/chNN.txt`)
 

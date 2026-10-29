@@ -371,7 +371,7 @@ a.tile { text-decoration: none; }
 .oc-test { display: grid; gap: 12px; padding: 14px 16px; border-top: 1px solid var(--line); }
 .oc-head { display: flex; align-items: center; gap: 12px; }
 .oc-go { margin-top: 12px; min-height: 52px; }
-.oc-more { display: block; margin-top: 12px; text-align: center; color: var(--ink-2); font-size: 0.9rem; text-decoration: underline; text-underline-offset: 3px; }
+.oc-shape { margin: 0 0 10px; line-height: 1.4; }
 .oc-chev { flex: none; color: var(--ink-3); }
 
 /* Level chips: choices on one line (modals, sheets, profile, leaderboard) */

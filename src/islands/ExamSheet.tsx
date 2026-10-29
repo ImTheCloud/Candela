@@ -5,7 +5,7 @@ import { level } from '../lib/level';
 import { progress, scoreLabel } from '../lib/progress';
 import LevelPicker from './LevelPicker';
 import Modal, { CloseButton } from './Modal';
-import { PER_TEST } from '../lib/questions';
+import { PER_TEST, SHAPE_TEXT } from '../lib/questions';
 
 /** A real exam that already took place, to play again. */
 export interface ExamInfo {
@@ -59,6 +59,7 @@ export default function ExamSheet({ book, exams, onClose }: { book: string; exam
               <span class="oc-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3 8-8" /><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9" /></svg></span>
               <span class="oc-main"><b>Întrebări din toată cartea</b></span>
             </div>
+            <p class="oc-shape small muted">{SHAPE_TEXT}</p>
             <LevelPicker />
           </div>
         </div>
