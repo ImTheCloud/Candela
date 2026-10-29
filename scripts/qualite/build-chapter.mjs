@@ -1,7 +1,7 @@
 // Writes content/{book}/intrebari/chNN.json from a chapter written in the short form below (see docs/fonctionnement.md).
 //
 //   scene: La Țiclag, când David află de moartea lui Saul
-//   ## sub12                                      (then 10 tf, 10 one, 1 match, 3 multi, in any order)
+//   ## usor                                       (usor, mediu, greu: each 10 tf, 10 one, 1 match, 3 multi)
 //   tf + 1:1 | David s-a întors la Țiclag.         (+ true, - false)
 //   one 1:2 | Cine a venit din tabăra lui Saul? | *un tânăr amalecit | un preot | un frate al lui David
 //   multi 1:11 | Ce au făcut David și oamenii lui? | *au plâns | *au postit | au cântat      (no * at all: none is right)
@@ -72,7 +72,7 @@ for (const line of lines) {
 }
 
 const ORDER = ['tf', 'one', 'match', 'multi'];
-const AGES = ['sub12', '12-13', '14-15', '16-17', '18+'];
+const AGES = ['usor', 'mediu', 'greu'];
 questions.sort((a, b) => AGES.indexOf(a.age) - AGES.indexOf(b.age) || ORDER.indexOf(a.t) - ORDER.indexOf(b.t));
 const out = `content/${book}/intrebari/ch${String(ch).padStart(2, '0')}.json`;
 fs.writeFileSync(out, JSON.stringify({ ch, scene, reviewed: false, questions }, null, 1) + '\n');

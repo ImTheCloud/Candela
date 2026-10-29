@@ -1,4 +1,4 @@
-import type { AgeGroup } from './age';
+import type { AgeGroup, Level } from './age';
 
 /** The five kinds of exam questions, in the order of the paper exam. */
 export type QType = 'tf' | 'one' | 'match' | 'fill' | 'multi';
@@ -6,7 +6,8 @@ export type QType = 'tf' | 'one' | 'match' | 'fill' | 'multi';
 interface Base {
   /** Stable id: never reused or renumbered, so progress survives edits. */
   id: string;
-  age: AgeGroup;
+  /** Level of a chapter question, or age group of a real exam question. */
+  age: Level | AgeGroup;
   ref: string;
   q: string;
   /** Who speaks or what happens, shown above a verse to complete. */

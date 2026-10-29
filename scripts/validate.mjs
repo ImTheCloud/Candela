@@ -1,16 +1,17 @@
 // Checks every question file before a build: shape, ids, references, and that each text to complete
-// is copied exactly from the verse. Prints how many questions each chapter has per age and type.
+// is copied exactly from the verse. Prints how many questions each chapter has per level and type.
 import { readdirSync, readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 
 const ROOT = new URL('../content/', import.meta.url).pathname;
 const BOOKS = { '1-samuel': '1sa', '2-samuel': '2sa' };
-const AGES = ['sub12', '12-13', '14-15', '16-17', '18+'];
+const AGES = ['usor', 'mediu', 'greu'];
 const TYPES = ['tf', 'one', 'match', 'fill', 'multi'];
-// A chapter test has the shape of the final exam, for every age group: 10 true/false, 10 single answer,
+// A chapter test has the shape of the final exam, for every level: 10 true/false, 10 single answer,
 // one matching of 5 pairs, 3 multiple answer (none, one or several right). No text to complete in chapters.
 const TARGET = { tf: 10, one: 10, match: 1, fill: 0, multi: 3 };
-const ADULT = ['14-15', '16-17', '18+'];
+// from the middle level up, the right answer may not stand out by its length
+const ADULT = ['mediu', 'greu'];
 
 let errors = 0;
 let warnings = 0;
@@ -134,7 +135,7 @@ function checkStyle(q, w, scene) {
   }
 }
 
-/** Per chapter and age: true and false both well represented, right answers spread over a, b, c. */
+/** Per chapter and level: true and false both well represented, right answers spread over a, b, c. */
 function checkBalance(file, where) {
   for (const a of AGES) {
     const qs = file.questions.filter((q) => q.age === a);
@@ -163,12 +164,12 @@ for (const [slug, abbr] of Object.entries(BOOKS)) {
     if ((typeof file.scene !== 'string' || !file.scene.trim())) err(where, 'scene lipsește');
     const counts = Object.fromEntries(AGES.map((a) => [a, Object.fromEntries(TYPES.map((t) => [t, 0]))]));
     for (const q of file.questions) {
-      const m = /^(\w+)\.(\d+)\.(sub12|12-13|14-15|16-17|18\+)\.(\d+)$/.exec(q.id ?? '');
+      const m = /^(\w+)\.(\d+)\.(usor|mediu|greu)\.(\d+)$/.exec(q.id ?? '');
       if (!m) { err(where, `id greșit "${q.id}"`); continue; }
-      if (m[1] !== abbr || Number(m[2]) !== file.ch || m[3] !== q.age) err(where, `id ${q.id} nu se potrivește cu cartea, capitolul sau vârsta`);
+      if (m[1] !== abbr || Number(m[2]) !== file.ch || m[3] !== q.age) err(where, `id ${q.id} nu se potrivește cu cartea, capitolul sau nivelul`);
       if (seen.has(q.id)) err(where, `id dublat ${q.id}`);
       seen.add(q.id);
-      if (!AGES.includes(q.age)) err(where, `vârstă necunoscută ${q.age}`);
+      if (!AGES.includes(q.age)) err(where, `nivel necunoscut ${q.age}`);
       checkQuestion(q, where, text);
       checkStyle(q, `${where} ${q.id}`, file.scene);
       if (counts[q.age]?.[q.t] !== undefined) counts[q.age][q.t]++;

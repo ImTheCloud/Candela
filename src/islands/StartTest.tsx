@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'preact/hooks';
 import { prefetch } from 'astro:prefetch';
-import { ageShort, type AgeGroup } from '../lib/age';
+import { levelLabel, type Level } from '../lib/age';
 import { level } from '../lib/level';
 import { loadChapter } from '../lib/load';
 import type { QType } from '../lib/questions';
@@ -12,7 +12,7 @@ interface Props {
   ch: number;
   title: string;
   /** Questions of this chapter per age group and type. */
-  counts: Partial<Record<AgeGroup, Partial<Record<QType, number>>>>;
+  counts: Partial<Record<Level, Partial<Record<QType, number>>>>;
 }
 
 /** "Începe întrebările" in the reader's bottom bar: it opens the same level sheet as a chapter tile, it never starts by itself. */
@@ -42,10 +42,11 @@ export default function StartTest({ book, ch, title, counts }: Props) {
               <CloseButton onClick={close} />
             </div>
             <div class="ts-block" style={{ marginTop: '14px' }}>
-              <p class="sheet-label" style={{ margin: 0 }}>Grupa de vârstă{total ? `, ${total} de întrebări` : ''}</p>
-              <LevelPicker label="Grupa de vârstă" />
+              <p class="sheet-label" style={{ margin: 0 }}>Nivelul{total ? `, ${total} de întrebări` : ''}</p>
+              <LevelPicker />
+              <p class="lv-hint small muted">Ușor: sub 12 ani. Mediu: 12-17 ani. Greu: 18 ani și peste.</p>
             </div>
-            <a class="btn btn-primary btn-block oc-go" href={href}>Începe testul pentru {ageShort(lv)} ani</a>
+            <a class="btn btn-primary btn-block oc-go" href={href}>Începe testul de nivel {levelLabel(lv).toLowerCase()}</a>
           </>)}
         </Modal>
       )}

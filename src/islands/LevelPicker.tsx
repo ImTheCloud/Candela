@@ -1,24 +1,24 @@
-import { AGE_GROUPS, ageShort, type AgeGroup } from '../lib/age';
+import { LEVELS, type Level } from '../lib/age';
 import { level, setLevel } from '../lib/level';
 
-export interface LevelPickerProps<T extends AgeGroup | 'all' = AgeGroup> {
+export interface LevelPickerProps<T extends Level | 'all' = Level> {
   label?: string;
   value?: T;
   onChange?: (val: T) => void;
   includeAll?: boolean;
   allLabel?: string;
-  groups?: { id: AgeGroup; label: string }[];
+  groups?: { id: Level; label: string }[];
   class?: string;
 }
 
-/** The age choices as chips. The last pick is kept and used for every chapter; also used to filter leaderboards and profiles. */
-export default function LevelPicker<T extends AgeGroup | 'all' = AgeGroup>({
-  label = 'Grupa de vârstă',
+/** The level choices as chips. The last pick is kept and used for every chapter; also used to filter leaderboards and profiles. */
+export default function LevelPicker<T extends Level | 'all' = Level>({
+  label = 'Nivelul',
   value,
   onChange,
   includeAll = false,
   allLabel = 'Toate',
-  groups = AGE_GROUPS,
+  groups = LEVELS,
   class: className = '',
 }: LevelPickerProps<T>) {
   const current = (value ?? level.value) as T;
@@ -26,24 +26,22 @@ export default function LevelPicker<T extends AgeGroup | 'all' = AgeGroup>({
     if (onChange) {
       onChange(next);
     } else {
-      setLevel(next as AgeGroup);
+      setLevel(next as Level);
     }
   };
 
   const items: { id: T; label: string }[] = groups.map((g) => ({
     id: g.id as T,
-    label: ageShort(g.id),
+    label: g.label,
   }));
 
   if (includeAll) {
     items.push({ id: 'all' as T, label: allLabel });
   }
 
-  const isSix = items.length === 6;
-
   return (
     <div
-      class={`lv-chips${isSix ? ' six' : ''}${className ? ` ${className}` : ''}`}
+      class={`lv-chips${className ? ` ${className}` : ''}`}
       role="radiogroup"
       aria-label={label}
     >

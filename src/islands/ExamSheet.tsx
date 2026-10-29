@@ -1,6 +1,6 @@
 import { useEffect } from 'preact/hooks';
 import { prefetch } from 'astro:prefetch';
-import { ageLabel, ageShort, type AgeGroup } from '../lib/age';
+import { ageLabel, levelLabel, type AgeGroup } from '../lib/age';
 import { level } from '../lib/level';
 import { progress, scoreLabel } from '../lib/progress';
 import LevelPicker from './LevelPicker';
@@ -59,10 +59,11 @@ export default function ExamSheet({ book, exams, onClose }: { book: string; exam
               <span class="oc-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3 8-8" /><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9" /></svg></span>
               <span class="oc-main"><b>Întrebări din toată cartea</b></span>
             </div>
-            <LevelPicker label="Grupa de vârstă" />
+            <LevelPicker />
+            <p class="lv-hint small muted">Ușor: sub 12 ani. Mediu: 12-17 ani. Greu: 18 ani și peste.</p>
           </div>
         </div>
-        <a class="btn btn-primary btn-block oc-go" href={`/${book}/examene/alb`}>Începe examenul alb pentru {ageShort(lv)} ani</a>
+        <a class="btn btn-primary btn-block oc-go" href={`/${book}/examene/alb`}>Începe examenul alb de nivel {levelLabel(lv).toLowerCase()}</a>
       </>)}
     </Modal>
   );

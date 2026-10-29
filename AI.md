@@ -12,7 +12,7 @@ Candela est une app web de quiz biblique (1 Samuel et 2 Samuel, traduction Corni
 ## Fichiers clés
 - `src/layouts/Base.astro` : en-tête, fil d'Ariane (`crumbs`), pied de page, polices.
 - `src/styles/global.css` : variables de couleur (clair et sombre), boutons, formulaires.
-- `src/lib/books.ts` (livres, texte), `src/lib/age.ts` (catégories d'âge), `src/lib/session.ts` (compte, profil), `src/lib/firebase.ts`.
+- `src/lib/books.ts` (livres, texte), `src/lib/age.ts` (niveaux des questions, âges des examens réels), `src/lib/session.ts` (compte, profil), `src/lib/firebase.ts`.
 - `content/<livre>/text-cornilescu.json` : texte biblique, un tableau de versets par chapitre.
 - `content/<livre>/sursa/chNN.txt` : source des questions d'un chapitre ; `intrebari/chNN.json` en est généré (`scripts/qualite/build-chapter.mjs`).
 

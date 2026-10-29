@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'preact/hooks';
-import { AGE_GROUPS, type AgeGroup } from '../lib/age';
+import { LEVELS, type Level } from '../lib/age';
 import { level as savedLevel, setLevel } from '../lib/level';
 import { player } from '../lib/players';
 import { shuffle, type Playable, type QType } from '../lib/questions';
@@ -10,7 +10,7 @@ import Quiz from './Quiz';
 import Loader from './Loader';
 
 /** How many questions each chapter has, per age group and type (computed at build). */
-export type Summary = Record<number, Partial<Record<AgeGroup, Partial<Record<QType, number>>>>>;
+export type Summary = Record<number, Partial<Record<Level, Partial<Record<QType, number>>>>>;
 
 interface Props {
   book: string;
@@ -27,12 +27,12 @@ export default function Practice({ book, bookName, chapters, summary }: Props) {
     const c = Number(params.get('capitol'));
     return c && summary[c] ? [c] : [];
   });
-  // from a chapter's menu: ?capitol=5&start=1[&nivel=14-15] starts the whole chapter test at once
+  // from a chapter's menu: ?capitol=5&start=1[&nivel=mediu] starts the whole chapter test at once
   const direct = params.get('start') === '1';
   useState(() => {
     // a bare "+" in the address reads as a space ("18+")
-    const asked = params.get('nivel')?.replace(' ', '+');
-    if (asked && AGE_GROUPS.some((g) => g.id === asked)) setLevel(asked as AgeGroup);
+    const asked = params.get('nivel');
+    if (asked && LEVELS.some((g) => g.id === asked)) setLevel(asked as Level);
   });
   const [count, setCount] = useState(direct ? 0 : 10);
   const [quiz, setQuiz] = useState<{ key: number; questions: Playable[] } | null>(null);
@@ -95,7 +95,7 @@ export default function Practice({ book, bookName, chapters, summary }: Props) {
       </div>
 
       <div class="setup-block">
-        <p class="setup-head"><strong>Grupa de vârstă</strong></p>
+        <p class="setup-head"><strong>Nivelul</strong></p>
         <LevelPicker />
       </div>
 

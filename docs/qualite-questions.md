@@ -1,8 +1,8 @@
 # Qualité des questions : comment écrire, vérifier et corriger
 
-Ce guide est pour la prochaine personne (ou IA) qui écrit ou reprend les questions. Le format des fichiers et le fonctionnement du site sont dans `docs/fonctionnement.md`, le barème de difficulté par âge dans `docs/niveluri.md`.
+Ce guide est pour la prochaine personne (ou IA) qui écrit ou reprend les questions. Le format des fichiers et le fonctionnement du site sont dans `docs/fonctionnement.md`, le barème de difficulté par niveau dans `docs/niveluri.md`.
 
-État au 29 octobre 2026 : 2 Samuel réécrit entièrement (24 chapitres, 120 questions chacun) ; 1 Samuel vidé, à réécrire de la même façon quand le propriétaire aura validé 2 Samuel.
+État au 29 octobre 2026 : 2 Samuel en trois niveaux (Ușor, Mediu, Greu ; 72 questions par chapitre). Greu est en réécriture : chapitre 1 fait, à valider par le propriétaire avant les autres. 1 Samuel vidé, à refaire ensuite.
 
 ## Ce que le propriétaire exige (retours répétés)
 
@@ -10,18 +10,19 @@ Ce guide est pour la prochaine personne (ou IA) qui écrit ou reprend les questi
 2. **Choix multiple : des faits indépendants.** Les bonnes réponses ne sont jamais la suite l'une de l'autre ni deux formulations de la même chose. Chacune doit être juste toute seule.
 3. **Pas de scène dans l'énoncé.** La scène est écrite une fois par chapitre (`scene:`) et ne s'affiche qu'en examen. L'énoncé doit quand même dire qui parle, à qui, de qui, où : jamais « Ce a zis femeia? », mais « Ce a spus femeia din Tecoa împăratului? ».
 4. **Une question = une seule question**, terminée par un point d'interrogation. Un vrai/faux est une affirmation, sans point d'interrogation. Pas de question à la forme négative (« Cu ce NU… »).
-5. **Longueur des propositions** : à partir de 14–15 ans, la bonne réponse n'est ni visiblement la plus longue ni la plus courte (écart de plus de 10 caractères avec toutes les autres). Le plus simple : écrire des fausses réponses aussi précises que la bonne. Pour les enfants, on s'en moque.
-6. **Vrai ou faux équilibré** : 4 à 6 vraies sur 10 par âge. Une fausse change un nom, un chiffre, un lieu ou le sens ; jamais un détail douteux ni un piège sur un mot.
-7. **Associations autonomes** : chaque paire doit se comprendre sans la consigne, car l'examen blanc mélange des paires de cinq chapitres (« Itream | al șaselea fiu al lui David », pas « Itream | al șaselea »).
-8. **La référence couvre les versets de la réponse** : la fenêtre « Versetul » surligne ces versets.
-9. **Sujets sensibles** (2 Samuel 11, 13) : rien de cru pour les plus jeunes ; on garde l'événement et la leçon.
-10. **Pas de point médian « · »** dans les textes du site : une virgule, des parenthèses ou une autre phrase.
-11. **Dire au propriétaire combien de questions ont été modifiées** à chaque correction.
+5. **Fausses réponses plausibles** (Mediu et Greu) : elles parlent des vrais personnages, lieux et objets du chapitre ; en Greu, elles ne diffèrent de la bonne que par un détail. `node scripts/qualite/ancrage.mjs` liste celles qu'on élimine sans avoir lu.
+6. **Longueur des propositions** : à partir de Mediu, la bonne réponse n'est ni visiblement la plus longue ni la plus courte (écart de plus de 10 caractères avec toutes les autres). Le plus simple : écrire des fausses réponses aussi précises que la bonne. En Ușor, on s'en moque.
+7. **Vrai ou faux équilibré** : 4 à 6 vraies sur 10 par niveau. Une fausse change un nom, un chiffre, un lieu ou le sens ; jamais un détail douteux ni un piège sur un mot.
+8. **Associations autonomes** : chaque paire doit se comprendre sans la consigne, car l'examen blanc mélange des paires de cinq chapitres (« Itream | al șaselea fiu al lui David », pas « Itream | al șaselea »).
+9. **La référence couvre les versets de la réponse** : la fenêtre « Versetul » surligne ces versets.
+10. **Sujets sensibles** (2 Samuel 11, 13) : rien de cru pour les plus jeunes ; on garde l'événement et la leçon.
+11. **Pas de point médian « · »** dans les textes du site : une virgule, des parenthèses ou une autre phrase.
+12. **Dire au propriétaire combien de questions ont été modifiées** à chaque correction.
 
 ## Écrire un chapitre
 
 1. Lire le chapitre dans `content/<livre>/text-cornilescu.json`.
-2. Écrire `content/<livre>/sursa/chNN.txt` : la scène, puis pour chaque âge 10 `tf`, 10 `one`, 1 `match` de 5 paires, 3 `multi`. Les cinq âges ont des questions différentes ; un même fait peut revenir d'un âge à l'autre, formulé selon le barème.
+2. Écrire `content/<livre>/sursa/chNN.txt` : la scène, puis pour chaque niveau (`## usor`, `## mediu`, `## greu`) 10 `tf`, 10 `one`, 1 `match` de 5 paires, 3 `multi`. Un même fait peut revenir d'un niveau à l'autre, formulé selon le barème.
 3. Varier les `multi` : selon les questions, une, deux ou trois bonnes réponses, et de temps en temps aucune.
 4. Générer et valider :
 
@@ -30,11 +31,11 @@ node scripts/qualite/build-chapter.mjs 2-samuel 5 content/2-samuel/sursa/ch05.tx
 node scripts/validate.mjs
 ```
 
-`validate.mjs` refuse (erreur) : mauvais nombre de questions par type et par âge, scène répétée dans un énoncé, deux points d'interrogation, question sans « ? », vrai/faux avec « ? », association sans verset par paire, versets inexistants. Il signale (avertissement) : réponse trahie par sa longueur, vrai/faux déséquilibré, bonne réponse trop souvent sur la même lettre. Un chapitre n'est fini qu'avec 0 erreur et 0 avertissement.
+`validate.mjs` refuse (erreur) : mauvais nombre de questions par type et par niveau, scène répétée dans un énoncé, deux points d'interrogation, question sans « ? », vrai/faux avec « ? », association sans verset par paire, versets inexistants. Il signale (avertissement) : réponse trahie par sa longueur, vrai/faux déséquilibré, bonne réponse trop souvent sur la même lettre. Un chapitre n'est fini qu'avec 0 erreur et 0 avertissement.
 
 ## Corriger une question
 
-Modifier sa ligne **sur place** dans `sursa/chNN.txt`, régénérer le chapitre, valider. Ne jamais insérer ni supprimer de ligne au milieu d'un âge : les identifiants suivraient l'ordre et la progression des joueurs serait décalée.
+Modifier sa ligne **sur place** dans `sursa/chNN.txt`, régénérer le chapitre, valider. Ne jamais insérer ni supprimer de ligne au milieu d'un niveau : les identifiants suivraient l'ordre et la progression des joueurs serait décalée.
 
 ## Détecteurs
 

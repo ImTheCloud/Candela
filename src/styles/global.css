@@ -375,26 +375,16 @@ a.tile { text-decoration: none; }
 .oc-chev { flex: none; color: var(--ink-3); }
 
 /* Level chips: choices on one line (modals, sheets, profile, leaderboard) */
-.lv-chips { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
-.lv-chips.six { grid-template-columns: repeat(6, 1fr); gap: 4px; }
+.lv-chips { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 6px; }
 .lv-chip {
   min-height: 40px; padding: 0 2px; border: 1.5px solid var(--line); border-radius: 12px; background: var(--surface);
   color: var(--ink-2); font: 600 0.85rem var(--f-body); white-space: nowrap; cursor: pointer;
   transition: background-color .12s, color .12s, border-color .12s, transform .08s;
 }
+.lv-hint { margin: 6px 0 0; }
 .lv-chip:active { transform: scale(0.98); }
 .lv-chip[aria-checked="true"],
 .lv-chip[aria-selected="true"] { background: var(--btn); border-color: var(--btn); color: #fff; }
-.lv-chips.six .lv-chip {
-  padding: 0 1px;
-  font-size: 0.78rem;
-  min-height: 38px;
-  letter-spacing: -0.01em;
-}
-@media (min-width: 360px) {
-  .lv-chips.six { gap: 6px; }
-  .lv-chips.six .lv-chip { font-size: 0.82rem; min-height: 40px; letter-spacing: normal; }
-}
 
 /* Exams page */
 .mock-card { display: grid; gap: 14px; padding: 16px; background: var(--surface-2); border-color: transparent; }

@@ -1,4 +1,4 @@
-import { ageShort } from '../lib/age';
+import { levelLabel } from '../lib/age';
 import { level } from '../lib/level';
 import LevelPicker from './LevelPicker';
 import { PER_TEST } from '../lib/questions';
@@ -11,8 +11,9 @@ export default function MockStart({ book }: { book: string }) {
         <p class="exam-title">Examen alb</p>
         <p class="small muted">{PER_TEST} de întrebări din toată cartea.</p>
       </div>
-      <LevelPicker label="Grupa de vârstă" />
-      <a class="btn btn-primary btn-block" href={`/${book}/examene/alb`}>Începe examenul pentru {ageShort(level.value)} ani</a>
+      <LevelPicker />
+      <p class="lv-hint small muted">Ușor: sub 12 ani. Mediu: 12-17 ani. Greu: 18 ani și peste.</p>
+      <a class="btn btn-primary btn-block" href={`/${book}/examene/alb`}>Începe examenul de nivel {levelLabel(level.value).toLowerCase()}</a>
     </div>
   );
 }
