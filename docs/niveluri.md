@@ -7,8 +7,28 @@ Depuis le 29 octobre 2026, les questions des chapitres n'ont plus de tranches d'
 | **Pour qui** | moins de 12 ans | 12 à 17 ans | 18 ans et plus |
 | **Fait demandé** | l'histoire centrale du chapitre | tous les événements, paroles, causes et conséquences | détails précis : qui a dit quoi à qui, mots exacts, chiffres, noms (pères, villes d'origine), lieux, ordre des événements |
 | **Distance au texte** | presque les mots du verset | paraphrase | reformulation, nuances |
-| **Propositions** (3) | une seule plausible, les autres clairement hors sujet | toutes ancrées dans le chapitre (vrais personnages, vrais lieux) : on ne devine pas sans avoir lu | trois très proches : la même scène avec un seul détail changé, ou un autre vrai fait du chapitre mal attribué |
+| **Propositions** (3) | des choses bibliques simples mais fausses ici, jamais absurdes | toutes ancrées dans le chapitre (vrais personnages, vrais lieux) : on ne devine pas sans avoir lu | trois très proches : la même scène avec un seul détail changé, ou un autre vrai fait du chapitre mal attribué |
 | **Vrai ou faux** | le faux change le sens de l'histoire | le faux change un nom, un lieu ou une action | le faux change un seul détail précis (un nom, un chiffre, la personne qui parle) |
+
+## Calibrage de référence : 2 Samuel 1 (30 octobre 2026)
+
+Après un premier test du propriétaire (Ușor « un chouïa trop facile », Mediu « vraiment trop facile », Greu « un chouïa trop facile »), le chapitre 1 a été réécrit un cran plus dur en Ușor et Greu, deux crans en Mediu. **Une fois validé, c'est ce chapitre qui sert de modèle pour tous les autres** (2 Samuel, puis 1 Samuel) : relire `content/2-samuel/sursa/ch01.txt` avant d'écrire un chapitre.
+
+**Ușor** : les faits principaux, mais il faut avoir lu ou écouté le chapitre. Plus de réponses absurdes (« pe o corabie », « cu melcii ») : les fausses réponses sont des choses bibliques simples mais fausses ici.
+- vrai/faux : « Saul a murit pe muntele Carmel. » (faux, c'était Ghilboa)
+- une réponse : « Din ce popor era tânărul care a adus vestea? » amalecit / filistean / egiptean
+- une réponse : « Pentru cine a făcut David cântarea de jale? » Saul și Ionatan / Saul și Abner / Ionatan și Mical
+
+**Mediu** : à peu près le niveau qu'avait l'ancien Greu. Paroles, détails importants (jour, lieu, qui), fausses réponses toutes tirées du chapitre ou très plausibles.
+- une réponse : « În a câta zi a venit omul din tabăra lui Saul? » a treia / a doua / a șaptea
+- une réponse : « Ce motiv i-ar fi dat Saul tânărului ca să-l omoare? » îl apucase amețeala / era rănit de o săgeată / nu voia să cadă viu
+- vrai/faux : « David și oamenii lui au jelit doar pentru Saul și Ionatan. » (faux : aussi pour le peuple)
+
+**Greu** : détails précis et ordre exact, mots exacts, propositions qui se ressemblent presque mot pour mot ; toujours écrit clairement dans le texte.
+- une réponse : « Ce a spus omul întâi […]? » că poporul a fugit / că Saul și Ionatan au murit / că un mare număr de oameni a pierit (les trois sont dans le verset, seule la première vient en premier)
+- vrai/faux : « David i-a spus amalecitului: „Sângele lui Saul să cadă asupra capului tău.” » (faux : « sângele tău »)
+- vrai/faux : « David l-a întrebat pe tânăr „De unde ești?” abia după ce au jelit. » (vrai, ordre des versets 12-13)
+- association : les images de la cântare reliées à la personne qu'elles décrivent.
 
 Règles communes :
 - 24 questions par chapitre et par niveau (forme de l'examen final) : 10 vrai/faux, 10 à une réponse, 1 association de 5 paires (colonne de droite sans doublons, chaque paire compréhensible seule), 3 à plusieurs réponses (0, 1, 2 ou 3 justes).
