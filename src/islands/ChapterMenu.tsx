@@ -5,10 +5,11 @@ import { level, scoreView } from '../lib/level';
 import { cachedExams, EMPTY, progress, scoreLabel } from '../lib/progress';
 import { rememberedAccount, user } from '../lib/session';
 import { player } from '../lib/players';
-import { PER_TEST, SHAPE_TEXT, type QType } from '../lib/questions';
+import { PER_TEST, type QType } from '../lib/questions';
 import { prefetch } from 'astro:prefetch';
 import { loadChapter } from '../lib/load';
 import LevelPicker from './LevelPicker';
+import TestShape from './TestShape';
 import Modal, { CloseButton } from './Modal';
 import ExamSheet, { type ExamInfo } from './ExamSheet';
 
@@ -130,7 +131,7 @@ function Sheet({ book, ch, title, total, best, onClose }: SheetProps) {
                 <small>{total ? `${total} întrebări` : ''}{best !== undefined ? `${total ? ', ' : ''}cel mai bun scor ${best}` : ''}</small>
               </span>
             </div>
-            <p class="oc-shape small muted">{SHAPE_TEXT}</p>
+            <TestShape />
             <LevelPicker />
           </div>
         </div>

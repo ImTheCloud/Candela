@@ -20,15 +20,19 @@ const { book, ch, verses } = Astro.props as { book: Book; ch: number; verses: st
 const prev = ch > 1 ? ch - 1 : null;
 const next = ch < book.chapters ? ch + 1 : null;
 const counts = summary(book.slug)[ch] ?? {};
-// "1 verset", "7 versete", "22 de versete"
-const n = verses.length;
-const count = n === 1 ? '1 verset' : n % 100 >= 1 && n % 100 < 20 ? `${n} versete` : `${n} de versete`;
+// "1 verset", "7 versete", "22 de versete" (and the same for minutes)
+const plural = (n: number, one: string, many: string) => (n === 1 ? `1 ${one}` : n % 100 >= 1 && n % 100 < 20 ? `${n} ${many}` : `${n} de ${many}`);
+const count = plural(verses.length, 'verset', 'versete');
+// reading time at an unhurried 150 words a minute, rounded up
+const words = verses.join(' ').split(/\s+/).length;
+const minutes = plural(Math.max(1, Math.ceil(words / 150)), 'minut', 'minute');
 ---
 <Base title={`${book.name} ${ch}`} backUp crumbs={[{ href: '/', label: 'Acasă' }, { href: `/${book.slug}`, label: book.name }]}>
   <article class="wrap narrow reader" data-book={book.slug} data-ch={ch}>
     <header class="reader-head">
-      <h1>Capitolul {ch} <span class="verse-count">({count})</span></h1>
+      <h1>Capitolul {ch}</h1>
       <p class="reader-title">{book.titles[ch - 1]}</p>
+      <p class="reader-meta">{count}, cam {minutes} de citit</p>
     </header>
     <div class="text">
       {verses.map((v, i) => (
@@ -54,7 +58,7 @@ const count = n === 1 ? '1 verset' : n % 100 >= 1 && n % 100 < 20 ? `${n} verset
   .reader { padding-block: 8px 24px; }
   .reader-head { display: flex; flex-direction: column; gap: 4px; margin-bottom: 18px; }
   .reader-head h1 { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
-  .verse-count { font: 500 0.95rem var(--f-body); color: var(--ink-3); letter-spacing: 0; }
+  .reader-meta { margin: 2px 0 0; font: 500 0.9rem var(--f-body); color: var(--ink-3); }
   .reader-title { font: 500 1.15rem/1.3 var(--f-display); color: var(--ink-2); }
   .text { font: 400 1.15rem/1.75 var(--f-bible); }
   .verse { margin: 0 0 2px; scroll-margin-top: 80px; }

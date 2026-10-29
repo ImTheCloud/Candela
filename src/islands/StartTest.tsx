@@ -3,8 +3,9 @@ import { prefetch } from 'astro:prefetch';
 import { levelLabel, type Level } from '../lib/age';
 import { level } from '../lib/level';
 import { loadChapter } from '../lib/load';
-import { SHAPE_TEXT, type QType } from '../lib/questions';
+import type { QType } from '../lib/questions';
 import LevelPicker from './LevelPicker';
+import TestShape from './TestShape';
 import Modal, { CloseButton } from './Modal';
 
 interface Props {
@@ -43,7 +44,7 @@ export default function StartTest({ book, ch, title, counts }: Props) {
             </div>
             <div class="ts-block" style={{ marginTop: '14px' }}>
               <p class="sheet-label" style={{ margin: 0 }}>Nivelul{total ? `, ${total} de întrebări` : ''}</p>
-              <p class="small muted" style={{ margin: 0 }}>{SHAPE_TEXT}</p>
+              <TestShape />
               <LevelPicker />
             </div>
             <a class="btn btn-primary btn-block oc-go" href={href}>Începe testul de nivel {levelLabel(lv).toLowerCase()}</a>
