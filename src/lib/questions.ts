@@ -39,6 +39,9 @@ export const PAIRS = 5;
 /** Questions in a chapter test or an exam, for one age group. */
 export const PER_TEST = Object.values(SHAPE).reduce((a, b) => a + b, 0);
 
+/** What a test holds, said before it starts: "10 adevărat sau fals, 10 cu un singur răspuns, 1 asociere, 3 cu mai multe răspunsuri". */
+export const SHAPE_TEXT = `${SHAPE.tf} adevărat sau fals, ${SHAPE.one} cu un singur răspuns, ${SHAPE.match} asociere, ${SHAPE.multi} cu mai multe răspunsuri`;
+
 export type Answer =
   | { t: 'tf'; v: boolean | null }
   | { t: 'one'; v: number | null }

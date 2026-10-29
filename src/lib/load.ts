@@ -26,8 +26,3 @@ export const loadVerses = (book: string, ch: number): Promise<string[]> => load(
 export async function loadChapters(book: string, chapters: number[]): Promise<Playable[]> {
   return (await Promise.all(chapters.map((c) => loadChapter(book, c)))).flat();
 }
-
-/** Chapter of a question, from its id "2sa.5.12-13.3". */
-export function chapterOf(id: string): number {
-  return Number(id.split('.')[1]);
-}
