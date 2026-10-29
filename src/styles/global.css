@@ -371,7 +371,10 @@ a.tile { text-decoration: none; }
 .oc-test { display: grid; gap: 12px; padding: 14px 16px; border-top: 1px solid var(--line); }
 .oc-head { display: flex; align-items: center; gap: 12px; }
 .oc-go { margin-top: 12px; min-height: 52px; }
-.oc-shape { margin: 0 0 10px; line-height: 1.4; }
+.shape { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 12px; margin: 2px 0 14px; padding: 0; list-style: none; }
+.shape li { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.shape b { flex: none; min-width: 26px; height: 22px; padding: 0 6px; display: grid; place-items: center; border-radius: 6px; background: var(--oil-soft); color: var(--oil-ink); font: 700 0.8rem var(--f-body); font-variant-numeric: tabular-nums; }
+.shape span { min-width: 0; font-size: 0.82rem; line-height: 1.2; color: var(--ink-2); }
 .oc-chev { flex: none; color: var(--ink-3); }
 
 /* Level chips: choices on one line (modals, sheets, profile, leaderboard) */
