@@ -1,6 +1,6 @@
 # Comment fonctionne Candela
 
-Ce document explique le site de bout en bout, pour qu'une personne (ou une IA) puisse ajouter un livre ou refaire des questions sans tout redécouvrir. Les règles de rédaction des questions sont dans `docs/qualite-questions.md`, le barème de difficulté par âge dans `docs/niveluri.md`.
+Ce document explique le site de bout en bout, pour qu'une personne (ou une IA) puisse ajouter un livre ou refaire des questions sans tout redécouvrir. Les règles de rédaction des questions sont dans `docs/qualite-questions.md`, le barème de difficulté par niveau dans `docs/niveluri.md`.
 
 ## Vue d'ensemble
 
@@ -23,7 +23,7 @@ Le livre est déclaré dans `src/lib/books.ts` : `slug` (adresse, ex. `2-samuel`
 
 ## Les questions d'un chapitre
 
-Chaque chapitre a, **pour chacune des cinq tranches d'âge** (sub 12, 12–13, 14–15, 16–17, 18–99), exactement :
+Chaque chapitre a, **pour chacun des trois niveaux** (Ușor pour les moins de 12 ans, Mediu pour 12-17 ans, Greu pour 18 ans et plus, voir `docs/niveluri.md`), exactement :
 
 | Type | Nombre | Code | Ce que c'est |
 |---|---|---|---|
@@ -32,7 +32,7 @@ Chaque chapitre a, **pour chacune des cinq tranches d'âge** (sub 12, 12–13, 1
 | Association | 1 | `match` | 5 paires à relier |
 | Plusieurs réponses | 3 | `multi` | une question, 3 propositions, de 0 à 3 justes (« Niciun răspuns corect » s'ajoute tout seul) |
 
-Soit 24 questions par âge et 120 par chapitre. C'est aussi la forme de l'examen final : l'examen blanc tire 10 + 10 + 1 + 3 questions dans tout le livre. Il n'y a plus de textes à compléter (`fill`) dans les chapitres ; le type existe encore dans le code pour les examens réels de 1 Samuel qui en contiennent.
+Soit 24 questions par niveau et 72 par chapitre. C'est aussi la forme de l'examen final : l'examen blanc tire 10 + 10 + 1 + 3 questions dans tout le livre. Il n'y a plus de textes à compléter (`fill`) dans les chapitres ; le type existe encore dans le code pour les examens réels de 1 Samuel qui en contiennent.
 
 ### La scène (contexte)
 
@@ -42,13 +42,15 @@ Chaque chapitre a une phrase de scène (`scene: …` en tête de la source), par
 
 ```
 scene: La Țiclag, când David află de moartea lui Saul
-## sub12
+## usor
 tf + 1:1 | David s-a întors la Țiclag.                         (+ vrai, - faux)
 one 1:2 | Cine a venit din tabăra lui Saul? | *un tânăr | un preot | un frate al lui David
 multi 1:11 | Ce au făcut David și oamenii lui? | *au plâns | *au postit | au cântat
 match 1:1-27 | Asociază fiecare persoană cu ce se spune despre ea.
 = Saul | s-a sprijinit în suliță | 1:6                    (cinq lignes : gauche | droite | verset)
-## 12-13
+## mediu
+…
+## greu
 …
 ```
 
@@ -66,10 +68,10 @@ node scripts/validate.mjs
 
 ### Les identifiants
 
-Le script numérote les questions de chaque âge dans l'ordre de la source : `2sa.5.18+.301`, `302`… La progression des joueurs (questions « știute », erreurs, classement) est rattachée à ces identifiants. Donc :
+Le script numérote les questions de chaque niveau dans l'ordre de la source : `2sa.5.greu.301`, `302`… La progression des joueurs (questions « știute », erreurs, classement) est rattachée à ces identifiants. Donc :
 
 - pour corriger une question, **modifier sa ligne sur place** (l'identifiant reste le même) ;
-- ne jamais insérer ni supprimer une ligne au milieu d'un âge : toutes les suivantes changeraient d'identifiant ;
+- ne jamais insérer ni supprimer une ligne au milieu d'un niveau : toutes les suivantes changeraient d'identifiant ;
 - pour une refonte complète d'un livre, on remet le classement à zéro (voir plus bas).
 
 ## De la source à l'écran

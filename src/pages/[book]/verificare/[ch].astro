@@ -1,6 +1,6 @@
 ---
 import Base from '../../../layouts/Base.astro';
-import { AGE_GROUPS } from '../../../lib/age';
+import { LEVELS } from '../../../lib/age';
 import { BOOKS, type Book } from '../../../lib/books';
 import { chapterFiles, playable, type ChapterFile } from '../../../lib/content';
 import { typeInfo, type Playable } from '../../../lib/questions';
@@ -25,7 +25,7 @@ const answer = (q: Playable) => {
   <section class="wrap narrow page">
     <h1>{book.name} {file.ch}</h1>
     <p class="muted">{file.questions.length} întrebări, {file.reviewed ? 'verificat' : 'de verificat'}, <a class="link" href={`/${book.slug}/citire/${file.ch}`}>textul capitolului</a></p>
-    {AGE_GROUPS.map((g) => (
+    {LEVELS.map((g) => (
       <section class="age">
         <h2>{g.label}</h2>
         {qs.filter((q) => q.age === g.id).map((q) => (

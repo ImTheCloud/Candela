@@ -1,5 +1,5 @@
 import { deleteDoc, doc, serverTimestamp, setDoc, type WriteBatch } from 'firebase/firestore';
-import { AGE_GROUPS, LEVEL_KEY, type AgeGroup } from './age';
+import { LEVEL_KEY, LEVELS, type Level } from './age';
 import { BOOKS } from './books';
 import { db } from './firebase';
 
@@ -15,14 +15,14 @@ export interface BoardFields {
   lv: Record<string, number>;
 }
 
-const LEVELS = new Set<string>(AGE_GROUPS.map((g) => g.id));
+const KNOWN = new Set<string>(LEVELS.map((l) => l.id));
 
 export function boardFields(mastered: string[]): BoardFields {
   const lv: BoardFields['lv'] = {};
   for (const id of new Set(mastered)) {
     const lvl = id.split('.')[2];
-    if (!LEVELS.has(lvl)) continue;
-    const k = LEVEL_KEY[lvl as AgeGroup];
+    if (!KNOWN.has(lvl)) continue;
+    const k = LEVEL_KEY[lvl as Level];
     lv[k] = (lv[k] ?? 0) + 1;
   }
   return { score: new Set(mastered).size, lv };

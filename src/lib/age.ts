@@ -1,4 +1,4 @@
-// Each player gets the exam of their age group, computed from the birth year (age reached this year).
+// The real exams of the contest are written per age group; the questions of the site have three levels instead.
 export type AgeGroup = 'sub12' | '12-13' | '14-15' | '16-17' | '18+';
 
 export const AGE_GROUPS: { id: AgeGroup; label: string }[] = [
@@ -31,5 +31,23 @@ export function validBirthYear(y: number, year = new Date().getFullYear()): bool
   return Number.isInteger(y) && y >= year - 100 && y <= year - 3;
 }
 
+/** The three levels of the chapter questions, with the ages each one suits (docs/niveluri.md). */
+export type Level = 'usor' | 'mediu' | 'greu';
+
+export const LEVELS: { id: Level; label: string; ages: string }[] = [
+  { id: 'usor', label: 'Ușor', ages: 'sub 12 ani' },
+  { id: 'mediu', label: 'Mediu', ages: '12-17 ani' },
+  { id: 'greu', label: 'Greu', ages: '18 ani și peste' },
+];
+
+export function levelLabel(lv: Level): string {
+  return LEVELS.find((l) => l.id === lv)!.label;
+}
+
+/** What a question shows as its level: a level for chapter questions, an age group for the real exams. */
+export function questionLevel(age: Level | AgeGroup): string {
+  return LEVELS.find((l) => l.id === age)?.label ?? ageLabel(age as AgeGroup);
+}
+
 /** Level keys for the board maps (plain letters, safe as Firestore field names). */
-export const LEVEL_KEY: Record<AgeGroup, string> = { sub12: 'a', '12-13': 'b', '14-15': 'c', '16-17': 'd', '18+': 'e' };
+export const LEVEL_KEY: Record<Level, string> = { usor: 'a', mediu: 'b', greu: 'c' };

@@ -54,7 +54,7 @@ export default function BookPanel({ books, initial }: { books: BookData[]; initi
           </div>
           {perLevel(book) ? (<>
             <h2 id="chapters">Ce capitol vrei să exersezi?</h2>
-            <p class="hb-sub muted">{perLevel(book)} de întrebări pe vârstă, câte {perLevel(book) / book.titles.length} pe capitol</p>
+            <p class="hb-sub muted">{perLevel(book)} de întrebări pe nivel, câte {perLevel(book) / book.titles.length} pe capitol</p>
             <ChapterMenu key={slug} book={slug} titles={book.titles} summary={book.summary} exams={book.exams} />
           </>) : (
             // a book whose questions are being written: the page is there, nothing to play yet
@@ -75,9 +75,8 @@ export default function BookPanel({ books, initial }: { books: BookData[]; initi
   );
 }
 
-/** All the questions of a book, and those of one level (every level has the same number). */
-const total = (b: BookData) => Object.values(b.summary).reduce((s, ch) => s + Object.values(ch['14-15'] ?? {}).reduce((a, n) => a + (n ?? 0), 0) * 5, 0);
-const perLevel = (b: BookData) => total(b) / 5;
+/** The questions of one level in a book (every level has the same number). */
+const perLevel = (b: BookData) => Object.values(b.summary).reduce((s, ch) => s + Object.values(ch.mediu ?? {}).reduce((a, n) => a + (n ?? 0), 0), 0);
 
 /** Changes the address without a page change, keeping the router's history state (the back button depends on it). */
 function replaceUrl(url: string) {

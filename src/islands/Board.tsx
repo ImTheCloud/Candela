@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'preact/hooks';
 import { collection, FieldPath, getDocs, limit, orderBy, query } from 'firebase/firestore';
-import { AGE_GROUPS, LEVEL_KEY, type AgeGroup } from '../lib/age';
+import { LEVEL_KEY, LEVELS, type Level } from '../lib/age';
 import { db } from '../lib/firebase';
 import { player, setHidden } from '../lib/players';
 import { progress } from '../lib/progress';
@@ -16,7 +16,7 @@ const cache = new Map<string, Row[]>();
 
 const CACHE_KEY = (b: string, a: string) => `lb:${b}:${a}`;
 
-function getCachedRows(book: string, a: AgeGroup | 'all'): Row[] | null {
+function getCachedRows(book: string, a: Level | 'all'): Row[] | null {
   const mem = cache.get(`${book}:${a}`);
   if (mem) return mem;
   const stored = localGet<Row[] | null>(CACHE_KEY(book, a), null);
@@ -27,9 +27,9 @@ function getCachedRows(book: string, a: AgeGroup | 'all'): Row[] | null {
   return null;
 }
 
-const TABS: (AgeGroup | 'all')[] = ['all', ...AGE_GROUPS.map((g) => g.id)];
+const TABS: (Level | 'all')[] = ['all', ...LEVELS.map((g) => g.id)];
 
-async function fetchBoard(book: string, a: AgeGroup | 'all'): Promise<Row[]> {
+async function fetchBoard(book: string, a: Level | 'all'): Promise<Row[]> {
   const key = `${book}:${a}`;
   const field = a === 'all' ? 'score' : new FieldPath('lv', LEVEL_KEY[a]);
   const snap = await getDocs(query(collection(db, 'boards', book, 'players'), orderBy(field, 'desc'), limit(100)));
@@ -57,12 +57,12 @@ interface Props {
 /** Public board of a book: all levels together or one level. Each question counts once; ties go to whoever got there first. */
 export default function Board({ book }: Props) {
   // the tabs also pick which scores the chapter tiles show; they do not change the level of the tests
-  const [age, setAgeState] = useState<AgeGroup | 'all'>(scoreView.value);
+  const [age, setAgeState] = useState<Level | 'all'>(scoreView.value);
   const [rows, setRows] = useState<Row[] | null>(() => getCachedRows(book, age));
   const [error, setError] = useState(false);
   const [busy, setBusy] = useState(false);
 
-  const setAge = (next: AgeGroup | 'all') => {
+  const setAge = (next: Level | 'all') => {
     if (next === age) return;
     scoreView.value = next;
     setAgeState(next);
@@ -134,8 +134,8 @@ export default function Board({ book }: Props) {
         )}
       </div>
 
-      <LevelPicker<AgeGroup | 'all'>
-        label="Grupa de vârstă a clasamentului"
+      <LevelPicker<Level | 'all'>
+        label="Nivelul clasamentului"
         value={age}
         onChange={setAge}
         includeAll

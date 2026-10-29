@@ -1,5 +1,5 @@
 scene: În fuga lui David, la Țiba, Șimei și Ahitofel
-## sub12
+## usor
 tf + 16:1 | Țiba a venit la David cu doi măgari încărcați.
 tf - 16:1 | Țiba i-a adus lui David arme și scuturi.
 tf + 16:4 | David i-a dat lui Țiba tot ce era al lui Mefiboșet.
@@ -29,56 +29,26 @@ match 16:1-23 | Asociază fiecare persoană cu ce se spune despre ea.
 multi 16:1 | Ce a adus Țiba pe măgari? | *pâini | *turte de stafide | aur
 multi 16:13 | Ce făcea Șimei în timp ce mergea pe coasta muntelui? | *blestema | *arunca cu pietre | cânta
 multi 16:12 | Ce spera David după blestemele lui Șimei? | că Șimei va muri îndată | că Absalom se va întoarce acasă | că Abișai îl va pedepsi pe Șimei
-## 12-13
-tf + 16:2 | Țiba a spus că măgarii sunt pentru călăria casei împăratului.
-tf - 16:3 | Țiba a spus că Mefiboșet a venit cu el.
-tf + 16:4 | Țiba s-a închinat după ce David i-a dat averea lui Mefiboșet.
-tf + 16:5 | Șimei a ieșit din Bahurim.
-tf - 16:5 | Șimei era fiul lui Țeruia.
-tf + 16:8 | Șimei a spus că Domnul a dat împărăția în mâinile lui Absalom.
-tf - 16:10 | David s-a mâniat pe Șimei și a cerut să fie prins.
-tf + 16:13 | Șimei vântura praf în drumul lui David.
-tf - 16:17 | Absalom l-a primit pe Hușai fără nicio întrebare.
-tf + 16:20 | Absalom i-a cerut sfat lui Ahitofel.
-one 16:1 | Al cui slujitor era Țiba? | *al lui Mefiboșet | al lui Absalom | al lui Șimei
-one 16:3 | Unde a spus Țiba că a rămas Mefiboșet? | *la Ierusalim | la Lodebar | la Hebron
-one 16:5 | Până unde ajunsese David când a ieșit Șimei? | *până la Bahurim | până la Iordan | până la Aiefim
-one 16:5 | Al cui fiu era Șimei? | *al lui Ghera | al lui Saul | al lui Țiba
-one 16:7 | Cum l-a numit Șimei pe David? | *„om al sângelui” | „om al lui Dumnezeu” | „frate”
-one 16:9 | Cum l-a numit Abișai pe Șimei? | *„câine mort” | „leu tânăr” | „om rău”
-one 16:11 | Pe cine a pomenit David, care vrea să-i ia viața? | *pe fiul lui | pe Ahitofel | pe Șimei
-one 16:15 | Cine era cu Absalom când a intrat în Ierusalim? | *Ahitofel | Hușai | Abișai
-one 16:18 | Al cui a spus Hușai că vrea să fie? | *al celui ales de Domnul și de popor | al lui David doar | al nimănui
-one 16:22 | Unde au întins un cort pentru Absalom? | *pe acoperiș | la poartă | lângă templu
-match 16:1-23 | Asociază fiecare persoană cu cuvintele spuse.
-= David către Țiba | „Unde este fiul stăpânului tău?” | 16:3
-= Șimei | „Du-te, du-te, om al sângelui!” | 16:7
-= Abișai | „Lasă-mă să mă duc să-i tai capul.” | 16:9
-= Hușai | „Trăiască împăratul!” | 16:16
-= Absalom către Ahitofel | „Ce avem de făcut?” | 16:20
-multi 16:2 | Pentru ce erau darurile aduse de Țiba? | *măgarii pentru călăria casei împăratului | *pâinile pentru hrana tinerilor | vinul pentru jertfe
-multi 16:6 | Cine stătea la dreapta și la stânga lui David când arunca Șimei cu pietre? | *tot poporul | *toți vitejii | Absalom
-multi 16:17 | Ce l-a întrebat Absalom pe Hușai? | *de ce nu s-a dus cu prietenul lui | *cât de mult ține la prietenul lui | dacă a adus aur
-## 14-15
+## mediu
 tf + 16:1 | Țiba l-a întâlnit pe David puțin după vârful dealului.
-tf - 16:1 | Pe măgarii lui Țiba erau o sută de pâini.
 tf + 16:3 | Țiba a spus că Mefiboșet așteaptă să primească împărăția tatălui său.
 tf + 16:8 | Șimei îl acuza pe David de sângele casei lui Saul.
-tf - 16:11 | David a spus că Șimei e mai rău decât fiul lui.
 tf + 16:12 | David spera că Domnul îi va face bine în locul blestemelor.
-tf - 16:14 | David s-a odihnit la Bahurim.
 tf + 16:19 | Hușai i-a spus lui Absalom că îi va sluji cum i-a slujit tatălui lui.
-tf + 16:21 | Ahitofel a vrut ca tot Israelul să știe că Absalom s-a făcut urât tatălui său.
+tf - 16:11 | David a spus că Șimei e mai rău decât fiul lui.
+tf - 16:14 | David s-a odihnit la Bahurim.
 tf - 16:23 | Sfaturile lui Ahitofel erau ascultate doar de Absalom.
-one 16:1 | Câte turte de stafide a adus Țiba? | *o sută | două sute | zece
-one 16:2 | Ce l-a întrebat David pe Țiba? | *ce vrea să facă cu ele | de unde le-a furat | cine l-a trimis
-one 16:3 | Ce a spus Țiba că spune Mefiboșet? | *că i se va da înapoi împărăția tatălui său | că va veni și el după David în pustie | că e bolnav și nu poate merge
-one 16:4 | Ce i-a dat David lui Țiba? | *tot ce era al lui Mefiboșet | o cetate în Iuda | o slujbă la curte
-one 16:8 | Cui a spus Șimei că a dat Domnul împărăția? | *lui Absalom | lui Ahitofel | lui Mefiboșet
-one 16:10 | Ce a spus David despre blestemul lui Șimei? | *poate Domnul i-a zis să blesteme | Șimei și-a pierdut mințile | Șimei va fi pedepsit curând
-one 16:11 | Din ce seminție era Șimei, după cuvintele lui David? | *beniamit | iudeu | efraimit
+tf - 16:4 | Țiba i-a cerut lui David să-l ierte pe Mefiboșet.
+tf - 16:9 | Ioab a cerut să-i taie capul lui Șimei.
+one 16:5 | Al cui fiu era Șimei? | *al lui Ghera | al lui Saul | al lui Țiba
+one 16:15 | Cine era cu Absalom când a intrat în Ierusalim? | *Ahitofel | Hușai | Abișai
+one 16:10 | Pe cine a mustrat David când Abișai a cerut să-l omoare pe Șimei? | *pe fiii Țeruiei | pe Șimei | pe Țiba
+one 16:22 | În fața cui a mers Absalom la țiitoarele tatălui său? | *a întregului Israel | doar a lui Ahitofel | a slujitorilor lui
 one 16:13 | Unde mergea Șimei în timp ce blestema? | *pe coasta muntelui | în urma poporului | înaintea lui David
 one 16:18 | Pe cine a spus Hușai că l-a ales? | *Domnul și tot poporul | Ahitofel, sfetnicul | David, prietenul lui
+one 16:6 | După cine a aruncat Șimei cu pietre? | *după David și slujitorii lui | doar după Abișai și Ioab | după Țiba și măgarii lui
+one 16:16 | Cum este numit Hușai când ajunge la Absalom? | *Architul, prietenul lui David | Ghilonitul, sfetnicul lui David | beniamitul, fiul lui Ghera
+one 16:7 | Cum l-a numit Șimei pe David? | *„om al sângelui” | „om de nimic” | „fiu al lui Isai”
 one 16:21 | Ce a spus Ahitofel că se va întâmpla cu cei ce erau cu Absalom? | *li se vor întări mâinile | vor fugi în pustie | se vor certa între ei
 match 16:1-23 | Asociază fiecare loc sau lucru cu ce se spune despre el.
 = Bahurim | de acolo a ieșit Șimei | 16:5
@@ -86,40 +56,10 @@ match 16:1-23 | Asociază fiecare loc sau lucru cu ce se spune despre el.
 = burduful adus de Țiba | era plin cu vin | 16:1
 = acoperișul | acolo s-a întins cortul lui Absalom | 16:22
 = pietrele | aruncate de Șimei | 16:6
-multi 16:1 | Ce se afla pe măgarii lui Țiba? | *o sută de roade de vară | *un burduf cu vin | o sută de oi
-multi 16:9-10 | Cum a reacționat David când Abișai a vrut să-l omoare pe Șimei? | *a zis: „Ce aveți voi cu mine, fiii Țeruiei?” | *a spus că poate Domnul i-a zis să blesteme | i-a dat voie
 multi 16:20 | Pe cine a întrebat Absalom ce au de făcut? | pe Hușai | pe Țiba | pe Șimei
-## 16-17
-tf + 16:2 | Țiba a spus că vinul e pentru cei obosiți în pustie.
-tf - 16:4 | Țiba i-a cerut lui David să-l ierte pe Mefiboșet.
-tf + 16:5 | Șimei înainta blestemând.
-tf + 16:7 | Șimei l-a numit pe David „om rău”.
-tf - 16:9 | Ioab a cerut să-i taie capul lui Șimei.
-tf + 16:11 | David a spus că fiul lui, care a ieșit din trupul lui, vrea să-i ia viața.
-tf - 16:15 | Ahitofel nu era cu Absalom când a intrat în Ierusalim.
-tf + 16:17 | Absalom i-a reproșat lui Hușai că nu s-a dus cu prietenul lui.
-tf - 16:18 | Hușai a spus că vrea să rămână cu cel ales de Ahitofel.
-tf + 16:23 | Sfaturile lui Ahitofel erau prețuite și de David, și de Absalom.
-one 16:1 | Câte roade de vară a adus Țiba? | *o sută | două sute | cincizeci
-one 16:3 | Cum a numit David pe Mefiboșet în întrebarea lui? | *„fiul stăpânului tău” | „nepotul lui Saul” | „prietenul meu”
-one 16:4 | Ce a răspuns Țiba când a primit averea lui Mefiboșet? | *„Mă închin cu plecăciune!” | „Nu vreau averea lui!” | „E prea mult pentru mine!”
-one 16:6 | După cine a aruncat Șimei cu pietre? | *după David și slujitorii lui | doar după Abișai și Ioab | după Țiba și măgarii lui
-one 16:8 | Al cui scaun de domnie spunea Șimei că l-a luat David? | *al lui Saul | al lui Absalom | al lui Iș-Boșet
-one 16:10 | Pe cine a mustrat David când Abișai a cerut să-l omoare pe Șimei? | *pe fiii Țeruiei | pe Șimei | pe Țiba
-one 16:12 | La ce spera David să Se uite Domnul? | *la necazul lui | la jertfele lui | la oastea lui
-one 16:16 | Cum este numit Hușai când ajunge la Absalom? | *Architul, prietenul lui David | Ghilonitul, sfetnicul lui David | beniamitul, fiul lui Ghera
-one 16:19 | Ce a întrebat Hușai ca să-și arate credința față de Absalom? | *„Cui îi voi sluji? Nu fiului său?” | „Unde s-a dus acum David?” | „Ce vrei, împărate, să fac?”
-one 16:22 | În fața cui a mers Absalom la țiitoarele tatălui său? | *a întregului Israel | doar a lui Ahitofel | a slujitorilor lui
-match 16:1-23 | Asociază fiecare persoană cu cuvintele spuse.
-= Țiba despre Mefiboșet | „Astăzi, casa lui Israel îmi va da înapoi împărăția.” | 16:3
-= David către Țiba | „Tot ce este al lui Mefiboșet este al tău.” | 16:4
-= David despre Șimei | „Lăsați-l să blesteme.” | 16:11
-= Absalom către Hușai | „Pentru ce nu te-ai dus cu prietenul tău?” | 16:17
-= Hușai către Absalom | „Cum am slujit tatălui tău, așa îți voi sluji și ție.” | 16:19
-multi 16:13 | Ce a făcut Șimei mergând pe coasta muntelui? | *a aruncat cu pietre | *a vânturat praf | a ajuns la Aiefim înaintea lui David
-multi 16:21 | Ce a spus Ahitofel că va afla tot Israelul? | *că Absalom s-a făcut urât tatălui său | că Absalom e împărat la Hebron | că David a murit în pustie
 multi 16:14-15 | Ce s-a întâmplat la Aiefim? | Absalom l-a ajuns pe David | Hușai a venit la David | Șimei a fost omorât
-## 18+
+multi 16:17 | Ce l-a întrebat Absalom pe Hușai? | *de ce nu s-a dus cu prietenul lui | *cât de mult ține la prietenul lui | dacă a adus aur
+## greu
 tf + 16:1 | Măgarii lui Țiba erau înșeuați.
 tf - 16:2 | Țiba a spus că pâinile sunt pentru împărat și preoți.
 tf + 16:4 | Țiba a zis: „Să capăt trecere înaintea ta, împărate, domnul meu!”

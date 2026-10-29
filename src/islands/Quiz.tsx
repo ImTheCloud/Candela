@@ -6,7 +6,7 @@ import { recordAnswers, recordExam } from '../lib/progress';
 import { emptyAnswer, grade, isAnswered, percent, TYPES, typeInfo, type Answer, type Grade, type Playable } from '../lib/questions';
 import QuestionView from './QuestionView';
 import Modal, { CloseButton } from './Modal';
-import { ageLabel } from '../lib/age';
+import { questionLevel } from '../lib/age';
 import { BOOKS } from '../lib/books';
 import ReportButton from './ReportButton';
 
@@ -180,7 +180,7 @@ function QHead({ q, bookName, scene }: { q: Playable; bookName: string; scene?: 
     <header class="q-head">
       <div class="q-row">
         <span class="q-kind">{typeInfo(q.t).short}</span>
-        <span class="q-age" title="Grupa de vârstă a întrebării">{ageLabel(q.age)}</span>
+        <span class="q-age" title="Nivelul întrebării">{questionLevel(q.age)}</span>
         <span class="q-spacer" />
         <ReportButton key={q.id} q={q} small />
       </div>

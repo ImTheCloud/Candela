@@ -1,6 +1,6 @@
 import type { JSX } from 'preact';
 import { useEffect, useState } from 'preact/hooks';
-import { AGE_GROUPS, ageShort, type AgeGroup } from '../lib/age';
+import { LEVELS, levelLabel, type Level } from '../lib/age';
 import { level, scoreView } from '../lib/level';
 import { cachedExams, EMPTY, progress, scoreLabel } from '../lib/progress';
 import { rememberedAccount, user } from '../lib/session';
@@ -13,7 +13,7 @@ import Modal, { CloseButton } from './Modal';
 import ExamSheet, { type ExamInfo } from './ExamSheet';
 
 /** Questions per chapter, age group and type (computed at build). */
-export type Summary = Record<number, Partial<Record<AgeGroup, Partial<Record<QType, number>>>>>;
+export type Summary = Record<number, Partial<Record<Level, Partial<Record<QType, number>>>>>;
 
 interface Props {
   book: string;
@@ -42,7 +42,7 @@ export default function ChapterMenu({ book, titles, summary, exams: realExams }:
   const view = scoreView.value;
   const tileEntry = (ch: number) => {
     if (view !== 'all') return at(ch, view);
-    const all = AGE_GROUPS.map((g) => at(ch, g.id)).filter(Boolean) as NonNullable<ReturnType<typeof entry>>[];
+    const all = LEVELS.map((g) => at(ch, g.id)).filter(Boolean) as NonNullable<ReturnType<typeof entry>>[];
     return all.sort((a, b) => (b.bestRight ?? Math.round(b.best / 100 * PER_TEST)) - (a.bestRight ?? Math.round(a.best / 100 * PER_TEST)))[0];
   };
 
@@ -132,11 +132,12 @@ function Sheet({ book, ch, title, total, best, wrongs, onClose }: SheetProps) {
                 <small>{total ? `${total} întrebări` : ''}{best !== undefined ? `${total ? ', ' : ''}cel mai bun scor ${best}` : ''}</small>
               </span>
             </div>
-            <LevelPicker label="Grupa de vârstă" />
+            <LevelPicker />
+            <p class="lv-hint small muted">Ușor: sub 12 ani. Mediu: 12-17 ani. Greu: 18 ani și peste.</p>
           </div>
         </div>
         <a class="btn btn-primary btn-block oc-go" href={`${base}/exersare?capitol=${ch}&start=1&nivel=${encodeURIComponent(lv)}`}>
-          Începe testul pentru {ageShort(lv)} ani
+          Începe testul de nivel {levelLabel(lv).toLowerCase()}
         </a>
         {wrongs > 0 && (
           <a class="oc-more" href={`${base}/greseli`}>Greșelile mele ({wrongs} de reluat)</a>

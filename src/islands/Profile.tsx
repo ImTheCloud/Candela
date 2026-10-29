@@ -4,7 +4,7 @@ import { db } from '../lib/firebase';
 import { addChild, choosePlayer, player, players, rememberedKids, removeChild, updateChild, type Player } from '../lib/players';
 import { localGet, localSet } from '../lib/store';
 import { TYPES } from '../lib/questions';
-import { AGE_GROUPS, ageLabel, type AgeGroup } from '../lib/age';
+import { LEVELS, levelLabel, type Level } from '../lib/age';
 import { deleteProgress, EMPTY, type Progress } from '../lib/progress';
 import { errorText, profile, profileError, rememberedAccount, setParent, signOut, user } from '../lib/session';
 import Avatar from './Avatar';
@@ -200,12 +200,12 @@ function TypeBars({ p, books }: { p: Player; books: BookInfo[] }) {
 function BookStats({ p, book }: { p: Player; book: BookInfo }) {
   const { data: d, loaded } = useBookProgress(p, book.slug);
   // the level shown: the one with the most known questions, unless the player picks another
-  const [picked, setPicked] = useState<AgeGroup | null>(null);
+  const [picked, setPicked] = useState<Level | null>(null);
   const entries = Object.entries(d.exams);
   // exams only count how many were played: they bring no points and no statistics
   const examsDone = entries.filter(([id]) => !/^c\d+/.test(id)).reduce((s, [, e]) => s + (e.plays ?? 1), 0);
   const started = d.mastered || d.wrong || entries.length;
-  const levels = AGE_GROUPS.filter((g) => (book.totals[g.id] ?? 0) > 0);
+  const levels = LEVELS.filter((g) => (book.totals[g.id] ?? 0) > 0);
   const top = levels.reduce((a, g) => ((d.byLevel?.[g.id] ?? 0) > (d.byLevel?.[a.id] ?? 0) ? g : a), levels[0]);
   const lv = picked && levels.some((g) => g.id === picked) ? picked : top.id;
   const t = book.totals[lv] ?? 0;
@@ -214,14 +214,14 @@ function BookStats({ p, book }: { p: Player; book: BookInfo }) {
   return (
     <section class="bk">
       <h3>{book.name}</h3>
-      <p class="hb-sub muted">{t} de întrebări pe vârstă, câte {Math.round(t / book.chapters)} pe capitol</p>
+      <p class="hb-sub muted">{t} de întrebări pe nivel, câte {Math.round(t / book.chapters)} pe capitol</p>
       {!loaded ? <Loader small /> : !started ? <p class="small muted">Nu a început încă.</p> : (
         <>
           <p class="bk-head">Întrebări știute <small>(răspunse corect cel puțin o dată)</small></p>
           <LevelPicker value={lv} onChange={setPicked} groups={levels} />
           <ul class="kinds bk-level">
             <li class={m === t ? 'is-full' : ''}>
-              <span class="kind-name">{ageLabel(lv)}</span>
+              <span class="kind-name">{levelLabel(lv)}</span>
               <span class="kind-bar" aria-hidden="true"><span style={{ width: `${(m / t) * 100}%` }} /></span>
               <span class="kind-n">{m}/{t}</span>
             </li>
