@@ -27,12 +27,8 @@ const count = plural(verses.length, 'verset', 'versete');
 const words = verses.join(' ').split(/\s+/).length;
 const minutes = Math.max(1, Math.ceil(words / 150));
 ---
-<Base title={`${book.name} ${ch}`} backUp crumbs={[{ href: '/', label: 'Acasă' }, { href: `/${book.slug}`, label: book.name }]}>
+<Base title={`${book.name} ${ch}`} heading={{ title: `Capitolul ${ch}`, note: `${count}, ${minutes} min`, sub: book.titles[ch - 1] }} backUp crumbs={[{ href: '/', label: 'Acasă' }, { href: `/${book.slug}`, label: book.name }]}>
   <article class="wrap narrow reader" data-book={book.slug} data-ch={ch}>
-    <header class="reader-head">
-      <h1>Capitolul {ch} <span class="verse-count">({count}, {minutes} min)</span></h1>
-      <p class="reader-title">{book.titles[ch - 1]}</p>
-    </header>
     <div class="text">
       {verses.map((v, i) => (
         <p class="verse" id={`v${i + 1}`}><sup>{i + 1}</sup>{v}</p>
@@ -54,11 +50,7 @@ const minutes = Math.max(1, Math.ceil(words / 150));
 
 </Base>
 <style>
-  .reader { padding-block: 8px 24px; }
-  .reader-head { display: flex; flex-direction: column; gap: 4px; margin-bottom: 18px; }
-  .reader-head h1 { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
-  .verse-count { font: 500 0.85rem var(--f-body); color: var(--ink-3); letter-spacing: 0; white-space: nowrap; }
-  .reader-title { font: 500 1.15rem/1.3 var(--f-display); color: var(--ink-2); }
+  .reader { padding-block: 16px 24px; }
   .text { font: 400 1.15rem/1.75 var(--f-bible); }
   .verse { margin: 0 0 2px; scroll-margin-top: 80px; }
   .verse:target { outline: 2px solid var(--flame); outline-offset: 1px; }

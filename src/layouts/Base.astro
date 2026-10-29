@@ -23,8 +23,10 @@ interface Props {
   backUp?: boolean;
   /** "Bun venit, {prenume}" in the header instead of the site name (enabled on all pages by default). */
   greet?: boolean;
+  /** A page title in the header instead of the site name and the account button (the Bible reader). */
+  heading?: { title: string; note?: string; sub?: string };
 }
-const { title, description = 'Teste biblice după traducerea Cornilescu: 1 Samuel și 2 Samuel.', crumbs = [], home = false, backUp = false, greet = true } = Astro.props;
+const { title, description = 'Teste biblice după traducerea Cornilescu: 1 Samuel și 2 Samuel.', crumbs = [], home = false, backUp = false, greet = true, heading } = Astro.props;
 const up = crumbs.at(-1)?.href ?? '/';
 const parent = up === `/${DEFAULT_BOOK}` ? '/' : up;
 const fullTitle = title === 'Candela' ? title : `${title} – Candela`;
@@ -36,7 +38,7 @@ const fullTitle = title === 'Candela' ? title : `${title} – Candela`;
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#f8f1e6" />
+    <meta name="theme-color" content="#fdfaf5" />
     <link rel="icon" href="/icons/icon-192.png" />
     <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.webmanifest" />
@@ -66,16 +68,23 @@ const fullTitle = title === 'Candela' ? title : `${title} – Candela`;
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6" /></svg>
           </a>
         )}
-        <a href="/" class="brand" aria-label="Candela, acasă">
-          <Lamp />
-          {greet
-            ? <HeaderTitle client:only="preact"><span slot="fallback" id="brand-fb" class="brand-text">Candela</span></HeaderTitle>
-            : <span class="brand-text">Candela</span>}
-        </a>
-        <div id="quiz-top" class="qt"></div>
-        <AccountButton client:only="preact">
-          <a slot="fallback" id="acct-fb" href="/cont" class="account-placeholder" hidden></a>
-        </AccountButton>
+        {heading ? (
+          <div class="heading">
+            <h1>{heading.title}{heading.note && <span class="heading-note"> ({heading.note})</span>}</h1>
+            {heading.sub && <p>{heading.sub}</p>}
+          </div>
+        ) : (<>
+          <a href="/" class="brand" aria-label="Candela, acasă">
+            <Lamp />
+            {greet
+              ? <HeaderTitle client:only="preact"><span slot="fallback" id="brand-fb" class="brand-text">Candela</span></HeaderTitle>
+              : <span class="brand-text">Candela</span>}
+          </a>
+          <div id="quiz-top" class="qt"></div>
+          <AccountButton client:only="preact">
+            <a slot="fallback" id="acct-fb" href="/cont" class="account-placeholder" hidden></a>
+          </AccountButton>
+        </>)}
       </div>
     </header>
     <main>
@@ -139,4 +148,10 @@ const fullTitle = title === 'Candela' ? title : `${title} – Candela`;
     border-radius: 50%; color: var(--ink); text-decoration: none;
   }
   .back:active { background: var(--surface-2); }
+  /* the reader: its back arrow sits right above the chapter arrows of the bottom bar */
+  .top-row:has(.heading) .back { width: 48px; height: 48px; margin: 0 4px 0 0; }
+  .heading { flex: 1; min-width: 0; display: grid; gap: 1px; }
+  .heading h1 { margin: 0; font: 600 1.2rem/1.2 var(--f-display); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .heading-note { font: 500 0.8rem var(--f-body); color: var(--ink-3); }
+  .heading p { margin: 0; font: 500 0.88rem/1.2 var(--f-display); color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 </style>
