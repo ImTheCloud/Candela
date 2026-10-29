@@ -371,8 +371,16 @@ a.tile { text-decoration: none; }
 .oc-test { display: grid; gap: 12px; padding: 14px 16px; border-top: 1px solid var(--line); }
 .oc-head { display: flex; align-items: center; gap: 12px; }
 .oc-go { margin-top: 12px; min-height: 52px; }
-.shape { display: grid; gap: 3px; margin: 2px 0 14px; padding-left: 18px; font-size: 0.85rem; line-height: 1.35; color: var(--ink-2); }
-.shape li::marker { color: var(--ink-3); }
+.read-row { display: flex; align-items: center; gap: 12px; margin-top: 18px; padding: 14px 16px; border: 1px solid var(--line); border-radius: 16px; background: var(--bg); color: var(--ink); text-decoration: none; }
+.read-row:active { background: var(--surface-2); }
+.test-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin: 22px 0 10px; }
+.test-head .sheet-label { margin: 0; }
+.test-best { font-size: 0.82rem; font-weight: 600; color: var(--oil-ink); white-space: nowrap; }
+.shape { margin: 12px 0 0; padding: 2px 14px; list-style: none; border: 1px solid var(--line); border-radius: 14px; background: var(--bg); }
+.shape li { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 9px 0; font-size: 0.9rem; color: var(--ink-2); }
+.shape li + li { border-top: 1px solid var(--line); }
+.shape b { font-weight: 600; color: var(--ink); font-variant-numeric: tabular-nums; }
+.shape-total span, .shape-total b { font-weight: 600; color: var(--ink); }
 .oc-chev { flex: none; color: var(--ink-3); }
 
 /* Level chips: choices on one line (modals, sheets, profile, leaderboard) */

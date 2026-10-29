@@ -2,7 +2,6 @@
 import Base from '../../../layouts/Base.astro';
 import { BOOKS, type Book } from '../../../lib/books';
 import { getText } from '../../../lib/text';
-import { summary } from '../../../lib/content';
 import StartTest from '../../../islands/StartTest';
 
 export function getStaticPaths() {
@@ -19,7 +18,6 @@ export function getStaticPaths() {
 const { book, ch, verses } = Astro.props as { book: Book; ch: number; verses: string[] };
 const prev = ch > 1 ? ch - 1 : null;
 const next = ch < book.chapters ? ch + 1 : null;
-const counts = summary(book.slug)[ch] ?? {};
 // "1 verset", "7 versete", "22 de versete"
 const plural = (n: number, one: string, many: string) => (n === 1 ? `1 ${one}` : n % 100 >= 1 && n % 100 < 20 ? `${n} ${many}` : `${n} de ${many}`);
 const count = plural(verses.length, 'verset', 'versete');
@@ -38,7 +36,7 @@ const count = plural(verses.length, 'verset', 'versete');
     <div class="wrap narrow pager-stack">
     <div class="pager-row">
       {prev ? <a class="pager-btn" href={`/${book.slug}/citire/${prev}`} rel="prev" data-astro-prefetch="load" aria-label={`Capitolul ${prev}`}><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6" /></svg></a> : <span class="pager-btn" aria-hidden="true" />}
-      <StartTest client:only="preact" book={book.slug} ch={ch} title={book.titles[ch - 1]} counts={counts}>
+      <StartTest client:only="preact" book={book.slug} ch={ch} title={book.titles[ch - 1]}>
         <button slot="fallback" type="button" class="btn btn-primary btn-block">Începe întrebările</button>
       </StartTest>
       {next ? <a class="pager-btn" href={`/${book.slug}/citire/${next}`} rel="next" data-astro-prefetch="load" aria-label={`Capitolul ${next}`}><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6" /></svg></a> : <span class="pager-btn" aria-hidden="true" />}
