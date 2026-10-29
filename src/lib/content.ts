@@ -6,6 +6,8 @@ import { getText } from './text';
 
 export interface ChapterFile {
   ch: number;
+  /** Where and when the chapter happens, shown above its questions when they are mixed with other chapters. */
+  scene?: string;
   /** Set once a person has read and approved the chapter's questions. */
   reviewed: boolean;
   questions: Question[];
@@ -22,9 +24,10 @@ export function chapterFiles(book: string): Map<number, ChapterFile> {
   return out;
 }
 
-export function playable(book: string, q: Question): Playable {
+export function playable(book: string, q: Question, scene?: string): Playable {
   const text = getText(book)!;
-  return { ...q, book, ch: firstChapter(q.ref), cite: versesOf(q.ref, text) };
+  const pairCite = q.t === 'match' && q.refs ? q.refs.map((r) => versesOf(r, text)) : undefined;
+  return { ...q, book, ch: firstChapter(q.ref), cite: versesOf(q.ref, text), ...(scene && { scene }), ...(pairCite && { pairCite }) };
 }
 
 /** Question counts per chapter, age group and type, for the practice screen. */

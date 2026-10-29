@@ -61,7 +61,7 @@ function Row({ r }: { r: UserRow }) {
       <button type="button" class="adm-head" aria-expanded={open} onClick={() => { if (!r.isParent) { setOpen(!open); load(); } }}>
         <Avatar name={r.name} size={40} />
         <strong class="adm-name">{r.name}</strong>
-        <span class="adm-badge">{r.isParent && <span class="tag-on">părinte · {n} {n === 1 ? 'copil' : 'copii'}</span>}</span>
+        <span class="adm-badge">{r.isParent && <span class="tag-on">părinte, {n} {n === 1 ? 'copil' : 'copii'}</span>}</span>
         <span class="adm-sub">
           <small class="adm-mail">{r.email}</small>
           <small class="adm-date">{r.at ? r.at.toDate().toLocaleDateString('ro-RO', { day: '2-digit', month: '2-digit', year: '2-digit' }) : 'vechi'}</small>
@@ -72,7 +72,7 @@ function Row({ r }: { r: UserRow }) {
           {kids.map((p) => (
             <div class="adm-player is-kid">
               <p class="adm-pname"><strong>{p.name}</strong><span class="tag-kid">copil</span></p>
-              {p.books.map((b) => <p class="small muted adm-line">{b.name} · {b.mastered} știute · {b.wrong} de reluat · {b.chapters} cap.</p>)}
+              {p.books.map((b) => <p class="small muted adm-line">{b.name}: {b.mastered} știute, {b.wrong} de reluat, {b.chapters} cap.</p>)}
             </div>
           ))}
         </div>
@@ -80,7 +80,7 @@ function Row({ r }: { r: UserRow }) {
       {!r.isParent && open && (
         <div class="adm-detail">
           {failed ? <p class="small bad">Nu s-au putut citi detaliile.</p> : !own ? <p class="small muted">Se încarcă…</p> : own.books.map((b) => (
-            <p class="small muted adm-line">{b.name} · {b.mastered} știute · {b.wrong} de reluat · {b.chapters} cap.</p>
+            <p class="small muted adm-line">{b.name}: {b.mastered} știute, {b.wrong} de reluat, {b.chapters} cap.</p>
           ))}
         </div>
       )}

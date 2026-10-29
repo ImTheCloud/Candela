@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'preact/hooks';
 import { loadChapters } from '../lib/load';
 import { level } from '../lib/level';
-import { shuffle, TYPES, type Playable, type QType } from '../lib/questions';
+import { PAIRS, SHAPE, shuffle, TYPES, type Playable } from '../lib/questions';
 import Quiz from './Quiz';
 import Loader from './Loader';
 
@@ -10,9 +10,6 @@ interface Props {
   bookName: string;
   chapters: number;
 }
-
-// Same shape as the paper exam: 5 + 5 + one matching + 5 + 5.
-const SHAPE: Record<QType, number> = { tf: 5, one: 5, match: 1, fill: 5, multi: 5 };
 
 /** A new exam drawn from the whole book, at the level picked on the previous screen. It starts at once. */
 export default function MockExam({ book, bookName, chapters }: Props) {
@@ -27,9 +24,10 @@ export default function MockExam({ book, bookName, chapters }: Props) {
       const pool = (await loadChapters(book, all)).filter((q) => q.age === lv);
       const out: Playable[] = [];
       for (const { t } of TYPES) {
-        let list = shuffle(pool.filter((q) => q.t === t));
-        if (t === 'match') list = list.sort((a, b) => (b.t === 'match' ? b.pairs.length : 0) - (a.t === 'match' ? a.pairs.length : 0));
-        out.push(...list.slice(0, SHAPE[t]));
+        if (t === 'match') {
+          const m = mixedMatch(pool);
+          if (m) out.push(m);
+        } else out.push(...shuffle(pool.filter((q) => q.t === t)).slice(0, SHAPE[t]));
       }
       setExam({ key: Date.now(), questions: out });
     } catch {
@@ -45,4 +43,23 @@ export default function MockExam({ book, bookName, chapters }: Props) {
   }
   if (error) return <p class="notice notice-bad" role="alert">{error}</p>;
   return <Loader />;
+}
+
+/** The exam's matching: one pair from the matching of each of five different chapters. */
+function mixedMatch(pool: Playable[]): Playable | null {
+  const matches = shuffle(pool.filter((q): q is Extract<Playable, { t: 'match' }> => q.t === 'match')).slice(0, PAIRS);
+  if (matches.length < PAIRS) return matches[0] ?? null;
+  const picked = matches.map((q) => ({ q, k: Math.floor(Math.random() * q.pairs.length) }));
+  const ref = picked.map(({ q, k }) => q.refs?.[k] ?? q.ref).join('; ');
+  return {
+    id: `alb.match.${picked.map(({ q, k }) => `${q.id}#${k}`).join('+')}`,
+    age: matches[0].age,
+    t: 'match',
+    ref,
+    q: 'Asociază fiecare element din prima coloană cu ce i se potrivește în a doua.',
+    pairs: picked.map(({ q, k }) => q.pairs[k]),
+    book: matches[0].book,
+    ch: 0,
+    cite: picked.flatMap(({ q, k }) => q.pairCite?.[k] ?? q.cite),
+  };
 }

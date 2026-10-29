@@ -10,7 +10,7 @@ export function getStaticPaths() {
 
 export const GET: APIRoute = ({ params }) => {
   const file = chapterFiles(params.book!).get(Number(params.ch))!;
-  const questions = file.questions.map((q) => playable(params.book!, q));
+  const questions = file.questions.map((q) => playable(params.book!, q, file.scene));
   return new Response(JSON.stringify({ ch: file.ch, reviewed: file.reviewed, questions, verses: getText(params.book!)?.[file.ch] ?? [] }), {
     headers: { 'Content-Type': 'application/json' },
   });

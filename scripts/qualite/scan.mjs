@@ -1,14 +1,15 @@
 // Detectors for question problems. Usage: node scripts/qualite/scan.mjs <mode>
 // Modes: fragments  continuation  speech  double  noscene  vague
 // Each one prints the suspicious questions; a human (or an AI) reads the list and fixes the real ones
-// with apply*.mjs. The detectors are keyword heuristics: they find candidates, never prove a defect.
+// in content/{book}/sursa/chNN.txt, then rebuilds the chapter with build-chapter.mjs.
+// The detectors are keyword heuristics: they find candidates, never prove a defect.
 import fs from 'fs';
 
 const mode = process.argv[2];
 const root = process.cwd() + '/content';
 const questions = [];
 for (const b of ['1-samuel', '2-samuel'])
-  for (const f of fs.readdirSync(`${root}/${b}/intrebari`)) {
+  for (const f of fs.existsSync(`${root}/${b}/intrebari`) ? fs.readdirSync(`${root}/${b}/intrebari`) : []) {
     const j = JSON.parse(fs.readFileSync(`${root}/${b}/intrebari/${f}`, 'utf8'));
     for (const q of j.questions) questions.push({ ...q, book: b, ch: j.ch });
   }

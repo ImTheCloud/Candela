@@ -133,7 +133,7 @@ export default function Practice({ book, bookName, chapters, summary }: Props) {
 
       <div class="actions">
         <button class="btn btn-primary btn-block" disabled={!n || busy} onClick={start}>
-          {busy ? 'Se încarcă…' : n ? `Începe · ${n} ${n === 1 ? 'întrebare' : 'întrebări'}` : 'Alege capitolele'}
+          {busy ? 'Se încarcă…' : n ? n === 1 ? 'Începe întrebarea' : `Începe cele ${n} întrebări` : 'Alege capitolele'}
         </button>
       </div>
     </div>

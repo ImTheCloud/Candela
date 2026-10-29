@@ -52,9 +52,17 @@ export default function BookPanel({ books, initial }: { books: BookData[]; initi
               <button type="button" role="tab" aria-selected={b.slug === slug} onClick={() => pick(b.slug)}>{b.name}</button>
             ))}
           </div>
-          <h2 id="chapters">Ce capitol vrei să exersezi?</h2>
-          <p class="hb-sub muted nowrap">{perLevel(book)} întrebări pentru fiecare grupă de vârstă · 21 pe capitol</p>
-          <ChapterMenu key={slug} book={slug} titles={book.titles} summary={book.summary} exams={book.exams} />
+          {perLevel(book) ? (<>
+            <h2 id="chapters">Ce capitol vrei să exersezi?</h2>
+            <p class="hb-sub muted">{perLevel(book)} de întrebări pe vârstă, câte {perLevel(book) / book.titles.length} pe capitol</p>
+            <ChapterMenu key={slug} book={slug} titles={book.titles} summary={book.summary} exams={book.exams} />
+          </>) : (
+            // a book whose questions are being written: the page is there, nothing to play yet
+            <div class="hb-soon">
+              <h2 id="chapters">Întrebările sunt în pregătire</h2>
+              <p class="muted">Întrebările din {book.name} se scriu din nou. Până atunci, poți exersa cu {books.find((b) => b.slug !== slug && perLevel(b))?.name ?? 'cealaltă carte'}.</p>
+            </div>
+          )}
         </div>
       </section>
 

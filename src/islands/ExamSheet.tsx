@@ -5,6 +5,7 @@ import { level } from '../lib/level';
 import { progress, scoreLabel } from '../lib/progress';
 import LevelPicker from './LevelPicker';
 import Modal, { CloseButton } from './Modal';
+import { PER_TEST } from '../lib/questions';
 
 /** A real exam that already took place, to play again. */
 export interface ExamInfo {
@@ -31,14 +32,14 @@ export default function ExamSheet({ book, exams, onClose }: { book: string; exam
         <div class="sheet-top">
           <div>
             <h2 id="ex-title">Examene</h2>
-            <p class="muted">21 de întrebări, ca la un test obișnuit</p>
+            <p class="muted">{PER_TEST} de întrebări, ca la examenul final</p>
           </div>
           <CloseButton onClick={close} />
         </div>
 
         {exams.length > 0 && (
           <>
-            <p class="sheet-label">Examenele reale de la concurs{dates.length === 1 ? ` · ${dates[0]}` : ''}</p>
+            <p class="sheet-label">Examenele reale de la concurs{dates.length === 1 ? `, din ${dates[0]!.replace(/^\S+, /, '')}` : ''}</p>
             <div class="opt-card ex-real">
               {exams.map((e) => (
                 <a class="oc-row" href={`/${book}/examene/${e.id}`}>
@@ -51,7 +52,7 @@ export default function ExamSheet({ book, exams, onClose }: { book: string; exam
           </>
         )}
 
-        <p class="sheet-label">Examen alb · doar pentru exersat</p>
+        <p class="sheet-label">Examen alb, doar pentru exersat</p>
         <div class="opt-card">
           <div class="oc-test" style={{ borderTop: 0 }}>
             <div class="oc-head">
@@ -61,7 +62,7 @@ export default function ExamSheet({ book, exams, onClose }: { book: string; exam
             <LevelPicker label="Grupa de vârstă" />
           </div>
         </div>
-        <a class="btn btn-primary btn-block oc-go" href={`/${book}/examene/alb`}>Începe examenul alb · {ageShort(lv)} ani</a>
+        <a class="btn btn-primary btn-block oc-go" href={`/${book}/examene/alb`}>Începe examenul alb pentru {ageShort(lv)} ani</a>
       </>)}
     </Modal>
   );

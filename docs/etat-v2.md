@@ -1,6 +1,6 @@
 # Candela v2 : état des lieux
 
-Dernière mise à jour : 21 octobre 2026. Branche `v2` (la v1 reste sur `main`, intacte).
+Dernière mise à jour : 29 octobre 2026. Branche `v2` (la v1 reste sur `main`, intacte).
 
 ## Où ça tourne
 - **Local :** `npm run dev` (émulateurs Firebase, données jetables) ou `npm run dev:live` (vrai Firebase). Port 4321.
@@ -11,7 +11,7 @@ Dernière mise à jour : 21 octobre 2026. Branche `v2` (la v1 reste sur `main`, 
 ## Fait
 - **App :** Astro + Preact, PWA hors-ligne, mobile d'abord, toujours en clair (fond beige, lampe de la v1).
 - **Comptes :** Firebase Auth (mot de passe oublié par email, œil sur le mot de passe), invité sans compte, compte parent avec enfants, plus aucune année de naissance : le niveau (sub 12, 12–13, 14–15, 16–17, 18–99) se choisit dans le menu du chapitre, le dernier choix est gardé pour tous les chapitres (`src/lib/level.ts`, clé `level`) ; un score par chapitre (`exams.c{N}`, meilleur score sur 100) ; le classement range chaque joueur au dernier niveau joué ; 31 comptes v1 migrés (Auth + Firestore, mots de passe conservés).
-- **Questions :** refaites le 22 octobre 2026 selon le barème de `docs/niveluri.md` (difficulté par levier, plus liée aux examens réels). 1 Samuel 3 255 (31 ch.) et 2 Samuel 2 520 (24 ch.), soit 21 par chapitre et par âge (sub 12, 12–13, 14–15, 16–17, 18+) : 5 vrai/faux, 5 à une réponse, 1 association de 5 paires, 5 à compléter (un seul mot), 5 à plusieurs réponses. Chaque énoncé porte sa scène (contexte) ; à partir de 14–15 ans les propositions ont une longueur proche de la bonne réponse. Relues contre le texte Cornilescu. 4 examens réels 1 Samuel 2026 reproduits (12–13, 14–15, 16–17, 18+).
+- **Questions :** réécrites entièrement le 29 octobre 2026. 2 Samuel : 24 chapitres × 120 questions (pour chaque âge : 10 vrai/faux, 10 à une réponse, 1 association de 5 paires, 3 à plusieurs réponses ; plus de textes à compléter). 1 Samuel est vide (« în pregătire ») jusqu'à validation de 2 Samuel. La scène est stockée par chapitre et affichée seulement en examen. Chaque question vaut 1 point, score en pourcentage ; l'examen blanc a la forme de l'examen final (10 + 10 + 1 + 3), son association prend une paire dans cinq chapitres. 4 examens réels 1 Samuel 2026 conservés.
 - **Accueil :** « Bun venit, {prénom} », 2 Samuel par défaut, bascule 1/2 Samuel sans rechargement (retenue en mémoire locale), grille de chapitres, tuile « Examene » après le dernier chapitre, carte « Clasament ».
 - **Lecture :** titre « Capitolul 4 (22 de versete) », barre du bas : précédent, « Începe întrebările », suivant (plus de sélecteur de chapitre).
 - **Menu de chapitre :** « Citește capitolul » (cèdre) et « Testul capitolului » (orange, étiquette de catégorie, nombre de questions), « Mai greu » et « Greșelile mele » si utile.
@@ -28,7 +28,7 @@ Dernière mise à jour : 21 octobre 2026. Branche `v2` (la v1 reste sur `main`, 
 3. **Compte admin :** vérifier que ton compte a bien `admin: true` (sinon ni « Semnalări » ni la page).
 4. **Équilibre vrai/faux :** ≈ 2/3 de « vrai » dans les nouvelles questions.
 5. **Examen blanc :** page présente mais basse priorité. 2 Samuel n'a pas d'examens réels.
-6. **Questions de la v1 de 1 Samuel :** à décider si elles reviennent comme source de questions (dossier `content/1-samuel/intrebari-v1`). Examens réels : 12–13 à 18+ ont eu lieu le lundi 19 octobre 2026 ; l'examen sub 12 est prévu dans environ une semaine et demie (pas encore dans le site).
+6. **1 Samuel :** questions à réécrire au nouveau format après validation de 2 Samuel (les anciennes, v1 comprise, sont supprimées ; elles restent dans l'historique git). Examens réels : 12–13 à 18+ ont eu lieu le lundi 19 octobre 2026 ; l'examen sub 12 est prévu dans environ une semaine et demie (pas encore dans le site).
 
 ## Bascule vers la production (quand tu valides)
 1. Refaire l'export Supabase (`scripts/export-supabase.sh`), puis relancer `node scripts/migrate-supabase.mjs <export.json>` (idempotent : ajoute, n'efface rien de la v2).
@@ -37,8 +37,8 @@ Dernière mise à jour : 21 octobre 2026. Branche `v2` (la v1 reste sur `main`, 
 
 ## Fichiers utiles
 - `docs/v2-plan.md` : décisions du début. `AI.md` : consignes pour les IA. `README.md`.
-- `content/{livre}/intrebari/chNN.json` : questions (générées depuis des sources compactes hors dépôt ; modifier le JSON directement est possible, puis `node scripts/validate.mjs`).
-- `scripts/validate.mjs` : règles (un seul trou, un seul mot ; paires uniques ; versets exacts).
+- `content/{livre}/sursa/chNN.txt` : source des questions ; `intrebari/chNN.json` est généré par `scripts/qualite/build-chapter.mjs`. Voir `docs/fonctionnement.md`.
+- `scripts/validate.mjs` : règles (nombre par type et par âge, forme des énoncés, longueurs, versets).
 
 ## Classements (octobre 2026)
 - En bas de l'accueil : classement du livre affiché, tous niveaux ou un niveau. Un grand carré par joueur, une ligne chacun. Pas de classement par chapitre ni de classement de toute l'app.

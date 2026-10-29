@@ -5,7 +5,7 @@ import { level, scoreView } from '../lib/level';
 import { cachedExams, EMPTY, progress, scoreLabel } from '../lib/progress';
 import { rememberedAccount, user } from '../lib/session';
 import { player } from '../lib/players';
-import type { QType } from '../lib/questions';
+import { PER_TEST, type QType } from '../lib/questions';
 import { prefetch } from 'astro:prefetch';
 import { loadChapter } from '../lib/load';
 import LevelPicker from './LevelPicker';
@@ -43,7 +43,7 @@ export default function ChapterMenu({ book, titles, summary, exams: realExams }:
   const tileEntry = (ch: number) => {
     if (view !== 'all') return at(ch, view);
     const all = AGE_GROUPS.map((g) => at(ch, g.id)).filter(Boolean) as NonNullable<ReturnType<typeof entry>>[];
-    return all.sort((a, b) => (b.bestRight ?? Math.round(b.best / 100 * 21)) - (a.bestRight ?? Math.round(a.best / 100 * 21)))[0];
+    return all.sort((a, b) => (b.bestRight ?? Math.round(b.best / 100 * PER_TEST)) - (a.bestRight ?? Math.round(a.best / 100 * PER_TEST)))[0];
   };
 
   const sheet = open !== null && (
@@ -58,7 +58,7 @@ export default function ChapterMenu({ book, titles, summary, exams: realExams }:
         {titles.map((t, k) => {
           const ch = k + 1;
           const e = tileEntry(ch);
-          const label = scoreLabel(e, 21);
+          const label = scoreLabel(e, PER_TEST);
           const full = !!e && (e.bestRight !== undefined ? e.bestRight === e.n : e.best === 100);
           return (
             <li>
@@ -129,14 +129,14 @@ function Sheet({ book, ch, title, total, best, wrongs, onClose }: SheetProps) {
               <span class="oc-ic"><Icon name="test" /></span>
               <span class="oc-main">
                 <b>Testul capitolului</b>
-                <small>{total ? `${total} întrebări` : ''}{best !== undefined ? `${total ? ' · ' : ''}cel mai bun scor ${best}` : ''}</small>
+                <small>{total ? `${total} întrebări` : ''}{best !== undefined ? `${total ? ', ' : ''}cel mai bun scor ${best}` : ''}</small>
               </span>
             </div>
             <LevelPicker label="Grupa de vârstă" />
           </div>
         </div>
         <a class="btn btn-primary btn-block oc-go" href={`${base}/exersare?capitol=${ch}&start=1&nivel=${encodeURIComponent(lv)}`}>
-          Începe testul · {ageShort(lv)} ani
+          Începe testul pentru {ageShort(lv)} ani
         </a>
         {wrongs > 0 && (
           <a class="oc-more" href={`${base}/greseli`}>Greșelile mele ({wrongs} de reluat)</a>
