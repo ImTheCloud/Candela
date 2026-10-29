@@ -1,91 +1,91 @@
 scene: La Țiclag, când David află de moartea lui Saul
 ## usor
-tf + 1:4 | Saul a murit în luptă.
-tf + 1:4 | Ionatan, fiul lui Saul, a murit și el.
-tf - 1:1 | David era în luptă cu Saul când a aflat vestea.
-tf + 1:2 | Un om a venit la David cu o veste.
-tf - 1:4 | Omul i-a spus lui David că Saul a câștigat lupta.
-tf + 1:11 | David a fost foarte trist când a aflat că Saul a murit.
-tf - 1:12 | David și oamenii lui au râs și s-au bucurat.
-tf + 1:12 | David și oamenii lui au plâns.
-tf - 1:17 | David a cântat o cântare veselă pentru Saul.
-tf - 1:26 | David nu-l iubea pe Ionatan.
-one 1:4 | Cine a murit în luptă, după vestea adusă lui David? | *Saul și Ionatan | David și Ioab | Samuel și Eli
-one 1:4 | Cine a câștigat lupta cu Israel? | *filistenii | oile | copiii lui David
-one 1:1 | Unde era David când a aflat vestea? | *la Țiclag | pe o corabie | în Egipt
-one 1:2 | Cum arăta omul care a venit la David? | *trist, cu hainele rupte | vesel, cu haine de sărbătoare | împărătește, cu o coroană de aur
-one 1:10 | Ce i-a adus omul lui David de la Saul? | *cununa lui Saul | un miel | o scrisoare de la Samuel
-one 1:11 | Ce a făcut David când a auzit vestea? | *și-a rupt hainele de durere | a făcut o petrecere | a plecat la plimbare
-one 1:12 | Ce au făcut David și oamenii lui până seara? | *au plâns și n-au mâncat | au cântat și au jucat | au dormit
-one 1:17 | Pentru cine a făcut David o cântare de jale? | *pentru Saul și Ionatan | pentru filisteni | pentru amaleciți
-one 1:23 | Cu ce animale îi aseamănă David pe Saul și Ionatan? | *cu vulturii și cu leii | cu melcii și cu broaștele | cu oile și cu mieii
-one 1:26 | Cum îl numește David pe Ionatan în cântare? | *frate | dușman | străin
+tf + 1:1 | David era la Țiclag când a aflat de moartea lui Saul.
+tf + 1:4 | Omul venit din tabără i-a spus lui David că Saul și Ionatan au murit.
+tf - 1:4 | Omul i-a spus lui David că poporul lui Israel a câștigat lupta.
+tf + 1:8 | Tânărul care a adus vestea era amalecit.
+tf - 1:10 | Tânărul i-a adus lui David sabia lui Saul.
+tf + 1:11 | David și oamenii lui și-au sfâșiat hainele de durere.
+tf - 1:12 | David și oamenii lui au mâncat o masă mare în ziua aceea.
+tf + 1:15 | David a poruncit ca tânărul amalecit să fie omorât.
+tf - 1:17 | David a făcut o cântare de jale doar pentru Ionatan.
+tf - 1:6 | Saul a murit pe muntele Carmel.
+one 1:4 | Ce veste i-a adus omul lui David? | *că Saul și Ionatan au murit | că Saul l-a iertat pe David | că Ionatan a fost luat rob
+one 1:6 | Pe ce munte a murit Saul? | *pe muntele Ghilboa | pe muntele Carmel | pe muntele Sion
+one 1:8 | Din ce popor era tânărul care a adus vestea? | *amalecit | filistean | egiptean
+one 1:10 | Ce i-a adus tânărul lui David de la Saul? | *cununa și brățara lui | sabia și scutul lui | haina și sandalele lui
+one 1:11 | Ce a făcut David când a auzit vestea? | *și-a sfâșiat hainele | a pornit la luptă | a trimis daruri tânărului
+one 1:12 | Până când au postit David și oamenii lui? | *până seara | trei zile | o săptămână
+one 1:14 | Cum l-a numit David pe Saul când a vorbit cu tânărul? | *unsul Domnului | dușmanul meu | fiul lui Chis
+one 1:17 | Pentru cine a făcut David cântarea de jale? | *pentru Saul și Ionatan | pentru Saul și Abner | pentru Ionatan și Mical
+one 1:23 | Cu ce animale îi aseamănă David pe Saul și Ionatan? | *cu vulturii și cu leii | cu caii și cu boii | cu cerbii și cu urșii
+one 1:26 | Cum îl numește David pe Ionatan în cântare? | *frate | fiu | domn
 match 1:1-27 | Asociază fiecare persoană cu ce se spune despre ea.
-= David | a plâns pentru Saul și Ionatan | 1:12
+= David | a făcut o cântare de jale | 1:17
 = Saul | a murit pe muntele Ghilboa | 1:6
 = Ionatan | prietenul drag al lui David | 1:26
-= omul venit din tabără | a adus cununa lui Saul | 1:10
+= tânărul amalecit | a adus cununa lui Saul | 1:10
 = copiii lui Iuda | au învățat cântarea lui David | 1:18
-multi 1:11-12 | Ce au făcut David și oamenii lui când au aflat vestea? | *au plâns | *și-au rupt hainele | au făcut o petrecere
-multi 1:4 | Cine a murit în lupta din acest capitol? | *Saul | *Ionatan | David
-multi 1:17 | Ce fel de cântare a făcut David pentru Saul? | o cântare de bucurie | o cântare de nuntă | o cântare de război pentru filisteni
+multi 1:11-12 | Ce au făcut David și oamenii lui când au aflat vestea? | *au plâns | *au postit | au făcut o petrecere
+multi 1:4 | Cine a murit în lupta de pe muntele Ghilboa? | *Saul | *Ionatan | Ioab
+multi 1:10 | Ce i-a adus tânărul lui David? | sabia lui Saul | scutul lui Saul | calul lui Saul
 ## mediu
-tf + 1:1 | David se întorsese la Țiclag după ce îi bătuse pe amaleciți.
-tf - 1:2 | Omul din tabăra lui Saul a venit cu hainele curate și capul uns.
-tf + 1:6 | Tânărul a spus că l-a găsit pe Saul pe muntele Ghilboa.
-tf - 1:8 | Tânărul i-a spus lui Saul că este filistean.
-tf + 1:10 | Tânărul i-a adus lui David cununa și brățara lui Saul.
-tf + 1:12 | David și oamenii lui au postit până seara.
-tf - 1:15 | David l-a răsplătit pe tânăr pentru vestea adusă.
-tf + 1:18 | Cântarea lui David pentru Saul și Ionatan se numește Cântarea Arcului.
-tf - 1:20 | David voia ca vestea să fie spusă în toate cetățile filistenilor.
-tf - 1:21 | David a binecuvântat munții Ghilboa în cântarea lui.
-one 1:3 | De unde a spus omul că a scăpat? | *din tabăra lui Israel | din tabăra filistenilor | din cetatea Țiclag
-one 1:6 | Cum l-a găsit tânărul pe Saul, după spusele lui? | *rezemat în sulița lui | ascuns sub carul lui | culcat pe scutul lui
-one 1:8 | Ce i-a spus tânărul lui Saul că este? | *amalecit | filistean | israelit
-one 1:9 | Ce i-ar fi cerut Saul tânărului? | *să-l omoare | să-l ascundă | să-l ducă la Ionatan
-one 1:10 | Ce i-a adus tânărul lui David, pe lângă cununa lui Saul? | *brățara lui Saul | sulița lui Saul | scutul lui Saul
-one 1:12 | Pentru cine au jelit David și oamenii lui? | *pentru Saul, Ionatan și popor | doar pentru Saul și Ionatan | doar pentru oștenii căzuți
-one 1:14 | Cum l-a numit David pe Saul când l-a mustrat pe tânăr? | *unsul Domnului | robul Domnului | fratele meu
-one 1:15 | Ce s-a întâmplat cu tânărul amalecit? | *a fost omorât din porunca lui David | a fost făcut căpetenie de David | a fost trimis înapoi la amaleciți
-one 1:20 | În ce cetăți filistene nu voia David să se afle vestea? | *în Gat și Ascalon | în Gaza și Asdod | în Ecron și Gat
-one 1:21 | Ce a fost aruncat pe munții Ghilboa, după cântarea lui David? | *scuturile vitejilor | sulițele vitejilor | coifurile vitejilor
-match 1:1-27 | Asociază fiecare loc cu ce se spune despre el.
-= Țiclag | acolo era David când a aflat vestea | 1:1
-= muntele Ghilboa | acolo a murit Saul | 1:6
-= Gat | acolo să nu se spună vestea | 1:20
-= Cartea Dreptului | acolo e scrisă Cântarea Arcului | 1:18
-= dealurile lui Israel | acolo a murit Ionatan, după cântare | 1:25
-multi 1:2 | Cum a venit omul din tabăra lui Saul la David? | *cu hainele sfâșiate | *cu țărână pe cap | cu sabia lui Saul în mână
-multi 1:10 | Ce spunea tânărul că i-a luat lui Saul? | *cununa de pe cap | *brățara de la braț | sabia de la brâu
-multi 1:23 | Ce spune David despre Saul și Ionatan în cântare? | *n-au fost despărțiți nici la moarte | *erau mai tari decât leii | erau mai bogați decât împărații
-## greu
-tf + 1:1 | David se întorsese la Țiclag de două zile când a venit vestea despre Saul.
-tf - 1:8 | Saul l-a întrebat pe tânăr: „De unde ești?”
-tf + 1:6 | Tânărul a spus că a ajuns pe muntele Ghilboa din întâmplare.
-tf - 1:6 | Tânărul a spus că pe Saul erau aproape să-l ajungă arcașii filistenilor.
-tf + 1:9 | După tânăr, Saul i-a spus că îl apucase amețeala, măcar că era încă plin de viață.
-tf - 1:10 | Tânărul a spus că i-a luat lui Saul cununa și sulița.
-tf + 1:13 | Tânărul a spus că e amalecit abia când David l-a întrebat a doua oară.
-tf - 1:15 | Abișai l-a lovit pe amalecit, din porunca lui David.
-tf + 1:18 | David a poruncit ca fiii lui Iuda să învețe Cântarea Arcului.
-tf - 1:22 | În cântare, sabia lui Ionatan nu dădea înapoi, iar arcul lui Saul nu se învârtea în vânt.
-one 1:2 | În a câta zi de la întoarcerea lui David la Țiclag a sosit omul din tabăra lui Saul? | *în a treia zi | în a doua zi | în a patra zi
-one 1:3 | Ce a răspuns omul când David l-a întrebat prima dată de unde vine? | *„Am scăpat din tabăra lui Israel.” | „Am scăpat de pe muntele Ghilboa.” | „Am scăpat din mâna filistenilor.”
-one 1:6 | Cine era aproape să-l ajungă pe Saul, după tânăr? | *carele și călăreții | arcașii și pedestrașii | carele și arcașii
-one 1:7-8 | În ce ordine s-au petrecut lucrurile, după tânăr? | *Saul l-a chemat, apoi l-a întrebat cine este | Saul l-a întrebat cine este, apoi l-a chemat | Saul i-a cerut să-l omoare, apoi l-a chemat
-one 1:10 | De ce a spus tânărul că l-a omorât pe Saul? | *știa că nu va trăi după înfrângere | Saul îi poruncise de trei ori | voia să-i aducă lui David cununa
-one 1:13 | Ce a răspuns tânărul când David l-a întrebat de unde este? | *„Sunt fiul unui străin, al unui amalecit.” | „Sunt fiul unui amalecit din Țiclag.” | „Sunt un străin din tabăra lui Israel.”
-one 1:16 | Ce vorbe ale tânărului i-a amintit David înainte să moară? | *„Am omorât pe unsul Domnului!” | „Am adus cununa unsului Domnului!” | „Am văzut moartea unsului Domnului!”
-one 1:18 | Unde este scrisă Cântarea Arcului? | *în Cartea Dreptului | în Cartea Legii | în Cartea Regilor
-one 1:21 | Ce nu trebuia să dea câmpiile munților Ghilboa, după cântare? | *pârgă pentru darurile de mâncare | rod pentru jertfele de mulțumire | iarbă pentru turmele lui Israel
-one 1:24 | Cu ce le îmbrăca Saul pe fiicele lui Israel, după cântare? | *cu stacojiu și cu alte podoabe | cu purpură și cu in subțire | cu stacojiu și cu in subțire
+tf + 1:1 | David se întorsese la Țiclag de două zile când a venit vestea.
+tf - 1:3 | Omul i-a spus lui David că a scăpat din tabăra filistenilor.
+tf + 1:6 | Tânărul a spus că pe Saul erau aproape să-l ajungă carele și călăreții.
+tf - 1:9 | După tânăr, Saul i-a cerut să-l ducă departe de luptă.
+tf + 1:10 | Tânărul a spus că știa că Saul nu va trăi după înfrângere.
+tf - 1:12 | David și oamenii lui au jelit doar pentru Saul și Ionatan.
+tf + 1:16 | David i-a spus tânărului că gura lui a mărturisit împotriva lui.
+tf - 1:18 | Cântarea lui David se numește Cântarea Sabiei.
+tf + 1:20 | David nu voia ca vestea să ajungă în Gat și în Ascalon.
+tf - 1:21 | David a dorit ploaie peste munții Ghilboa.
+one 1:2 | În a câta zi a venit omul din tabăra lui Saul? | *în a treia zi | în a doua zi | în a șaptea zi
+one 1:3 | Ce a răspuns omul când David l-a întrebat de unde vine? | *că a scăpat din tabăra lui Israel | că a scăpat de pe muntele Ghilboa | că a scăpat din mâna filistenilor
+one 1:6 | Cum spunea tânărul că stătea Saul? | *rezemat în sulița lui | culcat sub scutul lui | ascuns după carul lui
+one 1:9 | Ce motiv i-ar fi dat Saul tânărului ca să-l omoare? | *îl apucase amețeala | era rănit de o săgeată | nu voia să cadă viu
+one 1:13 | Ce a spus tânărul când David l-a întrebat de unde este? | *că e fiul unui străin, al unui amalecit | că e un rob din casa lui Saul | că e un beniamit din Ghibea
+one 1:15 | Cine l-a omorât pe tânărul amalecit? | *unul din oamenii lui David | David cu mâna lui | Ioab, din porunca lui David
+one 1:18 | În ce carte este scrisă Cântarea Arcului? | *în Cartea Dreptului | în Cartea Legii | în Cartea Cronicilor
+one 1:21 | Ce a fost aruncat pe munții Ghilboa, după cântare? | *scutul lui Saul | sulița lui Saul | cununa lui Saul
+one 1:22 | Ce spune cântarea despre arcul lui Ionatan? | *nu dădea înapoi niciodată | n-a greșit niciodată ținta | s-a rupt în ultima luptă
+one 1:24 | Cu ce le îmbrăca Saul pe fiicele lui Israel? | *cu stacojiu și podoabe | cu in subțire și purpură | cu haine de mătase
 match 1:1-27 | Asociază fiecare persoană cu cuvintele spuse.
-= David către tânăr, prima dată | „De unde vii?” | 1:3
+= David către tânăr | „De unde vii?” | 1:3
 = Saul către tânăr | „Cine ești?” | 1:8
 = tânărul către Saul | „Iată-mă!” | 1:7
-= David către tânăr, a doua oară | „De unde ești?” | 1:13
 = David către unul din oamenii lui | „Apropie-te și omoară-l!” | 1:15
-multi 1:20 | Ce motive dă David ca vestea să nu se afle la filisteni? | *să nu se bucure fetele filistenilor | *să nu se laude fetele celor netăiați împrejur | să nu vină filistenii asupra lui Iuda
-multi 1:22 | Ce spune cântarea despre armele lui Saul și Ionatan? | *arcul lui Ionatan nu dădea înapoi | *sabia lui Saul nu se învârtea în vânt | sulița lui Saul nu dădea greș
-multi 1:12 | Pentru cine au jelit David și oamenii lui până seara? | *pentru Saul | *pentru Ionatan | *pentru poporul Domnului
+= David în cântare | „Cum au căzut vitejii!” | 1:19
+multi 1:12 | Pentru cine au jelit David și oamenii lui până seara? | *pentru Saul | *pentru poporul Domnului | pentru amalecitul ucis
+multi 1:10 | Ce a spus tânărul că i-a luat lui Saul? | *cununa de pe cap | *brățara de la braț | sulița din mână
+multi 1:23 | Ce spune cântarea despre Saul și Ionatan? | *n-au fost despărțiți nici la moarte | *erau mai ușori decât vulturii | erau mai repezi decât căprioarele
+## greu
+tf + 1:2 | Omul din tabăra lui Saul s-a aruncat cu fața la pământ și s-a închinat înaintea lui David.
+tf - 1:4 | Omul i-a spus lui David întâi că Ionatan a murit, apoi că poporul a fugit.
+tf + 1:7 | După tânăr, Saul s-a întors, l-a văzut și l-a chemat.
+tf - 1:9 | După tânăr, Saul spunea că îl apucase amețeala pentru că pierduse mult sânge.
+tf + 1:10 | Tânărul l-a numit pe David „domnul meu” când i-a dat cununa și brățara.
+tf - 1:12 | David și oamenii lui au jelit, au plâns și au postit trei zile.
+tf + 1:13 | David l-a întrebat pe tânăr „De unde ești?” abia după ce au jelit.
+tf - 1:16 | David i-a spus amalecitului: „Sângele lui Saul să cadă asupra capului tău.”
+tf + 1:21 | David a spus că scutul lui Saul a fost aruncat ca și când n-ar fi fost uns cu untdelemn.
+tf - 1:24 | Cântarea le cheamă pe fiicele lui Iuda să-l plângă pe Saul.
+one 1:1 | Pe cine bătuse David înainte să se întoarcă la Țiclag? | *pe amaleciți | pe filisteni | pe gheșuriți
+one 1:4 | Ce a spus omul întâi, după ce David i-a cerut să spună ce s-a întâmplat? | *că poporul a fugit de pe câmpul de bătaie | că Saul și Ionatan au murit | că un mare număr de oameni a pierit
+one 1:6 | Unde spunea tânărul că a ajuns „din întâmplare”? | *pe muntele Ghilboa | în tabăra lui Israel | la cortul lui Saul
+one 1:8 | Ce i-a spus tânărul lui Saul despre el? | *„Eu sunt amalecit.” | „Sunt fiul unui străin.” | „Sunt robul tău.”
+one 1:9 | Cum descria Saul starea lui, după tânăr? | *amețit, dar încă plin de viață | rănit de moarte, fără putere | plin de viață, dar fără arme
+one 1:14 | Ce l-a întrebat David pe amalecit înainte să poruncească moartea lui? | *cum nu s-a temut să-l omoare pe unsul Domnului | de ce nu l-a apărat pe unsul Domnului | de ce a luat cununa unsului Domnului
+one 1:18 | Cui a poruncit David să învețe Cântarea Arcului? | *copiilor lui Iuda | leviților din Hebron | vitejilor lui Israel
+one 1:20 | De ce nu voia David ca vestea să ajungă în Gat? | *ca să nu se bucure fetele filistenilor | ca să nu vină filistenii asupra lui Iuda | ca să nu se laude împăratul din Gat
+one 1:22 | De la ce nu dădea înapoi arcul lui Ionatan, după cântare? | *de la sângele celor răniți | de la mulțimea vrăjmașilor | de la zidurile cetăților
+one 1:26 | Mai presus de ce era dragostea lui Ionatan, după David? | *de dragostea femeiască | de dragostea unui frate | de dragostea unui tată
+match 1:1-27 | Asociază fiecare cuvânt din cântarea lui David cu cel despre care este spus.
+= „arcul nu dădea înapoi” | Ionatan | 1:22
+= „sabia nu se învârtea în vânt” | Saul | 1:22
+= „îmbrăca în stacojiu” | Saul, pentru fiicele lui Israel | 1:24
+= „nici rouă, nici ploaie” | munții Ghilboa | 1:21
+= „să nu se laude” | fetele celor netăiați împrejur | 1:20
+multi 1:2 | Cum a venit omul din tabăra lui Saul? | *cu hainele sfâșiate | *cu capul presărat cu țărână | cu sulița lui Saul în mână
+multi 1:19-27 | Ce strigăte apar în cântarea lui David? | *„Cum au căzut vitejii!” | *„Cum li s-au pierdut armele!” | „Plângeți, munți ai lui Israel!”
+multi 1:15-16 | Ce a spus David când a poruncit moartea amalecitului? | „Ai adus o veste bună” | „Ai făcut ce ți-a cerut Saul” | „Ia cununa și pleacă”

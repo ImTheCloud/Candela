@@ -23,12 +23,10 @@ const counts = summary(book.slug)[ch] ?? {};
 // "1 verset", "7 versete", "22 de versete"
 const plural = (n: number, one: string, many: string) => (n === 1 ? `1 ${one}` : n % 100 >= 1 && n % 100 < 20 ? `${n} ${many}` : `${n} de ${many}`);
 const count = plural(verses.length, 'verset', 'versete');
-// reading time at an unhurried 150 words a minute, rounded up
-const words = verses.join(' ').split(/\s+/).length;
-const minutes = Math.max(1, Math.ceil(words / 150));
 ---
-<Base title={`${book.name} ${ch}`} heading={{ title: `Capitolul ${ch}`, note: `${count}, ${minutes} min`, sub: book.titles[ch - 1] }} backUp crumbs={[{ href: '/', label: 'Acasă' }, { href: `/${book.slug}`, label: book.name }]}>
+<Base title={`${book.name} ${ch}`} heading={{ title: `Capitolul ${ch}`, note: count }} backUp crumbs={[{ href: '/', label: 'Acasă' }, { href: `/${book.slug}`, label: book.name }]}>
   <article class="wrap narrow reader" data-book={book.slug} data-ch={ch}>
+    <h2 class="reader-title">{book.titles[ch - 1]}</h2>
     <div class="text">
       {verses.map((v, i) => (
         <p class="verse" id={`v${i + 1}`}><sup>{i + 1}</sup>{v}</p>
@@ -51,6 +49,7 @@ const minutes = Math.max(1, Math.ceil(words / 150));
 </Base>
 <style>
   .reader { padding-block: 16px 24px; }
+  .reader-title { margin: 0 0 10px; font: 600 1.2rem/1.3 var(--f-display); color: var(--ink); }
   .text { font: 400 1.15rem/1.75 var(--f-bible); }
   .verse { margin: 0 0 2px; scroll-margin-top: 80px; }
   .verse:target { outline: 2px solid var(--flame); outline-offset: 1px; }
