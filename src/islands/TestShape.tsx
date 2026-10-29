@@ -1,16 +1,17 @@
-import { PAIRS, SHAPE } from '../lib/questions';
+import { PAIRS, PER_TEST, SHAPE } from '../lib/questions';
 
-/** What a test holds, said before it starts, one plain line per kind of question in the order of the exam. */
+/** What a test holds, shown before it starts as a small table: one row per kind of question, in the order of the exam. */
 export default function TestShape() {
-  const lines = [
-    `${SHAPE.tf} întrebări adevărat sau fals`,
-    `${SHAPE.one} întrebări cu un singur răspuns corect`,
-    `${SHAPE.match} asociere de ${PAIRS} perechi`,
-    `${SHAPE.multi} întrebări cu mai multe răspunsuri posibile`,
+  const rows: [string, number][] = [
+    ['Adevărat sau fals', SHAPE.tf],
+    ['Un singur răspuns corect', SHAPE.one],
+    [`Asociere de ${PAIRS} perechi`, SHAPE.match],
+    ['Mai multe răspunsuri posibile', SHAPE.multi],
   ];
   return (
     <ul class="shape" aria-label="Ce conține testul">
-      {lines.map((l) => <li>{l}</li>)}
+      {rows.map(([label, n]) => <li><span>{label}</span><b>{n}</b></li>)}
+      <li class="shape-total"><span>În total</span><b>{PER_TEST} de întrebări</b></li>
     </ul>
   );
 }

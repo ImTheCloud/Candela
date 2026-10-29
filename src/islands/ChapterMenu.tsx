@@ -48,7 +48,7 @@ export default function ChapterMenu({ book, titles, summary, exams: realExams }:
   };
 
   const sheet = open !== null && (
-    <Sheet book={book} ch={open} title={titles[open - 1]} total={count(summary[open]?.[level.value])} best={scoreLabel(entry(open), count(summary[open]?.[level.value]))}
+    <Sheet book={book} ch={open} title={titles[open - 1]} best={scoreLabel(entry(open), count(summary[open]?.[level.value]))}
       onClose={() => setOpen(null)} />
   );
 
@@ -90,12 +90,11 @@ interface SheetProps {
   book: string;
   ch: number;
   title: string;
-  total: number;
   best: string | undefined;
   onClose: () => void;
 }
 
-function Sheet({ book, ch, title, total, best, onClose }: SheetProps) {
+function Sheet({ book, ch, title, best, onClose }: SheetProps) {
   const base = `/${book}`;
   const lv = level.value;
 
@@ -116,25 +115,17 @@ function Sheet({ book, ch, title, total, best, onClose }: SheetProps) {
           </div>
           <CloseButton onClick={close} />
         </div>
-        <p class="sheet-label">Alege ce vrei să faci</p>
-        <div class="opt-card">
-          <a class="oc-row" href={`${base}/citire/${ch}`}>
-            <span class="oc-ic"><Icon name="book" /></span>
-            <span class="oc-main"><b>Citește capitolul</b><small>Traducerea Cornilescu</small></span>
-            <Chev />
-          </a>
-          <div class="oc-test">
-            <div class="oc-head">
-              <span class="oc-ic"><Icon name="test" /></span>
-              <span class="oc-main">
-                <b>Testul capitolului</b>
-                <small>{total ? `${total} întrebări` : ''}{best !== undefined ? `${total ? ', ' : ''}cel mai bun scor ${best}` : ''}</small>
-              </span>
-            </div>
-            <TestShape />
-            <LevelPicker />
-          </div>
+        <a class="read-row" href={`${base}/citire/${ch}`}>
+          <span class="oc-ic"><Icon name="book" /></span>
+          <span class="oc-main"><b>Citește capitolul</b><small>Traducerea Cornilescu</small></span>
+          <Chev />
+        </a>
+        <div class="test-head">
+          <p class="sheet-label">Testul capitolului</p>
+          {best !== undefined && <span class="test-best">Cel mai bun scor: {best}</span>}
         </div>
+        <LevelPicker />
+        <TestShape />
         <a class="btn btn-primary btn-block oc-go" href={`${base}/exersare?capitol=${ch}&start=1&nivel=${encodeURIComponent(lv)}`}>
           Începe testul de nivel {levelLabel(lv).toLowerCase()}
         </a>
