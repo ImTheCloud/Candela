@@ -31,13 +31,13 @@ export function validBirthYear(y: number, year = new Date().getFullYear()): bool
   return Number.isInteger(y) && y >= year - 100 && y <= year - 3;
 }
 
-/** The three levels of the chapter questions, with the ages each one suits (docs/niveluri.md). */
+/** The three levels of the chapter questions, with who each one suits (docs/niveluri.md). */
 export type Level = 'usor' | 'mediu' | 'greu';
 
-export const LEVELS: { id: Level; label: string; ages: string }[] = [
-  { id: 'usor', label: 'Ușor', ages: 'sub 12 ani' },
-  { id: 'mediu', label: 'Mediu', ages: '12-17 ani' },
-  { id: 'greu', label: 'Greu', ages: '18 ani și peste' },
+export const LEVELS: { id: Level; label: string; who: string }[] = [
+  { id: 'usor', label: 'Ușor', who: 'copii' },
+  { id: 'mediu', label: 'Mediu', who: 'adolescenți' },
+  { id: 'greu', label: 'Greu', who: 'adulți' },
 ];
 
 export function levelLabel(lv: Level): string {

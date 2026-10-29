@@ -44,7 +44,6 @@ export default function StartTest({ book, ch, title, counts }: Props) {
             <div class="ts-block" style={{ marginTop: '14px' }}>
               <p class="sheet-label" style={{ margin: 0 }}>Nivelul{total ? `, ${total} de întrebări` : ''}</p>
               <LevelPicker />
-              <p class="lv-hint small muted">Ușor: sub 12 ani. Mediu: 12-17 ani. Greu: 18 ani și peste.</p>
             </div>
             <a class="btn btn-primary btn-block oc-go" href={href}>Începe testul de nivel {levelLabel(lv).toLowerCase()}</a>
           </>)}

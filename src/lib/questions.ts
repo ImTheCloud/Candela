@@ -183,6 +183,12 @@ export function percent(points: number, max: number): number {
   return max ? Math.round((points / max) * 100) : 0;
 }
 
+/** Questions in the order of the exam paper (true/false, single answer, matching, multiple answer), mixed within each kind. */
+export function examOrder<T extends { t: QType }>(list: T[]): T[] {
+  const rank = (t: QType) => TYPES.findIndex((x) => x.t === t);
+  return shuffle(list).sort((a, b) => rank(a.t) - rank(b.t));
+}
+
 export function shuffle<T>(list: T[]): T[] {
   const a = [...list];
   for (let i = a.length - 1; i > 0; i--) {

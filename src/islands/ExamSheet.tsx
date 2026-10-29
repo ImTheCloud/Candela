@@ -60,7 +60,6 @@ export default function ExamSheet({ book, exams, onClose }: { book: string; exam
               <span class="oc-main"><b>Întrebări din toată cartea</b></span>
             </div>
             <LevelPicker />
-            <p class="lv-hint small muted">Ușor: sub 12 ani. Mediu: 12-17 ani. Greu: 18 ani și peste.</p>
           </div>
         </div>
         <a class="btn btn-primary btn-block oc-go" href={`/${book}/examene/alb`}>Începe examenul alb de nivel {levelLabel(lv).toLowerCase()}</a>
