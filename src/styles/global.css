@@ -381,7 +381,8 @@ a.tile { text-decoration: none; }
   color: var(--ink-2); font: 600 0.85rem var(--f-body); white-space: nowrap; cursor: pointer;
   transition: background-color .12s, color .12s, border-color .12s, transform .08s;
 }
-.lv-hint { margin: 6px 0 0; }
+.lv-chip { display: grid; place-content: center; gap: 1px; line-height: 1.15; padding: 4px 2px; }
+.lv-who { font-weight: 500; font-size: 0.72rem; opacity: .75; }
 .lv-chip:active { transform: scale(0.98); }
 .lv-chip[aria-checked="true"],
 .lv-chip[aria-selected="true"] { background: var(--btn); border-color: var(--btn); color: #fff; }

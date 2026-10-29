@@ -7,7 +7,7 @@ export interface LevelPickerProps<T extends Level | 'all' = Level> {
   onChange?: (val: T) => void;
   includeAll?: boolean;
   allLabel?: string;
-  groups?: { id: Level; label: string }[];
+  groups?: { id: Level; label: string; who?: string }[];
   class?: string;
 }
 
@@ -30,9 +30,10 @@ export default function LevelPicker<T extends Level | 'all' = Level>({
     }
   };
 
-  const items: { id: T; label: string }[] = groups.map((g) => ({
+  const items: { id: T; label: string; who?: string }[] = groups.map((g) => ({
     id: g.id as T,
     label: g.label,
+    who: g.who,
   }));
 
   if (includeAll) {
@@ -57,6 +58,7 @@ export default function LevelPicker<T extends Level | 'all' = Level>({
             onClick={() => select(it.id)}
           >
             {it.label}
+            {it.who && <small class="lv-who">{it.who}</small>}
           </button>
         );
       })}

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'preact/hooks';
 import { LEVELS, type Level } from '../lib/age';
 import { level as savedLevel, setLevel } from '../lib/level';
 import { player } from '../lib/players';
-import { shuffle, type Playable, type QType } from '../lib/questions';
+import { examOrder, shuffle, type Playable, type QType } from '../lib/questions';
 import { bookHome } from '../lib/books';
 import { loadChapters } from '../lib/load';
 import LevelPicker from './LevelPicker';
@@ -59,7 +59,7 @@ export default function Practice({ book, bookName, chapters, summary }: Props) {
     try {
       const all = await loadChapters(book, chosen);
       const pool = all.filter((q) => q.age === level);
-      setQuiz({ key: Date.now(), questions: shuffle(pool).slice(0, count === 0 ? pool.length : count) });
+      setQuiz({ key: Date.now(), questions: examOrder(shuffle(pool).slice(0, count === 0 ? pool.length : count)) });
     } catch {
       setError('Întrebările nu s-au putut încărca. Verifică conexiunea la internet.');
     } finally {

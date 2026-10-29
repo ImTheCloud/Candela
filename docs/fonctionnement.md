@@ -32,7 +32,7 @@ Chaque chapitre a, **pour chacun des trois niveaux** (Ușor pour les moins de 12
 | Association | 1 | `match` | 5 paires à relier |
 | Plusieurs réponses | 3 | `multi` | une question, 3 propositions, de 0 à 3 justes (« Niciun răspuns corect » s'ajoute tout seul) |
 
-Soit 24 questions par niveau et 72 par chapitre. C'est aussi la forme de l'examen final : l'examen blanc tire 10 + 10 + 1 + 3 questions dans tout le livre. Il n'y a plus de textes à compléter (`fill`) dans les chapitres ; le type existe encore dans le code pour les examens réels de 1 Samuel qui en contiennent.
+Soit 24 questions par niveau et 72 par chapitre. Un test de chapitre suit l'ordre de l'examen (vrai/faux, une réponse, association, plusieurs réponses), mélangé à l'intérieur de chaque type. Les boutons de niveau indiquent à qui ils s'adressent : Ușor (copii), Mediu (adolescenți), Greu (adulți). C'est aussi la forme de l'examen final : l'examen blanc tire 10 + 10 + 1 + 3 questions dans tout le livre. Il n'y a plus de textes à compléter (`fill`) dans les chapitres ; le type existe encore dans le code pour les examens réels de 1 Samuel qui en contiennent.
 
 ### La scène (contexte)
 
