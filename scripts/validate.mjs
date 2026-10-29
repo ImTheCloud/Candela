@@ -7,8 +7,10 @@ const ROOT = new URL('../content/', import.meta.url).pathname;
 const BOOKS = { '1-samuel': '1sa', '2-samuel': '2sa' };
 const AGES = ['sub12', '12-13', '14-15', '16-17', '18+'];
 const TYPES = ['tf', 'one', 'match', 'fill', 'multi'];
-// A chapter test is a one-chapter exam: 5 + 5 + one matching of 5 pairs + 5 + 5, for every age group.
-const TARGET = { tf: 5, one: 5, match: 1, fill: 5, multi: 5 };
+// A chapter test has the shape of the final exam, for every age group: 10 true/false, 10 single answer,
+// one matching of 5 pairs, 3 multiple answer (none, one or several right). No text to complete in chapters.
+const TARGET = { tf: 10, one: 10, match: 1, fill: 0, multi: 3 };
+const ADULT = ['14-15', '16-17', '18+'];
 
 let errors = 0;
 let warnings = 0;
@@ -86,6 +88,11 @@ function checkQuestion(q, where, text, strictFill = true) {
       if (q.pairs.some((p) => !Array.isArray(p) || p.length !== 2 || !p[0]?.trim() || !p[1]?.trim())) err(w, 'pereche greșită');
       if (new Set(q.pairs.map((p) => p[0])).size !== q.pairs.length) err(w, 'stânga se repetă');
       if (new Set(q.pairs.map((p) => p[1])).size !== q.pairs.length) err(w, 'dreapta se repetă');
+      if (strictFill) {
+        // each pair has its own verse: the mock exam takes one pair from each of five chapters
+        if (!Array.isArray(q.refs) || q.refs.length !== q.pairs.length) err(w, 'refs: câte o referință pentru fiecare pereche');
+        else for (const r of q.refs) { try { versesOf(r, text); } catch (e) { err(w, `refs ${r}: ${e.message}`); } }
+      }
       break;
     case 'fill': {
       const blanks = q.q.split('___').length - 1;
@@ -108,6 +115,38 @@ function checkQuestion(q, where, text, strictFill = true) {
   }
 }
 
+/** Rules of the rewritten chapters that a shape check can see (the rest is in docs/qualite-questions.md). */
+function checkStyle(q, w, scene) {
+  if (scene && q.q.startsWith(scene)) err(w, 'scena se repetă în întrebare (e deja în fișier)');
+  if (/^[^:?„]{12,}: (?!„)/.test(q.q)) warn(`${w}: pare să înceapă cu o scenă („…: ”)`);
+  if ((q.q.match(/\?/g) ?? []).length > 1) err(w, 'două semne de întrebare: o singură întrebare');
+  if ((q.t === 'one' || q.t === 'multi') && /\?$/.test(q.q) === false) err(w, 'enunțul trebuie să fie o întrebare (se termină cu „?”)');
+  if (q.t === 'tf' && /\?$/.test(q.q)) err(w, 'adevărat/fals: o afirmație, nu o întrebare');
+  if (q.opts && ADULT.includes(q.age)) {
+    // the right answer may not stand out by its length
+    const len = q.opts.map((o) => o.length);
+    const right = q.t === 'one' ? [q.a] : q.a;
+    if (right.length === 1) {
+      const r = len[right[0]];
+      const others = len.filter((_, i) => i !== right[0]);
+      if (others.every((l) => r > l + 10) || others.every((l) => r < l - 10)) warn(`${w}: răspunsul corect se vede după lungime`);
+    }
+  }
+}
+
+/** Per chapter and age: true and false both well represented, right answers spread over a, b, c. */
+function checkBalance(file, where) {
+  for (const a of AGES) {
+    const qs = file.questions.filter((q) => q.age === a);
+    const tf = qs.filter((q) => q.t === 'tf');
+    const yes = tf.filter((q) => q.a).length;
+    if (yes < 4 || yes > 6) warn(`${where} ${a}: ${yes} adevărate din ${tf.length} (între 4 și 6)`);
+    const pos = [0, 0, 0];
+    for (const q of qs) if (q.t === 'one') pos[q.a]++;
+    if (Math.min(...pos) < 2) warn(`${where} ${a}: răspunsurile corecte la alegere unică sunt prea des pe aceeași literă (${pos.join('/')})`);
+  }
+}
+
 for (const [slug, abbr] of Object.entries(BOOKS)) {
   const dir = join(ROOT, slug, 'intrebari');
   if (!existsSync(dir)) continue;
@@ -121,6 +160,7 @@ for (const [slug, abbr] of Object.entries(BOOKS)) {
     if (file.ch !== Number(name.slice(2, -5))) err(where, 'ch nu se potrivește cu numele fișierului');
     if (typeof file.reviewed !== 'boolean') err(where, 'reviewed lipsește');
     if (!Array.isArray(file.questions)) { err(where, 'questions lipsește'); continue; }
+    if ((typeof file.scene !== 'string' || !file.scene.trim())) err(where, 'scene lipsește');
     const counts = Object.fromEntries(AGES.map((a) => [a, Object.fromEntries(TYPES.map((t) => [t, 0]))]));
     for (const q of file.questions) {
       const m = /^(\w+)\.(\d+)\.(sub12|12-13|14-15|16-17|18\+)\.(\d+)$/.exec(q.id ?? '');
@@ -130,9 +170,11 @@ for (const [slug, abbr] of Object.entries(BOOKS)) {
       seen.add(q.id);
       if (!AGES.includes(q.age)) err(where, `vârstă necunoscută ${q.age}`);
       checkQuestion(q, where, text);
+      checkStyle(q, `${where} ${q.id}`, file.scene);
       if (counts[q.age]?.[q.t] !== undefined) counts[q.age][q.t]++;
     }
-    for (const a of AGES) for (const t of TYPES) if (counts[a][t] !== TARGET[t]) warn(`${where}: ${a} are ${counts[a][t]} ${t} (ținta: ${TARGET[t]})`);
+    for (const a of AGES) for (const t of TYPES) if (counts[a][t] !== TARGET[t]) err(where, `${a} are ${counts[a][t]} ${t} (ținta: ${TARGET[t]})`);
+    checkBalance(file, where);
     table.push(`${name.padEnd(9)} ${AGES.map((a) => `${a}:${Object.values(counts[a]).reduce((x, y) => x + y, 0)}`.padEnd(9)).join(' ')} ${file.reviewed ? 'verificat' : 'neverificat'}`);
   }
   if (table.length) console.log(`\n${slug}\n${table.join('\n')}`);

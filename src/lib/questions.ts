@@ -18,11 +18,25 @@ export type Question =
   | (Base & { t: 'tf'; a: boolean })
   | (Base & { t: 'one'; opts: string[]; a: number })
   | (Base & { t: 'multi'; opts: string[]; a: number[] })
-  | (Base & { t: 'match'; pairs: [string, string][] })
+  | (Base & { t: 'match'; pairs: [string, string][]; /** verse of each pair, so a mock exam can mix pairs of several chapters */ refs?: string[] })
   | (Base & { t: 'fill'; a: string[] });
 
 /** A question as sent to the browser, with the text of the verses it refers to. */
-export type Playable = Question & { cite: [string, string][]; book: string; ch: number };
+export type Playable = Question & {
+  cite: [string, string][];
+  book: string;
+  /** 0 for a question made of several chapters (the mock exam's matching). */
+  ch: number;
+  scene?: string;
+  /** match: the verses of each pair. */
+  pairCite?: [string, string][][];
+};
+
+/** What a chapter has for every age group, and what the final exam (and the mock exam) has: 10 + 10 + one matching of 5 pairs + 3. */
+export const SHAPE: Record<QType, number> = { tf: 10, one: 10, match: 1, fill: 0, multi: 3 };
+export const PAIRS = 5;
+/** Questions in a chapter test or an exam, for one age group. */
+export const PER_TEST = Object.values(SHAPE).reduce((a, b) => a + b, 0);
 
 export type Answer =
   | { t: 'tf'; v: boolean | null }
@@ -43,18 +57,9 @@ export function typeInfo(t: QType) {
   return TYPES.find((x) => x.t === t)!;
 }
 
-/**
- * Points per question: 3, 4, 2 per pair, 5, 6. A full exam (5 + 5 + one matching of 5 pairs + 5 + 5)
- * is worth exactly 100, so the score needs no conversion.
- */
-export function maxPoints(q: Question): number {
-  switch (q.t) {
-    case 'tf': return 3;
-    case 'one': return 4;
-    case 'match': return q.pairs.length * 2;
-    case 'fill': return 5;
-    case 'multi': return 6;
-  }
+/** Every question is worth one point, as in the final exam; a matching gives its share per right pair. The score shows as a percentage. */
+export function maxPoints(_q: Question): number {
+  return 1;
 }
 
 export function emptyAnswer(q: Question): Answer {
@@ -162,12 +167,12 @@ export function grade(q: Question, a: Answer): Grade {
     case 'match': {
       const parts = q.pairs.map((_, i) => a.t === 'match' && a.v[i] === i);
       const n = parts.filter(Boolean).length;
-      return { points: n, max, right: n === parts.length, parts };
+      return { points: (max * n) / parts.length, max, right: n === parts.length, parts };
     }
     case 'fill': {
       const parts = q.a.map((w, i) => a.t === 'fill' && sameWord(a.v[i] ?? '', w));
       const n = parts.filter(Boolean).length;
-      return { points: Math.round((max * n * 2) / parts.length) / 2, max, right: n === parts.length, parts };
+      return { points: (max * n) / parts.length, max, right: n === parts.length, parts };
     }
   }
 }

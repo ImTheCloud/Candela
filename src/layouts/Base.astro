@@ -27,7 +27,7 @@ interface Props {
 const { title, description = 'Teste biblice după traducerea Cornilescu: 1 Samuel și 2 Samuel.', crumbs = [], home = false, backUp = false, greet = true } = Astro.props;
 const up = crumbs.at(-1)?.href ?? '/';
 const parent = up === `/${DEFAULT_BOOK}` ? '/' : up;
-const fullTitle = title === 'Candela' ? title : `${title} · Candela`;
+const fullTitle = title === 'Candela' ? title : `${title} – Candela`;
 ---
 <!doctype html>
 <html lang="ro">

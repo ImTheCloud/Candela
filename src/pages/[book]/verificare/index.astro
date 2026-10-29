@@ -15,7 +15,7 @@ const { book, files } = Astro.props as { book: Book; files: ChapterFile[] };
     <p class="muted">Fiecare capitol, pe grupe de vârstă, cu răspunsurile. Un capitol verificat este marcat în fișierul lui („reviewed").</p>
     <ul class="list">
       {files.map((f) => (
-        <li><a class="card row" href={`/${book.slug}/verificare/${f.ch}`}><span>Capitolul {f.ch}</span><span class={`small ${f.reviewed ? 'ok' : 'muted'}`}>{f.questions.length} întrebări · {f.reviewed ? 'verificat' : 'de verificat'}</span></a></li>
+        <li><a class="card row" href={`/${book.slug}/verificare/${f.ch}`}><span>Capitolul {f.ch}</span><span class={`small ${f.reviewed ? 'ok' : 'muted'}`}>{f.questions.length} întrebări, {f.reviewed ? 'verificat' : 'de verificat'}</span></a></li>
       ))}
     </ul>
   </section>

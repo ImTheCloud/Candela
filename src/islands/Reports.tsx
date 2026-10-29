@@ -30,8 +30,8 @@ function List() {
   return (
     <div class="stack">
       <div class="book-switch" role="tablist" aria-label="Semnalări">
-        <button type="button" role="tab" aria-selected={show === 'open'} onClick={() => setShow('open')}>De rezolvat · {open.length}</button>
-        <button type="button" role="tab" aria-selected={show === 'done'} onClick={() => setShow('done')}>Rezolvate · {done.length}</button>
+        <button type="button" role="tab" aria-selected={show === 'open'} onClick={() => setShow('open')}>De rezolvat ({open.length})</button>
+        <button type="button" role="tab" aria-selected={show === 'done'} onClick={() => setShow('done')}>Rezolvate ({done.length})</button>
       </div>
       {list.length === 0
         ? <p class="card empty muted">{show === 'open' ? 'Nicio semnalare nouă.' : 'Nimic rezolvat încă.'}</p>
@@ -59,7 +59,7 @@ function Item({ r }: { r: Report }) {
       <p class="ri-q">{r.q.replace(/___/g, '…')}</p>
       <p class="ri-reason">{REASONS.find((x) => x.id === r.reason)?.label ?? r.reason}</p>
       {r.note && <blockquote class="ri-note">{r.note}</blockquote>}
-      <p class="ri-meta">De la {r.by || 'un jucător'} · <code>{r.qid}</code></p>
+      <p class="ri-meta">De la {r.by || 'un jucător'}, <code>{r.qid}</code></p>
       {chapterQuestion && <a class="ri-link" href={`/${r.book}/verificare/${r.ch}#${r.qid}`}>Vezi întrebarea în capitolul {r.ch}</a>}
       {error && <p class="notice notice-bad" role="alert">{error}</p>}
       <div class="ri-actions">

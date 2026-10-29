@@ -3,7 +3,7 @@ export default function Avatar({ name, size = 44 }: { name: string; size?: numbe
   const parts = name.trim().split(/\s+/);
   const initials = ((parts[0]?.[0] ?? '?') + (parts.length > 1 ? parts[parts.length - 1][0] : '')).toUpperCase();
   return (
-    <span class="av" style={{ width: `${size}px`, height: `${size}px`, fontSize: `${size * 0.38}px`, background: '#4a3426' }} aria-hidden="true">
+    <span class="av" style={{ width: `${size}px`, height: `${size}px`, fontSize: `${size * 0.38}px`, background: 'var(--btn)', color: 'var(--on-oil)', fontFamily: 'var(--f-brand)' }} aria-hidden="true">
       {initials}
     </span>
   );

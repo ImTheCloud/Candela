@@ -126,6 +126,8 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
   }
 
   const topEl = document.getElementById('quiz-top');
+  // within one chapter the scene is the same for every question; it is said again only when chapters are mixed (mock exam, mistakes)
+  const mixed = new Set(questions.map((x) => `${x.book}/${x.ch}`)).size > 1;
 
   return (
     <div class={`quiz${g ? ' has-fb' : ''}`}>
@@ -137,7 +139,7 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
           <span class="qt-n">{i + 1}/{questions.length}</span>
         </>, topEl)}
 
-      <QHead q={q} bookName={bookName} />
+      <QHead q={q} bookName={bookName} scene={mixed ? q.scene : undefined} />
 
       <div class="q-body" aria-live="polite">
         <QuestionView key={q.id} q={q} answer={answers[i]} onChange={setAnswer} graded={g}
@@ -173,7 +175,7 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
 }
 
 /** Above the question: what to do, the level it is meant for, the report button, and the verse it comes from. */
-function QHead({ q, bookName }: { q: Playable; bookName: string }) {
+function QHead({ q, bookName, scene }: { q: Playable; bookName: string; scene?: string }) {
   return (
     <header class="q-head">
       <div class="q-row">
@@ -183,6 +185,7 @@ function QHead({ q, bookName }: { q: Playable; bookName: string }) {
         <ReportButton key={q.id} q={q} small />
       </div>
       <p class="q-where"><b>{bookName} {q.ref}</b></p>
+      {scene && <p class="q-scene">{scene}</p>}
     </header>
   );
 }
@@ -195,7 +198,7 @@ function Verdict({ g, last, onVerse, onNext }: { g: Grade; last: boolean; onVers
     <div class="verdict">
       <div class="verdict-row">
         <span class="verdict-ic" aria-hidden="true">{g.right ? <Tick /> : <Cross />}</span>
-        <span class="verdict-text">{g.right ? 'Corect!' : g.points > 0 ? `Parțial · ${g.points}/${g.max}` : 'Greșit'}</span>
+        <span class="verdict-text">{g.right ? 'Corect!' : g.points > 0 && g.parts ? `Parțial, ${g.parts.filter(Boolean).length} din ${g.parts.length}` : 'Greșit'}</span>
         <button type="button" class="verse-pill" onClick={onVerse}>{BOOK_ICON}Versetul</button>
       </div>
       <button class="btn btn-block verdict-btn btn-3d" onClick={onNext}>{last ? 'Vezi rezultatul' : 'Mai departe'}</button>
@@ -211,6 +214,7 @@ function VerseSheet({ q, bookName, onClose }: { q: Playable; bookName: string; o
 
   useEffect(() => {
     let live = true;
+    if (!q.ch) return;
     loadVerses(q.book, q.ch).then((v) => live && setVerses(v.length ? v : null), () => {});
     return () => { live = false; };
   }, [q.id]);
@@ -221,10 +225,10 @@ function VerseSheet({ q, bookName, onClose }: { q: Playable; bookName: string; o
   }, [verses]);
 
   return (
-    <Modal class="verse-sheet" label={`${bookName} ${q.ch}`} onClose={onClose}>
+    <Modal class="verse-sheet" label={`${bookName} ${q.ch || ''}`} onClose={onClose}>
       {(close) => (<>
         <div class="sheet-top">
-          <h2>{bookName} {q.ch}</h2>
+          <h2>{bookName} {q.ch || ''}</h2>
           <CloseButton onClick={close} />
         </div>
         <div class="vs-text" ref={box}>
@@ -250,7 +254,7 @@ function rightAnswer(q: Playable): string {
   switch (q.t) {
     case 'tf': return q.a ? 'Adevărat' : 'Fals';
     case 'one': return q.opts[q.a];
-    case 'multi': return q.a.length ? q.a.map((k) => q.opts[k]).join(' · ') : 'Niciun răspuns nu era corect.';
+    case 'multi': return q.a.length ? q.a.map((k) => q.opts[k]).join('; ') : 'Niciun răspuns nu era corect.';
     case 'match': return q.pairs.map(([l, r]) => `${l} → ${r}`).join('\n');
     case 'fill': return q.q.replace(/___/, q.a[0]);
   }

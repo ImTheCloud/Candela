@@ -15,7 +15,7 @@ const answer = (q: Playable) => {
   switch (q.t) {
     case 'tf': return q.a ? 'Adevărat' : 'Fals';
     case 'one': return `${letters[q.a]}) ${q.opts[q.a]}`;
-    case 'multi': return q.a.length ? q.a.map((i) => `${letters[i]}) ${q.opts[i]}`).join(' · ') : 'Niciun răspuns corect';
+    case 'multi': return q.a.length ? q.a.map((i) => `${letters[i]}) ${q.opts[i]}`).join('; ') : 'Niciun răspuns corect';
     case 'fill': return q.a.join(', ');
     case 'match': return '';
   }
@@ -24,13 +24,13 @@ const answer = (q: Playable) => {
 <Base title={`Verificare ${book.name} ${file.ch}`} crumbs={[{ href: '/', label: 'Acasă' }, { href: `/${book.slug}/verificare`, label: 'Verificare' }]}>
   <section class="wrap narrow page">
     <h1>{book.name} {file.ch}</h1>
-    <p class="muted">{file.questions.length} întrebări · {file.reviewed ? 'verificat' : 'de verificat'} · <a class="link" href={`/${book.slug}/citire/${file.ch}`}>textul capitolului</a></p>
+    <p class="muted">{file.questions.length} întrebări, {file.reviewed ? 'verificat' : 'de verificat'}, <a class="link" href={`/${book.slug}/citire/${file.ch}`}>textul capitolului</a></p>
     {AGE_GROUPS.map((g) => (
       <section class="age">
         <h2>{g.label}</h2>
         {qs.filter((q) => q.age === g.id).map((q) => (
           <article class="card rq" id={q.id}>
-            <p class="small muted"><strong>{typeInfo(q.t).short}</strong> · {q.ref} · {q.id}</p>
+            <p class="small muted"><strong>{typeInfo(q.t).short}</strong>, {q.ref}, {q.id}</p>
             {q.ctx && <p class="small muted">{q.ctx}</p>}
             <p class="rq-q">{q.q}</p>
             {(q.t === 'one' || q.t === 'multi') && <ol class="rq-opts" type="a">{q.opts.map((o, i) => <li class={(q.t === 'one' ? q.a === i : q.a.includes(i)) ? 'right' : ''}>{o}</li>)}</ol>}

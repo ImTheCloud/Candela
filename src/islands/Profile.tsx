@@ -118,7 +118,8 @@ function PlayerBlock({ p, books, head }: { p: Player; books: BookInfo[]; head: b
       )}
       <TypeBars p={p} books={books} />
       <button type="button" class="btn-reset link small bk-toggle" aria-expanded={details} onClick={() => setDetails(!details)}>{details ? 'Ascunde detaliile' : 'Vezi detaliile'}</button>
-      {details && books.map((b) => <BookStats key={b.slug} p={p} book={b} />)}
+      {/* a book whose questions are still being written has nothing to show yet */}
+      {details && books.filter((b) => Object.keys(b.totals).length).map((b) => <BookStats key={b.slug} p={p} book={b} />)}
       <footer class="pl-foot">
         {p.child && (
           <span class="pl-actions">
@@ -213,7 +214,7 @@ function BookStats({ p, book }: { p: Player; book: BookInfo }) {
   return (
     <section class="bk">
       <h3>{book.name}</h3>
-      <p class="hb-sub muted nowrap">{t} întrebări pentru fiecare grupă de vârstă · 21 pe capitol</p>
+      <p class="hb-sub muted">{t} de întrebări pe vârstă, câte {Math.round(t / book.chapters)} pe capitol</p>
       {!loaded ? <Loader small /> : !started ? <p class="small muted">Nu a început încă.</p> : (
         <>
           <p class="bk-head">Întrebări știute <small>(răspunse corect cel puțin o dată)</small></p>
