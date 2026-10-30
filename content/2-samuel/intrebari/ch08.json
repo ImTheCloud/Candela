@@ -8,7 +8,7 @@
    "age": "usor",
    "t": "tf",
    "ref": "8:1",
-   "q": "David i-a bătut pe filisteni.",
+   "q": "David i-a smerit pe filisteni.",
    "a": true
   },
   {
@@ -16,19 +16,11 @@
    "age": "usor",
    "t": "tf",
    "ref": "8:2",
-   "q": "Moabiții au ajuns supuși lui David și i-au plătit bir.",
-   "a": true
-  },
-  {
-   "id": "2sa.8.usor.303",
-   "age": "usor",
-   "t": "tf",
-   "ref": "8:3",
-   "q": "Hadadezer era împăratul Egiptului.",
+   "q": "Moabiții l-au biruit pe David.",
    "a": false
   },
   {
-   "id": "2sa.8.usor.304",
+   "id": "2sa.8.usor.303",
    "age": "usor",
    "t": "tf",
    "ref": "8:6",
@@ -36,39 +28,31 @@
    "a": true
   },
   {
+   "id": "2sa.8.usor.304",
+   "age": "usor",
+   "t": "tf",
+   "ref": "8:5",
+   "q": "Sirienii au venit să-l ajute pe David.",
+   "a": false
+  },
+  {
    "id": "2sa.8.usor.305",
    "age": "usor",
    "t": "tf",
-   "ref": "8:7",
-   "q": "David a adus la Ierusalim scuturi de aur.",
-   "a": true
+   "ref": "8:4",
+   "q": "David a păstrat toți caii dușmanilor.",
+   "a": false
   },
   {
    "id": "2sa.8.usor.306",
    "age": "usor",
    "t": "tf",
-   "ref": "8:10",
-   "q": "Toi, împăratul Hamatului, a pornit război împotriva lui David.",
+   "ref": "8:3",
+   "q": "David a fost bătut de împăratul din Țoba.",
    "a": false
   },
   {
    "id": "2sa.8.usor.307",
-   "age": "usor",
-   "t": "tf",
-   "ref": "8:11",
-   "q": "David i-a închinat Domnului argintul și aurul luate de la neamuri.",
-   "a": true
-  },
-  {
-   "id": "2sa.8.usor.308",
-   "age": "usor",
-   "t": "tf",
-   "ref": "8:14",
-   "q": "Edomiții n-au vrut niciodată să fie supuși lui David.",
-   "a": false
-  },
-  {
-   "id": "2sa.8.usor.309",
    "age": "usor",
    "t": "tf",
    "ref": "8:15",
@@ -76,11 +60,27 @@
    "a": true
   },
   {
+   "id": "2sa.8.usor.308",
+   "age": "usor",
+   "t": "tf",
+   "ref": "8:12",
+   "q": "David i-a biruit și pe fiii lui Amon.",
+   "a": true
+  },
+  {
+   "id": "2sa.8.usor.309",
+   "age": "usor",
+   "t": "tf",
+   "ref": "8:13",
+   "q": "David și-a făcut un nume mare.",
+   "a": true
+  },
+  {
    "id": "2sa.8.usor.310",
    "age": "usor",
    "t": "tf",
-   "ref": "8:16",
-   "q": "Ioab era preot în vremea lui David.",
+   "ref": "8:6",
+   "q": "Sirienii nu i-au plătit lui David niciun bir.",
    "a": false
   },
   {
@@ -88,11 +88,11 @@
    "age": "usor",
    "t": "one",
    "ref": "8:1",
-   "q": "Pe ce popor l-a bătut David întâi în acest capitol?",
+   "q": "Ce a luat David din mâna filistenilor?",
    "opts": [
-    "pe filisteni",
-    "pe babilonieni",
-    "pe egipteni"
+    "cârmuirea capitalei lor",
+    "o corabie",
+    "toate turmele lor"
    ],
    "a": 0
   },
@@ -100,12 +100,12 @@
    "id": "2sa.8.usor.312",
    "age": "usor",
    "t": "one",
-   "ref": "8:3",
-   "q": "Cum se numea împăratul din Țoba bătut de David?",
+   "ref": "8:2",
+   "q": "Ce au început să-i plătească moabiții lui David?",
    "opts": [
-    "Hadadezer",
-    "Hiram",
-    "Faraon"
+    "un bir",
+    "un cântec",
+    "o pedeapsă"
    ],
    "a": 0
   },
@@ -113,12 +113,12 @@
    "id": "2sa.8.usor.313",
    "age": "usor",
    "t": "one",
-   "ref": "8:5",
-   "q": "De unde au venit sirienii în ajutorul lui Hadadezer?",
+   "ref": "8:3",
+   "q": "Lângă ce râu se ducea să-și așeze stăpânirea, când a fost bătut Hadadezer?",
    "opts": [
-    "din Egipt",
-    "din Tir",
-    "din Damasc"
+    "Iordan",
+    "Nil",
+    "Eufrat"
    ],
    "a": 2
   },
@@ -126,12 +126,12 @@
    "id": "2sa.8.usor.314",
    "age": "usor",
    "t": "one",
-   "ref": "8:7",
-   "q": "Ce a luat David de la slujitorii lui Hadadezer?",
+   "ref": "8:9",
+   "q": "Cine a auzit de biruința lui David asupra lui Hadadezer?",
    "opts": [
-    "coroanele de argint",
-    "scuturile de aur",
-    "caii albi"
+    "faraon",
+    "împăratul Hamatului",
+    "regina din Saba"
    ],
    "a": 1
   },
@@ -140,11 +140,11 @@
    "age": "usor",
    "t": "one",
    "ref": "8:7",
-   "q": "Unde a adus David scuturile de aur?",
+   "q": "Ce a adus David la Ierusalim de la slujitorii lui Hadadezer?",
    "opts": [
-    "la Betleem",
-    "la Ierusalim",
-    "la Hebron"
+    "caii albi",
+    "scuturile de aur",
+    "carele de fier"
    ],
    "a": 1
   },
@@ -152,12 +152,12 @@
    "id": "2sa.8.usor.316",
    "age": "usor",
    "t": "one",
-   "ref": "8:10",
-   "q": "Pe cine a trimis Toi la David?",
+   "ref": "8:8",
+   "q": "Ce a mai luat David din cetățile lui Hadadezer?",
    "opts": [
-    "pe fratele său",
-    "pe un proroc",
-    "pe fiul său Ioram"
+    "mult grâu",
+    "multe cămile",
+    "multă aramă"
    ],
    "a": 2
   },
@@ -165,12 +165,12 @@
    "id": "2sa.8.usor.317",
    "age": "usor",
    "t": "one",
-   "ref": "8:11",
-   "q": "Cui i-a închinat David vasele primite de la Toi?",
+   "ref": "8:10",
+   "q": "Cu cine era în război împăratul Toi?",
    "opts": [
-    "oștenilor",
-    "Domnului",
-    "lui Ioab"
+    "cu Egiptul",
+    "cu Hadadezer",
+    "cu David"
    ],
    "a": 1
   },
@@ -179,11 +179,11 @@
    "age": "usor",
    "t": "one",
    "ref": "8:13",
-   "q": "În ce vale i-a bătut David pe edomiți?",
+   "q": "Pe cine a bătut David în Valea Sării?",
    "opts": [
-    "în Valea Sării",
-    "în valea Iordanului",
-    "în valea Refaim"
+    "pe edomiți",
+    "pe uriași",
+    "pe egipteni"
    ],
    "a": 0
   },
@@ -191,12 +191,12 @@
    "id": "2sa.8.usor.319",
    "age": "usor",
    "t": "one",
-   "ref": "8:15",
-   "q": "Ce făcea David pentru tot poporul lui?",
+   "ref": "8:6",
+   "q": "Unde a pus David strajă după ce i-a bătut pe sirieni?",
    "opts": [
-    "războaie",
-    "judecată și dreptate",
-    "petreceri"
+    "în Babilon",
+    "în Siria Damascului",
+    "în Egipt"
    ],
    "a": 1
   },
@@ -204,12 +204,12 @@
    "id": "2sa.8.usor.320",
    "age": "usor",
    "t": "one",
-   "ref": "8:16",
-   "q": "Cine era mai-mare peste oștirea lui David?",
+   "ref": "8:18",
+   "q": "Ce erau fiii lui David?",
    "opts": [
-    "Ioab, fiul Țeruiei",
-    "Țadoc, fiul lui Ahitub",
-    "Seraia, logofătul"
+    "mari dregători",
+    "păstori de oi",
+    "pescari"
    ],
    "a": 0
   },
@@ -217,48 +217,48 @@
    "id": "2sa.8.usor.321",
    "age": "usor",
    "t": "match",
-   "ref": "8:1-18",
-   "q": "Asociază fiecare persoană cu ce se spune despre ea.",
+   "ref": "8:2-17",
+   "q": "Asociază fiecare nume cu ce se spune despre el.",
    "pairs": [
-    [
-     "Hadadezer",
-     "împăratul din Țoba"
-    ],
-    [
-     "Toi",
-     "împăratul Hamatului"
-    ],
-    [
-     "Ioram",
-     "fiul lui Toi, trimis la David"
-    ],
     [
      "Ioab",
      "mai-mare peste oștire"
     ],
     [
      "Țadoc",
-     "preot"
+     "era preot"
+    ],
+    [
+     "frânghia",
+     "cu ea au fost măsurați moabiții"
+    ],
+    [
+     "Edomul",
+     "a fost supus în întregime lui David"
+    ],
+    [
+     "vasele de argint și de aur",
+     "le-a adus fiul lui Toi"
     ]
    ],
    "refs": [
-    "8:3",
-    "8:9",
-    "8:10",
     "8:16",
-    "8:17"
+    "8:17",
+    "8:2",
+    "8:14",
+    "8:10"
    ]
   },
   {
    "id": "2sa.8.usor.322",
    "age": "usor",
    "t": "multi",
-   "ref": "8:10",
-   "q": "Ce vase a adus Ioram la David?",
+   "ref": "8:4",
+   "q": "Pe cine i-a luat David lui Hadadezer?",
    "opts": [
-    "vase de aur",
-    "vase de lut",
-    "vase de argint"
+    "pedeștri",
+    "corăbii",
+    "călăreți"
    ],
    "a": [
     0,
@@ -269,12 +269,12 @@
    "id": "2sa.8.usor.323",
    "age": "usor",
    "t": "multi",
-   "ref": "8:2",
-   "q": "Ce au făcut moabiții după ce au fost bătuți de David?",
+   "ref": "8:11",
+   "q": "Ce I-a închinat David Domnului?",
    "opts": [
-    "au fost supuși lui David",
-    "au plecat în Egipt",
-    "i-au plătit bir"
+    "argintul",
+    "idolii",
+    "aurul"
    ],
    "a": [
     0,
@@ -285,89 +285,44 @@
    "id": "2sa.8.usor.324",
    "age": "usor",
    "t": "multi",
-   "ref": "8:6",
-   "q": "Ce au făcut sirienii după ce David i-a bătut?",
+   "ref": "8:12",
+   "q": "Pe cine biruise David?",
    "opts": [
-    "au refuzat să plătească bir",
-    "l-au făcut împărat pe Hadadezer peste Israel",
-    "au plecat împotriva lui Ioab"
+    "pe amaleciți",
+    "pe egipteni",
+    "pe moabiți"
    ],
-   "a": []
+   "a": [
+    0,
+    2
+   ]
   },
   {
    "id": "2sa.8.mediu.301",
    "age": "mediu",
    "t": "tf",
-   "ref": "8:2",
-   "q": "Moabiții au fost supuși lui David.",
+   "ref": "8:1",
+   "q": "David a luat din mâna filistenilor cârmuirea capitalei lor.",
    "a": true
   },
   {
    "id": "2sa.8.mediu.302",
    "age": "mediu",
    "t": "tf",
-   "ref": "8:4",
-   "q": "David i-a luat lui Hadadezer douăzeci de mii de pedeștri.",
-   "a": true
+   "ref": "8:2",
+   "q": "Moabiții au fost toți lăsați în viață.",
+   "a": false
   },
   {
    "id": "2sa.8.mediu.303",
    "age": "mediu",
    "t": "tf",
-   "ref": "8:8",
-   "q": "Betah și Berotai erau cetăți ale lui Hadadezer.",
+   "ref": "8:3",
+   "q": "Hadadezer era fiul lui Rehob.",
    "a": true
   },
   {
    "id": "2sa.8.mediu.304",
-   "age": "mediu",
-   "t": "tf",
-   "ref": "8:11",
-   "q": "David a închinat Domnului și vasele aduse de Ioram.",
-   "a": true
-  },
-  {
-   "id": "2sa.8.mediu.305",
-   "age": "mediu",
-   "t": "tf",
-   "ref": "8:15",
-   "q": "David a împărățit peste Israel.",
-   "a": true
-  },
-  {
-   "id": "2sa.8.mediu.306",
-   "age": "mediu",
-   "t": "tf",
-   "ref": "8:3",
-   "q": "Hadadezer era fiul lui Toi.",
-   "a": false
-  },
-  {
-   "id": "2sa.8.mediu.307",
-   "age": "mediu",
-   "t": "tf",
-   "ref": "8:7",
-   "q": "Scuturile de aur au fost lăsate de David în Țoba.",
-   "a": false
-  },
-  {
-   "id": "2sa.8.mediu.308",
-   "age": "mediu",
-   "t": "tf",
-   "ref": "8:13",
-   "q": "David și-a făcut un nume în Valea Sării înainte de lupta cu sirienii.",
-   "a": false
-  },
-  {
-   "id": "2sa.8.mediu.309",
-   "age": "mediu",
-   "t": "tf",
-   "ref": "8:17",
-   "q": "Seraia era mai-mare peste oștire.",
-   "a": false
-  },
-  {
-   "id": "2sa.8.mediu.310",
    "age": "mediu",
    "t": "tf",
    "ref": "8:5",
@@ -375,15 +330,63 @@
    "a": false
   },
   {
+   "id": "2sa.8.mediu.305",
+   "age": "mediu",
+   "t": "tf",
+   "ref": "8:7",
+   "q": "David a adus scuturile de aur la Ierusalim.",
+   "a": true
+  },
+  {
+   "id": "2sa.8.mediu.306",
+   "age": "mediu",
+   "t": "tf",
+   "ref": "8:4",
+   "q": "David a păstrat cai pentru o mie de care.",
+   "a": false
+  },
+  {
+   "id": "2sa.8.mediu.307",
+   "age": "mediu",
+   "t": "tf",
+   "ref": "8:11",
+   "q": "David a închinat Domnului argintul și aurul luate de la neamuri.",
+   "a": true
+  },
+  {
+   "id": "2sa.8.mediu.308",
+   "age": "mediu",
+   "t": "tf",
+   "ref": "8:13",
+   "q": "David i-a bătut pe edomiți în valea Refaim.",
+   "a": false
+  },
+  {
+   "id": "2sa.8.mediu.309",
+   "age": "mediu",
+   "t": "tf",
+   "ref": "8:16",
+   "q": "Iosafat, fiul lui Ahilud, era mai-mare peste scriitori.",
+   "a": true
+  },
+  {
+   "id": "2sa.8.mediu.310",
+   "age": "mediu",
+   "t": "tf",
+   "ref": "8:6",
+   "q": "Domnul l-a ocrotit pe David numai în Siria.",
+   "a": false
+  },
+  {
    "id": "2sa.8.mediu.311",
    "age": "mediu",
    "t": "one",
-   "ref": "8:9",
-   "q": "Ce a auzit Toi, împăratul Hamatului?",
+   "ref": "8:2",
+   "q": "Cu ce au fost măsurați moabiții?",
    "opts": [
-    "că David bătuse oștirea lui Hadadezer",
-    "că David adusese chivotul la Ierusalim",
-    "că David luase cetatea Ierusalimului"
+    "cu o frânghie",
+    "cu un lanț",
+    "cu o trestie"
    ],
    "a": 0
   },
@@ -391,12 +394,12 @@
    "id": "2sa.8.mediu.312",
    "age": "mediu",
    "t": "one",
-   "ref": "8:16",
-   "q": "Al cui fiu era Iosafat, mai-marele peste scriitori?",
+   "ref": "8:3",
+   "q": "Peste ce râu se ducea să-și așeze iarăși stăpânirea?",
    "opts": [
-    "al lui Ahitub",
-    "al lui Iehoiada",
-    "al lui Ahilud"
+    "peste Iordan",
+    "peste Nil",
+    "peste Eufrat"
    ],
    "a": 2
   },
@@ -404,12 +407,12 @@
    "id": "2sa.8.mediu.313",
    "age": "mediu",
    "t": "one",
-   "ref": "8:10",
-   "q": "Ce i-a dus Ioram lui David?",
+   "ref": "8:4",
+   "q": "Ce a făcut David cu caii de trăsură ai lui Hadadezer?",
    "opts": [
-    "vase de argint, de aur și de aramă",
-    "saci cu grâu, vin și untdelemn",
-    "cai de luptă și care de război"
+    "le-a tăiat vinele",
+    "i-a dat lui Toi",
+    "i-a dus la Ierusalim"
    ],
    "a": 0
   },
@@ -417,12 +420,12 @@
    "id": "2sa.8.mediu.314",
    "age": "mediu",
    "t": "one",
-   "ref": "8:12",
-   "q": "Din prada cui era o parte din aurul închinat Domnului?",
+   "ref": "8:6",
+   "q": "Ce au plătit sirienii lui David?",
    "opts": [
-    "de la Hadadezer, fiul lui Rehob",
-    "de la Toi, împăratul Hamatului",
-    "de la Hiram, împăratul Tirului"
+    "un bir",
+    "o răscumpărare",
+    "o datorie veche"
    ],
    "a": 0
   },
@@ -430,12 +433,12 @@
    "id": "2sa.8.mediu.315",
    "age": "mediu",
    "t": "one",
-   "ref": "8:18",
-   "q": "Peste cine era căpetenie Benaia?",
+   "ref": "8:8",
+   "q": "De unde a luat David multă aramă?",
    "opts": [
-    "peste scriitori",
-    "peste cheretiți și peletiți",
-    "peste preoți și leviți"
+    "din Țoba și Rehob",
+    "din Betah și Berotai",
+    "din Damasc și Hamat"
    ],
    "a": 1
   },
@@ -443,12 +446,12 @@
    "id": "2sa.8.mediu.316",
    "age": "mediu",
    "t": "one",
-   "ref": "8:14",
-   "q": "Ce se spune despre Edom la sfârșitul războaielor?",
+   "ref": "8:10",
+   "q": "Pe cine a trimis Toi la David?",
    "opts": [
-    "Edomul a rămas liber",
-    "Edomul s-a unit cu Siria",
-    "tot Edomul a fost supus lui David"
+    "pe căpetenia oștirii lui",
+    "pe un proroc din Hamat",
+    "pe fiul său, Ioram"
    ],
    "a": 2
   },
@@ -456,12 +459,12 @@
    "id": "2sa.8.mediu.317",
    "age": "mediu",
    "t": "one",
-   "ref": "8:6",
-   "q": "Ce a pus David în Siria Damascului?",
+   "ref": "8:13",
+   "q": "Când și-a făcut David iarăși un nume?",
    "opts": [
-    "dregători",
-    "un împărat",
-    "strajă"
+    "la întoarcerea de la biruința asupra filistenilor",
+    "la întoarcerea chivotului în cetatea lui David",
+    "la întoarcerea de la biruința asupra sirienilor"
    ],
    "a": 2
   },
@@ -469,12 +472,12 @@
    "id": "2sa.8.mediu.318",
    "age": "mediu",
    "t": "one",
-   "ref": "8:18",
-   "q": "Al cui fiu era Benaia?",
+   "ref": "8:14",
+   "q": "Unde a mai pus David străji, după Siria?",
    "opts": [
-    "al lui Ner",
-    "al lui Iehoiada",
-    "al lui Țeruia"
+    "în tot Amonul",
+    "în tot Edomul",
+    "în tot Moabul"
    ],
    "a": 1
   },
@@ -482,12 +485,12 @@
    "id": "2sa.8.mediu.319",
    "age": "mediu",
    "t": "one",
-   "ref": "8:10",
-   "q": "De ce l-a lăudat Toi pe David?",
+   "ref": "8:15",
+   "q": "Ce făcea David la tot poporul lui?",
    "opts": [
-    "a supus pe moabiți",
-    "a bătut pe filisteni",
-    "l-a bătut pe Hadadezer"
+    "pace și odihnă",
+    "milă și bunătate",
+    "judecată și dreptate"
    ],
    "a": 2
   },
@@ -495,12 +498,12 @@
    "id": "2sa.8.mediu.320",
    "age": "mediu",
    "t": "one",
-   "ref": "8:1",
-   "q": "Ce a luat David din mâna filistenilor?",
+   "ref": "8:18",
+   "q": "Peste cine era căpetenie Benaia?",
    "opts": [
-    "cârmuirea capitalei lor",
-    "toate armele lor de fier",
-    "chivotul legământului"
+    "peste cheretiți și peletiți",
+    "peste preoți și leviți",
+    "peste scriitori și logofeți"
    ],
    "a": 0
   },
@@ -508,48 +511,48 @@
    "id": "2sa.8.mediu.321",
    "age": "mediu",
    "t": "match",
-   "ref": "8:16-18",
-   "q": "Asociază fiecare om cu slujba lui la curtea lui David.",
+   "ref": "8:9-17",
+   "q": "Asociază fiecare persoană cu slujba ei.",
    "pairs": [
     [
      "Ioab",
      "mai-mare peste oștire"
     ],
     [
-     "Iosafat",
-     "mai-mare peste scriitori"
-    ],
-    [
      "Țadoc",
-     "preot"
+     "preot, fiul lui Ahitub"
     ],
     [
      "Seraia",
      "logofăt"
     ],
     [
-     "Benaia",
-     "căpetenia cheretiților și peletiților"
+     "Toi",
+     "împăratul Hamatului"
+    ],
+    [
+     "Ahimelec",
+     "preot, fiul lui Abiatar"
     ]
    ],
    "refs": [
     "8:16",
-    "8:16",
     "8:17",
     "8:17",
-    "8:18"
+    "8:9",
+    "8:17"
    ]
   },
   {
    "id": "2sa.8.mediu.322",
    "age": "mediu",
    "t": "multi",
-   "ref": "8:7-8",
-   "q": "Ce a luat David de la Hadadezer și din cetățile lui?",
+   "ref": "8:4",
+   "q": "Pe cine i-a luat David lui Hadadezer?",
    "opts": [
-    "multă aramă",
-    "scuturile de aur",
-    "vase de argint aduse de Ioram"
+    "douăzeci de mii de pedeștri",
+    "o mie șapte sute de călăreți",
+    "o mie de care de luptă"
    ],
    "a": [
     0,
@@ -560,12 +563,12 @@
    "id": "2sa.8.mediu.323",
    "age": "mediu",
    "t": "multi",
-   "ref": "8:4",
-   "q": "Ce i-a luat David lui Hadadezer?",
+   "ref": "8:10",
+   "q": "Ce vase i-a adus Ioram lui David?",
    "opts": [
-    "o mie de care de fier",
-    "o mie șapte sute de călăreți",
-    "douăzeci de mii de pedeștri"
+    "de fildeș",
+    "de argint",
+    "de aramă"
    ],
    "a": [
     1,
@@ -576,12 +579,12 @@
    "id": "2sa.8.mediu.324",
    "age": "mediu",
    "t": "multi",
-   "ref": "8:9-10",
-   "q": "Ce se spune despre Toi, împăratul Hamatului?",
+   "ref": "8:12",
+   "q": "De la ce neamuri era argintul și aurul închinat Domnului?",
    "opts": [
-    "era în război cu Hadadezer",
-    "a luptat alături de Hadadezer",
-    "l-a trimis pe fiul său Ioram la David"
+    "din Moab",
+    "din Egipt",
+    "de la Amalec"
    ],
    "a": [
     0,
@@ -592,8 +595,8 @@
    "id": "2sa.8.greu.301",
    "age": "greu",
    "t": "tf",
-   "ref": "8:2",
-   "q": "Moabiții au fost măsurați cu frânghia de David.",
+   "ref": "8:15",
+   "q": "David făcea judecată și dreptate la tot poporul lui.",
    "a": true
   },
   {
@@ -601,7 +604,7 @@
    "age": "greu",
    "t": "tf",
    "ref": "8:3",
-   "q": "Hadadezer a fost bătut când David se întorcea de la Edom.",
+   "q": "Hadadezer era fiul lui Toi.",
    "a": false
   },
   {
@@ -609,15 +612,15 @@
    "age": "greu",
    "t": "tf",
    "ref": "8:4",
-   "q": "David a tăiat vinele cailor de trăsură.",
+   "q": "David a păstrat cai pentru o sută de care.",
    "a": true
   },
   {
    "id": "2sa.8.greu.304",
    "age": "greu",
    "t": "tf",
-   "ref": "8:6",
-   "q": "Sirienii au rămas neatârnați după ce au fost bătuți.",
+   "ref": "8:5",
+   "q": "David a ucis douăzeci de mii de sirieni.",
    "a": false
   },
   {
@@ -625,7 +628,7 @@
    "age": "greu",
    "t": "tf",
    "ref": "8:8",
-   "q": "Arama luată de David venea din Betah și Berotai.",
+   "q": "Betah și Berotai erau cetățile lui Hadadezer.",
    "a": true
   },
   {
@@ -633,7 +636,7 @@
    "age": "greu",
    "t": "tf",
    "ref": "8:10",
-   "q": "Ioram a adus doar vase de aur.",
+   "q": "Toi l-a trimis pe fratele său Ioram la David.",
    "a": false
   },
   {
@@ -641,7 +644,7 @@
    "age": "greu",
    "t": "tf",
    "ref": "8:12",
-   "q": "Între neamurile pomenite sunt și fiii lui Amon.",
+   "q": "Prada închinată Domnului venea și de la fiii lui Amon.",
    "a": true
   },
   {
@@ -649,35 +652,35 @@
    "age": "greu",
    "t": "tf",
    "ref": "8:16",
-   "q": "Iosafat era fiul lui Ahilud.",
-   "a": true
+   "q": "Iosafat, fiul lui Ahilud, era mai-mare peste oștire.",
+   "a": false
   },
   {
    "id": "2sa.8.greu.309",
    "age": "greu",
    "t": "tf",
    "ref": "8:17",
-   "q": "Abiatar era fiul lui Ahimelec, după acest capitol.",
-   "a": false
+   "q": "Seraia era logofăt.",
+   "a": true
   },
   {
    "id": "2sa.8.greu.310",
    "age": "greu",
    "t": "tf",
    "ref": "8:18",
-   "q": "Benaia era fiul lui Ahitub.",
+   "q": "Benaia, fiul lui Iehoiada, era mai-mare peste scriitori.",
    "a": false
   },
   {
    "id": "2sa.8.greu.311",
    "age": "greu",
    "t": "one",
-   "ref": "8:2",
-   "q": "Câte frânghii a măsurat David pentru moabiții lăsați în viață?",
+   "ref": "8:1",
+   "q": "Ce a luat David din mâna filistenilor?",
    "opts": [
-    "o frânghie plină",
-    "trei frânghii",
-    "două frânghii"
+    "cârmuirea capitalei lor",
+    "cetatea Ecron cu ținutul ei",
+    "toate carele lor de război"
    ],
    "a": 0
   },
@@ -686,11 +689,11 @@
    "age": "greu",
    "t": "one",
    "ref": "8:4",
-   "q": "Câți pedeștri i-a luat David lui Hadadezer?",
+   "q": "Câți călăreți i-a luat David lui Hadadezer?",
    "opts": [
-    "douăzeci de mii",
-    "douăzeci și două de mii",
-    "o mie șapte sute"
+    "o mie șapte sute",
+    "trei mii",
+    "două mii cinci sute"
    ],
    "a": 0
   },
@@ -698,12 +701,12 @@
    "id": "2sa.8.greu.313",
    "age": "greu",
    "t": "one",
-   "ref": "8:5",
-   "q": "În ajutorul cui au venit sirienii din Damasc?",
+   "ref": "8:6",
+   "q": "Unde a pus David strajă după biruința asupra sirienilor?",
    "opts": [
-    "al lui Hadadezer",
-    "al edomiților",
-    "al lui Toi"
+    "în Siria Damascului",
+    "în cetatea Țoba",
+    "în cetatea Hamat"
    ],
    "a": 0
   },
@@ -711,12 +714,12 @@
    "id": "2sa.8.greu.314",
    "age": "greu",
    "t": "one",
-   "ref": "8:9",
-   "q": "Ce oștire bătuse David, după ce a auzit Toi?",
+   "ref": "8:7",
+   "q": "Ale cui erau scuturile de aur aduse la Ierusalim?",
    "opts": [
-    "oastea fiilor lui Amon",
-    "toată oștirea lui Hadadezer",
-    "oastea filistenilor din Gat"
+    "ale împăratului Toi",
+    "ale slujitorilor lui Hadadezer",
+    "ale lui Hadadezer însuși"
    ],
    "a": 1
   },
@@ -724,12 +727,12 @@
    "id": "2sa.8.greu.315",
    "age": "greu",
    "t": "one",
-   "ref": "8:10",
-   "q": "Cum se numea fiul lui Toi?",
+   "ref": "8:9",
+   "q": "Ce a auzit Toi, împăratul Hamatului?",
    "opts": [
-    "Ahilud",
-    "Rehob",
-    "Ioram"
+    "că David bătuse pe edomiți în vale",
+    "că David luase capitala filistenilor",
+    "că David bătuse toată oștirea lui Hadadezer"
    ],
    "a": 2
   },
@@ -737,12 +740,12 @@
    "id": "2sa.8.greu.316",
    "age": "greu",
    "t": "one",
-   "ref": "8:11",
-   "q": "Cum a închinat David vasele lui Toi?",
+   "ref": "8:10",
+   "q": "Ce vase a adus Ioram lui David?",
    "opts": [
-    "le-a pus în casa lui",
-    "cum închinase aurul de la neamuri",
-    "le-a topit pentru scuturi"
+    "de aur, de aramă și de fier",
+    "de argint, de aur și de aramă",
+    "de argint, de aur și de fildeș"
    ],
    "a": 1
   },
@@ -750,12 +753,12 @@
    "id": "2sa.8.greu.317",
    "age": "greu",
    "t": "one",
-   "ref": "8:13",
-   "q": "De unde se întorcea David când a bătut pe edomiți?",
+   "ref": "8:11",
+   "q": "Ce a făcut David cu vasele aduse de Ioram?",
    "opts": [
-    "de la Ierusalim cu chivotul",
-    "de la biruința asupra sirienilor",
-    "de la Hebron, după ungere"
+    "le-a pus în casa lui",
+    "le-a închinat Domnului",
+    "le-a dat preoților"
    ],
    "a": 1
   },
@@ -763,12 +766,12 @@
    "id": "2sa.8.greu.318",
    "age": "greu",
    "t": "one",
-   "ref": "8:16",
-   "q": "Ce era Ioab la curtea lui David?",
+   "ref": "8:14",
+   "q": "Ce se spune de două ori în capitol despre Domnul?",
    "opts": [
-    "mai-mare peste scriitori",
-    "căpetenia cheretiților",
-    "mai-mare peste oștire"
+    "că îi dădea biruință peste neamuri",
+    "că îi întărea împărăția în Israel",
+    "că îl ocrotea pe David oriunde mergea"
    ],
    "a": 2
   },
@@ -777,11 +780,11 @@
    "age": "greu",
    "t": "one",
    "ref": "8:17",
-   "q": "Al cui fiu era Ahimelec, preotul?",
+   "q": "Al cui fiu era Țadoc?",
    "opts": [
-    "al lui Abiatar",
-    "al lui Iehoiada",
-    "al lui Ahitub"
+    "al lui Ahitub",
+    "al lui Ahimelec",
+    "al lui Abiatar"
    ],
    "a": 0
   },
@@ -792,8 +795,8 @@
    "ref": "8:18",
    "q": "Ce erau fiii lui David?",
    "opts": [
-    "preoți",
-    "scriitori",
+    "căpetenii de oaste",
+    "scriitori ai împăratului",
     "mari dregători"
    ],
    "a": 2
@@ -802,48 +805,48 @@
    "id": "2sa.8.greu.321",
    "age": "greu",
    "t": "match",
-   "ref": "8:3-12",
-   "q": "Asociază fiecare număr cu ce înseamnă.",
+   "ref": "8:3-9",
+   "q": "Asociază fiecare loc cu ce se spune despre el.",
    "pairs": [
     [
-     "1700",
-     "călăreții luați de la Hadadezer"
+     "Țoba",
+     "cetatea împăratului Hadadezer"
     ],
     [
-     "20 000",
-     "pedeștrii luați de la Hadadezer"
+     "Hamat",
+     "împărăția lui Toi"
     ],
     [
-     "100",
-     "carele pentru care David a păstrat cai"
+     "Damascul",
+     "de acolo au venit sirienii în ajutorul lui Hadadezer"
     ],
     [
-     "22 000",
-     "sirienii uciși de David"
+     "Ierusalimul",
+     "acolo au fost aduse scuturile de aur"
     ],
     [
-     "18 000",
-     "edomiții bătuți în Valea Sării"
+     "Eufratul",
+     "acolo se ducea să-și așeze iarăși stăpânirea"
     ]
    ],
    "refs": [
-    "8:4",
-    "8:4",
-    "8:4",
+    "8:3",
+    "8:9",
     "8:5",
-    "8:13"
+    "8:7",
+    "8:3"
    ]
   },
   {
    "id": "2sa.8.greu.322",
    "age": "greu",
    "t": "multi",
-   "ref": "8:12",
-   "q": "Pe care dintre aceste neamuri le pomenește textul între cele biruite de David?",
+   "ref": "8:16-17",
+   "q": "Ce slujbe aveau oamenii lui David?",
    "opts": [
-    "Moab",
-    "Babilon",
-    "Amalec"
+    "Ahimelec era preot",
+    "Țadoc era logofăt",
+    "Ioab era mai-mare peste oștire"
    ],
    "a": [
     0,
@@ -854,30 +857,30 @@
    "id": "2sa.8.greu.323",
    "age": "greu",
    "t": "multi",
-   "ref": "8:2",
-   "q": "Ce se spune despre moabiți în acest capitol?",
+   "ref": "8:13",
+   "q": "Pe cine a bătut David la întoarcerea de la biruința asupra sirienilor?",
    "opts": [
-    "au fost bătuți de David",
-    "au venit în ajutorul lui Hadadezer",
-    "i-au plătit bir"
+    "pe moabiți",
+    "pe amaleciți",
+    "pe amoniți"
    ],
-   "a": [
-    0,
-    2
-   ]
+   "a": []
   },
   {
    "id": "2sa.8.greu.324",
    "age": "greu",
    "t": "multi",
-   "ref": "8:16-18",
-   "q": "Ce slujbă avea Iosafat, fiul lui Ahilud?",
+   "ref": "8:2",
+   "q": "Ce s-a întâmplat cu moabiții?",
    "opts": [
-    "căpetenia cheretiților",
-    "logofăt",
-    "preot"
+    "au fost duși robi în Egipt",
+    "i-au plătit bir lui David",
+    "au fost măsurați cu frânghia"
    ],
-   "a": []
+   "a": [
+    1,
+    2
+   ]
   }
  ]
 }

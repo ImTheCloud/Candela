@@ -7,8 +7,8 @@
    "id": "2sa.7.usor.301",
    "age": "usor",
    "t": "tf",
-   "ref": "7:2",
-   "q": "David locuia într-o casă de cedru.",
+   "ref": "7:1",
+   "q": "Domnul i-a dat lui David odihnă de vrăjmași.",
    "a": true
   },
   {
@@ -16,15 +16,15 @@
    "age": "usor",
    "t": "tf",
    "ref": "7:2",
-   "q": "Chivotul lui Dumnezeu locuia și el într-o casă de cedru.",
+   "q": "David locuia într-un cort, iar chivotul într-o casă de cedru.",
    "a": false
   },
   {
    "id": "2sa.7.usor.303",
    "age": "usor",
    "t": "tf",
-   "ref": "7:2",
-   "q": "David a vorbit cu prorocul Natan despre chivot.",
+   "ref": "7:3",
+   "q": "La început, Natan i-a spus lui David să facă tot ce are în inimă.",
    "a": true
   },
   {
@@ -32,47 +32,47 @@
    "age": "usor",
    "t": "tf",
    "ref": "7:4",
-   "q": "Domnul i-a vorbit lui Natan noaptea.",
-   "a": true
+   "q": "Domnul i-a vorbit lui Natan la amiază.",
+   "a": false
   },
   {
    "id": "2sa.7.usor.305",
    "age": "usor",
    "t": "tf",
-   "ref": "7:5",
-   "q": "Domnul i-a spus lui David să-I zidească îndată o casă.",
-   "a": false
+   "ref": "7:8",
+   "q": "Domnul l-a luat pe David de la oi.",
+   "a": true
   },
   {
    "id": "2sa.7.usor.306",
    "age": "usor",
    "t": "tf",
-   "ref": "7:8",
-   "q": "Domnul l-a luat pe David de la oi ca să-l facă căpetenie.",
-   "a": true
+   "ref": "7:6",
+   "q": "Domnul a locuit într-un palat de când a scos pe Israel din Egipt.",
+   "a": false
   },
   {
    "id": "2sa.7.usor.307",
    "age": "usor",
    "t": "tf",
-   "ref": "7:12",
-   "q": "Domnul a spus că după David nu va mai domni nimeni din familia lui.",
-   "a": false
+   "ref": "7:14",
+   "q": "Domnul a spus despre fiul lui David: „Eu îi voi fi Tată.”",
+   "a": true
   },
   {
    "id": "2sa.7.usor.308",
    "age": "usor",
    "t": "tf",
-   "ref": "7:13",
-   "q": "Fiul lui David avea să zidească o casă Numelui Domnului.",
-   "a": true
+   "ref": "7:15",
+   "q": "Domnul a spus că harul Lui se va depărta de la fiul lui David.",
+   "a": false
   },
   {
    "id": "2sa.7.usor.309",
    "age": "usor",
    "t": "tf",
    "ref": "7:18",
-   "q": "David s-a rugat înaintea Domnului după ce a vorbit cu Natan.",
+   "q": "David s-a înfățișat înaintea Domnului după ce a auzit vestea.",
    "a": true
   },
   {
@@ -80,7 +80,7 @@
    "age": "usor",
    "t": "tf",
    "ref": "7:22",
-   "q": "David a spus în rugăciune că sunt mulți dumnezei ca Domnul.",
+   "q": "David a spus că sunt mulți dumnezei ca Domnul.",
    "a": false
   },
   {
@@ -88,11 +88,11 @@
    "age": "usor",
    "t": "one",
    "ref": "7:2",
-   "q": "Cu ce proroc a vorbit David despre chivot?",
+   "q": "Cui i-a vorbit David despre chivot?",
    "opts": [
-    "cu Natan",
-    "cu Samuel",
-    "cu Ilie"
+    "prorocului Natan",
+    "lui Ioab",
+    "lui Saul"
    ],
    "a": 0
   },
@@ -101,11 +101,11 @@
    "age": "usor",
    "t": "one",
    "ref": "7:2",
-   "q": "În ce locuia chivotul lui Dumnezeu?",
+   "q": "Din ce lemn era casa lui David?",
    "opts": [
-    "într-un templu de aur",
-    "într-un cort",
-    "într-o peșteră"
+    "de stejar",
+    "de cedru",
+    "de bambus"
    ],
    "a": 1
   },
@@ -113,12 +113,12 @@
    "id": "2sa.7.usor.313",
    "age": "usor",
    "t": "one",
-   "ref": "7:3",
-   "q": "Ce i-a răspuns Natan lui David la început?",
+   "ref": "7:5",
+   "q": "Ce voia David să facă pentru Domnul?",
    "opts": [
-    "„Nu te atinge de chivot”",
-    "„Du-te și fă tot ce ai în inimă”",
-    "„Pleacă din Ierusalim”"
+    "să-I facă un car nou",
+    "să-I zidească o casă",
+    "să-I cumpere o turmă"
    ],
    "a": 1
   },
@@ -127,10 +127,10 @@
    "age": "usor",
    "t": "one",
    "ref": "7:6",
-   "q": "Unde a locuit Dumnezeu de când i-a scos pe israeliți din Egipt?",
+   "q": "În ce a călătorit Domnul cu Israel?",
    "opts": [
-    "într-un palat",
-    "pe un munte",
+    "într-o corabie",
+    "într-un car de foc",
     "într-un cort"
    ],
    "a": 2
@@ -139,12 +139,12 @@
    "id": "2sa.7.usor.315",
    "age": "usor",
    "t": "one",
-   "ref": "7:8",
-   "q": "De unde l-a luat Domnul pe David?",
+   "ref": "7:9",
+   "q": "Ce a făcut Domnul cu numele lui David?",
    "opts": [
-    "din oastea lui Saul",
-    "de la masa împăratului",
-    "de la pășune, de la oi"
+    "l-a uitat",
+    "l-a schimbat",
+    "l-a făcut mare"
    ],
    "a": 2
   },
@@ -152,12 +152,12 @@
    "id": "2sa.7.usor.316",
    "age": "usor",
    "t": "one",
-   "ref": "7:9",
-   "q": "Ce a făcut Domnul cu vrăjmașii lui David?",
+   "ref": "7:12",
+   "q": "Pe cine a spus Domnul că va ridica după David?",
    "opts": [
-    "i-a nimicit dinaintea lui",
-    "i-a lăsat să-l biruiască",
-    "i-a făcut prietenii lui"
+    "un urmaș din trupul lui",
+    "un preot din Silo",
+    "un împărat din Egipt"
    ],
    "a": 0
   },
@@ -165,12 +165,12 @@
    "id": "2sa.7.usor.317",
    "age": "usor",
    "t": "one",
-   "ref": "7:11",
-   "q": "Ce a spus Domnul că-i va zidi lui David?",
+   "ref": "7:13",
+   "q": "Cine va zidi casă Numelui Domnului?",
    "opts": [
-    "o casă",
-    "o corabie",
-    "un turn"
+    "urmașul lui David",
+    "Saul",
+    "Natan"
    ],
    "a": 0
   },
@@ -178,12 +178,12 @@
    "id": "2sa.7.usor.318",
    "age": "usor",
    "t": "one",
-   "ref": "7:14",
-   "q": "Ce a spus Domnul că va fi pentru fiul lui David?",
+   "ref": "7:16",
+   "q": "Cât va dăinui împărăția lui David?",
    "opts": [
-    "judecător",
-    "Tată",
-    "stăpân aspru"
+    "o zi",
+    "veșnic",
+    "zece ani"
    ],
    "a": 1
   },
@@ -191,12 +191,12 @@
    "id": "2sa.7.usor.319",
    "age": "usor",
    "t": "one",
-   "ref": "7:16",
-   "q": "Cât va dăinui casa și împărăția lui David?",
+   "ref": "7:18",
+   "q": "Ce a întrebat David înaintea Domnului?",
    "opts": [
-    "zece ani",
-    "o sută de ani",
-    "veșnic"
+    "„Unde este chivotul?”",
+    "„De ce nu sunt preot?”",
+    "„Cine sunt eu, Doamne Dumnezeule?”"
    ],
    "a": 2
   },
@@ -204,12 +204,12 @@
    "id": "2sa.7.usor.320",
    "age": "usor",
    "t": "one",
-   "ref": "7:18",
-   "q": "Ce a întrebat David în rugăciunea lui?",
+   "ref": "7:29",
+   "q": "Ce I-a cerut David Domnului la sfârșit?",
    "opts": [
-    "„De ce nu pot zidi eu?”",
-    "„Când voi muri?”",
-    "„Cine sunt eu, Doamne Dumnezeule?”"
+    "să-i dea mult aur",
+    "să-i nimicească pe filisteni",
+    "să-i binecuvânteze casa"
    ],
    "a": 2
   },
@@ -217,36 +217,36 @@
    "id": "2sa.7.usor.321",
    "age": "usor",
    "t": "match",
-   "ref": "7:1-29",
-   "q": "Asociază fiecare persoană cu ce se spune despre ea.",
+   "ref": "7:2-23",
+   "q": "Asociază fiecare nume cu ce se spune despre el.",
    "pairs": [
     [
-     "David",
-     "locuia într-o casă de cedru"
+     "chivotul",
+     "locuia într-un cort"
     ],
     [
      "Natan",
-     "a dus cuvântul Domnului la David"
+     "i-a spus lui David toată vedenia"
     ],
     [
-     "Saul",
-     "Domnul și-a depărtat harul de la el"
+     "judecătorii",
+     "Domnul îi pusese odinioară peste Israel"
     ],
     [
-     "urmașul lui David",
-     "va zidi o casă Numelui Domnului"
+     "poporul Israel",
+     "Domnul l-a făcut poporul Lui pe vecie"
     ],
     [
-     "Domnul",
-     "l-a luat pe David de la oi"
+     "Egiptul",
+     "de acolo a răscumpărat Domnul pe Israel"
     ]
    ],
    "refs": [
     "7:2",
     "7:17",
-    "7:15",
-    "7:13",
-    "7:8"
+    "7:11",
+    "7:24",
+    "7:23"
    ]
   },
   {
@@ -254,11 +254,11 @@
    "age": "usor",
    "t": "multi",
    "ref": "7:9",
-   "q": "Ce a făcut Domnul pentru David, după cuvintele prin Natan?",
+   "q": "Ce a făcut Domnul pentru David?",
    "opts": [
-    "i-a făcut numele mare",
+    "i-a nimicit vrăjmașii",
     "a fost cu el pretutindeni",
-    "i-a dat un palat în Egipt"
+    "l-a făcut preot"
    ],
    "a": [
     0,
@@ -269,12 +269,12 @@
    "id": "2sa.7.usor.323",
    "age": "usor",
    "t": "multi",
-   "ref": "7:12-13",
-   "q": "Ce a spus Domnul despre urmașul lui David?",
+   "ref": "7:10",
+   "q": "Ce a făcut Domnul pentru poporul Său Israel?",
    "opts": [
-    "va zidi o casă Numelui Domnului",
-    "va ieși din trupul lui",
-    "va fi un proroc"
+    "l-a sădit ca să locuiască acolo",
+    "i-a dat un loc",
+    "l-a trimis înapoi în Egipt"
    ],
    "a": [
     0,
@@ -285,105 +285,108 @@
    "id": "2sa.7.usor.324",
    "age": "usor",
    "t": "multi",
-   "ref": "7:5-6",
-   "q": "Ce a spus Domnul despre locuința Lui de până atunci?",
+   "ref": "7:28",
+   "q": "Ce a spus David despre Domnul?",
    "opts": [
-    "a locuit la Ierusalim de mult timp",
-    "a cerut o casă de cedru de la judecători",
-    "a locuit într-un palat de aur"
+    "că cuvintele Lui sunt adevăr",
+    "că S-a schimbat",
+    "că este Dumnezeu"
    ],
-   "a": []
+   "a": [
+    0,
+    2
+   ]
   },
   {
    "id": "2sa.7.mediu.301",
    "age": "mediu",
    "t": "tf",
-   "ref": "7:1",
-   "q": "Domnul îl izbăvise pe David de toți vrăjmașii care-l înconjurau.",
+   "ref": "7:2",
+   "q": "David s-a plâns că chivotul locuiește într-un cort.",
    "a": true
   },
   {
    "id": "2sa.7.mediu.302",
    "age": "mediu",
    "t": "tf",
-   "ref": "7:7",
-   "q": "Domnul nu ceruse niciunei seminții să-I zidească o casă de cedru.",
-   "a": true
+   "ref": "7:4",
+   "q": "Domnul i-a vorbit lui Natan după trei zile.",
+   "a": false
   },
   {
    "id": "2sa.7.mediu.303",
    "age": "mediu",
    "t": "tf",
-   "ref": "7:9",
-   "q": "Domnul spune că a fost cu David pretutindeni pe unde a mers.",
+   "ref": "7:7",
+   "q": "Domnul n-a cerut niciunei seminții să-I zidească o casă de cedru.",
    "a": true
   },
   {
    "id": "2sa.7.mediu.304",
    "age": "mediu",
    "t": "tf",
-   "ref": "7:12",
-   "q": "Urmașul promis avea să vină după ce David va fi culcat cu părinții lui.",
-   "a": true
+   "ref": "7:22",
+   "q": "David a spus că sunt și alți dumnezei ca Domnul.",
+   "a": false
   },
   {
    "id": "2sa.7.mediu.305",
    "age": "mediu",
    "t": "tf",
-   "ref": "7:20",
-   "q": "David a spus: „Tu cunoști pe robul Tău.”",
+   "ref": "7:11",
+   "q": "Domnul i-a vestit lui David că El îi va zidi o casă.",
    "a": true
   },
   {
    "id": "2sa.7.mediu.306",
    "age": "mediu",
    "t": "tf",
-   "ref": "7:4",
-   "q": "Domnul i-a vorbit lui David direct, fără Natan.",
+   "ref": "7:12",
+   "q": "Urmașul lui David va fi ridicat cât trăiește încă David.",
    "a": false
   },
   {
    "id": "2sa.7.mediu.307",
    "age": "mediu",
    "t": "tf",
-   "ref": "7:10",
-   "q": "Domnul spune că poporul Israel va fi mereu tulburat de cei răi.",
-   "a": false
+   "ref": "7:14",
+   "q": "Dacă fiul lui David va face rău, Domnul îl va pedepsi cu o nuia omenească.",
+   "a": true
   },
   {
    "id": "2sa.7.mediu.308",
    "age": "mediu",
    "t": "tf",
-   "ref": "7:13",
-   "q": "Domnul a spus că David însuși va zidi casa Numelui Său.",
+   "ref": "7:17",
+   "q": "Natan i-a ascuns lui David o parte din vedenie.",
    "a": false
   },
   {
    "id": "2sa.7.mediu.309",
    "age": "mediu",
    "t": "tf",
-   "ref": "7:24",
-   "q": "David a spus că Israel va fi poporul Domnului doar pentru o vreme.",
-   "a": false
+   "ref": "7:23",
+   "q": "David a spus că niciun neam nu este ca poporul Israel.",
+   "a": true
   },
   {
    "id": "2sa.7.mediu.310",
    "age": "mediu",
    "t": "tf",
-   "ref": "7:3",
-   "q": "Natan a întrebat întâi pe Domnul, apoi i-a răspuns lui David.",
+   "ref": "7:27",
+   "q": "David a spus că a îndrăznit să se roage pentru că era împărat.",
    "a": false
   },
   {
    "id": "2sa.7.mediu.311",
    "age": "mediu",
    "t": "one",
-   "ref": "7:21",
-   "q": "După ce spune David că a făcut Domnul lucrurile mari?",
+   "ref": "7:1",
+   "q": "Când a vorbit David despre chivot?",
    "opts": [
-    "după rugăciunile robului Său",
-    "după jertfele aduse de popor",
-    "după cuvântul și inima Lui"
+    "când a cucerit cetățuia Sionului",
+    "când a adus chivotul în cetate",
+    "când Domnul i-a dat odihnă de vrăjmași"
    ],
    "a": 2
   },
@@ -391,12 +394,12 @@
    "id": "2sa.7.mediu.312",
    "age": "mediu",
    "t": "one",
-   "ref": "7:22",
-   "q": "Ce a spus David despre Dumnezeu?",
+   "ref": "7:3",
+   "q": "Ce motiv i-a dat Natan lui David la început?",
    "opts": [
-    "că locuiește doar în cort",
-    "că nu este altul ca El",
-    "că este un Dumnezeu între mulți"
+    "„Domnul te-a binecuvântat”",
+    "„Domnul este cu tine”",
+    "„Domnul te-a ales”"
    ],
    "a": 1
   },
@@ -404,12 +407,12 @@
    "id": "2sa.7.mediu.313",
    "age": "mediu",
    "t": "one",
-   "ref": "7:14",
-   "q": "Cum va pedepsi Domnul pe urmașul lui David, dacă face răul?",
+   "ref": "7:5",
+   "q": "Ce întrebare i-a pus Domnul lui David prin Natan?",
    "opts": [
-    "cu sabia vrăjmașilor",
-    "cu nuia și lovituri omenești",
-    "cu pierderea împărăției"
+    "„Oare tu Îmi vei aduce jertfe?”",
+    "„Oare tu Îmi vei zidi o casă?”",
+    "„Oare tu Îmi vei păzi chivotul?”"
    ],
    "a": 1
   },
@@ -417,12 +420,12 @@
    "id": "2sa.7.mediu.314",
    "age": "mediu",
    "t": "one",
-   "ref": "7:27",
-   "q": "De ce a îndrăznit David să facă această rugăciune?",
+   "ref": "7:21",
+   "q": "După ce a făcut Domnul aceste lucruri mari, spune David?",
    "opts": [
-    "poporul i-a cerut",
-    "Domnul i Se descoperise",
-    "Natan l-a sfătuit"
+    "după credincioșia lui David",
+    "după cuvântul și inima Lui",
+    "după rugăciunile poporului"
    ],
    "a": 1
   },
@@ -430,12 +433,12 @@
    "id": "2sa.7.mediu.315",
    "age": "mediu",
    "t": "one",
-   "ref": "7:11",
-   "q": "Pe cine pusese Domnul peste Israel înainte de împărați?",
+   "ref": "7:9",
+   "q": "Cu cine a asemănat Domnul numele lui David?",
    "opts": [
-    "judecători",
-    "proroci",
-    "preoți"
+    "cu numele celor mari de pe pământ",
+    "cu numele lui Avraam și Moise",
+    "cu numele împăraților din Egipt"
    ],
    "a": 0
   },
@@ -443,12 +446,12 @@
    "id": "2sa.7.mediu.316",
    "age": "mediu",
    "t": "one",
-   "ref": "7:23",
-   "q": "Ce a făcut Dumnezeu pentru Israel, după rugăciunea lui David?",
+   "ref": "7:10",
+   "q": "Ce a spus Domnul că nu vor mai face cei răi poporului Său?",
    "opts": [
-    "un templu de aur în cetatea Ierusalim",
-    "o pace veșnică cu împăratul Egiptului",
-    "minuni și semne, izgonind neamuri"
+    "nu-l vor mai robi",
+    "nu-l vor mai jefui",
+    "nu-l vor mai apăsa"
    ],
    "a": 2
   },
@@ -456,12 +459,12 @@
    "id": "2sa.7.mediu.317",
    "age": "mediu",
    "t": "one",
-   "ref": "7:5",
-   "q": "Ce a întrebat Domnul prin Natan?",
+   "ref": "7:28",
+   "q": "Ce a spus David despre cuvintele Domnului?",
    "opts": [
-    "dacă David va pleca la război",
-    "dacă David Îi va zidi o casă",
-    "dacă David Îl iubește"
+    "sunt o taină",
+    "sunt adevăr",
+    "sunt grele"
    ],
    "a": 1
   },
@@ -469,12 +472,12 @@
    "id": "2sa.7.mediu.318",
    "age": "mediu",
    "t": "one",
-   "ref": "7:15",
-   "q": "De la cine își depărtase Domnul harul?",
+   "ref": "7:13",
+   "q": "Ce va întări Domnul pe vecie pentru urmașul lui David?",
    "opts": [
-    "de la Abner",
-    "de la Iș-Boșet",
-    "de la Saul"
+    "oastea și căpeteniile oștirii lui",
+    "zidurile cetății lui de la Ierusalim",
+    "scaunul de domnie al împărăției lui"
    ],
    "a": 2
   },
@@ -482,12 +485,12 @@
    "id": "2sa.7.mediu.319",
    "age": "mediu",
    "t": "one",
-   "ref": "7:8",
-   "q": "Ce titlu folosește Domnul pentru Sine când îi vorbește lui David?",
+   "ref": "7:20",
+   "q": "Ce a spus David că știe Domnul despre el?",
    "opts": [
-    "Domnul oștirilor",
-    "Păstorul lui Israel",
-    "Împăratul cerului"
+    "„Tu cunoști pe robul Tău”",
+    "„Tu ai ales pe robul Tău”",
+    "„Tu iubești pe robul Tău”"
    ],
    "a": 0
   },
@@ -495,12 +498,12 @@
    "id": "2sa.7.mediu.320",
    "age": "mediu",
    "t": "one",
-   "ref": "7:16",
-   "q": "Ce va fi întărit pe vecie, după cuvântul Domnului către David?",
+   "ref": "7:26",
+   "q": "Ce a cerut David să se zică despre Domnul?",
    "opts": [
-    "zidul Ierusalimului",
-    "oastea lui Israel",
-    "scaunul lui de domnie"
+    "„Domnul oștirilor este Împăratul lui Israel”",
+    "„Domnul oștirilor este Păstorul lui Israel”",
+    "„Domnul oștirilor este Dumnezeul lui Israel”"
    ],
    "a": 2
   },
@@ -508,48 +511,48 @@
    "id": "2sa.7.mediu.321",
    "age": "mediu",
    "t": "match",
-   "ref": "7:1-29",
-   "q": "Asociază fiecare persoană cu cuvintele spuse.",
+   "ref": "7:2-15",
+   "q": "Asociază fiecare nume cu ce se spune despre el.",
    "pairs": [
     [
-     "David către Natan",
-     "„Eu locuiesc într-o casă de cedru.”"
+     "judecătorii",
+     "Domnul îi pusese odinioară peste Israel"
     ],
     [
-     "Natan către David",
-     "„Domnul este cu tine.”"
+     "cortul",
+     "în el a călătorit Domnul cu Israel"
     ],
     [
-     "Domnul despre urmașul lui David",
-     "„Eu îi voi fi Tată.”"
+     "pășunea",
+     "de acolo a fost luat David"
     ],
     [
-     "David în rugăciune",
-     "„Cine sunt eu, Doamne Dumnezeule?”"
+     "urmașul lui David",
+     "va zidi o casă Numelui Domnului"
     ],
     [
-     "Domnul, după David",
-     "„Eu îți voi întemeia o casă!”"
+     "Saul",
+     "harul Domnului s-a depărtat de la el"
     ]
    ],
    "refs": [
-    "7:2",
-    "7:3",
-    "7:14",
-    "7:18",
-    "7:27"
+    "7:11",
+    "7:6",
+    "7:8",
+    "7:13",
+    "7:15"
    ]
   },
   {
    "id": "2sa.7.mediu.322",
    "age": "mediu",
    "t": "multi",
-   "ref": "7:6-7",
-   "q": "Ce spune Domnul despre locuința Lui în vremea semințiilor?",
+   "ref": "7:9",
+   "q": "Ce spune Domnul că a făcut pentru David?",
    "opts": [
-    "a locuit în casa judecătorilor",
-    "a călătorit într-un cort",
-    "n-a cerut nimănui o casă de cedru"
+    "i-a dat o mie de cai",
+    "a fost cu el pretutindeni",
+    "i-a nimicit toți vrăjmașii"
    ],
    "a": [
     1,
@@ -560,12 +563,12 @@
    "id": "2sa.7.mediu.323",
    "age": "mediu",
    "t": "multi",
-   "ref": "7:26",
-   "q": "Ce a dorit David să se zică pe vecie?",
+   "ref": "7:16",
+   "q": "Ce spune Domnul că va dăinui veșnic?",
    "opts": [
-    "„David a zidit casa Domnului”",
-    "„Domnul oștirilor este Dumnezeul lui Israel”",
-    "„Casa robului Tău David să rămână înaintea Ta”"
+    "cortul chivotului",
+    "casa lui David",
+    "împărăția lui David"
    ],
    "a": [
     1,
@@ -576,12 +579,12 @@
    "id": "2sa.7.mediu.324",
    "age": "mediu",
    "t": "multi",
-   "ref": "7:14-15",
-   "q": "Ce a spus Domnul despre urmașul lui David?",
+   "ref": "7:23",
+   "q": "Ce a făcut Dumnezeu pentru Israel, după rugăciunea lui David?",
    "opts": [
-    "harul Lui nu se va depărta de el",
-    "nu va păcătui niciodată",
-    "El îi va fi Tată"
+    "a izgonit neamuri dinaintea lui",
+    "i-a dat o lege nouă la Sion",
+    "l-a răscumpărat din Egipt"
    ],
    "a": [
     0,
@@ -593,55 +596,55 @@
    "age": "greu",
    "t": "tf",
    "ref": "7:1",
-   "q": "Discuția cu Natan a avut loc după ce Domnul i-a dat odihnă lui David.",
+   "q": "David a vorbit despre chivot după ce a locuit în casa lui.",
    "a": true
   },
   {
    "id": "2sa.7.greu.302",
    "age": "greu",
    "t": "tf",
-   "ref": "7:2",
-   "q": "David a zis că chivotul locuiește într-o casă de piatră.",
+   "ref": "7:3",
+   "q": "Natan i-a spus lui David să aștepte cuvântul Domnului.",
    "a": false
   },
   {
    "id": "2sa.7.greu.303",
    "age": "greu",
    "t": "tf",
-   "ref": "7:5",
-   "q": "Domnul a întrebat: „Oare tu Îmi vei zidi o casă ca să locuiesc în ea?”",
+   "ref": "7:4",
+   "q": "Cuvântul Domnului a venit la Natan în noaptea următoare.",
    "a": true
   },
   {
    "id": "2sa.7.greu.304",
    "age": "greu",
    "t": "tf",
-   "ref": "7:7",
-   "q": "Domnul spune că a poruncit preoților să pască pe poporul Său.",
+   "ref": "7:20",
+   "q": "David a spus: „Tu iubești pe robul Tău, Doamne Dumnezeule!”",
    "a": false
   },
   {
    "id": "2sa.7.greu.305",
    "age": "greu",
    "t": "tf",
-   "ref": "7:9",
-   "q": "Domnul a nimicit pe toți vrăjmașii lui David dinaintea lui.",
+   "ref": "7:10",
+   "q": "Domnul a spus că l-a sădit pe Israel ca să nu mai fie tulburat.",
    "a": true
   },
   {
    "id": "2sa.7.greu.306",
    "age": "greu",
    "t": "tf",
-   "ref": "7:11",
-   "q": "Domnul spune că pe vremea judecătorilor poporul era în odihnă deplină.",
+   "ref": "7:12",
+   "q": "Domnul a spus că urmașul lui David va fi ridicat dintre frații lui.",
    "a": false
   },
   {
    "id": "2sa.7.greu.307",
    "age": "greu",
    "t": "tf",
-   "ref": "7:14",
-   "q": "Domnul spune că pedeapsa urmașului va fi cu lovituri omenești.",
+   "ref": "7:15",
+   "q": "Domnul a spus că a depărtat harul de la Saul.",
    "a": true
   },
   {
@@ -649,35 +652,35 @@
    "age": "greu",
    "t": "tf",
    "ref": "7:19",
-   "q": "David spune că Domnul binevoiește să învețe un om despre lucrurile acestea.",
-   "a": true
+   "q": "David a spus că lucrul acesta este mare înaintea Domnului.",
+   "a": false
   },
   {
    "id": "2sa.7.greu.309",
    "age": "greu",
    "t": "tf",
-   "ref": "7:23",
-   "q": "David spune că Israel a fost răscumpărat din Babilon.",
-   "a": false
+   "ref": "7:21",
+   "q": "David a spus că Domnul a făcut totul după cuvântul și după inima Lui.",
+   "a": true
   },
   {
    "id": "2sa.7.greu.310",
    "age": "greu",
    "t": "tf",
-   "ref": "7:28",
-   "q": "David spune că harul vestit lui va fi pentru o vreme scurtă.",
+   "ref": "7:25",
+   "q": "David I-a cerut Domnului să schimbe cuvântul rostit asupra casei lui.",
    "a": false
   },
   {
    "id": "2sa.7.greu.311",
    "age": "greu",
    "t": "one",
-   "ref": "7:1",
-   "q": "Când a vorbit David cu Natan despre chivot?",
+   "ref": "7:19",
+   "q": "Despre ce vorbește Domnul „și în viitor”, după David?",
    "opts": [
-    "când avea odihnă de vrăjmași",
-    "înainte să ia Ierusalimul",
-    "după o înfrângere grea"
+    "despre casa robului Său",
+    "despre țara făgăduită",
+    "despre templul de la Ierusalim"
    ],
    "a": 0
   },
@@ -685,12 +688,12 @@
    "id": "2sa.7.greu.312",
    "age": "greu",
    "t": "one",
-   "ref": "7:6",
-   "q": "Cum descrie Domnul felul în care a călătorit cu Israel?",
+   "ref": "7:5",
+   "q": "Cum îl numește Domnul pe David când îi trimite vorbă?",
    "opts": [
-    "pe un nor de slavă",
-    "într-un cort drept locuință",
-    "într-un car de foc"
+    "slujitorul lui Israel",
+    "robul Meu",
+    "alesul Meu"
    ],
    "a": 1
   },
@@ -699,11 +702,11 @@
    "age": "greu",
    "t": "one",
    "ref": "7:7",
-   "q": "Ce le poruncise Domnul semințiilor, după cuvântul Lui?",
+   "q": "Ce a spus Domnul că poruncise semințiilor?",
    "opts": [
     "să pască pe poporul Său",
-    "să ducă chivotul",
-    "să-I zidească o casă"
+    "să păzească chivotul",
+    "să-I zidească un templu"
    ],
    "a": 0
   },
@@ -712,11 +715,11 @@
    "age": "greu",
    "t": "one",
    "ref": "7:8",
-   "q": "De la ce lucrare a fost luat David?",
+   "q": "Cum Se numește Domnul în mesajul trimis lui David?",
    "opts": [
-    "de la război",
-    "de la oi",
-    "de la plug"
+    "Domnul Cel Preaînalt",
+    "Domnul oștirilor",
+    "Domnul Dumnezeul lui Avraam"
    ],
    "a": 1
   },
@@ -725,11 +728,11 @@
    "age": "greu",
    "t": "one",
    "ref": "7:12",
-   "q": "Când va fi ridicat urmașul promis?",
+   "q": "Când va ridica Domnul un urmaș lui David?",
    "opts": [
-    "când David va pleca la război cu Edomul",
-    "în anul în care se va zidi casa Domnului",
-    "după ce David va fi culcat cu părinții lui"
+    "când David va birui pe filisteni",
+    "când David va zidi casa Domnului",
+    "când David va fi culcat cu părinții lui"
    ],
    "a": 2
   },
@@ -737,12 +740,12 @@
    "id": "2sa.7.greu.316",
    "age": "greu",
    "t": "one",
-   "ref": "7:15",
-   "q": "Cum descrie Domnul ce a făcut cu Saul?",
+   "ref": "7:14",
+   "q": "Cu ce va pedepsi Domnul pe urmașul lui David dacă va face rău?",
    "opts": [
-    "l-a îndepărtat dinaintea lui David",
-    "l-a făcut proroc peste Israel",
-    "l-a iertat la sfârșitul vieții lui"
+    "cu o nuia și cu lovituri omenești",
+    "cu boli și cu șerpi înfocați",
+    "cu foamete și cu sabia vrăjmașilor"
    ],
    "a": 0
   },
@@ -750,12 +753,12 @@
    "id": "2sa.7.greu.317",
    "age": "greu",
    "t": "one",
-   "ref": "7:20",
-   "q": "Ce spune David că ar putea spune mai mult?",
+   "ref": "7:17",
+   "q": "Ce i-a spus Natan lui David?",
    "opts": [
-    "o laudă pentru prorocul Natan",
-    "o cerere pentru urmașul lui",
-    "nimic, Domnul îl cunoaște"
+    "numai porunca de a nu zidi",
+    "numai cuvintele despre urmașul lui",
+    "toate aceste cuvinte și toată vedenia"
    ],
    "a": 2
   },
@@ -763,12 +766,12 @@
    "id": "2sa.7.greu.318",
    "age": "greu",
    "t": "one",
-   "ref": "7:23",
-   "q": "Pe cine a izgonit Dumnezeu dinaintea poporului răscumpărat?",
+   "ref": "7:22",
+   "q": "Pe ce se întemeiază David când spune că nu este alt Dumnezeu?",
    "opts": [
-    "pe Saul și casa lui",
-    "neamuri și pe dumnezeii lor",
-    "pe preoții din Silo"
+    "pe tot ce au văzut cu ochii lor",
+    "pe tot ce au auzit cu urechile lor",
+    "pe tot ce le-au spus părinții"
    ],
    "a": 1
   },
@@ -776,12 +779,12 @@
    "id": "2sa.7.greu.319",
    "age": "greu",
    "t": "one",
-   "ref": "7:25",
-   "q": "Ce I-a cerut David Domnului să facă?",
+   "ref": "7:24",
+   "q": "Pentru cât timp a întărit Domnul pe Israel ca popor al Său?",
    "opts": [
-    "să-i ierte poporul",
-    "să-i dea mai mulți ani",
-    "să lucreze după cuvântul Lui"
+    "pentru o mie de ani",
+    "pe o vreme",
+    "pe vecie"
    ],
    "a": 2
   },
@@ -789,12 +792,12 @@
    "id": "2sa.7.greu.320",
    "age": "greu",
    "t": "one",
-   "ref": "7:29",
-   "q": "Prin ce va fi binecuvântată casa robului Domnului pe vecie?",
+   "ref": "7:27",
+   "q": "Ce cuvânt al Domnului i-a dat lui David îndrăzneala să se roage?",
    "opts": [
-    "prin înțelepciunea lui Natan",
-    "prin binecuvântarea Domnului",
-    "prin jertfele lui David"
+    "„Eu îți voi da odihnă!”",
+    "„Eu îți voi întemeia o casă!”",
+    "„Eu voi fi cu tine pretutindeni!”"
    ],
    "a": 1
   },
@@ -802,48 +805,48 @@
    "id": "2sa.7.greu.321",
    "age": "greu",
    "t": "match",
-   "ref": "7:1-29",
-   "q": "Asociază fiecare cuvânt din capitol cu ce se spune despre el.",
+   "ref": "7:6-16",
+   "q": "Asociază fiecare lucru cu ce spune Domnul despre el.",
    "pairs": [
     [
-     "casa de cedru",
-     "locuința lui David"
+     "casa lui David",
+     "va dăinui veșnic înaintea Domnului"
+    ],
+    [
+     "casa Numelui Domnului",
+     "o va zidi urmașul lui David"
     ],
     [
      "cortul",
-     "locuința chivotului"
+     "în el a călătorit Domnul de la ieșirea din Egipt"
     ],
     [
-     "nuiaua omenească",
-     "pedeapsa urmașului dacă greșește"
+     "casa de cedru",
+     "Domnul n-a cerut-o niciodată semințiilor"
     ],
     [
-     "Egiptul",
-     "de acolo a fost răscumpărat Israel"
-    ],
-    [
-     "vedenia",
-     "Natan i-a spus-o toată lui David"
+     "scaunul de domnie al urmașului",
+     "va fi întărit pe vecie"
     ]
    ],
    "refs": [
-    "7:2",
-    "7:2",
-    "7:14",
-    "7:23",
-    "7:17"
+    "7:16",
+    "7:13",
+    "7:6",
+    "7:7",
+    "7:13"
    ]
   },
   {
    "id": "2sa.7.greu.322",
    "age": "greu",
    "t": "multi",
-   "ref": "7:9-10",
-   "q": "Ce i-a promis Domnul poporului Israel, prin Natan?",
+   "ref": "7:18",
+   "q": "Ce a spus David înfățișându-se înaintea Domnului?",
    "opts": [
-    "un loc în care să fie sădit",
-    "să nu mai fie tulburat",
-    "să stăpânească Egiptul"
+    "„Cine sunt eu, Doamne Dumnezeule?”",
+    "„Ce este casa mea?”",
+    "„Ce am făcut eu pentru Tine?”"
    ],
    "a": [
     0,
@@ -854,12 +857,12 @@
    "id": "2sa.7.greu.323",
    "age": "greu",
    "t": "multi",
-   "ref": "7:18",
-   "q": "Ce a spus David când s-a înfățișat înaintea Domnului?",
+   "ref": "7:9",
+   "q": "Ce a spus Domnul că a făcut pentru David?",
    "opts": [
-    "„Ce este casa mea?”",
-    "„Cine sunt eu, Doamne Dumnezeule?”",
-    "„Eu voi zidi casa Ta”"
+    "i-a nimicit vrăjmașii dinaintea lui",
+    "a fost cu el pretutindeni",
+    "l-a făcut preot peste Israel"
    ],
    "a": [
     0,
@@ -870,12 +873,12 @@
    "id": "2sa.7.greu.324",
    "age": "greu",
    "t": "multi",
-   "ref": "7:12-13",
-   "q": "Ce a spus Domnul că va face David însuși?",
+   "ref": "7:2",
+   "q": "Unde locuia chivotul lui Dumnezeu, după cuvintele lui David?",
    "opts": [
-    "va pune judecători peste Israel",
-    "va aduce chivotul într-un templu",
-    "va zidi casa Domnului"
+    "în cetățuia Milo",
+    "într-un palat de cedru",
+    "într-o casă de piatră"
    ],
    "a": []
   }

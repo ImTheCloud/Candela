@@ -1,91 +1,91 @@
 scene: La Ierusalim și Raba, în păcatul lui David cu Bat-Șeba
 ## usor
-tf + 11:1 | David l-a trimis pe Ioab la război și a rămas la Ierusalim.
-tf - 11:1 | David a mers el însuși să împresoare cetatea Raba.
-tf + 11:3 | Bat-Șeba era nevasta lui Urie, Hetitul.
-tf + 11:6 | David a cerut ca Urie să fie trimis la Ierusalim.
-tf - 11:9 | Urie s-a dus acasă la el, cum i-a spus David.
-tf + 11:14 | David i-a trimis lui Ioab o scrisoare prin Urie.
-tf + 11:17 | Urie a murit în luptă.
-tf - 11:18 | Ioab i-a ascuns lui David ce s-a întâmplat în luptă.
-tf + 11:26 | Bat-Șeba l-a plâns pe bărbatul ei.
-tf - 11:27 | Fapta lui David i-a plăcut Domnului.
-one 11:1 | Ce cetate trebuia să împresoare Ioab? | *Raba | Ierihon | Hebron
-one 11:2 | De unde a văzut-o David pe femeie? | *de pe acoperișul casei împărătești | de la poarta cetății | din câmpul de luptă
-one 11:3 | Cum se numea femeia văzută de David? | *Bat-Șeba | Abigail | Mical
-one 11:3 | Cine era bărbatul Bat-Șebei? | *Urie, Hetitul | Ioab, fiul Țeruiei | Natan, prorocul
-one 11:9 | Unde a dormit Urie în loc să meargă acasă? | *la poarta casei împărătești | în cortul lui Ioab | în casa lui
-one 11:14 | Prin cine a trimis David scrisoarea către Ioab? | *prin Urie | prin Natan | prin Bat-Șeba
-one 11:17 | Ce s-a întâmplat cu Urie la Raba? | *a fost ucis în luptă | a fugit acasă | a fost făcut căpetenie
-one 11:18 | Pe cine a trimis Ioab să-i spună lui David ce s-a întâmplat? | *un sol | pe Urie | pe Abișai
-one 11:26 | Ce a făcut Bat-Șeba când a aflat că Urie a murit? | *a plâns pe bărbatul ei | a fugit din Ierusalim | a mers la Raba
-one 11:27 | Ce a simțit Domnul față de fapta lui David? | *nu I-a plăcut | S-a bucurat | n-a văzut nimic
-match 11:1-27 | Asociază fiecare persoană cu ce se spune despre ea.
-= David | a rămas la Ierusalim | 11:1
-= Ioab | a împresurat cetatea Raba | 11:16
-= Urie | a dormit la poarta casei împărătești | 11:9
-= Bat-Șeba | l-a plâns pe bărbatul ei | 11:26
-= solul | i-a istorisit lui David lupta | 11:22
-multi 11:1 | Pe cine a trimis David la război împotriva lui Amon? | *pe Ioab | *pe tot Israelul | pe Natan
-multi 11:11 | Pe cine a pomenit Urie când a spus de ce nu merge acasă? | *chivotul | *pe Ioab și slujitorii lui | pe Bat-Șeba
-multi 11:13 | Ce a făcut Urie după ce a mâncat și a băut cu David? | s-a dus acasă la el | a plecat îndată la Raba | a rămas în casa lui David
+tf + 11:1 | David a rămas la Ierusalim când oastea a plecat la război.
+tf + 11:3 | David a întrebat cine este femeia.
+tf + 11:9 | Urie a dormit la poarta casei împărătești.
+tf - 11:12 | Urie s-a întors la război chiar în aceeași zi.
+tf - 11:13 | Urie n-a vrut să mănânce cu David.
+tf - 11:8 | Urie n-a primit niciun dar de la împărat.
+tf + 11:23 | Solul a spus că oamenii din cetate au fost mai tari.
+tf - 11:25 | David s-a mâniat pe Ioab când a aflat de moartea lui Urie.
+tf + 11:26 | Bat-Șeba l-a plâns pe Urie.
+tf - 11:27 | Fapta lui David I-a plăcut Domnului.
+one 11:1 | Țara cui trebuia s-o pustiască Ioab? | *a fiilor lui Amon | a Egiptului | a Babilonului
+one 11:3 | Al cui era nevastă Bat-Șeba? | *a lui Urie | a lui Ioab | a lui Natan
+one 11:6 | Pe cine a chemat David de la război? | *pe Urie | pe Ioab | pe Abner
+one 11:24 | De unde au tras arcașii asupra oamenilor lui David? | *de pe vârful zidului | din copaci | de pe corăbii
+one 11:8 | Ce i-a spus David lui Urie? | *„Coboară-te acasă” | „Du-te la templu” | „Fugi în pustie”
+one 11:10 | Ce l-a întrebat David pe Urie a doua zi? | *de ce nu s-a coborât acasă | de ce a venit fără arme | de ce nu-i place Ierusalimul
+one 11:13 | Unde a dormit Urie după ce a mâncat cu David? | *cu slujitorii împăratului | acasă la el | în templu
+one 11:15 | Ce a cerut David în scrisoare? | *ca Urie să fie pus în locul cel mai greu al luptei | ca Urie să fie făcut căpetenie | ca Urie să fie trimis acasă
+one 11:20 | Ce credea Ioab că va face David când va auzi de luptă? | *se va mânia | se va bucura | va dormi
+one 11:27 | Ce a făcut David după zilele de jale? | *a luat-o pe Bat-Șeba de nevastă | a plecat la război | a zidit un templu
+match 11:2-25 | Asociază fiecare nume cu ce se spune despre el.
+= acoperișul | de acolo a zărit-o David pe femeie | 11:2
+= Urie | a dus el însuși scrisoarea la Ioab | 11:14
+= solul | i-a dus lui David vestea luptei | 11:18
+= sabia | doboară când pe unul, când pe altul | 11:25
+= Ioab | l-a pus pe Urie unde erau ostași viteji | 11:16
+multi 11:11 | Pe cine a pomenit Urie că stă în corturi sau în câmp? | *chivotul | *pe Ioab și slujitorii lui | pe filisteni
+multi 11:17 | Cine a murit în lupta de la cetate? | *Urie | *mulți din slujitorii lui David | Ioab
+multi 11:7 | Despre ce l-a întrebat David pe Urie? | *despre Ioab | *despre popor | despre turmele lui
 ## mediu
-tf + 11:2 | David s-a sculat de pe pat după-amiază, spre seară.
-tf + 11:5 | Bat-Șeba i-a trimis vorbă lui David că este însărcinată.
-tf + 11:9 | Urie a dormit cu slujitorii stăpânului său.
-tf + 11:11 | Urie a spus că Ioab și slujitorii lui sunt tăbărâți în câmp.
-tf + 11:16 | Ioab știa că locul unde l-a pus pe Urie era apărat de ostași viteji.
-tf - 11:4 | Bat-Șeba a venit la palat din proprie inițiativă, fără să fie chemată.
-tf - 11:10 | David nu a aflat că Urie n-a mers acasă.
-tf - 11:14 | David i-a trimis scrisoarea lui Ioab prin solul lui Ioab.
-tf - 11:26 | Bat-Șeba s-a bucurat când a aflat de moartea lui Urie.
-tf - 11:3 | Bat-Șeba era fata lui Ahitofel, după acest capitol.
-one 11:8 | Ce l-a urmat pe Urie când a ieșit din casa împărătească? | *un dar din partea împăratului | un slujitor cu sabia | un sol de la Ioab
-one 11:7 | Despre ce l-a întrebat David pe Urie? | *despre Ioab, popor și război | despre casa și nevasta lui | despre chivotul Domnului
-one 11:6 | Cum este numit Urie în porunca lui David către Ioab? | *Urie, Hetitul | Urie, robul meu | Urie din Iuda
-one 11:23 | Până unde i-au împins oamenii lui Ioab pe cei din cetate? | *până la intrarea porții | până în pustie | până la râu
-one 11:15 | Ce scria în scrisoarea lui David? | *să-l pună pe Urie în locul cel mai greu al luptei | să-l trimită pe Urie înapoi acasă, la nevasta lui | să-l facă pe Urie căpetenie peste o mie de oameni
-one 11:27 | Ce a făcut David după zilele de jale ale Bat-Șebei? | *a luat-o în casa lui | a trimis-o la Raba | a trimis-o la tatăl ei
-one 11:1 | Cine a pornit la război împotriva fiilor lui Amon? | *Ioab cu tot Israelul | David cu oastea lui | Urie cu hetiții
-one 11:17 | Ce au făcut oamenii din cetate împotriva lui Ioab? | *au făcut o ieșire și s-au bătut | au cerut pace de la împărat | au dat foc taberei lui Ioab
-one 11:20 | De ce se temea Ioab că se va mânia David? | *că s-au apropiat prea mult de zid | că n-au luat încă cetatea Raba | că au pierdut multe arme în luptă
-one 11:12 | Cât timp a mai rămas Urie la Ierusalim? | *în ziua aceea și a doua zi | încă o săptămână întreagă | o lună, până la sărbătoare
-match 11:1-27 | Asociază fiecare nume cu ce se spune despre el.
+tf + 11:1 | Ioab a fost trimis să împresoare Raba.
+tf - 11:2 | David a zărit-o pe femeie dimineața, din grădină.
+tf + 11:3 | Bat-Șeba era fata lui Eliam.
+tf - 11:6 | David i-a cerut lui Ioab să-l trimită pe Urie fără să spună de ce.
+tf + 11:8 | Urie a fost urmat de un dar din partea împăratului.
+tf - 11:18 | Ioab i-a scris lui David o scrisoare despre luptă.
+tf + 11:12 | Urie a rămas la Ierusalim în ziua aceea și a doua zi.
+tf - 11:16 | Ioab l-a pus pe Urie unde știa că apărătorii sunt slabi.
+tf + 11:21 | Ioab i-a spus solului să pomenească moartea lui Abimelec.
+tf - 11:26 | Bat-Șeba nu l-a jelit pe Urie.
+one 11:1 | Când a trimis David oastea la război? | *pe vremea când porneau împărații la război | pe vremea când se strângeau roadele câmpului | după ce trecuse sărbătoarea corturilor
+one 11:3 | Cum i-au spus lui David cine este femeia? | *Bat-Șeba, nevasta lui Urie, Hetitul | Bat-Șeba, nevasta lui Eliam, Hetitul | Bat-Șeba, fata lui Urie, Hetitul
+one 11:7 | Despre ce l-a întrebat David pe Urie? | *despre starea lui Ioab și a poporului | despre starea cetății și a zidurilor | despre starea casei și a nevestei
+one 11:11 | Ce a jurat Urie? | *că nu va intra în casa lui cât stă oastea în câmp | că nu se va mai întoarce la Ioab cât trăiește împăratul | că va muri pentru împărat în locul cel mai greu al luptei
+one 11:13 | Ce a făcut David ca Urie să se ducă acasă? | *l-a poftit la masă și l-a îmbătat | i-a dat aur și haine noi | l-a dus el însuși până la ușă
+one 11:14 | Prin cine a trimis David scrisoarea către Ioab? | *prin Urie | prin un sol | prin Abișai
+one 11:17 | Ce au făcut oamenii din cetate? | *au făcut o ieșire și s-au bătut cu Ioab | au deschis porțile și s-au predat | au fugit noaptea din cetate
+one 11:20 | De unde se aruncau săgeți, după cuvintele lui Ioab? | *din vârful zidului | din turnul porții | de pe dealul de lângă cetate
+one 11:23 | Până unde i-au dat înapoi pe oamenii din cetate? | *până la intrarea porții | până la vârful zidului | până în mijlocul cetății
+one 11:25 | Ce i-a spus David solului să-i facă lui Ioab? | *să-l îmbărbăteze | să-l mustre | să-l cheme la Ierusalim
+match 11:1-21 | Asociază fiecare nume cu ce se spune despre el.
 = Raba | cetatea împresurată de Ioab | 11:1
-= Eliam | tatăl Bat-Șebei | 11:3
-= Urie | era hetit | 11:3
-= Abimelec | ucis de o femeie de pe zid | 11:21
-= Tebeț | locul unde a murit Abimelec | 11:21
-multi 11:23-24 | Ce i-a spus solul lui David? | *oamenii din cetate au fost mai tari | *mulți slujitori ai împăratului au fost uciși | Ioab a fost rănit
-multi 11:9-10 | Ce i s-a spus lui David despre Urie? | *că nu s-a coborât acasă | *că a dormit la poarta casei împărătești | că a fugit din Ierusalim
-multi 11:21 | Ce a pregătit Ioab să-i spună solul lui David, dacă se mânie? | *„A murit și robul tău Urie, Hetitul.” | *că și Abimelec a murit lângă un zid | că au luat deja cetatea
+= Eliam | tatăl lui Bat-Șeba | 11:3
+= Urie | hetitul care dormea la poarta împăratului | 11:9
+= Abimelec | ucis de o femeie cu o piatră de moară | 11:21
+= solul | i-a istorisit lui David tot ce poruncise Ioab | 11:22
+multi 11:11 | Ce a spus Urie lui David? | *„Chivotul și Israel și Iuda locuiesc în corturi” | *„Domnul meu Ioab este tăbărât în câmp” | „Nevasta mea m-a uitat”
+multi 11:15 | Ce scria în scrisoarea lui David? | *„Puneți pe Urie în locul cel mai greu al luptei” | *„Trageți-vă înapoi de la el” | „Trimiteți-l acasă la nevasta lui”
+multi 11:25 | Ce i-a trimis David vorbă lui Ioab? | *„Nu te munci pentru întâmplarea aceasta” | *„Bate cetatea cu putere” | „Întoarce-te la Ierusalim”
 ## greu
-tf + 11:1 | David a trimis la război pe Ioab cu slujitorii lui și tot Israelul.
-tf - 11:2 | David a văzut-o pe Bat-Șeba dimineața, din grădina palatului.
-tf + 11:4 | David a trimis niște oameni s-o aducă pe Bat-Șeba.
-tf - 11:7 | David l-a întrebat pe Urie doar despre starea poporului.
-tf + 11:10 | David i-a spus lui Urie: „Nu vii tu oare din călătorie?”
-tf + 11:11 | Urie a jurat: „Viu ești tu și viu este sufletul tău.”
-tf - 11:13 | Seara, după ce a fost îmbătat, Urie s-a culcat acasă.
-tf + 11:16 | Ioab împresura cetatea când l-a pus pe Urie la locul greu.
-tf - 11:21 | Ioab a spus că Abimelec a fost omorât de un ostaș cu sulița.
-tf + 11:23 | Solul a spus că oamenii lui Ioab i-au dat înapoi pe dușmani până la poartă.
-one 11:1 | Ce trebuia să facă Ioab cu țara lui Amon? | *s-o pustiască | s-o supună la bir | s-o ia în stăpânire
-one 11:3 | Ce a aflat David despre femeie? | *era nevasta lui Urie, Hetitul | era o slujnică din casa lui Saul | era o văduvă din cetatea Hebron
-one 11:8 | Ce a fost trimis după Urie când a ieșit de la David? | *un dar din partea împăratului | un ostaș care să-l păzească | o scrisoare pentru Ioab
-one 11:10 | Cum a aflat David că Urie n-a mers acasă? | *i-au dat de știre | l-a văzut el însuși | i-a spus Bat-Șeba
-one 11:15 | Ce trebuiau să facă oștenii după ce Urie era pus la locul greu? | *să se tragă înapoi de la el | să-l apere până la capăt | să-l lege și să-l predea
-one 11:19 | Când trebuia solul să-i spună lui David de moartea lui Urie? | *după ce va isprăvi de istorisit lupta | chiar la sosire, înainte de toate | numai dacă David îl întreabă de el
-one 11:21 | Al cui fiu era Abimelec, după cuvintele lui Ioab? | *al lui Ierubeșet | al lui Eliam | al lui Saul
-one 11:23 | Unde făcuseră oamenii din cetate ieșirea? | *în câmp | pe zid | în tabăra lui Ioab
-one 11:25 | Ce i-a spus David lui Ioab să nu facă? | *să nu se muncească pentru întâmplare | să nu mai lupte cu Amon | să nu-l mai pomenească pe Urie
-one 11:27 | Când a trimis David s-o ia pe Bat-Șeba? | *după ce au trecut zilele de jale | chiar în ziua morții lui Urie | după ce s-a născut copilul
-match 11:1-27 | Asociază fiecare persoană cu cuvintele spuse.
-= servitorii lui David | „Urie nu s-a coborât la el acasă.” | 11:10
-= David către Urie | „Mai rămâi și astăzi aici.” | 11:12
-= scrisoarea lui David | „Puneți pe Urie în locul cel mai greu al luptei.” | 11:15
-= solul către David | „Oamenii aceia au fost mai tari decât noi.” | 11:23
-= David despre sabie | „Doboară când pe unul, când pe altul.” | 11:25
-multi 11:20-21 | Ce credea Ioab că va întreba David mâniat? | *„Pentru ce v-ați apropiat de cetate?” | *„Cine a omorât pe Abimelec?” | „Unde este chivotul?”
-multi 11:2 | Ce se spune despre momentul în care David a văzut-o pe femeie? | *era după-amiază, spre seară | *David se sculase de pe pat | David se întorcea de la Raba
-multi 11:6-7 | Ce a făcut David când a venit Urie la el? | i-a dat scrisoarea pentru Ioab | l-a pus căpetenie peste o mie | l-a trimis înapoi chiar atunci
+tf + 11:2 | David s-a sculat de pe pat într-o după-amiază spre seară.
+tf - 11:3 | Bat-Șeba era fata lui Ahitofel.
+tf + 11:7 | David l-a întrebat pe Urie despre starea lui Ioab, a poporului și despre mersul războiului.
+tf - 11:8 | David i-a zis lui Urie: „Coboară-te acasă și odihnește-te.”
+tf + 11:10 | David l-a întrebat pe Urie: „Nu vii tu oare din călătorie?”
+tf - 11:13 | După ce l-a îmbătat David, Urie s-a dus acasă.
+tf + 11:17 | Oamenii din cetate au făcut o ieșire împotriva lui Ioab.
+tf - 11:21 | Abimelec a murit la Șechem, lovit de o piatră de moară.
+tf + 11:24 | Arcașii au tras de pe vârful zidului asupra slujitorilor împăratului.
+tf - 11:27 | David a luat-o pe Bat-Șeba de nevastă chiar a doua zi după moartea lui Urie.
+one 11:1 | Ce cetate trebuia să împresoare Ioab? | *Raba | Rehob | Rama
+one 11:9 | Cu cine s-a culcat Urie la poarta casei împărătești? | *cu toți slujitorii stăpânului său | cu oamenii veniți cu el de la Raba | cu paznicii porții împăratului
+one 11:11 | Cine locuia în corturi, după Urie? | *chivotul, Israel și Iuda | Ioab și slujitorii domnului său | toți vitejii lui David
+one 11:11 | Cum a jurat Urie înaintea lui David? | *„Viu ești tu și viu este sufletul tău” | „Viu este Domnul și viu este sufletul tău” | „Viu este Domnul, Dumnezeul lui Israel”
+one 11:12 | Ce i-a spus David lui Urie după ce n-a coborât acasă? | *„Mai rămâi și astăzi aici, și mâine îți voi da drumul” | „Mai rămâi trei zile aici, și apoi îți voi da drumul” | „Du-te acum la Ioab, și mâine vei lupta”
+one 11:16 | Unde l-a pus Ioab pe Urie? | *în locul știut ca apărat de ostași viteji | în fruntea cetei care urca pe zid | lângă poarta pe unde ieșeau dușmanii
+one 11:19 | Când trebuia solul să-i spună lui David de moartea lui Urie? | *dacă împăratul se mânia de amănuntele luptei | îndată ce ajungea în casa împăratului | numai dacă David întreba de Urie
+one 11:6 | Ce poruncă i-a trimis David lui Ioab? | *„Trimite-mi pe Urie, Hetitul.” | „Trimite-mi pe Urie și pe slujitorii lui.” | „Trimite-mi vești despre Raba.”
+one 11:23 | Unde făcuseră oamenii din cetate o ieșire? | *în câmp | la iazul cetății | pe drumul spre Ierusalim
+one 11:25 | Ce a spus David despre sabie? | *„Doboară când pe unul, când pe altul” | „Nu cruță nici pe cel viteaz” | „Mănâncă pe cei mari și pe cei mici”
+match 11:3-21 | Asociază fiecare nume cu ce se spune despre el.
+= Eliam | tatăl lui Bat-Șeba | 11:3
+= Urie | hetitul, bărbatul lui Bat-Șeba | 11:3
+= piatra de moară | aruncată de o femeie peste Abimelec | 11:21
+= solul | a istorisit lui David tot ce-i poruncise Ioab | 11:22
+= Raba | cetatea fiilor lui Amon împresurată de Ioab | 11:1
+multi 11:20 | Ce întrebări credea Ioab că va pune David? | *„Pentru ce v-ați apropiat de cetate?” | *„Nu știați că se aruncă săgeți din vârful zidului?” | „Cine v-a poruncit să vă retrageți?”
+multi 11:8 | Ce a primit Urie când a ieșit din casa împărătească? | o sabie nouă | haine de sărbătoare | un cal
+multi 11:27 | Ce se spune la sfârșitul capitolului? | *Bat-Șeba i-a născut lui David un fiu | *fapta lui David n-a plăcut Domnului | Natan a venit la David

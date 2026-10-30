@@ -8,7 +8,7 @@
    "age": "usor",
    "t": "tf",
    "ref": "10:1",
-   "q": "După moartea împăratului fiilor lui Amon, a domnit fiul său Hanun.",
+   "q": "Împăratul fiilor lui Amon a murit.",
    "a": true
   },
   {
@@ -16,7 +16,7 @@
    "age": "usor",
    "t": "tf",
    "ref": "10:2",
-   "q": "David a trimis slujitori ca să-l mângâie pe Hanun.",
+   "q": "Tatăl lui Hanun fusese bun cu David.",
    "a": true
   },
   {
@@ -24,27 +24,11 @@
    "age": "usor",
    "t": "tf",
    "ref": "10:3",
-   "q": "Căpeteniile lui Hanun au spus că David vrea să-i facă un dar.",
-   "a": false
-  },
-  {
-   "id": "2sa.10.usor.304",
-   "age": "usor",
-   "t": "tf",
-   "ref": "10:4",
-   "q": "Hanun le-a ras barba pe jumătate slujitorilor lui David.",
+   "q": "Căpeteniile lui Hanun credeau că oamenii lui David sunt iscoade.",
    "a": true
   },
   {
-   "id": "2sa.10.usor.305",
-   "age": "usor",
-   "t": "tf",
-   "ref": "10:5",
-   "q": "David le-a spus slujitorilor batjocoriți să vină îndată la Ierusalim.",
-   "a": false
-  },
-  {
-   "id": "2sa.10.usor.306",
+   "id": "2sa.10.usor.304",
    "age": "usor",
    "t": "tf",
    "ref": "10:7",
@@ -52,7 +36,7 @@
    "a": true
   },
   {
-   "id": "2sa.10.usor.307",
+   "id": "2sa.10.usor.305",
    "age": "usor",
    "t": "tf",
    "ref": "10:13",
@@ -60,27 +44,43 @@
    "a": true
   },
   {
+   "id": "2sa.10.usor.306",
+   "age": "usor",
+   "t": "tf",
+   "ref": "10:8",
+   "q": "Sirienii stăteau deoparte, în câmpie.",
+   "a": true
+  },
+  {
+   "id": "2sa.10.usor.307",
+   "age": "usor",
+   "t": "tf",
+   "ref": "10:19",
+   "q": "După război, sirienii au ajutat iar pe fiii lui Amon.",
+   "a": false
+  },
+  {
    "id": "2sa.10.usor.308",
    "age": "usor",
    "t": "tf",
-   "ref": "10:14",
-   "q": "Fiii lui Amon l-au învins pe Abișai.",
+   "ref": "10:18",
+   "q": "La a doua luptă, Israel a fugit dinaintea sirienilor.",
    "a": false
   },
   {
    "id": "2sa.10.usor.309",
    "age": "usor",
    "t": "tf",
-   "ref": "10:17",
-   "q": "David a trecut Iordanul și a venit la Helam.",
-   "a": true
+   "ref": "10:6",
+   "q": "Fiii lui Amon au cerut ajutor de la egipteni.",
+   "a": false
   },
   {
    "id": "2sa.10.usor.310",
    "age": "usor",
    "t": "tf",
-   "ref": "10:19",
-   "q": "După înfrângere, sirienii au ajutat din nou pe fiii lui Amon.",
+   "ref": "10:11",
+   "q": "Ioab și Abișai s-au certat înainte de luptă.",
    "a": false
   },
   {
@@ -88,11 +88,11 @@
    "age": "usor",
    "t": "one",
    "ref": "10:1",
-   "q": "Cine a domnit după moartea împăratului fiilor lui Amon?",
+   "q": "Cine a domnit după tatăl său peste fiii lui Amon?",
    "opts": [
-    "fiul său Hanun",
-    "Hadadezer",
-    "fratele său Șobac"
+    "Hanun",
+    "Goliat",
+    "Saul"
    ],
    "a": 0
   },
@@ -103,9 +103,9 @@
    "ref": "10:2",
    "q": "De ce a trimis David slujitori la Hanun?",
    "opts": [
-    "ca să-i declare război",
-    "ca să-i ceară bir",
-    "ca să-l mângâie pentru moartea tatălui său"
+    "să-i declare război",
+    "să-i ceară aur",
+    "să-l mângâie pentru moartea tatălui său"
    ],
    "a": 2
   },
@@ -116,7 +116,7 @@
    "ref": "10:4",
    "q": "Ce le-a făcut Hanun slujitorilor lui David?",
    "opts": [
-    "i-a ospătat",
+    "le-a dat un ospăț",
     "le-a dat haine noi",
     "le-a ras barba pe jumătate"
    ],
@@ -126,12 +126,12 @@
    "id": "2sa.10.usor.314",
    "age": "usor",
    "t": "one",
-   "ref": "10:5",
-   "q": "În ce cetate trebuiau să rămână slujitorii până le crește barba?",
+   "ref": "10:4",
+   "q": "Ce a făcut Hanun cu slujitorii după ce i-a batjocorit?",
    "opts": [
-    "la Ierihon",
-    "la Hebron",
-    "la Betleem"
+    "le-a dat drumul",
+    "i-a închis în temniță",
+    "i-a vândut ca robi"
    ],
    "a": 0
   },
@@ -139,12 +139,12 @@
    "id": "2sa.10.usor.315",
    "age": "usor",
    "t": "one",
-   "ref": "10:6",
-   "q": "De la cine au tocmit fiii lui Amon oameni de război?",
+   "ref": "10:8",
+   "q": "Unde s-au așezat fiii lui Amon la luptă?",
    "opts": [
-    "de la egipteni",
-    "de la sirieni",
-    "de la filisteni"
+    "pe vârful muntelui",
+    "la intrarea porții",
+    "pe malul mării"
    ],
    "a": 1
   },
@@ -152,12 +152,12 @@
    "id": "2sa.10.usor.316",
    "age": "usor",
    "t": "one",
-   "ref": "10:7",
-   "q": "Pe cine a trimis David împotriva amoniților și sirienilor?",
+   "ref": "10:9",
+   "q": "Împotriva cui a luptat Ioab cu aleșii lui Israel?",
    "opts": [
-    "pe Ioab",
-    "pe Țiba",
-    "pe Natan"
+    "împotriva sirienilor",
+    "împotriva egiptenilor",
+    "împotriva filistenilor"
    ],
    "a": 0
   },
@@ -166,11 +166,11 @@
    "age": "usor",
    "t": "one",
    "ref": "10:10",
-   "q": "Cine a luptat împotriva fiilor lui Amon?",
+   "q": "Pe cine a pus Ioab peste restul poporului?",
    "opts": [
-    "Șobac, căpetenia sirienilor",
-    "Abișai, fratele lui Ioab",
-    "Hanun, împăratul lor"
+    "pe Saul",
+    "pe fratele său Abișai",
+    "pe David"
    ],
    "a": 1
   },
@@ -178,12 +178,12 @@
    "id": "2sa.10.usor.318",
    "age": "usor",
    "t": "one",
-   "ref": "10:14",
-   "q": "Unde s-a întors Ioab după lupta cu fiii lui Amon?",
+   "ref": "10:12",
+   "q": "Ce i-a spus Ioab lui Abișai să fie?",
    "opts": [
-    "la Ierihon",
-    "la Ierusalim",
-    "la Hebron"
+    "tăcut",
+    "tare",
+    "blând"
    ],
    "a": 1
   },
@@ -191,12 +191,12 @@
    "id": "2sa.10.usor.319",
    "age": "usor",
    "t": "one",
-   "ref": "10:16",
-   "q": "Cum se numea căpetenia oștirii lui Hadadezer?",
+   "ref": "10:14",
+   "q": "Unde s-a întors Ioab după luptă?",
    "opts": [
-    "Hanun",
-    "Șobac",
-    "Abișai"
+    "la Hebron",
+    "la Ierusalim",
+    "în Egipt"
    ],
    "a": 1
   },
@@ -205,10 +205,10 @@
    "age": "usor",
    "t": "one",
    "ref": "10:19",
-   "q": "Ce au făcut împărații supuși lui Hadadezer după ce au fost bătuți?",
+   "q": "Ce au făcut împărații supuși lui Hadarezer?",
    "opts": [
-    "au atacat Ierusalimul",
     "au fugit în Egipt",
+    "au cucerit Ierusalimul",
     "au făcut pace cu Israel"
    ],
    "a": 2
@@ -217,48 +217,48 @@
    "id": "2sa.10.usor.321",
    "age": "usor",
    "t": "match",
-   "ref": "10:1-19",
-   "q": "Asociază fiecare persoană cu ce se spune despre ea.",
+   "ref": "10:4-18",
+   "q": "Asociază fiecare nume cu ce se spune despre el.",
    "pairs": [
     [
-     "Hanun",
-     "i-a batjocorit pe slujitorii lui David"
+     "hainele",
+     "le-au fost tăiate slujitorilor pe jumătate"
     ],
     [
-     "Nahaș",
-     "tatăl lui Hanun"
+     "fiii lui Amon",
+     "au fugit și au intrat în cetate"
     ],
     [
-     "Ioab",
-     "a luptat împotriva sirienilor"
+     "Iordanul",
+     "David l-a trecut cu tot Israelul"
     ],
     [
-     "Abișai",
-     "a ținut piept fiilor lui Amon"
+     "Helam",
+     "acolo s-au strâns iar sirienii"
     ],
     [
      "Șobac",
-     "căpetenia oștirii lui Hadadezer"
+     "căpetenia sirienilor, a murit în luptă"
     ]
    ],
    "refs": [
     "10:4",
-    "10:2",
-    "10:13",
-    "10:10",
-    "10:16"
+    "10:14",
+    "10:17",
+    "10:16",
+    "10:18"
    ]
   },
   {
    "id": "2sa.10.usor.322",
    "age": "usor",
    "t": "multi",
-   "ref": "10:4",
-   "q": "Ce le-a făcut Hanun slujitorilor lui David?",
+   "ref": "10:11-12",
+   "q": "Ce și-au spus Ioab și Abișai înainte de luptă?",
    "opts": [
-    "le-a tăiat hainele pe jumătate",
-    "i-a pus în închisoare",
-    "le-a ras barba pe jumătate"
+    "să lupte pentru poporul lor",
+    "să fugă împreună",
+    "să se ajute unul pe altul"
    ],
    "a": [
     0,
@@ -269,12 +269,12 @@
    "id": "2sa.10.usor.323",
    "age": "usor",
    "t": "multi",
-   "ref": "10:13-14",
-   "q": "Cine a fugit în prima luptă?",
+   "ref": "10:6-8",
+   "q": "Cine a ieșit la luptă împotriva lui Ioab?",
    "opts": [
-    "oamenii lui Ioab",
-    "sirienii",
-    "fiii lui Amon"
+    "filistenii",
+    "fiii lui Amon",
+    "sirienii"
    ],
    "a": [
     1,
@@ -285,21 +285,24 @@
    "id": "2sa.10.usor.324",
    "age": "usor",
    "t": "multi",
-   "ref": "10:2",
-   "q": "Ce voia David să-i arate lui Hanun?",
+   "ref": "10:5",
+   "q": "Ce a făcut David pentru slujitorii batjocoriți?",
    "opts": [
-    "dispreț",
-    "mânie",
-    "frică"
+    "a trimis oameni înaintea lor",
+    "le-a spus să aștepte până le crește barba",
+    "i-a pedepsit"
    ],
-   "a": []
+   "a": [
+    0,
+    1
+   ]
   },
   {
    "id": "2sa.10.mediu.301",
    "age": "mediu",
    "t": "tf",
    "ref": "10:2",
-   "q": "David voia să-i arate lui Hanun bunăvoința pe care i-o arătase tatăl lui.",
+   "q": "Nahaș, tatăl lui Hanun, îi arătase bunăvoință lui David.",
    "a": true
   },
   {
@@ -307,8 +310,8 @@
    "age": "mediu",
    "t": "tf",
    "ref": "10:3",
-   "q": "Căpeteniile lui Hanun bănuiau că David vrea să nimicească cetatea.",
-   "a": true
+   "q": "Hanun singur a crezut că slujitorii lui David sunt iscoade.",
+   "a": false
   },
   {
    "id": "2sa.10.mediu.303",
@@ -322,28 +325,36 @@
    "id": "2sa.10.mediu.304",
    "age": "mediu",
    "t": "tf",
-   "ref": "10:8",
-   "q": "Sirienii erau deoparte, în câmpie.",
-   "a": true
+   "ref": "10:6",
+   "q": "Fiii lui Amon au tocmit sirieni ca să facă pace cu David.",
+   "a": false
   },
   {
    "id": "2sa.10.mediu.305",
    "age": "mediu",
    "t": "tf",
-   "ref": "10:10",
-   "q": "Abișai a primit poruncă peste restul poporului.",
+   "ref": "10:8",
+   "q": "Fiii lui Amon s-au așezat în șiruri la intrarea porții.",
    "a": true
   },
   {
    "id": "2sa.10.mediu.306",
    "age": "mediu",
    "t": "tf",
-   "ref": "10:4",
-   "q": "Hanun i-a ținut pe slujitorii lui David închiși o lună.",
+   "ref": "10:10",
+   "q": "Abișai a luptat împotriva sirienilor.",
    "a": false
   },
   {
    "id": "2sa.10.mediu.307",
+   "age": "mediu",
+   "t": "tf",
+   "ref": "10:14",
+   "q": "Fiii lui Amon au fugit în cetate când au văzut fugind pe sirieni.",
+   "a": true
+  },
+  {
+   "id": "2sa.10.mediu.308",
    "age": "mediu",
    "t": "tf",
    "ref": "10:7",
@@ -351,39 +362,31 @@
    "a": false
   },
   {
-   "id": "2sa.10.mediu.308",
-   "age": "mediu",
-   "t": "tf",
-   "ref": "10:12",
-   "q": "Ioab i-a spus lui Abișai că biruința e sigură oricum.",
-   "a": false
-  },
-  {
    "id": "2sa.10.mediu.309",
    "age": "mediu",
    "t": "tf",
-   "ref": "10:17",
-   "q": "La Helam, sirienii au fugit fără luptă.",
-   "a": false
+   "ref": "10:18",
+   "q": "Sirienii au fugit dinaintea lui Israel la Helam.",
+   "a": true
   },
   {
    "id": "2sa.10.mediu.310",
    "age": "mediu",
    "t": "tf",
-   "ref": "10:6",
-   "q": "Împăratul din Maaca a dat douăzeci de mii de oameni.",
+   "ref": "10:19",
+   "q": "După război, sirienii au mai îndrăznit să-i ajute pe fiii lui Amon.",
    "a": false
   },
   {
    "id": "2sa.10.mediu.311",
    "age": "mediu",
    "t": "one",
-   "ref": "10:18",
-   "q": "Câți cai de trăsură le-a tăiat David sirienilor?",
+   "ref": "10:3",
+   "q": "De ce credeau căpeteniile că David îi trimisese slujitorii?",
    "opts": [
-    "patruzeci de mii",
-    "o mie șapte sute",
-    "șapte sute"
+    "să ceară bir de la fiii lui Amon",
+    "să-l cheme pe Hanun la Ierusalim",
+    "să cerceteze cetatea ca s-o nimicească"
    ],
    "a": 2
   },
@@ -391,12 +394,12 @@
    "id": "2sa.10.mediu.312",
    "age": "mediu",
    "t": "one",
-   "ref": "10:10",
-   "q": "Pe cine a pus Ioab sub porunca lui Abișai?",
+   "ref": "10:4",
+   "q": "Până unde le-a tăiat Hanun hainele slujitorilor?",
    "opts": [
-    "ce mai rămăsese din popor",
-    "oamenii din Tob",
-    "toți aleșii lui Israel"
+    "până la coapse",
+    "până la brâu",
+    "până la genunchi"
    ],
    "a": 0
   },
@@ -404,12 +407,12 @@
    "id": "2sa.10.mediu.313",
    "age": "mediu",
    "t": "one",
-   "ref": "10:13",
-   "q": "Împotriva cui a înaintat Ioab cu poporul lui?",
+   "ref": "10:5",
+   "q": "De ce nu s-au întors slujitorii direct la David?",
    "opts": [
-    "împotriva sirienilor",
-    "împotriva Maacăi",
-    "împotriva fiilor lui Amon"
+    "erau foarte batjocoriți",
+    "se temeau de Ioab",
+    "erau răniți în luptă"
    ],
    "a": 0
   },
@@ -417,12 +420,12 @@
    "id": "2sa.10.mediu.314",
    "age": "mediu",
    "t": "one",
-   "ref": "10:11",
-   "q": "Ce i-a cerut Ioab lui Abișai dacă sirienii vor fi mai tari?",
+   "ref": "10:6",
+   "q": "De ce au tocmit fiii lui Amon ajutor de la sirieni?",
    "opts": [
-    "să vină în ajutorul lui",
-    "să fugă la Ierusalim",
-    "să ceară pace"
+    "se făcuseră urâți lui David",
+    "voiau să cucerească Ierusalimul",
+    "se temeau de filisteni"
    ],
    "a": 0
   },
@@ -430,12 +433,12 @@
    "id": "2sa.10.mediu.315",
    "age": "mediu",
    "t": "one",
-   "ref": "10:16",
-   "q": "Cine a trimis după sirienii de dincolo de râu?",
+   "ref": "10:7",
+   "q": "Ce fel de oameni a trimis David cu Ioab?",
    "opts": [
-    "Hanun",
-    "Șobac",
-    "Hadadezer"
+    "numai tineri aleși",
+    "numai oameni din Iuda",
+    "numai oameni viteji"
    ],
    "a": 2
   },
@@ -443,12 +446,12 @@
    "id": "2sa.10.mediu.316",
    "age": "mediu",
    "t": "one",
-   "ref": "10:2",
-   "q": "Al cui fiu era Hanun?",
+   "ref": "10:9",
+   "q": "Ce a văzut Ioab înainte de luptă?",
    "opts": [
-    "al lui Nahaș",
-    "al lui Rehob",
-    "al lui Hadadezer"
+    "că avea să lupte și înainte, și înapoi",
+    "că fiii lui Amon fugiseră deja",
+    "că sirienii erau mai mulți decât ai lui"
    ],
    "a": 0
   },
@@ -456,12 +459,12 @@
    "id": "2sa.10.mediu.317",
    "age": "mediu",
    "t": "one",
-   "ref": "10:15",
-   "q": "Ce au făcut sirienii după ce au fost bătuți prima dată?",
+   "ref": "10:11",
+   "q": "Ce i-a spus Ioab lui Abișai?",
    "opts": [
-    "s-au supus lui David",
-    "s-au întors acasă",
-    "și-au strâns puterile"
+    "să-l aștepte până seara la poartă",
+    "să nu lupte fără porunca lui David",
+    "să-l ajute dacă sirienii vor fi mai tari"
    ],
    "a": 2
   },
@@ -469,12 +472,12 @@
    "id": "2sa.10.mediu.318",
    "age": "mediu",
    "t": "one",
-   "ref": "10:19",
-   "q": "Ce au făcut împărații supuși lui Hadarezer față de Israel?",
+   "ref": "10:12",
+   "q": "Pentru ce le-a cerut Ioab să fie plini de bărbăție?",
    "opts": [
-    "au plătit bir",
-    "i s-au supus",
-    "au fugit"
+    "pentru împăratul lor și pentru casa lui",
+    "pentru poporul lor și cetățile Dumnezeului lor",
+    "pentru chivotul și cortul Domnului"
    ],
    "a": 1
   },
@@ -482,12 +485,12 @@
    "id": "2sa.10.mediu.319",
    "age": "mediu",
    "t": "one",
-   "ref": "10:9",
-   "q": "Împotriva cui a pus Ioab ceata aleasă?",
+   "ref": "10:16",
+   "q": "De unde a trimis Hadadezer după sirieni?",
    "opts": [
-    "împotriva filistenilor",
-    "împotriva fiilor lui Amon",
-    "împotriva sirienilor"
+    "din munții Libanului",
+    "din cetatea Damascului",
+    "de cealaltă parte a râului"
    ],
    "a": 2
   },
@@ -496,11 +499,11 @@
    "age": "mediu",
    "t": "one",
    "ref": "10:17",
-   "q": "Pe cine a strâns David ca să lupte la Helam?",
+   "q": "Ce a făcut David când a aflat că sirienii s-au strâns?",
    "opts": [
-    "numai cetele lui Iuda",
-    "tot Israelul",
-    "numai pe Ioab"
+    "a cerut pace de la Hadadezer",
+    "a strâns tot Israelul și a trecut Iordanul",
+    "a trimis iar pe Ioab cu oamenii viteji"
    ],
    "a": 1
   },
@@ -508,48 +511,48 @@
    "id": "2sa.10.mediu.321",
    "age": "mediu",
    "t": "match",
-   "ref": "10:1-19",
-   "q": "Asociază fiecare persoană cu cuvintele spuse.",
+   "ref": "10:1-18",
+   "q": "Asociază fiecare nume cu ce se spune despre el.",
    "pairs": [
     [
-     "David despre Hanun",
-     "„Voi arăta bunăvoință lui Hanun.”"
+     "Hanun",
+     "fiul lui Nahaș"
     ],
     [
-     "căpeteniile lui Amon",
-     "„Crezi că David îți trimite oameni să te mângâie?”"
+     "Ierihonul",
+     "slujitorii au așteptat acolo să le crească barba"
     ],
     [
-     "David către slujitori",
-     "„Rămâneți la Ierihon până vă va crește barba.”"
+     "Abișai",
+     "a ținut piept fiilor lui Amon"
     ],
     [
-     "Ioab către Abișai",
-     "„Fii tare!”"
+     "Helam",
+     "acolo s-au strâns sirienii a doua oară"
     ],
     [
-     "Ioab despre Domnul",
-     "„Domnul să facă ce va crede!”"
+     "Șobac",
+     "căpetenia oștirii lui Hadadezer"
     ]
    ],
    "refs": [
     "10:2",
-    "10:3",
     "10:5",
-    "10:12",
-    "10:12"
+    "10:10",
+    "10:16",
+    "10:16"
    ]
   },
   {
    "id": "2sa.10.mediu.322",
    "age": "mediu",
    "t": "multi",
-   "ref": "10:8",
-   "q": "Cine stătea deoparte, în câmpie, la prima luptă?",
+   "ref": "10:6",
+   "q": "De unde au tocmit fiii lui Amon oameni?",
    "opts": [
-    "oamenii din Tob și Maaca",
-    "sirienii din Țoba și Rehob",
-    "fiii lui Amon"
+    "de la oamenii din Tob",
+    "de la sirienii din Bet-Rehob",
+    "de la filistenii din Gat"
    ],
    "a": [
     0,
@@ -560,12 +563,12 @@
    "id": "2sa.10.mediu.323",
    "age": "mediu",
    "t": "multi",
-   "ref": "10:17",
-   "q": "Ce a făcut David când i s-a dat de veste despre sirieni?",
+   "ref": "10:18",
+   "q": "Ce le-a făcut David sirienilor la Helam?",
    "opts": [
-    "a trecut Iordanul",
-    "a strâns tot Israelul",
-    "a trimis soli de pace"
+    "l-a lovit pe Șobac",
+    "le-a tăiat șapte sute de cai de trăsură",
+    "le-a luat cetatea Damasc"
    ],
    "a": [
     0,
@@ -576,12 +579,12 @@
    "id": "2sa.10.mediu.324",
    "age": "mediu",
    "t": "multi",
-   "ref": "10:9-10",
-   "q": "Cum și-a împărțit Ioab oastea?",
+   "ref": "10:19",
+   "q": "Ce au făcut împărații supuși lui Hadarezer?",
    "opts": [
-    "toată oastea împotriva cetății",
-    "restul, sub Abișai, împotriva fiilor lui Amon",
-    "o ceată aleasă împotriva sirienilor"
+    "au fugit în Egipt",
+    "i s-au supus",
+    "au făcut pace cu Israel"
    ],
    "a": [
     1,
@@ -592,80 +595,80 @@
    "id": "2sa.10.greu.301",
    "age": "greu",
    "t": "tf",
-   "ref": "10:2",
-   "q": "Slujitorii lui David au ajuns în țara fiilor lui Amon.",
+   "ref": "10:1",
+   "q": "Hanun a domnit în locul tatălui său peste fiii lui Amon.",
    "a": true
   },
   {
    "id": "2sa.10.greu.302",
    "age": "greu",
    "t": "tf",
-   "ref": "10:3",
-   "q": "Hanun a fost cel care a bănuit primul că David îl înșală.",
+   "ref": "10:2",
+   "q": "David a spus că îi va arăta bunăvoință lui Hanun cum îi arătase Saul.",
    "a": false
   },
   {
    "id": "2sa.10.greu.303",
    "age": "greu",
    "t": "tf",
-   "ref": "10:5",
-   "q": "Barba slujitorilor trebuia să crească înainte de întoarcere.",
+   "ref": "10:4",
+   "q": "Hanun le-a tăiat slujitorilor lui David hainele pe jumătate, până la coapse.",
    "a": true
   },
   {
    "id": "2sa.10.greu.304",
    "age": "greu",
    "t": "tf",
-   "ref": "10:6",
-   "q": "Oamenii din Tob au dat o mie de oameni.",
+   "ref": "10:5",
+   "q": "David le-a spus slujitorilor să rămână la Ghilgal până le va crește barba.",
    "a": false
   },
   {
    "id": "2sa.10.greu.305",
    "age": "greu",
    "t": "tf",
-   "ref": "10:8",
-   "q": "Oamenii din Tob și din Maaca erau în câmpie, cu sirienii.",
+   "ref": "10:6",
+   "q": "Fiii lui Amon au luat o mie de oameni de la împăratul din Maaca.",
    "a": true
   },
   {
    "id": "2sa.10.greu.306",
    "age": "greu",
    "t": "tf",
-   "ref": "10:11",
-   "q": "Ioab a promis că va veni în ajutorul lui Abișai dacă amoniții vor fi mai tari.",
-   "a": true
+   "ref": "10:7",
+   "q": "David a trimis cu Ioab doar o parte din oștire.",
+   "a": false
   },
   {
    "id": "2sa.10.greu.307",
    "age": "greu",
    "t": "tf",
-   "ref": "10:13",
-   "q": "Fiii lui Amon au fugit primii, iar sirienii după ei.",
-   "a": false
+   "ref": "10:2",
+   "q": "Slujitorii lui David au fost trimiși să-l mângâie pe Hanun.",
+   "a": true
   },
   {
    "id": "2sa.10.greu.308",
    "age": "greu",
    "t": "tf",
-   "ref": "10:16",
-   "q": "Sirienii au venit la Helam în frunte cu Șobac.",
-   "a": true
+   "ref": "10:14",
+   "q": "După luptă, Ioab a asediat cetatea fiilor lui Amon.",
+   "a": false
   },
   {
    "id": "2sa.10.greu.309",
    "age": "greu",
    "t": "tf",
-   "ref": "10:17",
-   "q": "La Helam, Ioab a condus oastea, nu David.",
-   "a": false
+   "ref": "10:18",
+   "q": "David a tăiat patruzeci de mii de călăreți sirieni.",
+   "a": true
   },
   {
    "id": "2sa.10.greu.310",
    "age": "greu",
    "t": "tf",
    "ref": "10:19",
-   "q": "Hadarezer a făcut pace cu fiii lui Amon după înfrângere.",
+   "q": "Împărații supuși lui Hadarezer au fugit peste râu după luptă.",
    "a": false
   },
   {
@@ -673,11 +676,11 @@
    "age": "greu",
    "t": "one",
    "ref": "10:2",
-   "q": "Pentru ce voia David să-l mângâie pe Hanun?",
+   "q": "Al cui fiu era Hanun?",
    "opts": [
-    "pentru boala fiului său cel mic",
-    "pentru înfrângerea lui de la Raba",
-    "pentru moartea tatălui său Nahaș"
+    "al lui Rehob",
+    "al lui Hadadezer",
+    "al lui Nahaș"
    ],
    "a": 2
   },
@@ -686,11 +689,11 @@
    "age": "greu",
    "t": "one",
    "ref": "10:3",
-   "q": "Ce întrebare i-au pus căpeteniile lui Hanun?",
+   "q": "Ce au întrebat căpeteniile pe Hanun?",
    "opts": [
-    "dacă vrea război cu David",
-    "dacă știe cine sunt slujitorii",
-    "dacă crede că David vrea să-l mângâie"
+    "„Crezi că David vrea să facă pace cu tine?”",
+    "„Crezi că David se teme de oastea ta?”",
+    "„Crezi că David îți trimite oameni să te mângâie?”"
    ],
    "a": 2
   },
@@ -698,12 +701,12 @@
    "id": "2sa.10.greu.313",
    "age": "greu",
    "t": "one",
-   "ref": "10:4",
-   "q": "Până unde le-a tăiat Hanun hainele slujitorilor?",
+   "ref": "10:11",
+   "q": "Ce i-a făgăduit Ioab lui Abișai?",
    "opts": [
-    "până la genunchi",
-    "până la coapse",
-    "până la glezne"
+    "să-i dea jumătate din pradă dacă vor birui",
+    "să vină să-l ajute dacă fiii lui Amon vor fi mai tari",
+    "să-i lase lui toată cinstea biruinței asupra lor"
    ],
    "a": 1
   },
@@ -712,11 +715,11 @@
    "age": "greu",
    "t": "one",
    "ref": "10:6",
-   "q": "Ce au tocmit fiii lui Amon de la sirienii din Bet-Rehob și Țoba?",
+   "q": "Câți pedeștri au tocmit fiii lui Amon de la sirienii din Bet-Rehob și Țoba?",
    "opts": [
-    "pedeștri",
-    "care",
-    "arcași"
+    "douăzeci de mii",
+    "douăsprezece mii",
+    "treizeci de mii"
    ],
    "a": 0
   },
@@ -724,12 +727,12 @@
    "id": "2sa.10.greu.315",
    "age": "greu",
    "t": "one",
-   "ref": "10:9",
-   "q": "Pe cine a ales Ioab pentru ceata împotriva sirienilor?",
+   "ref": "10:19",
+   "q": "Ce n-au mai îndrăznit sirienii după război?",
    "opts": [
-    "din cei din Ierihon",
-    "din toți aleșii lui Israel",
-    "din oamenii lui Abișai"
+    "să lupte cu Ioab",
+    "să-i ajute pe fiii lui Amon",
+    "să treacă iar Iordanul"
    ],
    "a": 1
   },
@@ -737,12 +740,12 @@
    "id": "2sa.10.greu.316",
    "age": "greu",
    "t": "one",
-   "ref": "10:12",
-   "q": "Pentru ce i-a îndemnat Ioab să se arate plini de bărbăție?",
+   "ref": "10:9",
+   "q": "Pe cine a ales Ioab să lupte împotriva sirienilor?",
    "opts": [
-    "pentru pradă",
-    "pentru poporul lor",
-    "pentru împăratul Hanun"
+    "ceata lui Abișai, fratele său",
+    "o ceată din toți aleșii lui Israel",
+    "oamenii lui David din Iuda"
    ],
    "a": 1
   },
@@ -750,12 +753,12 @@
    "id": "2sa.10.greu.317",
    "age": "greu",
    "t": "one",
-   "ref": "10:14",
-   "q": "Dinaintea cui au fugit fiii lui Amon?",
+   "ref": "10:12",
+   "q": "Cum își încheie Ioab cuvântul către Abișai?",
    "opts": [
-    "dinaintea lui Abișai",
-    "dinaintea lui David",
-    "dinaintea lui Ioab"
+    "„Domnul să facă ce va crede!”",
+    "„Domnul să ne dea biruința!”",
+    "„Domnul să fie cu tine!”"
    ],
    "a": 0
   },
@@ -764,11 +767,11 @@
    "age": "greu",
    "t": "one",
    "ref": "10:16",
-   "q": "Al cui oștean de frunte era Șobac?",
+   "q": "Cine era în fruntea sirienilor la Helam?",
    "opts": [
-    "al lui Hadadezer",
-    "al lui Hanun",
-    "al lui Nahaș"
+    "Șobac",
+    "Hadadezer",
+    "Hanun"
    ],
    "a": 0
   },
@@ -776,12 +779,12 @@
    "id": "2sa.10.greu.319",
    "age": "greu",
    "t": "one",
-   "ref": "10:17",
-   "q": "Cine a ieșit înaintea lui David la Helam?",
+   "ref": "10:15",
+   "q": "Ce au făcut sirienii după ce au fost bătuți prima dată?",
    "opts": [
-    "sirienii",
-    "fiii lui Amon",
-    "oamenii din Tob"
+    "și-au strâns puterile",
+    "au cerut pace",
+    "s-au întors acasă"
    ],
    "a": 0
   },
@@ -789,12 +792,12 @@
    "id": "2sa.10.greu.320",
    "age": "greu",
    "t": "one",
-   "ref": "10:19",
-   "q": "Pe cine n-au mai îndrăznit sirienii să ajute?",
+   "ref": "10:18",
+   "q": "Câți cai de trăsură a tăiat David de la sirieni?",
    "opts": [
-    "pe moabiți",
-    "pe fiii lui Amon",
-    "pe filisteni"
+    "patruzeci de mii",
+    "șapte sute",
+    "o mie șapte sute"
    ],
    "a": 1
   },
@@ -802,48 +805,48 @@
    "id": "2sa.10.greu.321",
    "age": "greu",
    "t": "match",
-   "ref": "10:1-19",
-   "q": "Asociază fiecare persoană cu ce se spune despre ea.",
+   "ref": "10:5-17",
+   "q": "Asociază fiecare loc cu ce se spune despre el.",
    "pairs": [
     [
-     "Hanun",
-     "fiul lui Nahaș"
+     "Ierihonul",
+     "slujitorii batjocoriți au așteptat acolo"
     ],
     [
-     "Abișai",
-     "fratele lui Ioab"
+     "intrarea porții",
+     "acolo s-au așezat fiii lui Amon"
     ],
     [
-     "Hadadezer",
-     "a trimis după sirienii de dincolo de râu"
+     "câmpia",
+     "acolo stăteau sirienii deoparte"
     ],
     [
-     "Șobac",
-     "a murit pe loc la Helam"
+     "Helam",
+     "acolo s-au strâns sirienii de dincolo de râu"
     ],
     [
-     "slujitorii lui David",
-     "au rămas la Ierihon"
+     "Iordanul",
+     "David l-a trecut cu tot Israelul"
     ]
    ],
    "refs": [
-    "10:2",
-    "10:10",
+    "10:5",
+    "10:8",
+    "10:8",
     "10:16",
-    "10:18",
-    "10:5"
+    "10:17"
    ]
   },
   {
    "id": "2sa.10.greu.322",
    "age": "greu",
    "t": "multi",
-   "ref": "10:6",
-   "q": "Pe cine au tocmit fiii lui Amon?",
+   "ref": "10:12",
+   "q": "Pentru ce le-a cerut Ioab să se arate plini de bărbăție?",
    "opts": [
-    "oameni din Moab",
-    "sirieni din Bet-Rehob",
-    "oameni din Tob"
+    "pentru împăratul David",
+    "pentru poporul lor",
+    "pentru cetățile Dumnezeului lor"
    ],
    "a": [
     1,
@@ -854,12 +857,12 @@
    "id": "2sa.10.greu.323",
    "age": "greu",
    "t": "multi",
-   "ref": "10:18",
-   "q": "Ce s-a întâmplat la Helam?",
+   "ref": "10:13-14",
+   "q": "Cine a fugit în prima luptă?",
    "opts": [
-    "Hadadezer a fost prins",
-    "sirienii au fugit dinaintea lui Israel",
-    "Șobac a fost lovit și a murit"
+    "oamenii lui Abișai",
+    "sirienii",
+    "fiii lui Amon"
    ],
    "a": [
     1,
@@ -870,12 +873,12 @@
    "id": "2sa.10.greu.324",
    "age": "greu",
    "t": "multi",
-   "ref": "10:3",
-   "q": "Ce le-au cerut căpeteniile lui Amon slujitorilor lui David?",
+   "ref": "10:4",
+   "q": "Ce le-a ras Hanun slujitorilor lui David?",
    "opts": [
-    "să-i aducă pe Ioab",
-    "să lupte cu sirienii",
-    "să plătească bir"
+    "toată barba",
+    "sprâncenele",
+    "părul capului"
    ],
    "a": []
   }

@@ -15,56 +15,56 @@
    "id": "2sa.12.usor.302",
    "age": "usor",
    "t": "tf",
-   "ref": "12:1",
-   "q": "În pilda lui Natan erau doi oameni bogați.",
+   "ref": "12:2",
+   "q": "În pilda lui Natan, omul sărac avea multe oi.",
    "a": false
   },
   {
    "id": "2sa.12.usor.303",
    "age": "usor",
    "t": "tf",
-   "ref": "12:3",
-   "q": "Săracul avea multe oi și mulți boi.",
-   "a": false
+   "ref": "12:5",
+   "q": "David s-a mâniat foarte tare pe omul bogat din pildă.",
+   "a": true
   },
   {
    "id": "2sa.12.usor.304",
    "age": "usor",
    "t": "tf",
-   "ref": "12:4",
-   "q": "Bogatul a luat mielușeaua săracului.",
-   "a": true
+   "ref": "12:13",
+   "q": "David a spus că n-a greșit cu nimic.",
+   "a": false
   },
   {
    "id": "2sa.12.usor.305",
    "age": "usor",
    "t": "tf",
-   "ref": "12:5",
-   "q": "David s-a mâniat pe omul bogat din pildă.",
+   "ref": "12:13",
+   "q": "Natan i-a spus lui David că Domnul îi iartă păcatul.",
    "a": true
   },
   {
    "id": "2sa.12.usor.306",
    "age": "usor",
    "t": "tf",
-   "ref": "12:7",
-   "q": "Natan i-a spus lui David: „Tu nu ești omul acesta.”",
+   "ref": "12:15",
+   "q": "Natan a rămas să locuiască în casa lui David.",
    "a": false
   },
   {
    "id": "2sa.12.usor.307",
    "age": "usor",
    "t": "tf",
-   "ref": "12:13",
-   "q": "David a recunoscut: „Am păcătuit împotriva Domnului!”",
+   "ref": "12:16",
+   "q": "David a postit pentru copilul bolnav.",
    "a": true
   },
   {
    "id": "2sa.12.usor.308",
    "age": "usor",
    "t": "tf",
-   "ref": "12:16",
-   "q": "David a făcut o petrecere cât timp copilul era bolnav.",
+   "ref": "12:20",
+   "q": "După moartea copilului, David a refuzat să mănânce.",
    "a": false
   },
   {
@@ -72,7 +72,7 @@
    "age": "usor",
    "t": "tf",
    "ref": "12:24",
-   "q": "Bat-Șeba a născut un fiu numit Solomon.",
+   "q": "Solomon a fost iubit de Domnul.",
    "a": true
   },
   {
@@ -80,19 +80,19 @@
    "age": "usor",
    "t": "tf",
    "ref": "12:29",
-   "q": "David a luat cetatea Raba.",
-   "a": true
+   "q": "David n-a mai luat cetatea Raba.",
+   "a": false
   },
   {
    "id": "2sa.12.usor.311",
    "age": "usor",
    "t": "one",
-   "ref": "12:1",
-   "q": "Pe cine a trimis Domnul la David?",
+   "ref": "12:3",
+   "q": "Ce avea omul sărac din pildă?",
    "opts": [
-    "pe Samuel",
-    "pe Ioab",
-    "pe Natan"
+    "o turmă de capre",
+    "un bou bătrân",
+    "o singură mielușea"
    ],
    "a": 2
   },
@@ -101,11 +101,11 @@
    "age": "usor",
    "t": "one",
    "ref": "12:3",
-   "q": "Ce avea săracul din pildă?",
+   "q": "Cum privea săracul mielușeaua?",
    "opts": [
-    "o singură mielușea",
-    "o turmă mare",
-    "un bou"
+    "ca pe fata lui",
+    "ca pe o slujnică",
+    "ca pe o străină"
    ],
    "a": 0
   },
@@ -113,12 +113,12 @@
    "id": "2sa.12.usor.313",
    "age": "usor",
    "t": "one",
-   "ref": "12:3",
-   "q": "Cum o privea săracul pe mielușea?",
+   "ref": "12:4",
+   "q": "Ce a făcut bogatul când a venit un călător la el?",
    "opts": [
-    "ca pe fata lui",
-    "ca pe o slugă",
-    "ca pe o mâncare"
+    "a luat oaia săracului",
+    "a ucis un bou de-al lui",
+    "l-a trimis la han"
    ],
    "a": 0
   },
@@ -126,12 +126,12 @@
    "id": "2sa.12.usor.314",
    "age": "usor",
    "t": "one",
-   "ref": "12:4",
-   "q": "Cine a venit la omul bogat?",
+   "ref": "12:7",
+   "q": "Ce i-a spus Natan lui David?",
    "opts": [
-    "un împărat",
-    "un călător",
-    "un proroc"
+    "„Tu ești un om bun!”",
+    "„Tu ești omul acesta!”",
+    "„Tu ești săracul!”"
    ],
    "a": 1
   },
@@ -140,11 +140,11 @@
    "age": "usor",
    "t": "one",
    "ref": "12:7",
-   "q": "Ce i-a spus Natan lui David după pildă?",
+   "q": "Din mâna cui îl scăpase Domnul pe David?",
    "opts": [
-    "„Omul a murit.”",
-    "„Ai judecat bine!”",
-    "„Tu ești omul acesta!”"
+    "a lui Ahab",
+    "a lui faraon",
+    "a lui Saul"
    ],
    "a": 2
   },
@@ -152,12 +152,12 @@
    "id": "2sa.12.usor.316",
    "age": "usor",
    "t": "one",
-   "ref": "12:13",
-   "q": "Ce a spus Natan după ce David și-a recunoscut păcatul?",
+   "ref": "12:10",
+   "q": "Ce a spus Domnul că nu se va depărta din casa lui David?",
    "opts": [
-    "Domnul îți iartă păcatul",
-    "Domnul nu te mai iubește",
-    "Domnul te va alunga"
+    "sabia",
+    "pacea",
+    "bucuria"
    ],
    "a": 0
   },
@@ -165,12 +165,12 @@
    "id": "2sa.12.usor.317",
    "age": "usor",
    "t": "one",
-   "ref": "12:16",
-   "q": "Ce a făcut David pentru copilul bolnav?",
+   "ref": "12:18",
+   "q": "În a câta zi a murit copilul?",
    "opts": [
-    "a plecat la război",
-    "s-a rugat și a postit",
-    "a chemat doctori din Egipt"
+    "a suta",
+    "a șaptea",
+    "prima"
    ],
    "a": 1
   },
@@ -178,12 +178,12 @@
    "id": "2sa.12.usor.318",
    "age": "usor",
    "t": "one",
-   "ref": "12:18",
-   "q": "În a câta zi a murit copilul?",
+   "ref": "12:19",
+   "q": "Cum a înțeles David că murise copilul?",
    "opts": [
-    "a șaptea",
-    "a treia",
-    "a zecea"
+    "slujitorii vorbeau în șoaptă",
+    "a văzut un vis",
+    "i-a spus Ioab"
    ],
    "a": 0
   },
@@ -192,11 +192,11 @@
    "age": "usor",
    "t": "one",
    "ref": "12:24",
-   "q": "Ce se spune despre Solomon?",
+   "q": "Cum s-a numit fiul născut de Bat-Șeba după aceea?",
    "opts": [
-    "a fost luat de Natan",
-    "a fost bolnav",
-    "a fost iubit de Domnul"
+    "Samuel",
+    "Absalom",
+    "Solomon"
    ],
    "a": 2
   },
@@ -205,10 +205,10 @@
    "age": "usor",
    "t": "one",
    "ref": "12:30",
-   "q": "Ce a fost pus pe capul lui David la Raba?",
+   "q": "Ce s-a pus pe capul lui David după cucerirea Rabei?",
    "opts": [
-    "un coif de fier",
-    "cununa împăratului cetății",
+    "o cască de fier",
+    "cununa împăratului lor",
     "o cunună de flori"
    ],
    "a": 1
@@ -217,35 +217,35 @@
    "id": "2sa.12.usor.321",
    "age": "usor",
    "t": "match",
-   "ref": "12:1-31",
-   "q": "Asociază fiecare persoană cu ce se spune despre ea.",
+   "ref": "12:2-25",
+   "q": "Asociază fiecare nume cu ce se spune despre el.",
    "pairs": [
     [
-     "Natan",
-     "a spus pilda cu mielușeaua"
+     "omul bogat",
+     "avea foarte multe oi și boi"
     ],
     [
-     "săracul din pildă",
-     "avea o singură mielușea"
+     "călătorul",
+     "a venit în vizită la omul bogat"
     ],
     [
-     "bogatul din pildă",
-     "a luat oaia săracului"
+     "mielușeaua",
+     "dormea la sânul săracului"
     ],
     [
-     "Solomon",
-     "a fost iubit de Domnul"
+     "Iedidia",
+     "numele dat de Natan lui Solomon"
     ],
     [
      "Ioab",
-     "a împresurat Raba"
+     "împresura Raba fiilor lui Amon"
     ]
    ],
    "refs": [
-    "12:1",
-    "12:3",
+    "12:2",
     "12:4",
-    "12:24",
+    "12:3",
+    "12:25",
     "12:26"
    ]
   },
@@ -253,12 +253,12 @@
    "id": "2sa.12.usor.322",
    "age": "usor",
    "t": "multi",
-   "ref": "12:2-3",
-   "q": "Ce se spune în pilda lui Natan?",
+   "ref": "12:20",
+   "q": "Ce a făcut David când a aflat că murise copilul?",
    "opts": [
-    "bogatul avea foarte multe oi",
-    "săracul avea foarte mulți boi",
-    "săracul avea o mielușea"
+    "s-a spălat și și-a schimbat hainele",
+    "a plâns și mai tare",
+    "s-a dus în Casa Domnului și s-a închinat"
    ],
    "a": [
     0,
@@ -269,12 +269,12 @@
    "id": "2sa.12.usor.323",
    "age": "usor",
    "t": "multi",
-   "ref": "12:20",
-   "q": "Ce a făcut David după ce a murit copilul?",
+   "ref": "12:6",
+   "q": "Ce a spus David că trebuie să facă bogatul din pildă?",
    "opts": [
-    "s-a dus în Casa Domnului și s-a închinat",
-    "s-a sculat de la pământ",
-    "a plâns încă o săptămână"
+    "să fie pedepsit",
+    "să dea înapoi patru miei",
+    "să primească o răsplată"
    ],
    "a": [
     0,
@@ -285,105 +285,108 @@
    "id": "2sa.12.usor.324",
    "age": "usor",
    "t": "multi",
-   "ref": "12:5",
-   "q": "Pe cine s-a mâniat David când a auzit pilda?",
+   "ref": "12:9",
+   "q": "Ce rău a făcut David, după cuvintele Domnului?",
    "opts": [
-    "pe săracul din pildă",
-    "pe călător",
-    "pe Natan"
+    "a luat de nevastă pe nevasta lui",
+    "a ars un oraș întreg",
+    "a lovit cu sabia pe Urie"
    ],
-   "a": []
+   "a": [
+    0,
+    2
+   ]
   },
   {
    "id": "2sa.12.mediu.301",
    "age": "mediu",
    "t": "tf",
-   "ref": "12:2",
-   "q": "Bogatul avea foarte mulți boi.",
+   "ref": "12:1",
+   "q": "Natan a început cu o pildă despre doi oameni dintr-o cetate.",
    "a": true
   },
   {
    "id": "2sa.12.mediu.302",
    "age": "mediu",
    "t": "tf",
-   "ref": "12:4",
-   "q": "Bogatul a gătit mielușeaua săracului pentru călător.",
-   "a": true
+   "ref": "12:3",
+   "q": "Săracul își primise mielușeaua în dar.",
+   "a": false
   },
   {
    "id": "2sa.12.mediu.303",
    "age": "mediu",
    "t": "tf",
-   "ref": "12:8",
-   "q": "Domnul spune că i-ar fi dat lui David și mai mult.",
+   "ref": "12:6",
+   "q": "David a cerut ca bogatul să dea înapoi patru miei.",
    "a": true
   },
   {
    "id": "2sa.12.mediu.304",
    "age": "mediu",
    "t": "tf",
-   "ref": "12:12",
-   "q": "Domnul spune că David a lucrat pe ascuns.",
-   "a": true
+   "ref": "12:7",
+   "q": "Natan i-a spus lui David: „Așa vorbește Domnul oștirilor.”",
+   "a": false
   },
   {
    "id": "2sa.12.mediu.305",
    "age": "mediu",
    "t": "tf",
-   "ref": "12:18",
-   "q": "Slujitorii s-au temut să-i spună lui David că a murit copilul.",
+   "ref": "12:12",
+   "q": "Domnul a spus că David a lucrat pe ascuns.",
    "a": true
   },
   {
    "id": "2sa.12.mediu.306",
    "age": "mediu",
    "t": "tf",
-   "ref": "12:3",
-   "q": "Mielușeaua săracului dormea afară, cu turma.",
+   "ref": "12:14",
+   "q": "Natan a spus că David va muri din pricina păcatului.",
    "a": false
   },
   {
    "id": "2sa.12.mediu.307",
    "age": "mediu",
    "t": "tf",
-   "ref": "12:6",
-   "q": "David a spus că bogatul trebuie să dea înapoi șapte miei.",
-   "a": false
+   "ref": "12:17",
+   "q": "Bătrânii casei au stăruit ca David să se scoale de la pământ.",
+   "a": true
   },
   {
    "id": "2sa.12.mediu.308",
    "age": "mediu",
    "t": "tf",
-   "ref": "12:15",
-   "q": "Natan a rămas la David până când copilul s-a vindecat.",
+   "ref": "12:18",
+   "q": "Slujitorii i-au spus îndată lui David că a murit copilul.",
    "a": false
   },
   {
    "id": "2sa.12.mediu.309",
    "age": "mediu",
    "t": "tf",
-   "ref": "12:21",
-   "q": "Slujitorii au înțeles îndată de ce s-a sculat David și a mâncat.",
-   "a": false
+   "ref": "12:26",
+   "q": "Ioab a pus mâna pe cetatea împărătească a Rabei.",
+   "a": true
   },
   {
    "id": "2sa.12.mediu.310",
    "age": "mediu",
    "t": "tf",
-   "ref": "12:10",
-   "q": "Domnul spune că sabia se va depărta din casa lui David după un an.",
+   "ref": "12:31",
+   "q": "David a rămas în Raba după cucerire.",
    "a": false
   },
   {
    "id": "2sa.12.mediu.311",
    "age": "mediu",
    "t": "one",
-   "ref": "12:17",
-   "q": "Cine a stăruit ca David să se scoale de la pământ?",
+   "ref": "12:3",
+   "q": "Ce făcea mielușeaua săracului?",
    "opts": [
-    "Natan",
-    "Bat-Șeba",
-    "bătrânii casei"
+    "păștea singură lângă casa lui",
+    "mergea cu el la câmp",
+    "mânca din aceeași bucată de pâine cu el"
    ],
    "a": 2
   },
@@ -391,12 +394,12 @@
    "id": "2sa.12.mediu.312",
    "age": "mediu",
    "t": "one",
-   "ref": "12:9",
-   "q": "Cu sabia cui spune Domnul că l-a ucis David pe Urie?",
+   "ref": "12:4",
+   "q": "De ce a luat bogatul oaia săracului?",
    "opts": [
-    "cu sabia lui",
-    "cu sabia lui Ioab",
-    "cu sabia fiilor lui Amon"
+    "voia să-l pedepsească pe sărac",
+    "nu mai avea niciun miel în turmă",
+    "nu s-a îndurat să se atingă de oile lui"
    ],
    "a": 2
   },
@@ -405,11 +408,11 @@
    "age": "mediu",
    "t": "one",
    "ref": "12:5",
-   "q": "Pe ce a jurat David când a judecat pe bogat?",
+   "q": "Ce a zis David despre omul bogat?",
    "opts": [
-    "„Viu este Domnul”",
-    "„Pe viața mea”",
-    "„Pe chivotul Domnului”"
+    "„Este vrednic de moarte!”",
+    "„Să fie alungat din cetate!”",
+    "„Să plătească de șapte ori!”"
    ],
    "a": 0
   },
@@ -417,12 +420,12 @@
    "id": "2sa.12.mediu.314",
    "age": "mediu",
    "t": "one",
-   "ref": "12:22",
-   "q": "De ce postea David cât trăia copilul?",
+   "ref": "12:8",
+   "q": "Ce spune Domnul că i-ar mai fi dat lui David?",
    "opts": [
-    "spera că Domnul se va îndura",
-    "Natan i-a poruncit să postească",
-    "bătrânii casei i-au cerut asta"
+    "ar mai fi adăugat dacă era puțin",
+    "i-ar fi dat și țara Egiptului",
+    "i-ar fi dat bogățiile lui Hiram"
    ],
    "a": 0
   },
@@ -430,12 +433,12 @@
    "id": "2sa.12.mediu.315",
    "age": "mediu",
    "t": "one",
-   "ref": "12:31",
-   "q": "Unde s-a întors David după ce a luat cetățile fiilor lui Amon?",
+   "ref": "12:9",
+   "q": "Cu sabia cui l-a ucis David pe Urie?",
    "opts": [
-    "la Ierusalim",
-    "la Hebron",
-    "la Raba"
+    "a fiilor lui Amon",
+    "a filistenilor",
+    "a sirienilor"
    ],
    "a": 0
   },
@@ -443,12 +446,12 @@
    "id": "2sa.12.mediu.316",
    "age": "mediu",
    "t": "one",
-   "ref": "12:25",
-   "q": "Ce înseamnă numele Iedidia?",
+   "ref": "12:14",
+   "q": "De ce va muri copilul, după Natan?",
    "opts": [
-    "Iubitul Domnului",
-    "Darul Domnului",
-    "Pacea Domnului"
+    "David i-a făcut pe vrăjmași să-L hulească pe Domnul",
+    "David nu s-a pocăit la timp înaintea Domnului",
+    "Natan nu fusese ascultat de împăratul David"
    ],
    "a": 0
   },
@@ -456,12 +459,12 @@
    "id": "2sa.12.mediu.317",
    "age": "mediu",
    "t": "one",
-   "ref": "12:7",
-   "q": "Din mâna cui spune Domnul că l-a scăpat pe David?",
+   "ref": "12:16",
+   "q": "Unde a stat David toată noaptea cât era copilul bolnav?",
    "opts": [
-    "din mâna filistenilor",
-    "din mâna lui Saul",
-    "din mâna lui Absalom"
+    "în Casa Domnului",
+    "culcat pe pământ",
+    "pe acoperiș"
    ],
    "a": 1
   },
@@ -469,12 +472,12 @@
    "id": "2sa.12.mediu.318",
    "age": "mediu",
    "t": "one",
-   "ref": "12:14",
-   "q": "De ce va muri copilul, după Natan?",
+   "ref": "12:22",
+   "q": "De ce postea David cât trăia copilul?",
    "opts": [
-    "copilul era slab de la naștere",
-    "Bat-Șeba nu l-a îngrijit bine",
-    "David i-a făcut pe vrăjmași să hulească"
+    "voia să-l vadă poporul",
+    "așa cerea Legea pentru boli",
+    "spera că Domnul se va îndura"
    ],
    "a": 2
   },
@@ -482,12 +485,12 @@
    "id": "2sa.12.mediu.319",
    "age": "mediu",
    "t": "one",
-   "ref": "12:16",
-   "q": "Unde a stat David toată noaptea, rugându-se pentru copil?",
+   "ref": "12:25",
+   "q": "Ce înseamnă numele Iedidia?",
    "opts": [
-    "în Casa Domnului",
-    "culcat pe pământ",
-    "lângă patul copilului"
+    "Darul Domnului",
+    "Iubitul Domnului",
+    "Pacea Domnului"
    ],
    "a": 1
   },
@@ -496,11 +499,11 @@
    "age": "mediu",
    "t": "one",
    "ref": "12:28",
-   "q": "De ce i-a cerut Ioab lui David să vină să ia cetatea?",
+   "q": "De ce i-a cerut Ioab lui David să vină la Raba?",
    "opts": [
-    "ca să-l ajute să fugă de la Raba",
-    "ca să nu vină cinstea asupra lui Ioab",
-    "ca să facă pace cu fiii lui Amon"
+    "ca să-l ajute în lupta grea",
+    "ca să nu vină asupra lui Ioab cinstea",
+    "ca să împartă prada cu poporul"
    ],
    "a": 1
   },
@@ -508,48 +511,48 @@
    "id": "2sa.12.mediu.321",
    "age": "mediu",
    "t": "match",
-   "ref": "12:1-31",
-   "q": "Asociază fiecare cuvânt cu ce se spune despre el în capitol.",
+   "ref": "12:1-30",
+   "q": "Asociază fiecare nume cu ce se spune despre el.",
    "pairs": [
     [
-     "mielușeaua",
-     "săracul o privea ca pe fata lui"
+     "săracul",
+     "își crescuse mielușeaua cu copiii lui"
     ],
     [
-     "patru miei",
-     "pedeapsa cerută de David pentru bogat"
+     "bogatul",
+     "i-a luat oaia săracului"
     ],
     [
-     "sabia",
-     "nu se va depărta din casa lui David"
-    ],
-    [
-     "Iedidia",
-     "Iubitul Domnului"
+     "Natan",
+     "i-a pus lui Solomon numele Iedidia"
     ],
     [
      "cetatea apelor",
-     "luată de Ioab la Raba"
+     "Ioab a pus stăpânire pe ea"
+    ],
+    [
+     "cununa împăratului din Raba",
+     "cântărea un talant de aur"
     ]
    ],
    "refs": [
     "12:3",
-    "12:6",
-    "12:10",
+    "12:4",
     "12:25",
-    "12:27"
+    "12:27",
+    "12:30"
    ]
   },
   {
    "id": "2sa.12.mediu.322",
    "age": "mediu",
    "t": "multi",
-   "ref": "12:7-8",
-   "q": "Ce spune Domnul că i-a dat lui David?",
+   "ref": "12:11",
+   "q": "Ce a spus Domnul că va face împotriva lui David?",
    "opts": [
-    "casa stăpânului său",
-    "casa lui Israel și Iuda",
-    "cetatea Raba"
+    "va ridica nenorocirea din casa lui",
+    "îi va lua nevestele și le va da altuia",
+    "îi va lua împărăția îndată"
    ],
    "a": [
     0,
@@ -560,12 +563,12 @@
    "id": "2sa.12.mediu.323",
    "age": "mediu",
    "t": "multi",
-   "ref": "12:20",
-   "q": "Ce a făcut David după moartea copilului?",
+   "ref": "12:21-23",
+   "q": "Ce le-a spus David slujitorilor despre copil?",
    "opts": [
-    "s-a spălat și s-a uns",
-    "a cerut să mănânce",
-    "s-a culcat iar pe pământ"
+    "„Pot să-l întorc în viață?”",
+    "„Eu mă voi duce la el, dar el nu se va întoarce la mine”",
+    "„Domnul îl va învia a treia zi”"
    ],
    "a": [
     0,
@@ -576,12 +579,12 @@
    "id": "2sa.12.mediu.324",
    "age": "mediu",
    "t": "multi",
-   "ref": "12:16-17",
-   "q": "Ce a făcut David cât timp copilul era bolnav?",
+   "ref": "12:7-8",
+   "q": "Ce spune Domnul că a făcut pentru David?",
    "opts": [
-    "a postit",
-    "a mâncat cu bătrânii casei",
-    "a stat culcat pe pământ"
+    "l-a uns împărat peste Israel",
+    "i-a zidit Templul",
+    "l-a scăpat din mâna lui Saul"
    ],
    "a": [
     0,
@@ -593,7 +596,7 @@
    "age": "greu",
    "t": "tf",
    "ref": "12:3",
-   "q": "Mielușeaua mânca din aceeași bucată de pâine cu săracul.",
+   "q": "Săracul își cumpărase mielușeaua.",
    "a": true
   },
   {
@@ -601,83 +604,83 @@
    "age": "greu",
    "t": "tf",
    "ref": "12:4",
-   "q": "Bogatul a luat un bou al săracului pentru călător.",
+   "q": "Bogatul a gătit oaia săracului pentru un frate al lui.",
    "a": false
   },
   {
    "id": "2sa.12.greu.303",
    "age": "greu",
    "t": "tf",
-   "ref": "12:7",
-   "q": "Natan a vorbit în Numele Domnului Dumnezeului lui Israel.",
+   "ref": "12:5",
+   "q": "David a jurat: „Viu este Domnul că omul care a făcut lucrul acesta este vrednic de moarte!”",
    "a": true
   },
   {
    "id": "2sa.12.greu.304",
    "age": "greu",
    "t": "tf",
-   "ref": "12:9",
-   "q": "Domnul spune că David l-a ucis pe Urie cu sabia filistenilor.",
+   "ref": "12:6",
+   "q": "David a cerut ca bogatul să dea înapoi șapte miei.",
    "a": false
   },
   {
    "id": "2sa.12.greu.305",
    "age": "greu",
    "t": "tf",
-   "ref": "12:11",
-   "q": "Domnul spune că va ridica nenorocirea din casa lui David.",
+   "ref": "12:9",
+   "q": "Domnul l-a întrebat pe David: „Pentru ce ai disprețuit Cuvântul Domnului?”",
    "a": true
   },
   {
    "id": "2sa.12.greu.306",
    "age": "greu",
    "t": "tf",
-   "ref": "12:15",
-   "q": "Copilul lovit de Domnul a fost greu bolnav.",
-   "a": true
+   "ref": "12:11",
+   "q": "Domnul a spus că va lua nevestele lui David sub ochii poporului din Ierusalim.",
+   "a": false
   },
   {
    "id": "2sa.12.greu.307",
    "age": "greu",
    "t": "tf",
-   "ref": "12:17",
-   "q": "David a mâncat cu bătrânii casei cât copilul era bolnav.",
-   "a": false
+   "ref": "12:20",
+   "q": "David s-a spălat, s-a uns și și-a schimbat hainele.",
+   "a": true
   },
   {
    "id": "2sa.12.greu.308",
    "age": "greu",
    "t": "tf",
    "ref": "12:20",
-   "q": "David s-a dus în Casa Domnului înainte să mănânce.",
-   "a": true
+   "q": "David a mâncat întâi, apoi s-a dus în Casa Domnului.",
+   "a": false
   },
   {
    "id": "2sa.12.greu.309",
    "age": "greu",
    "t": "tf",
-   "ref": "12:25",
-   "q": "David i-a pus fiului său numele Iedidia.",
-   "a": false
+   "ref": "12:27",
+   "q": "Ioab a scris că a pus stăpânire pe cetatea apelor.",
+   "a": true
   },
   {
    "id": "2sa.12.greu.310",
    "age": "greu",
    "t": "tf",
-   "ref": "12:28",
-   "q": "Ioab nu voia să ia el cetatea, ca să nu vină cinstea asupra lui.",
-   "a": true
+   "ref": "12:30",
+   "q": "Cununa împăratului din Raba cântărea doi talanți de aur.",
+   "a": false
   },
   {
    "id": "2sa.12.greu.311",
    "age": "greu",
    "t": "one",
    "ref": "12:3",
-   "q": "Cum își obținuse săracul mielușeaua?",
+   "q": "De unde bea mielușeaua săracului?",
    "opts": [
-    "o găsise",
-    "o primise în dar",
-    "o cumpărase"
+    "dintr-o găleată de lemn",
+    "din izvorul de lângă casă",
+    "din același pahar cu el"
    ],
    "a": 2
   },
@@ -685,12 +688,12 @@
    "id": "2sa.12.greu.312",
    "age": "greu",
    "t": "one",
-   "ref": "12:6",
-   "q": "Ce a mai spus David, pe lângă că bogatul e vrednic de moarte?",
+   "ref": "12:7",
+   "q": "Cum Se numește Domnul în vestea adusă de Natan?",
    "opts": [
-    "să-i dea săracului boii lui",
-    "să dea înapoi patru miei",
-    "să fie alungat din cetate"
+    "Domnul Cel Preaînalt",
+    "Domnul Dumnezeul lui Israel",
+    "Domnul oștirilor"
    ],
    "a": 1
   },
@@ -699,11 +702,11 @@
    "age": "greu",
    "t": "one",
    "ref": "12:8",
-   "q": "Ce ar mai fi făcut Domnul dacă ar fi fost puțin?",
+   "q": "Ce i-a dat Domnul lui David, după Natan?",
    "opts": [
-    "l-ar fi lăsat pe Saul",
-    "ar mai fi adăugat",
-    "i-ar fi luat împărăția"
+    "toate cetățile filistenilor",
+    "casa lui Israel și a lui Iuda",
+    "țara de la Nil la Eufrat"
    ],
    "a": 1
   },
@@ -712,11 +715,11 @@
    "age": "greu",
    "t": "one",
    "ref": "12:10",
-   "q": "De ce nu se va depărta sabia din casa lui David?",
+   "q": "Pentru ce nu se va depărta sabia din casa lui David?",
    "opts": [
-    "pentru că L-a disprețuit pe Domnul",
-    "pentru că a uitat chivotul",
-    "pentru că a pierdut războiul"
+    "M-ai disprețuit și ai luat pe nevasta lui Urie",
+    "n-ai ascultat de prorocul Meu Natan la vreme",
+    "ai vărsat mult sânge nevinovat înaintea Mea"
    ],
    "a": 0
   },
@@ -724,12 +727,12 @@
    "id": "2sa.12.greu.315",
    "age": "greu",
    "t": "one",
-   "ref": "12:13",
-   "q": "Ce a primit David când și-a mărturisit păcatul?",
+   "ref": "12:12",
+   "q": "Unde va face Domnul lucrul pe care David l-a făcut pe ascuns?",
    "opts": [
-    "o împărăție nouă",
-    "o pedeapsă de exil",
-    "iertarea: nu va muri"
+    "în cetatea lui David, înaintea poporului",
+    "în casa împăratului, înaintea slujitorilor",
+    "în fața întregului Israel și a soarelui"
    ],
    "a": 2
   },
@@ -737,12 +740,12 @@
    "id": "2sa.12.greu.316",
    "age": "greu",
    "t": "one",
-   "ref": "12:16",
-   "q": "Ce a făcut David când a venit acasă, rugându-se pentru copil?",
+   "ref": "12:13",
+   "q": "Ce i-a spus Natan după mărturisirea lui David?",
    "opts": [
-    "a stat toată noaptea în picioare",
-    "a plecat la Natan",
-    "a stat toată noaptea culcat pe pământ"
+    "„Domnul te va pedepsi, dar nu vei muri.”",
+    "„Domnul îți iartă păcatul, dar vei pierde tronul.”",
+    "„Domnul îți iartă păcatul, nu vei muri.”"
    ],
    "a": 2
   },
@@ -750,12 +753,12 @@
    "id": "2sa.12.greu.317",
    "age": "greu",
    "t": "one",
-   "ref": "12:20",
-   "q": "Ce a făcut David întâi când s-a sculat de la pământ?",
+   "ref": "12:15",
+   "q": "Cum este numită mama copilului când acesta se îmbolnăvește?",
    "opts": [
-    "a mers la mormântul copilului",
-    "s-a spălat și și-a schimbat hainele",
-    "a chemat-o pe Bat-Șeba la el"
+    "Bat-Șeba, fata lui Eliam",
+    "nevasta lui Urie",
+    "împărăteasa lui Israel"
    ],
    "a": 1
   },
@@ -763,12 +766,12 @@
    "id": "2sa.12.greu.318",
    "age": "greu",
    "t": "one",
-   "ref": "12:24",
-   "q": "Pe cine a mângâiat David după moartea copilului?",
+   "ref": "12:18",
+   "q": "Ce se temeau slujitorii că va face David dacă aude vestea?",
    "opts": [
-    "pe nevasta sa Bat-Șeba",
-    "pe slujitorii lui",
-    "pe Natan, prorocul"
+    "se va întrista și mai mult",
+    "îi va pedepsi pe ei",
+    "își va face rău"
    ],
    "a": 0
   },
@@ -776,12 +779,12 @@
    "id": "2sa.12.greu.319",
    "age": "greu",
    "t": "one",
-   "ref": "12:26",
-   "q": "Ce cetate a fiilor lui Amon a împresurat Ioab?",
+   "ref": "12:23",
+   "q": "Ce a spus David că va face el, după moartea copilului?",
    "opts": [
-    "Raba",
-    "Helam",
-    "Medeba"
+    "se va duce la el",
+    "îl va jeli șapte zile",
+    "îl va îngropa la Betleem"
    ],
    "a": 0
   },
@@ -789,12 +792,12 @@
    "id": "2sa.12.greu.320",
    "age": "greu",
    "t": "one",
-   "ref": "12:30",
-   "q": "Cu ce era împodobită cununa luată de David?",
+   "ref": "12:29",
+   "q": "Cine a cucerit până la urmă Raba?",
    "opts": [
-    "cu pietre scumpe",
-    "cu argint curat",
-    "cu perle din mare"
+    "David, cu tot poporul",
+    "Abișai, cu vitejii lui",
+    "Ioab, cu oștirea lui"
    ],
    "a": 0
   },
@@ -802,51 +805,50 @@
    "id": "2sa.12.greu.321",
    "age": "greu",
    "t": "match",
-   "ref": "12:1-31",
-   "q": "Asociază fiecare persoană cu ce a făcut după moartea copilului sau la Raba.",
+   "ref": "12:2-30",
+   "q": "Asociază fiecare persoană cu ce se spune despre ea.",
    "pairs": [
     [
-     "David",
-     "s-a închinat în Casa Domnului"
+     "bogatul",
+     "avea foarte multe oi și foarte mulți boi"
     ],
     [
-     "slujitorii",
-     "au vorbit în șoaptă"
+     "săracul",
+     "o privea pe mielușea ca pe fata lui"
     ],
     [
-     "Natan",
-     "i-a pus lui Solomon numele Iedidia"
+     "bătrânii casei",
+     "au stăruit ca David să se scoale"
+    ],
+    [
+     "Solomon",
+     "a fost iubit de Domnul"
     ],
     [
      "Ioab",
-     "a luat cetatea apelor"
-    ],
-    [
-     "tot poporul",
-     "s-a întors la Ierusalim cu David"
+     "i-a cerut lui David să ia el cetatea"
     ]
    ],
    "refs": [
-    "12:20",
-    "12:19",
-    "12:25",
-    "12:27",
-    "12:31"
+    "12:2",
+    "12:3",
+    "12:17",
+    "12:24",
+    "12:28"
    ]
   },
   {
    "id": "2sa.12.greu.322",
    "age": "greu",
    "t": "multi",
-   "ref": "12:11-12",
-   "q": "Ce a vestit Domnul că se va întâmpla în fața întregului Israel?",
+   "ref": "12:19",
+   "q": "Ce i-au spus slujitorii lui David când i-a întrebat de copil?",
    "opts": [
-    "David va pierde chivotul",
-    "nenorocirea se va ridica din casa lui",
-    "nevestele lui David vor fi date altuia"
+    "„Este mai bine.”",
+    "„Doarme.”",
+    "„A murit.”"
    ],
    "a": [
-    1,
     2
    ]
   },
@@ -854,12 +856,12 @@
    "id": "2sa.12.greu.323",
    "age": "greu",
    "t": "multi",
-   "ref": "12:23",
-   "q": "Ce a spus David după moartea copilului?",
+   "ref": "12:21",
+   "q": "Ce i-au spus slujitorii lui David?",
    "opts": [
-    "„Voi posti încă șapte zile”",
-    "„Pot să-l întorc în viață?”",
-    "„Eu mă voi duce la el”"
+    "„Pentru ce n-ai îngropat copilul?”",
+    "„Ce înseamnă ceea ce faci?”",
+    "„Când trăia copilul, posteai și plângeai”"
    ],
    "a": [
     1,
@@ -870,12 +872,12 @@
    "id": "2sa.12.greu.324",
    "age": "greu",
    "t": "multi",
-   "ref": "12:30",
-   "q": "Ce a luat David din Raba?",
+   "ref": "12:25",
+   "q": "Cine i-a dat lui Solomon numele Iedidia?",
    "opts": [
-    "chivotul fiilor lui Amon",
-    "pe împăratul Hanun viu",
-    "toată oastea lui Ioab"
+    "Bat-Șeba",
+    "Ioab",
+    "David"
    ],
    "a": []
   }
