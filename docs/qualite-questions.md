@@ -15,11 +15,14 @@ Ce guide est pour la prochaine personne (ou IA) qui écrit ou reprend les questi
 7. **Vrai ou faux équilibré** : 4 à 6 vraies sur 10 par niveau. Une fausse change un nom, un chiffre, un lieu ou le sens ; jamais un détail douteux ni un piège sur un mot.
 8. **Faux partout, pas seulement dans ce verset** : une affirmation fausse ou une mauvaise réponse ne doit pas être vraie ailleurs dans la Bible (un autre chapitre, 1 Samuel 31, etc.). Exemples corrigés le 31 octobre 2026 : « David a cântat această cântare după moartea lui Absalom » (2 Sam 22 : vrai dans l'histoire), « de pe zidul Bet-Șanului » (vrai en 1 Sam 31), « Saul era rănit de moarte » (vrai en 1 Sam 31:3), « David bătuse pe gheșuriți » (vrai en 1 Sam 27). On évite aussi « în acest capitol » comme seule raison du faux, et deux propositions qui veulent dire la même chose (« căpetenie a neamurilor » / « împărat peste neamuri »).
 
-9. **Associations autonomes** : chaque paire doit se comprendre sans la consigne, car l'examen blanc mélange des paires de cinq chapitres (« Itream | al șaselea fiu al lui David », pas « Itream | al șaselea »).
-10. **La référence couvre les versets de la réponse** : la fenêtre « Versetul » surligne ces versets.
-11. **Sujets sensibles** (2 Samuel 11, 13) : rien de cru pour les plus jeunes ; on garde l'événement et la leçon.
-12. **Pas de point médian « · »** dans les textes du site : une virgule, des parenthèses ou une autre phrase.
-13. **Dire au propriétaire combien de questions ont été modifiées** à chaque correction.
+9. **Un fait par question, dans tout le niveau** : à l'intérieur d'un niveau, deux questions (même de types différents : vrai/faux, une réponse, plusieurs réponses, association) ne portent jamais sur le même fait. Le même verset peut servir deux fois seulement pour deux faits différents ; quand le chapitre est très court et qu'on ne peut pas faire autrement, on reformule vraiment. Les niveaux entre eux peuvent reprendre un même fait.
+10. **« Niciun răspuns corect »** : jamais en Ușor (enfants), au plus une fois par chapitre en Mediu et rarement, une fois par chapitre environ en Greu. `validate.mjs` le signale (avertissement).
+11. **Association en Ușor** : la réponse ne doit pas se lire dans la question (pas « stânca → Domnul este stânca lui »). Chaque paire relie une chose à un fait du chapitre qu'il faut avoir lu.
+12. **Associations autonomes** : chaque paire doit se comprendre sans la consigne, car l'examen blanc mélange des paires de cinq chapitres (« Itream | al șaselea fiu al lui David », pas « Itream | al șaselea »).
+13. **La référence couvre les versets de la réponse** : la fenêtre « Versetul » surligne ces versets.
+14. **Sujets sensibles** (2 Samuel 11, 13) : rien de cru pour les plus jeunes ; on garde l'événement et la leçon.
+15. **Pas de point médian « · »** dans les textes du site : une virgule, des parenthèses ou une autre phrase.
+16. **Dire au propriétaire combien de questions ont été modifiées** à chaque correction.
 
 ## Écrire un chapitre
 
