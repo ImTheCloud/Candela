@@ -1,91 +1,91 @@
 scene: La Hebron și Ierusalim, când David devine împărat peste tot Israelul
 ## usor
 tf + 5:1 | Toate semințiile lui Israel au venit la David, la Hebron.
-tf + 5:3 | Bătrânii lui Israel l-au uns pe David împărat peste Israel.
-tf - 5:4 | David a domnit zece ani.
-tf + 5:7 | David a cucerit cetățuia Sionului.
-tf - 5:7 | Cetățuia Sionului a fost numită cetatea lui Saul.
-tf + 5:11 | Hiram, împăratul Tirului, i-a trimis lui David lemn de cedru.
-tf - 5:14 | Solomon s-a născut la Hebron.
-tf + 5:19 | David l-a întrebat pe Domnul dacă să lupte cu filistenii.
-tf + 5:20 | David i-a bătut pe filisteni la Baal-Perațim.
-tf - 5:21 | Filistenii și-au luat idolii cu ei când au fugit.
-one 5:3 | Unde l-au uns bătrânii lui Israel pe David împărat? | *la Hebron | la Ierusalim | la Silo
-one 5:4 | Câți ani avea David când s-a făcut împărat? | *treizeci | zece | șaptezeci
-one 5:4 | Câți ani a domnit David în total? | *patruzeci | o sută | cinci
-one 5:6 | Ce popor locuia în Ierusalim înainte de David? | *iebusiții | egiptenii | amaleciții
-one 5:7 | Cum s-a numit cetățuia Sionului după ce a luat-o David? | *cetatea lui David | cetatea lui Saul | cetatea filistenilor
-one 5:10 | Cine era cu David, de ajungea tot mai mare? | *Domnul Dumnezeul oștirilor | împăratul Egiptului | Abner, căpetenia oștirii
-one 5:11 | Ce au zidit tâmplarii trimiși de Hiram? | *o casă pentru David | un templu pentru Domnul | un zid în jurul Hebronului
-one 5:14 | Care dintre acești fii i s-a născut lui David la Ierusalim? | *Solomon | Amnon | Absalom
-one 5:18 | În ce vale s-au răspândit filistenii? | *în valea Refaim | în valea Iordanului | în valea terebinților
-one 5:23 | În dreptul căror copaci i-a spus Domnul lui David să meargă? | *al duzilor | al stejarilor | al palmierilor
-match 5:1-25 | Asociază fiecare persoană sau popor cu ce se spune despre el.
-= David | a luat cetățuia Sionului | 5:7
-= Hiram | i-a trimis lemn de cedru | 5:11
-= iebusiții | locuiau în Ierusalim | 5:6
-= filistenii | s-au răspândit în valea Refaim | 5:18
-= Solomon | s-a născut la Ierusalim | 5:14
-multi 5:11 | Ce i-a trimis Hiram lui David? | *lemn de cedru | *tâmplari | aur și argint
-multi 5:3 | Ce s-a întâmplat la Hebron cu bătrânii lui Israel? | *David a făcut legământ cu ei | *l-au uns pe David împărat | l-au alungat pe David
-multi 5:20 | Ce a spus David după biruința de la Baal-Perațim? | că el i-a biruit singur | că filistenii au fost prea slabi | că oamenii lui sunt cei mai viteji
-## mediu
-tf + 5:2 | Domnul îi spusese lui David că va fi căpetenia lui Israel.
+tf - 5:3 | Bătrânii lui Israel au refuzat să-l facă pe David împărat.
 tf + 5:4 | David a domnit patruzeci de ani.
-tf + 5:8 | David a zis că oricine îi bate pe iebusiți să arunce în canal pe vrăjmașii lui.
-tf + 5:10 | David ajungea tot mai mare.
-tf + 5:13 | David și-a luat neveste și din Ierusalim.
+tf - 5:6 | Iebusiții l-au primit pe David cu bucurie în Ierusalim.
+tf + 5:7 | Cetățuia Sionului a fost numită cetatea lui David.
+tf - 5:10 | David ajungea tot mai slab.
+tf + 5:14 | Solomon s-a născut la Ierusalim.
+tf - 5:19 | David a pornit la luptă fără să-L întrebe pe Domnul.
+tf + 5:21 | Filistenii și-au lăsat idolii pe câmpul de luptă.
+tf - 5:25 | Filistenii l-au bătut pe David.
+one 5:1 | Ce i-au spus semințiile lui David? | *„Suntem os din oasele tale” | „Suntem dușmanii tăi” | „Suntem străini de tine”
+one 5:2 | Ce îi spusese Domnul lui David că va face cu poporul Său? | *îl va paște | îl va vinde | îl va părăsi
+one 5:4 | Câți ani avea David când a ajuns împărat? | *treizeci | zece | o sută
+one 5:6 | Împotriva cui a luptat David la Ierusalim? | *împotriva iebusiților | împotriva egiptenilor | împotriva leilor
+one 5:10 | Cine era cu David? | *Domnul Dumnezeul oștirilor | Saul | faraon
+one 5:11 | Ce i-a trimis Hiram lui David? | *lemn de cedru | o turmă de cămile | o corabie cu aur
+one 5:11 | Ce au zidit meșterii lui Hiram pentru David? | *o casă | o corabie | un turn până la cer
+one 5:17 | Ce popor a venit să-l caute pe David după ce a fost uns? | *filistenii | moabiții | egiptenii
+one 5:20 | Cu ce a asemănat David pe vrăjmașii risipiți de Domnul? | *cu niște ape care se rup | cu niște frunze uscate | cu niște oi rătăcite
+one 5:23 | Ce i-a spus Domnul a doua oară? | *să-i ia pe la spate | să fugă în pustie | să facă pace cu ei
+match 5:3-24 | Asociază fiecare nume cu ce se spune despre el.
+= Hiram | împăratul Tirului | 5:11
+= Ierusalimul | acolo a domnit David peste tot Israelul | 5:5
+= duzii | în vârfurile lor s-a auzit vuiet de pași | 5:24
+= bătrânii lui Israel | l-au uns pe David împărat | 5:3
+= Baal-Perațim | acolo i-a bătut David pe filisteni | 5:20
+multi 5:6 | Despre cine au spus iebusiții că i se vor împotrivi lui David? | *orbii | *ologii | copiii
+multi 5:12 | Ce a cunoscut David? | *că Domnul îl întărea ca împărat | *că Domnul îi ridica împărăția | că filistenii îl iubeau
+multi 5:13 | Ce i s-a născut lui David la Ierusalim? | *fii | *fiice | nepoți de la Saul
+## mediu
+tf + 5:2 | Semințiile i-au amintit lui David că el îl povățuia pe Israel chiar pe vremea lui Saul.
 tf - 5:3 | David a făcut legământ cu bătrânii lui Israel la Ierusalim.
-tf - 5:6 | David a mers singur asupra Ierusalimului.
-tf - 5:11 | Hiram era împăratul Sidonului.
-tf - 5:22 | După prima înfrângere, filistenii nu s-au mai întors.
-tf - 5:5 | La Hebron, David a domnit șapte ani și trei luni.
-one 5:12 | Din pricina cui îi ridica Domnul împărăția lui David? | *din pricina poporului Său Israel | din pricina casei lui Saul, tatăl lui | din pricina lui Hiram, împăratul Tirului
-one 5:17 | Pentru ce s-au suit toți filistenii? | *ca să-l caute pe David | ca să-i ia cetățuia Sionului | ca să-l ajute contra iebusiților
-one 5:21 | Ce au făcut David și oamenii lui cu idolii filistenilor? | *i-au luat | i-au lăsat acolo | i-au pus în cort
-one 5:25 | Până unde i-a bătut David pe filisteni? | *până la Ghezer | până la Gat | până la Ascalon
-one 5:9 | Unde s-a așezat David după ce a luat Sionul? | *în cetățuie | în cortul lui | în valea Refaim
-one 5:20 | Ce înseamnă numele Baal-Perațim? | *Șesul rupturii | Locul săbiilor | Piatra ajutorului
-one 5:1 | Ce au spus semințiile lui Israel când au venit la David? | *că sunt os din oasele lui | că sunt robii casei lui Saul | că vor să rămână cu Iș-Boșet
-one 5:23 | Ce i-a spus Domnul lui David a doua oară? | *„Să nu te sui” | „Suie-te îndată” | „Fă pace cu ei”
-one 5:24 | Ce semn trebuia să audă David în vârfurile duzilor? | *un vuiet de pași | un sunet de trâmbiță | un tunet mare
-one 5:19 | Ce i-a răspuns Domnul lui David prima dată? | *„Suie-te” | „Să nu te sui” | „Ia-i pe la spate”
-match 5:1-25 | Asociază fiecare cuvânt sau nume cu ce înseamnă.
-= cetățuia Sionului | cetatea lui David | 5:7
-= Baal-Perațim | Șesul rupturii | 5:20
-= Milo | cetățuie | 5:9
-= „os din oasele tale” | ce au spus semințiile lui David | 5:1
-= vuietul de pași | semnul din vârfurile duzilor | 5:24
-multi 5:4-5 | Ce se spune despre anii domniei lui David? | *a ajuns împărat la treizeci de ani | *a domnit treizeci și trei de ani la Ierusalim | a domnit șapte ani la Ierusalim
-multi 5:13-16 | Ce se spune despre familia lui David la Ierusalim? | *și-a luat neveste din Ierusalim | *i s-au născut fii și fiice | toți fiii lui s-au născut la Hebron
-multi 5:6-7 | Ce s-a întâmplat la Ierusalim? | iebusiții l-au alungat pe David | David s-a întors la Hebron fără luptă | orbii și ologii au păzit cetatea până la capăt
+tf + 5:5 | David a domnit la Hebron peste Iuda șapte ani și șase luni.
+tf - 5:5 | David a domnit la Ierusalim patruzeci de ani.
+tf + 5:9 | David a făcut întărituri în jurul lui Milo.
+tf - 5:11 | Hiram a fost împăratul Sidonului.
+tf + 5:17 | Când au venit filistenii, David s-a coborât în cetățuie.
+tf - 5:18 | Filistenii s-au răspândit în valea Ela.
+tf + 5:21 | David și oamenii lui au luat idolii lăsați de filisteni.
+tf - 5:25 | David i-a bătut pe filisteni de la Gat până la Ecron.
+one 5:1 | Unde au venit semințiile lui Israel la David? | *la Hebron | la Ierusalim | la Betleem
+one 5:2 | Ce îi spusese Domnul lui David? | *„Tu vei paște pe poporul Meu Israel” | „Tu vei zidi o casă Numelui Meu” | „Tu vei judeca pe poporul Meu”
+one 5:4 | Câți ani avea David când a ajuns împărat? | *treizeci | douăzeci și cinci | patruzeci
+one 5:6 | Ce au spus iebusiții despre intrarea lui David în cetate? | *că orbii și ologii i se vor împotrivi | că zidurile cetății nu vor cădea | că filistenii le vor veni în ajutor
+one 5:7 | Ce cetățuie a cucerit David? | *cetățuia Sionului | cetățuia Milo | cetățuia Ghibea
+one 5:10 | Ce se spune despre David după ce s-a așezat la Ierusalim? | *ajungea tot mai mare | ajungea tot mai bogat | ajungea tot mai temut
+one 5:11 | Ce meșteri i-a trimis Hiram lui David? | *tâmplari și cioplitori de piatră | olari și țesători de pânză | fierari și aurari pricepuți
+one 5:19 | Ce l-a întrebat David pe Domnul prima dată? | *dacă să se suie împotriva filistenilor | dacă să zidească o casă la Ierusalim | dacă să facă legământ cu Hiram
+one 5:20 | Ce înseamnă numele Baal-Perațim? | *Șesul rupturii | Locul biruinței | Valea uriașilor
+one 5:23 | În dreptul căror copaci trebuia David să meargă asupra filistenilor? | *al duzilor | al stejarilor | al cedrilor
+match 5:6-24 | Asociază fiecare nume cu ce se spune despre el.
+= iebusiții | locuitorii țării, la Ierusalim | 5:6
+= Hiram | i-a trimis lui David lemn de cedru | 5:11
+= Solomon | unul din fiii născuți la Ierusalim | 5:14
+= valea Refaim | filistenii s-au răspândit în ea | 5:22
+= vârfurile duzilor | acolo s-a auzit un vuiet de pași | 5:24
+multi 5:12 | Ce a cunoscut David? | *că Domnul îl întărea ca împărat al lui Israel | *că Domnul îi ridica împărăția din pricina poporului | că Domnul îi va da toată țara filistenilor
+multi 5:8 | Ce a zis David despre orbi și șchiopi? | *că cel ce bate pe iebusiți să-i arunce în canal | *că sunt vrăjmașii lui David | că trebuie lăsați să plece în pace
+multi 5:24 | Ce i-a spus Domnul lui David despre vuietul de pași? | *atunci să se grăbească | *Domnul merge înaintea lui | atunci să se ascundă
 ## greu
-tf + 5:1 | Semințiile i-au spus lui David că sunt carne din carnea lui.
-tf - 5:2 | Semințiile au spus că Domnul i-a zis lui David: „Tu vei judeca pe poporul Meu.”
-tf + 5:3 | Ungerea lui David peste Israel s-a făcut după legământul de la Hebron.
-tf - 5:7 | David a luat cetățuia Sionului în ziua următoare.
-tf + 5:9 | David a făcut întărituri de jur împrejur, în afară și înăuntrul lui Milo.
-tf - 5:11 | Tâmplarii lui Hiram au zidit un altar pentru Domnul.
-tf + 5:14 | Șamua a fost primul în lista fiilor născuți lui David la Ierusalim.
-tf - 5:16 | Elifelet nu este pomenit între fiii lui David născuți la Ierusalim.
-tf + 5:20 | David a spus că Domnul i-a risipit vrăjmașii dinaintea lui.
-tf + 5:25 | David a făcut cum îi poruncise Domnul în a doua luptă.
-one 5:1 | În ce cetate au venit semințiile lui Israel la David? | *în Hebron | în Ierusalim | în Mahanaim
-one 5:2 | Cum spun semințiile că l-a numit Domnul pe David? | *căpetenia lui Israel | judecătorul lui Israel | proorocul lui Israel
-one 5:6 | Ce înțelegeau iebusiții prin vorbele despre orbi și ologi? | *că David nu va intra cu niciun chip | că vor să facă un legământ | că le e milă de oamenii lui David
-one 5:8 | Ce zicală a rămas de la cuvintele lui David? | *„Orbul și șchiopul să nu intre în Casa Domnului” | „Cine bate pe iebusiți va lua cetatea” | „Cetatea lui David nu va cădea niciodată”
-one 5:12 | Pentru cine, după David, îi ridica Domnul împărăția? | *pentru poporul Său Israel | pentru casa lui Saul | pentru Hiram, împăratul Tirului
-one 5:14 | Care este al treilea nume din lista fiilor născuți la Ierusalim? | *Natan | Solomon | Ibhar
-one 5:17 | Unde s-a coborât David când a aflat că vin filistenii? | *în cetățuie | în valea Refaim | la Baal-Perațim
-one 5:19 | Ce a promis Domnul la prima întrebare a lui David? | *că va da pe filisteni în mâinile lui | că-i va da prada filistenilor | că va bate El însuși pe filisteni
-one 5:23 | Pe unde trebuia să meargă David asupra filistenilor a doua oară? | *pe la spate, în dreptul duzilor | din față, prin valea Refaim | de sus, de pe cetățuie
-one 5:25 | De unde a început David să-i bată pe filisteni în a doua luptă? | *de la Gheba | de la Ghezer | de la Hebron
-match 5:4-5 | Asociază fiecare număr cu ce înseamnă în domnia lui David.
-= 30 | vârsta lui David când a ajuns împărat | 5:4
-= 40 | anii întregii lui domnii | 5:4
-= 7 ani și 6 luni | domnia la Hebron | 5:5
-= 33 | anii domniei la Ierusalim | 5:5
-= 11 | fiii născuți la Ierusalim | 5:14
-multi 5:6-8 | Ce se spune despre cucerirea Ierusalimului? | *iebusiții credeau că David nu va intra | *David a pus mâna pe cetățuia Sionului | David a făcut legământ cu iebusiții
-multi 5:9 | Ce a făcut David după ce s-a așezat în cetățuie? | *i-a dat numele de cetatea lui David | *a făcut întărituri de jur împrejur | a mutat-o la Hebron
-multi 5:24 | Ce i-a spus Domnul despre semnul din duzi? | să aștepte până dimineață | să trimită soli la filisteni | să se întoarcă la Hebron
+tf + 5:1 | Semințiile i-au spus lui David: „Suntem os din oasele tale și carne din carnea ta.”
+tf - 5:2 | Domnul îi spusese lui David: „Tu vei fi împăratul lui Iuda.”
+tf + 5:3 | David a făcut legământ cu bătrânii la Hebron, înaintea Domnului.
+tf - 5:5 | David a domnit la Ierusalim treizeci și patru de ani.
+tf + 5:8 | De aici se zice: „Orbul și șchiopul să nu intre în Casa Domnului.”
+tf - 5:17 | Când au venit filistenii, David a ieșit din cetățuie.
+tf + 5:13 | David și-a luat neveste din Ierusalim după ce a venit din Hebron.
+tf - 5:4 | David avea douăzeci și cinci de ani când a ajuns împărat.
+tf + 5:20 | Baal-Perațim înseamnă Șesul rupturii.
+tf + 5:24 | Domnul i-a spus lui David că El merge înaintea lui să bată oștirea filistenilor.
+one 5:2 | Ce făcea David chiar pe vremea lui Saul, după semințiile lui Israel? | *povățuia și strângea pe Israel | judeca și învăța pe Israel | apăra și hrănea pe Israel
+one 5:4 | Câți ani a domnit David în total? | *patruzeci | treizeci și trei | patruzeci și unu
+one 5:6 | Ce voiau să spună iebusiții prin vorbele despre orbi și ologi? | *că David nu va intra cu niciun chip | că cetatea are destui apărători | că nu le e frică de oastea lui
+one 5:8 | Unde trebuiau aruncați orbii și șchiopii, după David? | *în canal | în fântână | peste zid
+one 5:10 | Cum este numit Domnul care era cu David? | *Domnul Dumnezeul oștirilor | Domnul Dumnezeul lui Israel | Domnul Dumnezeul părinților
+one 5:12 | Din pricina cui îi ridica Domnul împărăția lui David? | *a poporului Său, Israel | a lui Avraam, părintele lor | a jurământului făcut lui Saul
+one 5:17 | De ce s-au suit filistenii să-l caute pe David? | *aflaseră că fusese uns împărat peste Israel | aflaseră că luase cetățuia Sionului | aflaseră că primise cedri de la Hiram
+one 5:19 | Ce i-a răspuns Domnul lui David prima dată? | *„Suie-te, căci voi da pe filisteni în mâinile tale” | „Nu te sui, ci mergi asupra lor în dreptul duzilor” | „Așteaptă până vei auzi un vuiet de pași în duzi”
+one 5:21 | Ce au lăsat filistenii la Baal-Perațim? | *idolii lor | carele lor | armele lor
+one 5:25 | Până unde i-a bătut David pe filisteni? | *de la Gheba până la Ghezer | de la Gat până la Ecron | de la Ghibea până la Ghezer
+match 5:5-22 | Asociază fiecare loc cu ce se spune despre el.
+= Hebron | acolo a domnit David șapte ani și șase luni | 5:5
+= cetățuia Sionului | David a pus mâna pe ea | 5:7
+= Milo | David a făcut întărituri împrejurul lui | 5:9
+= Tirul | de acolo i-au venit lui David cedri | 5:11
+= valea Refaim | filistenii s-au răspândit în ea de două ori | 5:22
+multi 5:14 | Ce fii i s-au născut lui David la Ierusalim? | *Natan | *Solomon | Absalom
+multi 5:22-23 | Ce s-a întâmplat a doua oară cu filistenii? | *s-au răspândit iar în valea Refaim | *Domnul i-a spus lui David să-i ia pe la spate | au fugit înainte de luptă
+multi 5:6-7 | Pe cine a cucerit David la Ierusalim? | pe filisteni | pe amaleciți | pe hetiți
