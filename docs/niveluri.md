@@ -39,6 +39,16 @@ Retour du propriétaire : Ușor un tout petit peu trop dur, Mediu un tout petit 
 - **Associations, à tous les niveaux** : la réponse ne répète jamais le mot de la colonne de gauche (« cel bun → Domnul este bun » est interdit).
 - **Chapitres de poésie** (cântări, 2 Samuel 22, une partie de 1 et 23) : ils paraissent naturellement plus durs ; viser un cran plus simple que pour un chapitre d'histoire au même niveau.
 
+## Ușor : niveau validé (31 octobre 2026)
+
+Le propriétaire a testé Ușor sur les chapitres 1, 21 et 22 : **les vrai/faux et les questions à une réponse sont parfaits, on ne les change plus**. C'est ce niveau-là qu'il faut reproduire :
+- vrai/faux : une phrase courte sur un fait central ; le faux change le sens de façon nette (« Saul a murit pe muntele Carmel », « În cântare, Domnul călărea pe un cal alb ») ;
+- une réponse : une question simple, la bonne réponse évidente pour qui a lu, une fausse réponse plausible et une clairement à côté (« Ce era sub picioarele Domnului? » un nor gros / o mare de cristal / un covor de flori).
+
+Associations et choix multiples Ușor, réglés le 31 octobre 2026 (un peu trop durs avant) :
+- association : cinq choses **de natures différentes** (une personne, un groupe, une ville, un animal, un objet), chacune reliée à ce qu'elle fait ou à ce qu'on en dit de plus marquant, en mots simples ; on peut s'aider par élimination ;
+- choix multiple : deux bonnes réponses tirées du cœur de l'histoire et une troisième **clairement fausse** (étrangère à la scène : « o ploaie de flori », « Israel a câștigat ») ; jamais trois bonnes, jamais aucune.
+
 Règles communes :
 - 24 questions par chapitre et par niveau (forme de l'examen final) : 10 vrai/faux, 10 à une réponse, 1 association de 5 paires (colonne de droite sans doublons, chaque paire compréhensible seule), 3 à plusieurs réponses (0, 1, 2 ou 3 justes).
 - Vrai/faux : 4 à 6 « vrai » sur 10 ; jamais un détail douteux ni un piège sur un mot.
