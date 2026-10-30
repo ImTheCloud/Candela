@@ -23,8 +23,8 @@
    "id": "2sa.22.usor.303",
    "age": "usor",
    "t": "tf",
-   "ref": "22:2",
-   "q": "David spune că Domnul este stânca lui Saul.",
+   "ref": "22:1",
+   "q": "David a cântat această cântare după moartea lui Absalom.",
    "a": false
   },
   {
@@ -32,7 +32,7 @@
    "age": "usor",
    "t": "tf",
    "ref": "22:7",
-   "q": "Când David a fost în strâmtorare, L-a chemat pe Domnul.",
+   "q": "Când era în necaz, David L-a chemat pe Domnul.",
    "a": true
   },
   {
@@ -56,43 +56,43 @@
    "age": "usor",
    "t": "tf",
    "ref": "22:20",
-   "q": "Domnul l-a mântuit pe David pentru că îl iubește.",
-   "a": true
+   "q": "David spune că Domnul l-a mântuit pentru că David era puternic.",
+   "a": false
   },
   {
    "id": "2sa.22.usor.308",
    "age": "usor",
    "t": "tf",
    "ref": "22:29",
-   "q": "David spune că Domnul este întunericul lui.",
-   "a": false
+   "q": "David spune: „Tu ești lumina mea, Doamne!”",
+   "a": true
   },
   {
    "id": "2sa.22.usor.309",
    "age": "usor",
    "t": "tf",
-   "ref": "22:34",
-   "q": "Domnul îi face picioarele ca ale cerboaicelor.",
-   "a": true
+   "ref": "22:30",
+   "q": "David spune că cu Dumnezeul lui sare peste un râu.",
+   "a": false
   },
   {
    "id": "2sa.22.usor.310",
    "age": "usor",
    "t": "tf",
    "ref": "22:50",
-   "q": "David spune că nu va mai cânta niciodată.",
+   "q": "David spune că va cânta doar în cortul lui.",
    "a": false
   },
   {
    "id": "2sa.22.usor.311",
    "age": "usor",
    "t": "one",
-   "ref": "22:2",
-   "q": "Cu ce lucru îl aseamănă David pe Domnul la început?",
+   "ref": "22:1",
+   "q": "Din mâna cui, numit pe nume, l-a izbăvit Domnul pe David?",
    "opts": [
-    "cu un râu",
-    "cu o stâncă",
-    "cu un copac"
+    "din mâna lui Goliat",
+    "din mâna lui Saul",
+    "din mâna lui Absalom"
    ],
    "a": 1
   },
@@ -100,11 +100,11 @@
    "id": "2sa.22.usor.312",
    "age": "usor",
    "t": "one",
-   "ref": "22:3",
-   "q": "Ce mai este Domnul pentru David, după cântare?",
+   "ref": "22:2",
+   "q": "Ce spune David că este Domnul pentru el?",
    "opts": [
-    "casa lui",
-    "scutul lui",
+    "cortul lui",
+    "stânca lui",
     "sabia lui"
    ],
    "a": 1
@@ -113,12 +113,12 @@
    "id": "2sa.22.usor.313",
    "age": "usor",
    "t": "one",
-   "ref": "22:7",
-   "q": "Ce a făcut David în strâmtorarea lui?",
+   "ref": "22:3",
+   "q": "Ce mai este Domnul pentru David, după cântare?",
    "opts": [
-    "L-a chemat pe Domnul",
-    "a fugit",
-    "a dormit"
+    "scutul lui",
+    "coiful lui",
+    "carul lui"
    ],
    "a": 0
   },
@@ -126,12 +126,12 @@
    "id": "2sa.22.usor.314",
    "age": "usor",
    "t": "one",
-   "ref": "22:11",
-   "q": "Pe ce călărea Domnul în cântare?",
+   "ref": "22:7",
+   "q": "Când L-a chemat David pe Domnul?",
    "opts": [
-    "pe un cal",
-    "pe un nor de praf",
-    "pe un heruvim"
+    "în ziua nunții lui",
+    "la ungerea lui",
+    "în strâmtorarea lui"
    ],
    "a": 2
   },
@@ -139,12 +139,12 @@
    "id": "2sa.22.usor.315",
    "age": "usor",
    "t": "one",
-   "ref": "22:14",
-   "q": "Ce a făcut Domnul din ceruri?",
+   "ref": "22:11",
+   "q": "Pe ce călărea Domnul în cântare?",
    "opts": [
-    "a plâns",
-    "a dormit",
-    "a tunat"
+    "pe un cal alb",
+    "pe un car de aur",
+    "pe un heruvim"
    ],
    "a": 2
   },
@@ -152,12 +152,12 @@
    "id": "2sa.22.usor.316",
    "age": "usor",
    "t": "one",
-   "ref": "22:17",
-   "q": "De unde l-a scos Domnul pe David?",
+   "ref": "22:14",
+   "q": "Ce a făcut Domnul din ceruri?",
    "opts": [
-    "din apele cele mari",
-    "din foc",
-    "dintr-o peșteră"
+    "a tunat",
+    "a cântat",
+    "a plâns"
    ],
    "a": 0
   },
@@ -165,12 +165,12 @@
    "id": "2sa.22.usor.317",
    "age": "usor",
    "t": "one",
-   "ref": "22:29",
-   "q": "Ce spune David că este Domnul pentru el?",
+   "ref": "22:20",
+   "q": "De ce l-a mântuit Domnul pe David?",
    "opts": [
-    "haina lui",
-    "lumina lui",
-    "umbra lui"
+    "pentru că i-a adus jertfe",
+    "pentru că îl iubește",
+    "pentru că era împărat"
    ],
    "a": 1
   },
@@ -178,12 +178,12 @@
    "id": "2sa.22.usor.318",
    "age": "usor",
    "t": "one",
-   "ref": "22:30",
-   "q": "Peste ce sare David cu Dumnezeul lui?",
+   "ref": "22:29",
+   "q": "Ce luminează Domnul pentru David?",
    "opts": [
-    "peste zid",
-    "peste munte",
-    "peste mare"
+    "întunericul lui",
+    "cortul lui",
+    "calea mării"
    ],
    "a": 0
   },
@@ -195,7 +195,7 @@
    "q": "Cu ale cui picioare sunt asemănate picioarele lui David?",
    "opts": [
     "ale cerboaicelor",
-    "ale cailor",
+    "ale vulturilor",
     "ale leilor"
    ],
    "a": 0
@@ -207,9 +207,9 @@
    "ref": "22:50",
    "q": "Ce va face David printre neamuri?",
    "opts": [
-    "va lupta",
+    "va face război",
     "Îl va lăuda pe Domnul",
-    "va pleca"
+    "va zidi cetăți"
    ],
    "a": 1
   },
@@ -270,11 +270,11 @@
    "age": "usor",
    "t": "multi",
    "ref": "22:14-15",
-   "q": "Ce a făcut Domnul împotriva vrăjmașilor lui David?",
+   "q": "Ce a aruncat Domnul împotriva vrăjmașilor lui David?",
    "opts": [
-    "a trimis ploaie de flori",
-    "a aruncat săgeți",
-    "a aruncat fulgerul"
+    "pietre mari",
+    "săgeți",
+    "fulgerul"
    ],
    "a": [
     1,
@@ -288,7 +288,7 @@
    "ref": "22:37",
    "q": "Ce spune David despre picioarele lui?",
    "opts": [
-    "sunt legate",
+    "sunt legate cu lanțuri",
     "se clatină mereu",
     "sunt obosite"
    ],
@@ -306,84 +306,84 @@
    "id": "2sa.22.mediu.302",
    "age": "mediu",
    "t": "tf",
-   "ref": "22:6",
-   "q": "Lațurile morții îl prinseseră pe David.",
-   "a": true
+   "ref": "22:5",
+   "q": "David spune că îl înconjuraseră valurile mării.",
+   "a": false
   },
   {
    "id": "2sa.22.mediu.303",
    "age": "mediu",
    "t": "tf",
-   "ref": "22:13",
-   "q": "Din strălucirea dinaintea Domnului scânteiau cărbuni de foc.",
+   "ref": "22:8",
+   "q": "Pământul s-a cutremurat pentru că Domnul Se mâniase.",
    "a": true
   },
   {
    "id": "2sa.22.mediu.304",
    "age": "mediu",
    "t": "tf",
-   "ref": "22:21",
-   "q": "David spune că Domnul i-a răsplătit după curăția mâinilor lui.",
-   "a": true
+   "ref": "22:10",
+   "q": "Sub picioarele Domnului era un foc mare.",
+   "a": false
   },
   {
    "id": "2sa.22.mediu.305",
    "age": "mediu",
    "t": "tf",
-   "ref": "22:36",
-   "q": "David spune că ajunge mare prin bunătatea Domnului.",
+   "ref": "22:16",
+   "q": "La mustrarea Domnului s-a văzut fundul mării.",
    "a": true
   },
   {
    "id": "2sa.22.mediu.306",
    "age": "mediu",
    "t": "tf",
-   "ref": "22:5",
-   "q": "David spune că șuvoaiele nimicirii nu l-au speriat.",
+   "ref": "22:21",
+   "q": "David spune că Domnul i-a răsplătit după bogăția lui.",
    "a": false
   },
   {
    "id": "2sa.22.mediu.307",
    "age": "mediu",
    "t": "tf",
-   "ref": "22:16",
-   "q": "David spune că s-a văzut fundul unui râu.",
-   "a": false
+   "ref": "22:28",
+   "q": "Domnul îi coboară cu privirea pe cei mândri.",
+   "a": true
   },
   {
    "id": "2sa.22.mediu.308",
    "age": "mediu",
    "t": "tf",
-   "ref": "22:27",
-   "q": "David spune că Domnul e îndărătnic cu cel curat.",
+   "ref": "22:31",
+   "q": "David spune că Domnul este un scut doar pentru împărați.",
    "a": false
   },
   {
    "id": "2sa.22.mediu.309",
    "age": "mediu",
    "t": "tf",
-   "ref": "22:47",
-   "q": "David numește pe Domnul „Stânca slavei mele”.",
-   "a": false
+   "ref": "22:35",
+   "q": "David spune că brațele lui întind arcul de aramă.",
+   "a": true
   },
   {
    "id": "2sa.22.mediu.310",
    "age": "mediu",
    "t": "tf",
-   "ref": "22:11",
-   "q": "Domnul mergea pe jos, pe pământ, în cântare.",
-   "a": false
+   "ref": "22:51",
+   "q": "Domnul arată milă unsului Său, lui David, și seminței lui.",
+   "a": true
   },
   {
    "id": "2sa.22.mediu.311",
    "age": "mediu",
    "t": "one",
-   "ref": "22:24",
-   "q": "De ce spune David că s-a păzit?",
+   "ref": "22:5",
+   "q": "Ce îl înconjuraseră pe David?",
    "opts": [
-    "de vrăjmași",
-    "de Saul",
-    "de fărădelegea lui"
+    "valurile mării",
+    "oștile filistenilor",
+    "valurile morții"
    ],
    "a": 2
   },
@@ -391,12 +391,12 @@
    "id": "2sa.22.mediu.312",
    "age": "mediu",
    "t": "one",
-   "ref": "22:10",
-   "q": "Ce a făcut Domnul cu cerurile?",
+   "ref": "22:9",
+   "q": "Ce ieșea din gura Domnului, în cântare?",
    "opts": [
-    "le-a plecat și S-a coborât",
-    "le-a aprins cu fulgere",
-    "le-a închis cu nori grei"
+    "un foc mistuitor",
+    "un nor gros",
+    "un vânt puternic"
    ],
    "a": 0
   },
@@ -404,12 +404,12 @@
    "id": "2sa.22.mediu.313",
    "age": "mediu",
    "t": "one",
-   "ref": "22:30",
-   "q": "Asupra a ce se năpustește David cu Domnul?",
+   "ref": "22:10",
+   "q": "Ce era sub picioarele Domnului?",
    "opts": [
-    "asupra unei oști înarmate",
-    "asupra unui leu",
-    "asupra unei cetăți"
+    "un nor gros",
+    "o mare de cristal",
+    "un heruvim"
    ],
    "a": 0
   },
@@ -417,12 +417,12 @@
    "id": "2sa.22.mediu.314",
    "age": "mediu",
    "t": "one",
-   "ref": "22:33",
-   "q": "Pe ce cale îl călăuzește Domnul pe David?",
+   "ref": "22:12",
+   "q": "Cu ce era înconjurat Domnul ca și cu un cort?",
    "opts": [
-    "pe calea pustiei",
-    "pe calea mării",
-    "pe calea cea dreaptă"
+    "cu focul",
+    "cu lumina",
+    "cu întunericul"
    ],
    "a": 2
   },
@@ -430,12 +430,12 @@
    "id": "2sa.22.mediu.315",
    "age": "mediu",
    "t": "one",
-   "ref": "22:12",
-   "q": "Cu ce mai era înconjurat Domnul?",
+   "ref": "22:17",
+   "q": "Cum l-a scos Domnul pe David din apele cele mari?",
    "opts": [
-    "cu oști de îngeri",
-    "cu grămezi de ape și nori",
-    "cu foc și fum"
+    "a trimis un înger să-l scoată",
+    "Și-a întins mâna de sus și l-a apucat",
+    "a despărțit apele înaintea lui"
    ],
    "a": 1
   },
@@ -443,12 +443,12 @@
    "id": "2sa.22.mediu.316",
    "age": "mediu",
    "t": "one",
-   "ref": "22:7",
-   "q": "De unde i-a auzit Domnul glasul lui David?",
+   "ref": "22:20",
+   "q": "Unde l-a scos Domnul pe David?",
    "opts": [
-    "din locașul Lui",
-    "de pe muntele Sion",
-    "din cortul chivotului"
+    "la loc larg",
+    "pe o stâncă înaltă",
+    "în cetatea Lui"
    ],
    "a": 0
   },
@@ -456,12 +456,12 @@
    "id": "2sa.22.mediu.317",
    "age": "mediu",
    "t": "one",
-   "ref": "22:45",
-   "q": "Cine îl lingușește pe David?",
+   "ref": "22:26",
+   "q": "Cum Se poartă Domnul cu cel bun?",
    "opts": [
-    "fiii lui Saul",
-    "preoții",
-    "fiii străinului"
+    "este aspru",
+    "este tăcut",
+    "este bun"
    ],
    "a": 2
   },
@@ -469,12 +469,12 @@
    "id": "2sa.22.mediu.318",
    "age": "mediu",
    "t": "one",
-   "ref": "22:28",
-   "q": "Pe cine mântuiește Domnul?",
+   "ref": "22:30",
+   "q": "Peste ce sare David cu Dumnezeul lui?",
    "opts": [
-    "pe cei mândri și tari",
-    "pe poporul care se smerește",
-    "pe cei bogați și înțelepți"
+    "peste munte",
+    "peste zid",
+    "peste șanț"
    ],
    "a": 1
   },
@@ -482,12 +482,12 @@
    "id": "2sa.22.mediu.319",
    "age": "mediu",
    "t": "one",
-   "ref": "22:38",
-   "q": "Până când nu se întoarce David din urmărirea vrăjmașilor?",
+   "ref": "22:33",
+   "q": "Pe ce cale îl călăuzește Domnul pe David?",
    "opts": [
-    "până la seară",
-    "până nu-i nimicește",
-    "până obosește"
+    "pe calea cea largă",
+    "pe calea cea dreaptă",
+    "pe calea păcii"
    ],
    "a": 1
   },
@@ -495,12 +495,12 @@
    "id": "2sa.22.mediu.320",
    "age": "mediu",
    "t": "one",
-   "ref": "22:51",
-   "q": "Cui arată Domnul milă?",
+   "ref": "22:45",
+   "q": "Cine îl lingușește pe David?",
    "opts": [
-    "lui Saul",
-    "unsului Său, lui David",
-    "filistenilor"
+    "fiii lui Saul",
+    "fiii străinului",
+    "căpeteniile lui Israel"
    ],
    "a": 1
   },
@@ -512,57 +512,60 @@
    "q": "Asociază fiecare lucru cu ce se spune despre el în cântare.",
    "pairs": [
     [
-     "valurile morții",
-     "îl înconjuraseră"
+     "fumul",
+     "se ridica din nările Domnului"
     ],
     [
-     "legăturile mormântului",
-     "îl înconjuraseră și ele"
+     "norul gros",
+     "era sub picioarele Domnului"
     ],
     [
-     "fulgerul",
-     "i-a pus pe fugă pe vrăjmași"
+     "heruvimul",
+     "pe el călărea Domnul"
     ],
     [
-     "fiii străinului",
-     "tremură când ies din cetățuie"
+     "apele cele mari",
+     "din ele a fost scos David"
     ],
     [
-     "poporul smerit",
-     "este mântuit de Domnul"
+     "arcul de aramă",
+     "îl întind brațele lui David"
     ]
    ],
    "refs": [
-    "22:5",
-    "22:6",
-    "22:15",
-    "22:46",
-    "22:28"
+    "22:9",
+    "22:10",
+    "22:11",
+    "22:17",
+    "22:35"
    ]
   },
   {
    "id": "2sa.22.mediu.322",
    "age": "mediu",
    "t": "multi",
-   "ref": "22:42",
-   "q": "Ce spune David despre vrăjmașii care strigă către Domnul?",
+   "ref": "22:8",
+   "q": "Ce s-a întâmplat când Domnul S-a mâniat, în cântare?",
    "opts": [
-    "Domnul le răspunde",
-    "Domnul îi iartă",
-    "Domnul îi scapă"
+    "pământul s-a cutremurat",
+    "soarele s-a întunecat",
+    "temeliile cerului s-au mișcat"
    ],
-   "a": []
+   "a": [
+    0,
+    2
+   ]
   },
   {
    "id": "2sa.22.mediu.323",
    "age": "mediu",
    "t": "multi",
-   "ref": "22:2",
-   "q": "Ce nume îi dă David Domnului la începutul cântării?",
+   "ref": "22:22-23",
+   "q": "Ce spune David că a făcut?",
    "opts": [
-    "păstorul meu",
-    "cetățuia mea",
-    "stânca mea"
+    "a adus jertfe în fiecare zi",
+    "nu s-a depărtat de la legile Lui",
+    "a păzit căile Domnului"
    ],
    "a": [
     1,
@@ -573,17 +576,14 @@
    "id": "2sa.22.mediu.324",
    "age": "mediu",
    "t": "multi",
-   "ref": "22:26-27",
-   "q": "Cum se poartă Domnul, după cântare?",
+   "ref": "22:42",
+   "q": "Ce primesc vrăjmașii lui David când strigă către Domnul?",
    "opts": [
-    "cu cel mândru este blând",
-    "cu cel curat este curat",
-    "cu cel bun este bun"
+    "iertare",
+    "un scăpător",
+    "un răspuns"
    ],
-   "a": [
-    1,
-    2
-   ]
+   "a": []
   },
   {
    "id": "2sa.22.greu.301",
@@ -597,84 +597,84 @@
    "id": "2sa.22.greu.302",
    "age": "greu",
    "t": "tf",
-   "ref": "22:5",
-   "q": "David spune că valurile mării îl înconjuraseră.",
+   "ref": "22:6",
+   "q": "David spune că lațurile mormântului îl prinseseră, iar legăturile morții îl înconjuraseră.",
    "a": false
   },
   {
    "id": "2sa.22.greu.303",
    "age": "greu",
    "t": "tf",
-   "ref": "22:13",
-   "q": "Cărbuni de foc scânteiau din strălucirea dinaintea Domnului.",
+   "ref": "22:11",
+   "q": "Domnul venea pe aripile vântului.",
    "a": true
   },
   {
    "id": "2sa.22.greu.304",
    "age": "greu",
    "t": "tf",
-   "ref": "22:17",
-   "q": "Domnul Și-a întins mâna de sus, din înălțime.",
-   "a": true
+   "ref": "22:13",
+   "q": "Din strălucirea dinaintea Domnului cădea grindină.",
+   "a": false
   },
   {
    "id": "2sa.22.greu.305",
    "age": "greu",
    "t": "tf",
-   "ref": "22:19",
-   "q": "David spune că Domnul a fost potrivnicul lui.",
-   "a": false
+   "ref": "22:16",
+   "q": "Temeliile lumii au fost descoperite de vuietul suflării nărilor Domnului.",
+   "a": true
   },
   {
    "id": "2sa.22.greu.306",
    "age": "greu",
    "t": "tf",
-   "ref": "22:28",
-   "q": "Domnul coboară cu privirea Lui pe cei mândri.",
-   "a": true
+   "ref": "22:19",
+   "q": "Vrăjmașii l-au prins pe David în ziua biruinței lui.",
+   "a": false
   },
   {
    "id": "2sa.22.greu.307",
    "age": "greu",
    "t": "tf",
-   "ref": "22:33",
-   "q": "David spune că Domnul este turnul lui cel slab.",
-   "a": false
+   "ref": "22:24",
+   "q": "David spune că s-a păzit de fărădelegea lui.",
+   "a": true
   },
   {
    "id": "2sa.22.greu.308",
    "age": "greu",
    "t": "tf",
-   "ref": "22:41",
-   "q": "David spune că nimicește pe cei ce-l urăsc.",
-   "a": true
+   "ref": "22:27",
+   "q": "David spune că Domnul este blând cu cel îndărătnic.",
+   "a": false
   },
   {
    "id": "2sa.22.greu.309",
    "age": "greu",
    "t": "tf",
-   "ref": "22:45",
-   "q": "Fiii străinului nu-l ascultă pe David.",
-   "a": false
+   "ref": "22:43",
+   "q": "David îi aseamănă pe vrăjmași cu noroiul de pe ulițe.",
+   "a": true
   },
   {
    "id": "2sa.22.greu.310",
    "age": "greu",
    "t": "tf",
-   "ref": "22:51",
-   "q": "Domnul arată milă lui David și seminței lui pentru totdeauna.",
-   "a": true
+   "ref": "22:48",
+   "q": "David spune că Domnul îi supune cetățile.",
+   "a": false
   },
   {
    "id": "2sa.22.greu.311",
    "age": "greu",
    "t": "one",
-   "ref": "22:4",
-   "q": "Cum îl numește David pe Domnul pe care-L cheamă?",
+   "ref": "22:3",
+   "q": "Cum numește David stânca lui Dumnezeu?",
    "opts": [
-    "cel vrednic de laudă",
-    "cel înfricoșat",
-    "cel ascuns"
+    "stânca la care găsește un adăpost",
+    "stânca din care curge apă",
+    "stânca pe care și-a zidit casa"
    ],
    "a": 0
   },
@@ -683,11 +683,11 @@
    "age": "greu",
    "t": "one",
    "ref": "22:7",
-   "q": "Unde a ajuns strigătul lui David?",
+   "q": "De unde a auzit Domnul glasul lui David?",
    "opts": [
-    "la cer, fără răspuns",
-    "la urechile Domnului",
-    "la Saul"
+    "din cerurile cele înalte",
+    "din locașul Lui",
+    "de pe muntele Lui"
    ],
    "a": 1
   },
@@ -695,12 +695,12 @@
    "id": "2sa.22.greu.313",
    "age": "greu",
    "t": "one",
-   "ref": "22:11",
-   "q": "Pe ce venea Domnul, în cântare?",
+   "ref": "22:13",
+   "q": "Ce scânteia din strălucirea dinaintea Domnului?",
    "opts": [
-    "pe un car de aur",
-    "pe aripile vântului",
-    "pe un nor de praf"
+    "fulgere de lumină",
+    "cărbuni de foc",
+    "stele de foc"
    ],
    "a": 1
   },
@@ -708,12 +708,12 @@
    "id": "2sa.22.greu.314",
    "age": "greu",
    "t": "one",
-   "ref": "22:14",
-   "q": "Cum este numit Domnul în versetul tunetului?",
+   "ref": "22:15",
+   "q": "Ce a făcut Domnul aruncând fulgerul?",
    "opts": [
-    "Cel Preaînalt",
-    "Cel Sfânt",
-    "Cel Vechi"
+    "i-a pus pe vrăjmași pe fugă",
+    "i-a ars pe vrăjmași de tot",
+    "i-a orbit pe vrăjmași"
    ],
    "a": 0
   },
@@ -722,11 +722,11 @@
    "age": "greu",
    "t": "one",
    "ref": "22:18",
-   "q": "Cum îl numește David pe potrivnicul lui?",
+   "q": "Cum îi descrie David pe vrăjmașii de care a fost izbăvit?",
    "opts": [
-    "cel slab",
-    "cel puternic",
-    "cel înțelept"
+    "mai mulți decât nisipul",
+    "mai tari decât el",
+    "mai vicleni decât șarpele"
    ],
    "a": 1
   },
@@ -734,12 +734,12 @@
    "id": "2sa.22.greu.316",
    "age": "greu",
    "t": "one",
-   "ref": "22:23",
-   "q": "Ce spune David că a fost înaintea lui?",
+   "ref": "22:21",
+   "q": "După ce i-a făcut Domnul lui David, după cântare?",
    "opts": [
-    "toți fiii lui",
-    "toți vrăjmașii lui",
-    "toate poruncile Domnului"
+    "după dreptatea faptelor lui",
+    "după curăția inimii lui",
+    "după curăția mâinilor lui"
    ],
    "a": 2
   },
@@ -747,12 +747,12 @@
    "id": "2sa.22.greu.317",
    "age": "greu",
    "t": "one",
-   "ref": "22:29",
-   "q": "Ce luminează Domnul pentru David?",
+   "ref": "22:28",
+   "q": "Pe cine mântuiește Domnul, după cântare?",
    "opts": [
-    "calea mării",
-    "întunericul lui",
-    "cortul lui"
+    "poporul care se roagă",
+    "poporul care se smerește",
+    "poporul care Îl laudă"
    ],
    "a": 1
   },
@@ -760,12 +760,12 @@
    "id": "2sa.22.greu.318",
    "age": "greu",
    "t": "one",
-   "ref": "22:37",
-   "q": "Ce lărgește Domnul sub pașii lui David?",
+   "ref": "22:36",
+   "q": "Ce îi dă Domnul lui David?",
    "opts": [
-    "drumul",
-    "cortul",
-    "podul"
+    "scutul mântuirii Sale",
+    "sabia biruinței Sale",
+    "coiful mântuirii Sale"
    ],
    "a": 0
   },
@@ -773,12 +773,12 @@
    "id": "2sa.22.greu.319",
    "age": "greu",
    "t": "one",
-   "ref": "22:43",
-   "q": "Cu ce noroi îi compară David pe vrăjmașii călcați?",
+   "ref": "22:44",
+   "q": "Drept ce îl păstrează Domnul pe David?",
    "opts": [
-    "noroiul de pe ulițe",
-    "noroiul din câmp",
-    "noroiul din râu"
+    "căpetenie a neamurilor",
+    "judecător al neamurilor",
+    "împărat peste neamuri"
    ],
    "a": 0
   },
@@ -789,8 +789,8 @@
    "ref": "22:46",
    "q": "Ce fac fiii străinului când ies din cetățuie?",
    "opts": [
-    "cântă",
     "se închină",
+    "fug",
     "tremură"
    ],
    "a": 2
@@ -800,47 +800,47 @@
    "age": "greu",
    "t": "match",
    "ref": "22:1-51",
-   "q": "Asociază fiecare nume dat lui Dumnezeu cu ce se spune despre el.",
+   "q": "Asociază fiecare persoană cu felul în care Se poartă Domnul cu ea.",
    "pairs": [
     [
-     "„Izbăvitorul meu”",
-     "primul nume al Domnului în cântare"
+     "cel bun",
+     "Domnul este bun"
     ],
     [
-     "„Stânca mântuirii mele”",
-     "nume din lauda de la sfârșit"
+     "omul drept",
+     "Domnul Se poartă după dreptate"
     ],
     [
-     "„răzbunătorul meu”",
-     "Dumnezeu care supune popoarele"
+     "cel curat",
+     "Domnul este curat"
     ],
     [
-     "„Cel Preaînalt”",
-     "cel care face să răsune glasul"
+     "cel îndărătnic",
+     "Domnul Se poartă după îndărătnicia lui"
     ],
     [
-     "„lumina mea”",
-     "cel care luminează întunericul"
+     "cei mândri",
+     "Domnul îi coboară cu privirea"
     ]
    ],
    "refs": [
-    "22:2",
-    "22:47",
-    "22:48",
-    "22:14",
-    "22:29"
+    "22:26",
+    "22:26",
+    "22:27",
+    "22:27",
+    "22:28"
    ]
   },
   {
    "id": "2sa.22.greu.322",
    "age": "greu",
    "t": "multi",
-   "ref": "22:44",
-   "q": "Ce face Domnul pentru David, după versetul 44?",
+   "ref": "22:47-48",
+   "q": "Ce nume îi dă David lui Dumnezeu la sfârșitul cântării?",
    "opts": [
-    "îl face preot",
-    "îl păstrează căpetenie a neamurilor",
-    "îl scapă din neînțelegerile poporului"
+    "Păstorul meu",
+    "răzbunătorul meu",
+    "Stânca mântuirii mele"
    ],
    "a": [
     1,
@@ -851,12 +851,12 @@
    "id": "2sa.22.greu.323",
    "age": "greu",
    "t": "multi",
-   "ref": "22:47-49",
-   "q": "Cum este numit Dumnezeu în încheierea cântării?",
+   "ref": "22:9",
+   "q": "Ce ieșea din Domnul, după cântare?",
    "opts": [
-    "răzbunătorul lui David",
-    "Păstorul lui Israel",
-    "Stânca mântuirii"
+    "foc mistuitor din gura Lui",
+    "fulger din mâna Lui",
+    "fum din nările Lui"
    ],
    "a": [
     0,
@@ -867,12 +867,12 @@
    "id": "2sa.22.greu.324",
    "age": "greu",
    "t": "multi",
-   "ref": "22:42",
-   "q": "Ce primesc vrăjmașii lui David când strigă către Domnul?",
+   "ref": "22:5-6",
+   "q": "Ce îl înconjuraseră pe David, după cântare?",
    "opts": [
-    "un scut",
-    "un răspuns",
-    "o cetate"
+    "oștile filistenilor",
+    "valurile mării",
+    "munții cei înalți"
    ],
    "a": []
   }
