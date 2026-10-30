@@ -15,44 +15,52 @@
    "id": "2sa.15.usor.302",
    "age": "usor",
    "t": "tf",
-   "ref": "15:6",
-   "q": "Absalom câștiga inima oamenilor lui Israel.",
-   "a": true
+   "ref": "15:2",
+   "q": "Absalom dormea până la prânz.",
+   "a": false
   },
   {
    "id": "2sa.15.usor.303",
    "age": "usor",
    "t": "tf",
-   "ref": "15:7",
-   "q": "Absalom a cerut voie să meargă la Betleem.",
-   "a": false
+   "ref": "15:6",
+   "q": "Absalom câștiga inima oamenilor lui Israel.",
+   "a": true
   },
   {
    "id": "2sa.15.usor.304",
    "age": "usor",
    "t": "tf",
-   "ref": "15:10",
-   "q": "Absalom s-a făcut împărat la Hebron.",
-   "a": true
+   "ref": "15:9",
+   "q": "David nu l-a lăsat pe Absalom să plece la Hebron.",
+   "a": false
   },
   {
    "id": "2sa.15.usor.305",
    "age": "usor",
    "t": "tf",
    "ref": "15:14",
-   "q": "David a rămas în Ierusalim să lupte cu Absalom.",
-   "a": false
+   "q": "David le-a spus slujitorilor: „Sculați-vă să fugim!”",
+   "a": true
   },
   {
    "id": "2sa.15.usor.306",
    "age": "usor",
    "t": "tf",
-   "ref": "15:21",
-   "q": "Itai din Gat a vrut să rămână cu David.",
-   "a": true
+   "ref": "15:19",
+   "q": "Itai era din cetatea Betleem.",
+   "a": false
   },
   {
    "id": "2sa.15.usor.307",
+   "age": "usor",
+   "t": "tf",
+   "ref": "15:23",
+   "q": "Tot ținutul plângea când trecea poporul.",
+   "a": true
+  },
+  {
+   "id": "2sa.15.usor.308",
    "age": "usor",
    "t": "tf",
    "ref": "15:25",
@@ -60,19 +68,11 @@
    "a": false
   },
   {
-   "id": "2sa.15.usor.308",
-   "age": "usor",
-   "t": "tf",
-   "ref": "15:30",
-   "q": "David a urcat dealul măslinilor plângând.",
-   "a": true
-  },
-  {
    "id": "2sa.15.usor.309",
    "age": "usor",
    "t": "tf",
-   "ref": "15:32",
-   "q": "Hușai a venit la David cu haina sfâșiată.",
+   "ref": "15:12",
+   "q": "Tot mai mulți oameni treceau de partea lui Absalom.",
    "a": true
   },
   {
@@ -80,7 +80,7 @@
    "age": "usor",
    "t": "tf",
    "ref": "15:37",
-   "q": "Hușai a fugit cu David în pustie.",
+   "q": "Absalom n-a mai intrat în Ierusalim.",
    "a": false
   },
   {
@@ -88,11 +88,11 @@
    "age": "usor",
    "t": "one",
    "ref": "15:2",
-   "q": "Unde stătea Absalom dis-de-dimineață?",
+   "q": "Unde stătea Absalom dimineața?",
    "opts": [
-    "în casa lui",
+    "în templu",
     "la poartă, la marginea drumului",
-    "pe câmp"
+    "pe acoperiș"
    ],
    "a": 1
   },
@@ -101,11 +101,11 @@
    "age": "usor",
    "t": "one",
    "ref": "15:5",
-   "q": "Ce făcea Absalom când cineva voia să se închine înaintea lui?",
+   "q": "Ce făcea Absalom cu cei care voiau să se închine înaintea lui?",
    "opts": [
-    "îl alunga",
-    "îl pedepsea",
-    "îl apuca și-l săruta"
+    "îi alunga",
+    "îi lovea",
+    "îi săruta"
    ],
    "a": 2
   },
@@ -113,12 +113,12 @@
    "id": "2sa.15.usor.313",
    "age": "usor",
    "t": "one",
-   "ref": "15:9",
-   "q": "Unde a plecat Absalom spunând că împlinește o juruință?",
+   "ref": "15:7",
+   "q": "Unde a cerut Absalom să meargă?",
    "opts": [
     "la Hebron",
-    "la Betel",
-    "la Gheșur"
+    "la Ninive",
+    "în Egipt"
    ],
    "a": 0
   },
@@ -126,12 +126,12 @@
    "id": "2sa.15.usor.314",
    "age": "usor",
    "t": "one",
-   "ref": "15:10",
-   "q": "Ce semn trebuiau să aștepte semințiile?",
+   "ref": "15:15",
+   "q": "Ce i-au răspuns slujitorii lui David?",
    "opts": [
-    "un foc pe munte",
-    "sunetul trâmbiței",
-    "o scrisoare"
+    "că îl vor părăsi",
+    "că vor face tot ce vrea împăratul",
+    "că vor lupta pentru Absalom"
    ],
    "a": 1
   },
@@ -139,12 +139,12 @@
    "id": "2sa.15.usor.315",
    "age": "usor",
    "t": "one",
-   "ref": "15:14",
-   "q": "Ce le-a spus David slujitorilor când a aflat de Absalom?",
+   "ref": "15:12",
+   "q": "Cine era Ahitofel?",
    "opts": [
-    "„Chemați pe Absalom!”",
-    "„Sculați-vă să fugim!”",
-    "„Pregătiți-vă de luptă!”"
+    "un preot",
+    "sfetnicul lui David",
+    "fratele lui Absalom"
    ],
    "a": 1
   },
@@ -152,12 +152,12 @@
    "id": "2sa.15.usor.316",
    "age": "usor",
    "t": "one",
-   "ref": "15:19",
-   "q": "De unde era Itai?",
+   "ref": "15:13",
+   "q": "Spre cine s-a întors inima oamenilor lui Israel?",
    "opts": [
-    "din Gat",
-    "din Hebron",
-    "din Tecoa"
+    "spre Absalom",
+    "spre David",
+    "spre Saul"
    ],
    "a": 0
   },
@@ -165,12 +165,12 @@
    "id": "2sa.15.usor.317",
    "age": "usor",
    "t": "one",
-   "ref": "15:23",
-   "q": "Ce pârâu a trecut David când a fugit?",
+   "ref": "15:21",
+   "q": "Ce i-a răspuns Itai lui David?",
    "opts": [
-    "pârâul Chișon",
-    "râul Iordan",
-    "pârâul Chedron"
+    "că vrea să-l ajute pe Absalom",
+    "că se întoarce în țara lui",
+    "că va fi unde va fi împăratul"
    ],
    "a": 2
   },
@@ -178,12 +178,12 @@
    "id": "2sa.15.usor.318",
    "age": "usor",
    "t": "one",
-   "ref": "15:24",
-   "q": "Ce duceau leviții cu Țadoc?",
+   "ref": "15:23",
+   "q": "Ce pârâu a trecut David?",
    "opts": [
-    "haine și pâine",
-    "chivotul legământului",
-    "sulițe și scuturi"
+    "Nilul",
+    "Chedronul",
+    "Iordanul"
    ],
    "a": 1
   },
@@ -191,12 +191,12 @@
    "id": "2sa.15.usor.319",
    "age": "usor",
    "t": "one",
-   "ref": "15:30",
-   "q": "Cum mergea David pe dealul măslinilor?",
+   "ref": "15:31",
+   "q": "Ce s-a rugat David despre Ahitofel?",
    "opts": [
-    "cu picioarele goale și plângând",
-    "călare pe un cal",
-    "cântând de bucurie"
+    "Domnul să-i nimicească sfaturile",
+    "Domnul să-l binecuvânteze",
+    "Domnul să-l aducă înapoi"
    ],
    "a": 0
   },
@@ -204,12 +204,12 @@
    "id": "2sa.15.usor.320",
    "age": "usor",
    "t": "one",
-   "ref": "15:37",
-   "q": "Cine a intrat în Ierusalim la sfârșitul capitolului?",
+   "ref": "15:32",
+   "q": "Cine a venit la David cu haina sfâșiată?",
    "opts": [
-    "Itai",
-    "Ahitofel",
-    "Absalom"
+    "Ioab",
+    "Natan",
+    "Hușai"
    ],
    "a": 2
   },
@@ -217,48 +217,48 @@
    "id": "2sa.15.usor.321",
    "age": "usor",
    "t": "match",
-   "ref": "15:1-37",
-   "q": "Asociază fiecare persoană cu ce se spune despre ea.",
+   "ref": "15:12-36",
+   "q": "Asociază fiecare nume cu ce se spune despre el.",
    "pairs": [
     [
-     "Absalom",
-     "s-a făcut împărat la Hebron"
-    ],
-    [
      "Itai",
-     "a venit din Gat cu oamenii lui"
+     "a venit din Gat după David"
     ],
     [
      "Țadoc",
-     "a dus chivotul înapoi"
+     "preotul care era cu leviții și chivotul"
+    ],
+    [
+     "trâmbița",
+     "la sunetul ei, Absalom trebuia vestit împărat"
+    ],
+    [
+     "dealul măslinilor",
+     "pe vârful lui s-a închinat David"
     ],
     [
      "Hușai",
-     "prietenul lui David"
-    ],
-    [
-     "Ahitofel",
-     "sfetnicul lui David, trecut la Absalom"
+     "a fost trimis înapoi în cetate să-l ajute pe David"
     ]
    ],
    "refs": [
+    "15:18",
+    "15:24",
     "15:10",
-    "15:19",
-    "15:29",
-    "15:37",
-    "15:12"
+    "15:32",
+    "15:34"
    ]
   },
   {
    "id": "2sa.15.usor.322",
    "age": "usor",
    "t": "multi",
-   "ref": "15:30",
-   "q": "Cum a urcat David dealul măslinilor?",
+   "ref": "15:4",
+   "q": "Ce spunea Absalom oamenilor?",
    "opts": [
-    "cântând",
-    "plângând",
-    "cu capul acoperit"
+    "„Iubiți-l pe împăratul David!”",
+    "„De m-ar pune pe mine judecător!”",
+    "„I-aș face dreptate”"
    ],
    "a": [
     1,
@@ -269,12 +269,12 @@
    "id": "2sa.15.usor.323",
    "age": "usor",
    "t": "multi",
-   "ref": "15:18",
-   "q": "Cine a mers cu David când a ieșit din Ierusalim?",
+   "ref": "15:16",
+   "q": "Cine a ieșit din cetate cu David?",
    "opts": [
-    "cheretiții și peletiții",
-    "gatiții",
-    "filistenii din Gaza"
+    "toată casa lui",
+    "tot poporul",
+    "soldații lui Absalom"
    ],
    "a": [
     0,
@@ -285,105 +285,108 @@
    "id": "2sa.15.usor.324",
    "age": "usor",
    "t": "multi",
-   "ref": "15:25",
-   "q": "Ce i-a spus David lui Țadoc să facă cu chivotul?",
+   "ref": "15:30",
+   "q": "Cum mergea David pe dealul măslinilor?",
    "opts": [
-    "să-l ia cu el în pustie",
-    "să-l ascundă în dealul măslinilor",
-    "să-l dea lui Absalom"
+    "plângând",
+    "cu picioarele goale",
+    "călare pe un cal alb"
    ],
-   "a": []
+   "a": [
+    0,
+    1
+   ]
   },
   {
    "id": "2sa.15.mediu.301",
    "age": "mediu",
    "t": "tf",
-   "ref": "15:2",
-   "q": "Absalom se scula dis-de-dimineață și stătea la poartă.",
+   "ref": "15:1",
+   "q": "Absalom avea cincizeci de oameni care alergau înaintea lui.",
    "a": true
   },
   {
    "id": "2sa.15.mediu.302",
    "age": "mediu",
    "t": "tf",
-   "ref": "15:5",
-   "q": "Absalom săruta pe cei care voiau să se închine înaintea lui.",
-   "a": true
+   "ref": "15:3",
+   "q": "Absalom le spunea oamenilor că pricina lor este rea.",
+   "a": false
   },
   {
    "id": "2sa.15.mediu.303",
    "age": "mediu",
    "t": "tf",
-   "ref": "15:12",
-   "q": "Ahitofel era sfetnicul lui David.",
+   "ref": "15:8",
+   "q": "Absalom a spus că a făcut juruința când locuia la Gheșur.",
    "a": true
   },
   {
    "id": "2sa.15.mediu.304",
    "age": "mediu",
    "t": "tf",
-   "ref": "15:15",
-   "q": "Slujitorii i-au spus lui David că vor face tot ce vrea el.",
-   "a": true
+   "ref": "15:11",
+   "q": "Cei două sute de oameni din Ierusalim știau ce plănuia Absalom.",
+   "a": false
   },
   {
    "id": "2sa.15.mediu.305",
    "age": "mediu",
    "t": "tf",
-   "ref": "15:24",
-   "q": "Leviții au așezat jos chivotul lângă drum.",
+   "ref": "15:16",
+   "q": "David a lăsat zece țiitoare pentru paza casei.",
    "a": true
   },
   {
    "id": "2sa.15.mediu.306",
    "age": "mediu",
    "t": "tf",
-   "ref": "15:9",
-   "q": "David nu l-a lăsat pe Absalom să plece la Hebron.",
+   "ref": "15:18",
+   "q": "Gatiții care l-au urmat pe David erau o mie.",
    "a": false
   },
   {
    "id": "2sa.15.mediu.307",
    "age": "mediu",
    "t": "tf",
-   "ref": "15:22",
-   "q": "David l-a trimis pe Itai înapoi la Gat.",
-   "a": false
+   "ref": "15:24",
+   "q": "Leviții duceau chivotul legământului lui Dumnezeu.",
+   "a": true
   },
   {
    "id": "2sa.15.mediu.308",
    "age": "mediu",
    "t": "tf",
-   "ref": "15:34",
-   "q": "Hușai trebuia să-i spună lui Absalom că a fost mereu dușmanul lui David.",
+   "ref": "15:23",
+   "q": "Ținutul s-a bucurat când a trecut poporul.",
    "a": false
   },
   {
    "id": "2sa.15.mediu.309",
    "age": "mediu",
    "t": "tf",
-   "ref": "15:3",
-   "q": "Absalom spunea că împăratul îi ascultă pe toți.",
-   "a": false
+   "ref": "15:32",
+   "q": "David s-a închinat înaintea lui Dumnezeu pe vârful dealului.",
+   "a": true
   },
   {
    "id": "2sa.15.mediu.310",
    "age": "mediu",
    "t": "tf",
-   "ref": "15:13",
-   "q": "David a aflat de uneltire de la Ahitofel.",
+   "ref": "15:33",
+   "q": "David i-a spus lui Hușai că îi va fi de mare ajutor dacă vine cu el.",
    "a": false
   },
   {
    "id": "2sa.15.mediu.311",
    "age": "mediu",
    "t": "one",
-   "ref": "15:28",
-   "q": "Unde a spus David că va aștepta vești?",
+   "ref": "15:2",
+   "q": "Ce îl întreba Absalom pe cel care venea la judecată?",
    "opts": [
-    "în câmpiile pustiei",
-    "la Hebron",
-    "pe dealul măslinilor"
+    "„Din ce cetate ești?”",
+    "„Cine te-a trimis?”",
+    "„Ce pricină ai?”"
    ],
    "a": 0
   },
@@ -391,12 +394,12 @@
    "id": "2sa.15.mediu.312",
    "age": "mediu",
    "t": "one",
-   "ref": "15:11",
-   "q": "Câți oameni din Ierusalim l-au însoțit pe Absalom fără să știe nimic?",
+   "ref": "15:3",
+   "q": "Ce spunea Absalom despre judecata împăratului?",
    "opts": [
-    "cincizeci",
-    "două sute",
-    "șase sute"
+    "împăratul judecă numai pe cei bogați",
+    "nimeni nu te va asculta din partea împăratului",
+    "împăratul nu mai vrea să judece"
    ],
    "a": 1
   },
@@ -404,12 +407,12 @@
    "id": "2sa.15.mediu.313",
    "age": "mediu",
    "t": "one",
-   "ref": "15:25",
-   "q": "Unde i-a spus David lui Țadoc să ducă chivotul?",
+   "ref": "15:7",
+   "q": "După câți ani a cerut Absalom să meargă la Hebron?",
    "opts": [
-    "la Hebron",
-    "în pustie",
-    "înapoi în cetate"
+    "doi",
+    "trei",
+    "patruzeci"
    ],
    "a": 2
   },
@@ -417,12 +420,12 @@
    "id": "2sa.15.mediu.314",
    "age": "mediu",
    "t": "one",
-   "ref": "15:14",
-   "q": "De ce voia David să fugă repede?",
+   "ref": "15:10",
+   "q": "Pe cine a trimis Absalom în toate semințiile?",
    "opts": [
-    "ca cetatea să nu fie trecută prin sabie",
-    "ca să ia chivotul înainte de Absalom",
-    "ca să ajungă înaintea lui la Gat"
+    "iscoade",
+    "căpetenii de oaste",
+    "preoți"
    ],
    "a": 0
   },
@@ -430,12 +433,12 @@
    "id": "2sa.15.mediu.315",
    "age": "mediu",
    "t": "one",
-   "ref": "15:17",
-   "q": "Unde s-a oprit împăratul cu poporul când a ieșit?",
+   "ref": "15:12",
+   "q": "Din ce cetate era Ahitofel?",
    "opts": [
-    "la cea din urmă casă",
-    "la poarta templului",
-    "la pârâul Chedron"
+    "din Ghilo",
+    "din Tecoa",
+    "din Ghibea"
    ],
    "a": 0
   },
@@ -443,12 +446,12 @@
    "id": "2sa.15.mediu.316",
    "age": "mediu",
    "t": "one",
-   "ref": "15:31",
-   "q": "Ce a aflat David pe dealul măslinilor?",
+   "ref": "15:14",
+   "q": "De ce voia David să fugă repede?",
    "opts": [
-    "că Itai l-a părăsit",
-    "că Ahitofel e printre uneltitori",
-    "că chivotul a fost luat"
+    "ca să adune oaste din Iuda",
+    "ca Absalom să nu treacă cetatea prin sabie",
+    "ca să ajungă la Gheșur înaintea lui"
    ],
    "a": 1
   },
@@ -456,12 +459,12 @@
    "id": "2sa.15.mediu.317",
    "age": "mediu",
    "t": "one",
-   "ref": "15:32",
-   "q": "Cine l-a întâmpinat pe David pe vârful dealului?",
+   "ref": "15:19",
+   "q": "De ce i-a spus David lui Itai să se întoarcă?",
    "opts": [
-    "Țadoc, preotul",
-    "Ahitofel, sfetnicul",
-    "Hușai, Architul"
+    "avea copii mici acasă",
+    "era bătrân și obosit",
+    "era străin și venise de curând"
    ],
    "a": 2
   },
@@ -469,12 +472,12 @@
    "id": "2sa.15.mediu.318",
    "age": "mediu",
    "t": "one",
-   "ref": "15:35",
-   "q": "Cui trebuia să spună Hușai ce află din casa împăratului?",
+   "ref": "15:25",
+   "q": "Ce i-a spus David lui Țadoc să facă cu chivotul?",
    "opts": [
-    "lui Itai din Gat",
-    "lui Ahimaaț singur",
-    "preoților Țadoc și Abiatar"
+    "să-l ascundă în pustie",
+    "să-l ducă la Hebron",
+    "să-l ducă înapoi în cetate"
    ],
    "a": 2
   },
@@ -482,12 +485,12 @@
    "id": "2sa.15.mediu.319",
    "age": "mediu",
    "t": "one",
-   "ref": "15:6",
-   "q": "Ce câștiga Absalom prin felul în care se purta?",
+   "ref": "15:28",
+   "q": "Unde a spus David că va aștepta vești?",
    "opts": [
-    "cetăți noi în Iuda și Israel",
-    "inima oamenilor lui Israel",
-    "aur și argint de la popor"
+    "la pârâul Chedron",
+    "în câmpiile pustiei",
+    "pe dealul măslinilor"
    ],
    "a": 1
   },
@@ -495,12 +498,12 @@
    "id": "2sa.15.mediu.320",
    "age": "mediu",
    "t": "one",
-   "ref": "15:10",
-   "q": "Pe cine a trimis Absalom în toate semințiile?",
+   "ref": "15:34",
+   "q": "Ce trebuia să-i spună Hușai lui Absalom?",
    "opts": [
-    "iscoade",
-    "soli cu daruri",
-    "trâmbițași"
+    "„Împărate, eu voi fi robul tău”",
+    "„Împărate, fugi, căci vine David”",
+    "„Împărate, ascultă de Ahitofel”"
    ],
    "a": 0
   },
@@ -508,48 +511,48 @@
    "id": "2sa.15.mediu.321",
    "age": "mediu",
    "t": "match",
-   "ref": "15:1-37",
-   "q": "Asociază fiecare persoană cu cuvintele spuse.",
+   "ref": "15:12-36",
+   "q": "Asociază fiecare nume cu ce se spune despre el.",
    "pairs": [
     [
-     "Absalom către oameni",
-     "„Din ce cetate ești?”"
+     "Ahitofel",
+     "Ghilonitul, sfetnicul lui David"
     ],
     [
-     "Absalom către David",
-     "„Dă-mi voie să mă duc la Hebron.”"
+     "Itai",
+     "a jurat că va fi unde va fi împăratul"
     ],
     [
-     "David către Absalom",
-     "„Du-te în pace.”"
+     "Țadoc",
+     "tatăl lui Ahimaaț"
     ],
     [
-     "David către slujitori",
-     "„Sculați-vă să fugim!”"
+     "Ionatan",
+     "fiul lui Abiatar"
     ],
     [
-     "David, rugându-se",
-     "„Doamne, nimicește sfaturile lui Ahitofel!”"
+     "Hușai",
+     "Architul, prietenul lui David"
     ]
    ],
    "refs": [
-    "15:2",
-    "15:7",
-    "15:9",
-    "15:14",
-    "15:31"
+    "15:12",
+    "15:21",
+    "15:27",
+    "15:36",
+    "15:37"
    ]
   },
   {
    "id": "2sa.15.mediu.322",
    "age": "mediu",
    "t": "multi",
-   "ref": "15:21",
-   "q": "Ce i-a răspuns Itai lui David?",
+   "ref": "15:5-6",
+   "q": "Cum câștiga Absalom inima oamenilor?",
    "opts": [
-    "fie ca să moară, fie ca să trăiască",
-    "va fi unde va fi împăratul",
-    "se va întoarce la Gat"
+    "le spunea că le-ar face dreptate",
+    "îi apuca de mână și îi săruta",
+    "le dădea aur și argint"
    ],
    "a": [
     0,
@@ -560,25 +563,28 @@
    "id": "2sa.15.mediu.323",
    "age": "mediu",
    "t": "multi",
-   "ref": "15:16",
-   "q": "Pe cine a luat David cu el când a fugit?",
+   "ref": "15:25-26",
+   "q": "Ce a spus David despre întoarcerea lui?",
    "opts": [
-    "pe Absalom",
-    "pe Ahitofel",
-    "pe cele zece țiitoare"
+    "„Dacă voi căpăta trecere, Domnul mă va aduce înapoi”",
+    "„Să facă ce va crede cu mine”",
+    "„Voi lua cetatea înapoi cu sabia”"
    ],
-   "a": []
+   "a": [
+    0,
+    1
+   ]
   },
   {
    "id": "2sa.15.mediu.324",
    "age": "mediu",
    "t": "multi",
-   "ref": "15:35-36",
-   "q": "Cum trebuia Hușai să-i trimită vești lui David?",
+   "ref": "15:30",
+   "q": "Ce făceau David și cei cu el pe dealul măslinilor?",
    "opts": [
-    "prin Ahitofel",
-    "prin fiii lor, Ahimaaț și Ionatan",
-    "prin preoții Țadoc și Abiatar"
+    "cântau psalmi de biruință",
+    "suiau plângând",
+    "își acopereau capul"
    ],
    "a": [
     1,
@@ -589,8 +595,8 @@
    "id": "2sa.15.greu.301",
    "age": "greu",
    "t": "tf",
-   "ref": "15:1",
-   "q": "Absalom avea cincizeci de oameni care alergau înaintea lui.",
+   "ref": "15:2",
+   "q": "Absalom se scula dis-de-dimineață și stătea la marginea drumului, la poartă.",
    "a": true
   },
   {
@@ -598,83 +604,83 @@
    "age": "greu",
    "t": "tf",
    "ref": "15:4",
-   "q": "Absalom spunea: „De m-ar pune pe mine preot în țară!”",
+   "q": "Absalom spunea: „De m-ar pune pe mine împărat în țară!”",
    "a": false
   },
   {
    "id": "2sa.15.greu.303",
    "age": "greu",
    "t": "tf",
-   "ref": "15:6",
-   "q": "Absalom se purta așa cu toți cei care mergeau să ceară dreptate la împărat.",
+   "ref": "15:8",
+   "q": "Absalom a spus că Gheșur este în Siria.",
    "a": true
   },
   {
    "id": "2sa.15.greu.304",
    "age": "greu",
    "t": "tf",
-   "ref": "15:8",
-   "q": "Absalom spunea că a făcut juruința când locuia la Tecoa.",
+   "ref": "15:12",
+   "q": "Absalom a trimis după Ahitofel la Tecoa.",
    "a": false
   },
   {
    "id": "2sa.15.greu.305",
    "age": "greu",
    "t": "tf",
-   "ref": "15:12",
-   "q": "Ahitofel era numit Ghilonitul.",
+   "ref": "15:17",
+   "q": "Împăratul și poporul s-au oprit la cea din urmă casă.",
    "a": true
   },
   {
    "id": "2sa.15.greu.306",
    "age": "greu",
    "t": "tf",
-   "ref": "15:16",
-   "q": "David a lăsat doi slujitori pentru paza casei.",
+   "ref": "15:20",
+   "q": "David i-a spus lui Itai: „De o lună ai venit.”",
    "a": false
   },
   {
    "id": "2sa.15.greu.307",
    "age": "greu",
    "t": "tf",
-   "ref": "15:20",
-   "q": "David i-a dorit lui Itai bunătate și credincioșie de la Domnul.",
+   "ref": "15:22",
+   "q": "Itai a trecut cu toți oamenii lui și cu toți copiii care erau cu el.",
    "a": true
   },
   {
    "id": "2sa.15.greu.308",
    "age": "greu",
    "t": "tf",
-   "ref": "15:24",
-   "q": "Abiatar se suia în timp ce poporul ieșea din cetate.",
-   "a": true
+   "ref": "15:30",
+   "q": "David a urcat dealul măslinilor călare.",
+   "a": false
   },
   {
    "id": "2sa.15.greu.309",
    "age": "greu",
    "t": "tf",
    "ref": "15:32",
-   "q": "Hușai l-a întâmpinat pe David la poalele dealului.",
-   "a": false
+   "q": "Hușai a venit cu capul acoperit cu țărână.",
+   "a": true
   },
   {
    "id": "2sa.15.greu.310",
    "age": "greu",
    "t": "tf",
-   "ref": "15:34",
-   "q": "Hușai trebuia să-i spună lui Absalom: „Eu voi fi robul tău.”",
-   "a": true
+   "ref": "15:37",
+   "q": "Hușai a intrat în Ierusalim după Absalom.",
+   "a": false
   },
   {
    "id": "2sa.15.greu.311",
    "age": "greu",
    "t": "one",
    "ref": "15:1",
-   "q": "Ce și-a pregătit Absalom după ce s-a împăcat cu tatăl lui?",
+   "q": "Ce și-a pregătit Absalom după aceea?",
    "opts": [
-    "o armată de străini",
-    "care, cai și alergători",
-    "o casă nouă"
+    "un car și cincizeci de slujitori",
+    "care și cai și cincizeci de alergători",
+    "care și cai și cincizeci de călăreți"
    ],
    "a": 1
   },
@@ -682,12 +688,12 @@
    "id": "2sa.15.greu.312",
    "age": "greu",
    "t": "one",
-   "ref": "15:5",
-   "q": "Ce făcea Absalom cu cei care voiau să se închine înaintea lui?",
+   "ref": "15:3",
+   "q": "Cum numea Absalom pricina celor ce veneau la judecată?",
    "opts": [
-    "îi apuca și-i săruta",
-    "îi trimitea la împărat",
-    "îi lăsa să se închine"
+    "bună și dreaptă",
+    "grea și încurcată",
+    "veche și uitată"
    ],
    "a": 0
   },
@@ -695,12 +701,12 @@
    "id": "2sa.15.greu.313",
    "age": "greu",
    "t": "one",
-   "ref": "15:7",
-   "q": "După trecerea câtor ani a vorbit Absalom despre juruință?",
+   "ref": "15:8",
+   "q": "Ce a făgăduit Absalom dacă Domnul îl aduce înapoi la Ierusalim?",
    "opts": [
-    "patru",
-    "patruzeci",
-    "paisprezece"
+    "că va aduce o mie de arderi-de-tot",
+    "că va da cinste Domnului",
+    "că va zidi un altar la Hebron"
    ],
    "a": 1
   },
@@ -709,11 +715,11 @@
    "age": "greu",
    "t": "one",
    "ref": "15:11",
-   "q": "Cum erau cei două sute care l-au însoțit pe Absalom?",
+   "q": "Cum au mers cei două sute de oameni cu Absalom?",
    "opts": [
-    "poftiți și fără să știe nimic",
-    "aleși și înarmați pentru luptă",
-    "trimiși în taină de David"
+    "în prostia lor, fără să știe nimic",
+    "de frică, siliți de iscoadele lui",
+    "de bunăvoie, știind ce plănuia"
    ],
    "a": 0
   },
@@ -721,12 +727,12 @@
    "id": "2sa.15.greu.315",
    "age": "greu",
    "t": "one",
-   "ref": "15:17",
-   "q": "Cum a ieșit împăratul din cetate?",
+   "ref": "15:18",
+   "q": "Câți gatiți au trecut înaintea împăratului?",
    "opts": [
-    "tot poporul îl urma",
-    "singur, noaptea",
-    "cu carul de luptă"
+    "șase sute",
+    "patru sute",
+    "o mie"
    ],
    "a": 0
   },
@@ -735,11 +741,11 @@
    "age": "greu",
    "t": "one",
    "ref": "15:20",
-   "q": "Cum a numit David venirea lui Itai?",
+   "q": "Ce i-a urat David lui Itai?",
    "opts": [
-    "„De ieri ai venit”",
-    "„Ai venit cu Absalom”",
-    "„De mult ești cu mine”"
+    "„Domnul să se poarte cu tine cu bunătate și credincioșie!”",
+    "„Domnul să te întoarcă sănătos la frații tăi din Gat!”",
+    "„Domnul să-ți dea pace și odihnă în țara ta, la Gat!”"
    ],
    "a": 0
   },
@@ -747,12 +753,12 @@
    "id": "2sa.15.greu.317",
    "age": "greu",
    "t": "one",
-   "ref": "15:21",
-   "q": "Pe ce a jurat Itai?",
+   "ref": "15:23",
+   "q": "Spre ce a apucat poporul după pârâul Chedron?",
    "opts": [
-    "pe sabia și pe scutul lui",
-    "pe zeii cetății lui, Gat",
-    "pe Domnul și pe viața împăratului"
+    "pe drumul care duce la Iordan",
+    "pe drumul care duce la Hebron",
+    "pe drumul care duce în pustie"
    ],
    "a": 2
   },
@@ -761,11 +767,11 @@
    "age": "greu",
    "t": "one",
    "ref": "15:27",
-   "q": "Cum l-a întrebat David pe Țadoc dacă a priceput?",
+   "q": "Pe cine a trimis David cu Țadoc înapoi în cetate?",
    "opts": [
-    "„Ai auzit?”",
-    "„Știi?”",
-    "„Înțelegi?”"
+    "pe Ahimaaț și Abiatar",
+    "pe Itai și Ionatan",
+    "pe Ahimaaț și Ionatan"
    ],
    "a": 2
   },
@@ -773,12 +779,12 @@
    "id": "2sa.15.greu.319",
    "age": "greu",
    "t": "one",
-   "ref": "15:32",
-   "q": "Unde s-a închinat David înaintea lui Dumnezeu?",
+   "ref": "15:31",
+   "q": "Ce a cerut David în rugăciune după vestea despre Ahitofel?",
    "opts": [
-    "la pârâul Chedron",
-    "la cea din urmă casă",
-    "pe vârful dealului"
+    "„Doamne, întoarce inima lui Ahitofel!”",
+    "„Doamne, pedepsește-l pe Ahitofel!”",
+    "„Doamne, nimicește sfaturile lui Ahitofel!”"
    ],
    "a": 2
   },
@@ -786,12 +792,12 @@
    "id": "2sa.15.greu.320",
    "age": "greu",
    "t": "one",
-   "ref": "15:36",
-   "q": "Al cui fiu era Ionatan, trimisul de vești?",
+   "ref": "15:35",
+   "q": "Cui trebuia Hușai să spună tot ce afla din casa împăratului?",
    "opts": [
-    "al lui Țadoc",
-    "al lui Abiatar",
-    "al lui Hușai"
+    "fiilor lor, Ahimaaț și Ionatan",
+    "preoților Țadoc și Abiatar",
+    "lui Itai din Gat"
    ],
    "a": 1
   },
@@ -799,48 +805,48 @@
    "id": "2sa.15.greu.321",
    "age": "greu",
    "t": "match",
-   "ref": "15:1-37",
-   "q": "Asociază fiecare număr sau nume cu ce înseamnă.",
+   "ref": "15:12-36",
+   "q": "Asociază fiecare nume cu ce se spune despre el.",
    "pairs": [
     [
-     "50",
-     "oamenii care alergau înaintea lui Absalom"
+     "Ghilo",
+     "cetatea lui Ahitofel"
     ],
     [
-     "200",
-     "oamenii din Ierusalim care l-au însoțit fără să știe"
+     "Gat",
+     "de acolo veniseră șase sute de oameni după David"
     ],
     [
-     "600",
-     "gatiții veniți după David"
+     "Hebron",
+     "acolo s-a dus Absalom să-și împlinească juruința"
     ],
     [
-     "10",
-     "țiitoarele lăsate să păzească casa"
+     "Ahimaaț",
+     "fiul lui Țadoc"
     ],
     [
-     "Architul",
-     "cum era numit Hușai"
+     "Ionatan",
+     "fiul lui Abiatar"
     ]
    ],
    "refs": [
-    "15:1",
-    "15:11",
+    "15:12",
     "15:18",
-    "15:16",
-    "15:32"
+    "15:9",
+    "15:36",
+    "15:36"
    ]
   },
   {
    "id": "2sa.15.greu.322",
    "age": "greu",
    "t": "multi",
-   "ref": "15:19",
-   "q": "Ce i-a spus David lui Itai?",
+   "ref": "15:13-14",
+   "q": "Ce a hotărât David după vestea despre Absalom?",
    "opts": [
-    "că e fiul lui Saul",
-    "că a fost luat din țara lui",
-    "că e străin"
+    "să-l aștepte pe Absalom la poartă",
+    "să se grăbească de plecare",
+    "să fugă din Ierusalim cu slujitorii lui"
    ],
    "a": [
     1,
@@ -852,29 +858,29 @@
    "age": "greu",
    "t": "multi",
    "ref": "15:23",
-   "q": "Ce s-a întâmplat la trecerea poporului?",
+   "q": "Ce pârâu a trecut împăratul când a ieșit din cetate?",
    "opts": [
-    "ținutul plângea și țipa",
-    "împăratul a trecut pârâul Chedron",
-    "Absalom i-a ajuns din urmă"
+    "Iordanul",
+    "Arnonul",
+    "Iabocul"
    ],
-   "a": [
-    0,
-    1
-   ]
+   "a": []
   },
   {
    "id": "2sa.15.greu.324",
    "age": "greu",
    "t": "multi",
-   "ref": "15:26",
-   "q": "Ce i-a spus David lui Țadoc că va face dacă Domnul nu-l mai vrea?",
+   "ref": "15:16-18",
+   "q": "Cine a ieșit cu David din cetate?",
    "opts": [
-    "va lupta până la capăt",
-    "va fugi la Gat",
-    "va lua chivotul cu el"
+    "cheretiții și peletiții",
+    "toată casa lui, afară de zece țiitoare",
+    "Ahitofel, sfetnicul lui"
    ],
-   "a": []
+   "a": [
+    0,
+    1
+   ]
   }
  ]
 }

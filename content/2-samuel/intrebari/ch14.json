@@ -8,55 +8,55 @@
    "age": "usor",
    "t": "tf",
    "ref": "14:1",
-   "q": "Ioab a crezut că împăratul l-a uitat pe Absalom.",
-   "a": false
+   "q": "Inima lui David era plină de dor după Absalom.",
+   "a": true
   },
   {
    "id": "2sa.14.usor.302",
    "age": "usor",
    "t": "tf",
    "ref": "14:2",
-   "q": "Ioab a adus o femeie iscusită din Tecoa.",
-   "a": true
+   "q": "Ioab a chemat o femeie din Ierihon.",
+   "a": false
   },
   {
    "id": "2sa.14.usor.303",
    "age": "usor",
    "t": "tf",
-   "ref": "14:2",
-   "q": "Femeia din Tecoa s-a îmbrăcat în haine de sărbătoare.",
-   "a": false
+   "ref": "14:4",
+   "q": "Femeia s-a închinat înaintea împăratului.",
+   "a": true
   },
   {
    "id": "2sa.14.usor.304",
    "age": "usor",
    "t": "tf",
-   "ref": "14:5",
-   "q": "Femeia i-a spus împăratului că este văduvă.",
-   "a": true
+   "ref": "14:6",
+   "q": "Femeia a spus că avea un singur fiu.",
+   "a": false
   },
   {
    "id": "2sa.14.usor.305",
    "age": "usor",
    "t": "tf",
-   "ref": "14:6",
-   "q": "Femeia a spus că a avut trei fii.",
-   "a": false
+   "ref": "14:22",
+   "q": "Ioab s-a bucurat că împăratul l-a ascultat.",
+   "a": true
   },
   {
    "id": "2sa.14.usor.306",
    "age": "usor",
    "t": "tf",
-   "ref": "14:19",
-   "q": "David a ghicit că Ioab o trimisese pe femeie.",
-   "a": true
+   "ref": "14:21",
+   "q": "David n-a vrut să-l aducă înapoi pe Absalom.",
+   "a": false
   },
   {
    "id": "2sa.14.usor.307",
    "age": "usor",
    "t": "tf",
-   "ref": "14:23",
-   "q": "Ioab l-a adus pe Absalom înapoi la Ierusalim.",
+   "ref": "14:25",
+   "q": "Absalom era foarte frumos.",
    "a": true
   },
   {
@@ -64,7 +64,7 @@
    "age": "usor",
    "t": "tf",
    "ref": "14:24",
-   "q": "David l-a primit pe Absalom îndată la masa lui.",
+   "q": "Absalom a mâncat la masa împăratului îndată ce s-a întors.",
    "a": false
   },
   {
@@ -80,19 +80,19 @@
    "age": "usor",
    "t": "tf",
    "ref": "14:33",
-   "q": "La sfârșit, împăratul l-a sărutat pe Absalom.",
-   "a": true
+   "q": "La sfârșit, David l-a alungat pe Absalom.",
+   "a": false
   },
   {
    "id": "2sa.14.usor.311",
    "age": "usor",
    "t": "one",
    "ref": "14:2",
-   "q": "De unde era femeia iscusită adusă de Ioab?",
+   "q": "Ce haine trebuia să poarte femeia?",
    "opts": [
-    "din Tecoa",
-    "din Hebron",
-    "din Betleem"
+    "haine de jale",
+    "haine de soldat",
+    "haine de nuntă"
    ],
    "a": 0
   },
@@ -100,12 +100,12 @@
    "id": "2sa.14.usor.312",
    "age": "usor",
    "t": "one",
-   "ref": "14:2",
-   "q": "Ce trebuia să facă femeia din Tecoa?",
+   "ref": "14:5",
+   "q": "Ce i-a spus femeia împăratului despre ea?",
    "opts": [
-    "să se prefacă că plânge",
-    "să aducă un dar",
-    "să cânte la harpă"
+    "că este văduvă",
+    "că este proorociță",
+    "că este împărăteasă"
    ],
    "a": 0
   },
@@ -113,12 +113,12 @@
    "id": "2sa.14.usor.313",
    "age": "usor",
    "t": "one",
-   "ref": "14:4",
-   "q": "Ce a strigat femeia înaintea împăratului?",
+   "ref": "14:6",
+   "q": "Ce s-a întâmplat cu cei doi fii ai femeii, după povestea ei?",
    "opts": [
-    "„Împărate, plătește!”",
-    "„Împărate, ascultă!”",
-    "„Împărate, scapă-mă!”"
+    "s-au căsătorit",
+    "au plecat la război",
+    "unul l-a omorât pe celălalt"
    ],
    "a": 2
   },
@@ -126,12 +126,12 @@
    "id": "2sa.14.usor.314",
    "age": "usor",
    "t": "one",
-   "ref": "14:6",
-   "q": "Ce s-a întâmplat cu cei doi fii ai femeii, după povestea ei?",
+   "ref": "14:11",
+   "q": "Ce a jurat David despre fiul femeii?",
    "opts": [
-    "s-au căsătorit",
-    "s-au certat și unul l-a omorât pe celălalt",
-    "au plecat la război"
+    "va primi o casă",
+    "nu-i va cădea niciun păr din cap",
+    "va fi făcut căpetenie"
    ],
    "a": 1
   },
@@ -139,12 +139,12 @@
    "id": "2sa.14.usor.315",
    "age": "usor",
    "t": "one",
-   "ref": "14:21",
-   "q": "Ce i-a spus David lui Ioab după ce a vorbit cu femeia?",
+   "ref": "14:17",
+   "q": "Cu cine l-a asemănat femeia pe împărat?",
    "opts": [
-    "să plece la Gheșur să stea acolo",
-    "să-l aducă înapoi pe Absalom",
-    "să-l pedepsească pe Absalom"
+    "cu un păstor",
+    "cu un înger al lui Dumnezeu",
+    "cu un leu"
    ],
    "a": 1
   },
@@ -156,7 +156,7 @@
    "q": "De unde l-a adus Ioab pe Absalom?",
    "opts": [
     "din Egipt",
-    "din Raba",
+    "din Babilon",
     "din Gheșur"
    ],
    "a": 2
@@ -165,12 +165,12 @@
    "id": "2sa.14.usor.317",
    "age": "usor",
    "t": "one",
-   "ref": "14:25",
-   "q": "Pentru ce era vestit Absalom în tot Israelul?",
+   "ref": "14:24",
+   "q": "Ce a spus David despre Absalom când s-a întors?",
    "opts": [
-    "pentru bogăția lui",
-    "pentru frumusețea lui",
-    "pentru puterea lui"
+    "să-l pună căpetenie",
+    "să nu-i vadă fața",
+    "să-i facă un ospăț"
    ],
    "a": 1
   },
@@ -179,11 +179,11 @@
    "age": "usor",
    "t": "one",
    "ref": "14:26",
-   "q": "Cât de des își tundea Absalom părul?",
+   "q": "Ce avea Absalom foarte greu?",
    "opts": [
-    "niciodată",
-    "în fiecare zi",
-    "în fiecare an"
+    "coroana",
+    "sabia",
+    "părul"
    ],
    "a": 2
   },
@@ -191,12 +191,12 @@
    "id": "2sa.14.usor.319",
    "age": "usor",
    "t": "one",
-   "ref": "14:27",
-   "q": "Cum se numea fiica lui Absalom?",
+   "ref": "14:29",
+   "q": "De câte ori l-a chemat Absalom pe Ioab fără ca el să vină?",
    "opts": [
-    "Ana",
-    "Tamar",
-    "Mical"
+    "de zece ori",
+    "de două ori",
+    "niciodată"
    ],
    "a": 1
   },
@@ -204,12 +204,12 @@
    "id": "2sa.14.usor.320",
    "age": "usor",
    "t": "one",
-   "ref": "14:30",
-   "q": "Ce avea Ioab pe ogorul lui?",
+   "ref": "14:33",
+   "q": "Ce a făcut David când a venit Absalom la el?",
    "opts": [
-    "orz",
-    "grâu",
-    "struguri"
+    "l-a sărutat",
+    "l-a lovit",
+    "a plecat"
    ],
    "a": 0
   },
@@ -217,48 +217,48 @@
    "id": "2sa.14.usor.321",
    "age": "usor",
    "t": "match",
-   "ref": "14:1-33",
-   "q": "Asociază fiecare persoană cu ce se spune despre ea.",
+   "ref": "14:2-30",
+   "q": "Asociază fiecare nume cu ce se spune despre el.",
    "pairs": [
     [
-     "Ioab",
-     "a adus femeia din Tecoa"
-    ],
-    [
      "femeia din Tecoa",
-     "s-a prefăcut văduvă"
+     "s-a prefăcut că plânge un mort"
     ],
     [
-     "Absalom",
-     "era vestit pentru frumusețea lui"
+     "Ioab",
+     "i-a pus femeii cuvintele în gură"
     ],
     [
-     "David",
-     "l-a sărutat pe Absalom"
+     "Tamar, fata lui Absalom",
+     "o femeie frumoasă la chip"
     ],
     [
-     "Tamar",
-     "fiica frumoasă a lui Absalom"
+     "ogorul lui Ioab",
+     "avea orz pe el"
+    ],
+    [
+     "apele vărsate pe pământ",
+     "nu se mai adună"
     ]
    ],
    "refs": [
     "14:2",
-    "14:5",
-    "14:25",
-    "14:33",
-    "14:27"
+    "14:19",
+    "14:27",
+    "14:30",
+    "14:14"
    ]
   },
   {
    "id": "2sa.14.usor.322",
    "age": "usor",
    "t": "multi",
-   "ref": "14:2",
-   "q": "Cum trebuia să arate femeia din Tecoa?",
+   "ref": "14:7",
+   "q": "Ce voia familia femeii să facă, după povestea ei?",
    "opts": [
-    "unsă cu untdelemn",
-    "îmbrăcată în haine de jale",
-    "ca o femeie care plânge de mult"
+    "să-i dea o casă nouă",
+    "să-l omoare pe fiul ucigaș",
+    "să-i ia moștenitorul"
    ],
    "a": [
     1,
@@ -272,8 +272,8 @@
    "ref": "14:27",
    "q": "Ce copii i s-au născut lui Absalom?",
    "opts": [
-    "o fiică numită Tamar",
-    "doi fii",
+    "o fiică",
+    "doisprezece fii",
     "trei fii"
    ],
    "a": [
@@ -285,105 +285,108 @@
    "id": "2sa.14.usor.324",
    "age": "usor",
    "t": "multi",
-   "ref": "14:24",
-   "q": "Ce i-a spus David lui Absalom când s-a întors?",
+   "ref": "14:32",
+   "q": "Ce i-a spus Absalom lui Ioab?",
    "opts": [
-    "să stea la masa împăratului",
-    "să meargă înapoi la Gheșur",
-    "să vină îndată la el"
+    "că ar fi fost mai bine să rămână în Gheșur",
+    "că vrea să plece în Egipt",
+    "că vrea să vadă fața împăratului"
    ],
-   "a": []
+   "a": [
+    0,
+    2
+   ]
   },
   {
    "id": "2sa.14.mediu.301",
    "age": "mediu",
    "t": "tf",
    "ref": "14:2",
-   "q": "Femeia trebuia să pară că plânge de multă vreme după un mort.",
+   "q": "Ioab i-a spus femeii să nu se ungă cu untdelemn.",
    "a": true
   },
   {
    "id": "2sa.14.mediu.302",
    "age": "mediu",
    "t": "tf",
-   "ref": "14:7",
-   "q": "Femeia a spus că familia vrea să-i stingă tăciunele care i-a rămas.",
-   "a": true
+   "ref": "14:3",
+   "q": "Femeia din Tecoa a vorbit împăratului din capul ei.",
+   "a": false
   },
   {
    "id": "2sa.14.mediu.303",
    "age": "mediu",
    "t": "tf",
-   "ref": "14:10",
-   "q": "David i-a promis femeii că o va apăra de cine vorbește împotriva ei.",
+   "ref": "14:6",
+   "q": "Femeia a spus că fiii ei s-au certat pe câmp.",
    "a": true
   },
   {
    "id": "2sa.14.mediu.304",
    "age": "mediu",
    "t": "tf",
-   "ref": "14:14",
-   "q": "Femeia a spus că oamenii sunt ca niște ape vărsate pe pământ.",
-   "a": true
+   "ref": "14:8",
+   "q": "David i-a promis femeii că va pedepsi familia ei.",
+   "a": false
   },
   {
    "id": "2sa.14.mediu.305",
    "age": "mediu",
    "t": "tf",
-   "ref": "14:22",
-   "q": "Ioab a spus că a căpătat trecere înaintea împăratului.",
+   "ref": "14:13",
+   "q": "Femeia i-a spus lui David că e ca și vinovat dacă nu-l cheamă pe cel izgonit.",
    "a": true
   },
   {
    "id": "2sa.14.mediu.306",
    "age": "mediu",
    "t": "tf",
-   "ref": "14:6",
-   "q": "Fiii femeii s-au certat în cetate, în fața tuturor.",
+   "ref": "14:22",
+   "q": "Ioab s-a supărat când David a hotărât să-l aducă pe Absalom.",
    "a": false
   },
   {
    "id": "2sa.14.mediu.307",
    "age": "mediu",
    "t": "tf",
-   "ref": "14:12",
-   "q": "David n-a vrut s-o lase pe femeie să mai spună ceva.",
-   "a": false
+   "ref": "14:24",
+   "q": "Absalom a locuit în casa lui fără să vadă fața împăratului.",
+   "a": true
   },
   {
    "id": "2sa.14.mediu.308",
    "age": "mediu",
    "t": "tf",
-   "ref": "14:20",
-   "q": "Femeia a spus că împăratul nu știe nimic din ce se petrece.",
+   "ref": "14:26",
+   "q": "Absalom își tundea părul o dată la trei ani.",
    "a": false
   },
   {
    "id": "2sa.14.mediu.309",
    "age": "mediu",
    "t": "tf",
-   "ref": "14:30",
-   "q": "Ogorul lui Ioab era departe, lângă Ierihon.",
-   "a": false
+   "ref": "14:28",
+   "q": "Absalom a stat doi ani la Ierusalim fără să-l vadă pe împărat.",
+   "a": true
   },
   {
    "id": "2sa.14.mediu.310",
    "age": "mediu",
    "t": "tf",
-   "ref": "14:3",
-   "q": "Femeia din Tecoa a ales singură ce să-i spună împăratului.",
+   "ref": "14:31",
+   "q": "Ioab a venit la Absalom de la prima chemare.",
    "a": false
   },
   {
    "id": "2sa.14.mediu.311",
    "age": "mediu",
    "t": "one",
-   "ref": "14:9",
-   "q": "Asupra cui a cerut femeia să cadă pedeapsa?",
+   "ref": "14:1",
+   "q": "Cine a băgat de seamă dorul lui David după Absalom?",
    "opts": [
-    "asupra ei și a casei tatălui ei",
-    "asupra lui Ioab și a casei lui",
-    "asupra fiului care a ucis"
+    "Ioab",
+    "Natan",
+    "Ionadab"
    ],
    "a": 0
   },
@@ -391,12 +394,12 @@
    "id": "2sa.14.mediu.312",
    "age": "mediu",
    "t": "one",
-   "ref": "14:11",
-   "q": "Pe cine să nu lase David să mărească prăpădul, după femeie?",
+   "ref": "14:4",
+   "q": "Ce a strigat femeia când a ajuns la împărat?",
    "opts": [
-    "familia bărbatului",
-    "răzbunătorul sângelui",
-    "ucigașul fiului"
+    "„Împărate, judecă-mă!”",
+    "„Împărate, scapă-mă!”",
+    "„Împărate, ascultă-mă!”"
    ],
    "a": 1
   },
@@ -404,12 +407,12 @@
    "id": "2sa.14.mediu.313",
    "age": "mediu",
    "t": "one",
-   "ref": "14:24",
-   "q": "Ce n-a făcut Absalom după întoarcere, din porunca împăratului?",
+   "ref": "14:7",
+   "q": "Ce a spus femeia că ar stinge familia ei?",
    "opts": [
-    "n-a vorbit cu Ioab",
-    "n-a văzut fața împăratului",
-    "n-a ieșit din Gheșur"
+    "focul din vatra ei",
+    "tăciunele care-i mai rămâne",
+    "lumina din casa ei"
    ],
    "a": 1
   },
@@ -417,12 +420,12 @@
    "id": "2sa.14.mediu.314",
    "age": "mediu",
    "t": "one",
-   "ref": "14:8",
-   "q": "Ce i-a spus împăratul femeii întâi?",
+   "ref": "14:11",
+   "q": "Pe cine a cerut femeia să nu mărească prăpădul?",
    "opts": [
-    "să meargă acasă și va da porunci",
-    "să rămână la palat până seara",
-    "să-l aducă la el pe fiul ei"
+    "răzbunătorul sângelui",
+    "bătrânii cetății",
+    "familia bărbatului ei"
    ],
    "a": 0
   },
@@ -430,12 +433,12 @@
    "id": "2sa.14.mediu.315",
    "age": "mediu",
    "t": "one",
-   "ref": "14:13",
-   "q": "Ce a spus femeia că face împăratul când nu-l cheamă pe fugar?",
+   "ref": "14:14",
+   "q": "Cu ce a asemănat femeia viața oamenilor?",
    "opts": [
-    "e înțelept",
-    "e ca și vinovat",
-    "e drept"
+    "cu un abur care trece",
+    "cu niște ape vărsate pe pământ",
+    "cu iarba care se usucă"
    ],
    "a": 1
   },
@@ -443,12 +446,12 @@
    "id": "2sa.14.mediu.316",
    "age": "mediu",
    "t": "one",
-   "ref": "14:16",
-   "q": "Din ce spune femeia că vor s-o nimicească?",
+   "ref": "14:17",
+   "q": "Ce a spus femeia că este împăratul?",
    "opts": [
-    "din casa tatălui ei",
-    "din cetatea Tecoa",
-    "din moștenirea lui Dumnezeu"
+    "ca un păstor al lui Israel",
+    "ca un tată al poporului",
+    "ca un înger al lui Dumnezeu"
    ],
    "a": 2
   },
@@ -456,12 +459,12 @@
    "id": "2sa.14.mediu.317",
    "age": "mediu",
    "t": "one",
-   "ref": "14:32",
-   "q": "Ce a cerut Absalom să i se facă dacă e vreo nelegiuire în el?",
+   "ref": "14:19",
+   "q": "Ce a întrebat-o David pe femeie?",
    "opts": [
-    "să fie omorât",
-    "să fie izgonit",
-    "să fie iertat"
+    "„Oare mâna lui Ioab nu este cu tine?”",
+    "„Oare Natan nu ți-a spus aceste vorbe?”",
+    "„Oare Absalom nu te-a trimis la mine?”"
    ],
    "a": 0
   },
@@ -469,12 +472,12 @@
    "id": "2sa.14.mediu.318",
    "age": "mediu",
    "t": "one",
-   "ref": "14:31",
-   "q": "Ce l-a întrebat Ioab pe Absalom?",
+   "ref": "14:25",
+   "q": "Ce se spune despre frumusețea lui Absalom?",
    "opts": [
-    "de ce l-a chemat de două ori",
-    "de ce i-au ars câmpul",
-    "de ce i-a trimis slujitori"
+    "era mai frumos decât toți frații lui",
+    "n-avea niciun cusur din talpă până în creștet",
+    "era frumos ca tatăl său David"
    ],
    "a": 1
   },
@@ -482,12 +485,12 @@
    "id": "2sa.14.mediu.319",
    "age": "mediu",
    "t": "one",
-   "ref": "14:23",
-   "q": "Unde a mers Ioab ca să-l aducă pe Absalom?",
+   "ref": "14:30",
+   "q": "Ce era pe ogorul lui Ioab?",
    "opts": [
-    "la Tecoa",
-    "la Baal-Hațor",
-    "la Gheșur"
+    "grâu",
+    "in",
+    "orz"
    ],
    "a": 2
   },
@@ -495,12 +498,12 @@
    "id": "2sa.14.mediu.320",
    "age": "mediu",
    "t": "one",
-   "ref": "14:17",
-   "q": "Ce spune femeia că este împăratul gata să audă?",
+   "ref": "14:32",
+   "q": "Ce a spus Absalom că vrea să facă împăratul dacă e vinovat?",
    "opts": [
-    "doar laudele",
-    "doar plângerile",
-    "binele și răul"
+    "să-l alunge din nou",
+    "să-l închidă",
+    "să-l omoare"
    ],
    "a": 2
   },
@@ -508,47 +511,47 @@
    "id": "2sa.14.mediu.321",
    "age": "mediu",
    "t": "match",
-   "ref": "14:1-33",
-   "q": "Asociază fiecare cuvânt sau număr cu ce se spune despre el.",
+   "ref": "14:2-27",
+   "q": "Asociază fiecare nume cu ce se spune despre el.",
    "pairs": [
     [
      "Tecoa",
-     "cetatea femeii iscusite"
+     "de acolo era femeia iscusită"
     ],
     [
-     "Gheșur",
-     "locul de unde l-a adus Ioab pe Absalom"
+     "Ioab",
+     "s-a dus la Gheșur după Absalom"
     ],
     [
-     "200 de sicli",
-     "greutatea părului lui Absalom"
+     "Absalom",
+     "părul lui cântărea două sute de sicli"
     ],
     [
-     "2 ani",
-     "timpul fără să vadă fața împăratului"
+     "Tamar, fata lui Absalom",
+     "era frumoasă la chip"
     ],
     [
-     "orzul",
-     "era pe ogorul lui Ioab"
+     "femeia din Tecoa",
+     "spunea că este văduvă"
     ]
    ],
    "refs": [
     "14:2",
     "14:23",
     "14:26",
-    "14:28",
-    "14:30"
+    "14:27",
+    "14:5"
    ]
   },
   {
    "id": "2sa.14.mediu.322",
    "age": "mediu",
    "t": "multi",
-   "ref": "14:4",
-   "q": "Ce a făcut femeia din Tecoa când a ajuns la împărat?",
+   "ref": "14:22",
+   "q": "Ce a făcut Ioab când David a hotărât să-l aducă pe Absalom?",
    "opts": [
-    "s-a închinat",
-    "a adus un dar",
+    "l-a binecuvântat pe împărat",
+    "a cerut o răsplată",
     "a căzut cu fața la pământ"
    ],
    "a": [
@@ -560,12 +563,12 @@
    "id": "2sa.14.mediu.323",
    "age": "mediu",
    "t": "multi",
-   "ref": "14:19",
-   "q": "Ce i-a răspuns femeia lui David când a întrebat de Ioab?",
+   "ref": "14:9-10",
+   "q": "Ce și-au spus femeia și împăratul?",
    "opts": [
-    "că Ioab nu știe nimic",
-    "că Ioab a pus cuvintele în gura ei",
-    "că Ioab i-a poruncit"
+    "ea: „Fiul meu trebuie să moară”",
+    "el: „Cine va vorbi împotriva ta, să-l aduci la mine”",
+    "ea: „Asupra mea să cadă pedeapsa”"
    ],
    "a": [
     1,
@@ -576,53 +579,56 @@
    "id": "2sa.14.mediu.324",
    "age": "mediu",
    "t": "multi",
-   "ref": "14:27",
-   "q": "Ce se spune despre Tamar, fiica lui Absalom?",
+   "ref": "14:33",
+   "q": "Ce s-a întâmplat la sfârșitul capitolului?",
    "opts": [
-    "s-a născut la Gheșur",
-    "era cea mai mare dintre copii",
-    "a fost luată de Ioab"
+    "împăratul l-a sărutat pe Absalom",
+    "Absalom s-a aruncat cu fața la pământ înaintea împăratului",
+    "Absalom a fost uns împărat"
    ],
-   "a": []
+   "a": [
+    0,
+    1
+   ]
   },
   {
    "id": "2sa.14.greu.301",
    "age": "greu",
    "t": "tf",
    "ref": "14:2",
-   "q": "Ioab i-a spus femeii să fie ca una care plânge de multă vreme după un mort.",
+   "q": "Femeia trebuia să fie ca una care plânge de multă vreme după un mort.",
    "a": true
   },
   {
    "id": "2sa.14.greu.302",
    "age": "greu",
    "t": "tf",
-   "ref": "14:6",
-   "q": "Femeia a spus că fiul ei a fost ucis de un străin.",
+   "ref": "14:5",
+   "q": "Femeia a spus că bărbatul ei fusese ucis în război.",
    "a": false
   },
   {
    "id": "2sa.14.greu.303",
    "age": "greu",
    "t": "tf",
-   "ref": "14:9",
-   "q": "Femeia a vrut ca împăratul și scaunul lui să nu sufere nimic.",
+   "ref": "14:7",
+   "q": "Familia voia să nimicească chiar și pe moștenitor.",
    "a": true
   },
   {
    "id": "2sa.14.greu.304",
    "age": "greu",
    "t": "tf",
-   "ref": "14:11",
-   "q": "Femeia i-a cerut împăratului să-și aducă aminte de legea lui Moise.",
+   "ref": "14:9",
+   "q": "Femeia a cerut ca pedeapsa să cadă asupra împăratului și a casei lui.",
    "a": false
   },
   {
    "id": "2sa.14.greu.305",
    "age": "greu",
    "t": "tf",
-   "ref": "14:13",
-   "q": "Femeia a spus că împăratul este ca și vinovat dacă nu-l cheamă pe cel izgonit.",
+   "ref": "14:15",
+   "q": "Femeia a spus că a venit pentru că poporul a înspăimântat-o.",
    "a": true
   },
   {
@@ -630,51 +636,51 @@
    "age": "greu",
    "t": "tf",
    "ref": "14:17",
-   "q": "Femeia a dorit ca Domnul Dumnezeu să fie cu împăratul.",
-   "a": true
+   "q": "Femeia a spus că împăratul este gata să audă numai binele.",
+   "a": false
   },
   {
    "id": "2sa.14.greu.307",
    "age": "greu",
    "t": "tf",
-   "ref": "14:21",
-   "q": "David i-a spus femeii să meargă ea să-l aducă pe Absalom.",
-   "a": false
+   "ref": "14:20",
+   "q": "Femeia a spus că Ioab a vrut să dea o altă înfățișare lucrului.",
+   "a": true
   },
   {
    "id": "2sa.14.greu.308",
    "age": "greu",
    "t": "tf",
-   "ref": "14:26",
-   "q": "Absalom își tundea părul în fiecare lună.",
+   "ref": "14:23",
+   "q": "Ioab l-a adus pe Absalom din Gheșur la Hebron.",
    "a": false
   },
   {
    "id": "2sa.14.greu.309",
    "age": "greu",
    "t": "tf",
-   "ref": "14:31",
-   "q": "Ioab s-a dus la Absalom acasă după ce i-a ars câmpul.",
+   "ref": "14:27",
+   "q": "Lui Absalom i s-au născut trei fii și o fiică.",
    "a": true
   },
   {
    "id": "2sa.14.greu.310",
    "age": "greu",
    "t": "tf",
-   "ref": "14:32",
-   "q": "Absalom a întrebat: „Pentru ce m-am întors din Gheșur?”",
-   "a": true
+   "ref": "14:29",
+   "q": "Ioab a venit la Absalom a doua oară când a fost chemat.",
+   "a": false
   },
   {
    "id": "2sa.14.greu.311",
    "age": "greu",
    "t": "one",
-   "ref": "14:4",
-   "q": "Cum s-a prezentat femeia înaintea împăratului?",
+   "ref": "14:3",
+   "q": "Ce a făcut Ioab după ce a adus-o pe femeie?",
    "opts": [
-    "a trimis o scrisoare",
-    "a căzut cu fața la pământ",
-    "a stat în picioare"
+    "i-a dat haine de jale",
+    "i-a spus ce trebuia să zică",
+    "a dus-o el însuși la împărat"
    ],
    "a": 1
   },
@@ -682,12 +688,12 @@
    "id": "2sa.14.greu.312",
    "age": "greu",
    "t": "one",
-   "ref": "14:7",
-   "q": "Ce imagine a folosit femeia pentru fiul care i-a rămas?",
+   "ref": "14:8",
+   "q": "Ce i-a spus întâi David femeii?",
    "opts": [
-    "lampa care-i mai rămâne",
-    "tăciunele care-i mai rămâne",
-    "ultima oaie din turmă"
+    "„Du-te acasă. Fiul tău nu va muri.”",
+    "„Du-te acasă. Voi da porunci cu privire la tine.”",
+    "„Du-te acasă. Voi vorbi cu familia ta.”"
    ],
    "a": 1
   },
@@ -695,12 +701,12 @@
    "id": "2sa.14.greu.313",
    "age": "greu",
    "t": "one",
-   "ref": "14:10",
-   "q": "Ce a promis David dacă cineva vorbește împotriva femeii?",
+   "ref": "14:11",
+   "q": "Cum a jurat David pentru fiul femeii?",
    "opts": [
-    "să-l aducă la el",
-    "să-l ducă la Ioab",
-    "să-l dea pe mâna familiei"
+    "„Un păr din capul fiului tău nu va cădea”",
+    "„Fiul tău va trăi cât voi trăi eu”",
+    "„Nimeni nu se va atinge de casa ta”"
    ],
    "a": 0
   },
@@ -708,12 +714,12 @@
    "id": "2sa.14.greu.314",
    "age": "greu",
    "t": "one",
-   "ref": "14:12",
-   "q": "Ce a cerut femeia după ce David i-a promis ocrotire?",
+   "ref": "14:14",
+   "q": "Ce dorește Dumnezeu, după femeia din Tecoa?",
    "opts": [
-    "să-i aducă fiul",
-    "să plece acasă",
-    "să mai spună o vorbă"
+    "ca împăratul să ierte tot poporul",
+    "ca ucigașul să fie pedepsit",
+    "ca fugarul să nu rămână izgonit"
    ],
    "a": 2
   },
@@ -721,12 +727,12 @@
    "id": "2sa.14.greu.315",
    "age": "greu",
    "t": "one",
-   "ref": "14:14",
-   "q": "Ce spune femeia că nu face Dumnezeu?",
+   "ref": "14:16",
+   "q": "Din ce voiau unii să-i nimicească pe femeie și pe fiul ei?",
    "opts": [
-    "nu ascultă rugăciunea",
-    "nu iartă păcatul",
-    "nu ia viața"
+    "din familia bărbatului ei",
+    "din cetatea Tecoa",
+    "din moștenirea lui Dumnezeu"
    ],
    "a": 2
   },
@@ -734,12 +740,12 @@
    "id": "2sa.14.greu.316",
    "age": "greu",
    "t": "one",
-   "ref": "14:15",
-   "q": "Ce spune femeia că a făcut-o să vină la împărat?",
+   "ref": "14:19",
+   "q": "Cum a jurat femeia când David a întrebat de Ioab?",
    "opts": [
-    "Ioab a plătit-o",
-    "fiul ei a rugat-o",
-    "poporul a înspăimântat-o"
+    "„Viu este Domnul, Dumnezeul tău”",
+    "„Viu este Domnul și viu ești tu”",
+    "„Viu este sufletul tău, împărate”"
    ],
    "a": 2
   },
@@ -747,12 +753,12 @@
    "id": "2sa.14.greu.317",
    "age": "greu",
    "t": "one",
-   "ref": "14:20",
-   "q": "De ce a făcut Ioab lucrul acesta, după femeie?",
+   "ref": "14:22",
+   "q": "Ce a cunoscut Ioab, după cuvintele lui?",
    "opts": [
-    "ca să ia locul lui David",
-    "ca să-l înșele pe Absalom",
-    "ca să dea altă înfățișare lucrului"
+    "că împăratul l-a iertat pentru Abner",
+    "că Absalom îi va fi recunoscător",
+    "că a căpătat trecere înaintea împăratului"
    ],
    "a": 2
   },
@@ -760,12 +766,12 @@
    "id": "2sa.14.greu.318",
    "age": "greu",
    "t": "one",
-   "ref": "14:22",
-   "q": "Ce a spus Ioab că face împăratul?",
+   "ref": "14:26",
+   "q": "Cât cântărea părul lui Absalom când și-l tundea?",
    "opts": [
-    "lucrează fără să întrebe pe nimeni",
-    "lucrează după cuvântul robului său",
-    "lucrează după sfatul lui Natan"
+    "o sută de sicli",
+    "două sute de sicli",
+    "trei sute de sicli"
    ],
    "a": 1
   },
@@ -773,12 +779,12 @@
    "id": "2sa.14.greu.319",
    "age": "greu",
    "t": "one",
-   "ref": "14:25",
-   "q": "Unde nu avea Absalom niciun cusur?",
+   "ref": "14:28",
+   "q": "Cât a locuit Absalom la Ierusalim fără să vadă fața împăratului?",
    "opts": [
-    "din talpă până în creștet",
-    "numai la păr și la ochi",
-    "doar la față și la mâini"
+    "doi ani",
+    "un an",
+    "trei ani"
    ],
    "a": 0
   },
@@ -786,12 +792,12 @@
    "id": "2sa.14.greu.320",
    "age": "greu",
    "t": "one",
-   "ref": "14:29",
-   "q": "De ce l-a chemat Absalom pe Ioab?",
+   "ref": "14:32",
+   "q": "Unde ar fi vrut Absalom să fie mai degrabă, după cuvintele lui?",
    "opts": [
-    "ca să-l trimită la împărat",
-    "ca să-i dea ogorul",
-    "ca să meargă la Gheșur"
+    "tot în Gheșur",
+    "tot la Hebron",
+    "tot în pustie"
    ],
    "a": 0
   },
@@ -799,51 +805,50 @@
    "id": "2sa.14.greu.321",
    "age": "greu",
    "t": "match",
-   "ref": "14:1-33",
-   "q": "Asociază fiecare persoană cu cuvintele spuse.",
+   "ref": "14:2-33",
+   "q": "Asociază fiecare persoană cu ce se spune despre ea.",
    "pairs": [
     [
-     "femeia, la sfârșit",
-     "„Domnul Dumnezeul tău să fie cu tine.”"
+     "femeia din Tecoa",
+     "s-a numit pe sine roaba împăratului"
     ],
     [
-     "David, jurând",
-     "„Un păr din capul fiului tău nu va cădea.”"
+     "Ioab",
+     "a căzut cu fața la pământ și l-a binecuvântat pe împărat"
     ],
     [
-     "familia din poveste",
-     "„Scoate încoace pe ucigașul fratelui său!”"
+     "Absalom",
+     "n-avea niciun cusur din talpă până în creștet"
     ],
     [
-     "femeia, despre Dumnezeu",
-     "„Dorește ca fugarul să nu rămână izgonit.”"
+     "Tamar",
+     "fata lui Absalom, frumoasă la chip"
     ],
     [
-     "Absalom către Ioab",
-     "„Doresc acum să văd fața împăratului.”"
+     "David",
+     "l-a sărutat pe Absalom"
     ]
    ],
    "refs": [
-    "14:17",
-    "14:11",
-    "14:7",
-    "14:14",
-    "14:32"
+    "14:12",
+    "14:22",
+    "14:25",
+    "14:27",
+    "14:33"
    ]
   },
   {
    "id": "2sa.14.greu.322",
    "age": "greu",
    "t": "multi",
-   "ref": "14:18-19",
-   "q": "Ce a spus femeia când David a întrebat-o de Ioab?",
+   "ref": "14:31",
+   "q": "Ce l-a întrebat Ioab pe Absalom?",
    "opts": [
-    "Ioab i-a poruncit totul",
-    "a venit fără știrea nimănui",
-    "nu se poate abate nici la dreapta, nici la stânga"
+    "„Pentru ce m-ai chemat de două ori la casa ta?”",
+    "„Pentru ce n-ai rămas mai departe în Gheșur?”",
+    "„Pentru ce au pus slujitorii tăi foc câmpului meu?”"
    ],
    "a": [
-    0,
     2
    ]
   },
@@ -851,30 +856,30 @@
    "id": "2sa.14.greu.323",
    "age": "greu",
    "t": "multi",
-   "ref": "14:5-6",
-   "q": "Ce a povestit femeia din Tecoa despre familia ei?",
+   "ref": "14:6",
+   "q": "Unde s-au certat cei doi fii ai femeii, după povestea ei?",
    "opts": [
-    "avea și o fiică",
-    "bărbatul i-a murit",
-    "avea doi fii"
+    "la fântână",
+    "la poarta cetății",
+    "în casa tatălui lor"
    ],
-   "a": [
-    1,
-    2
-   ]
+   "a": []
   },
   {
    "id": "2sa.14.greu.324",
    "age": "greu",
    "t": "multi",
-   "ref": "14:23-24",
-   "q": "Ce s-a întâmplat imediat după ce Absalom a fost adus la Ierusalim?",
+   "ref": "14:24",
+   "q": "Ce a poruncit David când s-a întors Absalom?",
    "opts": [
-    "i s-a dat cetatea Hebron",
-    "a mers la palat să-l vadă pe împărat",
-    "a fost primit cu ospăț"
+    "„Să fie pus sub pază”",
+    "„Să se ducă în casa lui”",
+    "„Să nu-mi vadă fața”"
    ],
-   "a": []
+   "a": [
+    1,
+    2
+   ]
   }
  ]
 }
