@@ -13,11 +13,13 @@ Ce guide est pour la prochaine personne (ou IA) qui écrit ou reprend les questi
 5. **Fausses réponses plausibles** (Mediu et Greu) : elles parlent des vrais personnages, lieux et objets du chapitre ; en Greu, elles ne diffèrent de la bonne que par un détail. `node scripts/qualite/ancrage.mjs` liste celles qu'on élimine sans avoir lu.
 6. **Longueur des propositions** : à partir de Mediu, la bonne réponse n'est ni visiblement la plus longue ni la plus courte (écart de plus de 10 caractères avec toutes les autres). Le plus simple : écrire des fausses réponses aussi précises que la bonne. En Ușor, on s'en moque.
 7. **Vrai ou faux équilibré** : 4 à 6 vraies sur 10 par niveau. Une fausse change un nom, un chiffre, un lieu ou le sens ; jamais un détail douteux ni un piège sur un mot.
-8. **Associations autonomes** : chaque paire doit se comprendre sans la consigne, car l'examen blanc mélange des paires de cinq chapitres (« Itream | al șaselea fiu al lui David », pas « Itream | al șaselea »).
-9. **La référence couvre les versets de la réponse** : la fenêtre « Versetul » surligne ces versets.
-10. **Sujets sensibles** (2 Samuel 11, 13) : rien de cru pour les plus jeunes ; on garde l'événement et la leçon.
-11. **Pas de point médian « · »** dans les textes du site : une virgule, des parenthèses ou une autre phrase.
-12. **Dire au propriétaire combien de questions ont été modifiées** à chaque correction.
+8. **Faux partout, pas seulement dans ce verset** : une affirmation fausse ou une mauvaise réponse ne doit pas être vraie ailleurs dans la Bible (un autre chapitre, 1 Samuel 31, etc.). Exemples corrigés le 31 octobre 2026 : « David a cântat această cântare după moartea lui Absalom » (2 Sam 22 : vrai dans l'histoire), « de pe zidul Bet-Șanului » (vrai en 1 Sam 31), « Saul era rănit de moarte » (vrai en 1 Sam 31:3), « David bătuse pe gheșuriți » (vrai en 1 Sam 27). On évite aussi « în acest capitol » comme seule raison du faux, et deux propositions qui veulent dire la même chose (« căpetenie a neamurilor » / « împărat peste neamuri »).
+
+9. **Associations autonomes** : chaque paire doit se comprendre sans la consigne, car l'examen blanc mélange des paires de cinq chapitres (« Itream | al șaselea fiu al lui David », pas « Itream | al șaselea »).
+10. **La référence couvre les versets de la réponse** : la fenêtre « Versetul » surligne ces versets.
+11. **Sujets sensibles** (2 Samuel 11, 13) : rien de cru pour les plus jeunes ; on garde l'événement et la leçon.
+12. **Pas de point médian « · »** dans les textes du site : une virgule, des parenthèses ou une autre phrase.
+13. **Dire au propriétaire combien de questions ont été modifiées** à chaque correction.
 
 ## Écrire un chapitre
 

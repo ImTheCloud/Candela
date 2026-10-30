@@ -33,6 +33,7 @@ Après un premier test du propriétaire (Ușor « un chouïa trop facile », Med
 Règles communes :
 - 24 questions par chapitre et par niveau (forme de l'examen final) : 10 vrai/faux, 10 à une réponse, 1 association de 5 paires (colonne de droite sans doublons, chaque paire compréhensible seule), 3 à plusieurs réponses (0, 1, 2 ou 3 justes).
 - Vrai/faux : 4 à 6 « vrai » sur 10 ; jamais un détail douteux ni un piège sur un mot.
+- Un faux (ou une mauvaise réponse) doit être faux dans toute la Bible, pas seulement « selon ce verset » : rien qui soit vrai dans un autre chapitre ou dans 1 Samuel.
 - Greu doit être difficile, pas absurde : pas de listes de généalogie apprises par cœur, pas de piège de formulation ; la réponse est toujours écrite clairement dans les versets cités.
 - Contexte : la scène est écrite une fois par chapitre et affichée seulement quand les chapitres sont mélangés (examen blanc). L'énoncé nomme quand même qui parle, à qui, de qui.
 - À partir de Mediu, les propositions ont une longueur proche de la bonne réponse.
