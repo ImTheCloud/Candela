@@ -8,63 +8,63 @@
    "age": "usor",
    "t": "tf",
    "ref": "11:1",
-   "q": "David l-a trimis pe Ioab la război și a rămas la Ierusalim.",
+   "q": "David a rămas la Ierusalim când oastea a plecat la război.",
    "a": true
   },
   {
    "id": "2sa.11.usor.302",
    "age": "usor",
    "t": "tf",
-   "ref": "11:1",
-   "q": "David a mers el însuși să împresoare cetatea Raba.",
-   "a": false
+   "ref": "11:3",
+   "q": "David a întrebat cine este femeia.",
+   "a": true
   },
   {
    "id": "2sa.11.usor.303",
    "age": "usor",
    "t": "tf",
-   "ref": "11:3",
-   "q": "Bat-Șeba era nevasta lui Urie, Hetitul.",
+   "ref": "11:9",
+   "q": "Urie a dormit la poarta casei împărătești.",
    "a": true
   },
   {
    "id": "2sa.11.usor.304",
    "age": "usor",
    "t": "tf",
-   "ref": "11:6",
-   "q": "David a cerut ca Urie să fie trimis la Ierusalim.",
-   "a": true
+   "ref": "11:12",
+   "q": "Urie s-a întors la război chiar în aceeași zi.",
+   "a": false
   },
   {
    "id": "2sa.11.usor.305",
    "age": "usor",
    "t": "tf",
-   "ref": "11:9",
-   "q": "Urie s-a dus acasă la el, cum i-a spus David.",
+   "ref": "11:13",
+   "q": "Urie n-a vrut să mănânce cu David.",
    "a": false
   },
   {
    "id": "2sa.11.usor.306",
    "age": "usor",
    "t": "tf",
-   "ref": "11:14",
-   "q": "David i-a trimis lui Ioab o scrisoare prin Urie.",
-   "a": true
+   "ref": "11:8",
+   "q": "Urie n-a primit niciun dar de la împărat.",
+   "a": false
   },
   {
    "id": "2sa.11.usor.307",
    "age": "usor",
    "t": "tf",
-   "ref": "11:17",
-   "q": "Urie a murit în luptă.",
+   "ref": "11:23",
+   "q": "Solul a spus că oamenii din cetate au fost mai tari.",
    "a": true
   },
   {
    "id": "2sa.11.usor.308",
    "age": "usor",
    "t": "tf",
-   "ref": "11:18",
-   "q": "Ioab i-a ascuns lui David ce s-a întâmplat în luptă.",
+   "ref": "11:25",
+   "q": "David s-a mâniat pe Ioab când a aflat de moartea lui Urie.",
    "a": false
   },
   {
@@ -72,7 +72,7 @@
    "age": "usor",
    "t": "tf",
    "ref": "11:26",
-   "q": "Bat-Șeba l-a plâns pe bărbatul ei.",
+   "q": "Bat-Șeba l-a plâns pe Urie.",
    "a": true
   },
   {
@@ -80,7 +80,7 @@
    "age": "usor",
    "t": "tf",
    "ref": "11:27",
-   "q": "Fapta lui David i-a plăcut Domnului.",
+   "q": "Fapta lui David I-a plăcut Domnului.",
    "a": false
   },
   {
@@ -88,11 +88,11 @@
    "age": "usor",
    "t": "one",
    "ref": "11:1",
-   "q": "Ce cetate trebuia să împresoare Ioab?",
+   "q": "Țara cui trebuia s-o pustiască Ioab?",
    "opts": [
-    "Ierihon",
-    "Raba",
-    "Hebron"
+    "a Egiptului",
+    "a fiilor lui Amon",
+    "a Babilonului"
    ],
    "a": 1
   },
@@ -100,12 +100,12 @@
    "id": "2sa.11.usor.312",
    "age": "usor",
    "t": "one",
-   "ref": "11:2",
-   "q": "De unde a văzut-o David pe femeie?",
+   "ref": "11:3",
+   "q": "Al cui era nevastă Bat-Șeba?",
    "opts": [
-    "de la poarta cetății",
-    "din câmpul de luptă",
-    "de pe acoperișul casei împărătești"
+    "a lui Ioab",
+    "a lui Natan",
+    "a lui Urie"
    ],
    "a": 2
   },
@@ -113,12 +113,12 @@
    "id": "2sa.11.usor.313",
    "age": "usor",
    "t": "one",
-   "ref": "11:3",
-   "q": "Cum se numea femeia văzută de David?",
+   "ref": "11:6",
+   "q": "Pe cine a chemat David de la război?",
    "opts": [
-    "Abigail",
-    "Bat-Șeba",
-    "Mical"
+    "pe Ioab",
+    "pe Urie",
+    "pe Abner"
    ],
    "a": 1
   },
@@ -126,12 +126,12 @@
    "id": "2sa.11.usor.314",
    "age": "usor",
    "t": "one",
-   "ref": "11:3",
-   "q": "Cine era bărbatul Bat-Șebei?",
+   "ref": "11:24",
+   "q": "De unde au tras arcașii asupra oamenilor lui David?",
    "opts": [
-    "Urie, Hetitul",
-    "Ioab, fiul Țeruiei",
-    "Natan, prorocul"
+    "de pe vârful zidului",
+    "din copaci",
+    "de pe corăbii"
    ],
    "a": 0
   },
@@ -139,12 +139,12 @@
    "id": "2sa.11.usor.315",
    "age": "usor",
    "t": "one",
-   "ref": "11:9",
-   "q": "Unde a dormit Urie în loc să meargă acasă?",
+   "ref": "11:8",
+   "q": "Ce i-a spus David lui Urie?",
    "opts": [
-    "în cortul lui Ioab",
-    "în casa lui",
-    "la poarta casei împărătești"
+    "„Du-te la templu”",
+    "„Fugi în pustie”",
+    "„Coboară-te acasă”"
    ],
    "a": 2
   },
@@ -152,12 +152,12 @@
    "id": "2sa.11.usor.316",
    "age": "usor",
    "t": "one",
-   "ref": "11:14",
-   "q": "Prin cine a trimis David scrisoarea către Ioab?",
+   "ref": "11:10",
+   "q": "Ce l-a întrebat David pe Urie a doua zi?",
    "opts": [
-    "prin Bat-Șeba",
-    "prin Urie",
-    "prin Natan"
+    "de ce nu-i place Ierusalimul",
+    "de ce nu s-a coborât acasă",
+    "de ce a venit fără arme"
    ],
    "a": 1
   },
@@ -165,12 +165,12 @@
    "id": "2sa.11.usor.317",
    "age": "usor",
    "t": "one",
-   "ref": "11:17",
-   "q": "Ce s-a întâmplat cu Urie la Raba?",
+   "ref": "11:13",
+   "q": "Unde a dormit Urie după ce a mâncat cu David?",
    "opts": [
-    "a fugit acasă",
-    "a fost ucis în luptă",
-    "a fost făcut căpetenie"
+    "acasă la el",
+    "cu slujitorii împăratului",
+    "în templu"
    ],
    "a": 1
   },
@@ -178,12 +178,12 @@
    "id": "2sa.11.usor.318",
    "age": "usor",
    "t": "one",
-   "ref": "11:18",
-   "q": "Pe cine a trimis Ioab să-i spună lui David ce s-a întâmplat?",
+   "ref": "11:15",
+   "q": "Ce a cerut David în scrisoare?",
    "opts": [
-    "pe Abișai",
-    "pe Urie",
-    "un sol"
+    "ca Urie să fie trimis acasă",
+    "ca Urie să fie făcut căpetenie",
+    "ca Urie să fie pus în locul cel mai greu al luptei"
    ],
    "a": 2
   },
@@ -191,12 +191,12 @@
    "id": "2sa.11.usor.319",
    "age": "usor",
    "t": "one",
-   "ref": "11:26",
-   "q": "Ce a făcut Bat-Șeba când a aflat că Urie a murit?",
+   "ref": "11:20",
+   "q": "Ce credea Ioab că va face David când va auzi de luptă?",
    "opts": [
-    "a mers la Raba",
-    "a fugit din Ierusalim",
-    "a plâns pe bărbatul ei"
+    "va dormi",
+    "se va bucura",
+    "se va mânia"
    ],
    "a": 2
   },
@@ -205,11 +205,11 @@
    "age": "usor",
    "t": "one",
    "ref": "11:27",
-   "q": "Ce a simțit Domnul față de fapta lui David?",
+   "q": "Ce a făcut David după zilele de jale?",
    "opts": [
-    "nu I-a plăcut",
-    "S-a bucurat",
-    "n-a văzut nimic"
+    "a luat-o pe Bat-Șeba de nevastă",
+    "a plecat la război",
+    "a zidit un templu"
    ],
    "a": 0
   },
@@ -217,48 +217,48 @@
    "id": "2sa.11.usor.321",
    "age": "usor",
    "t": "match",
-   "ref": "11:1-27",
-   "q": "Asociază fiecare persoană cu ce se spune despre ea.",
+   "ref": "11:2-25",
+   "q": "Asociază fiecare nume cu ce se spune despre el.",
    "pairs": [
     [
-     "David",
-     "a rămas la Ierusalim"
-    ],
-    [
-     "Ioab",
-     "a împresurat cetatea Raba"
+     "acoperișul",
+     "de acolo a zărit-o David pe femeie"
     ],
     [
      "Urie",
-     "a dormit la poarta casei împărătești"
-    ],
-    [
-     "Bat-Șeba",
-     "l-a plâns pe bărbatul ei"
+     "a dus el însuși scrisoarea la Ioab"
     ],
     [
      "solul",
-     "i-a istorisit lui David lupta"
+     "i-a dus lui David vestea luptei"
+    ],
+    [
+     "sabia",
+     "doboară când pe unul, când pe altul"
+    ],
+    [
+     "Ioab",
+     "l-a pus pe Urie unde erau ostași viteji"
     ]
    ],
    "refs": [
-    "11:1",
-    "11:16",
-    "11:9",
-    "11:26",
-    "11:22"
+    "11:2",
+    "11:14",
+    "11:18",
+    "11:25",
+    "11:16"
    ]
   },
   {
    "id": "2sa.11.usor.322",
    "age": "usor",
    "t": "multi",
-   "ref": "11:1",
-   "q": "Pe cine a trimis David la război împotriva lui Amon?",
+   "ref": "11:11",
+   "q": "Pe cine a pomenit Urie că stă în corturi sau în câmp?",
    "opts": [
-    "pe Natan",
-    "pe Ioab",
-    "pe tot Israelul"
+    "pe filisteni",
+    "chivotul",
+    "pe Ioab și slujitorii lui"
    ],
    "a": [
     1,
@@ -269,12 +269,12 @@
    "id": "2sa.11.usor.323",
    "age": "usor",
    "t": "multi",
-   "ref": "11:11",
-   "q": "Pe cine a pomenit Urie când a spus de ce nu merge acasă?",
+   "ref": "11:17",
+   "q": "Cine a murit în lupta de la cetate?",
    "opts": [
-    "pe Ioab și slujitorii lui",
-    "pe Bat-Șeba",
-    "chivotul"
+    "mulți din slujitorii lui David",
+    "Ioab",
+    "Urie"
    ],
    "a": [
     0,
@@ -285,105 +285,108 @@
    "id": "2sa.11.usor.324",
    "age": "usor",
    "t": "multi",
-   "ref": "11:13",
-   "q": "Ce a făcut Urie după ce a mâncat și a băut cu David?",
+   "ref": "11:7",
+   "q": "Despre ce l-a întrebat David pe Urie?",
    "opts": [
-    "a plecat îndată la Raba",
-    "s-a dus acasă la el",
-    "a rămas în casa lui David"
+    "despre popor",
+    "despre Ioab",
+    "despre turmele lui"
    ],
-   "a": []
+   "a": [
+    0,
+    1
+   ]
   },
   {
    "id": "2sa.11.mediu.301",
    "age": "mediu",
    "t": "tf",
-   "ref": "11:2",
-   "q": "David s-a sculat de pe pat după-amiază, spre seară.",
+   "ref": "11:1",
+   "q": "Ioab a fost trimis să împresoare Raba.",
    "a": true
   },
   {
    "id": "2sa.11.mediu.302",
    "age": "mediu",
    "t": "tf",
-   "ref": "11:5",
-   "q": "Bat-Șeba i-a trimis vorbă lui David că este însărcinată.",
-   "a": true
+   "ref": "11:2",
+   "q": "David a zărit-o pe femeie dimineața, din grădină.",
+   "a": false
   },
   {
    "id": "2sa.11.mediu.303",
    "age": "mediu",
    "t": "tf",
-   "ref": "11:9",
-   "q": "Urie a dormit cu slujitorii stăpânului său.",
+   "ref": "11:3",
+   "q": "Bat-Șeba era fata lui Eliam.",
    "a": true
   },
   {
    "id": "2sa.11.mediu.304",
    "age": "mediu",
    "t": "tf",
-   "ref": "11:11",
-   "q": "Urie a spus că Ioab și slujitorii lui sunt tăbărâți în câmp.",
-   "a": true
+   "ref": "11:6",
+   "q": "David i-a cerut lui Ioab să-l trimită pe Urie fără să spună de ce.",
+   "a": false
   },
   {
    "id": "2sa.11.mediu.305",
    "age": "mediu",
    "t": "tf",
-   "ref": "11:16",
-   "q": "Ioab știa că locul unde l-a pus pe Urie era apărat de ostași viteji.",
+   "ref": "11:8",
+   "q": "Urie a fost urmat de un dar din partea împăratului.",
    "a": true
   },
   {
    "id": "2sa.11.mediu.306",
    "age": "mediu",
    "t": "tf",
-   "ref": "11:4",
-   "q": "Bat-Șeba a venit la palat din proprie inițiativă, fără să fie chemată.",
+   "ref": "11:18",
+   "q": "Ioab i-a scris lui David o scrisoare despre luptă.",
    "a": false
   },
   {
    "id": "2sa.11.mediu.307",
    "age": "mediu",
    "t": "tf",
-   "ref": "11:10",
-   "q": "David nu a aflat că Urie n-a mers acasă.",
-   "a": false
+   "ref": "11:12",
+   "q": "Urie a rămas la Ierusalim în ziua aceea și a doua zi.",
+   "a": true
   },
   {
    "id": "2sa.11.mediu.308",
    "age": "mediu",
    "t": "tf",
-   "ref": "11:14",
-   "q": "David i-a trimis scrisoarea lui Ioab prin solul lui Ioab.",
+   "ref": "11:16",
+   "q": "Ioab l-a pus pe Urie unde știa că apărătorii sunt slabi.",
    "a": false
   },
   {
    "id": "2sa.11.mediu.309",
    "age": "mediu",
    "t": "tf",
-   "ref": "11:26",
-   "q": "Bat-Șeba s-a bucurat când a aflat de moartea lui Urie.",
-   "a": false
+   "ref": "11:21",
+   "q": "Ioab i-a spus solului să pomenească moartea lui Abimelec.",
+   "a": true
   },
   {
    "id": "2sa.11.mediu.310",
    "age": "mediu",
    "t": "tf",
-   "ref": "11:3",
-   "q": "Bat-Șeba era fata lui Ahitofel, după acest capitol.",
+   "ref": "11:26",
+   "q": "Bat-Șeba nu l-a jelit pe Urie.",
    "a": false
   },
   {
    "id": "2sa.11.mediu.311",
    "age": "mediu",
    "t": "one",
-   "ref": "11:8",
-   "q": "Ce l-a urmat pe Urie când a ieșit din casa împărătească?",
+   "ref": "11:1",
+   "q": "Când a trimis David oastea la război?",
    "opts": [
-    "un dar din partea împăratului",
-    "un slujitor cu sabia",
-    "un sol de la Ioab"
+    "pe vremea când porneau împărații la război",
+    "pe vremea când se strângeau roadele câmpului",
+    "după ce trecuse sărbătoarea corturilor"
    ],
    "a": 0
   },
@@ -391,12 +394,12 @@
    "id": "2sa.11.mediu.312",
    "age": "mediu",
    "t": "one",
-   "ref": "11:7",
-   "q": "Despre ce l-a întrebat David pe Urie?",
+   "ref": "11:3",
+   "q": "Cum i-au spus lui David cine este femeia?",
    "opts": [
-    "despre Ioab, popor și război",
-    "despre casa și nevasta lui",
-    "despre chivotul Domnului"
+    "Bat-Șeba, nevasta lui Urie, Hetitul",
+    "Bat-Șeba, nevasta lui Eliam, Hetitul",
+    "Bat-Șeba, fata lui Urie, Hetitul"
    ],
    "a": 0
   },
@@ -404,12 +407,12 @@
    "id": "2sa.11.mediu.313",
    "age": "mediu",
    "t": "one",
-   "ref": "11:6",
-   "q": "Cum este numit Urie în porunca lui David către Ioab?",
+   "ref": "11:7",
+   "q": "Despre ce l-a întrebat David pe Urie?",
    "opts": [
-    "Urie din Iuda",
-    "Urie, robul meu",
-    "Urie, Hetitul"
+    "despre starea casei și a nevestei",
+    "despre starea cetății și a zidurilor",
+    "despre starea lui Ioab și a poporului"
    ],
    "a": 2
   },
@@ -417,12 +420,12 @@
    "id": "2sa.11.mediu.314",
    "age": "mediu",
    "t": "one",
-   "ref": "11:23",
-   "q": "Până unde i-au împins oamenii lui Ioab pe cei din cetate?",
+   "ref": "11:11",
+   "q": "Ce a jurat Urie?",
    "opts": [
-    "până la râu",
-    "până în pustie",
-    "până la intrarea porții"
+    "că va muri pentru împărat în locul cel mai greu al luptei",
+    "că nu se va mai întoarce la Ioab cât trăiește împăratul",
+    "că nu va intra în casa lui cât stă oastea în câmp"
    ],
    "a": 2
   },
@@ -430,12 +433,12 @@
    "id": "2sa.11.mediu.315",
    "age": "mediu",
    "t": "one",
-   "ref": "11:15",
-   "q": "Ce scria în scrisoarea lui David?",
+   "ref": "11:13",
+   "q": "Ce a făcut David ca Urie să se ducă acasă?",
    "opts": [
-    "să-l pună pe Urie în locul cel mai greu al luptei",
-    "să-l facă pe Urie căpetenie peste o mie de oameni",
-    "să-l trimită pe Urie înapoi acasă, la nevasta lui"
+    "l-a poftit la masă și l-a îmbătat",
+    "l-a dus el însuși până la ușă",
+    "i-a dat aur și haine noi"
    ],
    "a": 0
   },
@@ -443,12 +446,12 @@
    "id": "2sa.11.mediu.316",
    "age": "mediu",
    "t": "one",
-   "ref": "11:27",
-   "q": "Ce a făcut David după zilele de jale ale Bat-Șebei?",
+   "ref": "11:14",
+   "q": "Prin cine a trimis David scrisoarea către Ioab?",
    "opts": [
-    "a trimis-o la tatăl ei",
-    "a luat-o în casa lui",
-    "a trimis-o la Raba"
+    "prin Abișai",
+    "prin Urie",
+    "prin un sol"
    ],
    "a": 1
   },
@@ -456,12 +459,12 @@
    "id": "2sa.11.mediu.317",
    "age": "mediu",
    "t": "one",
-   "ref": "11:1",
-   "q": "Cine a pornit la război împotriva fiilor lui Amon?",
+   "ref": "11:17",
+   "q": "Ce au făcut oamenii din cetate?",
    "opts": [
-    "David cu oastea lui",
-    "Ioab cu tot Israelul",
-    "Urie cu hetiții"
+    "au deschis porțile și s-au predat",
+    "au făcut o ieșire și s-au bătut cu Ioab",
+    "au fugit noaptea din cetate"
    ],
    "a": 1
   },
@@ -469,12 +472,12 @@
    "id": "2sa.11.mediu.318",
    "age": "mediu",
    "t": "one",
-   "ref": "11:17",
-   "q": "Ce au făcut oamenii din cetate împotriva lui Ioab?",
+   "ref": "11:20",
+   "q": "De unde se aruncau săgeți, după cuvintele lui Ioab?",
    "opts": [
-    "au cerut pace de la împărat",
-    "au făcut o ieșire și s-au bătut",
-    "au dat foc taberei lui Ioab"
+    "din turnul porții",
+    "din vârful zidului",
+    "de pe dealul de lângă cetate"
    ],
    "a": 1
   },
@@ -482,12 +485,12 @@
    "id": "2sa.11.mediu.319",
    "age": "mediu",
    "t": "one",
-   "ref": "11:20",
-   "q": "De ce se temea Ioab că se va mânia David?",
+   "ref": "11:23",
+   "q": "Până unde i-au dat înapoi pe oamenii din cetate?",
    "opts": [
-    "că n-au luat încă cetatea Raba",
-    "că au pierdut multe arme în luptă",
-    "că s-au apropiat prea mult de zid"
+    "până la vârful zidului",
+    "până în mijlocul cetății",
+    "până la intrarea porții"
    ],
    "a": 2
   },
@@ -495,12 +498,12 @@
    "id": "2sa.11.mediu.320",
    "age": "mediu",
    "t": "one",
-   "ref": "11:12",
-   "q": "Cât timp a mai rămas Urie la Ierusalim?",
+   "ref": "11:25",
+   "q": "Ce i-a spus David solului să-i facă lui Ioab?",
    "opts": [
-    "încă o săptămână întreagă",
-    "în ziua aceea și a doua zi",
-    "o lună, până la sărbătoare"
+    "să-l mustre",
+    "să-l îmbărbăteze",
+    "să-l cheme la Ierusalim"
    ],
    "a": 1
   },
@@ -508,7 +511,7 @@
    "id": "2sa.11.mediu.321",
    "age": "mediu",
    "t": "match",
-   "ref": "11:1-27",
+   "ref": "11:1-21",
    "q": "Asociază fiecare nume cu ce se spune despre el.",
    "pairs": [
     [
@@ -517,39 +520,39 @@
     ],
     [
      "Eliam",
-     "tatăl Bat-Șebei"
+     "tatăl lui Bat-Șeba"
     ],
     [
      "Urie",
-     "era hetit"
+     "hetitul care dormea la poarta împăratului"
     ],
     [
      "Abimelec",
-     "ucis de o femeie de pe zid"
+     "ucis de o femeie cu o piatră de moară"
     ],
     [
-     "Tebeț",
-     "locul unde a murit Abimelec"
+     "solul",
+     "i-a istorisit lui David tot ce poruncise Ioab"
     ]
    ],
    "refs": [
     "11:1",
     "11:3",
-    "11:3",
+    "11:9",
     "11:21",
-    "11:21"
+    "11:22"
    ]
   },
   {
    "id": "2sa.11.mediu.322",
    "age": "mediu",
    "t": "multi",
-   "ref": "11:23-24",
-   "q": "Ce i-a spus solul lui David?",
+   "ref": "11:11",
+   "q": "Ce a spus Urie lui David?",
    "opts": [
-    "oamenii din cetate au fost mai tari",
-    "Ioab a fost rănit",
-    "mulți slujitori ai împăratului au fost uciși"
+    "„Chivotul și Israel și Iuda locuiesc în corturi”",
+    "„Nevasta mea m-a uitat”",
+    "„Domnul meu Ioab este tăbărât în câmp”"
    ],
    "a": [
     0,
@@ -560,12 +563,12 @@
    "id": "2sa.11.mediu.323",
    "age": "mediu",
    "t": "multi",
-   "ref": "11:9-10",
-   "q": "Ce i s-a spus lui David despre Urie?",
+   "ref": "11:15",
+   "q": "Ce scria în scrisoarea lui David?",
    "opts": [
-    "că a fugit din Ierusalim",
-    "că nu s-a coborât acasă",
-    "că a dormit la poarta casei împărătești"
+    "„Trimiteți-l acasă la nevasta lui”",
+    "„Puneți pe Urie în locul cel mai greu al luptei”",
+    "„Trageți-vă înapoi de la el”"
    ],
    "a": [
     1,
@@ -576,12 +579,12 @@
    "id": "2sa.11.mediu.324",
    "age": "mediu",
    "t": "multi",
-   "ref": "11:21",
-   "q": "Ce a pregătit Ioab să-i spună solul lui David, dacă se mânie?",
+   "ref": "11:25",
+   "q": "Ce i-a trimis David vorbă lui Ioab?",
    "opts": [
-    "„A murit și robul tău Urie, Hetitul.”",
-    "că au luat deja cetatea",
-    "că și Abimelec a murit lângă un zid"
+    "„Nu te munci pentru întâmplarea aceasta”",
+    "„Întoarce-te la Ierusalim”",
+    "„Bate cetatea cu putere”"
    ],
    "a": [
     0,
@@ -592,32 +595,32 @@
    "id": "2sa.11.greu.301",
    "age": "greu",
    "t": "tf",
-   "ref": "11:1",
-   "q": "David a trimis la război pe Ioab cu slujitorii lui și tot Israelul.",
+   "ref": "11:2",
+   "q": "David s-a sculat de pe pat într-o după-amiază spre seară.",
    "a": true
   },
   {
    "id": "2sa.11.greu.302",
    "age": "greu",
    "t": "tf",
-   "ref": "11:2",
-   "q": "David a văzut-o pe Bat-Șeba dimineața, din grădina palatului.",
+   "ref": "11:3",
+   "q": "Bat-Șeba era fata lui Ahitofel.",
    "a": false
   },
   {
    "id": "2sa.11.greu.303",
    "age": "greu",
    "t": "tf",
-   "ref": "11:4",
-   "q": "David a trimis niște oameni s-o aducă pe Bat-Șeba.",
+   "ref": "11:7",
+   "q": "David l-a întrebat pe Urie despre starea lui Ioab, a poporului și despre mersul războiului.",
    "a": true
   },
   {
    "id": "2sa.11.greu.304",
    "age": "greu",
    "t": "tf",
-   "ref": "11:7",
-   "q": "David l-a întrebat pe Urie doar despre starea poporului.",
+   "ref": "11:8",
+   "q": "David i-a zis lui Urie: „Coboară-te acasă și odihnește-te.”",
    "a": false
   },
   {
@@ -625,59 +628,59 @@
    "age": "greu",
    "t": "tf",
    "ref": "11:10",
-   "q": "David i-a spus lui Urie: „Nu vii tu oare din călătorie?”",
+   "q": "David l-a întrebat pe Urie: „Nu vii tu oare din călătorie?”",
    "a": true
   },
   {
    "id": "2sa.11.greu.306",
    "age": "greu",
    "t": "tf",
-   "ref": "11:11",
-   "q": "Urie a jurat: „Viu ești tu și viu este sufletul tău.”",
-   "a": true
+   "ref": "11:13",
+   "q": "După ce l-a îmbătat David, Urie s-a dus acasă.",
+   "a": false
   },
   {
    "id": "2sa.11.greu.307",
    "age": "greu",
    "t": "tf",
-   "ref": "11:13",
-   "q": "Seara, după ce a fost îmbătat, Urie s-a culcat acasă.",
-   "a": false
+   "ref": "11:17",
+   "q": "Oamenii din cetate au făcut o ieșire împotriva lui Ioab.",
+   "a": true
   },
   {
    "id": "2sa.11.greu.308",
    "age": "greu",
    "t": "tf",
-   "ref": "11:16",
-   "q": "Ioab împresura cetatea când l-a pus pe Urie la locul greu.",
-   "a": true
+   "ref": "11:21",
+   "q": "Abimelec a murit la Șechem, lovit de o piatră de moară.",
+   "a": false
   },
   {
    "id": "2sa.11.greu.309",
    "age": "greu",
    "t": "tf",
-   "ref": "11:21",
-   "q": "Ioab a spus că Abimelec a fost omorât de un ostaș cu sulița.",
-   "a": false
+   "ref": "11:24",
+   "q": "Arcașii au tras de pe vârful zidului asupra slujitorilor împăratului.",
+   "a": true
   },
   {
    "id": "2sa.11.greu.310",
    "age": "greu",
    "t": "tf",
-   "ref": "11:23",
-   "q": "Solul a spus că oamenii lui Ioab i-au dat înapoi pe dușmani până la poartă.",
-   "a": true
+   "ref": "11:27",
+   "q": "David a luat-o pe Bat-Șeba de nevastă chiar a doua zi după moartea lui Urie.",
+   "a": false
   },
   {
    "id": "2sa.11.greu.311",
    "age": "greu",
    "t": "one",
    "ref": "11:1",
-   "q": "Ce trebuia să facă Ioab cu țara lui Amon?",
+   "q": "Ce cetate trebuia să împresoare Ioab?",
    "opts": [
-    "s-o pustiască",
-    "s-o ia în stăpânire",
-    "s-o supună la bir"
+    "Raba",
+    "Rama",
+    "Rehob"
    ],
    "a": 0
   },
@@ -685,12 +688,12 @@
    "id": "2sa.11.greu.312",
    "age": "greu",
    "t": "one",
-   "ref": "11:3",
-   "q": "Ce a aflat David despre femeie?",
+   "ref": "11:9",
+   "q": "Cu cine s-a culcat Urie la poarta casei împărătești?",
    "opts": [
-    "era o văduvă din cetatea Hebron",
-    "era o slujnică din casa lui Saul",
-    "era nevasta lui Urie, Hetitul"
+    "cu paznicii porții împăratului",
+    "cu oamenii veniți cu el de la Raba",
+    "cu toți slujitorii stăpânului său"
    ],
    "a": 2
   },
@@ -698,12 +701,12 @@
    "id": "2sa.11.greu.313",
    "age": "greu",
    "t": "one",
-   "ref": "11:8",
-   "q": "Ce a fost trimis după Urie când a ieșit de la David?",
+   "ref": "11:11",
+   "q": "Cine locuia în corturi, după Urie?",
    "opts": [
-    "o scrisoare pentru Ioab",
-    "un ostaș care să-l păzească",
-    "un dar din partea împăratului"
+    "toți vitejii lui David",
+    "Ioab și slujitorii domnului său",
+    "chivotul, Israel și Iuda"
    ],
    "a": 2
   },
@@ -711,12 +714,12 @@
    "id": "2sa.11.greu.314",
    "age": "greu",
    "t": "one",
-   "ref": "11:10",
-   "q": "Cum a aflat David că Urie n-a mers acasă?",
+   "ref": "11:11",
+   "q": "Cum a jurat Urie înaintea lui David?",
    "opts": [
-    "l-a văzut el însuși",
-    "i-au dat de știre",
-    "i-a spus Bat-Șeba"
+    "„Viu este Domnul și viu este sufletul tău”",
+    "„Viu ești tu și viu este sufletul tău”",
+    "„Viu este Domnul, Dumnezeul lui Israel”"
    ],
    "a": 1
   },
@@ -724,12 +727,12 @@
    "id": "2sa.11.greu.315",
    "age": "greu",
    "t": "one",
-   "ref": "11:15",
-   "q": "Ce trebuiau să facă oștenii după ce Urie era pus la locul greu?",
+   "ref": "11:12",
+   "q": "Ce i-a spus David lui Urie după ce n-a coborât acasă?",
    "opts": [
-    "să-l apere până la capăt",
-    "să-l lege și să-l predea",
-    "să se tragă înapoi de la el"
+    "„Mai rămâi trei zile aici, și apoi îți voi da drumul”",
+    "„Du-te acum la Ioab, și mâine vei lupta”",
+    "„Mai rămâi și astăzi aici, și mâine îți voi da drumul”"
    ],
    "a": 2
   },
@@ -737,12 +740,12 @@
    "id": "2sa.11.greu.316",
    "age": "greu",
    "t": "one",
-   "ref": "11:19",
-   "q": "Când trebuia solul să-i spună lui David de moartea lui Urie?",
+   "ref": "11:16",
+   "q": "Unde l-a pus Ioab pe Urie?",
    "opts": [
-    "după ce va isprăvi de istorisit lupta",
-    "numai dacă David îl întreabă de el",
-    "chiar la sosire, înainte de toate"
+    "în locul știut ca apărat de ostași viteji",
+    "lângă poarta pe unde ieșeau dușmanii",
+    "în fruntea cetei care urca pe zid"
    ],
    "a": 0
   },
@@ -750,12 +753,12 @@
    "id": "2sa.11.greu.317",
    "age": "greu",
    "t": "one",
-   "ref": "11:21",
-   "q": "Al cui fiu era Abimelec, după cuvintele lui Ioab?",
+   "ref": "11:19",
+   "q": "Când trebuia solul să-i spună lui David de moartea lui Urie?",
    "opts": [
-    "al lui Saul",
-    "al lui Ierubeșet",
-    "al lui Eliam"
+    "numai dacă David întreba de Urie",
+    "dacă împăratul se mânia de amănuntele luptei",
+    "îndată ce ajungea în casa împăratului"
    ],
    "a": 1
   },
@@ -763,12 +766,12 @@
    "id": "2sa.11.greu.318",
    "age": "greu",
    "t": "one",
-   "ref": "11:23",
-   "q": "Unde făcuseră oamenii din cetate ieșirea?",
+   "ref": "11:6",
+   "q": "Ce poruncă i-a trimis David lui Ioab?",
    "opts": [
-    "pe zid",
-    "în câmp",
-    "în tabăra lui Ioab"
+    "„Trimite-mi pe Urie și pe slujitorii lui.”",
+    "„Trimite-mi pe Urie, Hetitul.”",
+    "„Trimite-mi vești despre Raba.”"
    ],
    "a": 1
   },
@@ -776,12 +779,12 @@
    "id": "2sa.11.greu.319",
    "age": "greu",
    "t": "one",
-   "ref": "11:25",
-   "q": "Ce i-a spus David lui Ioab să nu facă?",
+   "ref": "11:23",
+   "q": "Unde făcuseră oamenii din cetate o ieșire?",
    "opts": [
-    "să nu-l mai pomenească pe Urie",
-    "să nu mai lupte cu Amon",
-    "să nu se muncească pentru întâmplare"
+    "pe drumul spre Ierusalim",
+    "la iazul cetății",
+    "în câmp"
    ],
    "a": 2
   },
@@ -789,12 +792,12 @@
    "id": "2sa.11.greu.320",
    "age": "greu",
    "t": "one",
-   "ref": "11:27",
-   "q": "Când a trimis David s-o ia pe Bat-Șeba?",
+   "ref": "11:25",
+   "q": "Ce a spus David despre sabie?",
    "opts": [
-    "chiar în ziua morții lui Urie",
-    "după ce au trecut zilele de jale",
-    "după ce s-a născut copilul"
+    "„Nu cruță nici pe cel viteaz”",
+    "„Doboară când pe unul, când pe altul”",
+    "„Mănâncă pe cei mari și pe cei mici”"
    ],
    "a": 1
   },
@@ -802,47 +805,47 @@
    "id": "2sa.11.greu.321",
    "age": "greu",
    "t": "match",
-   "ref": "11:1-27",
-   "q": "Asociază fiecare persoană cu cuvintele spuse.",
+   "ref": "11:3-21",
+   "q": "Asociază fiecare nume cu ce se spune despre el.",
    "pairs": [
     [
-     "servitorii lui David",
-     "„Urie nu s-a coborât la el acasă.”"
+     "Eliam",
+     "tatăl lui Bat-Șeba"
     ],
     [
-     "David către Urie",
-     "„Mai rămâi și astăzi aici.”"
+     "Urie",
+     "hetitul, bărbatul lui Bat-Șeba"
     ],
     [
-     "scrisoarea lui David",
-     "„Puneți pe Urie în locul cel mai greu al luptei.”"
+     "piatra de moară",
+     "aruncată de o femeie peste Abimelec"
     ],
     [
-     "solul către David",
-     "„Oamenii aceia au fost mai tari decât noi.”"
+     "solul",
+     "a istorisit lui David tot ce-i poruncise Ioab"
     ],
     [
-     "David despre sabie",
-     "„Doboară când pe unul, când pe altul.”"
+     "Raba",
+     "cetatea fiilor lui Amon împresurată de Ioab"
     ]
    ],
    "refs": [
-    "11:10",
-    "11:12",
-    "11:15",
-    "11:23",
-    "11:25"
+    "11:3",
+    "11:3",
+    "11:21",
+    "11:22",
+    "11:1"
    ]
   },
   {
    "id": "2sa.11.greu.322",
    "age": "greu",
    "t": "multi",
-   "ref": "11:20-21",
-   "q": "Ce credea Ioab că va întreba David mâniat?",
+   "ref": "11:20",
+   "q": "Ce întrebări credea Ioab că va pune David?",
    "opts": [
-    "„Cine a omorât pe Abimelec?”",
-    "„Unde este chivotul?”",
+    "„Nu știați că se aruncă săgeți din vârful zidului?”",
+    "„Cine v-a poruncit să vă retrageți?”",
     "„Pentru ce v-ați apropiat de cetate?”"
    ],
    "a": [
@@ -854,30 +857,30 @@
    "id": "2sa.11.greu.323",
    "age": "greu",
    "t": "multi",
-   "ref": "11:2",
-   "q": "Ce se spune despre momentul în care David a văzut-o pe femeie?",
+   "ref": "11:8",
+   "q": "Ce a primit Urie când a ieșit din casa împărătească?",
    "opts": [
-    "era după-amiază, spre seară",
-    "David se sculase de pe pat",
-    "David se întorcea de la Raba"
+    "o sabie nouă",
+    "haine de sărbătoare",
+    "un cal"
    ],
-   "a": [
-    0,
-    1
-   ]
+   "a": []
   },
   {
    "id": "2sa.11.greu.324",
    "age": "greu",
    "t": "multi",
-   "ref": "11:6-7",
-   "q": "Ce a făcut David când a venit Urie la el?",
+   "ref": "11:27",
+   "q": "Ce se spune la sfârșitul capitolului?",
    "opts": [
-    "i-a dat scrisoarea pentru Ioab",
-    "l-a pus căpetenie peste o mie",
-    "l-a trimis înapoi chiar atunci"
+    "Bat-Șeba i-a născut lui David un fiu",
+    "fapta lui David n-a plăcut Domnului",
+    "Natan a venit la David"
    ],
-   "a": []
+   "a": [
+    0,
+    1
+   ]
   }
  ]
 }

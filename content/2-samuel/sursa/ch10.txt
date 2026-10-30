@@ -1,91 +1,91 @@
 scene: În războiul cu amoniții și sirienii
 ## usor
-tf + 10:1 | După moartea împăratului fiilor lui Amon, a domnit fiul său Hanun.
-tf + 10:2 | David a trimis slujitori ca să-l mângâie pe Hanun.
-tf - 10:3 | Căpeteniile lui Hanun au spus că David vrea să-i facă un dar.
-tf + 10:4 | Hanun le-a ras barba pe jumătate slujitorilor lui David.
-tf - 10:5 | David le-a spus slujitorilor batjocoriți să vină îndată la Ierusalim.
+tf + 10:1 | Împăratul fiilor lui Amon a murit.
+tf + 10:2 | Tatăl lui Hanun fusese bun cu David.
+tf + 10:3 | Căpeteniile lui Hanun credeau că oamenii lui David sunt iscoade.
 tf + 10:7 | David l-a trimis pe Ioab cu toată oștirea.
 tf + 10:13 | Sirienii au fugit dinaintea lui Ioab.
-tf - 10:14 | Fiii lui Amon l-au învins pe Abișai.
-tf + 10:17 | David a trecut Iordanul și a venit la Helam.
-tf - 10:19 | După înfrângere, sirienii au ajutat din nou pe fiii lui Amon.
-one 10:1 | Cine a domnit după moartea împăratului fiilor lui Amon? | *fiul său Hanun | fratele său Șobac | Hadadezer
-one 10:2 | De ce a trimis David slujitori la Hanun? | *ca să-l mângâie pentru moartea tatălui său | ca să-i ceară bir | ca să-i declare război
-one 10:4 | Ce le-a făcut Hanun slujitorilor lui David? | *le-a ras barba pe jumătate | le-a dat haine noi | i-a ospătat
-one 10:5 | În ce cetate trebuiau să rămână slujitorii până le crește barba? | *la Ierihon | la Hebron | la Betleem
-one 10:6 | De la cine au tocmit fiii lui Amon oameni de război? | *de la sirieni | de la egipteni | de la filisteni
-one 10:7 | Pe cine a trimis David împotriva amoniților și sirienilor? | *pe Ioab | pe Natan | pe Țiba
-one 10:10 | Cine a luptat împotriva fiilor lui Amon? | *Abișai, fratele lui Ioab | Hanun, împăratul lor | Șobac, căpetenia sirienilor
-one 10:14 | Unde s-a întors Ioab după lupta cu fiii lui Amon? | *la Ierusalim | la Hebron | la Ierihon
-one 10:16 | Cum se numea căpetenia oștirii lui Hadadezer? | *Șobac | Hanun | Abișai
-one 10:19 | Ce au făcut împărații supuși lui Hadadezer după ce au fost bătuți? | *au făcut pace cu Israel | au fugit în Egipt | au atacat Ierusalimul
-match 10:1-19 | Asociază fiecare persoană cu ce se spune despre ea.
-= Hanun | i-a batjocorit pe slujitorii lui David | 10:4
-= Nahaș | tatăl lui Hanun | 10:2
-= Ioab | a luptat împotriva sirienilor | 10:13
-= Abișai | a ținut piept fiilor lui Amon | 10:10
-= Șobac | căpetenia oștirii lui Hadadezer | 10:16
-multi 10:4 | Ce le-a făcut Hanun slujitorilor lui David? | *le-a ras barba pe jumătate | *le-a tăiat hainele pe jumătate | i-a pus în închisoare
-multi 10:13-14 | Cine a fugit în prima luptă? | *sirienii | *fiii lui Amon | oamenii lui Ioab
-multi 10:2 | Ce voia David să-i arate lui Hanun? | dispreț | mânie | frică
+tf + 10:8 | Sirienii stăteau deoparte, în câmpie.
+tf - 10:19 | După război, sirienii au ajutat iar pe fiii lui Amon.
+tf - 10:18 | La a doua luptă, Israel a fugit dinaintea sirienilor.
+tf - 10:6 | Fiii lui Amon au cerut ajutor de la egipteni.
+tf - 10:11 | Ioab și Abișai s-au certat înainte de luptă.
+one 10:1 | Cine a domnit după tatăl său peste fiii lui Amon? | *Hanun | Saul | Goliat
+one 10:2 | De ce a trimis David slujitori la Hanun? | *să-l mângâie pentru moartea tatălui său | să-i ceară aur | să-i declare război
+one 10:4 | Ce le-a făcut Hanun slujitorilor lui David? | *le-a ras barba pe jumătate | le-a dat haine noi | le-a dat un ospăț
+one 10:4 | Ce a făcut Hanun cu slujitorii după ce i-a batjocorit? | *le-a dat drumul | i-a închis în temniță | i-a vândut ca robi
+one 10:8 | Unde s-au așezat fiii lui Amon la luptă? | *la intrarea porții | pe vârful muntelui | pe malul mării
+one 10:9 | Împotriva cui a luptat Ioab cu aleșii lui Israel? | *împotriva sirienilor | împotriva filistenilor | împotriva egiptenilor
+one 10:10 | Pe cine a pus Ioab peste restul poporului? | *pe fratele său Abișai | pe David | pe Saul
+one 10:12 | Ce i-a spus Ioab lui Abișai să fie? | *tare | blând | tăcut
+one 10:14 | Unde s-a întors Ioab după luptă? | *la Ierusalim | la Hebron | în Egipt
+one 10:19 | Ce au făcut împărații supuși lui Hadarezer? | *au făcut pace cu Israel | au cucerit Ierusalimul | au fugit în Egipt
+match 10:4-18 | Asociază fiecare nume cu ce se spune despre el.
+= hainele | le-au fost tăiate slujitorilor pe jumătate | 10:4
+= fiii lui Amon | au fugit și au intrat în cetate | 10:14
+= Iordanul | David l-a trecut cu tot Israelul | 10:17
+= Helam | acolo s-au strâns iar sirienii | 10:16
+= Șobac | căpetenia sirienilor, a murit în luptă | 10:18
+multi 10:11-12 | Ce și-au spus Ioab și Abișai înainte de luptă? | *să se ajute unul pe altul | *să lupte pentru poporul lor | să fugă împreună
+multi 10:6-8 | Cine a ieșit la luptă împotriva lui Ioab? | *fiii lui Amon | *sirienii | filistenii
+multi 10:5 | Ce a făcut David pentru slujitorii batjocoriți? | *a trimis oameni înaintea lor | *le-a spus să aștepte până le crește barba | i-a pedepsit
 ## mediu
-tf + 10:2 | David voia să-i arate lui Hanun bunăvoința pe care i-o arătase tatăl lui.
-tf + 10:3 | Căpeteniile lui Hanun bănuiau că David vrea să nimicească cetatea.
+tf + 10:2 | Nahaș, tatăl lui Hanun, îi arătase bunăvoință lui David.
+tf - 10:3 | Hanun singur a crezut că slujitorii lui David sunt iscoade.
 tf + 10:5 | David a trimis oameni înaintea slujitorilor batjocoriți.
-tf + 10:8 | Sirienii erau deoparte, în câmpie.
-tf + 10:10 | Abișai a primit poruncă peste restul poporului.
-tf - 10:4 | Hanun i-a ținut pe slujitorii lui David închiși o lună.
+tf - 10:6 | Fiii lui Amon au tocmit sirieni ca să facă pace cu David.
+tf + 10:8 | Fiii lui Amon s-au așezat în șiruri la intrarea porții.
+tf - 10:10 | Abișai a luptat împotriva sirienilor.
+tf + 10:14 | Fiii lui Amon au fugit în cetate când au văzut fugind pe sirieni.
 tf - 10:7 | David a mers el însuși în prima luptă cu fiii lui Amon.
-tf - 10:12 | Ioab i-a spus lui Abișai că biruința e sigură oricum.
-tf - 10:17 | La Helam, sirienii au fugit fără luptă.
-tf - 10:6 | Împăratul din Maaca a dat douăzeci de mii de oameni.
-one 10:18 | Câți cai de trăsură le-a tăiat David sirienilor? | *șapte sute | o mie șapte sute | patruzeci de mii
-one 10:10 | Pe cine a pus Ioab sub porunca lui Abișai? | *ce mai rămăsese din popor | toți aleșii lui Israel | oamenii din Tob
-one 10:13 | Împotriva cui a înaintat Ioab cu poporul lui? | *împotriva sirienilor | împotriva fiilor lui Amon | împotriva Maacăi
-one 10:11 | Ce i-a cerut Ioab lui Abișai dacă sirienii vor fi mai tari? | *să vină în ajutorul lui | să fugă la Ierusalim | să ceară pace
-one 10:16 | Cine a trimis după sirienii de dincolo de râu? | *Hadadezer | Hanun | Șobac
-one 10:2 | Al cui fiu era Hanun? | *al lui Nahaș | al lui Hadadezer | al lui Rehob
-one 10:15 | Ce au făcut sirienii după ce au fost bătuți prima dată? | *și-au strâns puterile | s-au supus lui David | s-au întors acasă
-one 10:19 | Ce au făcut împărații supuși lui Hadarezer față de Israel? | *i s-au supus | au plătit bir | au fugit
-one 10:9 | Împotriva cui a pus Ioab ceata aleasă? | *împotriva sirienilor | împotriva fiilor lui Amon | împotriva filistenilor
-one 10:17 | Pe cine a strâns David ca să lupte la Helam? | *tot Israelul | numai pe Ioab | numai cetele lui Iuda
-match 10:1-19 | Asociază fiecare persoană cu cuvintele spuse.
-= David despre Hanun | „Voi arăta bunăvoință lui Hanun.” | 10:2
-= căpeteniile lui Amon | „Crezi că David îți trimite oameni să te mângâie?” | 10:3
-= David către slujitori | „Rămâneți la Ierihon până vă va crește barba.” | 10:5
-= Ioab către Abișai | „Fii tare!” | 10:12
-= Ioab despre Domnul | „Domnul să facă ce va crede!” | 10:12
-multi 10:8 | Cine stătea deoparte, în câmpie, la prima luptă? | *sirienii din Țoba și Rehob | *oamenii din Tob și Maaca | fiii lui Amon
-multi 10:17 | Ce a făcut David când i s-a dat de veste despre sirieni? | *a strâns tot Israelul | *a trecut Iordanul | a trimis soli de pace
-multi 10:9-10 | Cum și-a împărțit Ioab oastea? | *o ceată aleasă împotriva sirienilor | *restul, sub Abișai, împotriva fiilor lui Amon | toată oastea împotriva cetății
-## greu
-tf + 10:2 | Slujitorii lui David au ajuns în țara fiilor lui Amon.
-tf - 10:3 | Hanun a fost cel care a bănuit primul că David îl înșală.
-tf + 10:5 | Barba slujitorilor trebuia să crească înainte de întoarcere.
-tf - 10:6 | Oamenii din Tob au dat o mie de oameni.
-tf + 10:8 | Oamenii din Tob și din Maaca erau în câmpie, cu sirienii.
-tf + 10:11 | Ioab a promis că va veni în ajutorul lui Abișai dacă amoniții vor fi mai tari.
-tf - 10:13 | Fiii lui Amon au fugit primii, iar sirienii după ei.
-tf + 10:16 | Sirienii au venit la Helam în frunte cu Șobac.
-tf - 10:17 | La Helam, Ioab a condus oastea, nu David.
-tf - 10:19 | Hadarezer a făcut pace cu fiii lui Amon după înfrângere.
-one 10:2 | Pentru ce voia David să-l mângâie pe Hanun? | *pentru moartea tatălui său Nahaș | pentru înfrângerea lui de la Raba | pentru boala fiului său cel mic
-one 10:3 | Ce întrebare i-au pus căpeteniile lui Hanun? | *dacă crede că David vrea să-l mângâie | dacă vrea război cu David | dacă știe cine sunt slujitorii
-one 10:4 | Până unde le-a tăiat Hanun hainele slujitorilor? | *până la coapse | până la genunchi | până la glezne
-one 10:6 | Ce au tocmit fiii lui Amon de la sirienii din Bet-Rehob și Țoba? | *pedeștri | care | arcași
-one 10:9 | Pe cine a ales Ioab pentru ceata împotriva sirienilor? | *din toți aleșii lui Israel | din oamenii lui Abișai | din cei din Ierihon
-one 10:12 | Pentru ce i-a îndemnat Ioab să se arate plini de bărbăție? | *pentru poporul lor | pentru împăratul Hanun | pentru pradă
-one 10:14 | Dinaintea cui au fugit fiii lui Amon? | *dinaintea lui Abișai | dinaintea lui David | dinaintea lui Ioab
-one 10:16 | Al cui oștean de frunte era Șobac? | *al lui Hadadezer | al lui Hanun | al lui Nahaș
-one 10:17 | Cine a ieșit înaintea lui David la Helam? | *sirienii | fiii lui Amon | oamenii din Tob
-one 10:19 | Pe cine n-au mai îndrăznit sirienii să ajute? | *pe fiii lui Amon | pe filisteni | pe moabiți
-match 10:1-19 | Asociază fiecare persoană cu ce se spune despre ea.
+tf + 10:18 | Sirienii au fugit dinaintea lui Israel la Helam.
+tf - 10:19 | După război, sirienii au mai îndrăznit să-i ajute pe fiii lui Amon.
+one 10:3 | De ce credeau căpeteniile că David îi trimisese slujitorii? | *să cerceteze cetatea ca s-o nimicească | să-l cheme pe Hanun la Ierusalim | să ceară bir de la fiii lui Amon
+one 10:4 | Până unde le-a tăiat Hanun hainele slujitorilor? | *până la coapse | până la genunchi | până la brâu
+one 10:5 | De ce nu s-au întors slujitorii direct la David? | *erau foarte batjocoriți | erau răniți în luptă | se temeau de Ioab
+one 10:6 | De ce au tocmit fiii lui Amon ajutor de la sirieni? | *se făcuseră urâți lui David | voiau să cucerească Ierusalimul | se temeau de filisteni
+one 10:7 | Ce fel de oameni a trimis David cu Ioab? | *numai oameni viteji | numai tineri aleși | numai oameni din Iuda
+one 10:9 | Ce a văzut Ioab înainte de luptă? | *că avea să lupte și înainte, și înapoi | că sirienii erau mai mulți decât ai lui | că fiii lui Amon fugiseră deja
+one 10:11 | Ce i-a spus Ioab lui Abișai? | *să-l ajute dacă sirienii vor fi mai tari | să-l aștepte până seara la poartă | să nu lupte fără porunca lui David
+one 10:12 | Pentru ce le-a cerut Ioab să fie plini de bărbăție? | *pentru poporul lor și cetățile Dumnezeului lor | pentru împăratul lor și pentru casa lui | pentru chivotul și cortul Domnului
+one 10:16 | De unde a trimis Hadadezer după sirieni? | *de cealaltă parte a râului | din cetatea Damascului | din munții Libanului
+one 10:17 | Ce a făcut David când a aflat că sirienii s-au strâns? | *a strâns tot Israelul și a trecut Iordanul | a trimis iar pe Ioab cu oamenii viteji | a cerut pace de la Hadadezer
+match 10:1-18 | Asociază fiecare nume cu ce se spune despre el.
 = Hanun | fiul lui Nahaș | 10:2
-= Abișai | fratele lui Ioab | 10:10
-= Hadadezer | a trimis după sirienii de dincolo de râu | 10:16
-= Șobac | a murit pe loc la Helam | 10:18
-= slujitorii lui David | au rămas la Ierihon | 10:5
-multi 10:6 | Pe cine au tocmit fiii lui Amon? | *sirieni din Bet-Rehob | *oameni din Tob | oameni din Moab
-multi 10:18 | Ce s-a întâmplat la Helam? | *sirienii au fugit dinaintea lui Israel | *Șobac a fost lovit și a murit | Hadadezer a fost prins
-multi 10:3 | Ce le-au cerut căpeteniile lui Amon slujitorilor lui David? | să plătească bir | să lupte cu sirienii | să-i aducă pe Ioab
+= Ierihonul | slujitorii au așteptat acolo să le crească barba | 10:5
+= Abișai | a ținut piept fiilor lui Amon | 10:10
+= Helam | acolo s-au strâns sirienii a doua oară | 10:16
+= Șobac | căpetenia oștirii lui Hadadezer | 10:16
+multi 10:6 | De unde au tocmit fiii lui Amon oameni? | *de la sirienii din Bet-Rehob | *de la oamenii din Tob | de la filistenii din Gat
+multi 10:18 | Ce le-a făcut David sirienilor la Helam? | *le-a tăiat șapte sute de cai de trăsură | *l-a lovit pe Șobac | le-a luat cetatea Damasc
+multi 10:19 | Ce au făcut împărații supuși lui Hadarezer? | *au făcut pace cu Israel | *i s-au supus | au fugit în Egipt
+## greu
+tf + 10:1 | Hanun a domnit în locul tatălui său peste fiii lui Amon.
+tf - 10:2 | David a spus că îi va arăta bunăvoință lui Hanun cum îi arătase Saul.
+tf + 10:4 | Hanun le-a tăiat slujitorilor lui David hainele pe jumătate, până la coapse.
+tf - 10:5 | David le-a spus slujitorilor să rămână la Ghilgal până le va crește barba.
+tf + 10:6 | Fiii lui Amon au luat o mie de oameni de la împăratul din Maaca.
+tf - 10:7 | David a trimis cu Ioab doar o parte din oștire.
+tf + 10:2 | Slujitorii lui David au fost trimiși să-l mângâie pe Hanun.
+tf - 10:14 | După luptă, Ioab a asediat cetatea fiilor lui Amon.
+tf + 10:18 | David a tăiat patruzeci de mii de călăreți sirieni.
+tf - 10:19 | Împărații supuși lui Hadarezer au fugit peste râu după luptă.
+one 10:2 | Al cui fiu era Hanun? | *al lui Nahaș | al lui Hadadezer | al lui Rehob
+one 10:3 | Ce au întrebat căpeteniile pe Hanun? | *„Crezi că David îți trimite oameni să te mângâie?” | „Crezi că David vrea să facă pace cu tine?” | „Crezi că David se teme de oastea ta?”
+one 10:11 | Ce i-a făgăduit Ioab lui Abișai? | *să vină să-l ajute dacă fiii lui Amon vor fi mai tari | să-i dea jumătate din pradă dacă vor birui | să-i lase lui toată cinstea biruinței asupra lor
+one 10:6 | Câți pedeștri au tocmit fiii lui Amon de la sirienii din Bet-Rehob și Țoba? | *douăzeci de mii | douăsprezece mii | treizeci de mii
+one 10:19 | Ce n-au mai îndrăznit sirienii după război? | *să-i ajute pe fiii lui Amon | să treacă iar Iordanul | să lupte cu Ioab
+one 10:9 | Pe cine a ales Ioab să lupte împotriva sirienilor? | *o ceată din toți aleșii lui Israel | oamenii lui David din Iuda | ceata lui Abișai, fratele său
+one 10:12 | Cum își încheie Ioab cuvântul către Abișai? | *„Domnul să facă ce va crede!” | „Domnul să ne dea biruința!” | „Domnul să fie cu tine!”
+one 10:16 | Cine era în fruntea sirienilor la Helam? | *Șobac | Hadadezer | Hanun
+one 10:15 | Ce au făcut sirienii după ce au fost bătuți prima dată? | *și-au strâns puterile | au cerut pace | s-au întors acasă
+one 10:18 | Câți cai de trăsură a tăiat David de la sirieni? | *șapte sute | o mie șapte sute | patruzeci de mii
+match 10:5-17 | Asociază fiecare loc cu ce se spune despre el.
+= Ierihonul | slujitorii batjocoriți au așteptat acolo | 10:5
+= intrarea porții | acolo s-au așezat fiii lui Amon | 10:8
+= câmpia | acolo stăteau sirienii deoparte | 10:8
+= Helam | acolo s-au strâns sirienii de dincolo de râu | 10:16
+= Iordanul | David l-a trecut cu tot Israelul | 10:17
+multi 10:12 | Pentru ce le-a cerut Ioab să se arate plini de bărbăție? | *pentru poporul lor | *pentru cetățile Dumnezeului lor | pentru împăratul David
+multi 10:13-14 | Cine a fugit în prima luptă? | *sirienii | *fiii lui Amon | oamenii lui Abișai
+multi 10:4 | Ce le-a ras Hanun slujitorilor lui David? | părul capului | sprâncenele | toată barba
