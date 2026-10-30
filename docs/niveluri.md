@@ -30,6 +30,15 @@ Après un premier test du propriétaire (Ușor « un chouïa trop facile », Med
 - vrai/faux : « David l-a întrebat pe tânăr „De unde ești?” abia după ce au jelit. » (vrai, ordre des versets 12-13)
 - association : les images de la cântare reliées à la personne qu'elles décrivent.
 
+## Réglage fin après le chapitre 22 (31 octobre 2026)
+
+Retour du propriétaire : Ușor un tout petit peu trop dur, Mediu un tout petit peu trop facile, Greu très bien mais à peine trop dur. Appliqué aux chapitres 1, 21 et 22, et à suivre pour tous les autres :
+- **Ușor** : les images et les faits les plus parlants ; dans une question à une réponse, une seule fausse réponse plausible et une clairement à côté ; jamais une expression exacte à retenir (« scutul mântuirii Sale »).
+- **Mediu** : des fausses réponses de la même famille que la bonne (« valurile morții / valurile mării / șuvoaiele apelor ») ; un faux change un détail, pas le sens général.
+- **Greu** : au plus deux ou trois pièges de mots exacts par test (moitiés de verset inversées, quasi-synonymes, lieux voisins) ; le reste en détails précis mais faciles à retenir (qui, combien, dans quel ordre, quelle image).
+- **Associations, à tous les niveaux** : la réponse ne répète jamais le mot de la colonne de gauche (« cel bun → Domnul este bun » est interdit).
+- **Chapitres de poésie** (cântări, 2 Samuel 22, une partie de 1 et 23) : ils paraissent naturellement plus durs ; viser un cran plus simple que pour un chapitre d'histoire au même niveau.
+
 Règles communes :
 - 24 questions par chapitre et par niveau (forme de l'examen final) : 10 vrai/faux, 10 à une réponse, 1 association de 5 paires (colonne de droite sans doublons, chaque paire compréhensible seule), 3 à plusieurs réponses (0, 1, 2 ou 3 justes).
 - Vrai/faux : 4 à 6 « vrai » sur 10 ; jamais un détail douteux ni un piège sur un mot.
