@@ -49,6 +49,32 @@ Associations et choix multiples Ușor, réglés le 31 octobre 2026 (un peu trop 
 - association : cinq choses **de natures différentes** (une personne, un groupe, une ville, un animal, un objet), chacune reliée à ce qu'elle fait ou à ce qu'on en dit de plus marquant, en mots simples ; on peut s'aider par élimination ;
 - choix multiple : deux bonnes réponses tirées du cœur de l'histoire et une troisième **clairement fausse** (étrangère à la scène : « o ploaie de flori », « Israel a câștigat ») ; jamais trois bonnes, jamais aucune.
 
+## MODÈLE FINAL : 2 Samuel 22 (validé le 31 octobre 2026)
+
+Le propriétaire a validé le chapitre 22 tel quel (`content/2-samuel/sursa/ch22.txt`). Tout nouveau chapitre se construit de la même façon ; relire ce fichier avant d'écrire.
+
+**Pour tous les niveaux**
+- 24 questions, **24 faits différents** : on part de la liste des faits du chapitre (verset par verset) et on attribue un fait par question. Un même verset ne sert deux fois que pour deux faits distincts.
+- Aucune réponse fausse ne doit être vraie ailleurs dans la Bible ; jamais deux propositions qui disent la même chose.
+- Association : la réponse ne répète jamais le mot de gauche ; chaque paire se comprend seule (examen blanc).
+
+**Ușor (enfants)**
+- vrai/faux : phrase courte, fait central ; le faux change le sens nettement (« Domnul călărea pe un cal alb »).
+- une réponse : question simple ; une fausse réponse plausible, une clairement à côté (« un nor gros / o mare de cristal / un covor de flori »).
+- association : cinq choses de natures différentes (une chose, un animal, un objet, une image…), reliées à un fait simple et marquant (« pământul → s-a cutremurat », « cerboaica → are picioare repezi ca ale lui David »).
+- plusieurs réponses : deux bonnes, une clairement fausse (« fundul mării, temeliile lumii / un curcubeu ») ; jamais aucune bonne.
+
+**Mediu (adolescents)**
+- fausses réponses de la même famille que la bonne (« valurile morții / valurile mării / șuvoaiele apelor » ; « bun / drept / curat » pour « cel bun »).
+- vrai/faux : le faux change un détail (« scânteiau stele » au lieu de « cărbuni de foc »).
+- association : images du chapitre reliées à ce qui en est dit (« heruvimul → pe el călărea Domnul »).
+- plusieurs réponses : deux bonnes et une plausible ; « Niciun răspuns corect » au plus une fois, rarement.
+
+**Greu (adultes)**
+- détails précis ; au plus deux ou trois pièges de mots exacts par test, le reste en détails faciles à retenir.
+- association **avec des paires qui se confondent** (« mâna Domnului → l-a apucat pe David de sus » / « mâinile lui David → Domnul le deprinde la luptă » / « locurile înalte » / « privirea Domnului »), jamais plus facile que celle de Mediu.
+- plusieurs réponses : une fois par chapitre environ avec « Niciun răspuns corect ».
+
 Règles communes :
 - 24 questions par chapitre et par niveau (forme de l'examen final) : 10 vrai/faux, 10 à une réponse, 1 association de 5 paires (colonne de droite sans doublons, chaque paire compréhensible seule), 3 à plusieurs réponses (0, 1, 2 ou 3 justes).
 - Vrai/faux : 4 à 6 « vrai » sur 10 ; jamais un détail douteux ni un piège sur un mot.
