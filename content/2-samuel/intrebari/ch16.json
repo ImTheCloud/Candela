@@ -15,64 +15,64 @@
    "id": "2sa.16.usor.302",
    "age": "usor",
    "t": "tf",
-   "ref": "16:1",
-   "q": "Țiba i-a adus lui David arme și scuturi.",
+   "ref": "16:8",
+   "q": "Șimei a spus că Domnul l-a făcut pe David împărat.",
    "a": false
   },
   {
    "id": "2sa.16.usor.303",
    "age": "usor",
    "t": "tf",
-   "ref": "16:4",
-   "q": "David i-a dat lui Țiba tot ce era al lui Mefiboșet.",
+   "ref": "16:5",
+   "q": "Șimei era din familia lui Saul.",
    "a": true
   },
   {
    "id": "2sa.16.usor.304",
    "age": "usor",
    "t": "tf",
-   "ref": "16:5",
-   "q": "Șimei era din casa lui Saul.",
-   "a": true
+   "ref": "16:6",
+   "q": "Șimei a adus daruri pentru David.",
+   "a": false
   },
   {
    "id": "2sa.16.usor.305",
    "age": "usor",
    "t": "tf",
-   "ref": "16:6",
-   "q": "Șimei i-a adus lui David apă și pâine.",
-   "a": false
+   "ref": "16:9",
+   "q": "Abișai voia să-l omoare pe Șimei.",
+   "a": true
   },
   {
    "id": "2sa.16.usor.306",
    "age": "usor",
    "t": "tf",
-   "ref": "16:6",
-   "q": "Șimei a aruncat cu pietre după David.",
-   "a": true
+   "ref": "16:10",
+   "q": "David i-a dat voie lui Abișai să-l pedepsească pe Șimei.",
+   "a": false
   },
   {
    "id": "2sa.16.usor.307",
    "age": "usor",
    "t": "tf",
-   "ref": "16:9",
-   "q": "David i-a dat voie lui Abișai să-l omoare pe Șimei.",
-   "a": false
+   "ref": "16:14",
+   "q": "David și poporul s-au odihnit după drum.",
+   "a": true
   },
   {
    "id": "2sa.16.usor.308",
    "age": "usor",
    "t": "tf",
-   "ref": "16:14",
-   "q": "David și poporul s-au odihnit la Aiefim.",
-   "a": true
+   "ref": "16:15",
+   "q": "Absalom n-a îndrăznit să intre în Ierusalim.",
+   "a": false
   },
   {
    "id": "2sa.16.usor.309",
    "age": "usor",
    "t": "tf",
    "ref": "16:16",
-   "q": "Hușai a mers la Absalom.",
+   "q": "Hușai a strigat: „Trăiască împăratul!”",
    "a": true
   },
   {
@@ -80,7 +80,7 @@
    "age": "usor",
    "t": "tf",
    "ref": "16:23",
-   "q": "Nimeni nu asculta sfaturile lui Ahitofel.",
+   "q": "Nimeni nu asculta de sfaturile lui Ahitofel.",
    "a": false
   },
   {
@@ -88,11 +88,11 @@
    "age": "usor",
    "t": "one",
    "ref": "16:1",
-   "q": "Cine a venit la David cu măgari încărcați?",
+   "q": "Ce a adus Țiba pentru David?",
    "opts": [
-    "Șimei",
-    "Hușai",
-    "Țiba"
+    "aur și argint",
+    "săbii și sulițe",
+    "pâini, stafide și vin"
    ],
    "a": 2
   },
@@ -100,12 +100,12 @@
    "id": "2sa.16.usor.312",
    "age": "usor",
    "t": "one",
-   "ref": "16:1",
-   "q": "Câte pâini erau pe măgarii lui Țiba?",
+   "ref": "16:2",
+   "q": "Pentru cine erau măgarii, după Țiba?",
    "opts": [
-    "zece",
-    "două sute",
-    "o mie"
+    "pentru Absalom",
+    "pentru casa împăratului, de călărie",
+    "pentru preoți"
    ],
    "a": 1
   },
@@ -113,12 +113,12 @@
    "id": "2sa.16.usor.313",
    "age": "usor",
    "t": "one",
-   "ref": "16:2",
-   "q": "Pentru cine era vinul adus de Țiba?",
+   "ref": "16:4",
+   "q": "Ce i-a dat David lui Țiba?",
    "opts": [
-    "pentru Absalom",
-    "pentru cei obosiți în pustie",
-    "pentru preoți"
+    "o sabie de aur",
+    "tot ce era al lui Mefiboșet",
+    "o cetate"
    ],
    "a": 1
   },
@@ -126,12 +126,12 @@
    "id": "2sa.16.usor.314",
    "age": "usor",
    "t": "one",
-   "ref": "16:5",
-   "q": "Cum se numea omul care l-a blestemat pe David?",
+   "ref": "16:6",
+   "q": "Cu ce arunca Șimei după David?",
    "opts": [
-    "Șimei",
-    "Țiba",
-    "Ahitofel"
+    "cu pietre",
+    "cu flori",
+    "cu săgeți"
    ],
    "a": 0
   },
@@ -139,12 +139,12 @@
    "id": "2sa.16.usor.315",
    "age": "usor",
    "t": "one",
-   "ref": "16:6",
-   "q": "Cu ce a aruncat Șimei după David?",
+   "ref": "16:7",
+   "q": "Cum îl numea Șimei pe David?",
    "opts": [
-    "cu apă",
-    "cu pietre",
-    "cu săgeți"
+    "prieten",
+    "om al sângelui",
+    "om bun"
    ],
    "a": 1
   },
@@ -153,11 +153,11 @@
    "age": "usor",
    "t": "one",
    "ref": "16:9",
-   "q": "Cine a vrut să-l pedepsească pe Șimei?",
+   "q": "Cum l-a numit Abișai pe Șimei?",
    "opts": [
-    "Abișai",
-    "Țiba",
-    "Hușai"
+    "câine mort",
+    "leu tânăr",
+    "om înțelept"
    ],
    "a": 0
   },
@@ -166,11 +166,11 @@
    "age": "usor",
    "t": "one",
    "ref": "16:11",
-   "q": "Ce a spus David despre Șimei?",
+   "q": "Cine voia să-i ia viața lui David?",
    "opts": [
-    "„Aduceți-l la mine”",
-    "„Lăsați-l să blesteme”",
-    "„Omorâți-l îndată”"
+    "Natan",
+    "fiul lui, Absalom",
+    "Ioab"
    ],
    "a": 1
   },
@@ -178,12 +178,12 @@
    "id": "2sa.16.usor.318",
    "age": "usor",
    "t": "one",
-   "ref": "16:14",
-   "q": "Unde s-au odihnit David și poporul?",
+   "ref": "16:12",
+   "q": "Ce spera David de la Domnul?",
    "opts": [
-    "la Aiefim",
-    "la Ierihon",
-    "la Hebron"
+    "să-i facă bine în locul blestemelor",
+    "să-l facă bogat",
+    "să-l pedepsească pe Șimei"
    ],
    "a": 0
   },
@@ -191,12 +191,12 @@
    "id": "2sa.16.usor.319",
    "age": "usor",
    "t": "one",
-   "ref": "16:16",
-   "q": "Ce a strigat Hușai când a ajuns la Absalom?",
+   "ref": "16:13",
+   "q": "Pe unde mergea Șimei când îl blestema pe David?",
    "opts": [
-    "„Trăiască împăratul!”",
-    "„Fugi, Absalom!”",
-    "„Unde e David?”"
+    "pe coasta muntelui",
+    "pe malul mării",
+    "pe acoperișuri"
    ],
    "a": 0
   },
@@ -204,12 +204,12 @@
    "id": "2sa.16.usor.320",
    "age": "usor",
    "t": "one",
-   "ref": "16:23",
-   "q": "Cu ce era asemănat sfatul lui Ahitofel?",
+   "ref": "16:20",
+   "q": "Pe cine a întrebat Absalom ce au de făcut?",
    "opts": [
-    "cu vântul pustiei",
-    "cu un vis",
-    "cu întrebarea lui Dumnezeu"
+    "pe Ioab",
+    "pe Țiba",
+    "pe Ahitofel"
    ],
    "a": 2
   },
@@ -217,48 +217,48 @@
    "id": "2sa.16.usor.321",
    "age": "usor",
    "t": "match",
-   "ref": "16:1-23",
-   "q": "Asociază fiecare persoană cu ce se spune despre ea.",
+   "ref": "16:1-17",
+   "q": "Asociază fiecare nume cu ce se spune despre el.",
    "pairs": [
     [
      "Țiba",
-     "a adus pâini și vin pentru David"
+     "slujitorul lui Mefiboșet"
     ],
     [
-     "Șimei",
-     "l-a blestemat pe David"
+     "Mefiboșet",
+     "a rămas la Ierusalim, după cuvintele lui Țiba"
     ],
     [
-     "Abișai",
-     "voia să-i taie capul lui Șimei"
+     "Bahurim",
+     "de acolo a ieșit Șimei"
     ],
     [
-     "Hușai",
-     "a venit la Absalom ca prieten"
+     "Absalom",
+     "l-a întrebat pe Hușai de ce nu a mers cu prietenul lui"
     ],
     [
      "Ahitofel",
-     "sfaturile lui aveau mare putere"
+     "era cu Absalom în Ierusalim"
     ]
    ],
    "refs": [
     "16:1",
-    "16:7",
-    "16:9",
-    "16:16",
-    "16:23"
+    "16:3",
+    "16:5",
+    "16:17",
+    "16:15"
    ]
   },
   {
    "id": "2sa.16.usor.322",
    "age": "usor",
    "t": "multi",
-   "ref": "16:1",
-   "q": "Ce a adus Țiba pe măgari?",
+   "ref": "16:2",
+   "q": "Pentru ce erau darurile aduse de Țiba?",
    "opts": [
-    "pâini",
-    "aur",
-    "turte de stafide"
+    "pâinile pentru hrana tinerilor",
+    "aurul pentru plata soldaților",
+    "vinul pentru cei obosiți în pustie"
    ],
    "a": [
     0,
@@ -270,11 +270,11 @@
    "age": "usor",
    "t": "multi",
    "ref": "16:13",
-   "q": "Ce făcea Șimei în timp ce mergea pe coasta muntelui?",
+   "q": "Ce făcea Șimei pe drum?",
    "opts": [
-    "cânta",
+    "cânta din harpă",
     "blestema",
-    "arunca cu pietre"
+    "vântura praf"
    ],
    "a": [
     1,
@@ -285,61 +285,64 @@
    "id": "2sa.16.usor.324",
    "age": "usor",
    "t": "multi",
-   "ref": "16:12",
-   "q": "Ce spera David după blestemele lui Șimei?",
+   "ref": "16:19",
+   "q": "Ce i-a spus Hușai lui Absalom?",
    "opts": [
-    "că Absalom se va întoarce acasă",
-    "că Șimei va muri îndată",
-    "că Abișai îl va pedepsi pe Șimei"
+    "că vrea să fie cu cel ales de Domnul",
+    "că îi va sluji cum i-a slujit tatălui său",
+    "că vrea să plece din cetate"
    ],
-   "a": []
+   "a": [
+    0,
+    1
+   ]
   },
   {
    "id": "2sa.16.mediu.301",
    "age": "mediu",
    "t": "tf",
    "ref": "16:1",
-   "q": "Țiba l-a întâlnit pe David puțin după vârful dealului.",
+   "q": "David trecuse puțin de vârful dealului când a venit Țiba.",
    "a": true
   },
   {
    "id": "2sa.16.mediu.302",
    "age": "mediu",
    "t": "tf",
-   "ref": "16:3",
-   "q": "Țiba a spus că Mefiboșet așteaptă să primească împărăția tatălui său.",
-   "a": true
+   "ref": "16:1",
+   "q": "Țiba a venit cu trei măgari înșeuați.",
+   "a": false
   },
   {
    "id": "2sa.16.mediu.303",
    "age": "mediu",
    "t": "tf",
-   "ref": "16:8",
-   "q": "Șimei îl acuza pe David de sângele casei lui Saul.",
+   "ref": "16:4",
+   "q": "Țiba i-a spus lui David: „Să capăt trecere înaintea ta, împărate!”",
    "a": true
   },
   {
    "id": "2sa.16.mediu.304",
    "age": "mediu",
    "t": "tf",
-   "ref": "16:12",
-   "q": "David spera că Domnul îi va face bine în locul blestemelor.",
-   "a": true
+   "ref": "16:5",
+   "q": "Șimei era fiul lui Ner.",
+   "a": false
   },
   {
    "id": "2sa.16.mediu.305",
    "age": "mediu",
    "t": "tf",
-   "ref": "16:19",
-   "q": "Hușai i-a spus lui Absalom că îi va sluji cum i-a slujit tatălui lui.",
+   "ref": "16:6",
+   "q": "Vitejii stăteau la dreapta și la stânga împăratului.",
    "a": true
   },
   {
    "id": "2sa.16.mediu.306",
    "age": "mediu",
    "t": "tf",
-   "ref": "16:11",
-   "q": "David a spus că Șimei e mai rău decât fiul lui.",
+   "ref": "16:9",
+   "q": "Abișai i-a cerut voie lui David să-l alunge pe Șimei.",
    "a": false
   },
   {
@@ -347,43 +350,43 @@
    "age": "mediu",
    "t": "tf",
    "ref": "16:14",
-   "q": "David s-a odihnit la Bahurim.",
-   "a": false
+   "q": "Împăratul și poporul s-au odihnit la Aiefim.",
+   "a": true
   },
   {
    "id": "2sa.16.mediu.308",
    "age": "mediu",
    "t": "tf",
-   "ref": "16:23",
-   "q": "Sfaturile lui Ahitofel erau ascultate doar de Absalom.",
+   "ref": "16:15",
+   "q": "Ahitofel a rămas departe de Ierusalim când a intrat Absalom.",
    "a": false
   },
   {
    "id": "2sa.16.mediu.309",
    "age": "mediu",
    "t": "tf",
-   "ref": "16:4",
-   "q": "Țiba i-a cerut lui David să-l ierte pe Mefiboșet.",
-   "a": false
+   "ref": "16:18",
+   "q": "Hușai a spus că vrea să fie al celui ales de Domnul și de popor.",
+   "a": true
   },
   {
    "id": "2sa.16.mediu.310",
    "age": "mediu",
    "t": "tf",
-   "ref": "16:9",
-   "q": "Ioab a cerut să-i taie capul lui Șimei.",
+   "ref": "16:22",
+   "q": "Cortul pentru Absalom a fost întins în curtea casei.",
    "a": false
   },
   {
    "id": "2sa.16.mediu.311",
    "age": "mediu",
    "t": "one",
-   "ref": "16:5",
-   "q": "Al cui fiu era Șimei?",
+   "ref": "16:1",
+   "q": "Câte pâini erau pe măgarii lui Țiba?",
    "opts": [
-    "al lui Ghera",
-    "al lui Țiba",
-    "al lui Saul"
+    "două sute",
+    "cincizeci",
+    "o sută"
    ],
    "a": 0
   },
@@ -391,12 +394,12 @@
    "id": "2sa.16.mediu.312",
    "age": "mediu",
    "t": "one",
-   "ref": "16:15",
-   "q": "Cine era cu Absalom când a intrat în Ierusalim?",
+   "ref": "16:3",
+   "q": "Ce ar fi spus Mefiboșet, după Țiba?",
    "opts": [
-    "Ahitofel",
-    "Hușai",
-    "Abișai"
+    "„Astăzi, casa lui Israel îmi va da înapoi împărăția”",
+    "„Astăzi, David va fi bătut de fiul său Absalom”",
+    "„Astăzi, voi merge să mănânc la masa lui Absalom”"
    ],
    "a": 0
   },
@@ -404,12 +407,12 @@
    "id": "2sa.16.mediu.313",
    "age": "mediu",
    "t": "one",
-   "ref": "16:10",
-   "q": "Pe cine a mustrat David când Abișai a cerut să-l omoare pe Șimei?",
+   "ref": "16:5",
+   "q": "Până unde ajunsese David când a ieșit Șimei?",
    "opts": [
-    "pe fiii Țeruiei",
-    "pe Țiba",
-    "pe Șimei"
+    "până la Bahurim",
+    "până la Iordan",
+    "până la Aiefim"
    ],
    "a": 0
   },
@@ -417,12 +420,12 @@
    "id": "2sa.16.mediu.314",
    "age": "mediu",
    "t": "one",
-   "ref": "16:22",
-   "q": "În fața cui a mers Absalom la țiitoarele tatălui său?",
+   "ref": "16:8",
+   "q": "Pentru ce sânge a spus Șimei că-l pedepsește Domnul pe David?",
    "opts": [
-    "a slujitorilor lui",
-    "a întregului Israel",
-    "doar a lui Ahitofel"
+    "pentru sângele lui Abner",
+    "pentru sângele casei lui Saul",
+    "pentru sângele lui Urie, Hetitul"
    ],
    "a": 1
   },
@@ -430,12 +433,12 @@
    "id": "2sa.16.mediu.315",
    "age": "mediu",
    "t": "one",
-   "ref": "16:13",
-   "q": "Unde mergea Șimei în timp ce blestema?",
+   "ref": "16:10",
+   "q": "Ce a spus David despre blestemul lui Șimei?",
    "opts": [
-    "pe coasta muntelui",
-    "înaintea lui David",
-    "în urma poporului"
+    "„Domnul i-a zis: Blestemă pe David!”",
+    "„Domnul îl va pedepsi mâine!”",
+    "„Șimei este nebun, lăsați-l!”"
    ],
    "a": 0
   },
@@ -443,12 +446,12 @@
    "id": "2sa.16.mediu.316",
    "age": "mediu",
    "t": "one",
-   "ref": "16:18",
-   "q": "Pe cine a spus Hușai că l-a ales?",
+   "ref": "16:11",
+   "q": "Cum l-a numit David pe Șimei?",
    "opts": [
-    "Ahitofel, sfetnicul",
-    "David, prietenul lui",
-    "Domnul și tot poporul"
+    "saulitul acesta",
+    "slujitorul acesta",
+    "beniamitul acesta"
    ],
    "a": 2
   },
@@ -456,12 +459,12 @@
    "id": "2sa.16.mediu.317",
    "age": "mediu",
    "t": "one",
-   "ref": "16:6",
-   "q": "După cine a aruncat Șimei cu pietre?",
+   "ref": "16:16",
+   "q": "Ce a strigat Hușai când a ajuns la Absalom?",
    "opts": [
-    "după Țiba și măgarii lui",
-    "după David și slujitorii lui",
-    "doar după Abișai și Ioab"
+    "„Domnul să fie cu tine!”",
+    "„Trăiască împăratul!”",
+    "„Bine ai venit, împărate!”"
    ],
    "a": 1
   },
@@ -469,12 +472,12 @@
    "id": "2sa.16.mediu.318",
    "age": "mediu",
    "t": "one",
-   "ref": "16:16",
-   "q": "Cum este numit Hușai când ajunge la Absalom?",
+   "ref": "16:17",
+   "q": "Ce l-a întrebat Absalom pe Hușai?",
    "opts": [
-    "Ghilonitul, sfetnicul lui David",
-    "Architul, prietenul lui David",
-    "beniamitul, fiul lui Ghera"
+    "de ce a venit atât de târziu",
+    "de ce nu s-a dus cu prietenul lui",
+    "de ce are haina sfâșiată"
    ],
    "a": 1
   },
@@ -482,12 +485,12 @@
    "id": "2sa.16.mediu.319",
    "age": "mediu",
    "t": "one",
-   "ref": "16:7",
-   "q": "Cum l-a numit Șimei pe David?",
+   "ref": "16:21",
+   "q": "Ce voia Ahitofel să afle tot Israelul?",
    "opts": [
-    "„om de nimic”",
-    "„om al sângelui”",
-    "„fiu al lui Isai”"
+    "că David a fugit în pustie",
+    "că Absalom s-a făcut urât tatălui său",
+    "că Hușai este de partea lui"
    ],
    "a": 1
   },
@@ -495,12 +498,12 @@
    "id": "2sa.16.mediu.320",
    "age": "mediu",
    "t": "one",
-   "ref": "16:21",
-   "q": "Ce a spus Ahitofel că se va întâmpla cu cei ce erau cu Absalom?",
+   "ref": "16:23",
+   "q": "Cu ce era asemănat sfatul lui Ahitofel?",
    "opts": [
-    "se vor certa între ei",
-    "vor fugi în pustie",
-    "li se vor întări mâinile"
+    "cu porunca unui împărat",
+    "cu cuvântul unui proroc",
+    "cu întrebarea făcută lui Dumnezeu"
    ],
    "a": 2
   },
@@ -508,74 +511,80 @@
    "id": "2sa.16.mediu.321",
    "age": "mediu",
    "t": "match",
-   "ref": "16:1-23",
-   "q": "Asociază fiecare loc sau lucru cu ce se spune despre el.",
+   "ref": "16:1-13",
+   "q": "Asociază fiecare lucru cu ce se spune despre el.",
    "pairs": [
     [
-     "Bahurim",
-     "de acolo a ieșit Șimei"
+     "măgarii",
+     "erau pentru călăria casei împăratului"
     ],
     [
-     "Aiefim",
-     "acolo s-au odihnit David și poporul"
+     "pâinile și roadele de vară",
+     "erau pentru hrana tinerilor"
     ],
     [
-     "burduful adus de Țiba",
-     "era plin cu vin"
-    ],
-    [
-     "acoperișul",
-     "acolo s-a întins cortul lui Absalom"
+     "vinul",
+     "era pentru cei obosiți în pustie"
     ],
     [
      "pietrele",
-     "aruncate de Șimei"
+     "Șimei le arunca după David"
+    ],
+    [
+     "praful",
+     "Șimei îl vântura pe coasta muntelui"
     ]
    ],
    "refs": [
-    "16:5",
-    "16:14",
-    "16:1",
-    "16:22",
-    "16:6"
+    "16:2",
+    "16:2",
+    "16:2",
+    "16:6",
+    "16:13"
    ]
   },
   {
    "id": "2sa.16.mediu.322",
    "age": "mediu",
    "t": "multi",
-   "ref": "16:20",
-   "q": "Pe cine a întrebat Absalom ce au de făcut?",
+   "ref": "16:7-8",
+   "q": "Ce i-a strigat Șimei lui David?",
    "opts": [
-    "pe Țiba",
-    "pe Hușai",
-    "pe Șimei"
+    "„Domnul a dat împărăția fiului tău Absalom”",
+    "„Du-te, du-te, om al sângelui!”",
+    "„Domnul te va aduce înapoi”"
    ],
-   "a": []
+   "a": [
+    0,
+    1
+   ]
   },
   {
    "id": "2sa.16.mediu.323",
    "age": "mediu",
    "t": "multi",
-   "ref": "16:14-15",
-   "q": "Ce s-a întâmplat la Aiefim?",
+   "ref": "16:12",
+   "q": "Ce spera David de la Domnul?",
    "opts": [
-    "Hușai a venit la David",
-    "Absalom l-a ajuns pe David",
-    "Șimei a fost omorât"
+    "să-i facă bine în locul blestemelor",
+    "să Se uite la necazul lui",
+    "să-l pedepsească îndată pe Șimei"
    ],
-   "a": []
+   "a": [
+    0,
+    1
+   ]
   },
   {
    "id": "2sa.16.mediu.324",
    "age": "mediu",
    "t": "multi",
-   "ref": "16:17",
-   "q": "Ce l-a întrebat Absalom pe Hușai?",
+   "ref": "16:4",
+   "q": "Ce s-a întâmplat între David și Țiba?",
    "opts": [
-    "de ce nu s-a dus cu prietenul lui",
-    "dacă a adus aur",
-    "cât de mult ține la prietenul lui"
+    "David i-a dat tot ce era al lui Mefiboșet",
+    "Țiba a plecat la Absalom",
+    "David l-a întrebat unde este fiul stăpânului său"
    ],
    "a": [
     0,
@@ -587,7 +596,7 @@
    "age": "greu",
    "t": "tf",
    "ref": "16:1",
-   "q": "Măgarii lui Țiba erau înșeuați.",
+   "q": "Țiba a adus o sută de turte de stafide și o sută de roade de vară.",
    "a": true
   },
   {
@@ -595,23 +604,23 @@
    "age": "greu",
    "t": "tf",
    "ref": "16:2",
-   "q": "Țiba a spus că pâinile sunt pentru împărat și preoți.",
+   "q": "Țiba a spus că vinul este pentru jertfele împăratului.",
    "a": false
   },
   {
    "id": "2sa.16.greu.303",
    "age": "greu",
    "t": "tf",
-   "ref": "16:4",
-   "q": "Țiba a zis: „Să capăt trecere înaintea ta, împărate, domnul meu!”",
+   "ref": "16:3",
+   "q": "Țiba a spus că Mefiboșet a rămas la Ierusalim.",
    "a": true
   },
   {
    "id": "2sa.16.greu.304",
    "age": "greu",
    "t": "tf",
-   "ref": "16:7",
-   "q": "Șimei a zis: „Vino, vino, om al sângelui!”",
+   "ref": "16:5",
+   "q": "Șimei, fiul lui Ghera, a ieșit din Aiefim.",
    "a": false
   },
   {
@@ -619,59 +628,59 @@
    "age": "greu",
    "t": "tf",
    "ref": "16:8",
-   "q": "Șimei a spus: „Iată-te nenorocit, căci ești un om al sângelui!”",
+   "q": "Șimei a spus că David a luat scaunul de domnie al lui Saul.",
    "a": true
   },
   {
    "id": "2sa.16.greu.306",
    "age": "greu",
    "t": "tf",
-   "ref": "16:10",
-   "q": "David i-a spus lui Abișai: „Du-te și tai-i capul!”",
+   "ref": "16:13",
+   "q": "Șimei a încetat să blesteme după ce i-a vorbit David.",
    "a": false
   },
   {
    "id": "2sa.16.greu.307",
    "age": "greu",
    "t": "tf",
-   "ref": "16:13",
-   "q": "Șimei mergea în dreptul lui David pe coasta muntelui.",
+   "ref": "16:10",
+   "q": "David a zis: „Ce aveți voi cu mine, fiii Țeruiei?”",
    "a": true
   },
   {
    "id": "2sa.16.greu.308",
    "age": "greu",
    "t": "tf",
-   "ref": "16:15",
-   "q": "Bărbații lui Israel au intrat cu Absalom în Ierusalim.",
-   "a": true
+   "ref": "16:11",
+   "q": "David a spus: „Fiul meu, care a ieșit din trupul meu, vrea să-mi ia împărăția.”",
+   "a": false
   },
   {
    "id": "2sa.16.greu.309",
    "age": "greu",
    "t": "tf",
-   "ref": "16:20",
-   "q": "Absalom i-a cerut sfat doar lui Hușai.",
-   "a": false
+   "ref": "16:15",
+   "q": "Ahitofel era cu Absalom când au intrat în Ierusalim.",
+   "a": true
   },
   {
    "id": "2sa.16.greu.310",
    "age": "greu",
    "t": "tf",
-   "ref": "16:22",
-   "q": "Cortul lui Absalom a fost întins pe acoperiș.",
-   "a": true
+   "ref": "16:20",
+   "q": "Absalom l-a întrebat întâi pe Hușai ce au de făcut.",
+   "a": false
   },
   {
    "id": "2sa.16.greu.311",
    "age": "greu",
    "t": "one",
-   "ref": "16:2",
-   "q": "Pentru ce erau roadele de vară, după Țiba?",
+   "ref": "16:1",
+   "q": "Ce mai era pe măgarii lui Țiba, pe lângă pâini, turte și roade?",
    "opts": [
-    "pentru măgari",
-    "pentru hrana tinerilor",
-    "pentru jertfă"
+    "un sac cu făină",
+    "un burduf cu vin",
+    "un vas cu untdelemn"
    ],
    "a": 1
   },
@@ -679,12 +688,12 @@
    "id": "2sa.16.greu.312",
    "age": "greu",
    "t": "one",
-   "ref": "16:3",
-   "q": "Ce credea Mefiboșet, după Țiba?",
+   "ref": "16:4",
+   "q": "Ce a răspuns Țiba când a primit tot ce era al lui Mefiboșet?",
    "opts": [
-    "că David îl va lua cu el în pustie",
-    "că i se va da împărăția tatălui său",
-    "că Absalom îl va omorî în cetate"
+    "„Robul tău îți mulțumește!”",
+    "„Mă închin cu plecăciune!”",
+    "„Domnul să te binecuvânteze!”"
    ],
    "a": 1
   },
@@ -693,11 +702,11 @@
    "age": "greu",
    "t": "one",
    "ref": "16:5",
-   "q": "Din ce familie era Șimei?",
+   "q": "Al cui fiu era Șimei?",
    "opts": [
-    "din casa lui Ioab",
-    "din casa lui David",
-    "din casa lui Saul"
+    "al lui Ahitub",
+    "al lui Gheba",
+    "al lui Ghera"
    ],
    "a": 2
   },
@@ -705,12 +714,12 @@
    "id": "2sa.16.greu.314",
    "age": "greu",
    "t": "one",
-   "ref": "16:8",
-   "q": "Pentru ce spunea Șimei că a venit pedeapsa peste David?",
+   "ref": "16:7",
+   "q": "Ce i-a strigat Șimei lui David?",
    "opts": [
-    "pentru Amnon și Tamar",
-    "pentru sângele casei lui Saul",
-    "pentru Urie și Bat-Șeba"
+    "„Pleacă, pleacă, om al sângelui, om viclean!”",
+    "„Du-te, du-te, om al sângelui, om rău!”",
+    "„Du-te, du-te, om al minciunii, om rău!”"
    ],
    "a": 1
   },
@@ -718,12 +727,12 @@
    "id": "2sa.16.greu.315",
    "age": "greu",
    "t": "one",
-   "ref": "16:10",
-   "q": "Ce întrebare a pus David despre cel care l-ar opri pe Șimei?",
+   "ref": "16:8",
+   "q": "Cui a spus Șimei că a dat Domnul împărăția?",
    "opts": [
-    "„Cine dintre voi îl va lovi?”",
-    "„Cine îl cunoaște pe omul acesta?”",
-    "„Cine-i va zice: «De ce faci așa?»”"
+    "casei lui Saul",
+    "lui Mefiboșet",
+    "fiului său Absalom"
    ],
    "a": 2
   },
@@ -731,12 +740,12 @@
    "id": "2sa.16.greu.316",
    "age": "greu",
    "t": "one",
-   "ref": "16:11",
-   "q": "Cu cât mai mult, a spus David, vrea să-i ia viața cine?",
+   "ref": "16:12",
+   "q": "Ce a spus David că poate face Domnul în locul blestemelor?",
    "opts": [
-    "beniamitul acesta",
-    "Țiba",
-    "Ahitofel"
+    "să-i facă bine",
+    "să-i întoarcă cetatea",
+    "să-i dea biruință"
    ],
    "a": 0
   },
@@ -744,12 +753,12 @@
    "id": "2sa.16.greu.317",
    "age": "greu",
    "t": "one",
-   "ref": "16:12",
-   "q": "Ce spera David să primească în locul blestemelor?",
+   "ref": "16:13",
+   "q": "Pe unde mergea Șimei în timp ce blestema?",
    "opts": [
-    "bine de la Domnul",
-    "iertarea lui Absalom",
-    "o cetate nouă"
+    "pe coasta muntelui, în dreptul lui David",
+    "pe vârful dealului, deasupra lui David",
+    "pe drum, în urma lui David"
    ],
    "a": 0
   },
@@ -758,11 +767,11 @@
    "age": "greu",
    "t": "one",
    "ref": "16:17",
-   "q": "Cum l-a numit Absalom pe David în fața lui Hușai?",
+   "q": "Ce i-a spus Absalom lui Hușai?",
    "opts": [
-    "„prietenul tău”",
-    "„tatăl meu”",
-    "„împăratul”"
+    "„Iată cât de mult ții tu la prietenul tău!”",
+    "„Iată cât de repede l-ai părăsit pe David!”",
+    "„Iată că ai venit la vremea potrivită!”"
    ],
    "a": 0
   },
@@ -770,12 +779,12 @@
    "id": "2sa.16.greu.319",
    "age": "greu",
    "t": "one",
-   "ref": "16:21",
-   "q": "La cine l-a sfătuit Ahitofel pe Absalom să intre?",
+   "ref": "16:19",
+   "q": "Ce întrebare a pus Hușai lui Absalom?",
    "opts": [
-    "la țiitoarele lăsate de tatăl său",
-    "la casa lui Ioab, lângă poartă",
-    "la cortul chivotului din cetate"
+    "„Cui îi voi sluji? Nu fiului său?”",
+    "„Unde să mă duc? Nu la tine?”",
+    "„Cui să mă închin? Nu împăratului?”"
    ],
    "a": 0
   },
@@ -783,12 +792,12 @@
    "id": "2sa.16.greu.320",
    "age": "greu",
    "t": "one",
-   "ref": "16:23",
-   "q": "Cât de mare era puterea sfaturilor lui Ahitofel?",
+   "ref": "16:22",
+   "q": "Unde a fost întins cortul pentru Absalom?",
    "opts": [
-    "ca vorba unui proroc mincinos",
-    "ca un ordin de la împărat",
-    "ca o întrebare pusă lui Dumnezeu"
+    "la poarta cetății",
+    "în curtea casei",
+    "pe acoperiș"
    ],
    "a": 2
   },
@@ -796,48 +805,48 @@
    "id": "2sa.16.greu.321",
    "age": "greu",
    "t": "match",
-   "ref": "16:1-23",
-   "q": "Asociază fiecare nume cu ce se spune despre el.",
+   "ref": "16:1-21",
+   "q": "Asociază fiecare persoană cu ce se spune despre ea.",
    "pairs": [
     [
-     "Ghera",
-     "tatăl lui Șimei"
+     "Țiba",
+     "a primit tot ce era al lui Mefiboșet"
     ],
     [
-     "Aiefim",
-     "locul unde s-a odihnit David"
+     "Șimei",
+     "a ieșit din casa lui Saul, blestemând"
     ],
     [
-     "Bahurim",
-     "locul de unde a ieșit Șimei"
+     "Abișai",
+     "a vrut să-i taie capul celui ce blestema"
     ],
     [
-     "Architul",
-     "numele dat lui Hușai"
+     "Hușai",
+     "Architul, prietenul lui David"
     ],
     [
-     "două sute de pâini",
-     "aduse de Țiba pe măgari"
+     "Ahitofel",
+     "sfatul lui era ca un răspuns de la Dumnezeu"
     ]
    ],
    "refs": [
+    "16:4",
     "16:5",
-    "16:14",
-    "16:5",
+    "16:9",
     "16:16",
-    "16:1"
+    "16:23"
    ]
   },
   {
    "id": "2sa.16.greu.322",
    "age": "greu",
    "t": "multi",
-   "ref": "16:5-6",
-   "q": "Ce a făcut Șimei la Bahurim?",
+   "ref": "16:6",
+   "q": "Asupra cui arunca Șimei cu pietre?",
    "opts": [
-    "a aruncat cu pietre după David",
-    "a ieșit blestemând",
-    "l-a lovit pe Abișai"
+    "asupra slujitorilor împăratului",
+    "asupra lui David",
+    "asupra lui Absalom"
    ],
    "a": [
     0,
@@ -848,31 +857,29 @@
    "id": "2sa.16.greu.323",
    "age": "greu",
    "t": "multi",
-   "ref": "16:18",
-   "q": "Ce i-a spus Hușai lui Absalom?",
+   "ref": "16:14",
+   "q": "Unde s-au odihnit împăratul și poporul?",
    "opts": [
-    "cu acela vrea să rămână",
-    "a fost trimis de David",
-    "vrea să fie al celui ales de Domnul"
+    "la Ghilgal",
+    "la Ierihon",
+    "la Bahurim"
    ],
-   "a": [
-    0,
-    2
-   ]
+   "a": []
   },
   {
    "id": "2sa.16.greu.324",
    "age": "greu",
    "t": "multi",
-   "ref": "16:4",
-   "q": "Cui i-a dat David averea lui Mefiboșet?",
+   "ref": "16:21",
+   "q": "Ce a spus Ahitofel că se va întâmpla după sfatul lui?",
    "opts": [
-    "lui Țiba",
-    "lui Ahitofel",
-    "lui Absalom"
+    "tot Israelul va ști că Absalom s-a făcut urât tatălui său",
+    "mâinile celor cu Absalom se vor întări",
+    "David se va întoarce cu pace"
    ],
    "a": [
-    0
+    0,
+    1
    ]
   }
  ]
