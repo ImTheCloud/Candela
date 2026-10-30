@@ -63,6 +63,7 @@ Le propriétaire a validé le chapitre 22 tel quel (`content/2-samuel/sursa/ch22
 - une réponse : question simple ; une fausse réponse plausible, une clairement à côté (« un nor gros / o mare de cristal / un covor de flori »).
 - association : cinq choses de natures différentes (une chose, un animal, un objet, une image…), reliées à un fait simple et marquant (« pământul → s-a cutremurat », « cerboaica → are picioare repezi ca ale lui David »).
 - plusieurs réponses : deux bonnes, une clairement fausse (« fundul mării, temeliile lumii / un curcubeu ») ; jamais aucune bonne.
+- jamais de détail de liste : pas de nombres précis (800, 37, 300), pas de noms secondaires (Elhanan, Sibecai, Ișbi-Benob), pas de lieux peu connus (Lehi, Ierihon). Seulement l'histoire principale et les personnages connus (David, Saul, Ionatan, Ioab, Abișai…).
 
 **Mediu (adolescents)**
 - fausses réponses de la même famille que la bonne (« valurile morții / valurile mării / șuvoaiele apelor » ; « bun / drept / curat » pour « cel bun »).
