@@ -337,6 +337,8 @@ a.tile { text-decoration: none; }
 .me-pill strong { font-weight: 700; }
 .me-pill .link { color: var(--oil-ink); }
 .me-form { width: 100%; text-align: left; --gap: 12px; }
+.me-name-form { width: 100%; max-width: 380px; margin: 0 auto; text-align: left; }
+.me-edit-btn { display: inline-flex; align-items: center; gap: 6px; }
 .me-row { padding: 14px 16px; border-radius: var(--r-box); background: var(--surface); border: 1px solid var(--line); }
 .me-sect { display: grid; gap: 12px; }
 .me-label { font: 600 0.75rem/1.2 var(--f-body); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
@@ -364,7 +366,7 @@ a.tile { text-decoration: none; }
 .kv > div:last-child:nth-child(odd) { grid-column: 1 / -1; }
 .kv dt { color: var(--ink-2); font-size: 0.78rem; }
 .kv dd { margin: 2px 0 0; font-weight: 700; font-variant-numeric: tabular-nums; }
-.pl-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.pl-foot { display: flex; align-items: center; justify-content: flex-end; gap: 12px; flex-wrap: wrap; }
 .pl-actions { display: flex; gap: 18px; }
 .me-end { display: grid; gap: 8px; }
 .me-link { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 16px; border: 1px solid var(--line); border-radius: var(--r-ctl); background: none; color: var(--ink); font: 600 0.95rem var(--f-body); text-decoration: none; cursor: pointer; }
