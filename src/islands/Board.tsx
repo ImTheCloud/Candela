@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'preact/hooks';
 import { collection, FieldPath, getDocs, limit, orderBy, query } from 'firebase/firestore';
-import { LEVEL_KEY, LEVELS, type Level } from '../lib/age';
+import { LEVEL_KEY, type Level } from '../lib/age';
+import { boardChangedAt } from '../lib/board';
 import { db } from '../lib/firebase';
 import { player, setHidden } from '../lib/players';
 import { progress } from '../lib/progress';
@@ -10,16 +11,19 @@ import LevelPicker from './LevelPicker';
 
 interface Row { key: string; name: string; score: number; at: number }
 
-// Memory cache across component remounts within the same session
-// Boards fetched since this page opened: switching tabs shows them at once, and a new visit always starts from fresh data.
-const cache = new Map<string, Row[]>();
-
-const TABS: (Level | 'all')[] = ['all', ...LEVELS.map((g) => g.id)];
+// Boards fetched in the last minutes, kept across pages: coming back home costs no reads (the free plan counts every document read).
+const FRESH = 5 * 60 * 1000;
+const SIZE = 50;
+const cache = new Map<string, { rows: Row[]; at: number }>();
+const cached = (key: string) => {
+  const c = cache.get(key);
+  return c && Date.now() - c.at < FRESH && c.at > boardChangedAt ? c.rows : null;
+};
 
 async function fetchBoard(book: string, a: Level | 'all'): Promise<Row[]> {
   const key = `${book}:${a}`;
   const field = a === 'all' ? 'score' : new FieldPath('lv', LEVEL_KEY[a]);
-  const snap = await getDocs(query(collection(db, 'boards', book, 'players'), orderBy(field, 'desc'), limit(100)));
+  const snap = await getDocs(query(collection(db, 'boards', book, 'players'), orderBy(field, 'desc'), limit(SIZE)));
   const list = snap.docs
     .map((d) => ({
       key: d.id,
@@ -29,7 +33,7 @@ async function fetchBoard(book: string, a: Level | 'all'): Promise<Row[]> {
     }))
     .sort((a, b) => b.score - a.score || a.at - b.at);
 
-  cache.set(key, list);
+  cache.set(key, { rows: list, at: Date.now() });
   return list;
 }
 
@@ -43,7 +47,7 @@ interface Props {
 export default function Board({ book }: Props) {
   // the tabs also pick which scores the chapter tiles show; they do not change the level of the tests
   const [age, setAgeState] = useState<Level | 'all'>(scoreView.value);
-  const [rows, setRows] = useState<Row[] | null>(() => { cache.clear(); return null; });
+  const [rows, setRows] = useState<Row[] | null>(() => cached(`${book}:${scoreView.value}`));
   const [error, setError] = useState(false);
   const [busy, setBusy] = useState(false);
 
@@ -52,9 +56,9 @@ export default function Board({ book }: Props) {
     scoreView.value = next;
     setAgeState(next);
     // instant switch when this board was already fetched since the page opened
-    const cached = cache.get(`${book}:${next}`) ?? null;
-    if (cached) {
-      setRows(cached);
+    const rows = cached(`${book}:${next}`);
+    if (rows) {
+      setRows(rows);
       setError(false);
     } else {
       setRows(null);
@@ -64,7 +68,8 @@ export default function Board({ book }: Props) {
   useEffect(() => {
     let active = true;
 
-    // Fetch active level to ensure freshest data
+    // only the tab on screen is read, and only when it is not fresh
+    if (cached(`${book}:${age}`)) return;
     fetchBoard(book, age)
       .then((list) => {
         if (active) {
@@ -73,15 +78,8 @@ export default function Board({ book }: Props) {
         }
       })
       .catch(() => {
-        if (active && !cache.has(`${book}:${age}`)) setError(true);
+        if (active) setError(true);
       });
-
-    // Prefetch other age groups in parallel so changing tabs is instant
-    for (const other of TABS) {
-      if (other !== age && !cache.has(`${book}:${other}`)) {
-        fetchBoard(book, other).catch(() => {});
-      }
-    }
 
     return () => { active = false; };
   }, [book, age]);
