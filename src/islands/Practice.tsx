@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'preact/hooks';
+import AccountGate from './AccountGate';
 import { LEVELS, type Level } from '../lib/age';
 import { level as savedLevel, setLevel } from '../lib/level';
 import { player } from '../lib/players';
@@ -21,7 +22,7 @@ interface Props {
 
 const COUNTS = [10, 20, 0];
 
-export default function Practice({ book, bookName, chapters, summary }: Props) {
+function PracticeInner({ book, bookName, chapters, summary }: Props) {
   const params = new URLSearchParams(location.search);
   const [picked, setPicked] = useState<number[]>(() => {
     const c = Number(params.get('capitol'));
@@ -138,4 +139,9 @@ export default function Practice({ book, bookName, chapters, summary }: Props) {
       </div>
     </div>
   );
+}
+
+/** Played only from an account. */
+export default function Practice(props: Props) {
+  return <AccountGate><PracticeInner {...props} /></AccountGate>;
 }

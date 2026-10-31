@@ -1,4 +1,5 @@
 import { useState } from 'preact/hooks';
+import AccountGate from './AccountGate';
 import type { Playable } from '../lib/questions';
 import Quiz from './Quiz';
 
@@ -11,8 +12,13 @@ interface Props {
 }
 
 /** A real exam played again: a test like any other, it starts at once. */
-export default function ExamRunner({ book, bookName, examId, questions }: Props) {
+function ExamRunnerInner({ book, bookName, examId, questions }: Props) {
   const [run, setRun] = useState(1);
   return <Quiz key={run} book={book} bookName={bookName} questions={questions} scoreId={examId} record={false}
     backHref={`/${book}/examene`} onAgain={() => setRun(run + 1)} />;
+}
+
+/** Played only from an account. */
+export default function ExamRunner(props: Props) {
+  return <AccountGate><ExamRunnerInner {...props} /></AccountGate>;
 }

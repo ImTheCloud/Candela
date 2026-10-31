@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'preact/hooks';
+import AccountGate from './AccountGate';
 import { loadChapters } from '../lib/load';
 import { level } from '../lib/level';
 import { PAIRS, SHAPE, shuffle, TYPES, type Playable } from '../lib/questions';
@@ -12,7 +13,7 @@ interface Props {
 }
 
 /** A new exam drawn from the whole book, at the level picked on the previous screen. It starts at once. */
-export default function MockExam({ book, bookName, chapters }: Props) {
+function MockExamInner({ book, bookName, chapters }: Props) {
   const lv = level.value;
   const [exam, setExam] = useState<{ key: number; questions: Playable[] } | null>(null);
   const [error, setError] = useState('');
@@ -62,4 +63,9 @@ function mixedMatch(pool: Playable[]): Playable | null {
     ch: 0,
     cite: picked.flatMap(({ q, k }) => q.pairCite?.[k] ?? q.cite),
   };
+}
+
+/** Played only from an account. */
+export default function MockExam(props: Props) {
+  return <AccountGate><MockExamInner {...props} /></AccountGate>;
 }

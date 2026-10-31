@@ -3,6 +3,7 @@ import { errorText, rememberedAccount, signIn, user } from '../lib/session';
 import PasswordInput from './PasswordInput';
 import Profile, { type BookInfo } from './Profile';
 import Loader from './Loader';
+import { nextPage } from './AccountGate';
 
 export default function AccountPage({ books }: { books: BookInfo[] }) {
   const u = user.value;
@@ -23,6 +24,9 @@ function SignInForm() {
     setError('');
     try {
       await signIn(email, password);
+      // sent here by a test: go back to it
+      const next = nextPage('');
+      if (next) location.replace(next);
     } catch (err) {
       setError(errorText(err));
     } finally {
@@ -33,6 +37,7 @@ function SignInForm() {
   return (
     <form class="card auth-card stack" onSubmit={submit}>
       <h2>Intră în cont</h2>
+      <p class="small muted">Ai avut cont pe versiunea veche a site-ului? Intră cu același email și aceeași parolă.</p>
       <div class="field">
         <label for="email">Email</label>
         <input id="email" class="input" type="email" autocomplete="email" required value={email} onInput={(e) => setEmail(e.currentTarget.value)} />
@@ -45,7 +50,7 @@ function SignInForm() {
       <button class="btn btn-primary btn-block" disabled={busy}>{busy ? 'Se verifică…' : 'Intră'}</button>
       <div class="auth-links small">
         <a class="link" href="/cont/parola">Ai uitat parola?</a>
-        <a class="link" href="/cont/inregistrare">Creează un cont</a>
+        <a class="link" href={`/cont/inregistrare${location.search}`}>Creează un cont</a>
       </div>
     </form>
   );

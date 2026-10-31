@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
 import { errorText, signUp, user } from '../lib/session';
 import PasswordInput from './PasswordInput';
+import { nextPage } from './AccountGate';
 
 export default function SignUpForm() {
   const [f, setF] = useState({ firstName: '', lastName: '', email: '', password: '', isParent: false });
@@ -26,7 +27,7 @@ export default function SignUpForm() {
     submitting.current = true;
     try {
       await signUp(f);
-      location.replace('/');
+      location.replace(nextPage('/'));
     } catch (err) {
       submitting.current = false;
       setError(errorText(err));
@@ -62,7 +63,7 @@ export default function SignUpForm() {
       </label>
       {error && <p class="notice notice-bad" role="alert">{error}</p>}
       <button class="btn btn-primary btn-block" disabled={busy}>{busy ? 'Se creează contul…' : 'Creează contul'}</button>
-      <p class="small auth-links"><a class="link" href="/cont">Ai deja un cont?</a></p>
+      <p class="small auth-links"><a class="link" href={`/cont${location.search}`}>Ai deja un cont?</a></p>
     </form>
   );
 }
