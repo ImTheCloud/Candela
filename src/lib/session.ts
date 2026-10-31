@@ -151,12 +151,7 @@ export async function updateAccountName(firstName: string, lastName: string): Pr
   const name = `${first} ${last}`;
   if (name.length > 80) throw new Error('name_too_long');
 
-  // Update Firestore user document (offline-first, with timeout safeguard)
-  await Promise.race([
-    updateDoc(doc(db, 'users', u.uid), { name }),
-    new Promise((resolve) => setTimeout(resolve, 2000)),
-  ]);
-
+  // Optimistically update local profile and storage
   if (profile.value) {
     profile.value = { ...profile.value, name };
   }
@@ -168,6 +163,14 @@ export async function updateAccountName(firstName: string, lastName: string): Pr
       profile: profile.value ? { ...profile.value, name } : null,
     } satisfies Remembered);
   }
+
+  // Update Firestore user document (offline-first, with 600ms safeguard so UI closes quickly)
+  await Promise.race([
+    updateDoc(doc(db, 'users', u.uid), { name }),
+    new Promise((resolve) => setTimeout(resolve, 600)),
+  ]).catch((err) => {
+    console.warn('Firestore user update deferred/failed:', err);
+  });
 
   // Update Firebase Auth displayName in background (never blocks the UI)
   updateProfile(u, { displayName: name }).catch(() => {});

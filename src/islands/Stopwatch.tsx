@@ -16,9 +16,12 @@ function clock(ms: number): string {
   return d ? `${d} z ${hms}` : hms;
 }
 
-/** The admin's own stopwatch, in the profile: started and paused by hand, kept until reset. */
-export default function Stopwatch() {
-  const t: Timer = (profile.value as { timer?: Timer } | null)?.timer ?? { total: 0, start: null };
+/** The admin's own stopwatch: started and paused by hand, kept until reset. */
+export default function Stopwatch({ wrap = false }: { wrap?: boolean }) {
+  const p = profile.value;
+  if (!p?.admin) return null;
+
+  const t: Timer = (p as { timer?: Timer } | null)?.timer ?? { total: 0, start: null };
   const [now, setNow] = useState(Date.now());
   const [confirm, setConfirm] = useState(false);
   const [error, setError] = useState('');
@@ -37,7 +40,7 @@ export default function Stopwatch() {
     try { await updateDoc(doc(db, 'users', user.value!.uid), { timer: next }); } catch (e) { setError(errorText(e)); }
   }
 
-  return (
+  const content = (
     <section class="me-sect" aria-labelledby="sw-title">
       <h2 id="sw-title" class="me-label">Cronometru</h2>
       <div class="me-row sw">
@@ -59,4 +62,6 @@ export default function Stopwatch() {
       </div>
     </section>
   );
+
+  return wrap ? <div class="wrap hb-sw">{content}</div> : content;
 }
