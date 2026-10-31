@@ -31,9 +31,13 @@ export function boardFields(mastered: string[]): BoardFields {
 
 export const boardRef = (book: string, uid: string, key: string) => doc(db, 'boards', book, 'players', `${uid}~${key}`);
 
+/** When this phone last changed a board: boards read before are read again. */
+export let boardChangedAt = 0;
+
 /** The player's entry in a book's board (in a batch, or on its own). */
 export function writeBoard(book: string, uid: string, key: string, name: string, mastered: string[], batch?: WriteBatch) {
   const data = { name, ...boardFields(mastered), at: serverTimestamp() };
+  boardChangedAt = Date.now();
   return batch ? batch.set(boardRef(book, uid, key), data) : setDoc(boardRef(book, uid, key), data);
 }
 
