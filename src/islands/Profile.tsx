@@ -212,6 +212,7 @@ function AccountNameForm({ currentName, onDone }: { currentName: string; onDone:
 
   async function submitName(e: Event) {
     e.preventDefault();
+    if (busy) return;
     const f = firstName.trim();
     const l = lastName.trim();
     if (!f || !l) {
