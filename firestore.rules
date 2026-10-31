@@ -1,7 +1,7 @@
 rules_version = '2';
 
-// Everything lives under users/{uid} and only the account owner reads or writes it (admins can also read, for the admin page).
-// admin, email and createdAt on the profile are not editable from the app.
+// Everything lives under users/{uid} and only the account owner reads or writes it. Admins read and manage every account from the admin page.
+// admin, email and createdAt on the profile are not editable by the owner; an admin can set admin, never email or createdAt.
 service cloud.firestore {
   match /databases/{database}/documents {
     function owner(uid) {
@@ -21,15 +21,19 @@ service cloud.firestore {
 
     match /users/{uid} {
       allow read: if owner(uid) || admin();
-      allow create: if owner(uid) && validUser(request.resource.data) && !('admin' in request.resource.data);
-      allow update: if owner(uid) && validUser(request.resource.data)
-        && !request.resource.data.diff(resource.data).affectedKeys().hasAny(['admin', 'email', 'createdAt']);
+      allow create: if (owner(uid) && validUser(request.resource.data) && !('admin' in request.resource.data))
+        || (admin() && validUser(request.resource.data) && request.resource.data.get('admin', false) is bool);
+      allow update: if (owner(uid) && validUser(request.resource.data)
+          && !request.resource.data.diff(resource.data).affectedKeys().hasAny(['admin', 'email', 'createdAt']))
+        || (admin() && validUser(request.resource.data) && request.resource.data.get('admin', false) is bool
+          && !request.resource.data.diff(resource.data).affectedKeys().hasAny(['email', 'createdAt']));
+      allow delete: if admin();
 
       // children of a parent account
       match /players/{pid} {
         allow read: if owner(uid) || admin();
-        allow delete: if owner(uid);
-        allow create, update: if owner(uid)
+        allow delete: if owner(uid) || admin();
+        allow create, update: if (owner(uid) || admin())
           && request.resource.data.name is string && request.resource.data.name.size() >= 1 && request.resource.data.name.size() <= 40
           && (request.resource.data.get('birthYear', null) == null || validYear(request.resource.data.birthYear))
           && request.resource.data.get('hidden', false) is bool;
@@ -37,13 +41,14 @@ service cloud.firestore {
 
       // what v1 left (questions mastered before the rewrite), written by the migration only
       match /archive/{key} {
-        allow read: if owner(uid);
+        allow read: if owner(uid) || admin();
+        allow delete: if admin();
       }
 
       // {playerKey}~{book}: read chapters, highlights, mastered and missed questions, exam scores
       match /progress/{key} {
         allow read: if owner(uid) || admin();
-        allow delete: if owner(uid);
+        allow delete: if owner(uid) || admin();
         allow create, update: if owner(uid)
           && key.matches('^[A-Za-z0-9_-]{1,128}~[12]-samuel$')
           && request.resource.data.get('read', []).size() <= 31
@@ -51,6 +56,14 @@ service cloud.firestore {
           && request.resource.data.get('mastered', []).size() <= 5000
           && request.resource.data.get('wrong', []).size() <= 5000;
       }
+    }
+
+    // The admin page reads every child and every progress in one query each.
+    match /{path=**}/players/{pid} {
+      allow read: if admin();
+    }
+    match /{path=**}/progress/{key} {
+      allow read: if admin();
     }
 
     function admin() {
@@ -86,7 +99,7 @@ service cloud.firestore {
 
     match /boards/{book}/players/{key} {
       allow read: if true;
-      allow delete: if request.auth != null && key.split('~')[0] == request.auth.uid;
+      allow delete: if (request.auth != null && key.split('~')[0] == request.auth.uid) || admin();
       allow create, update: if request.auth != null
         && key.split('~')[0] == request.auth.uid
         && book in ['1-samuel', '2-samuel']
@@ -106,7 +119,7 @@ service cloud.firestore {
 
     match /boards/all/players/{key} {
       allow read: if true;
-      allow delete: if request.auth != null && key.split('~')[0] == request.auth.uid;
+      allow delete: if (request.auth != null && key.split('~')[0] == request.auth.uid) || admin();
       allow create, update: if request.auth != null
         && key.split('~')[0] == request.auth.uid
         && request.resource.data.keys().hasOnly(['name', 'score', 'at'])
