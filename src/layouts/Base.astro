@@ -112,6 +112,9 @@ const fullTitle = title === 'Candela' ? title : `${title} – Candela`;
       var f = me.name.trim().split(/\s+/)[0];
       if (f) bfb.textContent = 'Bun venit, ' + f;
     }
+    // signed out, the sign-in page is the only way in: nothing to go back to
+    var back = document.querySelector('.back');
+    if (back && !me && location.pathname.indexOf('/cont') === 0) back.style.display = 'none';
   } catch (e) {}
 </script>
 

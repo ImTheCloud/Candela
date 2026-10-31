@@ -39,7 +39,6 @@ function SignInForm() {
   return (
     <form class="card auth-card stack" onSubmit={submit}>
       <h2>Intră în cont</h2>
-      <p>Testele din 1 și 2 Samuel se joacă din cont, ca să-ți păstrăm progresul și să apari în clasament.</p>
       <p class="small muted">Ai avut cont pe versiunea veche a site-ului? Intră cu același email și aceeași parolă.</p>
       <div class="field">
         <label for="email">Email</label>
