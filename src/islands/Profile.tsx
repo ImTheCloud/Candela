@@ -8,6 +8,7 @@ import { LEVELS, levelLabel, type Level } from '../lib/age';
 import { deleteProgress, EMPTY, type Progress } from '../lib/progress';
 import { errorText, profile, profileError, profileLoaded, rememberedAccount, setParent, signOut, user } from '../lib/session';
 import Avatar from './Avatar';
+import { contactHref } from './Welcome';
 import LevelPicker from './LevelPicker';
 import Loader from './Loader';
 
@@ -79,6 +80,7 @@ export default function Profile({ books }: { books: BookInfo[] }) {
       <nav class="me-end">
         {p?.admin && <a class="me-link" href="/admin">Administrare</a>}
         {p?.admin && <a class="me-link" href="/semnalari">Semnalări de greșeli{reportsOpen > 0 ? ` (${reportsOpen})` : ''}</a>}
+        <a class="me-link" href={contactHref}>Scrie-ne un email</a>
         <button type="button" class="me-link signout" onClick={() => signOut()}>Ieși din cont</button>
       </nav>
     </div>

@@ -435,6 +435,20 @@ a.tile { text-decoration: none; }
 .adm-form, .adm-actions { --gap: 10px; }
 .btn-danger { background: var(--bad); color: #fff; }
 html:not(.signed-in) .back-signed-in { display: none; }
+
+/* Welcome guide, shown once */
+.welcome { display: grid; gap: 16px; }
+.wl-top { display: flex; align-items: center; justify-content: space-between; min-height: 24px; }
+.wl-page { display: grid; gap: 12px; min-height: 300px; align-content: start; animation: wl-in .22s ease-out; }
+@keyframes wl-in { from { opacity: 0; transform: translateX(12px); } to { opacity: 1; transform: none; } }
+.wl-ic { display: grid; place-items: center; width: 56px; height: 56px; border-radius: var(--r-box); background: var(--oil-soft); color: var(--oil-ink); }
+.wl-page h2 { font-size: 1.5rem; }
+.wl-body { display: grid; gap: 10px; color: var(--ink-2); line-height: 1.5; }
+.wl-body p { margin: 0; }
+.wl-body b { color: var(--ink); font-weight: 600; }
+.wl-dots { display: flex; justify-content: center; gap: 6px; }
+.wl-dots span { width: 6px; height: 6px; border-radius: 50%; background: var(--line); transition: width .2s, background-color .2s; }
+.wl-dots span.on { width: 18px; border-radius: 3px; background: var(--btn); }
 .bk-nums { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 0; }
 .bk-nums > div { display: flex; flex-direction: column-reverse; gap: 2px; padding: 10px 8px; border-radius: var(--r-ctl); background: var(--bg); text-align: center; }
 .bk-nums dt { font-size: 0.75rem; color: var(--ink-2); }
