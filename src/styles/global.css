@@ -439,7 +439,7 @@ html:not(.signed-in) .back-signed-in { display: none; }
 /* Welcome guide, shown once */
 .welcome { display: grid; gap: 16px; }
 .wl-top { display: flex; align-items: center; justify-content: space-between; min-height: 24px; }
-.wl-page { display: grid; gap: 12px; justify-items: center; text-align: center; min-height: 380px; align-content: center; animation: wl-in .22s ease-out; }
+.wl-page { display: grid; gap: 12px; justify-items: center; text-align: center; animation: wl-in .22s ease-out; }
 .wl-demo { display: grid; gap: 12px; width: 100%; text-align: left; }
 .wl-demo .shape { margin: 0; }
 @keyframes wl-in { from { opacity: 0; transform: translateX(12px); } to { opacity: 1; transform: none; } }

@@ -18,27 +18,29 @@ const PAGES: Page[] = [
   {
     title: 'Bine ai venit pe Candela',
     body: (<>
-      <p>Candela îi ajută pe copii, adolescenți, tineri și adulți să se pregătească pentru concursul biblic <b>Talantul în negoț</b>.</p>
-      <p>Sus în dreapta, în <b>profil</b>, vezi progresul tău, îți adaugi copiii dacă ești părinte și ne poți scrie pentru orice întrebare sau corectare.</p>
+      <p>Candela este un site care îi ajută pe copii, adolescenți, tineri și adulți să se pregătească pentru concursul biblic <b>Talantul în negoț</b>.</p>
+      <p>Sus în dreapta, în profil, vezi progresul tău și îți adaugi copiii dacă ești părinte.</p>
+      <p><b>Pentru orice întrebare sau corectare, poți contacta administratorul din profil.</b></p>
     </>),
   },
   {
-    title: 'Testele',
+    title: 'Testele și examenele',
     body: (<>
       <p>Fiecare capitol are un test, pe trei niveluri. Încearcă-le pe toate.</p>
       <div class="wl-demo">
         <TestShape />
         <LevelPicker />
       </div>
+      <p>Butonul <b>Examene</b> îți dă un examen alb: 24 de întrebări amestecate din toată cartea, ca la examenul final.</p>
     </>),
   },
   {
-    title: 'Examenele',
-    body: <p>Un <b>examen alb</b> de 24 de întrebări amestecate din toată cartea, ca la examenul final.</p>,
-  },
-  {
     title: 'Clasamentul',
-    body: <p>Fiecare întrebare știută îți aduce un punct. Cu butonul <b>Vizibil</b> poți apărea sau nu în clasament. O întrebare greșită? Apasă <b>Semnalează</b>.</p>,
+    body: (<>
+      <p>Fiecare întrebare la care ai răspuns corect o dată îți aduce un punct. O întrebare se numără o singură dată.</p>
+      <p>Poți vedea clasamentul pe fiecare nivel sau pe toate odată. La egalitate, trece înainte cine a ajuns primul la acel punctaj.</p>
+      <p>Nu vrei să apari? Oprește butonul <b>Vizibil</b>: progresul tău rămâne, doar numele nu se mai vede.</p>
+    </>),
   },
 ];
 
