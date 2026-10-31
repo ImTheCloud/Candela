@@ -497,24 +497,19 @@ html:not(.signed-in) .back-signed-in { display: none; }
 @keyframes loader-in { to { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) { .loader svg { animation-duration: .01s; } }
 
-.lb-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.lb-head h2 { margin: 0; }
+.lb-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.lb-head h2 { margin: 0; flex: 1; min-width: 0; }
 .lb-head .check { white-space: nowrap; }
-.lb-count { margin: 0; white-space: nowrap; }
+.lb-count { margin: 0; white-space: nowrap; text-align: right; flex: none; }
 
 .real-note { margin: -6px 0 0; }
 .exams .card.exam { padding: 10px 14px; }
 .exams { gap: 8px; }
 
 .lb, .board, .lb-head { min-width: 0; max-width: 100%; }
-.lb-head h2 { flex: 1; min-width: 0; }
-.lb-count { white-space: normal; }
 
 .me-fam { display: grid; gap: 12px; }
 .fam-add { display: flex; align-items: center; gap: 10px; width: 100%; padding-top: 12px; border-top: 1px solid var(--line); color: var(--ink); text-align: left; }
-
-.lb-title { min-width: 0; }
-.lb-title .lb-count { margin: 2px 0 0; }
 
 
 .tiles-wrap { container-type: inline-size; }
