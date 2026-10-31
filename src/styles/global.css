@@ -423,6 +423,11 @@ a.tile { text-decoration: none; }
 .adm-form, .adm-kids-edit, .adm-actions { --gap: 10px; }
 .adm-del { align-self: flex-start; }
 .btn-danger { background: var(--bad); color: #fff; }
+html:not(.signed-in) .back-signed-in { display: none; }
+.bk-nums { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 0; }
+.bk-nums > div { display: flex; flex-direction: column-reverse; gap: 2px; padding: 10px 8px; border-radius: 12px; background: var(--bg); text-align: center; }
+.bk-nums dt { font-size: 0.75rem; color: var(--ink-2); }
+.bk-nums dd { margin: 0; font: 600 1.15rem/1.1 var(--f-display); font-variant-numeric: tabular-nums; }
 .adm-sub { grid-column: 2 / 4; min-width: 0; display: flex; justify-content: space-between; gap: 10px; }
 .adm-date { flex: none; color: var(--ink-3); white-space: nowrap; }
 .adm-mail { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--ink-2); }

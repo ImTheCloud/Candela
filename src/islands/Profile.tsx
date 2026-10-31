@@ -142,12 +142,29 @@ function PlayerBlock({ p, books, head }: { p: Player; books: BookInfo[]; head: b
 }
 
 /** What the profile shows of one player's progress in one book. */
-interface Summary { mastered: number; /** known questions per level */ byLevel?: Record<string, number>; wrong: number; exams: Progress['exams']; stats: Progress['stats'] }
-const EMPTY_SUMMARY: Summary = { mastered: 0, byLevel: {}, wrong: 0, exams: {}, stats: {} };
+interface Summary {
+  mastered: number;
+  /** known questions per level */
+  byLevel?: Record<string, number>;
+  wrong: number;
+  /** questions to redo per level */
+  wrongByLevel?: Record<string, number>;
+  exams: Progress['exams'];
+  stats: Progress['stats'];
+  lv?: Progress['lv'];
+}
+const EMPTY_SUMMARY: Summary = { mastered: 0, byLevel: {}, wrong: 0, wrongByLevel: {}, exams: {}, stats: {}, lv: {} };
+
+/** Counts per level of question ids (2sa.24.usor.302). */
+function perLevel(ids: string[]): Record<string, number> {
+  const out: Record<string, number> = {};
+  for (const id of new Set(ids)) out[id.split('.')[2]] = (out[id.split('.')[2]] ?? 0) + 1;
+  return out;
+}
 
 /** Live progress of one player in one book. The last visit's numbers show at once; `loaded` is false only for a first visit. */
 function useBookProgress(p: Player, book: string): { data: Summary; loaded: boolean } {
-  const key = `pg:${p.key}~${book}`;
+  const key = `pg2:${p.key}~${book}`;
   const [state, setState] = useState<{ data: Summary; loaded: boolean }>(() => {
     const cached = localGet<Summary | null>(key, null);
     return cached ? { data: cached, loaded: true } : { data: EMPTY_SUMMARY, loaded: false };
@@ -155,37 +172,30 @@ function useBookProgress(p: Player, book: string): { data: Summary; loaded: bool
   const uid = user.value?.uid;
   useEffect(() => {
     if (!uid) return;
-    let last: Progress | null = null;
-    const publish = () => {
-      if (!last) return;
-      const byLevel: Record<string, number> = {};
-      for (const id of new Set(last.mastered)) byLevel[id.split('.')[2]] = (byLevel[id.split('.')[2]] ?? 0) + 1;
-      const data: Summary = { mastered: new Set(last.mastered).size, byLevel, wrong: last.wrong.length, exams: last.exams, stats: last.stats };
+    return onSnapshot(doc(db, 'users', uid, 'progress', `${p.key}~${book}`), (snap) => {
+      const last: Progress = { ...EMPTY, ...(snap.data() as Partial<Progress>) };
+      const data: Summary = {
+        mastered: new Set(last.mastered).size,
+        byLevel: perLevel(last.mastered),
+        wrong: last.wrong.length,
+        wrongByLevel: perLevel(last.wrong),
+        exams: last.exams,
+        stats: last.stats,
+        lv: last.lv ?? {},
+      };
       setState({ data, loaded: true });
       localSet(key, data);
-    };
-    const stop = onSnapshot(doc(db, 'users', uid, 'progress', `${p.key}~${book}`), (snap) => {
-      last = { ...EMPTY, ...(snap.data() as Partial<Progress>) };
-      publish();
     });
-    return stop;
   }, [uid, p.key, book]);
   return state;
 }
 
-/** How well a player answers, per kind of question, over all the books. It is a share of the answers given, so the number of questions does not matter. */
-function TypeBars({ p, books }: { p: Player; books: BookInfo[] }) {
-  const all = books.map((b) => useBookProgress(p, b.slug));
-  const loaded = all.every((x) => x.loaded);
-  const kinds = TYPES.map((t) => ({
-    ...t,
-    n: all.reduce((s, x) => s + (x.data.stats[t.t]?.n ?? 0), 0),
-    r: all.reduce((s, x) => s + (x.data.stats[t.t]?.r ?? 0), 0),
-  })).filter((k) => k.n > 0);
-  if (!loaded) return <Loader small />;
-  if (!kinds.length) return <p class="small muted">Nu a început încă.</p>;
+/** Bars per kind of question: the share of answers fully right, so the number of questions does not matter. */
+function Kinds({ stats, label }: { stats: Progress['stats']; label: string }) {
+  const kinds = TYPES.map((t) => ({ ...t, n: stats[t.t]?.n ?? 0, r: stats[t.t]?.r ?? 0 })).filter((k) => k.n > 0);
+  if (!kinds.length) return null;
   return (
-    <ul class="kinds bk-brief" aria-label="Cât de bine răspunde, pe tipuri de întrebări">
+    <ul class="kinds bk-brief" aria-label={label}>
       {kinds.map((k) => (
         <li class={k.r === k.n ? 'is-full' : k.r === 0 ? 'is-zero' : ''}>
           <span class="kind-name">{k.t === 'fill' ? 'Completare versete' : k.short}</span>
@@ -197,19 +207,35 @@ function TypeBars({ p, books }: { p: Player; books: BookInfo[] }) {
   );
 }
 
+/** How well a player answers, per kind of question, over all the books and levels. */
+function TypeBars({ p, books }: { p: Player; books: BookInfo[] }) {
+  const all = books.map((b) => useBookProgress(p, b.slug));
+  if (!all.every((x) => x.loaded)) return <Loader small />;
+  const stats: Progress['stats'] = {};
+  for (const x of all) for (const [t, c] of Object.entries(x.data.stats)) {
+    const k = t as keyof Progress['stats'];
+    stats[k] = { n: (stats[k]?.n ?? 0) + (c?.n ?? 0), r: (stats[k]?.r ?? 0) + (c?.r ?? 0) };
+  }
+  if (!Object.values(stats).some((c) => c && c.n > 0)) return <p class="small muted">Nu a început încă.</p>;
+  return <Kinds stats={stats} label="Cât de bine răspunde, pe tipuri de întrebări" />;
+}
+
+/** One book at one level: every number here changes with the level picked. */
 function BookStats({ p, book }: { p: Player; book: BookInfo }) {
   const { data: d, loaded } = useBookProgress(p, book.slug);
   // the level shown: the one with the most known questions, unless the player picks another
   const [picked, setPicked] = useState<Level | null>(null);
   const entries = Object.entries(d.exams);
-  // exams only count how many were played: they bring no points and no statistics
-  const examsDone = entries.filter(([id]) => !/^c\d+/.test(id)).reduce((s, [, e]) => s + (e.plays ?? 1), 0);
   const started = d.mastered || d.wrong || entries.length;
   const levels = LEVELS.filter((g) => (book.totals[g.id] ?? 0) > 0);
   const top = levels.reduce((a, g) => ((d.byLevel?.[g.id] ?? 0) > (d.byLevel?.[a.id] ?? 0) ? g : a), levels[0]);
   const lv = picked && levels.some((g) => g.id === picked) ? picked : top.id;
   const t = book.totals[lv] ?? 0;
   const m = d.byLevel?.[lv] ?? 0;
+  const wrong = d.wrongByLevel?.[lv] ?? 0;
+  const chapters = entries.filter(([id]) => id.endsWith(`@${lv}`) && /^c\d+@/.test(id)).length;
+  const mocks = entries.filter(([id]) => id === `alb@${lv}`).reduce((s, [, e]) => s + (e.plays ?? 1), 0);
+  const kinds = d.lv?.[lv] ?? {};
 
   return (
     <section class="bk">
@@ -217,8 +243,8 @@ function BookStats({ p, book }: { p: Player; book: BookInfo }) {
       <p class="hb-sub muted">{t} de întrebări pe nivel, câte {Math.round(t / book.chapters)} pe capitol</p>
       {!loaded ? <Loader small /> : !started ? <p class="small muted">Nu a început încă.</p> : (
         <>
-          <p class="bk-head">Întrebări știute <small>(răspunse corect cel puțin o dată)</small></p>
           <LevelPicker value={lv} onChange={setPicked} groups={levels} />
+          <p class="bk-head">Întrebări știute <small>(răspunse corect cel puțin o dată)</small></p>
           <ul class="kinds bk-level">
             <li class={m === t ? 'is-full' : ''}>
               <span class="kind-name">{levelLabel(lv)}</span>
@@ -226,7 +252,12 @@ function BookStats({ p, book }: { p: Player; book: BookInfo }) {
               <span class="kind-n">{m}/{t}</span>
             </li>
           </ul>
-          <p class="small muted">Examene făcute: <strong>{examsDone}</strong></p>
+          <Kinds stats={kinds} label={`Pe tipuri de întrebări, nivel ${levelLabel(lv).toLowerCase()}`} />
+          <dl class="bk-nums">
+            <div><dt>Teste de capitol</dt><dd>{chapters}/{book.chapters}</dd></div>
+            <div><dt>De reluat</dt><dd>{wrong}</dd></div>
+            <div><dt>Examene albe</dt><dd>{mocks}</dd></div>
+          </dl>
         </>
       )}
     </section>

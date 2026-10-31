@@ -21,6 +21,8 @@ export interface Progress {
   exams: Record<string, { best: number; last: number; at: number; /** chapter tests: most right answers and test size */ bestRight?: number; n?: number; /** how many times it was played */ plays?: number }>;
   /** Answers per question type: n given, r fully right (shows the weak spots). */
   stats: Partial<Record<QType, { n: number; r: number }>>;
+  /** The same answers, per level (recorded since November 2026: older answers count only in `stats`). */
+  lv?: Partial<Record<string, Partial<Record<QType, { n: number; r: number }>>>>;
 }
 
 /** The chapter scores of the last visit, for the tiles to show at once while Firestore answers. */
@@ -96,6 +98,17 @@ export async function recordAnswers(book: string, answers: Answered[], points = 
     if (a.right) counts[a.t].r++;
   }
   for (const [t, c] of Object.entries(counts)) stats[t] = { n: increment(c.n), r: increment(c.r) };
+  // per level too: chapter question ids carry it (2sa.24.usor.302)
+  const byLevel: Record<string, Record<string, { n: number; r: number }>> = {};
+  for (const a of answers) {
+    const l = a.id.split('.')[2];
+    if (l !== 'usor' && l !== 'mediu' && l !== 'greu') continue;
+    const c = ((byLevel[l] ??= {})[a.t] ??= { n: 0, r: 0 });
+    c.n++;
+    if (a.right) c.r++;
+  }
+  const lv = Object.fromEntries(Object.entries(byLevel).map(([l, ts]) => [l,
+    Object.fromEntries(Object.entries(ts).map(([t, c]) => [t, { n: increment(c.n), r: increment(c.r) }]))]));
 
   const before = progress(book).value;
   if (isGuest()) {
@@ -111,7 +124,7 @@ export async function recordAnswers(book: string, answers: Answered[], points = 
   const r = ref(book);
   // one change per field: adding to and removing from "wrong" in the same write is refused
   if (right.length && wrong.length) await setDoc(r, { wrong: arrayUnion(...wrong), updatedAt: serverTimestamp() }, { merge: true });
-  const data: Record<string, unknown> = { stats, updatedAt: serverTimestamp() };
+  const data: Record<string, unknown> = { stats, lv, updatedAt: serverTimestamp() };
   if (right.length) {
     if (gain.length) data.mastered = arrayUnion(...gain);
     data.wrong = arrayRemove(...right);

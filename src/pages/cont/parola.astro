@@ -3,7 +3,7 @@ import Loader from '../../components/Loader.astro';
 import Base from '../../layouts/Base.astro';
 import ResetForm from '../../islands/ResetForm';
 ---
-<Base title="Parolă uitată" home crumbs={[{ href: '/cont', label: 'Cont' }]}>
+<Base title="Parolă uitată" crumbs={[{ href: '/cont', label: 'Cont' }]}>
   <section class="wrap narrow page">
     <ResetForm client:only="preact">
       <Loader slot="fallback" />

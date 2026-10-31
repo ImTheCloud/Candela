@@ -39,8 +39,13 @@ export const profileError = signal(false);
 
 let stopProfile: (() => void) | null = null;
 
+/** html.signed-in: what the CSS needs to know (the account page shows its back button only when signed in). Page swaps replace the html attributes. */
+const markSignedIn = () => document.documentElement.classList.toggle('signed-in', user.value ? true : user.value === undefined && !!remembered);
+document.addEventListener('astro:after-swap', markSignedIn);
+
 onAuthStateChanged(auth, (u) => {
   user.value = u;
+  markSignedIn();
   stopProfile?.();
   stopProfile = null;
   // the remembered profile stays on screen until the real one arrives, if it is the same account

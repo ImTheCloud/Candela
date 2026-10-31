@@ -23,10 +23,12 @@ interface Props {
   backUp?: boolean;
   /** "Bun venit, {prenume}" in the header instead of the site name (enabled on all pages by default). */
   greet?: boolean;
+  /** The back button shows only when signed in (the account page: the sign-in form when signed out, the profile when signed in). */
+  backSignedIn?: boolean;
   /** A page title in the header instead of the site name and the account button (the Bible reader). */
   heading?: { title: string; note?: string; sub?: string };
 }
-const { title, description = 'Teste biblice după traducerea Cornilescu: 1 Samuel și 2 Samuel.', crumbs = [], home = false, backUp = false, greet = true, heading } = Astro.props;
+const { title, description = 'Teste biblice după traducerea Cornilescu: 1 Samuel și 2 Samuel.', crumbs = [], home = false, backUp = false, backSignedIn = false, greet = true, heading } = Astro.props;
 const up = crumbs.at(-1)?.href ?? '/';
 const parent = up === `/${DEFAULT_BOOK}` ? '/' : up;
 const fullTitle = title === 'Candela' ? title : `${title} – Candela`;
@@ -55,7 +57,8 @@ const fullTitle = title === 'Candela' ? title : `${title} – Candela`;
     <script is:inline>
       // The site is played from an account: a visit not signed in goes to sign-in at once (the account pages stay open).
       try {
-        if (!localStorage.getItem('me') && location.pathname.indexOf('/cont') !== 0) location.replace('/cont?next=' + encodeURIComponent(location.pathname + location.search));
+        if (localStorage.getItem('me')) document.documentElement.classList.add('signed-in');
+        else if (location.pathname.indexOf('/cont') !== 0) location.replace('/cont?next=' + encodeURIComponent(location.pathname + location.search));
       } catch (e) {}
     </script>
     <ClientRouter />
@@ -70,7 +73,7 @@ const fullTitle = title === 'Candela' ? title : `${title} – Candela`;
     <header class="top">
       <div class="wrap top-row">
         {!home && (
-          <a class="back" href={parent} data-back={backUp ? undefined : ''} aria-label="Înapoi">
+          <a class={`back${backSignedIn ? ' back-signed-in' : ''}`} href={parent} data-back={backUp ? undefined : ''} aria-label="Înapoi">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6" /></svg>
           </a>
         )}
@@ -116,6 +119,9 @@ const fullTitle = title === 'Candela' ? title : `${title} – Candela`;
 </script>
 
 <script>
+  // every page checks the account (the Bible reader has no account button that would load it)
+  import '../lib/session';
+
   // Back goes to the previous page of the app (no reload); with nothing behind it, up to the parent page.
   document.addEventListener('click', (e) => {
     const a = (e.target as Element).closest('a[data-back]');
