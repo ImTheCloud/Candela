@@ -1,5 +1,5 @@
 import { useState } from 'preact/hooks';
-import { addChild, choosePlayer, player, players, removeChild, sameFirstName, updateChild, type Player } from '../lib/players';
+import { addChild, players, removeChild, sameFirstName, updateChild, type Player } from '../lib/players';
 import { localGet } from '../lib/store';
 import { deleteProgress } from '../lib/progress';
 import { errorText, profile, profileError, profileLoaded, rememberedAccount, setParent, signOut, updateAccountName, user } from '../lib/session';
@@ -69,7 +69,11 @@ export default function Profile({ books: _books }: { books?: BookInfo[] }) {
               onDoneEditSelf={() => setEditingSelf(false)}
             />
           ))}
-          {adding && <ChildForm onDone={() => setAdding(false)} />}
+          {adding && (
+            <article class="pl">
+              <ChildForm onDone={() => setAdding(false)} />
+            </article>
+          )}
           {p && (
             <div class="me-row me-fam">
               <label class="switch-row">
@@ -127,7 +131,7 @@ export default function Profile({ books: _books }: { books?: BookInfo[] }) {
   );
 }
 
-/** One player in the family: who they are, whether they are playing, and child management. */
+/** One player in the family: who they are, and management (rename, delete). */
 function PlayerBlock({
   p,
   editingSelf,
@@ -139,8 +143,6 @@ function PlayerBlock({
   onStartEditSelf: () => void;
   onDoneEditSelf: () => void;
 }) {
-  const current = player.value;
-  const active = p.key === current.key;
   const [editingChild, setEditingChild] = useState(false);
   const [confirming, setConfirming] = useState(false);
   const isSelf = !p.child;
@@ -153,32 +155,39 @@ function PlayerBlock({
   if (isSelf && editingSelf) {
     return (
       <article class="pl" id="name-edit">
-        <header class="pl-head">
-          <Avatar name={p.name} size={40} />
+        <div class="pl-row">
+          <Avatar name={p.name} size={36} />
           <div class="pl-name">
-            <strong>{p.name.split(' ')[0]} (tu)</strong>
+            <strong>{p.name.split(' ')[0]} <span class="muted small">(tu)</span></strong>
           </div>
-        </header>
+        </div>
         <AccountNameForm currentName={p.name} onDone={onDoneEditSelf} />
       </article>
     );
   }
 
-  if (editingChild) return <ChildForm child={p} onDone={() => setEditingChild(false)} />;
+  if (editingChild) {
+    return (
+      <article class="pl">
+        <div class="pl-row">
+          <Avatar name={p.name} size={36} />
+          <div class="pl-name">
+            <strong>{p.name.split(' ')[0]}</strong>
+          </div>
+        </div>
+        <ChildForm child={p} onDone={() => setEditingChild(false)} />
+      </article>
+    );
+  }
 
   return (
     <article class="pl">
-      <header class="pl-head">
-        <Avatar name={p.name} size={40} />
+      <div class="pl-row">
+        <Avatar name={p.name} size={36} />
         <div class="pl-name">
-          <strong>{p.name.split(' ')[0]}{isSelf && ' (tu)'}</strong>
+          <strong>{p.name.split(' ')[0]}{isSelf && <span class="muted small"> (tu)</span>}</strong>
         </div>
-        {active
-          ? <span class="tag-on">joacă acum</span>
-          : <button type="button" class="btn btn-ghost btn-sm" onClick={() => choosePlayer(p.key)}>Alege</button>}
-      </header>
-      <footer class="pl-foot">
-        <span class="pl-actions">
+        <div class="pl-actions">
           {p.child ? (
             <>
               <button type="button" class="btn-reset link small" onClick={() => setEditingChild(true)}>Schimbă</button>
@@ -187,10 +196,10 @@ function PlayerBlock({
           ) : (
             <button type="button" class="btn-reset link small" onClick={onStartEditSelf}>Schimbă numele</button>
           )}
-        </span>
-      </footer>
+        </div>
+      </div>
       {confirming && (
-        <div class="notice notice-bad stack" style="--gap: 10px">
+        <div class="notice notice-bad stack" style="--gap: 10px; margin-top: 6px;">
           <p>Ștergi profilul lui {p.name}? Nu se mai poate recupera.</p>
           <div class="two">
             <button type="button" class="btn btn-ghost btn-sm" onClick={() => setConfirming(false)}>Renunță</button>
