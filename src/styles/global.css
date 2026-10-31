@@ -405,7 +405,8 @@ a.tile { text-decoration: none; }
   transition: background-color .12s, color .12s, border-color .12s, transform .08s;
 }
 .lv-chip { display: grid; place-content: center; gap: 1px; line-height: 1.15; padding: 4px 2px; }
-.lv-who { font-weight: 500; font-size: 0.72rem; opacity: .75; }
+.lv-who { font-weight: 600; font-size: 0.85rem; }
+.lv-sub { font-weight: 500; font-size: 0.72rem; opacity: .75; }
 .lv-chip:active { transform: scale(0.98); }
 .lv-chip[aria-checked="true"],
 .lv-chip[aria-selected="true"] { background: var(--btn); border-color: var(--btn); color: #fff; }
