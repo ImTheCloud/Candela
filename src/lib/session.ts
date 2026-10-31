@@ -141,14 +141,40 @@ export function setParent(isParent: boolean) {
   return updateDoc(doc(db, 'users', u.uid), { isParent });
 }
 
+export async function updateAccountName(firstName: string, lastName: string): Promise<string> {
+  const u = auth.currentUser;
+  if (!u) throw new Error('not_signed_in');
+  const first = clean(firstName);
+  const last = clean(lastName);
+  if (!first || !last) throw new Error('name_required');
+  const name = `${first} ${last}`;
+  if (name.length > 80) throw new Error('name_too_long');
+  await updateProfile(u, { displayName: name });
+  await updateDoc(doc(db, 'users', u.uid), { name });
+  if (profile.value) {
+    profile.value = { ...profile.value, name };
+  }
+  const remembered = localGet<Remembered | null>('me', null);
+  if (remembered && remembered.uid === u.uid) {
+    localSet('me', {
+      ...remembered,
+      name,
+      profile: profile.value ? { ...profile.value, name } : null,
+    } satisfies Remembered);
+  }
+  return name;
+}
+
 function clean(s: string): string {
   return s.trim().replace(/\s+/g, ' ');
 }
 
 /** Romanian message for a Firebase error. */
 export function errorText(e: unknown): string {
-  const code = (e as { code?: string })?.code ?? '';
+  const code = (e as { code?: string; message?: string })?.code ?? (e as { message?: string })?.message ?? '';
   switch (code) {
+    case 'name_required': return 'Scrie prenumele și numele de familie.';
+    case 'name_too_long': return 'Numele este prea lung (maximum 80 de caractere).';
     case 'auth/invalid-email': return 'Adresa de email nu este validă.';
     case 'auth/invalid-credential':
     case 'auth/wrong-password':
