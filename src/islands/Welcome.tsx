@@ -10,61 +10,35 @@ export const contactHref = `mailto:${CONTACT}?subject=${encodeURIComponent('Cand
 
 const SEEN = 'welcome-v2';
 
-interface Page { icon: JSX.Element; title: string; body: JSX.Element }
+interface Page { title: string; body: JSX.Element }
 
 const PAGES: Page[] = [
   {
-    icon: <path d="M12 3c2 3 4 5 4 8a4 4 0 0 1-8 0c0-2 1-3 2-5 .5 1.5 1.2 2.3 2 2.7C11.6 6.6 12 5 12 3zM5 17c2 0 4.5-1 7-1s4.5 1 7 1c-1 2.5-4 4-7 4s-6-1.5-7-4z" />,
     title: 'Bine ai venit pe Candela',
     body: (<>
-      <p>Candela este făcută în <b>Biserica Bethel Dworp</b>, ca să-i ajute pe tinerii bisericii noastre să se pregătească pentru concursul biblic <b>Talantul în negoț</b>.</p>
-      <p>La Talantul în negoț, tinerii învață o carte din Biblie și dau la final un examen, pe grupe de vârstă.</p>
-      <p>A pornit din nevoile noastre, dar e deschisă oricui: orice biserică și oricine vrea să învețe Biblia o poate folosi.</p>
-      <p class="muted">Ai o întrebare, ai găsit o greșeală sau vrei să schimbi ceva în profil? Scrie-ne direct.</p>
+      <p>Candela îi ajută pe copii, adolescenți, tineri și adulți să se pregătească pentru concursul biblic <b>Talantul în negoț</b>.</p>
+      <p class="muted">Pentru orice întrebare sau corectare, ne poți scrie din profil.</p>
     </>),
   },
   {
-    icon: <path d="M4 5a2 2 0 0 1 2-2h5v18H6a2 2 0 0 1-2-2zM13 3h5a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-5z" />,
     title: 'Cărțile',
-    body: (<>
-      <p>Aici sunt cărțile <b>1 Samuel</b> și <b>2 Samuel</b>, după traducerea Cornilescu. Le alegi sus, pe pagina principală.</p>
-      <p><b>2 Samuel</b> este gata. Întrebările din <b>1 Samuel</b> se scriu din nou și apar în curând.</p>
-      <p>Fiecare capitol se poate citi direct pe site, cu butonul <b>Citește capitolul</b>.</p>
-    </>),
+    body: <p><b>1 Samuel</b> și <b>2 Samuel</b>, după traducerea Cornilescu. 2 Samuel este gata, 1 Samuel vine în curând. Fiecare capitol se poate și citi.</p>,
   },
   {
-    icon: <path d="M9 11l3 3 8-8M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9" />,
-    title: 'Testele pe capitole',
-    body: (<>
-      <p>Fiecare capitol are un test de <b>24 de întrebări</b>: adevărat sau fals, un singur răspuns, asociere și mai multe răspunsuri.</p>
-      <p>Sunt trei niveluri: <b>Ușor</b> pentru copii, <b>Mediu</b> pentru adolescenți și <b>Greu</b> pentru adulți. Poți încerca toate nivelurile.</p>
-      <p>După fiecare răspuns vezi versetul, ca să înveți din greșeli.</p>
-    </>),
+    title: 'Testele',
+    body: <p><b>24 de întrebări</b> pe capitol, pe trei niveluri: <b>Ușor</b> (copii), <b>Mediu</b> (adolescenți) și <b>Greu</b> (adulți). Le poți încerca pe toate.</p>,
   },
   {
-    icon: <path d="M7 3h10v4a5 5 0 0 1-10 0zM5 4H3v2a3 3 0 0 0 4 3M19 4h2v2a3 3 0 0 1-4 3M12 12v4M8 21h8M9 16h6v5H9z" />,
     title: 'Examenele',
-    body: (<>
-      <p>Butonul <b>Examene</b>, sub capitole, deschide un <b>examen alb</b>: 24 de întrebări amestecate din toată cartea, ca la examenul final.</p>
-      <p>Când au loc, examenele reale de la concurs apar tot acolo, ca să le poți reface.</p>
-    </>),
+    body: <p>Un <b>examen alb</b> de 24 de întrebări amestecate din toată cartea, ca la examenul final.</p>,
   },
   {
-    icon: <path d="M8 21V11M16 21V7M12 21V3M4 21h16" />,
     title: 'Clasamentul',
-    body: (<>
-      <p>Fiecare întrebare la care ai răspuns corect o dată îți aduce un punct în clasament, pe fiecare nivel sau pe toate.</p>
-      <p>Nu vrei să apari? Comută butonul <b>Vizibil</b> de lângă clasament și rămâi ascuns, fără să pierzi nimic.</p>
-    </>),
+    body: <p>Fiecare întrebare știută îți aduce un punct. Cu butonul <b>Vizibil</b> poți apărea sau nu în clasament.</p>,
   },
   {
-    icon: <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM4 21a8 8 0 0 1 16 0" />,
-    title: 'Profilul tău',
-    body: (<>
-      <p>Apasă pe cercul cu inițialele tale, sus în dreapta, ca să vezi progresul pe fiecare nivel.</p>
-      <p>Un părinte își adaugă copiii în profil. Fiecare copil joacă de pe telefonul părintelui, cu progresul lui.</p>
-      <p>Dacă o întrebare ți se pare greșită, apasă <b>Semnalează</b> chiar la întrebare.</p>
-    </>),
+    title: 'Profilul',
+    body: <p>Sus în dreapta: progresul tău, copiii (pentru un părinte) și un email către noi. O întrebare greșită? Apasă <b>Semnalează</b>.</p>,
   },
 ];
 
@@ -86,17 +60,9 @@ export default function Welcome() {
           {!last && <button type="button" class="btn-reset link small" onClick={close}>Sari peste</button>}
         </div>
         <div class="wl-page" key={i}>
-          <span class="wl-ic" aria-hidden="true">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">{page.icon}</svg>
-          </span>
+          <WelcomeLamp />
           <h2 id="wl-title">{page.title}</h2>
           <div class="wl-body">{page.body}</div>
-          {i === 0 && (
-            <a class="btn btn-ghost btn-block" href={contactHref}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16v12H4zM4 7l8 6 8-6" /></svg>
-              Scrie-ne un email
-            </a>
-          )}
         </div>
         <div class="wl-dots" aria-hidden="true">
           {PAGES.map((_, k) => <span class={k === i ? 'on' : ''} />)}
@@ -109,5 +75,23 @@ export default function Welcome() {
         </div>
       </>)}
     </Modal>
+  );
+}
+
+/** The site's lamp, as in the header, larger. */
+function WelcomeLamp() {
+  return (
+    <span class="wl-lamp" aria-hidden="true">
+      <span class="wl-glow" />
+      <svg width="96" height="96" viewBox="0 0 160 160">
+        <g class="wl-flame">
+          <path d="M80 18c10 18 22 30 22 48 0 13-10 22-22 22s-22-9-22-22c0-12 8-20 12-30 2 8 6 12 10 14-2-12 0-22 0-32z" fill="#D97B26" />
+          <path d="M80 50c5 9 10 15 10 23 0 6-4 10-10 10s-10-4-10-10c0-7 6-13 10-23z" fill="#FBE5CC" />
+        </g>
+        <path d="M28 104c18 0 34-8 52-8s30 4 52 0c-4 18-24 32-52 32-20 0-40-8-52-24z" fill="#3A271B" />
+        <path d="M132 96c8-4 14-2 16 4-6 0-10 2-16 6z" fill="#3A271B" />
+        <ellipse cx="80" cy="96" rx="10" ry="3" fill="#7B6450" />
+      </svg>
+    </span>
   );
 }
