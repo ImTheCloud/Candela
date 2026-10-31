@@ -7,7 +7,7 @@ import { totals } from '../../lib/content';
 
 const books = BOOKS.map((b) => ({ slug: b.slug, name: b.name, chapters: b.chapters, totals: totals(b.slug) }));
 ---
-<Base title="Contul meu" greet crumbs={[{ href: '/', label: 'Acasă' }]}>
+<Base title="Contul meu" greet home crumbs={[{ href: '/', label: 'Acasă' }]}>
   <section class="wrap narrow page">
     <AccountPage client:only="preact" books={books}>
       <Loader slot="fallback" />
