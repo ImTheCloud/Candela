@@ -2,15 +2,14 @@ import type { JSX } from 'preact';
 import { useEffect, useState } from 'preact/hooks';
 import { LEVELS, levelLabel, type Level } from '../lib/age';
 import { level, scoreView } from '../lib/level';
-import { cachedExams, EMPTY, progress, scoreLabel } from '../lib/progress';
-import { rememberedAccount, user } from '../lib/session';
-import { player } from '../lib/players';
+import { progress, progressLoaded, scoreLabel } from '../lib/progress';
 import { PER_TEST, type QType } from '../lib/questions';
 import { prefetch } from 'astro:prefetch';
 import { loadChapter } from '../lib/load';
 import LevelPicker from './LevelPicker';
 import TestShape from './TestShape';
 import Modal, { CloseButton } from './Modal';
+import Loader from './Loader';
 import ExamSheet, { type ExamInfo } from './ExamSheet';
 
 /** Questions per chapter, age group and type (computed at build). */
@@ -32,8 +31,7 @@ export default function ChapterMenu({ book, titles, summary, exams: realExams }:
   const [open, setOpen] = useState<number | null>(null);
   const [examOpen, setExamOpen] = useState(false);
   const prog = progress(book).value;
-  // until Firestore answers, the scores of the last visit are shown
-  const exams = prog === EMPTY && user.value !== null ? cachedExams(user.value?.uid ?? rememberedAccount?.uid ?? player.value.key, book) : prog.exams;
+  const exams = prog.exams;
   // a chapter's score belongs to a level: the tiles and the sheet show the score of the level picked now
   const at = (ch: number, lv: string) => exams[`c${ch}@${lv}`];
   const entry = (ch: number) => at(ch, level.value);
@@ -51,6 +49,9 @@ export default function ChapterMenu({ book, titles, summary, exams: realExams }:
     <Sheet book={book} ch={open} title={titles[open - 1]} best={scoreLabel(entry(open), count(summary[open]?.[level.value]))}
       onClose={() => setOpen(null)} />
   );
+
+  // the tiles wait for the player's scores: no numbers popping in after the page shows
+  if (!progressLoaded(book).value) return <Loader />;
 
   return (
     <>

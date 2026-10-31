@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'preact/hooks';
 import { doc, onSnapshot } from 'firebase/firestore';
 import { db } from '../lib/firebase';
-import { addChild, choosePlayer, player, players, rememberedKids, removeChild, updateChild, type Player } from '../lib/players';
+import { addChild, choosePlayer, player, players, removeChild, updateChild, type Player } from '../lib/players';
 import { localGet, localSet } from '../lib/store';
 import { TYPES } from '../lib/questions';
 import { LEVELS, levelLabel, type Level } from '../lib/age';
 import { deleteProgress, EMPTY, type Progress } from '../lib/progress';
-import { errorText, profile, profileError, rememberedAccount, setParent, signOut, user } from '../lib/session';
+import { errorText, profile, profileError, profileLoaded, rememberedAccount, setParent, signOut, user } from '../lib/session';
 import Avatar from './Avatar';
 import LevelPicker from './LevelPicker';
 import Loader from './Loader';
@@ -15,7 +15,7 @@ export interface BookInfo { slug: string; name: string; chapters: number; totals
 
 /**
  * The whole profile on one page: who you are, the family, and each player's progress.
- * It draws from what the last visit remembered, so nothing pops in while Firebase wakes up.
+ * It waits for the account and its data, so nothing changes under the eyes once it shows.
  */
 export default function Profile({ books }: { books: BookInfo[] }) {
   const u = user.value;
@@ -24,11 +24,14 @@ export default function Profile({ books }: { books: BookInfo[] }) {
   const email = u?.email ?? p?.email ?? '';
   const [parentError, setParentError] = useState('');
   const [adding, setAdding] = useState(false);
-  const list = u ? players.value : [...self(p, rememberedAccount?.uid), ...rememberedKids];
+  const list = players.value;
   const kids = list.filter((x) => x.child).length;
   const isParent = p?.isParent === true;
   // how many flagged questions wait (the avatar keeps this number up to date)
   const reportsOpen = p?.admin ? localGet<number>('acctN', 0) : 0;
+
+  // nothing is drawn from the last visit: the page waits for the account, then each block for its data
+  if (!u || !profileLoaded.value) return <Loader />;
 
   async function toggleParent(on: boolean) {
     setParentError('');
@@ -80,11 +83,6 @@ export default function Profile({ books }: { books: BookInfo[] }) {
       </nav>
     </div>
   );
-}
-
-/** The signed-in account as a player, from the remembered profile, until the real list arrives. */
-function self(p: ReturnType<typeof profile.peek>, uid?: string): Player[] {
-  return uid && p ? [{ key: uid, name: p.name, birthYear: p.birthYear, child: false, hidden: p.hidden ?? false }] : [];
 }
 
 /** One player: who, whether they are the one playing, progress in each book, and their settings. */
@@ -164,11 +162,7 @@ function perLevel(ids: string[]): Record<string, number> {
 
 /** Live progress of one player in one book. The last visit's numbers show at once; `loaded` is false only for a first visit. */
 function useBookProgress(p: Player, book: string): { data: Summary; loaded: boolean } {
-  const key = `pg2:${p.key}~${book}`;
-  const [state, setState] = useState<{ data: Summary; loaded: boolean }>(() => {
-    const cached = localGet<Summary | null>(key, null);
-    return cached ? { data: cached, loaded: true } : { data: EMPTY_SUMMARY, loaded: false };
-  });
+  const [state, setState] = useState<{ data: Summary; loaded: boolean }>({ data: EMPTY_SUMMARY, loaded: false });
   const uid = user.value?.uid;
   useEffect(() => {
     if (!uid) return;
@@ -184,7 +178,6 @@ function useBookProgress(p: Player, book: string): { data: Summary; loaded: bool
         lv: last.lv ?? {},
       };
       setState({ data, loaded: true });
-      localSet(key, data);
     });
   }, [uid, p.key, book]);
   return state;

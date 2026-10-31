@@ -30,7 +30,7 @@ body.in-quiz main { padding-top: 0; }
 /* tactile answers: a solid lip under each one, pressed down when touched */
 .opt {
   display: flex; align-items: center; gap: 12px; width: 100%; min-height: 54px; padding: 10px 14px;
-  border: 2px solid var(--line); border-radius: 16px; background: var(--surface); color: var(--ink); box-shadow: 0 3px 0 var(--line);
+  border: 2px solid var(--line); border-radius: var(--r-box); background: var(--surface); color: var(--ink); box-shadow: 0 3px 0 var(--line);
   font: 500 1rem/1.35 var(--f-body); text-align: left; cursor: pointer; transition: border-color .12s, background-color .12s, transform .06s, box-shadow .06s;
 }
 .opt:active:not(:disabled) { transform: translateY(3px); box-shadow: 0 0 0 var(--line); }
@@ -63,7 +63,7 @@ body.in-quiz main { padding-top: 0; }
 .match-col li { display: grid; }
 .m-item {
   position: relative; display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 8px; width: 100%; height: 100%; min-height: 56px;
-  padding: 10px 10px; text-align: left; border: 2px solid var(--line); border-radius: 14px; background: var(--surface);
+  padding: 10px 10px; text-align: left; border: 2px solid var(--line); border-radius: var(--r-ctl); background: var(--surface);
   color: var(--ink); font: 500 0.88rem/1.3 var(--f-body); cursor: pointer;
 }
 .m-key {
@@ -103,7 +103,7 @@ body.in-quiz main { padding-top: 0; }
 .feedback .fb-answer small { font-size: 0.72rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; opacity: .8; }
 .verse-btn {
   display: flex; align-items: center; gap: 12px; width: 100%; min-height: 56px; padding: 10px 14px;
-  border: 1.5px solid var(--line); border-radius: 16px; background: var(--surface); color: var(--ink);
+  border: 1.5px solid var(--line); border-radius: var(--r-box); background: var(--surface); color: var(--ink);
   font: inherit; text-align: left; cursor: pointer;
 }
 .verse-btn:active { background: var(--surface-2); }
@@ -114,14 +114,14 @@ body.in-quiz main { padding-top: 0; }
 .vb-chev { flex: none; color: var(--ink-3); }
 .verse-sheet { display: grid; gap: 12px; color: var(--ink); }
 .vs-text { position: relative; max-height: 56dvh; overflow-y: auto; padding: 4px 2px; font: 400 1.08rem/1.65 var(--f-bible); }
-.vs-text p { padding: 4px 10px; border-radius: 10px; }
+.vs-text p { padding: 4px 10px; border-radius: var(--r-ctl); }
 .vs-text sup { font: 600 0.7rem var(--f-body); color: var(--oil-ink); margin-right: 4px; }
 .vs-text .is-cited { background: var(--oil-soft); }
 .fb-actions { display: flex; gap: 8px; }
 .fb-actions .verse-btn { flex: 1; min-width: 0; }
 .info-btn {
   flex: none; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; width: 76px;
-  border: 1.5px solid var(--line); border-radius: 16px; background: var(--surface); color: var(--ink-2);
+  border: 1.5px solid var(--line); border-radius: var(--r-box); background: var(--surface); color: var(--ink-2);
   font: 600 0.72rem/1 var(--f-body); cursor: pointer;
 }
 .info-btn:active { background: var(--surface-2); }
@@ -137,13 +137,13 @@ body.in-quiz main { padding-top: 0; }
 .report-modal .sheet-top h2 { font-size: 1.25rem; }
 .rp-form { display: grid; gap: 8px; }
 .rp-reasons { display: grid; gap: 6px; }
-.rp-opt { display: flex; align-items: center; min-height: 42px; padding: 6px 14px; border: 1.5px solid var(--line); border-radius: 12px; background: var(--bg); font-size: 0.95rem; font-weight: 500; cursor: pointer; }
+.rp-opt { display: flex; align-items: center; min-height: 42px; padding: 6px 14px; border: 1.5px solid var(--line); border-radius: var(--r-ctl); background: var(--bg); font-size: 0.95rem; font-weight: 500; cursor: pointer; }
 .rp-opt input { position: absolute; opacity: 0; pointer-events: none; }
 .rp-opt.on { border-color: var(--btn); background: var(--oil-soft); font-weight: 600; }
 .rp-note { min-height: 56px; padding: 8px 12px; resize: none; font: inherit; }
 .rp-done { display: grid; gap: 12px; justify-items: center; text-align: center; padding: 6px 0 4px; }
 .rp-done-ic { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 50%; background: var(--ok-soft); color: var(--ok); }
-.fb-answer { padding: 10px 12px; border-radius: 10px; background: var(--ok-soft); color: var(--ok); font-weight: 600; }
+.fb-answer { padding: 10px 12px; border-radius: var(--r-ctl); background: var(--ok-soft); color: var(--ok); font-weight: 600; }
 
 /* The bar at the foot of the screen: "Verifică", then the verdict and the way on */
 .actions {
@@ -153,7 +153,7 @@ body.in-quiz main { padding-top: 0; }
   border-top: 1px solid var(--line);
 }
 .actions > * { max-width: var(--measure); margin-inline: auto; }
-.btn-3d { min-height: 52px; border-radius: 16px; font-size: 1.05rem; box-shadow: 0 3px 0 rgb(0 0 0 / .25); transition: transform .06s, box-shadow .06s; }
+.btn-3d { min-height: 52px; border-radius: 999px; font-size: 1.05rem; box-shadow: 0 3px 0 rgb(0 0 0 / .25); transition: transform .06s, box-shadow .06s; }
 .btn-3d:active:not(:disabled) { transform: translateY(3px); box-shadow: none; }
 .btn-3d:disabled { box-shadow: 0 3px 0 var(--line); }
 .verdict { display: grid; gap: 8px; }
@@ -201,7 +201,7 @@ body.in-quiz main { padding-top: 0; }
 .setup-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
 .ch-grid { display: grid; gap: 8px; grid-template-columns: repeat(auto-fill, minmax(48px, 1fr)); }
 .ch-pick {
-  aspect-ratio: 1; border-radius: 14px; border: 1.5px solid var(--line); background: var(--surface);
+  aspect-ratio: 1; border-radius: var(--r-ctl); border: 1.5px solid var(--line); background: var(--surface);
   font: 600 1rem var(--f-body); color: var(--ink); cursor: pointer; font-variant-numeric: tabular-nums;
 }
 .ch-pick[aria-pressed="true"] { background: var(--oil-soft); border-color: var(--oil); color: var(--oil-ink); }
@@ -209,7 +209,7 @@ body.in-quiz main { padding-top: 0; }
 .type-list { display: grid; gap: 8px; }
 .who-line { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 12px 14px; box-shadow: none; }
 .parts { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
-.parts li { display: flex; justify-content: space-between; gap: 10px; padding: 10px 12px; border-radius: 10px; background: var(--bg); }
+.parts li { display: flex; justify-content: space-between; gap: 10px; padding: 10px 12px; border-radius: var(--r-ctl); background: var(--bg); }
 
 /* missed questions, answer in sight */
 .missed-card { display: grid; gap: 10px; padding: 14px; box-shadow: none; }
@@ -219,11 +219,11 @@ body.in-quiz main { padding-top: 0; }
 .missed-card .fb-answer small { font-size: 0.72rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; opacity: .8; }
 
 /* Test sheet (from the reader and the exam tile) */
-.ts-block { display: grid; gap: 12px; padding: 14px; border: 1.5px solid var(--line); border-radius: 16px; background: var(--bg); }
+.ts-block { display: grid; gap: 12px; padding: 14px; border: 1.5px solid var(--line); border-radius: var(--r-box); background: var(--bg); }
 .ts-block + .ts-block { margin-top: 12px; }
 .ts-list { display: grid; gap: 8px; }
 .ts-exam {
-  display: flex; align-items: center; gap: 12px; min-height: 58px; padding: 9px 12px; border: 1.5px solid var(--line); border-radius: 14px;
+  display: flex; align-items: center; gap: 12px; min-height: 58px; padding: 9px 12px; border: 1.5px solid var(--line); border-radius: var(--r-ctl);
   background: var(--surface); color: var(--ink); text-decoration: none;
 }
 .ts-exam.is-mine { border-color: var(--oil); background: var(--oil-soft); }
@@ -255,6 +255,6 @@ body.in-quiz main { padding-top: 0; }
 .nowrap { white-space: nowrap; }
 .bk-level { margin-top: 10px; }
 .bk .lv-chips { margin-top: 2px; }
-.tile-done { margin-left: 8px; padding: 3px 10px; border-radius: 999px; background: linear-gradient(135deg, #fcebd4, #f5d9b3); color: var(--oil-ink); font: 600 0.75rem var(--f-body); border: 1px solid color-mix(in srgb, var(--flame) 25%, transparent); box-shadow: 0 1px 3px rgb(138 90 54 / 0.1); letter-spacing: 0.02em; }
+.tile-done { margin-left: 8px; padding: 3px 10px; border-radius: 999px; background: var(--oil-soft); color: var(--oil-ink); font: 600 0.75rem var(--f-body); }
 .bk-brief { margin: 8px 0 4px; }
 .bk-toggle { justify-self: start; margin-top: 4px; }
