@@ -464,11 +464,16 @@ html:not(.signed-in) .back-signed-in { display: none; }
   to { opacity: 1; transform: translateY(0); }
 }
 .pd { display: grid; grid-template-columns: 28px 1fr auto; align-items: center; gap: 12px; min-height: 52px; padding: 8px 14px 8px 10px; border-radius: var(--r-box); background: var(--bg); border: 1.5px solid var(--line); }
-.pd-1 { background: var(--oil-soft); border-color: transparent; }
-.pd.me { border-color: var(--btn); }
+.pd-1 { background: #fbf0d0; border-color: #ecd28a; }
+.pd-2 { background: #f1f1ef; border-color: #d9d9d5; }
+.pd-3 { background: #f8e6d6; border-color: #e3bf9e; }
 .pd-rank { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; background: var(--surface-2); color: var(--ink-2); font: 700 0.85rem var(--f-body); font-variant-numeric: tabular-nums; }
-.pd-1 .pd-rank { background: var(--btn); color: #fff; }
-.pd-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 600; }
+.pd-1 .pd-rank { background: linear-gradient(145deg, #f3cf5e, #c9961c); color: #fff; }
+.pd-2 .pd-rank { background: linear-gradient(145deg, #d6d8da, #9a9ea3); color: #fff; }
+.pd-3 .pd-rank { background: linear-gradient(145deg, #e0a172, #a8673a); color: #fff; }
+.pd-name { min-width: 0; display: flex; align-items: center; gap: 8px; font-weight: 600; }
+.pd-text { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pd-me { flex: none; padding: 2px 8px; border-radius: 999px; background: var(--btn); color: #fff; font: 600 0.72rem/1.4 var(--f-body); }
 .pd-score { font: 600 1.25rem/1 var(--f-display); color: var(--ink); font-variant-numeric: tabular-nums; }
 
 /* Skeleton placeholder for smooth loading */

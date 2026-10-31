@@ -125,9 +125,9 @@ export default function Board({ book }: Props) {
       ) : (
         <ol class="lb-cards" key={age}>
           {rows.map((r, i) => (
-            <li key={r.key} class={`pd${i === 0 ? ' pd-1' : ''}${mine(r.key) ? ' me' : ''}`}>
+            <li key={r.key} class={`pd${i < 3 ? ` pd-${i + 1}` : ''}`}>
               <span class="pd-rank">{i + 1}</span>
-              <span class="pd-name">{r.name}</span>
+              <span class="pd-name"><span class="pd-text">{r.name}</span>{mine(r.key) && <span class="pd-me">Eu</span>}</span>
               <span class="pd-score">{r.score}</span>
             </li>
           ))}
