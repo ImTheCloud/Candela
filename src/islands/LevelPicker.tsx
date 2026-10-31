@@ -57,8 +57,14 @@ export default function LevelPicker<T extends Level | 'all' = Level>({
             class="lv-chip"
             onClick={() => select(it.id)}
           >
-            {it.who && <small class="lv-who">{it.who}</small>}
-            {it.label}
+            {it.who ? (
+              <>
+                <span class="lv-who">{it.who}</span>
+                <span class="lv-sub">{it.label}</span>
+              </>
+            ) : (
+              it.label
+            )}
           </button>
         );
       })}

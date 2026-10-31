@@ -35,9 +35,9 @@ export function validBirthYear(y: number, year = new Date().getFullYear()): bool
 export type Level = 'usor' | 'mediu' | 'greu';
 
 export const LEVELS: { id: Level; label: string; who: string }[] = [
-  { id: 'usor', label: 'Ușor', who: 'copii' },
-  { id: 'mediu', label: 'Mediu', who: 'adolescenți' },
-  { id: 'greu', label: 'Greu', who: 'adulți' },
+  { id: 'usor', label: 'Ușor', who: 'Copii' },
+  { id: 'mediu', label: 'Mediu', who: 'Adolescenți' },
+  { id: 'greu', label: 'Greu', who: 'Adulți' },
 ];
 
 export function levelLabel(lv: Level): string {
