@@ -9,6 +9,8 @@ export default function AccountPage({ books }: { books: BookInfo[] }) {
   const u = user.value;
   if (u === undefined && !rememberedAccount) return <Loader />;
   if (u === null) return <SignInForm />;
+  // already signed in and sent here by another page: go back to it
+  if (u && nextPage('')) { location.replace(nextPage('')); return <Loader />; }
   return <Profile books={books} />;
 }
 
@@ -37,6 +39,7 @@ function SignInForm() {
   return (
     <form class="card auth-card stack" onSubmit={submit}>
       <h2>Intră în cont</h2>
+      <p>Testele din 1 și 2 Samuel se joacă din cont, ca să-ți păstrăm progresul și să apari în clasament.</p>
       <p class="small muted">Ai avut cont pe versiunea veche a site-ului? Intră cu același email și aceeași parolă.</p>
       <div class="field">
         <label for="email">Email</label>

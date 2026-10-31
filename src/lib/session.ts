@@ -49,8 +49,11 @@ onAuthStateChanged(auth, (u) => {
   profileError.value = false;
   if (!u) {
     localRemove('me');
+    // the whole site is played from an account: signed out, every page but the account pages goes to sign-in
+    if (!location.pathname.startsWith('/cont')) location.replace(signInHref());
     return;
   }
+  if (!localGet<Remembered | null>('me', null)) rememberSignedIn(u);
   stopProfile = onSnapshot(
     doc(db, 'users', u.uid),
     (snap) => {
@@ -78,6 +81,7 @@ export async function signUp(f: SignUp): Promise<void> {
   const name = `${clean(f.firstName)} ${clean(f.lastName)}`;
   const cred = await createUserWithEmailAndPassword(auth, f.email.trim(), f.password);
   await updateProfile(cred.user, { displayName: name });
+  rememberSignedIn(cred.user);
   await setDoc(doc(db, 'users', cred.user.uid), {
     name,
     email: cred.user.email,
@@ -88,8 +92,20 @@ export async function signUp(f: SignUp): Promise<void> {
   });
 }
 
-export function signIn(email: string, password: string) {
-  return signInWithEmailAndPassword(auth, email.trim(), password);
+export async function signIn(email: string, password: string) {
+  const cred = await signInWithEmailAndPassword(auth, email.trim(), password);
+  rememberSignedIn(cred.user);
+  return cred;
+}
+
+/** The sign-in page, coming back to this page afterwards. */
+export function signInHref(): string {
+  return `/cont?next=${encodeURIComponent(location.pathname + location.search)}`;
+}
+
+/** Marks the visit as signed in at once, before the profile is read: the layout sends visitors without it to sign-in. */
+function rememberSignedIn(u: User) {
+  if (localGet<Remembered | null>('me', null)?.uid !== u.uid) localSet('me', { uid: u.uid, profile: null, name: u.displayName ?? '' } satisfies Remembered);
 }
 
 export function signOut() {
