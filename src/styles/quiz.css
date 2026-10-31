@@ -128,7 +128,7 @@ body.in-quiz main { padding-top: 0; }
 .info-btn.is-sent { color: var(--ok); }
 /* beside the question: a flag and a word, so nobody has to guess what it does */
 .info-btn.sm {
-  flex-direction: row; gap: 6px; width: auto; min-height: 34px; padding: 0 12px 0 9px; border-radius: 999px;
+  flex-direction: row; gap: 6px; width: auto; min-height: 34px; padding: 0 12px 0 9px; border-radius: var(--r-ctl);
   background: none; font-size: 0.82rem;
 }
 /* the report sheet is short enough to show every button at once, no scrolling */
@@ -153,7 +153,7 @@ body.in-quiz main { padding-top: 0; }
   border-top: 1px solid var(--line);
 }
 .actions > * { max-width: var(--measure); margin-inline: auto; }
-.btn-3d { min-height: 52px; border-radius: 999px; font-size: 1.05rem; box-shadow: 0 3px 0 rgb(0 0 0 / .25); transition: transform .06s, box-shadow .06s; }
+.btn-3d { min-height: 52px; border-radius: var(--r-ctl); font-size: 1.05rem; box-shadow: 0 3px 0 rgb(0 0 0 / .25); transition: transform .06s, box-shadow .06s; }
 .btn-3d:active:not(:disabled) { transform: translateY(3px); box-shadow: none; }
 .btn-3d:disabled { box-shadow: 0 3px 0 var(--line); }
 .verdict { display: grid; gap: 8px; }
@@ -162,7 +162,7 @@ body.in-quiz main { padding-top: 0; }
 .verdict-ic { flex: none; display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--surface); }
 .verdict-text { flex: 1; min-width: 0; font: 800 1.2rem/1.2 var(--f-body); }
 .verse-pill {
-  flex: none; display: inline-flex; align-items: center; gap: 6px; min-height: 34px; padding: 0 12px 0 10px; border: 2px solid currentColor; border-radius: 999px;
+  flex: none; display: inline-flex; align-items: center; gap: 6px; min-height: 34px; padding: 0 12px 0 10px; border: 2px solid currentColor; border-radius: var(--r-ctl);
   background: var(--surface); color: inherit; font: 700 0.9rem var(--f-body); cursor: pointer;
 }
 .verse-pill:active { transform: translateY(2px); }

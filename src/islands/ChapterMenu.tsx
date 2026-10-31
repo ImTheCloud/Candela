@@ -116,6 +116,7 @@ function Sheet({ book, ch, title, best, onClose }: SheetProps) {
           </div>
           <CloseButton onClick={close} />
         </div>
+        <TestShape />
         <a class="read-row" href={`${base}/citire/${ch}`}>
           <span class="oc-ic"><Icon name="book" /></span>
           <span class="oc-main"><b>Citește capitolul</b><small>Traducerea Cornilescu</small></span>
@@ -126,7 +127,6 @@ function Sheet({ book, ch, title, best, onClose }: SheetProps) {
           {best !== undefined && <span class="test-best">Cel mai bun scor: {best}</span>}
         </div>
         <LevelPicker />
-        <TestShape />
         <a class="btn btn-primary btn-block oc-go" href={`${base}/exersare?capitol=${ch}&start=1&nivel=${encodeURIComponent(lv)}`}>
           Începe testul de nivel {levelLabel(lv).toLowerCase()}
         </a>
