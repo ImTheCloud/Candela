@@ -1,9 +1,9 @@
 import { effect, signal, type Signal } from '@preact/signals';
-import { arrayRemove, arrayUnion, deleteDoc, doc, increment, onSnapshot, serverTimestamp, setDoc, writeBatch } from 'firebase/firestore';
+import { arrayRemove, arrayUnion, deleteDoc, doc, getDoc, increment, onSnapshot, serverTimestamp, setDoc, writeBatch } from 'firebase/firestore';
 import { writeBoard } from './board';
 import { BOOKS } from './books';
 import { db } from './firebase';
-import { player, shortName } from './players';
+import { player, players, shortName } from './players';
 import type { QType } from './questions';
 import { user } from './session';
 import { localGet, localRemove, localSet } from './store';
@@ -171,20 +171,42 @@ export function deleteProgress(uid: string, playerKey: string) {
   return Promise.all(BOOKS.map((b) => deleteDoc(doc(db, 'users', uid, 'progress', `${playerKey}~${b.slug}`))));
 }
 
-const boardMark = (uid: string, key: string, book: string) => `bd:${uid}~${key}~${book}`;
+// v2: entries now also exist at 0 points and carry every level, so each one is written again once
+const boardMark = (uid: string, key: string, book: string) => `bd2:${uid}~${key}~${book}`;
 
-// The boards are filled from the progress: a player who answered before they existed
-// (or whose entry is out of date) gets their entry written once, and again whenever the number of known questions changes.
+// Everyone who comes into this version is on the boards, at 0 points until they know a question.
+// The playing player's entry follows their progress; the account's other players get theirs written once.
 effect(() => {
   const u = user.value;
   const p = player.value;
   if (!u || p.hidden) return;
   for (const b of BOOKS) {
+    if (!progressLoaded(b.slug).value) continue;
     const prog = progress(b.slug).value;
-    if (!prog.mastered.length || localGet<number | null>(boardMark(u.uid, p.key, b.slug), null) === prog.mastered.length) continue;
+    if (localGet<number | null>(boardMark(u.uid, p.key, b.slug), null) === prog.mastered.length) continue;
     localSet(boardMark(u.uid, p.key, b.slug), prog.mastered.length);
     Promise.resolve(writeBoard(b.slug, u.uid, p.key, shortName(p), prog.mastered))
       .catch((e) => { console.error(e); localRemove(boardMark(u.uid, p.key, b.slug)); });
+  }
+});
+
+effect(() => {
+  const u = user.value;
+  if (!u) return;
+  const current = player.value.key;
+  for (const p of players.value) {
+    if (p.hidden || p.key === current) continue;
+    for (const b of BOOKS) {
+      const mark = boardMark(u.uid, p.key, b.slug);
+      if (localGet<number | null>(mark, null) !== null) continue;
+      localSet(mark, -1);
+      getDoc(doc(db, 'users', u.uid, 'progress', `${p.key}~${b.slug}`))
+        .then((snap) => {
+          const mastered = (snap.get('mastered') as string[] | undefined) ?? [];
+          return Promise.resolve(writeBoard(b.slug, u.uid, p.key, shortName(p), mastered)).then(() => localSet(mark, mastered.length));
+        })
+        .catch((e) => { console.error(e); localRemove(mark); });
+    }
   }
 });
 

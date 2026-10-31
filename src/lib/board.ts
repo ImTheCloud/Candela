@@ -18,7 +18,8 @@ export interface BoardFields {
 const KNOWN = new Set<string>(LEVELS.map((l) => l.id));
 
 export function boardFields(mastered: string[]): BoardFields {
-  const lv: BoardFields['lv'] = {};
+  // every level is there, at 0 if need be: a level's board only lists entries that have its field
+  const lv: BoardFields['lv'] = Object.fromEntries(LEVELS.map((l) => [LEVEL_KEY[l.id], 0]));
   for (const id of new Set(mastered)) {
     const lvl = id.split('.')[2];
     if (!KNOWN.has(lvl)) continue;

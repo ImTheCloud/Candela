@@ -66,11 +66,14 @@ export default function BookPanel({ books, initial }: { books: BookData[]; initi
         </div>
       </section>
 
-      <section class="wrap hb-block" aria-labelledby="lb-title">
-        <div class="card lb">
-          <Board key={slug} book={slug} />
-        </div>
-      </section>
+      {/* no board until the book has questions */}
+      {perLevel(book) > 0 && (
+        <section class="wrap hb-block" aria-labelledby="lb-title">
+          <div class="card lb">
+            <Board key={slug} book={slug} />
+          </div>
+        </section>
+      )}
     </>
   );
 }

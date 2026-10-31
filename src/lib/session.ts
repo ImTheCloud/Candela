@@ -59,6 +59,13 @@ onAuthStateChanged(auth, (u) => {
     return;
   }
   if (!localGet<Remembered | null>('me', null)) rememberSignedIn(u);
+  // the admin page shows when each account last came: noted once a day
+  const today = new Date().toDateString();
+  if (localGet<string | null>(`seen:${u.uid}`, null) !== today) {
+    updateDoc(doc(db, 'users', u.uid), { lastSeen: serverTimestamp() })
+      .then(() => localSet(`seen:${u.uid}`, today))
+      .catch(() => {});
+  }
   stopProfile = onSnapshot(
     doc(db, 'users', u.uid),
     (snap) => {

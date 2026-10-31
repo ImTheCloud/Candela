@@ -27,7 +27,6 @@ async function fetchBoard(book: string, a: Level | 'all'): Promise<Row[]> {
       score: (d.get(field) as number) ?? 0,
       at: d.get('at')?.toMillis?.() ?? 0,
     }))
-    .filter((r) => r.score > 0)
     .sort((a, b) => b.score - a.score || a.at - b.at);
 
   cache.set(key, list);
