@@ -1,5 +1,5 @@
-import { effect, signal, type Signal } from '@preact/signals';
-import { arrayRemove, arrayUnion, deleteDoc, doc, getDoc, increment, onSnapshot, serverTimestamp, setDoc, writeBatch } from 'firebase/firestore';
+import { computed, effect, signal, type Signal } from '@preact/signals';
+import { arrayRemove, arrayUnion, deleteDoc, doc, getDoc, increment, onSnapshot, serverTimestamp, setDoc } from 'firebase/firestore';
 import { writeBoard } from './board';
 import { BOOKS } from './books';
 import { db } from './firebase';
@@ -37,6 +37,21 @@ export function progressLoaded(book: string): Signal<boolean> {
 }
 const guestKey = (book: string) => `progress:${book}`;
 
+// the key alone: a change of the profile (name, timer, last visit) gives a new player object, not another player
+const playerKey = computed(() => player.value.key);
+
+/** Resolves once the current player's progress in the book has come from Firestore. */
+function whenLoaded(book: string): Promise<void> {
+  return new Promise((resolve) => {
+    let stop: (() => void) | undefined;
+    stop = effect(() => {
+      if (!progressLoaded(book).value) return;
+      resolve();
+      queueMicrotask(() => stop?.());
+    });
+  });
+}
+
 function normalize(data: Partial<Progress> | undefined): Progress {
   return { ...EMPTY, ...data };
 }
@@ -52,7 +67,7 @@ export function progress(book: string): Signal<Progress> {
   let stop: (() => void) | null = null;
   effect(() => {
     const u = user.value;
-    const p = player.value;
+    const key = playerKey.value;
     stop?.();
     stop = null;
     if (u === undefined) return;
@@ -63,7 +78,7 @@ export function progress(book: string): Signal<Progress> {
     }
     sig.value = EMPTY;
     loaded.value = false;
-    stop = onSnapshot(doc(db, 'users', u.uid, 'progress', `${p.key}~${book}`), (snap) => {
+    stop = onSnapshot(doc(db, 'users', u.uid, 'progress', `${key}~${book}`), (snap) => {
       sig.value = normalize(snap.data() as Partial<Progress> | undefined);
       loaded.value = true;
     });
@@ -90,7 +105,7 @@ export interface Answered { id: string; t: QType; right: boolean }
 
 /**
  * After each answer: a right one becomes mastered and leaves the mistakes list, a wrong one joins it.
- * A newly mastered question also moves the player up on the public board (same batch, checked by the rules).
+ * The board follows on its own (the effect below): a board refused by the rules never takes the answers with it.
  */
 /** points: false (the mistakes list) takes right answers off the list without making them count for the player. */
 export async function recordAnswers(book: string, answers: Answered[], points = true) {
@@ -117,7 +132,6 @@ export async function recordAnswers(book: string, answers: Answered[], points = 
   const lv = Object.fromEntries(Object.entries(byLevel).map(([l, ts]) => [l,
     Object.fromEntries(Object.entries(ts).map(([t, c]) => [t, { n: increment(c.n), r: increment(c.r) }]))]));
 
-  const before = progress(book).value;
   if (isGuest()) {
     return guestUpdate(book, (p) => {
       const st = { ...p.stats };
@@ -138,20 +152,12 @@ export async function recordAnswers(book: string, answers: Answered[], points = 
   } else if (wrong.length) {
     data.wrong = arrayUnion(...wrong);
   }
-  const batch = writeBatch(db);
-  batch.set(r, data, { merge: true });
-  const mastered = [...new Set([...before.mastered, ...gain])];
-  const p = player.value;
-  const uid = user.value!.uid;
-  const onBoard = mastered.length > before.mastered.length && !p.hidden;
-  if (onBoard) writeBoard(book, uid, p.key, shortName(p), mastered, batch);
-  await batch.commit();
-  if (onBoard) {
-    localSet(boardMark(uid, p.key, book), mastered.length);
-  }
+  await setDoc(r, data, { merge: true });
 }
 
-export function recordExam(book: string, examId: string, score: number, count?: { right: number; n: number }) {
+export async function recordExam(book: string, examId: string, score: number, count?: { right: number; n: number }) {
+  // the best score is kept from the progress: never written over before it is known
+  if (!isGuest()) await whenLoaded(book);
   const prev = progress(book).value.exams[examId];
   const entry: Progress['exams'][string] = { best: Math.max(prev?.best ?? 0, score), last: score, at: Date.now(), plays: (prev?.plays ?? (prev ? 1 : 0)) + 1 };
   if (count) { entry.bestRight = Math.max(prev?.bestRight ?? 0, count.right); entry.n = count.n; }

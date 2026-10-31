@@ -116,7 +116,7 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
     if (grades.every(Boolean)) {
       const all = grades as Grade[];
       if (record) recordAnswers(book, questions.map((x, k) => ({ id: x.id, t: x.t, right: all[k].right })), points)?.catch((e) => { console.error(e); setSaveFailed(true); });
-      if (scoreId) recordExam(book, scoreId, percent(all.reduce((s, x) => s + x.points, 0), all.reduce((s, x) => s + x.max, 0)), { right: all.filter((x) => x.right).length, n: all.length });
+      if (scoreId) Promise.resolve(recordExam(book, scoreId, percent(all.reduce((s, x) => s + x.points, 0), all.reduce((s, x) => s + x.max, 0)), { right: all.filter((x) => x.right).length, n: all.length })).catch((e) => { console.error(e); setSaveFailed(true); });
     }
     setDone(true);
   }
