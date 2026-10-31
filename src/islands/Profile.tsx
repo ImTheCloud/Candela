@@ -5,6 +5,7 @@ import { addChild, choosePlayer, player, players, removeChild, sameFirstName, up
 import { localGet, localSet } from '../lib/store';
 import { TYPES } from '../lib/questions';
 import { LEVELS, levelLabel, type Level } from '../lib/age';
+import { level as globalLevel, setLevel } from '../lib/level';
 import { deleteProgress, EMPTY, type Progress } from '../lib/progress';
 import { errorText, profile, profileError, profileLoaded, rememberedAccount, setParent, signOut, user } from '../lib/session';
 import Avatar from './Avatar';
@@ -109,6 +110,8 @@ function PlayerBlock({ p, books, head }: { p: Player; books: BookInfo[]; head: b
 
   if (editing) return <ChildForm child={p} onDone={() => setEditing(false)} />;
 
+  const lv = globalLevel.value;
+
   return (
     <article class="pl">
       {head && (
@@ -122,7 +125,7 @@ function PlayerBlock({ p, books, head }: { p: Player; books: BookInfo[]; head: b
             : <button type="button" class="btn btn-ghost btn-sm" onClick={() => choosePlayer(p.key)}>Alege</button>}
         </header>
       )}
-      <TypeBars p={p} books={books} />
+      <TypeBars p={p} books={books} lv={lv} />
       <button type="button" class="btn-reset link small bk-toggle" aria-expanded={details} onClick={() => setDetails(!details)}>{details ? 'Ascunde detaliile' : 'Vezi detaliile'}</button>
       {/* a book whose questions are still being written has nothing to show yet */}
       {details && books.filter((b) => Object.keys(b.totals).length).map((b) => <BookStats key={b.slug} p={p} book={b} />)}
@@ -208,17 +211,29 @@ function Kinds({ stats, label }: { stats: Progress['stats']; label: string }) {
   );
 }
 
-/** How well a player answers, per kind of question, over all the books and levels. */
-function TypeBars({ p, books }: { p: Player; books: BookInfo[] }) {
+/** How well a player answers, per kind of question, filtered by the current level. */
+function TypeBars({ p, books, lv }: { p: Player; books: BookInfo[]; lv: Level }) {
   const all = books.map((b) => useBookProgress(p, b.slug));
   if (!all.every((x) => x.loaded)) return <Loader small />;
+  // aggregate per-level stats (lv field); fall back to global stats only when no per-level data exists yet
   const stats: Progress['stats'] = {};
-  for (const x of all) for (const [t, c] of Object.entries(x.data.stats)) {
-    const k = t as keyof Progress['stats'];
-    stats[k] = { n: (stats[k]?.n ?? 0) + (c?.n ?? 0), r: (stats[k]?.r ?? 0) + (c?.r ?? 0) };
+  let hasLv = false;
+  for (const x of all) {
+    const lvStats = x.data.lv?.[lv];
+    if (lvStats) {
+      hasLv = true;
+      for (const [t, c] of Object.entries(lvStats)) {
+        const k = t as keyof Progress['stats'];
+        stats[k] = { n: (stats[k]?.n ?? 0) + (c?.n ?? 0), r: (stats[k]?.r ?? 0) + (c?.r ?? 0) };
+      }
+    }
   }
-  if (!Object.values(stats).some((c) => c && c.n > 0)) return <p class="small muted">Nu a început încă.</p>;
-  return <Kinds stats={stats} label="Cât de bine răspunde, pe tipuri de întrebări" />;
+  if (!hasLv) {
+    // no per-level data recorded yet for this level: show nothing
+    return <p class="small muted">Nu a început încă la nivelul {levelLabel(lv).toLowerCase()}.</p>;
+  }
+  if (!Object.values(stats).some((c) => c && c.n > 0)) return <p class="small muted">Nu a început încă la nivelul {levelLabel(lv).toLowerCase()}.</p>;
+  return <Kinds stats={stats} label={`Cât de bine răspunde, pe tipuri de întrebări (${levelLabel(lv).toLowerCase()})`} />;
 }
 
 /** One book at one level: every number here changes with the level picked. */
