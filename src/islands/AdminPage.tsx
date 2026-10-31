@@ -32,7 +32,6 @@ function Users({ me }: { me: string }) {
   return (
     <div class="stack">
       <dl class="adm-stats">
-        <div><dt>Total</dt><dd>{rows.length + kidsTotal}</dd></div>
         <div><dt>Conturi</dt><dd>{rows.length}</dd></div>
         <div><dt>Părinți</dt><dd>{rows.filter((r) => r.isParent).length}</dd></div>
         <div><dt>Copii</dt><dd>{kidsTotal}</dd></div>
