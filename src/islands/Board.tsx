@@ -6,26 +6,13 @@ import { player, setHidden } from '../lib/players';
 import { progress } from '../lib/progress';
 import { scoreView } from '../lib/level';
 import { profile, rememberedAccount, user } from '../lib/session';
-import { localGet, localSet } from '../lib/store';
 import LevelPicker from './LevelPicker';
 
 interface Row { key: string; name: string; score: number; at: number }
 
 // Memory cache across component remounts within the same session
+// Boards fetched since this page opened: switching tabs shows them at once, and a new visit always starts from fresh data.
 const cache = new Map<string, Row[]>();
-
-const CACHE_KEY = (b: string, a: string) => `lb:${b}:${a}`;
-
-function getCachedRows(book: string, a: Level | 'all'): Row[] | null {
-  const mem = cache.get(`${book}:${a}`);
-  if (mem) return mem;
-  const stored = localGet<Row[] | null>(CACHE_KEY(book, a), null);
-  if (stored) {
-    cache.set(`${book}:${a}`, stored);
-    return stored;
-  }
-  return null;
-}
 
 const TABS: (Level | 'all')[] = ['all', ...LEVELS.map((g) => g.id)];
 
@@ -44,7 +31,6 @@ async function fetchBoard(book: string, a: Level | 'all'): Promise<Row[]> {
     .sort((a, b) => b.score - a.score || a.at - b.at);
 
   cache.set(key, list);
-  localSet(CACHE_KEY(book, a), list);
   return list;
 }
 
@@ -58,7 +44,7 @@ interface Props {
 export default function Board({ book }: Props) {
   // the tabs also pick which scores the chapter tiles show; they do not change the level of the tests
   const [age, setAgeState] = useState<Level | 'all'>(scoreView.value);
-  const [rows, setRows] = useState<Row[] | null>(() => getCachedRows(book, age));
+  const [rows, setRows] = useState<Row[] | null>(() => { cache.clear(); return null; });
   const [error, setError] = useState(false);
   const [busy, setBusy] = useState(false);
 
@@ -66,8 +52,8 @@ export default function Board({ book }: Props) {
     if (next === age) return;
     scoreView.value = next;
     setAgeState(next);
-    // Instant switch: load cached data immediately without waiting for network
-    const cached = getCachedRows(book, next);
+    // instant switch when this board was already fetched since the page opened
+    const cached = cache.get(`${book}:${next}`) ?? null;
     if (cached) {
       setRows(cached);
       setError(false);

@@ -1,17 +1,19 @@
 import { PAIRS, PER_TEST, SHAPE } from '../lib/questions';
 
-/** What a test holds, shown before it starts as a small table: one row per kind of question, in the order of the exam. */
+/** What a test holds, shown before it starts: the total, then one small cell per kind of question, in the order of the exam. */
 export default function TestShape() {
-  const rows: [string, number][] = [
-    ['Adevărat sau fals', SHAPE.tf],
-    ['Un singur răspuns corect', SHAPE.one],
-    [`Asociere de ${PAIRS} perechi`, SHAPE.match],
-    ['Mai multe răspunsuri posibile', SHAPE.multi],
+  const kinds: [number, string][] = [
+    [SHAPE.tf, 'Adevărat sau fals'],
+    [SHAPE.one, 'Un răspuns corect'],
+    [SHAPE.match, `Asociere (${PAIRS} perechi)`],
+    [SHAPE.multi, 'Mai multe răspunsuri'],
   ];
   return (
-    <ul class="shape" aria-label="Ce conține testul">
-      {rows.map(([label, n]) => <li><span>{label}</span><b>{n}</b></li>)}
-      <li class="shape-total"><span>În total</span><b>{PER_TEST} de întrebări</b></li>
-    </ul>
+    <div class="shape">
+      <p class="shape-total"><b>{PER_TEST} de întrebări</b> în test:</p>
+      <ul class="shape-grid" aria-label="Ce conține testul">
+        {kinds.map(([n, label]) => <li><b>{n}</b><span>{label}</span></li>)}
+      </ul>
+    </div>
   );
 }

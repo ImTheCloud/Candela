@@ -25,13 +25,16 @@ export interface Progress {
   lv?: Partial<Record<string, Partial<Record<QType, { n: number; r: number }>>>>;
 }
 
-/** The chapter scores of the last visit, for the tiles to show at once while Firestore answers. */
-const examsKey = (playerKey: string, book: string) => `ex:${playerKey}~${book}`;
-export const cachedExams = (playerKey: string, book: string) => localGet<Progress['exams']>(examsKey(playerKey, book), {});
-
 export const EMPTY: Progress = { mastered: [], wrong: [], exams: {}, stats: {} };
 
 const signals = new Map<string, Signal<Progress>>();
+const loadedSignals = new Map<string, Signal<boolean>>();
+
+/** True once the current player's progress in the book has come from Firestore (false again while another player's loads). */
+export function progressLoaded(book: string): Signal<boolean> {
+  progress(book);
+  return loadedSignals.get(book)!;
+}
 const guestKey = (book: string) => `progress:${book}`;
 
 function normalize(data: Partial<Progress> | undefined): Progress {
@@ -44,6 +47,8 @@ export function progress(book: string): Signal<Progress> {
   if (s) return s;
   const sig = signal<Progress>(EMPTY);
   signals.set(book, sig);
+  const loaded = signal(false);
+  loadedSignals.set(book, loaded);
   let stop: (() => void) | null = null;
   effect(() => {
     const u = user.value;
@@ -53,12 +58,14 @@ export function progress(book: string): Signal<Progress> {
     if (u === undefined) return;
     if (!u) {
       sig.value = normalize(localGet<Partial<Progress>>(guestKey(book), {}));
+      loaded.value = true;
       return;
     }
     sig.value = EMPTY;
+    loaded.value = false;
     stop = onSnapshot(doc(db, 'users', u.uid, 'progress', `${p.key}~${book}`), (snap) => {
       sig.value = normalize(snap.data() as Partial<Progress> | undefined);
-      localSet(examsKey(p.key, book), sig.value.exams);
+      loaded.value = true;
     });
   });
   return sig;
