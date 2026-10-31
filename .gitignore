@@ -7,3 +7,7 @@ dist/
 supabase/.temp/
 firebase-debug.log
 firestore-debug.log
+
+# exports Supabase (emails et mots de passe chiffrés)
+export.json
+auth-import.json
