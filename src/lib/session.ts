@@ -150,8 +150,13 @@ export async function updateAccountName(firstName: string, lastName: string): Pr
   if (!first || !last) throw new Error('name_required');
   const name = `${first} ${last}`;
   if (name.length > 80) throw new Error('name_too_long');
-  await updateProfile(u, { displayName: name });
-  await updateDoc(doc(db, 'users', u.uid), { name });
+
+  // Update Firestore user document (offline-first, with timeout safeguard)
+  await Promise.race([
+    updateDoc(doc(db, 'users', u.uid), { name }),
+    new Promise((resolve) => setTimeout(resolve, 2000)),
+  ]);
+
   if (profile.value) {
     profile.value = { ...profile.value, name };
   }
@@ -164,19 +169,25 @@ export async function updateAccountName(firstName: string, lastName: string): Pr
     } satisfies Remembered);
   }
 
-  // Update leaderboard entries in the background
-  const parts = name.trim().split(/\s+/);
-  const short = parts.length > 1 ? `${parts[0]} ${parts[parts.length - 1][0].toUpperCase()}.` : parts[0];
-  updatePlayerBoardName(u.uid, u.uid, short);
+  // Update Firebase Auth displayName in background (never blocks the UI)
+  updateProfile(u, { displayName: name }).catch(() => {});
 
-  // Update leaderboard entries for children (their last initial changes with the parent's last name)
-  const lastInitial = parts.length > 1 ? parts[parts.length - 1][0].toUpperCase() : '';
-  const kidsCache = localGet<{ uid: string; list: { key: string; name: string }[] } | null>('kids', null);
-  if (kidsCache && kidsCache.uid === u.uid) {
-    for (const k of kidsCache.list) {
-      const childShort = lastInitial ? `${k.name.trim().split(/\s+/)[0]} ${lastInitial}.` : k.name.trim().split(/\s+/)[0];
-      updatePlayerBoardName(u.uid, k.key, childShort);
+  // Update leaderboard entries in the background
+  try {
+    const parts = name.trim().split(/\s+/);
+    const short = parts.length > 1 ? `${parts[0]} ${parts[parts.length - 1][0].toUpperCase()}.` : parts[0];
+    updatePlayerBoardName(u.uid, u.uid, short);
+
+    const lastInitial = parts.length > 1 ? parts[parts.length - 1][0].toUpperCase() : '';
+    const kidsCache = localGet<{ uid: string; list: { key: string; name: string }[] } | null>('kids', null);
+    if (kidsCache && kidsCache.uid === u.uid) {
+      for (const k of kidsCache.list) {
+        const childShort = lastInitial ? `${k.name.trim().split(/\s+/)[0]} ${lastInitial}.` : k.name.trim().split(/\s+/)[0];
+        updatePlayerBoardName(u.uid, k.key, childShort);
+      }
     }
+  } catch {
+    // ignore
   }
 
   return name;
