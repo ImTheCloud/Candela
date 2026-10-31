@@ -42,7 +42,6 @@ export default function ExamSheet({ book, exams, onClose }: { book: string; exam
         </div>
         <TestShape />
         <a class="read-row" href={`${base}/citire/1`}>
-          <span class="oc-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4h7a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H2zM22 4h-7a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h8z" /></svg></span>
           <span class="oc-main"><b>Citește cartea</b><small>De la capitolul 1, traducerea Cornilescu</small></span>
           <Chev />
         </a>
