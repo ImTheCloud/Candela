@@ -128,7 +128,10 @@ img, svg { display: block; }
   flex: none; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%;
   background: var(--btn); color: var(--on-oil); font: 600 1rem var(--f-brand); letter-spacing: .02em; text-decoration: none;
 }
-.auth-card { padding: 24px; --gap: 18px; }
+.auth-card { padding: 20px 18px; --gap: 14px; }
+.auth-card .field { gap: 4px; }
+.auth-card .input { min-height: 44px; }
+.auth-card .two { grid-template-columns: 1fr 1fr; gap: 10px; }
 .auth-links { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 16px; }
 .two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 @media (max-width: 380px) { .two { grid-template-columns: 1fr; } }

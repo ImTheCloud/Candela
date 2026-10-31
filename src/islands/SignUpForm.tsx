@@ -41,11 +41,11 @@ export default function SignUpForm() {
       <div class="two">
         <div class="field">
           <label for="first">Prenume</label>
-          <input id="first" class="input" autocomplete="given-name" required value={f.firstName} onInput={set('firstName')} />
+          <input id="first" class="input" autocomplete="given-name" placeholder="ex. Ana" required value={f.firstName} onInput={set('firstName')} />
         </div>
         <div class="field">
-          <label for="last">Nume</label>
-          <input id="last" class="input" autocomplete="family-name" required value={f.lastName} onInput={set('lastName')} />
+          <label for="last">Nume de familie</label>
+          <input id="last" class="input" autocomplete="family-name" placeholder="ex. Popescu" required value={f.lastName} onInput={set('lastName')} />
         </div>
       </div>
       <div class="field">
@@ -53,9 +53,8 @@ export default function SignUpForm() {
         <input id="email" class="input" type="email" autocomplete="email" required value={f.email} onInput={set('email')} />
       </div>
       <div class="field">
-        <label for="password">Parolă</label>
+        <label for="password">Parolă <span class="muted">(cel puțin 6 caractere)</span></label>
         <PasswordInput id="password" autocomplete="new-password" minLength={6} value={f.password} onInput={set('password')} />
-        <p class="small muted">Cel puțin 6 caractere.</p>
       </div>
       <label class="check">
         <input type="checkbox" checked={f.isParent} onChange={set('isParent')} />
