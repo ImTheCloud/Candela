@@ -8,6 +8,7 @@ import { LEVELS, levelLabel, type Level } from '../lib/age';
 import { deleteProgress, EMPTY, type Progress } from '../lib/progress';
 import { errorText, profile, profileError, profileLoaded, rememberedAccount, setParent, signOut, user } from '../lib/session';
 import Avatar from './Avatar';
+import Stopwatch from './Stopwatch';
 import LevelPicker from './LevelPicker';
 import Loader from './Loader';
 
@@ -78,6 +79,8 @@ export default function Profile({ books }: { books: BookInfo[] }) {
         )}
         {parentError && <p class="notice notice-bad" role="alert">{parentError}</p>}
       </section>
+
+      {p?.admin && <Stopwatch />}
 
       <nav class="me-end">
         {p?.admin && <a class="me-link" href="/admin">Administrare</a>}
