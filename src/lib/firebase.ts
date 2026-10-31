@@ -3,17 +3,18 @@ import { connectAuthEmulator, getAuth } from 'firebase/auth';
 import { connectFirestoreEmulator, initializeFirestore, memoryLocalCache, persistentLocalCache, persistentMultipleTabManager } from 'firebase/firestore';
 
 // Public web config of the Firebase project "Candela" (safe to ship: access is enforced by firestore.rules).
-const app = initializeApp({
+export const firebaseConfig = {
   apiKey: 'AIzaSyDnHNKulcQKMNlWV-My68S_DdK0jfEzSVI',
   authDomain: 'candela-64d25.firebaseapp.com',
   projectId: 'candela-64d25',
   storageBucket: 'candela-64d25.firebasestorage.app',
   messagingSenderId: '663771331445',
   appId: '1:663771331445:web:ddb313b50263062c8a713c',
-});
+};
+const app = initializeApp(firebaseConfig);
 
 // `npm run dev` runs against local emulators, so testing never touches real accounts.
-const emulators = import.meta.env.PUBLIC_EMULATORS === '1';
+export const emulators = import.meta.env.PUBLIC_EMULATORS === '1';
 
 export const auth = getAuth(app);
 auth.languageCode = 'ro';
