@@ -12,6 +12,11 @@ service cloud.firestore {
       return y is int && y >= 1900 && y <= 2100;
     }
 
+    // a player of the account: the adult (key = uid) or one of its children
+    function player(uid, pk) {
+      return pk == uid || exists(/databases/$(database)/documents/users/$(uid)/players/$(pk));
+    }
+
     function validUser(d) {
       return d.name is string && d.name.size() <= 80
         && (d.get('birthYear', null) == null || validYear(d.birthYear))
@@ -51,9 +56,11 @@ service cloud.firestore {
         allow delete: if owner(uid) || admin();
         allow create, update: if owner(uid)
           && key.matches('^[A-Za-z0-9_-]{1,128}~[12]-samuel$')
+          && player(uid, key.split('~')[0])
           && request.resource.data.get('read', []).size() <= 31
           && request.resource.data.get('marks', []).size() <= 3000
-          && request.resource.data.get('mastered', []).size() <= 5000
+          // no more than the questions of a book (2 Samuel: 1728)
+          && request.resource.data.get('mastered', []).size() <= 2500
           && request.resource.data.get('wrong', []).size() <= 5000;
       }
     }
@@ -102,6 +109,7 @@ service cloud.firestore {
       allow delete: if (request.auth != null && key.split('~')[0] == request.auth.uid) || admin();
       allow create, update: if request.auth != null
         && key.split('~')[0] == request.auth.uid
+        && player(request.auth.uid, key.split('~')[1])
         && book in ['1-samuel', '2-samuel']
         && request.resource.data.keys().hasOnly(['name', 'age', 'score', 'at', 'lv', 'ct', 'ch'])
         && request.resource.data.name is string && request.resource.data.name.size() <= 40
