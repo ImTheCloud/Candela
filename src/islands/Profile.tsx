@@ -5,7 +5,6 @@ import { deleteProgress } from '../lib/progress';
 import { errorText, profile, profileError, profileLoaded, rememberedAccount, setParent, signOut, updateAccountName, user } from '../lib/session';
 import Avatar from './Avatar';
 import SameNameSheet from './SameNameSheet';
-import Stopwatch from './Stopwatch';
 import Loader from './Loader';
 
 /** The "Scrie-ne un email" button: a new email to the administrator. */
@@ -118,8 +117,6 @@ export default function Profile({ books: _books }: { books?: BookInfo[] }) {
           </section>
         )
       )}
-
-      {p?.admin && <Stopwatch />}
 
       <nav class="me-end">
         {p?.admin && <a class="me-link" href="/admin">Administrare</a>}
