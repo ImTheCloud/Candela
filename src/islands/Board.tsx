@@ -149,7 +149,7 @@ export default function Board({ book }: Props) {
       )}
       {user.value === null && (
         <div class="lb-guest">
-          <p class="small">Joci fără cont, așa că nu apari în clasament. Progresul rămâne doar pe acest telefon.</p>
+          <p class="small">Nu ești în cont. Intră sau creează un cont ca să joci și să apari în clasament.</p>
           <a class="btn btn-primary btn-block" href="/cont/inregistrare">Creează un cont</a>
         </div>
       )}
