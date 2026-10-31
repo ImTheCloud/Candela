@@ -59,16 +59,12 @@ onAuthStateChanged(auth, (u) => {
     return;
   }
   if (!localGet<Remembered | null>('me', null)) rememberSignedIn(u);
-  // the admin page shows when each account last came: noted once a day
-  const today = new Date().toDateString();
-  if (localGet<string | null>(`seen:${u.uid}`, null) !== today) {
-    updateDoc(doc(db, 'users', u.uid), { lastSeen: serverTimestamp() })
-      .then(() => localSet(`seen:${u.uid}`, today))
-      .catch(() => {});
-  }
   stopProfile = onSnapshot(
     doc(db, 'users', u.uid),
     (snap) => {
+      // the admin page shows when each account last came: noted once a day, only once the profile exists
+      // (an update before sign-up has written it is refused, and takes the sign-up's own writes down with it)
+      if (snap.exists() && !snap.metadata.hasPendingWrites) noteSeen(u.uid);
       profile.value = snap.exists() ? (snap.data() as Profile) : null;
       profileLoaded.value = true;
       localSet('me', { uid: u.uid, profile: profile.value, name: profile.value?.name || u.displayName || '' } satisfies Remembered);
@@ -80,6 +76,17 @@ onAuthStateChanged(auth, (u) => {
     },
   );
 });
+
+let seenAsked = '';
+function noteSeen(uid: string) {
+  const today = new Date().toDateString();
+  const key = `seen:${uid}`;
+  if (seenAsked === `${uid}:${today}` || localGet<string | null>(key, null) === today) return;
+  seenAsked = `${uid}:${today}`;
+  updateDoc(doc(db, 'users', uid), { lastSeen: serverTimestamp() })
+    .then(() => localSet(key, today))
+    .catch(() => { seenAsked = ''; });
+}
 
 export interface SignUp {
   firstName: string;
@@ -101,7 +108,9 @@ export async function signUp(f: SignUp): Promise<void> {
     isParent: f.isParent,
     hidden: false,
     createdAt: serverTimestamp(),
+    lastSeen: serverTimestamp(),
   });
+  localSet(`seen:${cred.user.uid}`, new Date().toDateString());
 }
 
 export async function signIn(email: string, password: string) {
