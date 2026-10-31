@@ -2,7 +2,6 @@
 import Loader from './Loader.astro';
 import BookPanel from '../islands/BookPanel';
 import PlayerPicker from '../islands/PlayerPicker';
-import Welcome from '../islands/Welcome';
 import { BOOKS, type Book } from '../lib/books';
 import { examList, summary } from '../lib/content';
 
@@ -16,8 +15,6 @@ const books = BOOKS.map((b) => ({ slug: b.slug, name: b.name, titles: b.titles, 
 <section class="wrap hb-who">
   <PlayerPicker client:only="preact" />
 </section>
-
-<Welcome client:only="preact" />
 
 <BookPanel client:only="preact" books={books} initial={book.slug}>
   <Loader slot="fallback" />

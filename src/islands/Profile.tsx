@@ -8,9 +8,11 @@ import { LEVELS, levelLabel, type Level } from '../lib/age';
 import { deleteProgress, EMPTY, type Progress } from '../lib/progress';
 import { errorText, profile, profileError, profileLoaded, rememberedAccount, setParent, signOut, user } from '../lib/session';
 import Avatar from './Avatar';
-import { contactHref } from './Welcome';
 import LevelPicker from './LevelPicker';
 import Loader from './Loader';
+
+/** The "Scrie-ne un email" button: a new email to the administrator. */
+const contactHref = `mailto:claudiu.dev@outlook.com?subject=${encodeURIComponent('Candela')}`;
 
 export interface BookInfo { slug: string; name: string; chapters: number; totals: Record<string, number> }
 
