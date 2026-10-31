@@ -52,6 +52,12 @@ const fullTitle = title === 'Candela' ? title : `${title} – Candela`;
     <meta property="og:image:alt" content="Candela: lampa cu untdelemn" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content={new URL('/og.png', Astro.site)} />
+    <script is:inline>
+      // The site is played from an account: a visit not signed in goes to sign-in at once (the account pages stay open).
+      try {
+        if (!localStorage.getItem('me') && location.pathname.indexOf('/cont') !== 0) location.replace('/cont?next=' + encodeURIComponent(location.pathname + location.search));
+      } catch (e) {}
+    </script>
     <ClientRouter />
     <slot name="head" />
     <script is:inline>
