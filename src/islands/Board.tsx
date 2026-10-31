@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'preact/hooks';
-import { collection, FieldPath, getDocs, limit, orderBy, query } from 'firebase/firestore';
+import { collection, FieldPath, getDocs, limit, orderBy, query, where } from 'firebase/firestore';
 import { LEVEL_KEY, type Level } from '../lib/age';
 import { boardChangedAt } from '../lib/board';
 import { db } from '../lib/firebase';
@@ -11,6 +11,7 @@ import LevelPicker from './LevelPicker';
 
 interface Row { key: string; name: string; score: number; at: number }
 
+// Only players with at least one point are listed.
 // Boards fetched in the last minutes, kept across pages: coming back home costs no reads (the free plan counts every document read).
 const FRESH = 5 * 60 * 1000;
 const SIZE = 50;
@@ -23,7 +24,7 @@ const cached = (key: string) => {
 async function fetchBoard(book: string, a: Level | 'all'): Promise<Row[]> {
   const key = `${book}:${a}`;
   const field = a === 'all' ? 'score' : new FieldPath('lv', LEVEL_KEY[a]);
-  const snap = await getDocs(query(collection(db, 'boards', book, 'players'), orderBy(field, 'desc'), limit(SIZE)));
+  const snap = await getDocs(query(collection(db, 'boards', book, 'players'), where(field, '>', 0), orderBy(field, 'desc'), limit(SIZE)));
   const list = snap.docs
     .map((d) => ({
       key: d.id,
