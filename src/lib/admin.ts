@@ -140,7 +140,3 @@ export async function createAccount(f: NewAccount) {
     await deleteApp(temp);
   }
 }
-
-export function sendPasswordLink(email: string) {
-  return sendPasswordResetEmail(auth, email);
-}

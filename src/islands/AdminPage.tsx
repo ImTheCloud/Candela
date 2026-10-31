@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'preact/hooks';
 import {
-  addChildTo, createAccount, deleteAccount, deleteChild, loadUsers, renameChild, sendPasswordLink, updateUser,
+  addChildTo, createAccount, deleteAccount, deleteChild, loadUsers, renameChild, updateUser,
   type BookStats, type UserRow,
 } from '../lib/admin';
 import { errorText, profile, profileLoaded, user } from '../lib/session';
@@ -136,8 +136,6 @@ function Editor({ r, self, onChanged }: { r: UserRow; self: boolean; onChanged: 
       )}
 
       <div class="stack adm-actions">
-        {r.email && <button type="button" class="btn btn-ghost btn-block" disabled={busy}
-          onClick={() => run(() => sendPasswordLink(r.email), `Link trimis la ${r.email}.`)}>Trimite link pentru parolă nouă</button>}
         {!self && (confirmDelete ? (
           <div class="two">
             <button type="button" class="btn btn-ghost" onClick={() => setConfirmDelete(false)}>Renunță</button>
