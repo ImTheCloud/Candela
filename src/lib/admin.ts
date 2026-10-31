@@ -1,5 +1,5 @@
 import { addDoc, collection, collectionGroup, deleteDoc, doc, getDocs, serverTimestamp, updateDoc, type Timestamp } from 'firebase/firestore';
-import { removeFromBoards } from './board';
+import { removeFromBoards, updatePlayerBoardName } from './board';
 import { BOOKS } from './books';
 import { db } from './firebase';
 
@@ -46,7 +46,13 @@ export async function loadUsers(): Promise<UserRow[]> {
 const clean = (s: string) => s.trim().replace(/\s+/g, ' ');
 
 export function updateUser(uid: string, data: { name: string; isParent: boolean; admin: boolean }) {
-  return updateDoc(doc(db, 'users', uid), { ...data, name: clean(data.name) });
+  const name = clean(data.name);
+  try {
+    const parts = name.trim().split(/\s+/);
+    const short = parts.length > 1 ? `${parts[0]} ${parts[parts.length - 1][0].toUpperCase()}.` : parts[0];
+    updatePlayerBoardName(uid, uid, short);
+  } catch {}
+  return updateDoc(doc(db, 'users', uid), { ...data, name });
 }
 
 export function addChildTo(uid: string, name: string) {
@@ -54,7 +60,12 @@ export function addChildTo(uid: string, name: string) {
 }
 
 export function renameChild(uid: string, key: string, name: string) {
-  return updateDoc(doc(db, 'users', uid, 'players', key), { name: clean(name) });
+  const cleaned = clean(name);
+  try {
+    const parts = cleaned.trim().split(/\s+/);
+    updatePlayerBoardName(uid, key, parts[0]);
+  } catch {}
+  return updateDoc(doc(db, 'users', uid, 'players', key), { name: cleaned });
 }
 
 /** A player's progress and board entries. */

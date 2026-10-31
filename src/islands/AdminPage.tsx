@@ -81,14 +81,27 @@ function day(d: Date): string {
   return d.toLocaleDateString('ro-RO', { day: '2-digit', month: '2-digit', year: '2-digit' });
 }
 
+function splitName(fullName: string): { first: string; last: string } {
+  const parts = fullName.trim().split(/\s+/).filter(Boolean);
+  if (parts.length === 0) return { first: '', last: '' };
+  if (parts.length === 1) return { first: parts[0], last: '' };
+  return { first: parts[0], last: parts.slice(1).join(' ') };
+}
+
 /** Everything an admin can change on one account. Each action saves at once and reloads the list. */
 function Editor({ r, self, onChanged }: { r: UserRow; self: boolean; onChanged: () => Promise<void> }) {
-  const [f, setF] = useState({ name: r.name, isParent: r.isParent, admin: r.admin });
+  const { first, last } = splitName(r.name);
+  const [firstName, setFirstName] = useState(first);
+  const [lastName, setLastName] = useState(last);
+  const [isParent, setIsParent] = useState(r.isParent);
+  const [isAdmin, setIsAdmin] = useState(r.admin);
   const [newKid, setNewKid] = useState('');
   const [busy, setBusy] = useState(false);
   const [msg, setMsg] = useState<{ ok: boolean; text: string } | null>(null);
   const [confirmDelete, setConfirmDelete] = useState(false);
-  const dirty = f.name.trim() !== r.name || f.isParent !== r.isParent || f.admin !== r.admin;
+
+  const dirty = firstName.trim() !== first || lastName.trim() !== last || isParent !== r.isParent || isAdmin !== r.admin;
+  const valid = !!firstName.trim() && !!lastName.trim();
 
   async function run(action: () => Promise<unknown>, done: string) {
     setBusy(true);
@@ -106,17 +119,46 @@ function Editor({ r, self, onChanged }: { r: UserRow; self: boolean; onChanged: 
 
   return (
     <div class="adm-detail">
-      <form class="stack adm-form" onSubmit={(e) => { e.preventDefault(); if (f.name.trim()) run(() => updateUser(r.uid, f), 'Salvat.'); }}>
-        <div class="field">
-          <label for={`an-${r.uid}`}>Nume complet</label>
-          <input id={`an-${r.uid}`} class="input" maxLength={80} value={f.name} onInput={(e) => setF({ ...f, name: e.currentTarget.value })} />
+      <form class="stack adm-form" onSubmit={(e) => {
+        e.preventDefault();
+        const f = firstName.trim();
+        const l = lastName.trim();
+        if (!f || !l) return;
+        const name = `${f} ${l}`.replace(/\s+/g, ' ');
+        run(() => updateUser(r.uid, { name, isParent, admin: isAdmin }), 'Salvat.');
+      }}>
+        <div class="two">
+          <div class="field">
+            <label for={`fn-${r.uid}`}>Prenume</label>
+            <input
+              id={`fn-${r.uid}`}
+              class="input"
+              maxLength={40}
+              required
+              value={firstName}
+              onInput={(e) => setFirstName(e.currentTarget.value)}
+            />
+          </div>
+          <div class="field">
+            <label for={`ln-${r.uid}`}>Nume de familie</label>
+            <input
+              id={`ln-${r.uid}`}
+              class="input"
+              maxLength={40}
+              required
+              value={lastName}
+              onInput={(e) => setLastName(e.currentTarget.value)}
+            />
+          </div>
         </div>
-        <label class="check"><input type="checkbox" checked={f.isParent} onChange={(e) => setF({ ...f, isParent: e.currentTarget.checked })} /><span>Cont de părinte</span></label>
+        <label class="check"><input type="checkbox" checked={isParent} onChange={(e) => setIsParent(e.currentTarget.checked)} /><span>Cont de părinte</span></label>
         <label class="check">
-          <input type="checkbox" checked={f.admin} disabled={self} onChange={(e) => setF({ ...f, admin: e.currentTarget.checked })} />
+          <input type="checkbox" checked={isAdmin} disabled={self} onChange={(e) => setIsAdmin(e.currentTarget.checked)} />
           <span>Administrator{self && <span class="muted"> (contul tău)</span>}</span>
         </label>
-        <button class="btn btn-primary btn-block" disabled={busy || !dirty || !f.name.trim()}>Salvează</button>
+        <button class="btn btn-primary btn-block" disabled={busy || !dirty || !valid}>
+          {busy ? 'Se salvează…' : 'Salvează'}
+        </button>
       </form>
 
       {(r.isParent || r.kids.length > 0) && (
