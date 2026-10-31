@@ -435,27 +435,6 @@ a.tile { text-decoration: none; }
 .btn-danger { background: var(--bad); color: #fff; }
 html:not(.signed-in) .back-signed-in { display: none; }
 
-/* Welcome guide, shown once */
-.welcome { display: grid; gap: 16px; }
-.wl-top { display: flex; align-items: center; justify-content: space-between; min-height: 24px; }
-.wl-page { display: grid; gap: 12px; justify-items: center; text-align: center; animation: wl-in .22s ease-out; }
-.wl-demo { display: grid; gap: 12px; width: 100%; text-align: left; }
-.wl-demo .shape { margin: 0; }
-@keyframes wl-in { from { opacity: 0; transform: translateX(12px); } to { opacity: 1; transform: none; } }
-.wl-lamp { position: relative; display: inline-flex; margin: 4px 0 -8px; }
-.wl-lamp svg { position: relative; display: block; }
-.wl-glow { position: absolute; inset: 0 10% auto; height: 70px; background: radial-gradient(closest-side, color-mix(in oklab, #D97B26 40%, transparent), transparent); filter: blur(6px); animation: wl-glow 3.2s ease-in-out infinite; }
-.wl-flame { transform-origin: 50% 90%; animation: wl-flicker 2.4s ease-in-out infinite; }
-@keyframes wl-glow { 0%, 100% { opacity: .55; transform: scale(1); } 50% { opacity: .85; transform: scale(1.06); } }
-@keyframes wl-flicker { 0%, 100% { transform: scaleY(1) skewX(0); } 25% { transform: scaleY(1.06) skewX(-2deg); } 50% { transform: scaleY(.96) skewX(1.5deg); } 75% { transform: scaleY(1.04) skewX(-1deg); } }
-@media (prefers-reduced-motion: reduce) { .wl-glow, .wl-flame { animation: none; } }
-.wl-page h2 { font-size: 1.5rem; }
-.wl-body { display: grid; gap: 10px; justify-items: center; max-width: 34ch; color: var(--ink-2); font-size: 1.02rem; line-height: 1.5; }
-.wl-body p { margin: 0; }
-.wl-body b { color: var(--ink); font-weight: 600; }
-.wl-dots { display: flex; justify-content: center; gap: 6px; }
-.wl-dots span { width: 6px; height: 6px; border-radius: 50%; background: var(--line); transition: width .2s, background-color .2s; }
-.wl-dots span.on { width: 18px; border-radius: 3px; background: var(--btn); }
 .bk-nums { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 0; }
 .bk-nums > div { display: flex; flex-direction: column-reverse; gap: 2px; padding: 10px 8px; border-radius: var(--r-ctl); background: var(--bg); text-align: center; }
 .bk-nums dt { font-size: 0.75rem; color: var(--ink-2); }
