@@ -47,8 +47,10 @@ export async function loadUsers(): Promise<UserRow[]> {
 
 const clean = (s: string) => s.trim().replace(/\s+/g, ' ');
 
-export function updateUser(uid: string, data: { name: string; isParent: boolean; hidden: boolean; admin: boolean }) {
-  return updateDoc(doc(db, 'users', uid), { ...data, name: clean(data.name) });
+/** Hiding an account also takes it off the boards (its own client only writes the boards while it is visible). */
+export async function updateUser(uid: string, data: { name: string; isParent: boolean; hidden: boolean; admin: boolean }) {
+  await updateDoc(doc(db, 'users', uid), { ...data, name: clean(data.name) });
+  if (data.hidden) await removeFromBoards(uid, uid);
 }
 
 export function addChildTo(uid: string, name: string) {
