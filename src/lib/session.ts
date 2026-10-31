@@ -164,10 +164,10 @@ export async function updateAccountName(firstName: string, lastName: string): Pr
     } satisfies Remembered);
   }
 
-  // Update leaderboard entries for the adult account
+  // Update leaderboard entries in the background
   const parts = name.trim().split(/\s+/);
   const short = parts.length > 1 ? `${parts[0]} ${parts[parts.length - 1][0].toUpperCase()}.` : parts[0];
-  await updatePlayerBoardName(u.uid, u.uid, short);
+  updatePlayerBoardName(u.uid, u.uid, short);
 
   // Update leaderboard entries for children (their last initial changes with the parent's last name)
   const lastInitial = parts.length > 1 ? parts[parts.length - 1][0].toUpperCase() : '';
@@ -175,7 +175,7 @@ export async function updateAccountName(firstName: string, lastName: string): Pr
   if (kidsCache && kidsCache.uid === u.uid) {
     for (const k of kidsCache.list) {
       const childShort = lastInitial ? `${k.name.trim().split(/\s+/)[0]} ${lastInitial}.` : k.name.trim().split(/\s+/)[0];
-      await updatePlayerBoardName(u.uid, k.key, childShort);
+      updatePlayerBoardName(u.uid, k.key, childShort);
     }
   }
 

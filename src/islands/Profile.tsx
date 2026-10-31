@@ -235,6 +235,7 @@ function AccountNameForm({ currentName, onDone }: { currentName: string; onDone:
       onDone();
     } catch (err) {
       setNameError(errorText(err));
+    } finally {
       setBusy(false);
     }
   }
@@ -297,6 +298,7 @@ function ChildForm({ child, onDone }: { child?: Player; onDone: () => void }) {
       onDone();
     } catch (err) {
       setError(errorText(err));
+    } finally {
       setBusy(false);
     }
   }
