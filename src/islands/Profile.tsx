@@ -30,11 +30,7 @@ export default function Profile({ books: _books }: { books?: BookInfo[] }) {
   const email = u?.email ?? p?.email ?? '';
   const [parentError, setParentError] = useState('');
   const [adding, setAdding] = useState(false);
-  const [editingName, setEditingName] = useState(false);
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [nameError, setNameError] = useState('');
-  const [savingName, setSavingName] = useState(false);
+  const [editingSelf, setEditingSelf] = useState(false);
 
   const list = players.value;
   const kids = list.filter((x) => x.child).length;
@@ -45,44 +41,6 @@ export default function Profile({ books: _books }: { books?: BookInfo[] }) {
   // nothing is drawn from the last visit: the page waits for the account, then each block for its data
   if (!u || !profileLoaded.value) return <Loader />;
 
-  function startEditName() {
-    const { first, last } = splitName(name);
-    setFirstName(first);
-    setLastName(last);
-    setNameError('');
-    setEditingName(true);
-  }
-
-  async function submitName(e: Event) {
-    e.preventDefault();
-    const f = firstName.trim();
-    const l = lastName.trim();
-    if (!f || !l) {
-      setNameError('Scrie prenumele și numele de familie.');
-      return;
-    }
-    const full = `${f} ${l}`.replace(/\s+/g, ' ');
-    if (full.length > 80) {
-      setNameError('Numele este prea lung (maximum 80 de caractere).');
-      return;
-    }
-    const twin = list.find((x) => x.child && sameFirstName(x.name, f));
-    if (twin) {
-      setNameError(`Prenumele tău nu poate fi identic cu cel al copilului (${twin.name}).`);
-      return;
-    }
-    setSavingName(true);
-    setNameError('');
-    try {
-      await updateAccountName(f, l);
-      setEditingName(false);
-    } catch (err) {
-      setNameError(errorText(err));
-    } finally {
-      setSavingName(false);
-    }
-  }
-
   async function toggleParent(on: boolean) {
     setParentError('');
     try { await setParent(on); } catch (err) { setParentError(errorText(err)); }
@@ -92,67 +50,24 @@ export default function Profile({ books: _books }: { books?: BookInfo[] }) {
     <div class="me">
       <header class="me-id">
         <Avatar name={name} size={76} />
-        {!editingName ? (
-          <div class="me-who">
-            <h1>{name}</h1>
-            {email && <p class="small muted">{email}</p>}
-            <button
-              type="button"
-              class="btn-reset link small me-edit-btn"
-              onClick={startEditName}
-            >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
-                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
-              </svg>
-              Schimbă numele
-            </button>
-            {profileError.value && <p class="small bad">Profilul nu a putut fi încărcat. Verifică conexiunea.</p>}
-          </div>
-        ) : (
-          <form class="stack me-form me-name-form" onSubmit={submitName}>
-            <div class="two">
-              <div class="field">
-                <label for="me-first">Prenume</label>
-                <input
-                  id="me-first"
-                  class="input"
-                  autocomplete="given-name"
-                  required
-                  maxLength={40}
-                  value={firstName}
-                  onInput={(e) => setFirstName(e.currentTarget.value)}
-                />
-              </div>
-              <div class="field">
-                <label for="me-last">Nume de familie</label>
-                <input
-                  id="me-last"
-                  class="input"
-                  autocomplete="family-name"
-                  required
-                  maxLength={40}
-                  value={lastName}
-                  onInput={(e) => setLastName(e.currentTarget.value)}
-                />
-              </div>
-            </div>
-            {nameError && <p class="notice notice-bad" role="alert">{nameError}</p>}
-            <div class="two">
-              <button type="button" class="btn btn-ghost" onClick={() => setEditingName(false)}>Renunță</button>
-              <button type="submit" class="btn btn-primary" disabled={savingName}>
-                {savingName ? 'Se salvează…' : 'Salvează'}
-              </button>
-            </div>
-          </form>
-        )}
+        <div class="me-who">
+          <h1>{name}</h1>
+          {email && <p class="small muted">{email}</p>}
+          {profileError.value && <p class="small bad">Profilul nu a putut fi încărcat. Verifică conexiunea.</p>}
+        </div>
       </header>
 
       {isParent ? (
         <section class="me-sect" aria-labelledby="pl-title">
           <h2 id="pl-title" class="me-label">Familia</h2>
           {list.map((x) => (
-            <PlayerBlock key={x.key} p={x} onEditSelf={startEditName} />
+            <PlayerBlock
+              key={x.key}
+              p={x}
+              editingSelf={editingSelf}
+              onStartEditSelf={() => setEditingSelf(true)}
+              onDoneEditSelf={() => setEditingSelf(false)}
+            />
           ))}
           {adding && <ChildForm onDone={() => setAdding(false)} />}
           {p && (
@@ -176,7 +91,16 @@ export default function Profile({ books: _books }: { books?: BookInfo[] }) {
         </section>
       ) : (
         p && (
-          <section class="me-sect" aria-label="Setări cont">
+          <section class="me-sect" aria-label="Contul meu">
+            {list.map((x) => (
+              <PlayerBlock
+                key={x.key}
+                p={x}
+                editingSelf={editingSelf}
+                onStartEditSelf={() => setEditingSelf(true)}
+                onDoneEditSelf={() => setEditingSelf(false)}
+              />
+            ))}
             <div class="me-row me-fam">
               <label class="switch-row">
                 <span>
@@ -204,10 +128,20 @@ export default function Profile({ books: _books }: { books?: BookInfo[] }) {
 }
 
 /** One player in the family: who they are, whether they are playing, and child management. */
-function PlayerBlock({ p, onEditSelf }: { p: Player; onEditSelf: () => void }) {
+function PlayerBlock({
+  p,
+  editingSelf,
+  onStartEditSelf,
+  onDoneEditSelf,
+}: {
+  p: Player;
+  editingSelf: boolean;
+  onStartEditSelf: () => void;
+  onDoneEditSelf: () => void;
+}) {
   const current = player.value;
   const active = p.key === current.key;
-  const [editing, setEditing] = useState(false);
+  const [editingChild, setEditingChild] = useState(false);
   const [confirming, setConfirming] = useState(false);
   const isSelf = !p.child;
 
@@ -216,7 +150,21 @@ function PlayerBlock({ p, onEditSelf }: { p: Player; onEditSelf: () => void }) {
     await removeChild(p.key);
   }
 
-  if (editing) return <ChildForm child={p} onDone={() => setEditing(false)} />;
+  if (isSelf && editingSelf) {
+    return (
+      <article class="pl" id="name-edit">
+        <header class="pl-head">
+          <Avatar name={p.name} size={40} />
+          <div class="pl-name">
+            <strong>{p.name.split(' ')[0]} (tu)</strong>
+          </div>
+        </header>
+        <AccountNameForm currentName={p.name} onDone={onDoneEditSelf} />
+      </article>
+    );
+  }
+
+  if (editingChild) return <ChildForm child={p} onDone={() => setEditingChild(false)} />;
 
   return (
     <article class="pl">
@@ -233,11 +181,11 @@ function PlayerBlock({ p, onEditSelf }: { p: Player; onEditSelf: () => void }) {
         <span class="pl-actions">
           {p.child ? (
             <>
-              <button type="button" class="btn-reset link small" onClick={() => setEditing(true)}>Schimbă</button>
+              <button type="button" class="btn-reset link small" onClick={() => setEditingChild(true)}>Schimbă</button>
               <button type="button" class="btn-reset link small bad" onClick={() => setConfirming(true)} aria-label={`Șterge pe ${p.name}`}>Șterge</button>
             </>
           ) : (
-            <button type="button" class="btn-reset link small" onClick={onEditSelf}>Schimbă numele</button>
+            <button type="button" class="btn-reset link small" onClick={onStartEditSelf}>Schimbă numele</button>
           )}
         </span>
       </footer>
@@ -251,6 +199,82 @@ function PlayerBlock({ p, onEditSelf }: { p: Player; onEditSelf: () => void }) {
         </div>
       )}
     </article>
+  );
+}
+
+function AccountNameForm({ currentName, onDone }: { currentName: string; onDone: () => void }) {
+  const { first, last } = splitName(currentName);
+  const [firstName, setFirstName] = useState(first);
+  const [lastName, setLastName] = useState(last);
+  const [nameError, setNameError] = useState('');
+  const [busy, setBusy] = useState(false);
+  const list = players.value;
+
+  async function submitName(e: Event) {
+    e.preventDefault();
+    const f = firstName.trim();
+    const l = lastName.trim();
+    if (!f || !l) {
+      setNameError('Scrie prenumele și numele de familie.');
+      return;
+    }
+    const full = `${f} ${l}`.replace(/\s+/g, ' ');
+    if (full.length > 80) {
+      setNameError('Numele este prea lung (maximum 80 de caractere).');
+      return;
+    }
+    const twin = list.find((x) => x.child && sameFirstName(x.name, f));
+    if (twin) {
+      setNameError(`Prenumele tău nu poate fi identic cu cel al copilului (${twin.name}).`);
+      return;
+    }
+    setBusy(true);
+    setNameError('');
+    try {
+      await updateAccountName(f, l);
+      onDone();
+    } catch (err) {
+      setNameError(errorText(err));
+      setBusy(false);
+    }
+  }
+
+  return (
+    <form class="stack me-form" onSubmit={submitName}>
+      <div class="two">
+        <div class="field">
+          <label for="me-first">Prenume</label>
+          <input
+            id="me-first"
+            class="input"
+            autocomplete="given-name"
+            required
+            maxLength={40}
+            value={firstName}
+            onInput={(e) => setFirstName(e.currentTarget.value)}
+          />
+        </div>
+        <div class="field">
+          <label for="me-last">Nume de familie</label>
+          <input
+            id="me-last"
+            class="input"
+            autocomplete="family-name"
+            required
+            maxLength={40}
+            value={lastName}
+            onInput={(e) => setLastName(e.currentTarget.value)}
+          />
+        </div>
+      </div>
+      {nameError && <p class="notice notice-bad" role="alert">{nameError}</p>}
+      <div class="two">
+        <button type="button" class="btn btn-ghost" onClick={onDone}>Renunță</button>
+        <button type="submit" class="btn btn-primary" disabled={busy}>
+          {busy ? 'Se salvează…' : 'Salvează'}
+        </button>
+      </div>
+    </form>
   );
 }
 

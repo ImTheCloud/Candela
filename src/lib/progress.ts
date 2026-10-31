@@ -178,7 +178,7 @@ export function deleteProgress(uid: string, playerKey: string) {
 }
 
 // v2: entries now also exist at 0 points and carry every level, so each one is written again once
-const boardMark = (uid: string, key: string, book: string) => `bd2:${uid}~${key}~${book}`;
+const boardMark = (uid: string, key: string, book: string) => `bd3:${uid}~${key}~${book}`;
 
 // Everyone who comes into this version is on the boards, at 0 points until they know a question.
 // The playing player's entry follows their progress; the account's other players get theirs written once.
@@ -189,10 +189,12 @@ effect(() => {
   for (const b of BOOKS) {
     if (!progressLoaded(b.slug).value) continue;
     const prog = progress(b.slug).value;
-    if (localGet<number | null>(boardMark(u.uid, p.key, b.slug), null) === prog.mastered.length) continue;
-    localSet(boardMark(u.uid, p.key, b.slug), prog.mastered.length);
+    const mark = boardMark(u.uid, p.key, b.slug);
+    const expected = `${shortName(p)}:${prog.mastered.length}`;
+    if (localGet<string | null>(mark, null) === expected) continue;
+    localSet(mark, expected);
     Promise.resolve(writeBoard(b.slug, u.uid, p.key, shortName(p), prog.mastered))
-      .catch((e) => { console.error(e); localRemove(boardMark(u.uid, p.key, b.slug)); });
+      .catch((e) => { console.error(e); localRemove(mark); });
   }
 });
 
@@ -204,12 +206,13 @@ effect(() => {
     if (p.key === current) continue;
     for (const b of BOOKS) {
       const mark = boardMark(u.uid, p.key, b.slug);
-      if (localGet<number | null>(mark, null) !== null) continue;
-      localSet(mark, -1);
       getDoc(doc(db, 'users', u.uid, 'progress', `${p.key}~${b.slug}`))
         .then((snap) => {
           const mastered = (snap.get('mastered') as string[] | undefined) ?? [];
-          return Promise.resolve(writeBoard(b.slug, u.uid, p.key, shortName(p), mastered)).then(() => localSet(mark, mastered.length));
+          const expected = `${shortName(p)}:${mastered.length}`;
+          if (localGet<string | null>(mark, null) === expected) return;
+          localSet(mark, expected);
+          return Promise.resolve(writeBoard(b.slug, u.uid, p.key, shortName(p), mastered));
         })
         .catch((e) => { console.error(e); localRemove(mark); });
     }

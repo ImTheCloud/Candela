@@ -1,4 +1,4 @@
-import { deleteDoc, doc, serverTimestamp, setDoc, type WriteBatch } from 'firebase/firestore';
+import { deleteDoc, doc, getDoc, serverTimestamp, setDoc, updateDoc, type WriteBatch } from 'firebase/firestore';
 import { LEVEL_KEY, LEVELS, type Level } from './age';
 import { BOOKS } from './books';
 import { db } from './firebase';
@@ -44,4 +44,21 @@ export function writeBoard(book: string, uid: string, key: string, name: string,
 /** Leaves the boards (a deleted player). "all" is an old board that no longer exists. */
 export function removeFromBoards(uid: string, key: string) {
   return Promise.all([...BOOKS.map((b) => b.slug), 'all'].map((b) => deleteDoc(boardRef(b, uid, key))));
+}
+
+/** Updates the name displayed on the leaderboards for a player. */
+export async function updatePlayerBoardName(uid: string, key: string, name: string) {
+  boardChangedAt = Date.now();
+  const allBooks = [...BOOKS.map((b) => b.slug), 'all'];
+  for (const slug of allBooks) {
+    const ref = boardRef(slug, uid, key);
+    try {
+      const snap = await getDoc(ref);
+      if (snap.exists()) {
+        await updateDoc(ref, { name, at: serverTimestamp() });
+      }
+    } catch {
+      // ignore
+    }
+  }
 }
