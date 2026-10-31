@@ -3,10 +3,8 @@ import { collection, FieldPath, getDocs, limit, orderBy, query, where } from 'fi
 import { LEVEL_KEY, type Level } from '../lib/age';
 import { boardChangedAt } from '../lib/board';
 import { db } from '../lib/firebase';
-import { player, setHidden } from '../lib/players';
-import { progress } from '../lib/progress';
 import { scoreView } from '../lib/level';
-import { profile, rememberedAccount, user } from '../lib/session';
+import { user } from '../lib/session';
 import LevelPicker from './LevelPicker';
 
 interface Row { key: string; name: string; score: number; at: number }
@@ -50,7 +48,6 @@ export default function Board({ book }: Props) {
   const [age, setAgeState] = useState<Level | 'all'>(scoreView.value);
   const [rows, setRows] = useState<Row[] | null>(() => cached(`${book}:${scoreView.value}`));
   const [error, setError] = useState(false);
-  const [busy, setBusy] = useState(false);
 
   const setAge = (next: Level | 'all') => {
     if (next === age) return;
@@ -85,19 +82,6 @@ export default function Board({ book }: Props) {
     return () => { active = false; };
   }, [book, age]);
 
-  const p = player.value;
-  // before the account answers, the last visit's account and choice are shown at once (nothing pops in later)
-  const waiting = user.value === undefined && !!rememberedAccount;
-  const signedIn = !!user.value || waiting;
-  const hidden = waiting ? (profile.value?.hidden ?? false) : p.hidden;
-  async function toggleHidden() {
-    setBusy(true);
-    try { await setHidden(p, !p.hidden); } finally { setBusy(false); }
-  }
-
-  const mastered = progress(book).value.mastered;
-  const myScore = age === 'all' ? new Set(mastered).size : new Set(mastered.filter((id) => id.split('.')[2] === age)).size;
-
   const mine = (key: string) => !!user.value && key.startsWith(`${user.value.uid}~`);
 
   return (
@@ -106,16 +90,9 @@ export default function Board({ book }: Props) {
         <div class="lb-title">
           <h2 id="lb-title">Clasament</h2>
           <p class="lb-count small muted" style={rows === null || error ? { visibility: 'hidden' } : undefined}>
-            {rows ? `${rows.length} ${rows.length === 1 ? 'jucător vizibil' : 'jucători vizibili'}` : '\u00a0'}
+            {rows ? `${rows.length} ${rows.length === 1 ? 'jucător' : 'jucători'}` : '\u00a0'}
           </p>
         </div>
-        {signedIn && (
-          <label class="tgl">
-            <input type="checkbox" role="switch" checked={!hidden} disabled={busy || waiting} onChange={toggleHidden} />
-            <span class="tgl-track" aria-hidden="true"><span class="tgl-thumb" /></span>
-            <span class="tgl-text">{hidden ? 'Ascuns' : 'Vizibil'}</span>
-          </label>
-        )}
       </div>
 
       <LevelPicker<Level | 'all'>
@@ -125,12 +102,6 @@ export default function Board({ book }: Props) {
         includeAll
       />
 
-      {signedIn && hidden && (
-        <div class="lb-hidden">
-          <span class="small muted">Nu apari în clasament</span>
-          <strong>{myScore} {myScore === 1 ? 'punct' : 'puncte'}</strong>
-        </div>
-      )}
       {user.value === null && (
         <div class="lb-guest">
           <p class="small">Nu ești în cont. Intră sau creează un cont ca să joci și să apari în clasament.</p>

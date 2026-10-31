@@ -499,20 +499,9 @@ html:not(.signed-in) .back-signed-in { display: none; }
 .exams .card.exam { padding: 10px 14px; }
 .exams { gap: 8px; }
 
-.tgl { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; white-space: nowrap; }
-.tgl input { position: absolute; opacity: 0; width: 1px; height: 1px; }
-.tgl-track { width: 46px; height: 28px; border-radius: 999px; background: var(--surface-2); box-shadow: inset 0 0 0 1px var(--line); padding: 3px; display: block; transition: background .18s; flex: none; }
-.tgl-thumb { display: block; width: 22px; height: 22px; border-radius: 50%; background: var(--surface); box-shadow: 0 1px 2px rgb(58 39 27 / .3); transition: transform .18s; }
-.tgl input:checked + .tgl-track { background: var(--btn); box-shadow: none; }
-.tgl input:checked + .tgl-track .tgl-thumb { transform: translateX(18px); }
-.tgl input:focus-visible + .tgl-track { outline: 2px solid var(--btn); outline-offset: 2px; }
-.tgl-text { font-size: 0.85rem; color: var(--ink-2);  }
-.lb-hidden { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 14px; border-radius: var(--r-ctl); background: var(--bg); border: 1px dashed var(--line); }
-.lb-hidden strong { font-variant-numeric: tabular-nums; white-space: nowrap; }
 .lb, .board, .lb-head { min-width: 0; max-width: 100%; }
 .lb-head h2 { flex: 1; min-width: 0; }
 .lb-count { white-space: normal; }
-.tgl { flex: none; }
 
 .me-fam { display: grid; gap: 12px; }
 .fam-add { display: flex; align-items: center; gap: 10px; width: 100%; padding-top: 12px; border-top: 1px solid var(--line); color: var(--ink); text-align: left; }

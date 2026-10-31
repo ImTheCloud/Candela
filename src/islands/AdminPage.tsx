@@ -83,12 +83,12 @@ function day(d: Date): string {
 
 /** Everything an admin can change on one account. Each action saves at once and reloads the list. */
 function Editor({ r, self, onChanged }: { r: UserRow; self: boolean; onChanged: () => Promise<void> }) {
-  const [f, setF] = useState({ name: r.name, isParent: r.isParent, hidden: r.hidden, admin: r.admin });
+  const [f, setF] = useState({ name: r.name, isParent: r.isParent, admin: r.admin });
   const [newKid, setNewKid] = useState('');
   const [busy, setBusy] = useState(false);
   const [msg, setMsg] = useState<{ ok: boolean; text: string } | null>(null);
   const [confirmDelete, setConfirmDelete] = useState(false);
-  const dirty = f.name.trim() !== r.name || f.isParent !== r.isParent || f.hidden !== r.hidden || f.admin !== r.admin;
+  const dirty = f.name.trim() !== r.name || f.isParent !== r.isParent || f.admin !== r.admin;
 
   async function run(action: () => Promise<unknown>, done: string) {
     setBusy(true);
@@ -112,7 +112,6 @@ function Editor({ r, self, onChanged }: { r: UserRow; self: boolean; onChanged: 
           <input id={`an-${r.uid}`} class="input" maxLength={80} value={f.name} onInput={(e) => setF({ ...f, name: e.currentTarget.value })} />
         </div>
         <label class="check"><input type="checkbox" checked={f.isParent} onChange={(e) => setF({ ...f, isParent: e.currentTarget.checked })} /><span>Cont de părinte</span></label>
-        <label class="check"><input type="checkbox" checked={f.hidden} onChange={(e) => setF({ ...f, hidden: e.currentTarget.checked })} /><span>Ascuns din clasament</span></label>
         <label class="check">
           <input type="checkbox" checked={f.admin} disabled={self} onChange={(e) => setF({ ...f, admin: e.currentTarget.checked })} />
           <span>Administrator{self && <span class="muted"> (contul tău)</span>}</span>
