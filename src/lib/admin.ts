@@ -10,7 +10,6 @@ export interface UserRow {
   name: string;
   email: string;
   isParent: boolean;
-  hidden: boolean;
   admin: boolean;
   at: Timestamp | null;
   /** Last visit to this version (noted once a day); null when they have not come yet. */
@@ -36,7 +35,6 @@ export async function loadUsers(): Promise<UserRow[]> {
       name: (d.get('name') as string) || '(fără nume)',
       email: (d.get('email') as string) || '',
       isParent: d.get('isParent') === true,
-      hidden: d.get('hidden') === true,
       admin: d.get('admin') === true,
       at: (d.get('createdAt') as Timestamp | undefined) ?? null,
       seen: (d.get('lastSeen') as Timestamp | undefined) ?? null,
@@ -47,10 +45,8 @@ export async function loadUsers(): Promise<UserRow[]> {
 
 const clean = (s: string) => s.trim().replace(/\s+/g, ' ');
 
-/** Hiding an account also takes it off the boards (its own client only writes the boards while it is visible). */
-export async function updateUser(uid: string, data: { name: string; isParent: boolean; hidden: boolean; admin: boolean }) {
-  await updateDoc(doc(db, 'users', uid), { ...data, name: clean(data.name) });
-  if (data.hidden) await removeFromBoards(uid, uid);
+export function updateUser(uid: string, data: { name: string; isParent: boolean; admin: boolean }) {
+  return updateDoc(doc(db, 'users', uid), { ...data, name: clean(data.name) });
 }
 
 export function addChildTo(uid: string, name: string) {

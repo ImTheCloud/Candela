@@ -1,7 +1,6 @@
 import { computed, effect, signal } from '@preact/signals';
-import { addDoc, collection, deleteDoc, doc, getDoc, onSnapshot, serverTimestamp, updateDoc } from 'firebase/firestore';
-import { removeFromBoards, writeBoard } from './board';
-import { BOOKS } from './books';
+import { addDoc, collection, deleteDoc, doc, onSnapshot, serverTimestamp, updateDoc } from 'firebase/firestore';
+import { removeFromBoards } from './board';
 import { db } from './firebase';
 import { profile, rememberedAccount, user } from './session';
 import { localGet, localRemove, localSet } from './store';
@@ -12,8 +11,6 @@ export interface Player {
   name: string;
   birthYear: number | null;
   child: boolean;
-  /** Left out of the public board. */
-  hidden: boolean;
 }
 
 export const GUEST = 'guest';
@@ -26,9 +23,9 @@ const chosen = signal<string | null>(localGet<string | null>('player', null));
 
 export const players = computed<Player[]>(() => {
   const u = user.value;
-  if (!u) return [{ key: GUEST, name: 'Invitat', birthYear: null, child: false, hidden: true }];
+  if (!u) return [{ key: GUEST, name: 'Invitat', birthYear: null, child: false }];
   const p = profile.value;
-  const self: Player = { key: u.uid, name: p?.name || u.displayName || 'Eu', birthYear: p?.birthYear ?? null, child: false, hidden: p?.hidden ?? false };
+  const self: Player = { key: u.uid, name: p?.name || u.displayName || 'Eu', birthYear: p?.birthYear ?? null, child: false };
   return [self, ...children.value];
 });
 
@@ -53,7 +50,7 @@ effect(() => {
   if (u.uid !== kidsCache?.uid) children.value = [];
   stopChildren = onSnapshot(collection(db, 'users', u.uid, 'players'), (snap) => {
     children.value = snap.docs
-      .map((d) => ({ key: d.id, name: d.get('name') as string, birthYear: (d.get('birthYear') as number | undefined) ?? null, child: true, hidden: d.get('hidden') === true, at: d.get('createdAt')?.toMillis?.() ?? 0 }))
+      .map((d) => ({ key: d.id, name: d.get('name') as string, birthYear: (d.get('birthYear') as number | undefined) ?? null, child: true, at: d.get('createdAt')?.toMillis?.() ?? 0 }))
       .sort((a, b) => a.at - b.at)
       .map(({ at: _, ...p }) => p);
     localSet('kids', { uid: u.uid, list: children.value });
@@ -86,18 +83,6 @@ export function shortName(p: Player): string {
   const parts = p.name.trim().split(/\s+/);
   const last = p.child ? (profile.value?.name ?? '').trim().split(/\s+/).slice(1).pop() : parts.length > 1 ? parts[parts.length - 1] : '';
   return last ? `${parts[0]} ${last[0].toUpperCase()}.` : parts[0];
-}
-
-/** Show or hide a player on the public boards; hiding removes the board entries. */
-export async function setHidden(p: Player, hidden: boolean) {
-  const id = uid();
-  if (p.child) await updateDoc(doc(db, 'users', id, 'players', p.key), { hidden });
-  else await updateDoc(doc(db, 'users', id), { hidden });
-  if (hidden) return removeFromBoards(id, p.key);
-  await Promise.all(BOOKS.map(async (b) => {
-    const mastered = ((await getDoc(doc(db, 'users', id, 'progress', `${p.key}~${b.slug}`))).get('mastered') as string[] | undefined) ?? [];
-    if (mastered.length) await writeBoard(b.slug, id, p.key, shortName(p), mastered);
-  }));
 }
 
 /**

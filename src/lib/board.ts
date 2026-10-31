@@ -41,7 +41,7 @@ export function writeBoard(book: string, uid: string, key: string, name: string,
   return batch ? batch.set(boardRef(book, uid, key), data) : setDoc(boardRef(book, uid, key), data);
 }
 
-/** Leaves the boards (a hidden or deleted player). "all" is an old board that no longer exists. */
+/** Leaves the boards (a deleted player). "all" is an old board that no longer exists. */
 export function removeFromBoards(uid: string, key: string) {
   return Promise.all([...BOOKS.map((b) => b.slug), 'all'].map((b) => deleteDoc(boardRef(b, uid, key))));
 }

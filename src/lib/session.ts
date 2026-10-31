@@ -18,7 +18,6 @@ export interface Profile {
   email: string;
   birthYear: number | null;
   isParent: boolean;
-  hidden: boolean;
   /** Can read the reports; set only from the Firebase console or the migration. */
   admin?: boolean;
 }
@@ -106,7 +105,6 @@ export async function signUp(f: SignUp): Promise<void> {
     email: cred.user.email,
     birthYear: null,
     isParent: f.isParent,
-    hidden: false,
     createdAt: serverTimestamp(),
     lastSeen: serverTimestamp(),
   });

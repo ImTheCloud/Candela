@@ -20,8 +20,7 @@ service cloud.firestore {
     function validUser(d) {
       return d.name is string && d.name.size() <= 80
         && (d.get('birthYear', null) == null || validYear(d.birthYear))
-        && d.isParent is bool
-        && d.hidden is bool;
+        && d.isParent is bool;
     }
 
     match /users/{uid} {
@@ -40,8 +39,7 @@ service cloud.firestore {
         allow delete: if owner(uid) || admin();
         allow create, update: if (owner(uid) || admin())
           && request.resource.data.name is string && request.resource.data.name.size() >= 1 && request.resource.data.name.size() <= 40
-          && (request.resource.data.get('birthYear', null) == null || validYear(request.resource.data.birthYear))
-          && request.resource.data.get('hidden', false) is bool;
+          && (request.resource.data.get('birthYear', null) == null || validYear(request.resource.data.birthYear));
       }
 
       // what v1 left (questions mastered before the rewrite), written by the migration only

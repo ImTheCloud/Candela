@@ -185,7 +185,7 @@ const boardMark = (uid: string, key: string, book: string) => `bd2:${uid}~${key}
 effect(() => {
   const u = user.value;
   const p = player.value;
-  if (!u || p.hidden) return;
+  if (!u) return;
   for (const b of BOOKS) {
     if (!progressLoaded(b.slug).value) continue;
     const prog = progress(b.slug).value;
@@ -201,7 +201,7 @@ effect(() => {
   if (!u) return;
   const current = player.value.key;
   for (const p of players.value) {
-    if (p.hidden || p.key === current) continue;
+    if (p.key === current) continue;
     for (const b of BOOKS) {
       const mark = boardMark(u.uid, p.key, b.slug);
       if (localGet<number | null>(mark, null) !== null) continue;
