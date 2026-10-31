@@ -6,7 +6,6 @@ import { progress, scoreLabel } from '../lib/progress';
 import LevelPicker from './LevelPicker';
 import TestShape from './TestShape';
 import Modal, { CloseButton } from './Modal';
-import { PER_TEST } from '../lib/questions';
 
 /** A real exam that already took place, to play again. */
 export interface ExamInfo {
@@ -37,10 +36,11 @@ export default function ExamSheet({ book, exams, onClose }: { book: string; exam
         <div class="sheet-top">
           <div>
             <h2 id="ex-title">Examene</h2>
-            <p class="muted">{PER_TEST} de întrebări, ca la examenul final</p>
+            <p class="muted">Din toată cartea, ca la examenul final</p>
           </div>
           <CloseButton onClick={close} />
         </div>
+        <TestShape />
         <a class="read-row" href={`${base}/citire/1`}>
           <span class="oc-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 4h7a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H2zM22 4h-7a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h8z" /></svg></span>
           <span class="oc-main"><b>Citește cartea</b><small>De la capitolul 1, traducerea Cornilescu</small></span>
@@ -66,7 +66,6 @@ export default function ExamSheet({ book, exams, onClose }: { book: string; exam
           <p class="sheet-label">Examen alb, din toată cartea</p>
         </div>
         <LevelPicker />
-        <TestShape />
         <a class="btn btn-primary btn-block oc-go" href={`${base}/examene/alb`}>Începe examenul alb de nivel {levelLabel(lv).toLowerCase()}</a>
       </>)}
     </Modal>
