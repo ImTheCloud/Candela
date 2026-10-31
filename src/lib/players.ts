@@ -1,6 +1,6 @@
 import { computed, effect, signal } from '@preact/signals';
 import { addDoc, collection, deleteDoc, doc, onSnapshot, serverTimestamp, updateDoc } from 'firebase/firestore';
-import { removeFromBoards } from './board';
+import { removeFromBoards, updatePlayerBoardName } from './board';
 import { db } from './firebase';
 import { profile, rememberedAccount, user } from './session';
 import { localGet, localRemove, localSet } from './store';
@@ -67,8 +67,13 @@ export function addChild(name: string) {
   return addDoc(collection(db, 'users', uid(), 'players'), { name: name.trim().replace(/\s+/g, ' '), createdAt: serverTimestamp() });
 }
 
-export function updateChild(key: string, name: string) {
-  return updateDoc(doc(db, 'users', uid(), 'players', key), { name: name.trim().replace(/\s+/g, ' ') });
+export async function updateChild(key: string, name: string) {
+  const cleanName = name.trim().replace(/\s+/g, ' ');
+  await updateDoc(doc(db, 'users', uid(), 'players', key), { name: cleanName });
+  const parentParts = (profile.value?.name ?? '').trim().split(/\s+/);
+  const lastInitial = parentParts.length > 1 ? parentParts[parentParts.length - 1][0].toUpperCase() : '';
+  const short = lastInitial ? `${cleanName.split(/\s+/)[0]} ${lastInitial}.` : cleanName.split(/\s+/)[0];
+  await updatePlayerBoardName(uid(), key, short);
 }
 
 export async function removeChild(key: string) {
