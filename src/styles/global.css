@@ -487,7 +487,7 @@ a.tile { text-decoration: none; }
 .exam.soon { opacity: .75; border-style: dashed; box-shadow: none; }
 
 /* Admin: accounts */
-.adm-stats { display: grid; grid-template-columns: repeat(4, 1fr); margin: 0; padding: 14px 0; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-box); }
+.adm-stats { display: grid; grid-template-columns: repeat(3, 1fr); margin: 0; padding: 14px 0; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-box); }
 .adm-stats > div { display: flex; flex-direction: column-reverse; align-items: center; gap: 2px; min-width: 0; }
 .adm-stats > div + div { border-left: 1px solid var(--line); }
 .adm-stats dt { font-size: 0.78rem; color: var(--ink-2); }
