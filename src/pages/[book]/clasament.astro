@@ -3,18 +3,22 @@ import Loader from '../../components/Loader.astro';
 import Base from '../../layouts/Base.astro';
 import Board from '../../islands/Board';
 import { BOOKS, type Book } from '../../lib/books';
+import { totals } from '../../lib/content';
 
 export function getStaticPaths() {
   return BOOKS.map((book) => ({ params: { book: book.slug }, props: { book } }));
 }
 const { book } = Astro.props as { book: Book };
+const ready = Object.keys(totals(book.slug)).length > 0;
 ---
 <Base title="Clasament" description={`Clasamentul ${book.name}, pe niveluri.`} crumbs={[{ href: '/', label: 'Acasă' }, { href: `/${book.slug}`, label: book.name }]}>
   <section class="wrap narrow page">
     <h1>Clasament</h1>
-    <Board client:only="preact" book={book.slug}>
-      <Loader slot="fallback" />
-    </Board>
+    {ready ? (
+      <Board client:only="preact" book={book.slug}>
+        <Loader slot="fallback" />
+      </Board>
+    ) : <p class="muted">Clasamentul din {book.name} apare când sunt gata întrebările.</p>}
   </section>
 </Base>
 <style>.page { display: grid; gap: 16px; padding-block: 8px 32px; }</style>

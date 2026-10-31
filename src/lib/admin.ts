@@ -13,6 +13,8 @@ export interface UserRow {
   hidden: boolean;
   admin: boolean;
   at: Timestamp | null;
+  /** Last visit to this version (noted once a day); null when they have not come yet. */
+  seen: Timestamp | null;
   kids: Kid[];
 }
 
@@ -37,6 +39,7 @@ export async function loadUsers(): Promise<UserRow[]> {
       hidden: d.get('hidden') === true,
       admin: d.get('admin') === true,
       at: (d.get('createdAt') as Timestamp | undefined) ?? null,
+      seen: (d.get('lastSeen') as Timestamp | undefined) ?? null,
       kids: kidsOf.get(d.id) ?? [],
     }))
     .sort((a, b) => (b.at?.toMillis() ?? 0) - (a.at?.toMillis() ?? 0));

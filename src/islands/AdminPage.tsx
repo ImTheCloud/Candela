@@ -61,12 +61,24 @@ function Row({ r, me, onChanged }: { r: UserRow; me: string; onChanged: () => Pr
         <svg class="adm-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
         <span class="adm-sub">
           <small class="adm-mail">{r.email}</small>
-          <small class="adm-date">{r.at ? r.at.toDate().toLocaleDateString('ro-RO', { day: '2-digit', month: '2-digit', year: '2-digit' }) : 'vechi'}</small>
+        </span>
+        <span class="adm-dates">
+          <small>Creat: <b>{r.at ? day(r.at.toDate()) : '—'}</b></small>
+          <small>Ultima dată: <b>{r.seen ? day(r.seen.toDate()) : 'încă nu'}</b></small>
         </span>
       </button>
       {open && <Editor r={r} self={r.uid === me} onChanged={onChanged} />}
     </li>
   );
+}
+
+/** "azi", "ieri" or "31.10.26". */
+function day(d: Date): string {
+  const start = (x: Date) => new Date(x.getFullYear(), x.getMonth(), x.getDate()).getTime();
+  const diff = Math.round((start(new Date()) - start(d)) / 86400000);
+  if (diff === 0) return 'azi';
+  if (diff === 1) return 'ieri';
+  return d.toLocaleDateString('ro-RO', { day: '2-digit', month: '2-digit', year: '2-digit' });
 }
 
 /** Everything an admin can change on one account. Each action saves at once and reloads the list. */
