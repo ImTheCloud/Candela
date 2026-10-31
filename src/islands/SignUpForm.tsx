@@ -2,7 +2,8 @@ import { useEffect, useRef, useState } from 'preact/hooks';
 import { errorText, signUp, user } from '../lib/session';
 import PasswordInput from './PasswordInput';
 import { nextPage } from './AccountGate';
-import { addChild } from '../lib/players';
+import { addChild, sameFirstName } from '../lib/players';
+import SameNameSheet from './SameNameSheet';
 
 export default function SignUpForm() {
   const [f, setF] = useState({ firstName: '', lastName: '', email: '', password: '', isParent: false });
@@ -10,6 +11,7 @@ export default function SignUpForm() {
   const [kids, setKids] = useState(['']);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
+  const [sameName, setSameName] = useState('');
   const submitting = useRef(false);
 
   // Someone already signed in has nothing to do here. During sign-up, wait until the profile is written.
@@ -27,6 +29,8 @@ export default function SignUpForm() {
     if (!f.firstName.trim() || !f.lastName.trim()) return setError('Scrie prenumele și numele de familie.');
     const names = f.isParent ? kids.map((k) => k.trim()).filter(Boolean) : [];
     if (f.isParent && !names.length) return setError('Scrie prenumele a cel puțin unui copil.');
+    const twin = names.find((n) => sameFirstName(n, f.firstName));
+    if (twin) return setSameName(f.firstName.trim());
     setBusy(true);
     setError('');
     submitting.current = true;
@@ -92,6 +96,7 @@ export default function SignUpForm() {
       {error && <p class="notice notice-bad" role="alert">{error}</p>}
       <button class="btn btn-primary btn-block" disabled={busy}>{busy ? 'Se creează contul…' : 'Creează contul'}</button>
       <p class="small auth-links"><a class="link" href={`/cont${location.search}`}>Ai deja un cont?</a></p>
+      {sameName && <SameNameSheet name={sameName} onClose={() => setSameName('')} />}
     </form>
   );
 }
