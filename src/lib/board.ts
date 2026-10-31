@@ -2,6 +2,7 @@ import { deleteDoc, doc, getDoc, serverTimestamp, setDoc, updateDoc, type WriteB
 import { LEVEL_KEY, LEVELS, type Level } from './age';
 import { BOOKS } from './books';
 import { db } from './firebase';
+import { localRemove } from './store';
 
 /**
  * Public board of a book (everyone reads it, the account writes its own players):
@@ -46,19 +47,22 @@ export function removeFromBoards(uid: string, key: string) {
   return Promise.all([...BOOKS.map((b) => b.slug), 'all'].map((b) => deleteDoc(boardRef(b, uid, key))));
 }
 
-/** Updates the name displayed on the leaderboards for a player. */
-export async function updatePlayerBoardName(uid: string, key: string, name: string) {
+/** Updates the name displayed on the leaderboards for a player in the background. */
+export function updatePlayerBoardName(uid: string, key: string, name: string) {
   boardChangedAt = Date.now();
-  const allBooks = [...BOOKS.map((b) => b.slug), 'all'];
-  for (const slug of allBooks) {
-    const ref = boardRef(slug, uid, key);
-    try {
-      const snap = await getDoc(ref);
-      if (snap.exists()) {
-        await updateDoc(ref, { name, at: serverTimestamp() });
-      }
-    } catch {
-      // ignore
-    }
+  for (const b of BOOKS) {
+    localRemove(`bd3:${uid}~${key}~${b.slug}`);
+    getDoc(doc(db, 'users', uid, 'progress', `${key}~${b.slug}`))
+      .then((snap) => {
+        if (!snap.exists()) return;
+        const mastered = (snap.get('mastered') as string[] | undefined) ?? [];
+        return writeBoard(b.slug, uid, key, name, mastered);
+      })
+      .then(() => {
+        boardChangedAt = Date.now();
+      })
+      .catch((e) => {
+        console.warn('Could not sync board for', b.slug, e);
+      });
   }
 }
