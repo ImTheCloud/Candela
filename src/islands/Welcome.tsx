@@ -3,6 +3,8 @@ import { useState } from 'preact/hooks';
 import { user } from '../lib/session';
 import { localGet, localSet } from '../lib/store';
 import Modal from './Modal';
+import LevelPicker from './LevelPicker';
+import TestShape from './TestShape';
 
 /** Where questions and corrections go: the "Scrie-ne" buttons open a new email to it. */
 export const CONTACT = 'claudiu.dev@outlook.com';
@@ -17,16 +19,18 @@ const PAGES: Page[] = [
     title: 'Bine ai venit pe Candela',
     body: (<>
       <p>Candela îi ajută pe copii, adolescenți, tineri și adulți să se pregătească pentru concursul biblic <b>Talantul în negoț</b>.</p>
-      <p class="muted">Pentru orice întrebare sau corectare, ne poți scrie din profil.</p>
+      <p>Sus în dreapta, în <b>profil</b>, vezi progresul tău, îți adaugi copiii dacă ești părinte și ne poți scrie pentru orice întrebare sau corectare.</p>
     </>),
   },
   {
-    title: 'Cărțile',
-    body: <p><b>1 Samuel</b> și <b>2 Samuel</b>, după traducerea Cornilescu. 2 Samuel este gata, 1 Samuel vine în curând. Fiecare capitol se poate și citi.</p>,
-  },
-  {
     title: 'Testele',
-    body: <p><b>24 de întrebări</b> pe capitol, pe trei niveluri: <b>Ușor</b> (copii), <b>Mediu</b> (adolescenți) și <b>Greu</b> (adulți). Le poți încerca pe toate.</p>,
+    body: (<>
+      <p>Fiecare capitol are un test, pe trei niveluri. Încearcă-le pe toate.</p>
+      <div class="wl-demo">
+        <TestShape />
+        <LevelPicker />
+      </div>
+    </>),
   },
   {
     title: 'Examenele',
@@ -34,11 +38,7 @@ const PAGES: Page[] = [
   },
   {
     title: 'Clasamentul',
-    body: <p>Fiecare întrebare știută îți aduce un punct. Cu butonul <b>Vizibil</b> poți apărea sau nu în clasament.</p>,
-  },
-  {
-    title: 'Profilul',
-    body: <p>Sus în dreapta: progresul tău, copiii (pentru un părinte) și un email către noi. O întrebare greșită? Apasă <b>Semnalează</b>.</p>,
+    body: <p>Fiecare întrebare știută îți aduce un punct. Cu butonul <b>Vizibil</b> poți apărea sau nu în clasament. O întrebare greșită? Apasă <b>Semnalează</b>.</p>,
   },
 ];
 
