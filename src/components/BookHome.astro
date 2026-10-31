@@ -2,6 +2,7 @@
 import Loader from './Loader.astro';
 import BookPanel from '../islands/BookPanel';
 import PlayerPicker from '../islands/PlayerPicker';
+import Stopwatch from '../islands/Stopwatch';
 import { BOOKS, type Book } from '../lib/books';
 import { examList, summary } from '../lib/content';
 
@@ -11,6 +12,8 @@ const { book } = Astro.props;
 const books = BOOKS.map((b) => ({ slug: b.slug, name: b.name, titles: b.titles, summary: summary(b.slug), exams: examList(b.slug) }));
 ---
 <h1 class="sr-only">Candela</h1>
+
+<Stopwatch client:only="preact" wrap />
 
 <section class="wrap hb-who">
   <PlayerPicker client:only="preact" />

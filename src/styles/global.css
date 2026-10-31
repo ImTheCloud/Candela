@@ -287,6 +287,7 @@ img, svg { display: block; }
 .tile-exam { aspect-ratio: auto; height: 100%; min-height: 0; display: flex; gap: 8px; justify-content: center; text-decoration: none; font-size: 0.95rem; }
 
 /* Home: book switch, chapters card, board link */
+.hb-sw { padding-top: 10px; margin-bottom: 6px; }
 .hb-chap { padding-top: 8px; }
 .hb-block { padding-top: 12px; }
 .hb-chapters { display: grid; gap: 10px; padding: 12px 14px 14px; }
