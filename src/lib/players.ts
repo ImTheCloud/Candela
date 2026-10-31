@@ -99,3 +99,13 @@ export async function setHidden(p: Player, hidden: boolean) {
     if (mastered.length) await writeBoard(b.slug, id, p.key, shortName(p), mastered);
   }));
 }
+
+/**
+ * A child cannot have the parent's first name: it is how a parent who signed up under the child's name
+ * and then added the child again shows up (the same child twice on the board).
+ */
+export function sameFirstName(a: string, b: string): boolean {
+  const first = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim().split(/[\s-]+/)[0] ?? '';
+  const x = first(a);
+  return x !== '' && x === first(b);
+}

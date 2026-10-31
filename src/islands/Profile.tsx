@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'preact/hooks';
 import { doc, onSnapshot } from 'firebase/firestore';
 import { db } from '../lib/firebase';
-import { addChild, choosePlayer, player, players, removeChild, updateChild, type Player } from '../lib/players';
+import { addChild, choosePlayer, player, players, removeChild, sameFirstName, updateChild, type Player } from '../lib/players';
 import { localGet, localSet } from '../lib/store';
 import { TYPES } from '../lib/questions';
 import { LEVELS, levelLabel, type Level } from '../lib/age';
 import { deleteProgress, EMPTY, type Progress } from '../lib/progress';
 import { errorText, profile, profileError, profileLoaded, rememberedAccount, setParent, signOut, user } from '../lib/session';
 import Avatar from './Avatar';
+import SameNameSheet from './SameNameSheet';
 import Stopwatch from './Stopwatch';
 import LevelPicker from './LevelPicker';
 import Loader from './Loader';
@@ -268,10 +269,13 @@ function ChildForm({ child, onDone }: { child?: Player; onDone: () => void }) {
   const [name, setName] = useState(child?.name ?? '');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
+  const [sameName, setSameName] = useState('');
 
   async function submit(e: Event) {
     e.preventDefault();
     if (!name.trim()) return setError('Scrie prenumele copilului.');
+    const parent = profile.value?.name ?? '';
+    if (sameFirstName(name, parent)) return setSameName(parent.trim().split(/\s+/)[0]);
     setBusy(true);
     setError('');
     try {
@@ -296,6 +300,7 @@ function ChildForm({ child, onDone }: { child?: Player; onDone: () => void }) {
         <button type="button" class="btn btn-ghost" onClick={onDone}>Renunță</button>
         <button class="btn btn-primary" disabled={busy}>{child ? 'Salvează' : 'Adaugă'}</button>
       </div>
+      {sameName && <SameNameSheet name={sameName} fromProfile onClose={() => setSameName('')} />}
     </form>
   );
 }
