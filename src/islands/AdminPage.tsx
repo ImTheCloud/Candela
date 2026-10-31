@@ -1,13 +1,10 @@
 import { useEffect, useState } from 'preact/hooks';
-import {
-  addChildTo, createAccount, deleteAccount, deleteChild, loadUsers, renameChild, updateUser,
-  type BookStats, type UserRow,
-} from '../lib/admin';
+import { addChildTo, deleteAccount, deleteChild, loadUsers, renameChild, updateUser, type Kid, type UserRow } from '../lib/admin';
 import { errorText, profile, profileLoaded, user } from '../lib/session';
 import Avatar from './Avatar';
 import Loader from './Loader';
 
-/** For admins: every account, its children and how far each one got; add, change and delete them. */
+/** For admins: every account and its children; change and delete them. */
 export default function AdminPage() {
   const u = user.value;
   if (u === undefined || (u && !profileLoaded.value && !profile.value)) return <Loader />;
@@ -20,7 +17,6 @@ function Users({ me }: { me: string }) {
   const [rows, setRows] = useState<UserRow[] | null>(null);
   const [error, setError] = useState('');
   const [q, setQ] = useState('');
-  const [adding, setAdding] = useState(false);
 
   const reload = () => loadUsers().then((r) => { setRows(r); setError(''); }).catch((e) => setError(errorText(e)));
   useEffect(() => { reload(); }, []);
@@ -41,9 +37,6 @@ function Users({ me }: { me: string }) {
         <div><dt>Părinți</dt><dd>{rows.filter((r) => r.isParent).length}</dd></div>
         <div><dt>Copii</dt><dd>{kidsTotal}</dd></div>
       </dl>
-      {adding
-        ? <NewAccountForm onDone={(made) => { setAdding(false); if (made) reload(); }} />
-        : <button type="button" class="btn btn-primary btn-block" onClick={() => setAdding(true)}>Adaugă o persoană</button>}
       <input class="input" type="search" placeholder="Caută după nume sau email" aria-label="Caută" value={q} onInput={(e) => setQ(e.currentTarget.value)} />
       <ul class="adm-list">
         {shown.map((r) => <Row key={r.uid} r={r} me={me} onChanged={reload} />)}
@@ -63,21 +56,17 @@ function Row({ r, me, onChanged }: { r: UserRow; me: string; onChanged: () => Pr
         <strong class="adm-name">{r.name}</strong>
         <span class="adm-badge">
           {r.admin && <span class="tag-on">admin</span>}
-          {r.isParent && <span class="tag-on">părinte, {n} {n === 1 ? 'copil' : 'copii'}</span>}
+          {r.isParent && <span class="tag-on">{n} {n === 1 ? 'copil' : 'copii'}</span>}
         </span>
+        <svg class="adm-chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6" /></svg>
         <span class="adm-sub">
           <small class="adm-mail">{r.email}</small>
           <small class="adm-date">{r.at ? r.at.toDate().toLocaleDateString('ro-RO', { day: '2-digit', month: '2-digit', year: '2-digit' }) : 'vechi'}</small>
         </span>
       </button>
-      {!open && r.isParent && n > 0 && <p class="small muted adm-kids">{r.kids.map((k) => k.name).join(', ')}</p>}
       {open && <Editor r={r} self={r.uid === me} onChanged={onChanged} />}
     </li>
   );
-}
-
-function Stats({ books }: { books: BookStats[] }) {
-  return <>{books.map((b) => <p class="small muted adm-line">{b.name}: {b.mastered} știute, {b.wrong} greșite, {b.chapters} cap., {b.exams} examene</p>)}</>;
 }
 
 /** Everything an admin can change on one account. Each action saves at once and reloads the list. */
@@ -105,11 +94,6 @@ function Editor({ r, self, onChanged }: { r: UserRow; self: boolean; onChanged: 
 
   return (
     <div class="adm-detail">
-      <div class="adm-player">
-        <p class="adm-pname"><strong>Progresul lui {r.name.split(' ')[0]}</strong></p>
-        <Stats books={r.books} />
-      </div>
-
       <form class="stack adm-form" onSubmit={(e) => { e.preventDefault(); if (f.name.trim()) run(() => updateUser(r.uid, f), 'Salvat.'); }}>
         <div class="field">
           <label for={`an-${r.uid}`}>Nume complet</label>
@@ -125,101 +109,62 @@ function Editor({ r, self, onChanged }: { r: UserRow; self: boolean; onChanged: 
       </form>
 
       {(r.isParent || r.kids.length > 0) && (
-        <div class="stack adm-kids-edit">
+        <section class="adm-kids" aria-label="Copii">
           <p class="me-label">Copii</p>
-          {r.kids.map((k) => <KidEditor key={k.key} uid={r.uid} k={k} busy={busy} run={run} />)}
+          <ul class="adm-kid-list">
+            {r.kids.map((k) => <KidRow key={k.key} uid={r.uid} k={k} busy={busy} run={run} />)}
+          </ul>
           <form class="kid-row" onSubmit={(e) => { e.preventDefault(); if (newKid.trim()) run(() => addChildTo(r.uid, newKid), 'Copil adăugat.').then(() => setNewKid('')); }}>
-            <input class="input" maxLength={40} placeholder="Prenumele copilului" aria-label="Prenumele copilului nou" value={newKid} onInput={(e) => setNewKid(e.currentTarget.value)} />
+            <input class="input" maxLength={40} placeholder="Prenumele unui copil nou" aria-label="Prenumele copilului nou" value={newKid} onInput={(e) => setNewKid(e.currentTarget.value)} />
             <button class="btn btn-ghost" disabled={busy || !newKid.trim()}>Adaugă</button>
           </form>
-        </div>
+        </section>
       )}
 
-      <div class="stack adm-actions">
-        {!self && (confirmDelete ? (
+      {!self && (confirmDelete ? (
+        <div class="stack adm-actions">
+          <p class="small muted">Se șterg profilul, copiii și tot progresul lor. Emailul și parola rămân în Firebase Authentication, de unde se pot șterge din consolă.</p>
           <div class="two">
             <button type="button" class="btn btn-ghost" onClick={() => setConfirmDelete(false)}>Renunță</button>
             <button type="button" class="btn btn-danger" disabled={busy} onClick={() => run(() => deleteAccount(r), 'Contul a fost șters.')}>Șterge definitiv</button>
           </div>
-        ) : (
-          <button type="button" class="btn btn-ghost btn-block bad" disabled={busy} onClick={() => setConfirmDelete(true)}>Șterge contul</button>
-        ))}
-        {confirmDelete && <p class="small muted">Se șterg profilul, copiii și tot progresul lor. Emailul și parola rămân în Firebase Authentication, de unde se pot șterge din consolă.</p>}
-      </div>
+        </div>
+      ) : (
+        <button type="button" class="btn btn-ghost btn-block bad" disabled={busy} onClick={() => setConfirmDelete(true)}>Șterge contul</button>
+      ))}
       {msg && <p class={`notice ${msg.ok ? 'notice-ok' : 'notice-bad'}`} role="status">{msg.text}</p>}
     </div>
   );
 }
 
-function KidEditor({ uid, k, busy, run }: {
-  uid: string; k: UserRow['kids'][number]; busy: boolean; run: (a: () => Promise<unknown>, done: string) => Promise<void>;
-}) {
+/** One child: the name to change in place, and a delete that asks first. */
+function KidRow({ uid, k, busy, run }: { uid: string; k: Kid; busy: boolean; run: (a: () => Promise<unknown>, done: string) => Promise<void> }) {
   const [name, setName] = useState(k.name);
   const [confirm, setConfirm] = useState(false);
+  const changed = name.trim() !== k.name && !!name.trim();
   return (
-    <div class="adm-player is-kid stack">
-      <form class="kid-row" onSubmit={(e) => { e.preventDefault(); if (name.trim()) run(() => renameChild(uid, k.key, name), 'Salvat.'); }}>
-        <input class="input" maxLength={40} aria-label={`Prenumele lui ${k.name}`} value={name} onInput={(e) => setName(e.currentTarget.value)} />
-        {name.trim() !== k.name && <button class="btn btn-ghost" disabled={busy || !name.trim()}>Salvează</button>}
-      </form>
-      <Stats books={k.books} />
+    <li class="adm-kid">
       {confirm ? (
-        <div class="two">
-          <button type="button" class="btn btn-ghost btn-sm" onClick={() => setConfirm(false)}>Renunță</button>
-          <button type="button" class="btn btn-danger btn-sm" disabled={busy} onClick={() => run(() => deleteChild(uid, k.key), 'Copil șters.')}>Șterge definitiv</button>
+        <div class="adm-kid-confirm">
+          <span class="small">Ștergi pe <strong>{k.name}</strong> și progresul lui?</span>
+          <div class="two">
+            <button type="button" class="btn btn-ghost btn-sm" onClick={() => setConfirm(false)}>Renunță</button>
+            <button type="button" class="btn btn-danger btn-sm" disabled={busy} onClick={() => run(() => deleteChild(uid, k.key), 'Copil șters.')}>Șterge</button>
+          </div>
         </div>
       ) : (
-        <button type="button" class="link small bad btn-reset adm-del" disabled={busy} onClick={() => setConfirm(true)}>Șterge copilul</button>
+        <form class="adm-kid-line" onSubmit={(e) => { e.preventDefault(); if (changed) run(() => renameChild(uid, k.key, name), 'Salvat.'); }}>
+          <Avatar name={k.name} size={32} />
+          <input class="input" maxLength={40} aria-label={`Prenumele lui ${k.name}`} value={name} onInput={(e) => setName(e.currentTarget.value)} />
+          {changed
+            ? <button class="btn btn-ghost btn-sm" disabled={busy}>Salvează</button>
+            : (
+              <button type="button" class="btn btn-ghost btn-sm adm-kid-del" disabled={busy} aria-label={`Șterge pe ${k.name}`} onClick={() => setConfirm(true)}>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M10 11v6M14 11v6M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12M9 7V4h6v3" /></svg>
+              </button>
+            )}
+        </form>
       )}
-    </div>
-  );
-}
-
-function NewAccountForm({ onDone }: { onDone: (made: boolean) => void }) {
-  const [f, setF] = useState({ firstName: '', lastName: '', email: '', isParent: false });
-  const [kids, setKids] = useState(['']);
-  const [busy, setBusy] = useState(false);
-  const [error, setError] = useState('');
-
-  async function submit(e: Event) {
-    e.preventDefault();
-    if (!f.firstName.trim() || !f.lastName.trim()) return setError('Scrie prenumele și numele de familie.');
-    setBusy(true);
-    setError('');
-    try {
-      await createAccount({ ...f, kids });
-      onDone(true);
-    } catch (err) {
-      setError(errorText(err));
-      setBusy(false);
-    }
-  }
-
-  return (
-    <form class="card auth-card stack" onSubmit={submit}>
-      <h2>Persoană nouă</h2>
-      <p class="small muted">Primește pe email un link ca să-și aleagă parola.</p>
-      <div class="two">
-        <div class="field"><label for="nf">Prenume</label><input id="nf" class="input" required value={f.firstName} onInput={(e) => setF({ ...f, firstName: e.currentTarget.value })} /></div>
-        <div class="field"><label for="nl">Nume de familie</label><input id="nl" class="input" required value={f.lastName} onInput={(e) => setF({ ...f, lastName: e.currentTarget.value })} /></div>
-      </div>
-      <div class="field"><label for="ne">Email</label><input id="ne" class="input" type="email" required value={f.email} onInput={(e) => setF({ ...f, email: e.currentTarget.value })} /></div>
-      <label class="check"><input type="checkbox" checked={f.isParent} onChange={(e) => setF({ ...f, isParent: e.currentTarget.checked })} /><span>Cont de părinte (cu copii)</span></label>
-      {f.isParent && (
-        <div class="field">
-          <label for="nk-0">Prenumele copiilor</label>
-          {kids.map((k, i) => (
-            <input id={`nk-${i}`} class="input" maxLength={40} aria-label={`Prenumele copilului ${i + 1}`} value={k}
-              onInput={(e) => setKids(kids.map((x, j) => (j === i ? e.currentTarget.value : x)))} />
-          ))}
-          <button type="button" class="link small kid-add btn-reset" onClick={() => setKids([...kids, ''])}>+ Adaugă încă un copil</button>
-        </div>
-      )}
-      {error && <p class="notice notice-bad" role="alert">{error}</p>}
-      <div class="two">
-        <button type="button" class="btn btn-ghost" onClick={() => onDone(false)}>Renunță</button>
-        <button class="btn btn-primary" disabled={busy}>{busy ? 'Se creează…' : 'Creează contul'}</button>
-      </div>
-    </form>
+    </li>
   );
 }
