@@ -4,9 +4,12 @@ import Loader from './Loader';
 import LampIcon from './LampIcon';
 
 /** Where to come back after signing in: `?next=` when it is a page of this site, else `fallback`. */
-export function nextPage(fallback: string): string {
+export function nextPage(fallback: string = '/'): string {
   const next = new URLSearchParams(location.search).get('next') ?? '';
-  return next.startsWith('/') && !next.startsWith('//') ? next : fallback;
+  if (next.startsWith('/') && !next.startsWith('//') && !next.startsWith('/cont')) {
+    return next;
+  }
+  return fallback;
 }
 
 /** Tests and exams are played from an account: signed out, the page asks to sign in or create one, then comes back here. */

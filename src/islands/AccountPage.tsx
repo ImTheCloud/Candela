@@ -10,8 +10,9 @@ export default function AccountPage({ books }: { books: BookInfo[] }) {
   const u = user.value;
   if (u === undefined && !rememberedAccount) return <Loader />;
   if (u === null) return <SignInForm />;
-  // already signed in and sent here by another page: go back to it
-  if (u && nextPage('')) { location.replace(nextPage('')); return <Loader />; }
+  // already signed in and sent here by another page with a valid target: go back to it
+  const next = nextPage('');
+  if (u && next && !next.startsWith('/cont')) { location.replace(next); return <Loader />; }
   return <Profile books={books} />;
 }
 
@@ -32,12 +33,10 @@ function SignInForm() {
     setError('');
     try {
       await signIn(email, password);
-      // sent here by a test: go back to it
-      const next = nextPage('');
-      if (next) location.replace(next);
+      // After sign-in, always land on home page (or the destination quiz that sent the user here)
+      location.replace(nextPage('/'));
     } catch (err) {
       setError(errorText(err));
-    } finally {
       setBusy(false);
     }
   }
