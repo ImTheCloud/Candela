@@ -4,6 +4,108 @@ import preact from '@astrojs/preact';
 function ttsDevPlugin() {
   const cache = new Map();
   const inflight = new Map();
+
+  let sharedTtsInstance = null;
+  let sharedTtsPromise = null;
+
+  async function getSharedTts(voice) {
+    if (sharedTtsInstance) return sharedTtsInstance;
+    if (sharedTtsPromise) return sharedTtsPromise;
+
+    sharedTtsPromise = (async () => {
+      const { MsEdgeTTS, OUTPUT_FORMAT } = await import('msedge-tts');
+      const tts = new MsEdgeTTS();
+      await tts.setMetadata(voice, OUTPUT_FORMAT.AUDIO_24KHZ_48KBITRATE_MONO_MP3);
+      sharedTtsInstance = tts;
+      sharedTtsPromise = null;
+      return tts;
+    })().catch((err) => {
+      sharedTtsInstance = null;
+      sharedTtsPromise = null;
+      throw err;
+    });
+
+    return sharedTtsPromise;
+  }
+
+  function resetSharedTts() {
+    if (sharedTtsInstance) {
+      try { sharedTtsInstance.close(); } catch {}
+      sharedTtsInstance = null;
+    }
+    sharedTtsPromise = null;
+  }
+
+  class InflightStream {
+    constructor() {
+      this.chunks = [];
+      this.subscribers = new Set();
+      this.ended = false;
+      this.error = null;
+    }
+    subscribe(res, req) {
+      res.setHeader('Content-Type', 'audio/mpeg');
+      res.setHeader('Cache-Control', 'public, max-age=86400');
+      res.setHeader('Transfer-Encoding', 'chunked');
+      if (typeof res.flushHeaders === 'function') {
+        res.flushHeaders();
+      }
+
+      for (const chunk of this.chunks) {
+        if (!res.writableEnded) {
+          res.write(chunk);
+        }
+      }
+
+      if (this.ended) {
+        if (!res.writableEnded) res.end();
+        return;
+      }
+      if (this.error) {
+        if (!res.headersSent) {
+          res.statusCode = 500;
+          res.end(String(this.error));
+        } else if (!res.writableEnded) {
+          res.end();
+        }
+        return;
+      }
+
+      this.subscribers.add(res);
+      req.on('close', () => {
+        this.subscribers.delete(res);
+      });
+    }
+    write(chunk) {
+      this.chunks.push(chunk);
+      for (const res of this.subscribers) {
+        if (!res.writableEnded) {
+          try { res.write(chunk); } catch {}
+        }
+      }
+    }
+    end() {
+      this.ended = true;
+      for (const res of this.subscribers) {
+        if (!res.writableEnded) {
+          try { res.end(); } catch {}
+        }
+      }
+      this.subscribers.clear();
+    }
+    destroy(err) {
+      this.error = err;
+      for (const res of this.subscribers) {
+        if (!res.headersSent) {
+          try { res.statusCode = 500; res.end(String(err)); } catch {}
+        } else if (!res.writableEnded) {
+          try { res.end(); } catch {}
+        }
+      }
+      this.subscribers.clear();
+    }
+  }
+
   return {
     name: 'candela-tts-dev',
     configureServer(server) {
@@ -19,6 +121,8 @@ function ttsDevPlugin() {
           }
 
           const cacheKey = `${voice}:${text}`;
+
+          // 1. Instant response from memory cache (2ms)
           if (cache.has(cacheKey)) {
             const buf = cache.get(cacheKey);
             res.setHeader('Content-Type', 'audio/mpeg');
@@ -28,84 +132,51 @@ function ttsDevPlugin() {
             return res.end(buf);
           }
 
-          // If an identical request is already fetching from Microsoft, wait for it instead of opening duplicate WebSockets
+          // 2. Active in-flight stream: broadcast chunks immediately to concurrent subscriber
           if (inflight.has(cacheKey)) {
-            try {
-              const buf = await inflight.get(cacheKey);
-              res.setHeader('Content-Type', 'audio/mpeg');
-              res.setHeader('Content-Length', buf.length);
-              res.setHeader('Cache-Control', 'public, max-age=86400, immutable');
-              res.setHeader('Accept-Ranges', 'bytes');
-              return res.end(buf);
-            } catch {
-              // fallback to fresh attempt if in-flight failed
-            }
+            const stream = inflight.get(cacheKey);
+            stream.subscribe(res, req);
+            return;
           }
 
-          let resolveInflight;
-          let rejectInflight;
-          const inflightPromise = new Promise((resolve, reject) => {
-            resolveInflight = resolve;
-            rejectInflight = reject;
-          });
-          inflight.set(cacheKey, inflightPromise);
+          // 3. New synthesis request: create InflightStream and pipe from persistent warm TTS
+          const stream = new InflightStream();
+          inflight.set(cacheKey, stream);
+          stream.subscribe(res, req);
 
-          const { MsEdgeTTS, OUTPUT_FORMAT } = await import('msedge-tts');
-          const tts = new MsEdgeTTS();
-          await tts.setMetadata(voice, OUTPUT_FORMAT.AUDIO_24KHZ_48KBITRATE_MONO_MP3);
-          const { audioStream } = tts.toStream(text);
+          try {
+            const tts = await getSharedTts(voice);
+            const { audioStream } = tts.toStream(text);
 
-          res.setHeader('Content-Type', 'audio/mpeg');
-          res.setHeader('Cache-Control', 'public, max-age=86400');
-          res.setHeader('Transfer-Encoding', 'chunked');
-          if (typeof res.flushHeaders === 'function') {
-            res.flushHeaders();
+            audioStream.on('data', (chunk) => {
+              stream.write(chunk);
+            });
+            audioStream.on('end', () => {
+              const fullBuf = Buffer.concat(stream.chunks);
+              cache.set(cacheKey, fullBuf);
+              inflight.delete(cacheKey);
+              stream.end();
+            });
+            audioStream.on('error', (err) => {
+              inflight.delete(cacheKey);
+              stream.destroy(err);
+              resetSharedTts();
+            });
+          } catch (err) {
+            inflight.delete(cacheKey);
+            stream.destroy(err);
+            resetSharedTts();
           }
-
-          let closed = false;
-          req.on('close', () => {
-            closed = true;
-            try { tts.close(); } catch {}
-          });
-
-          const chunks = [];
-          audioStream.on('data', (chunk) => {
-            if (!closed && !res.writableEnded) {
-              res.write(chunk);
-              chunks.push(chunk);
-            }
-          });
-          audioStream.on('end', () => {
-            const buf = Buffer.concat(chunks);
-            cache.set(cacheKey, buf);
-            inflight.delete(cacheKey);
-            resolveInflight(buf);
-            if (!closed) {
-              res.end();
-            }
-            try { tts.close(); } catch {}
-          });
-          audioStream.on('error', (err) => {
-            inflight.delete(cacheKey);
-            rejectInflight(err);
-            if (!res.headersSent) {
-              res.statusCode = 500;
-              res.end(String(err));
-            } else {
-              res.end();
-            }
-            try { tts.close(); } catch {}
-          });
         } catch (err) {
           if (!res.headersSent) {
             res.statusCode = 500;
             res.end(String(err));
-          } else {
+          } else if (!res.writableEnded) {
             res.end();
           }
         }
       });
-    }
+    },
   };
 }
 

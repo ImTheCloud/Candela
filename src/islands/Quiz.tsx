@@ -137,8 +137,25 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
       return;
     }
     if (isSpeaking && isPaused) {
-      resumeSpeaking();
+      const ok = resumeSpeaking();
       setIsPaused(false);
+      if (ok) return;
+      // If audio session was lost/ended while paused, replay current question immediately
+      speakQuestion(q, {
+        rate: speedRef.current,
+        onStart: () => {
+          setIsSpeaking(true);
+          setIsPaused(false);
+        },
+        onEnd: () => {
+          setIsSpeaking(false);
+          setIsPaused(false);
+        },
+        onError: () => {
+          setIsSpeaking(false);
+          setIsPaused(false);
+        },
+      });
       return;
     }
     stopSpeaking();

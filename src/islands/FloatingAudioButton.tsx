@@ -105,13 +105,8 @@ export default function FloatingAudioButton({
             <span class="fab-wbar bar-3" />
             <span class="fab-wbar bar-4" />
           </span>
-        ) : isPaused ? (
-          /* Play icon to resume when paused - stays base brown color (#4a3426) */
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <polygon points="7 4 20 12 7 20 7 4" />
-          </svg>
         ) : (
-          /* Natural speaker volume icon in idle state */
+          /* Base natural speaker icon for both idle and paused states */
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor" fill-opacity="0.25" />
             <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
