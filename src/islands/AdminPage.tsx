@@ -120,68 +120,7 @@ function Users({ me }: { me: string }) {
         </article>
       </section>
 
-      {/* Filter Pills Bar */}
-      <div class="adm-filter-bar" role="tablist" aria-label="Filtrare conturi">
-        <button
-          type="button"
-          class={`adm-pill${filter === 'toate' ? ' is-active' : ''}`}
-          onClick={() => setFilter('toate')}
-        >
-          <span>Toți</span>
-          <span class="adm-pill-count">{totalAccounts}</span>
-        </button>
-        <button
-          type="button"
-          class={`adm-pill${filter === 'activi_7z' ? ' is-active' : ''}`}
-          onClick={() => setFilter('activi_7z')}
-        >
-          <span class="adm-dot is-online" />
-          <span>Activi (7z)</span>
-          <span class="adm-pill-count">{active7d}</span>
-        </button>
-        <button
-          type="button"
-          class={`adm-pill${filter === 'azi' ? ' is-active' : ''}`}
-          onClick={() => setFilter('azi')}
-        >
-          <span>Azi</span>
-          <span class="adm-pill-count">{activeToday}</span>
-        </button>
-        <button
-          type="button"
-          class={`adm-pill${filter === 'progres' ? ' is-active' : ''}`}
-          onClick={() => setFilter('progres')}
-        >
-          <span>Cu progres</span>
-          <span class="adm-pill-count">{withScoreTotal}</span>
-        </button>
-        <button
-          type="button"
-          class={`adm-pill${filter === 'parinti' ? ' is-active' : ''}`}
-          onClick={() => setFilter('parinti')}
-        >
-          <span>Părinți</span>
-          <span class="adm-pill-count">{parentsTotal}</span>
-        </button>
-        <button
-          type="button"
-          class={`adm-pill${filter === 'singuri' ? ' is-active' : ''}`}
-          onClick={() => setFilter('singuri')}
-        >
-          <span>Fără copii</span>
-          <span class="adm-pill-count">{normalTotal}</span>
-        </button>
-        <button
-          type="button"
-          class={`adm-pill${filter === 'admini' ? ' is-active' : ''}`}
-          onClick={() => setFilter('admini')}
-        >
-          <span>Admini</span>
-          <span class="adm-pill-count">{adminTotal}</span>
-        </button>
-      </div>
-
-      {/* Toolbar: Search input & Sort dropdown */}
+      {/* Toolbar: Search input, Filter dropdown & Sort dropdown */}
       <div class="adm-toolbar">
         <div class="adm-search-wrap">
           <svg class="adm-search-ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -208,20 +147,37 @@ function Users({ me }: { me: string }) {
           )}
         </div>
 
-        <select
-          class="adm-sort-select"
-          aria-label="Sortează utilizatorii"
-          value={sort}
-          onChange={(e) => setSort(e.currentTarget.value as SortType)}
-        >
-          <option value="seen_desc">⏱️ Conectare: cele mai recente</option>
-          <option value="seen_asc">⏱️ Conectare: cele mai vechi / inactivi</option>
-          <option value="created_desc">📅 Înregistrare: cele mai noi</option>
-          <option value="created_asc">📅 Înregistrare: cele mai vechi</option>
-          <option value="score_desc">⭐ Scor: cele mai multe întrebări</option>
-          <option value="name_asc">🔤 Nume: alfabetic (A-Z)</option>
-          <option value="kids_desc">👨‍👩‍👧 Număr copii: cei mai mulți</option>
-        </select>
+        <div class="adm-selects-row">
+          <select
+            class="adm-select"
+            aria-label="Filtrează utilizatorii"
+            value={filter}
+            onChange={(e) => setFilter(e.currentTarget.value as FilterType)}
+          >
+            <option value="toate">Filtru: Toți utilizatorii ({totalAccounts})</option>
+            <option value="activi_7z">Filtru: Activi recent – 7 zile ({active7d})</option>
+            <option value="azi">Filtru: Conectați astăzi ({activeToday})</option>
+            <option value="progres">Filtru: Cu progres ({withScoreTotal})</option>
+            <option value="parinti">Filtru: Părinți cu copii ({parentsTotal})</option>
+            <option value="singuri">Filtru: Conturi fără copii ({normalTotal})</option>
+            <option value="admini">Filtru: Administratori ({adminTotal})</option>
+          </select>
+
+          <select
+            class="adm-select"
+            aria-label="Sortează utilizatorii"
+            value={sort}
+            onChange={(e) => setSort(e.currentTarget.value as SortType)}
+          >
+            <option value="seen_desc">Sortare: Conectare (recente)</option>
+            <option value="seen_asc">Sortare: Conectare (vechi)</option>
+            <option value="created_desc">Sortare: Înregistrare (noi)</option>
+            <option value="created_asc">Sortare: Înregistrare (vechi)</option>
+            <option value="score_desc">Sortare: Scor descrescător</option>
+            <option value="name_asc">Sortare: Nume alfabetic (A-Z)</option>
+            <option value="kids_desc">Sortare: Număr de copii</option>
+          </select>
+        </div>
       </div>
 
       {/* Results summary counter */}
@@ -313,7 +269,7 @@ function Row({ r, me, onChanged }: { r: UserRow; me: string; onChanged: () => Pr
           {r.isParent && <span class="adm-pill-parent">{n} {n === 1 ? 'copil' : 'copii'}</span>}
           {(r.totalScore ?? 0) > 0 && (
             <span class="adm-pill-score" title="Întrebări rezolvate în total">
-              ★ {r.totalScore}
+              {r.totalScore} pct
             </span>
           )}
         </div>
@@ -412,11 +368,11 @@ function Editor({ r, self, onChanged }: { r: UserRow; self: boolean; onChanged: 
           <button type="button" class="adm-uid-copy" onClick={copyUid} title="Copiază UID în clipboard">
             <span>UID:</span>
             <code>{r.uid.slice(0, 10)}…</code>
-            <span style={{ color: copiedUid ? 'var(--ok)' : 'var(--ink-3)' }}>{copiedUid ? '✓ Copiat' : '📋'}</span>
+            <span style={{ color: copiedUid ? 'var(--ok)' : 'var(--ink-3)' }}>{copiedUid ? 'Copiat' : 'Copiază'}</span>
           </button>
           {r.email && (
             <a href={`mailto:${r.email}`} class="btn btn-ghost btn-sm" style={{ padding: '3px 8px', fontSize: '0.78rem' }}>
-              ✉️ Email
+              Email
             </a>
           )}
         </div>
@@ -428,7 +384,7 @@ function Editor({ r, self, onChanged }: { r: UserRow; self: boolean; onChanged: 
       {/* Progress / Score Breakdown Card */}
       {(r.totalScore ?? 0) > 0 && (
         <div class="adm-score-box">
-          <span class="adm-score-title">⭐ Întrebări rezolvate pe platformă</span>
+          <span class="adm-score-title">Întrebări rezolvate pe platformă</span>
           <div class="adm-score-grid">
             <div class="adm-score-item">
               <span class="muted small">Părinte / Cont:</span>

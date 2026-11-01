@@ -87,7 +87,11 @@ function HubContent({ books }: { books: BookSummary[] }) {
               onClick={() => { setSelectedBook(b.slug); setSearch(''); }}
             >
               <strong>{b.name}</strong>
-              <span class="small">{b.chaptersCount} capitole • {b.totalQuestions} întrebări</span>
+              <span class="small">
+                <span>{b.chaptersCount} capitole</span>
+                <span class="adm-tab-sep"> • </span>
+                <span class="adm-tab-q">{b.totalQuestions} întrebări</span>
+              </span>
             </button>
           );
         })}
