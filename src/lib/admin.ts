@@ -142,6 +142,12 @@ export async function deleteChild(uid: string, key: string) {
 export async function deleteAccount(r: UserRow) {
   for (const k of r.kids) await deleteChild(r.uid, k.key);
   await wipePlayer(r.uid, r.uid);
+  try {
+    const prog = await getDocs(collection(db, 'users', r.uid, 'progress'));
+    await Promise.all(prog.docs.map((d) => deleteDoc(d.ref)));
+  } catch (e) {
+    console.warn('Could not clean up progress:', e);
+  }
   const archive = await getDocs(collection(db, 'users', r.uid, 'archive'));
   await Promise.all(archive.docs.map((d) => deleteDoc(d.ref)));
   await deleteDoc(doc(db, 'users', r.uid));
