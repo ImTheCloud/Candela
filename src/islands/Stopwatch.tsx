@@ -40,19 +40,38 @@ export default function Stopwatch({ wrap = false }: { wrap?: boolean }) {
   }
 
   const content = (
-    <section class="me-sect" aria-labelledby="sw-title">
-      <h2 id="sw-title" class="me-label">Cronometru</h2>
-      <div class="me-row sw">
-        <p class={`sw-time${running ? ' is-on' : ''}`} aria-live="off">{clock(shown)}</p>
-        <div class="two">
-          {running
-            ? <button type="button" class="btn btn-primary" onClick={() => save({ total: shown, start: null })}>Pauză</button>
-            : <button type="button" class="btn btn-primary" onClick={() => { setNow(Date.now()); save({ total: t.total, start: Date.now() }); }}>{t.total ? 'Continuă' : 'Pornește'}</button>}
-          <button type="button" class="btn btn-ghost" disabled={!shown} onClick={() => save({ total: 0, start: null })}>Reset</button>
-        </div>
-        {error && <p class="notice notice-bad" role="alert">{error}</p>}
+    <aside class="sw-bar" aria-label="Cronometru admin">
+      <div class="sw-info">
+        <span class={`sw-dot${running ? ' is-live' : ''}`} aria-hidden="true">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10" />
+            <polyline points="12 6 12 12 16 14" />
+          </svg>
+        </span>
+        <span class={`sw-digits${running ? ' is-on' : ''}`}>{clock(shown)}</span>
       </div>
-    </section>
+      <div class="sw-actions">
+        {running ? (
+          <button type="button" class="sw-btn sw-btn-main" onClick={() => save({ total: shown, start: null })}>
+            Pauză
+          </button>
+        ) : (
+          <button type="button" class="sw-btn sw-btn-main" onClick={() => { setNow(Date.now()); save({ total: t.total, start: Date.now() }); }}>
+            {t.total ? 'Continuă' : 'Pornește'}
+          </button>
+        )}
+        <button
+          type="button"
+          class="sw-btn sw-btn-reset"
+          disabled={!shown}
+          onClick={() => save({ total: 0, start: null })}
+          title="Reset"
+        >
+          Reset
+        </button>
+      </div>
+      {error && <span class="sw-err" role="alert">{error}</span>}
+    </aside>
   );
 
   return wrap ? <div class="wrap hb-sw">{content}</div> : content;
