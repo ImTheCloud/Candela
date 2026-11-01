@@ -6,6 +6,7 @@ import { localGet } from '../lib/store';
 import { deleteProgress } from '../lib/progress';
 import { deleteMyAccount, errorText, profile, profileError, profileLoaded, rememberedAccount, setParent, signOut, updateAccountName, user } from '../lib/session';
 import Avatar from './Avatar';
+import PasswordInput from './PasswordInput';
 import SameNameSheet from './SameNameSheet';
 import Loader from './Loader';
 import Modal from './Modal';
@@ -241,16 +242,13 @@ export default function Profile({ books: _books }: { books?: BookInfo[] }) {
               </p>
               <div class="field">
                 <label for="del-pass">Confirmă cu parola contului</label>
-                <input
+                <PasswordInput
                   id="del-pass"
-                  type="password"
-                  class="input"
-                  required
-                  placeholder="Introdu parola ta"
+                  autocomplete="current-password"
                   value={deletePassword}
                   onInput={(e) => setDeletePassword(e.currentTarget.value)}
                   disabled={deleting}
-                  autocomplete="current-password"
+                  placeholder="Introdu parola ta"
                 />
               </div>
               {deleteError && <p class="notice notice-bad" role="alert">{deleteError}</p>}
