@@ -6,6 +6,6 @@ import { DEFAULT_BOOK, getBook } from '../lib/books';
 // The home page is the default book; BookPanel shows the other one when that is the player's choice.
 const book = getBook(DEFAULT_BOOK)!;
 ---
-<Base home title="Candela" description={`Teste biblice după traducerea Cornilescu. ${book.name}: ${book.summary}`}>
+<Base home title="Candela lui Dumnezeu" description={`Pregătire pentru concursul biblic „Talantul în Negoț”: teste din 1 Samuel și 2 Samuel. „...și candela lui Dumnezeu nu se stinsese încă...” (1 Samuel 3:3)`}>
   <BookHome book={book} />
 </Base>

@@ -20,6 +20,12 @@ function NeedAccount() {
   const next = encodeURIComponent(location.pathname + location.search);
   return (
     <div class="card auth-card stack">
+      <div class="auth-brand">
+        <span class="auth-brand-badge">Concursul „Talantul în Negoț”</span>
+        <h1 class="auth-brand-title">Candela lui Dumnezeu</h1>
+        <p class="auth-brand-verse">„...și candela lui Dumnezeu nu se stinsese încă...”</p>
+        <span class="auth-brand-ref">1 Samuel 3:3</span>
+      </div>
       <h2>Intră în cont ca să joci</h2>
       <p>Întrebările se joacă din cont, ca să-ți păstrăm progresul pe orice telefon și să apari în clasament. Copiii joacă din contul unui părinte.</p>
       <p class="small muted">Ai avut cont pe versiunea veche a site-ului? Intră cu același email și aceeași parolă.</p>

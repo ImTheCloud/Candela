@@ -137,6 +137,41 @@ img, svg { display: block; }
 .auth-card .field { gap: 4px; }
 .auth-card .input { min-height: 44px; }
 .auth-card .two { grid-template-columns: 1fr 1fr; gap: 10px; }
+.auth-brand {
+  text-align: center;
+  padding: 4px 6px 14px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.auth-brand-badge {
+  display: inline-block;
+  align-self: center;
+  padding: 3px 12px;
+  border-radius: 999px;
+  background: var(--cedar-soft);
+  color: var(--oil);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.auth-brand-title {
+  font: 700 1.35rem/1.2 var(--f-display);
+  color: var(--oil-ink);
+  margin: 0;
+}
+.auth-brand-verse {
+  font: italic 400 0.92rem/1.4 var(--f-bible);
+  color: var(--ink);
+  margin: 0;
+}
+.auth-brand-ref {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--oil);
+}
 .kid-row { display: flex; gap: 8px; }
 .kid-x { flex: none; width: 44px; min-height: 44px; padding: 0; }
 .kid-add { align-self: flex-start; margin-top: 2px; }

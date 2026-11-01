@@ -28,10 +28,18 @@ interface Props {
   /** A page title in the header instead of the site name and the account button (the Bible reader). */
   heading?: { title: string; note?: string; sub?: string };
 }
-const { title, description = 'Teste biblice după traducerea Cornilescu: 1 Samuel și 2 Samuel.', crumbs = [], home = false, backUp = false, backSignedIn = false, greet = true, heading } = Astro.props;
+const {
+  title,
+  description = 'Pregătire pentru concursul biblic „Talantul în Negoț”: teste din 1 Samuel și 2 Samuel. „...și candela lui Dumnezeu nu se stinsese încă...” (1 Samuel 3:3)',
+  crumbs = [],
+  home = false,
+  backUp = false,
+  backSignedIn = false,
+  heading
+} = Astro.props;
 const up = crumbs.at(-1)?.href ?? '/';
 const parent = up === `/${DEFAULT_BOOK}` ? '/' : up;
-const fullTitle = title === 'Candela' ? title : `${title} – Candela`;
+const fullTitle = title === 'Candela lui Dumnezeu' ? title : `${title} – Candela lui Dumnezeu`;
 ---
 <!doctype html>
 <html lang="ro" transition:animate="none">
@@ -47,11 +55,11 @@ const fullTitle = title === 'Candela' ? title : `${title} – Candela`;
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Candela" />
+    <meta property="og:site_name" content="Candela lui Dumnezeu" />
     <meta property="og:image" content={new URL('/og.png', Astro.site)} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Candela: lampa cu untdelemn" />
+    <meta property="og:image:alt" content="Candela lui Dumnezeu: lampa cu untdelemn" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content={new URL('/og.png', Astro.site)} />
     <script is:inline>
@@ -83,11 +91,9 @@ const fullTitle = title === 'Candela' ? title : `${title} – Candela`;
             {heading.sub && <p>{heading.sub}</p>}
           </div>
         ) : (<>
-          <a href="/" class="brand" aria-label="Candela, acasă">
+          <a href="/" class="brand" aria-label="Candela lui Dumnezeu, acasă">
             <Lamp />
-            {greet
-              ? <HeaderTitle client:only="preact"><span slot="fallback" id="brand-fb" class="brand-text">Candela</span></HeaderTitle>
-              : <span class="brand-text">Candela</span>}
+            <span class="brand-text">Candela lui Dumnezeu</span>
           </a>
           <div id="quiz-top" class="qt"></div>
           <AccountButton client:only="preact">
@@ -103,18 +109,12 @@ const fullTitle = title === 'Candela' ? title : `${title} – Candela`;
 </html>
 
 <script is:inline>
-  // The account button & brand title are islands: until they load, show what the last visit left so they do not pop in late.
+  // The account button is an island: until it loads, show what the last visit left so it does not pop in late.
   try {
     var acct = JSON.parse(localStorage.getItem('acct') || 'null'), fb = document.getElementById('acct-fb');
     if (fb && typeof acct === 'string' && !(acct === '' && location.pathname.indexOf('/cont') === 0)) {
       if (acct) { fb.className = 'avatar'; fb.textContent = acct; var n = parseInt(localStorage.getItem('acctN') || '0', 10); if (n > 0) { var s = document.createElement('span'); s.className = 'badge-n'; s.textContent = n > 9 ? '9+' : String(n); fb.appendChild(s); fb.href = parseInt(localStorage.getItem('acctRep') || '0', 10) > 0 ? '/semnalari' : '/mesaje'; } } else { fb.className = 'btn btn-primary btn-sm'; fb.textContent = 'Intră'; }
       fb.hidden = false;
-    }
-    var me = JSON.parse(localStorage.getItem('me') || 'null'), bfb = document.getElementById('brand-fb');
-    if (bfb && me && me.name) {
-      var parts = me.name.trim().split(/\s+/).filter(Boolean);
-      var f = parts.length > 1 ? parts.slice(1).join(' ') : parts[0];
-      if (f) bfb.textContent = 'Bun venit, ' + f;
     }
   } catch (e) {}
 </script>
@@ -129,17 +129,6 @@ const fullTitle = title === 'Candela' ? title : `${title} – Candela`;
     if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey) return;
     if ((history.state?.index ?? 0) > 0) { e.preventDefault(); history.back(); }
   }, true);
-
-  document.addEventListener('astro:page-load', () => {
-    try {
-      var me = JSON.parse(localStorage.getItem('me') || 'null'), bfb = document.getElementById('brand-fb');
-      if (bfb && me && me.name) {
-        var parts = me.name.trim().split(/\s+/).filter(Boolean);
-        var f = parts.length > 1 ? parts.slice(1).join(' ') : parts[0];
-        if (f) bfb.textContent = 'Bun venit, ' + f;
-      }
-    } catch (e) {}
-  });
 </script>
 
 <style>
@@ -151,7 +140,10 @@ const fullTitle = title === 'Candela' ? title : `${title} – Candela`;
     padding-top: env(safe-area-inset-top);
   }
   .top-row { display: flex; align-items: center; justify-content: space-between; height: 60px; }
-  .brand { display: flex; align-items: center; gap: 7px; min-width: 0; text-decoration: none; font: 400 25px/1 var(--f-brand); }
+  .brand { display: flex; align-items: center; gap: 7px; min-width: 0; text-decoration: none; font: 400 21px/1 var(--f-brand); }
+  @media (min-width: 440px) {
+    .brand { font-size: 24px; }
+  }
   .brand-text { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .brand :global(.lamp) { margin: -8px -4px -3px -10px; }
   .account-placeholder { display: block; width: 44px; height: 44px; }

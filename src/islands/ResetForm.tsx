@@ -33,6 +33,11 @@ export default function ResetForm() {
 
   return (
     <form class="card auth-card stack" onSubmit={submit}>
+      <div class="auth-brand">
+        <h1 class="auth-brand-title">Candela lui Dumnezeu</h1>
+        <p class="auth-brand-verse">„...și candela lui Dumnezeu nu se stinsese încă...”</p>
+        <span class="auth-brand-ref">1 Samuel 3:3</span>
+      </div>
       <h2>Parolă nouă</h2>
       <p class="muted">Îți trimitem un link pentru o parolă nouă.</p>
       <div class="field">
