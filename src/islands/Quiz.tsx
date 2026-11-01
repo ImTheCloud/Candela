@@ -250,6 +250,10 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
     setDone(true);
   }
 
+  if (!q) {
+    return <p class="card notice muted" role="alert">Nu s-au găsit întrebări.</p>;
+  }
+
   if (done) {
     return <Results bookName={bookName} questions={questions} answers={answers} grades={grades} saveFailed={saveFailed} backHref={backHref} onAgain={onAgain} />;
   }

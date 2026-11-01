@@ -60,6 +60,10 @@ function PracticeInner({ book, bookName, chapters, summary }: Props) {
     try {
       const all = await loadChapters(book, chosen);
       const pool = all.filter((q) => q.age === level);
+      if (pool.length === 0) {
+        setError('Nu există întrebări disponibile pentru acest nivel în capitolul selectat.');
+        return;
+      }
       setQuiz({ key: Date.now(), questions: examOrder(shuffle(pool).slice(0, count === 0 ? pool.length : count)) });
     } catch {
       setError('Întrebările nu s-au putut încărca. Verifică conexiunea la internet.');
@@ -69,8 +73,10 @@ function PracticeInner({ book, bookName, chapters, summary }: Props) {
   }
 
   useEffect(() => {
-    if (direct && level && chosen.length && !quiz && !busy) start();
-  }, [level]);
+    if (direct && level && chosen.length && !quiz && !busy) {
+      start();
+    }
+  }, [level, direct, chosen.length]);
 
   const toggle = (c: number) => setPicked(picked.includes(c) ? picked.filter((x) => x !== c) : [...picked, c]);
 

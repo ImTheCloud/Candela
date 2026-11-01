@@ -199,8 +199,8 @@ export function speakText(text: string, options: SpeakOptions = {}): () => void 
   return () => {};
 }
 
-function cleanText(s: string): string {
-  return s.replace(/[*_#`]/g, '').trim();
+function cleanText(s: unknown): string {
+  return String(s ?? '').replace(/[*_#`]/g, '').trim();
 }
 
 /**
