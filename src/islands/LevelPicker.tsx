@@ -55,7 +55,10 @@ export default function LevelPicker<T extends Level | 'all' = Level>({
             role="radio"
             aria-checked={checked}
             class="lv-chip"
-            onClick={() => select(it.id)}
+            onClick={(e) => {
+              e.preventDefault();
+              select(it.id);
+            }}
           >
             {it.who ? (
               <>

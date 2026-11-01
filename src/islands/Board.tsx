@@ -100,6 +100,10 @@ export default function Board({ book }: Props) {
   const [age, setAgeState] = useState<Level | 'all'>(scoreView.value);
   const [rows, setRows] = useState<Row[] | null>(() => getCached(`${book}:${scoreView.value}`));
   const [error, setError] = useState(false);
+  const [switching, setSwitching] = useState(false);
+
+  const boardRef = useRef<HTMLDivElement>(null);
+  const scrollAnchorRef = useRef<number | null>(null);
 
   // References to track DOM elements for FLIP & pops
   const cardRefs = useRef<Map<string, HTMLLIElement>>(new Map());
@@ -114,6 +118,14 @@ export default function Board({ book }: Props) {
 
   const setAge = (next: Level | 'all') => {
     if (next === age) return;
+
+    // Anchor current board viewport position and lock height to prevent any scroll jump
+    if (boardRef.current) {
+      const rect = boardRef.current.getBoundingClientRect();
+      scrollAnchorRef.current = rect.top;
+      boardRef.current.style.minHeight = `${rect.height}px`;
+    }
+
     setScoreView(next);
     setAgeState(next);
     isInitialSnapshotRef.current = true;
@@ -122,10 +134,11 @@ export default function Board({ book }: Props) {
     if (existing) {
       setRows(existing);
       prevRowsRef.current = existing;
+      setSwitching(false);
       setError(false);
     } else {
-      setRows(null);
-      prevRowsRef.current = null;
+      // Keep previous rows visible (dimmed) instead of collapsing into null/skeletons
+      setSwitching(true);
     }
   };
 
@@ -178,6 +191,7 @@ export default function Board({ book }: Props) {
           setCached(cacheKey, freshList);
           prevRowsRef.current = freshList;
           setRows(freshList);
+          setSwitching(false);
           runAutoHeal(freshList);
           return;
         }
@@ -223,6 +237,7 @@ export default function Board({ book }: Props) {
         setCached(cacheKey, freshList);
         prevRowsRef.current = freshList;
         setRows(freshList);
+        setSwitching(false);
         runAutoHeal(freshList);
       },
       () => {
@@ -232,8 +247,10 @@ export default function Board({ book }: Props) {
         if (fallback) {
           setRows(fallback);
           prevRowsRef.current = fallback;
+          setSwitching(false);
           setError(false);
         } else if (!rows) {
+          setSwitching(false);
           setError(true);
         }
       }
@@ -268,6 +285,21 @@ export default function Board({ book }: Props) {
 
   // Execute FLIP and animations right after DOM update before paint
   useIsomorphicLayoutEffect(() => {
+    // Keep board viewport position strictly stable when switching levels
+    if (scrollAnchorRef.current !== null && boardRef.current) {
+      const currentTop = boardRef.current.getBoundingClientRect().top;
+      const delta = currentTop - scrollAnchorRef.current;
+      if (Math.abs(delta) > 1) {
+        window.scrollBy({ top: delta, behavior: 'instant' });
+      }
+      scrollAnchorRef.current = null;
+      requestAnimationFrame(() => {
+        if (boardRef.current) {
+          boardRef.current.style.minHeight = '';
+        }
+      });
+    }
+
     const anim = pendingAnimRef.current;
     if (!anim) return;
     pendingAnimRef.current = null;
@@ -354,7 +386,7 @@ export default function Board({ book }: Props) {
   const mine = (key: string) => !!user.value && key.startsWith(`${user.value.uid}~`);
 
   return (
-    <div class="board">
+    <div class="board" ref={boardRef}>
       <div class="lb-head">
         <h2 id="lb-title">Clasament</h2>
         <p class="lb-count small muted" style={rows === null || error ? { visibility: 'hidden' } : undefined}>
@@ -388,9 +420,9 @@ export default function Board({ book }: Props) {
           ))}
         </ol>
       ) : rows.length === 0 ? (
-        <p class="lb-empty" key={age}>Niciun jucător încă. Fii primul!</p>
+        <p class="lb-empty">Niciun jucător încă. Fii primul!</p>
       ) : (
-        <ol class="lb-cards" key={age}>
+        <ol class={`lb-cards${switching ? ' is-switching' : ''}`} aria-busy={switching}>
           {rows.map((r, i) => (
             <li
               key={r.key}

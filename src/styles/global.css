@@ -1285,6 +1285,7 @@ html:not(.signed-in) .back-signed-in { display: none; }
 .lb-note { text-align: center; }
 .lb-wait { min-height: 60px; }
 .lb-cards { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.lb-cards.is-switching { opacity: 0.55; transition: opacity 0.15s ease; }
 .lb-cards > li { animation: lbIn .15s ease-out; }
 @keyframes lbIn {
   from { opacity: 0; transform: translateY(3px); }
