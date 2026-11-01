@@ -70,10 +70,10 @@ export function addChild(name: string) {
 export async function updateChild(key: string, name: string) {
   const cleanName = name.trim().replace(/\s+/g, ' ');
   await updateDoc(doc(db, 'users', uid(), 'players', key), { name: cleanName });
-  const parts = cleanName.split(/\s+/);
-  const parentParts = (profile.value?.name ?? '').trim().split(/\s+/);
-  const parentLast = parentParts.slice(1).join(' ');
-  const fullName = parts.length > 1 ? cleanName : (parentLast ? `${parts[0]} ${parentLast}` : parts[0]);
+  const parts = cleanName.split(/\s+/).filter(Boolean);
+  const parentParts = (profile.value?.name ?? '').trim().split(/\s+/).filter(Boolean);
+  const parentLast = parentParts[0];
+  const fullName = parts.length > 1 ? cleanName : (parentLast ? `${parentLast} ${parts[0]}` : parts[0]);
   await updatePlayerBoardName(uid(), key, fullName);
 }
 
@@ -84,13 +84,13 @@ export async function removeChild(key: string) {
   return deleteDoc(doc(db, 'users', id, 'players', key));
 }
 
-/** Name on the public board: full name (children get the parent's last name if they don't have one). */
+/** Name on the public board: full name with family name first (children get the parent's last name if they don't have one). */
 export function shortName(p: Player): string {
-  const parts = p.name.trim().split(/\s+/);
+  const parts = p.name.trim().split(/\s+/).filter(Boolean);
   if (parts.length > 1) return p.name.trim();
-  const parentParts = (profile.value?.name ?? '').trim().split(/\s+/);
-  const parentLast = parentParts.slice(1).join(' ');
-  return parentLast ? `${parts[0]} ${parentLast}` : parts[0];
+  const parentParts = (profile.value?.name ?? '').trim().split(/\s+/).filter(Boolean);
+  const parentLast = parentParts[0];
+  return parentLast ? `${parentLast} ${parts[0]}` : parts[0];
 }
 
 /**

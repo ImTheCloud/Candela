@@ -16,7 +16,7 @@ function splitName(fullName: string): { first: string; last: string } {
   const parts = fullName.trim().split(/\s+/).filter(Boolean);
   if (parts.length === 0) return { first: '', last: '' };
   if (parts.length === 1) return { first: parts[0], last: '' };
-  return { first: parts[0], last: parts.slice(1).join(' ') };
+  return { last: parts[0], first: parts.slice(1).join(' ') };
 }
 
 /**
@@ -426,10 +426,10 @@ function AccountNameForm({ currentName, onDone }: { currentName: string; onDone:
     const f = firstName.trim();
     const l = lastName.trim();
     if (!f || !l) {
-      setNameError('Scrie prenumele și numele de familie.');
+      setNameError('Scrie numele de familie și prenumele.');
       return;
     }
-    const full = `${f} ${l}`.replace(/\s+/g, ' ');
+    const full = `${l} ${f}`.replace(/\s+/g, ' ');
     if (full.length > 80) {
       setNameError('Numele este prea lung (maximum 80 de caractere).');
       return;
@@ -455,18 +455,6 @@ function AccountNameForm({ currentName, onDone }: { currentName: string; onDone:
     <form class="stack me-form" onSubmit={submitName}>
       <div class="two">
         <div class="field">
-          <label for="me-first">Prenume</label>
-          <input
-            id="me-first"
-            class="input"
-            autocomplete="given-name"
-            required
-            maxLength={40}
-            value={firstName}
-            onInput={(e) => setFirstName(e.currentTarget.value)}
-          />
-        </div>
-        <div class="field">
           <label for="me-last">Nume de familie</label>
           <input
             id="me-last"
@@ -476,6 +464,18 @@ function AccountNameForm({ currentName, onDone }: { currentName: string; onDone:
             maxLength={40}
             value={lastName}
             onInput={(e) => setLastName(e.currentTarget.value)}
+          />
+        </div>
+        <div class="field">
+          <label for="me-first">Prenume</label>
+          <input
+            id="me-first"
+            class="input"
+            autocomplete="given-name"
+            required
+            maxLength={40}
+            value={firstName}
+            onInput={(e) => setFirstName(e.currentTarget.value)}
           />
         </div>
       </div>

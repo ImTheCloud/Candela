@@ -50,15 +50,16 @@ export async function updateUser(uid: string, data: { name: string; isParent: bo
   await updateDoc(doc(db, 'users', uid), { ...data, name });
   try {
     await updatePlayerBoardName(uid, uid, name);
-    const parentParts = name.trim().split(/\s+/);
-    const parentLast = parentParts.slice(1).join(' ');
+    const parentParts = name.trim().split(/\s+/).filter(Boolean);
+    const parentLast = parentParts[0];
     if (parentLast) {
       const snap = await getDocs(collection(db, 'users', uid, 'players'));
       await Promise.all(
         snap.docs.map(async (kd) => {
           const kname = (kd.data().name as string | undefined) ?? '';
-          const kp = kname.trim().split(/\s+/);
-          const kfull = kp.length > 1 ? kname.trim() : `${kp[0]} ${parentLast}`;
+          const kp = kname.trim().split(/\s+/).filter(Boolean);
+          const childFirst = kp.length > 1 ? kp.slice(1).join(' ') : kp[0];
+          const kfull = `${parentLast} ${childFirst}`;
           await updatePlayerBoardName(uid, kd.id, kfull);
         })
       );
@@ -76,15 +77,15 @@ export async function renameChild(uid: string, key: string, name: string) {
   const cleaned = clean(name);
   await updateDoc(doc(db, 'users', uid, 'players', key), { name: cleaned });
   try {
-    const parts = cleaned.trim().split(/\s+/);
+    const parts = cleaned.trim().split(/\s+/).filter(Boolean);
     if (parts.length > 1) {
       await updatePlayerBoardName(uid, key, cleaned);
     } else {
       const userSnap = await getDoc(doc(db, 'users', uid));
       const parentName = (userSnap.data()?.name as string | undefined) ?? '';
-      const parentParts = parentName.trim().split(/\s+/);
-      const parentLast = parentParts.slice(1).join(' ');
-      const fullName = parentLast ? `${parts[0]} ${parentLast}` : parts[0];
+      const parentParts = parentName.trim().split(/\s+/).filter(Boolean);
+      const parentLast = parentParts[0];
+      const fullName = parentLast ? `${parentLast} ${parts[0]}` : parts[0];
       await updatePlayerBoardName(uid, key, fullName);
     }
   } catch (e) {

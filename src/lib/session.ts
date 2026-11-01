@@ -98,7 +98,9 @@ export interface SignUp {
 }
 
 export async function signUp(f: SignUp): Promise<void> {
-  const name = `${clean(f.firstName)} ${clean(f.lastName)}`;
+  const last = clean(f.lastName);
+  const first = clean(f.firstName);
+  const name = `${last} ${first}`;
   const cred = await createUserWithEmailAndPassword(auth, f.email.trim(), f.password);
   await updateProfile(cred.user, { displayName: name });
   rememberSignedIn(cred.user);
@@ -201,7 +203,7 @@ export async function updateAccountName(firstName: string, lastName: string): Pr
   const first = clean(firstName);
   const last = clean(lastName);
   if (!first || !last) throw new Error('name_required');
-  const name = `${first} ${last}`;
+  const name = `${last} ${first}`;
   if (name.length > 80) throw new Error('name_too_long');
 
   // Optimistically update local profile and storage
@@ -230,18 +232,17 @@ export async function updateAccountName(firstName: string, lastName: string): Pr
 
   // Update leaderboard entries in the background
   try {
-    const parentParts = name.trim().split(/\s+/);
-    const parentLast = parentParts.slice(1).join(' ');
     await updatePlayerBoardName(u.uid, u.uid, name);
 
-    // Also update all children on leaderboards if parent has children
+    // Also update all children on leaderboards if parent has children: "LastName ChildFirstName"
     const kidsSnap = await getDocs(collection(db, 'users', u.uid, 'players')).catch(() => null);
     if (kidsSnap && !kidsSnap.empty) {
       await Promise.all(
         kidsSnap.docs.map(async (kd) => {
           const kname = (kd.data().name as string | undefined) ?? '';
-          const kp = kname.trim().split(/\s+/);
-          const kfull = kp.length > 1 ? kname.trim() : (parentLast ? `${kp[0]} ${parentLast}` : kp[0]);
+          const kp = kname.trim().split(/\s+/).filter(Boolean);
+          const childFirst = kp.length > 1 ? kp.slice(1).join(' ') : kp[0];
+          const kfull = `${last} ${childFirst}`;
           await updatePlayerBoardName(u.uid, kd.id, kfull);
         })
       );
@@ -250,8 +251,9 @@ export async function updateAccountName(firstName: string, lastName: string): Pr
       if (kidsCache && kidsCache.uid === u.uid) {
         await Promise.all(
           kidsCache.list.map(async (k) => {
-            const childParts = k.name.trim().split(/\s+/);
-            const childFull = childParts.length > 1 ? k.name.trim() : (parentLast ? `${childParts[0]} ${parentLast}` : childParts[0]);
+            const childParts = k.name.trim().split(/\s+/).filter(Boolean);
+            const childFirst = childParts.length > 1 ? childParts.slice(1).join(' ') : childParts[0];
+            const childFull = `${last} ${childFirst}`;
             await updatePlayerBoardName(u.uid, k.key, childFull);
           })
         );
