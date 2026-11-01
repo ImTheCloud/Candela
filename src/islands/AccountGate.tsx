@@ -1,6 +1,7 @@
 import type { ComponentChildren } from 'preact';
 import { rememberedAccount, user } from '../lib/session';
 import Loader from './Loader';
+import LampIcon from './LampIcon';
 
 /** Where to come back after signing in: `?next=` when it is a page of this site, else `fallback`. */
 export function nextPage(fallback: string): string {
@@ -21,8 +22,10 @@ function NeedAccount() {
   return (
     <div class="card auth-card stack">
       <div class="auth-brand">
+        <a href="/" class="auth-brand-lamp" aria-label="Acasă - Candela" title="Acasă - Candela">
+          <LampIcon size={26} />
+        </a>
         <span class="auth-brand-badge">Concursul „Talantul în Negoț”</span>
-        <h1 class="auth-brand-title">Candela lui Dumnezeu</h1>
         <p class="auth-brand-verse">„...și candela lui Dumnezeu nu se stinsese încă...”</p>
         <span class="auth-brand-ref">1 Samuel 3:3</span>
       </div>

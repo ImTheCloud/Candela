@@ -3,11 +3,13 @@ import Loader from '../../components/Loader.astro';
 import Base from '../../layouts/Base.astro';
 import SignUpForm from '../../islands/SignUpForm';
 ---
-<Base title="Creează un cont" crumbs={[{ href: '/cont', label: 'Cont' }]}>
-  <section class="wrap narrow page">
+<Base noHeader title="Creează un cont" crumbs={[{ href: '/cont', label: 'Cont' }]}>
+  <section class="wrap narrow page page-auth">
     <SignUpForm client:only="preact">
       <Loader slot="fallback" />
     </SignUpForm>
   </section>
 </Base>
-<style>.page { padding-block: 12px 24px; }</style>
+<style>
+  .page-auth { padding-block: 8px 20px; }
+</style>

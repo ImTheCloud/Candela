@@ -1,5 +1,6 @@
 import { useState } from 'preact/hooks';
 import { errorText, resetPassword } from '../lib/session';
+import LampIcon from './LampIcon';
 
 export default function ResetForm() {
   const [email, setEmail] = useState('');
@@ -34,7 +35,10 @@ export default function ResetForm() {
   return (
     <form class="card auth-card stack" onSubmit={submit}>
       <div class="auth-brand">
-        <h1 class="auth-brand-title">Candela lui Dumnezeu</h1>
+        <a href="/" class="auth-brand-lamp" aria-label="Acasă - Candela" title="Acasă - Candela">
+          <LampIcon size={26} />
+        </a>
+        <span class="auth-brand-badge">Concursul „Talantul în Negoț”</span>
         <p class="auth-brand-verse">„...și candela lui Dumnezeu nu se stinsese încă...”</p>
         <span class="auth-brand-ref">1 Samuel 3:3</span>
       </div>
@@ -46,7 +50,10 @@ export default function ResetForm() {
       </div>
       {error && <p class="notice notice-bad" role="alert">{error}</p>}
       <button class="btn btn-primary btn-block" disabled={busy}>{busy ? 'Se trimite…' : 'Trimite linkul'}</button>
-      <p class="small auth-links"><a class="link" href="/cont">Înapoi la intrare</a></p>
+      <div class="auth-links small">
+        <a class="link" href="/cont">Înapoi la intrare</a>
+        <a class="link muted" href="/">Înapoi acasă</a>
+      </div>
     </form>
   );
 }

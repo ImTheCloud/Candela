@@ -3,11 +3,13 @@ import Loader from '../../components/Loader.astro';
 import Base from '../../layouts/Base.astro';
 import ResetForm from '../../islands/ResetForm';
 ---
-<Base title="Parolă uitată" crumbs={[{ href: '/cont', label: 'Cont' }]}>
-  <section class="wrap narrow page">
+<Base noHeader title="Parolă uitată" crumbs={[{ href: '/cont', label: 'Cont' }]}>
+  <section class="wrap narrow page page-auth">
     <ResetForm client:only="preact">
       <Loader slot="fallback" />
     </ResetForm>
   </section>
 </Base>
-<style>.page { padding-block: 12px 24px; }</style>
+<style>
+  .page-auth { padding-block: 8px 20px; }
+</style>

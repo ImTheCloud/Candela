@@ -27,6 +27,8 @@ interface Props {
   backSignedIn?: boolean;
   /** A page title in the header instead of the site name and the account button (the Bible reader). */
   heading?: { title: string; note?: string; sub?: string };
+  /** Hide the top header completely (login, signup, reset password) */
+  noHeader?: boolean;
 }
 const {
   title,
@@ -35,11 +37,12 @@ const {
   home = false,
   backUp = false,
   backSignedIn = false,
-  heading
+  heading,
+  noHeader = false
 } = Astro.props;
 const up = crumbs.at(-1)?.href ?? '/';
 const parent = up === `/${DEFAULT_BOOK}` ? '/' : up;
-const fullTitle = title === 'Candela lui Dumnezeu' ? title : `${title} – Candela lui Dumnezeu`;
+const fullTitle = title === 'Candela' ? title : `${title} – Candela`;
 ---
 <!doctype html>
 <html lang="ro" transition:animate="none">
@@ -55,11 +58,11 @@ const fullTitle = title === 'Candela lui Dumnezeu' ? title : `${title} – Cande
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Candela lui Dumnezeu" />
+    <meta property="og:site_name" content="Candela" />
     <meta property="og:image" content={new URL('/og.png', Astro.site)} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Candela lui Dumnezeu: lampa cu untdelemn" />
+    <meta property="og:image:alt" content="Candela: lampa cu untdelemn" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content={new URL('/og.png', Astro.site)} />
     <script is:inline>
@@ -77,31 +80,33 @@ const fullTitle = title === 'Candela lui Dumnezeu' ? title : `${title} – Cande
       if (window.caches) caches.keys().then((ks) => ks.forEach((k) => caches.delete(k))).catch(() => {});
     </script>
   </head>
-  <body>
-    <header class="top">
-      <div class="wrap top-row">
-        {!home && (
-          <a class={`back${backSignedIn ? ' back-signed-in' : ''}`} href={parent} data-back={backUp ? undefined : ''} aria-label="Înapoi">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6" /></svg>
-          </a>
-        )}
-        {heading ? (
-          <div class="heading">
-            <h1>{heading.title}{heading.note && <span class="heading-note"> ({heading.note})</span>}</h1>
-            {heading.sub && <p>{heading.sub}</p>}
-          </div>
-        ) : (<>
-          <a href="/" class="brand" aria-label="Candela lui Dumnezeu, acasă">
-            <Lamp />
-            <span class="brand-text">Candela lui Dumnezeu</span>
-          </a>
-          <div id="quiz-top" class="qt"></div>
-          <AccountButton client:only="preact">
-            <a slot="fallback" id="acct-fb" href="/cont" class="account-placeholder" hidden></a>
-          </AccountButton>
-        </>)}
-      </div>
-    </header>
+  <body class={noHeader ? 'auth-no-header' : undefined}>
+    {!noHeader && (
+      <header class="top">
+        <div class="wrap top-row">
+          {!home && (
+            <a class={`back${backSignedIn ? ' back-signed-in' : ''}`} href={parent} data-back={backUp ? undefined : ''} aria-label="Înapoi">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6" /></svg>
+            </a>
+          )}
+          {heading ? (
+            <div class="heading">
+              <h1>{heading.title}{heading.note && <span class="heading-note"> ({heading.note})</span>}</h1>
+              {heading.sub && <p>{heading.sub}</p>}
+            </div>
+          ) : (<>
+            <a href="/" class="brand" aria-label="Candela, acasă">
+              <Lamp />
+              <span class="brand-text">Candela</span>
+            </a>
+            <div id="quiz-top" class="qt"></div>
+            <AccountButton client:only="preact">
+              <a slot="fallback" id="acct-fb" href="/cont" class="account-placeholder" hidden></a>
+            </AccountButton>
+          </>)}
+        </div>
+      </header>
+    )}
     <main>
       <slot />
     </main>
