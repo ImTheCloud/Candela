@@ -451,7 +451,7 @@ a.tile { text-decoration: none; }
   gap: 12px;
   min-height: 50px;
   padding: 12px 16px;
-  background: none;
+  background: transparent;
   border: none;
   width: 100%;
   color: var(--ink);
@@ -461,12 +461,17 @@ a.tile { text-decoration: none; }
   text-align: left;
   transition: background-color 0.12s ease;
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
 }
 .me-item + .me-item {
   border-top: 1px solid var(--line);
 }
-.me-item:hover, .me-item:active {
-  background: var(--surface-2);
+@media (hover: hover) and (pointer: fine) {
+  .me-item:hover {
+    background: var(--surface-2);
+  }
 }
 .me-item-ic {
   display: grid;
@@ -506,8 +511,10 @@ a.tile { text-decoration: none; }
   color: var(--bad);
   opacity: 0.6;
 }
-.me-item.danger:hover, .me-item.danger:active {
-  background: var(--bad-soft);
+@media (hover: hover) and (pointer: fine) {
+  .me-item.danger:hover {
+    background: var(--bad-soft);
+  }
 }
 .me-link { display: flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 16px; border: 1px solid var(--line); border-radius: var(--r-ctl); background: none; color: var(--ink); font: 600 0.95rem var(--f-body); text-decoration: none; cursor: pointer; }
 .me-link.signout { color: var(--bad); }
