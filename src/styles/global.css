@@ -1558,12 +1558,19 @@ html:not(.signed-in) .back-signed-in { display: none; }
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: 1.5px solid var(--line);
   background: var(--surface);
   color: var(--ink);
-  font: 700 0.72rem/1 var(--f-body);
+  font: 700 0.62rem/1 var(--f-body);
+  letter-spacing: -0.04em;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow: visible;
   cursor: pointer;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
@@ -1588,9 +1595,10 @@ html:not(.signed-in) .back-signed-in { display: none; }
 }
 
 .fab-arc-pill.is-selected {
-  background: var(--btn);
+  background: #4a3426;
   color: #ffffff;
-  border-color: var(--btn);
+  font-weight: 700;
+  border-color: #4a3426;
   box-shadow: 0 3px 12px rgba(58, 39, 27, 0.32);
 }
 
@@ -1605,7 +1613,7 @@ html:not(.signed-in) .back-signed-in { display: none; }
   height: 50px;
   border-radius: 50%;
   border: 1.5px solid var(--line);
-  background: var(--btn); /* Always base brown color (#4a3426) */
+  background: #4a3426; /* Always base brown color (#4a3426) */
   color: #fff;
   cursor: pointer;
   box-shadow: 0 4px 14px rgba(58, 39, 27, 0.28), 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -1622,7 +1630,7 @@ html:not(.signed-in) .back-signed-in { display: none; }
   box-shadow: 0 4px 16px rgba(46, 125, 50, 0.38), 0 0 0 3px rgba(46, 125, 50, 0.2);
 }
 .fab-main-btn.is-paused {
-  background: var(--btn); /* Stays base brown - never orange! */
+  background: #4a3426; /* Stays base brown - never orange! */
   border-color: var(--line);
   box-shadow: 0 4px 14px rgba(58, 39, 27, 0.28);
 }
