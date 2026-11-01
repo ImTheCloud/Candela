@@ -35,7 +35,7 @@ export default function ExamSheet({ book, exams, onClose }: { book: string; exam
       {(close) => (<>
         <div class="sheet-top">
           <div>
-            <h2 id="ex-title">Examene</h2>
+            <h2 id="ex-title">Examen alb</h2>
             <p class="muted">Din toată cartea, ca la examenul final</p>
           </div>
           <CloseButton onClick={close} />
