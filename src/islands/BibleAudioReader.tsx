@@ -271,3 +271,4 @@ export default function BibleAudioReader({ bookName, ch, verses }: Props) {
     </div>
   );
 }
+

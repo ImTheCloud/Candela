@@ -29,18 +29,19 @@ export default function SignUpForm() {
 
   async function submit(e: Event) {
     e.preventDefault();
-    if (!f.firstName.trim() || !f.lastName.trim()) return setError('Scrie prenumele și numele de familie.');
+    if (!f.lastName.trim()) return setError('Scrie numele de familie.');
+    const effectiveFirst = f.firstName.trim() || 'Familia';
     const names = f.isParent ? kids.map((k) => k.trim()).filter(Boolean) : [];
     if (f.isParent && !names.length) return setError('Scrie prenumele a cel puțin unui copil.');
-    const twin = names.find((n) => sameFirstName(n, f.firstName));
-    if (twin) return setSameName({ name: f.firstName.trim(), kind: 'parent' });
+    const twin = names.find((n) => sameFirstName(n, effectiveFirst));
+    if (twin) return setSameName({ name: effectiveFirst, kind: 'parent' });
     const duplicateChild = names.find((n, i) => names.some((other, j) => j > i && sameFirstName(n, other)));
     if (duplicateChild) return setSameName({ name: duplicateChild, kind: 'child' });
     setBusy(true);
     setError('');
     submitting.current = true;
     try {
-      await signUp(f);
+      await signUp({ ...f, firstName: effectiveFirst });
     } catch (err) {
       submitting.current = false;
       setError(errorText(err));
@@ -74,7 +75,14 @@ export default function SignUpForm() {
         </div>
         <div class="field">
           <label for="first">Prenume</label>
-          <input id="first" class="input" autocomplete="given-name" required value={f.firstName} onInput={set('firstName')} />
+          <input
+            id="first"
+            class="input"
+            autocomplete="given-name"
+            placeholder="Familia"
+            value={f.firstName}
+            onInput={set('firstName')}
+          />
         </div>
       </div>
       <div class="field">

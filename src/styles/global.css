@@ -121,6 +121,7 @@ img, svg { display: block; }
   border: 1px solid var(--line); border-radius: var(--r-sm);
   font: 400 1rem var(--f-body);
 }
+.input::placeholder { color: var(--ink-2); opacity: 0.55; }
 .input:focus { outline: none; border-color: var(--oil); box-shadow: 0 0 0 3px var(--oil-soft); }
 .check { display: flex; gap: 10px; align-items: flex-start; font-size: 0.95rem; cursor: pointer; }
 .check input { width: 20px; height: 20px; margin: 2px 0 0; accent-color: var(--oil); flex: none; }
