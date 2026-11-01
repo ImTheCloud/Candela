@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'preact/hooks';
 import { sendMessage, watchOpenMessagesCount } from '../lib/messages';
-import { addChild, players, removeChild, sameFirstName, updateChild, type Player } from '../lib/players';
+import { addChild, players, removeChild, sameFirstName, shortName, updateChild, type Player } from '../lib/players';
 import { watchOpenCount } from '../lib/reports';
 import { localGet } from '../lib/store';
 import { deleteProgress } from '../lib/progress';
@@ -25,7 +25,6 @@ function splitName(fullName: string): { first: string; last: string } {
 export default function Profile({ books: _books }: { books?: BookInfo[] }) {
   const u = user.value;
   const p = profile.value;
-  const name = p?.name || u?.displayName || rememberedAccount?.name || 'Contul meu';
   const email = u?.email ?? p?.email ?? '';
   const [parentError, setParentError] = useState('');
   const [adding, setAdding] = useState(false);
@@ -81,14 +80,7 @@ export default function Profile({ books: _books }: { books?: BookInfo[] }) {
 
   return (
     <div class="me">
-      <header class="me-id">
-        <Avatar name={name} size={76} />
-        <div class="me-who">
-          <h1>{name}</h1>
-          {email && <p class="small muted">{email}</p>}
-          {profileError.value && <p class="small bad">Profilul nu a putut fi încărcat. Verifică conexiunea.</p>}
-        </div>
-      </header>
+      {profileError.value && <p class="notice notice-bad" role="alert">Profilul nu a putut fi încărcat. Verifică conexiunea.</p>}
 
       {isParent ? (
         <section class="me-sect" aria-labelledby="pl-title">
@@ -97,6 +89,7 @@ export default function Profile({ books: _books }: { books?: BookInfo[] }) {
             <PlayerBlock
               key={x.key}
               p={x}
+              email={email}
               editingSelf={editingSelf}
               onStartEditSelf={() => setEditingSelf(true)}
               onDoneEditSelf={() => setEditingSelf(false)}
@@ -133,6 +126,7 @@ export default function Profile({ books: _books }: { books?: BookInfo[] }) {
               <PlayerBlock
                 key={x.key}
                 p={x}
+                email={email}
                 editingSelf={editingSelf}
                 onStartEditSelf={() => setEditingSelf(true)}
                 onDoneEditSelf={() => setEditingSelf(false)}
@@ -335,11 +329,13 @@ export default function Profile({ books: _books }: { books?: BookInfo[] }) {
 /** One player in the family: who they are, and management (rename, delete). */
 function PlayerBlock({
   p,
+  email,
   editingSelf,
   onStartEditSelf,
   onDoneEditSelf,
 }: {
   p: Player;
+  email?: string;
   editingSelf: boolean;
   onStartEditSelf: () => void;
   onDoneEditSelf: () => void;
@@ -347,6 +343,7 @@ function PlayerBlock({
   const [editingChild, setEditingChild] = useState(false);
   const [confirming, setConfirming] = useState(false);
   const isSelf = !p.child;
+  const displayName = isSelf ? p.name : shortName(p);
 
   async function remove() {
     await deleteProgress(user.value!.uid, p.key);
@@ -357,9 +354,10 @@ function PlayerBlock({
     return (
       <article class="pl" id="name-edit">
         <div class="pl-row">
-          <Avatar name={p.name} size={36} />
+          <Avatar name={p.name} size={38} />
           <div class="pl-name">
-            <strong>{p.name.split(' ')[0]} <span class="muted small">(tu)</span></strong>
+            <strong>{p.name}</strong>
+            {email && <span class="pl-email">{email}</span>}
           </div>
         </div>
         <AccountNameForm currentName={p.name} onDone={onDoneEditSelf} />
@@ -371,9 +369,9 @@ function PlayerBlock({
     return (
       <article class="pl">
         <div class="pl-row">
-          <Avatar name={p.name} size={36} />
+          <Avatar name={displayName} size={38} />
           <div class="pl-name">
-            <strong>{p.name.split(' ')[0]}</strong>
+            <strong>{displayName}</strong>
           </div>
         </div>
         <ChildForm child={p} onDone={() => setEditingChild(false)} />
@@ -384,24 +382,60 @@ function PlayerBlock({
   return (
     <article class="pl">
       <div class="pl-row">
-        <Avatar name={p.name} size={36} />
+        <Avatar name={displayName} size={38} />
         <div class="pl-name">
-          <strong>{p.name.split(' ')[0]}{isSelf && <span class="muted small"> (tu)</span>}</strong>
+          <strong>{displayName}</strong>
+          {isSelf && email && <span class="pl-email">{email}</span>}
         </div>
         <div class="pl-actions">
           {p.child ? (
             <>
-              <button type="button" class="btn-reset link small" onClick={() => setEditingChild(true)}>Schimbă</button>
-              <button type="button" class="btn-reset link small bad" onClick={() => setConfirming(true)} aria-label={`Șterge pe ${p.name}`}>Șterge</button>
+              <button
+                type="button"
+                class="pl-btn"
+                onClick={() => setEditingChild(true)}
+                aria-label={`Modifică numele lui ${p.name}`}
+                title="Modifică"
+              >
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M12 20h9" />
+                  <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+                </svg>
+              </button>
+              <button
+                type="button"
+                class="pl-btn bad"
+                onClick={() => setConfirming(true)}
+                aria-label={`Șterge pe ${p.name}`}
+                title="Șterge"
+              >
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="3 6 5 6 21 6" />
+                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                  <line x1="10" y1="11" x2="10" y2="17" />
+                  <line x1="14" y1="11" x2="14" y2="17" />
+                </svg>
+              </button>
             </>
           ) : (
-            <button type="button" class="btn-reset link small" onClick={onStartEditSelf}>Schimbă numele</button>
+            <button
+              type="button"
+              class="pl-btn"
+              onClick={onStartEditSelf}
+              aria-label="Modifică numele"
+              title="Modifică numele"
+            >
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 20h9" />
+                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+              </svg>
+            </button>
           )}
         </div>
       </div>
       {confirming && (
         <div class="notice notice-bad stack" style="--gap: 10px; margin-top: 6px;">
-          <p>Ștergi profilul lui {p.name}? Nu se mai poate recupera.</p>
+          <p>Ștergi profilul lui {displayName}? Nu se mai poate recupera.</p>
           <div class="two">
             <button type="button" class="btn btn-ghost btn-sm" onClick={() => setConfirming(false)}>Renunță</button>
             <button type="button" class="btn btn-sm danger" onClick={remove}>Da, șterge</button>
@@ -500,7 +534,9 @@ function ChildForm({ child, onDone }: { child?: Player; onDone: () => void }) {
     e.preventDefault();
     if (!name.trim()) return setError('Scrie prenumele copilului.');
     const parent = profile.value?.name ?? '';
-    if (sameFirstName(name, parent)) return setSameName(parent.trim().split(/\s+/)[0]);
+    const parentParts = parent.trim().split(/\s+/).filter(Boolean);
+    const parentFirst = parentParts.length > 1 ? parentParts.slice(1).join(' ') : (parentParts[0] ?? '');
+    if (sameFirstName(name, parentFirst)) return setSameName(parentFirst);
     setBusy(true);
     setError('');
     try {

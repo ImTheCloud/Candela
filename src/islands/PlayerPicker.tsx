@@ -49,7 +49,6 @@ export default function PlayerPicker() {
           const isSelected = p.key === current.key;
           const firstName = getFirstName(p.name);
           const initial = (firstName[0] ?? '?').toUpperCase();
-          const isSelf = !p.child;
 
           return (
             <button
@@ -61,10 +60,7 @@ export default function PlayerPicker() {
               onClick={() => choosePlayer(p.key)}
             >
               <span class="pk-av" aria-hidden="true">{initial}</span>
-              <span class="pk-name">
-                {firstName}
-                {isSelf && <small class="pk-sub"> (tu)</small>}
-              </span>
+              <span class="pk-name">{firstName}</span>
             </button>
           );
         })}

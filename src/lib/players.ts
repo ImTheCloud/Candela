@@ -98,7 +98,14 @@ export function shortName(p: Player): string {
  * and then added the child again shows up (the same child twice on the board).
  */
 export function sameFirstName(a: string, b: string): boolean {
-  const first = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim().split(/[\s-]+/)[0] ?? '';
-  const x = first(a);
-  return x !== '' && x === first(b);
+  const normalize = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();
+  const getFirstTokens = (s: string) => {
+    const parts = normalize(s).split(/[\s-]+/).filter(Boolean);
+    if (parts.length <= 1) return parts;
+    return parts.slice(1);
+  };
+  const tokensA = getFirstTokens(a);
+  const tokensB = getFirstTokens(b);
+  if (!tokensA.length || !tokensB.length) return false;
+  return tokensA.some((tA) => tokensB.includes(tA)) || tokensA.join(' ') === tokensB.join(' ');
 }
