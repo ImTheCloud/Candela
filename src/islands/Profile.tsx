@@ -2,10 +2,11 @@ import { useState } from 'preact/hooks';
 import { addChild, players, removeChild, sameFirstName, updateChild, type Player } from '../lib/players';
 import { localGet } from '../lib/store';
 import { deleteProgress } from '../lib/progress';
-import { errorText, profile, profileError, profileLoaded, rememberedAccount, setParent, signOut, updateAccountName, user } from '../lib/session';
+import { deleteMyAccount, errorText, profile, profileError, profileLoaded, rememberedAccount, setParent, signOut, updateAccountName, user } from '../lib/session';
 import Avatar from './Avatar';
 import SameNameSheet from './SameNameSheet';
 import Loader from './Loader';
+import Modal from './Modal';
 
 /** The "Scrie-ne un email" button: a new email to the administrator. */
 const contactHref = `mailto:claudiu.dev@outlook.com?subject=${encodeURIComponent('Candela')}`;
@@ -30,6 +31,9 @@ export default function Profile({ books: _books }: { books?: BookInfo[] }) {
   const [parentError, setParentError] = useState('');
   const [adding, setAdding] = useState(false);
   const [editingSelf, setEditingSelf] = useState(false);
+  const [confirmDelete, setConfirmDelete] = useState(false);
+  const [deleting, setDeleting] = useState(false);
+  const [deleteError, setDeleteError] = useState('');
 
   const list = players.value;
   const kids = list.filter((x) => x.child).length;
@@ -43,6 +47,18 @@ export default function Profile({ books: _books }: { books?: BookInfo[] }) {
   async function toggleParent(on: boolean) {
     setParentError('');
     try { await setParent(on); } catch (err) { setParentError(errorText(err)); }
+  }
+
+  async function handleDeleteAccount() {
+    setDeleting(true);
+    setDeleteError('');
+    try {
+      await deleteMyAccount();
+      window.location.replace('/');
+    } catch (e) {
+      setDeleteError(errorText(e));
+      setDeleting(false);
+    }
   }
 
   return (
@@ -118,12 +134,90 @@ export default function Profile({ books: _books }: { books?: BookInfo[] }) {
         )
       )}
 
-      <nav class="me-end">
-        {p?.admin && <a class="me-link" href="/admin">Administrare</a>}
-        {p?.admin && <a class="me-link" href="/semnalari">Semnalări de greșeli{reportsOpen > 0 ? ` (${reportsOpen})` : ''}</a>}
-        <a class="me-link" href={contactHref}>Scrie-ne un email</a>
-        <button type="button" class="me-link signout" onClick={() => signOut()}>Ieși din cont</button>
-      </nav>
+      <div class="me-end">
+        <div class="me-card">
+          {p?.admin && (
+            <a class="me-item" href="/admin">
+              <span class="me-item-ic">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+              </span>
+              <span class="me-item-label">Administrare</span>
+              <span class="me-item-chev">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
+              </span>
+            </a>
+          )}
+          {p?.admin && (
+            <a class="me-item" href="/semnalari">
+              <span class="me-item-ic">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" /><line x1="4" y1="22" x2="4" y2="15" /></svg>
+              </span>
+              <span class="me-item-label">Semnalări de greșeli</span>
+              {reportsOpen > 0 && <span class="me-item-badge">{reportsOpen}</span>}
+              <span class="me-item-chev">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
+              </span>
+            </a>
+          )}
+          <a class="me-item" href={contactHref}>
+            <span class="me-item-ic">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg>
+            </span>
+            <span class="me-item-label">Scrie-ne un email</span>
+            <span class="me-item-chev">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
+            </span>
+          </a>
+        </div>
+
+        <div class="me-card">
+          <button type="button" class="me-item" onClick={() => signOut()}>
+            <span class="me-item-ic">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" /><polyline points="16 17 21 12 16 7" /><line x1="21" y1="12" x2="9" y2="12" /></svg>
+            </span>
+            <span class="me-item-label">Ieși din cont</span>
+            <span class="me-item-chev">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
+            </span>
+          </button>
+          <button type="button" class="me-item danger" onClick={() => { setDeleteError(''); setConfirmDelete(true); }}>
+            <span class="me-item-ic">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3 6 5 6 21 6" /><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /><line x1="10" y1="11" x2="10" y2="17" /><line x1="14" y1="11" x2="14" y2="17" /></svg>
+            </span>
+            <span class="me-item-label">Șterge contul</span>
+            <span class="me-item-chev">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
+            </span>
+          </button>
+        </div>
+      </div>
+
+      {confirmDelete && (
+        <Modal class="confirm" role="alertdialog" labelledby="del-t" onClose={() => !deleting && setConfirmDelete(false)}>
+          {(close) => (
+            <>
+              <h2 id="del-t">Ștergi contul definitiv?</h2>
+              <p class="muted">
+                Această acțiune este ireversibilă. Toate datele tale, progresul și conturile copiilor asociați vor fi șterse definitiv.
+              </p>
+              {deleteError && <p class="notice notice-bad" role="alert">{deleteError}</p>}
+              <div class="two">
+                <button type="button" class="btn btn-ghost" disabled={deleting} onClick={close}>
+                  Renunță
+                </button>
+                <button
+                  type="button"
+                  class="btn danger"
+                  disabled={deleting}
+                  onClick={handleDeleteAccount}
+                >
+                  {deleting ? 'Se șterge...' : 'Da, șterge contul'}
+                </button>
+              </div>
+            </>
+          )}
+        </Modal>
+      )}
     </div>
   );
 }

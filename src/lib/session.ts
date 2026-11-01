@@ -1,6 +1,7 @@
 import { signal } from '@preact/signals';
 import {
   createUserWithEmailAndPassword,
+  deleteUser,
   onAuthStateChanged,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
@@ -8,8 +9,8 @@ import {
   updateProfile,
   type User,
 } from 'firebase/auth';
-import { doc, onSnapshot, serverTimestamp, setDoc, updateDoc } from 'firebase/firestore';
-import { updatePlayerBoardName } from './board';
+import { collection, deleteDoc, doc, getDocs, onSnapshot, serverTimestamp, setDoc, updateDoc } from 'firebase/firestore';
+import { removeFromBoards, updatePlayerBoardName } from './board';
 import { auth, db } from './firebase';
 import { localGet, localRemove, localSet } from './store';
 
@@ -132,6 +133,58 @@ export function signOut() {
   return fbSignOut(auth);
 }
 
+/**
+ * Permanently deletes the user's account:
+ * 1. Children docs and leaderboard entries
+ * 2. Progress and board records
+ * 3. Firestore user document
+ * 4. Firebase Auth user
+ * 5. Local cache
+ */
+export async function deleteMyAccount(): Promise<void> {
+  const u = auth.currentUser;
+  if (!u) throw new Error('not_signed_in');
+  const uid = u.uid;
+
+  // 1. Delete all children player docs and remove them from leaderboards
+  try {
+    const kidsSnap = await getDocs(collection(db, 'users', uid, 'players'));
+    for (const kidDoc of kidsSnap.docs) {
+      await removeFromBoards(uid, kidDoc.id).catch(() => {});
+      await deleteDoc(kidDoc.ref).catch(() => {});
+    }
+  } catch (err) {
+    console.warn('Could not clean up children on account deletion:', err);
+  }
+
+  // 2. Remove parent from leaderboards
+  await removeFromBoards(uid, uid).catch(() => {});
+
+  // 3. Delete progress docs for parent and children
+  try {
+    const progSnap = await getDocs(collection(db, 'users', uid, 'progress'));
+    for (const pDoc of progSnap.docs) {
+      await deleteDoc(pDoc.ref).catch(() => {});
+    }
+  } catch (err) {
+    console.warn('Could not clean up progress on account deletion:', err);
+  }
+
+  // 4. Delete the user document in Firestore
+  await deleteDoc(doc(db, 'users', uid)).catch((err) => {
+    console.warn('Could not delete user doc:', err);
+  });
+
+  // 5. Delete the Auth user
+  await deleteUser(u);
+
+  // 6. Local storage cleanup
+  localRemove('me');
+  localRemove('kids');
+  localRemove('player');
+  localRemove(`seen:${uid}`);
+}
+
 export function resetPassword(email: string) {
   return sendPasswordResetEmail(auth, email.trim());
 }
@@ -214,6 +267,7 @@ export function errorText(e: unknown): string {
     case 'auth/weak-password': return 'Parola trebuie să aibă cel puțin 6 caractere.';
     case 'auth/too-many-requests': return 'Prea multe încercări. Încearcă din nou peste câteva minute.';
     case 'auth/network-request-failed': return 'Nu există conexiune la internet.';
+    case 'auth/requires-recent-login': return 'Această operațiune necesită o conectare recentă. Te rugăm să ieși din cont, să te conectezi din nou și să reîncerci.';
     case 'permission-denied': return 'Nu ai voie să faci această modificare.';
     default: return 'A apărut o eroare. Încearcă din nou.';
   }
