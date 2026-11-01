@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
 import { isSpeechSupported, pauseSpeaking, preloadText, resumeSpeaking, setSpeakingSpeed, speakText, stopSpeaking } from '../lib/speech';
-import AudioPlayerBar, { DEFAULT_SPEEDS } from './AudioPlayerBar';
+import FloatingAudioButton from './FloatingAudioButton';
 
 interface Props {
   bookSlug: string;
@@ -189,6 +189,16 @@ export default function BibleAudioReader({ bookSlug, bookName, ch, totalChapters
     setSpeakingSpeed(newSpeed);
   };
 
+  const toggleAudio = () => {
+    if (isPlaying && !isPaused) {
+      pause();
+    } else if (isPlaying && isPaused) {
+      resume();
+    } else {
+      start(verseIdx);
+    }
+  };
+
   // Clean up on unmount or page exit
   useEffect(() => {
     return () => {
@@ -217,29 +227,15 @@ export default function BibleAudioReader({ bookSlug, bookName, ch, totalChapters
 
   if (!supported) return null;
 
-  const statusLabel = isPlaying
-    ? isPaused
-      ? `Pauză: Versetul ${verseIdx + 1} din ${verses.length}`
-      : `Versetul ${verseIdx + 1} din ${verses.length}`
-    : `Capitolul ${ch} (${verses.length} versete)`;
-
   return (
-    <div class="bible-bottom-dock" role="region" aria-label="Player audio biblic permanent">
-      <AudioPlayerBar
-        isPlaying={isPlaying}
-        isPaused={isPaused}
-        speed={speed}
-        speeds={DEFAULT_SPEEDS}
-        onStart={() => start(verseIdx)}
-        onPause={pause}
-        onStop={stop}
-        onSpeedChange={handleSpeedChange}
-        statusLabel={statusLabel}
-        onPrev={prevVerse}
-        onNext={nextVerse}
-        hasPrev={verseIdx > 0}
-        hasNext={verseIdx < verses.length - 1 || ch < totalChapters}
-      />
-    </div>
+    <FloatingAudioButton
+      isPlaying={isPlaying}
+      isPaused={isPaused}
+      speed={speed}
+      onToggle={toggleAudio}
+      onStop={stop}
+      onSpeedChange={handleSpeedChange}
+      bottomOffset="calc(64px + env(safe-area-inset-bottom) + 12px)"
+    />
   );
 }

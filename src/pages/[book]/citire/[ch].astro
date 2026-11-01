@@ -64,14 +64,15 @@ const count = plural(verses.length, 'verset', 'versete');
   }
   sup { font: 600 0.7rem var(--f-body); color: var(--oil-ink); margin-right: 4px; vertical-align: 0.5em; line-height: 0; }
 
-  /* Thumb-reachable chapter navigation above the fixed audio player dock */
+  /* Thumb-reachable chapter navigation sticky at the bottom */
   .pager {
-    padding-bottom: calc(115px + env(safe-area-inset-bottom));
-    background: transparent;
+    position: sticky; bottom: 0; z-index: 10;
+    background: color-mix(in srgb, var(--bg) 94%, transparent); backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-top: 1px solid var(--line);
-    margin-top: 16px;
+    padding-bottom: env(safe-area-inset-bottom);
   }
-  .pager-stack { padding-block: 14px 6px; }
+  .pager-stack { padding-block: 8px; }
   .pager-row { display: grid; grid-template-columns: 48px 1fr 48px; align-items: center; gap: 10px; }
   .pager-btn {
     display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%;
