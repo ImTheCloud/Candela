@@ -1225,14 +1225,30 @@ html:not(.signed-in) .back-signed-in { display: none; }
   color: var(--ink-2);
   font-variant-numeric: tabular-nums;
   letter-spacing: 0.02em;
+  display: inline-flex;
+  align-items: baseline;
 }
 .sw-digits.is-on {
   color: var(--ink);
+}
+.sw-digits-base {
+  font-variant-numeric: tabular-nums;
+}
+.sw-digits-ms {
+  font-size: 0.8em;
+  opacity: 0.72;
+  font-variant-numeric: tabular-nums;
+  margin-left: 1px;
 }
 .sw-actions {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+}
+.sw-confirm-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
 }
 .sw-btn {
   display: inline-flex;
@@ -1265,6 +1281,25 @@ html:not(.signed-in) .back-signed-in { display: none; }
   opacity: 0.3;
   cursor: default;
   border-color: transparent;
+}
+.sw-btn-confirm {
+  background: var(--bad);
+  color: #fff;
+  border-color: var(--bad);
+  font-weight: 700;
+}
+.sw-btn-confirm:active {
+  background: #962a20;
+}
+.sw-btn-cancel {
+  background: transparent;
+  color: var(--ink-2);
+  border-color: var(--line);
+  padding: 0 7px;
+}
+.sw-btn-cancel:hover,
+.sw-btn-cancel:active {
+  background: var(--surface-2);
 }
 .sw-err {
   font-size: 0.75rem;
