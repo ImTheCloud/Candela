@@ -28,14 +28,19 @@ function ttsDevPlugin() {
           const tts = new MsEdgeTTS();
           await tts.setMetadata(voice, OUTPUT_FORMAT.AUDIO_24KHZ_48KBITRATE_MONO_MP3);
           const { audioStream } = await tts.toStream(text);
+
+          res.setHeader('Content-Type', 'audio/mpeg');
+          res.setHeader('Cache-Control', 'public, max-age=86400');
+
           const chunks = [];
-          audioStream.on('data', chunk => chunks.push(chunk));
+          audioStream.on('data', chunk => {
+            res.write(chunk);
+            chunks.push(chunk);
+          });
           audioStream.on('end', () => {
             const buf = Buffer.concat(chunks);
             cache.set(cacheKey, buf);
-            res.setHeader('Content-Type', 'audio/mpeg');
-            res.setHeader('Cache-Control', 'public, max-age=86400');
-            res.end(buf);
+            res.end();
             tts.close();
           });
           audioStream.on('error', err => {
