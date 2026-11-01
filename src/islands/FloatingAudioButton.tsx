@@ -1,12 +1,10 @@
-import { useState } from 'preact/hooks';
-
 export interface FloatingAudioButtonProps {
   isPlaying: boolean;
   isPaused: boolean;
   speed: number;
   speeds?: number[];
   onToggle: () => void;
-  onStop: () => void;
+  onStop?: () => void;
   onSpeedChange: (speed: number) => void;
   bottomOffset?: string;
   className?: string;
@@ -14,81 +12,77 @@ export interface FloatingAudioButtonProps {
 
 export const SPEED_OPTIONS = [0.5, 0.75, 1, 1.25, 1.5];
 
+// Coordinates (x, y in pixels) along a smooth radial arc (R = 66px)
+// Spanning from 195° (lower-left) around to 75° (top-center)
+const ARC_COORDINATES = [
+  { x: -64, y: 17 },   // 0.5x  (lower-left of button)
+  { x: -64, y: -17 },  // 0.75x (upper-left of button)
+  { x: -47, y: -47 },  // 1.0x  (top-left diagonal)
+  { x: -17, y: -64 },  // 1.25x (top, slightly left)
+  { x: 17,  y: -64 },  // 1.5x  (top, slightly right)
+];
+
 export default function FloatingAudioButton({
   isPlaying,
   isPaused,
   speed,
   speeds = SPEED_OPTIONS,
   onToggle,
-  onStop,
   onSpeedChange,
   bottomOffset = 'calc(var(--bar-h, 72px) + 12px)',
   className = '',
 }: FloatingAudioButtonProps) {
-  const [showSpeeds, setShowSpeeds] = useState(false);
   const activePlaying = isPlaying && !isPaused;
   const isAudioActive = isPlaying || isPaused;
-
-  // Speeds dial is visible whenever audio is running (playing or paused), or can be toggled
-  const speedsVisible = isAudioActive || showSpeeds;
 
   const handleMainClick = (e: MouseEvent) => {
     e.stopPropagation();
     onToggle();
   };
 
-  const handleStopClick = (e: MouseEvent) => {
-    e.stopPropagation();
-    setShowSpeeds(false);
-    onStop();
-  };
-
   return (
     <div
-      class={`fab-audio-wrap ${className}`.trim()}
+      class={`fab-audio-container ${className}`.trim()}
       style={{ bottom: bottomOffset }}
       role="region"
       aria-label="Comenzi audio"
     >
-      {/* Floating Speed Dial & Stop Button - Appears above the FAB when audio starts */}
-      {speedsVisible && (
-        <div class="fab-speeds-dial" role="toolbar" aria-label="Opțiuni viteză audio">
-          <div class="fab-speeds-list">
-            {speeds.map((s) => (
-              <button
-                key={s}
-                type="button"
-                class={`fab-speed-btn${s === speed ? ' is-selected' : ''}`}
-                onClick={(e) => {
-                  e.stopPropagation();
-                  onSpeedChange(s);
-                }}
-                aria-pressed={s === speed}
-                title={`Viteza ${s}x`}
-              >
-                {s}x
-              </button>
-            ))}
-          </div>
-
-          <button
-            type="button"
-            class="fab-speed-stop"
-            onClick={handleStopClick}
-            title="Oprește lectura"
-            aria-label="Oprește lectura"
-          >
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor">
-              <rect x="4" y="4" width="16" height="16" rx="2" />
-            </svg>
-          </button>
-        </div>
-      )}
+      {/* Semi-circle radial arc of speed pills (from left of button up to top) */}
+      <div
+        class={`fab-arc-speeds${isAudioActive ? ' is-visible' : ''}`}
+        role="group"
+        aria-label="Viteză audio"
+      >
+        {speeds.map((s, idx) => {
+          const coord = ARC_COORDINATES[idx] || { x: -40 * (idx + 1), y: 0 };
+          return (
+            <button
+              key={s}
+              type="button"
+              class={`fab-arc-pill${s === speed ? ' is-selected' : ''}`}
+              style={{
+                '--dx': `${coord.x}px`,
+                '--dy': `${coord.y}px`,
+                '--delay': `${idx * 30}ms`,
+              }}
+              onClick={(e) => {
+                e.stopPropagation();
+                onSpeedChange(s);
+              }}
+              aria-pressed={s === speed}
+              title={`Viteza ${s}x`}
+              tabIndex={isAudioActive ? 0 : -1}
+            >
+              {s}x
+            </button>
+          );
+        })}
+      </div>
 
       {/* Main Floating Action Button (FAB) */}
       <button
         type="button"
-        class={`fab-audio-btn${activePlaying ? ' is-playing' : ''}${isPaused ? ' is-paused' : ''}`}
+        class={`fab-main-btn${activePlaying ? ' is-playing' : ''}${isPaused ? ' is-paused' : ''}`}
         onClick={handleMainClick}
         title={
           activePlaying
@@ -114,7 +108,7 @@ export default function FloatingAudioButton({
             <span class="fab-wbar bar-4" />
           </span>
         ) : isPaused ? (
-          /* Play icon to resume when paused */
+          /* Play icon to resume when paused - stays base brown color */
           <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <polygon points="7 4 20 12 7 20 7 4" />
           </svg>

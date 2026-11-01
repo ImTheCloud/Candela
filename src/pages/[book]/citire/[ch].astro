@@ -23,7 +23,7 @@ const next = ch < book.chapters ? ch + 1 : null;
 const plural = (n: number, one: string, many: string) => (n === 1 ? `1 ${one}` : n % 100 >= 1 && n % 100 < 20 ? `${n} ${many}` : `${n} de ${many}`);
 const count = plural(verses.length, 'verset', 'versete');
 ---
-<Base title={`${book.name} ${ch}`} heading={{ title: `Capitolul ${ch}`, note: count }} backUp crumbs={[{ href: '/', label: 'Acasă' }, { href: `/${book.slug}`, label: book.name }]}>
+<Base title={`${book.name} ${ch}`} heading={{ title: `Capitolul ${ch}`, note: count }} backHome backUp crumbs={[{ href: '/', label: 'Acasă' }]}>
   <article class="wrap narrow reader" data-book={book.slug} data-ch={ch}>
     <h2 class="reader-title">{book.titles[ch - 1]}</h2>
     <BibleAudioReader client:only="preact" bookSlug={book.slug} bookName={book.name} ch={ch} totalChapters={book.chapters} title={book.titles[ch - 1]} verses={verses} />
