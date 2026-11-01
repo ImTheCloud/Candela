@@ -37,8 +37,7 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
   const [saveFailed, setSaveFailed] = useState(false);
   const [verse, setVerse] = useState(false);
 
-  // Audio narration toggle: strictly disabled by default on every new test
-  const [voiceEnabled, setVoiceEnabled] = useState(false);
+  // Audio narration state
   const [isSpeaking, setIsSpeaking] = useState(false);
 
   const q = questions[i];
@@ -112,12 +111,10 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
   const setAnswer = (a: Answer) => setAnswers(answers.map((x, k) => (k === i ? a : x)));
 
   const toggleVoice = () => {
-    if (voiceEnabled) {
-      setVoiceEnabled(false);
-      setIsSpeaking(false);
+    if (isSpeaking) {
       stopSpeaking();
+      setIsSpeaking(false);
     } else {
-      setVoiceEnabled(true);
       setIsSpeaking(true);
       speakQuestion(
         q,
@@ -127,33 +124,11 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
     }
   };
 
-  // When advancing to another question: if voice was activated, automatically read the new question
+  // Stop speaking when question changes, quiz ends, or verse modal opens; never loop automatically
   useEffect(() => {
-    if (!voiceEnabled || done || grades[i]) {
-      setIsSpeaking(false);
-      return;
-    }
-
-    const timer = setTimeout(() => {
-      speakQuestion(
-        q,
-        () => setIsSpeaking(true),
-        () => setIsSpeaking(false)
-      );
-    }, 200);
-
-    return () => {
-      clearTimeout(timer);
-      stopSpeaking();
-    };
-  }, [i, voiceEnabled, done]);
-
-  useEffect(() => {
-    if (done || verse) {
-      stopSpeaking();
-      setIsSpeaking(false);
-    }
-  }, [done, verse]);
+    stopSpeaking();
+    setIsSpeaking(false);
+  }, [i, done, verse]);
 
   useEffect(() => {
     return () => {
@@ -229,10 +204,10 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
           <div class="actions-aux">
             <button
               type="button"
-              class={`btn-voice${voiceEnabled ? ' is-active' : ''}${isSpeaking ? ' is-speaking' : ''}`}
+              class={`btn-voice${isSpeaking ? ' is-speaking' : ''}`}
               onClick={toggleVoice}
-              title={voiceEnabled ? 'Oprește vocea pentru acest test' : 'Ascultă întrebarea și variantele (voce)'}
-              aria-label={voiceEnabled ? 'Oprește vocea' : 'Ascultă întrebarea'}
+              title={isSpeaking ? 'Oprește lectura' : 'Ascultă întrebarea (voce naturală)'}
+              aria-label={isSpeaking ? 'Oprește lectura' : 'Ascultă întrebarea'}
             >
               {isSpeaking ? (
                 <span class="voice-wave" aria-hidden="true">
@@ -248,7 +223,7 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
                 </svg>
               )}
               <span class="btn-voice-label">
-                {isSpeaking ? 'Vorbește' : voiceEnabled ? 'Voce activă' : 'Ascultă'}
+                {isSpeaking ? 'Vorbește' : 'Ascultă'}
               </span>
             </button>
           </div>
