@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'preact/hooks';
 import { addChildTo, deleteAccount, deleteChild, loadUsers, renameChild, updateUser, type Kid, type UserRow } from '../lib/admin';
+import { sameFirstName } from '../lib/players';
 import { errorText, profile, profileLoaded, user } from '../lib/session';
 import Avatar from './Avatar';
 import Loader from './Loader';
+import SameNameSheet from './SameNameSheet';
 
 type FilterType = 'toate' | 'activi_7z' | 'azi' | 'progres' | 'parinti' | 'singuri' | 'admini';
 type SortType = 'seen_desc' | 'seen_asc' | 'created_desc' | 'created_asc' | 'score_desc' | 'name_asc' | 'kids_desc';
@@ -336,6 +338,31 @@ function Editor({ r, self, onChanged }: { r: UserRow; self: boolean; onChanged: 
   const [msg, setMsg] = useState<{ ok: boolean; text: string } | null>(null);
   const [confirmDelete, setConfirmDelete] = useState(false);
   const [copiedUid, setCopiedUid] = useState(false);
+  const [modalConflict, setModalConflict] = useState<{ name: string; kind: 'parent' | 'child' } | null>(null);
+
+  function validateKidName(candidateName: string, currentKey?: string): boolean {
+    const cleanName = candidateName.trim();
+    if (!cleanName) return false;
+
+    // 1. Cannot have the parent's first name
+    const currentParentFirst = firstName.trim() || (() => {
+      const parentParts = r.name.trim().split(/\s+/).filter(Boolean);
+      return parentParts.length > 1 ? parentParts.slice(1).join(' ') : (parentParts[0] ?? '');
+    })();
+    if (sameFirstName(cleanName, currentParentFirst)) {
+      setModalConflict({ name: currentParentFirst, kind: 'parent' });
+      return false;
+    }
+
+    // 2. Cannot have the same first name as another child in the family
+    const duplicate = r.kids.find((k) => k.key !== currentKey && sameFirstName(cleanName, k.name));
+    if (duplicate) {
+      setModalConflict({ name: duplicate.name, kind: 'child' });
+      return false;
+    }
+
+    return true;
+  }
 
   const dirty = firstName.trim() !== first || lastName.trim() !== last || isParent !== r.isParent;
   const valid = !!firstName.trim() && !!lastName.trim();
@@ -410,6 +437,11 @@ function Editor({ r, self, onChanged }: { r: UserRow; self: boolean; onChanged: 
         const f = firstName.trim();
         const l = lastName.trim();
         if (!f || !l) return;
+        const duplicateChild = r.kids.find((k) => sameFirstName(k.name, f));
+        if (duplicateChild) {
+          setModalConflict({ name: duplicateChild.name, kind: 'parent' });
+          return;
+        }
         const name = `${l} ${f}`.replace(/\s+/g, ' ');
         run(() => updateUser(r.uid, { name, isParent, admin: r.admin }), 'Profilul a fost salvat.');
       }}>
@@ -451,9 +483,24 @@ function Editor({ r, self, onChanged }: { r: UserRow; self: boolean; onChanged: 
         <section class="adm-kids" aria-label="Copii">
           <p class="me-label">Copii asociați ({r.kids.length})</p>
           <ul class="adm-kid-list">
-            {r.kids.map((k) => <KidRow key={k.key} uid={r.uid} k={k} busy={busy} run={run} />)}
+            {r.kids.map((k) => (
+              <KidRow
+                key={k.key}
+                uid={r.uid}
+                k={k}
+                busy={busy}
+                run={run}
+                onValidate={(newName) => validateKidName(newName, k.key)}
+              />
+            ))}
           </ul>
-          <form class="kid-row" onSubmit={(e) => { e.preventDefault(); if (newKid.trim()) run(() => addChildTo(r.uid, newKid), 'Copil adăugat.').then(() => setNewKid('')); }}>
+          <form class="kid-row" onSubmit={(e) => {
+            e.preventDefault();
+            const cleanName = newKid.trim();
+            if (!cleanName) return;
+            if (!validateKidName(cleanName)) return;
+            run(() => addChildTo(r.uid, cleanName), 'Copil adăugat.').then(() => setNewKid(''));
+          }}>
             <input class="input" maxLength={40} placeholder="Prenumele unui copil nou" aria-label="Prenumele copilului nou" value={newKid} onInput={(e) => setNewKid(e.currentTarget.value)} />
             <button class="btn btn-ghost" disabled={busy || !newKid.trim()}>Adaugă</button>
           </form>
@@ -478,15 +525,44 @@ function Editor({ r, self, onChanged }: { r: UserRow; self: boolean; onChanged: 
       ))}
 
       {msg && <p class={`notice ${msg.ok ? 'notice-ok' : 'notice-bad'}`} role="status">{msg.text}</p>}
+
+      {modalConflict && (
+        <SameNameSheet
+          name={modalConflict.name}
+          kind={modalConflict.kind}
+          isAdmin
+          onClose={() => setModalConflict(null)}
+        />
+      )}
     </div>
   );
 }
 
 /** One child: the name to change in place, and a delete that asks first. */
-function KidRow({ uid, k, busy, run }: { uid: string; k: Kid; busy: boolean; run: (a: () => Promise<unknown>, done: string) => Promise<void> }) {
+function KidRow({
+  uid,
+  k,
+  busy,
+  run,
+  onValidate,
+}: {
+  uid: string;
+  k: Kid;
+  busy: boolean;
+  run: (a: () => Promise<unknown>, done: string) => Promise<void>;
+  onValidate: (name: string) => boolean;
+}) {
   const [name, setName] = useState(k.name);
   const [confirm, setConfirm] = useState(false);
   const changed = name.trim() !== k.name && !!name.trim();
+
+  function handleSave(e: Event) {
+    e.preventDefault();
+    const cleanName = name.trim();
+    if (!changed || !cleanName) return;
+    if (!onValidate(cleanName)) return;
+    run(() => renameChild(uid, k.key, cleanName), 'Salvat.');
+  }
 
   return (
     <li class="adm-kid">
@@ -499,7 +575,7 @@ function KidRow({ uid, k, busy, run }: { uid: string; k: Kid; busy: boolean; run
           </div>
         </div>
       ) : (
-        <form class="adm-kid-line" onSubmit={(e) => { e.preventDefault(); if (changed) run(() => renameChild(uid, k.key, name), 'Salvat.'); }}>
+        <form class="adm-kid-line" onSubmit={handleSave}>
           <Avatar name={k.name} size={32} />
           <input class="input" maxLength={40} aria-label={`Prenumele lui ${k.name}`} value={name} onInput={(e) => setName(e.currentTarget.value)} />
           {k.score !== undefined && k.score > 0 && (
