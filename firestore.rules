@@ -94,7 +94,7 @@ service cloud.firestore {
         && request.resource.data.at == request.time;
     }
 
-    // Public boards. Everyone reads them; an account writes only its own players.
+    // Public boards. Everyone reads them; an account writes its own players, or an admin can manage them.
     //   boards/{book}/players/{uid}~{playerKey}: score = questions known in the book, and it must equal the questions mastered in the progress.
     //   lv (per level), ct (per chapter) and ch (per chapter and level) feed the boards by level and by chapter. Their total can only be bounded by the score.
     //   boards/all/players/{uid}~{playerKey}: the same player across every book; the score is the sum of both progress documents.
@@ -102,15 +102,23 @@ service cloud.firestore {
       return existsAfter(path) ? getAfter(path).data.get('mastered', []).size() : 0;
     }
 
-    match /boards/{book}/players/{key} {
-      allow read: if true;
-      allow delete: if (request.auth != null && key.split('~')[0] == request.auth.uid) || admin();
-      allow create, update: if request.auth != null
+    function validBoardName() {
+      return request.resource.data.name is string && request.resource.data.name.size() <= 40;
+    }
+
+    function canUpdateBoardName(key) {
+      return ((request.auth != null && key.split('~')[0] == request.auth.uid && player(request.auth.uid, key.split('~')[1])) || admin())
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['name'])
+        && validBoardName();
+    }
+
+    function validBookBoard(book, key) {
+      return request.auth != null
         && key.split('~')[0] == request.auth.uid
         && player(request.auth.uid, key.split('~')[1])
         && book in ['1-samuel', '2-samuel']
         && request.resource.data.keys().hasOnly(['name', 'age', 'score', 'at', 'lv', 'ct', 'ch'])
-        && request.resource.data.name is string && request.resource.data.name.size() <= 40
+        && validBoardName()
         && request.resource.data.get('age', '18+') in ['sub12', '12-13', '14-15', '16-17', '18+']
         && request.resource.data.score is int
         && request.resource.data.score == known(/databases/$(database)/documents/users/$(request.auth.uid)/progress/$(key.split('~')[1] + '~' + book))
@@ -123,17 +131,35 @@ service cloud.firestore {
         && request.resource.data.at == request.time;
     }
 
-    match /boards/all/players/{key} {
-      allow read: if true;
-      allow delete: if (request.auth != null && key.split('~')[0] == request.auth.uid) || admin();
-      allow create, update: if request.auth != null
+    function validAllBoard(key) {
+      return request.auth != null
         && key.split('~')[0] == request.auth.uid
         && request.resource.data.keys().hasOnly(['name', 'score', 'at'])
-        && request.resource.data.name is string && request.resource.data.name.size() <= 40
+        && validBoardName()
         && request.resource.data.score is int
         && request.resource.data.score == known(/databases/$(database)/documents/users/$(request.auth.uid)/progress/$(key.split('~')[1] + '~1-samuel'))
           + known(/databases/$(database)/documents/users/$(request.auth.uid)/progress/$(key.split('~')[1] + '~2-samuel'))
         && request.resource.data.at == request.time;
+    }
+
+    match /boards/{book}/players/{key} {
+      allow read: if true;
+      allow delete: if (request.auth != null && key.split('~')[0] == request.auth.uid) || admin();
+      allow create: if validBookBoard(book, key)
+        || (admin() && validBoardName());
+      allow update: if validBookBoard(book, key)
+        || canUpdateBoardName(key)
+        || (admin() && validBoardName());
+    }
+
+    match /boards/all/players/{key} {
+      allow read: if true;
+      allow delete: if (request.auth != null && key.split('~')[0] == request.auth.uid) || admin();
+      allow create: if validAllBoard(key)
+        || (admin() && validBoardName());
+      allow update: if validAllBoard(key)
+        || canUpdateBoardName(key)
+        || (admin() && validBoardName());
     }
   }
 }

@@ -45,24 +45,27 @@ export async function loadUsers(): Promise<UserRow[]> {
 
 const clean = (s: string) => s.trim().replace(/\s+/g, ' ');
 
-export function updateUser(uid: string, data: { name: string; isParent: boolean; admin: boolean }) {
+export async function updateUser(uid: string, data: { name: string; isParent: boolean; admin: boolean }) {
   const name = clean(data.name);
+  await updateDoc(doc(db, 'users', uid), { ...data, name });
   try {
-    updatePlayerBoardName(uid, uid, name);
+    await updatePlayerBoardName(uid, uid, name);
     const parentParts = name.trim().split(/\s+/);
     const parentLast = parentParts.slice(1).join(' ');
     if (parentLast) {
-      getDocs(collection(db, 'users', uid, 'players')).then((snap) => {
-        for (const kd of snap.docs) {
+      const snap = await getDocs(collection(db, 'users', uid, 'players'));
+      await Promise.all(
+        snap.docs.map(async (kd) => {
           const kname = (kd.data().name as string | undefined) ?? '';
           const kp = kname.trim().split(/\s+/);
           const kfull = kp.length > 1 ? kname.trim() : `${kp[0]} ${parentLast}`;
-          updatePlayerBoardName(uid, kd.id, kfull);
-        }
-      }).catch(() => {});
+          await updatePlayerBoardName(uid, kd.id, kfull);
+        })
+      );
     }
-  } catch {}
-  return updateDoc(doc(db, 'users', uid), { ...data, name });
+  } catch (e) {
+    console.warn('Could not sync board names for user update', e);
+  }
 }
 
 export function addChildTo(uid: string, name: string) {
@@ -71,20 +74,22 @@ export function addChildTo(uid: string, name: string) {
 
 export async function renameChild(uid: string, key: string, name: string) {
   const cleaned = clean(name);
+  await updateDoc(doc(db, 'users', uid, 'players', key), { name: cleaned });
   try {
     const parts = cleaned.trim().split(/\s+/);
     if (parts.length > 1) {
-      updatePlayerBoardName(uid, key, cleaned);
+      await updatePlayerBoardName(uid, key, cleaned);
     } else {
       const userSnap = await getDoc(doc(db, 'users', uid));
       const parentName = (userSnap.data()?.name as string | undefined) ?? '';
       const parentParts = parentName.trim().split(/\s+/);
       const parentLast = parentParts.slice(1).join(' ');
       const fullName = parentLast ? `${parts[0]} ${parentLast}` : parts[0];
-      updatePlayerBoardName(uid, key, fullName);
+      await updatePlayerBoardName(uid, key, fullName);
     }
-  } catch {}
-  return updateDoc(doc(db, 'users', uid, 'players', key), { name: cleaned });
+  } catch (e) {
+    console.warn('Could not sync board name for child rename', e);
+  }
 }
 
 /** A player's progress and board entries. */

@@ -232,14 +232,29 @@ export async function updateAccountName(firstName: string, lastName: string): Pr
   try {
     const parentParts = name.trim().split(/\s+/);
     const parentLast = parentParts.slice(1).join(' ');
-    updatePlayerBoardName(u.uid, u.uid, name);
+    await updatePlayerBoardName(u.uid, u.uid, name);
 
-    const kidsCache = localGet<{ uid: string; list: { key: string; name: string }[] } | null>('kids', null);
-    if (kidsCache && kidsCache.uid === u.uid) {
-      for (const k of kidsCache.list) {
-        const childParts = k.name.trim().split(/\s+/);
-        const childFull = childParts.length > 1 ? k.name.trim() : (parentLast ? `${childParts[0]} ${parentLast}` : childParts[0]);
-        updatePlayerBoardName(u.uid, k.key, childFull);
+    // Also update all children on leaderboards if parent has children
+    const kidsSnap = await getDocs(collection(db, 'users', u.uid, 'players')).catch(() => null);
+    if (kidsSnap && !kidsSnap.empty) {
+      await Promise.all(
+        kidsSnap.docs.map(async (kd) => {
+          const kname = (kd.data().name as string | undefined) ?? '';
+          const kp = kname.trim().split(/\s+/);
+          const kfull = kp.length > 1 ? kname.trim() : (parentLast ? `${kp[0]} ${parentLast}` : kp[0]);
+          await updatePlayerBoardName(u.uid, kd.id, kfull);
+        })
+      );
+    } else {
+      const kidsCache = localGet<{ uid: string; list: { key: string; name: string }[] } | null>('kids', null);
+      if (kidsCache && kidsCache.uid === u.uid) {
+        await Promise.all(
+          kidsCache.list.map(async (k) => {
+            const childParts = k.name.trim().split(/\s+/);
+            const childFull = childParts.length > 1 ? k.name.trim() : (parentLast ? `${childParts[0]} ${parentLast}` : childParts[0]);
+            await updatePlayerBoardName(u.uid, k.key, childFull);
+          })
+        );
       }
     }
   } catch {

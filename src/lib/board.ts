@@ -47,22 +47,28 @@ export function removeFromBoards(uid: string, key: string) {
   return Promise.all([...BOOKS.map((b) => b.slug), 'all'].map((b) => deleteDoc(boardRef(b, uid, key))));
 }
 
-/** Updates the name displayed on the leaderboards for a player in the background. */
-export function updatePlayerBoardName(uid: string, key: string, name: string) {
+/** Updates the name displayed on the leaderboards for a player. */
+export async function updatePlayerBoardName(uid: string, key: string, name: string): Promise<void> {
   boardChangedAt = Date.now();
-  for (const b of BOOKS) {
-    localRemove(`bd3:${uid}~${key}~${b.slug}`);
-    getDoc(doc(db, 'users', uid, 'progress', `${key}~${b.slug}`))
-      .then((snap) => {
-        if (!snap.exists()) return;
-        const mastered = (snap.get('mastered') as string[] | undefined) ?? [];
-        return writeBoard(b.slug, uid, key, name, mastered);
-      })
-      .then(() => {
-        boardChangedAt = Date.now();
-      })
-      .catch((e) => {
-        console.warn('Could not sync board for', b.slug, e);
-      });
-  }
+  await Promise.all(
+    BOOKS.map(async (b) => {
+      localRemove(`bd3:${uid}~${key}~${b.slug}`);
+      const bRef = boardRef(b.slug, uid, key);
+      try {
+        await updateDoc(bRef, { name });
+      } catch {
+        // Document might not exist yet if they have no points on board; if they have progress, write it
+        try {
+          const snap = await getDoc(doc(db, 'users', uid, 'progress', `${key}~${b.slug}`));
+          if (snap.exists()) {
+            const mastered = (snap.get('mastered') as string[] | undefined) ?? [];
+            if (mastered.length > 0) {
+              await writeBoard(b.slug, uid, key, name, mastered);
+            }
+          }
+        } catch {}
+      }
+    })
+  );
+  boardChangedAt = Date.now();
 }
