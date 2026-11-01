@@ -1,6 +1,11 @@
 import { choosePlayer, player, players } from '../lib/players';
 import { user } from '../lib/session';
 
+function getFirstName(fullName: string): string {
+  const parts = fullName.trim().split(/\s+/).filter(Boolean);
+  return parts.length > 1 ? parts.slice(1).join(' ') : (parts[0] ?? '');
+}
+
 /** "Cine joacă?" for a parent and their children. */
 export default function PlayerPicker() {
   const u = user.value;
@@ -20,7 +25,7 @@ export default function PlayerPicker() {
           ? 'pk-cols-2'
           : 'pk-cols-many';
 
-  const currentFirst = current.name.trim().split(/\s+/)[0];
+  const currentFirst = getFirstName(current.name);
 
   return (
     <div class="picker">
@@ -42,7 +47,7 @@ export default function PlayerPicker() {
       <div class={`pk-grid ${gridClass}`} role="radiogroup" aria-label="Cine joacă">
         {list.map((p) => {
           const isSelected = p.key === current.key;
-          const firstName = p.name.trim().split(/\s+/)[0];
+          const firstName = getFirstName(p.name);
           const initial = (firstName[0] ?? '?').toUpperCase();
           const isSelf = !p.child;
 

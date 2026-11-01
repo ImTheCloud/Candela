@@ -89,7 +89,7 @@ function splitName(fullName: string): { first: string; last: string } {
   const parts = fullName.trim().split(/\s+/).filter(Boolean);
   if (parts.length === 0) return { first: '', last: '' };
   if (parts.length === 1) return { first: parts[0], last: '' };
-  return { first: parts[0], last: parts.slice(1).join(' ') };
+  return { last: parts[0], first: parts.slice(1).join(' ') };
 }
 
 /** Everything an admin can change on one account. Each action saves at once and reloads the list. */
@@ -127,21 +127,10 @@ function Editor({ r, self, onChanged }: { r: UserRow; self: boolean; onChanged: 
         const f = firstName.trim();
         const l = lastName.trim();
         if (!f || !l) return;
-        const name = `${f} ${l}`.replace(/\s+/g, ' ');
+        const name = `${l} ${f}`.replace(/\s+/g, ' ');
         run(() => updateUser(r.uid, { name, isParent, admin: r.admin }), 'Salvat.');
       }}>
         <div class="two">
-          <div class="field">
-            <label for={`fn-${r.uid}`}>Prenume</label>
-            <input
-              id={`fn-${r.uid}`}
-              class="input"
-              maxLength={40}
-              required
-              value={firstName}
-              onInput={(e) => setFirstName(e.currentTarget.value)}
-            />
-          </div>
           <div class="field">
             <label for={`ln-${r.uid}`}>Nume de familie</label>
             <input
@@ -151,6 +140,17 @@ function Editor({ r, self, onChanged }: { r: UserRow; self: boolean; onChanged: 
               required
               value={lastName}
               onInput={(e) => setLastName(e.currentTarget.value)}
+            />
+          </div>
+          <div class="field">
+            <label for={`fn-${r.uid}`}>Prenume</label>
+            <input
+              id={`fn-${r.uid}`}
+              class="input"
+              maxLength={40}
+              required
+              value={firstName}
+              onInput={(e) => setFirstName(e.currentTarget.value)}
             />
           </div>
         </div>

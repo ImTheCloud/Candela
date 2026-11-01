@@ -11,7 +11,8 @@ export default function HeaderTitle() {
     : u === undefined
       ? rememberedAccount?.name
       : '';
-  const first = (full ?? '').trim().split(/\s+/)[0];
+  const parts = (full ?? '').trim().split(/\s+/).filter(Boolean);
+  const first = parts.length > 1 ? parts.slice(1).join(' ') : (parts[0] ?? '');
   return <span class="brand-text">{first ? `Bun venit, ${first}` : 'Candela'}</span>;
 }
 
