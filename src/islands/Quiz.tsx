@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'preact/hooks';
 import { createPortal } from 'preact/compat';
 import { navigate } from 'astro:transitions/client';
 import { loadVerses } from '../lib/load';
-import { recordAnswers, recordExam } from '../lib/progress';
+import { saveQuizResult } from '../lib/progress';
 import { emptyAnswer, grade, isAnswered, percent, TYPES, typeInfo, type Answer, type Grade, type Playable } from '../lib/questions';
 import QuestionView from './QuestionView';
 import Modal, { CloseButton } from './Modal';
@@ -115,8 +115,22 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
     // nothing counts until the whole test is finished
     if (grades.every(Boolean)) {
       const all = grades as Grade[];
-      if (record) recordAnswers(book, questions.map((x, k) => ({ id: x.id, t: x.t, right: all[k].right })), points)?.catch((e) => { console.error(e); setSaveFailed(true); });
-      if (scoreId) Promise.resolve(recordExam(book, scoreId, percent(all.reduce((s, x) => s + x.points, 0), all.reduce((s, x) => s + x.max, 0)), { right: all.filter((x) => x.right).length, n: all.length })).catch((e) => { console.error(e); setSaveFailed(true); });
+      const ans = record ? questions.map((x, k) => ({ id: x.id, t: x.t, right: all[k].right })) : undefined;
+      const ex = scoreId
+        ? {
+            id: scoreId,
+            score: percent(
+              all.reduce((s, x) => s + x.points, 0),
+              all.reduce((s, x) => s + x.max, 0)
+            ),
+            count: { right: all.filter((x) => x.right).length, n: all.length },
+          }
+        : undefined;
+
+      saveQuizResult(book, ans, points, ex).catch((e) => {
+        console.error('Eroare la salvarea testului:', e);
+        setSaveFailed(true);
+      });
     }
     setDone(true);
   }
