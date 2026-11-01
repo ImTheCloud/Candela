@@ -16,11 +16,11 @@ export default function BibleAudioReader({ bookSlug, bookName, ch, totalChapters
   const [isPlaying, setIsPlaying] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [verseIdx, setVerseIdx] = useState(0);
-  const [speed, setSpeed] = useState(0.75); // default 0.75x as requested
+  const [speed, setSpeed] = useState(1.0); // default 1.0x as requested
 
   const isPlayingRef = useRef(false);
   const verseIdxRef = useRef(0);
-  const speedRef = useRef(0.75);
+  const speedRef = useRef(1.0);
 
   isPlayingRef.current = isPlaying;
   verseIdxRef.current = verseIdx;
@@ -128,9 +128,9 @@ export default function BibleAudioReader({ bookSlug, bookName, ch, totalChapters
   const handleChapterFinished = () => {
     clearHighlight();
     if (ch < totalChapters) {
-      // Auto-advance to the next chapter with ?autoplay=1
+      // Auto-advance to the next chapter with ?autoplay=1 (replace history so back button still returns home)
       const nextCh = ch + 1;
-      window.location.assign(`/${bookSlug}/citire/${nextCh}?autoplay=1`);
+      window.location.replace(`/${bookSlug}/citire/${nextCh}?autoplay=1`);
     } else {
       stop();
     }

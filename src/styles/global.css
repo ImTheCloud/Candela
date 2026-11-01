@@ -1532,50 +1532,99 @@ html:not(.signed-in) .back-signed-in { display: none; }
 }
 
 /* ==========================================================================
-   Floating Audio Action Button (FAB) + Pop-up Speed Dial
+   Floating Audio Action Button (FAB) + Semi-Circle Radial Speed Dial
    Floats above the bottom bar in Quiz and Bible Reader
    ========================================================================== */
-.fab-audio-wrap {
+.fab-audio-container {
   position: fixed;
   right: max(16px, calc((100vw - var(--measure, 40rem)) / 2 + 16px));
   z-index: 35;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 8px;
+  width: 50px;
+  height: 50px;
   pointer-events: none;
 }
 
-/* Main Floating Action Button */
-.fab-audio-btn {
+/* Semi-Circle Radial Arc Speed Dial */
+.fab-arc-speeds {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.fab-arc-pill {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  border: 1.5px solid var(--line);
+  background: var(--surface);
+  color: var(--ink);
+  font: 700 0.72rem/1 var(--f-body);
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  box-shadow: 0 3px 10px rgba(58, 39, 27, 0.16);
+  transform: translate(-50%, -50%) scale(0.2);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275) var(--delay, 0ms),
+              opacity 0.18s ease var(--delay, 0ms),
+              background-color 0.12s ease,
+              color 0.12s ease;
+}
+
+.fab-arc-speeds.is-visible .fab-arc-pill {
+  transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(1);
+  opacity: 1;
   pointer-events: auto;
-  position: relative;
+}
+
+.fab-arc-pill:active {
+  transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(0.92) !important;
+}
+
+.fab-arc-pill.is-selected {
+  background: var(--btn);
+  color: #ffffff;
+  border-color: var(--btn);
+  box-shadow: 0 3px 12px rgba(58, 39, 27, 0.32);
+}
+
+/* Main Floating Action Button */
+.fab-main-btn {
+  pointer-events: auto;
+  position: absolute;
+  inset: 0;
   display: grid;
   place-items: center;
   width: 50px;
   height: 50px;
   border-radius: 50%;
   border: 1.5px solid var(--line);
-  background: var(--btn);
+  background: var(--btn); /* Always base brown color (#4a3426) */
   color: #fff;
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(58, 39, 27, 0.25), 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 14px rgba(58, 39, 27, 0.28), 0 1px 3px rgba(0, 0, 0, 0.1);
   user-select: none;
   -webkit-tap-highlight-color: transparent;
   transition: transform 0.15s cubic-bezier(0.2, 0.8, 0.2, 1), background-color 0.15s ease, box-shadow 0.15s ease;
 }
-.fab-audio-btn:active {
+.fab-main-btn:active {
   transform: scale(0.92);
 }
-.fab-audio-btn.is-playing {
+.fab-main-btn.is-playing {
   background: #2e7d32;
   border-color: #2e7d32;
   box-shadow: 0 4px 16px rgba(46, 125, 50, 0.38), 0 0 0 3px rgba(46, 125, 50, 0.2);
 }
-.fab-audio-btn.is-paused {
-  background: var(--flame);
-  border-color: var(--flame);
-  box-shadow: 0 4px 14px rgba(217, 123, 38, 0.35);
+.fab-main-btn.is-paused {
+  background: var(--btn); /* Stays base brown - never orange! */
+  border-color: var(--line);
+  box-shadow: 0 4px 14px rgba(58, 39, 27, 0.28);
 }
 
 /* Sound wave animation inside FAB */
@@ -1606,87 +1655,5 @@ html:not(.signed-in) .back-signed-in { display: none; }
 
 @media (prefers-reduced-motion: reduce) {
   .fab-wbar { animation: none; transform: scaleY(0.7); }
-}
-
-/* Floating Speed Dial & Stop button row */
-.fab-speeds-dial {
-  pointer-events: auto;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  padding: 3px 5px;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--surface) 96%, transparent);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid var(--line);
-  box-shadow: 0 4px 16px rgba(58, 39, 27, 0.15);
-  animation: fabPopIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  transform-origin: bottom right;
-}
-
-@keyframes fabPopIn {
-  from {
-    opacity: 0;
-    transform: translateY(8px) scale(0.92);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-.fab-speeds-list {
-  display: flex;
-  align-items: center;
-  gap: 2px;
-}
-
-.fab-speed-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 32px;
-  height: 28px;
-  padding: 0 5px;
-  border-radius: 999px;
-  border: 1px solid transparent;
-  background: transparent;
-  color: var(--ink-2);
-  font: 600 0.74rem/1 var(--f-body);
-  cursor: pointer;
-  user-select: none;
-  -webkit-tap-highlight-color: transparent;
-  transition: all 0.12s ease;
-}
-.fab-speed-btn:active {
-  transform: scale(0.94);
-}
-.fab-speed-btn.is-selected {
-  background: var(--btn);
-  color: #ffffff;
-  font-weight: 700;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
-}
-
-.fab-speed-stop {
-  display: grid;
-  place-items: center;
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  border: 1px solid var(--line);
-  background: var(--surface-2);
-  color: var(--ink-2);
-  cursor: pointer;
-  transition: all 0.12s ease;
-  margin-left: 1px;
-}
-.fab-speed-stop:hover,
-.fab-speed-stop:active {
-  background: var(--bad-soft);
-  color: var(--bad);
-  border-color: var(--bad);
-  transform: scale(0.92);
 }
 

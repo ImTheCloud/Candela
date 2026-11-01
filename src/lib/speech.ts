@@ -6,7 +6,11 @@ export function isSpeechSupported(): boolean {
 }
 
 let activeAudio: HTMLAudioElement | null = null;
-let currentPlaybackRate = 0.75; // default 0.75x for clear, relaxed natural pacing
+let currentPlaybackRate = 1.0; // default 1.0x as requested
+
+if (typeof window !== 'undefined') {
+  (window as any).stopSpeaking = stopSpeaking;
+}
 
 export interface SpeakOptions {
   rate?: number;

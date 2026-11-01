@@ -42,7 +42,7 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
   const [autoVoice, setAutoVoice] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
-  const [speed, setSpeed] = useState(0.75); // 0.75x default as requested
+  const [speed, setSpeed] = useState(1.0); // 1.0x default as requested
   const lastSpokenIndex = useRef<number | null>(null);
 
   const q = questions[i];
