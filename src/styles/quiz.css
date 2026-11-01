@@ -132,47 +132,6 @@ body.in-quiz main { padding-top: 0; }
   background: none; font-size: 0.82rem;
 }
 /* Auxiliary row right above the primary action button (e.g. voice/listen button at bottom right) */
-/* Quiz Unified Footer Dock: Holds structured AudioPlayerBar + Verifică / Verdict actions */
-.quiz-footer-dock {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 20;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  padding: 6px var(--gutter) calc(8px + env(safe-area-inset-bottom));
-  background: color-mix(in srgb, var(--bg) 96%, transparent);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-top: 1px solid var(--line);
-  box-sizing: border-box;
-}
-.quiz-footer-dock > * {
-  max-width: var(--measure);
-  margin-inline: auto;
-  width: 100%;
-}
-.quiz-footer-dock .actions {
-  position: static;
-  padding: 0;
-  background: transparent;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  border-top: none;
-}
-.quiz-footer-dock:has(.actions.is-right) {
-  background: var(--ok-soft);
-  border-top-color: color-mix(in srgb, var(--ok) 40%, transparent);
-  color: var(--ok);
-}
-.quiz-footer-dock:has(.actions.is-wrong) {
-  background: var(--bad-soft);
-  border-top-color: color-mix(in srgb, var(--bad) 40%, transparent);
-  color: var(--bad);
-}
-
 /* The bar at the foot of the screen: "Verifică", then the verdict and the way on */
 .actions {
   position: fixed; left: 0; right: 0; bottom: 0; z-index: 6;

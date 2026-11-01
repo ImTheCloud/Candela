@@ -10,7 +10,7 @@ import { questionLevel } from '../lib/age';
 import { BOOKS } from '../lib/books';
 import ReportButton from './ReportButton';
 import { isSpeechSupported, preloadQuestionAudio, setSpeakingSpeed, speakQuestion, stopSpeaking, pauseSpeaking, resumeSpeaking } from '../lib/speech';
-import AudioPlayerBar from './AudioPlayerBar';
+import FloatingAudioButton from './FloatingAudioButton';
 
 export interface QuizProps {
   book: string;
@@ -121,7 +121,12 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
 
   const setAnswer = (a: Answer) => setAnswers(answers.map((x, k) => (k === i ? a : x)));
 
-  const handleStartVoice = () => {
+  const handleToggleVoice = () => {
+    if (isSpeaking && !isPaused) {
+      pauseSpeaking();
+      setIsPaused(true);
+      return;
+    }
     if (isSpeaking && isPaused) {
       resumeSpeaking();
       setIsPaused(false);
@@ -143,11 +148,6 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
         setIsPaused(false);
       },
     });
-  };
-
-  const handlePauseVoice = () => {
-    pauseSpeaking();
-    setIsPaused(true);
   };
 
   const handleStopVoice = () => {
@@ -270,26 +270,24 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
 
       {saveFailed && <p class="notice notice-bad" role="alert">Răspunsurile nu se salvează acum (progresul și clasamentul nu se actualizează). Spune-i administratorului.</p>}
 
-      <div ref={barEl} class="quiz-footer-dock">
-        {!g && speechSupported && (
-          <AudioPlayerBar
-            isPlaying={isSpeaking}
-            isPaused={isPaused}
-            speed={speed}
-            onStart={handleStartVoice}
-            onPause={handlePauseVoice}
-            onStop={handleStopVoice}
-            onSpeedChange={handleSpeedChange}
-            statusLabel={isSpeaking ? (isPaused ? 'În pauză' : 'Redare întrebare') : autoVoice ? 'Lectură automată activă' : 'Ascultă întrebarea'}
-          />
+      {!g && speechSupported && (
+        <FloatingAudioButton
+          isPlaying={isSpeaking}
+          isPaused={isPaused}
+          speed={speed}
+          onToggle={handleToggleVoice}
+          onStop={handleStopVoice}
+          onSpeedChange={handleSpeedChange}
+          bottomOffset="calc(var(--bar-h, 72px) + 12px)"
+        />
+      )}
+
+      <div ref={barEl} class={`actions${g ? ` is-graded ${g.right ? 'is-right' : 'is-wrong'}` : ''}`}>
+        {g ? (
+          <Verdict g={g} last={i === questions.length - 1} onVerse={() => setVerse(true)} onNext={next} />
+        ) : (
+          <button class="btn btn-primary btn-block btn-3d" disabled={!isAnswered(answers[i])} onClick={check}>Verifică</button>
         )}
-        <div class={`actions${g ? ` is-graded ${g.right ? 'is-right' : 'is-wrong'}` : ''}`}>
-          {g ? (
-            <Verdict g={g} last={i === questions.length - 1} onVerse={() => setVerse(true)} onNext={next} />
-          ) : (
-            <button class="btn btn-primary btn-block btn-3d" disabled={!isAnswered(answers[i])} onClick={check}>Verifică</button>
-          )}
-        </div>
       </div>
 
       {verse && <VerseSheet q={q} bookName={bookName} onClose={() => setVerse(false)} />}

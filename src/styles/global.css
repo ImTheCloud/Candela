@@ -1532,206 +1532,161 @@ html:not(.signed-in) .back-signed-in { display: none; }
 }
 
 /* ==========================================================================
-   Unified Audio Player Bar (Quiz & Bible Reader)
-   Structured playback controls: Play/Start, Pause, Terminate & 6 Speed Options
+   Floating Audio Action Button (FAB) + Pop-up Speed Dial
+   Floats above the bottom bar in Quiz and Bible Reader
    ========================================================================== */
-
-/* Fixed Docked Player in Bible Reader (Permanently sticky at bottom) */
-.bible-bottom-dock {
+.fab-audio-wrap {
   position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 40;
-  padding: 6px var(--gutter) calc(8px + env(safe-area-inset-bottom));
-  background: color-mix(in srgb, var(--bg) 95%, transparent);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-top: 1px solid var(--line);
-  box-shadow: 0 -3px 18px rgba(58, 39, 27, 0.08);
-}
-.bible-bottom-dock .audio-player-bar {
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  padding: 0;
-}
-
-/* Base Card structure for Audio Player Bar */
-.audio-player-bar {
+  right: max(16px, calc((100vw - var(--measure, 40rem)) / 2 + 16px));
+  z-index: 35;
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  width: 100%;
-  max-width: var(--measure);
-  margin-inline: auto;
-  box-sizing: border-box;
-  padding: 8px 10px;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--r-box);
-  box-shadow: 0 2px 8px rgba(58, 39, 27, 0.06);
-}
-
-.apb-main {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  align-items: flex-end;
   gap: 8px;
-  min-height: 32px;
+  pointer-events: none;
 }
 
-.apb-meta {
+/* Main Floating Action Button */
+.fab-audio-btn {
+  pointer-events: auto;
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1.5px solid var(--line);
+  background: var(--btn);
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(58, 39, 27, 0.25), 0 1px 3px rgba(0, 0, 0, 0.1);
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.15s cubic-bezier(0.2, 0.8, 0.2, 1), background-color 0.15s ease, box-shadow 0.15s ease;
+}
+.fab-audio-btn:active {
+  transform: scale(0.92);
+}
+.fab-audio-btn.is-playing {
+  background: #2e7d32;
+  border-color: #2e7d32;
+  box-shadow: 0 4px 16px rgba(46, 125, 50, 0.38), 0 0 0 3px rgba(46, 125, 50, 0.2);
+}
+.fab-audio-btn.is-paused {
+  background: var(--flame);
+  border-color: var(--flame);
+  box-shadow: 0 4px 14px rgba(217, 123, 38, 0.35);
+}
+
+/* Sound wave animation inside FAB */
+.fab-wave {
+  display: inline-flex;
+  align-items: center;
+  gap: 2.5px;
+  height: 18px;
+}
+.fab-wbar {
+  display: inline-block;
+  width: 2.5px;
+  height: 100%;
+  border-radius: 2px;
+  background: #ffffff;
+  transform-origin: bottom center;
+  animation: fabWaveAnim 0.75s ease-in-out infinite alternate;
+}
+.fab-wbar.bar-1 { animation-delay: 0s; height: 45%; }
+.fab-wbar.bar-2 { animation-delay: 0.18s; height: 100%; }
+.fab-wbar.bar-3 { animation-delay: 0.36s; height: 65%; }
+.fab-wbar.bar-4 { animation-delay: 0.54s; height: 85%; }
+
+@keyframes fabWaveAnim {
+  0% { transform: scaleY(0.25); }
+  100% { transform: scaleY(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fab-wbar { animation: none; transform: scaleY(0.7); }
+}
+
+/* Floating Speed Dial & Stop button row */
+.fab-speeds-dial {
+  pointer-events: auto;
   display: flex;
   align-items: center;
-  gap: 7px;
-  min-width: 0;
-  flex: 1;
+  gap: 4px;
+  padding: 3px 5px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--surface) 96%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--line);
+  box-shadow: 0 4px 16px rgba(58, 39, 27, 0.15);
+  animation: fabPopIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform-origin: bottom right;
 }
 
-.apb-status-text {
-  font: 600 0.8rem/1.2 var(--f-body);
-  color: var(--ink-2);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+@keyframes fabPopIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
-.apb-controls {
+.fab-speeds-list {
   display: flex;
   align-items: center;
-  gap: 5px;
-  flex: none;
+  gap: 2px;
 }
 
-.apb-btn {
+.fab-speed-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 5px;
-  min-height: 32px;
-  padding: 0 10px;
-  border: 1px solid var(--line);
+  min-width: 32px;
+  height: 28px;
+  padding: 0 5px;
   border-radius: 999px;
-  background: var(--surface);
-  color: var(--ink);
-  font: 600 0.78rem/1 var(--f-body);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--ink-2);
+  font: 600 0.74rem/1 var(--f-body);
   cursor: pointer;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
   transition: all 0.12s ease;
 }
-
-.apb-btn:active:not(:disabled) {
-  transform: scale(0.96);
+.fab-speed-btn:active {
+  transform: scale(0.94);
 }
-
-.apb-btn:disabled {
-  opacity: 0.38;
-  cursor: default;
-}
-
-.apb-btn-start {
+.fab-speed-btn.is-selected {
   background: var(--btn);
-  border-color: var(--btn);
-  color: #fff;
+  color: #ffffff;
+  font-weight: 700;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
 }
 
-.apb-btn-start.is-current {
-  background: #2e7d32;
-  border-color: #2e7d32;
-  color: #fff;
-  box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.22);
+.fab-speed-stop {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--surface-2);
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: all 0.12s ease;
+  margin-left: 1px;
 }
-
-.apb-btn-pause.is-current {
-  background: var(--flame-ink);
-  border-color: var(--flame-ink);
-  color: #fff;
-}
-
-.apb-btn-stop:not(:disabled):hover,
-.apb-btn-stop:not(:disabled):active {
+.fab-speed-stop:hover,
+.fab-speed-stop:active {
   background: var(--bad-soft);
   color: var(--bad);
   border-color: var(--bad);
-}
-
-.apb-nav-btn {
-  width: 32px;
-  height: 32px;
-  padding: 0;
-  border-radius: 50%;
-}
-
-/* Speed selector pills row: 0.5x, 0.75x, 1x, 1.25x, 1.5x, 2x */
-.apb-speeds {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 4px;
-}
-
-.apb-speed-pill {
-  min-height: 28px;
-  padding: 0 2px;
-  display: grid;
-  place-items: center;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: var(--bg);
-  color: var(--ink-2);
-  font: 600 0.76rem/1 var(--f-body);
-  cursor: pointer;
-  user-select: none;
-  -webkit-tap-highlight-color: transparent;
-  transition: all 0.1s ease;
-}
-
-.apb-speed-pill:active {
-  transform: scale(0.95);
-}
-
-.apb-speed-pill.is-selected {
-  background: var(--btn);
-  border-color: var(--btn);
-  color: #ffffff;
-  font-weight: 700;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
-}
-
-/* Voice wave equalizer indicator */
-.voice-wave {
-  display: inline-flex;
-  align-items: center;
-  gap: 2.5px;
-  height: 13px;
-  flex: none;
-}
-.voice-wave .vw-bar {
-  display: inline-block;
-  width: 2.5px;
-  height: 100%;
-  border-radius: 2px;
-  background: currentColor;
-  transform-origin: bottom center;
-}
-.voice-wave.is-active .vw-bar {
-  animation: vwAnim 0.75s ease-in-out infinite alternate;
-}
-.voice-wave.is-active .bar-1 { animation-delay: 0s; height: 50%; }
-.voice-wave.is-active .bar-2 { animation-delay: 0.22s; height: 100%; }
-.voice-wave.is-active .bar-3 { animation-delay: 0.44s; height: 65%; }
-.voice-wave .vw-bar.is-paused {
-  animation: none !important;
-  opacity: 0.5;
-}
-
-@keyframes vwAnim {
-  0% { transform: scaleY(0.3); }
-  100% { transform: scaleY(1); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .voice-wave .vw-bar { animation: none; transform: scaleY(0.7); }
+  transform: scale(0.92);
 }
 
