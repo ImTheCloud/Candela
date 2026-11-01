@@ -74,7 +74,7 @@ export async function updateChild(key: string, name: string) {
   const parentParts = (profile.value?.name ?? '').trim().split(/\s+/);
   const parentLast = parentParts.slice(1).join(' ');
   const fullName = parts.length > 1 ? cleanName : (parentLast ? `${parts[0]} ${parentLast}` : parts[0]);
-  updatePlayerBoardName(uid(), key, fullName);
+  await updatePlayerBoardName(uid(), key, fullName);
 }
 
 export async function removeChild(key: string) {
