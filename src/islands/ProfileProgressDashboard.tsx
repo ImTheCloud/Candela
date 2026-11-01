@@ -1,10 +1,12 @@
 import { useState } from 'preact/hooks';
+import type { Level } from '../lib/age';
 import { choosePlayer, player, players, type Player } from '../lib/players';
 import { progress, type Progress } from '../lib/progress';
 import type { QType } from '../lib/questions';
+import LevelPicker from './LevelPicker';
 
-type BookChoice = '1-samuel' | '2-samuel' | 'all';
-type LevelChoice = 'all' | 'usor' | 'mediu' | 'greu';
+type BookChoice = '1-samuel' | '2-samuel';
+type LevelChoice = Level | 'all';
 
 interface KindRow {
   type: QType;
@@ -33,10 +35,10 @@ function getFirstName(fullName: string): string {
 
 /**
  * Mini dashboard at the top of the Profile page.
- * Displays global progress per book and level across all question types with progress bars.
+ * Displays progress per book and level across all question types with progress bars.
  */
 export default function ProfileProgressDashboard() {
-  const [selectedBook, setSelectedBook] = useState<BookChoice>('all');
+  const [selectedBook, setSelectedBook] = useState<BookChoice>('2-samuel');
   const [selectedLevel, setSelectedLevel] = useState<LevelChoice>('all');
 
   const curPlayer = player.value;
@@ -46,8 +48,7 @@ export default function ProfileProgressDashboard() {
   const p1: Progress = progress('1-samuel').value;
   const p2: Progress = progress('2-samuel').value;
 
-  const targetProgs: Progress[] =
-    selectedBook === '1-samuel' ? [p1] : selectedBook === '2-samuel' ? [p2] : [p1, p2];
+  const targetProgs: Progress[] = [selectedBook === '1-samuel' ? p1 : p2];
 
   const KINDS_DEF: { type: QType; name: string }[] = [
     { type: 'tf', name: 'Adevărat sau fals' },
@@ -96,29 +97,11 @@ export default function ProfileProgressDashboard() {
   const totalOk = kindsList.reduce((sum, k) => sum + k.ok, 0);
   const totalPercent = totalN > 0 ? Math.round((totalOk / totalN) * 100) : 0;
 
-  // Mastered unique count
-  let masteredCount = 0;
-  for (const p of targetProgs) {
-    if (selectedLevel === 'all') {
-      masteredCount += p.mastered.length;
-    } else {
-      masteredCount += p.mastered.filter((id) => id.split('.')[2] === selectedLevel).length;
-    }
-  }
-
   return (
     <section class="prof-dash card" aria-label="Statistici progres">
       {/* Dashboard Top Header */}
       <div class="prof-dash-head">
-        <div>
-          <h2 class="prof-dash-title">Progresul tău</h2>
-          <p class="prof-dash-sub">Răspunsuri reușite pe tipuri de întrebări (total global)</p>
-        </div>
-        {masteredCount > 0 && (
-          <span class="adm-pill-score" title="Întrebări stăpânite">
-            ★ {masteredCount} stăpânite
-          </span>
-        )}
+        <h2 class="prof-dash-title">Progresul tău</h2>
       </div>
 
       {/* Family Player Picker if multiple players */}
@@ -143,76 +126,35 @@ export default function ProfileProgressDashboard() {
 
       {/* Dynamic Selectors: Book & Level */}
       <div class="prof-dash-controls">
-        {/* Book Segmented Switcher */}
-        <div class="prof-dash-seg" role="radiogroup" aria-label="Selectează cartea">
-          <button
-            type="button"
-            role="radio"
-            aria-checked={selectedBook === 'all'}
-            class={`prof-dash-seg-btn${selectedBook === 'all' ? ' is-active' : ''}`}
-            onClick={() => setSelectedBook('all')}
-          >
-            Ambele
-          </button>
+        {/* Book Selector - exact same lv-chip design */}
+        <div class="lv-chips" role="radiogroup" aria-label="Selectează cartea">
           <button
             type="button"
             role="radio"
             aria-checked={selectedBook === '1-samuel'}
-            class={`prof-dash-seg-btn${selectedBook === '1-samuel' ? ' is-active' : ''}`}
+            class="lv-chip"
             onClick={() => setSelectedBook('1-samuel')}
           >
-            1 Samuel
+            <span class="lv-who">1 Samuel</span>
           </button>
           <button
             type="button"
             role="radio"
             aria-checked={selectedBook === '2-samuel'}
-            class={`prof-dash-seg-btn${selectedBook === '2-samuel' ? ' is-active' : ''}`}
+            class="lv-chip"
             onClick={() => setSelectedBook('2-samuel')}
           >
-            2 Samuel
+            <span class="lv-who">2 Samuel</span>
           </button>
         </div>
 
-        {/* Difficulty Level Chips */}
-        <div class="prof-dash-chips" role="radiogroup" aria-label="Selectează nivelul de dificultate">
-          <button
-            type="button"
-            role="radio"
-            aria-checked={selectedLevel === 'all'}
-            class={`prof-dash-chip${selectedLevel === 'all' ? ' is-active' : ''}`}
-            onClick={() => setSelectedLevel('all')}
-          >
-            Toate
-          </button>
-          <button
-            type="button"
-            role="radio"
-            aria-checked={selectedLevel === 'usor'}
-            class={`prof-dash-chip${selectedLevel === 'usor' ? ' is-active' : ''}`}
-            onClick={() => setSelectedLevel('usor')}
-          >
-            Copii · Ușor
-          </button>
-          <button
-            type="button"
-            role="radio"
-            aria-checked={selectedLevel === 'mediu'}
-            class={`prof-dash-chip${selectedLevel === 'mediu' ? ' is-active' : ''}`}
-            onClick={() => setSelectedLevel('mediu')}
-          >
-            Adolescenți · Mediu
-          </button>
-          <button
-            type="button"
-            role="radio"
-            aria-checked={selectedLevel === 'greu'}
-            class={`prof-dash-chip${selectedLevel === 'greu' ? ' is-active' : ''}`}
-            onClick={() => setSelectedLevel('greu')}
-          >
-            Adulți · Greu
-          </button>
-        </div>
+        {/* Difficulty Level Picker - identical to leaderboard */}
+        <LevelPicker<Level | 'all'>
+          label="Nivelul de dificultate"
+          value={selectedLevel}
+          onChange={setSelectedLevel}
+          includeAll
+        />
       </div>
 
       {/* Questions Breakdown List with Mobile-First 2-Row Progress Bars */}
