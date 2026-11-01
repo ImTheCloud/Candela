@@ -10,6 +10,7 @@ import PasswordInput from './PasswordInput';
 import SameNameSheet from './SameNameSheet';
 import Loader from './Loader';
 import Modal from './Modal';
+import ProfileProgressDashboard from './ProfileProgressDashboard';
 
 export interface BookInfo { slug: string; name: string; chapters: number; totals: Record<string, number> }
 
@@ -90,6 +91,8 @@ export default function Profile({ books: _books }: { books?: BookInfo[] }) {
   return (
     <div class="me">
       {profileError.value && <p class="notice notice-bad" role="alert">Profilul nu a putut fi încărcat. Verifică conexiunea.</p>}
+
+      <ProfileProgressDashboard />
 
       {isParent ? (
         <section class="me-sect" aria-labelledby="pl-title">
