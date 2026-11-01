@@ -131,6 +131,53 @@ body.in-quiz main { padding-top: 0; }
   flex-direction: row; gap: 6px; width: auto; min-height: 34px; padding: 0 12px 0 9px; border-radius: var(--r-ctl);
   background: none; font-size: 0.82rem;
 }
+/* Beside the report button: voice / TTS narration toggle */
+.btn-voice {
+  flex: none; display: inline-flex; align-items: center; gap: 6px; min-height: 34px; padding: 0 11px 0 9px;
+  border: 1.5px solid var(--line); border-radius: var(--r-ctl); background: none; color: var(--ink-2);
+  font: 600 0.82rem/1 var(--f-body); cursor: pointer; transition: all .15s ease; user-select: none;
+}
+.btn-voice:active { background: var(--surface-2); }
+.btn-voice.is-active {
+  border-color: var(--cedar);
+  color: var(--cedar);
+  background: var(--cedar-soft);
+}
+.btn-voice.is-speaking {
+  border-color: #2e7d32;
+  color: #2e7d32;
+  background: rgba(46, 125, 50, 0.08);
+}
+.btn-voice-label { white-space: nowrap; }
+
+/* Sound wave equalizer animation in quiz */
+.voice-wave {
+  display: inline-flex;
+  align-items: center;
+  gap: 2.5px;
+  height: 14px;
+}
+.voice-wave .vw-bar {
+  display: inline-block;
+  width: 2.5px;
+  height: 100%;
+  border-radius: 2px;
+  background: currentColor;
+  transform-origin: bottom center;
+  animation: vwAnim 0.75s ease-in-out infinite alternate;
+}
+.voice-wave .bar-1 { animation-delay: 0s; height: 50%; }
+.voice-wave .bar-2 { animation-delay: 0.22s; height: 100%; }
+.voice-wave .bar-3 { animation-delay: 0.44s; height: 65%; }
+
+@keyframes vwAnim {
+  0% { transform: scaleY(0.3); }
+  100% { transform: scaleY(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .voice-wave .vw-bar { animation: none; transform: scaleY(0.7); }
+}
 /* the report sheet is short enough to show every button at once, no scrolling */
 .report-modal { display: grid; gap: 10px; }
 .report-modal .sheet-top { align-items: center; }

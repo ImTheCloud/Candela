@@ -9,6 +9,7 @@ import Modal, { CloseButton } from './Modal';
 import { questionLevel } from '../lib/age';
 import { BOOKS } from '../lib/books';
 import ReportButton from './ReportButton';
+import { isSpeechSupported, speakQuestion, stopSpeaking } from '../lib/speech';
 
 export interface QuizProps {
   book: string;
@@ -35,6 +36,10 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
   const barEl = useRef<HTMLDivElement>(null);
   const [saveFailed, setSaveFailed] = useState(false);
   const [verse, setVerse] = useState(false);
+
+  // Audio narration toggle: strictly disabled by default on every new test
+  const [voiceEnabled, setVoiceEnabled] = useState(false);
+  const [isSpeaking, setIsSpeaking] = useState(false);
 
   const q = questions[i];
   const g = grades[i];
@@ -105,7 +110,59 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
 
   const setAnswer = (a: Answer) => setAnswers(answers.map((x, k) => (k === i ? a : x)));
 
+  const toggleVoice = () => {
+    if (voiceEnabled) {
+      setVoiceEnabled(false);
+      setIsSpeaking(false);
+      stopSpeaking();
+    } else {
+      setVoiceEnabled(true);
+      setIsSpeaking(true);
+      speakQuestion(
+        q,
+        () => setIsSpeaking(true),
+        () => setIsSpeaking(false)
+      );
+    }
+  };
+
+  // When advancing to another question: if voice was activated, automatically read the new question
+  useEffect(() => {
+    if (!voiceEnabled || done || grades[i]) {
+      setIsSpeaking(false);
+      return;
+    }
+
+    const timer = setTimeout(() => {
+      speakQuestion(
+        q,
+        () => setIsSpeaking(true),
+        () => setIsSpeaking(false)
+      );
+    }, 200);
+
+    return () => {
+      clearTimeout(timer);
+      stopSpeaking();
+    };
+  }, [i, voiceEnabled, done]);
+
+  useEffect(() => {
+    if (done || verse) {
+      stopSpeaking();
+      setIsSpeaking(false);
+    }
+  }, [done, verse]);
+
+  useEffect(() => {
+    return () => {
+      stopSpeaking();
+    };
+  }, []);
+
   function check() {
+    stopSpeaking();
+    setIsSpeaking(false);
     const gr = grade(q, answers[i]);
     setGrades(grades.map((x, k) => (k === i ? gr : x)));
   }
@@ -153,7 +210,14 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
           <span class="qt-n">{i + 1}/{questions.length}</span>
         </>, topEl)}
 
-      <QHead q={q} bookName={bookName} scene={mixed ? q.scene : undefined} />
+      <QHead
+        q={q}
+        bookName={bookName}
+        scene={mixed ? q.scene : undefined}
+        voiceEnabled={voiceEnabled}
+        isSpeaking={isSpeaking}
+        onToggleVoice={toggleVoice}
+      />
 
       <div class="q-body" aria-live="polite">
         <QuestionView key={q.id} q={q} answer={answers[i]} onChange={setAnswer} graded={g}
@@ -188,14 +252,62 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
   );
 }
 
-/** Above the question: what to do, the level it is meant for, the report button, and the verse it comes from. */
-function QHead({ q, bookName, scene }: { q: Playable; bookName: string; scene?: string }) {
+/** Above the question: what to do, the level it is meant for, the report button, voice narration, and the verse it comes from. */
+function QHead({
+  q,
+  bookName,
+  scene,
+  voiceEnabled,
+  isSpeaking,
+  onToggleVoice,
+}: {
+  q: Playable;
+  bookName: string;
+  scene?: string;
+  voiceEnabled: boolean;
+  isSpeaking: boolean;
+  onToggleVoice: () => void;
+}) {
+  const speechSupported = isSpeechSupported();
+
   return (
     <header class="q-head">
       <div class="q-row">
         <span class="q-kind">{typeInfo(q.t).short}</span>
         <span class="q-age" title="Nivelul întrebării">{questionLevel(q.age)}</span>
         <span class="q-spacer" />
+        {speechSupported && (
+          <button
+            type="button"
+            class={`btn-voice${voiceEnabled ? ' is-active' : ''}${isSpeaking ? ' is-speaking' : ''}`}
+            onClick={onToggleVoice}
+            title={voiceEnabled ? 'Oprește vocea pentru acest test' : 'Ascultă întrebarea și variantele (voce)'}
+            aria-label={voiceEnabled ? 'Oprește vocea' : 'Ascultă întrebarea'}
+          >
+            {isSpeaking ? (
+              <span class="voice-wave" aria-hidden="true">
+                <span class="vw-bar bar-1" />
+                <span class="vw-bar bar-2" />
+                <span class="vw-bar bar-3" />
+              </span>
+            ) : voiceEnabled ? (
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+              </svg>
+            ) : (
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+                <line x1="22" y1="9" x2="16" y2="15" />
+                <line x1="16" y1="9" x2="22" y2="15" />
+              </svg>
+            )}
+            <span class="btn-voice-label">
+              {isSpeaking ? 'Vorbește' : voiceEnabled ? 'Activ' : 'Ascultă'}
+            </span>
+          </button>
+        )}
         <ReportButton key={q.id} q={q} small />
       </div>
       <p class="q-where"><b>{bookName} {q.ref}</b></p>
