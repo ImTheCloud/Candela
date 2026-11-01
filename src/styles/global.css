@@ -665,7 +665,7 @@ a.tile { text-decoration: none; }
 }
 @media (min-width: 580px) {
   .adm-dashboard-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 .adm-card-kpi {
@@ -1403,31 +1403,65 @@ html:not(.signed-in) .back-signed-in { display: none; }
   font-weight: 600;
 }
 
+.prof-kinds {
+  display: grid;
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+  margin: 4px 0 0;
+}
 .prof-kinds li {
   display: grid;
-  grid-template-columns: 10.5rem minmax(2rem, 1fr) auto;
-  align-items: center;
-  gap: 10px;
+  gap: 5px;
 }
-@media (max-width: 440px) {
-  .prof-kinds li {
-    grid-template-columns: 8.2rem minmax(2rem, 1fr) auto;
-    gap: 8px;
-  }
-  .prof-kinds .kind-name {
-    font-size: 0.8rem;
-  }
-  .prof-kinds .kind-n {
-    font-size: 0.8rem;
-  }
+.prof-kinds .kind-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
 }
-@media (max-width: 360px) {
-  .prof-kinds li {
-    grid-template-columns: 7.2rem minmax(1.5rem, 1fr) auto;
-    gap: 6px;
-  }
-  .prof-kinds .kind-name {
-    font-size: 0.76rem;
-  }
+.prof-kinds .kind-name {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--ink);
+}
+.prof-kinds .kind-n {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.prof-kinds .kind-bar {
+  width: 100%;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--surface-2);
+  overflow: hidden;
+}
+.prof-kinds .kind-bar span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--flame);
+  transition: width 0.3s ease;
+}
+.prof-kinds .is-full .kind-bar span { background: var(--ok); }
+.prof-kinds .is-full .kind-n { color: var(--ok); }
+.prof-kinds .is-zero .kind-n { color: var(--bad); }
+
+.prof-kinds .kinds-sum {
+  margin-top: 4px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+}
+.prof-kinds .kinds-sum .kind-name {
+  font-weight: 700;
+}
+.prof-kinds .kinds-sum .kind-bar {
+  height: 10px;
+}
+.prof-kinds .kinds-sum .kind-bar span {
+  background: var(--btn);
 }
 
