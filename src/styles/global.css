@@ -1308,66 +1308,6 @@ html:not(.signed-in) .back-signed-in { display: none; }
   display: grid;
   gap: 8px;
 }
-.prof-dash-seg {
-  display: flex;
-  width: 100%;
-  padding: 3px;
-  background: var(--surface-2);
-  border-radius: var(--r-ctl);
-  gap: 3px;
-  border: 1px solid var(--line);
-}
-.prof-dash-seg-btn {
-  flex: 1;
-  padding: 6px 10px;
-  font-size: 0.82rem;
-  font-weight: 500;
-  border-radius: calc(var(--r-ctl) - 3px);
-  border: 0;
-  background: none;
-  color: var(--ink-2);
-  cursor: pointer;
-  text-align: center;
-  transition: all 0.15s ease;
-  white-space: nowrap;
-}
-.prof-dash-seg-btn.is-active {
-  background: var(--surface);
-  color: var(--ink);
-  font-weight: 600;
-  box-shadow: 0 1px 3px rgb(58 39 27 / 0.08);
-}
-.prof-dash-chips {
-  display: flex;
-  gap: 6px;
-  overflow-x: auto;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
-  padding: 2px 0;
-}
-.prof-dash-chips::-webkit-scrollbar { display: none; }
-.prof-dash-chip {
-  flex-shrink: 0;
-  padding: 4px 11px;
-  font-size: 0.78rem;
-  font-weight: 500;
-  border-radius: 999px;
-  border: 1px solid var(--line);
-  background: var(--surface);
-  color: var(--ink-2);
-  cursor: pointer;
-  transition: all 0.15s ease;
-  white-space: nowrap;
-}
-.prof-dash-chip:hover {
-  border-color: var(--oil);
-  color: var(--oil-ink);
-}
-.prof-dash-chip.is-active {
-  background: var(--btn);
-  border-color: var(--btn);
-  color: #fff;
-}
 .prof-dash-players {
   display: flex;
   align-items: center;
