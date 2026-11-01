@@ -2,7 +2,9 @@ import { signal } from '@preact/signals';
 import {
   createUserWithEmailAndPassword,
   deleteUser,
+  EmailAuthProvider,
   onAuthStateChanged,
+  reauthenticateWithCredential,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signOut as fbSignOut,
@@ -143,10 +145,20 @@ export function signOut() {
  * 4. Firebase Auth user
  * 5. Local cache
  */
-export async function deleteMyAccount(): Promise<void> {
+export async function deleteMyAccount(password?: string): Promise<void> {
   const u = auth.currentUser;
   if (!u) throw new Error('not_signed_in');
   const uid = u.uid;
+
+  // Re-authenticate if password was supplied, ensuring fresh credentials so deleteUser() never fails with requires-recent-login
+  if (password && u.email) {
+    const cred = EmailAuthProvider.credential(u.email, password);
+    await reauthenticateWithCredential(u, cred);
+  }
+
+  // Detach profile listener so it doesn't write lastSeen or trigger updates during deletion
+  stopProfile?.();
+  stopProfile = null;
 
   // 1. Delete all children player docs and remove them from leaderboards
   try {
@@ -172,15 +184,26 @@ export async function deleteMyAccount(): Promise<void> {
     console.warn('Could not clean up progress on account deletion:', err);
   }
 
-  // 4. Delete the user document in Firestore
+  // 4. Delete legacy v1 archive docs if present
+  try {
+    const archiveSnap = await getDocs(collection(db, 'users', uid, 'archive'));
+    for (const aDoc of archiveSnap.docs) {
+      await deleteDoc(aDoc.ref).catch(() => {});
+    }
+  } catch (err) {
+    console.warn('Could not clean up archive on account deletion:', err);
+  }
+
+  // 5. Delete the user document in Firestore
   await deleteDoc(doc(db, 'users', uid)).catch((err) => {
     console.warn('Could not delete user doc:', err);
+    throw err;
   });
 
-  // 5. Delete the Auth user
+  // 6. Delete the Auth user
   await deleteUser(u);
 
-  // 6. Local storage cleanup
+  // 7. Local storage cleanup
   localRemove('me');
   localRemove('kids');
   localRemove('player');

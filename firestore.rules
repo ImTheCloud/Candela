@@ -1,27 +1,137 @@
 rules_version = '2';
 
-// Everything lives under users/{uid} and only the account owner reads or writes it. Admins read and manage every account from the admin page.
-// admin, email and createdAt on the profile are not editable by the owner; an admin can set admin, never email or createdAt.
+// ===============================================================
+// Assumed Data Model
+// ===============================================================
+//
+// Collection: users
+// Document ID: {uid} (Firebase Auth UID)
+// Fields:
+//   - name: string (required, 1..80 chars) - User's full display name (Last First)
+//   - email: string (optional, max 120 chars) - User email (immutable by owner)
+//   - birthYear: int (optional, 1900..2100) - Year of birth
+//   - isParent: bool (required) - True if parent account managing children
+//   - admin: bool (optional, immutable by owner, admin-only) - Admin privileges
+//   - createdAt: timestamp (optional, immutable on update) - Account creation timestamp
+//   - lastSeen: timestamp (optional) - Daily visit timestamp
+//   - hidden: bool (optional) - Migration flag
+//   - migratedFromV1: bool (optional) - Migration flag
+//
+// Subcollection: users/{uid}/players
+// Document ID: {pid} (Child player key)
+// Fields:
+//   - name: string (required, 1..40 chars) - Child's first name
+//   - birthYear: int (optional, 1900..2100) - Child's birth year
+//   - createdAt: timestamp (optional) - Creation timestamp
+//   - hidden: bool (optional) - Migration flag
+//
+// Subcollection: users/{uid}/archive
+// Document ID: {key} (Legacy v1 archive data from migration)
+// Fields:
+//   - mastered: list of strings (optional)
+//   - count: int (optional)
+//   - exportedAt: timestamp (optional)
+//
+// Subcollection: users/{uid}/progress
+// Document ID: {key} (format: {playerKey}~{book}, where book is '1-samuel' or '2-samuel')
+// Fields:
+//   - mastered: list of string question IDs (max 2500)
+//   - wrong: list of string question IDs (max 5000)
+//   - marks: list of strings (max 3000)
+//   - read: list of int/string chapters (max 31)
+//   - exams: map of exam results
+//   - stats: map of question type statistics
+//   - lv: map of per-level question stats
+//   - updatedAt: timestamp (optional)
+//
+// Collection: reports
+// Document ID: {id} (Auto-generated)
+// Fields:
+//   - uid: string (required, matches auth.uid)
+//   - by: string (required, max 80 chars)
+//   - qid: string (required, max 60 chars)
+//   - book: string (required, in ['1-samuel', '2-samuel'])
+//   - ch: int (required)
+//   - ref: string (required, max 60 chars)
+//   - q: string (required, max 500 chars)
+//   - reason: string (required, in ['answer', 'text', 'unclear', 'hard', 'typo', 'other'])
+//   - note: string (required, max 1000 chars)
+//   - done: bool (required, initially false)
+//   - at: timestamp (required, request.time)
+//
+// Collection: messages
+// Document ID: {id} (Auto-generated)
+// Fields:
+//   - uid: string (required, matches auth.uid)
+//   - by: string (required, max 80 chars)
+//   - email: string (required, max 120 chars)
+//   - message: string (required, 1..3000 chars)
+//   - done: bool (required, initially false)
+//   - at: timestamp (required, request.time)
+//
+// Collection: boards/{book}/players
+// Document ID: {key} (format: {uid}~{playerKey})
+// Fields:
+//   - name: string (required, max 40 chars)
+//   - score: int (required, equals mastered.size in progress)
+//   - at: timestamp (required, request.time)
+//   - age: string (optional, in ['sub12', '12-13', '14-15', '16-17', '18+'])
+//   - lv: map (optional)
+//   - ct: map (optional)
+//   - ch: map (optional)
+//
+// Collection: boards/all/players
+// Document ID: {key} (format: {uid}~{playerKey})
+// Fields:
+//   - name: string (required, max 40 chars)
+//   - score: int (required, sum of 1-samuel and 2-samuel mastered)
+//   - at: timestamp (required, request.time)
+// ===============================================================
+
 service cloud.firestore {
   match /databases/{database}/documents {
+
+    // ===============================================================
+    // Helper Functions
+    // ===============================================================
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
     function owner(uid) {
-      return request.auth != null && request.auth.uid == uid;
+      return isAuthenticated() && request.auth.uid == uid;
+    }
+
+    // Rock-solid admin verification:
+    // 1. Checks custom claims (request.auth.token.admin == true)
+    // 2. Safely verifies document existence with exists() before calling get() to avoid CEL evaluation errors during document deletions
+    function admin() {
+      return isAuthenticated() && (
+        request.auth.token.get('admin', false) == true ||
+        (exists(/databases/$(database)/documents/users/$(request.auth.uid))
+          && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.get('admin', false) == true)
+      );
     }
 
     function validYear(y) {
       return y is int && y >= 1900 && y <= 2100;
     }
 
-    // a player of the account: the adult (key = uid) or one of its children
+    // A player belonging to the account: the adult (key = uid) or one of their registered children
     function player(uid, pk) {
       return pk == uid || exists(/databases/$(database)/documents/users/$(uid)/players/$(pk));
     }
 
     function validUser(d) {
-      return d.name is string && d.name.size() <= 80
+      return d.name is string && d.name.size() >= 1 && d.name.size() <= 80
         && (d.get('birthYear', null) == null || validYear(d.birthYear))
         && d.isParent is bool;
     }
+
+    // ===============================================================
+    // Users & Subcollections
+    // ===============================================================
 
     match /users/{uid} {
       allow read: if owner(uid) || admin();
@@ -33,7 +143,7 @@ service cloud.firestore {
           && !request.resource.data.diff(resource.data).affectedKeys().hasAny(['email', 'createdAt']));
       allow delete: if owner(uid) || admin();
 
-      // children of a parent account
+      // Children registered under a parent account
       match /players/{pid} {
         allow read: if owner(uid) || admin();
         allow delete: if owner(uid) || admin();
@@ -42,28 +152,29 @@ service cloud.firestore {
           && (request.resource.data.get('birthYear', null) == null || validYear(request.resource.data.birthYear));
       }
 
-      // what v1 left (questions mastered before the rewrite), written by the migration only
+      // Legacy v1 archive data (questions mastered before the rewrite).
+      // Both owner and admin can delete when cleaning up or deleting account.
       match /archive/{key} {
         allow read: if owner(uid) || admin();
-        allow delete: if admin();
+        allow delete: if owner(uid) || admin();
       }
 
       // {playerKey}~{book}: read chapters, highlights, mastered and missed questions, exam scores
       match /progress/{key} {
         allow read: if owner(uid) || admin();
         allow delete: if owner(uid) || admin();
-        allow create, update: if owner(uid)
+        allow create, update: if (owner(uid) || admin())
           && key.matches('^[A-Za-z0-9_-]{1,128}~[12]-samuel$')
-          && player(uid, key.split('~')[0])
+          && (admin() || player(uid, key.split('~')[0]))
           && request.resource.data.get('read', []).size() <= 31
           && request.resource.data.get('marks', []).size() <= 3000
-          // no more than the questions of a book (2 Samuel: 1728)
+          // No more than the questions of a book (2 Samuel: 1728)
           && request.resource.data.get('mastered', []).size() <= 2500
           && request.resource.data.get('wrong', []).size() <= 5000;
       }
     }
 
-    // The admin page reads every child and every progress in one query each.
+    // Collection group queries: the admin page reads all children and all progress in one query each.
     match /{path=**}/players/{pid} {
       allow read: if admin();
     }
@@ -71,15 +182,15 @@ service cloud.firestore {
       allow read: if admin();
     }
 
-    function admin() {
-      return request.auth != null
-        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.get('admin', false) == true;
-    }
+    // ===============================================================
+    // Question Reports
+    // ===============================================================
 
-    // A player flags a question as wrong. Any signed-in player sends one; only admins read, close or delete them.
+    // A player flags a question as wrong. Any signed-in player can submit; only admins read, update, or delete.
     match /reports/{id} {
-      allow read, update, delete: if admin();
-      allow create: if request.auth != null
+      allow read, delete: if admin();
+      allow update: if admin() && request.resource.data.done is bool;
+      allow create: if isAuthenticated()
         && request.resource.data.keys().hasOnly(['uid', 'by', 'qid', 'book', 'ch', 'ref', 'q', 'reason', 'note', 'done', 'at'])
         && request.resource.data.uid == request.auth.uid
         && request.resource.data.by is string && request.resource.data.by.size() <= 80
@@ -94,10 +205,15 @@ service cloud.firestore {
         && request.resource.data.at == request.time;
     }
 
-    // User-to-admin contact messages sent from the user profile. Only admins read, close or delete them.
+    // ===============================================================
+    // Contact Messages
+    // ===============================================================
+
+    // User-to-admin contact messages sent from user profile. Only admins read, update, or delete.
     match /messages/{id} {
-      allow read, update, delete: if admin();
-      allow create: if request.auth != null
+      allow read, delete: if admin();
+      allow update: if admin() && request.resource.data.done is bool;
+      allow create: if isAuthenticated()
         && request.resource.data.keys().hasOnly(['uid', 'by', 'email', 'message', 'done', 'at'])
         && request.resource.data.uid == request.auth.uid
         && request.resource.data.by is string && request.resource.data.by.size() <= 80
@@ -107,10 +223,10 @@ service cloud.firestore {
         && request.resource.data.at == request.time;
     }
 
-    // Public boards. Everyone reads them; an account writes its own players, or an admin can manage them.
-    //   boards/{book}/players/{uid}~{playerKey}: score = questions known in the book, and it must equal the questions mastered in the progress.
-    //   lv (per level), ct (per chapter) and ch (per chapter and level) feed the boards by level and by chapter. Their total can only be bounded by the score.
-    //   boards/all/players/{uid}~{playerKey}: the same player across every book; the score is the sum of both progress documents.
+    // ===============================================================
+    // Public Leaderboards
+    // ===============================================================
+
     function known(path) {
       return existsAfter(path) ? getAfter(path).data.get('mastered', []).size() : 0;
     }
@@ -120,13 +236,14 @@ service cloud.firestore {
     }
 
     function canUpdateBoardName(key) {
-      return ((request.auth != null && key.split('~')[0] == request.auth.uid && player(request.auth.uid, key.split('~')[1])) || admin())
+      return ((isAuthenticated() && key.matches('^[A-Za-z0-9_-]+~[A-Za-z0-9_-]+$') && key.split('~')[0] == request.auth.uid && player(request.auth.uid, key.split('~')[1])) || admin())
         && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['name'])
         && validBoardName();
     }
 
     function validBookBoard(book, key) {
-      return request.auth != null
+      return isAuthenticated()
+        && key.matches('^[A-Za-z0-9_-]+~[A-Za-z0-9_-]+$')
         && key.split('~')[0] == request.auth.uid
         && player(request.auth.uid, key.split('~')[1])
         && book in ['1-samuel', '2-samuel']
@@ -145,7 +262,8 @@ service cloud.firestore {
     }
 
     function validAllBoard(key) {
-      return request.auth != null
+      return isAuthenticated()
+        && key.matches('^[A-Za-z0-9_-]+~[A-Za-z0-9_-]+$')
         && key.split('~')[0] == request.auth.uid
         && request.resource.data.keys().hasOnly(['name', 'score', 'at'])
         && validBoardName()
@@ -157,7 +275,7 @@ service cloud.firestore {
 
     match /boards/{book}/players/{key} {
       allow read: if true;
-      allow delete: if (request.auth != null && key.split('~')[0] == request.auth.uid) || admin();
+      allow delete: if (isAuthenticated() && key.split('~')[0] == request.auth.uid) || admin();
       allow create: if validBookBoard(book, key)
         || (admin() && validBoardName());
       allow update: if validBookBoard(book, key)
@@ -167,7 +285,7 @@ service cloud.firestore {
 
     match /boards/all/players/{key} {
       allow read: if true;
-      allow delete: if (request.auth != null && key.split('~')[0] == request.auth.uid) || admin();
+      allow delete: if (isAuthenticated() && key.split('~')[0] == request.auth.uid) || admin();
       allow create: if validAllBoard(key)
         || (admin() && validBoardName());
       allow update: if validAllBoard(key)

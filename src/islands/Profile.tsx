@@ -30,6 +30,7 @@ export default function Profile({ books: _books }: { books?: BookInfo[] }) {
   const [adding, setAdding] = useState(false);
   const [editingSelf, setEditingSelf] = useState(false);
   const [confirmDelete, setConfirmDelete] = useState(false);
+  const [deletePassword, setDeletePassword] = useState('');
   const [deleting, setDeleting] = useState(false);
   const [deleteError, setDeleteError] = useState('');
 
@@ -66,14 +67,19 @@ export default function Profile({ books: _books }: { books?: BookInfo[] }) {
     try { await setParent(on); } catch (err) { setParentError(errorText(err)); }
   }
 
-  async function handleDeleteAccount() {
+  async function handleDeleteAccount(e?: Event) {
+    if (e) e.preventDefault();
+    if (!deletePassword.trim()) {
+      setDeleteError('Introdu parola contului pentru a confirma ștergerea.');
+      return;
+    }
     setDeleting(true);
     setDeleteError('');
     try {
-      await deleteMyAccount();
+      await deleteMyAccount(deletePassword);
       window.location.replace('/');
-    } catch (e) {
-      setDeleteError(errorText(e));
+    } catch (err) {
+      setDeleteError(errorText(err));
       setDeleting(false);
     }
   }
@@ -213,7 +219,7 @@ export default function Profile({ books: _books }: { books?: BookInfo[] }) {
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
             </span>
           </button>
-          <button type="button" class="me-item danger" onClick={() => { setDeleteError(''); setConfirmDelete(true); }}>
+          <button type="button" class="me-item danger" onClick={() => { setDeleteError(''); setDeletePassword(''); setConfirmDelete(true); }}>
             <span class="me-item-ic">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="3 6 5 6 21 6" /><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" /><line x1="10" y1="11" x2="10" y2="17" /><line x1="14" y1="11" x2="14" y2="17" /></svg>
             </span>
@@ -228,26 +234,39 @@ export default function Profile({ books: _books }: { books?: BookInfo[] }) {
       {confirmDelete && (
         <Modal class="confirm" role="alertdialog" labelledby="del-t" onClose={() => !deleting && setConfirmDelete(false)}>
           {(close) => (
-            <>
+            <form onSubmit={handleDeleteAccount} class="stack" style={{ gap: '14px' }}>
               <h2 id="del-t">Ștergi contul definitiv?</h2>
-              <p class="muted">
+              <p class="muted small">
                 Această acțiune este ireversibilă. Toate datele tale, progresul și conturile copiilor asociați vor fi șterse definitiv.
               </p>
+              <div class="field">
+                <label for="del-pass">Confirmă cu parola contului</label>
+                <input
+                  id="del-pass"
+                  type="password"
+                  class="input"
+                  required
+                  placeholder="Introdu parola ta"
+                  value={deletePassword}
+                  onInput={(e) => setDeletePassword(e.currentTarget.value)}
+                  disabled={deleting}
+                  autocomplete="current-password"
+                />
+              </div>
               {deleteError && <p class="notice notice-bad" role="alert">{deleteError}</p>}
               <div class="two">
                 <button type="button" class="btn btn-ghost" disabled={deleting} onClick={close}>
                   Renunță
                 </button>
                 <button
-                  type="button"
+                  type="submit"
                   class="btn danger"
-                  disabled={deleting}
-                  onClick={handleDeleteAccount}
+                  disabled={deleting || !deletePassword.trim()}
                 >
-                  {deleting ? 'Se șterge...' : 'Da, șterge contul'}
+                  {deleting ? 'Se șterge...' : 'Da, șterge definitiv'}
                 </button>
               </div>
-            </>
+            </form>
           )}
         </Modal>
       )}
