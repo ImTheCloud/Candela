@@ -8,7 +8,6 @@ import '../styles/quiz.css';
 import { ClientRouter } from 'astro:transitions';
 import Lamp from '../components/Lamp.astro';
 import AccountButton from '../islands/AccountButton';
-import HeaderTitle from '../islands/HeaderTitle';
 import { DEFAULT_BOOK } from '../lib/books';
 
 interface Crumb { href: string; label: string }
@@ -88,7 +87,7 @@ const fullTitle = title === 'Candela' ? title : `${title} – Candela`;
       <header class="top">
         <div class="wrap top-row">
           {!home && (
-            <a class={`back${backSignedIn ? ' back-signed-in' : ''}`} href={parent} data-back={backHome || backUp ? undefined : ''} aria-label="Înapoi">
+            <a class={`back${backSignedIn ? ' back-signed-in' : ''}`} href={parent} data-back={backHome || backUp ? undefined : ''} data-back-home={backHome ? '' : undefined} aria-label="Înapoi">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6" /></svg>
             </a>
           )}
@@ -130,15 +129,44 @@ const fullTitle = title === 'Candela' ? title : `${title} – Candela`;
 <script>
   // every page checks the account (the Bible reader has no account button that would load it)
   import '../lib/session';
+  import { stopSpeaking } from '../lib/speech';
 
-  // Back goes to the previous page of the app (no reload); with nothing behind it, up to the parent page.
+  // Stop speaking immediately on any page transition (View Transitions / ClientRouter)
+  document.addEventListener('astro:before-preparation', () => {
+    stopSpeaking();
+  });
+  document.addEventListener('astro:before-swap', () => {
+    stopSpeaking();
+  });
+  window.addEventListener('popstate', () => {
+    stopSpeaking();
+  });
+
+  // Back button and header navigation click handling
   document.addEventListener('click', (e) => {
-    const backBtn = (e.target as Element).closest('header.top a.back');
-    if (backBtn && backBtn.getAttribute('href') === '/') {
-      if (typeof window !== 'undefined' && (window as any).stopSpeaking) {
-        (window as any).stopSpeaking();
+    const backBtn = (e.target as Element).closest('header.top a.back') as HTMLAnchorElement | null;
+    if (backBtn) {
+      stopSpeaking();
+      const href = backBtn.getAttribute('href') || '/';
+      // If backHome or on Bible reader, always navigate directly to '/'
+      if (backBtn.hasAttribute('data-back-home') || href === '/') {
+        e.preventDefault();
+        e.stopPropagation();
+        window.location.assign('/');
+        return;
       }
     }
+
+    const brand = (e.target as Element).closest('header.top a.brand');
+    if (brand) {
+      stopSpeaking();
+    }
+
+    const pagerBtn = (e.target as Element).closest('.pager-btn');
+    if (pagerBtn) {
+      stopSpeaking();
+    }
+
     const a = (e.target as Element).closest('a[data-back]');
     if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey) return;
     if ((history.state?.index ?? 0) > 0) { e.preventDefault(); history.back(); }

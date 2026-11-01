@@ -45,6 +45,8 @@ export function invalidateBoardCache(book?: string) {
 }
 
 /** The player's entry in a book's board (in a batch, or on its own). */
+export function writeBoard(book: string, uid: string, key: string, name: string, mastered: string[]): Promise<void>;
+export function writeBoard(book: string, uid: string, key: string, name: string, mastered: string[], batch: WriteBatch): WriteBatch;
 export function writeBoard(book: string, uid: string, key: string, name: string, mastered: string[], batch?: WriteBatch) {
   const data = { name, ...boardFields(mastered), at: serverTimestamp() };
   invalidateBoardCache(book);
