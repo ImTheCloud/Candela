@@ -18,7 +18,7 @@ export default function SignUpForm() {
   // Someone already signed in has nothing to do here. During sign-up, wait until the profile is written.
   useEffect(() => {
     document.body.classList.add('auth-no-header');
-    if (user.value && !submitting.current) location.replace('/cont');
+    if (user.value && !submitting.current) location.replace('/');
     return () => document.body.classList.remove('auth-no-header');
   }, [user.value]);
 
@@ -51,8 +51,8 @@ export default function SignUpForm() {
       for (const n of names) await addChild(n);
       location.replace(nextPage('/'));
     } catch {
-      // the account exists: the children can be added from the profile
-      location.replace('/cont');
+      // the account is created: redirect to home
+      location.replace(nextPage('/'));
     }
   }
 
