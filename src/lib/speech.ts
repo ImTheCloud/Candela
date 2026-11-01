@@ -5,8 +5,30 @@ export function isSpeechSupported(): boolean {
   return typeof Audio !== 'undefined';
 }
 
+const SPEED_STORAGE_KEY = 'candela_audio_speed';
+export const VALID_SPEAKING_SPEEDS = [0.75, 1, 1.25];
+
+export function getSavedSpeakingSpeed(): number {
+  if (typeof window === 'undefined') return 1.0;
+  try {
+    const raw = localStorage.getItem(SPEED_STORAGE_KEY);
+    if (raw) {
+      const val = parseFloat(raw);
+      if (VALID_SPEAKING_SPEEDS.includes(val)) return val;
+    }
+  } catch {}
+  return 1.0;
+}
+
+export function saveSpeakingSpeed(rate: number): void {
+  if (typeof window === 'undefined') return;
+  try {
+    localStorage.setItem(SPEED_STORAGE_KEY, String(rate));
+  } catch {}
+}
+
 let activeAudio: HTMLAudioElement | null = null;
-let currentPlaybackRate = 1.0; // Default 1.0x
+let currentPlaybackRate = typeof window !== 'undefined' ? getSavedSpeakingSpeed() : 1.0;
 
 // In-memory cache of audio URLs (blob URLs created from background fetch for 0ms latency)
 const readyUrlCache = new Map<string, string>();
@@ -77,6 +99,7 @@ export function getEffectivePlaybackRate(rate: number): number {
 
 export function setSpeakingSpeed(rate: number): void {
   currentPlaybackRate = rate;
+  saveSpeakingSpeed(rate);
   if (activeAudio) {
     try {
       activeAudio.playbackRate = getEffectivePlaybackRate(rate);

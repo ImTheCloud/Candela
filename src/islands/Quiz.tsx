@@ -8,7 +8,7 @@ import QuestionView from './QuestionView';
 import Modal, { CloseButton } from './Modal';
 import { questionLevel } from '../lib/age';
 import ReportButton from './ReportButton';
-import { isSpeechSupported, preloadQuestionAudio, setSpeakingSpeed, speakQuestion, stopSpeaking, pauseSpeaking, resumeSpeaking } from '../lib/speech';
+import { getSavedSpeakingSpeed, isSpeechSupported, preloadQuestionAudio, setSpeakingSpeed, speakQuestion, stopSpeaking, pauseSpeaking, resumeSpeaking } from '../lib/speech';
 import FloatingAudioButton from './FloatingAudioButton';
 
 export interface QuizProps {
@@ -41,8 +41,8 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
   const [autoVoice, setAutoVoice] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
-  const [speed, setSpeed] = useState(1.0); // 1.0x default as requested
-  const speedRef = useRef(1.0);
+  const [speed, setSpeed] = useState(() => getSavedSpeakingSpeed());
+  const speedRef = useRef(speed);
   const autoVoiceRef = useRef(false);
   const isPausedRef = useRef(false);
   const lastSpokenIndex = useRef<number | null>(null);
@@ -50,6 +50,13 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
   speedRef.current = speed;
   autoVoiceRef.current = autoVoice;
   isPausedRef.current = isPaused;
+
+  // Sync saved audio speed from storage on mount
+  useEffect(() => {
+    const saved = getSavedSpeakingSpeed();
+    setSpeed(saved);
+    speedRef.current = saved;
+  }, []);
 
   const q = questions[i];
   const g = grades[i];

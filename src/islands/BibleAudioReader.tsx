@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
-import { isSpeechSupported, pauseSpeaking, preloadText, resumeSpeaking, setSpeakingSpeed, speakText, stopSpeaking } from '../lib/speech';
+import { getSavedSpeakingSpeed, isSpeechSupported, pauseSpeaking, preloadText, resumeSpeaking, setSpeakingSpeed, speakText, stopSpeaking } from '../lib/speech';
 import FloatingAudioButton from './FloatingAudioButton';
 
 interface Props {
@@ -16,17 +16,24 @@ export default function BibleAudioReader({ bookSlug, ch, totalChapters = 24, ver
   const [isPlaying, setIsPlaying] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [verseIdx, setVerseIdx] = useState(0);
-  const [speed, setSpeed] = useState(1.0); // Default 1.0x
+  const [speed, setSpeed] = useState(() => getSavedSpeakingSpeed());
 
   const isPlayingRef = useRef(false);
   const isPausedRef = useRef(false);
   const verseIdxRef = useRef(0);
-  const speedRef = useRef(1.0);
+  const speedRef = useRef(speed);
 
   isPlayingRef.current = isPlaying;
   isPausedRef.current = isPaused;
   verseIdxRef.current = verseIdx;
   speedRef.current = speed;
+
+  // Sync saved audio speed from storage on mount
+  useEffect(() => {
+    const saved = getSavedSpeakingSpeed();
+    setSpeed(saved);
+    speedRef.current = saved;
+  }, []);
 
   // Toggle .audio-active on reader element when audio is active
   useEffect(() => {
