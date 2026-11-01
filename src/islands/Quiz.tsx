@@ -7,7 +7,6 @@ import { emptyAnswer, grade, isAnswered, percent, TYPES, typeInfo, type Answer, 
 import QuestionView from './QuestionView';
 import Modal, { CloseButton } from './Modal';
 import { questionLevel } from '../lib/age';
-import { BOOKS } from '../lib/books';
 import ReportButton from './ReportButton';
 import { isSpeechSupported, preloadQuestionAudio, setSpeakingSpeed, speakQuestion, stopSpeaking, pauseSpeaking, resumeSpeaking } from '../lib/speech';
 import FloatingAudioButton from './FloatingAudioButton';
@@ -43,17 +42,27 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [speed, setSpeed] = useState(1.0); // 1.0x default as requested
+  const speedRef = useRef(1.0);
+  const autoVoiceRef = useRef(false);
+  const isPausedRef = useRef(false);
   const lastSpokenIndex = useRef<number | null>(null);
+
+  speedRef.current = speed;
+  autoVoiceRef.current = autoVoice;
+  isPausedRef.current = isPaused;
 
   const q = questions[i];
   const g = grades[i];
   const started = answers.some(isAnswered);
   const speechSupported = isSpeechSupported();
 
-  // Preload first two questions immediately on mount so first question plays with 0 delay and natural voice
+  // Preload first question immediately on mount, stagger second
   useEffect(() => {
     if (questions[0]) preloadQuestionAudio(questions[0]);
-    if (questions[1]) preloadQuestionAudio(questions[1]);
+    const timer = setTimeout(() => {
+      if (questions[1]) preloadQuestionAudio(questions[1]);
+    }, 600);
+    return () => clearTimeout(timer);
   }, []);
 
   // leaving in the middle loses the answers: ask first
@@ -134,11 +143,12 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
     }
     stopSpeaking();
     setAutoVoice(true);
+    autoVoiceRef.current = true;
     setIsSpeaking(true);
     setIsPaused(false);
     lastSpokenIndex.current = i;
     speakQuestion(q, {
-      rate: speed,
+      rate: speedRef.current,
       onStart: () => {
         setIsSpeaking(true);
         setIsPaused(false);
@@ -147,19 +157,16 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
         setIsSpeaking(false);
         setIsPaused(false);
       },
+      onError: () => {
+        setIsSpeaking(false);
+        setIsPaused(false);
+      },
     });
-  };
-
-  const handleStopVoice = () => {
-    stopSpeaking();
-    setIsSpeaking(false);
-    setIsPaused(false);
-    setAutoVoice(false);
-    lastSpokenIndex.current = null;
   };
 
   const handleSpeedChange = (newSpeed: number) => {
     setSpeed(newSpeed);
+    speedRef.current = newSpeed;
     setSpeakingSpeed(newSpeed);
   };
 
@@ -172,22 +179,27 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
 
   // When advancing to another question: if autoVoice was activated, automatically read the new question once
   useEffect(() => {
-    stopSpeaking();
-    setIsSpeaking(false);
-    setIsPaused(false);
-
-    if (!autoVoice || done || grades[i] || verse) return;
+    if (!autoVoiceRef.current || isPausedRef.current || done || grades[i] || verse) {
+      return;
+    }
     if (lastSpokenIndex.current === i) return;
 
     lastSpokenIndex.current = i;
+    setIsSpeaking(true);
+    setIsPaused(false);
+
     const timer = setTimeout(() => {
       speakQuestion(q, {
-        rate: speed,
+        rate: speedRef.current,
         onStart: () => {
           setIsSpeaking(true);
           setIsPaused(false);
         },
         onEnd: () => {
+          setIsSpeaking(false);
+          setIsPaused(false);
+        },
+        onError: () => {
           setIsSpeaking(false);
           setIsPaused(false);
         },
@@ -198,7 +210,7 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
       clearTimeout(timer);
       stopSpeaking();
     };
-  }, [i, autoVoice, done, verse, speed]);
+  }, [i]);
 
   useEffect(() => {
     return () => {
@@ -209,7 +221,6 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
   function check() {
     stopSpeaking();
     setIsSpeaking(false);
-    setIsPaused(false);
     const gr = grade(q, answers[i]);
     setGrades(grades.map((x, k) => (k === i ? gr : x)));
   }
@@ -276,9 +287,8 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
           isPaused={isPaused}
           speed={speed}
           onToggle={handleToggleVoice}
-          onStop={handleStopVoice}
           onSpeedChange={handleSpeedChange}
-          bottomOffset="calc(var(--bar-h, 72px) + 12px)"
+          bottomOffset="calc(var(--bar-h, 72px) + 14px)"
         />
       )}
 
