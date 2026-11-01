@@ -691,16 +691,16 @@ html:not(.signed-in) .back-signed-in { display: none; }
 }
 .pd { display: grid; grid-template-columns: 28px 1fr auto; align-items: center; gap: 12px; min-height: 52px; padding: 8px 14px 8px 10px; border-radius: var(--r-box); background: var(--bg); border: 1.5px solid var(--line); box-sizing: border-box; }
 .pd-1 {
-  background: linear-gradient(135deg, #f8dfbf 0%, #f4d5b0 100%);
-  border-color: #dfa663;
+  background: linear-gradient(135deg, #fef8ee 0%, #faeed7 100%);
+  border-color: #eecf97;
 }
 .pd-2 {
-  background: linear-gradient(135deg, #eed1b3 0%, #e6c5a3 100%);
-  border-color: #c9986b;
+  background: linear-gradient(135deg, #f8f9fb 0%, #ebedf2 100%);
+  border-color: #cdd4de;
 }
 .pd-3 {
-  background: linear-gradient(135deg, #e3c4a4 0%, #d9b692 100%);
-  border-color: #b8885b;
+  background: linear-gradient(135deg, #fef6f0 0%, #fae8dc 100%);
+  border-color: #e7c5af;
 }
 .pd-rank {
   display: grid;
@@ -716,23 +716,23 @@ html:not(.signed-in) .back-signed-in { display: none; }
   box-sizing: border-box;
 }
 .pd-1 .pd-rank {
-  background: linear-gradient(145deg, #df7922 0%, #c15e0f 100%);
+  background: linear-gradient(135deg, #f5b027 0%, #d98e0d 100%);
   color: #fff;
-  box-shadow: 0 2px 4px rgba(193, 94, 15, 0.35);
+  box-shadow: 0 2px 5px rgba(217, 142, 13, 0.35);
 }
 .pd-2 .pd-rank {
-  background: linear-gradient(145deg, #8b5028 0%, #6e3d1c 100%);
+  background: linear-gradient(135deg, #9da8b6 0%, #7b8898 100%);
   color: #fff;
-  box-shadow: 0 2px 4px rgba(110, 61, 28, 0.35);
+  box-shadow: 0 2px 5px rgba(123, 136, 152, 0.3);
 }
 .pd-3 .pd-rank {
-  background: linear-gradient(145deg, #a86b3e 0%, #8c5229 100%);
+  background: linear-gradient(135deg, #c77b4d 0%, #a85a2b 100%);
   color: #fff;
-  box-shadow: 0 2px 4px rgba(140, 82, 41, 0.35);
+  box-shadow: 0 2px 5px rgba(168, 90, 43, 0.3);
 }
-.pd-1 .pd-score { color: #522502; font-weight: 700; }
-.pd-2 .pd-score { color: #3c1a05; font-weight: 700; }
-.pd-3 .pd-score { color: #351503; font-weight: 700; }
+.pd-1 .pd-score { color: #7a4a06; font-weight: 700; }
+.pd-2 .pd-score { color: #3e4854; font-weight: 700; }
+.pd-3 .pd-score { color: #693414; font-weight: 700; }
 .pd-name { min-width: 0; display: flex; align-items: center; gap: 8px; font-weight: 600; }
 .pd-text { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .pd-me { flex: none; padding: 2px 8px; border-radius: 999px; background: var(--btn); color: #fff; font: 600 0.72rem/1.4 var(--f-body); }
