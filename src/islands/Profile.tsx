@@ -1,5 +1,7 @@
-import { useState } from 'preact/hooks';
+import { useEffect, useState } from 'preact/hooks';
+import { sendMessage, watchOpenMessagesCount } from '../lib/messages';
 import { addChild, players, removeChild, sameFirstName, updateChild, type Player } from '../lib/players';
+import { watchOpenCount } from '../lib/reports';
 import { localGet } from '../lib/store';
 import { deleteProgress } from '../lib/progress';
 import { deleteMyAccount, errorText, profile, profileError, profileLoaded, rememberedAccount, setParent, signOut, updateAccountName, user } from '../lib/session';
@@ -7,9 +9,6 @@ import Avatar from './Avatar';
 import SameNameSheet from './SameNameSheet';
 import Loader from './Loader';
 import Modal from './Modal';
-
-/** The "Scrie-ne un email" button: a new email to the administrator. */
-const contactHref = `mailto:claudiu.dev@outlook.com?subject=${encodeURIComponent('Candela')}`;
 
 export interface BookInfo { slug: string; name: string; chapters: number; totals: Record<string, number> }
 
@@ -35,11 +34,30 @@ export default function Profile({ books: _books }: { books?: BookInfo[] }) {
   const [deleting, setDeleting] = useState(false);
   const [deleteError, setDeleteError] = useState('');
 
+  // Contact message state
+  const [contactModal, setContactModal] = useState(false);
+  const [contactText, setContactText] = useState('');
+  const [contactSending, setContactSending] = useState(false);
+  const [contactDone, setContactDone] = useState(false);
+  const [contactError, setContactError] = useState('');
+
   const list = players.value;
   const kids = list.filter((x) => x.child).length;
   const isParent = p?.isParent === true;
-  // how many flagged questions wait (the avatar keeps this number up to date)
-  const reportsOpen = p?.admin ? localGet<number>('acctN', 0) : 0;
+
+  // Badges for admin
+  const [reportsOpen, setReportsOpen] = useState(() => (p?.admin ? localGet<number>('acctRep', 0) : 0));
+  const [messagesOpen, setMessagesOpen] = useState(() => (p?.admin ? localGet<number>('acctMsg', 0) : 0));
+
+  useEffect(() => {
+    if (!p?.admin) return;
+    const unsubR = watchOpenCount((n) => setReportsOpen(n));
+    const unsubM = watchOpenMessagesCount((n) => setMessagesOpen(n));
+    return () => {
+      unsubR?.();
+      unsubM?.();
+    };
+  }, [p?.admin]);
 
   // nothing is drawn from the last visit: the page waits for the account, then each block for its data
   if (!u || !profileLoaded.value) return <Loader />;
@@ -159,15 +177,36 @@ export default function Profile({ books: _books }: { books?: BookInfo[] }) {
               </span>
             </a>
           )}
-          <a class="me-item" href={contactHref}>
+          {p?.admin && (
+            <a class="me-item" href="/mesaje">
+              <span class="me-item-ic">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" /></svg>
+              </span>
+              <span class="me-item-label">Mesaje primite</span>
+              {messagesOpen > 0 && <span class="me-item-badge">{messagesOpen}</span>}
+              <span class="me-item-chev">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
+              </span>
+            </a>
+          )}
+          <button
+            type="button"
+            class="me-item"
+            onClick={() => {
+              setContactText('');
+              setContactDone(false);
+              setContactError('');
+              setContactModal(true);
+            }}
+          >
             <span class="me-item-ic">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /><polyline points="22,6 12,13 2,6" /></svg>
             </span>
-            <span class="me-item-label">Scrie-ne un email</span>
+            <span class="me-item-label">Trimite un mesaj</span>
             <span class="me-item-chev">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
             </span>
-          </a>
+          </button>
         </div>
 
         <div class="me-card">
@@ -214,6 +253,77 @@ export default function Profile({ books: _books }: { books?: BookInfo[] }) {
                   {deleting ? 'Se șterge...' : 'Da, șterge contul'}
                 </button>
               </div>
+            </>
+          )}
+        </Modal>
+      )}
+
+      {contactModal && (
+        <Modal role="dialog" labelledby="msg-t" onClose={() => !contactSending && setContactModal(false)}>
+          {() => (
+            <>
+              {contactDone ? (
+                <div class="contact-success stack" style={{ textAlign: 'center', padding: '16px 8px 8px' }}>
+                  <div class="contact-success-ic">
+                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--oil-ink)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                      <polyline points="22 4 12 14.01 9 11.01" />
+                    </svg>
+                  </div>
+                  <h2 style={{ margin: '0 0 6px' }}>Mesaj trimis!</h2>
+                  <p class="muted" style={{ margin: '0 0 16px' }}>
+                    Mesajul tău a fost transmis cu succes administratorilor. Îți mulțumim!
+                  </p>
+                  <button type="button" class="btn btn-primary btn-block" onClick={() => setContactModal(false)}>
+                    Închide
+                  </button>
+                </div>
+              ) : (
+                <form
+                  class="stack"
+                  onSubmit={async (e) => {
+                    e.preventDefault();
+                    if (!contactText.trim() || contactSending) return;
+                    setContactSending(true);
+                    setContactError('');
+                    try {
+                      await sendMessage(contactText);
+                      setContactDone(true);
+                    } catch (err) {
+                      setContactError(errorText(err));
+                    } finally {
+                      setContactSending(false);
+                    }
+                  }}
+                >
+                  <h2 id="msg-t">Trimite un mesaj</h2>
+                  <p class="muted small" style={{ margin: '-4px 0 6px' }}>
+                    Ai o întrebare, o sugestie sau o problemă? Scrie-ne mai jos și vom citi mesajul tău.
+                  </p>
+                  <div class="field">
+                    <textarea
+                      class="input msg-textarea"
+                      rows={5}
+                      maxLength={3000}
+                      required
+                      placeholder="Scrie mesajul tău aici..."
+                      value={contactText}
+                      onInput={(e) => setContactText(e.currentTarget.value)}
+                      disabled={contactSending}
+                      autoFocus
+                    />
+                  </div>
+                  {contactError && <p class="notice notice-bad" role="alert">{contactError}</p>}
+                  <div class="two">
+                    <button type="button" class="btn btn-ghost" disabled={contactSending} onClick={() => setContactModal(false)}>
+                      Renunță
+                    </button>
+                    <button type="submit" class="btn btn-primary" disabled={contactSending || !contactText.trim()}>
+                      {contactSending ? 'Se trimite…' : 'Trimite'}
+                    </button>
+                  </div>
+                </form>
+              )}
             </>
           )}
         </Modal>
