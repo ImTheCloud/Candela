@@ -98,13 +98,12 @@ function Editor({ r, self, onChanged }: { r: UserRow; self: boolean; onChanged: 
   const [firstName, setFirstName] = useState(first);
   const [lastName, setLastName] = useState(last);
   const [isParent, setIsParent] = useState(r.isParent);
-  const [isAdmin, setIsAdmin] = useState(r.admin);
   const [newKid, setNewKid] = useState('');
   const [busy, setBusy] = useState(false);
   const [msg, setMsg] = useState<{ ok: boolean; text: string } | null>(null);
   const [confirmDelete, setConfirmDelete] = useState(false);
 
-  const dirty = firstName.trim() !== first || lastName.trim() !== last || isParent !== r.isParent || isAdmin !== r.admin;
+  const dirty = firstName.trim() !== first || lastName.trim() !== last || isParent !== r.isParent;
   const valid = !!firstName.trim() && !!lastName.trim();
 
   async function run(action: () => Promise<unknown>, done: string) {
@@ -129,7 +128,7 @@ function Editor({ r, self, onChanged }: { r: UserRow; self: boolean; onChanged: 
         const l = lastName.trim();
         if (!f || !l) return;
         const name = `${f} ${l}`.replace(/\s+/g, ' ');
-        run(() => updateUser(r.uid, { name, isParent, admin: isAdmin }), 'Salvat.');
+        run(() => updateUser(r.uid, { name, isParent, admin: r.admin }), 'Salvat.');
       }}>
         <div class="two">
           <div class="field">
@@ -156,10 +155,6 @@ function Editor({ r, self, onChanged }: { r: UserRow; self: boolean; onChanged: 
           </div>
         </div>
         <label class="check"><input type="checkbox" checked={isParent} onChange={(e) => setIsParent(e.currentTarget.checked)} /><span>Cont de părinte</span></label>
-        <label class="check">
-          <input type="checkbox" checked={isAdmin} disabled={self} onChange={(e) => setIsAdmin(e.currentTarget.checked)} />
-          <span>Administrator{self && <span class="muted"> (contul tău)</span>}</span>
-        </label>
         <button class="btn btn-primary btn-block" disabled={busy || !dirty || !valid}>
           {busy ? 'Se salvează…' : 'Salvează'}
         </button>
