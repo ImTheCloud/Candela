@@ -604,20 +604,29 @@ function ChildForm({ child, onDone }: { child?: Player; onDone: () => void }) {
   const [name, setName] = useState(child?.name ?? '');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
-  const [sameName, setSameName] = useState('');
+  const [conflict, setConflict] = useState<{ name: string; kind: 'parent' | 'child' } | null>(null);
 
   async function submit(e: Event) {
     e.preventDefault();
-    if (!name.trim()) return setError('Scrie prenumele copilului.');
+    const cleanName = name.trim();
+    if (!cleanName) return setError('Scrie prenumele copilului.');
+
+    // 1. Check against parent first name
     const parent = profile.value?.name ?? '';
     const parentParts = parent.trim().split(/\s+/).filter(Boolean);
     const parentFirst = parentParts.length > 1 ? parentParts.slice(1).join(' ') : (parentParts[0] ?? '');
-    if (sameFirstName(name, parentFirst)) return setSameName(parentFirst);
+    if (sameFirstName(cleanName, parentFirst)) return setConflict({ name: parentFirst, kind: 'parent' });
+
+    // 2. Check against other children in this family
+    const list = players.value ?? [];
+    const duplicateChild = list.find((p) => p.child && p.key !== child?.key && sameFirstName(cleanName, p.name));
+    if (duplicateChild) return setConflict({ name: duplicateChild.name, kind: 'child' });
+
     setBusy(true);
     setError('');
     try {
-      if (child) await updateChild(child.key, name);
-      else await addChild(name);
+      if (child) await updateChild(child.key, cleanName);
+      else await addChild(cleanName);
       onDone();
     } catch (err) {
       setError(errorText(err));
@@ -638,7 +647,14 @@ function ChildForm({ child, onDone }: { child?: Player; onDone: () => void }) {
         <button type="button" class="btn btn-ghost" onClick={onDone}>Renunță</button>
         <button class="btn btn-primary" disabled={busy}>{child ? 'Salvează' : 'Adaugă'}</button>
       </div>
-      {sameName && <SameNameSheet name={sameName} fromProfile onClose={() => setSameName('')} />}
+      {conflict && (
+        <SameNameSheet
+          name={conflict.name}
+          kind={conflict.kind}
+          fromProfile
+          onClose={() => setConflict(null)}
+        />
+      )}
     </form>
   );
 }

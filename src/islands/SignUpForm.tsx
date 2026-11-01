@@ -12,7 +12,7 @@ export default function SignUpForm() {
   const [kids, setKids] = useState(['']);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
-  const [sameName, setSameName] = useState('');
+  const [sameName, setSameName] = useState<{ name: string; kind: 'parent' | 'child' } | null>(null);
   const submitting = useRef(false);
 
   // Someone already signed in has nothing to do here. During sign-up, wait until the profile is written.
@@ -33,7 +33,9 @@ export default function SignUpForm() {
     const names = f.isParent ? kids.map((k) => k.trim()).filter(Boolean) : [];
     if (f.isParent && !names.length) return setError('Scrie prenumele a cel puțin unui copil.');
     const twin = names.find((n) => sameFirstName(n, f.firstName));
-    if (twin) return setSameName(f.firstName.trim());
+    if (twin) return setSameName({ name: f.firstName.trim(), kind: 'parent' });
+    const duplicateChild = names.find((n, i) => names.some((other, j) => j > i && sameFirstName(n, other)));
+    if (duplicateChild) return setSameName({ name: duplicateChild, kind: 'child' });
     setBusy(true);
     setError('');
     submitting.current = true;
@@ -109,7 +111,7 @@ export default function SignUpForm() {
       <div class="auth-links small">
         <a class="link" href={`/cont${location.search}`}>Ai deja un cont?</a>
       </div>
-      {sameName && <SameNameSheet name={sameName} onClose={() => setSameName('')} />}
+      {sameName && <SameNameSheet name={sameName.name} kind={sameName.kind} onClose={() => setSameName(null)} />}
     </form>
   );
 }

@@ -1,33 +1,65 @@
 import Modal, { CloseButton } from './Modal';
 
-/** Says why a child cannot have the parent's first name, and what to write instead. */
-export default function SameNameSheet({ name, fromProfile = false, onClose }: { name: string; fromProfile?: boolean; onClose: () => void }) {
+interface Props {
+  name: string;
+  kind?: 'parent' | 'child';
+  fromProfile?: boolean;
+  isAdmin?: boolean;
+  onClose: () => void;
+}
+
+/** Says why a child cannot have the parent's first name or the same name as another child, and what to write instead. */
+export default function SameNameSheet({ name, kind = 'parent', fromProfile = false, isAdmin = false, onClose }: Props) {
+  const isChild = kind === 'child';
+
   return (
     <Modal role="alertdialog" labelledby="sn-title" onClose={onClose}>
-      {(close) => (<>
-        <div class="sheet-top">
-          <h2 id="sn-title">Același prenume ca părintele</h2>
-          <CloseButton onClick={close} />
-        </div>
-        <div class="stack" style="--gap: 12px;">
-          <p>Un copil nu poate avea același prenume ca cel al contului: <strong>{name}</strong> este deja prenumele tău.</p>
-          <p class="muted">
-            {fromProfile ? (
+      {(close) => (
+        <>
+          <div class="sheet-top">
+            <h2 id="sn-title">
+              {isChild ? 'Același prenume pentru doi copii' : 'Același prenume ca părintele'}
+            </h2>
+            <CloseButton onClick={close} />
+          </div>
+          <div class="stack" style="--gap: 12px;">
+            {isChild ? (
               <>
-                Dacă ai creat inițial contul cu numele copilului, apasă pe pictograma de editare (creion) din dreptul profilului tău pentru a trece datele tale de părinte. Vei putea apoi adăuga copilul cu acest prenume.
+                <p>
+                  Nu poți adăuga doi copii cu același prenume în aceeași familie: <strong>{name}</strong> este deja înregistrat.
+                </p>
+                <p class="muted">
+                  Fiecare copil are propriul profil de joc și propriul progres salvat în clasament.
+                </p>
+                <p class="muted small">
+                  Dacă doi copii poartă același prenume, adaugă o mică distincție (de exemplu un al doilea prenume sau o inițială).
+                </p>
               </>
             ) : (
               <>
-                Sus scrie datele tale de părinte, iar mai jos prenumele fiecărui copil. Copiii vor juca direct de pe contul tău.
+                <p>
+                  Un copil nu poate avea același prenume ca cel al contului de părinte: <strong>{name}</strong> este deja prenumele {isAdmin ? 'părintelui' : 'tău'}.
+                </p>
+                <p class="muted">
+                  {isAdmin ? (
+                    'Pentru a evita erorile și confuzia în clasament, profilul de copil trebuie să aibă un prenume distinct față de cel al părintelui.'
+                  ) : fromProfile ? (
+                    'Dacă ai creat inițial contul cu numele copilului, apasă pe pictograma de editare (creion) din dreptul profilului tău pentru a trece datele tale de părinte. Vei putea apoi adăuga copilul cu acest prenume.'
+                  ) : (
+                    'Sus scrie datele tale de părinte, iar mai jos prenumele fiecărui copil. Copiii vor juca direct de pe contul tău.'
+                  )}
+                </p>
+                <p class="muted small">
+                  Dacă purtați amândoi același prenume, adaugă o mică distincție pentru copil (de exemplu un al doilea prenume sau „Jr.”).
+                </p>
               </>
             )}
-          </p>
-          <p class="muted small">
-            Dacă purtați amândoi același prenume, adaugă o mică distincție pentru copil (de exemplu un al doilea prenume sau „Jr.”).
-          </p>
-          <button type="button" class="btn btn-primary btn-block" onClick={close}>Am înțeles</button>
-        </div>
-      </>)}
+            <button type="button" class="btn btn-primary btn-block" onClick={close}>
+              Am înțeles
+            </button>
+          </div>
+        </>
+      )}
     </Modal>
   );
 }
