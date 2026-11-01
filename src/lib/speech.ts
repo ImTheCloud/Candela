@@ -6,7 +6,12 @@ export function isSpeechSupported(): boolean {
 }
 
 let activeAudio: HTMLAudioElement | null = null;
-let currentPlaybackRate = 1.0; // default 1.0x as requested
+let currentPlaybackRate = 1.0; // Default 1.0x
+
+// In-memory cache of audio URLs (blob URLs created from background fetch for 0ms latency)
+const readyUrlCache = new Map<string, string>();
+const inflightFetches = new Map<string, Promise<string>>();
+const MAX_CACHE_SIZE = 40;
 
 if (typeof window !== 'undefined') {
   (window as any).stopSpeaking = stopSpeaking;
@@ -23,9 +28,11 @@ export interface SpeakOptions {
 export function stopSpeaking(): void {
   if (activeAudio) {
     try {
+      activeAudio.onplay = null;
+      activeAudio.onended = null;
+      activeAudio.onerror = null;
       activeAudio.pause();
       activeAudio.currentTime = 0;
-      activeAudio.src = '';
     } catch {}
     activeAudio = null;
   }
@@ -61,18 +68,48 @@ export function isCurrentlySpeaking(): boolean {
 }
 
 /**
- * Preloads audio in the background using HTML5 Audio so it plays with 0 latency.
+ * Preloads audio in the background using fetch + blob URL.
+ * Works seamlessly across mobile browsers (iOS Safari, Android Chrome) which block
+ * media element autoplay/preload without user gestures, but allow background fetch.
  */
 export function preloadText(text: string, voice = 'ro-RO-AlinaNeural'): void {
   if (typeof window === 'undefined') return;
   const clean = text.trim();
   if (!clean) return;
-  try {
-    const url = `/api/tts?text=${encodeURIComponent(clean)}&voice=${encodeURIComponent(voice)}`;
-    const audio = new Audio();
-    audio.preload = 'auto';
-    audio.src = url;
-  } catch {}
+
+  const key = `${voice}:${clean}`;
+  if (readyUrlCache.has(key) || inflightFetches.has(key)) return;
+
+  const url = `/api/tts?text=${encodeURIComponent(clean)}&voice=${encodeURIComponent(voice)}`;
+
+  const fetchPromise = fetch(url)
+    .then((res) => {
+      if (!res.ok) throw new Error(`TTS status ${res.status}`);
+      return res.blob();
+    })
+    .then((blob) => {
+      const blobUrl = URL.createObjectURL(blob);
+      readyUrlCache.set(key, blobUrl);
+      inflightFetches.delete(key);
+
+      if (readyUrlCache.size > MAX_CACHE_SIZE) {
+        const oldest = readyUrlCache.keys().next().value;
+        if (oldest) {
+          const oldUrl = readyUrlCache.get(oldest);
+          if (oldUrl && oldUrl.startsWith('blob:')) {
+            try { URL.revokeObjectURL(oldUrl); } catch {}
+          }
+          readyUrlCache.delete(oldest);
+        }
+      }
+      return blobUrl;
+    })
+    .catch(() => {
+      inflightFetches.delete(key);
+      return url;
+    });
+
+  inflightFetches.set(key, fetchPromise);
 }
 
 /**
@@ -86,7 +123,7 @@ export function preloadQuestionAudio(q: Playable): void {
 
 /**
  * Speaks text using a natural human Romanian voice (Microsoft Azure Alina Neural via /api/tts),
- * with custom rate (default 0.75x). Never falls back to robotic SpeechSynthesis.
+ * with custom rate (default 1.0x). Zero robotic SpeechSynthesis.
  */
 export function speakText(text: string, options: SpeakOptions = {}): () => void {
   const clean = text.trim();
@@ -105,8 +142,13 @@ export function speakText(text: string, options: SpeakOptions = {}): () => void 
       const rate = options.rate ?? currentPlaybackRate;
       currentPlaybackRate = rate;
 
-      const url = `/api/tts?text=${encodeURIComponent(clean)}&voice=${encodeURIComponent(voice)}`;
-      const audio = new Audio(url);
+      const key = `${voice}:${clean}`;
+      const directUrl = `/api/tts?text=${encodeURIComponent(clean)}&voice=${encodeURIComponent(voice)}`;
+      
+      // If a preloaded blob URL is already available in RAM, use it for 0ms latency;
+      // otherwise stream directly via chunked HTTP
+      const playbackSrc = readyUrlCache.get(key) || directUrl;
+      const audio = new Audio(playbackSrc);
       activeAudio = audio;
 
       audio.playbackRate = rate;
