@@ -16,10 +16,10 @@ body.in-quiz main { padding-top: 0; }
 
 /* Above the question: what to do, the level, the report button; then where it comes from */
 .q-head { display: grid; gap: 3px; }
-.q-row { display: flex; align-items: center; gap: 8px; min-height: 34px; }
+.q-row { display: flex; align-items: center; gap: 8px; min-height: 34px; flex-wrap: wrap; }
 .q-kind { font: 700 0.72rem var(--f-body); letter-spacing: .07em; text-transform: uppercase; color: var(--oil-ink); white-space: nowrap; }
 .q-age { padding: 2px 9px; border-radius: 999px; background: var(--oil-soft); color: var(--oil-ink); font: 600 0.78rem var(--f-body); white-space: nowrap; }
-.q-spacer { flex: 1; }
+.q-spacer { flex: 1; min-width: 4px; }
 .q-where { margin: 0; font-size: 0.85rem; line-height: 1.35; color: var(--ink-2); }
 .q-where b { color: var(--ink); font-weight: 600; }
 .q-scene { margin: 6px 0 0; padding-left: 10px; border-left: 3px solid var(--flame); font: italic 0.95rem/1.4 var(--f-bible); color: var(--ink-2); }
@@ -131,13 +131,21 @@ body.in-quiz main { padding-top: 0; }
   flex-direction: row; gap: 6px; width: auto; min-height: 34px; padding: 0 12px 0 9px; border-radius: var(--r-ctl);
   background: none; font-size: 0.82rem;
 }
-/* Beside the report button: voice / TTS narration toggle */
-.btn-voice {
-  flex: none; display: inline-flex; align-items: center; gap: 6px; min-height: 34px; padding: 0 11px 0 9px;
-  border: 1.5px solid var(--line); border-radius: var(--r-ctl); background: none; color: var(--ink-2);
-  font: 600 0.82rem/1 var(--f-body); cursor: pointer; transition: all .15s ease; user-select: none;
+/* Auxiliary row right above the primary action button (e.g. voice/listen button at bottom right) */
+.actions-aux {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 8px;
 }
-.btn-voice:active { background: var(--surface-2); }
+
+/* Voice / TTS narration toggle button, placed at bottom right above "Verifică" */
+.btn-voice {
+  flex: none; display: inline-flex; align-items: center; gap: 7px; min-height: 34px; padding: 0 13px 0 10px;
+  border: 1.5px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--ink-2);
+  font: 600 0.82rem/1 var(--f-body); cursor: pointer; transition: all .15s ease; user-select: none;
+  box-shadow: 0 1.5px 4px rgb(0 0 0 / .06);
+}
+.btn-voice:active { background: var(--surface-2); transform: translateY(1px); }
 .btn-voice.is-active {
   border-color: var(--cedar);
   color: var(--cedar);
