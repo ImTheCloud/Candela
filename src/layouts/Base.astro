@@ -182,25 +182,22 @@ const fullTitle = title === 'Candela' ? title : `${title} – Candela`;
     border-bottom: 1px solid var(--line);
     padding-top: env(safe-area-inset-top);
   }
-  .top-row { display: flex; align-items: center; justify-content: space-between; height: 60px; }
-  .brand { display: flex; align-items: center; gap: 7px; min-width: 0; text-decoration: none; font: 400 21px/1 var(--f-brand); }
+  .top-row { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 6px; }
+  .top-row:has(.heading) { gap: 4px; justify-content: flex-start; }
+  .brand { display: flex; align-items: center; gap: 7px; min-width: 0; text-decoration: none; font: 400 21px/1 var(--f-brand); margin-right: auto; }
   @media (min-width: 440px) {
     .brand { font-size: 24px; }
   }
   .brand-text { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .brand :global(.lamp) { margin: -8px -4px -3px -10px; }
   .account-placeholder { display: block; width: 44px; height: 44px; }
-  .top-row { gap: 6px; }
-  .brand { margin-right: auto; }
   .back {
-    flex: none; display: grid; place-items: center; width: 40px; height: 40px; margin-left: -8px;
+    flex: none; display: grid; place-items: center; width: 40px; height: 40px; margin-left: -10px;
     border-radius: 50%; color: var(--ink); text-decoration: none;
   }
   .back:active { background: var(--surface-2); }
-  /* the reader: its back arrow sits right above the chapter arrows of the bottom bar */
-  .top-row:has(.heading) .back { width: 48px; height: 48px; margin: 0 4px 0 0; }
   .heading { flex: 1; min-width: 0; display: grid; gap: 1px; }
-  .heading h1 { margin: 0; font: 600 1.6rem/1.2 var(--f-display); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .heading h1 { margin: 0; font: 600 1.55rem/1.2 var(--f-display); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .heading-note { font: 500 0.8rem var(--f-body); color: var(--ink-3); }
   .heading p { margin: 0; font: 500 0.88rem/1.2 var(--f-display); color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 </style>
