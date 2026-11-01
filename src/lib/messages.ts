@@ -60,3 +60,4 @@ export function setMessageDone(id: string, done: boolean) {
 export function removeMessage(id: string) {
   return deleteDoc(doc(db, 'messages', id));
 }
+
