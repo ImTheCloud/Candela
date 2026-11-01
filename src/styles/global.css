@@ -775,3 +775,13 @@ html:not(.signed-in) .back-signed-in { display: none; }
 .tiles-wrap { container-type: inline-size; }
 /* the exams tile is as tall as a chapter tile, also when it sits alone on its row */
 .tile-exam { min-height: calc((100cqw - 40px) / 6); }
+
+/* User-to-admin messages */
+.msg-item { gap: 10px; }
+.msg-email { display: flex; align-items: center; margin: -4px 0 0; }
+.msg-email a { color: var(--ink-2); text-decoration: underline; text-underline-offset: 2px; }
+.msg-body { background: var(--bg); border: 1px solid var(--line); border-radius: var(--r-sm); padding: 12px; margin: 4px 0; }
+.msg-text { margin: 0; white-space: pre-wrap; word-break: break-word; line-height: 1.5; font-size: 0.95rem; color: var(--ink); }
+.msg-textarea { min-height: 130px; padding: 12px 14px; resize: vertical; line-height: 1.5; }
+.contact-success-ic { display: flex; justify-content: center; align-items: center; width: 64px; height: 64px; margin: 0 auto 8px; border-radius: 50%; background: var(--oil-soft); }
+

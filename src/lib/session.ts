@@ -274,6 +274,8 @@ export function errorText(e: unknown): string {
   switch (code) {
     case 'name_required': return 'Scrie prenumele și numele de familie.';
     case 'name_too_long': return 'Numele este prea lung (maximum 80 de caractere).';
+    case 'message_empty': return 'Mesajul nu poate fi gol.';
+    case 'message_too_long': return 'Mesajul este prea lung (maximum 3000 de caractere).';
     case 'auth/invalid-email': return 'Adresa de email nu este validă.';
     case 'auth/invalid-credential':
     case 'auth/wrong-password':

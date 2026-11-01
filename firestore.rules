@@ -94,6 +94,19 @@ service cloud.firestore {
         && request.resource.data.at == request.time;
     }
 
+    // User-to-admin contact messages sent from the user profile. Only admins read, close or delete them.
+    match /messages/{id} {
+      allow read, update, delete: if admin();
+      allow create: if request.auth != null
+        && request.resource.data.keys().hasOnly(['uid', 'by', 'email', 'message', 'done', 'at'])
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.by is string && request.resource.data.by.size() <= 80
+        && request.resource.data.email is string && request.resource.data.email.size() <= 120
+        && request.resource.data.message is string && request.resource.data.message.size() >= 1 && request.resource.data.message.size() <= 3000
+        && request.resource.data.done == false
+        && request.resource.data.at == request.time;
+    }
+
     // Public boards. Everyone reads them; an account writes its own players, or an admin can manage them.
     //   boards/{book}/players/{uid}~{playerKey}: score = questions known in the book, and it must equal the questions mastered in the progress.
     //   lv (per level), ct (per chapter) and ch (per chapter and level) feed the boards by level and by chapter. Their total can only be bounded by the score.

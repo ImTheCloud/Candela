@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'preact/hooks';
+import { watchOpenMessagesCount } from '../lib/messages';
 import { player } from '../lib/players';
 import { watchOpenCount } from '../lib/reports';
 import { profile, user } from '../lib/session';
@@ -11,21 +12,50 @@ export default function AccountButton() {
   // remembered for the next visit, so the button is there from the first paint (see the script in Base)
   useEffect(() => { if (initialsNow !== null) localSet('acct', initialsNow); }, [initialsNow]);
 
-  // for an admin: how many flagged questions wait, shown on the avatar
-  const [open, setOpen] = useState(() => localGet<number>('acctN', 0));
+  // for an admin: how many flagged questions and messages wait, shown on the avatar
+  const [repCount, setRepCount] = useState(() => localGet<number>('acctRep', 0));
+  const [msgCount, setMsgCount] = useState(() => localGet<number>('acctMsg', 0));
+
   useEffect(() => {
-    if (!admin) { if (u !== undefined) localSet('acctN', 0); return; }
-    return watchOpenCount((n) => { setOpen(n); localSet('acctN', n); });
+    if (!admin) {
+      if (u !== undefined) {
+        localSet('acctN', 0);
+        localSet('acctRep', 0);
+        localSet('acctMsg', 0);
+      }
+      return;
+    }
+    const unsubRep = watchOpenCount((n) => {
+      setRepCount(n);
+      localSet('acctRep', n);
+    });
+    const unsubMsg = watchOpenMessagesCount((n) => {
+      setMsgCount(n);
+      localSet('acctMsg', n);
+    });
+    return () => {
+      unsubRep?.();
+      unsubMsg?.();
+    };
   }, [admin, u === undefined]);
-  const count = admin || u === undefined ? open : 0;
+
+  const total = repCount + msgCount;
+  useEffect(() => {
+    if (admin) localSet('acctN', total);
+  }, [admin, total]);
+
+  const count = admin || u === undefined ? (admin ? total : localGet<number>('acctN', 0)) : 0;
 
   // while Firebase restores the session, show what the last visit left
   const shown = initialsNow ?? localGet<string | null>('acct', null);
   if (shown === null || (shown === '' && location.pathname.startsWith('/cont'))) return <span class="account-placeholder" />;
   if (!shown) return <a class="btn btn-primary btn-sm" href="/cont" aria-label="Intră în cont">Intră</a>;
+
+  const targetHref = admin && count > 0 ? (repCount > 0 ? '/semnalari' : '/mesaje') : '/cont';
+
   return (
-    <a class="avatar" href={admin && count ? '/semnalari' : '/cont'}
-      aria-label={admin && count ? `${count} semnalări de verificat` : u ? `Contul meu (joacă ${player.value.name})` : 'Contul meu'}>
+    <a class="avatar" href={targetHref}
+      aria-label={admin && count ? `${count} notificări de verificat` : u ? `Contul meu (joacă ${player.value.name})` : 'Contul meu'}>
       {shown}
       {count > 0 && <span class="badge-n">{count > 9 ? '9+' : count}</span>}
     </a>

@@ -1,0 +1,15 @@
+---
+import Loader from '../components/Loader.astro';
+import Base from '../layouts/Base.astro';
+import AdminMessages from '../islands/AdminMessages';
+---
+<Base title="Mesaje primite" crumbs={[{ href: '/cont', label: 'Profil' }]}>
+  <section class="wrap narrow page">
+    <h1>Mesaje primite</h1>
+    <p class="muted">Mesaje și sugestii trimise de utilizatori direct din profilul lor.</p>
+    <AdminMessages client:only="preact">
+      <Loader slot="fallback" />
+    </AdminMessages>
+  </section>
+</Base>
+<style>.page { display: grid; gap: 16px; padding-block: 8px 32px; }</style>
