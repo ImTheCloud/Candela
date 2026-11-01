@@ -3,7 +3,7 @@ import Loader from '../../components/Loader.astro';
 import Base from '../../layouts/Base.astro';
 import SignUpForm from '../../islands/SignUpForm';
 ---
-<Base title="Cont nou" home crumbs={[{ href: '/cont', label: 'Cont' }]}>
+<Base title="Creează un cont" crumbs={[{ href: '/cont', label: 'Cont' }]}>
   <section class="wrap narrow page">
     <SignUpForm client:only="preact">
       <Loader slot="fallback" />

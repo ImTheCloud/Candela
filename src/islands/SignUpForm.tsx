@@ -53,6 +53,12 @@ export default function SignUpForm() {
 
   return (
     <form class="card auth-card stack" onSubmit={submit}>
+      <div class="auth-brand">
+        <span class="auth-brand-badge">Concursul „Talantul în Negoț”</span>
+        <h1 class="auth-brand-title">Candela lui Dumnezeu</h1>
+        <p class="auth-brand-verse">„...și candela lui Dumnezeu nu se stinsese încă...”</p>
+        <span class="auth-brand-ref">1 Samuel 3:3</span>
+      </div>
       <h2>Creează un cont</h2>
       <div class="two">
         <div class="field">

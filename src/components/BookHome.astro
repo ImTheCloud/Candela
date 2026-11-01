@@ -11,7 +11,7 @@ interface Props { book: Book }
 const { book } = Astro.props;
 const books = BOOKS.map((b) => ({ slug: b.slug, name: b.name, titles: b.titles, summary: summary(b.slug), exams: examList(b.slug) }));
 ---
-<h1 class="sr-only">Candela</h1>
+<h1 class="sr-only">Candela lui Dumnezeu</h1>
 
 <Stopwatch client:only="preact" wrap />
 
