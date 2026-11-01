@@ -3,7 +3,6 @@ import { sendMessage, watchOpenMessagesCount } from '../lib/messages';
 import { addChild, players, removeChild, sameFirstName, shortName, updateChild, type Player } from '../lib/players';
 import { watchOpenCount } from '../lib/reports';
 import { localGet } from '../lib/store';
-import { deleteProgress } from '../lib/progress';
 import { deleteMyAccount, errorText, profile, profileError, profileLoaded, rememberedAccount, setParent, signOut, updateAccountName, user } from '../lib/session';
 import Avatar from './Avatar';
 import PasswordInput from './PasswordInput';
@@ -393,12 +392,23 @@ function PlayerBlock({
 }) {
   const [editingChild, setEditingChild] = useState(false);
   const [confirming, setConfirming] = useState(false);
+  const [deleting, setDeleting] = useState(false);
+  const [error, setError] = useState('');
   const isSelf = !p.child;
   const displayName = isSelf ? p.name : shortName(p);
 
   async function remove() {
-    await deleteProgress(user.value!.uid, p.key);
-    await removeChild(p.key);
+    if (deleting) return;
+    setDeleting(true);
+    setError('');
+    try {
+      await removeChild(p.key);
+      setConfirming(false);
+    } catch (e) {
+      console.error('Eroare la ștergerea profilului:', e);
+      setError('Nu s-a putut șterge profilul. Verifică conexiunea la internet și încearcă din nou.');
+      setDeleting(false);
+    }
   }
 
   if (isSelf && editingSelf) {
@@ -487,9 +497,24 @@ function PlayerBlock({
       {confirming && (
         <div class="notice notice-bad stack" style="--gap: 10px; margin-top: 6px;">
           <p>Ștergi profilul lui {displayName}? Nu se mai poate recupera.</p>
+          {error && <p class="error-msg" style="color: #b91c1c; font-weight: 500; font-size: 0.9rem;">{error}</p>}
           <div class="two">
-            <button type="button" class="btn btn-ghost btn-sm" onClick={() => setConfirming(false)}>Renunță</button>
-            <button type="button" class="btn btn-sm danger" onClick={remove}>Da, șterge</button>
+            <button
+              type="button"
+              class="btn btn-ghost btn-sm"
+              disabled={deleting}
+              onClick={() => { setConfirming(false); setError(''); }}
+            >
+              Renunță
+            </button>
+            <button
+              type="button"
+              class="btn btn-sm danger"
+              disabled={deleting}
+              onClick={remove}
+            >
+              {deleting ? 'Se șterge...' : 'Da, șterge'}
+            </button>
           </div>
         </div>
       )}
