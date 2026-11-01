@@ -23,7 +23,6 @@ export default function Stopwatch({ wrap = false }: { wrap?: boolean }) {
 
   const t: Timer = (p as { timer?: Timer } | null)?.timer ?? { total: 0, start: null };
   const [now, setNow] = useState(Date.now());
-  const [confirm, setConfirm] = useState(false);
   const [error, setError] = useState('');
   const running = t.start !== null;
 
@@ -45,19 +44,12 @@ export default function Stopwatch({ wrap = false }: { wrap?: boolean }) {
       <h2 id="sw-title" class="me-label">Cronometru</h2>
       <div class="me-row sw">
         <p class={`sw-time${running ? ' is-on' : ''}`} aria-live="off">{clock(shown)}</p>
-        {confirm ? (
-          <div class="two">
-            <button type="button" class="btn btn-ghost" onClick={() => setConfirm(false)}>Renunță</button>
-            <button type="button" class="btn btn-danger" onClick={() => { setConfirm(false); save({ total: 0, start: null }); }}>Pune la zero</button>
-          </div>
-        ) : (
-          <div class="two">
-            {running
-              ? <button type="button" class="btn btn-primary" onClick={() => save({ total: shown, start: null })}>Pauză</button>
-              : <button type="button" class="btn btn-primary" onClick={() => { setNow(Date.now()); save({ total: t.total, start: Date.now() }); }}>{t.total ? 'Continuă' : 'Pornește'}</button>}
-            <button type="button" class="btn btn-ghost" disabled={!shown} onClick={() => setConfirm(true)}>Reset</button>
-          </div>
-        )}
+        <div class="two">
+          {running
+            ? <button type="button" class="btn btn-primary" onClick={() => save({ total: shown, start: null })}>Pauză</button>
+            : <button type="button" class="btn btn-primary" onClick={() => { setNow(Date.now()); save({ total: t.total, start: Date.now() }); }}>{t.total ? 'Continuă' : 'Pornește'}</button>}
+          <button type="button" class="btn btn-ghost" disabled={!shown} onClick={() => save({ total: 0, start: null })}>Reset</button>
+        </div>
         {error && <p class="notice notice-bad" role="alert">{error}</p>}
       </div>
     </section>
