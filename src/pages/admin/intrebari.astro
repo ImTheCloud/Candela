@@ -1,0 +1,34 @@
+---
+import Base from '../../layouts/Base.astro';
+import Loader from '../../components/Loader.astro';
+import { BOOKS } from '../../lib/books';
+import { chapterFiles } from '../../lib/content';
+import AdminQuestionsHub from '../../islands/AdminQuestionsHub';
+
+const booksData = BOOKS.map((b) => {
+  const files = [...chapterFiles(b.slug).values()].sort((a, b) => a.ch - b.ch);
+  const totalQuestions = files.reduce((acc, f) => acc + f.questions.length, 0);
+  return {
+    slug: b.slug,
+    name: b.name,
+    chaptersCount: b.chapters,
+    totalQuestions,
+    chapters: files.map((f) => ({
+      ch: f.ch,
+      title: b.titles[f.ch - 1] ?? `Capitolul ${f.ch}`,
+      count: f.questions.length,
+      reviewed: f.reviewed,
+    })),
+  };
+});
+---
+<Base title="Întrebări și răspunsuri" crumbs={[{ href: '/admin', label: 'Administrare' }]}>
+  <section class="wrap narrow page">
+    <AdminQuestionsHub client:only="preact" books={booksData}>
+      <Loader slot="fallback" />
+    </AdminQuestionsHub>
+  </section>
+</Base>
+<style>
+  .page { display: grid; gap: 16px; padding-block: 8px 32px; }
+</style>
