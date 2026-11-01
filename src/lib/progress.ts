@@ -41,13 +41,27 @@ const guestKey = (book: string) => `progress:${book}`;
 const playerKey = computed(() => player.value.key);
 
 /** Resolves once the current player's progress in the book has come from Firestore. */
-function whenLoaded(book: string): Promise<void> {
+function whenLoaded(book: string, timeoutMs = 5000): Promise<void> {
+  if (progressLoaded(book).value) return Promise.resolve();
   return new Promise((resolve) => {
+    let done = false;
     let stop: (() => void) | undefined;
+    const timer = setTimeout(() => {
+      if (!done) {
+        done = true;
+        stop?.();
+        resolve();
+      }
+    }, timeoutMs);
+
     stop = effect(() => {
       if (!progressLoaded(book).value) return;
-      resolve();
-      queueMicrotask(() => stop?.());
+      if (!done) {
+        done = true;
+        clearTimeout(timer);
+        resolve();
+        queueMicrotask(() => stop?.());
+      }
     });
   });
 }
@@ -103,66 +117,145 @@ const drop = <T,>(list: T[], items: T[]) => list.filter((x) => !items.includes(x
 
 export interface Answered { id: string; t: QType; right: boolean }
 
-/**
- * After each answer: a right one becomes mastered and leaves the mistakes list, a wrong one joins it.
- * The board follows on its own (the effect below): a board refused by the rules never takes the answers with it.
- */
-/** points: false (the mistakes list) takes right answers off the list without making them count for the player. */
-export async function recordAnswers(book: string, answers: Answered[], points = true) {
-  const right = answers.filter((a) => a.right).map((a) => a.id);
-  const gain = points ? right : [];
-  const wrong = answers.filter((a) => !a.right).map((a) => a.id);
-  const stats: Record<string, { n: ReturnType<typeof increment>; r: ReturnType<typeof increment> }> = {};
-  const counts: Record<string, { n: number; r: number }> = {};
-  for (const a of answers) {
-    counts[a.t] ??= { n: 0, r: 0 };
-    counts[a.t].n++;
-    if (a.right) counts[a.t].r++;
-  }
-  for (const [t, c] of Object.entries(counts)) stats[t] = { n: increment(c.n), r: increment(c.r) };
-  // per level too: chapter question ids carry it (2sa.24.usor.302)
-  const byLevel: Record<string, Record<string, { n: number; r: number }>> = {};
-  for (const a of answers) {
-    const l = a.id.split('.')[2];
-    if (l !== 'usor' && l !== 'mediu' && l !== 'greu') continue;
-    const c = ((byLevel[l] ??= {})[a.t] ??= { n: 0, r: 0 });
-    c.n++;
-    if (a.right) c.r++;
-  }
-  const lv = Object.fromEntries(Object.entries(byLevel).map(([l, ts]) => [l,
-    Object.fromEntries(Object.entries(ts).map(([t, c]) => [t, { n: increment(c.n), r: increment(c.r) }]))]));
-
-  if (isGuest()) {
-    return guestUpdate(book, (p) => {
-      const st = { ...p.stats };
-      for (const [t, c] of Object.entries(counts)) {
-        const k = t as QType;
-        st[k] = { n: (st[k]?.n ?? 0) + c.n, r: (st[k]?.r ?? 0) + c.r };
-      }
-      return { ...p, mastered: add(p.mastered, gain), wrong: drop(add(p.wrong, wrong), right), stats: st };
-    });
-  }
-  const r = ref(book);
-  // one change per field: adding to and removing from "wrong" in the same write is refused
-  if (right.length && wrong.length) await setDoc(r, { wrong: arrayUnion(...wrong), updatedAt: serverTimestamp() }, { merge: true });
-  const data: Record<string, unknown> = { stats, lv, updatedAt: serverTimestamp() };
-  if (right.length) {
-    if (gain.length) data.mastered = arrayUnion(...gain);
-    data.wrong = arrayRemove(...right);
-  } else if (wrong.length) {
-    data.wrong = arrayUnion(...wrong);
-  }
-  await setDoc(r, data, { merge: true });
+export interface ExamInfo {
+  id: string;
+  score: number;
+  count?: { right: number; n: number };
 }
 
-export async function recordExam(book: string, examId: string, score: number, count?: { right: number; n: number }) {
-  // the best score is kept from the progress: never written over before it is known
-  if (!isGuest()) await whenLoaded(book);
-  const prev = progress(book).value.exams[examId];
-  const entry: Progress['exams'][string] = { best: Math.max(prev?.best ?? 0, score), last: score, at: Date.now(), plays: (prev?.plays ?? (prev ? 1 : 0)) + 1 };
-  if (count) { entry.bestRight = Math.max(prev?.bestRight ?? 0, count.right); entry.n = count.n; }
-  if (isGuest()) return guestUpdate(book, (p) => ({ ...p, exams: { ...p.exams, [examId]: entry } }));
-  return setDoc(ref(book), { exams: { [examId]: entry }, updatedAt: serverTimestamp() }, { merge: true });
+/**
+ * Atomically saves all quiz results (answers, stats, level stats, mastered, wrong, and exams)
+ * in a SINGLE Firestore write operation to prevent race conditions or partial saves.
+ * Immediately synchronizes the public leaderboard once committed.
+ */
+export async function saveQuizResult(
+  book: string,
+  answers?: Answered[],
+  points = true,
+  exam?: ExamInfo
+): Promise<void> {
+  const right = answers ? answers.filter((a) => a.right).map((a) => a.id) : [];
+  const gain = points ? right : [];
+  const wrong = answers ? answers.filter((a) => !a.right).map((a) => a.id) : [];
+
+  const counts: Record<string, { n: number; r: number }> = {};
+  const byLevel: Record<string, Record<string, { n: number; r: number }>> = {};
+
+  if (answers && answers.length > 0) {
+    for (const a of answers) {
+      counts[a.t] ??= { n: 0, r: 0 };
+      counts[a.t].n++;
+      if (a.right) counts[a.t].r++;
+    }
+    for (const a of answers) {
+      const l = a.id.split('.')[2];
+      if (l !== 'usor' && l !== 'mediu' && l !== 'greu') continue;
+      const c = ((byLevel[l] ??= {})[a.t] ??= { n: 0, r: 0 });
+      c.n++;
+      if (a.right) c.r++;
+    }
+  }
+
+  if (isGuest()) {
+    guestUpdate(book, (p) => {
+      let nextP = { ...p };
+      if (answers && answers.length > 0) {
+        const st = { ...nextP.stats };
+        for (const [t, c] of Object.entries(counts)) {
+          const k = t as QType;
+          st[k] = { n: (st[k]?.n ?? 0) + c.n, r: (st[k]?.r ?? 0) + c.r };
+        }
+        nextP = {
+          ...nextP,
+          mastered: add(nextP.mastered, gain),
+          wrong: drop(add(nextP.wrong, wrong), right),
+          stats: st,
+        };
+      }
+      if (exam) {
+        const prev = nextP.exams[exam.id];
+        const entry: Progress['exams'][string] = {
+          best: Math.max(prev?.best ?? 0, exam.score),
+          last: exam.score,
+          at: Date.now(),
+          plays: (prev?.plays ?? (prev ? 1 : 0)) + 1,
+        };
+        if (exam.count) {
+          entry.bestRight = Math.max(prev?.bestRight ?? 0, exam.count.right);
+          entry.n = exam.count.n;
+        }
+        nextP.exams = { ...nextP.exams, [exam.id]: entry };
+      }
+      return nextP;
+    });
+    return;
+  }
+
+  await whenLoaded(book);
+  const curProg = progress(book).value;
+  const data: Record<string, unknown> = { updatedAt: serverTimestamp() };
+
+  if (answers && answers.length > 0) {
+    const stats: Record<string, { n: ReturnType<typeof increment>; r: ReturnType<typeof increment> }> = {};
+    for (const [t, c] of Object.entries(counts)) stats[t] = { n: increment(c.n), r: increment(c.r) };
+    data.stats = stats;
+
+    const lv = Object.fromEntries(
+      Object.entries(byLevel).map(([l, ts]) => [
+        l,
+        Object.fromEntries(Object.entries(ts).map(([t, c]) => [t, { n: increment(c.n), r: increment(c.r) }])),
+      ])
+    );
+    data.lv = lv;
+
+    if (gain.length > 0) {
+      data.mastered = arrayUnion(...gain);
+    }
+    const currentWrong = curProg.wrong || [];
+    data.wrong = drop(add(currentWrong, wrong), right);
+  }
+
+  if (exam) {
+    const prev = curProg.exams?.[exam.id];
+    const entry: Progress['exams'][string] = {
+      best: Math.max(prev?.best ?? 0, exam.score),
+      last: exam.score,
+      at: Date.now(),
+      plays: (prev?.plays ?? (prev ? 1 : 0)) + 1,
+    };
+    if (exam.count) {
+      entry.bestRight = Math.max(prev?.bestRight ?? 0, exam.count.right);
+      entry.n = exam.count.n;
+    }
+    data.exams = { [exam.id]: entry };
+  }
+
+  // Single atomic write to Firestore
+  const r = ref(book);
+  await setDoc(r, data, { merge: true });
+
+  // Update public board immediately once progress is committed
+  const u = user.value;
+  const p = player.value;
+  if (u && p && gain.length > 0) {
+    const fullMastered = add(curProg.mastered || [], gain);
+    try {
+      await writeBoard(book, u.uid, p.key, shortName(p), fullMastered);
+      localSet(boardMark(u.uid, p.key, book), `${shortName(p)}:${fullMastered.length}`);
+    } catch (err) {
+      console.error('Eroare la sincronizarea clasamentului:', err);
+    }
+  }
+}
+
+/** Legacy wrapper for answers recording */
+export function recordAnswers(book: string, answers: Answered[], points = true) {
+  return saveQuizResult(book, answers, points);
+}
+
+/** Legacy wrapper for exam recording */
+export function recordExam(book: string, examId: string, score: number, count?: { right: number; n: number }) {
+  return saveQuizResult(book, undefined, false, { id: examId, score, count });
 }
 
 /** "17/21" for a test or an exam. Entries from before the count was kept have only a percentage: the count is worked out from it until the test is played again. */
@@ -192,8 +285,8 @@ effect(() => {
     const mark = boardMark(u.uid, p.key, b.slug);
     const expected = `${shortName(p)}:${prog.mastered.length}`;
     if (localGet<string | null>(mark, null) === expected) continue;
-    localSet(mark, expected);
     Promise.resolve(writeBoard(b.slug, u.uid, p.key, shortName(p), prog.mastered))
+      .then(() => localSet(mark, expected))
       .catch((e) => { console.error(e); localRemove(mark); });
   }
 });
@@ -211,8 +304,8 @@ effect(() => {
           const mastered = (snap.get('mastered') as string[] | undefined) ?? [];
           const expected = `${shortName(p)}:${mastered.length}`;
           if (localGet<string | null>(mark, null) === expected) return;
-          localSet(mark, expected);
-          return Promise.resolve(writeBoard(b.slug, u.uid, p.key, shortName(p), mastered));
+          return Promise.resolve(writeBoard(b.slug, u.uid, p.key, shortName(p), mastered))
+            .then(() => localSet(mark, expected));
         })
         .catch((e) => { console.error(e); localRemove(mark); });
     }

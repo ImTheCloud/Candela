@@ -12,10 +12,12 @@ import {
   type DocumentData,
 } from 'firebase/firestore';
 import { LEVEL_KEY, type Level } from '../lib/age';
-import { boardChangedAt } from '../lib/board';
+import { boardChangedAt, writeBoard } from '../lib/board';
 import { db } from '../lib/firebase';
 import { scoreView, setScoreView } from '../lib/level';
 import { localGet, localSet } from '../lib/store';
+import { player, shortName } from '../lib/players';
+import { progress } from '../lib/progress';
 import { user } from '../lib/session';
 import LevelPicker from './LevelPicker';
 
@@ -150,6 +152,27 @@ export default function Board({ book }: Props) {
         if (active) {
           setRows(list);
           setError(false);
+
+          // Auto-heal: verify current logged-in player's score on the board matches their actual progress
+          if (user.value && player.value) {
+            const u = user.value;
+            const p = player.value;
+            const myKey = `${u.uid}~${p.key}`;
+            const prog = progress(book).value;
+            const mastered = prog?.mastered || [];
+            if (mastered.length > 0) {
+              const myRow = list.find((r) => r.key === myKey);
+              const expectedScore = age === 'all'
+                ? mastered.length
+                : mastered.filter((id) => id.split('.')[2] === age).length;
+              if ((!myRow && expectedScore > 0) || (myRow && myRow.score !== expectedScore)) {
+                writeBoard(book, u.uid, p.key, shortName(p), mastered)
+                  .then(() => fetchBoard(book, age))
+                  .then((fresh) => { if (active) setRows(fresh); })
+                  .catch((e) => console.error('Eroare auto-heal clasament:', e));
+              }
+            }
+          }
         }
       })
       .catch(() => {
