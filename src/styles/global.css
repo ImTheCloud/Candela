@@ -295,9 +295,11 @@ img, svg { display: block; }
 /* Password with show/hide */
 .pw { position: relative; }
 .pw .input { width: 100%; padding-right: 52px; }
+.pw .input.pw-shown { -webkit-text-security: none !important; }
 .pw-eye {
   position: absolute; top: 0; right: 0; bottom: 0; width: 48px; display: grid; place-items: center;
   border: 0; background: none; color: var(--ink-2); cursor: pointer; border-radius: 0 var(--r-sm) var(--r-sm) 0;
+  z-index: 2; -webkit-tap-highlight-color: transparent;
 }
 .pw-eye[aria-pressed="true"] { color: var(--oil-ink); }
 
