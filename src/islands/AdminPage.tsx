@@ -28,12 +28,17 @@ function Users({ me }: { me: string }) {
   const shown = term ? rows.filter((r) => r.name.toLowerCase().includes(term) || r.email.toLowerCase().includes(term)
     || r.kids.some((k) => k.name.toLowerCase().includes(term))) : rows;
   const kidsTotal = rows.reduce((n, r) => n + r.kids.length, 0);
+  const parentsTotal = rows.filter((r) => r.isParent).length;
+  const normalTotal = rows.length - parentsTotal;
+  const totalPlayers = rows.length + kidsTotal;
 
   return (
     <div class="stack">
       <dl class="adm-stats">
+        <div><dt>Total</dt><dd>{totalPlayers}</dd></div>
         <div><dt>Conturi</dt><dd>{rows.length}</dd></div>
-        <div><dt>Părinți</dt><dd>{rows.filter((r) => r.isParent).length}</dd></div>
+        <div><dt>Normale</dt><dd>{normalTotal}</dd></div>
+        <div><dt>Părinți</dt><dd>{parentsTotal}</dd></div>
         <div><dt>Copii</dt><dd>{kidsTotal}</dd></div>
       </dl>
       <input class="input" type="search" placeholder="Caută după nume sau email" aria-label="Caută" value={q} onInput={(e) => setQ(e.currentTarget.value)} />
