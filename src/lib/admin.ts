@@ -1,4 +1,4 @@
-import { addDoc, collection, collectionGroup, deleteDoc, doc, getDocs, serverTimestamp, updateDoc, type Timestamp } from 'firebase/firestore';
+import { addDoc, collection, collectionGroup, deleteDoc, doc, getDoc, getDocs, serverTimestamp, updateDoc, type Timestamp } from 'firebase/firestore';
 import { removeFromBoards, updatePlayerBoardName } from './board';
 import { BOOKS } from './books';
 import { db } from './firebase';
@@ -48,9 +48,19 @@ const clean = (s: string) => s.trim().replace(/\s+/g, ' ');
 export function updateUser(uid: string, data: { name: string; isParent: boolean; admin: boolean }) {
   const name = clean(data.name);
   try {
-    const parts = name.trim().split(/\s+/);
-    const short = parts.length > 1 ? `${parts[0]} ${parts[parts.length - 1][0].toUpperCase()}.` : parts[0];
-    updatePlayerBoardName(uid, uid, short);
+    updatePlayerBoardName(uid, uid, name);
+    const parentParts = name.trim().split(/\s+/);
+    const parentLast = parentParts.slice(1).join(' ');
+    if (parentLast) {
+      getDocs(collection(db, 'users', uid, 'players')).then((snap) => {
+        for (const kd of snap.docs) {
+          const kname = (kd.data().name as string | undefined) ?? '';
+          const kp = kname.trim().split(/\s+/);
+          const kfull = kp.length > 1 ? kname.trim() : `${kp[0]} ${parentLast}`;
+          updatePlayerBoardName(uid, kd.id, kfull);
+        }
+      }).catch(() => {});
+    }
   } catch {}
   return updateDoc(doc(db, 'users', uid), { ...data, name });
 }
@@ -59,11 +69,20 @@ export function addChildTo(uid: string, name: string) {
   return addDoc(collection(db, 'users', uid, 'players'), { name: clean(name), createdAt: serverTimestamp() });
 }
 
-export function renameChild(uid: string, key: string, name: string) {
+export async function renameChild(uid: string, key: string, name: string) {
   const cleaned = clean(name);
   try {
     const parts = cleaned.trim().split(/\s+/);
-    updatePlayerBoardName(uid, key, parts[0]);
+    if (parts.length > 1) {
+      updatePlayerBoardName(uid, key, cleaned);
+    } else {
+      const userSnap = await getDoc(doc(db, 'users', uid));
+      const parentName = (userSnap.data()?.name as string | undefined) ?? '';
+      const parentParts = parentName.trim().split(/\s+/);
+      const parentLast = parentParts.slice(1).join(' ');
+      const fullName = parentLast ? `${parts[0]} ${parentLast}` : parts[0];
+      updatePlayerBoardName(uid, key, fullName);
+    }
   } catch {}
   return updateDoc(doc(db, 'users', uid, 'players', key), { name: cleaned });
 }

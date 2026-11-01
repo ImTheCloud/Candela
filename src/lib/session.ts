@@ -230,16 +230,16 @@ export async function updateAccountName(firstName: string, lastName: string): Pr
 
   // Update leaderboard entries in the background
   try {
-    const parts = name.trim().split(/\s+/);
-    const short = parts.length > 1 ? `${parts[0]} ${parts[parts.length - 1][0].toUpperCase()}.` : parts[0];
-    updatePlayerBoardName(u.uid, u.uid, short);
+    const parentParts = name.trim().split(/\s+/);
+    const parentLast = parentParts.slice(1).join(' ');
+    updatePlayerBoardName(u.uid, u.uid, name);
 
-    const lastInitial = parts.length > 1 ? parts[parts.length - 1][0].toUpperCase() : '';
     const kidsCache = localGet<{ uid: string; list: { key: string; name: string }[] } | null>('kids', null);
     if (kidsCache && kidsCache.uid === u.uid) {
       for (const k of kidsCache.list) {
-        const childShort = lastInitial ? `${k.name.trim().split(/\s+/)[0]} ${lastInitial}.` : k.name.trim().split(/\s+/)[0];
-        updatePlayerBoardName(u.uid, k.key, childShort);
+        const childParts = k.name.trim().split(/\s+/);
+        const childFull = childParts.length > 1 ? k.name.trim() : (parentLast ? `${childParts[0]} ${parentLast}` : childParts[0]);
+        updatePlayerBoardName(u.uid, k.key, childFull);
       }
     }
   } catch {

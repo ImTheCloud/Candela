@@ -70,10 +70,11 @@ export function addChild(name: string) {
 export async function updateChild(key: string, name: string) {
   const cleanName = name.trim().replace(/\s+/g, ' ');
   await updateDoc(doc(db, 'users', uid(), 'players', key), { name: cleanName });
+  const parts = cleanName.split(/\s+/);
   const parentParts = (profile.value?.name ?? '').trim().split(/\s+/);
-  const lastInitial = parentParts.length > 1 ? parentParts[parentParts.length - 1][0].toUpperCase() : '';
-  const short = lastInitial ? `${cleanName.split(/\s+/)[0]} ${lastInitial}.` : cleanName.split(/\s+/)[0];
-  updatePlayerBoardName(uid(), key, short);
+  const parentLast = parentParts.slice(1).join(' ');
+  const fullName = parts.length > 1 ? cleanName : (parentLast ? `${parts[0]} ${parentLast}` : parts[0]);
+  updatePlayerBoardName(uid(), key, fullName);
 }
 
 export async function removeChild(key: string) {
@@ -83,11 +84,13 @@ export async function removeChild(key: string) {
   return deleteDoc(doc(db, 'users', id, 'players', key));
 }
 
-/** Name on the public board: "Ana P." (children get the parent's last initial). */
+/** Name on the public board: full name (children get the parent's last name if they don't have one). */
 export function shortName(p: Player): string {
   const parts = p.name.trim().split(/\s+/);
-  const last = p.child ? (profile.value?.name ?? '').trim().split(/\s+/).slice(1).pop() : parts.length > 1 ? parts[parts.length - 1] : '';
-  return last ? `${parts[0]} ${last[0].toUpperCase()}.` : parts[0];
+  if (parts.length > 1) return p.name.trim();
+  const parentParts = (profile.value?.name ?? '').trim().split(/\s+/);
+  const parentLast = parentParts.slice(1).join(' ');
+  return parentLast ? `${parts[0]} ${parentLast}` : parts[0];
 }
 
 /**
