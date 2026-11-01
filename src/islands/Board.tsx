@@ -356,13 +356,7 @@ export default function Board({ book }: Props) {
   return (
     <div class="board">
       <div class="lb-head">
-        <div class="lb-title-wrap">
-          <h2 id="lb-title">Clasament</h2>
-          <span class="lb-live-badge" title="Clasament actualizat în timp real">
-            <span class="lb-live-dot" aria-hidden="true" />
-            <span>Live</span>
-          </span>
-        </div>
+        <h2 id="lb-title">Clasament</h2>
         <p class="lb-count small muted" style={rows === null || error ? { visibility: 'hidden' } : undefined}>
           {rows ? `${rows.length} ${rows.length === 1 ? 'jucător' : 'jucători'}` : '\u00a0'}
         </p>

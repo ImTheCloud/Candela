@@ -1378,52 +1378,10 @@ html:not(.signed-in) .back-signed-in { display: none; }
 @keyframes loader-in { to { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) { .loader svg { animation-duration: .01s; } }
 
-.lb-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-.lb-title-wrap { display: flex; align-items: center; gap: 10px; min-width: 0; flex: 1; }
-.lb-title-wrap h2 { margin: 0; }
+.lb-head { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; }
+.lb-head h2 { margin: 0; flex: 1; min-width: 0; }
 .lb-head .check { white-space: nowrap; }
 .lb-count { margin: 0; white-space: nowrap; text-align: right; flex: none; }
-
-.lb-live-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  padding: 3px 8px 3px 7px;
-  border-radius: 999px;
-  background: rgba(46, 125, 50, 0.08);
-  border: 1px solid rgba(46, 125, 50, 0.22);
-  color: #2e7d32;
-  font: 700 0.68rem/1 var(--f-body);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  flex: none;
-  user-select: none;
-}
-.lb-live-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #2e7d32;
-  box-shadow: 0 0 0 0 rgba(46, 125, 50, 0.7);
-  animation: lbLivePulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-@keyframes lbLivePulse {
-  0% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(46, 125, 50, 0.7);
-  }
-  70% {
-    transform: scale(1);
-    box-shadow: 0 0 0 5px rgba(46, 125, 50, 0);
-  }
-  100% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(46, 125, 50, 0);
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  .lb-live-dot { animation: none; }
-}
 
 .lb, .board, .lb-head { min-width: 0; max-width: 100%; }
 
