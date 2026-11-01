@@ -152,7 +152,7 @@ export default function ProfileProgressDashboard() {
             class={`prof-dash-seg-btn${selectedBook === 'all' ? ' is-active' : ''}`}
             onClick={() => setSelectedBook('all')}
           >
-            Ambele cărți
+            Ambele
           </button>
           <button
             type="button"
@@ -183,7 +183,7 @@ export default function ProfileProgressDashboard() {
             class={`prof-dash-chip${selectedLevel === 'all' ? ' is-active' : ''}`}
             onClick={() => setSelectedLevel('all')}
           >
-            Toate nivelurile
+            Toate
           </button>
           <button
             type="button"
@@ -215,34 +215,38 @@ export default function ProfileProgressDashboard() {
         </div>
       </div>
 
-      {/* Questions Breakdown List with Progress Bars */}
+      {/* Questions Breakdown List with Mobile-First 2-Row Progress Bars */}
       {totalN > 0 ? (
-        <ul class="kinds prof-kinds" aria-label="Pe tipuri de întrebări">
+        <ul class="prof-kinds" aria-label="Pe tipuri de întrebări">
           {kindsList.map((k) => {
             const isFull = k.ok === k.n && k.n > 0;
             const isZero = k.ok === 0 && k.n > 0;
             return (
               <li key={k.type} class={isFull ? 'is-full' : isZero ? 'is-zero' : ''}>
-                <span class="kind-name">{k.name}</span>
-                <span class="kind-bar" aria-hidden="true">
+                <div class="kind-head">
+                  <span class="kind-name">{k.name}</span>
+                  <span class="kind-n">
+                    {k.ok}/{k.n} <small class="muted">({k.percent}%)</small>
+                  </span>
+                </div>
+                <div class="kind-bar" aria-hidden="true">
                   <span style={{ width: `${k.percent}%` }} />
-                </span>
-                <span class="kind-n">
-                  {k.ok}/{k.n} <small class="muted">({k.percent}%)</small>
-                </span>
+                </div>
               </li>
             );
           })}
 
           {/* Global Total Row with border-top */}
           <li class="kinds-sum">
-            <span class="kind-name"><strong>Total global</strong></span>
-            <span class="kind-bar" aria-hidden="true">
+            <div class="kind-head">
+              <span class="kind-name"><strong>Total global</strong></span>
+              <span class="kind-n">
+                <strong>{totalOk}/{totalN}</strong> <small class="muted">({totalPercent}%)</small>
+              </span>
+            </div>
+            <div class="kind-bar" aria-hidden="true">
               <span style={{ width: `${totalPercent}%` }} />
-            </span>
-            <span class="kind-n">
-              <strong>{totalOk}/{totalN}</strong> <small class="muted">({totalPercent}%)</small>
-            </span>
+            </div>
           </li>
         </ul>
       ) : (
