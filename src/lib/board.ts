@@ -35,21 +35,31 @@ export const boardRef = (book: string, uid: string, key: string) => doc(db, 'boa
 /** When this phone last changed a board: boards read before are read again. */
 export let boardChangedAt = 0;
 
+export function invalidateBoardCache(book?: string) {
+  boardChangedAt = Date.now();
+  const booksToClear = book ? [book] : BOOKS.map((b) => b.slug);
+  for (const b of booksToClear) {
+    localRemove(`board:${b}:all`);
+    for (const l of LEVELS) localRemove(`board:${b}:${l.id}`);
+  }
+}
+
 /** The player's entry in a book's board (in a batch, or on its own). */
 export function writeBoard(book: string, uid: string, key: string, name: string, mastered: string[], batch?: WriteBatch) {
   const data = { name, ...boardFields(mastered), at: serverTimestamp() };
-  boardChangedAt = Date.now();
+  invalidateBoardCache(book);
   return batch ? batch.set(boardRef(book, uid, key), data) : setDoc(boardRef(book, uid, key), data);
 }
 
 /** Leaves the boards (a deleted player). "all" is an old board that no longer exists. */
 export function removeFromBoards(uid: string, key: string) {
+  invalidateBoardCache();
   return Promise.all([...BOOKS.map((b) => b.slug), 'all'].map((b) => deleteDoc(boardRef(b, uid, key))));
 }
 
 /** Updates the name displayed on the leaderboards for a player. */
 export async function updatePlayerBoardName(uid: string, key: string, name: string): Promise<void> {
-  boardChangedAt = Date.now();
+  invalidateBoardCache();
   await Promise.all(
     BOOKS.map(async (b) => {
       localRemove(`bd3:${uid}~${key}~${b.slug}`);

@@ -1,39 +1,113 @@
 import { useEffect, useState } from 'preact/hooks';
-import { collection, FieldPath, getDocs, limit, orderBy, query, where } from 'firebase/firestore';
+import {
+  collection,
+  FieldPath,
+  getDocs,
+  getDocsFromCache,
+  limit,
+  orderBy,
+  query,
+  where,
+  type QuerySnapshot,
+  type DocumentData,
+} from 'firebase/firestore';
 import { LEVEL_KEY, type Level } from '../lib/age';
 import { boardChangedAt } from '../lib/board';
 import { db } from '../lib/firebase';
-import { scoreView } from '../lib/level';
+import { scoreView, setScoreView } from '../lib/level';
+import { localGet, localSet } from '../lib/store';
 import { user } from '../lib/session';
 import LevelPicker from './LevelPicker';
 
 interface Row { key: string; name: string; score: number; at: number }
 
-// Only players with at least one point are listed.
-// Boards fetched in the last minutes, kept across pages: coming back home costs no reads (the free plan counts every document read).
+// Freshness threshold: 5 minutes in memory, but we display cached data immediately
 const FRESH = 5 * 60 * 1000;
 const SIZE = 50;
-const cache = new Map<string, { rows: Row[]; at: number }>();
-const cached = (key: string) => {
-  const c = cache.get(key);
-  return c && Date.now() - c.at < FRESH && c.at > boardChangedAt ? c.rows : null;
-};
+
+interface CacheEntry {
+  rows: Row[];
+  at: number;
+}
+
+const memoryCache = new Map<string, CacheEntry>();
+
+function getCached(key: string): Row[] | null {
+  const mem = memoryCache.get(key);
+  if (mem && Date.now() - mem.at < FRESH && mem.at > boardChangedAt) {
+    return mem.rows;
+  }
+  const stored = localGet<CacheEntry | null>(`board:${key}`, null);
+  if (stored && Array.isArray(stored.rows) && stored.at > boardChangedAt) {
+    memoryCache.set(key, stored);
+    return stored.rows;
+  }
+  return null;
+}
+
+function setCached(key: string, rows: Row[]): void {
+  const entry: CacheEntry = { rows, at: Date.now() };
+  memoryCache.set(key, entry);
+  localSet(`board:${key}`, entry);
+}
+
+function parseSnapshot(snap: QuerySnapshot<DocumentData>, a: Level | 'all'): Row[] {
+  return snap.docs
+    .map((d) => {
+      const score = a === 'all'
+        ? ((d.get('score') as number) ?? 0)
+        : ((d.data()?.lv?.[LEVEL_KEY[a]] as number) ?? 0);
+      return {
+        key: d.id,
+        name: (d.get('name') as string) || 'Anonim',
+        score,
+        at: d.get('at')?.toMillis?.() ?? 0,
+      };
+    })
+    .sort((x, y) => y.score - x.score || x.at - y.at);
+}
 
 async function fetchBoard(book: string, a: Level | 'all'): Promise<Row[]> {
   const key = `${book}:${a}`;
   const field = a === 'all' ? 'score' : new FieldPath('lv', LEVEL_KEY[a]);
-  const snap = await getDocs(query(collection(db, 'boards', book, 'players'), where(field, '>', 0), orderBy(field, 'desc'), limit(SIZE)));
-  const list = snap.docs
-    .map((d) => ({
-      key: d.id,
-      name: d.get('name') as string,
-      score: (d.get(field) as number) ?? 0,
-      at: d.get('at')?.toMillis?.() ?? 0,
-    }))
-    .sort((a, b) => b.score - a.score || a.at - b.at);
+  const q = query(
+    collection(db, 'boards', book, 'players'),
+    where(field, '>', 0),
+    orderBy(field, 'desc'),
+    limit(SIZE)
+  );
 
-  cache.set(key, { rows: list, at: Date.now() });
-  return list;
+  // 1. Try local Firestore IndexedDB cache first
+  let localList: Row[] | null = null;
+  try {
+    const cachedSnap = await getDocsFromCache(q);
+    if (!cachedSnap.empty) {
+      localList = parseSnapshot(cachedSnap, a);
+    }
+  } catch {}
+
+  // 2. Query server with 5-second timeout so mobile never hangs
+  let timer: any;
+  const timeoutPromise = new Promise<never>((_, reject) => {
+    timer = setTimeout(() => reject(new Error('timeout')), 5000);
+  });
+
+  try {
+    const snap = await Promise.race([getDocs(q), timeoutPromise]);
+    clearTimeout(timer);
+    const list = parseSnapshot(snap, a);
+    setCached(key, list);
+    return list;
+  } catch (err) {
+    clearTimeout(timer);
+    if (localList && localList.length > 0) {
+      setCached(key, localList);
+      return localList;
+    }
+    const fallback = getCached(key);
+    if (fallback) return fallback;
+    throw err;
+  }
 }
 
 interface Props {
@@ -44,19 +118,17 @@ interface Props {
 
 /** Public board of a book: all levels together or one level. Each question counts once; ties go to whoever got there first. */
 export default function Board({ book }: Props) {
-  // the tabs also pick which scores the chapter tiles show; they do not change the level of the tests
   const [age, setAgeState] = useState<Level | 'all'>(scoreView.value);
-  const [rows, setRows] = useState<Row[] | null>(() => cached(`${book}:${scoreView.value}`));
+  const [rows, setRows] = useState<Row[] | null>(() => getCached(`${book}:${scoreView.value}`));
   const [error, setError] = useState(false);
 
   const setAge = (next: Level | 'all') => {
     if (next === age) return;
-    scoreView.value = next;
+    setScoreView(next);
     setAgeState(next);
-    // instant switch when this board was already fetched since the page opened
-    const rows = cached(`${book}:${next}`);
-    if (rows) {
-      setRows(rows);
+    const existing = getCached(`${book}:${next}`);
+    if (existing) {
+      setRows(existing);
       setError(false);
     } else {
       setRows(null);
@@ -66,8 +138,13 @@ export default function Board({ book }: Props) {
   useEffect(() => {
     let active = true;
 
-    // only the tab on screen is read, and only when it is not fresh
-    if (cached(`${book}:${age}`)) return;
+    // Immediately display cached rows if we were waiting
+    const existing = getCached(`${book}:${age}`);
+    if (existing && rows === null) {
+      setRows(existing);
+      setError(false);
+    }
+
     fetchBoard(book, age)
       .then((list) => {
         if (active) {
@@ -76,10 +153,20 @@ export default function Board({ book }: Props) {
         }
       })
       .catch(() => {
-        if (active) setError(true);
+        if (active) {
+          const fallback = getCached(`${book}:${age}`);
+          if (fallback) {
+            setRows(fallback);
+            setError(false);
+          } else if (!rows) {
+            setError(true);
+          }
+        }
       });
 
-    return () => { active = false; };
+    return () => {
+      active = false;
+    };
   }, [book, age]);
 
   const mine = (key: string) => !!user.value && key.startsWith(`${user.value.uid}~`);
