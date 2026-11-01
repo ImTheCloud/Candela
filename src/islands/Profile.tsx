@@ -525,7 +525,7 @@ function PlayerBlock({
 
 function AccountNameForm({ currentName, onDone }: { currentName: string; onDone: () => void }) {
   const { first, last } = splitName(currentName);
-  const [firstName, setFirstName] = useState(first === 'Familia' ? '' : first);
+  const [firstName, setFirstName] = useState(first);
   const [lastName, setLastName] = useState(last);
   const [nameError, setNameError] = useState('');
   const [busy, setBusy] = useState(false);
@@ -534,10 +534,10 @@ function AccountNameForm({ currentName, onDone }: { currentName: string; onDone:
   async function submitName(e: Event) {
     e.preventDefault();
     if (busy) return;
+    const f = firstName.trim();
     const l = lastName.trim();
-    const f = firstName.trim() || 'Familia';
-    if (!l) {
-      setNameError('Scrie numele de familie.');
+    if (!f || !l) {
+      setNameError('Scrie prenumele și numele de familie.');
       return;
     }
     const full = `${f} ${l}`.replace(/\s+/g, ' ');
@@ -571,7 +571,7 @@ function AccountNameForm({ currentName, onDone }: { currentName: string; onDone:
             id="me-first"
             class="input"
             autocomplete="given-name"
-            placeholder="Familia"
+            required
             maxLength={40}
             value={firstName}
             onInput={(e) => setFirstName(e.currentTarget.value)}
