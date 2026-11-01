@@ -9,7 +9,7 @@ export function getStaticPaths() {
 }
 const { book } = Astro.props as { book: Book };
 ---
-<Base title="Examen alb" crumbs={[{ href: '/', label: 'Acasă' }, { href: `/${book.slug}`, label: book.name }, { href: `/${book.slug}/examene`, label: 'Examene' }]}>
+<Base title="Examen alb" crumbs={[{ href: '/', label: 'Acasă' }, { href: `/${book.slug}`, label: book.name }]}>
   <section class="wrap narrow">
     <MockExam client:only="preact" book={book.slug} bookName={book.name} chapters={book.chapters}>
       <Loader slot="fallback" />

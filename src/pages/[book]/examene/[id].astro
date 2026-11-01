@@ -13,7 +13,7 @@ const { book, exam } = Astro.props as { book: Book; exam: ExamFile };
 const questions = exam.questions.map((q) => playable(book.slug, q));
 const title = `${exam.title}, ${ageLabel(exam.age as AgeGroup)}`;
 ---
-<Base title={title} crumbs={[{ href: '/', label: 'Acasă' }, { href: `/${book.slug}`, label: book.name }, { href: `/${book.slug}/examene`, label: 'Examene' }]}>
+<Base title={title} crumbs={[{ href: '/', label: 'Acasă' }, { href: `/${book.slug}`, label: book.name }]}>
   <section class="wrap narrow">
     <ExamRunner client:only="preact" book={book.slug} bookName={book.name} title={`${title} (${exam.year})`} examId={exam.id} questions={questions}>
       <Loader slot="fallback" />

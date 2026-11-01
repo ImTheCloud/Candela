@@ -595,11 +595,6 @@ a.tile { text-decoration: none; }
 .lv-chip[aria-checked="true"],
 .lv-chip[aria-selected="true"] { background: var(--btn); border-color: var(--btn); color: #fff; }
 
-/* Exams page */
-.mock-card { display: grid; gap: 14px; padding: 16px; background: var(--surface-2); border-color: transparent; }
-.mock-card .exam-title { font-weight: 600; font-size: 1.05rem; }
-.exam.soon { opacity: .75; border-style: dashed; box-shadow: none; }
-
 /* Admin: accounts */
 .adm-stats { display: grid; grid-template-columns: repeat(5, 1fr); margin: 0; padding: 12px 0; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-box); }
 .adm-stats > div { display: flex; flex-direction: column-reverse; align-items: center; gap: 2px; min-width: 0; padding: 0 2px; }
@@ -805,10 +800,6 @@ html:not(.signed-in) .back-signed-in { display: none; }
 .lb-head h2 { margin: 0; flex: 1; min-width: 0; }
 .lb-head .check { white-space: nowrap; }
 .lb-count { margin: 0; white-space: nowrap; text-align: right; flex: none; }
-
-.real-note { margin: -6px 0 0; }
-.exams .card.exam { padding: 10px 14px; }
-.exams { gap: 8px; }
 
 .lb, .board, .lb-head { min-width: 0; max-width: 100%; }
 
