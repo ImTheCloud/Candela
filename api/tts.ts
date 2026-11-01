@@ -1,53 +1,45 @@
 import { MsEdgeTTS, OUTPUT_FORMAT } from 'msedge-tts';
 
 const cache = new Map<string, Buffer>();
-const inflight = new Map<string, Promise<Buffer>>();
+const inflight = new Map<string, InflightStream>();
 
-export default async function handler(req: any, res: any) {
-  try {
-    const text = (req.query?.text || req.body?.text || '').trim();
-    const voice = req.query?.voice || req.body?.voice || 'ro-RO-AlinaNeural';
+let sharedTtsInstance: MsEdgeTTS | null = null;
+let sharedTtsPromise: Promise<MsEdgeTTS> | null = null;
 
-    if (!text) {
-      return res.status(400).send('Missing text parameter');
-    }
+async function getSharedTts(voice: string): Promise<MsEdgeTTS> {
+  if (sharedTtsInstance) return sharedTtsInstance;
+  if (sharedTtsPromise) return sharedTtsPromise;
 
-    const cacheKey = `${voice}:${text}`;
-    if (cache.has(cacheKey)) {
-      const buf = cache.get(cacheKey)!;
-      res.setHeader('Content-Type', 'audio/mpeg');
-      res.setHeader('Content-Length', buf.length);
-      res.setHeader('Cache-Control', 'public, max-age=86400, immutable');
-      res.setHeader('Accept-Ranges', 'bytes');
-      return res.send(buf);
-    }
-
-    // Wait for in-flight request if another concurrent request is already fetching this exact speech
-    if (inflight.has(cacheKey)) {
-      try {
-        const buf = await inflight.get(cacheKey)!;
-        res.setHeader('Content-Type', 'audio/mpeg');
-        res.setHeader('Content-Length', buf.length);
-        res.setHeader('Cache-Control', 'public, max-age=86400, immutable');
-        res.setHeader('Accept-Ranges', 'bytes');
-        return res.send(buf);
-      } catch {
-        // proceed to retry below if in-flight failed
-      }
-    }
-
-    let resolveInflight: (buf: Buffer) => void;
-    let rejectInflight: (err: any) => void;
-    const inflightPromise = new Promise<Buffer>((resolve, reject) => {
-      resolveInflight = resolve;
-      rejectInflight = reject;
-    });
-    inflight.set(cacheKey, inflightPromise);
-
+  sharedTtsPromise = (async () => {
     const tts = new MsEdgeTTS();
     await tts.setMetadata(voice, OUTPUT_FORMAT.AUDIO_24KHZ_48KBITRATE_MONO_MP3);
-    const { audioStream } = tts.toStream(text);
+    sharedTtsInstance = tts;
+    sharedTtsPromise = null;
+    return tts;
+  })().catch((err) => {
+    sharedTtsInstance = null;
+    sharedTtsPromise = null;
+    throw err;
+  });
 
+  return sharedTtsPromise;
+}
+
+function resetSharedTts(): void {
+  if (sharedTtsInstance) {
+    try { sharedTtsInstance.close(); } catch {}
+    sharedTtsInstance = null;
+  }
+  sharedTtsPromise = null;
+}
+
+class InflightStream {
+  chunks: Buffer[] = [];
+  subscribers = new Set<any>();
+  ended = false;
+  error: any = null;
+
+  subscribe(res: any, req: any) {
     res.setHeader('Content-Type', 'audio/mpeg');
     res.setHeader('Cache-Control', 'public, max-age=86400');
     res.setHeader('Transfer-Encoding', 'chunked');
@@ -55,43 +47,126 @@ export default async function handler(req: any, res: any) {
       res.flushHeaders();
     }
 
-    let closed = false;
-    req.on('close', () => {
-      closed = true;
-      try { tts.close(); } catch {}
-    });
-
-    const chunks: Buffer[] = [];
-    audioStream.on('data', (chunk: Buffer) => {
-      if (!closed && !res.writableEnded) {
+    for (const chunk of this.chunks) {
+      if (!res.writableEnded) {
         res.write(chunk);
-        chunks.push(chunk);
       }
-    });
-    audioStream.on('end', () => {
-      const buf = Buffer.concat(chunks);
-      cache.set(cacheKey, buf);
-      inflight.delete(cacheKey);
-      resolveInflight!(buf);
-      if (!closed) {
-        res.end();
-      }
-      try { tts.close(); } catch {}
-    });
-    audioStream.on('error', (err: any) => {
-      inflight.delete(cacheKey);
-      rejectInflight!(err);
+    }
+
+    if (this.ended) {
+      if (!res.writableEnded) res.end();
+      return;
+    }
+    if (this.error) {
       if (!res.headersSent) {
-        res.status(500).send(String(err));
-      } else {
+        res.status?.(500).send(String(this.error)) || res.end(String(this.error));
+      } else if (!res.writableEnded) {
         res.end();
       }
-      try { tts.close(); } catch {}
+      return;
+    }
+
+    this.subscribers.add(res);
+    req.on?.('close', () => {
+      this.subscribers.delete(res);
     });
+  }
+
+  write(chunk: Buffer) {
+    this.chunks.push(chunk);
+    for (const res of this.subscribers) {
+      if (!res.writableEnded) {
+        try { res.write(chunk); } catch {}
+      }
+    }
+  }
+
+  end() {
+    this.ended = true;
+    for (const res of this.subscribers) {
+      if (!res.writableEnded) {
+        try { res.end(); } catch {}
+      }
+    }
+    this.subscribers.clear();
+  }
+
+  destroy(err: any) {
+    this.error = err;
+    for (const res of this.subscribers) {
+      if (!res.headersSent) {
+        try {
+          if (typeof res.status === 'function') res.status(500).send(String(err));
+          else res.end(String(err));
+        } catch {}
+      } else if (!res.writableEnded) {
+        try { res.end(); } catch {}
+      }
+    }
+    this.subscribers.clear();
+  }
+}
+
+export default async function handler(req: any, res: any) {
+  try {
+    const text = (req.query?.text || req.body?.text || '').trim();
+    const voice = req.query?.voice || req.body?.voice || 'ro-RO-AlinaNeural';
+
+    if (!text) {
+      return res.status ? res.status(400).send('Missing text parameter') : res.end('Missing text parameter');
+    }
+
+    const cacheKey = `${voice}:${text}`;
+
+    // 1. Instant response from memory cache (2ms)
+    if (cache.has(cacheKey)) {
+      const buf = cache.get(cacheKey)!;
+      res.setHeader('Content-Type', 'audio/mpeg');
+      res.setHeader('Content-Length', buf.length);
+      res.setHeader('Cache-Control', 'public, max-age=86400, immutable');
+      res.setHeader('Accept-Ranges', 'bytes');
+      return res.send ? res.send(buf) : res.end(buf);
+    }
+
+    // 2. Active in-flight stream: broadcast chunks immediately to concurrent subscriber
+    if (inflight.has(cacheKey)) {
+      const stream = inflight.get(cacheKey)!;
+      stream.subscribe(res, req);
+      return;
+    }
+
+    // 3. New synthesis request: create InflightStream and pipe from persistent warm TTS
+    const stream = new InflightStream();
+    inflight.set(cacheKey, stream);
+    stream.subscribe(res, req);
+
+    try {
+      const tts = await getSharedTts(voice);
+      const { audioStream } = tts.toStream(text);
+
+      audioStream.on('data', (chunk: Buffer) => {
+        stream.write(chunk);
+      });
+      audioStream.on('end', () => {
+        const fullBuf = Buffer.concat(stream.chunks);
+        cache.set(cacheKey, fullBuf);
+        inflight.delete(cacheKey);
+        stream.end();
+      });
+      audioStream.on('error', (err: any) => {
+        inflight.delete(cacheKey);
+        stream.destroy(err);
+        resetSharedTts();
+      });
+    } catch (err) {
+      inflight.delete(cacheKey);
+      stream.destroy(err);
+      resetSharedTts();
+    }
   } catch (err: any) {
     if (!res.headersSent) {
-      res.status(500).send(err?.message || String(err));
-    } else {
+      res.status ? res.status(500).send(err?.message || String(err)) : res.end(err?.message || String(err));
+    } else if (!res.writableEnded) {
       res.end();
     }
   }

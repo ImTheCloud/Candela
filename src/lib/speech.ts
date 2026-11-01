@@ -11,7 +11,7 @@ let currentPlaybackRate = 1.0; // Default 1.0x
 // In-memory cache of audio URLs (blob URLs created from background fetch for 0ms latency)
 const readyUrlCache = new Map<string, string>();
 const inflightFetches = new Map<string, Promise<string>>();
-const MAX_CACHE_SIZE = 40;
+const MAX_CACHE_SIZE = 150;
 
 if (typeof window !== 'undefined') {
   (window as any).stopSpeaking = stopSpeaking;
@@ -46,12 +46,19 @@ export function pauseSpeaking(): void {
   }
 }
 
-export function resumeSpeaking(): void {
-  if (activeAudio && activeAudio.paused) {
+export function resumeSpeaking(): boolean {
+  if (activeAudio && !activeAudio.ended && activeAudio.paused) {
     try {
-      activeAudio.play().catch(() => {});
-    } catch {}
+      const p = activeAudio.play();
+      if (p !== undefined) {
+        p.catch(() => {});
+      }
+      return true;
+    } catch {
+      return false;
+    }
   }
+  return false;
 }
 
 /**
@@ -86,13 +93,14 @@ export function isCurrentlySpeaking(): boolean {
  * Works seamlessly across mobile browsers (iOS Safari, Android Chrome) which block
  * media element autoplay/preload without user gestures, but allow background fetch.
  */
-export function preloadText(text: string, voice = 'ro-RO-AlinaNeural'): void {
-  if (typeof window === 'undefined') return;
+export function preloadText(text: string, voice = 'ro-RO-AlinaNeural'): Promise<string> {
+  if (typeof window === 'undefined') return Promise.resolve('');
   const clean = text.trim();
-  if (!clean) return;
+  if (!clean) return Promise.resolve('');
 
   const key = `${voice}:${clean}`;
-  if (readyUrlCache.has(key) || inflightFetches.has(key)) return;
+  if (readyUrlCache.has(key)) return Promise.resolve(readyUrlCache.get(key)!);
+  if (inflightFetches.has(key)) return inflightFetches.get(key)!;
 
   const url = `/api/tts?text=${encodeURIComponent(clean)}&voice=${encodeURIComponent(voice)}`;
 
@@ -124,6 +132,7 @@ export function preloadText(text: string, voice = 'ro-RO-AlinaNeural'): void {
     });
 
   inflightFetches.set(key, fetchPromise);
+  return fetchPromise;
 }
 
 /**

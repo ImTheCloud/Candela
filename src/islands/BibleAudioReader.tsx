@@ -55,19 +55,50 @@ export default function BibleAudioReader({ bookSlug, ch, totalChapters = 24, ver
     };
   }, []);
 
-  // Pre-buffer initial verse immediately with full network priority for 0ms initial latency
+  // Pre-buffer entire chapter in background sequentially so any clicked verse starts in 0ms
   useEffect(() => {
+    let cancelled = false;
+    let timeoutId: any = null;
+
     if (verses[0]) preloadText(verses[0]);
 
     const isAutoplay = typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('autoplay') === '1';
     if (isAutoplay) {
       preloadText(`Capitolul ${ch}.`);
-    } else {
-      const timer = setTimeout(() => {
-        if (verses[1]) preloadText(verses[1]);
-      }, 600);
-      return () => clearTimeout(timer);
     }
+
+    let nextIdxToPreload = 1;
+
+    const preloadNext = () => {
+      if (cancelled) return;
+      if (nextIdxToPreload >= verses.length) return;
+
+      const idx = nextIdxToPreload++;
+      const text = verses[idx];
+      if (!text) {
+        preloadNext();
+        return;
+      }
+
+      preloadText(text)
+        .then(() => {
+          if (!cancelled) {
+            timeoutId = setTimeout(preloadNext, 50);
+          }
+        })
+        .catch(() => {
+          if (!cancelled) {
+            timeoutId = setTimeout(preloadNext, 200);
+          }
+        });
+    };
+
+    timeoutId = setTimeout(preloadNext, 300);
+
+    return () => {
+      cancelled = true;
+      if (timeoutId) clearTimeout(timeoutId);
+    };
   }, [ch, verses]);
 
   // Handle autoplay when auto-advancing from the previous chapter
@@ -133,9 +164,11 @@ export default function BibleAudioReader({ bookSlug, ch, totalChapters = 24, ver
     setIsPaused(false);
     highlightVerse(idx);
 
-    // Preload next verse in background for gapless playback
-    if (idx + 1 < verses.length) {
-      preloadText(verses[idx + 1]);
+    // Preload the next 3 verses in background for gapless, zero-latency playback
+    for (let k = 1; k <= 3; k++) {
+      if (idx + k < verses.length) {
+        preloadText(verses[idx + k]);
+      }
     }
 
     // Pure biblical text only: never say verse numbers out loud
@@ -192,7 +225,11 @@ export default function BibleAudioReader({ bookSlug, ch, totalChapters = 24, ver
     setIsPaused(false);
     setIsPlaying(true);
     isPlayingRef.current = true;
-    resumeSpeaking();
+    const ok = resumeSpeaking();
+    if (!ok) {
+      // Audio element was lost or ended while paused: restart verse immediately
+      playVerse(verseIdxRef.current);
+    }
   };
 
   const stop = () => {

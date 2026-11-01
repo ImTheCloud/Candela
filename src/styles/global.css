@@ -64,6 +64,7 @@ body {
   width: 100%;
 }
 main { flex: 1; padding-top: 8px; padding-bottom: calc(32px + env(safe-area-inset-bottom)); min-width: 0; max-width: 100%; }
+main:has(.pager) { padding-bottom: 0; }
 
 /* smooth page changes (Astro's router) instead of a flash of the previous page */
 ::view-transition-old(root), ::view-transition-new(root) { animation-duration: .14s; }

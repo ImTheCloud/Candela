@@ -48,7 +48,11 @@ const count = plural(verses.length, 'verset', 'versete');
 
 </Base>
 <style>
-  .reader { padding-block: 16px 24px; }
+  :global(main:has(.pager)),
+  :global(body:has(.pager) main) {
+    padding-bottom: 0 !important;
+  }
+  .reader { padding-block: 16px calc(var(--pager-h, 68px) + 24px); }
   .reader-title { margin: 0 0 10px; font: 600 1.2rem/1.3 var(--f-display); color: var(--ink); }
   .text { font: 400 1.15rem/1.75 var(--f-bible); }
   .verse { margin: 0 0 2px; scroll-margin-top: 80px; }
