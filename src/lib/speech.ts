@@ -77,12 +77,56 @@ export function stopSpeaking(): void {
   }
 }
 
+export function pauseSpeaking(): void {
+  if (activeAudio && !activeAudio.paused) {
+    try {
+      activeAudio.pause();
+    } catch {}
+  }
+}
+
+export function resumeSpeaking(): void {
+  if (activeAudio && activeAudio.paused) {
+    try {
+      activeAudio.play().catch(() => {});
+    } catch {}
+  }
+}
+
+export function setSpeakingSpeed(rate: number): void {
+  if (activeAudio) {
+    try {
+      activeAudio.playbackRate = rate;
+    } catch {}
+  }
+}
+
 export function isCurrentlySpeaking(): boolean {
   if (activeAudio && !activeAudio.paused && !activeAudio.ended) return true;
   if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
     return window.speechSynthesis.speaking;
   }
   return false;
+}
+
+/**
+ * Preloads audio in the background so it plays with 0 latency when requested.
+ */
+export function preloadText(text: string, voice = 'ro-RO-AlinaNeural'): void {
+  if (typeof window === 'undefined') return;
+  const clean = text.trim();
+  if (!clean) return;
+  const url = `/api/tts?text=${encodeURIComponent(clean)}&voice=${encodeURIComponent(voice)}`;
+  fetch(url).catch(() => {});
+}
+
+/**
+ * Preloads question audio before the user navigates to it.
+ */
+export function preloadQuestionAudio(q: Playable): void {
+  if (!q) return;
+  const text = buildQuestionSpeech(q);
+  preloadText(text);
 }
 
 /**
@@ -104,7 +148,7 @@ function speakLocalText(text: string, options: SpeakOptions = {}): () => void {
   const voice = preferredVoice || getBestRomanianVoice();
   if (voice) utt.voice = voice;
 
-  utt.rate = options.rate ?? 0.93;
+  utt.rate = options.rate ?? 0.75;
   utt.pitch = options.pitch ?? 1.0;
 
   utt.onstart = () => {
@@ -142,7 +186,7 @@ function speakLocalText(text: string, options: SpeakOptions = {}): () => void {
 
 /**
  * Speaks text using a natural human Romanian voice (Microsoft Azure Alina Neural via /api/tts),
- * seamlessly falling back to local SpeechSynthesis if offline.
+ * with custom rate (default 0.75x for clear, relaxed pacing).
  */
 export function speakText(text: string, options: SpeakOptions = {}): () => void {
   const clean = text.trim();
@@ -162,6 +206,10 @@ export function speakText(text: string, options: SpeakOptions = {}): () => void 
       const url = `/api/tts?text=${encodeURIComponent(clean)}&voice=${encodeURIComponent(voice)}`;
       const audio = new Audio(url);
       activeAudio = audio;
+
+      const rate = options.rate ?? 0.75;
+      audio.playbackRate = rate;
+      (audio as any).preservesPitch = true;
 
       audio.onplay = () => {
         if (!cancelled) options.onStart?.();
@@ -264,12 +312,16 @@ export function buildQuestionSpeech(q: Playable): string {
  */
 export function speakQuestion(
   q: Playable,
-  onStart?: () => void,
-  onEnd?: () => void
+  options: {
+    rate?: number;
+    onStart?: () => void;
+    onEnd?: () => void;
+  } = {}
 ): () => void {
   const text = buildQuestionSpeech(q);
   return speakText(text, {
-    onStart,
-    onEnd,
+    rate: options.rate ?? 0.75,
+    onStart: options.onStart,
+    onEnd: options.onEnd,
   });
 }

@@ -9,7 +9,7 @@ import Modal, { CloseButton } from './Modal';
 import { questionLevel } from '../lib/age';
 import { BOOKS } from '../lib/books';
 import ReportButton from './ReportButton';
-import { isSpeechSupported, speakQuestion, stopSpeaking } from '../lib/speech';
+import { isSpeechSupported, preloadQuestionAudio, setSpeakingSpeed, speakQuestion, stopSpeaking } from '../lib/speech';
 
 export interface QuizProps {
   book: string;
@@ -37,8 +37,12 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
   const [saveFailed, setSaveFailed] = useState(false);
   const [verse, setVerse] = useState(false);
 
-  // Audio narration state
+  // Audio narration state (persistent across questions once activated by user)
+  const [autoVoice, setAutoVoice] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
+  const [speedIdx, setSpeedIdx] = useState(0); // 0.75x default
+  const SPEEDS = [0.75, 1.0, 1.25];
+  const lastSpokenIndex = useRef<number | null>(null);
 
   const q = questions[i];
   const g = grades[i];
@@ -115,20 +119,53 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
       stopSpeaking();
       setIsSpeaking(false);
     } else {
+      setAutoVoice(true);
       setIsSpeaking(true);
-      speakQuestion(
-        q,
-        () => setIsSpeaking(true),
-        () => setIsSpeaking(false)
-      );
+      lastSpokenIndex.current = i;
+      speakQuestion(q, {
+        rate: SPEEDS[speedIdx],
+        onStart: () => setIsSpeaking(true),
+        onEnd: () => setIsSpeaking(false),
+      });
     }
   };
 
-  // Stop speaking when question changes, quiz ends, or verse modal opens; never loop automatically
+  const cycleSpeed = (e: MouseEvent) => {
+    e.stopPropagation();
+    const nextIdx = (speedIdx + 1) % SPEEDS.length;
+    setSpeedIdx(nextIdx);
+    setSpeakingSpeed(SPEEDS[nextIdx]);
+  };
+
+  // Preload next question's audio as soon as current question appears
+  useEffect(() => {
+    if (questions[i + 1]) {
+      preloadQuestionAudio(questions[i + 1]);
+    }
+  }, [i]);
+
+  // When advancing to another question: if autoVoice was activated, automatically read the new question once
   useEffect(() => {
     stopSpeaking();
     setIsSpeaking(false);
-  }, [i, done, verse]);
+
+    if (!autoVoice || done || grades[i] || verse) return;
+    if (lastSpokenIndex.current === i) return;
+
+    lastSpokenIndex.current = i;
+    const timer = setTimeout(() => {
+      speakQuestion(q, {
+        rate: SPEEDS[speedIdx],
+        onStart: () => setIsSpeaking(true),
+        onEnd: () => setIsSpeaking(false),
+      });
+    }, 120);
+
+    return () => {
+      clearTimeout(timer);
+      stopSpeaking();
+    };
+  }, [i, autoVoice, done, verse, speedIdx]);
 
   useEffect(() => {
     return () => {
@@ -204,9 +241,9 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
           <div class="actions-aux">
             <button
               type="button"
-              class={`btn-voice${isSpeaking ? ' is-speaking' : ''}`}
+              class={`btn-voice${isSpeaking ? ' is-speaking' : ''}${autoVoice ? ' is-active' : ''}`}
               onClick={toggleVoice}
-              title={isSpeaking ? 'Oprește lectura' : 'Ascultă întrebarea (voce naturală)'}
+              title={isSpeaking ? 'Pauză / Oprește' : autoVoice ? 'Ascultă din nou' : 'Ascultă întrebarea (voce naturală)'}
               aria-label={isSpeaking ? 'Oprește lectura' : 'Ascultă întrebarea'}
             >
               {isSpeaking ? (
@@ -225,6 +262,15 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
               <span class="btn-voice-label">
                 {isSpeaking ? 'Vorbește' : 'Ascultă'}
               </span>
+            </button>
+            <button
+              type="button"
+              class="btn-voice-speed"
+              onClick={cycleSpeed}
+              title="Schimbă viteza vocii (0.75x, 1x, 1.25x)"
+              aria-label="Viteza vocii"
+            >
+              {SPEEDS[speedIdx]}x
             </button>
           </div>
         )}
