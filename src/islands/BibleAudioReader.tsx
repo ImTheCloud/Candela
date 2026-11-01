@@ -4,32 +4,70 @@ import FloatingAudioButton from './FloatingAudioButton';
 
 interface Props {
   bookSlug: string;
-  bookName: string;
+  bookName?: string;
   ch: number;
   totalChapters?: number;
   title?: string;
   verses: string[];
 }
 
-export default function BibleAudioReader({ bookSlug, bookName, ch, totalChapters = 24, verses }: Props) {
+export default function BibleAudioReader({ bookSlug, ch, totalChapters = 24, verses }: Props) {
   const [supported] = useState(() => isSpeechSupported());
   const [isPlaying, setIsPlaying] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [verseIdx, setVerseIdx] = useState(0);
-  const [speed, setSpeed] = useState(1.0); // default 1.0x as requested
+  const [speed, setSpeed] = useState(1.0); // Default 1.0x
 
   const isPlayingRef = useRef(false);
+  const isPausedRef = useRef(false);
   const verseIdxRef = useRef(0);
   const speedRef = useRef(1.0);
 
   isPlayingRef.current = isPlaying;
+  isPausedRef.current = isPaused;
   verseIdxRef.current = verseIdx;
   speedRef.current = speed;
 
-  // Pre-buffer first 2 verses immediately upon opening chapter for 0ms initial latency
+  // Toggle .audio-active on reader element when audio is active
+  useEffect(() => {
+    if (typeof document === 'undefined') return;
+    const isAudioActive = isPlaying || isPaused;
+    const readerEl = document.querySelector('.reader');
+    if (readerEl) {
+      readerEl.classList.toggle('audio-active', isAudioActive);
+    }
+  }, [isPlaying, isPaused]);
+
+  // Track .pager height dynamically for perfect responsive FAB placement above the bottom bar
+  useEffect(() => {
+    if (typeof document === 'undefined') return;
+    const pager = document.querySelector('.pager') as HTMLElement | null;
+    if (!pager) return;
+    const update = () => {
+      document.documentElement.style.setProperty('--pager-h', `${pager.offsetHeight}px`);
+    };
+    update();
+    const ro = new ResizeObserver(update);
+    ro.observe(pager);
+    return () => {
+      ro.disconnect();
+      document.documentElement.style.removeProperty('--pager-h');
+    };
+  }, []);
+
+  // Pre-buffer initial verse immediately with full network priority for 0ms initial latency
   useEffect(() => {
     if (verses[0]) preloadText(verses[0]);
-    if (verses[1]) preloadText(verses[1]);
+
+    const isAutoplay = typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('autoplay') === '1';
+    if (isAutoplay) {
+      preloadText(`Capitolul ${ch}.`);
+    } else {
+      const timer = setTimeout(() => {
+        if (verses[1]) preloadText(verses[1]);
+      }, 600);
+      return () => clearTimeout(timer);
+    }
   }, [ch, verses]);
 
   // Handle autoplay when auto-advancing from the previous chapter
@@ -46,8 +84,9 @@ export default function BibleAudioReader({ bookSlug, bookName, ch, totalChapters
       setIsPaused(false);
       setVerseIdx(0);
       verseIdxRef.current = 0;
+      highlightVerse(0);
 
-      // Announce the chapter number out loud so the listener knows it changed chapters
+      // Announce the chapter number out loud: "Capitolul X.", then read verse 1 directly
       speakText(`Capitolul ${ch}.`, {
         rate: speedRef.current,
         onEnd: () => {
@@ -99,7 +138,7 @@ export default function BibleAudioReader({ bookSlug, bookName, ch, totalChapters
       preloadText(verses[idx + 1]);
     }
 
-    // Do NOT say "Versetul X." out loud: read only the pure text of the verse
+    // Pure biblical text only: never say verse numbers out loud
     const verseText = verses[idx];
 
     speakText(verseText, {
@@ -136,11 +175,8 @@ export default function BibleAudioReader({ bookSlug, bookName, ch, totalChapters
     }
   };
 
-  const start = (fromIdx = verseIdx) => {
-    if (isPlaying && isPaused) {
-      resume();
-      return;
-    }
+  const start = (fromIdx = verseIdxRef.current) => {
+    stopSpeaking();
     setIsPlaying(true);
     isPlayingRef.current = true;
     setIsPaused(false);
@@ -169,20 +205,6 @@ export default function BibleAudioReader({ bookSlug, bookName, ch, totalChapters
     clearHighlight();
   };
 
-  const nextVerse = () => {
-    if (verseIdx < verses.length - 1) {
-      playVerse(verseIdx + 1);
-    } else {
-      handleChapterFinished();
-    }
-  };
-
-  const prevVerse = () => {
-    if (verseIdx > 0) {
-      playVerse(verseIdx - 1);
-    }
-  };
-
   const handleSpeedChange = (newSpeed: number) => {
     setSpeed(newSpeed);
     speedRef.current = newSpeed;
@@ -195,7 +217,7 @@ export default function BibleAudioReader({ bookSlug, bookName, ch, totalChapters
     } else if (isPlaying && isPaused) {
       resume();
     } else {
-      start(verseIdx);
+      start(verseIdxRef.current);
     }
   };
 
@@ -204,12 +226,19 @@ export default function BibleAudioReader({ bookSlug, bookName, ch, totalChapters
     return () => {
       stopSpeaking();
       clearHighlight();
+      if (typeof document !== 'undefined') {
+        const readerEl = document.querySelector('.reader');
+        if (readerEl) readerEl.classList.remove('audio-active');
+      }
     };
   }, []);
 
-  // Allow clicking on any verse in the text to start listening directly from that verse
+  // If audio playback was started, clicking on any verse jumps directly to that verse
   useEffect(() => {
     const onVerseClick = (e: MouseEvent) => {
+      // Only jump to clicked verse if audio playback was already started (playing or paused)
+      if (!isPlayingRef.current && !isPausedRef.current) return;
+
       const target = (e.target as HTMLElement).closest('.verse');
       if (!target || !target.id || !target.id.startsWith('v')) return;
       const num = parseInt(target.id.slice(1), 10);
@@ -233,9 +262,8 @@ export default function BibleAudioReader({ bookSlug, bookName, ch, totalChapters
       isPaused={isPaused}
       speed={speed}
       onToggle={toggleAudio}
-      onStop={stop}
       onSpeedChange={handleSpeedChange}
-      bottomOffset="calc(64px + env(safe-area-inset-bottom) + 12px)"
+      bottomOffset="calc(var(--pager-h, 65px) + 14px)"
     />
   );
 }
