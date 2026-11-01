@@ -26,7 +26,7 @@ const count = plural(verses.length, 'verset', 'versete');
 <Base title={`${book.name} ${ch}`} heading={{ title: `Capitolul ${ch}`, note: count }} backUp crumbs={[{ href: '/', label: 'Acasă' }, { href: `/${book.slug}`, label: book.name }]}>
   <article class="wrap narrow reader" data-book={book.slug} data-ch={ch}>
     <h2 class="reader-title">{book.titles[ch - 1]}</h2>
-    <BibleAudioReader client:only="preact" bookSlug={book.slug} bookName={book.name} ch={ch} title={book.titles[ch - 1]} verses={verses} />
+    <BibleAudioReader client:only="preact" bookSlug={book.slug} bookName={book.name} ch={ch} totalChapters={book.chapters} title={book.titles[ch - 1]} verses={verses} />
     <div class="text">
       {verses.map((v, i) => (
         <p class="verse" id={`v${i + 1}`}><sup>{i + 1}</sup>{v}</p>
@@ -64,14 +64,14 @@ const count = plural(verses.length, 'verset', 'versete');
   }
   sup { font: 600 0.7rem var(--f-body); color: var(--oil-ink); margin-right: 4px; vertical-align: 0.5em; line-height: 0; }
 
-  /* Thumb-reachable chapter navigation */
+  /* Thumb-reachable chapter navigation above the fixed audio player dock */
   .pager {
-    position: sticky; bottom: 0; z-index: 5;
-    background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(10px);
+    padding-bottom: calc(115px + env(safe-area-inset-bottom));
+    background: transparent;
     border-top: 1px solid var(--line);
-    padding-bottom: env(safe-area-inset-bottom);
+    margin-top: 16px;
   }
-  .pager-stack { padding-block: 8px; }
+  .pager-stack { padding-block: 14px 6px; }
   .pager-row { display: grid; grid-template-columns: 48px 1fr 48px; align-items: center; gap: 10px; }
   .pager-btn {
     display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%;

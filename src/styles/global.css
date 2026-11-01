@@ -45,7 +45,7 @@ html {
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
   touch-action: manipulation;
-  overflow-x: hidden;
+  overflow-x: clip;
   max-width: 100%;
 }
 /* iOS Safari zooms in when an input's computed font-size is below 16px */
@@ -59,7 +59,7 @@ body {
   color: var(--ink);
   font: 400 16px/1.55 var(--f-body);
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
+  overflow-x: clip;
   max-width: 100%;
   width: 100%;
 }
@@ -1531,148 +1531,207 @@ html:not(.signed-in) .back-signed-in { display: none; }
   background: var(--btn);
 }
 
-/* Bible Audio Reader - Trigger Bar & Docked Bottom Player */
-body.bible-audio-active main {
-  padding-bottom: calc(90px + env(safe-area-inset-bottom));
-}
+/* ==========================================================================
+   Unified Audio Player Bar (Quiz & Bible Reader)
+   Structured playback controls: Play/Start, Pause, Terminate & 6 Speed Options
+   ========================================================================== */
 
-.bible-audio-trigger-bar {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin: 6px 0 16px;
-}
-.btn-audio-start {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 40px;
-  padding: 0 16px 0 12px;
-  border-radius: 999px;
-  background: var(--btn);
-  color: #fff;
-  border: none;
-  font: 600 0.9rem/1 var(--f-body);
-  cursor: pointer;
-  box-shadow: 0 2px 6px rgba(58, 39, 27, 0.12);
-  transition: transform 0.1s ease, background-color 0.15s ease;
-}
-.btn-audio-start:active {
-  transform: scale(0.97);
-  background: var(--btn-hover);
-}
-.btn-audio-speed-pill {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 44px;
-  height: 40px;
-  padding: 0 10px;
-  border-radius: 999px;
-  border: 1.5px solid var(--line);
-  background: var(--surface);
-  color: var(--oil-ink);
-  font: 700 0.82rem/1 var(--f-body);
-  cursor: pointer;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  transition: all 0.15s ease;
-}
-.btn-audio-speed-pill:active {
-  background: var(--surface-2);
-  transform: scale(0.96);
-}
-
-/* Fixed Docked Player Bar (Sticky at Bottom) */
-.bible-audio-dock {
+/* Fixed Docked Player in Bible Reader (Permanently sticky at bottom) */
+.bible-bottom-dock {
   position: fixed;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 40;
-  padding: 8px var(--gutter) calc(8px + env(safe-area-inset-bottom));
-  background: color-mix(in srgb, var(--surface) 96%, transparent);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-top: 1.5px solid var(--line);
-  box-shadow: 0 -4px 20px rgba(58, 39, 27, 0.08);
+  padding: 6px var(--gutter) calc(8px + env(safe-area-inset-bottom));
+  background: color-mix(in srgb, var(--bg) 95%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-top: 1px solid var(--line);
+  box-shadow: 0 -3px 18px rgba(58, 39, 27, 0.08);
 }
-.bible-audio-dock-inner {
+.bible-bottom-dock .audio-player-bar {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+/* Base Card structure for Audio Player Bar */
+.audio-player-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
   max-width: var(--measure);
   margin-inline: auto;
+  box-sizing: border-box;
+  padding: 8px 10px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--r-box);
+  box-shadow: 0 2px 8px rgba(58, 39, 27, 0.06);
+}
+
+.apb-main {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
+  gap: 8px;
+  min-height: 32px;
 }
-.dock-meta {
+
+.apb-meta {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 7px;
   min-width: 0;
+  flex: 1;
 }
-.dock-verse-title {
-  font: 600 0.88rem/1 var(--f-body);
-  color: var(--ink);
+
+.apb-status-text {
+  font: 600 0.8rem/1.2 var(--f-body);
+  color: var(--ink-2);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.dock-controls {
+
+.apb-controls {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   flex: none;
 }
-.dock-btn {
-  display: grid;
-  place-items: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: 1.5px solid var(--line);
-  background: var(--surface);
-  color: var(--ink);
-  cursor: pointer;
-  transition: all 0.12s ease;
-}
-.dock-btn:active:not(:disabled) {
-  transform: scale(0.92);
-}
-.dock-btn:disabled {
-  opacity: 0.35;
-  cursor: default;
-}
-.dock-btn.is-play-pause {
-  width: 42px;
-  height: 42px;
-  background: var(--btn);
-  color: #fff;
-  border-color: var(--btn);
-  box-shadow: 0 2px 6px rgba(58, 39, 27, 0.2);
-}
-.dock-btn.is-play-pause:active {
-  background: var(--btn-hover);
-}
-.dock-btn.is-stop {
-  color: var(--ink-2);
-}
-.dock-speed-pill {
+
+.apb-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 40px;
-  height: 34px;
-  padding: 0 8px;
+  gap: 5px;
+  min-height: 32px;
+  padding: 0 10px;
+  border: 1px solid var(--line);
   border-radius: 999px;
-  border: 1.5px solid var(--line);
   background: var(--surface);
-  color: var(--oil-ink);
-  font: 700 0.78rem/1 var(--f-body);
+  color: var(--ink);
+  font: 600 0.78rem/1 var(--f-body);
   cursor: pointer;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: all 0.12s ease;
 }
-.dock-speed-pill:active {
-  background: var(--surface-2);
+
+.apb-btn:active:not(:disabled) {
   transform: scale(0.96);
+}
+
+.apb-btn:disabled {
+  opacity: 0.38;
+  cursor: default;
+}
+
+.apb-btn-start {
+  background: var(--btn);
+  border-color: var(--btn);
+  color: #fff;
+}
+
+.apb-btn-start.is-current {
+  background: #2e7d32;
+  border-color: #2e7d32;
+  color: #fff;
+  box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.22);
+}
+
+.apb-btn-pause.is-current {
+  background: var(--flame-ink);
+  border-color: var(--flame-ink);
+  color: #fff;
+}
+
+.apb-btn-stop:not(:disabled):hover,
+.apb-btn-stop:not(:disabled):active {
+  background: var(--bad-soft);
+  color: var(--bad);
+  border-color: var(--bad);
+}
+
+.apb-nav-btn {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border-radius: 50%;
+}
+
+/* Speed selector pills row: 0.5x, 0.75x, 1x, 1.25x, 1.5x, 2x */
+.apb-speeds {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 4px;
+}
+
+.apb-speed-pill {
+  min-height: 28px;
+  padding: 0 2px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--ink-2);
+  font: 600 0.76rem/1 var(--f-body);
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: all 0.1s ease;
+}
+
+.apb-speed-pill:active {
+  transform: scale(0.95);
+}
+
+.apb-speed-pill.is-selected {
+  background: var(--btn);
+  border-color: var(--btn);
+  color: #ffffff;
+  font-weight: 700;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+/* Voice wave equalizer indicator */
+.voice-wave {
+  display: inline-flex;
+  align-items: center;
+  gap: 2.5px;
+  height: 13px;
+  flex: none;
+}
+.voice-wave .vw-bar {
+  display: inline-block;
+  width: 2.5px;
+  height: 100%;
+  border-radius: 2px;
+  background: currentColor;
+  transform-origin: bottom center;
+}
+.voice-wave.is-active .vw-bar {
+  animation: vwAnim 0.75s ease-in-out infinite alternate;
+}
+.voice-wave.is-active .bar-1 { animation-delay: 0s; height: 50%; }
+.voice-wave.is-active .bar-2 { animation-delay: 0.22s; height: 100%; }
+.voice-wave.is-active .bar-3 { animation-delay: 0.44s; height: 65%; }
+.voice-wave .vw-bar.is-paused {
+  animation: none !important;
+  opacity: 0.5;
+}
+
+@keyframes vwAnim {
+  0% { transform: scaleY(0.3); }
+  100% { transform: scaleY(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .voice-wave .vw-bar { animation: none; transform: scaleY(0.7); }
 }
 

@@ -1,53 +1,66 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
 import { isSpeechSupported, pauseSpeaking, preloadText, resumeSpeaking, setSpeakingSpeed, speakText, stopSpeaking } from '../lib/speech';
+import AudioPlayerBar, { DEFAULT_SPEEDS } from './AudioPlayerBar';
 
 interface Props {
   bookSlug: string;
   bookName: string;
   ch: number;
+  totalChapters?: number;
   title?: string;
   verses: string[];
 }
 
-const SPEEDS = [
-  { label: '0.75x', val: 0.75 },
-  { label: '1x', val: 1.0 },
-  { label: '1.25x', val: 1.25 },
-];
-
-export default function BibleAudioReader({ bookName, ch, verses }: Props) {
+export default function BibleAudioReader({ bookSlug, bookName, ch, totalChapters = 24, verses }: Props) {
   const [supported] = useState(() => isSpeechSupported());
   const [isPlaying, setIsPlaying] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [verseIdx, setVerseIdx] = useState(0);
-  const [speedIdx, setSpeedIdx] = useState(0); // default 0.75x
+  const [speed, setSpeed] = useState(0.75); // default 0.75x as requested
 
   const isPlayingRef = useRef(false);
   const verseIdxRef = useRef(0);
-  const speedRef = useRef(SPEEDS[0].val);
+  const speedRef = useRef(0.75);
 
   isPlayingRef.current = isPlaying;
   verseIdxRef.current = verseIdx;
-  speedRef.current = SPEEDS[speedIdx].val;
+  speedRef.current = speed;
 
   // Pre-buffer first 2 verses immediately upon opening chapter for 0ms initial latency
   useEffect(() => {
-    if (verses[0]) preloadText(`Versetul 1. ${verses[0]}`);
-    if (verses[1]) preloadText(`Versetul 2. ${verses[1]}`);
-  }, [ch]);
+    if (verses[0]) preloadText(verses[0]);
+    if (verses[1]) preloadText(verses[1]);
+  }, [ch, verses]);
 
-  // Manage class on body to expand page bottom padding when bottom dock player is active
+  // Handle autoplay when auto-advancing from the previous chapter
   useEffect(() => {
-    if (typeof document === 'undefined') return;
-    if (isPlaying) {
-      document.body.classList.add('bible-audio-active');
-    } else {
-      document.body.classList.remove('bible-audio-active');
+    if (typeof window === 'undefined') return;
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('autoplay') === '1') {
+      try {
+        history.replaceState(null, '', window.location.pathname);
+      } catch {}
+
+      setIsPlaying(true);
+      isPlayingRef.current = true;
+      setIsPaused(false);
+      setVerseIdx(0);
+      verseIdxRef.current = 0;
+
+      // Announce the chapter number out loud so the listener knows it changed chapters
+      speakText(`Capitolul ${ch}.`, {
+        rate: speedRef.current,
+        onEnd: () => {
+          if (!isPlayingRef.current) return;
+          playVerse(0);
+        },
+        onError: () => {
+          if (!isPlayingRef.current) return;
+          playVerse(0);
+        },
+      });
     }
-    return () => {
-      document.body.classList.remove('bible-audio-active');
-    };
-  }, [isPlaying]);
+  }, [ch]);
 
   // Highlight verse in DOM and smooth scroll into view
   const highlightVerse = (idx: number) => {
@@ -72,7 +85,7 @@ export default function BibleAudioReader({ bookName, ch, verses }: Props) {
 
   const playVerse = (idx: number) => {
     if (idx < 0 || idx >= verses.length) {
-      stop();
+      handleChapterFinished();
       return;
     }
 
@@ -83,13 +96,13 @@ export default function BibleAudioReader({ bookName, ch, verses }: Props) {
 
     // Preload next verse in background for gapless playback
     if (idx + 1 < verses.length) {
-      preloadText(`Versetul ${idx + 2}. ${verses[idx + 1]}`);
+      preloadText(verses[idx + 1]);
     }
 
+    // Do NOT say "Versetul X." out loud: read only the pure text of the verse
     const verseText = verses[idx];
-    const textToSpeak = `Versetul ${idx + 1}. ${verseText}`;
 
-    speakText(textToSpeak, {
+    speakText(verseText, {
       rate: speedRef.current,
       onEnd: () => {
         if (!isPlayingRef.current) return;
@@ -97,7 +110,7 @@ export default function BibleAudioReader({ bookName, ch, verses }: Props) {
         if (next < verses.length) {
           playVerse(next);
         } else {
-          stop();
+          handleChapterFinished();
         }
       },
       onError: () => {
@@ -106,13 +119,28 @@ export default function BibleAudioReader({ bookName, ch, verses }: Props) {
         if (next < verses.length) {
           playVerse(next);
         } else {
-          stop();
+          handleChapterFinished();
         }
       },
     });
   };
 
-  const start = (fromIdx = 0) => {
+  const handleChapterFinished = () => {
+    clearHighlight();
+    if (ch < totalChapters) {
+      // Auto-advance to the next chapter with ?autoplay=1
+      const nextCh = ch + 1;
+      window.location.assign(`/${bookSlug}/citire/${nextCh}?autoplay=1`);
+    } else {
+      stop();
+    }
+  };
+
+  const start = (fromIdx = verseIdx) => {
+    if (isPlaying && isPaused) {
+      resume();
+      return;
+    }
     setIsPlaying(true);
     isPlayingRef.current = true;
     setIsPaused(false);
@@ -144,6 +172,8 @@ export default function BibleAudioReader({ bookName, ch, verses }: Props) {
   const nextVerse = () => {
     if (verseIdx < verses.length - 1) {
       playVerse(verseIdx + 1);
+    } else {
+      handleChapterFinished();
     }
   };
 
@@ -153,12 +183,10 @@ export default function BibleAudioReader({ bookName, ch, verses }: Props) {
     }
   };
 
-  const cycleSpeed = (e?: MouseEvent) => {
-    e?.stopPropagation();
-    const nextSpeed = (speedIdx + 1) % SPEEDS.length;
-    setSpeedIdx(nextSpeed);
-    speedRef.current = SPEEDS[nextSpeed].val;
-    setSpeakingSpeed(SPEEDS[nextSpeed].val);
+  const handleSpeedChange = (newSpeed: number) => {
+    setSpeed(newSpeed);
+    speedRef.current = newSpeed;
+    setSpeakingSpeed(newSpeed);
   };
 
   // Clean up on unmount or page exit
@@ -169,7 +197,7 @@ export default function BibleAudioReader({ bookName, ch, verses }: Props) {
     };
   }, []);
 
-  // Allow clicking on any verse in the text to start listening from that verse
+  // Allow clicking on any verse in the text to start listening directly from that verse
   useEffect(() => {
     const onVerseClick = (e: MouseEvent) => {
       const target = (e.target as HTMLElement).closest('.verse');
@@ -189,120 +217,29 @@ export default function BibleAudioReader({ bookName, ch, verses }: Props) {
 
   if (!supported) return null;
 
+  const statusLabel = isPlaying
+    ? isPaused
+      ? `Pauză: Versetul ${verseIdx + 1} din ${verses.length}`
+      : `Versetul ${verseIdx + 1} din ${verses.length}`
+    : `Capitolul ${ch} (${verses.length} versete)`;
+
   return (
-    <>
-      {/* Trigger button above text when idle */}
-      {!isPlaying && (
-        <div class="bible-audio-trigger-bar">
-          <button type="button" class="btn btn-audio-start" onClick={() => start(0)}>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
-              <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
-              <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
-            </svg>
-            <span>Ascultă capitolul</span>
-          </button>
-          <button type="button" class="btn-audio-speed-pill" onClick={cycleSpeed} title="Schimbă viteza vocii (0.75x, 1x, 1.25x)">
-            {SPEEDS[speedIdx].label}
-          </button>
-        </div>
-      )}
-
-      {/* Persistent floating player dock docked at the bottom of the screen */}
-      {isPlaying && (
-        <div class="bible-audio-dock" role="region" aria-label="Player audio biblic">
-          <div class="bible-audio-dock-inner">
-            <div class="dock-meta">
-              <span class="voice-wave" aria-hidden="true">
-                <span class={`vw-bar bar-1${isPaused ? ' is-paused' : ''}`} />
-                <span class={`vw-bar bar-2${isPaused ? ' is-paused' : ''}`} />
-                <span class={`vw-bar bar-3${isPaused ? ' is-paused' : ''}`} />
-              </span>
-              <span class="dock-verse-title">
-                Versetul <b>{verseIdx + 1}</b> <span class="muted">/ {verses.length}</span>
-              </span>
-            </div>
-
-            <div class="dock-controls">
-              <button
-                type="button"
-                class="dock-btn"
-                disabled={verseIdx <= 0}
-                onClick={prevVerse}
-                title="Versetul anterior"
-                aria-label="Versetul anterior"
-              >
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-                  <polygon points="19 20 9 12 19 4 19 20" />
-                  <line x1="5" y1="19" x2="5" y2="5" />
-                </svg>
-              </button>
-
-              {isPaused ? (
-                <button
-                  type="button"
-                  class="dock-btn is-play-pause"
-                  onClick={resume}
-                  title="Continuă ascultarea"
-                  aria-label="Continuă"
-                >
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                    <polygon points="6 3 20 12 6 21 6 3" />
-                  </svg>
-                </button>
-              ) : (
-                <button
-                  type="button"
-                  class="dock-btn is-play-pause"
-                  onClick={pause}
-                  title="Pauză"
-                  aria-label="Pauză"
-                >
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                    <rect x="6" y="4" width="4" height="16" rx="1.5" />
-                    <rect x="14" y="4" width="4" height="16" rx="1.5" />
-                  </svg>
-                </button>
-              )}
-
-              <button
-                type="button"
-                class="dock-btn"
-                disabled={verseIdx >= verses.length - 1}
-                onClick={nextVerse}
-                title="Versetul următor"
-                aria-label="Versetul următor"
-              >
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-                  <polygon points="5 4 15 12 5 20 5 4" />
-                  <line x1="19" y1="5" x2="19" y2="19" />
-                </svg>
-              </button>
-
-              <button
-                type="button"
-                class="dock-btn is-stop"
-                onClick={stop}
-                title="Oprește ascultarea"
-                aria-label="Oprește"
-              >
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-                  <rect x="5" y="5" width="14" height="14" rx="2" />
-                </svg>
-              </button>
-
-              <button
-                type="button"
-                class="dock-speed-pill"
-                onClick={cycleSpeed}
-                title="Schimbă viteza vocii"
-              >
-                {SPEEDS[speedIdx].label}
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-    </>
+    <div class="bible-bottom-dock" role="region" aria-label="Player audio biblic permanent">
+      <AudioPlayerBar
+        isPlaying={isPlaying}
+        isPaused={isPaused}
+        speed={speed}
+        speeds={DEFAULT_SPEEDS}
+        onStart={() => start(verseIdx)}
+        onPause={pause}
+        onStop={stop}
+        onSpeedChange={handleSpeedChange}
+        statusLabel={statusLabel}
+        onPrev={prevVerse}
+        onNext={nextVerse}
+        hasPrev={verseIdx > 0}
+        hasNext={verseIdx < verses.length - 1 || ch < totalChapters}
+      />
+    </div>
   );
 }
