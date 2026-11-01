@@ -97,13 +97,44 @@ export async function removeChild(key: string): Promise<void> {
   ]).catch((err) => console.error('Eroare curățare date copil:', err));
 }
 
-/** Name on the public board: full name with family name first (children get the parent's last name if they don't have one). */
+const KNOWN_LAST_NAMES = new Set([
+  'popadiuc', 'tudosa', 'croitor', 'ungurean', 'zagan', 'bujdei',
+  'prodan', 'svestun', 'nichita', 'constantin', 'grigoras', 'gafencu',
+  'florea', 'gula', 'pavel', 'gavrilovici', 'stanciuc', 'spoiala'
+]);
+
+/** Formats name cleanly as "Prenume Nume" (e.g. "Claudiu Popadiuc") everywhere. */
+export function formatFirstLast(name: string): string {
+  if (!name) return '';
+  const trimmed = name.trim();
+  const parts = trimmed.split(/\s+/).filter(Boolean);
+  if (parts.length !== 2) return trimmed;
+
+  const [a, b] = parts;
+  const aNorm = a.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  const bNorm = b.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+
+  const isFamilySuffix = (s: string) => /(?:uc|ovici|ici|escu|eanu|anu)$/i.test(s);
+
+  // If first token is a known family name or suffix and second is not, flip to "Prenume Nume"
+  const aIsLast = KNOWN_LAST_NAMES.has(aNorm) || isFamilySuffix(aNorm);
+  const bIsLast = KNOWN_LAST_NAMES.has(bNorm) || isFamilySuffix(bNorm);
+
+  if (aIsLast && !bIsLast) {
+    return `${b} ${a}`;
+  }
+
+  return trimmed;
+}
+
+/** Name on the public board: full name in "Prenume Nume" order (children get parent's family name). */
 export function shortName(p: Player): string {
   const parts = p.name.trim().split(/\s+/).filter(Boolean);
-  if (parts.length > 1) return p.name.trim();
-  const parentParts = (profile.value?.name ?? '').trim().split(/\s+/).filter(Boolean);
-  const parentLast = parentParts[0];
-  return parentLast ? `${parentLast} ${parts[0]}` : parts[0];
+  if (parts.length > 1) return formatFirstLast(p.name.trim());
+  const parentFormatted = formatFirstLast(profile.value?.name ?? '');
+  const pParts = parentFormatted.trim().split(/\s+/).filter(Boolean);
+  const parentLast = pParts.length > 1 ? pParts[pParts.length - 1] : pParts[0];
+  return parentLast && parentLast !== parts[0] ? `${parts[0]} ${parentLast}` : parts[0];
 }
 
 /**
@@ -111,14 +142,16 @@ export function shortName(p: Player): string {
  * and then added the child again shows up (the same child twice on the board).
  */
 export function sameFirstName(a: string, b: string): boolean {
-  const normalize = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();
+  const normA = formatFirstLast(a);
+  const normB = formatFirstLast(b);
+  const normalize = (s: string) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
   const getFirstTokens = (s: string) => {
     const parts = normalize(s).split(/[\s-]+/).filter(Boolean);
     if (parts.length <= 1) return parts;
-    return parts.slice(1);
+    return parts.slice(0, -1);
   };
-  const tokensA = getFirstTokens(a);
-  const tokensB = getFirstTokens(b);
+  const tokensA = getFirstTokens(normA);
+  const tokensB = getFirstTokens(normB);
   if (!tokensA.length || !tokensB.length) return false;
   return tokensA.some((tA) => tokensB.includes(tA)) || tokensA.join(' ') === tokensB.join(' ');
 }

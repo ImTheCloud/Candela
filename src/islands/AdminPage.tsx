@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'preact/hooks';
 import { addChildTo, deleteAccount, deleteChild, loadUsers, renameChild, updateUser, type Kid, type UserRow } from '../lib/admin';
-import { sameFirstName } from '../lib/players';
+import { formatFirstLast, sameFirstName } from '../lib/players';
 import { errorText, profile, profileLoaded, user } from '../lib/session';
 import Avatar from './Avatar';
 import Loader from './Loader';
@@ -244,13 +244,13 @@ function Row({ r, me, onChanged }: { r: UserRow; me: string; onChanged: () => Pr
       <button type="button" class="adm-head" aria-expanded={open} onClick={() => setOpen(!open)}>
         {/* Avatar with live status dot overlay */}
         <div class="adm-av-wrap">
-          <Avatar name={r.name} size={40} />
+          <Avatar name={formatFirstLast(r.name)} size={40} />
           <span class={`adm-dot is-${timeInfo.status}`} title={`Status: ${timeInfo.tooltip}`} />
         </div>
 
         {/* User name & email */}
         <div class="adm-info">
-          <strong class="adm-name">{r.name}</strong>
+          <strong class="adm-name">{formatFirstLast(r.name)}</strong>
           <span class="adm-mail">{r.email || '(fără email)'}</span>
           {r.kids.length > 0 && (
             <div class="adm-kids-preview">
@@ -321,10 +321,11 @@ function formatExact(t: any): string {
 }
 
 function splitName(fullName: string): { first: string; last: string } {
-  const parts = fullName.trim().split(/\s+/).filter(Boolean);
+  const formatted = formatFirstLast(fullName);
+  const parts = formatted.trim().split(/\s+/).filter(Boolean);
   if (parts.length === 0) return { first: '', last: '' };
   if (parts.length === 1) return { first: parts[0], last: '' };
-  return { last: parts[0], first: parts.slice(1).join(' ') };
+  return { first: parts.slice(0, -1).join(' '), last: parts[parts.length - 1] };
 }
 
 /** Everything an admin can change on one account. Each action saves at once and reloads the list. */
@@ -442,21 +443,10 @@ function Editor({ r, self, onChanged }: { r: UserRow; self: boolean; onChanged: 
           setModalConflict({ name: duplicateChild.name, kind: 'parent' });
           return;
         }
-        const name = `${l} ${f}`.replace(/\s+/g, ' ');
+        const name = `${f} ${l}`.replace(/\s+/g, ' ');
         run(() => updateUser(r.uid, { name, isParent, admin: r.admin }), 'Profilul a fost salvat.');
       }}>
         <div class="two">
-          <div class="field">
-            <label for={`ln-${r.uid}`}>Nume de familie</label>
-            <input
-              id={`ln-${r.uid}`}
-              class="input"
-              maxLength={40}
-              required
-              value={lastName}
-              onInput={(e) => setLastName(e.currentTarget.value)}
-            />
-          </div>
           <div class="field">
             <label for={`fn-${r.uid}`}>Prenume</label>
             <input
@@ -466,6 +456,17 @@ function Editor({ r, self, onChanged }: { r: UserRow; self: boolean; onChanged: 
               placeholder="Familia"
               value={firstName}
               onInput={(e) => setFirstName(e.currentTarget.value)}
+            />
+          </div>
+          <div class="field">
+            <label for={`ln-${r.uid}`}>Nume de familie</label>
+            <input
+              id={`ln-${r.uid}`}
+              class="input"
+              maxLength={40}
+              required
+              value={lastName}
+              onInput={(e) => setLastName(e.currentTarget.value)}
             />
           </div>
         </div>

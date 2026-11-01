@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'preact/hooks';
 import { sendMessage, watchOpenMessagesCount } from '../lib/messages';
-import { addChild, players, removeChild, sameFirstName, shortName, updateChild, type Player } from '../lib/players';
+import { addChild, formatFirstLast, players, removeChild, sameFirstName, shortName, updateChild, type Player } from '../lib/players';
 import { watchOpenCount } from '../lib/reports';
 import { localGet } from '../lib/store';
 import { deleteMyAccount, errorText, profile, profileError, profileLoaded, rememberedAccount, setParent, signOut, updateAccountName, user } from '../lib/session';
@@ -14,10 +14,11 @@ import ProfileProgressDashboard from './ProfileProgressDashboard';
 export interface BookInfo { slug: string; name: string; chapters: number; totals: Record<string, number> }
 
 function splitName(fullName: string): { first: string; last: string } {
-  const parts = fullName.trim().split(/\s+/).filter(Boolean);
+  const formatted = formatFirstLast(fullName);
+  const parts = formatted.trim().split(/\s+/).filter(Boolean);
   if (parts.length === 0) return { first: '', last: '' };
   if (parts.length === 1) return { first: parts[0], last: '' };
-  return { last: parts[0], first: parts.slice(1).join(' ') };
+  return { first: parts.slice(0, -1).join(' '), last: parts[parts.length - 1] };
 }
 
 /**
@@ -395,7 +396,7 @@ function PlayerBlock({
   const [deleting, setDeleting] = useState(false);
   const [error, setError] = useState('');
   const isSelf = !p.child;
-  const displayName = isSelf ? p.name : shortName(p);
+  const displayName = isSelf ? formatFirstLast(p.name) : shortName(p);
 
   async function remove() {
     if (deleting) return;
@@ -415,9 +416,9 @@ function PlayerBlock({
     return (
       <article class="pl" id="name-edit">
         <div class="pl-row">
-          <Avatar name={p.name} size={38} />
+          <Avatar name={displayName} size={38} />
           <div class="pl-name">
-            <strong>{p.name}</strong>
+            <strong>{displayName}</strong>
             {email && <span class="pl-email">{email}</span>}
           </div>
         </div>
@@ -539,7 +540,7 @@ function AccountNameForm({ currentName, onDone }: { currentName: string; onDone:
       setNameError('Scrie numele de familie.');
       return;
     }
-    const full = `${l} ${f}`.replace(/\s+/g, ' ');
+    const full = `${f} ${l}`.replace(/\s+/g, ' ');
     if (full.length > 80) {
       setNameError('Numele este prea lung (maximum 80 de caractere).');
       return;
@@ -565,18 +566,6 @@ function AccountNameForm({ currentName, onDone }: { currentName: string; onDone:
     <form class="stack me-form" onSubmit={submitName}>
       <div class="two">
         <div class="field">
-          <label for="me-last">Nume de familie</label>
-          <input
-            id="me-last"
-            class="input"
-            autocomplete="family-name"
-            required
-            maxLength={40}
-            value={lastName}
-            onInput={(e) => setLastName(e.currentTarget.value)}
-          />
-        </div>
-        <div class="field">
           <label for="me-first">Prenume</label>
           <input
             id="me-first"
@@ -586,6 +575,18 @@ function AccountNameForm({ currentName, onDone }: { currentName: string; onDone:
             maxLength={40}
             value={firstName}
             onInput={(e) => setFirstName(e.currentTarget.value)}
+          />
+        </div>
+        <div class="field">
+          <label for="me-last">Nume de familie</label>
+          <input
+            id="me-last"
+            class="input"
+            autocomplete="family-name"
+            required
+            maxLength={40}
+            value={lastName}
+            onInput={(e) => setLastName(e.currentTarget.value)}
           />
         </div>
       </div>

@@ -100,9 +100,9 @@ export interface SignUp {
 }
 
 export async function signUp(f: SignUp): Promise<void> {
-  const last = clean(f.lastName);
   const first = clean(f.firstName) || 'Familia';
-  const name = `${last} ${first}`.trim();
+  const last = clean(f.lastName);
+  const name = `${first} ${last}`.trim();
   const cred = await createUserWithEmailAndPassword(auth, f.email.trim(), f.password);
   await updateProfile(cred.user, { displayName: name });
   rememberSignedIn(cred.user);
@@ -226,7 +226,7 @@ export async function updateAccountName(firstName: string, lastName: string): Pr
   const first = clean(firstName) || 'Familia';
   const last = clean(lastName);
   if (!last) throw new Error('name_required');
-  const name = `${last} ${first}`.trim();
+  const name = `${first} ${last}`.trim();
   if (name.length > 80) throw new Error('name_too_long');
 
   // Optimistically update local profile and storage
@@ -265,7 +265,7 @@ export async function updateAccountName(firstName: string, lastName: string): Pr
           const kname = (kd.data().name as string | undefined) ?? '';
           const kp = kname.trim().split(/\s+/).filter(Boolean);
           const childFirst = kp.length > 1 ? kp.slice(1).join(' ') : kp[0];
-          const kfull = `${last} ${childFirst}`;
+          const kfull = `${childFirst} ${last}`.trim();
           await updatePlayerBoardName(u.uid, kd.id, kfull);
         })
       );
@@ -275,8 +275,8 @@ export async function updateAccountName(firstName: string, lastName: string): Pr
         await Promise.all(
           kidsCache.list.map(async (k) => {
             const childParts = k.name.trim().split(/\s+/).filter(Boolean);
-            const childFirst = childParts.length > 1 ? childParts.slice(1).join(' ') : childParts[0];
-            const childFull = `${last} ${childFirst}`;
+            const childFirst = childParts.length > 1 ? childParts.slice(0, -1).join(' ') : childParts[0];
+            const childFull = `${childFirst} ${last}`.trim();
             await updatePlayerBoardName(u.uid, k.key, childFull);
           })
         );

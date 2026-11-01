@@ -70,10 +70,6 @@ export default function SignUpForm() {
       <h2>Creează un cont</h2>
       <div class="two">
         <div class="field">
-          <label for="last">Nume de familie</label>
-          <input id="last" class="input" autocomplete="family-name" required value={f.lastName} onInput={set('lastName')} />
-        </div>
-        <div class="field">
           <label for="first">Prenume</label>
           <input
             id="first"
@@ -83,6 +79,10 @@ export default function SignUpForm() {
             value={f.firstName}
             onInput={set('firstName')}
           />
+        </div>
+        <div class="field">
+          <label for="last">Nume de familie</label>
+          <input id="last" class="input" autocomplete="family-name" required value={f.lastName} onInput={set('lastName')} />
         </div>
       </div>
       <div class="field">

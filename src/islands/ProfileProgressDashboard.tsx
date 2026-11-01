@@ -1,6 +1,6 @@
 import { useState } from 'preact/hooks';
 import type { Level } from '../lib/age';
-import { choosePlayer, player, players, type Player } from '../lib/players';
+import { choosePlayer, formatFirstLast, player, players, type Player } from '../lib/players';
 import { progress, type Progress } from '../lib/progress';
 import type { QType } from '../lib/questions';
 import LevelPicker from './LevelPicker';
@@ -29,8 +29,9 @@ function qTypeFromId(id: string): QType | null {
 }
 
 function getFirstName(fullName: string): string {
-  const parts = fullName.trim().split(/\s+/).filter(Boolean);
-  return parts.length > 1 ? parts.slice(1).join(' ') : (parts[0] ?? '');
+  const formatted = formatFirstLast(fullName);
+  const parts = formatted.trim().split(/\s+/).filter(Boolean);
+  return parts.length > 1 ? parts.slice(0, -1).join(' ') : (parts[0] ?? '');
 }
 
 /**

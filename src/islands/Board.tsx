@@ -15,7 +15,7 @@ import { boardChangedAt, writeBoard } from '../lib/board';
 import { db } from '../lib/firebase';
 import { scoreView, setScoreView } from '../lib/level';
 import { localGet, localSet } from '../lib/store';
-import { player, shortName } from '../lib/players';
+import { formatFirstLast, player, shortName } from '../lib/players';
 import { progress } from '../lib/progress';
 import { user } from '../lib/session';
 import LevelPicker from './LevelPicker';
@@ -402,7 +402,7 @@ export default function Board({ book }: Props) {
             >
               <span class="pd-rank">{i + 1}</span>
               <span class="pd-name">
-                <span class="pd-text">{r.name}</span>
+                <span class="pd-text">{formatFirstLast(r.name)}</span>
                 {mine(r.key) && <span class="pd-me">Eu</span>}
               </span>
               <span
