@@ -1,17 +1,19 @@
 import type { Playable } from './questions';
 
 export function isSpeechSupported(): boolean {
-  return typeof window !== 'undefined' && 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
+  if (typeof window === 'undefined') return false;
+  return typeof Audio !== 'undefined' || ('speechSynthesis' in window && 'SpeechSynthesisUtterance' in window);
 }
 
 let preferredVoice: SpeechSynthesisVoice | null = null;
+let activeAudio: HTMLAudioElement | null = null;
+let activeUtterance: SpeechSynthesisUtterance | null = null;
 
 /**
- * Searches for the most natural, human-like Romanian voice available on this device.
- * Prioritizes high-quality neural / natural / Siri / Google voices.
+ * Searches for the most natural, human-like Romanian voice available on this device as fallback.
  */
 export function getBestRomanianVoice(): SpeechSynthesisVoice | null {
-  if (!isSpeechSupported()) return null;
+  if (typeof window === 'undefined' || !('speechSynthesis' in window)) return null;
   const synth = window.speechSynthesis;
   const voices = synth.getVoices();
   if (!voices || voices.length === 0) return null;
@@ -28,9 +30,7 @@ export function getBestRomanianVoice(): SpeechSynthesisVoice | null {
     if (!isRo) continue;
 
     score += 100;
-    // Premium natural voices (Siri, Neural, Natural, Enhanced)
     if (/natural|neural|premium|enhanced/i.test(name)) score += 50;
-    // Google / Apple / Ioana
     if (/google|siri|apple|ioana/i.test(name)) score += 30;
     if (v.default) score += 5;
 
@@ -43,7 +43,7 @@ export function getBestRomanianVoice(): SpeechSynthesisVoice | null {
   return best;
 }
 
-if (isSpeechSupported()) {
+if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
   try {
     window.speechSynthesis.onvoiceschanged = () => {
       preferredVoice = getBestRomanianVoice();
@@ -55,32 +55,41 @@ if (isSpeechSupported()) {
 export interface SpeakOptions {
   rate?: number;
   pitch?: number;
+  voiceName?: string;
   onStart?: () => void;
   onEnd?: () => void;
   onError?: (err?: any) => void;
 }
 
-let activeUtterance: SpeechSynthesisUtterance | null = null;
-
 export function stopSpeaking(): void {
-  if (!isSpeechSupported()) return;
-  try {
-    activeUtterance = null;
-    window.speechSynthesis.cancel();
-  } catch {}
+  if (activeAudio) {
+    try {
+      activeAudio.pause();
+      activeAudio.currentTime = 0;
+    } catch {}
+    activeAudio = null;
+  }
+  if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+    try {
+      activeUtterance = null;
+      window.speechSynthesis.cancel();
+    } catch {}
+  }
 }
 
 export function isCurrentlySpeaking(): boolean {
-  if (!isSpeechSupported()) return false;
-  return window.speechSynthesis.speaking;
+  if (activeAudio && !activeAudio.paused && !activeAudio.ended) return true;
+  if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+    return window.speechSynthesis.speaking;
+  }
+  return false;
 }
 
 /**
- * Speaks text using the best natural Romanian voice.
- * Rate 0.93 provides a warm, natural and easily comprehensible pacing.
+ * Fallback to local device SpeechSynthesis if internet / server TTS is unavailable.
  */
-export function speakText(text: string, options: SpeakOptions = {}): () => void {
-  if (!isSpeechSupported() || !text.trim()) {
+function speakLocalText(text: string, options: SpeakOptions = {}): () => void {
+  if (typeof window === 'undefined' || !('speechSynthesis' in window) || !text.trim()) {
     options.onEnd?.();
     return () => {};
   }
@@ -131,6 +140,69 @@ export function speakText(text: string, options: SpeakOptions = {}): () => void 
   };
 }
 
+/**
+ * Speaks text using a natural human Romanian voice (Microsoft Azure Alina Neural via /api/tts),
+ * seamlessly falling back to local SpeechSynthesis if offline.
+ */
+export function speakText(text: string, options: SpeakOptions = {}): () => void {
+  const clean = text.trim();
+  if (!clean) {
+    options.onEnd?.();
+    return () => {};
+  }
+
+  stopSpeaking();
+
+  let cancelled = false;
+
+  // Use Neural Romanian Voice (Alina) via /api/tts
+  if (typeof window !== 'undefined' && typeof Audio !== 'undefined') {
+    try {
+      const voice = options.voiceName || 'ro-RO-AlinaNeural';
+      const url = `/api/tts?text=${encodeURIComponent(clean)}&voice=${encodeURIComponent(voice)}`;
+      const audio = new Audio(url);
+      activeAudio = audio;
+
+      audio.onplay = () => {
+        if (!cancelled) options.onStart?.();
+      };
+
+      audio.onended = () => {
+        if (activeAudio === audio) activeAudio = null;
+        if (!cancelled) options.onEnd?.();
+      };
+
+      audio.onerror = () => {
+        if (activeAudio === audio) activeAudio = null;
+        if (!cancelled) {
+          speakLocalText(clean, options);
+        }
+      };
+
+      const playPromise = audio.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          if (activeAudio === audio) activeAudio = null;
+          if (!cancelled) {
+            speakLocalText(clean, options);
+          }
+        });
+      }
+
+      return () => {
+        cancelled = true;
+        if (activeAudio === audio) {
+          stopSpeaking();
+        }
+      };
+    } catch {
+      // Fallback
+    }
+  }
+
+  return speakLocalText(clean, options);
+}
+
 function cleanText(s: string): string {
   return s.replace(/[*_#`]/g, '').trim();
 }
@@ -152,8 +224,8 @@ export function buildQuestionSpeech(q: Playable): string {
   // Question options
   switch (q.t) {
     case 'tf':
-      parts.push('Varianta 1: Adevărat.');
-      parts.push('Varianta 2: Fals.');
+      // For true/false: natural Romanian prompt, no robotic "varianta 1 / varianta 2"
+      parts.push('Adevărat sau fals.');
       break;
 
     case 'one': {
@@ -188,7 +260,7 @@ export function buildQuestionSpeech(q: Playable): string {
 }
 
 /**
- * Speaks a full question and its options, handling lifecycle events.
+ * Speaks a full question and its options with natural human voice, handling lifecycle events.
  */
 export function speakQuestion(
   q: Playable,
@@ -197,9 +269,7 @@ export function speakQuestion(
 ): () => void {
   const text = buildQuestionSpeech(q);
   return speakText(text, {
-    rate: 0.93,
     onStart,
     onEnd,
   });
 }
-
