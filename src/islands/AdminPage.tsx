@@ -366,7 +366,7 @@ function Editor({ r, self, onChanged }: { r: UserRow; self: boolean; onChanged: 
   }
 
   const dirty = firstName.trim() !== first || lastName.trim() !== last || isParent !== r.isParent;
-  const valid = !!lastName.trim();
+  const valid = !!firstName.trim() && !!lastName.trim();
 
   async function run(action: () => Promise<unknown>, done: string) {
     setBusy(true);
@@ -435,9 +435,9 @@ function Editor({ r, self, onChanged }: { r: UserRow; self: boolean; onChanged: 
       {/* Profile Name & Parent Toggle Form */}
       <form class="stack adm-form" onSubmit={(e) => {
         e.preventDefault();
+        const f = firstName.trim();
         const l = lastName.trim();
-        const f = firstName.trim() || 'Familia';
-        if (!l) return;
+        if (!f || !l) return;
         const duplicateChild = r.kids.find((k) => sameFirstName(k.name, f));
         if (duplicateChild) {
           setModalConflict({ name: duplicateChild.name, kind: 'parent' });
@@ -453,7 +453,7 @@ function Editor({ r, self, onChanged }: { r: UserRow; self: boolean; onChanged: 
               id={`fn-${r.uid}`}
               class="input"
               maxLength={40}
-              placeholder="Familia"
+              required
               value={firstName}
               onInput={(e) => setFirstName(e.currentTarget.value)}
             />

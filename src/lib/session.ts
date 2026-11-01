@@ -100,8 +100,9 @@ export interface SignUp {
 }
 
 export async function signUp(f: SignUp): Promise<void> {
-  const first = clean(f.firstName) || 'Familia';
+  const first = clean(f.firstName);
   const last = clean(f.lastName);
+  if (!first || !last) throw new Error('name_required');
   const name = `${first} ${last}`.trim();
   const cred = await createUserWithEmailAndPassword(auth, f.email.trim(), f.password);
   await updateProfile(cred.user, { displayName: name });
@@ -223,9 +224,9 @@ export function setParent(isParent: boolean) {
 export async function updateAccountName(firstName: string, lastName: string): Promise<string> {
   const u = auth.currentUser;
   if (!u) throw new Error('not_signed_in');
-  const first = clean(firstName) || 'Familia';
+  const first = clean(firstName);
   const last = clean(lastName);
-  if (!last) throw new Error('name_required');
+  if (!first || !last) throw new Error('name_required');
   const name = `${first} ${last}`.trim();
   if (name.length > 80) throw new Error('name_too_long');
 
