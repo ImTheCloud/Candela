@@ -625,6 +625,42 @@ a.tile { text-decoration: none; }
 .btn-danger { background: var(--bad); color: #fff; }
 html:not(.signed-in) .back-signed-in { display: none; }
 
+/* Admin sub-navigation and questions hub */
+.adm-nav { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 4px; }
+.adm-nav-btn {
+  display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px;
+  border: 1px solid var(--line); border-radius: var(--r-ctl); background: var(--surface);
+  color: var(--ink-2); font-size: 0.9rem; font-weight: 500; text-decoration: none;
+}
+.adm-nav-btn.is-active,
+.adm-nav-btn:hover { border-color: var(--oil); color: var(--oil-ink); }
+.adm-nav-btn.is-active { background: var(--oil-soft); }
+
+.adm-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.adm-tab {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 2px; padding: 12px 14px; border: 1px solid var(--line); border-radius: var(--r-box);
+  background: var(--surface); color: var(--ink); cursor: pointer; text-align: center;
+  font: inherit; transition: border-color .15s, background .15s;
+}
+.adm-tab.is-active {
+  border-color: var(--oil); background: var(--oil-soft); color: var(--oil-ink);
+}
+.adm-chapters-list { display: grid; gap: 8px; }
+.adm-ch-card {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 12px 16px; text-decoration: none; color: inherit; box-shadow: none;
+  transition: transform .12s, border-color .15s;
+}
+.adm-ch-card:hover { border-color: var(--oil); }
+.adm-ch-main { display: flex; align-items: center; gap: 14px; min-width: 0; }
+.adm-ch-num {
+  width: 36px; height: 36px; border-radius: 50%; background: var(--surface-2);
+  display: grid; place-items: center; font-weight: 700; color: var(--ink); flex-shrink: 0;
+}
+.adm-ch-info { display: flex; flex-direction: column; min-width: 0; }
+.adm-ch-info strong { font-size: 0.98rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
 /* Admin stopwatch: discreet single-line toolbar on home */
 .sw-bar {
   display: flex;

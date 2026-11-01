@@ -10,6 +10,7 @@ export function getStaticPaths() {
 }
 const { book, file } = Astro.props as { book: Book; file: ChapterFile };
 const qs = file.questions.map((q) => playable(book.slug, q));
+const chTitle = book.titles[file.ch - 1] ?? '';
 const letters = ['a', 'b', 'c'];
 const answer = (q: Playable) => {
   switch (q.t) {
@@ -21,10 +22,37 @@ const answer = (q: Playable) => {
   }
 };
 ---
-<Base title={`Verificare ${book.name} ${file.ch}`} crumbs={[{ href: '/', label: 'Acasă' }, { href: `/${book.slug}/verificare`, label: 'Verificare' }]}>
+<Base
+  title={`Verificare ${book.name} ${file.ch}`}
+  crumbs={[
+    { href: '/', label: 'Acasă' },
+    { href: '/admin/intrebari', label: 'Întrebări' },
+    { href: `/${book.slug}/verificare`, label: book.name },
+    { href: `/${book.slug}/verificare/${file.ch}`, label: `Cap. ${file.ch}` },
+  ]}
+>
   <section class="wrap narrow page">
-    <h1>{book.name} {file.ch}</h1>
-    <p class="muted">{file.questions.length} întrebări, {file.reviewed ? 'verificat' : 'de verificat'}, <a class="link" href={`/${book.slug}/citire/${file.ch}`}>textul capitolului</a></p>
+    <nav class="ch-nav">
+      {file.ch > 1 ? (
+        <a class="btn btn-ghost btn-sm" href={`/${book.slug}/verificare/${file.ch - 1}`}>
+          ← Cap. {file.ch - 1}
+        </a>
+      ) : <span />}
+      <a class="btn btn-ghost btn-sm" href="/admin/intrebari">
+        Toate capitolele
+      </a>
+      {file.ch < book.chapters ? (
+        <a class="btn btn-ghost btn-sm" href={`/${book.slug}/verificare/${file.ch + 1}`}>
+          Cap. {file.ch + 1} →
+        </a>
+      ) : <span />}
+    </nav>
+
+    <div class="ch-head">
+      <h1>{book.name} {file.ch}{chTitle ? `: ${chTitle}` : ''}</h1>
+      <p class="muted">{file.questions.length} întrebări, {file.reviewed ? 'verificat' : 'de verificat'} • <a class="link" href={`/${book.slug}/citire/${file.ch}`}>textul capitolului</a></p>
+    </div>
+
     {LEVELS.map((g) => (
       <section class="age">
         <h2>{g.label}</h2>
@@ -42,10 +70,31 @@ const answer = (q: Playable) => {
         ))}
       </section>
     ))}
+
+    <nav class="ch-nav ch-nav-bottom">
+      {file.ch > 1 ? (
+        <a class="btn btn-ghost btn-sm" href={`/${book.slug}/verificare/${file.ch - 1}`}>
+          ← Cap. {file.ch - 1}
+        </a>
+      ) : <span />}
+      <a class="btn btn-primary btn-sm" href="/admin/intrebari">
+        Înapoi la capitole
+      </a>
+      {file.ch < book.chapters ? (
+        <a class="btn btn-ghost btn-sm" href={`/${book.slug}/verificare/${file.ch + 1}`}>
+          Cap. {file.ch + 1} →
+        </a>
+      ) : <span />}
+    </nav>
   </section>
 </Base>
 <style>
   .page { display: grid; gap: 14px; padding-block: 8px 32px; }
+  .ch-nav { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
+  .ch-nav-bottom { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--line); }
+  .ch-head { display: grid; gap: 4px; }
+  .ch-head h1 { margin: 0; font-size: 1.5rem; }
+  .ch-head p { margin: 0; }
   .age { display: grid; gap: 10px; padding-top: 12px; }
   .rq { display: grid; gap: 6px; padding: 14px 16px; box-shadow: none; }
   .rq-q { font-weight: 500; }

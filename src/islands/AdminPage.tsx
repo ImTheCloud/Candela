@@ -34,6 +34,12 @@ function Users({ me }: { me: string }) {
 
   return (
     <div class="stack">
+      <nav class="adm-nav" aria-label="Secțiuni administrare">
+        <span class="adm-nav-btn is-active">Utilizatori</span>
+        <a class="adm-nav-btn" href="/semnalari">Semnalări</a>
+        <a class="adm-nav-btn" href="/mesaje">Mesaje</a>
+        <a class="adm-nav-btn" href="/admin/intrebari">Întrebări și răspunsuri</a>
+      </nav>
       <dl class="adm-stats">
         <div><dt>Total</dt><dd>{totalPlayers}</dd></div>
         <div><dt>Conturi</dt><dd>{rows.length}</dd></div>

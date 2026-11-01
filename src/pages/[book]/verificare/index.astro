@@ -3,19 +3,38 @@ import Base from '../../../layouts/Base.astro';
 import { BOOKS, type Book } from '../../../lib/books';
 import { chapterFiles, type ChapterFile } from '../../../lib/content';
 
-// Not linked from the app: the page where a person reads every question before it is marked as checked.
 export function getStaticPaths() {
-  return BOOKS.map((book) => ({ params: { book: book.slug }, props: { book, files: [...chapterFiles(book.slug).values()].sort((a, b) => a.ch - b.ch) } }));
+  return BOOKS.map((book) => ({
+    params: { book: book.slug },
+    props: { book, files: [...chapterFiles(book.slug).values()].sort((a, b) => a.ch - b.ch) },
+  }));
 }
 const { book, files } = Astro.props as { book: Book; files: ChapterFile[] };
 ---
-<Base title={`Verificare ${book.name}`} crumbs={[{ href: '/', label: 'Acasă' }, { href: `/${book.slug}`, label: book.name }]}>
+<Base
+  title={`Verificare ${book.name}`}
+  crumbs={[
+    { href: '/', label: 'Acasă' },
+    { href: '/admin/intrebari', label: 'Întrebări' },
+    { href: `/${book.slug}/verificare`, label: book.name },
+  ]}
+>
   <section class="wrap narrow page">
-    <h1>Verificarea întrebărilor</h1>
-    <p class="muted">Fiecare capitol, pe niveluri, cu răspunsurile. Un capitol verificat este marcat în fișierul lui („reviewed").</p>
+    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px;">
+      <h1 style="margin: 0;">{book.name}: Capitole</h1>
+      <a class="btn btn-ghost btn-sm" href="/admin/intrebari">← Toate cărțile</a>
+    </div>
+    <p class="muted" style="margin: -4px 0 0;">Fiecare capitol, pe niveluri, cu răspunsurile corecte. Selectează un capitol pentru a-i vedea întrebările.</p>
     <ul class="list">
       {files.map((f) => (
-        <li><a class="card row" href={`/${book.slug}/verificare/${f.ch}`}><span>Capitolul {f.ch}</span><span class={`small ${f.reviewed ? 'ok' : 'muted'}`}>{f.questions.length} întrebări, {f.reviewed ? 'verificat' : 'de verificat'}</span></a></li>
+        <li>
+          <a class="card row" href={`/${book.slug}/verificare/${f.ch}`}>
+            <div>
+              <strong>Capitolul {f.ch}</strong>: {book.titles[f.ch - 1] ?? ''}
+            </div>
+            <span class="small muted">{f.questions.length} întrebări</span>
+          </a>
+        </li>
       ))}
     </ul>
   </section>
@@ -23,6 +42,6 @@ const { book, files } = Astro.props as { book: Book; files: ChapterFile[] };
 <style>
   .page { display: grid; gap: 14px; padding-block: 8px 32px; }
   .list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
-  .row { display: flex; justify-content: space-between; gap: 10px; padding: 14px 16px; text-decoration: none; box-shadow: none; }
-  .ok { color: var(--ok); font-weight: 600; }
+  .row { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 14px 16px; text-decoration: none; box-shadow: none; }
+  .row:hover { border-color: var(--oil); }
 </style>
