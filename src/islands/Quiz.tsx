@@ -9,7 +9,8 @@ import Modal, { CloseButton } from './Modal';
 import { questionLevel } from '../lib/age';
 import { BOOKS } from '../lib/books';
 import ReportButton from './ReportButton';
-import { isSpeechSupported, preloadQuestionAudio, setSpeakingSpeed, speakQuestion, stopSpeaking } from '../lib/speech';
+import { isSpeechSupported, preloadQuestionAudio, setSpeakingSpeed, speakQuestion, stopSpeaking, pauseSpeaking, resumeSpeaking } from '../lib/speech';
+import AudioPlayerBar from './AudioPlayerBar';
 
 export interface QuizProps {
   book: string;
@@ -40,14 +41,20 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
   // Audio narration state (persistent across questions once activated by user)
   const [autoVoice, setAutoVoice] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
-  const [speedIdx, setSpeedIdx] = useState(0); // 0.75x default
-  const SPEEDS = [0.75, 1.0, 1.25];
+  const [isPaused, setIsPaused] = useState(false);
+  const [speed, setSpeed] = useState(0.75); // 0.75x default as requested
   const lastSpokenIndex = useRef<number | null>(null);
 
   const q = questions[i];
   const g = grades[i];
   const started = answers.some(isAnswered);
   const speechSupported = isSpeechSupported();
+
+  // Preload first two questions immediately on mount so first question plays with 0 delay and natural voice
+  useEffect(() => {
+    if (questions[0]) preloadQuestionAudio(questions[0]);
+    if (questions[1]) preloadQuestionAudio(questions[1]);
+  }, []);
 
   // leaving in the middle loses the answers: ask first
   useEffect(() => {
@@ -114,27 +121,46 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
 
   const setAnswer = (a: Answer) => setAnswers(answers.map((x, k) => (k === i ? a : x)));
 
-  const toggleVoice = () => {
-    if (isSpeaking) {
-      stopSpeaking();
-      setIsSpeaking(false);
-    } else {
-      setAutoVoice(true);
-      setIsSpeaking(true);
-      lastSpokenIndex.current = i;
-      speakQuestion(q, {
-        rate: SPEEDS[speedIdx],
-        onStart: () => setIsSpeaking(true),
-        onEnd: () => setIsSpeaking(false),
-      });
+  const handleStartVoice = () => {
+    if (isSpeaking && isPaused) {
+      resumeSpeaking();
+      setIsPaused(false);
+      return;
     }
+    stopSpeaking();
+    setAutoVoice(true);
+    setIsSpeaking(true);
+    setIsPaused(false);
+    lastSpokenIndex.current = i;
+    speakQuestion(q, {
+      rate: speed,
+      onStart: () => {
+        setIsSpeaking(true);
+        setIsPaused(false);
+      },
+      onEnd: () => {
+        setIsSpeaking(false);
+        setIsPaused(false);
+      },
+    });
   };
 
-  const cycleSpeed = (e: MouseEvent) => {
-    e.stopPropagation();
-    const nextIdx = (speedIdx + 1) % SPEEDS.length;
-    setSpeedIdx(nextIdx);
-    setSpeakingSpeed(SPEEDS[nextIdx]);
+  const handlePauseVoice = () => {
+    pauseSpeaking();
+    setIsPaused(true);
+  };
+
+  const handleStopVoice = () => {
+    stopSpeaking();
+    setIsSpeaking(false);
+    setIsPaused(false);
+    setAutoVoice(false);
+    lastSpokenIndex.current = null;
+  };
+
+  const handleSpeedChange = (newSpeed: number) => {
+    setSpeed(newSpeed);
+    setSpeakingSpeed(newSpeed);
   };
 
   // Preload next question's audio as soon as current question appears
@@ -148,6 +174,7 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
   useEffect(() => {
     stopSpeaking();
     setIsSpeaking(false);
+    setIsPaused(false);
 
     if (!autoVoice || done || grades[i] || verse) return;
     if (lastSpokenIndex.current === i) return;
@@ -155,9 +182,15 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
     lastSpokenIndex.current = i;
     const timer = setTimeout(() => {
       speakQuestion(q, {
-        rate: SPEEDS[speedIdx],
-        onStart: () => setIsSpeaking(true),
-        onEnd: () => setIsSpeaking(false),
+        rate: speed,
+        onStart: () => {
+          setIsSpeaking(true);
+          setIsPaused(false);
+        },
+        onEnd: () => {
+          setIsSpeaking(false);
+          setIsPaused(false);
+        },
       });
     }, 120);
 
@@ -165,7 +198,7 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
       clearTimeout(timer);
       stopSpeaking();
     };
-  }, [i, autoVoice, done, verse, speedIdx]);
+  }, [i, autoVoice, done, verse, speed]);
 
   useEffect(() => {
     return () => {
@@ -176,6 +209,7 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
   function check() {
     stopSpeaking();
     setIsSpeaking(false);
+    setIsPaused(false);
     const gr = grade(q, answers[i]);
     setGrades(grades.map((x, k) => (k === i ? gr : x)));
   }
@@ -236,49 +270,26 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
 
       {saveFailed && <p class="notice notice-bad" role="alert">Răspunsurile nu se salvează acum (progresul și clasamentul nu se actualizează). Spune-i administratorului.</p>}
 
-      <div ref={barEl} class={`actions${g ? ` is-graded ${g.right ? 'is-right' : 'is-wrong'}` : ''}`}>
+      <div ref={barEl} class="quiz-footer-dock">
         {!g && speechSupported && (
-          <div class="actions-aux">
-            <button
-              type="button"
-              class={`btn-voice${isSpeaking ? ' is-speaking' : ''}${autoVoice ? ' is-active' : ''}`}
-              onClick={toggleVoice}
-              title={isSpeaking ? 'Pauză / Oprește' : autoVoice ? 'Ascultă din nou' : 'Ascultă întrebarea (voce naturală)'}
-              aria-label={isSpeaking ? 'Oprește lectura' : 'Ascultă întrebarea'}
-            >
-              {isSpeaking ? (
-                <span class="voice-wave" aria-hidden="true">
-                  <span class="vw-bar bar-1" />
-                  <span class="vw-bar bar-2" />
-                  <span class="vw-bar bar-3" />
-                </span>
-              ) : (
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
-                  <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
-                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
-                </svg>
-              )}
-              <span class="btn-voice-label">
-                {isSpeaking ? 'Vorbește' : 'Ascultă'}
-              </span>
-            </button>
-            <button
-              type="button"
-              class="btn-voice-speed"
-              onClick={cycleSpeed}
-              title="Schimbă viteza vocii (0.75x, 1x, 1.25x)"
-              aria-label="Viteza vocii"
-            >
-              {SPEEDS[speedIdx]}x
-            </button>
-          </div>
+          <AudioPlayerBar
+            isPlaying={isSpeaking}
+            isPaused={isPaused}
+            speed={speed}
+            onStart={handleStartVoice}
+            onPause={handlePauseVoice}
+            onStop={handleStopVoice}
+            onSpeedChange={handleSpeedChange}
+            statusLabel={isSpeaking ? (isPaused ? 'În pauză' : 'Redare întrebare') : autoVoice ? 'Lectură automată activă' : 'Ascultă întrebarea'}
+          />
         )}
-        {g ? (
-          <Verdict g={g} last={i === questions.length - 1} onVerse={() => setVerse(true)} onNext={next} />
-        ) : (
-          <button class="btn btn-primary btn-block btn-3d" disabled={!isAnswered(answers[i])} onClick={check}>Verifică</button>
-        )}
+        <div class={`actions${g ? ` is-graded ${g.right ? 'is-right' : 'is-wrong'}` : ''}`}>
+          {g ? (
+            <Verdict g={g} last={i === questions.length - 1} onVerse={() => setVerse(true)} onNext={next} />
+          ) : (
+            <button class="btn btn-primary btn-block btn-3d" disabled={!isAnswered(answers[i])} onClick={check}>Verifică</button>
+          )}
+        </div>
       </div>
 
       {verse && <VerseSheet q={q} bookName={bookName} onClose={() => setVerse(false)} />}
