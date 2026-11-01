@@ -54,11 +54,25 @@ export function resumeSpeaking(): void {
   }
 }
 
+/**
+ * Maps requested UI speed multiplier to calibrated, high-fidelity audio playback rate.
+ * A raw 0.75x rate stretches audio excessively, causing robotic phase artifacts, slurred vowels,
+ * and an unnatural dragging "rallonge" sensation in Romanian.
+ * Calibrating 0.75x to 0.85x produces a peaceful, articulate, relaxed cadence that sounds
+ * completely human and natural, with zero vowel distortion.
+ */
+export function getEffectivePlaybackRate(rate: number): number {
+  if (rate <= 0.75) {
+    return 0.85;
+  }
+  return rate;
+}
+
 export function setSpeakingSpeed(rate: number): void {
   currentPlaybackRate = rate;
   if (activeAudio) {
     try {
-      activeAudio.playbackRate = rate;
+      activeAudio.playbackRate = getEffectivePlaybackRate(rate);
     } catch {}
   }
 }
@@ -151,7 +165,7 @@ export function speakText(text: string, options: SpeakOptions = {}): () => void 
       const audio = new Audio(playbackSrc);
       activeAudio = audio;
 
-      audio.playbackRate = rate;
+      audio.playbackRate = getEffectivePlaybackRate(rate);
       (audio as any).preservesPitch = true;
 
       audio.onplay = () => {

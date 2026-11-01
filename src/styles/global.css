@@ -1564,8 +1564,8 @@ html:not(.signed-in) .back-signed-in { display: none; }
   border: 1.5px solid var(--line);
   background: var(--surface);
   color: var(--ink);
-  font: 700 0.62rem/1 var(--f-body);
-  letter-spacing: -0.04em;
+  font: 700 0.68rem/1 var(--f-body);
+  letter-spacing: -0.02em;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
@@ -1574,14 +1574,16 @@ html:not(.signed-in) .back-signed-in { display: none; }
   cursor: pointer;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
-  box-shadow: 0 3px 10px rgba(58, 39, 27, 0.16);
+  box-shadow: 0 3px 10px rgba(58, 39, 27, 0.18), 0 1px 3px rgba(0, 0, 0, 0.06);
   transform: translate(-50%, -50%) scale(0.2);
   opacity: 0;
   pointer-events: none;
-  transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275) var(--delay, 0ms),
-              opacity 0.18s ease var(--delay, 0ms),
-              background-color 0.12s ease,
-              color 0.12s ease;
+  transition: transform 0.22s cubic-bezier(0.175, 0.885, 0.32, 1.275) var(--delay, 0ms),
+              opacity 0.16s ease var(--delay, 0ms),
+              background-color 0.15s ease,
+              color 0.15s ease,
+              border-color 0.15s ease,
+              box-shadow 0.15s ease;
 }
 
 .fab-arc-speeds.is-visible .fab-arc-pill {
@@ -1599,7 +1601,7 @@ html:not(.signed-in) .back-signed-in { display: none; }
   color: #ffffff;
   font-weight: 700;
   border-color: #4a3426;
-  box-shadow: 0 3px 12px rgba(58, 39, 27, 0.32);
+  box-shadow: 0 4px 14px rgba(74, 52, 38, 0.35);
 }
 
 /* Main Floating Action Button */

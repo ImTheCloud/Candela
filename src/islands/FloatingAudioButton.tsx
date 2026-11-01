@@ -9,17 +9,14 @@ export interface FloatingAudioButtonProps {
   className?: string;
 }
 
-export const SPEED_OPTIONS = [0.5, 0.75, 1, 1.25, 1.5];
+export const SPEED_OPTIONS = [0.75, 1, 1.25];
 
-// Coordinates (x, y in pixels) along an airy, spacious radial arc around the top-left of the FAB
-// Centers are ~44px apart, ensuring a clean 8-10px visual gap between 36px bubbles with zero overlap
-// Placed on the left and above the button to stay completely on-screen across all mobile screens
+// Coordinates (x, y in pixels) along a tight, elegant satellite arc around the top-left of the FAB
+// Sits at an equidistant ~11px margin from the main button with clean 7-9px gaps between pills
 const ARC_COORDINATES = [
-  { x: -78, y: 8 },    // 0.5x  (lower-left of button)
-  { x: -82, y: -36 },  // 0.75x (mid-left of button)
-  { x: -62, y: -74 },  // 1.0x  (upper-left diagonal)
-  { x: -22, y: -94 },  // 1.25x (top, slightly left)
-  { x: 16,  y: -74 },  // 1.5x  (top, slightly right)
+  { x: -55, y: 0 },    // 0.75x (mid-left of button)
+  { x: -36, y: -41 },  // 1x    (upper-left diagonal)
+  { x: 5,   y: -54 },  // 1.25x (top, above button)
 ];
 
 export default function FloatingAudioButton({
@@ -33,7 +30,8 @@ export default function FloatingAudioButton({
   className = '',
 }: FloatingAudioButtonProps) {
   const activePlaying = isPlaying && !isPaused;
-  const isAudioActive = isPlaying || isPaused;
+  // Speed buttons only show while actively playing; when paused or idle, they close into the FAB
+  const showSpeeds = activePlaying;
 
   const handleMainClick = (e: MouseEvent) => {
     e.stopPropagation();
@@ -47,9 +45,9 @@ export default function FloatingAudioButton({
       role="region"
       aria-label="Comenzi audio"
     >
-      {/* Semi-circle radial arc of 5 speed pills (from left of button up to top) */}
+      {/* Radial arc of 3 speed pills around the FAB */}
       <div
-        class={`fab-arc-speeds${isAudioActive ? ' is-visible' : ''}`}
+        class={`fab-arc-speeds${showSpeeds ? ' is-visible' : ''}`}
         role="group"
         aria-label="Viteză audio"
       >
@@ -63,7 +61,7 @@ export default function FloatingAudioButton({
               style={{
                 '--dx': `${coord.x}px`,
                 '--dy': `${coord.y}px`,
-                '--delay': `${idx * 25}ms`,
+                '--delay': `${idx * 30}ms`,
               }}
               onClick={(e) => {
                 e.stopPropagation();
@@ -71,7 +69,7 @@ export default function FloatingAudioButton({
               }}
               aria-pressed={s === speed}
               title={`Viteza ${s}x`}
-              tabIndex={isAudioActive ? 0 : -1}
+              tabIndex={showSpeeds ? 0 : -1}
             >
               {s}x
             </button>
