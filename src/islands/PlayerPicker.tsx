@@ -1,9 +1,10 @@
-import { choosePlayer, player, players } from '../lib/players';
+import { choosePlayer, formatFirstLast, player, players } from '../lib/players';
 import { user } from '../lib/session';
 
 function getFirstName(fullName: string): string {
-  const parts = fullName.trim().split(/\s+/).filter(Boolean);
-  return parts.length > 1 ? parts.slice(1).join(' ') : (parts[0] ?? '');
+  const formatted = formatFirstLast(fullName);
+  const parts = formatted.trim().split(/\s+/).filter(Boolean);
+  return parts.length > 1 ? parts.slice(0, -1).join(' ') : (parts[0] ?? '');
 }
 
 /** "Cine joacă?" for a parent and their children. */

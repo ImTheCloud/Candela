@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'preact/hooks';
 import { watchOpenMessagesCount } from '../lib/messages';
 import { player } from '../lib/players';
+import { formatFirstLast } from '../lib/players';
 import { watchOpenCount } from '../lib/reports';
 import { profile, user } from '../lib/session';
 import { localGet, localSet } from '../lib/store';
@@ -63,6 +64,7 @@ export default function AccountButton() {
 }
 
 function initials(name: string): string {
-  const parts = name.trim().split(/\s+/);
+  const formatted = formatFirstLast(name);
+  const parts = formatted.trim().split(/\s+/).filter(Boolean);
   return ((parts[0]?.[0] ?? '') + (parts.length > 1 ? parts[parts.length - 1][0] : '')).toUpperCase();
 }
