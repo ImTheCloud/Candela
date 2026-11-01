@@ -1,6 +1,7 @@
 import { computed, effect, signal } from '@preact/signals';
 import { addDoc, collection, deleteDoc, doc, onSnapshot, serverTimestamp, updateDoc } from 'firebase/firestore';
 import { removeFromBoards, updatePlayerBoardName } from './board';
+import { BOOKS } from './books';
 import { db } from './firebase';
 import { profile, rememberedAccount, user } from './session';
 import { localGet, localRemove, localSet } from './store';
@@ -77,11 +78,23 @@ export async function updateChild(key: string, name: string) {
   await updatePlayerBoardName(uid(), key, fullName);
 }
 
-export async function removeChild(key: string) {
+export async function removeChild(key: string): Promise<void> {
   const id = uid();
+  if (!id) return;
   if (chosen.value === key) choosePlayer(id);
-  await removeFromBoards(id, key);
-  return deleteDoc(doc(db, 'users', id, 'players', key));
+
+  // Optimistically remove from local state and cache right away
+  children.value = children.value.filter((c) => c.key !== key);
+  localSet('kids', { uid: id, list: children.value });
+
+  // Delete the child's player document first
+  await deleteDoc(doc(db, 'users', id, 'players', key));
+
+  // Clean up boards and progress in parallel; errors in secondary docs won't block child deletion
+  Promise.allSettled([
+    removeFromBoards(id, key),
+    ...BOOKS.map((b) => deleteDoc(doc(db, 'users', id, 'progress', `${key}~${b.slug}`))),
+  ]).catch((err) => console.error('Eroare curățare date copil:', err));
 }
 
 /** Name on the public board: full name with family name first (children get the parent's last name if they don't have one). */
