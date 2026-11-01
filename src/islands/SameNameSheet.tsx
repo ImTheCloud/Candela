@@ -14,7 +14,7 @@ export default function SameNameSheet({ name, fromProfile = false, onClose }: { 
           <p class="muted">
             {fromProfile ? (
               <>
-                Dacă ai creat inițial contul cu numele copilului, apasă pe <strong>„Schimbă numele”</strong> din dreptul profilului tău pentru a trece datele tale de părinte. Vei putea apoi adăuga copilul cu acest prenume.
+                Dacă ai creat inițial contul cu numele copilului, apasă pe pictograma de editare (creion) din dreptul profilului tău pentru a trece datele tale de părinte. Vei putea apoi adăuga copilul cu acest prenume.
               </>
             ) : (
               <>

@@ -434,10 +434,45 @@ a.tile { text-decoration: none; }
 .switch:disabled { opacity: .55; cursor: default; }
 
 .pl { display: grid; gap: 8px; padding: 10px 14px; border-radius: var(--r-box); background: var(--surface); border: 1px solid var(--line); }
-.pl-row { display: flex; align-items: center; gap: 12px; min-height: 38px; }
-.pl-name { flex: 1; min-width: 0; display: flex; align-items: baseline; gap: 6px; }
-.pl-name strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 0.95rem; }
-.pl-actions { display: flex; align-items: center; gap: 14px; margin-left: auto; flex: none; }
+.pl-row { display: flex; align-items: center; gap: 12px; min-height: 42px; }
+.pl-name { flex: 1; min-width: 0; display: flex; flex-direction: column; justify-content: center; gap: 2px; }
+.pl-name strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 0.95rem; font-weight: 600; color: var(--ink); line-height: 1.25; }
+.pl-email { font-size: 0.8rem; color: var(--ink-3); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; line-height: 1.2; }
+.pl-actions { display: flex; align-items: center; gap: 8px; margin-left: auto; flex: none; }
+.pl-btn {
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink-2);
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 0.12s ease, color 0.12s ease, border-color 0.12s ease;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  .pl-btn:hover {
+    background: var(--surface-2);
+    color: var(--ink);
+    border-color: var(--line-strong, var(--line));
+  }
+  .pl-btn.bad:hover {
+    background: var(--bad-soft);
+    color: var(--bad);
+    border-color: color-mix(in srgb, var(--bad) 30%, transparent);
+  }
+}
+.pl-btn:active {
+  background: var(--surface-2);
+}
+.pl-btn.bad {
+  color: var(--bad);
+}
 .me-end { display: grid; gap: 12px; margin-top: 4px; }
 .me-card {
   background: var(--surface);
