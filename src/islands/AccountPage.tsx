@@ -1,9 +1,10 @@
-import { useState } from 'preact/hooks';
+import { useEffect, useState } from 'preact/hooks';
 import { errorText, rememberedAccount, signIn, user } from '../lib/session';
 import PasswordInput from './PasswordInput';
 import Profile, { type BookInfo } from './Profile';
 import Loader from './Loader';
 import { nextPage } from './AccountGate';
+import LampIcon from './LampIcon';
 
 export default function AccountPage({ books }: { books: BookInfo[] }) {
   const u = user.value;
@@ -19,6 +20,11 @@ function SignInForm() {
   const [password, setPassword] = useState('');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
+
+  useEffect(() => {
+    document.body.classList.add('auth-no-header');
+    return () => document.body.classList.remove('auth-no-header');
+  }, []);
 
   async function submit(e: Event) {
     e.preventDefault();
@@ -39,8 +45,10 @@ function SignInForm() {
   return (
     <form class="card auth-card stack" onSubmit={submit}>
       <div class="auth-brand">
+        <a href="/" class="auth-brand-lamp" aria-label="Acasă - Candela" title="Acasă - Candela">
+          <LampIcon size={26} />
+        </a>
         <span class="auth-brand-badge">Concursul „Talantul în Negoț”</span>
-        <h1 class="auth-brand-title">Candela lui Dumnezeu</h1>
         <p class="auth-brand-verse">„...și candela lui Dumnezeu nu se stinsese încă...”</p>
         <span class="auth-brand-ref">1 Samuel 3:3</span>
       </div>
@@ -59,6 +67,7 @@ function SignInForm() {
       <div class="auth-links small">
         <a class="link" href="/cont/parola">Ai uitat parola?</a>
         <a class="link" href={`/cont/inregistrare${location.search}`}>Creează un cont</a>
+        <a class="link muted" href="/">Înapoi acasă</a>
       </div>
     </form>
   );

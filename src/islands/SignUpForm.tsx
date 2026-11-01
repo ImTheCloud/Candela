@@ -4,6 +4,7 @@ import PasswordInput from './PasswordInput';
 import { nextPage } from './AccountGate';
 import { addChild, sameFirstName } from '../lib/players';
 import SameNameSheet from './SameNameSheet';
+import LampIcon from './LampIcon';
 
 export default function SignUpForm() {
   const [f, setF] = useState({ firstName: '', lastName: '', email: '', password: '', isParent: false });
@@ -16,7 +17,9 @@ export default function SignUpForm() {
 
   // Someone already signed in has nothing to do here. During sign-up, wait until the profile is written.
   useEffect(() => {
+    document.body.classList.add('auth-no-header');
     if (user.value && !submitting.current) location.replace('/cont');
+    return () => document.body.classList.remove('auth-no-header');
   }, [user.value]);
 
   const set = (k: keyof typeof f) => (e: Event) => {
@@ -54,8 +57,10 @@ export default function SignUpForm() {
   return (
     <form class="card auth-card stack" onSubmit={submit}>
       <div class="auth-brand">
+        <a href="/" class="auth-brand-lamp" aria-label="Acasă - Candela" title="Acasă - Candela">
+          <LampIcon size={26} />
+        </a>
         <span class="auth-brand-badge">Concursul „Talantul în Negoț”</span>
-        <h1 class="auth-brand-title">Candela lui Dumnezeu</h1>
         <p class="auth-brand-verse">„...și candela lui Dumnezeu nu se stinsese încă...”</p>
         <span class="auth-brand-ref">1 Samuel 3:3</span>
       </div>
@@ -101,7 +106,10 @@ export default function SignUpForm() {
       )}
       {error && <p class="notice notice-bad" role="alert">{error}</p>}
       <button class="btn btn-primary btn-block" disabled={busy}>{busy ? 'Se creează contul…' : 'Creează contul'}</button>
-      <p class="small auth-links"><a class="link" href={`/cont${location.search}`}>Ai deja un cont?</a></p>
+      <div class="auth-links small">
+        <a class="link" href={`/cont${location.search}`}>Ai deja un cont?</a>
+        <a class="link muted" href="/">Înapoi acasă</a>
+      </div>
       {sameName && <SameNameSheet name={sameName} onClose={() => setSameName('')} />}
     </form>
   );
