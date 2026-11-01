@@ -44,74 +44,40 @@ export default function AdminQuestionsHub({ books }: Props) {
 }
 
 function HubContent({ books }: { books: BookSummary[] }) {
-  const [selectedBook, setSelectedBook] = useState(books[0]?.slug ?? '1-samuel');
-  const [search, setSearch] = useState('');
+  const [selectedBook, setSelectedBook] = useState(
+    books.some((b) => b.slug === '2-samuel') ? '2-samuel' : (books[0]?.slug ?? '1-samuel')
+  );
 
   const current = books.find((b) => b.slug === selectedBook) ?? books[0]!;
-  const term = search.trim().toLowerCase();
-
-  const filtered = term
-    ? current.chapters.filter(
-        (c) =>
-          String(c.ch).includes(term) ||
-          c.title.toLowerCase().includes(term) ||
-          `capitolul ${c.ch}`.includes(term)
-      )
-    : current.chapters;
-
   const totalAll = books.reduce((sum, b) => sum + b.totalQuestions, 0);
 
   return (
-    <div class="stack" style={{ gap: '18px' }}>
+    <div class="stack" style={{ gap: '16px' }}>
       <div class="adm-hub-head">
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px' }}>
-          <h1 style={{ margin: 0 }}>Întrebări și răspunsuri</h1>
-          <a class="btn btn-ghost btn-sm" href="/admin">← Administrare</a>
-        </div>
+        <h1 style={{ margin: 0 }}>Întrebări și răspunsuri</h1>
         <p class="muted" style={{ margin: '6px 0 0' }}>
-          Consultă toate întrebările și răspunsurile pentru fiecare capitol și nivel. Datele sunt sincronizate direct din fișierele JSON ale întrebărilor ({totalAll} întrebări în total).
+          Consultă toate întrebările și răspunsurile pentru fiecare capitol și nivel ({totalAll} întrebări în total).
         </p>
       </div>
 
-      {/* Book tabs */}
-      <div class="adm-tabs" role="tablist">
-        {books.map((b) => {
-          const active = b.slug === current.slug;
-          return (
-            <button
-              key={b.slug}
-              type="button"
-              role="tab"
-              aria-selected={active}
-              class={`adm-tab${active ? ' is-active' : ''}`}
-              onClick={() => { setSelectedBook(b.slug); setSearch(''); }}
-            >
-              <strong>{b.name}</strong>
-              <span class="small">
-                <span>{b.chaptersCount} capitole</span>
-                <span class="adm-tab-sep"> • </span>
-                <span class="adm-tab-q">{b.totalQuestions} întrebări</span>
-              </span>
-            </button>
-          );
-        })}
-      </div>
-
-      {/* Search bar */}
-      <div class="field" style={{ margin: 0 }}>
-        <input
-          class="input"
-          type="search"
-          placeholder={`Caută în capitolele din ${current.name} (ex: 3 sau Goliat)...`}
-          aria-label="Caută capitol"
-          value={search}
-          onInput={(e) => setSearch(e.currentTarget.value)}
-        />
+      {/* Book selector: simple 2-button switch like home page */}
+      <div class="book-switch" role="tablist" aria-label="Alege cartea">
+        {books.map((b) => (
+          <button
+            key={b.slug}
+            type="button"
+            role="tab"
+            aria-selected={b.slug === current.slug}
+            onClick={() => setSelectedBook(b.slug)}
+          >
+            {b.name}
+          </button>
+        ))}
       </div>
 
       {/* Chapters list */}
       <div class="adm-chapters-list">
-        {filtered.map((c) => (
+        {current.chapters.map((c) => (
           <a
             key={c.ch}
             class="card adm-ch-card"
@@ -129,8 +95,8 @@ function HubContent({ books }: { books: BookSummary[] }) {
             </div>
           </a>
         ))}
-        {filtered.length === 0 && (
-          <p class="card empty muted">Niciun capitol nu corespunde căutării.</p>
+        {current.chapters.length === 0 && (
+          <p class="card empty muted">Nu există capitole disponibile pentru această carte.</p>
         )}
       </div>
     </div>
