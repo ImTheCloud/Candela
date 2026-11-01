@@ -101,8 +101,8 @@ export interface SignUp {
 
 export async function signUp(f: SignUp): Promise<void> {
   const last = clean(f.lastName);
-  const first = clean(f.firstName);
-  const name = `${last} ${first}`;
+  const first = clean(f.firstName) || 'Familia';
+  const name = `${last} ${first}`.trim();
   const cred = await createUserWithEmailAndPassword(auth, f.email.trim(), f.password);
   await updateProfile(cred.user, { displayName: name });
   rememberSignedIn(cred.user);
@@ -223,10 +223,10 @@ export function setParent(isParent: boolean) {
 export async function updateAccountName(firstName: string, lastName: string): Promise<string> {
   const u = auth.currentUser;
   if (!u) throw new Error('not_signed_in');
-  const first = clean(firstName);
+  const first = clean(firstName) || 'Familia';
   const last = clean(lastName);
-  if (!first || !last) throw new Error('name_required');
-  const name = `${last} ${first}`;
+  if (!last) throw new Error('name_required');
+  const name = `${last} ${first}`.trim();
   if (name.length > 80) throw new Error('name_too_long');
 
   // Optimistically update local profile and storage
