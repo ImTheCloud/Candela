@@ -43,7 +43,9 @@ export default function Profile({ books: _books }: { books?: BookInfo[] }) {
   const [contactError, setContactError] = useState('');
 
   const list = players.value;
-  const kids = list.filter((x) => x.child).length;
+  const selfPlayer = list.find((x) => !x.child) || list[0];
+  const childPlayers = list.filter((x) => x.child);
+  const kids = childPlayers.length;
   const isParent = p?.isParent === true;
 
   // Badges for admin
@@ -91,8 +93,21 @@ export default function Profile({ books: _books }: { books?: BookInfo[] }) {
 
       {isParent ? (
         <section class="me-sect" aria-labelledby="pl-title">
-          <h2 id="pl-title" class="me-label">Familia</h2>
-          {list.map((x) => (
+          <h2 id="pl-title" class="me-label">Părintele</h2>
+          {selfPlayer && (
+            <PlayerBlock
+              key={selfPlayer.key}
+              p={selfPlayer}
+              email={email}
+              editingSelf={editingSelf}
+              onStartEditSelf={() => setEditingSelf(true)}
+              onDoneEditSelf={() => setEditingSelf(false)}
+            />
+          )}
+          {(childPlayers.length > 0 || adding) && (
+            <h3 class="me-label" style={{ marginTop: '8px' }}>Copii</h3>
+          )}
+          {childPlayers.map((x) => (
             <PlayerBlock
               key={x.key}
               p={x}
