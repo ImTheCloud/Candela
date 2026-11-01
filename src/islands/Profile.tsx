@@ -91,8 +91,6 @@ export default function Profile({ books: _books }: { books?: BookInfo[] }) {
     <div class="me">
       {profileError.value && <p class="notice notice-bad" role="alert">Profilul nu a putut fi încărcat. Verifică conexiunea.</p>}
 
-      <ProfileProgressDashboard />
-
       {isParent ? (
         <section class="me-sect" aria-labelledby="pl-title">
           <h2 id="pl-title" class="me-label">Părintele</h2>
@@ -169,6 +167,8 @@ export default function Profile({ books: _books }: { books?: BookInfo[] }) {
           </section>
         )
       )}
+
+      <ProfileProgressDashboard />
 
       <div class="me-end">
         <div class="me-card">
