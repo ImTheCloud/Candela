@@ -132,3 +132,4 @@ function HubContent({ books }: { books: BookSummary[] }) {
     </div>
   );
 }
+
