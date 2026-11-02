@@ -267,7 +267,6 @@ function Row({ r, me, onChanged }: { r: UserRow; me: string; onChanged: () => Pr
 
         {/* Badges on right side */}
         <div class="adm-badge">
-          {r.admin && <span class="adm-pill-admin">admin</span>}
           {r.isParent && <span class="adm-pill-parent">{n} {n === 1 ? 'copil' : 'copii'}</span>}
           {(r.totalScore ?? 0) > 0 && (
             <span class="adm-pill-score" title="Întrebări rezolvate în total">
