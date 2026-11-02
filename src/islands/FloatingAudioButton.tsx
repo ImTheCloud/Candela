@@ -61,7 +61,6 @@ export default function FloatingAudioButton({
               style={{
                 '--dx': `${coord.x}px`,
                 '--dy': `${coord.y}px`,
-                '--delay': `${idx * 30}ms`,
               }}
               onClick={(e) => {
                 e.stopPropagation();
