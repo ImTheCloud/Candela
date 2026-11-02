@@ -24,7 +24,8 @@ body.in-quiz main { padding-top: 0; }
 .q-where b { color: var(--ink); font-weight: 600; }
 .q-scene { margin: 6px 0 0; padding-left: 10px; border-left: 3px solid var(--flame); font: italic 0.95rem/1.4 var(--f-bible); color: var(--ink-2); }
 .q-body { display: grid; gap: 14px; margin-top: 4px; }
-.q-text { font: 600 1.25rem/1.35 var(--f-body); letter-spacing: -0.005em; }
+.q-text { font: 600 1.25rem/1.35 var(--f-body); letter-spacing: -0.005em; margin: 0; }
+.q-hint { margin: -6px 0 2px; font-size: 0.85rem; color: var(--ink-2); line-height: 1.35; }
 
 .opts { display: grid; gap: 12px; }
 /* tactile answers: a solid lip under each one, pressed down when touched */
