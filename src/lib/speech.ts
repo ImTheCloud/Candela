@@ -327,7 +327,7 @@ export function buildQuestionSpeech(q: Playable): string {
     parts.push(`Completează: ${formatted}`);
   } else if (q.t === 'match') {
     // Only speak the single, clean instruction once (no duplicate sentence)
-    parts.push('Asociază perechile corespunzătoare din stânga și din dreapta.');
+    parts.push('Asociază perechile din stânga și din dreapta.');
   } else {
     parts.push(cleanSpeechText(q.q));
   }
