@@ -112,6 +112,14 @@ export function isCurrentlySpeaking(): boolean {
   return !!(activeAudio && !activeAudio.paused && !activeAudio.ended);
 }
 
+export function cleanSpeechText(s: unknown): string {
+  return String(s ?? '')
+    .replace(/[*_#`]/g, '')
+    .replace(/["'„”«»“”’‘‚‛]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 /**
  * Preloads audio in the background using fetch + blob URL.
  * Works seamlessly across mobile browsers (iOS Safari, Android Chrome) which block
@@ -119,7 +127,7 @@ export function isCurrentlySpeaking(): boolean {
  */
 export function preloadText(text: string, voice = 'ro-RO-AlinaNeural'): Promise<string> {
   if (typeof window === 'undefined') return Promise.resolve('');
-  const clean = text.trim();
+  const clean = cleanSpeechText(text);
   if (!clean) return Promise.resolve('');
 
   const key = `${voice}:${clean}`;
@@ -173,7 +181,7 @@ export function preloadQuestionAudio(q: Playable): void {
  * with custom rate (default 1.0x). Zero robotic SpeechSynthesis.
  */
 export function speakText(text: string, options: SpeakOptions = {}): () => void {
-  const clean = text.trim();
+  const clean = cleanSpeechText(text);
   if (!clean) {
     options.onEnd?.();
     return () => {};
@@ -307,10 +315,6 @@ export function speakText(text: string, options: SpeakOptions = {}): () => void 
   return () => {};
 }
 
-function cleanText(s: unknown): string {
-  return String(s ?? '').replace(/[*_#`]/g, '').trim();
-}
-
 /**
  * Builds clear, natural Romanian spoken text for a quiz question and its options.
  */
@@ -319,10 +323,13 @@ export function buildQuestionSpeech(q: Playable): string {
 
   // Question prompt
   if (q.t === 'fill') {
-    const formatted = cleanText(q.q).replace(/_{2,}/g, '... spațiu liber ...');
+    const formatted = cleanSpeechText(q.q).replace(/_{2,}/g, '... spațiu liber ...');
     parts.push(`Completează: ${formatted}`);
+  } else if (q.t === 'match') {
+    // Only speak the single, clean instruction once (no duplicate sentence)
+    parts.push('Asociază perechile corespunzătoare din stânga și din dreapta.');
   } else {
-    parts.push(cleanText(q.q));
+    parts.push(cleanSpeechText(q.q));
   }
 
   // Question options
@@ -336,7 +343,8 @@ export function buildQuestionSpeech(q: Playable): string {
       const letters = ['A', 'B', 'C', 'D', 'E'];
       q.opts.forEach((opt, idx) => {
         const letter = letters[idx] || String(idx + 1);
-        parts.push(`Opțiunea ${letter}: ${cleanText(opt)}.`);
+        // "Opțiunea..." adds a natural micro-pause so the letter (especially "A") does not merge into "Opțiunea-a"
+        parts.push(`Opțiunea... ${letter}: ${cleanSpeechText(opt)}.`);
       });
       break;
     }
@@ -345,14 +353,15 @@ export function buildQuestionSpeech(q: Playable): string {
       const letters = ['A', 'B', 'C', 'D', 'E'];
       q.opts.forEach((opt, idx) => {
         const letter = letters[idx] || String(idx + 1);
-        parts.push(`Opțiunea ${letter}: ${cleanText(opt)}.`);
+        parts.push(`Opțiunea... ${letter}: ${cleanSpeechText(opt)}.`);
       });
       parts.push('Sau: Niciun răspuns corect.');
+      parts.push('Pot fi corecte: niciuna, una, două sau trei variante.');
       break;
     }
 
     case 'match':
-      parts.push('Asociază perechile corespunzătoare din stânga și din dreapta.');
+      // Handled above in question prompt to avoid repeating two phrases
       break;
 
     case 'fill':

@@ -77,6 +77,7 @@ function Multi({ q, answer, onChange, graded }: P<'multi'>) {
   return (
     <>
       <p class="q-text">{q.q}</p>
+      <p class="q-hint small muted">Pot fi corecte: niciuna, 1, 2 sau 3 variante.</p>
       <div class="opts" role="group" aria-label="Variante">
         {q.opts.map((o, i) => {
           const chosen = !answer.none && answer.v.includes(i);
@@ -134,7 +135,7 @@ function Match({ q, answer, onChange, graded }: P<'match'>) {
 
   return (
     <>
-      <p class="q-text">{q.q}</p>
+      <p class="q-text">Asociază perechile corespunzătoare din stânga și din dreapta.</p>
       <div class="match">
         <ol class="match-col" aria-label="Coloana întâi">
           {q.pairs.map(([left], row) => {
