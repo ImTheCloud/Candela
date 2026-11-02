@@ -171,7 +171,7 @@ function Match({ q, answer, onChange, graded }: P<'match'>) {
 
   return (
     <>
-      <p class="q-text">Asociază perechile corespunzătoare din stânga și din dreapta.</p>
+      <p class="q-text">Asociază perechile din stânga și din dreapta.</p>
       <div class="match">
         <ol class="match-col" aria-label="Coloana întâi">
           {q.pairs.map(([left], row) => {
