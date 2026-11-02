@@ -42,13 +42,10 @@ function TrueFalse({ q, answer, onChange, graded }: P<'tf'>) {
     <>
       <p class="q-text">{q.q}</p>
       <div class="tf" role="radiogroup" aria-label="Răspuns">
-        {[
-          { v: true, label: 'Adevărat', key: 'A' },
-          { v: false, label: 'Fals', key: 'F' },
-        ].map(({ v, label, key }) => (
+        {[true, false].map((v) => (
           <button type="button" role="radio" aria-checked={answer.v === v} disabled={!!graded}
             class={`opt tf-opt ${state(graded, q.a === v, answer.v === v)}`} onClick={() => onChange({ t: 'tf', v })}>
-            <span class="opt-key">{key}</span><span>{label}</span>
+            {v ? 'Adevărat' : 'Fals'}
           </button>
         ))}
       </div>
@@ -94,7 +91,7 @@ function Multi({ q, answer, onChange, graded }: P<'multi'>) {
         <button type="button" role="checkbox" aria-checked={answer.none} disabled={!!graded}
           class={`opt opt-none ${state(graded, q.a.length === 0, answer.none)}`}
           onClick={() => onChange({ t: 'multi', v: [], none: !answer.none })}>
-          <span class="opt-key">N</span><span>Niciun răspuns corect</span>
+          Niciun răspuns corect
         </button>
       </div>
     </>
