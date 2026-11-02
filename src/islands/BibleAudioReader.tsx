@@ -1,6 +1,10 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
+import { navigate } from 'astro:transitions/client';
 import { getSavedSpeakingSpeed, isSpeechSupported, pauseSpeaking, preloadText, resumeSpeaking, setSpeakingSpeed, speakText, stopSpeaking } from '../lib/speech';
 import FloatingAudioButton from './FloatingAudioButton';
+
+// Track auto-advance across chapter transitions so audio is not stopped on unmount
+let isAutoAdvancingChapter = false;
 
 interface Props {
   bookSlug: string;
@@ -68,17 +72,27 @@ export default function BibleAudioReader({ bookSlug, ch, totalChapters = 24, ver
     let timeoutId: any = null;
 
     if (verses[0]) preloadText(verses[0]);
-
-    const isAutoplay = typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('autoplay') === '1';
-    if (isAutoplay) {
-      preloadText(`Capitolul ${ch}.`);
-    }
+    preloadText(`Capitolul ${ch}.`);
 
     let nextIdxToPreload = 1;
 
     const preloadNext = () => {
       if (cancelled) return;
-      if (nextIdxToPreload >= verses.length) return;
+      if (nextIdxToPreload >= verses.length) {
+        // Once this chapter is fully preloaded, proactively preload next chapter's announcement and verse 1
+        if (ch < totalChapters) {
+          preloadText(`Capitolul ${ch + 1}.`);
+          fetch(`/data/${bookSlug}/${ch + 1}.json`)
+            .then((r) => r.json())
+            .then((data) => {
+              if (!cancelled && data?.verses?.[0]) {
+                preloadText(data.verses[0]);
+              }
+            })
+            .catch(() => {});
+        }
+        return;
+      }
 
       const idx = nextIdxToPreload++;
       const text = verses[idx];
@@ -112,10 +126,22 @@ export default function BibleAudioReader({ bookSlug, ch, totalChapters = 24, ver
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const params = new URLSearchParams(window.location.search);
-    if (params.get('autoplay') === '1') {
+    const isAutoplayParam = params.get('autoplay') === '1';
+    let isAutoplayStorage = false;
+    try {
+      if (sessionStorage.getItem('candela_auto_chapter') === String(ch)) {
+        isAutoplayStorage = true;
+        sessionStorage.removeItem('candela_auto_chapter');
+      }
+    } catch {}
+
+    if (isAutoplayParam || isAutoplayStorage || isAutoAdvancingChapter) {
+      isAutoAdvancingChapter = false;
       try {
         history.replaceState(null, '', window.location.pathname);
       } catch {}
+
+      window.scrollTo({ top: 0, behavior: 'instant' });
 
       setIsPlaying(true);
       isPlayingRef.current = true;
@@ -131,9 +157,12 @@ export default function BibleAudioReader({ bookSlug, ch, totalChapters = 24, ver
           if (!isPlayingRef.current) return;
           playVerse(0);
         },
-        onError: () => {
-          if (!isPlayingRef.current) return;
-          playVerse(0);
+        onError: (err) => {
+          console.warn('Audio autoplay failed on chapter announcement:', err);
+          setIsPlaying(false);
+          setIsPaused(true);
+          isPlayingRef.current = false;
+          isPausedRef.current = true;
         },
       });
     }
@@ -178,6 +207,17 @@ export default function BibleAudioReader({ bookSlug, ch, totalChapters = 24, ver
       }
     }
 
+    // Near the end of chapter: proactively preload next chapter's announcement and verse 1
+    if (ch < totalChapters && idx >= verses.length - 2) {
+      preloadText(`Capitolul ${ch + 1}.`);
+      fetch(`/data/${bookSlug}/${ch + 1}.json`)
+        .then((r) => r.json())
+        .then((data) => {
+          if (data?.verses?.[0]) preloadText(data.verses[0]);
+        })
+        .catch(() => {});
+    }
+
     // Pure biblical text only: never say verse numbers out loud
     const verseText = verses[idx];
 
@@ -192,14 +232,13 @@ export default function BibleAudioReader({ bookSlug, ch, totalChapters = 24, ver
           handleChapterFinished();
         }
       },
-      onError: () => {
-        if (!isPlayingRef.current) return;
-        const next = verseIdxRef.current + 1;
-        if (next < verses.length) {
-          playVerse(next);
-        } else {
-          handleChapterFinished();
-        }
+      onError: (err) => {
+        console.warn('Audio playback error on verse', idx, err);
+        // Do NOT skip verses on error! Cleanly pause at this verse.
+        setIsPlaying(false);
+        setIsPaused(true);
+        isPlayingRef.current = false;
+        isPausedRef.current = true;
       },
     });
   };
@@ -207,9 +246,15 @@ export default function BibleAudioReader({ bookSlug, ch, totalChapters = 24, ver
   const handleChapterFinished = () => {
     clearHighlight();
     if (ch < totalChapters) {
-      // Auto-advance to the next chapter with ?autoplay=1 (replace history so back button still returns home)
       const nextCh = ch + 1;
-      window.location.replace(`/${bookSlug}/citire/${nextCh}?autoplay=1`);
+      isAutoAdvancingChapter = true;
+      try {
+        sessionStorage.setItem('candela_auto_chapter', String(nextCh));
+      } catch {}
+
+      navigate(`/${bookSlug}/citire/${nextCh}?autoplay=1`, { history: 'replace' }).catch(() => {
+        window.location.replace(`/${bookSlug}/citire/${nextCh}?autoplay=1`);
+      });
     } else {
       stop();
     }
@@ -268,7 +313,9 @@ export default function BibleAudioReader({ bookSlug, ch, totalChapters = 24, ver
   // Clean up on unmount or page exit
   useEffect(() => {
     return () => {
-      stopSpeaking();
+      if (!isAutoAdvancingChapter) {
+        stopSpeaking();
+      }
       clearHighlight();
       if (typeof document !== 'undefined') {
         const readerEl = document.querySelector('.reader');

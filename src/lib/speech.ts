@@ -55,7 +55,8 @@ export function stopSpeaking(): void {
       activeAudio.onerror = null;
       activeAudio.pause();
       activeAudio.currentTime = 0;
-      activeAudio.src = '';
+      activeAudio.removeAttribute('src');
+      activeAudio.load();
     } catch {}
     activeAudio = null;
   }
@@ -200,52 +201,7 @@ export function speakText(text: string, options: SpeakOptions = {}): () => void 
       const key = `${voice}:${clean}`;
       const directUrl = `/api/tts?text=${encodeURIComponent(clean)}&voice=${encodeURIComponent(voice)}`;
 
-      // 1. If preloaded blob URL is already in RAM, play IMMEDIATELY (0ms latency!)
-      const cachedBlob = readyUrlCache.get(key);
-      if (cachedBlob) {
-        const audio = new Audio(cachedBlob);
-        activeAudio = audio;
-        audio.playbackRate = getEffectivePlaybackRate(rate);
-        (audio as any).preservesPitch = true;
-
-        audio.onplay = () => {
-          if (!cancelled) options.onStart?.();
-        };
-
-        audio.onended = () => {
-          if (activeAudio === audio) activeAudio = null;
-          if (!cancelled) options.onEnd?.();
-        };
-
-        audio.onerror = (e) => {
-          if (activeAudio === audio) activeAudio = null;
-          if (!cancelled) {
-            options.onError?.(e);
-            options.onEnd?.();
-          }
-        };
-
-        const playPromise = audio.play();
-        if (playPromise !== undefined) {
-          playPromise.catch((err) => {
-            if (activeAudio === audio) activeAudio = null;
-            if (!cancelled) {
-              options.onError?.(err);
-              options.onEnd?.();
-            }
-          });
-        }
-
-        return () => {
-          cancelled = true;
-          if (activeAudio === audio) {
-            stopSpeaking();
-          }
-        };
-      }
-
-      // 2. Not yet in RAM cache: prepare audio instance synchronously to preserve user gesture
-      const audio = new Audio();
+      const audio = activeAudio || new Audio();
       activeAudio = audio;
       audio.playbackRate = getEffectivePlaybackRate(rate);
       (audio as any).preservesPitch = true;
@@ -255,48 +211,57 @@ export function speakText(text: string, options: SpeakOptions = {}): () => void 
       };
 
       audio.onended = () => {
-        if (activeAudio === audio) activeAudio = null;
         if (!cancelled) options.onEnd?.();
       };
 
-      audio.onerror = (e) => {
-        if (activeAudio === audio) activeAudio = null;
+      const handleError = (err?: any) => {
         if (!cancelled) {
-          options.onError?.(e);
-          options.onEnd?.();
+          if (options.onError) {
+            options.onError(err);
+          } else {
+            options.onEnd?.();
+          }
         }
+      };
+
+      audio.onerror = (e) => {
+        handleError(e);
       };
 
       const startPlayback = (src: string) => {
         if (cancelled || activeAudio !== audio) return;
-        audio.src = src;
+        if (audio.src !== src) {
+          audio.src = src;
+        }
+        audio.currentTime = 0;
         audio.playbackRate = getEffectivePlaybackRate(rate);
         const playPromise = audio.play();
         if (playPromise !== undefined) {
           playPromise.catch((err) => {
-            if (activeAudio === audio) activeAudio = null;
-            if (!cancelled) {
-              options.onError?.(err);
-              options.onEnd?.();
-            }
+            handleError(err);
           });
         }
       };
 
-      // If an in-flight fetch is currently downloading this audio, wait for the blob;
-      // otherwise initiate preloadText so the blob is created without chunked stream stalls
-      const promise = inflightFetches.get(key) || preloadText(clean, voice);
-      promise
-        .then((blobUrl) => {
-          if (!cancelled && activeAudio === audio) {
-            startPlayback(blobUrl || directUrl);
-          }
-        })
-        .catch(() => {
-          if (!cancelled && activeAudio === audio) {
-            startPlayback(directUrl);
-          }
-        });
+      // 1. If preloaded blob URL is already in RAM, play IMMEDIATELY (0ms latency!)
+      const cachedBlob = readyUrlCache.get(key);
+      if (cachedBlob) {
+        startPlayback(cachedBlob);
+      } else {
+        // 2. Not yet in RAM cache: fetch blob in background or fallback to direct URL
+        const promise = inflightFetches.get(key) || preloadText(clean, voice);
+        promise
+          .then((blobUrl) => {
+            if (!cancelled && activeAudio === audio) {
+              startPlayback(blobUrl || directUrl);
+            }
+          })
+          .catch(() => {
+            if (!cancelled && activeAudio === audio) {
+              startPlayback(directUrl);
+            }
+          });
+      }
 
       return () => {
         cancelled = true;
@@ -305,8 +270,11 @@ export function speakText(text: string, options: SpeakOptions = {}): () => void 
         }
       };
     } catch (err) {
-      options.onError?.(err);
-      options.onEnd?.();
+      if (options.onError) {
+        options.onError(err);
+      } else {
+        options.onEnd?.();
+      }
       return () => {};
     }
   }
