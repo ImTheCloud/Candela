@@ -3,6 +3,7 @@ import AccountGate from './AccountGate';
 import { loadChapters } from '../lib/load';
 import { level } from '../lib/level';
 import { PAIRS, SHAPE, shuffle, TYPES, type Playable } from '../lib/questions';
+import { preloadQuestionAudio } from '../lib/speech';
 import Quiz from './Quiz';
 import Loader from './Loader';
 
@@ -30,6 +31,9 @@ function MockExamInner({ book, bookName, chapters }: Props) {
           if (m) out.push(m);
         } else out.push(...shuffle(pool.filter((q) => q.t === t)).slice(0, SHAPE[t]));
       }
+      if (out[0]) preloadQuestionAudio(out[0]);
+      if (out[1]) preloadQuestionAudio(out[1]);
+      if (out[2]) preloadQuestionAudio(out[2]);
       setExam({ key: Date.now(), questions: out });
     } catch {
       setError('Întrebările nu s-au putut încărca. Verifică conexiunea la internet.');
