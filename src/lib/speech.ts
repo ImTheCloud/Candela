@@ -343,8 +343,7 @@ export function buildQuestionSpeech(q: Playable): string {
       const letters = ['A', 'B', 'C', 'D', 'E'];
       q.opts.forEach((opt, idx) => {
         const letter = letters[idx] || String(idx + 1);
-        // "Opțiunea..." adds a natural micro-pause so the letter (especially "A") does not merge into "Opțiunea-a"
-        parts.push(`Opțiunea... ${letter}: ${cleanSpeechText(opt)}.`);
+        parts.push(`Răspunsul ${letter}: ${cleanSpeechText(opt)}.`);
       });
       break;
     }
@@ -353,7 +352,7 @@ export function buildQuestionSpeech(q: Playable): string {
       const letters = ['A', 'B', 'C', 'D', 'E'];
       q.opts.forEach((opt, idx) => {
         const letter = letters[idx] || String(idx + 1);
-        parts.push(`Opțiunea... ${letter}: ${cleanSpeechText(opt)}.`);
+        parts.push(`Răspunsul ${letter}: ${cleanSpeechText(opt)}.`);
       });
       parts.push('Sau: Niciun răspuns corect.');
       parts.push('Pot fi corecte: niciuna, una, două sau trei variante.');
