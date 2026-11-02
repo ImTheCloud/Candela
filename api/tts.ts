@@ -41,7 +41,7 @@ class InflightStream {
 
   subscribe(res: any, req: any) {
     res.setHeader('Content-Type', 'audio/mpeg');
-    res.setHeader('Cache-Control', 'public, max-age=86400');
+    res.setHeader('Cache-Control', 'public, max-age=31536000, s-maxage=31536000, stale-while-revalidate=86400, immutable');
     res.setHeader('Transfer-Encoding', 'chunked');
     if (typeof res.flushHeaders === 'function') {
       res.flushHeaders();
@@ -123,7 +123,7 @@ export default async function handler(req: any, res: any) {
       const buf = cache.get(cacheKey)!;
       res.setHeader('Content-Type', 'audio/mpeg');
       res.setHeader('Content-Length', buf.length);
-      res.setHeader('Cache-Control', 'public, max-age=86400, immutable');
+      res.setHeader('Cache-Control', 'public, max-age=31536000, s-maxage=31536000, stale-while-revalidate=86400, immutable');
       res.setHeader('Accept-Ranges', 'bytes');
       return res.send ? res.send(buf) : res.end(buf);
     }

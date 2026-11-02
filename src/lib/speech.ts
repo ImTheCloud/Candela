@@ -248,19 +248,10 @@ export function speakText(text: string, options: SpeakOptions = {}): () => void 
       if (cachedBlob) {
         startPlayback(cachedBlob);
       } else {
-        // 2. Not yet in RAM cache: fetch blob in background or fallback to direct URL
-        const promise = inflightFetches.get(key) || preloadText(clean, voice);
-        promise
-          .then((blobUrl) => {
-            if (!cancelled && activeAudio === audio) {
-              startPlayback(blobUrl || directUrl);
-            }
-          })
-          .catch(() => {
-            if (!cancelled && activeAudio === audio) {
-              startPlayback(directUrl);
-            }
-          });
+        // 2. Not yet in RAM cache: stream directly via audio URL IMMEDIATELY (zero waiting!)
+        // and trigger background preload to populate the RAM cache for any subsequent replay
+        startPlayback(directUrl);
+        preloadText(clean, voice).catch(() => {});
       }
 
       return () => {
