@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'preact/hooks';
+import { useEffect, useMemo, useState } from 'preact/hooks';
 import { shuffle, type Answer, type Grade, type Playable } from '../lib/questions';
 
 interface Props {
@@ -42,10 +42,13 @@ function TrueFalse({ q, answer, onChange, graded }: P<'tf'>) {
     <>
       <p class="q-text">{q.q}</p>
       <div class="tf" role="radiogroup" aria-label="Răspuns">
-        {[true, false].map((v) => (
+        {[
+          { v: true, label: 'Adevărat', key: 'A' },
+          { v: false, label: 'Fals', key: 'F' },
+        ].map(({ v, label, key }) => (
           <button type="button" role="radio" aria-checked={answer.v === v} disabled={!!graded}
             class={`opt tf-opt ${state(graded, q.a === v, answer.v === v)}`} onClick={() => onChange({ t: 'tf', v })}>
-            {v ? 'Adevărat' : 'Fals'}
+            <span class="opt-key">{key}</span><span>{label}</span>
           </button>
         ))}
       </div>
@@ -91,7 +94,7 @@ function Multi({ q, answer, onChange, graded }: P<'multi'>) {
         <button type="button" role="checkbox" aria-checked={answer.none} disabled={!!graded}
           class={`opt opt-none ${state(graded, q.a.length === 0, answer.none)}`}
           onClick={() => onChange({ t: 'multi', v: [], none: !answer.none })}>
-          Niciun răspuns corect
+          <span class="opt-key">N</span><span>Niciun răspuns corect</span>
         </button>
       </div>
     </>
@@ -132,6 +135,42 @@ function Match({ q, answer, onChange, graded }: P<'match'>) {
     setRight(right === i ? null : i);
   };
   const active = left;
+
+  useEffect(() => {
+    if (graded) return;
+    const onKey = (e: KeyboardEvent) => {
+      const target = e.target as HTMLElement | null;
+      if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable)) return;
+
+      if (e.key === 'Escape') {
+        if (left !== null || right !== null) {
+          e.preventDefault();
+          setLeft(null);
+          setRight(null);
+        }
+        return;
+      }
+
+      const key = e.key.toLowerCase();
+      if (['1', '2', '3', '4', '5'].includes(key)) {
+        const row = parseInt(key, 10) - 1;
+        if (row < q.pairs.length) {
+          e.preventDefault();
+          pickLeft(row);
+        }
+        return;
+      }
+
+      const letterIndex = ['a', 'b', 'c', 'd', 'e'].indexOf(key);
+      if (letterIndex >= 0 && letterIndex < order.length) {
+        const rightItem = order[letterIndex];
+        e.preventDefault();
+        pickRight(rightItem);
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [left, right, answer.v, graded, order, q.pairs.length]);
 
   return (
     <>

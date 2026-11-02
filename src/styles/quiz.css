@@ -55,8 +55,15 @@ body.in-quiz main { padding-top: 0; }
 .opt.is-wrong .opt-key { background: var(--bad); color: #fff; }
 .opt.is-dim { opacity: .55; }
 .opt-none { justify-content: center; font-weight: 600; border-style: dashed; min-height: 48px; }
+.opt-none .opt-key { border-radius: 7px; }
+.opt-none[aria-checked="true"] .opt-key { position: relative; font-size: 0; }
+.opt-none[aria-checked="true"] .opt-key::before {
+  content: ""; position: absolute; inset: 0; margin: auto; width: 14px; height: 14px; background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 8.5l3.2 3L13 4.5'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 8.5l3.2 3L13 4.5'/%3E%3C/svg%3E") center / contain no-repeat;
+}
 .tf { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.tf-opt { justify-content: center; font-weight: 700; min-height: 68px; font-size: 1.05rem; }
+.tf-opt { justify-content: center; font-weight: 700; min-height: 68px; font-size: 1.05rem; gap: 10px; }
 
 .match { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; align-items: stretch; }
 /* every item has the same height: the rows share the tallest one */
