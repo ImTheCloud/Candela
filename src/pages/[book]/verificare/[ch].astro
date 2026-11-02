@@ -32,29 +32,20 @@ const answer = (q: Playable) => {
   ]}
 >
   <section class="wrap narrow page">
-    <nav class="ch-nav">
-      {file.ch > 1 ? (
-        <a class="btn btn-ghost btn-sm" href={`/${book.slug}/verificare/${file.ch - 1}`}>
-          ← Cap. {file.ch - 1}
-        </a>
-      ) : <span />}
-      <a class="btn btn-ghost btn-sm" href="/admin/intrebari">
-        Toate capitolele
-      </a>
-      {file.ch < book.chapters ? (
-        <a class="btn btn-ghost btn-sm" href={`/${book.slug}/verificare/${file.ch + 1}`}>
-          Cap. {file.ch + 1} →
-        </a>
-      ) : <span />}
-    </nav>
-
     <div class="ch-head">
       <h1>{book.name} {file.ch}{chTitle ? `: ${chTitle}` : ''}</h1>
-      <p class="muted">{file.questions.length} întrebări, {file.reviewed ? 'verificat' : 'de verificat'} • <a class="link" href={`/${book.slug}/citire/${file.ch}`}>textul capitolului</a></p>
+      <p class="muted">{file.questions.length} întrebări, {file.reviewed ? 'verificat' : 'de verificat'}</p>
+    </div>
+
+    <div class="lv-chips ch-filter" role="radiogroup" aria-label="Filtru nivel">
+      <button type="button" role="radio" class="lv-chip" data-lv="usor" aria-checked="false">Ușor</button>
+      <button type="button" role="radio" class="lv-chip" data-lv="mediu" aria-checked="false">Mediu</button>
+      <button type="button" role="radio" class="lv-chip" data-lv="greu" aria-checked="false">Greu</button>
+      <button type="button" role="radio" class="lv-chip" data-lv="all" aria-checked="true">Toate</button>
     </div>
 
     {LEVELS.map((g) => (
-      <section class="age">
+      <section class="age" data-age={g.id}>
         <h2>{g.label}</h2>
         {qs.filter((q) => q.age === g.id).map((q) => (
           <article class="card rq" id={q.id}>
@@ -71,30 +62,47 @@ const answer = (q: Playable) => {
       </section>
     ))}
 
-    <nav class="ch-nav ch-nav-bottom">
-      {file.ch > 1 ? (
-        <a class="btn btn-ghost btn-sm" href={`/${book.slug}/verificare/${file.ch - 1}`}>
-          ← Cap. {file.ch - 1}
-        </a>
-      ) : <span />}
-      <a class="btn btn-primary btn-sm" href="/admin/intrebari">
-        Înapoi la capitole
-      </a>
-      {file.ch < book.chapters ? (
-        <a class="btn btn-ghost btn-sm" href={`/${book.slug}/verificare/${file.ch + 1}`}>
-          Cap. {file.ch + 1} →
-        </a>
-      ) : <span />}
-    </nav>
+    <div class="ch-foot">
+      <a class="btn btn-ghost btn-sm" href="/admin/intrebari">← Înapoi la întrebări</a>
+    </div>
   </section>
 </Base>
+
+<script>
+  function setupFilter() {
+    const container = document.querySelector('.ch-filter');
+    if (!container) return;
+    const buttons = container.querySelectorAll<HTMLButtonElement>('.lv-chip');
+    const sections = document.querySelectorAll<HTMLElement>('.age[data-age]');
+
+    function setFilter(lv: string) {
+      buttons.forEach((btn) => {
+        btn.setAttribute('aria-checked', btn.dataset.lv === lv ? 'true' : 'false');
+      });
+      sections.forEach((sec) => {
+        const match = lv === 'all' || sec.dataset.age === lv;
+        sec.style.display = match ? 'grid' : 'none';
+      });
+    }
+
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const lv = btn.dataset.lv || 'all';
+        setFilter(lv);
+      });
+    });
+  }
+
+  setupFilter();
+  document.addEventListener('astro:page-load', setupFilter);
+</script>
+
 <style>
   .page { display: grid; gap: 14px; padding-block: 8px 32px; }
-  .ch-nav { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; }
-  .ch-nav-bottom { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--line); }
   .ch-head { display: grid; gap: 4px; }
   .ch-head h1 { margin: 0; font-size: 1.5rem; }
   .ch-head p { margin: 0; }
+  .ch-filter { margin-top: 4px; }
   .age { display: grid; gap: 10px; padding-top: 12px; }
   .rq { display: grid; gap: 6px; padding: 14px 16px; box-shadow: none; }
   .rq-q { font-weight: 500; }
@@ -102,5 +110,6 @@ const answer = (q: Playable) => {
   .rq-opts .right { color: var(--ok); font-weight: 600; }
   .rq-a { color: var(--ok); }
   .rq-v { font: 400 0.98rem/1.6 var(--f-bible); margin-top: 4px; }
+  .ch-foot { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--line); display: flex; justify-content: center; }
   summary { cursor: pointer; color: var(--oil-ink); }
 </style>
