@@ -63,14 +63,38 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
   const started = answers.some(isAnswered);
   const speechSupported = isSpeechSupported();
 
-  // Preload first question immediately on mount, stagger second
+  // Preload entire quiz audio in background so ANY question starts instantaneously in 0ms
   useEffect(() => {
+    let cancelled = false;
+    let timeoutId: any = null;
+
+    if (!questions || !questions.length) return;
+
+    // 1. Immediately pre-buffer questions 0, 1, 2 in parallel
     if (questions[0]) preloadQuestionAudio(questions[0]);
-    const timer = setTimeout(() => {
-      if (questions[1]) preloadQuestionAudio(questions[1]);
-    }, 600);
-    return () => clearTimeout(timer);
-  }, []);
+    if (questions[1]) preloadQuestionAudio(questions[1]);
+    if (questions[2]) preloadQuestionAudio(questions[2]);
+
+    // 2. Sequentially buffer all remaining questions of the quiz in background
+    let nextIdx = 3;
+    const preloadNext = () => {
+      if (cancelled || nextIdx >= questions.length) return;
+      const target = questions[nextIdx++];
+      if (!target) {
+        preloadNext();
+        return;
+      }
+      preloadQuestionAudio(target);
+      timeoutId = setTimeout(preloadNext, 60);
+    };
+
+    timeoutId = setTimeout(preloadNext, 180);
+
+    return () => {
+      cancelled = true;
+      if (timeoutId) clearTimeout(timeoutId);
+    };
+  }, [questions]);
 
   // leaving in the middle loses the answers: ask first
   useEffect(() => {
@@ -194,12 +218,12 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
     setSpeakingSpeed(newSpeed);
   };
 
-  // Preload next question's audio as soon as current question appears
+  // Whenever active question index changes, immediately ensure current and next 2 questions are prioritized
   useEffect(() => {
-    if (questions[i + 1]) {
-      preloadQuestionAudio(questions[i + 1]);
-    }
-  }, [i]);
+    if (questions[i]) preloadQuestionAudio(questions[i]);
+    if (questions[i + 1]) preloadQuestionAudio(questions[i + 1]);
+    if (questions[i + 2]) preloadQuestionAudio(questions[i + 2]);
+  }, [i, questions]);
 
   // When advancing to another question: if autoVoice was activated, automatically read the new question once
   useEffect(() => {
@@ -212,26 +236,23 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
     setIsSpeaking(true);
     setIsPaused(false);
 
-    const timer = setTimeout(() => {
-      speakQuestion(q, {
-        rate: speedRef.current,
-        onStart: () => {
-          setIsSpeaking(true);
-          setIsPaused(false);
-        },
-        onEnd: () => {
-          setIsSpeaking(false);
-          setIsPaused(false);
-        },
-        onError: () => {
-          setIsSpeaking(false);
-          setIsPaused(false);
-        },
-      });
-    }, 120);
+    speakQuestion(q, {
+      rate: speedRef.current,
+      onStart: () => {
+        setIsSpeaking(true);
+        setIsPaused(false);
+      },
+      onEnd: () => {
+        setIsSpeaking(false);
+        setIsPaused(false);
+      },
+      onError: () => {
+        setIsSpeaking(false);
+        setIsPaused(false);
+      },
+    });
 
     return () => {
-      clearTimeout(timer);
       stopSpeaking();
     };
   }, [i]);
