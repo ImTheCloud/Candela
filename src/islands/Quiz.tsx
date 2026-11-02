@@ -432,7 +432,7 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
 
       {saveFailed && <p class="notice notice-bad" role="alert">Răspunsurile nu se salvează acum (progresul și clasamentul nu se actualizează). Spune-i administratorului.</p>}
 
-      {!g && speechSupported && (
+      {speechSupported && (
         <FloatingAudioButton
           isPlaying={isSpeaking}
           isPaused={isPaused}
@@ -440,6 +440,7 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
           onToggle={handleToggleVoice}
           onSpeedChange={handleSpeedChange}
           bottomOffset="calc(var(--bar-h, 72px) + 14px)"
+          className={g ? 'is-graded-hidden' : ''}
         />
       )}
 
