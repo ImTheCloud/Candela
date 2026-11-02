@@ -295,6 +295,108 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
     setDone(true);
   }
 
+  // Keyboard controls for PC desktop users:
+  // - True/False: 'A', 'V', '1' (Adevărat) or 'F', '2' (Fals)
+  // - Single/Multi Choice: 'A'/'1', 'B'/'2', 'C'/'3', 'D'/'4', 'E'/'5'
+  // - Multi Choice "Niciun răspuns corect": 'N' or '0'
+  // - Enter or Space: Verifică (when answering) or Mai departe (when graded)
+  // - 'V': opens Versetul when graded
+  // - Escape: closes modals
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      // 1. Ignore if typing in text inputs (e.g. fill-in-the-blanks or report modal)
+      const target = e.target as HTMLElement | null;
+      if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable)) {
+        return;
+      }
+
+      // 2. Modals handling
+      if (verse) {
+        if (e.key === 'Escape') {
+          e.preventDefault();
+          setVerse(false);
+        }
+        return;
+      }
+      if (leaveTo) {
+        if (e.key === 'Escape') {
+          e.preventDefault();
+          setLeaveTo(null);
+        }
+        return;
+      }
+      if (done || !q) return;
+
+      const key = e.key.toLowerCase();
+
+      // 3. Graded state: Enter / Space / ArrowRight moves to next question, V opens verse
+      if (g) {
+        if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowRight') {
+          e.preventDefault();
+          next();
+        } else if (key === 'v') {
+          e.preventDefault();
+          setVerse(true);
+        }
+        return;
+      }
+
+      // 4. Not graded: Enter or Space checks answer if answered
+      if (e.key === 'Enter' || e.key === ' ') {
+        if (isAnswered(answers[i])) {
+          e.preventDefault();
+          check();
+        }
+        return;
+      }
+
+      // 5. Answer selection shortcuts by question type
+      if (q.t === 'tf') {
+        if (key === 'a' || key === 'v' || key === '1') {
+          e.preventDefault();
+          setAnswer({ t: 'tf', v: true });
+        } else if (key === 'f' || key === '2') {
+          e.preventDefault();
+          setAnswer({ t: 'tf', v: false });
+        }
+      } else if (q.t === 'one') {
+        const keyMap: Record<string, number> = {
+          a: 0, '1': 0,
+          b: 1, '2': 1,
+          c: 2, '3': 2,
+          d: 3, '4': 3,
+          e: 4, '5': 4,
+        };
+        const idx = keyMap[key];
+        if (idx !== undefined && idx < q.opts.length) {
+          e.preventDefault();
+          setAnswer({ t: 'one', v: idx });
+        }
+      } else if (q.t === 'multi') {
+        const keyMap: Record<string, number> = {
+          a: 0, '1': 0,
+          b: 1, '2': 1,
+          c: 2, '3': 2,
+          d: 3, '4': 3,
+          e: 4, '5': 4,
+        };
+        const idx = keyMap[key];
+        const cur = answers[i] as Extract<Answer, { t: 'multi' }>;
+        if (idx !== undefined && idx < q.opts.length) {
+          e.preventDefault();
+          const nextV = cur.v.includes(idx) ? cur.v.filter((x) => x !== idx) : [...cur.v, idx];
+          setAnswer({ t: 'multi', v: nextV, none: false });
+        } else if (key === 'n' || key === '0') {
+          e.preventDefault();
+          setAnswer({ t: 'multi', v: [], none: !cur.none });
+        }
+      }
+    };
+
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [i, answers, grades, done, verse, leaveTo, q]);
+
   if (!q) {
     return <p class="card notice muted" role="alert">Nu s-au găsit întrebări.</p>;
   }
