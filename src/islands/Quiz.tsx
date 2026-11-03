@@ -63,38 +63,19 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
   const started = answers.some(isAnswered);
   const speechSupported = isSpeechSupported();
 
-  // Preload entire quiz audio in background so ANY question starts instantaneously in 0ms
+  // Once the voice is switched on, buffer the rest of the quiz in background, one question after another,
+  // so every next question starts at once (nothing is fetched for players who never use the voice)
   useEffect(() => {
+    if (!autoVoice || !questions.length) return;
     let cancelled = false;
-    let timeoutId: any = null;
-
-    if (!questions || !questions.length) return;
-
-    // 1. Immediately pre-buffer questions 0, 1, 2 in parallel
-    if (questions[0]) preloadQuestionAudio(questions[0]);
-    if (questions[1]) preloadQuestionAudio(questions[1]);
-    if (questions[2]) preloadQuestionAudio(questions[2]);
-
-    // 2. Sequentially buffer all remaining questions of the quiz in background
-    let nextIdx = 3;
+    let k = i + 1;
     const preloadNext = () => {
-      if (cancelled || nextIdx >= questions.length) return;
-      const target = questions[nextIdx++];
-      if (!target) {
-        preloadNext();
-        return;
-      }
-      preloadQuestionAudio(target);
-      timeoutId = setTimeout(preloadNext, 60);
+      if (cancelled || k >= questions.length) return;
+      preloadQuestionAudio(questions[k++]).finally(preloadNext);
     };
-
-    timeoutId = setTimeout(preloadNext, 180);
-
-    return () => {
-      cancelled = true;
-      if (timeoutId) clearTimeout(timeoutId);
-    };
-  }, [questions]);
+    preloadNext();
+    return () => { cancelled = true; };
+  }, [autoVoice, questions]);
 
   // leaving in the middle loses the answers: ask first
   useEffect(() => {
@@ -218,9 +199,10 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
     setSpeakingSpeed(newSpeed);
   };
 
-  // Whenever active question index changes, immediately ensure current and next 2 questions are prioritized
+  // The current question is always ready to be heard; the next ones too once the voice is on
   useEffect(() => {
     if (questions[i]) preloadQuestionAudio(questions[i]);
+    if (!autoVoiceRef.current) return;
     if (questions[i + 1]) preloadQuestionAudio(questions[i + 1]);
     if (questions[i + 2]) preloadQuestionAudio(questions[i + 2]);
   }, [i, questions]);
@@ -265,7 +247,13 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
 
   function check() {
     stopSpeaking();
+    // paused audio is dropped with the question it belonged to; a pause also means "stop reading the next ones"
+    if (isPausedRef.current) {
+      setAutoVoice(false);
+      autoVoiceRef.current = false;
+    }
     setIsSpeaking(false);
+    setIsPaused(false);
     const gr = grade(q, answers[i]);
     setGrades(grades.map((x, k) => (k === i ? gr : x)));
   }
@@ -304,11 +292,17 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
   // - Escape: closes modals
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
-      // 1. Ignore if typing in text inputs (e.g. fill-in-the-blanks or report modal)
+      // 1. Ignore browser shortcuts (Ctrl/Cmd+F, Alt+…), typing in a field (fill-in-the-blanks, report form)
+      // and any sheet opened above the quiz other than ours (the report modal)
+      if (e.ctrlKey || e.metaKey || e.altKey) return;
       const target = e.target as HTMLElement | null;
-      if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.isContentEditable)) {
+      if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.tagName === 'SELECT' || target.isContentEditable)) {
         return;
       }
+      if (!verse && !leaveTo && document.querySelector('.sheet-back')) return;
+      // a held key never fires a row of actions, and a focused control outside the answers
+      // (the audio button, Verifică, Mai departe, the report button) answers Enter and Space on its own
+      if ((e.key === 'Enter' || e.key === ' ') && (e.repeat || (target?.closest('button, a') && !target.closest('.q-body')))) return;
 
       // 2. Modals handling
       if (verse) {

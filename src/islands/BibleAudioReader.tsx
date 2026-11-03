@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
 import { navigate } from 'astro:transitions/client';
-import { getSavedSpeakingSpeed, isSpeechSupported, pauseSpeaking, preloadText, resumeSpeaking, setSpeakingSpeed, speakText, stopSpeaking } from '../lib/speech';
+import { getSavedSpeakingSpeed, isSpeechSupported, pauseSpeaking, preloadText, resumeSpeaking, savesData, setSpeakingSpeed, speakText, stopSpeaking } from '../lib/speech';
 import FloatingAudioButton from './FloatingAudioButton';
 
 // Track auto-advance across chapter transitions so audio is not stopped on unmount
@@ -66,61 +66,42 @@ export default function BibleAudioReader({ bookSlug, ch, totalChapters = 24, ver
     };
   }, []);
 
-  // Pre-buffer entire chapter in background sequentially so any clicked verse starts in 0ms
+  // Verse 1 is ready before the first tap; the rest of the chapter is buffered one verse after another
+  // only once the reading has started (opening a chapter never downloads all of it)
   useEffect(() => {
-    let cancelled = false;
-    let timeoutId: any = null;
-
+    if (savesData()) return;
     if (verses[0]) preloadText(verses[0]);
-    preloadText(`Capitolul ${ch}.`);
+  }, [ch, verses]);
 
-    let nextIdxToPreload = 1;
-
+  useEffect(() => {
+    if (!isPlaying || savesData()) return;
+    let cancelled = false;
+    let k = 1;
     const preloadNext = () => {
       if (cancelled) return;
-      if (nextIdxToPreload >= verses.length) {
-        // Once this chapter is fully preloaded, proactively preload next chapter's announcement and verse 1
-        if (ch < totalChapters) {
-          preloadText(`Capitolul ${ch + 1}.`);
-          fetch(`/data/${bookSlug}/${ch + 1}.json`)
-            .then((r) => r.json())
-            .then((data) => {
-              if (!cancelled && data?.verses?.[0]) {
-                preloadText(data.verses[0]);
-              }
-            })
-            .catch(() => {});
-        }
+      if (k >= verses.length) {
+        preloadNextChapter();
         return;
       }
-
-      const idx = nextIdxToPreload++;
-      const text = verses[idx];
-      if (!text) {
-        preloadNext();
-        return;
-      }
-
-      preloadText(text)
-        .then(() => {
-          if (!cancelled) {
-            timeoutId = setTimeout(preloadNext, 50);
-          }
-        })
-        .catch(() => {
-          if (!cancelled) {
-            timeoutId = setTimeout(preloadNext, 200);
-          }
-        });
+      preloadText(verses[k++]).finally(preloadNext);
     };
+    preloadNext();
+    return () => { cancelled = true; };
+  }, [isPlaying, ch, verses]);
 
-    timeoutId = setTimeout(preloadNext, 300);
-
-    return () => {
-      cancelled = true;
-      if (timeoutId) clearTimeout(timeoutId);
-    };
-  }, [ch, verses]);
+  // The announcement and verse 1 of the next chapter, fetched once, so the auto-advance has no gap
+  const nextChapterPreloaded = useRef(false);
+  const preloadNextChapter = () => {
+    if (nextChapterPreloaded.current || ch >= totalChapters) return;
+    nextChapterPreloaded.current = true;
+    preloadText(`Capitolul ${ch + 1}.`);
+    fetch(`/data/${bookSlug}/${ch + 1}.json`)
+      .then((r) => r.json())
+      .then((data) => {
+        if (data?.verses?.[0]) preloadText(data.verses[0]);
+      })
+      .catch(() => { nextChapterPreloaded.current = false; });
+  };
 
   // Handle autoplay when auto-advancing from the previous chapter
   useEffect(() => {
@@ -178,7 +159,8 @@ export default function BibleAudioReader({ bookSlug, ch, totalChapters = 24, ver
     const el = document.getElementById(`v${idx + 1}`);
     if (el) {
       el.classList.add('is-reading');
-      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      const still = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+      el.scrollIntoView({ behavior: still ? 'auto' : 'smooth', block: 'center' });
     }
   };
 
@@ -208,15 +190,7 @@ export default function BibleAudioReader({ bookSlug, ch, totalChapters = 24, ver
     }
 
     // Near the end of chapter: proactively preload next chapter's announcement and verse 1
-    if (ch < totalChapters && idx >= verses.length - 2) {
-      preloadText(`Capitolul ${ch + 1}.`);
-      fetch(`/data/${bookSlug}/${ch + 1}.json`)
-        .then((r) => r.json())
-        .then((data) => {
-          if (data?.verses?.[0]) preloadText(data.verses[0]);
-        })
-        .catch(() => {});
-    }
+    if (idx >= verses.length - 2) preloadNextChapter();
 
     // Pure biblical text only: never say verse numbers out loud
     const verseText = verses[idx];

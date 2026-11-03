@@ -11,12 +11,12 @@ export interface FloatingAudioButtonProps {
 
 export const SPEED_OPTIONS = [0.75, 1, 1.25];
 
-// Coordinates (x, y in pixels) along a tight, elegant satellite arc around the top-left of the FAB
-// Sits at an equidistant ~11px margin from the main button with clean 7-9px gaps between pills
+// Coordinates (x, y in pixels) of the 40px pills on a quarter circle (radius 62) around the top-left of the FAB:
+// every pill is a full thumb target, ~17px clear of the main button and ~7px apart from each other
 const ARC_COORDINATES = [
-  { x: -55, y: 0 },    // 0.75x (mid-left of button)
-  { x: -36, y: -41 },  // 1x    (upper-left diagonal)
-  { x: 5,   y: -54 },  // 1.25x (top, above button)
+  { x: -62, y: 0 },    // 0.75x (left of button)
+  { x: -44, y: -44 },  // 1x    (upper-left diagonal)
+  { x: 0,   y: -62 },  // 1.25x (above button)
 ];
 
 export default function FloatingAudioButton({
@@ -50,6 +50,7 @@ export default function FloatingAudioButton({
         class={`fab-arc-speeds${showSpeeds ? ' is-visible' : ''}`}
         role="group"
         aria-label="Viteză audio"
+        aria-hidden={!showSpeeds}
       >
         {speeds.map((s, idx) => {
           const coord = ARC_COORDINATES[idx] || { x: -45 * (idx + 1), y: 0 };
@@ -67,6 +68,7 @@ export default function FloatingAudioButton({
                 onSpeedChange(s);
               }}
               aria-pressed={s === speed}
+              aria-label={`Viteza ${s}x`}
               title={`Viteza ${s}x`}
               tabIndex={showSpeeds ? 0 : -1}
             >
