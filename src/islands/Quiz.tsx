@@ -295,7 +295,7 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
       // 1. Ignore browser shortcuts (Ctrl/Cmd+F, Alt+…), typing in a field (fill-in-the-blanks, report form)
       // and any sheet opened above the quiz other than ours (the report modal)
       if (e.ctrlKey || e.metaKey || e.altKey) return;
-      const target = e.target as HTMLElement | null;
+      const target = e.target instanceof HTMLElement ? e.target : null;
       if (target && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.tagName === 'SELECT' || target.isContentEditable)) {
         return;
       }

@@ -377,7 +377,8 @@ body.auth-no-header main { padding-top: 0; }
 .pw-eye[aria-pressed="true"] { color: var(--oil-ink); }
 
 /* Chapter tiles and the chapter menu (same look as v1) */
-.tiles { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; grid-template-columns: repeat(6, 1fr); }
+.tiles { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; grid-template-columns: repeat(6, minmax(0, 1fr)); }
+/* 1fr alone lets "22/24" widen its column: on a 320px phone the 6th column was pushed off the card */
 .tile {
   position: relative; width: 100%; aspect-ratio: 1; display: grid; place-items: center; align-content: center; gap: 2px;
   border: 1.5px solid var(--line); border-radius: var(--r-ctl); background: var(--bg); color: var(--ink);
@@ -655,13 +656,14 @@ a.tile { text-decoration: none; }
 .oc-chev { flex: none; color: var(--ink-3); }
 
 /* Level chips: choices on one line (modals, sheets, profile, leaderboard) */
-.lv-chips { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 6px; }
+/* equal widths when they fit; on a narrow phone "Adolescenți" keeps the room it needs instead of spilling out of its chip */
+.lv-chips { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(min-content, 1fr); gap: 6px; }
 .lv-chip {
   min-height: 40px; padding: 0 2px; border: 1.5px solid var(--line); border-radius: var(--r-ctl); background: var(--surface);
   color: var(--ink-2); font: 600 0.85rem var(--f-body); white-space: nowrap; cursor: pointer;
   transition: background-color .12s, color .12s, border-color .12s, transform .08s;
 }
-.lv-chip { display: grid; place-content: center; gap: 1px; line-height: 1.15; padding: 4px 2px; }
+.lv-chip { display: grid; place-content: center; gap: 1px; line-height: 1.15; padding: 4px 6px; }
 .lv-who { font-weight: 600; font-size: 0.85rem; }
 .lv-sub { font-weight: 500; font-size: 0.72rem; opacity: .75; }
 .lv-chip:active { transform: scale(0.98); }
@@ -711,11 +713,10 @@ a.tile { text-decoration: none; }
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--ink-3);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  line-height: 1.25;
   min-width: 0;
 }
+.adm-card-kpi-head { align-items: flex-start; }
 .adm-card-kpi-val {
   font: 700 1.55rem/1.1 var(--f-display);
   color: var(--ink);
@@ -1043,6 +1044,12 @@ a.tile { text-decoration: none; }
 }
 .adm-dates b { font-weight: 600; color: var(--ink-2); }
 .adm-dates b.text-ok { color: var(--ok); }
+/* small phones: the badges drop under the name so the name and the e-mail keep their width */
+@media (max-width: 400px) {
+  .adm-badge { grid-column: 2 / 4; grid-row: 2; justify-self: start; }
+  .adm-dates { grid-row: 3; }
+  .adm-chev { grid-row: 1; }
+}
 .adm-kids { display: grid; gap: 8px; }
 .adm-kid-list { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
 .adm-kid-line { display: flex; align-items: center; gap: 8px; }
@@ -1429,6 +1436,10 @@ html:not(.signed-in) .back-signed-in { display: none; }
 .tiles-wrap { container-type: inline-size; }
 /* the exams tile is as tall as a chapter tile, also when it sits alone on its row */
 .tile-exam { min-height: calc((100cqw - 40px) / 6); }
+@container (max-width: 280px) {
+  .tiles { gap: 6px; }
+  .tile-sc { font-size: 0.6rem; }
+}
 
 /* User-to-admin messages */
 .msg-item { gap: 10px; }
@@ -1640,10 +1651,10 @@ html:not(.signed-in) .back-signed-in { display: none; }
 }
 
 .fab-arc-pill.is-selected {
-  background: #4a3426;
+  background: var(--oil-ink);
   color: #ffffff;
   font-weight: 700;
-  border-color: #4a3426;
+  border-color: var(--oil-ink);
   box-shadow: 0 4px 14px rgba(74, 52, 38, 0.35);
 }
 
@@ -1658,7 +1669,7 @@ html:not(.signed-in) .back-signed-in { display: none; }
   height: 50px;
   border-radius: 50%;
   border: 1.5px solid var(--line);
-  background: #4a3426; /* Always base brown color (#4a3426) */
+  background: var(--oil-ink); /* always the brand brown (var(--oil-ink)) */
   color: #fff;
   cursor: pointer;
   box-shadow: 0 4px 14px rgba(58, 39, 27, 0.28), 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -1675,7 +1686,7 @@ html:not(.signed-in) .back-signed-in { display: none; }
   box-shadow: 0 4px 16px rgba(46, 125, 50, 0.38), 0 0 0 3px rgba(46, 125, 50, 0.2);
 }
 .fab-main-btn.is-paused {
-  background: #4a3426; /* Stays base brown - never orange! */
+  background: var(--oil-ink); /* stays brown in pause, never orange */
   border-color: var(--line);
   box-shadow: 0 4px 14px rgba(58, 39, 27, 0.28);
 }
