@@ -1592,6 +1592,8 @@ html:not(.signed-in) .back-signed-in { display: none; }
   transition: opacity 0.15s ease, visibility 0.15s;
 }
 
+/* an open sheet (a sheet opened from the reader's bottom bar sits in a lower stacking context) */
+body:has(.sheet-back) .fab-audio-container,
 .fab-audio-container.is-graded-hidden {
   opacity: 0;
   visibility: hidden;
