@@ -34,9 +34,42 @@ let currentPlaybackRate = typeof window !== 'undefined' ? getSavedSpeakingSpeed(
 const readyUrlCache = new Map<string, string>();
 const inflightFetches = new Map<string, Promise<string>>();
 const MAX_CACHE_SIZE = 150;
+// Background fetches run a few at a time, so scrolling fast through questions or chapters never floods the network
+const MAX_PARALLEL_PRELOADS = 3;
+let runningPreloads = 0;
+const preloadQueue: (() => void)[] = [];
 
-if (typeof window !== 'undefined') {
-  (window as any).stopSpeaking = stopSpeaking;
+function runPreload<T>(task: () => Promise<T>): Promise<T> {
+  return new Promise<T>((resolve, reject) => {
+    const start = () => {
+      runningPreloads++;
+      task().then(resolve, reject).finally(() => {
+        runningPreloads--;
+        preloadQueue.shift()?.();
+      });
+    };
+    if (runningPreloads < MAX_PARALLEL_PRELOADS) start();
+    else preloadQueue.push(start);
+  });
+}
+
+/** The user asked the browser to save data: no audio is fetched before it is asked for. */
+export function savesData(): boolean {
+  return typeof navigator !== 'undefined' && !!(navigator as any).connection?.saveData;
+}
+
+function ttsUrl(clean: string, voice: string): string {
+  return `/api/tts?text=${encodeURIComponent(clean)}&voice=${encodeURIComponent(voice)}`;
+}
+
+/** Drops the least recently used audio; the one playing right now is never revoked. */
+function trimCache(): void {
+  for (const [key, url] of readyUrlCache) {
+    if (readyUrlCache.size <= MAX_CACHE_SIZE) return;
+    if (activeAudio && activeAudio.src === url) continue;
+    try { URL.revokeObjectURL(url); } catch {}
+    readyUrlCache.delete(key);
+  }
 }
 
 export interface SpeakOptions {
@@ -132,12 +165,18 @@ export function preloadText(text: string, voice = 'ro-RO-AlinaNeural'): Promise<
   if (!clean) return Promise.resolve('');
 
   const key = `${voice}:${clean}`;
-  if (readyUrlCache.has(key)) return Promise.resolve(readyUrlCache.get(key)!);
-  if (inflightFetches.has(key)) return inflightFetches.get(key)!;
+  const ready = readyUrlCache.get(key);
+  if (ready) {
+    // most recently used goes last, so it is evicted last
+    readyUrlCache.delete(key);
+    readyUrlCache.set(key, ready);
+    return Promise.resolve(ready);
+  }
+  const running = inflightFetches.get(key);
+  if (running) return running;
 
-  const url = `/api/tts?text=${encodeURIComponent(clean)}&voice=${encodeURIComponent(voice)}`;
-
-  const fetchPromise = fetch(url)
+  const url = ttsUrl(clean, voice);
+  const fetchPromise = runPreload(() => fetch(url))
     .then((res) => {
       if (!res.ok) throw new Error(`TTS status ${res.status}`);
       return res.blob();
@@ -146,17 +185,7 @@ export function preloadText(text: string, voice = 'ro-RO-AlinaNeural'): Promise<
       const blobUrl = URL.createObjectURL(blob);
       readyUrlCache.set(key, blobUrl);
       inflightFetches.delete(key);
-
-      if (readyUrlCache.size > MAX_CACHE_SIZE) {
-        const oldest = readyUrlCache.keys().next().value;
-        if (oldest) {
-          const oldUrl = readyUrlCache.get(oldest);
-          if (oldUrl && oldUrl.startsWith('blob:')) {
-            try { URL.revokeObjectURL(oldUrl); } catch {}
-          }
-          readyUrlCache.delete(oldest);
-        }
-      }
+      trimCache();
       return blobUrl;
     })
     .catch(() => {
@@ -171,10 +200,9 @@ export function preloadText(text: string, voice = 'ro-RO-AlinaNeural'): Promise<
 /**
  * Preloads question audio before the user navigates to it.
  */
-export function preloadQuestionAudio(q: Playable): void {
-  if (!q) return;
-  const text = buildQuestionSpeech(q);
-  preloadText(text);
+export function preloadQuestionAudio(q: Playable): Promise<string> {
+  if (!q || savesData()) return Promise.resolve('');
+  return preloadText(buildQuestionSpeech(q));
 }
 
 /**
@@ -199,7 +227,7 @@ export function speakText(text: string, options: SpeakOptions = {}): () => void 
       currentPlaybackRate = rate;
 
       const key = `${voice}:${clean}`;
-      const directUrl = `/api/tts?text=${encodeURIComponent(clean)}&voice=${encodeURIComponent(voice)}`;
+      const directUrl = ttsUrl(clean, voice);
 
       const audio = activeAudio || new Audio();
       activeAudio = audio;
@@ -246,12 +274,16 @@ export function speakText(text: string, options: SpeakOptions = {}): () => void 
       // 1. If preloaded blob URL is already in RAM, play IMMEDIATELY (0ms latency!)
       const cachedBlob = readyUrlCache.get(key);
       if (cachedBlob) {
+        readyUrlCache.delete(key);
+        readyUrlCache.set(key, cachedBlob);
+      }
+      if (cachedBlob) {
         startPlayback(cachedBlob);
       } else {
         // 2. Not yet in RAM cache: stream directly via audio URL IMMEDIATELY (zero waiting!)
         // and trigger background preload to populate the RAM cache for any subsequent replay
         startPlayback(directUrl);
-        preloadText(clean, voice).catch(() => {});
+        if (!savesData()) preloadText(clean, voice).catch(() => {});
       }
 
       return () => {
