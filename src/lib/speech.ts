@@ -243,6 +243,9 @@ export function speakText(text: string, options: SpeakOptions = {}): () => void 
       };
 
       const handleError = (err?: any) => {
+        // a newer text replaced this one (fast taps on verses or questions): its play() rejects with an
+        // AbortError that must not pause the reading that took over
+        if (activeAudio !== audio || err?.name === 'AbortError') return;
         if (!cancelled) {
           if (options.onError) {
             options.onError(err);

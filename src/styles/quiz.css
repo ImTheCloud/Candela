@@ -1,5 +1,7 @@
 /* Quiz screens, phone first: the question starts right under the slim header, the actions sit at thumb height. */
 .quiz { display: grid; align-content: start; gap: 12px; padding-block: 4px calc(var(--bar-h, 96px) + 16px); }
+/* the audio button floats 14px above the bar: the last answers scroll clear of it */
+.quiz:has(.fab-audio-container) { padding-bottom: calc(var(--bar-h, 96px) + 14px + 50px + 12px); }
 /* a typed answer: leave room under the field so the page can bring it above the keyboard */
 body:has(.fill-input:focus) .quiz { padding-bottom: 45dvh; }
 
@@ -16,10 +18,18 @@ body.in-quiz main { padding-top: 0; }
 
 /* Above the question: what to do, the level, the report button; then where it comes from */
 .q-head { display: grid; gap: 3px; }
-.q-row { display: flex; align-items: center; gap: 8px; min-height: 34px; flex-wrap: wrap; }
-.q-kind { font: 700 0.72rem var(--f-body); letter-spacing: .07em; text-transform: uppercase; color: var(--oil-ink); white-space: nowrap; }
-.q-age { padding: 2px 9px; border-radius: 999px; background: var(--oil-soft); color: var(--oil-ink); font: 600 0.78rem var(--f-body); white-space: nowrap; }
+/* one line whatever the phone: the report button always stays on the right (it keeps only its flag when the row is narrow) */
+.q-row { display: flex; align-items: center; gap: 8px; min-height: 34px; container-type: inline-size; }
+.q-row .info-btn { flex: none; margin-left: auto; }
+.q-kind { min-width: 0; overflow: hidden; text-overflow: ellipsis; font: 700 0.72rem var(--f-body); letter-spacing: .07em; text-transform: uppercase; color: var(--oil-ink); white-space: nowrap; }
+/* the longest row ("Adevărat sau fals", "Mediu", "Semnalează") needs 332px */
+@container (max-width: 335px) {
+  .q-row .info-btn.sm { width: 40px; padding: 0; justify-content: center; }
+  .q-row .info-btn.sm span { display: none; }
+}
+.q-age { flex: none; padding: 2px 9px; border-radius: 999px; background: var(--oil-soft); color: var(--oil-ink); font: 600 0.78rem var(--f-body); white-space: nowrap; }
 .q-spacer { flex: 1; min-width: 4px; }
+.q-row .q-spacer { display: none; }
 .q-where { margin: 0; font-size: 0.85rem; line-height: 1.35; color: var(--ink-2); }
 .q-where b { color: var(--ink); font-weight: 600; }
 .q-scene { margin: 6px 0 0; padding-left: 10px; border-left: 3px solid var(--flame); font: italic 0.95rem/1.4 var(--f-bible); color: var(--ink-2); }
