@@ -1,4 +1,5 @@
 import type { ComponentChildren } from 'preact';
+import { createPortal } from 'preact/compat';
 import { useEffect, useRef, useState } from 'preact/hooks';
 
 interface Props {
@@ -36,13 +37,15 @@ export default function Modal({ onClose, class: cls = '', role = 'dialog', label
     return () => { removeEventListener('keydown', esc); document.body.style.overflow = ''; };
   }, []);
 
-  return (
+  // rendered on <body>: an ancestor with a backdrop-filter (the reader's bottom bar) would otherwise hold the fixed backdrop inside itself
+  return createPortal(
     <div class={`sheet-back${closing ? ' is-closing' : ''}`} onClick={(e) => e.target === e.currentTarget && close()}>
       <div class={`sheet-panel ${cls}`} role={role} aria-modal="true" aria-labelledby={labelledby} aria-label={label}>
         <div class="sheet-grab" aria-hidden="true" />
         {children(close)}
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }
 
