@@ -80,19 +80,36 @@ export interface SpeakOptions {
   onError?: (err?: any) => void;
 }
 
+// One audio element for the whole visit: iOS lets an element that was started by a tap keep playing
+// the next verses while the phone is locked, a new element would need a new tap
+let sharedAudio: HTMLAudioElement | null = null;
+// Bumped by every new text and every stop: events of an older text are ignored
+let playGen = 0;
+
+/** The element playing right now (the Bible reader follows its time to light up the word being read). */
+export function getActiveAudio(): HTMLAudioElement | null {
+  return activeAudio;
+}
+
+/** Changes with every new text or stop: tells a follower its text is no longer the one being read. */
+export function currentPlayback(): number {
+  return playGen;
+}
+
 export function stopSpeaking(): void {
+  playGen++;
   if (activeAudio) {
     try {
       activeAudio.onplay = null;
       activeAudio.onended = null;
       activeAudio.onerror = null;
       activeAudio.pause();
-      activeAudio.currentTime = 0;
       activeAudio.removeAttribute('src');
       activeAudio.load();
     } catch {}
     activeAudio = null;
   }
+  setMediaPlaybackState('none');
 }
 
 export function pauseSpeaking(): void {
@@ -101,6 +118,7 @@ export function pauseSpeaking(): void {
       activeAudio.pause();
     } catch {}
   }
+  setMediaPlaybackState('paused');
 }
 
 export function resumeSpeaking(): boolean {
@@ -110,6 +128,7 @@ export function resumeSpeaking(): boolean {
       if (p !== undefined) {
         p.catch(() => {});
       }
+      setMediaPlaybackState('playing');
       return true;
     } catch {
       return false;
@@ -229,29 +248,31 @@ export function speakText(text: string, options: SpeakOptions = {}): () => void 
       const key = `${voice}:${clean}`;
       const directUrl = ttsUrl(clean, voice);
 
-      const audio = activeAudio || new Audio();
+      const gen = ++playGen;
+      const audio = sharedAudio || (sharedAudio = new Audio());
       activeAudio = audio;
       audio.playbackRate = getEffectivePlaybackRate(rate);
       (audio as any).preservesPitch = true;
+      // a newer text took over (fast taps on verses or questions): this one stays silent
+      const stale = () => cancelled || gen !== playGen;
 
       audio.onplay = () => {
-        if (!cancelled) options.onStart?.();
+        if (stale()) return;
+        setMediaPlaybackState('playing');
+        options.onStart?.();
       };
 
       audio.onended = () => {
-        if (!cancelled) options.onEnd?.();
+        if (!stale()) options.onEnd?.();
       };
 
       const handleError = (err?: any) => {
-        // a newer text replaced this one (fast taps on verses or questions): its play() rejects with an
-        // AbortError that must not pause the reading that took over
-        if (activeAudio !== audio || err?.name === 'AbortError') return;
-        if (!cancelled) {
-          if (options.onError) {
-            options.onError(err);
-          } else {
-            options.onEnd?.();
-          }
+        // a replaced text's play() rejects with an AbortError: it must not pause the reading that took over
+        if (stale() || err?.name === 'AbortError') return;
+        if (options.onError) {
+          options.onError(err);
+        } else {
+          options.onEnd?.();
         }
       };
 
@@ -260,11 +281,8 @@ export function speakText(text: string, options: SpeakOptions = {}): () => void 
       };
 
       const startPlayback = (src: string) => {
-        if (cancelled || activeAudio !== audio) return;
-        if (audio.src !== src) {
-          audio.src = src;
-        }
-        audio.currentTime = 0;
+        if (stale()) return;
+        audio.src = src;
         audio.playbackRate = getEffectivePlaybackRate(rate);
         const playPromise = audio.play();
         if (playPromise !== undefined) {
@@ -291,9 +309,7 @@ export function speakText(text: string, options: SpeakOptions = {}): () => void 
 
       return () => {
         cancelled = true;
-        if (activeAudio === audio) {
-          stopSpeaking();
-        }
+        if (gen === playGen) stopSpeaking();
       };
     } catch (err) {
       if (options.onError) {
@@ -383,4 +399,55 @@ export function speakQuestion(
     onEnd: options.onEnd,
     onError: options.onError,
   });
+}
+
+export interface MediaSessionInfo {
+  title: string;
+  album?: string;
+  onPlay?: () => void;
+  onPause?: () => void;
+  onNext?: () => void;
+  onPrevious?: () => void;
+  onStop?: () => void;
+}
+
+const MEDIA_ACTIONS = ['play', 'pause', 'nexttrack', 'previoustrack', 'stop'] as const;
+
+/**
+ * What the lock screen, the car and the headphones show and control while Candela reads:
+ * the title, play/pause and, in the Bible reader, the next or previous verse. null clears it.
+ */
+export function setMediaSession(info: MediaSessionInfo | null): void {
+  if (typeof navigator === 'undefined' || !('mediaSession' in navigator)) return;
+  const ms = navigator.mediaSession;
+  try {
+    ms.metadata = info
+      ? new MediaMetadata({
+          title: info.title,
+          artist: 'Candela',
+          album: info.album ?? '',
+          artwork: [
+            { src: '/icons/icon-192.png', sizes: '192x192', type: 'image/png' },
+            { src: '/icons/icon-512.png', sizes: '512x512', type: 'image/png' },
+          ],
+        })
+      : null;
+  } catch {}
+  const handlers: Record<(typeof MEDIA_ACTIONS)[number], (() => void) | undefined> = {
+    play: info?.onPlay,
+    pause: info?.onPause,
+    nexttrack: info?.onNext,
+    previoustrack: info?.onPrevious,
+    stop: info?.onStop,
+  };
+  for (const action of MEDIA_ACTIONS) {
+    const fn = handlers[action];
+    try { ms.setActionHandler(action, fn ? () => fn() : null); } catch {}
+  }
+  if (!info) setMediaPlaybackState('none');
+}
+
+function setMediaPlaybackState(state: MediaSessionPlaybackState): void {
+  if (typeof navigator === 'undefined' || !('mediaSession' in navigator)) return;
+  try { navigator.mediaSession.playbackState = state; } catch {}
 }

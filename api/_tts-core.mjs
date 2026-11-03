@@ -13,6 +13,7 @@ const SYNTH_TIMEOUT_MS = 20000;
 const MAX_CACHE_BYTES = 25 * 1024 * 1024;
 const CACHE_HEADER = 'public, max-age=31536000, s-maxage=31536000, stale-while-revalidate=86400, immutable';
 
+/** key -> { audio: Buffer, marks: [startMs, durationMs, word][] } */
 const cache = new Map();
 let cacheBytes = 0;
 const inflight = new Map();
@@ -25,7 +26,8 @@ function getSharedTts() {
   if (sharedTtsPromise) return sharedTtsPromise;
   sharedTtsPromise = (async () => {
     const tts = new MsEdgeTTS();
-    await tts.setMetadata(DEFAULT_VOICE, OUTPUT_FORMAT.AUDIO_24KHZ_48KBITRATE_MONO_MP3);
+    // word boundaries: the Bible reader lights up each word as it is read
+    await tts.setMetadata(DEFAULT_VOICE, OUTPUT_FORMAT.AUDIO_24KHZ_48KBITRATE_MONO_MP3, { wordBoundaryEnabled: true });
     sharedTts = tts;
     sharedTtsPromise = null;
     return tts;
@@ -50,14 +52,32 @@ function escapeXml(s) {
   return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&apos;');
 }
 
-function remember(key, buf) {
-  cache.set(key, buf);
-  cacheBytes += buf.length;
+function remember(key, entry) {
+  cache.set(key, entry);
+  cacheBytes += entry.audio.length;
   while (cacheBytes > MAX_CACHE_BYTES && cache.size > 1) {
     const oldest = cache.keys().next().value;
-    cacheBytes -= cache.get(oldest).length;
+    cacheBytes -= cache.get(oldest).audio.length;
     cache.delete(oldest);
   }
+}
+
+/** Edge sends its word boundaries as JSON chunks, times in 100 ns ticks. */
+function readMarks(chunk, marks) {
+  try {
+    for (const m of JSON.parse(chunk.toString()).Metadata || []) {
+      if (m.Type !== 'WordBoundary') continue;
+      const word = m.Data?.text?.Text;
+      if (word) marks.push([Math.round(m.Data.Offset / 10000), Math.round(m.Data.Duration / 10000), word]);
+    }
+  } catch {}
+}
+
+function sendMarks(res, marks) {
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'application/json; charset=utf-8');
+  res.setHeader('Cache-Control', CACHE_HEADER);
+  res.end(JSON.stringify(marks));
 }
 
 function sendError(res, status, message) {
@@ -74,6 +94,9 @@ function sendError(res, status, message) {
 
 class InflightStream {
   chunks = [];
+  marks = [];
+  /** requests for the word times only: answered once the synthesis is over */
+  waitingMarks = new Set();
   subscribers = new Set();
   ended = false;
   failed = false;
@@ -101,6 +124,8 @@ class InflightStream {
 
   end() {
     this.ended = true;
+    for (const res of this.waitingMarks) sendMarks(res, this.marks);
+    this.waitingMarks.clear();
     for (const res of this.subscribers) {
       if (!res.writableEnded) {
         try { res.end(); } catch {}
@@ -111,12 +136,17 @@ class InflightStream {
 
   fail() {
     this.failed = true;
+    for (const res of this.waitingMarks) sendError(res, 502, 'Speech synthesis failed');
+    this.waitingMarks.clear();
     for (const res of this.subscribers) sendError(res, 502, 'Speech synthesis failed');
     this.subscribers.clear();
   }
 }
 
-/** Reads `text` and `voice`, checks them, then answers with MP3 audio streamed as it is synthesised. */
+/**
+ * Reads `text` and `voice`, checks them, then answers with MP3 audio streamed as it is synthesised,
+ * or with `marks` set, the time of each word as JSON: [[startMs, durationMs, word], ...].
+ */
 export async function handleTts(req, res, params) {
   try {
     const rawText = params.text;
@@ -129,9 +159,12 @@ export async function handleTts(req, res, params) {
     if (!VOICES.has(voice)) return sendError(res, 400, 'Unsupported voice');
 
     const key = `${voice}:${text}`;
+    const wantsMarks = params.marks === '1';
 
     // 1. already synthesised by this instance
-    const buf = cache.get(key);
+    const hit = cache.get(key);
+    if (hit && wantsMarks) return sendMarks(res, hit.marks);
+    const buf = hit?.audio;
     if (buf) {
       res.statusCode = 200;
       res.setHeader('Content-Type', 'audio/mpeg');
@@ -143,12 +176,14 @@ export async function handleTts(req, res, params) {
 
     // 2. being synthesised: join the same stream
     const running = inflight.get(key);
+    if (running && wantsMarks) return void running.waitingMarks.add(res);
     if (running) return running.subscribe(res, req);
 
     // 3. new synthesis, streamed to the client chunk by chunk as it arrives
     const stream = new InflightStream();
     inflight.set(key, stream);
-    stream.subscribe(res, req);
+    if (wantsMarks) stream.waitingMarks.add(res);
+    else stream.subscribe(res, req);
 
     let timer = null;
     const fail = () => {
@@ -160,7 +195,9 @@ export async function handleTts(req, res, params) {
 
     try {
       const tts = await getSharedTts();
-      const { audioStream } = tts.toStream(escapeXml(text));
+      const { audioStream, metadataStream } = tts.toStream(escapeXml(text));
+      metadataStream?.on('data', (chunk) => readMarks(chunk, stream.marks));
+      metadataStream?.on('error', () => {});
       timer = setTimeout(() => {
         try { audioStream.destroy(); } catch {}
         fail();
@@ -170,7 +207,7 @@ export async function handleTts(req, res, params) {
         clearTimeout(timer);
         if (inflight.get(key) === stream) inflight.delete(key);
         if (!stream.failed) {
-          remember(key, Buffer.concat(stream.chunks));
+          remember(key, { audio: Buffer.concat(stream.chunks), marks: stream.marks });
           stream.end();
         }
       });
