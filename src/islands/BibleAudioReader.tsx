@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
 import { navigate } from 'astro:transitions/client';
-import { getSavedSpeakingSpeed, isSpeechSupported, pauseSpeaking, preloadText, resumeSpeaking, savesData, setSpeakingSpeed, speakText, stopSpeaking } from '../lib/speech';
+import { getSavedSpeakingSpeed, isSpeechSupported, pauseSpeaking, preloadText, resumeSpeaking, savesData, setMediaSession, setSpeakingSpeed, speakText, stopSpeaking } from '../lib/speech';
+import { followWords } from '../lib/wordFollow';
 import FloatingAudioButton from './FloatingAudioButton';
 
 // Track auto-advance across chapter transitions so audio is not stopped on unmount
@@ -15,7 +16,7 @@ interface Props {
   verses: string[];
 }
 
-export default function BibleAudioReader({ bookSlug, ch, totalChapters = 24, verses }: Props) {
+export default function BibleAudioReader({ bookSlug, bookName = '', ch, totalChapters = 24, title = '', verses }: Props) {
   const [supported] = useState(() => isSpeechSupported());
   const [isPlaying, setIsPlaying] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
@@ -164,7 +165,12 @@ export default function BibleAudioReader({ bookSlug, ch, totalChapters = 24, ver
     }
   };
 
+  // the word being read, lit up inside the verse
+  const stopFollow = useRef<(() => void) | null>(null);
+
   const clearHighlight = () => {
+    stopFollow.current?.();
+    stopFollow.current = null;
     if (typeof document === 'undefined') return;
     document.querySelectorAll('.verse.is-reading').forEach((el) => {
       el.classList.remove('is-reading');
@@ -215,6 +221,10 @@ export default function BibleAudioReader({ bookSlug, ch, totalChapters = 24, ver
         isPausedRef.current = true;
       },
     });
+
+    stopFollow.current?.();
+    const verseEl = document.getElementById(`v${idx + 1}`);
+    stopFollow.current = verseEl ? followWords(verseEl, verseText) : null;
   };
 
   const handleChapterFinished = () => {
@@ -266,6 +276,7 @@ export default function BibleAudioReader({ bookSlug, ch, totalChapters = 24, ver
     verseIdxRef.current = 0;
     stopSpeaking();
     clearHighlight();
+    setMediaSession(null);
   };
 
   const handleSpeedChange = (newSpeed: number) => {
@@ -284,9 +295,27 @@ export default function BibleAudioReader({ bookSlug, ch, totalChapters = 24, ver
     }
   };
 
+  // Lock screen, car and headphones: title of the verse being read, play/pause, next and previous verse.
+  // The handlers go through a ref so they always act on the latest state.
+  const media = useRef({ toggle: toggleAudio, pause, start, stop });
+  media.current = { toggle: toggleAudio, pause, start, stop };
+  useEffect(() => {
+    if (!isPlaying) return;
+    setMediaSession({
+      title: `${bookName} ${ch}:${verseIdx + 1}`.trim(),
+      album: title,
+      onPlay: () => media.current.toggle(),
+      onPause: () => media.current.pause(),
+      onNext: () => media.current.start(verseIdxRef.current + 1),
+      onPrevious: () => media.current.start(Math.max(0, verseIdxRef.current - 1)),
+      onStop: () => media.current.stop(),
+    });
+  }, [isPlaying, verseIdx]);
+
   // Clean up on unmount or page exit
   useEffect(() => {
     return () => {
+      if (!isAutoAdvancingChapter) setMediaSession(null);
       if (!isAutoAdvancingChapter) {
         stopSpeaking();
       }

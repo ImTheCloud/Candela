@@ -8,7 +8,7 @@ import QuestionView from './QuestionView';
 import Modal, { CloseButton } from './Modal';
 import { questionLevel } from '../lib/age';
 import ReportButton from './ReportButton';
-import { getSavedSpeakingSpeed, isSpeechSupported, preloadQuestionAudio, setSpeakingSpeed, speakQuestion, stopSpeaking, pauseSpeaking, resumeSpeaking } from '../lib/speech';
+import { getSavedSpeakingSpeed, isSpeechSupported, preloadQuestionAudio, setMediaSession, setSpeakingSpeed, speakQuestion, stopSpeaking, pauseSpeaking, resumeSpeaking } from '../lib/speech';
 import FloatingAudioButton from './FloatingAudioButton';
 
 export interface QuizProps {
@@ -193,6 +193,22 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
     });
   };
 
+  // Lock screen and headphones: which question is read, play/pause (through a ref: always the latest state)
+  const toggleRef = useRef(handleToggleVoice);
+  toggleRef.current = handleToggleVoice;
+  useEffect(() => {
+    if (!isSpeaking) {
+      setMediaSession(null);
+      return;
+    }
+    setMediaSession({
+      title: `Întrebarea ${i + 1} din ${questions.length}`,
+      album: bookName,
+      onPlay: () => { if (isPausedRef.current) toggleRef.current(); },
+      onPause: () => { if (!isPausedRef.current) toggleRef.current(); },
+    });
+  }, [isSpeaking, i]);
+
   const handleSpeedChange = (newSpeed: number) => {
     setSpeed(newSpeed);
     speedRef.current = newSpeed;
@@ -242,6 +258,7 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
   useEffect(() => {
     return () => {
       stopSpeaking();
+      setMediaSession(null);
     };
   }, []);
 
