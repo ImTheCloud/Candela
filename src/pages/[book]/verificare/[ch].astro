@@ -17,7 +17,6 @@ const answer = (q: Playable) => {
     case 'tf': return q.a ? 'Adevărat' : 'Fals';
     case 'one': return `${letters[q.a]}) ${q.opts[q.a]}`;
     case 'multi': return q.a.length ? q.a.map((i) => `${letters[i]}) ${q.opts[i]}`).join('; ') : 'Niciun răspuns corect';
-    case 'fill': return q.a.join(', ');
     case 'match': return '';
   }
 };
@@ -50,7 +49,6 @@ const answer = (q: Playable) => {
         {qs.filter((q) => q.age === g.id).map((q) => (
           <article class="card rq" id={q.id}>
             <p class="small muted"><strong>{typeInfo(q.t).short}</strong>, {q.ref}, {q.id}</p>
-            {q.ctx && <p class="small muted">{q.ctx}</p>}
             <p class="rq-q">{q.q}</p>
             {(q.t === 'one' || q.t === 'multi') && <ol class="rq-opts" type="a">{q.opts.map((o, i) => <li class={(q.t === 'one' ? q.a === i : q.a.includes(i)) ? 'right' : ''}>{o}</li>)}</ol>}
             {q.t === 'match' && <ul class="rq-opts">{q.pairs.map(([l, r]) => <li><strong>{l}</strong> → {r}</li>)}</ul>}

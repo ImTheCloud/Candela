@@ -10,7 +10,7 @@ import LevelPicker from './LevelPicker';
 import TestShape from './TestShape';
 import Modal, { CloseButton } from './Modal';
 import Loader from './Loader';
-import ExamSheet, { type ExamInfo } from './ExamSheet';
+import ExamSheet from './ExamSheet';
 
 /** Questions per chapter, age group and type (computed at build). */
 export type Summary = Record<number, Partial<Record<Level, Partial<Record<QType, number>>>>>;
@@ -19,15 +19,14 @@ interface Props {
   book: string;
   titles: string[];
   summary: Summary;
-  /** The exams tile after the last chapter (as in v1): it opens a sheet to pick the level and the exam. */
-  exams?: ExamInfo[];
 }
 
 /**
  * The chapters of a book as tiles (as in v1): a tap opens the chapter's menu,
- * where the player reads it or picks a test.
+ * where the player reads it or picks a test. A chapter without questions yet is greyed: it can only be read.
+ * The tile after the last chapter opens the mock exam.
  */
-export default function ChapterMenu({ book, titles, summary, exams: realExams }: Props) {
+export default function ChapterMenu({ book, titles, summary }: Props) {
   const [open, setOpen] = useState<number | null>(null);
   const [examOpen, setExamOpen] = useState(false);
   const prog = progress(book).value;
@@ -46,7 +45,7 @@ export default function ChapterMenu({ book, titles, summary, exams: realExams }:
   };
 
   const sheet = open !== null && (
-    <Sheet book={book} ch={open} title={titles[open - 1]} best={scoreLabel(entry(open), count(summary[open]?.[level.value]))}
+    <Sheet book={book} ch={open} title={titles[open - 1]} ready={!!summary[open]} best={scoreLabel(entry(open), count(summary[open]?.[level.value]))}
       onClose={() => setOpen(null)} />
   );
 
@@ -61,28 +60,27 @@ export default function ChapterMenu({ book, titles, summary, exams: realExams }:
           const e = tileEntry(ch);
           const label = scoreLabel(e, PER_TEST);
           const full = !!e && (e.bestRight !== undefined ? e.bestRight === e.n : e.best === 100);
+          const soon = !summary[ch];
           return (
             <li>
-              <button type="button" class={`tile${full ? ' is-full' : ''}`} onClick={() => setOpen(ch)}
-                aria-label={`Capitolul ${ch}: ${t}`} title={t}>
+              <button type="button" class={`tile${full ? ' is-full' : ''}${soon ? ' is-soon' : ''}`} onClick={() => setOpen(ch)}
+                aria-label={`Capitolul ${ch}: ${t}${soon ? ', întrebări în pregătire' : ''}`} title={t}>
                 <span class="tile-n">{ch}</span>
                 {label && <span class="tile-sc">{label}</span>}
               </button>
             </li>
           );
         })}
-        {realExams && (
-          <li style={{ gridColumn: `span ${examSpan(titles.length)}` }}>
-            <button type="button" class="tile tile-exam" onClick={() => setExamOpen(true)}>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3 8-8" /><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9" /></svg>
-              <span>Examen alb</span>
-              {examsDone > 0 && <small class="tile-done">{examsDone} {examsDone === 1 ? 'făcut' : 'făcute'}</small>}
-            </button>
-          </li>
-        )}
+        <li style={{ gridColumn: `span ${examSpan(titles.length)}` }}>
+          <button type="button" class="tile tile-exam" onClick={() => setExamOpen(true)}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3 8-8" /><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9" /></svg>
+            <span>Examen alb</span>
+            {examsDone > 0 && <small class="tile-done">{examsDone} {examsDone === 1 ? 'făcut' : 'făcute'}</small>}
+          </button>
+        </li>
       </ol></div>
       {sheet}
-      {examOpen && realExams && <ExamSheet book={book} exams={realExams} onClose={() => setExamOpen(false)} />}
+      {examOpen && <ExamSheet book={book} ready={Object.keys(summary).length} total={titles.length} onClose={() => setExamOpen(false)} />}
     </>
   );
 }
@@ -91,16 +89,20 @@ interface SheetProps {
   book: string;
   ch: number;
   title: string;
+  /** The chapter has questions; without them the sheet only offers the reading. */
+  ready: boolean;
   best: string | undefined;
   onClose: () => void;
 }
 
-function Sheet({ book, ch, title, best, onClose }: SheetProps) {
+function Sheet({ book, ch, title, ready, best, onClose }: SheetProps) {
   const base = `/${book}`;
   const lv = level.value;
 
   // the test starts at once: its page, questions and first audio tracks are preloaded while the menu is open
   useEffect(() => {
+    prefetch(`${base}/citire/${ch}`, { ignoreSlowConnection: true });
+    if (!ready) return;
     loadChapter(book, ch)
       .then((qs) => {
         const pool = qs.filter((q) => q.age === lv);
@@ -110,8 +112,7 @@ function Sheet({ book, ch, title, best, onClose }: SheetProps) {
       })
       .catch(() => {});
     prefetch(`${base}/exersare?capitol=${ch}&start=1&nivel=${encodeURIComponent(lv)}`, { ignoreSlowConnection: true });
-    prefetch(`${base}/citire/${ch}`, { ignoreSlowConnection: true });
-  }, [book, ch, lv]);
+  }, [book, ch, lv, ready]);
 
   return (
     <Modal labelledby="cm-title" onClose={onClose}>
@@ -123,19 +124,21 @@ function Sheet({ book, ch, title, best, onClose }: SheetProps) {
           </div>
           <CloseButton onClick={close} />
         </div>
-        <TestShape />
+        {ready && <TestShape />}
         <a class="read-row" href={`${base}/citire/${ch}`}>
           <span class="oc-main"><b>Citește capitolul</b><small>Traducerea Cornilescu</small></span>
           <Chev />
         </a>
-        <div class="test-head">
-          <p class="sheet-label">Testul capitolului</p>
-          {best !== undefined && <span class="test-best">Cel mai bun scor: {best}</span>}
-        </div>
-        <LevelPicker />
-        <a class="btn btn-primary btn-block oc-go" href={`${base}/exersare?capitol=${ch}&start=1&nivel=${encodeURIComponent(lv)}`}>
-          Începe testul de nivel {levelLabel(lv).toLowerCase()}
-        </a>
+        {ready ? (<>
+          <div class="test-head">
+            <p class="sheet-label">Testul capitolului</p>
+            {best !== undefined && <span class="test-best">Cel mai bun scor: {best}</span>}
+          </div>
+          <LevelPicker />
+          <a class="btn btn-primary btn-block oc-go" href={`${base}/exersare?capitol=${ch}&start=1&nivel=${encodeURIComponent(lv)}`}>
+            Începe testul de nivel {levelLabel(lv).toLowerCase()}
+          </a>
+        </>) : <p class="muted sheet-soon">Întrebările din acest capitol sunt în pregătire.</p>}
       </>)}
     </Modal>
   );

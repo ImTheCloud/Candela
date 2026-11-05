@@ -19,7 +19,6 @@ export default function QuestionView({ q, answer, onChange, graded, onEnter }: P
     case 'one': return <One q={q} answer={answer as Extract<Answer, { t: 'one' }>} onChange={onChange} graded={graded} />;
     case 'multi': return <Multi q={q} answer={answer as Extract<Answer, { t: 'multi' }>} onChange={onChange} graded={graded} />;
     case 'match': return <Match q={q} answer={answer as Extract<Answer, { t: 'match' }>} onChange={onChange} graded={graded} />;
-    case 'fill': return <Fill q={q} answer={answer as Extract<Answer, { t: 'fill' }>} onChange={onChange} graded={graded} onEnter={onEnter} />;
   }
 }
 
@@ -211,56 +210,4 @@ function Match({ q, answer, onChange, graded }: P<'match'>) {
       )}
     </>
   );
-}
-
-function Fill({ q, answer, onChange, graded, onEnter }: P<'fill'>) {
-  const parts = q.q.split('___');
-  const set = (i: number, value: string) => {
-    const v = [...answer.v];
-    v[i] = value;
-    onChange({ t: 'fill', v });
-  };
-  return (
-    <>
-      <p class="q-text fill-text">
-        {parts.map((seg, i) => (
-          <>
-            {seg}
-            {i < parts.length - 1 && (
-              <input class={`fill-input ${graded ? (graded.parts?.[i] ? 'is-right' : 'is-wrong') : ''}`}
-                aria-label={`Cuvântul ${i + 1}`} value={answer.v[i]} disabled={!!graded}
-                autocomplete="off" autocapitalize="off" spellcheck={false}
-                style={{ width: `${Math.max(5, q.a[i].length + 2)}ch` }}
-                enterkeyhint="done"
-                onInput={(e) => set(i, e.currentTarget.value)}
-                onFocus={(e) => ensureVisible(e.currentTarget)}
-                onKeyDown={(e) => { if (e.key === 'Enter') { e.preventDefault(); e.currentTarget.blur(); onEnter?.(); } }} />
-            )}
-          </>
-        ))}
-      </p>
-      {graded && !graded.right && (
-        <p class="small fill-fix">
-          Corect: {q.a.map((w, i) => (
-            <span class={graded.parts?.[i] ? '' : 'strong'}>{i ? ', ' : ''}{w}</span>
-          ))}
-        </p>
-      )}
-    </>
-  );
-}
-
-/**
- * The phone keyboard may cover the field. Once it is up, and only if the field really is hidden or under the header,
- * the page moves just enough to show it, in one step and without animation.
- */
-function ensureVisible(el: HTMLElement) {
-  setTimeout(() => {
-    const vv = window.visualViewport;
-    const top = (vv?.offsetTop ?? 0) + (document.querySelector('header.top')?.getBoundingClientRect().bottom ?? 48) + 8;
-    const bottom = (vv?.offsetTop ?? 0) + (vv?.height ?? innerHeight) - 80;
-    const r = el.getBoundingClientRect();
-    if (r.bottom > bottom) scrollBy(0, r.bottom - bottom);
-    else if (r.top < top) scrollBy(0, r.top - top);
-  }, 350);
 }

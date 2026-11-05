@@ -20,6 +20,15 @@
         "4322"
       ],
       "port": 4322
+    },
+    {
+      "name": "candela-emulators",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "dev:emulators"
+      ],
+      "port": 4321
     }
   ]
 }

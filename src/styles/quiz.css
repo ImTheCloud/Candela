@@ -3,7 +3,6 @@
 /* the audio button floats 14px above the bar: the last answers scroll clear of it */
 .quiz:has(.fab-audio-container) { padding-bottom: calc(var(--bar-h, 96px) + 14px + 50px + 12px); }
 /* a typed answer: leave room under the field so the page can bring it above the keyboard */
-body:has(.fill-input:focus) .quiz { padding-bottom: 45dvh; }
 
 /* While answering: a slim header with the back arrow, the progress and the count, nothing else */
 .qt { display: none; }
@@ -97,17 +96,6 @@ body.in-quiz main { padding-top: 0; }
 .m-item:disabled { cursor: default; }
 .match-fix { margin: 0; padding: 0; list-style: none; display: grid; gap: 4px; color: var(--ok); }
 
-.fill-text { font: 400 1.3rem/2 var(--f-bible); }
-.fill-input { scroll-margin-block: 90px 140px; }
-.fill-input {
-  display: inline-block; min-width: 5ch; max-width: 100%; height: 40px; margin: 0 2px; padding: 0 6px;
-  border: 0; border-bottom: 2px solid var(--oil); border-radius: 6px 6px 0 0; background: var(--oil-soft); color: var(--ink);
-  font: 500 1.15rem var(--f-body); vertical-align: baseline;
-}
-.fill-input:focus { outline: none; background: var(--surface-2); }
-.fill-input.is-right { border-color: var(--ok); background: var(--ok-soft); }
-.fill-input.is-wrong { border-color: var(--bad); background: var(--bad-soft); }
-.fill-fix .strong { font-weight: 700; }
 
 .feedback { display: grid; gap: 10px; }
 .feedback .fb-answer { display: grid; gap: 2px; padding: 10px 12px; }
@@ -228,7 +216,6 @@ body.in-quiz main { padding-top: 0; }
 .ts-exam > span:first-child { flex: 1; min-width: 0; display: grid; gap: 1px; }
 .ts-exam b { font-weight: 600; }
 .ts-exam small { color: var(--ink-2); font-size: 0.8rem; }
-.ts-best { flex: none; padding: 3px 9px; border-radius: 999px; background: var(--ok-soft); color: var(--ok); font-size: 0.8rem; font-weight: 600; }
 .ts-redo { flex: none; color: var(--ink-3); }
 
 
@@ -260,9 +247,6 @@ body.in-quiz main { padding-top: 0; }
 .kinds .is-full .kind-bar span { background: var(--ok); }
 .kinds .is-full .kind-n { color: var(--ok); }
 .kinds .is-zero .kind-n { color: var(--bad); }
-.ex-real .oc-row { min-height: 52px; padding-block: 8px; }
-.ex-real .oc-row.is-mine { background: var(--oil-soft); }
-.ts-todo { flex: none; font-size: 0.8rem; font-weight: 600; color: var(--flame-ink); }
 .bk-head { margin: 14px 0 6px; font-weight: 600; font-size: 0.92rem; }
 .bk-head small { font-weight: 400; color: var(--ink-3); }
 .kinds-sum { padding-top: 8px; border-top: 1px solid var(--line); }
