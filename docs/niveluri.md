@@ -35,7 +35,7 @@ Après un premier test du propriétaire (Ușor « un chouïa trop facile », Med
 Retour du propriétaire : Ușor un tout petit peu trop dur, Mediu un tout petit peu trop facile, Greu très bien mais à peine trop dur. Appliqué aux chapitres 1, 21 et 22, et à suivre pour tous les autres :
 - **Ușor** : les images et les faits les plus parlants ; dans une question à une réponse, une seule fausse réponse plausible et une clairement à côté ; jamais une expression exacte à retenir (« scutul mântuirii Sale »).
 - **Mediu** : des fausses réponses de la même famille que la bonne (« valurile morții / valurile mării / șuvoaiele apelor ») ; un faux change un détail, pas le sens général.
-- **Greu** : au plus deux ou trois pièges de mots exacts par test (moitiés de verset inversées, quasi-synonymes, lieux voisins) ; le reste en détails précis mais faciles à retenir (qui, combien, dans quel ordre, quelle image).
+- **Greu** : au plus cinq pièges de mots exacts par test (limite fixée le 5 novembre 2026) (moitiés de verset inversées, quasi-synonymes, lieux voisins) ; le reste en détails précis mais faciles à retenir (qui, combien, dans quel ordre, quelle image).
 - **Associations, à tous les niveaux** : la réponse ne répète jamais le mot de la colonne de gauche (« cel bun → Domnul este bun » est interdit).
 - **Chapitres de poésie** (cântări, 2 Samuel 22, une partie de 1 et 23) : ils paraissent naturellement plus durs ; viser un cran plus simple que pour un chapitre d'histoire au même niveau.
 
@@ -72,7 +72,7 @@ Le propriétaire a validé le chapitre 22 tel quel (`content/2-samuel/sursa/ch22
 - plusieurs réponses : deux bonnes et une plausible ; « Niciun răspuns corect » au plus une fois, rarement.
 
 **Greu (adultes)**
-- détails précis ; au plus deux ou trois pièges de mots exacts par test, le reste en détails faciles à retenir.
+- détails précis ; au plus cinq pièges de mots exacts par test, le reste en détails faciles à retenir. Un piège de mots, c'est une question qui se tranche seulement sur la formulation exacte : trois citations proches, ou un vrai/faux avec une citation changée. Une réponse qui change un fait (qui, où, combien) n'en est pas un.
 - association **avec des paires qui se confondent** (« mâna Domnului → l-a apucat pe David de sus » / « mâinile lui David → Domnul le deprinde la luptă » / « locurile înalte » / « privirea Domnului »), jamais plus facile que celle de Mediu.
 - plusieurs réponses : une fois par chapitre environ avec « Niciun răspuns corect ».
 
