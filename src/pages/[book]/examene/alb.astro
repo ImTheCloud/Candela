@@ -3,15 +3,17 @@ import Loader from '../../../components/Loader.astro';
 import Base from '../../../layouts/Base.astro';
 import MockExam from '../../../islands/MockExam';
 import { BOOKS, type Book } from '../../../lib/books';
+import { chapterFiles } from '../../../lib/content';
 
 export function getStaticPaths() {
   return BOOKS.map((book) => ({ params: { book: book.slug }, props: { book } }));
 }
 const { book } = Astro.props as { book: Book };
+const chapters = [...chapterFiles(book.slug).keys()].sort((a, b) => a - b);
 ---
 <Base title="Examen alb" crumbs={[{ href: '/', label: 'Acasă' }, { href: `/${book.slug}`, label: book.name }]}>
   <section class="wrap narrow">
-    <MockExam client:only="preact" book={book.slug} bookName={book.name} chapters={book.chapters}>
+    <MockExam client:only="preact" book={book.slug} bookName={book.name} chapters={chapters}>
       <Loader slot="fallback" />
     </MockExam>
   </section>

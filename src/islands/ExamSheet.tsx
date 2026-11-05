@@ -1,29 +1,23 @@
 import { useEffect } from 'preact/hooks';
 import { prefetch } from 'astro:prefetch';
-import { ageLabel, levelLabel, type AgeGroup } from '../lib/age';
+import { levelLabel } from '../lib/age';
 import { level } from '../lib/level';
-import { progress, scoreLabel } from '../lib/progress';
 import LevelPicker from './LevelPicker';
 import TestShape from './TestShape';
 import Modal, { CloseButton } from './Modal';
 
-/** A real exam that already took place, to play again. */
-export interface ExamInfo {
-  id: string;
-  age: AgeGroup;
-  title: string;
-  year: number;
-  /** "luni, 19 octombrie 2026" */
-  date?: string;
+interface Props {
+  book: string;
+  /** Chapters with questions, and chapters in the book: a book being written draws only from the first. */
+  ready: number;
+  total: number;
+  onClose: () => void;
 }
 
-/** The "Examene" tile opens this sheet, laid out like a chapter's: reading from chapter 1, the real exams to redo, then the level and the start button. */
-export default function ExamSheet({ book, exams, onClose }: { book: string; exams: ExamInfo[]; onClose: () => void }) {
+/** The "Examen alb" tile opens this sheet, laid out like a chapter's: reading from chapter 1, then the level and the start button. */
+export default function ExamSheet({ book, ready, total, onClose }: Props) {
   const base = `/${book}`;
   const lv = level.value;
-  const best = progress(book).value.exams;
-  // one date for all of them when it is the same
-  const dates = [...new Set(exams.map((e) => e.date).filter(Boolean))];
 
   useEffect(() => {
     prefetch(`${base}/examene/alb`, { ignoreSlowConnection: true });
@@ -36,7 +30,7 @@ export default function ExamSheet({ book, exams, onClose }: { book: string; exam
         <div class="sheet-top">
           <div>
             <h2 id="ex-title">Examen alb</h2>
-            <p class="muted">Din toată cartea, ca la examenul final</p>
+            <p class="muted">{ready < total ? `Din capitolele gata: ${ready} din ${total}` : 'Din toată cartea, ca la examenul final'}</p>
           </div>
           <CloseButton onClick={close} />
         </div>
@@ -45,24 +39,8 @@ export default function ExamSheet({ book, exams, onClose }: { book: string; exam
           <span class="oc-main"><b>Citește cartea</b><small>De la capitolul 1, traducerea Cornilescu</small></span>
           <Chev />
         </a>
-
-        {exams.length > 0 && (
-          <>
-            <p class="sheet-label">Examenele reale de la concurs{dates.length === 1 ? `, din ${dates[0]!.replace(/^\S+, /, '')}` : ''}</p>
-            <div class="opt-card ex-real">
-              {exams.map((e) => (
-                <a class="oc-row" href={`${base}/examene/${e.id}`}>
-                  <span class="oc-main"><b>{ageLabel(e.age)}</b></span>
-                  {best[e.id] ? <span class="ts-best">{scoreLabel(best[e.id], 21)}</span> : <span class="ts-todo">Încearcă-l</span>}
-                  <Chev />
-                </a>
-              ))}
-            </div>
-          </>
-        )}
-
         <div class="test-head">
-          <p class="sheet-label">Examen alb, din toată cartea</p>
+          <p class="sheet-label">Alege nivelul</p>
         </div>
         <LevelPicker />
         <a class="btn btn-primary btn-block oc-go" href={`${base}/examene/alb`}>Începe examenul alb de nivel {levelLabel(lv).toLowerCase()}</a>

@@ -391,6 +391,9 @@ body.auth-no-header main { padding-top: 0; }
 .tile-sc { font-size: 0.68rem; font-weight: 600; color: var(--flame-ink); line-height: 1; }
 .tile.is-full { background: var(--ok-soft); border-color: transparent; }
 .tile.is-full .tile-sc { color: var(--ok); }
+/* no questions yet: it still opens, to read the chapter */
+.tile.is-soon { background: var(--surface-2); border-color: transparent; color: var(--ink-3); }
+.sheet-soon { margin: 0; }
 
 .sheet-back {
   position: fixed; inset: 0; z-index: 40; display: grid; align-items: end;

@@ -6,7 +6,7 @@ import { saveQuizResult } from '../lib/progress';
 import { emptyAnswer, grade, isAnswered, percent, TYPES, typeInfo, type Answer, type Grade, type Playable } from '../lib/questions';
 import QuestionView from './QuestionView';
 import Modal, { CloseButton } from './Modal';
-import { questionLevel } from '../lib/age';
+import { levelLabel } from '../lib/age';
 import ReportButton from './ReportButton';
 import { getSavedSpeakingSpeed, isSpeechSupported, preloadQuestionAudio, setMediaSession, setSpeakingSpeed, speakQuestion, stopSpeaking, pauseSpeaking, resumeSpeaking } from '../lib/speech';
 import FloatingAudioButton from './FloatingAudioButton';
@@ -309,7 +309,7 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
   // - Escape: closes modals
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
-      // 1. Ignore browser shortcuts (Ctrl/Cmd+F, Alt+…), typing in a field (fill-in-the-blanks, report form)
+      // 1. Ignore browser shortcuts (Ctrl/Cmd+F, Alt+…), typing in a field (report form)
       // and any sheet opened above the quiz other than ours (the report modal)
       if (e.ctrlKey || e.metaKey || e.altKey) return;
       const target = e.target instanceof HTMLElement ? e.target : null;
@@ -495,7 +495,7 @@ function QHead({
     <header class="q-head">
       <div class="q-row">
         <span class="q-kind">{typeInfo(q.t).short}</span>
-        <span class="q-age" title="Nivelul întrebării">{questionLevel(q.age)}</span>
+        <span class="q-age" title="Nivelul întrebării">{levelLabel(q.age)}</span>
         <span class="q-spacer" />
         <ReportButton key={q.id} q={q} small />
       </div>
@@ -571,7 +571,6 @@ function rightAnswer(q: Playable): string {
     case 'one': return q.opts[q.a];
     case 'multi': return q.a.length ? q.a.map((k) => q.opts[k]).join('; ') : 'Niciun răspuns nu era corect.';
     case 'match': return q.pairs.map(([l, r]) => `${l} → ${r}`).join('\n');
-    case 'fill': return q.q.replace(/___/, q.a[0]);
   }
 }
 
@@ -617,7 +616,7 @@ function Results({ bookName, questions, answers, grades, saveFailed, backHref, o
           <ul class="kinds" aria-label="Pe tipuri de întrebări">
             {kinds.map((k) => (
               <li class={k.ok === k.n ? 'is-full' : k.ok === 0 ? 'is-zero' : ''}>
-                <span class="kind-name">{k.t === 'fill' ? 'Completare versete' : k.short}</span>
+                <span class="kind-name">{k.short}</span>
                 <span class="kind-bar" aria-hidden="true"><span style={{ width: `${(k.ok / k.n) * 100}%` }} /></span>
                 <span class="kind-n">{k.ok}/{k.n}</span>
               </li>

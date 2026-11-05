@@ -56,7 +56,6 @@ export default function ProfileProgressDashboard() {
     { type: 'one', name: 'Un singur răspuns corect' },
     { type: 'match', name: 'Asociere de perechi' },
     { type: 'multi', name: 'Mai multe răspunsuri' },
-    { type: 'fill', name: 'Completare versete' },
   ];
 
   const kindsList: KindRow[] = KINDS_DEF.map((kd) => {
@@ -92,7 +91,7 @@ export default function ProfileProgressDashboard() {
 
     const percent = n > 0 ? Math.round((ok / n) * 100) : 0;
     return { type: kd.type, name: kd.name, n, ok, percent };
-  }).filter((k) => k.type !== 'fill' || k.n > 0);
+  });
 
   const totalN = kindsList.reduce((sum, k) => sum + k.n, 0);
   const totalOk = kindsList.reduce((sum, k) => sum + k.ok, 0);

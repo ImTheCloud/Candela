@@ -332,10 +332,7 @@ export function buildQuestionSpeech(q: Playable): string {
   const parts: string[] = [];
 
   // Question prompt
-  if (q.t === 'fill') {
-    const formatted = cleanSpeechText(q.q).replace(/_{2,}/g, '... spațiu liber ...');
-    parts.push(`Completează: ${formatted}`);
-  } else if (q.t === 'match') {
+  if (q.t === 'match') {
     // Only speak the single, clean instruction once (no duplicate sentence)
     parts.push('Asociază perechile din stânga și din dreapta.');
   } else {
@@ -371,9 +368,6 @@ export function buildQuestionSpeech(q: Playable): string {
 
     case 'match':
       // Handled above in question prompt to avoid repeating two phrases
-      break;
-
-    case 'fill':
       break;
   }
 

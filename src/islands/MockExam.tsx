@@ -10,10 +10,11 @@ import Loader from './Loader';
 interface Props {
   book: string;
   bookName: string;
-  chapters: number;
+  /** The chapters that have questions. */
+  chapters: number[];
 }
 
-/** A new exam drawn from the whole book, at the level picked on the previous screen. It starts at once. */
+/** A new exam drawn from the chapters of the book that have questions, at the level picked on the previous screen. It starts at once. */
 function MockExamInner({ book, bookName, chapters }: Props) {
   const lv = level.value;
   const [exam, setExam] = useState<{ key: number; questions: Playable[] } | null>(null);
@@ -22,8 +23,7 @@ function MockExamInner({ book, bookName, chapters }: Props) {
   async function build() {
     setError('');
     try {
-      const all = Array.from({ length: chapters }, (_, k) => k + 1);
-      const pool = (await loadChapters(book, all)).filter((q) => q.age === lv);
+      const pool = (await loadChapters(book, chapters)).filter((q) => q.age === lv);
       const out: Playable[] = [];
       for (const { t } of TYPES) {
         if (t === 'match') {
