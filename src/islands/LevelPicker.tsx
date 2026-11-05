@@ -37,7 +37,7 @@ export default function LevelPicker<T extends Level | 'all' = Level>({
   }));
 
   if (includeAll) {
-    items.push({ id: 'all' as T, label: allLabel });
+    items.push({ id: 'all' as T, who: allLabel, label: 'nivelurile' });
   }
 
   return (
