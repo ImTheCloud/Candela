@@ -2,6 +2,7 @@
 import Loader from '../../components/Loader.astro';
 import Base from '../../layouts/Base.astro';
 import AccountPage from '../../islands/AccountPage';
+import Lamp from '../../components/Lamp.astro';
 import { BOOKS } from '../../lib/books';
 import { totals } from '../../lib/content';
 
@@ -12,6 +13,23 @@ const books = BOOKS.map((b) => ({ slug: b.slug, name: b.name, chapters: b.chapte
     <AccountPage client:only="preact" books={books}>
       <Loader slot="fallback" />
     </AccountPage>
+    <footer class="credits">
+      <Lamp size={56} />
+      <p class="credits-name">Candela</p>
+      <p class="credits-quote">„Candela lui Dumnezeu nu se stinsese încă...”</p>
+      <a class="credits-ref" href="/1-samuel/citire/3#v3">1 Samuel 3:3</a>
+      <p class="credits-by">Bethel Dworp, citim Biblia împreună</p>
+    </footer>
   </section>
 </Base>
-<style>.page { padding-block: 12px 24px; }</style>
+<style>
+  .page { padding-block: 12px 24px; }
+  .credits { display: grid; justify-items: center; gap: 6px; margin-top: 32px; padding-top: 28px; border-top: 1px solid var(--line); text-align: center; }
+  /* the sign-in card already shows the lamp and the verse */
+  :global(body.auth-no-header) .credits { display: none; }
+  .credits p { margin: 0; }
+  .credits-name { font: 700 1.25rem/1.2 var(--f-brand); letter-spacing: .08em; text-transform: uppercase; color: var(--ink); }
+  .credits-quote { margin-top: 4px; font: italic 500 1rem/1.35 var(--f-bible); color: var(--ink-2); text-wrap: balance; }
+  .credits-ref { font-size: 0.85rem; color: var(--ink-2); }
+  .credits-by { margin-top: 8px; font-size: 0.85rem; color: var(--ink-2); }
+</style>
