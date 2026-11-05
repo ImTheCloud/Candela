@@ -2,7 +2,7 @@
 
 Ce guide est pour la prochaine personne (ou IA) qui écrit ou reprend les questions. Le format des fichiers et le fonctionnement du site sont dans `docs/fonctionnement.md`, le barème de difficulté par niveau dans `docs/niveluri.md`.
 
-État au 29 octobre 2026 : 2 Samuel en trois niveaux (Ușor, Mediu, Greu ; 72 questions par chapitre). Les trois niveaux du chapitre 1 ont été recalibrés (Ușor plus simple, Greu plus dur) : à valider par le propriétaire avant de refaire les autres chapitres de la même façon. 1 Samuel vidé, à refaire ensuite.
+État au 5 novembre 2026 : 2 Samuel complet en trois niveaux (Ușor, Mediu, Greu ; 72 questions par chapitre). 1 Samuel en cours, chapitre par chapitre (chapitre 1 écrit).
 
 ## Ce que le propriétaire exige (retours répétés)
 
@@ -10,6 +10,7 @@ Ce guide est pour la prochaine personne (ou IA) qui écrit ou reprend les questi
 2. **Choix multiple : des faits indépendants.** Les bonnes réponses ne sont jamais la suite l'une de l'autre ni deux formulations de la même chose. Chacune doit être juste toute seule.
 3. **Pas de scène dans l'énoncé.** La scène est écrite une fois par chapitre (`scene:`) et ne s'affiche qu'en examen. L'énoncé doit quand même dire qui parle, à qui, de qui, où : jamais « Ce a zis femeia? », mais « Ce a spus femeia din Tecoa împăratului? ».
 3 bis. **Un énoncé se comprend seul, même en chapitre** : il situe le moment (« Când Abner s-a întors la Hebron… », « La îngroparea lui Abner… ») au lieu d'un énoncé nu comme « Cine s-a certat cu Abner? ». Jamais de numéro de verset dans l'énoncé (« după versetul 30 ») : la référence est déjà affichée. Ce contexte ne doit pas donner la réponse d'une autre question du même niveau.
+3 ter. **L'énoncé annonce exactement ce que les réponses donnent, et cite le moment précis.** Corrigé le 5 novembre 2026 (2 Samuel 7:3) : « Când David i-a vorbit despre chivot, ce motiv i-a dat Natan la început? » avec des citations pour réponses. Un « motif » appelle « pentru că… » ; pour des paroles, on demande « cu ce cuvinte… ». Et « i-a vorbit despre chivot » ou « la început » ne disent ni ce qui a été dit ni à quel moment : on écrit le fait (« Când David i-a spus că el locuiește într-o casă de cedru, iar chivotul într-un cort… »). Avant de garder une question : lire l'énoncé puis chaque réponse à voix haute, la phrase doit tenir.
 4. **Une question = une seule question**, terminée par un point d'interrogation. Un vrai/faux est une affirmation, sans point d'interrogation. Pas de question à la forme négative (« Cu ce NU… »).
 5. **Fausses réponses plausibles** (Mediu et Greu) : elles parlent des vrais personnages, lieux et objets du chapitre ; en Greu, elles ne diffèrent de la bonne que par un détail. `node scripts/qualite/ancrage.mjs` liste celles qu'on élimine sans avoir lu.
 6. **Longueur des propositions** : à partir de Mediu, la bonne réponse n'est ni visiblement la plus longue ni la plus courte (écart de plus de 10 caractères avec toutes les autres). Le plus simple : écrire des fausses réponses aussi précises que la bonne. En Ușor, on s'en moque.
@@ -67,4 +68,4 @@ Ce sont des heuristiques par mots-clés : elles sortent des candidats, jamais un
 - Écrire la bonne réponse avec soin et les fausses à la va-vite : c'est la première cause d'avertissement de longueur.
 - Recopier le verset comme réponse : la proposition doit répondre à la question, pas la prolonger.
 - Une paire d'association qui ne vit que par la consigne (« fils → mère ») : écrire la relation dans la colonne de droite.
-- Les examens réels (`content/1-samuel/examene/`) gardent leur texte d'origine : on n'y touche pas (leurs avertissements de texte non exact sont normaux).
+- Les examens réels (`content/1-samuel/examene/`) ne sont plus dans le site (retirés le 5 novembre 2026) : les fichiers restent comme archive, on n'y touche pas (leurs avertissements de texte non exact sont normaux).
