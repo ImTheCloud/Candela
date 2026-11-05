@@ -40,6 +40,12 @@ Dernière mise à jour : 29 octobre 2026. Branche `v2` (la v1 reste sur `main`, 
 - `content/{livre}/sursa/chNN.txt` : source des questions ; `intrebari/chNN.json` est généré par `scripts/qualite/build-chapter.mjs`. Voir `docs/fonctionnement.md`.
 - `scripts/validate.mjs` : règles (nombre par type et par âge, forme des énoncés, longueurs, versets).
 
+## Mise à jour du 5 novembre 2026
+- **1 Samuel :** s'ouvre chapitre par chapitre. Chapitre 1 jouable (72 questions), chapitres 2 à 31 grisés, en lecture seule. Le classement du livre est actif.
+- **Examens réels :** retirés du site. Les fichiers restent dans `content/1-samuel/examene/` comme archive. Il ne reste que l'examen blanc.
+- **Profil :** crédits en bas de page (lampe, verset, Bethel Dworp), cachés sur l'écran de connexion.
+- **Android :** le manifeste s'appelle maintenant « Candela » (écran de démarrage).
+
 ## Classements (octobre 2026)
 - En bas de l'accueil : classement du livre affiché, tous niveaux ou un niveau. Un grand carré par joueur, une ligne chacun. Pas de classement par chapitre ni de classement de toute l'app.
 - Données : `boards/{livre}/players/{uid}~{joueur}` = `score` (questions connues, vérifié par les règles) et `lv` (par niveau). Code : `src/lib/board.ts`. Les entrées se remplissent à chaque nouvelle question réussie, et une fois pour les joueurs qui avaient déjà répondu (effet de rattrapage dans `src/lib/progress.ts`).

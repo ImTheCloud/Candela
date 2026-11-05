@@ -16,7 +16,7 @@ content/<livre>/
   carte.json             guide du livre (frises, lieux, trajets), facultatif
   sursa/chNN.txt         SOURCE des questions d'un chapitre (c'est ce fichier qu'on modifie)
   intrebari/chNN.json    questions générées depuis la source (ne pas modifier à la main)
-  examene/*.json         examens réels du concours, recopiés tels quels (facultatif)
+  examene/*.json         examens réels du concours : archive seulement, jamais affichés dans le site
 ```
 
 Le livre est déclaré dans `src/lib/books.ts` : `slug` (adresse, ex. `2-samuel`), nom affiché, nombre de chapitres, résumé et un titre court par chapitre (tuiles et menus).
@@ -32,7 +32,7 @@ Chaque chapitre a, **pour chacun des trois niveaux** (Ușor pour les moins de 12
 | Association | 1 | `match` | 5 paires à relier |
 | Plusieurs réponses | 3 | `multi` | une question, 3 propositions, de 0 à 3 justes (« Niciun răspuns corect » s'ajoute tout seul) |
 
-Soit 24 questions par niveau et 72 par chapitre. Un test de chapitre suit l'ordre de l'examen (vrai/faux, une réponse, association, plusieurs réponses), mélangé à l'intérieur de chaque type. Les boutons de niveau indiquent à qui ils s'adressent : Ușor (copii), Mediu (adolescenți), Greu (adulți). C'est aussi la forme de l'examen final : l'examen blanc tire 10 + 10 + 1 + 3 questions dans tout le livre. Il n'y a plus de textes à compléter (`fill`) dans les chapitres ; le type existe encore dans le code pour les examens réels de 1 Samuel qui en contiennent.
+Soit 24 questions par niveau et 72 par chapitre. Un test de chapitre suit l'ordre de l'examen (vrai/faux, une réponse, association, plusieurs réponses), mélangé à l'intérieur de chaque type. Les boutons de niveau indiquent à qui ils s'adressent : Ușor (copii), Mediu (adolescenți), Greu (adulți). C'est aussi la forme de l'examen final : l'examen blanc tire 10 + 10 + 1 + 3 questions dans tout le livre. Il n'y a plus de textes à compléter : le site ne connaît que ces quatre types.
 
 ### La scène (contexte)
 
@@ -83,7 +83,7 @@ Le script numérote les questions de chaque niveau dans l'ordre de la source : `
 5. Points : chaque question vaut 1 point (une association : 0,2 par paire juste). Le score s'affiche en pourcentage. Le classement compte les questions réussies au moins une fois.
 6. L'examen blanc (`src/islands/MockExam.tsx`) suit `SHAPE` dans `src/lib/questions.ts` et compose son association avec `mixedMatch`.
 
-Un livre sans aucun fichier de questions s'affiche « Întrebările sunt în pregătire » : la page existe, mais il n'y a rien à jouer (c'est le cas de 1 Samuel pendant sa réécriture).
+Un livre sans aucun fichier de questions s'affiche « Întrebările sunt în pregătire ». Un livre peut aussi s'ouvrir chapitre par chapitre (c'est le cas de 1 Samuel) : un chapitre sans fichier de questions a une tuile grisée, sa fenêtre ne propose que la lecture, et l'examen blanc tire seulement dans les chapitres prêts. Il suffit d'ajouter `intrebari/chNN.json` pour qu'un chapitre s'ouvre.
 
 ## Ajouter un livre
 
@@ -92,7 +92,6 @@ Un livre sans aucun fichier de questions s'affiche « Întrebările sunt în pre
 3. **Firestore** : les règles citent les livres par leur nom. Dans `firestore.rules`, ajouter le nouveau slug partout où apparaissent `1-samuel` et `2-samuel` (clé de progression, signalements, classement, somme du score), puis `firebase deploy --only firestore:rules --project candela-64d25`.
 4. **Questions** : écrire `content/<livre>/sursa/chNN.txt` chapitre par chapitre (règles dans `docs/qualite-questions.md`), générer avec `build-chapter.mjs`, valider avec `validate.mjs` (0 erreur exigée, pas d'avertissement de longueur).
 5. **Vérifier** : `npm run build`, puis jouer un test de chapitre et un examen blanc sur téléphone (`npx astro preview`).
-6. **Examens réels** (facultatif) : `content/<livre>/examene/<année>-<âge>.json`, recopiés tels quels, et leurs dates dans `EXAM_DATES` de `src/lib/content.ts`.
 
 ## Remettre le classement à zéro
 
