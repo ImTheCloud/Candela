@@ -18,6 +18,10 @@ export interface UserRow {
   at: Timestamp | null;
   /** Last visit to this version (noted once a day); null when they have not come yet. */
   seen: Timestamp | null;
+  /** The announcement of 1 Samuel was shown; new accounts get this too, at sign-up. */
+  news: boolean;
+  /** Opened 1 Samuel from the announcement. */
+  newsOpened: boolean;
   kids: Kid[];
   score?: number;
   totalScore?: number;
@@ -66,6 +70,8 @@ export async function loadUsers(): Promise<UserRow[]> {
         admin: d.get('admin') === true,
         at: (d.get('createdAt') as Timestamp | undefined) ?? null,
         seen: (d.get('lastSeen') as Timestamp | undefined) ?? null,
+        news: d.get('news1Samuel') === true,
+        newsOpened: d.get('news1SamuelOpened') === true,
         kids: userKids,
         score: userScore,
         totalScore: userScore + kidsScore,

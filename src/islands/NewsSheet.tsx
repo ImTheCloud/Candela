@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'preact/hooks';
-import { mark1SamuelNewsSeen, needs1SamuelNews, profile, profileLoaded, user } from '../lib/session';
+import { mark1SamuelNewsOpened, mark1SamuelNewsSeen, needs1SamuelNews, profile, profileLoaded, user } from '../lib/session';
 import LampIcon from './LampIcon';
 import Modal, { CloseButton } from './Modal';
 
@@ -42,7 +42,7 @@ export default function NewsSheet() {
             </li>
           ))}
         </ul>
-        <a class="btn btn-primary btn-block" href="/1-samuel" onClick={close}>Deschide 1 Samuel</a>
+        <a class="btn btn-primary btn-block" href="/1-samuel" onClick={() => { if (u) mark1SamuelNewsOpened(u.uid); close(); }}>Deschide 1 Samuel</a>
       </>)}
     </Modal>
   );
