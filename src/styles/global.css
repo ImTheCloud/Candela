@@ -667,6 +667,8 @@ a.tile { text-decoration: none; }
   transition: background-color .12s, color .12s, border-color .12s, transform .08s;
 }
 .lv-chip { display: grid; place-content: center; gap: 1px; line-height: 1.15; padding: 4px 6px; }
+/* four chips must fit the leaderboard card on a 320px phone */
+@media (max-width: 340px) { .lv-chip { padding-inline: 4px; } }
 .lv-who { font-weight: 600; font-size: 0.85rem; }
 .lv-sub { font-weight: 500; font-size: 0.72rem; opacity: .75; }
 .lv-chip:active { transform: scale(0.98); }
