@@ -11,7 +11,7 @@ import {
   updateProfile,
   type User,
 } from 'firebase/auth';
-import { collection, deleteDoc, doc, getDocs, onSnapshot, serverTimestamp, setDoc, updateDoc } from 'firebase/firestore';
+import { collection, deleteDoc, doc, getDocs, onSnapshot, serverTimestamp, setDoc, updateDoc, type Timestamp } from 'firebase/firestore';
 import { removeFromBoards, updatePlayerBoardName } from './board';
 import { auth, db } from './firebase';
 import { localGet, localRemove, localSet } from './store';
@@ -24,6 +24,10 @@ export interface Profile {
   isParent: boolean;
   /** Can read the reports; set only from the Firebase console or the migration. */
   admin?: boolean;
+  /** Missing on the oldest accounts. */
+  createdAt?: Timestamp | null;
+  /** The announcement of 1 Samuel was shown to this account, or it does not need it. */
+  news1Samuel?: boolean;
 }
 
 /** What the last visit left behind: lets a page show the name and profile before Firebase has restored the session. */
@@ -91,6 +95,19 @@ function noteSeen(uid: string) {
     .catch(() => { seenAsked = ''; });
 }
 
+/** Accounts created after 1 Samuel went live never see its announcement. */
+const NEWS_1SAMUEL_FROM = Date.parse('2026-11-05T16:49:20Z');
+
+export function needs1SamuelNews(p: Profile | null): boolean {
+  if (!p || p.news1Samuel) return false;
+  return !p.createdAt || p.createdAt.toMillis() < NEWS_1SAMUEL_FROM;
+}
+
+/** Kept on the account, so the announcement shows once whatever the device. */
+export function mark1SamuelNewsSeen(uid: string) {
+  updateDoc(doc(db, 'users', uid), { news1Samuel: true }).catch(() => {});
+}
+
 export interface SignUp {
   firstName: string;
   lastName: string;
@@ -114,6 +131,7 @@ export async function signUp(f: SignUp): Promise<void> {
     isParent: f.isParent,
     createdAt: serverTimestamp(),
     lastSeen: serverTimestamp(),
+    news1Samuel: true,
   });
   localSet(`seen:${cred.user.uid}`, new Date().toDateString());
 }

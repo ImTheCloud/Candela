@@ -1,6 +1,7 @@
 ---
 import Loader from './Loader.astro';
 import BookPanel from '../islands/BookPanel';
+import NewsSheet from '../islands/NewsSheet';
 import PlayerPicker from '../islands/PlayerPicker';
 import Stopwatch from '../islands/Stopwatch';
 import { BOOKS, type Book } from '../lib/books';
@@ -22,6 +23,8 @@ const books = BOOKS.map((b) => ({ slug: b.slug, name: b.name, titles: b.titles, 
 <BookPanel client:only="preact" books={books} initial={book.slug}>
   <Loader slot="fallback" />
 </BookPanel>
+
+<NewsSheet client:only="preact" />
 
 <style>
   .hb-who:has(.picker) { padding-top: 10px; padding-bottom: 4px; }
