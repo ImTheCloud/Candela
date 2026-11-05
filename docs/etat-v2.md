@@ -44,7 +44,7 @@ Dernière mise à jour : 29 octobre 2026. Branche `v2` (la v1 reste sur `main`, 
 - **1 Samuel :** complet, 31 chapitres de 72 questions (tout est écrit depuis le 5 novembre 2026). Le classement du livre est actif.
 - **Examens réels :** retirés du site. Les fichiers restent dans `content/1-samuel/examene/` comme archive. Il ne reste que l'examen blanc.
 - **Profil :** crédits en bas de page (lampe, verset, Bethel Dworp), cachés sur l'écran de connexion.
-- **Annonce 1 Samuel :** fenêtre sur l'accueil, une seule fois par compte existant (`src/islands/NewsSheet.tsx`, champ `news1Samuel` du compte). Les comptes créés ensuite ne la voient pas.
+- **Annonce 1 Samuel :** fenêtre sur l'accueil, une seule fois par compte existant (`src/islands/NewsSheet.tsx`, champ `news1Samuel` du compte). Les comptes créés ensuite ne la voient pas. La page admin compte ceux qui l'ont vue et ceux qui ont ouvert 1 Samuel depuis elle (`news1SamuelOpened`).
 - **Android :** le manifeste s'appelle maintenant « Candela » (écran de démarrage).
 
 ## Classements (octobre 2026)

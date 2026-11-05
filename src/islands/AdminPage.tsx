@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'preact/hooks';
 import { addChildTo, deleteAccount, deleteChild, loadUsers, renameChild, updateUser, type Kid, type UserRow } from '../lib/admin';
 import { formatFirstLast, sameFirstName } from '../lib/players';
-import { errorText, profile, profileLoaded, user } from '../lib/session';
+import { errorText, NEWS_1SAMUEL_FROM, profile, profileLoaded, user } from '../lib/session';
 import Avatar from './Avatar';
 import Loader from './Loader';
 import SameNameSheet from './SameNameSheet';
@@ -49,6 +49,10 @@ function Users({ me }: { me: string }) {
   const withScoreTotal = rows.filter((r) => (r.totalScore ?? 0) > 0).length;
   const adminTotal = rows.filter((r) => r.admin).length;
   const activeRate = totalAccounts > 0 ? Math.round((active7d / totalAccounts) * 100) : 0;
+  // the announcement of 1 Samuel: only the accounts that existed before it count
+  const newsAccounts = rows.filter((r) => !r.at || r.at.toMillis() < NEWS_1SAMUEL_FROM);
+  const newsSeen = newsAccounts.filter((r) => r.news).length;
+  const newsOpened = newsAccounts.filter((r) => r.newsOpened).length;
 
   // Filtered and sorted rows
   const term = q.trim().toLowerCase();
@@ -119,6 +123,14 @@ function Users({ me }: { me: string }) {
           </div>
           <div class="adm-card-kpi-val">{new30d}</div>
           <div class="adm-card-kpi-sub">înregistrați recent</div>
+        </article>
+
+        <article class="adm-card-kpi" style={{ gridColumn: '1 / -1' }}>
+          <div class="adm-card-kpi-head">
+            <span class="adm-card-kpi-title">Anunțul 1 Samuel</span>
+          </div>
+          <div class="adm-card-kpi-val">{newsSeen} din {newsAccounts.length}</div>
+          <div class="adm-card-kpi-sub">l-au văzut, {newsOpened} {newsOpened === 1 ? 'a' : 'au'} deschis 1 Samuel</div>
         </article>
       </section>
 
