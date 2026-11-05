@@ -2,7 +2,7 @@
 
 Ce guide est pour la prochaine personne (ou IA) qui écrit ou reprend les questions. Le format des fichiers et le fonctionnement du site sont dans `docs/fonctionnement.md`, le barème de difficulté par niveau dans `docs/niveluri.md`.
 
-État au 5 novembre 2026 : 2 Samuel complet en trois niveaux (Ușor, Mediu, Greu ; 72 questions par chapitre). 1 Samuel en cours, chapitre par chapitre (chapitres 1 à 6 écrits).
+État au 5 novembre 2026 : 2 Samuel complet en trois niveaux (Ușor, Mediu, Greu ; 72 questions par chapitre). 1 Samuel en cours, chapitre par chapitre (chapitres 1 à 12 écrits).
 
 ## Ce que le propriétaire exige (retours répétés)
 

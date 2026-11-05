@@ -41,7 +41,7 @@ Dernière mise à jour : 29 octobre 2026. Branche `v2` (la v1 reste sur `main`, 
 - `scripts/validate.mjs` : règles (nombre par type et par âge, forme des énoncés, longueurs, versets).
 
 ## Mise à jour du 5 novembre 2026
-- **1 Samuel :** s'ouvre chapitre par chapitre. Chapitres 1 à 6 jouables (72 questions chacun), chapitres 7 à 31 grisés, en lecture seule. Le classement du livre est actif.
+- **1 Samuel :** s'ouvre chapitre par chapitre. Chapitres 1 à 12 jouables (72 questions chacun), chapitres 13 à 31 grisés, en lecture seule. Le classement du livre est actif.
 - **Examens réels :** retirés du site. Les fichiers restent dans `content/1-samuel/examene/` comme archive. Il ne reste que l'examen blanc.
 - **Profil :** crédits en bas de page (lampe, verset, Bethel Dworp), cachés sur l'écran de connexion.
 - **Android :** le manifeste s'appelle maintenant « Candela » (écran de démarrage).
