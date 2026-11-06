@@ -9,14 +9,14 @@ export interface FloatingAudioButtonProps {
   className?: string;
 }
 
-export const SPEED_OPTIONS = [0.75, 1, 1.25];
+export const SPEED_OPTIONS = [0.5, 0.75, 1, 1.25];
 
-// Coordinates (x, y in pixels) of the 40px pills on a quarter circle (radius 62) around the top-left of the FAB:
-// every pill is a full thumb target, ~17px clear of the main button and ~7px apart from each other
+// Four 40px speed buttons spaced along a quarter circle around the FAB.
 const ARC_COORDINATES = [
-  { x: -62, y: 0 },    // 0.75x (left of button)
-  { x: -44, y: -44 },  // 1x    (upper-left diagonal)
-  { x: 0,   y: -62 },  // 1.25x (above button)
+  { x: -92, y: 0 },
+  { x: -80, y: -46 },
+  { x: -46, y: -80 },
+  { x: 0, y: -92 },
 ];
 
 export default function FloatingAudioButton({
@@ -45,7 +45,7 @@ export default function FloatingAudioButton({
       role="region"
       aria-label="Comenzi audio"
     >
-      {/* Radial arc of 3 speed pills around the FAB */}
+      {/* Radial arc of speed pills around the FAB */}
       <div
         class={`fab-arc-speeds${showSpeeds ? ' is-visible' : ''}`}
         role="group"
