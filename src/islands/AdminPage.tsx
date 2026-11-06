@@ -523,7 +523,7 @@ function Editor({ r, self, onChanged }: { r: UserRow; self: boolean; onChanged: 
       {!self && (confirmDelete ? (
         <div class="stack adm-actions" style={{ marginTop: '10px' }}>
           <p class="small muted" style={{ color: 'var(--bad)' }}>
-            Atenție: Se șterg profilul din baza de date, toți copiii asociați și tot progresul lor. Emailul și parola rămân în Firebase Auth.
+            Atenție: Se șterg profilul din baza de date, toți copiii asociați, tot progresul lor și contul de autentificare (Firebase Auth).
           </p>
           <div class="two">
             <button type="button" class="btn btn-ghost" onClick={() => setConfirmDelete(false)}>Renunță</button>

@@ -15,6 +15,44 @@ function ttsDevPlugin() {
   };
 }
 
+// in dev, /api/admin-delete-account is served via ssrLoadModule
+function adminDevPlugin() {
+  return {
+    name: 'candela-admin-dev',
+    configureServer(server) {
+      server.middlewares.use('/api/admin-delete-account', async (req, res) => {
+        let body = '';
+        req.on('data', (chunk) => {
+          body += chunk;
+        });
+        req.on('end', async () => {
+          try {
+            req.body = body ? JSON.parse(body) : {};
+          } catch {
+            req.body = {};
+          }
+          res.status = (code) => {
+            res.statusCode = code;
+            return res;
+          };
+          res.json = (data) => {
+            res.setHeader('Content-Type', 'application/json');
+            res.end(JSON.stringify(data));
+            return res;
+          };
+          try {
+            const mod = await server.ssrLoadModule('./api/admin-delete-account.ts');
+            await mod.default(req, res);
+          } catch (err) {
+            console.error('Error in dev /api/admin-delete-account:', err);
+            res.status(500).json({ error: 'internal_error', message: err?.message });
+          }
+        });
+      });
+    },
+  };
+}
+
 export default defineConfig({
   site: 'https://candela-biblia.vercel.app',
   integrations: [preact()],
@@ -23,7 +61,7 @@ export default defineConfig({
     '/2-samuel/examene': '/2-samuel',
   },
   vite: {
-    plugins: [ttsDevPlugin()],
+    plugins: [ttsDevPlugin(), adminDevPlugin()],
   },
   // pages are tiny: loading them when a link is touched makes the next page instant
   prefetch: { prefetchAll: true, defaultStrategy: 'hover' },
