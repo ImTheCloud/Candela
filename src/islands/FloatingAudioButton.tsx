@@ -9,7 +9,7 @@ export interface FloatingAudioButtonProps {
   className?: string;
 }
 
-export const SPEED_OPTIONS = [0.5, 0.75, 1, 1.25];
+export const SPEED_OPTIONS = [0.65, 0.75, 1, 1.25];
 
 // Four 40px speed buttons spaced along a quarter circle around the FAB.
 const ARC_COORDINATES = [

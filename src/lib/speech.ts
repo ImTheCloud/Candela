@@ -6,7 +6,7 @@ export function isSpeechSupported(): boolean {
 }
 
 const SPEED_STORAGE_KEY = 'candela_audio_speed';
-export const VALID_SPEAKING_SPEEDS = [0.5, 0.75, 1, 1.25];
+export const VALID_SPEAKING_SPEEDS = [0.65, 0.75, 1, 1.25];
 
 export function getSavedSpeakingSpeed(): number {
   if (typeof window === 'undefined') return 1.0;
@@ -14,6 +14,7 @@ export function getSavedSpeakingSpeed(): number {
     const raw = localStorage.getItem(SPEED_STORAGE_KEY);
     if (raw) {
       const val = parseFloat(raw);
+      if (val === 0.5) return 0.65;
       if (VALID_SPEAKING_SPEEDS.includes(val)) return val;
     }
   } catch {}
