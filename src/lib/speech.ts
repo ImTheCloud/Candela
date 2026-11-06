@@ -6,7 +6,7 @@ export function isSpeechSupported(): boolean {
 }
 
 const SPEED_STORAGE_KEY = 'candela_audio_speed';
-export const VALID_SPEAKING_SPEEDS = [0.75, 1, 1.25];
+export const VALID_SPEAKING_SPEEDS = [0.5, 0.75, 1, 1.25];
 
 export function getSavedSpeakingSpeed(): number {
   if (typeof window === 'undefined') return 1.0;
@@ -145,7 +145,7 @@ export function resumeSpeaking(): boolean {
  * completely human and natural, with zero vowel distortion.
  */
 export function getEffectivePlaybackRate(rate: number): number {
-  if (rate <= 0.75) {
+  if (rate === 0.75) {
     return 0.85;
   }
   return rate;
