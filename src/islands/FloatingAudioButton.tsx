@@ -11,12 +11,12 @@ export interface FloatingAudioButtonProps {
 
 export const SPEED_OPTIONS = [0.65, 0.75, 1, 1.25];
 
-// Four 40px speed buttons spaced along a quarter circle around the FAB.
+// Four 32px speed buttons spaced along a quarter circle around the FAB.
 const ARC_COORDINATES = [
-  { x: -92, y: 0 },
-  { x: -80, y: -46 },
-  { x: -46, y: -80 },
-  { x: 0, y: -92 },
+  { x: -70, y: 0 },
+  { x: -61, y: -35 },
+  { x: -35, y: -61 },
+  { x: 0, y: -70 },
 ];
 
 export default function FloatingAudioButton({
