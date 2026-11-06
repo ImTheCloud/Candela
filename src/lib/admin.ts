@@ -1,7 +1,7 @@
 import { addDoc, collection, collectionGroup, deleteDoc, doc, getDoc, getDocs, serverTimestamp, updateDoc, type Timestamp } from 'firebase/firestore';
 import { removeFromBoards, updatePlayerBoardName } from './board';
 import { BOOKS } from './books';
-import { db } from './firebase';
+import { auth, db } from './firebase';
 
 export interface Kid {
   key: string;
@@ -143,9 +143,31 @@ export async function deleteChild(uid: string, key: string) {
 
 /**
  * Everything the site keeps about an account: children, progress, boards, the v1 archive, the profile.
- * The sign-in itself (email and password) lives in Firebase Authentication, which only the console can delete.
+ * Also permanently deletes the sign-in from Firebase Authentication via the admin serverless API.
  */
 export async function deleteAccount(r: UserRow) {
+  // 1. Delete user from Firebase Authentication
+  try {
+    const token = await auth.currentUser?.getIdToken();
+    if (token) {
+      const res = await fetch('/api/admin-delete-account', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ uid: r.uid }),
+      });
+      if (!res.ok) {
+        const body = await res.json().catch(() => ({}));
+        console.warn('Could not delete user from Firebase Auth:', body);
+      }
+    }
+  } catch (e) {
+    console.warn('Network error calling admin-delete-account:', e);
+  }
+
+  // 2. Wipe children, progress, boards, archive, and profile doc
   for (const k of r.kids) await deleteChild(r.uid, k.key);
   await wipePlayer(r.uid, r.uid);
   try {
