@@ -1,11 +1,7 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
-import { navigate } from 'astro:transitions/client';
 import { getSavedSpeakingSpeed, isSpeechSupported, pauseSpeaking, preloadText, resumeSpeaking, savesData, setMediaSession, setSpeakingSpeed, speakText, stopSpeaking } from '../lib/speech';
 import { followWords } from '../lib/wordFollow';
 import FloatingAudioButton from './FloatingAudioButton';
-
-// Track auto-advance across chapter transitions so audio is not stopped on unmount
-let isAutoAdvancingChapter = false;
 
 interface Props {
   bookSlug: string;
@@ -16,7 +12,7 @@ interface Props {
   verses: string[];
 }
 
-export default function BibleAudioReader({ bookSlug, bookName = '', ch, totalChapters = 24, title = '', verses }: Props) {
+export default function BibleAudioReader({ bookName = '', ch, title = '', verses }: Props) {
   const [supported] = useState(() => isSpeechSupported());
   const [isPlaying, setIsPlaying] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
@@ -81,7 +77,6 @@ export default function BibleAudioReader({ bookSlug, bookName = '', ch, totalCha
     const preloadNext = () => {
       if (cancelled) return;
       if (k >= verses.length) {
-        preloadNextChapter();
         return;
       }
       preloadText(verses[k++]).finally(preloadNext);
@@ -89,20 +84,6 @@ export default function BibleAudioReader({ bookSlug, bookName = '', ch, totalCha
     preloadNext();
     return () => { cancelled = true; };
   }, [isPlaying, ch, verses]);
-
-  // The announcement and verse 1 of the next chapter, fetched once, so the auto-advance has no gap
-  const nextChapterPreloaded = useRef(false);
-  const preloadNextChapter = () => {
-    if (nextChapterPreloaded.current || ch >= totalChapters) return;
-    nextChapterPreloaded.current = true;
-    preloadText(`Capitolul ${ch + 1}.`);
-    fetch(`/data/${bookSlug}/${ch + 1}.json`)
-      .then((r) => r.json())
-      .then((data) => {
-        if (data?.verses?.[0]) preloadText(data.verses[0]);
-      })
-      .catch(() => { nextChapterPreloaded.current = false; });
-  };
 
   // Handle autoplay when auto-advancing from the previous chapter
   useEffect(() => {
@@ -117,8 +98,7 @@ export default function BibleAudioReader({ bookSlug, bookName = '', ch, totalCha
       }
     } catch {}
 
-    if (isAutoplayParam || isAutoplayStorage || isAutoAdvancingChapter) {
-      isAutoAdvancingChapter = false;
+    if (isAutoplayParam || isAutoplayStorage) {
       try {
         history.replaceState(null, '', window.location.pathname);
       } catch {}
@@ -195,9 +175,6 @@ export default function BibleAudioReader({ bookSlug, bookName = '', ch, totalCha
       }
     }
 
-    // Near the end of chapter: proactively preload next chapter's announcement and verse 1
-    if (idx >= verses.length - 2) preloadNextChapter();
-
     // Pure biblical text only: never say verse numbers out loud
     const verseText = verses[idx];
 
@@ -229,16 +206,8 @@ export default function BibleAudioReader({ bookSlug, bookName = '', ch, totalCha
 
   const handleChapterFinished = () => {
     clearHighlight();
-    if (ch < totalChapters) {
-      const nextCh = ch + 1;
-      isAutoAdvancingChapter = true;
-      try {
-        sessionStorage.setItem('candela_auto_chapter', String(nextCh));
-      } catch {}
-
-      navigate(`/${bookSlug}/citire/${nextCh}?autoplay=1`, { history: 'replace' }).catch(() => {
-        window.location.replace(`/${bookSlug}/citire/${nextCh}?autoplay=1`);
-      });
+    if (isPlayingRef.current && verses.length > 0) {
+      playVerse(0);
     } else {
       stop();
     }
@@ -315,10 +284,8 @@ export default function BibleAudioReader({ bookSlug, bookName = '', ch, totalCha
   // Clean up on unmount or page exit
   useEffect(() => {
     return () => {
-      if (!isAutoAdvancingChapter) setMediaSession(null);
-      if (!isAutoAdvancingChapter) {
-        stopSpeaking();
-      }
+      setMediaSession(null);
+      stopSpeaking();
       clearHighlight();
       if (typeof document !== 'undefined') {
         const readerEl = document.querySelector('.reader');
