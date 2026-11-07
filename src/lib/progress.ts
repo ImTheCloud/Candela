@@ -1,5 +1,5 @@
 import { computed, effect, signal, type Signal } from '@preact/signals';
-import { arrayRemove, arrayUnion, deleteDoc, doc, getDoc, increment, onSnapshot, serverTimestamp, setDoc } from 'firebase/firestore';
+import { arrayUnion, deleteDoc, doc, getDoc, increment, onSnapshot, serverTimestamp, setDoc } from 'firebase/firestore';
 import { writeBoard } from './board';
 import { BOOKS } from './books';
 import { db } from './firebase';
@@ -39,22 +39,35 @@ const guestKey = (book: string) => `progress:${book}`;
 
 // the key alone: a change of the profile (name, timer, last visit) gives a new player object, not another player
 const playerKey = computed(() => player.value.key);
+const progressOwner = computed(() => {
+  const u = user.value;
+  return u === undefined ? null : u ? `${u.uid}~${playerKey.value}` : 'guest';
+});
 
 /** Resolves once the current player's progress in the book has come from Firestore. */
-function whenLoaded(book: string, timeoutMs = 5000): Promise<void> {
+function whenLoaded(book: string, owner: string | null, timeoutMs = 5000): Promise<void> {
   if (progressLoaded(book).value) return Promise.resolve();
-  return new Promise((resolve) => {
+  return new Promise((resolve, reject) => {
     let done = false;
     let stop: (() => void) | undefined;
     const timer = setTimeout(() => {
       if (!done) {
         done = true;
         stop?.();
-        resolve();
+        reject(new Error('progress_not_loaded'));
       }
     }, timeoutMs);
 
     stop = effect(() => {
+      if (progressOwner.value !== owner) {
+        if (!done) {
+          done = true;
+          clearTimeout(timer);
+          reject(new Error('player_changed'));
+          queueMicrotask(() => stop?.());
+        }
+        return;
+      }
       if (!progressLoaded(book).value) return;
       if (!done) {
         done = true;
@@ -76,33 +89,35 @@ export function progress(book: string): Signal<Progress> {
   if (s) return s;
   const sig = signal<Progress>(EMPTY);
   signals.set(book, sig);
-  const loaded = signal(false);
+  // Readiness belongs to an identity, not just a book. Effects may run in any
+  // order when switching players; the previous player's data must never qualify.
+  const loadedOwner = signal<string | null>(null);
+  const loaded = computed(() => progressOwner.value !== null && loadedOwner.value === progressOwner.value);
   loadedSignals.set(book, loaded);
   let stop: (() => void) | null = null;
   effect(() => {
     const u = user.value;
     const key = playerKey.value;
+    const owner = progressOwner.value;
+    let active = true;
     stop?.();
     stop = null;
+    loadedOwner.value = null;
     if (u === undefined) return;
     if (!u) {
       sig.value = normalize(localGet<Partial<Progress>>(guestKey(book), {}));
-      loaded.value = true;
+      loadedOwner.value = owner;
       return;
     }
     sig.value = EMPTY;
-    loaded.value = false;
-    stop = onSnapshot(doc(db, 'users', u.uid, 'progress', `${key}~${book}`), (snap) => {
+    const unsubscribe = onSnapshot(doc(db, 'users', u.uid, 'progress', `${key}~${book}`), (snap) => {
+      if (!active || progressOwner.value !== owner) return;
       sig.value = normalize(snap.data() as Partial<Progress> | undefined);
-      loaded.value = true;
+      loadedOwner.value = owner;
     });
+    stop = () => { active = false; unsubscribe(); };
   });
   return sig;
-}
-
-function ref(book: string) {
-  const u = user.value!;
-  return doc(db, 'users', u.uid, 'progress', `${player.value.key}~${book}`);
 }
 
 function guestUpdate(book: string, change: (p: Progress) => Progress) {
@@ -191,7 +206,14 @@ export async function saveQuizResult(
     return;
   }
 
-  await whenLoaded(book);
+  // Keep the same account and player across both asynchronous writes.
+  const u = user.value!;
+  const p = player.value;
+  const owner = progressOwner.value;
+  const name = shortName(p);
+  const r = doc(db, 'users', u.uid, 'progress', `${p.key}~${book}`);
+  await whenLoaded(book, owner);
+  if (progressOwner.value !== owner) throw new Error('player_changed');
   const curProg = progress(book).value;
   const data: Record<string, unknown> = { updatedAt: serverTimestamp() };
 
@@ -231,17 +253,14 @@ export async function saveQuizResult(
   }
 
   // Single atomic write to Firestore
-  const r = ref(book);
   await setDoc(r, data, { merge: true });
 
   // Update public board immediately once progress is committed
-  const u = user.value;
-  const p = player.value;
-  if (u && p && gain.length > 0) {
+  if (gain.length > 0) {
     const fullMastered = add(curProg.mastered || [], gain);
     try {
-      await writeBoard(book, u.uid, p.key, shortName(p), fullMastered);
-      localSet(boardMark(u.uid, p.key, book), `${shortName(p)}:${fullMastered.length}`);
+      await writeBoard(book, u.uid, p.key, name, fullMastered);
+      localSet(boardMark(u.uid, p.key, book), `${name}:${fullMastered.length}`);
     } catch (err) {
       console.error('Eroare la sincronizarea clasamentului:', err);
     }
@@ -271,7 +290,7 @@ export function deleteProgress(uid: string, playerKey: string) {
 }
 
 // v2: entries now also exist at 0 points and carry every level, so each one is written again once
-const boardMark = (uid: string, key: string, book: string) => `bd3:${uid}~${key}~${book}`;
+const boardMark = (uid: string, key: string, book: string) => `bd4:${uid}~${key}~${book}`;
 
 // Everyone who comes into this version is on the boards, at 0 points until they know a question.
 // The playing player's entry follows their progress; the account's other players get theirs written once.

@@ -64,7 +64,7 @@ export async function updatePlayerBoardName(uid: string, key: string, name: stri
   invalidateBoardCache();
   await Promise.all(
     BOOKS.map(async (b) => {
-      localRemove(`bd3:${uid}~${key}~${b.slug}`);
+      localRemove(`bd4:${uid}~${key}~${b.slug}`);
       const bRef = boardRef(b.slug, uid, key);
       try {
         await updateDoc(bRef, { name });
