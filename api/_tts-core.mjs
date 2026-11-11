@@ -11,6 +11,12 @@ export const MAX_TEXT_LENGTH = 1500;
 const SYNTH_TIMEOUT_MS = 20000;
 /** Rough cap on the audio kept in memory by a warm instance (~25 MB). */
 const MAX_CACHE_BYTES = 25 * 1024 * 1024;
+/**
+ * Spoken Romanian at 48 kbit/s is about 400 bytes of MP3 per character of text. A synthesis that ends with far
+ * less was cut by Edge: it is dropped (never cached) instead of being kept by browsers and the CDN for a year.
+ */
+const MIN_BYTES_PER_CHAR = 120;
+const MIN_AUDIO_BYTES = 2000;
 const CACHE_HEADER = 'public, max-age=31536000, s-maxage=31536000, stale-while-revalidate=86400, immutable';
 
 /** key -> { audio: Buffer, marks: [startMs, durationMs, word][] } */
@@ -205,11 +211,15 @@ export async function handleTts(req, res, params) {
       audioStream.on('data', (chunk) => stream.write(chunk));
       audioStream.on('end', () => {
         clearTimeout(timer);
-        if (inflight.get(key) === stream) inflight.delete(key);
-        if (!stream.failed) {
-          remember(key, { audio: Buffer.concat(stream.chunks), marks: stream.marks });
-          stream.end();
+        if (stream.failed) return;
+        const audio = Buffer.concat(stream.chunks);
+        if (audio.length < Math.max(MIN_AUDIO_BYTES, text.length * MIN_BYTES_PER_CHAR)) {
+          console.error(`TTS audio cut short: ${audio.length} bytes for ${text.length} characters`);
+          return fail();
         }
+        if (inflight.get(key) === stream) inflight.delete(key);
+        remember(key, { audio, marks: stream.marks });
+        stream.end();
       });
       audioStream.on('error', (err) => {
         console.error('TTS stream error:', err?.message || err);

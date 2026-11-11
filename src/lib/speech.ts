@@ -59,8 +59,11 @@ export function savesData(): boolean {
   return typeof navigator !== 'undefined' && !!(navigator as any).connection?.saveData;
 }
 
+// Bumped when audio already kept by browsers or the CDN must be fetched again (a cut file is kept for a year)
+const TTS_VERSION = '2';
+
 function ttsUrl(clean: string, voice: string): string {
-  return `/api/tts?text=${encodeURIComponent(clean)}&voice=${encodeURIComponent(voice)}`;
+  return `/api/tts?text=${encodeURIComponent(clean)}&voice=${encodeURIComponent(voice)}&v=${TTS_VERSION}`;
 }
 
 /** Drops the least recently used audio; the one playing right now is never revoked. */
@@ -192,6 +195,7 @@ export function preloadText(text: string, voice = 'ro-RO-AlinaNeural'): Promise<
       return res.blob();
     })
     .then((blob) => {
+      if (!blob.size) throw new Error('Empty audio');
       const blobUrl = URL.createObjectURL(blob);
       readyUrlCache.set(key, blobUrl);
       inflightFetches.delete(key);
@@ -267,8 +271,37 @@ export function speakText(text: string, options: SpeakOptions = {}): () => void 
         }
       };
 
+      // A file that will not play (cut or empty, kept by the browser cache) is fetched once more from the
+      // network, bypassing every cache, before the reading gives up on it
+      // 0: not retried yet, 1: fetching again (the same failure may be reported twice), 2: playing the new copy
+      let retry = 0;
+      const failOrRetry = (err?: any) => {
+        if (stale() || err?.name === 'AbortError' || retry === 1) return;
+        if (retry === 2) return handleError(err);
+        retry = 1;
+        const bad = readyUrlCache.get(key);
+        if (bad) {
+          readyUrlCache.delete(key);
+          try { URL.revokeObjectURL(bad); } catch {}
+        }
+        fetch(directUrl, { cache: 'reload' })
+          .then((res) => {
+            if (!res.ok) throw new Error(`TTS status ${res.status}`);
+            return res.blob();
+          })
+          .then((blob) => {
+            if (!blob.size) throw new Error('Empty audio');
+            const blobUrl = URL.createObjectURL(blob);
+            readyUrlCache.set(key, blobUrl);
+            trimCache();
+            retry = 2;
+            startPlayback(blobUrl);
+          })
+          .catch(handleError);
+      };
+
       audio.onerror = (e) => {
-        handleError(e);
+        failOrRetry(audio.error ?? e);
       };
 
       const startPlayback = (src: string) => {
@@ -278,7 +311,7 @@ export function speakText(text: string, options: SpeakOptions = {}): () => void 
         const playPromise = audio.play();
         if (playPromise !== undefined) {
           playPromise.catch((err) => {
-            handleError(err);
+            failOrRetry(err);
           });
         }
       };
