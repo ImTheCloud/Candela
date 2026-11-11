@@ -87,16 +87,6 @@ let sharedAudio: HTMLAudioElement | null = null;
 // Bumped by every new text and every stop: events of an older text are ignored
 let playGen = 0;
 
-/** The element playing right now (the Bible reader follows its time to light up the word being read). */
-export function getActiveAudio(): HTMLAudioElement | null {
-  return activeAudio;
-}
-
-/** Changes with every new text or stop: tells a follower its text is no longer the one being read. */
-export function currentPlayback(): number {
-  return playGen;
-}
-
 export function stopSpeaking(): void {
   playGen++;
   if (activeAudio) {
