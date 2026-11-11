@@ -42,8 +42,8 @@ export default function BookPanel({ books, initial }: { books: BookData[]; initi
   }
 
   return (
-    <>
-      <section class="wrap hb-chap" aria-labelledby="chapters">
+    <div class="wrap hb-grid">
+      <section class="hb-chap" aria-labelledby="chapters">
         <div class="card hb-chapters">
           <div class="book-switch" role="tablist" aria-label="Cartea">
             {books.map((b) => (
@@ -66,13 +66,13 @@ export default function BookPanel({ books, initial }: { books: BookData[]; initi
 
       {/* no board until the book has questions */}
       {perLevel(book) > 0 && (
-        <section class="wrap hb-block" aria-labelledby="lb-title">
+        <section class="hb-block" aria-labelledby="lb-title">
           <div class="card lb">
             <Board key={slug} book={slug} />
           </div>
         </section>
       )}
-    </>
+    </div>
   );
 }
 

@@ -21,4 +21,9 @@ const ready = Object.keys(totals(book.slug)).length > 0;
     ) : <p class="muted">Clasamentul din {book.name} apare când sunt gata întrebările.</p>}
   </section>
 </Base>
-<style>.page { display: grid; gap: 16px; padding-block: 8px 32px; }</style>
+<style>
+  .page { display: grid; gap: 16px; padding-block: 8px 32px; }
+  /* the page title already says it: the board keeps only its player count */
+  .page :global(.lb-head h2) { display: none; }
+  .page :global(.lb-head) { justify-content: flex-end; }
+</style>

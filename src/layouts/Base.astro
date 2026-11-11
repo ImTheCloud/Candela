@@ -184,6 +184,8 @@ const fullTitle = title === 'Candela' ? title : `${title} – Candela`;
   }
   .top-row { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 6px; }
   .top-row:has(.heading) { gap: 4px; justify-content: flex-start; }
+  /* a page in a narrow column: the header lines up with it (on a phone both are the full width) */
+  :global(body:has(main > .wrap.narrow)) .top-row { max-width: var(--measure); }
   .brand { display: flex; align-items: center; gap: 7px; min-width: 0; text-decoration: none; font: 400 21px/1 var(--f-brand); margin-right: auto; }
   @media (min-width: 440px) {
     .brand { font-size: 24px; }
