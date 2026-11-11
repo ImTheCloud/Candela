@@ -80,8 +80,8 @@ img, svg { display: block; }
 /* Layout */
 .wrap { width: 100%; max-width: var(--wide); margin-inline: auto; padding-inline: var(--gutter); box-sizing: border-box; }
 .narrow { max-width: var(--measure); }
-.page { min-width: 0; max-width: 100%; box-sizing: border-box; }
-.stack { display: flex; flex-direction: column; gap: var(--gap, 16px); min-width: 0; max-width: 100%; box-sizing: border-box; }
+.page { min-width: 0; box-sizing: border-box; }
+.stack { display: flex; flex-direction: column; gap: var(--gap, 16px); min-width: 0; box-sizing: border-box; }
 .muted { color: var(--ink-2); }
 .small { font-size: 0.875rem; }
 .eyebrow { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--oil-ink); }
@@ -210,6 +210,8 @@ img, svg { display: block; }
 
 body.auth-no-header header.top { display: none !important; }
 body.auth-no-header main { padding-top: 0; }
+/* PC: the sign-in card sits lower on the screen instead of against the top edge */
+@media (min-width: 640px) and (min-height: 700px) { body.auth-no-header main { padding-top: 8vh; } }
 .kid-row { display: flex; gap: 8px; }
 .kid-x { flex: none; width: 44px; min-height: 44px; padding: 0; }
 .kid-add { align-self: flex-start; margin-top: 2px; }
@@ -461,6 +463,13 @@ body.auth-no-header main { padding-top: 0; }
 .hb-sw { padding-top: 6px; padding-bottom: 2px; }
 .hb-chap { padding-top: 8px; }
 .hb-block { padding-top: 12px; }
+/* PC: the chapters and the board side by side; the board stays in view while scrolling */
+@media (min-width: 960px) {
+  .hb-grid { display: grid; grid-template-columns: minmax(0, 1fr) 22rem; gap: 20px; align-items: start; padding-top: 8px; }
+  .hb-grid > .hb-chap, .hb-grid > .hb-block { padding-top: 0; }
+  .hb-grid > .hb-chap:only-child { grid-column: 1 / -1; }
+  .hb-grid > .hb-block { position: sticky; top: 76px; }
+}
 .hb-chapters { display: grid; gap: 10px; padding: 12px 14px 14px; }
 .hb-chapters h2 { font-size: 1.4rem; line-height: 1.25; margin-bottom: 2px; }
 .hb-sub { font: 500 clamp(0.72rem, 0.65rem + 0.35vw, 0.85rem) var(--f-body); white-space: nowrap; letter-spacing: -0.01em; margin-top: -4px; }
@@ -1608,6 +1617,10 @@ html:not(.signed-in) .back-signed-in { display: none; }
   height: 50px;
   pointer-events: none;
   transition: opacity 0.15s ease, visibility 0.15s;
+}
+/* PC: beside the text column instead of over the text */
+@media (min-width: 52rem) {
+  .fab-audio-container { right: calc((100vw - var(--measure, 40rem)) / 2 - 66px); }
 }
 
 /* an open sheet (a sheet opened from the reader's bottom bar sits in a lower stacking context) */
