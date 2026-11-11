@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
 import { getSavedSpeakingSpeed, isSpeechSupported, pauseSpeaking, preloadText, resumeSpeaking, savesData, setMediaSession, setSpeakingSpeed, speakText, stopSpeaking } from '../lib/speech';
-import { followWords } from '../lib/wordFollow';
 import FloatingAudioButton from './FloatingAudioButton';
 
 interface Props {
@@ -145,12 +144,7 @@ export default function BibleAudioReader({ bookName = '', ch, title = '', verses
     }
   };
 
-  // the word being read, lit up inside the verse
-  const stopFollow = useRef<(() => void) | null>(null);
-
   const clearHighlight = () => {
-    stopFollow.current?.();
-    stopFollow.current = null;
     if (typeof document === 'undefined') return;
     document.querySelectorAll('.verse.is-reading').forEach((el) => {
       el.classList.remove('is-reading');
@@ -198,10 +192,6 @@ export default function BibleAudioReader({ bookName = '', ch, title = '', verses
         isPausedRef.current = true;
       },
     });
-
-    stopFollow.current?.();
-    const verseEl = document.getElementById(`v${idx + 1}`);
-    stopFollow.current = verseEl ? followWords(verseEl, verseText) : null;
   };
 
   const handleChapterFinished = () => {

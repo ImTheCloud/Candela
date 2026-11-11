@@ -10,6 +10,7 @@ import { levelLabel } from '../lib/age';
 import ReportButton from './ReportButton';
 import { getSavedSpeakingSpeed, isSpeechSupported, preloadQuestionAudio, setMediaSession, setSpeakingSpeed, speakQuestion, stopSpeaking, pauseSpeaking, resumeSpeaking } from '../lib/speech';
 import FloatingAudioButton from './FloatingAudioButton';
+import { playCheck, playNext, playRight, playWrong } from '../lib/sfx';
 
 export interface QuizProps {
   book: string;
@@ -263,6 +264,8 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
   }, []);
 
   function check() {
+    // the game sounds go with the voice: only someone listening hears them
+    const listening = autoVoiceRef.current;
     stopSpeaking();
     // paused audio is dropped with the question it belonged to; a pause also means "stop reading the next ones"
     if (isPausedRef.current) {
@@ -272,10 +275,16 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
     setIsSpeaking(false);
     setIsPaused(false);
     const gr = grade(q, answers[i]);
+    if (listening) {
+      playCheck();
+      // the verdict comes right after the click, not on top of it
+      setTimeout(gr.right ? playRight : playWrong, 110);
+    }
     setGrades(grades.map((x, k) => (k === i ? gr : x)));
   }
 
   function next() {
+    if (autoVoiceRef.current) playNext();
     if (i < questions.length - 1) return setI(i + 1);
     // nothing counts until the whole test is finished
     if (grades.every(Boolean)) {
