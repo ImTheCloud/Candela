@@ -3,8 +3,8 @@
 La page `/semnalari` montre les signalements reçus aux administrateurs. `/semnalari?tab=mine` montre uniquement ceux du compte connecté, y compris pour un administrateur.
 
 - **En attente** : le signalement attend une vérification.
-- **Accepté** : un clic sur Accepter puis une confirmation, sans commentaire. Si le chapitre publié contient déjà une version corrigée de la question, elle est conservée avec la décision et montrée au joueur.
-- **Refusé** : un clic sur Refuser puis une confirmation, sans commentaire. La question n’est pas modifiée.
+- **Accepté** : un seul clic sur Accepter, sans confirmation ni commentaire. Si le chapitre publié contient déjà une version corrigée de la question, elle est conservée avec la décision et montrée au joueur.
+- **Refusé** : un seul clic sur Refuser, sans confirmation ni commentaire. La question n’est pas modifiée.
 - Le joueur voit seulement la décision (acceptée ou refusée) avec un remerciement automatique. Les anciennes réponses écrites restent affichées.
 - Le badge compte les réponses non lues. Ouvrir une réponse la marque comme lue dans Firestore, donc sur tous les appareils du compte.
 - Les anciens signalements `done: true` restent archivés, sans inventer une acceptation ou un refus et sans générer de notification rétroactive.
