@@ -1,5 +1,6 @@
 import { addDoc, collection, deleteDoc, doc, limit, onSnapshot, orderBy, query, serverTimestamp, updateDoc, where, type Timestamp } from 'firebase/firestore';
 import { db } from './firebase';
+import { serverCount } from './reports';
 import { profile, user } from './session';
 
 export interface Message {
@@ -35,11 +36,7 @@ export async function sendMessage(text: string) {
 
 /** Watches the count of unread / pending messages for the admin badge. */
 export function watchOpenMessagesCount(cb: (n: number) => void) {
-  return onSnapshot(
-    query(collection(db, 'messages'), where('done', '==', false)),
-    (snap) => cb(snap.size),
-    () => cb(0),
-  );
+  return serverCount(query(collection(db, 'messages'), where('done', '==', false)), (snap) => snap.size, cb);
 }
 
 /** Watches all messages newest first, for the admin messages page. */

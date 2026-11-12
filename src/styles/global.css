@@ -1258,9 +1258,9 @@ body:has(.sheet-back) .sw-fab { opacity: 0; visibility: hidden; pointer-events: 
 .sw-main.is-live { background: var(--ok); border-color: var(--ok); }
 .sw-main:focus-visible { outline: 2px solid var(--oil-ink); outline-offset: 3px; }
 .sw-main { position: relative; overflow: hidden; -webkit-touch-callout: none; touch-action: manipulation; }
-/* Holding: a lighter fill sweeps across in 3 s, then the reset question opens. */
+/* Holding: a lighter fill sweeps across in 1.5 s, then the reset question opens. */
 .sw-main::before { content: ""; position: absolute; inset: 0; background: rgb(255 255 255 / .28); transform: scaleX(0); transform-origin: left; pointer-events: none; }
-.sw-main.is-holding::before { transform: scaleX(1); transition: transform 3s linear; }
+.sw-main.is-holding::before { transform: scaleX(1); transition: transform 1.5s linear; }
 .sw-main > * { position: relative; }
 .sw-panel {
   display: grid; gap: 12px; width: min(18rem, calc(100vw - 32px)); padding: 16px;
