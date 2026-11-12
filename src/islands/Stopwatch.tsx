@@ -6,66 +6,64 @@ import { errorText, profile } from '../lib/session';
 /** Saved on users/{uid}: the time already counted, and when it was started if it is running. Same on every phone. */
 export interface Timer { total: number; start: number | null }
 
+const HOLD_MS = 3000;
 const two = (n: number) => String(n).padStart(2, '0');
 
-/** "3 z 04:12:09" past a day, else "04:12:09", with milliseconds ".mmm" */
-function formatClock(ms: number): { time: string; ms: string } {
+/** "3 z 04:12:09" past a day, else "04:12:09" */
+function formatClock(ms: number): string {
   const s = Math.floor(ms / 1000);
   const d = Math.floor(s / 86400);
   const hms = `${two(Math.floor((s % 86400) / 3600))}:${two(Math.floor((s % 3600) / 60))}:${two(s % 60)}`;
-  return { time: d ? `${d} z ${hms}` : hms, ms: `.${String(ms % 1000).padStart(3, '0')}` };
+  return d ? `${d} z ${hms}` : hms;
 }
 
 const CLOCK = <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9" /><path d="M12 7v5l3 2" /></svg>;
+const PLAY = <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z" /></svg>;
 
 /**
- * The admin's own stopwatch, as a button floating bottom left on every page (kept across navigation).
- * Tapping it opens a small panel to start, pause or reset it.
+ * The admin's own stopwatch, floating bottom left on every page (kept across navigation). Only admins see it.
+ * Tap: start or pause (green while running, brown when paused). Hold 3 s: offers to reset to zero.
  */
 export default function Stopwatch() {
   const p = profile.value;
   const t: Timer = (p as { timer?: Timer } | null)?.timer ?? { total: 0, start: null };
   const running = t.start !== null;
   const [now, setNow] = useState(Date.now());
-  const [open, setOpen] = useState(false);
+  const [holding, setHolding] = useState(false);
+  const [askReset, setAskReset] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
-  const [confirmReset, setConfirmReset] = useState(false);
+  const holdTimer = useRef<ReturnType<typeof setTimeout>>();
+  const held = useRef(false);
   const root = useRef<HTMLDivElement>(null);
 
-  // Milliseconds move smoothly only while the panel is open; the button itself needs one tick a second.
   useEffect(() => {
     if (!running) return;
-    const id = setInterval(() => setNow(Date.now()), open ? 33 : 1000);
+    const id = setInterval(() => setNow(Date.now()), 1000);
     return () => clearInterval(id);
-  }, [running, open]);
+  }, [running]);
 
+  // The reset question closes on a tap elsewhere or Escape.
   useEffect(() => {
-    if (!confirmReset) return;
-    const id = setTimeout(() => setConfirmReset(false), 4000);
-    return () => clearTimeout(id);
-  }, [confirmReset]);
-
-  // Close on a tap outside, or Escape.
-  useEffect(() => {
-    if (!open) return;
-    const outside = (e: PointerEvent) => { if (!root.current?.contains(e.target as Node)) setOpen(false); };
-    const esc = (e: KeyboardEvent) => { if (e.key === 'Escape') setOpen(false); };
+    if (!askReset) return;
+    const outside = (e: PointerEvent) => { if (!root.current?.contains(e.target as Node)) setAskReset(false); };
+    const esc = (e: KeyboardEvent) => { if (e.key === 'Escape') setAskReset(false); };
     document.addEventListener('pointerdown', outside);
     document.addEventListener('keydown', esc);
     return () => { document.removeEventListener('pointerdown', outside); document.removeEventListener('keydown', esc); };
-  }, [open]);
+  }, [askReset]);
+
+  useEffect(() => () => clearTimeout(holdTimer.current), []);
 
   if (!p?.admin) return null;
 
   const shown = t.total + (running ? Math.max(0, now - t.start!) : 0);
-  const { time, ms } = formatClock(shown);
+  const time = formatClock(shown);
 
   // The remembered profile shows the button before Firebase has restored the session: wait for it instead of failing.
   async function save(next: Timer) {
     setBusy(true);
     setError('');
-    setConfirmReset(false);
     try {
       await auth.authStateReady();
       const uid = auth.currentUser?.uid;
@@ -78,28 +76,46 @@ export default function Stopwatch() {
     }
   }
 
+  function toggle() {
+    if (busy) return;
+    if (running) save({ total: shown, start: null });
+    else { const at = Date.now(); setNow(at); save({ total: t.total, start: at }); }
+  }
+
+  function press(e: PointerEvent) {
+    if (e.button !== 0) return;
+    held.current = false;
+    setHolding(true);
+    holdTimer.current = setTimeout(() => {
+      held.current = true;
+      setHolding(false);
+      setAskReset(true);
+      navigator.vibrate?.(20);
+    }, HOLD_MS);
+  }
+  function release() {
+    clearTimeout(holdTimer.current);
+    setHolding(false);
+  }
+
   return (
     <div ref={root} class="sw-fab">
-      {open && (
-        <div id="sw-panel" class="sw-panel" role="dialog" aria-label="Cronometru">
-          <p class={`sw-digits${running ? ' is-on' : ''}`} aria-live="off">
-            <span>{time}</span><span class="sw-digits-ms">{ms}</span>
-          </p>
+      {askReset && (
+        <div class="sw-panel" role="dialog" aria-label="Resetează cronometrul">
+          <p>Repornești cronometrul de la zero?</p>
           <div class="sw-actions">
-            {running
-              ? <button type="button" class="btn btn-primary btn-sm" disabled={busy} onClick={() => save({ total: shown, start: null })}>Pauză</button>
-              : <button type="button" class="btn btn-primary btn-sm" disabled={busy} onClick={() => { const at = Date.now(); setNow(at); save({ total: t.total, start: at }); }}>{t.total ? 'Continuă' : 'Pornește'}</button>}
-            {confirmReset
-              ? <button type="button" class="btn btn-ghost btn-sm sw-confirm" disabled={busy} onClick={() => save({ total: 0, start: null })}>Confirmă</button>
-              : <button type="button" class="btn btn-ghost btn-sm" disabled={busy || !shown} onClick={() => setConfirmReset(true)}>Resetează</button>}
+            <button type="button" class="btn btn-ghost btn-sm" onClick={() => setAskReset(false)}>Nu</button>
+            <button type="button" class="btn btn-primary btn-sm" disabled={busy} onClick={async () => { await save({ total: 0, start: null }); setAskReset(false); }}>Da, de la zero</button>
           </div>
-          {error && <p class="sw-err" role="alert">{error}</p>}
         </div>
       )}
-      <button type="button" class={`sw-main${running ? ' is-live' : ''}${shown ? ' has-time' : ''}`}
-        aria-expanded={open} aria-controls="sw-panel" aria-label={`Cronometru ${time}${running ? ', pornit' : ''}`}
-        onClick={() => setOpen((o) => !o)}>
-        {CLOCK}
+      {error && <p class="sw-err" role="alert">{error}</p>}
+      <button type="button" class={`sw-main${running ? ' is-live' : ''}${shown ? ' has-time' : ''}${holding ? ' is-holding' : ''}`}
+        aria-pressed={running} aria-label={`Cronometru ${time}, ${running ? 'pornit: apasă pentru pauză' : 'oprit: apasă ca să pornească'}. Ține apăsat 3 secunde ca să-l resetezi.`}
+        onPointerDown={press} onPointerUp={release} onPointerLeave={release} onPointerCancel={release}
+        onContextMenu={(e) => e.preventDefault()}
+        onClick={() => { if (held.current) { held.current = false; return; } setAskReset(false); toggle(); }}>
+        {running ? CLOCK : PLAY}
         {shown > 0 && <span class="sw-main-time">{time}</span>}
       </button>
     </div>

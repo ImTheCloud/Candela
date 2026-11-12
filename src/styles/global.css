@@ -1257,18 +1257,21 @@ body:has(.sheet-back) .sw-fab { opacity: 0; visibility: hidden; pointer-events: 
 .sw-main:active { transform: scale(.94); }
 .sw-main.is-live { background: var(--ok); border-color: var(--ok); }
 .sw-main:focus-visible { outline: 2px solid var(--oil-ink); outline-offset: 3px; }
+.sw-main { position: relative; overflow: hidden; -webkit-touch-callout: none; touch-action: manipulation; }
+/* Holding: a lighter fill sweeps across in 3 s, then the reset question opens. */
+.sw-main::before { content: ""; position: absolute; inset: 0; background: rgb(255 255 255 / .28); transform: scaleX(0); transform-origin: left; pointer-events: none; }
+.sw-main.is-holding::before { transform: scaleX(1); transition: transform 3s linear; }
+.sw-main > * { position: relative; }
 .sw-panel {
   display: grid; gap: 12px; width: min(18rem, calc(100vw - 32px)); padding: 16px;
   border: 1px solid var(--line); border-radius: var(--r); background: var(--surface);
   box-shadow: 0 10px 30px rgba(58, 39, 27, .18);
 }
-.sw-digits { margin: 0; font: 600 1.6rem/1 var(--f-body); font-variant-numeric: tabular-nums; color: var(--ink-2); white-space: nowrap; }
-.sw-digits.is-on { color: var(--ink); }
-.sw-digits-ms { font-size: .9rem; color: var(--ink-3); }
+.sw-panel p { margin: 0; font-weight: 600; }
 .sw-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .sw-actions .btn { white-space: nowrap; }
-.sw-confirm { color: var(--bad); border-color: var(--bad); }
-.sw-err { margin: 0; font-size: .8rem; color: var(--bad); }
+.sw-err { margin: 0; padding: 6px 10px; border-radius: var(--r-ctl); background: var(--surface); font-size: .8rem; color: var(--bad); }
+
 .bk-nums { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 0; }
 .bk-nums > div { display: flex; flex-direction: column-reverse; gap: 2px; padding: 10px 8px; border-radius: var(--r-ctl); background: var(--bg); text-align: center; }
 .bk-nums dt { font-size: 0.75rem; color: var(--ink-2); }
