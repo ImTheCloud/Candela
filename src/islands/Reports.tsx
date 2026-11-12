@@ -81,8 +81,7 @@ function Item({ r, mine, onDecision }: { r: Report; mine: boolean; onDecision: (
   const [error, setError] = useState('');
   const [expanded, setExpanded] = useState(false);
   const [reading, setReading] = useState(false);
-  const [decision, setDecision] = useState<Decision | null>(null);
-  const [busy, setBusy] = useState(false);
+  const [busy, setBusy] = useState<Decision | null>(null);
   const book = BOOKS.find((b) => b.slug === r.book);
   const status = reportStatus(r);
   const unread = mine && isUnread(r);
@@ -96,16 +95,16 @@ function Item({ r, mine, onDecision }: { r: Report; mine: boolean; onDecision: (
     try { await markResponseRead(r); } catch (err) { setError(errorText(err)); } finally { setReading(false); }
   }
 
-  async function decide() {
-    if (!decision || busy) return;
-    setBusy(true);
+  async function decide(decision: Decision) {
+    if (busy) return;
+    setBusy(decision);
     setError('');
     try {
       await decideReport(r, decision);
       onDecision(decision === 'accepted' ? 'Semnalare acceptată. Jucătorul a fost notificat.' : 'Semnalare refuzată. Jucătorul a fost notificat.');
     } catch (err) {
       setError(reportError(err) ?? errorText(err));
-      setBusy(false);
+      setBusy(null);
     }
   }
 
@@ -122,16 +121,10 @@ function Item({ r, mine, onDecision }: { r: Report; mine: boolean; onDecision: (
     {mine && r.by && <p class="ri-meta">Trimisă de {r.by}</p>}
     {!mine && chapterQuestion && <a class="ri-link" href={`/${r.book}/verificare/${r.ch}#${r.qid}`}>Vezi întrebarea</a>}
     {status === 'pending' && (mine ? <p class="reports-waiting">O vom verifica. Răspunsul va apărea aici și vei primi o notificare pe pictograma contului.</p> : <>
-      {!decision ? <div class="ri-actions">
-        <button type="button" class="btn btn-ghost btn-sm" onClick={() => setDecision('rejected')}>Refuză</button>
-        <button type="button" class="btn btn-primary btn-sm" onClick={() => setDecision('accepted')}>Acceptă</button>
-      </div> : <div class="reports-decision" aria-busy={busy}>
-        <p>{decision === 'accepted' ? 'Accepți semnalarea? Jucătorul va afla că întrebarea a fost corectată.' : 'Refuzi semnalarea? Jucătorul va afla că întrebarea rămâne așa.'} Decizia nu mai poate fi schimbată.</p>
-        <div class="ri-actions">
-          <button type="button" class="btn btn-ghost btn-sm" onClick={() => setDecision(null)} disabled={busy}>Anulează</button>
-          <button type="button" class="btn btn-primary btn-sm" onClick={decide} disabled={busy}>{busy ? 'Se salvează…' : decision === 'accepted' ? 'Da, acceptă' : 'Da, refuză'}</button>
-        </div>
-      </div>}
+      <div class="ri-actions" aria-busy={!!busy}>
+        <button type="button" class="btn btn-ghost btn-sm" disabled={!!busy} onClick={() => decide('rejected')}>{busy === 'rejected' ? 'Se salvează…' : 'Refuză'}</button>
+        <button type="button" class="btn btn-primary btn-sm" disabled={!!busy} onClick={() => decide('accepted')}>{busy === 'accepted' ? 'Se salvează…' : 'Acceptă'}</button>
+      </div>
     </>)}
     {(status === 'accepted' || status === 'rejected') && <>
       <button type="button" class="reports-response-toggle" aria-expanded={expanded} aria-controls={`response-${r.id}`} onClick={() => expanded ? setExpanded(false) : readResponse()}>
