@@ -56,7 +56,12 @@ rules_version = '2';
 //   - q: string (required, max 500 chars)
 //   - reason: string (required, in ['answer', 'text', 'unclear', 'hard', 'typo', 'other'])
 //   - note: string (required, max 1000 chars)
-//   - done: bool (required, initially false)
+//   - done: bool (required, initially false; kept for existing admin counters)
+//   - status: pending | accepted | rejected (missing on legacy reports)
+//   - originalQuestion: string (optional serialized question snapshot)
+//   - response, decidedAt, decidedBy: immutable admin decision
+//   - correctedQuestion, correctedText: published correction, accepted only
+//   - responseReadAt: timestamp or null, set only by the owner after reading
 //   - at: timestamp (required, request.time)
 //
 // Collection: messages
@@ -186,12 +191,43 @@ service cloud.firestore {
     // Question Reports
     // ===============================================================
 
-    // A player flags a question as wrong. Any signed-in player can submit; only admins read, update, or delete.
+    // Players read only their own reports. Decisions are retained and cannot be overwritten.
     match /reports/{id} {
-      allow read, delete: if admin();
-      allow update: if admin() && request.resource.data.done is bool;
+      allow read: if admin() || owner(resource.data.uid);
+      allow update: if (
+        admin()
+        && resource.data.done == false
+        && resource.data.get('status', 'pending') == 'pending'
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+          'done', 'status', 'response', 'decidedAt', 'decidedBy', 'responseReadAt', 'correctedQuestion', 'correctedText'
+        ])
+        && request.resource.data.done == true
+        && request.resource.data.status in ['accepted', 'rejected']
+        && request.resource.data.response is string
+        && request.resource.data.response.size() > 0 && request.resource.data.response.size() <= 1000
+        && request.resource.data.decidedAt == request.time
+        && request.resource.data.decidedBy == request.auth.uid
+        && request.resource.data.responseReadAt == null
+        && (
+          (request.resource.data.status == 'accepted'
+            && request.resource.data.correctedQuestion is string
+            && request.resource.data.correctedQuestion.size() > 0
+            && request.resource.data.correctedQuestion.size() <= 16000
+            && request.resource.data.correctedQuestion != resource.data.get('originalQuestion', '')
+            && request.resource.data.correctedText is string
+            && request.resource.data.correctedText.size() > 0
+            && request.resource.data.correctedText.size() <= 16000)
+          || (request.resource.data.status == 'rejected'
+            && !request.resource.data.keys().hasAny(['correctedQuestion', 'correctedText']))
+        )
+      ) || (
+        owner(resource.data.uid)
+        && resource.data.get('status', '') in ['accepted', 'rejected']
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['responseReadAt'])
+        && request.resource.data.responseReadAt == request.time
+      );
       allow create: if isAuthenticated()
-        && request.resource.data.keys().hasOnly(['uid', 'by', 'qid', 'book', 'ch', 'ref', 'q', 'reason', 'note', 'done', 'at'])
+        && request.resource.data.keys().hasOnly(['uid', 'by', 'qid', 'book', 'ch', 'ref', 'q', 'reason', 'note', 'done', 'at', 'status', 'originalQuestion'])
         && request.resource.data.uid == request.auth.uid
         && request.resource.data.by is string && request.resource.data.by.size() <= 80
         && request.resource.data.qid is string && request.resource.data.qid.size() <= 60
@@ -199,6 +235,9 @@ service cloud.firestore {
         && request.resource.data.ch is int
         && request.resource.data.ref is string && request.resource.data.ref.size() <= 60
         && request.resource.data.q is string && request.resource.data.q.size() <= 500
+        && request.resource.data.get('status', 'pending') == 'pending'
+        && request.resource.data.get('originalQuestion', '') is string
+        && request.resource.data.get('originalQuestion', '').size() <= 16000
         && request.resource.data.reason in ['answer', 'text', 'unclear', 'hard', 'typo', 'other']
         && request.resource.data.note is string && request.resource.data.note.size() <= 1000
         && request.resource.data.done == false

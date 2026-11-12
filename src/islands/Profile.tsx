@@ -1,9 +1,8 @@
-import { useEffect, useState } from 'preact/hooks';
-import { sendMessage, watchOpenMessagesCount } from '../lib/messages';
+import { useState } from 'preact/hooks';
+import { sendMessage } from '../lib/messages';
+import { notifications } from '../lib/notifications';
 import { addChild, formatFirstLast, players, removeChild, sameFirstName, shortName, updateChild, type Player } from '../lib/players';
-import { watchOpenCount } from '../lib/reports';
-import { localGet } from '../lib/store';
-import { deleteMyAccount, errorText, profile, profileError, profileLoaded, rememberedAccount, setParent, signOut, updateAccountName, user } from '../lib/session';
+import { deleteMyAccount, errorText, profile, profileError, profileLoaded, setParent, signOut, updateAccountName, user } from '../lib/session';
 import Avatar from './Avatar';
 import PasswordInput from './PasswordInput';
 import SameNameSheet from './SameNameSheet';
@@ -49,19 +48,10 @@ export default function Profile({ books: _books }: { books?: BookInfo[] }) {
   const kids = childPlayers.length;
   const isParent = p?.isParent === true;
 
-  // Badges for admin
-  const [reportsOpen, setReportsOpen] = useState(() => (p?.admin ? localGet<number>('acctRep', 0) : 0));
-  const [messagesOpen, setMessagesOpen] = useState(() => (p?.admin ? localGet<number>('acctMsg', 0) : 0));
-
-  useEffect(() => {
-    if (!p?.admin) return;
-    const unsubR = watchOpenCount((n) => setReportsOpen(n));
-    const unsubM = watchOpenMessagesCount((n) => setMessagesOpen(n));
-    return () => {
-      unsubR?.();
-      unsubM?.();
-    };
-  }, [p?.admin]);
+  const counts = notifications.value;
+  const reportsOpen = counts.uid === u?.uid ? counts.reports : 0;
+  const messagesOpen = counts.uid === u?.uid ? counts.messages : 0;
+  const replies = counts.uid === u?.uid ? counts.replies : 0;
 
   // nothing is drawn from the last visit: the page waits for the account, then each block for its data
   if (!u || !profileLoaded.value) return <Loader />;
@@ -184,12 +174,20 @@ export default function Profile({ books: _books }: { books?: BookInfo[] }) {
               </span>
             </a>
           )}
+          <a class="me-item" href="/semnalari?tab=mine">
+            <span class="me-item-ic">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 21V4m0 0h12l-2 4 2 4H5" /></svg>
+            </span>
+            <span class="me-item-label">Semnalările mele</span>
+            {replies > 0 && <span class="me-item-badge">{replies}</span>}
+            <span class="me-item-chev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg></span>
+          </a>
           {p?.admin && (
             <a class="me-item" href="/semnalari">
               <span class="me-item-ic">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z" /><line x1="4" y1="22" x2="4" y2="15" /></svg>
               </span>
-              <span class="me-item-label">Semnalări de greșeli</span>
+              <span class="me-item-label">Semnalări primite</span>
               {reportsOpen > 0 && <span class="me-item-badge">{reportsOpen}</span>}
               <span class="me-item-chev">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
