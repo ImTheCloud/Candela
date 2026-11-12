@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'preact/hooks';
+import { useEffect, useRef, useState } from 'preact/hooks';
 import { BOOKS } from '../lib/books';
 import { REPORT_THANKS, type ReportStatus } from '../lib/report-model';
 import { decideReport, isUnread, markResponseRead, REASONS, reportError, reportStatus, watchReports, type Decision, type Report } from '../lib/reports';
@@ -49,13 +49,22 @@ function List({ uid, mine }: { uid: string; mine: boolean }) {
 
   // Keep the order stable when a response is read, so the open answer never jumps.
   const [personalFilter, setPersonalFilter] = useState('all');
+  // Seeing the list is reading the answers: the badge clears at once, the new ones stay marked for this visit.
+  const fresh = useRef<Set<string> | null>(null);
+  useEffect(() => {
+    if (!mine || !reports || fresh.current) return;
+    const unreadNow = reports.filter(isUnread);
+    fresh.current = new Set(unreadNow.map((r) => r.id));
+    unreadNow.forEach((r) => markResponseRead(r).catch(() => {}));
+  }, [mine, reports]);
   if (failed) return <div class="notice notice-bad" role="alert"><p>Semnalările nu au putut fi încărcate.</p><button type="button" class="btn btn-ghost btn-sm" onClick={() => setRetry((n) => n + 1)}>Încearcă din nou</button></div>;
   if (!reports) return <ReportSkeleton />;
   const activeFilter = mine ? personalFilter : filter;
   const pending = reports.filter((r) => reportStatus(r) === 'pending').length;
   const accepted = reports.filter((r) => reportStatus(r) === 'accepted').length;
   const rejected = reports.filter((r) => reportStatus(r) === 'rejected').length;
-  const unread = mine ? reports.filter(isUnread).length : 0;
+  const isNew = (r: Report) => mine && (isUnread(r) || !!fresh.current?.has(r.id));
+  const unread = reports.filter(isNew).length;
   const filters = mine
     ? [{ id: 'all', label: 'Toate', count: reports.length }, { id: 'pending', label: 'În așteptare', count: pending }, { id: 'accepted', label: 'Acceptate', count: accepted }, { id: 'rejected', label: 'Refuzate', count: rejected }]
     : [{ id: 'pending', label: 'De verificat', count: pending }, { id: 'done', label: 'Verificate', count: reports.length - pending }];
@@ -63,7 +72,7 @@ function List({ uid, mine }: { uid: string; mine: boolean }) {
   if (mine) list.sort((a, b) => ((b.decidedAt ?? b.at)?.toMillis() ?? 0) - ((a.decidedAt ?? a.at)?.toMillis() ?? 0));
 
   return <div class="reports-content">
-    {unread > 0 && <p class="reports-unread-summary" role="status">{unread === 1 ? 'Ai un răspuns nou.' : `Ai ${unread} răspunsuri noi.`} Deschide răspunsul ca să-l marchezi ca citit.</p>}
+    {unread > 0 && <p class="reports-unread-summary" role="status">{unread === 1 ? 'Ai un răspuns nou.' : `Ai ${unread} răspunsuri noi.`}</p>}
     <div class="reports-filters" role="group" aria-label="Filtrează semnalările">
       {filters.map((f) => <button key={f.id} type="button" aria-pressed={activeFilter === f.id} onClick={() => mine ? setPersonalFilter(f.id) : setFilter(f.id)}>{f.label}<span>{f.count}</span></button>)}
     </div>
@@ -73,18 +82,18 @@ function List({ uid, mine }: { uid: string; mine: boolean }) {
       <h2>{reports.length === 0 ? (mine ? 'Nicio semnalare încă' : 'Totul este la zi') : 'Nicio semnalare aici'}</h2>
       <p class="muted">{reports.length === 0 && mine ? 'Când observi o greșeală într-un test, apasă „Semnalează”. Vei putea urmări răspunsul aici.' : 'Semnalările care corespund acestui filtru vor apărea aici.'}</p>
       {mine && reports.length === 0 && <a class="btn btn-ghost btn-sm" href="/">Înapoi la teste</a>}
-    </div> : <ul class="reports-rows">{list.map((r) => <Item key={r.id} r={r} mine={mine} onDecision={setAnnouncement} />)}</ul>}
+    </div> : <ul class="reports-rows">{list.map((r) => <Item key={r.id} r={r} mine={mine} isNew={isNew(r)} onDecision={setAnnouncement} />)}</ul>}
   </div>;
 }
 
-function Item({ r, mine, onDecision }: { r: Report; mine: boolean; onDecision: (s: string) => void }) {
+function Item({ r, mine, isNew, onDecision }: { r: Report; mine: boolean; isNew: boolean; onDecision: (s: string) => void }) {
   const [error, setError] = useState('');
   const [expanded, setExpanded] = useState(false);
   const [reading, setReading] = useState(false);
   const [busy, setBusy] = useState<Decision | null>(null);
   const book = BOOKS.find((b) => b.slug === r.book);
   const status = reportStatus(r);
-  const unread = mine && isUnread(r);
+  const unread = isNew;
   const chapterQuestion = /^\w+\.\d+\./.test(r.qid);
 
   async function readResponse() {
