@@ -9,7 +9,7 @@ function ttsDevPlugin() {
     configureServer(server) {
       server.middlewares.use('/api/tts', async (req, res) => {
         const url = new URL(req.url, 'http://localhost');
-        await handleTts(req, res, { text: url.searchParams.get('text'), voice: url.searchParams.get('voice'), marks: url.searchParams.get('marks') });
+        await handleTts(req, res, { text: url.searchParams.get('text'), voice: url.searchParams.get('voice'), marks: url.searchParams.get('marks'), fresh: url.searchParams.get('fresh') });
       });
     },
   };
