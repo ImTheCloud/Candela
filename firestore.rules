@@ -59,8 +59,8 @@ rules_version = '2';
 //   - done: bool (required, initially false; kept for existing admin counters)
 //   - status: pending | accepted | rejected (missing on legacy reports)
 //   - originalQuestion: string (optional serialized question snapshot)
-//   - response, decidedAt, decidedBy: immutable admin decision
-//   - correctedQuestion, correctedText: published correction, accepted only
+//   - decidedAt, decidedBy: immutable admin decision (response: legacy free-text answer, no longer written)
+//   - correctedQuestion, correctedText: published correction, optional, accepted only
 //   - responseReadAt: timestamp or null, set only by the owner after reading
 //   - at: timestamp (required, request.time)
 //
@@ -199,17 +199,17 @@ service cloud.firestore {
         && resource.data.done == false
         && resource.data.get('status', 'pending') == 'pending'
         && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
-          'done', 'status', 'response', 'decidedAt', 'decidedBy', 'responseReadAt', 'correctedQuestion', 'correctedText'
+          'done', 'status', 'decidedAt', 'decidedBy', 'responseReadAt', 'correctedQuestion', 'correctedText'
         ])
         && request.resource.data.done == true
         && request.resource.data.status in ['accepted', 'rejected']
-        && request.resource.data.response is string
-        && request.resource.data.response.size() > 0 && request.resource.data.response.size() <= 1000
         && request.resource.data.decidedAt == request.time
         && request.resource.data.decidedBy == request.auth.uid
         && request.resource.data.responseReadAt == null
         && (
           (request.resource.data.status == 'accepted'
+            && !request.resource.data.keys().hasAny(['correctedQuestion', 'correctedText']))
+          || (request.resource.data.status == 'accepted'
             && request.resource.data.correctedQuestion is string
             && request.resource.data.correctedQuestion.size() > 0
             && request.resource.data.correctedQuestion.size() <= 16000

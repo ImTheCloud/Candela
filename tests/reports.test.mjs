@@ -47,46 +47,42 @@ async function setup() {
     get report() { return report; }, setReport: (r) => { report = { ...report, ...r }; }, setCurrent: (q) => { current = q; } };
 }
 
-test('rejecting a report saves one response without fetching or changing the question', async () => {
+test('rejecting a report saves the decision alone, without a comment or fetching the question', async () => {
   const s = await setup();
-  await s.api.decideReport(s.report, 'rejected', 'Explicație.');
+  await s.api.decideReport(s.report, 'rejected');
   assert.equal(s.writes.length, 1);
   assert.equal(s.writes[0].path, 'reports/report');
   assert.equal(s.report.status, 'rejected');
+  assert.equal(s.report.response, undefined);
   assert.equal(s.report.correctedQuestion, undefined);
   assert.equal(s.model.isUnread(s.report), true);
 });
 
-test('accepting retains the actual published correction and rejects duplicate decisions', async () => {
+test('accepting keeps the published correction and rejects duplicate decisions', async () => {
   const s = await setup();
-  await s.api.decideReport(s.report, 'accepted', 'Am corectat formularea.', corrected);
+  await s.api.decideReport(s.report, 'accepted');
   assert.equal(s.report.status, 'accepted');
+  assert.equal(s.report.response, undefined);
   assert.equal(s.report.correctedQuestion, s.model.questionSnapshot(corrected));
   assert.match(s.report.correctedText, /Enunț corectat/);
-  await assert.rejects(s.api.decideReport(s.report, 'rejected', 'Altă decizie.'), /report_decided/);
+  await assert.rejects(s.api.decideReport(s.report, 'rejected'), /report_decided/);
   assert.equal(s.writes.length, 1);
 });
 
-test('an unchanged question cannot be accepted, including legacy reports', async () => {
+test('an unchanged question can still be accepted, without a stored correction', async () => {
   const s = await setup(); s.setCurrent(original);
-  await assert.rejects(s.api.decideReport(s.report, 'accepted', 'Corectat.', original), /question_unchanged/);
   s.setReport({ originalQuestion: s.model.questionSnapshot(original) });
-  await assert.rejects(s.api.decideReport(s.report, 'accepted', 'Corectat.', original), /question_unchanged/);
-  assert.equal(s.writes.length, 0);
+  await s.api.decideReport(s.report, 'accepted');
+  assert.equal(s.report.status, 'accepted');
+  assert.equal('correctedQuestion' in s.writes[0].data, false);
 });
 
 test('an answer-only correction is detected, but quiz runtime changes are ignored', async () => {
   const s = await setup(); s.setReport({ originalQuestion: s.model.questionSnapshot(original) });
   assert.equal(s.model.hasCorrection(s.report, { ...original, cite: [['6:2', 'other']] }), false);
-  const answerCorrection = { ...original, a: false }; s.setCurrent(answerCorrection);
-  await s.api.decideReport(s.report, 'accepted', 'Am corectat răspunsul.', answerCorrection);
+  s.setCurrent({ ...original, a: false });
+  await s.api.decideReport(s.report, 'accepted');
   assert.match(s.report.correctedText, /Fals/);
-});
-
-test('a question changed after review must be reviewed again before acceptance', async () => {
-  const s = await setup(); s.setCurrent({ ...corrected, a: false });
-  await assert.rejects(s.api.decideReport(s.report, 'accepted', 'Corectat.', corrected), /question_changed/);
-  assert.equal(s.writes.length, 0);
 });
 
 test('only opening the owner response marks it read; legacy history has no false notifications', async () => {

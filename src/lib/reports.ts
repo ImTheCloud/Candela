@@ -55,14 +55,15 @@ export async function loadReportedQuestion(r: Report): Promise<Playable> {
   return question;
 }
 
-/** A concurrent admin cannot overwrite a decision or notify the player twice. */
-export async function decideReport(r: Report, decision: Decision, response: string, reviewed?: Playable) {
+/**
+ * One click, no comment: the player just learns whether the report was accepted or rejected.
+ * On acceptance, the published chapter is re-read and the corrected version is kept when it differs.
+ * A concurrent admin cannot overwrite a decision or notify the player twice.
+ */
+export async function decideReport(r: Report, decision: Decision) {
   const u = user.value;
   if (!u) throw new Error('not_signed_in');
-  const message = response.trim();
-  if (!message || message.length > 1000) throw new Error('response_required');
-  const current = decision === 'accepted' ? await loadReportedQuestion(r) : undefined;
-  if (current && (!reviewed || questionSnapshot(current) !== questionSnapshot(reviewed))) throw new Error('question_changed');
+  const current = decision === 'accepted' ? await loadReportedQuestion(r).catch(() => undefined) : undefined;
   if (user.value?.uid !== u.uid) throw new Error('not_signed_in');
   await runTransaction(db, async (tx) => {
     const ref = doc(db, 'reports', r.id);
@@ -70,11 +71,11 @@ export async function decideReport(r: Report, decision: Decision, response: stri
     if (!snap.exists()) throw new Error('report_missing');
     const latest = { ...snap.data(), id: snap.id } as Report;
     if (reportStatus(latest) !== 'pending') throw new Error('report_decided');
-    if (current && !hasCorrection(latest, current)) throw new Error('question_unchanged');
+    const corrected = current && hasCorrection(latest, current) ? current : undefined;
     tx.update(ref, {
-      status: decision, done: true, response: message,
+      status: decision, done: true,
       decidedAt: serverTimestamp(), decidedBy: u.uid, responseReadAt: null,
-      ...(current ? { correctedQuestion: questionSnapshot(current), correctedText: questionSummary(current) } : {}),
+      ...(corrected ? { correctedQuestion: questionSnapshot(corrected), correctedText: questionSummary(corrected) } : {}),
     });
   });
 }
@@ -86,10 +87,6 @@ export async function markResponseRead(r: Report) {
 
 export function reportError(err: unknown): string | undefined {
   const messages: Record<string, string> = {
-    response_required: 'Scrie un răspuns pentru jucător (cel mult 1.000 de caractere).',
-    question_unchanged: 'Întrebarea nu a fost încă modificată. Publică mai întâi corectura, apoi acceptă semnalarea.',
-    question_changed: 'Întrebarea s-a schimbat între timp. Verifică din nou versiunea publicată.',
-    question_unavailable: 'Întrebarea nu a putut fi verificată. Încearcă din nou.',
     report_decided: 'Această semnalare a fost deja verificată de un administrator.',
     report_missing: 'Această semnalare nu mai este disponibilă.',
   };

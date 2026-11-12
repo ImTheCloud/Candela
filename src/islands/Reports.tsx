@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'preact/hooks';
 import { BOOKS } from '../lib/books';
-import { hasCorrection, questionSummary, REPORT_THANKS, type ReportStatus } from '../lib/report-model';
-import type { Playable } from '../lib/questions';
-import { decideReport, isUnread, loadReportedQuestion, markResponseRead, REASONS, reportError, reportStatus, watchReports, type Decision, type Report } from '../lib/reports';
+import { REPORT_THANKS, type ReportStatus } from '../lib/report-model';
+import { decideReport, isUnread, markResponseRead, REASONS, reportError, reportStatus, watchReports, type Decision, type Report } from '../lib/reports';
 import { errorText, profile, profileLoaded, user } from '../lib/session';
 
 const STATUS: Record<ReportStatus, string> = { pending: 'În așteptare', accepted: 'Acceptată', rejected: 'Refuzată', legacy: 'Arhivată' };
@@ -17,7 +16,7 @@ export default function Reports() {
   return <>
     <header class="reports-heading">
       <h1>Semnalări</h1>
-      <p class="muted">{mine ? 'Urmărește semnalările tale și răspunsurile primite. Îți mulțumim că ne ajuți să îmbunătățim întrebările.' : 'Verifică fiecare semnalare. Acceptă după publicarea corecturii sau explică de ce o refuzi.'}</p>
+      <p class="muted">{mine ? 'Urmărește semnalările tale și răspunsurile primite. Îți mulțumim că ne ajuți să îmbunătățim întrebările.' : 'Verifică fiecare semnalare, apoi accept-o sau refuz-o. Jucătorul primește o notificare cu decizia.'}</p>
     </header>
     {admin && <nav class="reports-nav" aria-label="Tipul semnalărilor">
       <a href="/semnalari" aria-current={!mine ? 'page' : undefined}>Administrare</a>
@@ -83,6 +82,7 @@ function Item({ r, mine, onDecision }: { r: Report; mine: boolean; onDecision: (
   const [expanded, setExpanded] = useState(false);
   const [reading, setReading] = useState(false);
   const [decision, setDecision] = useState<Decision | null>(null);
+  const [busy, setBusy] = useState(false);
   const book = BOOKS.find((b) => b.slug === r.book);
   const status = reportStatus(r);
   const unread = mine && isUnread(r);
@@ -94,6 +94,19 @@ function Item({ r, mine, onDecision }: { r: Report; mine: boolean; onDecision: (
     setReading(true);
     setError('');
     try { await markResponseRead(r); } catch (err) { setError(errorText(err)); } finally { setReading(false); }
+  }
+
+  async function decide() {
+    if (!decision || busy) return;
+    setBusy(true);
+    setError('');
+    try {
+      await decideReport(r, decision);
+      onDecision(decision === 'accepted' ? 'Semnalare acceptată. Jucătorul a fost notificat.' : 'Semnalare refuzată. Jucătorul a fost notificat.');
+    } catch (err) {
+      setError(reportError(err) ?? errorText(err));
+      setBusy(false);
+    }
   }
 
   return <li class={`reports-row${unread ? ' has-unread' : ''}`}>
@@ -109,20 +122,25 @@ function Item({ r, mine, onDecision }: { r: Report; mine: boolean; onDecision: (
     {mine && r.by && <p class="ri-meta">Trimisă de {r.by}</p>}
     {!mine && chapterQuestion && <a class="ri-link" href={`/${r.book}/verificare/${r.ch}#${r.qid}`}>Vezi întrebarea</a>}
     {status === 'pending' && (mine ? <p class="reports-waiting">O vom verifica. Răspunsul va apărea aici și vei primi o notificare pe pictograma contului.</p> : <>
-      {!decision && <div class="ri-actions">
+      {!decision ? <div class="ri-actions">
         <button type="button" class="btn btn-ghost btn-sm" onClick={() => setDecision('rejected')}>Refuză</button>
         <button type="button" class="btn btn-primary btn-sm" onClick={() => setDecision('accepted')}>Acceptă</button>
+      </div> : <div class="reports-decision" aria-busy={busy}>
+        <p>{decision === 'accepted' ? 'Accepți semnalarea? Jucătorul va afla că întrebarea a fost corectată.' : 'Refuzi semnalarea? Jucătorul va afla că întrebarea rămâne așa.'} Decizia nu mai poate fi schimbată.</p>
+        <div class="ri-actions">
+          <button type="button" class="btn btn-ghost btn-sm" onClick={() => setDecision(null)} disabled={busy}>Anulează</button>
+          <button type="button" class="btn btn-primary btn-sm" onClick={decide} disabled={busy}>{busy ? 'Se salvează…' : decision === 'accepted' ? 'Da, acceptă' : 'Da, refuză'}</button>
+        </div>
       </div>}
-      {decision && <DecisionForm r={r} decision={decision} onCancel={() => setDecision(null)} onDone={() => { setDecision(null); onDecision(decision === 'accepted' ? 'Semnalare acceptată. Jucătorul a fost notificat.' : 'Semnalare refuzată. Jucătorul a fost notificat.'); }} />}
     </>)}
     {(status === 'accepted' || status === 'rejected') && <>
       <button type="button" class="reports-response-toggle" aria-expanded={expanded} aria-controls={`response-${r.id}`} onClick={() => expanded ? setExpanded(false) : readResponse()}>
         <span>{expanded ? 'Ascunde răspunsul' : 'Vezi răspunsul'}</span><span aria-hidden="true">{expanded ? '−' : '+'}</span>
       </button>
       {expanded && <div id={`response-${r.id}`} class={`reports-response is-${status}`}>
-        <p class="reports-response-title">{status === 'accepted' ? 'Am corectat întrebarea' : 'Întrebarea a fost păstrată'}</p>
+        <p class="reports-response-title">{status === 'accepted' ? 'Semnalare acceptată: am corectat întrebarea' : 'Semnalare refuzată: întrebarea rămâne așa'}</p>
         <p class="reports-thanks">{REPORT_THANKS}</p>
-        <p class="reports-response-copy">{r.response}</p>
+        {r.response && <p class="reports-response-copy">{r.response}</p>}
         {r.correctedText && <div class="reports-correction"><span class="reports-eyebrow">Versiunea corectată</span><p>{r.correctedText}</p></div>}
         <p class="small muted">Răspuns din {date(r.decidedAt ?? null)}</p>
         {unread && !reading && error && <button type="button" class="btn btn-ghost btn-sm" onClick={readResponse}>Marchează ca citit</button>}
@@ -131,54 +149,4 @@ function Item({ r, mine, onDecision }: { r: Report; mine: boolean; onDecision: (
     {status === 'legacy' && <p class="reports-waiting">Semnalare închisă înainte de introducerea răspunsurilor. Decizia nu a fost înregistrată.</p>}
     {error && <p class="notice notice-bad" role="alert">{error}</p>}
   </li>;
-}
-
-function DecisionForm({ r, decision, onCancel, onDone }: { r: Report; decision: Decision; onCancel: () => void; onDone: () => void }) {
-  const accepting = decision === 'accepted';
-  const [current, setCurrent] = useState<Playable | null>(null);
-  const [loading, setLoading] = useState(accepting);
-  const [loadError, setLoadError] = useState('');
-  const [attempt, setAttempt] = useState(0);
-  const [response, setResponse] = useState('');
-  const [confirmed, setConfirmed] = useState(false);
-  const [busy, setBusy] = useState(false);
-  const [error, setError] = useState('');
-
-  useEffect(() => {
-    if (!accepting) return;
-    let active = true;
-    setLoading(true); setLoadError(''); setCurrent(null); setConfirmed(false);
-    loadReportedQuestion(r).then((q) => { if (active) setCurrent(q); }).catch((err) => { if (active) setLoadError(reportError(err) ?? errorText(err)); }).finally(() => { if (active) setLoading(false); });
-    return () => { active = false; };
-  }, [r.id, accepting, attempt]);
-
-  const changed = current && hasCorrection(r, current);
-  async function submit(e: Event) {
-    e.preventDefault();
-    if (busy || (accepting && (!changed || !confirmed))) return;
-    setBusy(true); setError('');
-    try { await decideReport(r, decision, response, current ?? undefined); onDone(); }
-    catch (err) { setError(reportError(err) ?? errorText(err)); setBusy(false); }
-  }
-
-  return <form class="reports-decision" onSubmit={submit} aria-label={accepting ? 'Acceptă semnalarea' : 'Refuză semnalarea'} aria-busy={busy}>
-    <h3>{accepting ? 'Confirmă corectura' : 'Explică refuzul'}</h3>
-    {accepting ? <>
-      {loading && <p class="muted" role="status">Verificăm versiunea publicată…</p>}
-      {loadError && <p class="notice notice-bad" role="alert">{loadError}</p>}
-      {current && <div class="reports-correction"><span class="reports-eyebrow">Versiunea publicată acum</span><p>{questionSummary(current)}</p></div>}
-      {!loading && !changed && <p class="reports-waiting">{r.originalQuestion ? 'Publică mai întâi corectura întrebării. Acceptarea va fi disponibilă când modificarea este vizibilă în aplicație.' : 'Această semnalare veche păstrează doar enunțul și referința. Pentru acceptare, trebuie să putem verifica o corectură a acestora.'}</p>}
-      {!loading && <button type="button" class="reports-text-button" onClick={() => setAttempt((n) => n + 1)} disabled={busy}>Verifică din nou</button>}
-      {changed && <label class="reports-confirm"><input type="checkbox" checked={confirmed} onChange={(e) => setConfirmed(e.currentTarget.checked)} disabled={busy} /><span>Am verificat: această corectură rezolvă problema semnalată.</span></label>}
-    </> : <p class="muted small">Refuzul nu modifică întrebarea. Jucătorul va vedea explicația ta în semnalările sale.</p>}
-    <label class="reports-field" for={`reply-${r.id}`}>Răspuns pentru jucător
-      <textarea id={`reply-${r.id}`} class="input" rows={3} maxLength={1000} required value={response} disabled={busy} onInput={(e) => setResponse(e.currentTarget.value)} placeholder={accepting ? 'Ce ai corectat și de ce?' : 'De ce este corectă întrebarea actuală?'} />
-    </label>
-    <p class="reports-thanks-preview"><strong>Mulțumire inclusă automat</strong><span>{REPORT_THANKS}</span></p>
-    {error && <p class="notice notice-bad" role="alert">{error}</p>}
-    <div class="ri-actions">
-      <button type="button" class="btn btn-ghost btn-sm" onClick={onCancel} disabled={busy}>Anulează</button>
-      <button class="btn btn-primary btn-sm" disabled={busy || !response.trim() || (accepting && (!changed || !confirmed || loading))}>{busy ? 'Se salvează…' : accepting ? 'Acceptă' : 'Refuză'}</button>
-    </div>
-  </form>;
 }
