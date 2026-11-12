@@ -8,6 +8,7 @@ import '../styles/quiz.css';
 import { ClientRouter } from 'astro:transitions';
 import Lamp from '../components/Lamp.astro';
 import AccountButton from '../islands/AccountButton';
+import Stopwatch from '../islands/Stopwatch';
 import { DEFAULT_BOOK } from '../lib/books';
 
 interface Crumb { href: string; label: string }
@@ -112,6 +113,7 @@ const fullTitle = title === 'Candela' ? title : `${title} – Candela`;
     <main>
       <slot />
     </main>
+    <Stopwatch client:only="preact" transition:persist="stopwatch" />
   </body>
 </html>
 

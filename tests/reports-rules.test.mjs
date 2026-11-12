@@ -36,7 +36,7 @@ test('report access, terminal decisions and read receipts are enforced by Firest
       await deny(setDoc(doc(owner, 'reports', `${id}-fake-status`), { ...base, status: 'accepted' }));
       await deny(updateDoc(doc(owner, 'reports', id), { responseReadAt: serverTimestamp() }));
     });
-    const decision = { status: 'rejected', done: true, response: 'The original question is correct.', decidedBy: 'admin', decidedAt: serverTimestamp(), responseReadAt: null };
+    const decision = { status: 'rejected', done: true, decidedBy: 'admin', decidedAt: serverTimestamp(), responseReadAt: null };
     await t.test('only admin can decide, cannot change reporter details or delete history', async () => {
       await deny(updateDoc(doc(owner, 'reports', id), decision));
       await deny(updateDoc(doc(admin, 'reports', id), { ...decision, uid: 'outsider' }));
@@ -51,13 +51,15 @@ test('report access, terminal decisions and read receipts are enforced by Firest
       assert.ok((await getDoc(doc(owner, 'reports', id))).data().responseReadAt);
       await deny(updateDoc(doc(owner, 'reports', id), { responseReadAt: null }));
     });
-    await t.test('acceptance requires a changed snapshot; refusal cannot attach a correction', async () => {
+    await t.test('acceptance needs no comment; a stored correction must differ; refusal cannot attach one', async () => {
       const ref = doc(admin, 'reports', `${id}-accept`);
       await setDoc(doc(owner, 'reports', `${id}-accept`), base);
-      await deny(updateDoc(ref, { ...decision, status: 'accepted' }));
+      await deny(updateDoc(ref, { ...decision, response: 'Comments are no longer written.' }));
       await deny(updateDoc(ref, { ...decision, status: 'accepted', correctedQuestion: 'original', correctedText: 'No change' }));
       await deny(updateDoc(ref, { ...decision, correctedQuestion: 'new', correctedText: 'New' }));
       await updateDoc(ref, { ...decision, status: 'accepted', correctedQuestion: 'new', correctedText: 'New question' });
+      await setDoc(doc(owner, 'reports', `${id}-accept-plain`), base);
+      await updateDoc(doc(admin, 'reports', `${id}-accept-plain`), { ...decision, status: 'accepted' });
     });
     await t.test('legacy pending reports can receive a decision without rewriting old data', async () => {
       const { status, originalQuestion, ...legacy } = base;
