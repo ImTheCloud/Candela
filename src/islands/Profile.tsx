@@ -82,6 +82,18 @@ export default function Profile({ books: _books }: { books?: BookInfo[] }) {
     <div class="me">
       {profileError.value && <p class="notice notice-bad" role="alert">Profilul nu a putut fi încărcat. Verifică conexiunea.</p>}
 
+      {/* What the number on the avatar stands for, first on the page */}
+      {(replies > 0 || reportsOpen > 0 || messagesOpen > 0) && (
+        <section class="me-sect" aria-labelledby="news-title">
+          <h2 id="news-title" class="me-label">Noutăți</h2>
+          <div class="me-card">
+            {replies > 0 && <NewsItem href="/semnalari?tab=mine" label={replies === 1 ? 'Un răspuns nou la semnalările tale' : `${replies} răspunsuri noi la semnalările tale`} n={replies} />}
+            {reportsOpen > 0 && <NewsItem href="/semnalari" label={reportsOpen === 1 ? 'O semnalare de verificat' : `${reportsOpen} semnalări de verificat`} n={reportsOpen} />}
+            {messagesOpen > 0 && <NewsItem href="/mesaje" label={messagesOpen === 1 ? 'Un mesaj nou' : `${messagesOpen} mesaje noi`} n={messagesOpen} />}
+          </div>
+        </section>
+      )}
+
       {isParent ? (
         <section class="me-sect" aria-labelledby="pl-title">
           <h2 id="pl-title" class="me-label">Părintele</h2>
@@ -655,5 +667,18 @@ function ChildForm({ child, onDone }: { child?: Player; onDone: () => void }) {
         />
       )}
     </form>
+  );
+}
+
+function NewsItem({ href, label, n }: { href: string; label: string; n: number }) {
+  return (
+    <a class="me-item" href={href}>
+      <span class="me-item-ic">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" /><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" /></svg>
+      </span>
+      <span class="me-item-label">{label}</span>
+      <span class="me-item-badge">{n}</span>
+      <span class="me-item-chev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg></span>
+    </a>
   );
 }

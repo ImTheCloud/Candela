@@ -1,4 +1,4 @@
-import { addDoc, collection, doc, onSnapshot, query, runTransaction, serverTimestamp, updateDoc, where } from 'firebase/firestore';
+import { addDoc, collection, doc, onSnapshot, query, runTransaction, serverTimestamp, updateDoc, where, type Query, type QuerySnapshot } from 'firebase/firestore';
 import { db } from './firebase';
 import type { Playable } from './questions';
 import { hasCorrection, isUnread, questionSnapshot, questionSummary, reportStatus, type Decision, type Reason, type Report } from './report-model';
@@ -24,8 +24,16 @@ export async function sendReport(q: Playable, reason: Reason, note: string, by: 
   localSet(key, [...localGet<string[]>(key, []), q.id].slice(-500));
 }
 
+/**
+ * Badge counters use only what the server confirmed: the phone's cache answers first and may still hold
+ * replies read on another device, which made the number flash back for a moment. Offline, the last count stays.
+ */
+export function serverCount(source: Query, count: (snap: QuerySnapshot) => number, cb: (n: number) => void) {
+  return onSnapshot(source, { includeMetadataChanges: true }, (snap) => { if (!snap.metadata.fromCache) cb(count(snap)); }, () => cb(0));
+}
+
 export function watchOpenCount(cb: (n: number) => void) {
-  return onSnapshot(query(collection(db, 'reports'), where('done', '==', false)), (snap) => cb(snap.size), () => cb(0));
+  return serverCount(query(collection(db, 'reports'), where('done', '==', false)), (snap) => snap.size, cb);
 }
 
 /** Owner queries are constrained by uid, including in the security rules. No history truncation. */
@@ -39,7 +47,8 @@ export function watchReports(uid: string | null, cb: (r: Report[]) => void, onEr
 }
 
 export function watchUnreadCount(uid: string, cb: (n: number) => void) {
-  return watchReports(uid, (reports) => cb(reports.filter(isUnread).length), () => cb(0));
+  return serverCount(query(collection(db, 'reports'), where('uid', '==', uid)),
+    (snap) => snap.docs.filter((d) => isUnread({ ...d.data(), id: d.id } as Report)).length, cb);
 }
 
 /** Always check the published chapter afresh, not the quiz's in-memory cache. */

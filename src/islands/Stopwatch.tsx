@@ -6,7 +6,7 @@ import { errorText, profile } from '../lib/session';
 /** Saved on users/{uid}: the time already counted, and when it was started if it is running. Same on every phone. */
 export interface Timer { total: number; start: number | null }
 
-const HOLD_MS = 3000;
+const HOLD_MS = 1500;
 const two = (n: number) => String(n).padStart(2, '0');
 
 /** "3 z 04:12:09" past a day, else "04:12:09" */
@@ -22,7 +22,7 @@ const PLAY = <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"
 
 /**
  * The admin's own stopwatch, floating bottom left on every page (kept across navigation). Only admins see it.
- * Tap: start or pause (green while running, brown when paused). Hold 3 s: offers to reset to zero.
+ * Tap: start or pause (green while running, brown when paused). Hold 1.5 s: offers to reset to zero.
  */
 export default function Stopwatch() {
   const p = profile.value;
@@ -111,7 +111,7 @@ export default function Stopwatch() {
       )}
       {error && <p class="sw-err" role="alert">{error}</p>}
       <button type="button" class={`sw-main${running ? ' is-live' : ''}${shown ? ' has-time' : ''}${holding ? ' is-holding' : ''}`}
-        aria-pressed={running} aria-label={`Cronometru ${time}, ${running ? 'pornit: apasă pentru pauză' : 'oprit: apasă ca să pornească'}. Ține apăsat 3 secunde ca să-l resetezi.`}
+        aria-pressed={running} aria-label={`Cronometru ${time}, ${running ? 'pornit: apasă pentru pauză' : 'oprit: apasă ca să pornească'}. Ține apăsat o secundă și jumătate ca să-l resetezi.`}
         onPointerDown={press} onPointerUp={release} onPointerLeave={release} onPointerCancel={release}
         onContextMenu={(e) => e.preventDefault()}
         onClick={() => { if (held.current) { held.current = false; return; } setAskReset(false); toggle(); }}>
