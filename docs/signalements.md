@@ -6,7 +6,7 @@ La page `/semnalari` montre les signalements reçus aux administrateurs. `/semna
 - **Accepté** : un seul clic sur Accepter, sans confirmation ni commentaire. Si le chapitre publié contient déjà une version corrigée de la question, elle est conservée avec la décision et montrée au joueur.
 - **Refusé** : un seul clic sur Refuser, sans confirmation ni commentaire. La question n’est pas modifiée.
 - Le joueur voit seulement la décision (acceptée ou refusée) avec un remerciement automatique. Les anciennes réponses écrites restent affichées.
-- Le badge compte les réponses non lues. Ouvrir une réponse la marque comme lue dans Firestore, donc sur tous les appareils du compte.
+- Le badge de l’avatar compte les réponses non lues ; l’avatar ouvre toujours le profil, qui mène aux signalements. Afficher « Ale mele » marque toutes les réponses comme lues dans Firestore (donc sur tous les appareils), elles restent signalées comme nouvelles pendant cette visite. Un administrateur qui décide son propre signalement ne reçoit pas de notification.
 - Les anciens signalements `done: true` restent archivés, sans inventer une acceptation ou un refus et sans générer de notification rétroactive.
 
 Les questions restent gérées dans les fichiers `content/`. Le bouton Accepter ne constitue pas un éditeur de questions : il relit le chapitre publié au moment de la décision pour joindre la correction, s’il y en a une. Les nouveaux signalements conservent un instantané complet pour détecter également une correction de réponse, de choix, de niveau ou de référence. Les anciens signalements ne permettent de comparer que l’énoncé et la référence.

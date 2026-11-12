@@ -78,6 +78,8 @@ export async function decideReport(r: Report, decision: Decision) {
       ...(corrected ? { correctedQuestion: questionSnapshot(corrected), correctedText: questionSummary(corrected) } : {}),
     });
   });
+  // An admin deciding a report they sent themselves already knows the answer.
+  if (r.uid === u.uid) await updateDoc(doc(db, 'reports', r.id), { responseReadAt: serverTimestamp() }).catch(() => {});
 }
 
 export async function markResponseRead(r: Report) {

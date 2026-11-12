@@ -20,10 +20,8 @@ export default function AccountButton() {
   if (shown === null || (shown === '' && location.pathname.startsWith('/cont'))) return <span class="account-placeholder" />;
   if (!shown) return <a class="btn btn-primary btn-sm" href="/cont" aria-label="Intră în cont">Intră</a>;
 
-  const targetHref = u === undefined ? localGet<string>('acctHref', '/cont') : count > 0 ? (n.replies > 0 ? '/semnalari?tab=mine' : n.reports > 0 ? '/semnalari' : '/mesaje') : '/cont';
-
   return (
-    <a class="avatar" href={targetHref}
+    <a class="avatar" href="/cont"
       aria-label={count ? (count === 1 ? 'O notificare nouă' : `${count} notificări noi`) : u ? `Contul meu (joacă ${player.value.name})` : 'Contul meu'}>
       {shown}
       {count > 0 && <span class="badge-n">{count > 9 ? '9+' : count}</span>}

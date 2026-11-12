@@ -22,7 +22,6 @@ effect(() => {
     localSet('acctN', counts.reports + counts.messages + counts.replies);
     localSet('acctRep', counts.reports);
     localSet('acctMsg', counts.messages);
-    localSet('acctHref', counts.replies > 0 ? '/semnalari?tab=mine' : counts.reports > 0 ? '/semnalari' : counts.messages > 0 ? '/mesaje' : '/cont');
   };
   publish();
   if (!u || !loaded) return;

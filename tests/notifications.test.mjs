@@ -26,8 +26,7 @@ test('notification counts reset per account and ignore stale subscriptions', asy
     user.value = { uid: 'admin' }; profile.value = { admin: true }; profileLoaded.value = true;
     send('reports', 3); send('messages', 2); send('replies', 1);
     assert.equal(storage.get('acctN'), 6);
-    assert.equal(storage.get('acctHref'), '/semnalari?tab=mine');
-    send('replies', 0); assert.equal(storage.get('acctHref'), '/semnalari');
+    send('replies', 0); assert.equal(storage.get('acctN'), 5);
     const late = listeners.filter(l => !l.stopped);
     user.value = null; profileLoaded.value = false; profile.value = null;
     assert.equal(storage.get('acctN'), 0);
@@ -38,6 +37,6 @@ test('notification counts reset per account and ignore stale subscriptions', asy
     assert.deepEqual(listeners.filter(l => !l.stopped).map(l => l.kind), ['replies']);
     send('replies', 2); assert.equal(storage.get('acctN'), 2);
     send('replies', 0); assert.equal(storage.get('acctN'), 0);
-    assert.equal(storage.get('acctHref'), '/cont');
+    assert.equal(storage.get('acctHref'), undefined);
   } finally { dispose(); }
 });
