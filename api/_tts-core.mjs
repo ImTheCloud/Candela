@@ -12,11 +12,14 @@ const SYNTH_TIMEOUT_MS = 20000;
 /** Rough cap on the audio kept in memory by a warm instance (~25 MB). */
 const MAX_CACHE_BYTES = 25 * 1024 * 1024;
 /**
- * Spoken Romanian at 48 kbit/s is about 400 bytes of MP3 per character of text. A synthesis that ends with far
- * less was cut by Edge: it is dropped (never cached) instead of being kept by browsers and the CDN for a year.
+ * Spoken Romanian at 48 kbit/s is 385 to 475 bytes of MP3 per character of text (measured on 2 Samuel 14).
+ * A synthesis that ends with far less was cut by Edge: it is dropped (never cached) instead of being kept by
+ * browsers and the CDN for a year. 120 let a file cut in its second half through (2 Samuel 14:32).
  */
-const MIN_BYTES_PER_CHAR = 120;
+const MIN_BYTES_PER_CHAR = 200;
 const MIN_AUDIO_BYTES = 2000;
+/** 48 kbit/s constant bitrate: 6 bytes of MP3 per millisecond of audio */
+const BYTES_PER_MS = 6;
 const CACHE_HEADER = 'public, max-age=31536000, s-maxage=31536000, stale-while-revalidate=86400, immutable';
 
 /** key -> { audio: Buffer, marks: [startMs, durationMs, word][] } */
@@ -86,6 +89,48 @@ function sendMarks(res, marks) {
   res.end(JSON.stringify(marks));
 }
 
+/**
+ * Why a finished synthesis must not be sent or kept, or null when it is whole: too few bytes for the text,
+ * or fewer milliseconds of audio than the word times Edge sent for it (the end of the file is missing).
+ */
+export function cutReason(audioBytes, textLength, marks) {
+  if (audioBytes < Math.max(MIN_AUDIO_BYTES, textLength * MIN_BYTES_PER_CHAR)) {
+    return `${audioBytes} bytes for ${textLength} characters`;
+  }
+  const last = marks?.[marks.length - 1];
+  if (last) {
+    const wordsEndMs = last[0] + last[1];
+    const audioMs = audioBytes / BYTES_PER_MS;
+    if (audioMs + 300 < wordsEndMs) return `${Math.round(audioMs)} ms of audio for words ending at ${wordsEndMs} ms`;
+  }
+  return null;
+}
+
+/** Answers a `Range` request with 206 (Safari asks for byte ranges before playing an audio file). */
+export function sendAudio(req, res, buf, cacheHeader) {
+  res.setHeader('Content-Type', 'audio/mpeg');
+  res.setHeader('Cache-Control', cacheHeader);
+  res.setHeader('Accept-Ranges', 'bytes');
+  const range = /^bytes=(\d*)-(\d*)$/.exec(req.headers?.range || '');
+  if (range && (range[1] || range[2])) {
+    let start = range[1] ? Number(range[1]) : buf.length - Number(range[2]);
+    let end = range[1] && range[2] ? Math.min(Number(range[2]), buf.length - 1) : buf.length - 1;
+    start = Math.max(0, start);
+    if (start > end || start >= buf.length) {
+      res.statusCode = 416;
+      res.setHeader('Content-Range', `bytes */${buf.length}`);
+      return res.end();
+    }
+    res.statusCode = 206;
+    res.setHeader('Content-Range', `bytes ${start}-${end}/${buf.length}`);
+    res.setHeader('Content-Length', end - start + 1);
+    return res.end(buf.subarray(start, end + 1));
+  }
+  res.statusCode = 200;
+  res.setHeader('Content-Length', buf.length);
+  return res.end(buf);
+}
+
 function sendError(res, status, message) {
   if (res.headersSent) {
     // a 200 is already on its way: cut the connection so no cache keeps a truncated file
@@ -107,11 +152,11 @@ class InflightStream {
   ended = false;
   failed = false;
 
-  subscribe(res, req) {
+  subscribe(res, req, cacheHeader = CACHE_HEADER) {
     if (this.failed) return sendError(res, 502, 'Speech synthesis failed');
     res.statusCode = 200;
     res.setHeader('Content-Type', 'audio/mpeg');
-    res.setHeader('Cache-Control', CACHE_HEADER);
+    res.setHeader('Cache-Control', cacheHeader);
     if (typeof res.flushHeaders === 'function') res.flushHeaders();
     for (const chunk of this.chunks) res.write(chunk);
     if (this.ended) return res.end();
@@ -152,6 +197,8 @@ class InflightStream {
 /**
  * Reads `text` and `voice`, checks them, then answers with MP3 audio streamed as it is synthesised,
  * or with `marks` set, the time of each word as JSON: [[startMs, durationMs, word], ...].
+ * With `fresh` set (a copy that would not play on the phone), the audio is synthesised again instead of being
+ * taken from this instance's memory, and the answer is never stored by the CDN or the browser.
  */
 export async function handleTts(req, res, params) {
   try {
@@ -166,30 +213,31 @@ export async function handleTts(req, res, params) {
 
     const key = `${voice}:${text}`;
     const wantsMarks = params.marks === '1';
+    const fresh = !!params.fresh && !wantsMarks;
+    const cacheHeader = fresh ? 'no-store' : CACHE_HEADER;
 
     // 1. already synthesised by this instance
-    const hit = cache.get(key);
+    const hit = fresh ? null : cache.get(key);
     if (hit && wantsMarks) return sendMarks(res, hit.marks);
-    const buf = hit?.audio;
-    if (buf) {
-      res.statusCode = 200;
-      res.setHeader('Content-Type', 'audio/mpeg');
-      res.setHeader('Content-Length', buf.length);
-      res.setHeader('Cache-Control', CACHE_HEADER);
-      res.setHeader('Accept-Ranges', 'bytes');
-      return res.end(buf);
-    }
+    if (hit) return sendAudio(req, res, hit.audio, cacheHeader);
 
     // 2. being synthesised: join the same stream
     const running = inflight.get(key);
     if (running && wantsMarks) return void running.waitingMarks.add(res);
-    if (running) return running.subscribe(res, req);
+    if (running) return running.subscribe(res, req, cacheHeader);
 
     // 3. new synthesis, streamed to the client chunk by chunk as it arrives
+    if (fresh) {
+      const old = cache.get(key);
+      if (old) {
+        cacheBytes -= old.audio.length;
+        cache.delete(key);
+      }
+    }
     const stream = new InflightStream();
     inflight.set(key, stream);
     if (wantsMarks) stream.waitingMarks.add(res);
-    else stream.subscribe(res, req);
+    else stream.subscribe(res, req, cacheHeader);
 
     let timer = null;
     const fail = () => {
@@ -213,8 +261,9 @@ export async function handleTts(req, res, params) {
         clearTimeout(timer);
         if (stream.failed) return;
         const audio = Buffer.concat(stream.chunks);
-        if (audio.length < Math.max(MIN_AUDIO_BYTES, text.length * MIN_BYTES_PER_CHAR)) {
-          console.error(`TTS audio cut short: ${audio.length} bytes for ${text.length} characters`);
+        const cut = cutReason(audio.length, text.length, stream.marks);
+        if (cut) {
+          console.error(`TTS audio cut short: ${cut}`);
           return fail();
         }
         if (inflight.get(key) === stream) inflight.delete(key);

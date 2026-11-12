@@ -168,6 +168,7 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
           setIsSpeaking(false);
           setIsPaused(false);
         },
+        onPause: () => setIsPaused(true),
       });
       return;
     }
@@ -191,6 +192,7 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
         setIsSpeaking(false);
         setIsPaused(false);
       },
+      onPause: () => setIsPaused(true),
     });
   };
 
@@ -249,6 +251,7 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
         setIsSpeaking(false);
         setIsPaused(false);
       },
+      onPause: () => setIsPaused(true),
     });
 
     return () => {

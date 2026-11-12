@@ -4,19 +4,33 @@
  * through a small room reverb and a gentle compressor, so they sound round rather than like bare beeps.
  */
 
+import { claimPlaybackSession } from './speech';
+
 let ctx: AudioContext | null = null;
 let bus: AudioNode | null = null;
+let idle: ReturnType<typeof setTimeout> | null = null;
+/** The longest sound with its reverb tail is under 2 s */
+const IDLE_MS = 2500;
 
 function audio(): { ac: AudioContext; out: AudioNode } | null {
   if (typeof window === 'undefined') return null;
   try {
     if (!ctx) {
+      // iOS: a running Web Audio context switches the page to an "ambient" audio session (muted by the silent
+      // switch, mixed under other sounds); the voice must stay "playback" or the next question can be silent
+      claimPlaybackSession();
       const AC = window.AudioContext || (window as any).webkitAudioContext;
       if (!AC) return null;
       ctx = new AC();
       bus = makeBus(ctx);
     }
-    if (ctx.state === 'suspended') ctx.resume().catch(() => {});
+    if (ctx.state !== 'running') ctx.resume().catch(() => {});
+    // the context is put to sleep once the sound is over: it never holds the phone's audio while the voice reads
+    if (idle) clearTimeout(idle);
+    idle = setTimeout(() => {
+      idle = null;
+      ctx?.suspend().catch(() => {});
+    }, IDLE_MS);
     return { ac: ctx, out: bus! };
   } catch {
     return null;

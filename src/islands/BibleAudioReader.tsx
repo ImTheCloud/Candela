@@ -191,6 +191,11 @@ export default function BibleAudioReader({ bookName = '', ch, title = '', verses
         isPlayingRef.current = false;
         isPausedRef.current = true;
       },
+      // the phone paused the sound (a call, headphones taken off): the button shows it, a tap goes on
+      onPause: () => {
+        setIsPaused(true);
+        isPausedRef.current = true;
+      },
     });
   };
 
