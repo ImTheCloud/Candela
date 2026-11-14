@@ -228,13 +228,22 @@ export function stopSpeaking(): void {
   current?.dispose();
   current = null;
   if (activeAudio) {
-    try {
-      detach(activeAudio);
-      activeAudio.pause();
-      activeAudio.removeAttribute('src');
-      activeAudio.load();
-    } catch {}
+    const a = activeAudio;
     activeAudio = null;
+    try {
+      detach(a);
+      a.pause();
+    } catch {}
+    // unloading the file can hold the main thread for a moment on iPhone: it waits until the tap has been
+    // answered (button pressed, sound played), and is skipped if the element is already reading something new
+    const gen = playGen;
+    setTimeout(() => {
+      if (gen !== playGen || activeAudio === a) return;
+      try {
+        a.removeAttribute('src');
+        a.load();
+      } catch {}
+    }, 400);
   }
   setMediaPlaybackState('none');
 }

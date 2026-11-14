@@ -1,44 +1,83 @@
 /**
- * Short game sounds for the quiz, made on the fly with Web Audio (no file to download).
+ * Short game sounds for the quiz, made with Web Audio (no file to download).
  * Bell and marimba tones built from a few partials, plus soft filtered air,
  * through a small room reverb and a gentle compressor, so they sound round rather than like bare beeps.
+ *
+ * They are rendered once, offline, into small WAV files played by ordinary <audio> elements. No live
+ * AudioContext is kept: on iPhone a running one switches the page to an "ambient" audio session (the voice
+ * could go silent), and waking a suspended one takes about a second, so the sound came well after the tap.
  */
 
-import { claimPlaybackSession } from './speech';
+type Name = 'check' | 'right' | 'wrong' | 'next';
 
-let ctx: AudioContext | null = null;
-let bus: AudioNode | null = null;
-let idle: ReturnType<typeof setTimeout> | null = null;
-/** The longest sound with its reverb tail is under 2 s */
-const IDLE_MS = 2500;
+const urls: { [K in Name]?: string } = {};
+const players: { [K in Name]?: HTMLAudioElement } = {};
+let preparing: Promise<void> | null = null;
 
-function audio(): { ac: AudioContext; out: AudioNode } | null {
-  if (typeof window === 'undefined') return null;
-  try {
-    if (!ctx) {
-      // iOS: a running Web Audio context switches the page to an "ambient" audio session (muted by the silent
-      // switch, mixed under other sounds); the voice must stay "playback" or the next question can be silent
-      claimPlaybackSession();
-      const AC = window.AudioContext || (window as any).webkitAudioContext;
-      if (!AC) return null;
-      ctx = new AC();
-      bus = makeBus(ctx);
+/** Renders the sounds ahead of time (call on quiz mount); safe to call often. */
+export function prepareSfx(): Promise<void> {
+  if (typeof window === 'undefined') return Promise.resolve();
+  if (preparing) return preparing;
+  const OAC = window.OfflineAudioContext || (window as any).webkitOfflineAudioContext;
+  if (!OAC) return (preparing = Promise.resolve());
+  preparing = (async () => {
+    for (const [name, len, draw] of SOUNDS) {
+      try {
+        const ac: OfflineAudioContext = new OAC(2, Math.ceil(44100 * len), 44100);
+        draw(ac, makeBus(ac));
+        const buf = await ac.startRendering();
+        const url = URL.createObjectURL(new Blob([wav(buf)], { type: 'audio/wav' }));
+        urls[name] = url;
+        const el = new Audio();
+        el.preload = 'auto';
+        el.src = url;
+        try { el.load(); } catch {}
+        players[name] = el;
+      } catch {
+        /* this sound stays silent */
+      }
     }
-    if (ctx.state !== 'running') ctx.resume().catch(() => {});
-    // the context is put to sleep once the sound is over: it never holds the phone's audio while the voice reads
-    if (idle) clearTimeout(idle);
-    idle = setTimeout(() => {
-      idle = null;
-      ctx?.suspend().catch(() => {});
-    }, IDLE_MS);
-    return { ac: ctx, out: bus! };
-  } catch {
-    return null;
+  })();
+  return preparing;
+}
+
+function play(name: Name) {
+  if (typeof window === 'undefined') return;
+  if (!preparing) void prepareSfx();
+  const el = players[name];
+  if (!el) return;
+  try {
+    // still sounding from a quick double tap: a fresh copy overlaps it instead of cutting it
+    const p = !el.paused && !el.ended ? new Audio(urls[name]) : el;
+    if (p === el) el.currentTime = 0;
+    p.play().catch(() => {});
+  } catch {}
+}
+
+/** 16-bit PCM WAV from a rendered buffer */
+function wav(b: AudioBuffer): ArrayBuffer {
+  const ch = b.numberOfChannels, n = b.length, rate = b.sampleRate;
+  const out = new ArrayBuffer(44 + n * ch * 2);
+  const v = new DataView(out);
+  const str = (o: number, t: string) => { for (let k = 0; k < t.length; k++) v.setUint8(o + k, t.charCodeAt(k)); };
+  str(0, 'RIFF'); v.setUint32(4, 36 + n * ch * 2, true); str(8, 'WAVE');
+  str(12, 'fmt '); v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, ch, true);
+  v.setUint32(24, rate, true); v.setUint32(28, rate * ch * 2, true); v.setUint16(32, ch * 2, true); v.setUint16(34, 16, true);
+  str(36, 'data'); v.setUint32(40, n * ch * 2, true);
+  const data = Array.from({ length: ch }, (_, c) => b.getChannelData(c));
+  let o = 44;
+  for (let i = 0; i < n; i++) {
+    for (let c = 0; c < ch; c++) {
+      const x = Math.max(-1, Math.min(1, data[c][i]));
+      v.setInt16(o, x < 0 ? x * 0x8000 : x * 0x7fff, true);
+      o += 2;
+    }
   }
+  return out;
 }
 
 /** dry + a little reverb, glued by a soft compressor */
-function makeBus(ac: AudioContext): AudioNode {
+function makeBus(ac: BaseAudioContext): AudioNode {
   const input = ac.createGain();
   const comp = ac.createDynamicsCompressor();
   comp.threshold.value = -18;
@@ -74,10 +113,7 @@ function makeBus(ac: AudioContext): AudioNode {
 
 interface Partial { ratio: number; gain: number; decay: number }
 /** A struck tone: several sine partials, each with its own fade (higher ones die first); `lowpass` muffles it. */
-function strike(at: number, freq: number, vol: number, partials: Partial[], o: { lowpass?: number } = {}) {
-  const a = audio();
-  if (!a) return;
-  const { ac, out } = a;
+function strike(ac: BaseAudioContext, out: AudioNode, at: number, freq: number, vol: number, partials: Partial[], o: { lowpass?: number } = {}) {
   let dest: AudioNode = out;
   if (o.lowpass) {
     const f = ac.createBiquadFilter();
@@ -102,10 +138,7 @@ function strike(at: number, freq: number, vol: number, partials: Partial[], o: {
 }
 
 /** Soft air: noise through a band filter sweeping from one frequency to another. */
-function air(at: number, len: number, vol: number, from: number, to: number, q = 1.4, peakAt = 0.3) {
-  const a = audio();
-  if (!a) return;
-  const { ac, out } = a;
+function air(ac: BaseAudioContext, out: AudioNode, at: number, len: number, vol: number, from: number, to: number, q = 1.4, peakAt = 0.3) {
   const n = Math.floor(ac.sampleRate * len);
   const buf = ac.createBuffer(1, n, ac.sampleRate);
   const d = buf.getChannelData(0);
@@ -140,33 +173,44 @@ const MARIMBA: Partial[] = [
   { ratio: 9.9, gain: 0.05, decay: 0.03 },
 ];
 
-const now = () => (ctx ? ctx.currentTime : 0) + 0.015;
-
-/** Right answer: a golden arpeggio of bells, C E G C. */
-export function playRight() {
-  if (!audio()) return;
-  const t = now();
-  [1046.5, 1318.51, 1567.98, 2093].forEach((f, k) => strike(t + k * 0.055, f, 0.2, BELL));
-}
-
-/** Wrong answer: two low, muffled wooden notes falling gently, disappointed but never harsh. */
-export function playWrong() {
-  if (!audio()) return;
-  const t = now();
-  strike(t, 311.13, 0.32, MARIMBA, { lowpass: 1400 }); // D#4
-  strike(t + 0.14, 233.08, 0.36, MARIMBA, { lowpass: 1100 }); // A#3
-}
+type Draw = (ac: BaseAudioContext, out: AudioNode) => void;
+const T = 0.01;
 
 /** Pressing "Verifică": a soft double click, like a switch. */
-export function playCheck() {
-  if (!audio()) return;
-  const t = now();
-  air(t, 0.025, 0.12, 3000, 2500, 2, 0.1);
-  air(t + 0.045, 0.025, 0.09, 2200, 1800, 2, 0.1);
+const drawCheck: Draw = (ac, out) => {
+  air(ac, out, T, 0.025, 0.12, 3000, 2500, 2, 0.1);
+  air(ac, out, T + 0.045, 0.025, 0.09, 2200, 1800, 2, 0.1);
+};
+/** the verdict comes right after the click, not on top of it */
+const V = T + 0.11;
+
+const SOUNDS: [Name, number, Draw][] = [
+  // the click and the verdict are one file: one play() on the tap, exact timing between them
+  ['right', 2.3, (ac, out) => {
+    drawCheck(ac, out);
+    // a golden arpeggio of bells, C E G C
+    [1046.5, 1318.51, 1567.98, 2093].forEach((f, k) => strike(ac, out, V + k * 0.055, f, 0.2, BELL));
+  }],
+  ['wrong', 1.9, (ac, out) => {
+    drawCheck(ac, out);
+    // two low, muffled wooden notes falling gently, disappointed but never harsh
+    strike(ac, out, V, 311.13, 0.32, MARIMBA, { lowpass: 1400 }); // D#4
+    strike(ac, out, V + 0.14, 233.08, 0.36, MARIMBA, { lowpass: 1100 }); // A#3
+  }],
+  ['check', 1.2, drawCheck],
+  // next question: a long soft whoosh
+  ['next', 1.6, (ac, out) => air(ac, out, T, 0.38, 0.1, 400, 5000, 1, 0.55)],
+];
+
+/** "Verifică" pressed: the click, then the verdict. */
+export function playVerdict(right: boolean) {
+  play(right ? 'right' : 'wrong');
 }
 
-/** Next question: a long soft whoosh. */
+export function playCheck() {
+  play('check');
+}
+
 export function playNext() {
-  if (!audio()) return;
-  air(now(), 0.38, 0.1, 400, 5000, 1, 0.55);
+  play('next');
 }
