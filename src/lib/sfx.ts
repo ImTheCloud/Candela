@@ -3,15 +3,17 @@
  * Bell and marimba tones built from a few partials, plus soft filtered air,
  * through a small room reverb and a gentle compressor, so they sound round rather than like bare beeps.
  *
- * They are rendered once, offline, into small WAV files played by ordinary <audio> elements. No live
- * AudioContext is kept: on iPhone a running one switches the page to an "ambient" audio session (the voice
- * could go silent), and waking a suspended one takes about a second, so the sound came well after the tap.
+ * They are rendered once, offline, into small WAV files played on the voice's own <audio> element (they are
+ * heard only by someone listening to the voice). No live AudioContext is kept: on iPhone a running one switches
+ * the page to an "ambient" audio session (the voice could go silent), and waking a suspended one takes about a
+ * second. A second <audio> element is not used either: switching players took about a second on iPhone too.
  */
+
+import { playCue } from './speech';
 
 type Name = 'check' | 'right' | 'wrong' | 'next';
 
 const urls: { [K in Name]?: string } = {};
-const players: { [K in Name]?: HTMLAudioElement } = {};
 let preparing: Promise<void> | null = null;
 
 /** Renders the sounds ahead of time (call on quiz mount); safe to call often. */
@@ -28,11 +30,6 @@ export function prepareSfx(): Promise<void> {
         const buf = await ac.startRendering();
         const url = URL.createObjectURL(new Blob([wav(buf)], { type: 'audio/wav' }));
         urls[name] = url;
-        const el = new Audio();
-        el.preload = 'auto';
-        el.src = url;
-        try { el.load(); } catch {}
-        players[name] = el;
       } catch {
         /* this sound stays silent */
       }
@@ -41,17 +38,14 @@ export function prepareSfx(): Promise<void> {
   return preparing;
 }
 
+/** How much of a sound the next reading waits for: the whoosh is heard before the question it announces */
+const HOLD: { [K in Name]?: number } = { next: 380 };
+
 function play(name: Name) {
   if (typeof window === 'undefined') return;
   if (!preparing) void prepareSfx();
-  const el = players[name];
-  if (!el) return;
-  try {
-    // still sounding from a quick double tap: a fresh copy overlaps it instead of cutting it
-    const p = !el.paused && !el.ended ? new Audio(urls[name]) : el;
-    if (p === el) el.currentTime = 0;
-    p.play().catch(() => {});
-  } catch {}
+  const url = urls[name];
+  if (url) playCue(url, HOLD[name]);
 }
 
 /** 16-bit PCM WAV from a rendered buffer */
