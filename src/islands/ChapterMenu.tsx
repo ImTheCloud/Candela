@@ -5,7 +5,6 @@ import { progress, progressLoaded, scoreLabel } from '../lib/progress';
 import { PER_TEST, type QType } from '../lib/questions';
 import { prefetch } from 'astro:prefetch';
 import { loadChapter } from '../lib/load';
-import { preloadQuestionAudio } from '../lib/speech';
 import LevelPicker from './LevelPicker';
 import TestShape from './TestShape';
 import Modal, { CloseButton } from './Modal';
@@ -99,18 +98,12 @@ function Sheet({ book, ch, title, ready, best, onClose }: SheetProps) {
   const base = `/${book}`;
   const lv = level.value;
 
-  // the test starts at once: its page, questions and first audio tracks are preloaded while the menu is open
+  // the test starts at once: its page and questions are preloaded while the menu is open
   useEffect(() => {
     prefetch(`${base}/citire/${ch}`, { ignoreSlowConnection: true });
     if (!ready) return;
-    loadChapter(book, ch)
-      .then((qs) => {
-        const pool = qs.filter((q) => q.age === lv);
-        if (pool[0]) preloadQuestionAudio(pool[0]);
-        if (pool[1]) preloadQuestionAudio(pool[1]);
-        if (pool[2]) preloadQuestionAudio(pool[2]);
-      })
-      .catch(() => {});
+    // the questions too (not their audio: the test shuffles them, and it prepares the one on screen itself)
+    loadChapter(book, ch).catch(() => {});
     prefetch(`${base}/exersare?capitol=${ch}&start=1&nivel=${encodeURIComponent(lv)}`, { ignoreSlowConnection: true });
   }, [book, ch, lv, ready]);
 

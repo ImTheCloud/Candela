@@ -6,7 +6,6 @@ import { player } from '../lib/players';
 import { examOrder, shuffle, type Playable, type QType } from '../lib/questions';
 import { bookHome } from '../lib/books';
 import { loadChapters } from '../lib/load';
-import { preloadQuestionAudio } from '../lib/speech';
 import LevelPicker from './LevelPicker';
 import Quiz from './Quiz';
 import Loader from './Loader';
@@ -66,9 +65,6 @@ function PracticeInner({ book, bookName, chapters, summary }: Props) {
         return;
       }
       const questions = examOrder(shuffle(pool).slice(0, count === 0 ? pool.length : count));
-      if (questions[0]) preloadQuestionAudio(questions[0]);
-      if (questions[1]) preloadQuestionAudio(questions[1]);
-      if (questions[2]) preloadQuestionAudio(questions[2]);
       setQuiz({ key: Date.now(), questions });
     } catch {
       setError('Întrebările nu s-au putut încărca. Verifică conexiunea la internet.');

@@ -312,8 +312,9 @@ service cloud.firestore {
         && request.resource.data.at == request.time;
     }
 
+    // Names of players (children too): seen only by signed-in players, never by anyone on the internet
     match /boards/{book}/players/{key} {
-      allow read: if true;
+      allow read: if isAuthenticated();
       allow delete: if (isAuthenticated() && key.split('~')[0] == request.auth.uid) || admin();
       allow create: if validBookBoard(book, key)
         || (admin() && validBoardName());
@@ -323,7 +324,7 @@ service cloud.firestore {
     }
 
     match /boards/all/players/{key} {
-      allow read: if true;
+      allow read: if isAuthenticated();
       allow delete: if (isAuthenticated() && key.split('~')[0] == request.auth.uid) || admin();
       allow create: if validAllBoard(key)
         || (admin() && validBoardName());

@@ -62,13 +62,20 @@ export default function BibleAudioReader({ bookName = '', ch, title = '', verses
     };
   }, []);
 
-  // The whole chapter is ready before the first tap (ready-made files of a few dozen kilobytes, three at a time,
-  // in reading order): starting, or tapping any verse, plays at once. Not when the phone asks to save data.
+  // On opening, only the start of the chapter is fetched, so the first tap plays at once: most visits only read,
+  // and a whole chapter is some thirty files. Once the reading starts, the rest follows (preloadChapter).
+  // Nothing when the phone asks to save data.
   useEffect(() => {
+    if (savesData()) return;
+    for (const v of verses.slice(0, 2)) preloadText(v);
+  }, [ch, verses]);
+
+  /** The whole chapter, three files at a time in reading order: tapping any verse then plays at once. */
+  const preloadChapter = () => {
     if (savesData()) return;
     preloadText(chapterAnnouncement(ch));
     for (const v of verses) preloadText(v);
-  }, [ch, verses]);
+  };
 
   // Handle autoplay when auto-advancing from the previous chapter
   useEffect(() => {
@@ -97,6 +104,7 @@ export default function BibleAudioReader({ bookName = '', ch, title = '', verses
       verseIdxRef.current = 0;
       highlightVerse(0);
 
+      preloadChapter();
       // Announce the chapter number out loud: "Capitolul X.", then read verse 1 directly
       speakText(chapterAnnouncement(ch), {
         rate: speedRef.current,
@@ -195,6 +203,7 @@ export default function BibleAudioReader({ bookName = '', ch, title = '', verses
   };
 
   const start = (fromIdx = verseIdxRef.current) => {
+    preloadChapter();
     stopSpeaking();
     setIsPlaying(true);
     isPlayingRef.current = true;

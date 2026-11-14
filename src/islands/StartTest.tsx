@@ -3,7 +3,6 @@ import { prefetch } from 'astro:prefetch';
 import { levelLabel } from '../lib/age';
 import { level } from '../lib/level';
 import { loadChapter } from '../lib/load';
-import { preloadQuestionAudio } from '../lib/speech';
 import LevelPicker from './LevelPicker';
 import TestShape from './TestShape';
 import Modal, { CloseButton } from './Modal';
@@ -20,16 +19,10 @@ export default function StartTest({ book, ch, title }: Props) {
   const lv = level.value;
   const href = `/${book}/exersare?capitol=${ch}&start=1&nivel=${encodeURIComponent(lv)}`;
 
-  // the test then starts at once: its page, questions and first audio tracks are preloaded beforehand
+  // the test then starts at once: its page and questions are preloaded beforehand
   useEffect(() => {
-    loadChapter(book, ch)
-      .then((qs) => {
-        const pool = qs.filter((q) => q.age === lv);
-        if (pool[0]) preloadQuestionAudio(pool[0]);
-        if (pool[1]) preloadQuestionAudio(pool[1]);
-        if (pool[2]) preloadQuestionAudio(pool[2]);
-      })
-      .catch(() => {});
+    // the questions too (not their audio: the test shuffles them, and it prepares the one on screen itself)
+    loadChapter(book, ch).catch(() => {});
     prefetch(href, { ignoreSlowConnection: true });
   }, [book, ch, lv]);
 
