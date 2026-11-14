@@ -3,6 +3,7 @@ import { sendMessage } from '../lib/messages';
 import { notifications } from '../lib/notifications';
 import { addChild, formatFirstLast, players, removeChild, sameFirstName, shortName, updateChild, type Player } from '../lib/players';
 import { deleteMyAccount, errorText, profile, profileError, profileLoaded, setParent, signOut, updateAccountName, user } from '../lib/session';
+import { setSfxEnabled, sfxEnabled } from '../lib/sfx';
 import Avatar from './Avatar';
 import PasswordInput from './PasswordInput';
 import SameNameSheet from './SameNameSheet';
@@ -170,6 +171,8 @@ export default function Profile({ books: _books }: { books?: BookInfo[] }) {
           </section>
         )
       )}
+
+      <SoundsSetting />
 
       <ProfileProgressDashboard />
 
@@ -680,5 +683,24 @@ function NewsItem({ href, label, n }: { href: string; label: string; n: number }
       <span class="me-item-badge">{n}</span>
       <span class="me-item-chev"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg></span>
     </a>
+  );
+}
+
+/** The quiz sounds (answer, Verifică, going on) can be switched off for good on this phone. */
+function SoundsSetting() {
+  const [on, setOn] = useState(sfxEnabled);
+  return (
+    <section class="me-sect" aria-label="Sunete">
+      <div class="me-row me-fam">
+        <label class="switch-row">
+          <span>
+            <strong>Sunete în teste</strong>
+            <span class="small muted block">La alegerea răspunsului, la Verifică și la Mai departe.</span>
+          </span>
+          <input type="checkbox" class="switch" role="switch" checked={on}
+            onChange={(e) => { const v = e.currentTarget.checked; setSfxEnabled(v); setOn(v); }} />
+        </label>
+      </div>
+    </section>
   );
 }

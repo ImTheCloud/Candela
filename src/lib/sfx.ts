@@ -1,7 +1,8 @@
 /**
- * The quiz's sounds, made with Web Audio (no file to download): bell, marimba and soft filtered air tones,
+ * The quiz's sounds, made with Web Audio (no file to download): marimba, bell and soft filtered air tones,
  * through a small room reverb and a gentle compressor, so they sound round rather than like bare beeps.
- * Every button of the quiz has one (EVENTS below says which), with or without the voice.
+ * Three moments only, with or without the voice: choosing an answer, Verifică (click then verdict), going on.
+ * They can be switched off in the profile (stored on this phone): then no audio is ever made for them.
  *
  * Measured on iPhone: an <audio> element takes 0.2 to 0.6 s to start a new file (and briefly freezes the page),
  * and a suspended AudioContext about a second to wake. So the sounds are rendered once into memory and played by
@@ -10,30 +11,25 @@
  * follows the silent switch); the voice claims "playback" for itself when it is turned on.
  */
 
-/** The palette: every sound the quiz can make */
-export type Sound =
-  | 'tic' | 'bois' | 'bulle' | 'goutte' | 'clochette' | 'interrupteur'
-  | 'arpege' | 'descente' | 'souffle' | 'carillon' | 'page' | 'pouf';
+type Sound = 'bois' | 'interrupteur' | 'arpege' | 'descente' | 'souffle';
 
-/** What happens in the quiz, and the sound it makes */
-export const EVENTS = {
-  select: 'bois', // an answer is chosen (Adevărat/Fals, A/B/C, a box, a pair)
-  check: 'interrupteur', // Verifică
-  right: 'arpege', // the answer was right
-  wrong: 'descente', // the answer was wrong
-  next: 'souffle', // Mai departe
-  finish: 'carillon', // Vezi rezultatul
-  verse: 'page', // Versetul
-  close: 'pouf', // a window is closed (×)
-  voice: 'bulle', // the voice button
-  speed: 'goutte', // a speed of the voice
-  report: 'tic', // Semnalează
-  back: 'tic', // the back arrow (asks whether to leave)
-  stay: 'pouf', // Rămân
-  exit: 'pouf', // Ieși
-  again: 'clochette', // Reia testul
-} satisfies Record<string, Sound>;
-export type SfxEvent = keyof typeof EVENTS;
+const OFF_KEY = 'candela_sfx_off';
+
+/** false when the player switched the quiz sounds off in the profile */
+export function sfxEnabled(): boolean {
+  try {
+    return typeof localStorage === 'undefined' || localStorage.getItem(OFF_KEY) !== '1';
+  } catch {
+    return true;
+  }
+}
+
+export function setSfxEnabled(on: boolean): void {
+  try {
+    if (on) localStorage.removeItem(OFF_KEY);
+    else localStorage.setItem(OFF_KEY, '1');
+  } catch {}
+}
 
 const buffers: { [K in Sound]?: AudioBuffer } = {};
 let preparing: Promise<void> | null = null;
@@ -42,7 +38,7 @@ let sleep: ReturnType<typeof setTimeout> | null = null;
 
 /** Renders the sounds ahead of time (call on quiz mount); safe to call often. */
 export function prepareSfx(): Promise<void> {
-  if (typeof window === 'undefined') return Promise.resolve();
+  if (typeof window === 'undefined' || !sfxEnabled()) return Promise.resolve();
   if (preparing) return preparing;
   const OAC = window.OfflineAudioContext || (window as any).webkitOfflineAudioContext;
   if (!OAC) return (preparing = Promise.resolve());
@@ -62,7 +58,7 @@ export function prepareSfx(): Promise<void> {
 
 /** Inside a touch: the context is made or woken, and stays running for the next sounds. */
 export function armSfx(): void {
-  if (typeof window === 'undefined') return;
+  if (typeof window === 'undefined' || !sfxEnabled()) return;
   if (!preparing) void prepareSfx();
   if (sleep) clearTimeout(sleep);
   sleep = null;
@@ -88,6 +84,7 @@ export function releaseSfx(): void {
 }
 
 function play(name: Sound, delay = 0) {
+  if (!sfxEnabled()) return;
   armSfx();
   const b = buffers[name];
   if (!ctx || !b) return;
@@ -99,20 +96,20 @@ function play(name: Sound, delay = 0) {
   } catch {}
 }
 
-/** The sound of something that happens in the quiz. */
-export function sfx(event: SfxEvent): void {
-  play(EVENTS[event]);
+/** An answer is chosen (Adevărat/Fals, A/B/C, a box, a pair): one warm wooden note. */
+export function playSelect(): void {
+  play('bois');
 }
 
-/** "Verifică" pressed: its click, then the verdict right after (not on top of it). */
+/** "Verifică" pressed: a soft double click, then the verdict right after (not on top of it). */
 export function playVerdict(right: boolean): void {
-  play(EVENTS.check);
-  play(right ? EVENTS.right : EVENTS.wrong, 0.11);
+  play('interrupteur');
+  play(right ? 'arpege' : 'descente', 0.11);
 }
 
-/** Next question: a long soft whoosh. */
+/** Mai departe / Vezi rezultatul: a long soft whoosh. */
 export function playNext(): void {
-  sfx('next');
+  play('souffle');
 }
 
 /** dry + a little reverb, glued by a soft compressor */
@@ -212,39 +209,13 @@ const MARIMBA: Partial[] = [
   { ratio: 9.9, gain: 0.05, decay: 0.03 },
 ];
 
-/** A tone gliding from one pitch to another (bubbles, drops, soft thumps). */
-function glide(ac: BaseAudioContext, out: AudioNode, at: number, len: number, vol: number, from: number, to: number, type: OscillatorType = 'sine') {
-  const osc = ac.createOscillator();
-  const g = ac.createGain();
-  osc.type = type;
-  osc.frequency.setValueAtTime(from, at);
-  osc.frequency.exponentialRampToValueAtTime(to, at + len);
-  g.gain.setValueAtTime(0.0001, at);
-  g.gain.exponentialRampToValueAtTime(vol, at + 0.006);
-  g.gain.exponentialRampToValueAtTime(0.0001, at + len);
-  osc.connect(g).connect(out);
-  osc.start(at);
-  osc.stop(at + len + 0.02);
-}
-
 type Draw = (ac: BaseAudioContext, out: AudioNode) => void;
 const T = 0.01;
 
 /** Each sound: its length with the reverb tail (s), and how it is made */
 const SOUNDS: Record<Sound, [number, Draw]> = {
-  // a soft tick, like a fingertip on wood
-  tic: [0.7, (ac, out) => {
-    air(ac, out, T, 0.018, 0.16, 3200, 2600, 2.5, 0.1);
-    strike(ac, out, T, 1760, 0.08, MARIMBA, { lowpass: 3000 });
-  }],
   // one warm marimba note
   bois: [0.9, (ac, out) => strike(ac, out, T, 784, 0.3, MARIMBA)],
-  // a round bubble rising
-  bulle: [0.7, (ac, out) => glide(ac, out, T, 0.09, 0.3, 380, 950)],
-  // a water drop falling
-  goutte: [0.7, (ac, out) => glide(ac, out, T, 0.11, 0.28, 1500, 520)],
-  // one small glass bell
-  clochette: [1.4, (ac, out) => strike(ac, out, T, 1318.51, 0.22, BELL)],
   // a soft double click, like a switch
   interrupteur: [0.7, (ac, out) => {
     air(ac, out, T, 0.025, 0.12, 3000, 2500, 2, 0.1);
@@ -261,19 +232,4 @@ const SOUNDS: Record<Sound, [number, Draw]> = {
   }],
   // a long soft whoosh
   souffle: [1.6, (ac, out) => air(ac, out, T, 0.38, 0.1, 400, 5000, 1, 0.55)],
-  // a little victory chime: rising bells ending on a held chord
-  carillon: [2.8, (ac, out) => {
-    [783.99, 1046.5, 1318.51, 1567.98].forEach((f, k) => strike(ac, out, T + k * 0.09, f, 0.18, BELL));
-    [1046.5, 1318.51, 2093].forEach((f) => strike(ac, out, T + 0.42, f, 0.14, BELL));
-  }],
-  // a page turned: two quick paper rustles
-  page: [0.9, (ac, out) => {
-    air(ac, out, T, 0.12, 0.13, 900, 3500, 0.9, 0.4);
-    air(ac, out, T + 0.1, 0.09, 0.08, 2500, 5000, 0.9, 0.3);
-  }],
-  // a soft felt thump
-  pouf: [0.7, (ac, out) => {
-    glide(ac, out, T, 0.14, 0.45, 190, 85);
-    air(ac, out, T, 0.05, 0.05, 600, 300, 1, 0.2);
-  }],
 };
