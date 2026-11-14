@@ -62,27 +62,13 @@ export default function BibleAudioReader({ bookName = '', ch, title = '', verses
     };
   }, []);
 
-  // Verse 1 is ready before the first tap; the rest of the chapter is buffered one verse after another
-  // only once the reading has started (opening a chapter never downloads all of it)
+  // The whole chapter is ready before the first tap (ready-made files of a few dozen kilobytes, three at a time,
+  // in reading order): starting, or tapping any verse, plays at once. Not when the phone asks to save data.
   useEffect(() => {
     if (savesData()) return;
-    if (verses[0]) preloadText(verses[0]);
+    preloadText(chapterAnnouncement(ch));
+    for (const v of verses) preloadText(v);
   }, [ch, verses]);
-
-  useEffect(() => {
-    if (!isPlaying || savesData()) return;
-    let cancelled = false;
-    let k = 1;
-    const preloadNext = () => {
-      if (cancelled) return;
-      if (k >= verses.length) {
-        return;
-      }
-      preloadText(verses[k++]).finally(preloadNext);
-    };
-    preloadNext();
-    return () => { cancelled = true; };
-  }, [isPlaying, ch, verses]);
 
   // Handle autoplay when auto-advancing from the previous chapter
   useEffect(() => {

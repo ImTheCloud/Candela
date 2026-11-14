@@ -14,6 +14,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { MsEdgeTTS, OUTPUT_FORMAT } from 'msedge-tts';
 import { cutReason } from '../api/_tts-core.mjs';
+import { trimFile } from './trim-audio.mjs';
 import { audioFileName, buildQuestionSpeech, chapterAnnouncement, cleanSpeechText, DEFAULT_VOICE } from '../src/lib/speech-text.ts';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -27,6 +28,7 @@ const LIMIT = opt('limit', Infinity);
 const JOBS = opt('jobs', 4);
 const SYNTH_TIMEOUT_MS = 30000;
 const MAX_TRIES = 6;
+let warnedTrim = false;
 
 /** Every text the site can say, cleaned exactly as speech.ts cleans it before choosing its file. */
 function collectTexts() {
@@ -118,6 +120,11 @@ async function main() {
           const tmp = join(OUT, `${name}.tmp`);
           writeFileSync(tmp, audio);
           renameSync(tmp, join(OUT, name));
+          // the silence Edge puts around the voice is cut, so it starts at once (needs ffmpeg)
+          await trimFile(join(OUT, name)).catch((e) => {
+            if (!warnedTrim) console.warn(`\nSilence not trimmed (is ffmpeg installed?): ${e?.message || e}`);
+            warnedTrim = true;
+          });
           ok = true;
         } catch (err) {
           // a hung or refused socket: a new connection, and a longer wait each time (Edge limits the rate)
