@@ -8,7 +8,7 @@ import ts from 'typescript';
 const VERSE = 'Da, împăratul va asculta pe roaba sa ca să scape din mâna celor ce caută să ne nimicească, pe mine și pe fiul meu, din moștenirea lui Dumnezeu.';
 
 /** speech.ts in a sandbox: a fake audio element, a fake network and a clock moved by hand */
-async function setup({ respond } = {}) {
+async function setup({ respond, audioBase = '' } = {}) {
   let now = 0;
   const timers = [];
   let nextId = 1;
@@ -61,7 +61,7 @@ async function setup({ respond } = {}) {
   class FakeDate extends Date { static now() { return now; } }
   const context = vm.createContext({
     window: {}, navigator: {}, localStorage: { getItem: () => null, setItem() {} },
-    Audio: FakeAudio, Blob, AbortController, Date: FakeDate, console: { warn() {}, error() {}, log() {} },
+    Audio: FakeAudio, Blob, AbortController, TextEncoder, Date: FakeDate, console: { warn() {}, error() {}, log() {} },
     btoa: (s) => Buffer.from(s, 'binary').toString('base64'),
     setTimeout: (fn, ms) => addTimer(fn, ms), clearTimeout: clearTimer,
     setInterval: (fn, ms) => addTimer(fn, ms, ms), clearInterval: clearTimer,
@@ -73,12 +73,20 @@ async function setup({ respond } = {}) {
       return { ok: r.ok, status: r.ok ? 200 : 502, blob: async () => ({ size: r.size ?? 0, type: 'audio/mpeg' }) };
     },
   });
-  const source = await readFile(new URL('../src/lib/speech.ts', import.meta.url), 'utf8');
-  const compiled = ts.transpileModule(source, { compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2022 } }).outputText;
-  const m = new vm.SourceTextModule(compiled, { context });
-  await m.link(() => { throw new Error('speech.ts imports nothing at run time'); });
+  const load = async (file) => {
+    const source = await readFile(new URL(`../src/lib/${file}`, import.meta.url), 'utf8');
+    const compiled = ts.transpileModule(source, { compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2022 } }).outputText;
+    return new vm.SourceTextModule(compiled, { context, initializeImportMeta: (meta) => { meta.env = { PUBLIC_AUDIO_BASE: audioBase }; } });
+  };
+  const text = await load('speech-text.ts');
+  await text.link(() => { throw new Error('speech-text.ts imports nothing at run time'); });
+  const m = await load('speech.ts');
+  await m.link((spec) => {
+    if (spec === './speech-text') return text;
+    throw new Error(`speech.ts imports only speech-text at run time, not ${spec}`);
+  });
   await m.evaluate();
-  return { api: m.namespace, fetches, tick, flush, audio: () => audios[0] };
+  return { api: m.namespace, textApi: text.namespace, fetches, tick, flush, audio: () => audios[0] };
 }
 
 function listen() {
@@ -194,4 +202,43 @@ test('a newer text silences the older one', async () => {
   a.meta(1.2); a.start(); a.finish();
   assert.deepEqual(first.log, []);
   assert.deepEqual(second.log, ['start', 'end']);
+});
+
+test('a ready-made recording is played from the CDN, with no synthesis', async () => {
+  const s = await setup({ audioBase: 'https://audio.example/' });
+  const l = listen();
+  s.api.speakText(VERSE, l.options);
+  await s.tick(0);
+  assert.equal(s.fetches.length, 1);
+  assert.match(s.fetches[0].url, /^https:\/\/audio\.example\/[0-9a-f]{16}\.mp3$/);
+  const a = s.audio();
+  assert.equal(a.src, 'blob:1');
+  a.meta(9.2); a.start(); a.finish();
+  assert.deepEqual(l.log, ['start', 'end']);
+});
+
+test('a recording missing from the CDN is synthesised, and the CDN is not asked for it again', async () => {
+  const s = await setup({ audioBase: 'https://audio.example', respond: (url) => ({ ok: !url.startsWith('https://audio.example'), size: 55000 }) });
+  const l = listen();
+  s.api.speakText(VERSE, l.options);
+  await s.tick(0);
+  assert.equal(s.fetches.length, 2);
+  assert.match(s.fetches[1].url, /^\/api\/tts\?/);
+  const a = s.audio();
+  a.meta(9.2); a.start(); a.finish();
+  assert.deepEqual(l.log, ['start', 'end']);
+  // already in memory: nothing more is fetched
+  s.api.speakText(VERSE, listen().options);
+  await s.tick(0);
+  assert.equal(s.fetches.length, 2);
+});
+
+test('the file name follows the spoken text: an edited question gets a new recording', async () => {
+  const s = await setup();
+  const { audioFileName, buildQuestionSpeech, cleanSpeechText } = s.textApi;
+  const q = { t: 'one', q: 'Cine era Elcana?', opts: ['Un levit', 'Un rege'] };
+  const a = audioFileName(cleanSpeechText(buildQuestionSpeech(q)));
+  assert.match(a, /^[0-9a-f]{16}\.mp3$/);
+  assert.equal(audioFileName(cleanSpeechText(buildQuestionSpeech({ ...q }))), a);
+  assert.notEqual(audioFileName(cleanSpeechText(buildQuestionSpeech({ ...q, opts: ['Un levit', 'Un preot'] }))), a);
 });

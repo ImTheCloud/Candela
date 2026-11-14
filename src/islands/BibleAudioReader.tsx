@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
-import { getSavedSpeakingSpeed, isSpeechSupported, pauseSpeaking, preloadText, resumeSpeaking, savesData, setMediaSession, setSpeakingSpeed, speakText, stopSpeaking } from '../lib/speech';
+import { chapterAnnouncement, getSavedSpeakingSpeed, isSpeechSupported, pauseSpeaking, preloadText, resumeSpeaking, savesData, setMediaSession, setSpeakingSpeed, speakText, stopSpeaking } from '../lib/speech';
 import FloatingAudioButton from './FloatingAudioButton';
 
 interface Props {
@@ -112,7 +112,7 @@ export default function BibleAudioReader({ bookName = '', ch, title = '', verses
       highlightVerse(0);
 
       // Announce the chapter number out loud: "Capitolul X.", then read verse 1 directly
-      speakText(`Capitolul ${ch}.`, {
+      speakText(chapterAnnouncement(ch), {
         rate: speedRef.current,
         onEnd: () => {
           if (!isPlayingRef.current) return;

@@ -1,4 +1,7 @@
 import type { Playable } from './questions';
+import { audioFileName, buildQuestionSpeech, cleanSpeechText, DEFAULT_VOICE } from './speech-text';
+
+export { buildQuestionSpeech, chapterAnnouncement, cleanSpeechText } from './speech-text';
 
 export function isSpeechSupported(): boolean {
   if (typeof window === 'undefined') return false;
@@ -84,6 +87,20 @@ const minBytes = (clean: string) => Math.max(2000, clean.length * MIN_BYTES_PER_
 const minSeconds = (clean: string) => clean.length * MIN_SECONDS_PER_CHAR;
 /** Longer than the server's own 20 s limit on a synthesis */
 const FETCH_TIMEOUT_MS = 25000;
+/** A ready-made file is a few dozen kilobytes on a CDN: past this, the server is asked instead */
+const STATIC_TIMEOUT_MS = 8000;
+
+/**
+ * Where the ready-made recordings are (scripts/generate-audio.mjs made one per verse and per question).
+ * Unset: everything is synthesised by /api/tts as before.
+ */
+const AUDIO_BASE = String(import.meta.env?.PUBLIC_AUDIO_BASE ?? '').replace(/\/+$/, '');
+/** Ready-made files that could not be had (a question added since the last generation): the server is asked at once */
+const missingStatic = new Set<string>();
+
+function staticUrl(clean: string, voice: string): string | null {
+  return AUDIO_BASE ? `${AUDIO_BASE}/${audioFileName(clean, voice)}` : null;
+}
 /** No sound coming out this long after play(), or the position frozen this long: the file is reloaded */
 const START_TIMEOUT_MS = 8000;
 const STALL_TIMEOUT_MS = 8000;
@@ -91,9 +108,9 @@ const STALL_TIMEOUT_MS = 8000;
 const MAX_REGENERATIONS = 3;
 
 /** Downloads the whole file and checks it before anything is played: an audio element is never given the network URL. */
-async function fetchAudio(url: string, clean: string, cache: RequestCache = 'default'): Promise<string> {
+async function fetchAudio(url: string, clean: string, cache: RequestCache = 'default', timeoutMs = FETCH_TIMEOUT_MS): Promise<string> {
   const ctrl = typeof AbortController !== 'undefined' ? new AbortController() : null;
-  const timer = ctrl ? setTimeout(() => ctrl.abort(), FETCH_TIMEOUT_MS) : null;
+  const timer = ctrl ? setTimeout(() => ctrl.abort(), timeoutMs) : null;
   try {
     const res = await fetch(url, { cache, signal: ctrl?.signal });
     if (!res.ok) throw new Error(`TTS status ${res.status}`);
@@ -103,6 +120,20 @@ async function fetchAudio(url: string, clean: string, cache: RequestCache = 'def
   } finally {
     if (timer) clearTimeout(timer);
   }
+}
+
+/** The ready-made recording when there is one (instant, from the CDN), else a synthesis by /api/tts. */
+async function fetchBest(clean: string, voice: string): Promise<string> {
+  const ready = staticUrl(clean, voice);
+  if (ready && !missingStatic.has(ready)) {
+    try {
+      return await fetchAudio(ready, clean, 'default', STATIC_TIMEOUT_MS);
+    } catch (err) {
+      missingStatic.add(ready);
+      console.warn('Ready-made audio missing, synthesising it:', (err as any)?.message || err);
+    }
+  }
+  return fetchAudio(ttsUrl(clean, voice), clean);
 }
 
 function keep(key: string, blobUrl: string): void {
@@ -140,7 +171,7 @@ function loadAudio(clean: string, voice: string, urgent: boolean): Promise<strin
     if (urgent) preloadQueue.get(key)?.();
     return running;
   }
-  const task = () => fetchAudio(ttsUrl(clean, voice), clean).then((blobUrl) => {
+  const task = () => fetchBest(clean, voice).then((blobUrl) => {
     keep(key, blobUrl);
     return blobUrl;
   });
@@ -295,21 +326,13 @@ export function isCurrentlySpeaking(): boolean {
   return !!(activeAudio && !activeAudio.paused && !activeAudio.ended);
 }
 
-export function cleanSpeechText(s: unknown): string {
-  return String(s ?? '')
-    .replace(/[*_#`]/g, '')
-    .replace(/["'„”«»“”’‘‚‛]/g, '')
-    .replace(/\s+/g, ' ')
-    .trim();
-}
-
 /**
  * Preloads audio in the background using fetch + blob URL.
  * Works seamlessly across mobile browsers (iOS Safari, Android Chrome) which block
  * media element autoplay/preload without user gestures, but allow background fetch.
  * Resolves with the blob URL, or '' when the file could not be had (it is asked again when it is played).
  */
-export function preloadText(text: string, voice = 'ro-RO-AlinaNeural'): Promise<string> {
+export function preloadText(text: string, voice = DEFAULT_VOICE): Promise<string> {
   if (typeof window === 'undefined') return Promise.resolve('');
   const clean = cleanSpeechText(text);
   if (!clean) return Promise.resolve('');
@@ -348,7 +371,7 @@ export function speakText(text: string, options: SpeakOptions = {}): () => void 
   let cancelled = false;
   try {
     claimPlaybackSession();
-    const voice = options.voiceName || 'ro-RO-AlinaNeural';
+    const voice = options.voiceName || DEFAULT_VOICE;
     const rate = options.rate ?? currentPlaybackRate;
     currentPlaybackRate = rate;
 
@@ -532,55 +555,6 @@ export function speakText(text: string, options: SpeakOptions = {}): () => void 
     }
     return () => {};
   }
-}
-
-/**
- * Builds clear, natural Romanian spoken text for a quiz question and its options.
- */
-export function buildQuestionSpeech(q: Playable): string {
-  const parts: string[] = [];
-
-  // Question prompt
-  if (q.t === 'match') {
-    // Only speak the single, clean instruction once (no duplicate sentence)
-    parts.push('Asociază perechile din stânga și din dreapta.');
-  } else {
-    parts.push(cleanSpeechText(q.q));
-  }
-
-  // Question options
-  switch (q.t) {
-    case 'tf':
-      // For true/false: natural Romanian prompt, no robotic "varianta 1 / varianta 2"
-      parts.push('Adevărat sau fals.');
-      break;
-
-    case 'one': {
-      const letters = ['A', 'B', 'C', 'D', 'E'];
-      q.opts.forEach((opt, idx) => {
-        const letter = letters[idx] || String(idx + 1);
-        parts.push(`Răspunsul ${letter}: ${cleanSpeechText(opt)}.`);
-      });
-      break;
-    }
-
-    case 'multi': {
-      const letters = ['A', 'B', 'C', 'D', 'E'];
-      q.opts.forEach((opt, idx) => {
-        const letter = letters[idx] || String(idx + 1);
-        parts.push(`Răspunsul ${letter}: ${cleanSpeechText(opt)}.`);
-      });
-      parts.push('Sau: Niciun răspuns corect.');
-      parts.push('Pot fi corecte: niciuna, una, două sau trei variante.');
-      break;
-    }
-
-    case 'match':
-      // Handled above in question prompt to avoid repeating two phrases
-      break;
-  }
-
-  return parts.join('\n');
 }
 
 /**
