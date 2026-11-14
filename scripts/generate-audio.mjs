@@ -1,15 +1,15 @@
 #!/usr/bin/env node
 // Records, ahead of time, everything Candela reads out loud: every verse, every "Capitolul N." and every
-// quiz question with its options. One MP3 per text in audio-out/ (not in git), named by
+// quiz question with its options. One MP3 per text in public/audio/, served by Vercel with the site and named by
 // audioFileName() from src/lib/speech-text.ts, the same function the site uses to find it.
 // Each file is checked like /api/tts checks a synthesis (cutReason): a cut file is made again.
 //
-// Run again after questions or verses change: only the missing files are made.
+// Run again after questions or verses change, then commit public/audio/: only the missing files are made,
+// and the recordings of texts that no longer exist (an edited question) are deleted.
 //   node scripts/generate-audio.mjs              all books
 //   node scripts/generate-audio.mjs --limit 20   a quick try
 //   node scripts/generate-audio.mjs --jobs 4     parallel syntheses (default 4)
-// Then send audio-out/ to the CDN (scripts/upload-audio.mjs) and set PUBLIC_AUDIO_BASE.
-import { readFileSync, readdirSync, existsSync, mkdirSync, writeFileSync, renameSync, statSync } from 'node:fs';
+import { readFileSync, readdirSync, existsSync, mkdirSync, writeFileSync, renameSync, statSync, unlinkSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { MsEdgeTTS, OUTPUT_FORMAT } from 'msedge-tts';
@@ -17,7 +17,7 @@ import { cutReason } from '../api/_tts-core.mjs';
 import { audioFileName, buildQuestionSpeech, chapterAnnouncement, cleanSpeechText, DEFAULT_VOICE } from '../src/lib/speech-text.ts';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
-const OUT = join(root, 'audio-out');
+const OUT = join(root, 'public', 'audio');
 const args = process.argv.slice(2);
 const opt = (name, def) => {
   const i = args.indexOf(`--${name}`);
@@ -99,8 +99,10 @@ async function main() {
   const missing = [...all].filter(([name]) => !existsSync(join(OUT, name)) || statSync(join(OUT, name)).size === 0);
   const todo = missing.slice(0, LIMIT);
   console.log(`${all.size} texts, ${all.size - missing.length} already recorded, ${todo.length} to record now with ${JOBS} jobs`);
-  // the list of every file the site may ask for: the upload sends exactly these
-  writeFileSync(join(OUT, 'index.json'), JSON.stringify([...all.keys()].sort()));
+  // recordings of texts the site no longer says (a question edited or removed): not kept in the site
+  const stale = readdirSync(OUT).filter((f) => (f.endsWith('.mp3') && !all.has(f)) || f.endsWith('.tmp'));
+  for (const f of stale) unlinkSync(join(OUT, f));
+  if (stale.length) console.log(`${stale.length} old recordings deleted`);
 
   let done = 0, failed = 0;
   const started = Date.now();

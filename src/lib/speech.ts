@@ -91,10 +91,10 @@ const FETCH_TIMEOUT_MS = 25000;
 const STATIC_TIMEOUT_MS = 8000;
 
 /**
- * Where the ready-made recordings are (scripts/generate-audio.mjs made one per verse and per question).
- * Unset: everything is synthesised by /api/tts as before.
+ * Where the ready-made recordings are: public/audio/, one per verse and per question (scripts/generate-audio.mjs),
+ * served by Vercel with the site. PUBLIC_AUDIO_BASE can point elsewhere; set to '' everything is synthesised by /api/tts.
  */
-const AUDIO_BASE = String(import.meta.env?.PUBLIC_AUDIO_BASE ?? '').replace(/\/+$/, '');
+const AUDIO_BASE = String(import.meta.env?.PUBLIC_AUDIO_BASE ?? '/audio').replace(/\/+$/, '');
 /** Ready-made files that could not be had (a question added since the last generation): the server is asked at once */
 const missingStatic = new Set<string>();
 
