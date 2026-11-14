@@ -3,18 +3,21 @@
  * Bell and marimba tones built from a few partials, plus soft filtered air,
  * through a small room reverb and a gentle compressor, so they sound round rather than like bare beeps.
  *
- * They are rendered once, offline, into small WAV files played on the voice's own <audio> element (they are
- * heard only by someone listening to the voice). No live AudioContext is kept: on iPhone a running one switches
- * the page to an "ambient" audio session (the voice could go silent), and waking a suspended one takes about a
- * second. A second <audio> element is not used either: switching players took about a second on iPhone too.
+ * Measured on iPhone: an <audio> element takes 0.2 to 0.6 s to start a new file (and briefly freezes the page),
+ * and a suspended AudioContext takes about a second to wake. So the sounds are rendered once into memory, and
+ * one AudioContext is started by the tap that turns the voice on and kept running while the quiz is played:
+ * a sound then starts within a few milliseconds of the tap. The voice keeps its own <audio> element, in the
+ * "playback" session claimed before the context is made (a context alone would switch the page to "ambient").
  */
 
-import { playCue } from './speech';
+import { claimPlaybackSession } from './speech';
 
-type Name = 'check' | 'right' | 'wrong' | 'next';
+type Name = 'right' | 'wrong' | 'next';
 
-const urls: { [K in Name]?: string } = {};
+const buffers: { [K in Name]?: AudioBuffer } = {};
 let preparing: Promise<void> | null = null;
+let ctx: AudioContext | null = null;
+let sleep: ReturnType<typeof setTimeout> | null = null;
 
 /** Renders the sounds ahead of time (call on quiz mount); safe to call often. */
 export function prepareSfx(): Promise<void> {
@@ -27,9 +30,7 @@ export function prepareSfx(): Promise<void> {
       try {
         const ac: OfflineAudioContext = new OAC(2, Math.ceil(44100 * len), 44100);
         draw(ac, makeBus(ac));
-        const buf = await ac.startRendering();
-        const url = URL.createObjectURL(new Blob([wav(buf)], { type: 'audio/wav' }));
-        urls[name] = url;
+        buffers[name] = await ac.startRendering();
       } catch {
         /* this sound stays silent */
       }
@@ -38,36 +39,42 @@ export function prepareSfx(): Promise<void> {
   return preparing;
 }
 
-/** How much of a sound the next reading waits for: the whoosh is heard before the question it announces */
-const HOLD: { [K in Name]?: number } = { next: 380 };
-
-function play(name: Name) {
+/** Inside a tap (the voice button, Verifică): the context is made or woken, and stays running for the next sounds. */
+export function armSfx(): void {
   if (typeof window === 'undefined') return;
   if (!preparing) void prepareSfx();
-  const url = urls[name];
-  if (url) playCue(url, HOLD[name]);
+  if (sleep) clearTimeout(sleep);
+  sleep = null;
+  try {
+    if (!ctx) {
+      const AC = window.AudioContext || (window as any).webkitAudioContext;
+      if (!AC) return;
+      claimPlaybackSession();
+      ctx = new AC({ latencyHint: 'interactive' });
+    }
+    if (ctx.state !== 'running') ctx.resume().catch(() => {});
+  } catch {}
 }
 
-/** 16-bit PCM WAV from a rendered buffer */
-function wav(b: AudioBuffer): ArrayBuffer {
-  const ch = b.numberOfChannels, n = b.length, rate = b.sampleRate;
-  const out = new ArrayBuffer(44 + n * ch * 2);
-  const v = new DataView(out);
-  const str = (o: number, t: string) => { for (let k = 0; k < t.length; k++) v.setUint8(o + k, t.charCodeAt(k)); };
-  str(0, 'RIFF'); v.setUint32(4, 36 + n * ch * 2, true); str(8, 'WAVE');
-  str(12, 'fmt '); v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, ch, true);
-  v.setUint32(24, rate, true); v.setUint32(28, rate * ch * 2, true); v.setUint16(32, ch * 2, true); v.setUint16(34, 16, true);
-  str(36, 'data'); v.setUint32(40, n * ch * 2, true);
-  const data = Array.from({ length: ch }, (_, c) => b.getChannelData(c));
-  let o = 44;
-  for (let i = 0; i < n; i++) {
-    for (let c = 0; c < ch; c++) {
-      const x = Math.max(-1, Math.min(1, data[c][i]));
-      v.setInt16(o, x < 0 ? x * 0x8000 : x * 0x7fff, true);
-      o += 2;
-    }
-  }
-  return out;
+/** The quiz is over or the voice is off: the context sleeps and gives the phone's audio back, once the last sound is over. */
+export function releaseSfx(): void {
+  if (!ctx || sleep) return;
+  sleep = setTimeout(() => {
+    sleep = null;
+    if (ctx && ctx.state === 'running') ctx.suspend().catch(() => {});
+  }, 2500);
+}
+
+function play(name: Name) {
+  armSfx();
+  const b = buffers[name];
+  if (!ctx || !b) return;
+  try {
+    const src = ctx.createBufferSource();
+    src.buffer = b;
+    src.connect(ctx.destination);
+    src.start();
+  } catch {}
 }
 
 /** dry + a little reverb, glued by a soft compressor */
@@ -191,7 +198,6 @@ const SOUNDS: [Name, number, Draw][] = [
     strike(ac, out, V, 311.13, 0.32, MARIMBA, { lowpass: 1400 }); // D#4
     strike(ac, out, V + 0.14, 233.08, 0.36, MARIMBA, { lowpass: 1100 }); // A#3
   }],
-  ['check', 1.2, drawCheck],
   // next question: a long soft whoosh
   ['next', 1.6, (ac, out) => air(ac, out, T, 0.38, 0.1, 400, 5000, 1, 0.55)],
 ];
@@ -201,10 +207,7 @@ export function playVerdict(right: boolean) {
   play(right ? 'right' : 'wrong');
 }
 
-export function playCheck() {
-  play('check');
-}
-
+/** Next question: a long soft whoosh. */
 export function playNext() {
   play('next');
 }

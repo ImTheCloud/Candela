@@ -218,28 +218,6 @@ let pausedByUser = false;
 // The text being read: what resume and stop act on
 let current: { resume: () => void; dispose: () => void } | null = null;
 
-// End (Date.now()) of a game sound the next reading waits for: the whoosh is not cut by the question it announces
-let cueUntil = 0;
-
-/**
- * A short game sound (the quiz's click, verdict, whoosh), played on the voice's own element: it is already allowed
- * to play and already holds the phone's audio, so the sound starts with the tap. A second element would make
- * iPhone switch players first, which took about a second while the voice was on. `holdMs`: the next reading
- * starts only after this much of the sound.
- */
-export function playCue(url: string, holdMs = 0): void {
-  if (typeof window === 'undefined' || typeof Audio === 'undefined' || !url) return;
-  stopSpeaking();
-  try {
-    const audio = sharedAudio || (sharedAudio = new Audio());
-    detach(audio);
-    audio.src = url;
-    audio.playbackRate = 1;
-    audio.play()?.catch(() => {});
-    cueUntil = holdMs > 0 ? Date.now() + holdMs : 0;
-  } catch {}
-}
-
 let silence: string | null = null;
 /** 50 ms of silent WAV: played at once inside the tap while the real file downloads, so iOS lets it play afterwards */
 function silentClip(): string {
@@ -538,33 +516,21 @@ export function speakText(text: string, options: SpeakOptions = {}): () => void 
       dispose,
     };
 
-    // a game sound still sounding on this element (the whoosh before the next question): the reading follows it
-    const holdUntil = cueUntil;
-    cueUntil = 0;
-    const playAfterCue = (url: string) => {
-      const w = holdUntil - Date.now();
-      if (w > 0) setTimeout(() => play(url), w);
-      else play(url);
-    };
-
     const key = `${voice}:${clean}`;
     const cached = readyUrlCache.get(key);
     if (cached) {
       // 1. already downloaded and checked: plays at once (and is now the most recently used)
       readyUrlCache.delete(key);
       readyUrlCache.set(key, cached);
-      playAfterCue(cached);
+      play(cached);
     } else {
       // 2. downloaded first (Safari plays a network URL badly: the server streams it without byte ranges).
-      // Meanwhile a silent clip is started inside the tap, so iOS lets the real file play when it arrives
-      // (not needed, and it would cut the sound, when a game sound started inside the tap is still playing).
-      if (holdUntil <= Date.now()) {
-        detach(audio);
-        audio.src = silentClip();
-        audio.play()?.catch(() => {});
-      }
+      // Meanwhile a silent clip is started inside the tap, so iOS lets the real file play when it arrives.
+      detach(audio);
+      audio.src = silentClip();
+      audio.play()?.catch(() => {});
       loadAudio(clean, voice, true)
-        .then((url) => playAfterCue(url))
+        .then((url) => play(url))
         .catch((err) => recover(err));
     }
 

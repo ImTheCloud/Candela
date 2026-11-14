@@ -10,7 +10,7 @@ import { levelLabel } from '../lib/age';
 import ReportButton from './ReportButton';
 import { getSavedSpeakingSpeed, isSpeechSupported, preloadQuestionAudio, setMediaSession, setSpeakingSpeed, speakQuestion, stopSpeaking, pauseSpeaking, resumeSpeaking } from '../lib/speech';
 import FloatingAudioButton from './FloatingAudioButton';
-import { playNext, playVerdict, prepareSfx } from '../lib/sfx';
+import { armSfx, playNext, playVerdict, prepareSfx, releaseSfx } from '../lib/sfx';
 
 export interface QuizProps {
   book: string;
@@ -144,6 +144,8 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
   const setAnswer = (a: Answer) => setAnswers(answers.map((x, k) => (k === i ? a : x)));
 
   const handleToggleVoice = () => {
+    // this tap starts the game sounds' audio too, so Verifică sounds at once later
+    armSfx();
     if (isSpeaking && !isPaused) {
       pauseSpeaking();
       setIsPaused(true);
@@ -265,8 +267,14 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
     return () => {
       stopSpeaking();
       setMediaSession(null);
+      releaseSfx();
     };
   }, []);
+
+  // the game sounds keep the phone's audio only while someone listens to the quiz
+  useEffect(() => {
+    if (!autoVoice || done) releaseSfx();
+  }, [autoVoice, done]);
 
   function check() {
     // the game sounds go with the voice: only someone listening hears them
