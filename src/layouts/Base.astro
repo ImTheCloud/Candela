@@ -133,6 +133,10 @@ const fullTitle = title === 'Candela' ? title : `${title} – Candela`;
   import '../lib/session';
   import { stopSpeaking } from '../lib/speech';
 
+  // iPhone shows a button's pressed look (:active) only when the page listens to touches: without it a tap
+  // looks dead until the click arrives, as if the button had not been pressed
+  document.addEventListener('touchstart', () => {}, { passive: true });
+
   // Stop speaking immediately on any page transition (View Transitions / ClientRouter)
   document.addEventListener('astro:before-preparation', () => {
     stopSpeaking();
