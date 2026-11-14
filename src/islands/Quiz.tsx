@@ -10,7 +10,7 @@ import { levelLabel } from '../lib/age';
 import ReportButton from './ReportButton';
 import { getSavedSpeakingSpeed, isSpeechSupported, preloadQuestionAudio, setMediaSession, setSpeakingSpeed, speakQuestion, stopSpeaking, pauseSpeaking, resumeSpeaking } from '../lib/speech';
 import FloatingAudioButton from './FloatingAudioButton';
-import { armSfx, playNext, playVerdict, prepareSfx, releaseSfx } from '../lib/sfx';
+import { armSfx, playNext, playVerdict, prepareSfx, releaseSfx, sfx, type SfxEvent } from '../lib/sfx';
 
 export interface QuizProps {
   book: string;
@@ -25,6 +25,16 @@ export interface QuizProps {
   backHref: string;
   onAgain?: () => void;
 }
+
+/** The sound of each kind of button in the quiz (the first that matches); any other button makes the 'report' tick */
+const SFX_OF: [string, SfxEvent][] = [
+  ['.q-body button', 'select'],
+  ['.verse-pill, .verse-btn', 'verse'],
+  ['.icon-btn', 'close'],
+  ['.fab-main-btn', 'voice'],
+  ['.fab-arc-pill', 'speed'],
+  ['.info-btn', 'report'],
+];
 
 /** Every set of questions is played the same way: a chapter test, the mock exam, a real exam, the mistakes. */
 export default function Quiz({ book, bookName, questions, scoreId, record = true, points = true, backHref, onAgain }: QuizProps) {
@@ -130,6 +140,7 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
       if (!a || e.button !== 0) return;
       e.preventDefault();
       e.stopPropagation();
+      sfx('back');
       const back = a.matches('a[data-back]');
       setLeaveTo(() => () => {
         leaving.current = true;
@@ -144,8 +155,6 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
   const setAnswer = (a: Answer) => setAnswers(answers.map((x, k) => (k === i ? a : x)));
 
   const handleToggleVoice = () => {
-    // this tap starts the game sounds' audio too, so Verifică sounds at once later
-    armSfx();
     if (isSpeaking && !isPaused) {
       pauseSpeaking();
       setIsPaused(true);
@@ -271,14 +280,33 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
     };
   }, []);
 
-  // the game sounds keep the phone's audio only while someone listens to the quiz
+  // Every button of the quiz has its sound, with or without the voice. The first touch wakes the sounds' audio,
+  // so it is running when the click arrives. Verifică and Mai departe make theirs in check() and next().
   useEffect(() => {
-    if (!autoVoice || done) releaseSfx();
-  }, [autoVoice, done]);
+    const wake = () => armSfx();
+    const onClick = (e: MouseEvent) => {
+      const el = (e.target as Element).closest?.('button, a');
+      if (!el || (el as HTMLButtonElement).disabled) return;
+      const own = el.getAttribute('data-sfx');
+      if (own !== null) {
+        if (own) sfx(own as SfxEvent);
+        return;
+      }
+      if (el.closest('header.top')) return; // the back arrow: its own handler (it asks first)
+      for (const [sel, ev] of SFX_OF) {
+        if (el.matches(sel)) return sfx(ev);
+      }
+      sfx('report');
+    };
+    addEventListener('pointerdown', wake, true);
+    addEventListener('click', onClick, true);
+    return () => {
+      removeEventListener('pointerdown', wake, true);
+      removeEventListener('click', onClick, true);
+    };
+  }, []);
 
   function check() {
-    // the game sounds go with the voice: only someone listening hears them
-    const listening = autoVoiceRef.current;
     stopSpeaking();
     // paused audio is dropped with the question it belonged to; a pause also means "stop reading the next ones"
     if (isPausedRef.current) {
@@ -288,12 +316,13 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
     setIsSpeaking(false);
     setIsPaused(false);
     const gr = grade(q, answers[i]);
-    if (listening) playVerdict(gr.right);
+    playVerdict(gr.right);
     setGrades(grades.map((x, k) => (k === i ? gr : x)));
   }
 
   function next() {
-    if (autoVoiceRef.current) playNext();
+    if (i < questions.length - 1) playNext();
+    else sfx('finish');
     if (i < questions.length - 1) return setI(i + 1);
     // nothing counts until the whole test is finished
     if (grades.every(Boolean)) {
@@ -477,7 +506,7 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
         {g ? (
           <Verdict g={g} last={i === questions.length - 1} onVerse={() => setVerse(true)} onNext={next} />
         ) : (
-          <button class="btn btn-primary btn-block btn-3d" disabled={!isAnswered(answers[i])} onClick={check}>Verifică</button>
+          <button class="btn btn-primary btn-block btn-3d" data-sfx="" disabled={!isAnswered(answers[i])} onClick={check}>Verifică</button>
         )}
       </div>
 
@@ -489,9 +518,12 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
             <h2 id="leave-t">Ieși din test?</h2>
             <p class="muted">Răspunsurile de până acum nu se păstrează.</p>
             <div class="two">
-              <button class="btn btn-ghost" onClick={close}>Rămân</button>
-              <button class="btn danger" onClick={leaveTo}>Ieși</button>
+              <button class="btn btn-ghost" data-sfx="stay" onClick={close}>Rămân</button>
+              <button class="btn danger" data-sfx="exit" onClick={leaveTo}>Ieși</button>
             </div>
+            {onAgain && (
+              <button class="btn btn-ghost btn-block" data-sfx="again" onClick={() => { setLeaveTo(null); stopSpeaking(); onAgain(); }}>Reia testul de la început</button>
+            )}
           </>)}
         </Modal>
       )}
@@ -534,7 +566,7 @@ function Verdict({ g, last, onVerse, onNext }: { g: Grade; last: boolean; onVers
         <span class="verdict-text">{g.right ? 'Corect!' : g.points > 0 && g.parts ? `Parțial, ${g.parts.filter(Boolean).length} din ${g.parts.length}` : 'Greșit'}</span>
         <button type="button" class="verse-pill" onClick={onVerse}>{BOOK_ICON}Versetul</button>
       </div>
-      <button class="btn btn-block verdict-btn btn-3d" onClick={onNext}>{last ? 'Vezi rezultatul' : 'Mai departe'}</button>
+      <button class="btn btn-block verdict-btn btn-3d" data-sfx="" onClick={onNext}>{last ? 'Vezi rezultatul' : 'Mai departe'}</button>
     </div>
   );
 }
@@ -643,7 +675,7 @@ function Results({ bookName, questions, answers, grades, saveFailed, backHref, o
         )}
 
         <div class="score-actions">
-          {onAgain && <button class="btn btn-primary btn-block" onClick={onAgain}>Reia testul</button>}
+          {onAgain && <button class="btn btn-primary btn-block" data-sfx="again" onClick={onAgain}>Reia testul</button>}
           <a class="btn btn-ghost btn-block" href={backHref}>{back}</a>
         </div>
       </section>

@@ -1,20 +1,41 @@
 /**
- * Short game sounds for the quiz, made with Web Audio (no file to download).
- * Bell and marimba tones built from a few partials, plus soft filtered air,
+ * The quiz's sounds, made with Web Audio (no file to download): bell, marimba and soft filtered air tones,
  * through a small room reverb and a gentle compressor, so they sound round rather than like bare beeps.
+ * Every button of the quiz has one (EVENTS below says which), with or without the voice.
  *
  * Measured on iPhone: an <audio> element takes 0.2 to 0.6 s to start a new file (and briefly freezes the page),
- * and a suspended AudioContext takes about a second to wake. So the sounds are rendered once into memory, and
- * one AudioContext is started by the tap that turns the voice on and kept running while the quiz is played:
- * a sound then starts within a few milliseconds of the tap. The voice keeps its own <audio> element, in the
- * "playback" session claimed before the context is made (a context alone would switch the page to "ambient").
+ * and a suspended AudioContext about a second to wake. So the sounds are rendered once into memory and played by
+ * one AudioContext, woken by the first touch in the quiz and kept running while it is open: a sound starts within
+ * a few milliseconds of the tap. Without the voice the page's audio stays "ambient" (it mixes with music and
+ * follows the silent switch); the voice claims "playback" for itself when it is turned on.
  */
 
-import { claimPlaybackSession } from './speech';
+/** The palette: every sound the quiz can make */
+export type Sound =
+  | 'tic' | 'bois' | 'bulle' | 'goutte' | 'clochette' | 'interrupteur'
+  | 'arpege' | 'descente' | 'souffle' | 'carillon' | 'page' | 'pouf';
 
-type Name = 'right' | 'wrong' | 'next';
+/** What happens in the quiz, and the sound it makes */
+export const EVENTS = {
+  select: 'bois', // an answer is chosen (Adevărat/Fals, A/B/C, a box, a pair)
+  check: 'interrupteur', // Verifică
+  right: 'arpege', // the answer was right
+  wrong: 'descente', // the answer was wrong
+  next: 'souffle', // Mai departe
+  finish: 'carillon', // Vezi rezultatul
+  verse: 'page', // Versetul
+  close: 'pouf', // a window is closed (×)
+  voice: 'bulle', // the voice button
+  speed: 'goutte', // a speed of the voice
+  report: 'tic', // Semnalează
+  back: 'tic', // the back arrow (asks whether to leave)
+  stay: 'pouf', // Rămân
+  exit: 'pouf', // Ieși
+  again: 'clochette', // Reia testul
+} satisfies Record<string, Sound>;
+export type SfxEvent = keyof typeof EVENTS;
 
-const buffers: { [K in Name]?: AudioBuffer } = {};
+const buffers: { [K in Sound]?: AudioBuffer } = {};
 let preparing: Promise<void> | null = null;
 let ctx: AudioContext | null = null;
 let sleep: ReturnType<typeof setTimeout> | null = null;
@@ -26,7 +47,7 @@ export function prepareSfx(): Promise<void> {
   const OAC = window.OfflineAudioContext || (window as any).webkitOfflineAudioContext;
   if (!OAC) return (preparing = Promise.resolve());
   preparing = (async () => {
-    for (const [name, len, draw] of SOUNDS) {
+    for (const [name, [len, draw]] of Object.entries(SOUNDS) as [Sound, [number, Draw]][]) {
       try {
         const ac: OfflineAudioContext = new OAC(2, Math.ceil(44100 * len), 44100);
         draw(ac, makeBus(ac));
@@ -39,7 +60,7 @@ export function prepareSfx(): Promise<void> {
   return preparing;
 }
 
-/** Inside a tap (the voice button, Verifică): the context is made or woken, and stays running for the next sounds. */
+/** Inside a touch: the context is made or woken, and stays running for the next sounds. */
 export function armSfx(): void {
   if (typeof window === 'undefined') return;
   if (!preparing) void prepareSfx();
@@ -49,23 +70,24 @@ export function armSfx(): void {
     if (!ctx) {
       const AC = window.AudioContext || (window as any).webkitAudioContext;
       if (!AC) return;
-      claimPlaybackSession();
       ctx = new AC({ latencyHint: 'interactive' });
     }
     if (ctx.state !== 'running') ctx.resume().catch(() => {});
   } catch {}
 }
 
-/** The quiz is over or the voice is off: the context sleeps and gives the phone's audio back, once the last sound is over. */
+/** The quiz is closed: the context sleeps and gives the phone's audio back, once the last sound is over. */
 export function releaseSfx(): void {
-  if (!ctx || sleep) return;
+  if (!ctx) return;
+  if (sleep) clearTimeout(sleep);
+  // a new quiz (Reia testul) wakes it again with its first touch, which cancels this
   sleep = setTimeout(() => {
     sleep = null;
     if (ctx && ctx.state === 'running') ctx.suspend().catch(() => {});
   }, 2500);
 }
 
-function play(name: Name) {
+function play(name: Sound, delay = 0) {
   armSfx();
   const b = buffers[name];
   if (!ctx || !b) return;
@@ -73,8 +95,24 @@ function play(name: Name) {
     const src = ctx.createBufferSource();
     src.buffer = b;
     src.connect(ctx.destination);
-    src.start();
+    src.start(delay ? ctx.currentTime + delay : 0);
   } catch {}
+}
+
+/** The sound of something that happens in the quiz. */
+export function sfx(event: SfxEvent): void {
+  play(EVENTS[event]);
+}
+
+/** "Verifică" pressed: its click, then the verdict right after (not on top of it). */
+export function playVerdict(right: boolean): void {
+  play(EVENTS.check);
+  play(right ? EVENTS.right : EVENTS.wrong, 0.11);
+}
+
+/** Next question: a long soft whoosh. */
+export function playNext(): void {
+  sfx('next');
 }
 
 /** dry + a little reverb, glued by a soft compressor */
@@ -174,40 +212,68 @@ const MARIMBA: Partial[] = [
   { ratio: 9.9, gain: 0.05, decay: 0.03 },
 ];
 
+/** A tone gliding from one pitch to another (bubbles, drops, soft thumps). */
+function glide(ac: BaseAudioContext, out: AudioNode, at: number, len: number, vol: number, from: number, to: number, type: OscillatorType = 'sine') {
+  const osc = ac.createOscillator();
+  const g = ac.createGain();
+  osc.type = type;
+  osc.frequency.setValueAtTime(from, at);
+  osc.frequency.exponentialRampToValueAtTime(to, at + len);
+  g.gain.setValueAtTime(0.0001, at);
+  g.gain.exponentialRampToValueAtTime(vol, at + 0.006);
+  g.gain.exponentialRampToValueAtTime(0.0001, at + len);
+  osc.connect(g).connect(out);
+  osc.start(at);
+  osc.stop(at + len + 0.02);
+}
+
 type Draw = (ac: BaseAudioContext, out: AudioNode) => void;
 const T = 0.01;
 
-/** Pressing "Verifică": a soft double click, like a switch. */
-const drawCheck: Draw = (ac, out) => {
-  air(ac, out, T, 0.025, 0.12, 3000, 2500, 2, 0.1);
-  air(ac, out, T + 0.045, 0.025, 0.09, 2200, 1800, 2, 0.1);
+/** Each sound: its length with the reverb tail (s), and how it is made */
+const SOUNDS: Record<Sound, [number, Draw]> = {
+  // a soft tick, like a fingertip on wood
+  tic: [0.7, (ac, out) => {
+    air(ac, out, T, 0.018, 0.16, 3200, 2600, 2.5, 0.1);
+    strike(ac, out, T, 1760, 0.08, MARIMBA, { lowpass: 3000 });
+  }],
+  // one warm marimba note
+  bois: [0.9, (ac, out) => strike(ac, out, T, 784, 0.3, MARIMBA)],
+  // a round bubble rising
+  bulle: [0.7, (ac, out) => glide(ac, out, T, 0.09, 0.3, 380, 950)],
+  // a water drop falling
+  goutte: [0.7, (ac, out) => glide(ac, out, T, 0.11, 0.28, 1500, 520)],
+  // one small glass bell
+  clochette: [1.4, (ac, out) => strike(ac, out, T, 1318.51, 0.22, BELL)],
+  // a soft double click, like a switch
+  interrupteur: [0.7, (ac, out) => {
+    air(ac, out, T, 0.025, 0.12, 3000, 2500, 2, 0.1);
+    air(ac, out, T + 0.045, 0.025, 0.09, 2200, 1800, 2, 0.1);
+  }],
+  // a golden arpeggio of bells, C E G C
+  arpege: [2.1, (ac, out) => {
+    [1046.5, 1318.51, 1567.98, 2093].forEach((f, k) => strike(ac, out, T + k * 0.055, f, 0.2, BELL));
+  }],
+  // two low, muffled wooden notes falling gently, disappointed but never harsh
+  descente: [1.7, (ac, out) => {
+    strike(ac, out, T, 311.13, 0.32, MARIMBA, { lowpass: 1400 }); // D#4
+    strike(ac, out, T + 0.14, 233.08, 0.36, MARIMBA, { lowpass: 1100 }); // A#3
+  }],
+  // a long soft whoosh
+  souffle: [1.6, (ac, out) => air(ac, out, T, 0.38, 0.1, 400, 5000, 1, 0.55)],
+  // a little victory chime: rising bells ending on a held chord
+  carillon: [2.8, (ac, out) => {
+    [783.99, 1046.5, 1318.51, 1567.98].forEach((f, k) => strike(ac, out, T + k * 0.09, f, 0.18, BELL));
+    [1046.5, 1318.51, 2093].forEach((f) => strike(ac, out, T + 0.42, f, 0.14, BELL));
+  }],
+  // a page turned: two quick paper rustles
+  page: [0.9, (ac, out) => {
+    air(ac, out, T, 0.12, 0.13, 900, 3500, 0.9, 0.4);
+    air(ac, out, T + 0.1, 0.09, 0.08, 2500, 5000, 0.9, 0.3);
+  }],
+  // a soft felt thump
+  pouf: [0.7, (ac, out) => {
+    glide(ac, out, T, 0.14, 0.45, 190, 85);
+    air(ac, out, T, 0.05, 0.05, 600, 300, 1, 0.2);
+  }],
 };
-/** the verdict comes right after the click, not on top of it */
-const V = T + 0.11;
-
-const SOUNDS: [Name, number, Draw][] = [
-  // the click and the verdict are one file: one play() on the tap, exact timing between them
-  ['right', 2.3, (ac, out) => {
-    drawCheck(ac, out);
-    // a golden arpeggio of bells, C E G C
-    [1046.5, 1318.51, 1567.98, 2093].forEach((f, k) => strike(ac, out, V + k * 0.055, f, 0.2, BELL));
-  }],
-  ['wrong', 1.9, (ac, out) => {
-    drawCheck(ac, out);
-    // two low, muffled wooden notes falling gently, disappointed but never harsh
-    strike(ac, out, V, 311.13, 0.32, MARIMBA, { lowpass: 1400 }); // D#4
-    strike(ac, out, V + 0.14, 233.08, 0.36, MARIMBA, { lowpass: 1100 }); // A#3
-  }],
-  // next question: a long soft whoosh
-  ['next', 1.6, (ac, out) => air(ac, out, T, 0.38, 0.1, 400, 5000, 1, 0.55)],
-];
-
-/** "Verifică" pressed: the click, then the verdict. */
-export function playVerdict(right: boolean) {
-  play(right ? 'right' : 'wrong');
-}
-
-/** Next question: a long soft whoosh. */
-export function playNext() {
-  play('next');
-}
