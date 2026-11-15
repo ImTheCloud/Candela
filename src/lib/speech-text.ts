@@ -11,12 +11,20 @@ export const DEFAULT_VOICE = 'ro-RO-AlinaNeural';
  */
 export const AUDIO_FILES_VERSION = '1';
 
+/**
+ * Words the voice says wrong, respelled for it only (the text on screen is unchanged).
+ * închinat, închină, închinarea…: the voice garbled the "ch"; written with a k it says it right (chosen by ear).
+ */
+const PRONUNCIATIONS: [RegExp, string][] = [[/([îÎ])nchin/g, '$1nkin']];
+
 export function cleanSpeechText(s: unknown): string {
-  return String(s ?? '')
+  let t = String(s ?? '')
     .replace(/[*_#`]/g, '')
     .replace(/["'„”«»“”’‘‚‛]/g, '')
     .replace(/\s+/g, ' ')
     .trim();
+  for (const [re, say] of PRONUNCIATIONS) t = t.replace(re, say);
+  return t;
 }
 
 /** What the Bible reader says before verse 1 when it goes on to the next chapter. */
