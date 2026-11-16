@@ -8,9 +8,10 @@
 // Run again after questions or verses change, then commit and push candela-audio: only the missing files are made,
 // and the recordings of texts that no longer exist (an edited question) are deleted.
 //   node scripts/generate-audio.mjs              all books
+//   node scripts/generate-audio.mjs --check      only says what is missing or unused (records nothing; exit 1 if not up to date)
 //   node scripts/generate-audio.mjs --limit 20   a quick try
 //   node scripts/generate-audio.mjs --jobs 4     parallel syntheses (default 4)
-import { readFileSync, readdirSync, existsSync, mkdirSync, writeFileSync, renameSync, statSync, unlinkSync } from 'node:fs';
+import { readFileSync, readdirSync, existsSync, writeFileSync, renameSync, statSync, unlinkSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { MsEdgeTTS, OUTPUT_FORMAT } from 'msedge-tts';
@@ -25,6 +26,7 @@ const opt = (name, def) => {
   const i = args.indexOf(`--${name}`);
   return i >= 0 ? Number(args[i + 1]) : def;
 };
+const CHECK = args.includes('--check');
 const LIMIT = opt('limit', Infinity);
 const JOBS = opt('jobs', 4);
 const SYNTH_TIMEOUT_MS = 30000;
@@ -97,9 +99,20 @@ function synth(tts, text) {
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 async function main() {
-  mkdirSync(OUT, { recursive: true });
+  if (!existsSync(OUT)) {
+    console.error(`${OUT} does not exist. Clone the audio repository next to this project first:\n  git clone https://github.com/ImTheCloud/candela-audio.git ${OUT}`);
+    process.exitCode = 1;
+    return;
+  }
   const all = collectTexts();
   const missing = [...all].filter(([name]) => !existsSync(join(OUT, name)) || statSync(join(OUT, name)).size === 0);
+  if (CHECK) {
+    const unused = readdirSync(OUT).filter((f) => f.endsWith('.mp3') && !all.has(f));
+    console.log(`${all.size} texts: ${missing.length} recordings missing, ${unused.length} no longer used.`);
+    if (missing.length || unused.length) console.log('Run node scripts/generate-audio.mjs, then commit and push candela-audio.');
+    process.exitCode = missing.length || unused.length ? 1 : 0;
+    return;
+  }
   const todo = missing.slice(0, LIMIT);
   console.log(`${all.size} texts, ${all.size - missing.length} already recorded, ${todo.length} to record now with ${JOBS} jobs`);
   // recordings of texts the site no longer says (a question edited or removed): not kept in the site
@@ -146,6 +159,7 @@ async function main() {
   };
   await Promise.all(Array.from({ length: Math.min(JOBS, todo.length) }, worker));
   console.log(`\nDone: ${done} recorded, ${failed} failed${failed ? ' (run again to retry them)' : ''}.`);
+  if (done || stale.length) console.log(`Now publish them: cd ${OUT} && git add -A && git commit -m "..." && git push`);
   process.exitCode = failed ? 1 : 0;
 }
 

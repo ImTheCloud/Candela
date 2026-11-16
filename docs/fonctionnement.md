@@ -6,7 +6,8 @@ Ce document explique le site de bout en bout, pour qu'une personne (ou une IA) p
 
 - **Site statique Astro** avec des îlots Preact (`src/islands/`). Tout le contenu (texte biblique, questions, examens) est lu au moment du build depuis `content/` et transformé en pages et en fichiers JSON.
 - **Firebase** (projet `candela-64d25`) pour les comptes (Authentication) et la progression (Firestore). Les règles de sécurité sont dans `firestore.rules`.
-- **Hébergement Vercel** : la branche `v2` a sa propre adresse de prévisualisation.
+- **Hébergement Vercel** : chaque push sur `main` part en production.
+- **Audios** : un MP3 par texte lu, dans le dépôt `ImTheCloud/candela-audio` servi par GitHub Pages (voir « Les enregistrements audio »).
 
 ## Les dossiers d'un livre
 
@@ -64,6 +65,7 @@ Générer le JSON, puis vérifier :
 ```bash
 node scripts/qualite/build-chapter.mjs 2-samuel 5 content/2-samuel/sursa/ch05.txt
 node scripts/validate.mjs
+node scripts/generate-audio.mjs            # puis commit et push dans ../candela-audio
 ```
 
 ### Les identifiants
@@ -84,6 +86,24 @@ Le script numérote les questions de chaque niveau dans l'ordre de la source : `
 6. L'examen blanc (`src/islands/MockExam.tsx`) suit `SHAPE` dans `src/lib/questions.ts` et compose son association avec `mixedMatch`.
 
 Un livre sans aucun fichier de questions s'affiche « Întrebările sunt în pregătire ». Un livre peut aussi s'ouvrir chapitre par chapitre (c'est le cas de 1 Samuel) : un chapitre sans fichier de questions a une tuile grisée, sa fenêtre ne propose que la lecture, et l'examen blanc tire seulement dans les chapitres prêts. Il suffit d'ajouter `intrebari/chNN.json` pour qu'un chapitre s'ouvre.
+
+## Les enregistrements audio
+
+Le site lit à voix haute les versets et les questions. Chaque texte a son MP3, enregistré à l'avance par `scripts/generate-audio.mjs` (voix Edge `ro-RO`) et nommé par `audioFileName()` de `src/lib/speech-text.ts` : le nom vient du texte, donc un texte modifié a un nouveau fichier.
+
+- Les MP3 sont dans le dépôt public `ImTheCloud/candela-audio`, cloné à côté du projet (`../candela-audio`, ou `CANDELA_AUDIO_DIR`), et servis par GitHub Pages : `https://imthecloud.github.io/candela-audio/<nom>.mp3`. L'adresse est dans `AUDIO_BASE` de `src/lib/speech.ts`.
+- Ils ne vont jamais dans `public/` : Vercel les recopierait dans chaque déploiement.
+- Un audio absent est synthétisé à la volée par `/api/tts` : le site marche quand même, mais plus lentement.
+
+Après une modification de questions, de propositions ou de versets :
+
+```bash
+node scripts/generate-audio.mjs                 # enregistre ce qui manque, supprime ce qui ne sert plus
+cd ../candela-audio && git add -A && git commit -m "Audios : ..." && git push && cd -
+node scripts/generate-audio.mjs --check         # 0 manquant, 0 inutilisé
+```
+
+Pousser `candela-audio` avant Candela.
 
 ## Ajouter un livre
 
