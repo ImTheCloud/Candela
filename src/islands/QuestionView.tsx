@@ -7,13 +7,11 @@ interface Props {
   onChange: (a: Answer) => void;
   /** Set once checked: inputs lock and show right and wrong. */
   graded: Grade | null;
-  /** Enter in a typed answer: check it (the button bar can be hidden behind the keyboard). */
-  onEnter?: () => void;
 }
 
 const LETTERS = ['a', 'b', 'c', 'd', 'e'];
 
-export default function QuestionView({ q, answer, onChange, graded, onEnter }: Props) {
+export default function QuestionView({ q, answer, onChange, graded }: Props) {
   switch (q.t) {
     case 'tf': return <TrueFalse q={q} answer={answer as Extract<Answer, { t: 'tf' }>} onChange={onChange} graded={graded} />;
     case 'one': return <One q={q} answer={answer as Extract<Answer, { t: 'one' }>} onChange={onChange} graded={graded} />;
@@ -27,7 +25,6 @@ type P<T extends Playable['t']> = {
   answer: Extract<Answer, { t: T }>;
   onChange: (a: Answer) => void;
   graded: Grade | null;
-  onEnter?: () => void;
 };
 
 function state(graded: Grade | null, isRight: boolean, chosen: boolean): string {

@@ -14,7 +14,6 @@ for (const b of ['1-samuel', '2-samuel'])
     for (const q of j.questions) questions.push({ ...q, book: b, ch: j.ch });
   }
 const tail = (t) => t.replace(/^[^:?]*: /, ''); // the question without its scene prefix
-const rightOf = (q) => (q.t === 'one' ? [q.a] : q.a || []).map((i) => q.opts[i]);
 const show = (q) => `${q.id} [${q.t}] ${q.q}${q.opts ? ' || ' + q.opts.map((o, i) => ((q.t === 'one' ? q.a === i : q.a.includes(i)) ? '*' : '') + o).join(' | ') : ''}`;
 
 const PREP = /^(din|în|la|pe|de|cu|peste|până|după|înainte|nici|și|ca|ori|spre|fără|prin|pentru|când|dacă|care|cum|iar|sub|între|lângă|chiar|numai|doar|tot)\b/i;

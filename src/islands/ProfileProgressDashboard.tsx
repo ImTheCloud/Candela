@@ -1,6 +1,6 @@
 import { useState } from 'preact/hooks';
 import type { Level } from '../lib/age';
-import { choosePlayer, formatFirstLast, player, players, type Player } from '../lib/players';
+import { choosePlayer, formatFirstLast, player, players } from '../lib/players';
 import { progress, type Progress } from '../lib/progress';
 import type { QType } from '../lib/questions';
 import LevelPicker from './LevelPicker';

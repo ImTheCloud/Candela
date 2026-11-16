@@ -462,8 +462,7 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
       />
 
       <div class="q-body" aria-live="polite">
-        <QuestionView key={q.id} q={q} answer={answers[i]} onChange={setAnswer} graded={g}
-          onEnter={!g && isAnswered(answers[i]) ? check : undefined} />
+        <QuestionView key={q.id} q={q} answer={answers[i]} onChange={setAnswer} graded={g} />
       </div>
 
       {saveFailed && <p class="notice notice-bad" role="alert">Răspunsurile nu se salvează acum (progresul și clasamentul nu se actualizează). Spune-i administratorului.</p>}
