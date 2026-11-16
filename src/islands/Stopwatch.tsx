@@ -22,7 +22,7 @@ const PLAY = <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"
 
 /**
  * The admin's own stopwatch, floating bottom left on every page (kept across navigation). Only admins see it.
- * Tap: start or pause (green while running, brown when paused). Hold 1.5 s: offers to reset to zero.
+ * Tap: start or pause (green while running, brown when paused). Hold 1.5 s: add minutes (any number) or reset to zero.
  */
 export default function Stopwatch() {
   const p = profile.value;
@@ -33,6 +33,7 @@ export default function Stopwatch() {
   const [askReset, setAskReset] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
+  const [custom, setCustom] = useState('');
   const holdTimer = useRef<ReturnType<typeof setTimeout>>();
   const held = useRef(false);
   const root = useRef<HTMLDivElement>(null);
@@ -82,6 +83,17 @@ export default function Stopwatch() {
     else { const at = Date.now(); setNow(at); save({ total: t.total, start: at }); }
   }
 
+  /** Adds (or, if negative, takes off) minutes at once, running or paused; never below zero. */
+  async function addMinutes(min: number) {
+    if (busy || !Number.isFinite(min) || min === 0) return;
+    const target = Math.max(0, shown + Math.round(min * 60000));
+    const at = Date.now();
+    setNow(at);
+    await save(running ? { total: target, start: at } : { total: target, start: null });
+    setCustom('');
+    setAskReset(false);
+  }
+
   function press(e: PointerEvent) {
     if (e.button !== 0) return;
     held.current = false;
@@ -101,7 +113,19 @@ export default function Stopwatch() {
   return (
     <div ref={root} class="sw-fab">
       {askReset && (
-        <div class="sw-panel" role="dialog" aria-label="Resetează cronometrul">
+        <div class="sw-panel" role="dialog" aria-label="Ajustează cronometrul">
+          <p>Adaugi minute?</p>
+          <div class="sw-quick">
+            {[5, 10, 15, 30].map((m) => (
+              <button key={m} type="button" class="btn btn-ghost btn-sm" disabled={busy} onClick={() => addMinutes(m)}>+{m}</button>
+            ))}
+          </div>
+          <form class="sw-custom" onSubmit={(e) => { e.preventDefault(); addMinutes(Number(custom.replace(',', '.'))); }}>
+            <input class="input" type="number" inputMode="decimal" step="any" placeholder="Minute" aria-label="Câte minute adaugi (cu minus scazi)"
+              value={custom} onInput={(e) => setCustom((e.target as HTMLInputElement).value)} />
+            <button type="submit" class="btn btn-primary btn-sm" disabled={busy || !custom.trim() || !Number(custom.replace(',', '.'))}>Adaugă</button>
+          </form>
+          <hr class="sw-sep" />
           <p>Repornești cronometrul de la zero?</p>
           <div class="sw-actions">
             <button type="button" class="btn btn-ghost btn-sm" onClick={() => setAskReset(false)}>Nu</button>

@@ -1270,6 +1270,11 @@ body:has(.sheet-back) .sw-fab { opacity: 0; visibility: hidden; pointer-events: 
 .sw-panel p { margin: 0; font-weight: 600; }
 .sw-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .sw-actions .btn { white-space: nowrap; }
+.sw-quick { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.sw-quick .btn { padding: 0; font-variant-numeric: tabular-nums; }
+.sw-custom { display: grid; grid-template-columns: 1fr auto; gap: 8px; }
+.sw-custom .input { min-width: 0; min-height: 40px; }
+.sw-sep { margin: 2px 0; border: 0; border-top: 1px solid var(--line); }
 .sw-err { margin: 0; padding: 6px 10px; border-radius: var(--r-ctl); background: var(--surface); font-size: .8rem; color: var(--bad); }
 
 .bk-nums { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 0; }
