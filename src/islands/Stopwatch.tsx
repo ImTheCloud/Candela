@@ -6,7 +6,8 @@ import { errorText, profile } from '../lib/session';
 /** Saved on users/{uid}: the time already counted, and when it was started if it is running. Same on every phone. */
 export interface Timer { total: number; start: number | null }
 
-const HOLD_MS = 500;
+/** Two taps closer than this open the panel; a single tap waits this long to be sure it is not the first of two. */
+const DOUBLE_TAP_MS = 300;
 const two = (n: number) => String(n).padStart(2, '0');
 
 /** "3 z 04:12:09" past a day, else "04:12:09" */
@@ -22,20 +23,19 @@ const PLAY = <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"
 
 /**
  * The admin's own stopwatch, floating bottom left on every page (kept across navigation). Only admins see it.
- * Tap: start or pause (green while running, brown when paused). Hold 0.5 s: add minutes (any number) or reset to zero.
+ * Tap: start or pause (green while running, brown when paused). Two quick taps: add minutes (any number) or reset to zero.
  */
 export default function Stopwatch() {
   const p = profile.value;
   const t: Timer = (p as { timer?: Timer } | null)?.timer ?? { total: 0, start: null };
   const running = t.start !== null;
   const [now, setNow] = useState(Date.now());
-  const [holding, setHolding] = useState(false);
   const [askReset, setAskReset] = useState(false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
   const [custom, setCustom] = useState('');
-  const holdTimer = useRef<ReturnType<typeof setTimeout>>();
-  const held = useRef(false);
+  const lastTap = useRef(0);
+  const tapTimer = useRef<ReturnType<typeof setTimeout>>();
   const root = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -54,7 +54,7 @@ export default function Stopwatch() {
     return () => { document.removeEventListener('pointerdown', outside); document.removeEventListener('keydown', esc); };
   }, [askReset]);
 
-  useEffect(() => () => clearTimeout(holdTimer.current), []);
+  useEffect(() => () => clearTimeout(tapTimer.current), []);
 
   if (!p?.admin) return null;
 
@@ -77,10 +77,30 @@ export default function Stopwatch() {
     }
   }
 
-  function toggle() {
+  /** `at` is the moment of the tap, so a delayed single tap still counts from when it was made. */
+  function toggle(at: number) {
     if (busy) return;
-    if (running) save({ total: shown, start: null });
-    else { const at = Date.now(); setNow(at); save({ total: t.total, start: at }); }
+    if (running) save({ total: t.total + Math.max(0, at - t.start!), start: null });
+    else { setNow(at); save({ total: t.total, start: at }); }
+  }
+  // The delayed single tap runs after a render, so it reads the latest state through this ref.
+  const toggleLatest = useRef(toggle);
+  toggleLatest.current = toggle;
+
+  function tap() {
+    const at = Date.now();
+    clearTimeout(tapTimer.current);
+    if (at - lastTap.current < DOUBLE_TAP_MS) {
+      lastTap.current = 0;
+      setAskReset(true);
+      navigator.vibrate?.(20);
+      return;
+    }
+    lastTap.current = at;
+    tapTimer.current = setTimeout(() => {
+      setAskReset(false);
+      toggleLatest.current(at);
+    }, DOUBLE_TAP_MS);
   }
 
   /** Adds (or, if negative, takes off) minutes at once, running or paused; never below zero. */
@@ -92,22 +112,6 @@ export default function Stopwatch() {
     await save(running ? { total: target, start: at } : { total: target, start: null });
     setCustom('');
     setAskReset(false);
-  }
-
-  function press(e: PointerEvent) {
-    if (e.button !== 0) return;
-    held.current = false;
-    setHolding(true);
-    holdTimer.current = setTimeout(() => {
-      held.current = true;
-      setHolding(false);
-      setAskReset(true);
-      navigator.vibrate?.(20);
-    }, HOLD_MS);
-  }
-  function release() {
-    clearTimeout(holdTimer.current);
-    setHolding(false);
   }
 
   return (
@@ -134,11 +138,9 @@ export default function Stopwatch() {
         </div>
       )}
       {error && <p class="sw-err" role="alert">{error}</p>}
-      <button type="button" class={`sw-main${running ? ' is-live' : ''}${shown ? ' has-time' : ''}${holding ? ' is-holding' : ''}`}
-        aria-pressed={running} aria-label={`Cronometru ${time}, ${running ? 'pornit: apasă pentru pauză' : 'oprit: apasă ca să pornească'}. Ține apăsat o clipă ca să adaugi minute sau să-l resetezi.`}
-        onPointerDown={press} onPointerUp={release} onPointerLeave={release} onPointerCancel={release}
-        onContextMenu={(e) => e.preventDefault()}
-        onClick={() => { if (held.current) { held.current = false; return; } setAskReset(false); toggle(); }}>
+      <button type="button" class={`sw-main${running ? ' is-live' : ''}${shown ? ' has-time' : ''}`}
+        aria-pressed={running} aria-label={`Cronometru ${time}, ${running ? 'pornit: apasă pentru pauză' : 'oprit: apasă ca să pornească'}. Apasă de două ori repede ca să adaugi minute sau să-l resetezi.`}
+        onClick={tap}>
         {running ? CLOCK : PLAY}
         {shown > 0 && <span class="sw-main-time">{time}</span>}
       </button>
