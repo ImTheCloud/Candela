@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 // Records, ahead of time, everything Candela reads out loud: every verse, every "Capitolul N." and every
-// quiz question with its options. One MP3 per text in public/audio/, served by Vercel with the site and named by
-// audioFileName() from src/lib/speech-text.ts, the same function the site uses to find it.
+// quiz question with its options. One MP3 per text, written into the clone of the public repository
+// ImTheCloud/candela-audio (../candela-audio next to this project, or CANDELA_AUDIO_DIR), served by GitHub Pages
+// and named by audioFileName() from src/lib/speech-text.ts, the same function the site uses to find it.
 // Each file is checked like /api/tts checks a synthesis (cutReason): a cut file is made again.
 //
-// Run again after questions or verses change, then commit public/audio/: only the missing files are made,
+// Run again after questions or verses change, then commit and push candela-audio: only the missing files are made,
 // and the recordings of texts that no longer exist (an edited question) are deleted.
 //   node scripts/generate-audio.mjs              all books
 //   node scripts/generate-audio.mjs --limit 20   a quick try
@@ -18,7 +19,7 @@ import { trimFile } from './trim-audio.mjs';
 import { audioFileName, buildQuestionSpeech, chapterAnnouncement, cleanSpeechText, DEFAULT_VOICE } from '../src/lib/speech-text.ts';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
-const OUT = join(root, 'public', 'audio');
+const OUT = process.env.CANDELA_AUDIO_DIR || join(root, '..', 'candela-audio');
 const args = process.argv.slice(2);
 const opt = (name, def) => {
   const i = args.indexOf(`--${name}`);

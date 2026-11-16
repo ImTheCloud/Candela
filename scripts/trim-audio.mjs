@@ -3,7 +3,7 @@
 // the voice starts the moment the button is pressed, and the next verse follows without a long gap.
 // Lossless (whole MP3 frames are kept, nothing is re-encoded) and safe to run again: a file already
 // trimmed is left as it is. Needs ffmpeg (brew install ffmpeg). Called by generate-audio.mjs.
-//   node scripts/trim-audio.mjs            every file in public/audio
+//   node scripts/trim-audio.mjs            every file in ../candela-audio (or CANDELA_AUDIO_DIR)
 //   node scripts/trim-audio.mjs a.mp3 ...  only these
 import { execFile } from 'node:child_process';
 import { readdirSync, renameSync, unlinkSync } from 'node:fs';
@@ -12,7 +12,7 @@ import { fileURLToPath } from 'node:url';
 import { promisify } from 'node:util';
 
 const run = promisify(execFile);
-const DIR = join(dirname(fileURLToPath(import.meta.url)), '..', 'public', 'audio');
+const DIR = process.env.CANDELA_AUDIO_DIR || join(dirname(fileURLToPath(import.meta.url)), '..', '..', 'candela-audio');
 /** silence kept before the voice, and after it (a natural breath before the next verse) */
 const KEEP_BEFORE = 0.04;
 const KEEP_AFTER = 0.3;

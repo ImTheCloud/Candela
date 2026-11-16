@@ -91,10 +91,11 @@ const FETCH_TIMEOUT_MS = 25000;
 const STATIC_TIMEOUT_MS = 8000;
 
 /**
- * Where the ready-made recordings are: public/audio/, one per verse and per question (scripts/generate-audio.mjs),
- * served by Vercel with the site. PUBLIC_AUDIO_BASE can point elsewhere; set to '' everything is synthesised by /api/tts.
+ * Where the ready-made recordings are: one per verse and per question (scripts/generate-audio.mjs), kept in the
+ * public repository ImTheCloud/candela-audio and served by GitHub Pages, so they never weigh on Vercel's deployments.
+ * PUBLIC_AUDIO_BASE can point elsewhere; set to '' everything is synthesised by /api/tts.
  */
-const AUDIO_BASE = String(import.meta.env?.PUBLIC_AUDIO_BASE ?? '/audio').replace(/\/+$/, '');
+const AUDIO_BASE = String(import.meta.env?.PUBLIC_AUDIO_BASE ?? 'https://imthecloud.github.io/candela-audio').replace(/\/+$/, '');
 /** Ready-made files that could not be had (a question added since the last generation): the server is asked at once */
 const missingStatic = new Set<string>();
 
