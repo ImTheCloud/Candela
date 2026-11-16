@@ -257,12 +257,11 @@
    "q": "Cine era culcat în mijlocul taberei?",
    "opts": [
     "Saul",
-    "David",
-    "Abner"
+    "Goliat",
+    "David"
    ],
    "a": [
-    0,
-    2
+    0
    ]
   },
   {
@@ -274,11 +273,12 @@
    "opts": [
     "„Am lucrat ca un nebun”",
     "„Am păcătuit”",
-    "„Te voi prinde”"
+    "„Nu-ți voi mai face rău”"
    ],
    "a": [
     0,
-    1
+    1,
+    2
    ]
   },
   {
@@ -550,12 +550,11 @@
    "ref": "26:11-12",
    "q": "Ce a luat David de la căpătâiul lui Saul?",
    "opts": [
+    "coiful",
     "sabia",
-    "urciorul cu apă",
-    "sulița"
+    "urciorul cu apă"
    ],
    "a": [
-    1,
     2
    ]
   },
@@ -582,11 +581,12 @@
    "ref": "26:25",
    "q": "Ce i-a spus Saul lui David la despărțire?",
    "opts": [
-    "că va fi ucis de filisteni",
+    "să fie binecuvântat",
     "că va birui",
     "că va face lucruri mari"
    ],
    "a": [
+    0,
     1,
     2
    ]
@@ -873,12 +873,11 @@
    "ref": "26:23",
    "q": "După ce a spus David că va răsplăti Domnul fiecăruia?",
    "opts": [
-    "după credincioșia lui",
     "după bogăția lui",
-    "după dreptatea lui"
+    "după jertfele lui",
+    "după credincioșia lui"
    ],
    "a": [
-    0,
     2
    ]
   }

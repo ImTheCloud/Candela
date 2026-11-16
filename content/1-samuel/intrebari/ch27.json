@@ -256,11 +256,12 @@
    "ref": "27:9",
    "q": "Ce lua David din țările unde năvălea?",
    "opts": [
-    "corăbii",
+    "cămile",
     "oi",
     "boi"
    ],
    "a": [
+    0,
     1,
     2
    ]
@@ -272,12 +273,11 @@
    "ref": "27:2",
    "q": "Cine a trecut la Achiș?",
    "opts": [
-    "oamenii lui David",
     "Ionatan",
-    "David"
+    "Abner",
+    "oamenii lui David"
    ],
    "a": [
-    0,
     2
    ]
   },
@@ -550,12 +550,11 @@
    "ref": "27:9",
    "q": "Ce lua David din ținuturile unde năvălea?",
    "opts": [
-    "haine",
     "cai",
-    "măgari"
+    "corăbii",
+    "haine"
    ],
    "a": [
-    0,
     2
    ]
   },
@@ -567,11 +566,12 @@
    "q": "Asupra cui năvălea David?",
    "opts": [
     "asupra gheșuriților",
-    "asupra filistenilor",
+    "asupra ghirziților",
     "asupra amaleciților"
    ],
    "a": [
     0,
+    1,
     2
    ]
   },
@@ -844,11 +844,13 @@
    "ref": "27:8",
    "q": "Asupra cui năvălea David, dintre aceștia?",
    "opts": [
-    "asupra filistenilor",
-    "asupra ierahmeeliților",
-    "asupra moabiților"
+    "asupra ghirziților",
+    "asupra moabiților",
+    "asupra filistenilor"
    ],
-   "a": []
+   "a": [
+    0
+   ]
   },
   {
    "id": "1sa.27.greu.323",
@@ -874,11 +876,12 @@
    "q": "Ce lua David din ținuturile unde năvălea?",
    "opts": [
     "haine",
-    "cai",
+    "măgari",
     "cămile"
    ],
    "a": [
     0,
+    1,
     2
    ]
   }

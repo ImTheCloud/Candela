@@ -24,7 +24,7 @@ Ce guide est pour la prochaine personne (ou IA) qui écrit ou reprend les questi
 8. **Faux partout, pas seulement dans ce verset** : une affirmation fausse ou une mauvaise réponse ne doit pas être vraie ailleurs dans la Bible (un autre chapitre, 1 Samuel 31, etc.). Exemples corrigés le 31 octobre 2026 : « David a cântat această cântare după moartea lui Absalom » (2 Sam 22 : vrai dans l'histoire), « de pe zidul Bet-Șanului » (vrai en 1 Sam 31), « Saul era rănit de moarte » (vrai en 1 Sam 31:3), « David bătuse pe gheșuriți » (vrai en 1 Sam 27). On évite aussi « în acest capitol » comme seule raison du faux, et deux propositions qui veulent dire la même chose (« căpetenie a neamurilor » / « împărat peste neamuri »).
 
 9. **Un fait par question, dans tout le niveau** : à l'intérieur d'un niveau, deux questions (même de types différents : vrai/faux, une réponse, plusieurs réponses, association) ne portent jamais sur le même fait. Le même verset peut servir deux fois seulement pour deux faits différents ; quand le chapitre est très court et qu'on ne peut pas faire autrement, on reformule vraiment. Les niveaux entre eux peuvent reprendre un même fait. Les **énoncés** comptent aussi : en Ușor, « Ce veste a venit când Mefiboșet era copil de cinci ani? » donnait la réponse du vrai/faux « Mefiboșet era un om în putere când a murit Saul ». Avant de garder une question, relire les autres énoncés et les paires d'association du même niveau.
-10. **« Niciun răspuns corect »** : jamais en Ușor (enfants), au plus une fois par chapitre en Mediu et rarement, une fois par chapitre environ en Greu. `validate.mjs` le signale (avertissement).
+10. **Nombre de bonnes réponses imprévisible** : une, deux, trois ou aucune, à tous les niveaux. Les trois `multi` d'un niveau n'ont jamais toutes le même nombre de bonnes réponses, et « Niciun răspuns corect » vient au plus une fois par niveau (rarement en Ușor). Pour changer ce nombre, on change les propositions, pas l'énoncé : une bonne de plus tirée du verset, ou une fausse plausible à la place d'une bonne. `validate.mjs` le signale (avertissement).
 11. **Association en Ușor** : la réponse ne doit pas se lire dans la question (pas « stânca → Domnul este stânca lui »). Chaque paire relie une chose à un fait du chapitre qu'il faut avoir lu.
 12. **Associations autonomes** : chaque paire doit se comprendre sans la consigne, car l'examen blanc mélange des paires de cinq chapitres (« Itream | al șaselea fiu al lui David », pas « Itream | al șaselea »).
 13. **La référence couvre les versets de la réponse** : la fenêtre « Versetul » surligne ces versets.
@@ -36,7 +36,7 @@ Ce guide est pour la prochaine personne (ou IA) qui écrit ou reprend les questi
 
 1. Lire le chapitre dans `content/<livre>/text-cornilescu.json`.
 2. Écrire `content/<livre>/sursa/chNN.txt` : la scène, puis pour chaque niveau (`## usor`, `## mediu`, `## greu`) 10 `tf`, 10 `one`, 1 `match` de 5 paires, 3 `multi`. Un même fait peut revenir d'un niveau à l'autre, formulé selon le barème.
-3. Varier les `multi` : selon les questions, une, deux ou trois bonnes réponses, et de temps en temps aucune.
+3. Varier les `multi` : selon les questions, une, deux ou trois bonnes réponses, et de temps en temps aucune ; jamais le même nombre pour les trois d'un niveau (règle 10).
 4. Générer et valider :
 
 ```bash

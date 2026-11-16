@@ -26,9 +26,9 @@ match 5:1-12 | Asociază fiecare nume cu ce se spune despre el.
 = filistenii | au luat chivotul de la Eben-Ezer | 5:1
 = asdodenii | s-au sculat dis-de-dimineață | 5:3
 = toată cetatea Ecron | era într-o groază de moarte | 5:11
-multi 5:7-8 | Când au fost loviți, ce au făcut oamenii din Asdod? | *au spus să nu rămână chivotul la ei | *au cerut sfat | au adus chivotul la Silo
+multi 5:7-8 | Când au fost loviți, ce au făcut oamenii din Asdod? | *au spus să nu rămână chivotul la ei | au adus chivotul la Silo | au ars chivotul
 multi 5:4 | În a doua dimineață, ce era tăiat la Dagon? | *capul | *cele două mâini | picioarele
-multi 5:9 | Pe cine a lovit Domnul în a doua cetate? | *pe cei mici | *pe cei mari | doar pe preoți
+multi 5:9 | Pe cine a lovit Domnul în a doua cetate? | *pe cei mari | doar pe preoți | doar pe copii
 ## mediu
 tf + 5:1 | Filistenii au dus chivotul de la Eben-Ezer la Asdod.
 tf - 5:2 | La Asdod, chivotul a fost pus în casa lui Baal.
@@ -57,8 +57,8 @@ match 5:2-12 | Asociază fiecare nume cu ce se spune despre el.
 = mâna lui Dumnezeu | a apăsat cu putere în ultima cetate | 5:11
 = filistenii | au pus chivotul lângă dumnezeul lor | 5:2
 multi 5:4 | În a doua dimineață, ce era tăiat la Dagon? | *capul | *cele două mâini | picioarele
-multi 5:5 | La Asdod, cine se ferește să calce pe pragul casei lui Dagon? | *preoții lui Dagon | *ceilalți care intră în casa lui | numai domnitorii filistenilor
-multi 5:7-8 | După ce au fost loviți, ce au făcut oamenii din Asdod? | *au spus să nu rămână chivotul la ei | *i-au adunat pe domnitori | au adus jertfe Domnului
+multi 5:5 | La Asdod, cine se ferește să calce pe pragul casei lui Dagon? | *preoții lui Dagon | numai domnitorii filistenilor | numai israeliții
+multi 5:7-8 | După ce au fost loviți, ce au făcut oamenii din Asdod? | *au spus să nu rămână chivotul la ei | *i-au adunat pe domnitori | *au întrebat ce să facă cu chivotul
 ## greu
 tf + 5:2 | Filistenii au așezat chivotul chiar lângă Dagon.
 tf - 5:3 | Încă din prima dimineață, capul lui Dagon era tăiat.
@@ -87,5 +87,5 @@ match 5:3-12 | Asociază fiecare grup cu ce se spune despre el.
 = preoții lui Dagon | nu calcă pe prag | 5:5
 = țipetele din Ecron | se înălțau până la cer | 5:12
 multi 5:8-10 | Ce cetate a primit chivotul după Asdod, înainte de Gat? | Ecron | Ascalon | Gaza
-multi 5:1-10 | Prin care dintre aceste cetăți a trecut chivotul? | *Asdod | *Ecron | Gaza
-multi 5:10-12 | Ce s-a întâmplat la Ecron cât a stat chivotul acolo? | *mâna lui Dumnezeu apăsa cu putere | *oamenii care nu mureau erau loviți | preoții au ars chivotul
+multi 5:1-10 | Prin care dintre aceste cetăți a trecut chivotul? | *Asdod | *Ecron | *Gat
+multi 5:10-12 | Ce s-a întâmplat la Ecron cât a stat chivotul acolo? | *oamenii care nu mureau erau loviți | preoții au ars chivotul | chivotul a fost pus lângă Dagon

@@ -26,9 +26,9 @@ match 17:5-55 | Asociază fiecare nume cu ce se spune despre el.
 = Abner | nu știa al cui fiu este David | 17:55
 = Ierusalim | acolo a dus David capul uriașului | 17:54
 = oile | David le-a lăsat în seama unui paznic | 17:20
-multi 17:38 | Ce i-a pus Saul lui David înainte de luptă? | *un coif de aramă | *o platoșă | o coroană
+multi 17:38 | Ce i-a pus Saul lui David înainte de luptă? | *un coif de aramă | *o platoșă | *hainele lui Saul
 multi 17:52 | Ce au făcut israeliții după moartea lui Goliat? | *au dat chiote | *i-au urmărit pe filisteni | s-au ascuns în peșteri
-multi 17:50 | Cu ce l-a biruit David pe Goliat? | *cu o praștie | *cu o piatră | cu un arc
+multi 17:50 | Cu ce l-a biruit David pe Goliat? | *cu o piatră | cu un arc | cu o suliță
 ## mediu
 tf + 17:1 | Filistenii și-au strâns oștile la Soco, o cetate a lui Iuda.
 tf - 17:3 | În război, filistenii și israeliții erau despărțiți de un râu.
@@ -56,8 +56,8 @@ match 17:10-58 | Asociază fiecare persoană cu cuvintele spuse.
 = Goliat | „Dați-mi un om ca să mă lupt cu el.” | 17:10
 = Abner | „Pe sufletul tău, împărate, că nu știu.” | 17:55
 = David | „Sunt fiul robului tău Isai” | 17:58
-multi 17:6 | Ce purta Goliat din aramă, pe lângă coif? | *tureci peste picioare | *o pavăză între umeri | o sabie la brâu
-multi 17:17-18 | Ce a trimis Isai în tabără prin David? | *grâu prăjit | *cașuri de brânză | miere
+multi 17:6 | Ce purta Goliat din aramă, pe lângă coif? | *o pavăză între umeri | o sabie la brâu | un scut pe brațul stâng
+multi 17:17-18 | Ce a trimis Isai în tabără prin David? | *grâu prăjit | *cașuri de brânză | *zece pâini
 multi 17:51 | Ce a făcut David după ce l-a doborât pe Goliat? | *a alergat lângă el | *i-a scos sabia din teacă | l-a dus viu la Saul
 ## greu
 tf + 17:4 | Goliat avea o înălțime de șase coți și o palmă.
@@ -88,4 +88,4 @@ match 17:10-47 | Asociază fiecare persoană cu cuvintele spuse.
 = oamenii din Israel | „Ați văzut pe omul acesta înaintând?” | 17:25
 multi 17:39-40 | Ce a luat David de la Saul când a înaintat împotriva lui Goliat? | sabia | platoșa | coiful
 multi 17:13 | Care dintre aceștia au urmat pe Saul la război? | *Eliab | *Șama | Ionatan
-multi 17:53-54 | Ce s-a întâmplat după urmărirea filistenilor? | *israeliții le-au jefuit tabăra | *David a pus armele lui Goliat în cortul lui | Saul i-a dat îndată fata de nevastă
+multi 17:53-54 | Ce s-a întâmplat după urmărirea filistenilor? | *israeliții le-au jefuit tabăra | *David a pus armele lui Goliat în cortul lui | *David a dus capul lui Goliat la Ierusalim

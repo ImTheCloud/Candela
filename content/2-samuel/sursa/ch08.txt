@@ -27,8 +27,8 @@ match 8:2-17 | Asociază fiecare nume cu ce se spune despre el.
 = Edomul | a fost supus în întregime lui David | 8:14
 = vasele de argint și de aur | le-a adus fiul lui Toi | 8:10
 multi 8:4 | După biruința asupra lui Hadadezer, împăratul din Țoba, pe cine i-a luat David? | *călăreți | *pedeștri | corăbii
-multi 8:11 | Ce I-a închinat David Domnului din prada luată de la neamuri? | *argintul | *aurul | idolii
-multi 8:12 | După prada închinată Domnului, ce neamuri biruise David? | *pe moabiți | *pe amaleciți | pe egipteni
+multi 8:11 | Ce I-a închinat David Domnului din prada luată de la neamuri? | *aurul | idolii | robii
+multi 8:12 | După prada închinată Domnului, ce neamuri biruise David? | *pe moabiți | *pe amaleciți | *pe filisteni
 ## mediu
 tf + 8:1 | După ce i-a bătut și i-a smerit, David a luat din mâna filistenilor cârmuirea capitalei lor.
 tf - 8:2 | Când i-a bătut pe moabiți, David i-a lăsat pe toți în viață.
@@ -56,9 +56,9 @@ match 8:9-17 | Asociază fiecare persoană cu slujba ei.
 = Seraia | logofăt | 8:17
 = Toi | împăratul Hamatului | 8:9
 = Ahimelec | preot, fiul lui Abiatar | 8:17
-multi 8:4 | După biruința asupra lui Hadadezer, pe cine i-a luat David? | *o mie șapte sute de călăreți | *douăzeci de mii de pedeștri | o mie de care de luptă
-multi 8:10 | Când împăratul Hamatului a trimis să-l laude pe David, ce vase i s-au adus? | *de argint | *de aramă | de fildeș
-multi 8:12 | De la ce neamuri era argintul și aurul închinat Domnului? | *din Moab | *de la Amalec | din Egipt
+multi 8:4 | După biruința asupra lui Hadadezer, pe cine i-a luat David? | *douăzeci de mii de pedeștri | două mii de călăreți | o mie de care de luptă
+multi 8:10 | Când împăratul Hamatului a trimis să-l laude pe David, ce vase i s-au adus? | *de argint | *de aramă | *de aur
+multi 8:12 | De la ce neamuri era argintul și aurul închinat Domnului? | din Egipt | de la hetiți | din Asiria
 ## greu
 tf + 8:15 | După ce a biruit neamurile din jur, David făcea judecată și dreptate la tot poporul lui.
 tf - 8:3 | Hadadezer, împăratul din Țoba, era fiul lui Toi.
@@ -86,6 +86,6 @@ match 8:3-9 | Asociază fiecare loc cu ce se spune despre el.
 = Damascul | de acolo au venit sirienii în ajutorul lui Hadadezer | 8:5
 = Ierusalimul | acolo au fost aduse scuturile de aur | 8:7
 = Eufratul | acolo se ducea să-și așeze iarăși stăpânirea | 8:3
-multi 8:16-17 | În împărăția lui David, ce slujbe aveau oamenii lui? | *Ioab era mai-mare peste oștire | *Ahimelec era preot | Țadoc era logofăt
+multi 8:16-17 | În împărăția lui David, ce slujbe aveau oamenii lui? | *Ioab era mai-mare peste oștire | *Ahimelec era preot | *Seraia era logofăt
 multi 8:13 | Pe cine a bătut David la întoarcerea de la biruința asupra sirienilor? | pe moabiți | pe amoniți | pe amaleciți
-multi 8:2 | După ce David i-a bătut, ce s-a întâmplat cu moabiții? | *au fost măsurați cu frânghia | *i-au plătit bir lui David | au fost duși robi în Egipt
+multi 8:2 | După ce David i-a bătut, ce s-a întâmplat cu moabiții? | *i-au plătit bir lui David | au fost duși robi în Egipt | au fost mutați peste Eufrat

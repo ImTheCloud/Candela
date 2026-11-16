@@ -26,9 +26,9 @@ match 3:1-19 | Asociază fiecare nume cu ce se spune despre el.
 = cuvântul Domnului | era rar în vremea aceea | 3:1
 = vedeniile | nu erau dese în vremea aceea | 3:1
 = cuvintele lui Samuel | Domnul n-a lăsat niciunul să cadă la pământ | 3:19
-multi 3:6 | Când Domnul l-a chemat a doua oară, ce a făcut Samuel? | *s-a sculat | *s-a dus la Eli | a ieșit în curte
+multi 3:6 | Când Domnul l-a chemat a doua oară, ce a făcut Samuel? | *s-a sculat | *s-a dus la Eli | *a zis: „Iată-mă!”
 multi 3:16-17 | Dimineața, ce i-a spus Eli lui Samuel? | *„Samuele, fiule!” | *„Nu-mi ascunde nimic.” | „Pleacă de la Silo!”
-multi 3:19-20 | Pe măsură ce Samuel creștea, ce s-a întâmplat? | *Domnul era cu el | *tot Israelul a aflat că este proroc | a ajuns împărat
+multi 3:19-20 | Pe măsură ce Samuel creștea, ce s-a întâmplat? | *Domnul era cu el | a ajuns împărat | a plecat din Silo
 ## mediu
 tf + 3:1 | În vremea când Samuel slujea la Templu, Cuvântul Domnului era rar.
 tf - 3:3 | Când Domnul l-a chemat, Samuel dormea acasă, la Rama.
@@ -56,9 +56,9 @@ match 3:1-19 | Asociază fiecare nume cu ce se spune despre el.
 = candela lui Dumnezeu | nu se stinsese încă | 3:3
 = vedeniile | nu erau dese în vremea aceea | 3:1
 = cuvintele lui Samuel | niciunul n-a căzut la pământ | 3:19
-multi 3:12-13 | Ce i-a spus Domnul lui Samuel despre pedeapsa casei lui Eli? | *că va fi pentru totdeauna | *că Eli nu și-a oprit fiii | că va cădea peste tot Israelul
-multi 3:15 | Dimineața, după vedenie, ce a făcut Samuel? | *a deschis ușile Casei Domnului | *s-a temut să-i spună lui Eli | a adus o jertfă Domnului
-multi 3:17 | Dimineața, cu ce cuvinte l-a îndemnat Eli pe Samuel să spună tot? | *„Nu-mi ascunde nimic.” | *„Dumnezeu să Se poarte cu tine cu toată asprimea” | „Îți voi da un dar dacă spui tot.”
+multi 3:12-13 | Ce i-a spus Domnul lui Samuel despre pedeapsa casei lui Eli? | *că Eli nu și-a oprit fiii | că va cădea peste tot Israelul | că se va sfârși după un an
+multi 3:15 | Dimineața, după vedenie, ce a făcut Samuel? | a adus o jertfă Domnului | a fugit acasă la Rama | a plecat s-o vadă pe Ana
+multi 3:17 | Dimineața, cu ce cuvinte l-a îndemnat Eli pe Samuel să spună tot? | *„Nu-mi ascunde nimic.” | *„Dumnezeu să Se poarte cu tine cu toată asprimea” | *„Care este cuvântul pe care ți l-a vorbit Domnul?”
 ## greu
 tf + 3:3 | Când Domnul l-a chemat pe Samuel, candela lui Dumnezeu nu se stinsese încă.
 tf - 3:1 | Când Samuel slujea înaintea lui Eli, vedeniile erau dese.
@@ -87,5 +87,5 @@ match 3:5-18 | Asociază fiecare persoană cu cuvintele spuse.
 = Eli, după ce a auzit tot | „Domnul este Acesta” | 3:18
 = Domnul, către Samuel | „I-am spus că vreau să pedepsesc casa lui” | 3:13
 multi 3:15 | Cui i-a istorisit Samuel vedenia chiar în noaptea aceea? | lui Elcana | Anei | preoților din Silo
-multi 3:6-8 | Când a fost chemat a doua și a treia oară, ce a făcut Samuel? | *s-a sculat | *s-a dus la Eli | a strigat Numele Domnului
-multi 3:12-13 | Ce i-a spus Domnul lui Samuel despre pedeapsa casei lui Eli? | *că este pentru totdeauna | *că vine dintr-o fărădelege cunoscută de Eli | că va cădea peste tot Israelul
+multi 3:6-8 | Când a fost chemat a doua și a treia oară, ce a făcut Samuel? | *s-a dus la Eli și a zis: „Iată-mă!” | a strigat Numele Domnului | a deschis ușile Casei Domnului
+multi 3:12-14 | Ce i-a spus Domnul lui Samuel despre pedeapsa casei lui Eli? | *că este pentru totdeauna | *că vine dintr-o fărădelege cunoscută de Eli | *că nu va fi ispășită prin jertfe

@@ -26,8 +26,8 @@ match 31:1-13 | Asociază fiecare nume cu ce se spune despre el.
 = filistenii | au trimis vestea prin toată țara lor | 31:9
 = purtătorul de arme | a murit împreună cu Saul | 31:5
 = Iordanul | israeliții de dincolo de el au fugit | 31:7
-multi 31:7 | Ce au făcut israeliții de dincolo de vale, după moartea lui Saul? | *și-au părăsit cetățile | *au fugit | au mers la Silo
-multi 31:12-13 | Ce au făcut vitejii din Iabes? | *au luat trupurile | *au postit | au atacat cetatea Gat
+multi 31:7 | Ce au făcut israeliții de dincolo de vale, după moartea lui Saul? | *au fugit | au mers la Silo | au venit să lupte
+multi 31:12-13 | Ce au făcut vitejii din Iabes? | *au luat trupurile | *au postit | *au îngropat oasele sub stejar
 multi 31:8 | Ce au găsit filistenii a doua zi pe munte? | *pe Saul | *pe fiii lui | pe David
 ## mediu
 tf + 31:2 | Filistenii au urmărit pe Saul și pe fiii lui.
@@ -57,8 +57,8 @@ match 31:1-13 | Asociază fiecare nume cu ce se spune despre el.
 = muntele Ghilboa | acolo au căzut uciși bărbații lui Israel | 31:1
 = casele idolilor | acolo a ajuns vestea filistenilor | 31:9
 multi 31:7 | Ce au văzut israeliții de dincolo de Iordan? | *că oamenii lui Israel fugeau | *că Saul și fiii lui muriseră | că filistenii au plecat
-multi 31:8-9 | Ce au făcut filistenii a doua zi după luptă? | *au venit să-i dezbrace pe cei morți | *au trimis să dea de veste | au plecat acasă
-multi 31:13 | Ce au făcut oamenii din Iabes la sfârșit? | *au îngropat oasele | *au postit | au trimis soli la David
+multi 31:8-9 | Ce au făcut filistenii a doua zi după luptă? | *au venit să-i dezbrace pe cei morți | *au trimis să dea de veste | *i-au tăiat capul lui Saul
+multi 31:13 | Ce au făcut oamenii din Iabes la sfârșit? | *au postit șapte zile | au trimis soli la David | au ars cetatea Bet-Șan
 ## greu
 tf + 31:1 | Bărbații lui Israel au căzut uciși pe muntele Ghilboa.
 tf - 31:2 | Filistenii l-au ucis pe Ișvi în lupta de pe Ghilboa.
@@ -86,6 +86,6 @@ match 31:2-12 | Asociază fiecare nume cu ce se spune despre el.
 = vitejii din Iabes | au luat trupurile de pe ziduri | 31:12
 = Malchișua | un fiu al lui Saul ucis în luptă | 31:2
 = locuitorii de dincolo de Iordan | și-au părăsit cetățile | 31:7
-multi 31:2 | Cine a fost ucis dintre aceștia în lupta de pe Ghilboa? | Abner | David | Eliab
-multi 31:9 | Ce le-au făcut filistenii lui Saul a doua zi? | *i-au tăiat capul | *i-au luat armele | l-au ars
+multi 31:2 | Cine a fost ucis dintre aceștia în lupta de pe Ghilboa? | *Ionatan | *Abinadab | *Malchișua
+multi 31:9 | Ce le-au făcut filistenii lui Saul a doua zi? | *i-au luat armele | l-au ars | l-au îngropat la Bet-Șan
 multi 31:7 | Ce au văzut israeliții de dincolo de vale? | *că oamenii lui Israel fugeau | *că Saul și fiii lui muriseră | că David venea

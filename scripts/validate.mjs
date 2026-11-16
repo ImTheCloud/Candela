@@ -142,10 +142,12 @@ function checkBalance(file, where) {
     const tf = qs.filter((q) => q.t === 'tf');
     const yes = tf.filter((q) => q.a).length;
     if (yes < 4 || yes > 6) warn(`${where} ${a}: ${yes} adevărate din ${tf.length} (între 4 și 6)`);
-    // "Niciun răspuns corect": never for children, at most once a chapter in Mediu
-    const none = qs.filter((q) => q.t === 'multi' && q.a.length === 0).length;
-    if (a === 'usor' && none) warn(`${where} ${a}: întrebare cu mai multe răspunsuri fără niciun răspuns corect (nu la Ușor)`);
-    if (a === 'mediu' && none > 1) warn(`${where} ${a}: ${none} întrebări fără niciun răspuns corect (cel mult una)`);
+    // Multiple answers: the number of right ones must not be guessable. At most one "Niciun răspuns corect"
+    // per level, and the three questions of a level never all have the same number of right answers.
+    const multi = qs.filter((q) => q.t === 'multi');
+    const none = multi.filter((q) => q.a.length === 0).length;
+    if (none > 1) warn(`${where} ${a}: ${none} întrebări fără niciun răspuns corect (cel mult una)`);
+    if (multi.length > 1 && new Set(multi.map((q) => q.a.length)).size === 1) warn(`${where} ${a}: toate întrebările cu mai multe răspunsuri au ${multi[0].a.length} răspunsuri corecte (variază)`);
     const pos = [0, 0, 0];
     for (const q of qs) if (q.t === 'one') pos[q.a]++;
     if (Math.min(...pos) < 2) warn(`${where} ${a}: răspunsurile corecte la alegere unică sunt prea des pe aceeași literă (${pos.join('/')})`);

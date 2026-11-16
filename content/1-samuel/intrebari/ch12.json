@@ -256,11 +256,12 @@
    "ref": "12:11",
    "q": "Pe cine a trimis Domnul ca să-i izbăvească pe părinți, după cuvintele lui Samuel?",
    "opts": [
-    "pe Goliat",
+    "pe Iefta",
     "pe Barac",
     "pe Samuel"
    ],
    "a": [
+    0,
     1,
     2
    ]
@@ -272,13 +273,12 @@
    "ref": "12:24",
    "q": "La sfârșitul cuvântării, ce le-a cerut Samuel israeliților?",
    "opts": [
-    "să se teamă de Domnul",
-    "să-și facă idoli",
-    "să-I slujească din toată inima"
+    "să-I slujească din toată inima",
+    "să plece din țară",
+    "să-și facă idoli"
    ],
    "a": [
-    0,
-    2
+    0
    ]
   },
   {
@@ -550,12 +550,11 @@
    "ref": "12:20",
    "q": "Ce le-a spus Samuel israeliților după ce au recunoscut păcatul?",
    "opts": [
-    "„Slujiți Domnului din toată inima voastră”",
+    "„Alungați-vă împăratul!”",
     "„Nu vă temeți!”",
-    "„Alungați-l pe împăratul vostru!”"
+    "„Aduceți jertfe!”"
    ],
    "a": [
-    0,
     1
    ]
   },
@@ -566,14 +565,11 @@
    "ref": "12:23",
    "q": "Ce a spus Samuel că va face pentru popor de atunci înainte?",
    "opts": [
-    "îi va învăța calea cea bună",
-    "va pleca din Israel",
-    "va continua să se roage pentru ei"
+    "va unge alt împărat",
+    "nu se va mai ruga pentru ei",
+    "va pleca din Israel"
    ],
-   "a": [
-    0,
-    2
-   ]
+   "a": []
   },
   {
    "id": "1sa.12.mediu.324",
@@ -845,10 +841,13 @@
    "q": "Pe cine pomenește Samuel între izbăvitorii trimiși de Domnul?",
    "opts": [
     "pe Samson",
-    "pe Ehud",
-    "pe Iosua"
+    "pe Iefta",
+    "pe Ierubaal"
    ],
-   "a": []
+   "a": [
+    1,
+    2
+   ]
   },
   {
    "id": "1sa.12.greu.323",
@@ -857,11 +856,12 @@
    "ref": "12:20-24",
    "q": "Ce le-a cerut Samuel israeliților după ce au recunoscut păcatul?",
    "opts": [
-    "să-l alunge pe împărat",
+    "să nu se abată de la Domnul",
     "să slujească Domnului din toată inima",
     "să se teamă de Domnul"
    ],
    "a": [
+    0,
     1,
     2
    ]
@@ -873,12 +873,11 @@
    "ref": "12:13",
    "q": "Cu ce cuvinte vorbește Samuel despre Saul înaintea poporului?",
    "opts": [
-    "„împăratul pe care l-ați cerut”",
     "„împăratul pe care l-ați uns”",
-    "„împăratul pe care l-ați ales”"
+    "„împăratul pe care vi l-am dat”",
+    "„împăratul pe care l-ați cerut”"
    ],
    "a": [
-    0,
     2
    ]
   }

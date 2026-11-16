@@ -26,9 +26,9 @@ match 13:3-38 | Asociază fiecare nume cu ce se spune despre el.
 = Amnon | a fost ucis la tunsul oilor | 13:29
 = Gheșur | acolo a stat Absalom trei ani | 13:38
 = David | și-a rupt hainele când a auzit zvonul | 13:31
-multi 13:9 | Ce a făcut Amnon când i-a adus Tamar turtele? | *n-a vrut să mănânce | *a scos pe toată lumea afară | a mulțumit și a mâncat
+multi 13:9 | Ce a făcut Amnon când i-a adus Tamar turtele? | *n-a vrut să mănânce | a mulțumit și a mâncat | a dat turtele slujitorilor
 multi 13:25 | Ce a făcut David când Absalom l-a chemat la tunsul oilor? | *n-a vrut să meargă | *l-a binecuvântat pe Absalom | s-a mâniat pe el
-multi 13:12-13 | Când Amnon a apucat-o, ce i-a spus Tamar? | *„Nu se face așa în Israel!” | *„Vorbește împăratului!” | „Fă ce vrei!”
+multi 13:12-13 | Când Amnon a apucat-o, ce i-a spus Tamar? | *„Nu se face așa în Israel!” | *„Vorbește împăratului!” | *„Nu mă necinsti!”
 ## mediu
 tf + 13:1 | Absalom și Amnon erau amândoi fii ai lui David.
 tf - 13:21 | După ce Amnon a izgonit-o pe Tamar, David n-a aflat ce se întâmplase.
@@ -56,9 +56,9 @@ match 13:3-37 | Asociază fiecare nume cu ce se spune despre el.
 = Amnon | a fost lovit când inima lui se veselea de vin | 13:28
 = Talmai | împăratul Gheșurului, fiul lui Amihur | 13:37
 = fiii împăratului | au fugit călare pe catâri | 13:29
-multi 13:19 | Ce a făcut Tamar după ce a fost izgonită? | *și-a presărat cenușă pe cap | *și-a sfâșiat haina pestriță | s-a dus la împărat
-multi 13:28 | La tunsul oilor, ce le-a spus Absalom slujitorilor lui? | *„Să nu vă temeți de nimic” | *„Fiți tari și arătați-vă oameni de inimă” | „Să-l legați și să mi-l aduceți”
-multi 13:31 | Când a auzit zvonul că toți fiii lui au fost uciși, ce a făcut David? | *și-a rupt hainele | *s-a culcat pe pământ | a trimis oastea după Absalom
+multi 13:19 | Ce a făcut Tamar după ce a fost izgonită? | *și-a presărat cenușă pe cap | *și-a sfâșiat haina pestriță | *a plecat țipând
+multi 13:28 | La tunsul oilor, ce le-a spus Absalom slujitorilor lui? | *„Fiți tari și arătați-vă oameni de inimă” | „Să-l legați și să mi-l aduceți” | „Așteptați până se întoarce împăratul”
+multi 13:31 | Când a auzit zvonul că toți fiii lui au fost uciși, ce a făcut David? | a trimis oastea după Absalom | a fugit din Ierusalim | a postit șapte zile
 ## greu
 tf + 13:2 | Când a căzut bolnav după Tamar, lui Amnon îi venea greu să-i facă ceva, căci era fecioară.
 tf - 13:16-19 | Când Amnon a izgonit-o, Tamar a plecat în tăcere, fără să spună nimic.
@@ -86,6 +86,6 @@ match 13:3-37 | Asociază fiecare persoană cu ce se spune despre ea.
 = Talmai | împăratul Gheșurului | 13:37
 = Amihur | tatăl împăratului la care a fugit Absalom | 13:37
 = tânărul de strajă | a văzut ceata venind dinspre munte | 13:34
-multi 13:23 | După doi ani, unde a fost tunsul oilor lui Absalom? | la Hebron | la Ghilgal | la Bet-El
+multi 13:23 | După doi ani, unde a fost tunsul oilor lui Absalom? | *la Baal-Hațor | la Hebron | la Bet-El
 multi 13:12-13 | Când Amnon a apucat-o, ce i-a spus Tamar? | *„Nu se face așa în Israel” | *„Tu vei trece drept un mișel în Israel” | „Tatăl nostru te va ucide”
-multi 13:36-37 | După moartea lui Amnon, ce s-a întâmplat după ce s-au întors fiii împăratului? | *împăratul și slujitorii lui au plâns mult | *David jelea în fiecare zi pe fiul său | David a trimis după Absalom la Gheșur
+multi 13:36-37 | După moartea lui Amnon, ce s-a întâmplat după ce s-au întors fiii împăratului? | *împăratul și slujitorii lui au plâns mult | *David jelea în fiecare zi pe fiul său | *Absalom fugise la Talmai, împăratul Gheșurului

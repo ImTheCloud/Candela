@@ -26,8 +26,8 @@ match 25:1-43 | Asociază fiecare nume cu ce se spune despre el.
 = măgarul | Abigail a mers călare pe el | 25:20
 = Caleb | din el se trăgea Nabal | 25:3
 = Ahinoam | altă nevastă a lui David | 25:43
-multi 25:7 | Ce au spus oamenii lui David despre păstorii lui Nabal? | *nu i-au ocărât | *nu li s-a luat nimic | le-au furat oile
-multi 25:24 | Ce a făcut Abigail înaintea lui David? | *s-a aruncat la picioarele lui | *a spus că ea este de vină | a strigat la el
+multi 25:7 | Ce au spus oamenii lui David despre păstorii lui Nabal? | *nu li s-a luat nimic | le-au furat oile | i-au bătut
+multi 25:23-24 | Ce a făcut Abigail înaintea lui David? | *s-a aruncat la picioarele lui | *a spus că ea este de vină | *s-a dat jos repede de pe măgar
 multi 25:11 | Ce n-a vrut Nabal să le dea oamenilor lui David? | *pâinea | *apa | casa
 ## mediu
 tf + 25:1 | După moartea lui Samuel, David s-a coborât în pustia Paran.
@@ -56,9 +56,9 @@ match 25:3-44 | Asociază fiecare nume cu ce se spune despre el.
 = Caleb | din el se trăgea Nabal | 25:3
 = cele cinci fete | au însoțit-o pe Abigail | 25:42
 = tunzătorii | Nabal a tăiat vite pentru ei | 25:11
-multi 25:18 | Ce a luat Abigail pentru David? | *cinci oi pregătite | *două sute de legături de smochine | zece burdufuri cu vin
-multi 25:32-33 | Ce a spus David când a oprit-o Abigail? | *L-a binecuvântat pe Domnul | *a binecuvântat judecata ei | a spus că va omorî pe Nabal totuși
-multi 25:15-16 | Ce a spus slujitorul lui Nabal despre oamenii lui David? | *au fost foarte buni cu păstorii | *le-au fost zid zi și noapte | le-au luat din turme
+multi 25:18 | Ce a luat Abigail pentru David? | *cinci oi pregătite | *două sute de legături de smochine | *două sute de pâini
+multi 25:32-33 | Ce a spus David când a oprit-o Abigail? | *a binecuvântat judecata ei | a spus că va omorî pe Nabal totuși | a cerut-o îndată de nevastă
+multi 25:15-16 | Ce a spus slujitorul lui Nabal despre oamenii lui David? | le-au luat din turme | i-au ocărât | au cerut plată pentru pază
 ## greu
 tf + 25:2 | Nabal avea trei mii de oi și o mie de capre.
 tf - 25:5 | David a trimis doisprezece tineri la Nabal.
@@ -87,5 +87,5 @@ match 25:13-33 | Asociază fiecare persoană cu cuvintele spuse.
 = Abigail, către David | „Eu sunt de vină, domnul meu!” | 25:24
 = David, către Abigail | „Binecuvântată să fie judecata ta” | 25:33
 multi 25:19 | Cui i-a spus Abigail că merge înaintea lui David, dintre aceștia? | lui Nabal | lui Saul | lui Samuel
-multi 25:18 | Ce a luat Abigail pentru David? | *cinci măsuri de grâu prăjit | *o sută de turte de stafide | zece oi pregătite
-multi 25:28 | Ce i-a spus Abigail lui David despre el? | *Domnul îi va face o casă trainică | *poartă războaiele Domnului | va ajunge judecător la Carmel
+multi 25:18 | Ce a luat Abigail pentru David? | *o sută de turte de stafide | zece oi pregătite | trei burdufuri cu vin
+multi 25:28 | Ce i-a spus Abigail lui David despre el? | *Domnul îi va face o casă trainică | *poartă războaiele Domnului | *nu va fi răutate în el

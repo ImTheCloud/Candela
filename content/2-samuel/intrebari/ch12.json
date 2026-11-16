@@ -257,11 +257,12 @@
    "q": "Ce a făcut David când a aflat că murise copilul?",
    "opts": [
     "s-a spălat și și-a schimbat hainele",
-    "a plâns și mai tare",
+    "a cerut să mănânce și a mâncat",
     "s-a dus în Casa Domnului și s-a închinat"
    ],
    "a": [
     0,
+    1,
     2
    ]
   },
@@ -272,12 +273,11 @@
    "ref": "12:6",
    "q": "După ce a auzit pilda, ce a spus David că trebuie să facă bogatul?",
    "opts": [
-    "să fie pedepsit",
+    "să primească o răsplată",
     "să dea înapoi patru miei",
-    "să primească o răsplată"
+    "să plece din țară"
    ],
    "a": [
-    0,
     1
    ]
   },
@@ -288,14 +288,11 @@
    "ref": "12:9",
    "q": "Ce rău a spus Domnul, prin Natan, că a făcut David?",
    "opts": [
-    "a luat de nevastă pe nevasta lui Urie",
-    "a ars un oraș întreg",
-    "a lovit cu sabia pe Urie"
+    "a furat oile lui Natan",
+    "l-a mințit pe Saul",
+    "a ars un oraș întreg"
    ],
-   "a": [
-    0,
-    2
-   ]
+   "a": []
   },
   {
    "id": "2sa.12.mediu.301",
@@ -547,16 +544,17 @@
    "id": "2sa.12.mediu.322",
    "age": "mediu",
    "t": "multi",
-   "ref": "12:11",
+   "ref": "12:11-12",
    "q": "Prin Natan, ce a spus Domnul că va face împotriva lui David?",
    "opts": [
     "va ridica nenorocirea din casa lui",
     "îi va lua nevestele și le va da altuia",
-    "îi va lua împărăția îndată"
+    "va face lucrul acesta în fața întregului Israel"
    ],
    "a": [
     0,
-    1
+    1,
+    2
    ]
   },
   {
@@ -567,12 +565,11 @@
    "q": "Ce le-a spus David slujitorilor despre copil?",
    "opts": [
     "„Pot să-l întorc în viață?”",
-    "„Eu mă voi duce la el, dar el nu se va întoarce la mine”",
-    "„Domnul îl va învia a treia zi”"
+    "„Domnul îl va învia a treia zi”",
+    "„Copilul doarme, nu a murit”"
    ],
    "a": [
-    0,
-    1
+    0
    ]
   },
   {
@@ -859,11 +856,12 @@
    "ref": "12:21",
    "q": "Când David s-a sculat și a mâncat, ce i-au spus slujitorii lui?",
    "opts": [
-    "„Pentru ce n-ai îngropat copilul?”",
+    "„Acum, când a murit copilul, te scoli și mănânci!”",
     "„Ce înseamnă ceea ce faci?”",
     "„Când trăia copilul, posteai și plângeai”"
    ],
    "a": [
+    0,
     1,
     2
    ]
@@ -875,11 +873,13 @@
    "ref": "12:25",
    "q": "Cine i-a dat lui Solomon numele Iedidia?",
    "opts": [
+    "David",
     "Bat-Șeba",
-    "Ioab",
-    "David"
+    "Natan"
    ],
-   "a": []
+   "a": [
+    2
+   ]
   }
  ]
 }

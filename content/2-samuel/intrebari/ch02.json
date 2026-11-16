@@ -257,11 +257,12 @@
    "q": "Care erau fiii Țeruiei?",
    "opts": [
     "Ioab",
-    "Goliat",
+    "Asael",
     "Abișai"
    ],
    "a": [
     0,
+    1,
     2
    ]
   },
@@ -272,13 +273,12 @@
    "ref": "2:5-6",
    "q": "Ce le-a spus David oamenilor din Iabes?",
    "opts": [
-    "că îi va pedepsi",
+    "să vină la Hebron",
     "să fie binecuvântați de Domnul",
-    "că le va face și el bine"
+    "că îi va pedepsi"
    ],
    "a": [
-    1,
-    2
+    1
    ]
   },
   {
@@ -550,11 +550,12 @@
    "ref": "2:9",
    "q": "Peste ce ținuturi l-a pus Abner împărat pe Iș-Boșet?",
    "opts": [
-    "peste Iuda",
+    "peste Beniamin",
     "peste Galaad",
     "peste Efraim"
    ],
    "a": [
+    0,
     1,
     2
    ]
@@ -566,14 +567,11 @@
    "ref": "2:5-6",
    "q": "Ce le-a spus David oamenilor din Iabes?",
    "opts": [
-    "„Domnul să vă arate bunătate și credincioșie”",
-    "„Binecuvântați să fiți de Domnul”",
-    "„Veniți să locuiți la Hebron”"
+    "„Aduceți-mi oasele lui Saul”",
+    "„Veniți să locuiți la Hebron”",
+    "„Trimiteți-mi oameni de luptă”"
    ],
-   "a": [
-    0,
-    1
-   ]
+   "a": []
   },
   {
    "id": "2sa.2.mediu.324",
@@ -845,12 +843,11 @@
    "q": "Cu ce neveste s-a suit David la Hebron?",
    "opts": [
     "Ahinoam din Izreel",
-    "Mical din Ghibea",
-    "Abigail, nevasta lui Nabal"
+    "Maaca, fiica lui Talmai",
+    "Mical, fiica lui Saul"
    ],
    "a": [
-    0,
-    2
+    0
    ]
   },
   {
@@ -876,11 +873,15 @@
    "ref": "2:30-31",
    "q": "Ce s-a aflat când s-au numărat morții după luptă?",
    "opts": [
-    "lipseau douăzeci de oameni ai lui Abner",
-    "muriseră trei sute de oameni ai lui David",
-    "Abner fusese rănit de moarte"
+    "lipseau nouăsprezece oameni ai lui David",
+    "muriseră trei sute șaizeci de oameni ai lui Abner",
+    "lipsea și Asael dintre oamenii lui David"
    ],
-   "a": []
+   "a": [
+    0,
+    1,
+    2
+   ]
   }
  ]
 }

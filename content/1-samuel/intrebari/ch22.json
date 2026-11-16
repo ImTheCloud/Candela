@@ -256,12 +256,11 @@
    "ref": "22:1",
    "q": "Cine a coborât la David în peștera Adulam?",
    "opts": [
+    "Ionatan",
     "Saul",
-    "toată casa tatălui său",
     "frații lui"
    ],
    "a": [
-    1,
     2
    ]
   },
@@ -288,14 +287,11 @@
    "ref": "22:7",
    "q": "Ce i-a întrebat Saul pe slujitorii lui despre fiul lui Isai?",
    "opts": [
+    "dacă le va da cai",
     "dacă le va da corăbii",
-    "dacă le va da ogoare și vii",
-    "dacă îi va face căpetenii"
+    "dacă îi va face preoți"
    ],
-   "a": [
-    1,
-    2
-   ]
+   "a": []
   },
   {
    "id": "1sa.22.mediu.301",
@@ -551,11 +547,12 @@
    "q": "Cine s-a strâns la David în peștera Adulam?",
    "opts": [
     "cei care aveau datorii",
-    "preoții din Nob",
+    "cei nemulțumiți",
     "cei aflați în nevoie"
    ],
    "a": [
     0,
+    1,
     2
    ]
   },
@@ -566,13 +563,12 @@
    "ref": "22:23",
    "q": "Ce i-a spus David lui Abiatar?",
    "opts": [
-    "să rămână cu el",
     "să nu se teamă de nimic",
-    "să meargă la Moab"
+    "să meargă la Moab",
+    "să se întoarcă la Nob"
    ],
    "a": [
-    0,
-    1
+    0
    ]
   },
   {
@@ -844,11 +840,13 @@
    "ref": "22:20",
    "q": "Cine dintre aceștia a scăpat din casa lui Ahimelec?",
    "opts": [
-    "Doeg",
+    "Abiatar",
     "Gad",
-    "Ahitub"
+    "Doeg"
    ],
-   "a": []
+   "a": [
+    0
+   ]
   },
   {
    "id": "1sa.22.greu.323",
@@ -859,11 +857,12 @@
    "opts": [
     "măgari",
     "boi",
-    "cai"
+    "oi"
    ],
    "a": [
     0,
-    1
+    1,
+    2
    ]
   },
   {
@@ -873,12 +872,11 @@
    "ref": "22:10",
    "q": "Ce a spus Doeg că a făcut Ahimelec pentru David?",
    "opts": [
+    "i-a dat un efod",
     "i-a dat merinde",
-    "a întrebat pe Domnul pentru el",
-    "i-a dat un efod"
+    "i-a dat o suliță"
    ],
    "a": [
-    0,
     1
    ]
   }

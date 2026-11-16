@@ -26,8 +26,8 @@ match 26:3-23 | Asociază fiecare nume cu ce se spune despre el.
 = cortul | Saul dormea în el | 26:5
 = potârnichea | David spune că este urmărit ca ea | 26:20
 = Domnul | va răsplăti fiecăruia | 26:23
-multi 26:5 | Cine era culcat în mijlocul taberei? | *Saul | *Abner | David
-multi 26:21 | Ce a spus Saul când a înțeles că David l-a cruțat? | *„Am păcătuit” | *„Am lucrat ca un nebun” | „Te voi prinde”
+multi 26:5 | Cine era culcat în mijlocul taberei? | *Saul | David | Goliat
+multi 26:21 | Ce a spus Saul când a înțeles că David l-a cruțat? | *„Am păcătuit” | *„Am lucrat ca un nebun” | *„Nu-ți voi mai face rău”
 multi 26:25 | Ce au făcut David și Saul la sfârșit? | *David și-a văzut de drum | *Saul s-a întors acasă | au plecat împreună la Ghibea
 ## mediu
 tf + 26:2 | Saul a coborât în pustia Zif cu trei mii de oameni aleși.
@@ -56,9 +56,9 @@ match 26:5-19 | Asociază fiecare nume cu ce se spune despre el.
 = somnul adânc | Domnul i-a cufundat în el pe cei din tabără | 26:12
 = vârful muntelui | de acolo a strigat David | 26:13
 = darul de mâncare | David l-a pomenit, dacă Domnul l-a ațâțat pe Saul | 26:19
-multi 26:11-12 | Ce a luat David de la căpătâiul lui Saul? | *sulița | *urciorul cu apă | sabia
+multi 26:11-12 | Ce a luat David de la căpătâiul lui Saul? | *urciorul cu apă | sabia | coiful
 multi 26:23-24 | Ce i-a spus David lui Saul despre Domnul la sfârșit? | *va răsplăti fiecăruia după dreptate | *îl va izbăvi din orice necaz | îl va pedepsi pe Saul a doua zi
-multi 26:25 | Ce i-a spus Saul lui David la despărțire? | *că va face lucruri mari | *că va birui | că va fi ucis de filisteni
+multi 26:25 | Ce i-a spus Saul lui David la despărțire? | *că va face lucruri mari | *că va birui | *să fie binecuvântat
 ## greu
 tf + 26:1 | Zifiții s-au dus la Saul, la Ghibea, ca să-i spună unde e David.
 tf - 26:2 | Saul a coborât în pustia Zif cu șase mii de oameni.
@@ -88,4 +88,4 @@ match 26:6-25 | Asociază fiecare persoană cu cuvintele spuse.
 = Saul, la sfârșit | „Tu vei face lucruri mari” | 26:25
 multi 26:12 | Cine i-a văzut pe David și pe Abișai plecând din tabără? | Abner | Saul | străjerii
 multi 26:16 | Ce i-a spus David lui Abner să caute lângă căpătâiul împăratului? | *sulița | *urciorul de apă | coiful
-multi 26:23 | După ce a spus David că va răsplăti Domnul fiecăruia? | *după dreptatea lui | *după credincioșia lui | după bogăția lui
+multi 26:23 | După ce a spus David că va răsplăti Domnul fiecăruia? | *după credincioșia lui | după bogăția lui | după jertfele lui

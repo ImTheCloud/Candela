@@ -26,9 +26,9 @@ match 13:1-17 | Asociază fiecare nume cu ce se spune despre el.
 = Ghilgal | acolo l-a așteptat Saul pe Samuel | 13:8
 = cetele filistenilor | au ieșit să pustiască țara | 13:17
 = Saul | avea treizeci de ani când a ajuns împărat | 13:1
-multi 13:2 | Cine avea oameni aleși lângă el când a început războiul cu filistenii? | *Saul | *Ionatan | Samuel
+multi 13:2 | Cine avea oameni aleși lângă el când a început războiul cu filistenii? | *Ionatan | Samuel | Goliat
 multi 13:5 | Ce aveau filistenii când s-au strâns să lupte cu Israel? | *care | *călăreți | corăbii
-multi 13:20 | Ce mergeau israeliții să-și ascută la filisteni? | *fierul plugului | *coasa | harfa
+multi 13:20 | Ce mergeau israeliții să-și ascută la filisteni? | *fierul plugului | *coasa | *securea
 ## mediu
 tf + 13:1 | Saul avea treizeci de ani când a ajuns împărat.
 tf - 13:2 | La începutul războiului, Saul și-a ales zece mii de bărbați din Israel.
@@ -56,9 +56,9 @@ match 13:7-23 | Asociază fiecare nume cu ce se spune despre el.
 = Ionatan | avea sabie în ziua luptei | 13:22
 = trecătoarea Micmașului | o ceată de filisteni s-a așezat acolo | 13:23
 = poporul de lângă Saul | tremura la Ghilgal | 13:7
-multi 13:13-14 | Ce i-a spus Samuel lui Saul după jertfa de la Ghilgal? | *că a lucrat ca un nebun | *că domnia lui nu va dăinui | că va fi iertat în curând
-multi 13:14 | Ce a spus Samuel despre omul ales de Domnul în locul lui Saul? | *este după inima Domnului | *este rânduit căpetenie a poporului | este din casa lui Saul
-multi 13:21 | Ce unelte se toceau și trebuiau ascuțite la filisteni? | *sapa | *furca cu trei coarne | sabia
+multi 13:13-14 | Ce i-a spus Samuel lui Saul după jertfa de la Ghilgal? | *că a lucrat ca un nebun | *că domnia lui nu va dăinui | *că n-a păzit porunca Domnului
+multi 13:14 | Ce a spus Samuel despre omul ales de Domnul în locul lui Saul? | *este după inima Domnului | este din casa lui Saul | este un preot din Silo
+multi 13:21 | Ce unelte se toceau și trebuiau ascuțite la filisteni? | sabia | sulița | arcul
 ## greu
 tf + 13:1 | Când a ajuns împărat, Saul a domnit doi ani peste Israel.
 tf - 13:2 | Din bărbații aleși, două mii erau cu Ionatan, iar o mie cu Saul.
@@ -87,5 +87,5 @@ match 13:4-19 | Asociază fiecare persoană cu cuvintele spuse.
 = vestea din Israel | „Saul a bătut tabăra filistenilor” | 13:4
 = Saul, prin toată țara | „Să audă evreii lucrul acesta!” | 13:3
 multi 13:10 | În ce moment a sosit Samuel la Ghilgal? | înainte de jertfă | a doua zi după jertfă | după o lună
-multi 13:20 | Ce unelte duceau israeliții la ascuțit? | *securea | *sapa | sabia
-multi 13:13-14 | Ce a spus Samuel despre domnia lui Saul? | *Domnul ar fi întărit-o pe vecie | *Domnul Și-a ales alt om | Saul va muri chiar în ziua aceea
+multi 13:20 | Ce unelte duceau israeliții la ascuțit? | *securea | *sapa | *coasa
+multi 13:13-14 | Ce a spus Samuel despre domnia lui Saul? | *Domnul Și-a ales alt om | Saul va muri chiar în ziua aceea | domnia va trece la Ionatan

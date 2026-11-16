@@ -26,9 +26,9 @@ match 9:1-27 | Asociază fiecare nume cu ce se spune despre el.
 = acoperișul | acolo a stat de vorbă Samuel cu Saul | 9:25
 = înălțimea | acolo aducea poporul jertfă | 9:12
 = sluga lui Saul | a trecut înainte la marginea cetății | 9:27
-multi 9:4 | Pe unde au căutat Saul și sluga lui măgărițele? | *prin muntele lui Efraim | *prin țara lui Beniamin | prin Egipt
+multi 9:4 | Pe unde au căutat Saul și sluga lui măgărițele? | *prin țara lui Beniamin | prin Egipt | prin pustia Sinai
 multi 9:7 | De ce se îngrijora Saul când sluga i-a spus să meargă la omul lui Dumnezeu? | *nu mai aveau merinde | *n-aveau niciun dar | n-aveau încălțăminte
-multi 9:12 | Ce le-au spus fetele lui Saul și slugii lui despre cetate? | *că văzătorul a venit acolo | *că poporul aduce jertfă | că nu este nimeni acolo
+multi 9:12 | Ce le-au spus fetele lui Saul și slugii lui despre cetate? | *că văzătorul a venit acolo | *că poporul aduce jertfă | *să se grăbească
 ## mediu
 tf + 9:1 | Chis, tatăl lui Saul, era din Beniamin.
 tf - 9:2 | Saul era mai scund decât ceilalți tineri din Israel.
@@ -56,8 +56,8 @@ match 9:11-27 | Asociază fiecare nume cu ce se spune despre el.
 = fetele din cetate | ieșiseră să scoată apă | 9:11
 = sluga lui Saul | a trecut înainte la marginea cetății | 9:27
 = seminția lui Beniamin | Saul o numește una din cele mai mici | 9:21
-multi 9:19 | Ce i-a spus Samuel lui Saul la poartă? | *să se suie înaintea lui pe înălțime | *că vor mânca împreună | că îl va face împărat chiar atunci
-multi 9:26-27 | Ce a făcut Samuel în dimineața plecării lui Saul? | *l-a chemat de pe acoperiș | *i-a cerut să trimită sluga înainte | l-a dus înapoi la Chis
+multi 9:19-20 | Ce i-a spus Samuel lui Saul la poartă? | *să se suie înaintea lui pe înălțime | *că vor mânca împreună | *că măgărițele s-au găsit
+multi 9:26-27 | Ce a făcut Samuel în dimineața plecării lui Saul? | *i-a cerut să trimită sluga înainte | l-a dus înapoi la tatăl său Chis | i-a dat o sabie pentru drum
 multi 9:16 | Ce a spus Domnul despre poporul Său când l-a înștiințat pe Samuel? | *a căutat cu îndurare spre el | *strigătul lui a ajuns până la El | va fi dat în mâna filistenilor
 ## greu
 tf + 9:1 | Chis, tatăl lui Saul, era fiul lui Abiel.
@@ -87,5 +87,5 @@ match 9:5-23 | Asociază fiecare persoană cu cuvintele spuse.
 = Samuel, către bucătar | „Pune-o deoparte” | 9:23
 = Domnul, către Samuel | „El va domni peste poporul Meu” | 9:17
 multi 9:4 | În care dintre aceste ținuturi a găsit Saul măgărițele? | Șalișa | Șaalim | țara lui Beniamin
-multi 9:26-27 | Ce s-a întâmplat în dimineața plecării lui Saul de la Samuel? | *în zori, Samuel l-a chemat pe Saul | *la marginea cetății, Samuel l-a oprit | Samuel l-a dus înapoi pe înălțime
-multi 9:23-24 | Ce a spus Samuel despre porția adusă de bucătar? | *a fost păstrată pentru Saul | *a fost pusă deoparte de la început | a fost binecuvântată de preoți
+multi 9:26-27 | Ce s-a întâmplat în dimineața plecării lui Saul de la Samuel? | *în zori, Samuel l-a chemat pe Saul | *la marginea cetății, Samuel l-a oprit | *sluga a trecut înaintea lor
+multi 9:23-24 | Ce a spus Samuel despre porția adusă de bucătar? | *a fost păstrată pentru Saul | a fost binecuvântată de preoți | a fost gătită de Samuel însuși

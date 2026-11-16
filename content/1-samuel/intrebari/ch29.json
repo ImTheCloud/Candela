@@ -256,12 +256,11 @@
    "ref": "29:10",
    "q": "Cum trebuiau să plece David și oamenii lui?",
    "opts": [
-    "de îndată ce se lumina",
     "la miezul nopții",
+    "după trei zile",
     "dis-de-dimineață"
    ],
    "a": [
-    0,
     2
    ]
   },
@@ -288,11 +287,12 @@
    "ref": "29:6",
    "q": "Ce i-a spus Achiș lui David?",
    "opts": [
-    "că trebuie să moară",
+    "că este un om curat la suflet",
     "că îi place să-l vadă în tabără",
     "că nu e pe placul domnitorilor"
    ],
    "a": [
+    0,
     1,
     2
    ]
@@ -551,12 +551,11 @@
    "q": "Ce cuvinte s-au rostit când domnii filistenilor i-au văzut pe oamenii lui David?",
    "opts": [
     "„Ce caută evreii aceștia aici?”",
-    "„Acesta este David, slujitorul lui Saul.”",
-    "„Evreii aceștia sunt robii mei.”"
+    "„Evreii aceștia sunt robii mei.”",
+    "„Trimite-i să lupte în frunte!”"
    ],
    "a": [
-    0,
-    1
+    0
    ]
   },
   {
@@ -582,14 +581,11 @@
    "ref": "29:6",
    "q": "Ce i-a spus Achiș lui David înainte să-l trimită înapoi?",
    "opts": [
+    "că va fi pedepsit",
     "că l-a înșelat",
-    "că este un om curat la suflet",
-    "că nu este pe placul domnitorilor"
+    "că trebuie să plece la Saul"
    ],
-   "a": [
-    1,
-    2
-   ]
+   "a": []
   },
   {
    "id": "1sa.29.greu.301",
@@ -857,12 +853,11 @@
    "ref": "29:6",
    "q": "Ce a spus Achiș despre David?",
    "opts": [
+    "„Te voi trimite la Saul”",
     "„N-am găsit nimic rău în tine”",
-    "„Viu este Domnul că ești un om curat la suflet”",
-    "„Te voi trimite la Saul”"
+    "„Rămâi cu mine la Izreel”"
    ],
    "a": [
-    0,
     1
    ]
   },
@@ -874,11 +869,12 @@
    "q": "Ce au spus domnitorii filistenilor despre David?",
    "opts": [
     "„să nu ne fie vrăjmaș în timpul luptei”",
-    "„să fie dat în mâinile noastre”",
+    "„trimite înapoi pe omul acesta”",
     "„să nu se coboare cu noi pe câmpul de bătaie”"
    ],
    "a": [
     0,
+    1,
     2
    ]
   }

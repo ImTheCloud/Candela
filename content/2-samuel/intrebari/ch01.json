@@ -258,11 +258,10 @@
    "opts": [
     "l-a chemat",
     "i-a dat sabia lui",
-    "l-a întrebat cine este"
+    "l-a trimis după ajutor"
    ],
    "a": [
-    0,
-    2
+    0
    ]
   },
   {
@@ -273,11 +272,12 @@
    "q": "Pentru cine au plâns David și oamenii lui?",
    "opts": [
     "pentru Saul",
-    "pentru filisteni",
+    "pentru poporul Domnului",
     "pentru Ionatan"
    ],
    "a": [
     0,
+    1,
     2
    ]
   },
@@ -550,14 +550,11 @@
    "ref": "1:2",
    "q": "Cum a venit omul din tabăra lui Saul?",
    "opts": [
+    "cu doi oameni înarmați",
     "cu sulița lui Saul în mână",
-    "cu hainele sfâșiate",
-    "cu țărână pe cap"
+    "călare pe un catâr"
    ],
-   "a": [
-    1,
-    2
-   ]
+   "a": []
   },
   {
    "id": "2sa.1.mediu.323",
@@ -844,11 +841,10 @@
    "q": "Cum a venit omul din tabăra lui Saul?",
    "opts": [
     "cu sulița lui Saul în mână",
-    "cu capul presărat cu țărână",
-    "cu hainele sfâșiate"
+    "îmbrăcat cu sac pe trup",
+    "cu capul presărat cu țărână"
    ],
    "a": [
-    1,
     2
    ]
   },
@@ -859,11 +855,12 @@
    "ref": "1:19-27",
    "q": "Ce strigăte apar în cântarea lui David?",
    "opts": [
-    "„Plângeți, munți ai lui Israel!”",
+    "„Cum a murit Ionatan pe dealurile tale!”",
     "„Cum au căzut vitejii!”",
     "„Cum li s-au pierdut armele!”"
    ],
    "a": [
+    0,
     1,
     2
    ]

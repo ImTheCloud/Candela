@@ -256,13 +256,12 @@
    "ref": "5:6",
    "q": "Când David a venit asupra Ierusalimului, despre cine au spus iebusiții că i se vor împotrivi?",
    "opts": [
-    "orbii",
-    "copiii",
-    "ologii"
+    "ologii",
+    "bătrânii",
+    "copiii"
    ],
    "a": [
-    0,
-    2
+    0
    ]
   },
   {
@@ -272,12 +271,11 @@
    "ref": "5:12",
    "q": "După ce Hiram i-a zidit o casă, ce a cunoscut David?",
    "opts": [
-    "că Domnul îi ridica împărăția",
     "că filistenii îl iubeau",
+    "că Saul trăia încă",
     "că Domnul îl întărea ca împărat"
    ],
    "a": [
-    0,
     2
    ]
   },
@@ -550,12 +548,11 @@
    "ref": "5:12",
    "q": "După ce Hiram i-a zidit o casă, ce a cunoscut David?",
    "opts": [
+    "că Hiram îi va fi supus toată viața",
     "că Domnul îi va da toată țara filistenilor",
-    "că Domnul îi ridica împărăția din pricina poporului",
-    "că Domnul îl întărea ca împărat al lui Israel"
+    "că Domnul îi ridica împărăția din pricina poporului"
    ],
    "a": [
-    1,
     2
    ]
   },
@@ -582,11 +579,12 @@
    "ref": "5:24",
    "q": "În a doua luptă cu filistenii, ce i-a spus Domnul lui David despre vuietul de pași?",
    "opts": [
-    "atunci să se ascundă",
+    "Domnul va bate oștirea filistenilor",
     "atunci să se grăbească",
     "Domnul merge înaintea lui"
    ],
    "a": [
+    0,
     1,
     2
    ]
@@ -846,11 +844,12 @@
    "opts": [
     "Solomon",
     "Natan",
-    "Absalom"
+    "Șamua"
    ],
    "a": [
     0,
-    1
+    1,
+    2
    ]
   },
   {
@@ -876,11 +875,13 @@
    "ref": "5:6-7",
    "q": "Când a mers asupra Ierusalimului, pe cine a cucerit David acolo?",
    "opts": [
-    "pe hetiți",
-    "pe filisteni",
-    "pe amaleciți"
+    "pe amaleciți",
+    "pe iebusiți",
+    "pe filisteni"
    ],
-   "a": []
+   "a": [
+    1
+   ]
   }
  ]
 }

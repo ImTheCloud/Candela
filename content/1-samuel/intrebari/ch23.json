@@ -256,11 +256,12 @@
    "ref": "23:16-17",
    "q": "Cum l-a îmbărbătat Ionatan pe David în pădure?",
    "opts": [
-    "i-a dat o coroană",
+    "i-a spus că va domni peste Israel",
     "i-a spus să nu se teamă",
     "i-a întărit încrederea în Dumnezeu"
    ],
    "a": [
+    0,
     1,
     2
    ]
@@ -272,12 +273,11 @@
    "ref": "23:5",
    "q": "Ce a făcut David la Cheila?",
    "opts": [
-    "le-a pricinuit o mare înfrângere",
     "a fugit dinaintea lor",
+    "a ars cetatea",
     "s-a bătut cu filistenii"
    ],
    "a": [
-    0,
     2
    ]
   },
@@ -550,12 +550,11 @@
    "ref": "23:10-11",
    "q": "Ce L-a întrebat David pe Domnul la Cheila?",
    "opts": [
-    "dacă se va coborî Saul acolo",
     "dacă va birui oastea lui Saul",
-    "dacă îl vor da locuitorii în mâinile lui Saul"
+    "dacă trebuie să fugă în Moab",
+    "dacă se va coborî Saul acolo"
    ],
    "a": [
-    0,
     2
    ]
   },
@@ -566,11 +565,12 @@
    "ref": "23:26",
    "q": "Ce s-a întâmplat pe muntele din pustia Maon?",
    "opts": [
-    "Ionatan l-a ascuns pe David",
+    "Saul mergea pe o parte a muntelui",
     "David fugea repede",
     "Saul și oamenii lui îl înconjuraseră pe David"
    ],
    "a": [
+    0,
     1,
     2
    ]
@@ -582,14 +582,11 @@
    "ref": "23:22-23",
    "q": "Ce le-a cerut Saul zifiților?",
    "opts": [
-    "să vină la el cu ceva temeinic",
-    "să cerceteze toate ascunzătorile lui David",
-    "să-l aducă viu pe David"
+    "să-l omoare ei înșiși",
+    "să-l aducă viu pe David",
+    "să-l prindă la Cheila"
    ],
-   "a": [
-    0,
-    1
-   ]
+   "a": []
   },
   {
    "id": "1sa.23.greu.301",
@@ -857,12 +854,11 @@
    "ref": "23:26",
    "q": "Ce s-a întâmplat pe munte, în pustia Maon?",
    "opts": [
-    "David fugea repede",
     "Ionatan l-a ascuns pe David",
-    "Saul și oamenii lui îl înconjuraseră pe David"
+    "David s-a ascuns într-o peșteră",
+    "David fugea repede"
    ],
    "a": [
-    0,
     2
    ]
   },
@@ -870,15 +866,16 @@
    "id": "1sa.23.greu.324",
    "age": "greu",
    "t": "multi",
-   "ref": "23:22",
+   "ref": "23:22-23",
    "q": "Ce voia Saul să afle de la zifiți despre David?",
    "opts": [
     "cine l-a văzut",
-    "câți oameni are cu el",
+    "toate locurile unde se ascunde",
     "în ce loc și-a îndreptat pașii"
    ],
    "a": [
     0,
+    1,
     2
    ]
   }

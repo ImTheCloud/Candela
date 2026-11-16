@@ -26,8 +26,8 @@ match 4:4-7 | Asociază fiecare nume cu ce se spune despre el.
 = Iș-Boșet | a fost lovit în pântece de ucigași | 4:6
 = Baana | fratele lui Recab | 4:6
 = câmpia | ucigașii au mers prin ea toată noaptea | 4:7
-multi 4:5-7 | Ce au făcut Recab și Baana în casa lui Iș-Boșet? | *au intrat până în mijlocul casei | *l-au omorât | au furat aurul împăratului
-multi 4:9-11 | Ce le-a spus David lui Recab și Baana când i-au adus capul lui Iș-Boșet? | *„Viu este Domnul!” | *„Vă voi nimici de pe pământ!” | „Ați făcut bine!”
+multi 4:5-7 | Ce au făcut Recab și Baana în casa lui Iș-Boșet? | *l-au omorât | au furat aurul împăratului | au dat foc casei
+multi 4:9-11 | Ce le-a spus David lui Recab și Baana când i-au adus capul lui Iș-Boșet? | *„Viu este Domnul!” | *„Vă voi nimici de pe pământ!” | *„Domnul m-a izbăvit din orice primejdie.”
 multi 4:12 | Ce se spune despre îngroparea lui Iș-Boșet? | *capul lui a fost pus în mormântul lui Abner | *a fost îngropat de oamenii lui David | a fost îngropat în Egipt
 ## mediu
 tf + 4:1 | Când a auzit că Abner a murit la Hebron, Iș-Boșet a rămas cu mâinile fără putere.
@@ -56,9 +56,9 @@ match 4:2-12 | Asociază fiecare nume cu ce se spune despre el.
 = Mefiboșet | avea cinci ani când a murit Saul | 4:4
 = Izreel | de acolo a venit vestea morții lui Saul | 4:4
 = Abner | în mormântul lui a fost îngropat capul lui Iș-Boșet | 4:12
-multi 4:6-7 | Ce au făcut ucigașii în casa lui Iș-Boșet? | *l-au lovit în pântece | *i-au tăiat capul | i-au luat sulița
-multi 4:12 | Ce s-a făcut cu ucigașii, din porunca lui David? | *au fost omorâți | *au fost spânzurați lângă iazul din Hebron | au fost alungați în pustie
-multi 4:5 | Ce se spune despre clipa în care Recab și Baana au venit la casa lui Iș-Boșet? | *era în timpul zădufului zilei | *Iș-Boșet își făcea somnul de amiază | se crăpa de ziuă
+multi 4:6-7 | Ce au făcut ucigașii în casa lui Iș-Boșet? | *l-au lovit în pântece | i-au luat sulița | i-au legat mâinile
+multi 4:12 | Ce s-a făcut cu ucigașii, din porunca lui David? | *au fost omorâți | *au fost spânzurați lângă iazul din Hebron | *li s-au tăiat mâinile și picioarele
+multi 4:5 | Ce se spune despre clipa în care Recab și Baana au venit la casa lui Iș-Boșet? | se crăpa de ziuă | era seara, la apusul soarelui | Iș-Boșet stătea la masă
 ## greu
 tf + 4:2 | Ucigașii lui Iș-Boșet, Recab și Baana, erau fiii lui Rimon din Beerot.
 tf - 4:5 | Ca să-l omoare pe Iș-Boșet, Recab și Baana au venit la el în zori.
@@ -88,4 +88,4 @@ match 4:2-12 | Asociază fiecare loc cu ce se spune despre el.
 = iazul din Hebron | lângă el au fost spânzurați ucigașii | 4:12
 multi 4:11 | Când i-au adus capul lui Iș-Boșet, ce le-a spus David ucigașilor? | *că le va cere sângele lui Iș-Boșet din mâini | *că îi va nimici de pe pământ | că îi va trimite în surghiun
 multi 4:6 | Când au venit la casa lui Iș-Boșet, drept cine s-au dat ucigașii ca să intre? | negustori de vin | negustori de ulei | negustori de orz
-multi 4:7 | Ce au făcut Recab și Baana în odaia de dormit a lui Iș-Boșet? | *l-au omorât pe Iș-Boșet | *i-au tăiat capul | i-au luat sulița
+multi 4:7 | Ce au făcut Recab și Baana în odaia de dormit a lui Iș-Boșet? | *i-au tăiat capul | i-au luat sulița | i-au ars patul

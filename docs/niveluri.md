@@ -62,22 +62,22 @@ Le propriétaire a validé le chapitre 22 tel quel (`content/2-samuel/sursa/ch22
 - vrai/faux : phrase courte, fait central ; le faux change le sens nettement (« Domnul călărea pe un cal alb »).
 - une réponse : question simple ; une fausse réponse plausible, une clairement à côté (« un nor gros / o mare de cristal / un covor de flori »).
 - association : cinq choses de natures différentes (une chose, un animal, un objet, une image…), reliées à un fait simple et marquant (« pământul → s-a cutremurat », « cerboaica → are picioare repezi ca ale lui David »).
-- plusieurs réponses : deux bonnes, une clairement fausse (« fundul mării, temeliile lumii / un curcubeu ») ; jamais aucune bonne.
+- plusieurs réponses : les fausses sont clairement fausses (« fundul mării, temeliile lumii / un curcubeu ») ; le nombre de bonnes varie (voir les règles communes), « Niciun răspuns corect » rarement.
 - jamais de détail de liste : pas de nombres précis (800, 37, 300), pas de noms secondaires (Elhanan, Sibecai, Ișbi-Benob), pas de lieux peu connus (Lehi, Ierihon). Seulement l'histoire principale et les personnages connus (David, Saul, Ionatan, Ioab, Abișai…).
 
 **Mediu (adolescents)**
 - fausses réponses de la même famille que la bonne (« valurile morții / valurile mării / șuvoaiele apelor » ; « bun / drept / curat » pour « cel bun »).
 - vrai/faux : le faux change un détail (« scânteiau stele » au lieu de « cărbuni de foc »).
 - association : images du chapitre reliées à ce qui en est dit (« heruvimul → pe el călărea Domnul »).
-- plusieurs réponses : deux bonnes et une plausible ; « Niciun răspuns corect » au plus une fois, rarement.
+- plusieurs réponses : les fausses sont plausibles ; le nombre de bonnes varie (voir les règles communes).
 
 **Greu (adultes)**
 - détails précis ; au plus cinq pièges de mots exacts par test, le reste en détails faciles à retenir. Un piège de mots, c'est une question qui se tranche seulement sur la formulation exacte : trois citations proches, ou un vrai/faux avec une citation changée. Une réponse qui change un fait (qui, où, combien) n'en est pas un.
 - association **avec des paires qui se confondent** (« mâna Domnului → l-a apucat pe David de sus » / « mâinile lui David → Domnul le deprinde la luptă » / « locurile înalte » / « privirea Domnului »), jamais plus facile que celle de Mediu.
-- plusieurs réponses : une fois par chapitre environ avec « Niciun răspuns corect ».
+- plusieurs réponses : le nombre de bonnes varie (voir les règles communes) ; « Niciun răspuns corect » pas à chaque chapitre, sinon il redevient prévisible.
 
 Règles communes :
-- 24 questions par chapitre et par niveau (forme de l'examen final) : 10 vrai/faux, 10 à une réponse, 1 association de 5 paires (colonne de droite sans doublons, chaque paire compréhensible seule), 3 à plusieurs réponses (0, 1, 2 ou 3 justes).
+- 24 questions par chapitre et par niveau (forme de l'examen final) : 10 vrai/faux, 10 à une réponse, 1 association de 5 paires (colonne de droite sans doublons, chaque paire compréhensible seule), 3 à plusieurs réponses (0, 1, 2 ou 3 justes). Le nombre de bonnes réponses ne doit jamais se deviner : les trois questions d'un niveau n'ont jamais toutes le même nombre, et sur un livre on vise à peu près un tiers à une bonne, un quart à deux, un quart à trois, le reste à aucune. Corrigé le 16 novembre 2026 : presque toutes en avaient deux, le joueur cherchait toujours « la deuxième ».
 - Vrai/faux : 4 à 6 « vrai » sur 10 ; jamais un détail douteux ni un piège sur un mot.
 - Un faux (ou une mauvaise réponse) doit être faux dans toute la Bible, pas seulement « selon ce verset » : rien qui soit vrai dans un autre chapitre ou dans 1 Samuel.
 - Greu doit être difficile, pas absurde : pas de listes de généalogie apprises par cœur, pas de piège de formulation ; la réponse est toujours écrite clairement dans les versets cités.

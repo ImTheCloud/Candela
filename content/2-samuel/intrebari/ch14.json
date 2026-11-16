@@ -256,13 +256,12 @@
    "ref": "14:7",
    "q": "Ce voia familia femeii din Tecoa să facă, după povestea ei?",
    "opts": [
-    "să-i dea o casă nouă",
+    "să plece din țară",
     "să-l omoare pe fiul ucigaș",
-    "să-i ia moștenitorul"
+    "să-i dea o casă nouă"
    ],
    "a": [
-    1,
-    2
+    1
    ]
   },
   {
@@ -289,11 +288,12 @@
    "q": "Când Ioab a venit în sfârșit la el, ce i-a spus Absalom?",
    "opts": [
     "că ar fi fost mai bine să rămână în Gheșur",
-    "că vrea să plece în Egipt",
+    "că, dacă e vinovat, să fie omorât",
     "că vrea să vadă fața împăratului"
    ],
    "a": [
     0,
+    1,
     2
    ]
   },
@@ -547,15 +547,16 @@
    "id": "2sa.14.mediu.322",
    "age": "mediu",
    "t": "multi",
-   "ref": "14:22",
+   "ref": "14:22-23",
    "q": "Ce a făcut Ioab când David a hotărât să-l aducă pe Absalom?",
    "opts": [
     "l-a binecuvântat pe împărat",
-    "a cerut o răsplată",
+    "s-a dus în Gheșur după Absalom",
     "a căzut cu fața la pământ"
    ],
    "a": [
     0,
+    1,
     2
    ]
   },
@@ -566,12 +567,11 @@
    "ref": "14:9-10",
    "q": "După povestea femeii din Tecoa, ce și-au spus femeia și împăratul?",
    "opts": [
-    "ea: „Fiul meu trebuie să moară”",
-    "el: „Cine va vorbi împotriva ta, să-l aduci la mine”",
-    "ea: „Asupra mea să cadă pedeapsa”"
+    "ea: „Fiul meu trebuie să moară pentru fratele lui”",
+    "el: „Du-te acasă și adu-l pe ucigaș la mine”",
+    "el: „Cine va vorbi împotriva ta, să-l aduci la mine”"
    ],
    "a": [
-    1,
     2
    ]
   },

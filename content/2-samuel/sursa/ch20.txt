@@ -26,9 +26,9 @@ match 20:1-23 | Asociază fiecare nume cu ce se spune despre el.
 = piatra cea mare | se afla la Gabaon | 20:8
 = trâmbița | Ioab a sunat din ea la sfârșit | 20:22
 = Abel | cetatea în care s-a ascuns Șeba | 20:15
-multi 20:7 | Când Amasa a întârziat, cine a plecat după Șeba cu Abișai? | *oamenii lui Ioab | *cheretiții și peletiții | filistenii
+multi 20:7 | Când Amasa a întârziat, cine a plecat după Șeba cu Abișai? | *oamenii lui Ioab | *cheretiții și peletiții | *toți vitejii
 multi 20:11-13 | Ce s-a întâmplat după moartea lui Amasa? | *un om striga: „Să urmeze pe Ioab!” | *toți l-au urmat pe Ioab după Șeba | toți s-au întors acasă
-multi 20:25 | Cine erau preoți în vremea lui David? | *Țadoc | *Abiatar | Goliat
+multi 20:25 | Cine erau preoți în vremea lui David? | *Țadoc | Goliat | Ioab
 ## mediu
 tf + 20:2 | Când ceilalți l-au urmat pe Șeba, bărbații lui Iuda l-au însoțit pe împărat de la Iordan până la Ierusalim.
 tf - 20:4 | După întoarcerea la Ierusalim, David l-a trimis pe Ioab să-i cheme pe bărbații lui Iuda.
@@ -56,9 +56,9 @@ match 20:1-26 | Asociază fiecare nume cu slujba sau fapta lui.
 = Șeia | logofăt | 20:25
 = Ira din Iair | slujbaș de stat al lui David | 20:26
 = Adoram | mai-mare peste dări | 20:24
-multi 20:1 | Când a ridicat poporul împotriva lui David, ce a strigat Șeba? | *„Noi n-avem nicio parte cu David” | *„Fiecare la cortul său, Israele!” | „Să-l facem împărat pe Mefiboșet!”
+multi 20:1 | Când a ridicat poporul împotriva lui David, ce a strigat Șeba? | *„Fiecare la cortul său, Israele!” | „Să-l facem împărat pe Mefiboșet!” | „Să ne întoarcem la Absalom!”
 multi 20:19 | Când a vorbit cu Ioab, cum își descria femeia cetatea? | *una din cetățile liniștite și credincioase | *o mamă în Israel | o cetate întărită de filisteni
-multi 20:11 | După moartea lui Amasa, ce striga omul lui Ioab lângă el? | *„Cine vrea pe Ioab?” | *„Cine este pentru David?” | „Amasa a fost un trădător!”
+multi 20:11 | După moartea lui Amasa, ce striga omul lui Ioab lângă el? | „Amasa a fost un trădător!” | „Să ne întoarcem acasă!” | „Să răzbunăm moartea lui Amasa!”
 ## greu
 tf + 20:1 | Când a sunat din trâmbiță, Șeba a zis: „Noi n-avem nicio moștenire cu fiul lui Isai!”
 tf - 20:3 | După întoarcerea lui David la Ierusalim, cele zece țiitoare au fost trimise înapoi la casele lor.
@@ -86,6 +86,6 @@ match 20:1-22 | Asociază fiecare persoană cu ce se spune despre ea.
 = omul lui Ioab | l-a tras pe Amasa din drum pe un câmp | 20:12
 = femeia înțeleaptă | a înduplecat poporul cetății | 20:22
 = Șeba | fiul lui Bicri, Beniamitul | 20:1
-multi 20:21 | Când a vorbit cu femeia din Abel, cum îl descrie Ioab pe Șeba? | *un om din muntele lui Efraim | *a ridicat mâna împotriva împăratului | era fiul lui Ner
+multi 20:21 | Când a vorbit cu femeia din Abel, cum îl descrie Ioab pe Șeba? | *un om din muntele lui Efraim | *a ridicat mâna împotriva împăratului | *era fiul lui Bicri
 multi 20:10 | Pe cine a urmărit Ioab după moartea lui Amasa? | pe Absalom | pe Șimei | pe Mefiboșet
-multi 20:25 | Cine erau preoți în vremea lui David? | *Țadoc | *Abiatar | Ahitofel
+multi 20:25 | Cine erau preoți în vremea lui David? | *Abiatar | Ahitofel | Benaia

@@ -26,9 +26,9 @@ match 14:2-30 | Asociază fiecare nume cu ce se spune despre el.
 = Tamar, fata lui Absalom | o femeie frumoasă la chip | 14:27
 = ogorul lui Ioab | avea orz pe el | 14:30
 = apele vărsate pe pământ | nu se mai adună | 14:14
-multi 14:7 | Ce voia familia femeii din Tecoa să facă, după povestea ei? | *să-l omoare pe fiul ucigaș | *să-i ia moștenitorul | să-i dea o casă nouă
+multi 14:7 | Ce voia familia femeii din Tecoa să facă, după povestea ei? | *să-l omoare pe fiul ucigaș | să-i dea o casă nouă | să plece din țară
 multi 14:27 | Ce copii i s-au născut lui Absalom? | *trei fii | *o fiică | doisprezece fii
-multi 14:32 | Când Ioab a venit în sfârșit la el, ce i-a spus Absalom? | *că vrea să vadă fața împăratului | *că ar fi fost mai bine să rămână în Gheșur | că vrea să plece în Egipt
+multi 14:32 | Când Ioab a venit în sfârșit la el, ce i-a spus Absalom? | *că vrea să vadă fața împăratului | *că ar fi fost mai bine să rămână în Gheșur | *că, dacă e vinovat, să fie omorât
 ## mediu
 tf + 14:2 | Când a pregătit-o să meargă la împărat, Ioab i-a spus femeii din Tecoa să nu se ungă cu untdelemn.
 tf - 14:19 | Când David a întrebat dacă mâna lui Ioab e cu ea, femeia din Tecoa a spus că nu e adevărat.
@@ -56,8 +56,8 @@ match 14:2-27 | Asociază fiecare nume cu ce se spune despre el.
 = Absalom | părul lui cântărea două sute de sicli | 14:26
 = Tamar, fata lui Absalom | era frumoasă la chip | 14:27
 = femeia din Tecoa | spunea că este văduvă | 14:5
-multi 14:22 | Ce a făcut Ioab când David a hotărât să-l aducă pe Absalom? | *a căzut cu fața la pământ | *l-a binecuvântat pe împărat | a cerut o răsplată
-multi 14:9-10 | După povestea femeii din Tecoa, ce și-au spus femeia și împăratul? | *ea: „Asupra mea să cadă pedeapsa” | *el: „Cine va vorbi împotriva ta, să-l aduci la mine” | ea: „Fiul meu trebuie să moară”
+multi 14:22-23 | Ce a făcut Ioab când David a hotărât să-l aducă pe Absalom? | *a căzut cu fața la pământ | *l-a binecuvântat pe împărat | *s-a dus în Gheșur după Absalom
+multi 14:9-10 | După povestea femeii din Tecoa, ce și-au spus femeia și împăratul? | *el: „Cine va vorbi împotriva ta, să-l aduci la mine” | el: „Du-te acasă și adu-l pe ucigaș la mine” | ea: „Fiul meu trebuie să moară pentru fratele lui”
 multi 14:33 | La întâlnirea lui David cu Absalom, ce s-a întâmplat? | *Absalom s-a aruncat cu fața la pământ înaintea împăratului | *împăratul l-a sărutat pe Absalom | Absalom a fost uns împărat
 ## greu
 tf + 14:2 | Ca s-o trimită la împărat, Ioab i-a spus femeii din Tecoa să fie ca una care plânge de multă vreme după un mort.

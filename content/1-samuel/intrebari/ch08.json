@@ -257,11 +257,12 @@
    "q": "Ce voia poporul să facă împăratul pentru el?",
    "opts": [
     "să meargă în fruntea lui",
-    "să-i dea aur",
+    "să-l cârmuiască în războaie",
     "să-l judece"
    ],
    "a": [
     0,
+    1,
     2
    ]
   },
@@ -272,12 +273,11 @@
    "ref": "8:12",
    "q": "La ce lucrări a spus Samuel că îi va pune împăratul pe fiii lor?",
    "opts": [
-    "la seceratul bucatelor",
     "la zidit corăbii",
-    "la aratul pământurilor"
+    "la cântat din harpă",
+    "la seceratul bucatelor"
    ],
    "a": [
-    0,
     2
    ]
   },
@@ -552,11 +552,12 @@
    "opts": [
     "la aratul pământurilor",
     "la facerea armelor de război",
-    "la zidirea templului"
+    "la seceratul bucatelor"
    ],
    "a": [
     0,
-    1
+    1,
+    2
    ]
   },
   {
@@ -566,13 +567,12 @@
    "ref": "8:20",
    "q": "Ce aștepta poporul de la împăratul cerut?",
    "opts": [
-    "să-l judece",
-    "să-i scadă zeciuiala",
-    "să-l cârmuiască în războaie"
+    "să-l cârmuiască în războaie",
+    "să-i zidească un Templu",
+    "să-i scadă zeciuiala"
    ],
    "a": [
-    0,
-    2
+    0
    ]
   },
   {
@@ -582,14 +582,11 @@
    "ref": "8:14-15",
    "q": "Cui a spus Samuel că va da împăratul din ce ia de la popor?",
    "opts": [
-    "preoților lui",
-    "famenilor lui",
-    "slujitorilor lui"
+    "fiilor lui Samuel",
+    "leviților",
+    "preoților lui"
    ],
-   "a": [
-    1,
-    2
-   ]
+   "a": []
   },
   {
    "id": "1sa.8.greu.301",
@@ -857,13 +854,12 @@
    "ref": "8:22",
    "q": "Ce i-a spus Domnul lui Samuel la sfârșit?",
    "opts": [
-    "„Ascultă-le glasul”",
-    "„Așteaptă până îl voi alege”",
-    "„Pune un împărat peste ei”"
+    "„Pune un împărat peste ei”",
+    "„Nu le da ce cer”",
+    "„Așteaptă până îl voi alege”"
    ],
    "a": [
-    0,
-    2
+    0
    ]
   },
   {

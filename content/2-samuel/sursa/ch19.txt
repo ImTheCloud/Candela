@@ -26,8 +26,8 @@ match 19:13-37 | Asociază fiecare nume cu ce se spune despre el.
 = Mefiboșet | nu-și îngrijise picioarele, nici barba | 19:24
 = Barzilai | îl hrănise pe împărat la Mahanaim | 19:32
 = Ghilgal | acolo a ieșit Iuda înaintea împăratului | 19:15
-multi 19:9 | După moartea lui Absalom, ce spunea poporul din semințiile lui Israel despre David? | *„Ne-a izbăvit din mâna vrăjmașilor” | *„Ne-a scăpat din mâna filistenilor” | „Nu-l mai vrem împărat”
-multi 19:35 | Când David l-a chemat la Ierusalim, ce a spus Barzilai despre bătrânețea lui? | *că nu mai simte gustul mâncării | *că nu mai aude bine glasul cântăreților | că poate încă să lupte
+multi 19:9 | După moartea lui Absalom, ce spunea poporul din semințiile lui Israel despre David? | *„Ne-a izbăvit din mâna vrăjmașilor” | *„Ne-a scăpat din mâna filistenilor” | *„A trebuit să fugă din țară dinaintea lui Absalom”
+multi 19:35 | Când David l-a chemat la Ierusalim, ce a spus Barzilai despre bătrânețea lui? | *că nu mai simte gustul mâncării | că poate încă să lupte | că vrea să locuiască la Ierusalim
 multi 19:29-30 | Ce s-a hotărât despre pământurile lui Mefiboșet? | *David a zis că le vor împărți el și Țiba | *Mefiboșet a zis: „Să ia chiar totul” | David le-a dat toate lui Mefiboșet
 ## mediu
 tf + 19:3 | În ziua biruinței, poporul a intrat în cetate pe furiș, ca niște oameni rușinați.
@@ -56,9 +56,9 @@ match 19:11-37 | Asociază fiecare nume cu ce se spune despre el.
 = Țiba | a venit cu cincisprezece fii și douăzeci de robi | 19:17
 = Roghelim | de acolo s-a coborât Barzilai | 19:31
 = Chimham | a trecut Iordanul cu împăratul în locul lui Barzilai | 19:37
-multi 19:23 | Când Șimei i-a cerut iertare, ce i-a făcut David? | *i-a zis: „Nu vei muri!” | *i-a jurat că nu-l va omorî | l-a trimis în surghiun
+multi 19:23 | Când Șimei i-a cerut iertare, ce i-a făcut David? | *i-a jurat că nu-l va omorî | l-a trimis în surghiun | l-a pus în lanțuri
 multi 19:28 | Când a venit înaintea împăratului, ce a spus Mefiboșet despre casa tatălui său? | *că toți erau vrednici de moarte înaintea împăratului | *că totuși împăratul l-a pus la masa lui | că i se cuvenea toată împărăția
-multi 19:35 | Când David l-a chemat la Ierusalim, ce a spus Barzilai despre el însuși? | *că nu mai simte gustul mâncării | *că ar fi o povară pentru împărat | că este bolnav și nu poate merge
+multi 19:35 | Când David l-a chemat la Ierusalim, ce a spus Barzilai despre el însuși? | *că nu mai simte gustul mâncării | *că ar fi o povară pentru împărat | *că are optzeci de ani
 ## greu
 tf + 19:2 | După moartea lui Absalom, poporul auzea zicându-se: „Împăratul este mâhnit din pricina fiului său.”
 tf - 19:30 | Când a venit înaintea împăratului, Mefiboșet a cerut să primească înapoi toate pământurile lui Saul.
@@ -86,6 +86,6 @@ match 19:13-37 | Asociază fiecare persoană cu ce se spune despre ea.
 = Țiba | mai-marele casei lui Saul | 19:17
 = Barzilai | Galaaditul, în vârstă de optzeci de ani | 19:32
 = Chimham | Barzilai l-a trimis cu împăratul | 19:37
-multi 19:24 | Cât a lipsit împăratul din Ierusalim, ce nu-și îngrijise Mefiboșet? | *picioarele | *barba | părul capului
-multi 19:15 | Când împăratul a ajuns la Iordan, unde s-a dus Iuda ca să iasă înaintea lui? | la Hebron | la Mahanaim | la Bahurim
-multi 19:42 | În cearta de după trecerea Iordanului, ce au spus bărbații lui Iuda celor din Israel? | *„Împăratul ne este rudă” | *„Am trăit noi pe cheltuiala împăratului?” | „Împăratul ne-a dat pământuri”
+multi 19:24 | Cât a lipsit împăratul din Ierusalim, ce nu-și îngrijise Mefiboșet? | *picioarele | *barba | *hainele
+multi 19:15 | Când împăratul a ajuns la Iordan, unde s-a dus Iuda ca să iasă înaintea lui? | *la Ghilgal | la Hebron | la Mahanaim
+multi 19:42 | În cearta de după trecerea Iordanului, ce au spus bărbații lui Iuda celor din Israel? | *„Împăratul ne este rudă” | *„Am trăit noi pe cheltuiala împăratului?” | „Noi am cerut cei dintâi să se întoarcă”

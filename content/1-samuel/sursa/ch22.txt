@@ -26,9 +26,9 @@ match 22:5-19 | Asociază fiecare nume cu ce se spune despre el.
 = sulița | Saul o avea în mână | 22:6
 = cei care aveau datorii | s-au strâns la David | 22:2
 = efodul de in | îl purtau preoții | 22:18
-multi 22:1 | Cine a coborât la David în peștera Adulam? | *frații lui | *toată casa tatălui său | Saul
+multi 22:1 | Cine a coborât la David în peștera Adulam? | *frații lui | Saul | Ionatan
 multi 22:13 | Ce i-a reproșat Saul lui Ahimelec că i-a dat lui David? | *pâine | *o sabie | aur
-multi 22:7 | Ce i-a întrebat Saul pe slujitorii lui despre fiul lui Isai? | *dacă le va da ogoare și vii | *dacă îi va face căpetenii | dacă le va da corăbii
+multi 22:7 | Ce i-a întrebat Saul pe slujitorii lui despre fiul lui Isai? | dacă le va da corăbii | dacă îi va face preoți | dacă le va da cai
 ## mediu
 tf + 22:2 | La Adulam s-au unit cu David aproape patru sute de oameni.
 tf - 22:4 | Părinții lui David au locuit cu el în peșteră tot timpul.
@@ -56,8 +56,8 @@ match 22:6-20 | Asociază fiecare nume cu ce se spune despre el.
 = tamariscul | sub el ședea Saul | 22:6
 = slujitorii împăratului | n-au voit să lovească pe preoți | 22:17
 = beniamiții | Saul i-a întrebat dacă David le va da ogoare | 22:7
-multi 22:2 | Cine s-a strâns la David în peștera Adulam? | *cei aflați în nevoie | *cei care aveau datorii | preoții din Nob
-multi 22:23 | Ce i-a spus David lui Abiatar? | *să rămână cu el | *să nu se teamă de nimic | să meargă la Moab
+multi 22:2 | Cine s-a strâns la David în peștera Adulam? | *cei aflați în nevoie | *cei care aveau datorii | *cei nemulțumiți
+multi 22:23 | Ce i-a spus David lui Abiatar? | *să nu se teamă de nimic | să meargă la Moab | să se întoarcă la Nob
 multi 22:13 | Ce i-a reproșat Saul lui Ahimelec? | *că i-a dat lui David pâine și o sabie | *că a întrebat pe Dumnezeu pentru el | că l-a uns împărat
 ## greu
 tf + 22:3 | Mițpe, unde a mers David, era în țara Moabului.
@@ -86,6 +86,6 @@ match 22:3-18 | Asociază fiecare persoană cu cuvintele spuse.
 = Saul, către slujitori | „Ascultați, beniamiți!” | 22:7
 = Doeg, către Saul | „Eu am văzut pe fiul lui Isai” | 22:9
 = Saul, către Doeg | „Întoarce-te și lovește pe preoți.” | 22:18
-multi 22:20 | Cine dintre aceștia a scăpat din casa lui Ahimelec? | Doeg | Ahitub | Gad
-multi 22:19 | Ce animale au căzut sub sabie la Nob? | *boi | *măgari | cai
-multi 22:10 | Ce a spus Doeg că a făcut Ahimelec pentru David? | *a întrebat pe Domnul pentru el | *i-a dat merinde | i-a dat un efod
+multi 22:20 | Cine dintre aceștia a scăpat din casa lui Ahimelec? | *Abiatar | Doeg | Gad
+multi 22:19 | Ce animale au căzut sub sabie la Nob? | *boi | *măgari | *oi
+multi 22:10 | Ce a spus Doeg că a făcut Ahimelec pentru David? | *i-a dat merinde | i-a dat un efod | i-a dat o suliță

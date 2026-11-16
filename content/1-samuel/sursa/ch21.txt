@@ -26,8 +26,8 @@ match 21:1-13 | Asociază fiecare nume cu ce se spune despre el.
 = Valea Terebinților | acolo a fost omorât Goliat | 21:9
 = efodul | în dosul lui era sabia | 21:9
 = ușile porților | David făcea zgârieturi pe ele | 21:13
-multi 21:13 | Ce făcea David ca să pară nebun înaintea lui Achiș? | *zgârieturi pe uși | *lăsa să-i curgă balele pe barbă | cânta din harpă
-multi 21:3-8 | Ce i-a cerut David preotului? | *pâine | *o sabie | un cal
+multi 21:13 | Ce făcea David ca să pară nebun înaintea lui Achiș? | *zgârieturi pe uși | *lăsa să-i curgă balele pe barbă | *făcea năzdrăvănii
+multi 21:3-8 | Ce i-a cerut David preotului? | *pâine | un cal | haine noi
 multi 21:14 | Ce le-a spus Achiș slujitorilor lui despre David? | *„Omul acesta și-a pierdut mințile.” | *„Pentru ce mi-l aduceți?” | „Puneți-l împărat!”
 ## mediu
 tf + 21:2 | David i-a spus preotului că împăratul i-a dat o poruncă tainică.
@@ -56,9 +56,9 @@ match 21:6-13 | Asociază fiecare nume cu ce se spune despre el.
 = covorul | în el era învelită sabia | 21:9
 = barba lui David | pe ea îi curgeau balele | 21:13
 = ușile porților | David făcea zgârieturi pe ele | 21:13
-multi 21:8 | Ce arme i-a cerut David preotului? | *o suliță | *o sabie | un scut
-multi 21:7 | Ce spune textul despre Doeg în ziua aceea? | *era închis înaintea Domnului | *era slujitor al lui Saul | era preot la Nob
-multi 21:14-15 | Ce a spus Achiș despre David? | *că și-a pierdut mințile | *că nu duce lipsă de nebuni | că îl va lua în casa lui
+multi 21:8 | Ce arme i-a cerut David preotului? | un scut | un arc | un coif
+multi 21:7 | Ce spune textul despre Doeg în ziua aceea? | *era slujitor al lui Saul | era preot la Nob | era fratele lui Ahimelec
+multi 21:14-15 | Ce a spus Achiș despre David? | *că și-a pierdut mințile | *că nu duce lipsă de nebuni | *că nu-l vrea în casa lui
 ## greu
 tf + 21:6 | Preotul i-a dat lui David pâine luată dinaintea Domnului.
 tf - 21:3 | David i-a cerut preotului șapte pâini.
@@ -87,5 +87,5 @@ match 21:1-14 | Asociază fiecare persoană cu cuvintele spuse.
 = Achiș, către slujitori | „Pentru ce mi-l aduceți?” | 21:14
 = David, despre oamenii lui | „Am hotărât un loc de întâlnire” | 21:2
 multi 21:10 | La cine s-a dus David după ce a plecat de la preot? | la Samuel | la Ionatan | la Isai
-multi 21:13 | Ce făcea David înaintea slujitorilor lui Achiș? | *făcea năzdrăvănii | *lăsa să-i curgă balele pe barbă | își rupea hainele
+multi 21:13 | Ce făcea David înaintea slujitorilor lui Achiș? | *făcea năzdrăvănii | își rupea hainele | striga numele lui Saul
 multi 21:6-9 | Ce a primit David de la preot? | *pâine sfințită | *sabia lui Goliat | un măgar

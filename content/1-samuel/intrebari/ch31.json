@@ -256,12 +256,11 @@
    "ref": "31:7",
    "q": "Ce au făcut israeliții de dincolo de vale, după moartea lui Saul?",
    "opts": [
-    "au fugit",
     "au mers la Silo",
-    "și-au părăsit cetățile"
+    "au venit să lupte",
+    "au fugit"
    ],
    "a": [
-    0,
     2
    ]
   },
@@ -274,11 +273,12 @@
    "opts": [
     "au postit",
     "au luat trupurile",
-    "au atacat cetatea Gat"
+    "au îngropat oasele sub stejar"
    ],
    "a": [
     0,
-    1
+    1,
+    2
    ]
   },
   {
@@ -568,11 +568,12 @@
    "opts": [
     "au venit să-i dezbrace pe cei morți",
     "au trimis să dea de veste",
-    "au plecat acasă"
+    "i-au tăiat capul lui Saul"
    ],
    "a": [
     0,
-    1
+    1,
+    2
    ]
   },
   {
@@ -582,12 +583,11 @@
    "ref": "31:13",
    "q": "Ce au făcut oamenii din Iabes la sfârșit?",
    "opts": [
-    "au postit",
     "au trimis soli la David",
-    "au îngropat oasele"
+    "au ars cetatea Bet-Șan",
+    "au postit șapte zile"
    ],
    "a": [
-    0,
     2
    ]
   },
@@ -844,11 +844,15 @@
    "ref": "31:2",
    "q": "Cine a fost ucis dintre aceștia în lupta de pe Ghilboa?",
    "opts": [
-    "Eliab",
-    "Abner",
-    "David"
+    "Malchișua",
+    "Ionatan",
+    "Abinadab"
    ],
-   "a": []
+   "a": [
+    0,
+    1,
+    2
+   ]
   },
   {
    "id": "1sa.31.greu.323",
@@ -857,13 +861,12 @@
    "ref": "31:9",
    "q": "Ce le-au făcut filistenii lui Saul a doua zi?",
    "opts": [
-    "i-au tăiat capul",
-    "l-au ars",
-    "i-au luat armele"
+    "i-au luat armele",
+    "l-au îngropat la Bet-Șan",
+    "l-au ars"
    ],
    "a": [
-    0,
-    2
+    0
    ]
   },
   {

@@ -256,11 +256,12 @@
    "ref": "23:1",
    "q": "Cum este numit David în cele din urmă cuvinte ale lui?",
    "opts": [
-    "împăratul Egiptului",
+    "unsul Dumnezeului lui Iacov",
     "fiul lui Isai",
     "cântărețul plăcut al lui Israel"
    ],
    "a": [
+    0,
     1,
     2
    ]
@@ -272,12 +273,11 @@
    "ref": "23:21",
    "q": "În lupta cu egipteanul groaznic la înfățișare, ce a făcut Benaia?",
    "opts": [
-    "l-a omorât",
     "l-a lăsat să fugă",
-    "i-a smuls sulița din mână"
+    "l-a luat rob",
+    "l-a omorât"
    ],
    "a": [
-    0,
     2
    ]
   },
@@ -550,13 +550,12 @@
    "ref": "23:4",
    "q": "În cele din urmă cuvinte ale lui David, cu ce este asemănat împăratul care domnește cu dreptate?",
    "opts": [
-    "cu vântul de miazăzi",
-    "cu lumina dimineții",
-    "cu razele soarelui după ploaie"
+    "cu un stejar înalt",
+    "cu razele soarelui după ploaie",
+    "cu vântul de miazăzi"
    ],
    "a": [
-    1,
-    2
+    1
    ]
   },
   {
@@ -583,11 +582,12 @@
    "q": "Care dintre aceștia sunt în lista vitejilor lui David?",
    "opts": [
     "Urie, Hetitul",
-    "Absalom, fiul lui David",
+    "Asael, fratele lui Ioab",
     "Elhanan, fiul lui Dodo"
    ],
    "a": [
     0,
+    1,
     2
    ]
   },
@@ -844,29 +844,29 @@
    "ref": "23:4",
    "q": "În cele din urmă cuvinte ale lui David, cu ce este asemănat împăratul drept?",
    "opts": [
-    "cu lumina dimineții, când răsare soarele",
     "cu razele soarelui după ploaie",
-    "cu roua de pe muntele Hermon"
+    "cu roua de pe muntele Hermon",
+    "cu ploaia care cade la vreme"
    ],
    "a": [
-    0,
-    1
+    0
    ]
   },
   {
    "id": "2sa.23.greu.323",
    "age": "greu",
    "t": "multi",
-   "ref": "23:14-15",
+   "ref": "23:14-16",
    "q": "Ce se spune despre David în povestea apei din Betleem?",
    "opts": [
     "a dorit apă de la poarta Betleemului",
     "era atunci în cetățuie",
-    "i-a trimis el pe cei trei la fântână"
+    "a vărsat apa înaintea Domnului"
    ],
    "a": [
     0,
-    1
+    1,
+    2
    ]
   },
   {
@@ -877,10 +877,13 @@
    "q": "Ce se spune despre Abișai, căpetenia celor trei viteji?",
    "opts": [
     "a ucis un leu într-o groapă",
-    "era fratele lui Absalom",
-    "a omorât opt sute de oameni"
+    "era fratele lui Ioab",
+    "a omorât trei sute de oameni"
    ],
-   "a": []
+   "a": [
+    1,
+    2
+   ]
   }
  ]
 }

@@ -256,13 +256,12 @@
    "ref": "13:9",
    "q": "Ce a făcut Amnon când i-a adus Tamar turtele?",
    "opts": [
-    "a mulțumit și a mâncat",
+    "a dat turtele slujitorilor",
     "n-a vrut să mănânce",
-    "a scos pe toată lumea afară"
+    "a mulțumit și a mâncat"
    ],
    "a": [
-    1,
-    2
+    1
    ]
   },
   {
@@ -289,11 +288,12 @@
    "q": "Când Amnon a apucat-o, ce i-a spus Tamar?",
    "opts": [
     "„Vorbește împăratului!”",
-    "„Fă ce vrei!”",
+    "„Nu mă necinsti!”",
     "„Nu se face așa în Israel!”"
    ],
    "a": [
     0,
+    1,
     2
    ]
   },
@@ -552,11 +552,12 @@
    "opts": [
     "și-a presărat cenușă pe cap",
     "și-a sfâșiat haina pestriță",
-    "s-a dus la împărat"
+    "a plecat țipând"
    ],
    "a": [
     0,
-    1
+    1,
+    2
    ]
   },
   {
@@ -566,12 +567,11 @@
    "ref": "13:28",
    "q": "La tunsul oilor, ce le-a spus Absalom slujitorilor lui?",
    "opts": [
-    "„Fiți tari și arătați-vă oameni de inimă”",
     "„Să-l legați și să mi-l aduceți”",
-    "„Să nu vă temeți de nimic”"
+    "„Așteptați până se întoarce împăratul”",
+    "„Fiți tari și arătați-vă oameni de inimă”"
    ],
    "a": [
-    0,
     2
    ]
   },
@@ -582,14 +582,11 @@
    "ref": "13:31",
    "q": "Când a auzit zvonul că toți fiii lui au fost uciși, ce a făcut David?",
    "opts": [
-    "s-a culcat pe pământ",
-    "a trimis oastea după Absalom",
-    "și-a rupt hainele"
+    "a fugit din Ierusalim",
+    "a postit șapte zile",
+    "a trimis oastea după Absalom"
    ],
-   "a": [
-    0,
-    2
-   ]
+   "a": []
   },
   {
    "id": "2sa.13.greu.301",
@@ -844,11 +841,13 @@
    "ref": "13:23",
    "q": "După doi ani, unde a fost tunsul oilor lui Absalom?",
    "opts": [
+    "la Baal-Hațor",
     "la Hebron",
-    "la Ghilgal",
     "la Bet-El"
    ],
-   "a": []
+   "a": [
+    0
+   ]
   },
   {
    "id": "2sa.13.greu.323",
@@ -873,11 +872,12 @@
    "ref": "13:36-37",
    "q": "După moartea lui Amnon, ce s-a întâmplat după ce s-au întors fiii împăratului?",
    "opts": [
-    "David a trimis după Absalom la Gheșur",
+    "Absalom fugise la Talmai, împăratul Gheșurului",
     "împăratul și slujitorii lui au plâns mult",
     "David jelea în fiecare zi pe fiul său"
    ],
    "a": [
+    0,
     1,
     2
    ]

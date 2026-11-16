@@ -256,12 +256,11 @@
    "ref": "13:2",
    "q": "Cine avea oameni aleși lângă el când a început războiul cu filistenii?",
    "opts": [
-    "Ionatan",
     "Samuel",
-    "Saul"
+    "Goliat",
+    "Ionatan"
    ],
    "a": [
-    0,
     2
    ]
   },
@@ -288,11 +287,12 @@
    "ref": "13:20",
    "q": "Ce mergeau israeliții să-și ascută la filisteni?",
    "opts": [
-    "harfa",
+    "securea",
     "fierul plugului",
     "coasa"
    ],
    "a": [
+    0,
     1,
     2
    ]
@@ -552,11 +552,12 @@
    "opts": [
     "că a lucrat ca un nebun",
     "că domnia lui nu va dăinui",
-    "că va fi iertat în curând"
+    "că n-a păzit porunca Domnului"
    ],
    "a": [
     0,
-    1
+    1,
+    2
    ]
   },
   {
@@ -566,13 +567,12 @@
    "ref": "13:14",
    "q": "Ce a spus Samuel despre omul ales de Domnul în locul lui Saul?",
    "opts": [
-    "este din casa lui Saul",
+    "este un preot din Silo",
     "este după inima Domnului",
-    "este rânduit căpetenie a poporului"
+    "este din casa lui Saul"
    ],
    "a": [
-    1,
-    2
+    1
    ]
   },
   {
@@ -582,14 +582,11 @@
    "ref": "13:21",
    "q": "Ce unelte se toceau și trebuiau ascuțite la filisteni?",
    "opts": [
-    "furca cu trei coarne",
-    "sapa",
-    "sabia"
+    "sulița",
+    "sabia",
+    "arcul"
    ],
-   "a": [
-    0,
-    1
-   ]
+   "a": []
   },
   {
    "id": "1sa.13.greu.301",
@@ -859,11 +856,12 @@
    "opts": [
     "securea",
     "sapa",
-    "sabia"
+    "coasa"
    ],
    "a": [
     0,
-    1
+    1,
+    2
    ]
   },
   {
@@ -873,13 +871,12 @@
    "ref": "13:13-14",
    "q": "Ce a spus Samuel despre domnia lui Saul?",
    "opts": [
-    "Domnul ar fi întărit-o pe vecie",
-    "Saul va muri chiar în ziua aceea",
-    "Domnul Și-a ales alt om"
+    "Domnul Și-a ales alt om",
+    "domnia va trece la Ionatan",
+    "Saul va muri chiar în ziua aceea"
    ],
    "a": [
-    0,
-    2
+    0
    ]
   }
  ]

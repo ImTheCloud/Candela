@@ -26,8 +26,8 @@ match 10:1-26 | Asociază fiecare nume cu ce se spune despre el.
 = iezii | îi ducea la Betel unul din cei trei oameni | 10:3
 = Dumnezeu | a mișcat inima unor ostași | 10:26
 = sticluța | în ea era untdelemnul | 10:1
-multi 10:18 | Ce le-a amintit Domnul israeliților prin Samuel, la Mițpa? | *i-a scos din Egipt | *i-a izbăvit de cei care îi apăsau | le-a dat munți de aur
-multi 10:2-5 | Pe cine i-a spus Samuel lui Saul că va întâlni pe drum? | *doi oameni la un mormânt | *o ceată de proroci | un leu flămând
+multi 10:18 | Ce le-a amintit Domnul israeliților prin Samuel, la Mițpa? | *i-a scos din Egipt | le-a dat munți de aur | i-a dus în Babilon
+multi 10:2-5 | Pe cine i-a spus Samuel lui Saul că va întâlni pe drum? | *doi oameni la un mormânt | *o ceată de proroci | *trei oameni la stejarul din Tabor
 multi 10:7 | Ce i-a spus Samuel lui Saul despre vremea după semne? | *să facă ce va găsi de făcut | *că Dumnezeu este cu el | să se ascundă în munți
 ## mediu
 tf + 10:2 | Samuel i-a spus lui Saul că va găsi doi oameni la mormântul Rahelei.
@@ -56,9 +56,9 @@ match 10:5-27 | Asociază fiecare nume cu ce se spune despre el.
 = cineva din Ghibea | „Și cine este tatăl lor?” | 10:12
 = ostașii | Dumnezeu le mișcase inima | 10:26
 = dreptul împărăției | Samuel l-a scris într-o carte | 10:25
-multi 10:3 | Ce duceau cei trei oameni întâlniți la stejarul din Tabor? | *trei iezi | *un burduf cu vin | trei oi
-multi 10:18-19 | Ce le-a amintit Domnul israeliților prin Samuel, la Mițpa? | *i-a scos din Egipt | *i-a izbăvit din toate relele | le-a ales El Însuși un împărat
-multi 10:23 | Ce se spune despre Saul după ce a fost scos dintre vase? | *s-a înfățișat în mijlocul poporului | *îi întrecea pe toți în înălțime | a strigat către Domnul
+multi 10:3 | Ce duceau cei trei oameni întâlniți la stejarul din Tabor? | *trei iezi | *un burduf cu vin | *trei turte de pâine
+multi 10:18-19 | Ce le-a amintit Domnul israeliților prin Samuel, la Mițpa? | *i-a izbăvit din toate relele | le-a ales El Însuși un împărat | le-a dat cetatea Ierusalimului
+multi 10:23 | Ce se spune despre Saul după ce a fost scos dintre vase? | a strigat către Domnul | a fugit acasă, în Ghibea | a spus că nu vrea să fie împărat
 ## greu
 tf + 10:2 | Mormântul Rahelei era la Țelțah, în hotarul lui Beniamin.
 tf - 10:3 | Cei trei oameni trebuiau întâlniți la stejarul din Mamre.
@@ -86,6 +86,6 @@ match 10:2-24 | Asociază fiecare persoană cu cuvintele spuse.
 = Domnul, când Saul era căutat | „Iată că este ascuns între vase.” | 10:22
 = cei doi oameni de la mormântul Rahelei | „Măgărițele pe care te-ai dus să le cauți s-au găsit” | 10:2
 = unchiul lui Saul | „Unde v-ați dus?” | 10:14
-multi 10:3-4 | Ce a primit Saul din mâna celor trei oameni? | trei iezi | trei turte | un burduf cu vin
-multi 10:9-10 | Ce s-a întâmplat cu Saul în ziua despărțirii de Samuel? | *Dumnezeu i-a dat o altă inimă | *Duhul lui Dumnezeu a venit peste el | Samuel a prorocit împreună cu el
-multi 10:26-27 | Ce s-a întâmplat după ce Saul a plecat acasă, în Ghibea? | *ostașii cu inima mișcată l-au însoțit | *oamenii răi nu i-au adus niciun dar | Samuel a mers să locuiască cu el
+multi 10:3-4 | Ce a primit Saul din mâna celor trei oameni? | *două pâini | trei iezi | un burduf cu vin
+multi 10:9-10 | Ce s-a întâmplat cu Saul în ziua despărțirii de Samuel? | *Dumnezeu i-a dat o altă inimă | *Duhul lui Dumnezeu a venit peste el | *toate semnele s-au împlinit
+multi 10:26-27 | Ce s-a întâmplat după ce Saul a plecat acasă, în Ghibea? | *oamenii răi nu i-au adus niciun dar | Samuel a mers să locuiască cu el | Saul i-a pedepsit pe cei răi

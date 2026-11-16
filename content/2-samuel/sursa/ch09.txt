@@ -26,9 +26,9 @@ match 9:2-12 | Asociază fiecare nume cu ce se spune despre el.
 = Ionatan | fiul lui era olog de picioare | 9:3
 = câinele mort | așa s-a numit Mefiboșet pe sine | 9:8
 = Lodebar | acolo locuia Machir | 9:4
-multi 9:7 | Când l-a primit, ce i-a promis David lui Mefiboșet? | *că îi va face bine | *că va mânca totdeauna la masa lui | că îl va face împărat
+multi 9:7 | Când l-a primit, ce i-a promis David lui Mefiboșet? | *că îi va face bine | *că va mânca totdeauna la masa lui | *că îi va da înapoi pământurile lui Saul
 multi 9:10 | Cine trebuia să lucreze pământurile pentru Mefiboșet? | *Țiba | *fiii lui Țiba | soldații lui Ioab
-multi 9:6 | Ce s-au spus David și Mefiboșet când s-au întâlnit? | *David l-a strigat: „Mefiboșet!” | *Mefiboșet a răspuns: „Iată robul tău!” | Mefiboșet a zis: „Nu mă omorî!”
+multi 9:6 | Ce s-au spus David și Mefiboșet când s-au întâlnit? | *Mefiboșet a răspuns: „Iată robul tău!” | Mefiboșet a zis: „Nu mă omorî!” | David a zis: „Pleacă de aici!”
 ## mediu
 tf + 9:2 | Când David a întrebat de casa lui Saul, Țiba a fost adus la el.
 tf - 9:3 | Când a vorbit cu Țiba, David a întrebat dacă mai e cineva din casa lui Saul, ca să-l pedepsească.
@@ -57,8 +57,8 @@ match 9:1-12 | Asociază fiecare persoană cu ce se spune despre ea.
 = Machir | fiul lui Amiel | 9:5
 = cei din casa lui Țiba | au ajuns robii lui Mefiboșet | 9:12
 multi 9:8 | Când David i-a făgăduit bine, ce a spus Mefiboșet? | *„Cine este robul tău?” | *„Ca să te uiți la un câine mort ca mine?” | „Nu sunt vrednic de masa ta”
-multi 9:6 | Ce a făcut Mefiboșet când a venit la David? | *a căzut cu fața la pământ | *s-a închinat | a adus un dar
-multi 9:9 | Ce i-a dat David fiului stăpânului lui Țiba? | *tot ce era al lui Saul | *tot ce avea toată casa lui Saul | jumătate din pământurile lui Ionatan
+multi 9:6 | Ce a făcut Mefiboșet când a venit la David? | a adus un dar | a cerut iertare | a plâns în fața lui
+multi 9:9 | Ce i-a dat David fiului stăpânului lui Țiba? | *tot ce era al lui Saul | jumătate din pământurile lui Ionatan | casa lui Machir din Lodebar
 ## greu
 tf + 9:1 | Când a întrebat de casa lui Saul, David voia să facă bine din pricina lui Ionatan.
 tf - 9:3-4 | Când a fost adus la David, Țiba a refuzat să-i spună unde este fiul lui Ionatan.
@@ -86,6 +86,6 @@ match 9:2-13 | Asociază fiecare persoană cu ce se spune despre ea.
 = Amiel | tatăl lui Machir | 9:5
 = Mica | fiul cel mic al lui Mefiboșet | 9:12
 = Mefiboșet | locuia la Ierusalim | 9:13
-multi 9:7 | Când l-a primit, ce i-a spus David lui Mefiboșet? | *„Nu te teme” | *„Vei mânca totdeauna la masa mea” | „Vei locui la Hebron”
+multi 9:7 | Când l-a primit, ce i-a spus David lui Mefiboșet? | *„Nu te teme” | *„Vei mânca totdeauna la masa mea” | *„Îți voi da înapoi pământurile lui Saul”
 multi 9:2 | Cine a vorbit primul când Țiba a fost adus la David? | Țiba | Mefiboșet | Ioab
 multi 9:6 | Ce a făcut Mefiboșet când a venit la David? | *a căzut cu fața la pământ | *s-a închinat | a cerut iertare

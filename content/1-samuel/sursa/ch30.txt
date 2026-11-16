@@ -26,9 +26,9 @@ match 30:5-31 | Asociază fiecare nume cu ce se spune despre el.
 = Hebron | a primit dar din prada lui David | 30:31
 = oile și boii | „Aceasta este prada lui David!” | 30:20
 = oamenii răi | n-au vrut să dea din pradă celor obosiți | 30:22
-multi 30:5 | Pe cine au luat amaleciții dintre ai lui David? | *pe Ahinoam | *pe Abigail | pe Ionatan
+multi 30:5 | Pe cine au luat amaleciții dintre ai lui David? | *pe Abigail | pe Ionatan | pe Mical
 multi 30:23-24 | Ce a spus David despre împărțirea prăzii? | *că Domnul i-a păzit | *că partea trebuie să fie aceeași | că totul este al lui
-multi 30:6 | Ce a făcut David când era în mare strâmtorare? | *s-a îmbărbătat | *s-a sprijinit pe Domnul | a fugit din cetate
+multi 30:6-7 | Ce a făcut David când era în mare strâmtorare? | *s-a îmbărbătat | *s-a sprijinit pe Domnul | *a cerut efodul
 ## mediu
 tf + 30:1 | David a ajuns la Țiclag a treia zi.
 tf - 30:5 | Nevestele lui David n-au fost luate de amaleciți.
@@ -56,8 +56,8 @@ match 30:7-31 | Asociază fiecare nume cu ce se spune despre el.
 = cheretiții | amaleciții au năvălit la miazăzi de ei | 30:14
 = cei patru sute de tineri | au scăpat pe cămile | 30:17
 = Hebron | a primit dar din pradă | 30:31
-multi 30:14 | Unde au năvălit amaleciții, după spusele egipteanului? | *în partea de miazăzi a cheretiților | *pe ținutul lui Iuda | în țara Moabului
-multi 30:15 | Ce i-a cerut egipteanul lui David să jure? | *că nu-l va omorî | *că nu-l va da pe mâna stăpânului lui | că îl va face slobod în Egipt
+multi 30:14 | Unde au năvălit amaleciții, după spusele egipteanului? | *în partea de miazăzi a cheretiților | *pe ținutul lui Iuda | *la miazăzi de Caleb
+multi 30:15 | Ce i-a cerut egipteanul lui David să jure? | *că nu-l va omorî | că îl va face slobod | că îi va da din pradă
 multi 30:27-29 | Cui i-a trimis David din pradă? | *celor din Betel | *celor din Racal | celor din Gat
 ## greu
 tf + 30:1 | Amaleciții năvăliseră în partea de miazăzi și în Țiclag.
@@ -86,6 +86,6 @@ match 30:8-29 | Asociază fiecare persoană cu cuvintele spuse.
 = egipteanul, către David | „Am ars Țiclagul.” | 30:14
 = oamenii răi | „Să nu le dăm nimic din pradă” | 30:22
 = David, către bătrânii lui Iuda | „Iată darul pe care vi-l fac” | 30:26
-multi 30:27-31 | Care dintre aceste cetăți a primit dar din prada lui David? | Țiclag | Gat | Ecron
-multi 30:12 | Ce i-au dat egipteanului? | *o legătură de smochine | *două legături de stafide | un burduf cu vin
-multi 30:24 | Pentru cine trebuie să fie aceeași parte, după David? | *pentru cel ce s-a coborât pe câmpul de bătaie | *pentru cel ce a rămas la calabalâcuri | pentru cel ce a adus efodul
+multi 30:27-31 | Care dintre aceste cetăți a primit dar din prada lui David? | *Hebron | *Horma | Gat
+multi 30:11-12 | Ce i-au dat egipteanului? | *o legătură de smochine | *două legături de stafide | *pâine și apă
+multi 30:24 | Pentru cine trebuie să fie aceeași parte, după David? | *pentru cel ce a rămas la calabalâcuri | pentru cel ce a adus efodul | pentru cel ce l-a găsit pe egiptean

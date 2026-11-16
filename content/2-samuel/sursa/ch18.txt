@@ -26,9 +26,9 @@ match 18:2-31 | Asociază fiecare nume cu ce se spune despre el.
 = trâmbița | Ioab a sunat din ea ca să oprească lupta | 18:16
 = Ahimaaț | a alergat pe drumul câmpiei | 18:23
 = caraula | s-a urcat pe acoperișul porții | 18:24
-multi 18:11-12 | Când a aflat că Absalom e prins în stejar, ce s-au spus Ioab și omul care l-a văzut? | *Ioab: „De ce nu l-ai tăiat pe loc?” | *omul: „N-aș pune mâna pe fiul împăratului” | omul: „L-am omorât eu”
-multi 18:3 | Când David a vrut să iasă cu ei la luptă, ce i-a spus poporul? | *„Să nu ieși!” | *„Este mai bine să ne vii în ajutor din cetate” | „Vino cu noi în luptă!”
-multi 18:33 | Când a aflat de moartea lui Absalom, ce a strigat David plângând? | *„Fiul meu Absalom!” | *„Cum n-am murit eu în locul tău!” | „Bine că a murit!”
+multi 18:11-12 | Când a aflat că Absalom e prins în stejar, ce s-au spus Ioab și omul care l-a văzut? | *Ioab: „De ce nu l-ai tăiat pe loc?” | omul: „L-am omorât eu” | Ioab: „Lasă-l să plece”
+multi 18:3 | Când David a vrut să iasă cu ei la luptă, ce i-a spus poporul? | *„Să nu ieși!” | *„Este mai bine să ne vii în ajutor din cetate” | *„Tu ești ca zece mii dintre noi”
+multi 18:33 | Când a aflat de moartea lui Absalom, ce a strigat David plângând? | *„Cum n-am murit eu în locul tău!” | „Bine că a murit!” | „Ioab, te voi pedepsi!”
 ## mediu
 tf + 18:1 | Înainte de lupta cu Absalom, David a pus căpetenii peste mii și peste sute.
 tf - 18:24 | În ziua luptei cu Absalom, David ședea în casa lui și aștepta vești.
@@ -56,9 +56,9 @@ match 18:2-27 | Asociază fiecare nume cu ce se spune despre el.
 = stejarul | de ramurile lui s-a prins capul lui Absalom | 18:9
 = Stâlpul lui Absalom | se află în valea împăratului | 18:18
 = Ahimaaț | David l-a numit om de bine | 18:27
-multi 18:31-32 | Când a ajuns la împărat, ce i-a spus Cuși? | *„Domnul ți-a făcut dreptate astăzi” | *„Ca tânărul acesta să fie vrăjmașii împăratului” | „Absalom a fugit peste Iordan”
-multi 18:16-17 | Ce s-a întâmplat după moartea lui Absalom? | *Ioab a sunat din trâmbiță | *tot Israelul a fugit în corturi | Ioab a ars pădurea
-multi 18:33 | Când a aflat de moartea lui Absalom, ce a făcut David? | *s-a cutremurat | *s-a suit în odaia de sus a porții și a plâns | a pornit spre pădurea lui Efraim
+multi 18:31-32 | Când a ajuns la împărat, ce i-a spus Cuși? | „Absalom a fugit peste Iordan” | „Absalom vine să-ți ceară iertare” | „Ioab a fost ucis în luptă”
+multi 18:16-17 | Ce s-a întâmplat după moartea lui Absalom? | *Ioab a sunat din trâmbiță | *tot Israelul a fugit în corturi | *Absalom a fost aruncat într-o groapă mare
+multi 18:33 | Când a aflat de moartea lui Absalom, ce a făcut David? | *s-a suit în odaia de sus a porții și a plâns | a pornit singur spre pădurea lui Efraim | a poruncit să fie omorât Ioab îndată
 ## greu
 tf + 18:3 | Când David a vrut să iasă la luptă, poporul i-a spus că e mai bine să-i ajute din cetate.
 tf - 18:5 | Înainte de luptă, numai Ioab a auzit porunca împăratului despre Absalom.
@@ -88,4 +88,4 @@ match 18:6-27 | Asociază fiecare nume cu ce se spune despre el.
 = drumul câmpiei | pe el a alergat Ahimaaț | 18:23
 multi 18:27 | Când caraula l-a recunoscut pe Ahimaaț, ce a zis împăratul despre el? | *„Este un om de bine” | *„Aduce vești bune” | „Este un om viclean”
 multi 18:15 | Când Absalom era prins în stejar, câți tineri purtători de arme l-au înconjurat? | trei | doisprezece | douăzeci
-multi 18:18 | Ce se spune despre stâlpul lui Absalom? | *Absalom zicea că n-are fii care să-i păstreze numele | *Absalom i-a pus numele său | era ridicat în pădurea lui Efraim
+multi 18:18 | Ce se spune despre stâlpul lui Absalom? | *Absalom zicea că n-are fii care să-i păstreze numele | *Absalom i-a pus numele său | *Absalom l-a ridicat în valea împăratului

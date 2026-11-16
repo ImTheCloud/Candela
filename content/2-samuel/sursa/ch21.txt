@@ -26,8 +26,8 @@ match 21:1-22 | Asociază fiecare nume cu ce se spune despre el.
 = Chis | tatăl lui Saul, în mormântul căruia a fost îngropat Saul | 21:14
 = Gat | cetatea din care erau uriașii | 21:22
 = gabaoniții | Saul voise să-i omoare | 21:2
-multi 21:8 | Ca să facă ispășire, pe cine a dat David gabaoniților? | *doi fii ai lui Saul | *cinci nepoți ai lui Saul | doi fii ai lui David
-multi 21:12-13 | După ce a aflat de Rițpa, ale cui oase au fost îngropate? | *ale lui Saul | *ale lui Ionatan | ale lui Goliat
+multi 21:8 | Ca să facă ispășire, pe cine a dat David gabaoniților? | *cinci nepoți ai lui Saul | doi fii ai lui David | doi fii ai lui Ioab
+multi 21:12-13 | După ce a aflat de Rițpa, ale cui oase au fost îngropate? | *ale lui Saul | *ale lui Ionatan | *ale celor spânzurați
 multi 21:20-21 | În lupta de la Gat, ce se spune despre uriașul care a batjocorit pe Israel? | *era un om de statură înaltă | *l-a omorât Ionatan, nepotul lui David | era fratele lui Saul
 ## mediu
 tf + 21:2 | Gabaoniții erau o rămășiță a amoriților, nu dintre copiii lui Israel.
@@ -56,9 +56,9 @@ match 21:15-22 | Asociază fiecare uriaș cu cel care l-a omorât.
 = Goliat din Gat | ucis de Elhanan, din Betleem | 21:19
 = uriașul cu șase degete | ucis de Ionatan, fiul lui Șimea | 21:21
 = cei patru copii ai lui Rafa | uciși de David și slujitorii lui | 21:22
-multi 21:4 | Când David i-a întrebat cum să facă ispășire, ce au spus gabaoniții că nu vor? | *argint și aur de la casa lui Saul | *să omoare ei pe cineva din Israel | șapte bărbați din fiii lui Saul
+multi 21:4 | Când David i-a întrebat cum să facă ispășire, ce au spus gabaoniții că nu vor? | șapte bărbați din fiii lui Saul | pământurile lui Saul | un loc în țara lui Iuda
 multi 21:20 | În lupta de la Gat, ce avea deosebit uriașul de acolo? | *șase degete la fiecare mână | *șase degete la fiecare picior | doi ochi în frunte
-multi 21:1-2 | Când David L-a întrebat pe Domnul, de ce era foamete? | *din pricina casei sângeroase a lui Saul | *pentru că Saul îi ucisese pe gabaoniți | pentru că poporul slujise idolilor
+multi 21:1-2 | Când David L-a întrebat pe Domnul, de ce era foamete? | *pentru că Saul îi ucisese pe gabaoniți | pentru că poporul slujise idolilor | pentru că David numărase poporul
 ## greu
 tf + 21:1 | Când David L-a întrebat, Domnul a spus că foametea era din pricina lui Saul și a casei lui sângeroase.
 tf - 21:2 | Deși copiii lui Israel se legaseră cu jurământ față de ei, Saul îi cruțase mereu pe gabaoniți.
@@ -86,6 +86,6 @@ match 21:8-21 | Asociază fiecare persoană cu familia ei.
 = Ionatan, ucigașul uriașului | fiul lui Șimea, fratele lui David | 21:21
 = Adriel | fiul lui Barzilai, din Mehola | 21:8
 = Rițpa | fata lui Aiia | 21:8
-multi 21:12-13 | Când a aflat ce a făcut Rițpa, ce oase au strâns și îngropat David și oamenii lui? | *ale lui Saul | *ale celor spânzurați | ale lui Abner
-multi 21:4-6 | Când i-a chemat la el, ce s-au spus David și gabaoniții? | *David a întrebat: „Ce voiți dar să vă fac?” | *David a răspuns: „Vi-i voi da.” | gabaoniții au cerut: „Dă-ne cetatea Ghibea.”
+multi 21:12-13 | Când a aflat ce a făcut Rițpa, ce oase au strâns și îngropat David și oamenii lui? | *ale lui Saul | *ale celor spânzurați | *ale lui Ionatan
+multi 21:4-6 | Când i-a chemat la el, ce s-au spus David și gabaoniții? | *David a răspuns: „Vi-i voi da.” | gabaoniții au cerut: „Dă-ne cetatea Ghibea.” | David a zis: „Luați argint și aur.”
 multi 21:14 | După ce le-a luat de la Iabes, unde au fost îngropate oasele lui Saul? | la Ghibea | la Iabes | la Rama

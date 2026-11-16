@@ -257,11 +257,12 @@
    "q": "Când Amasa a întârziat, cine a plecat după Șeba cu Abișai?",
    "opts": [
     "oamenii lui Ioab",
-    "filistenii",
+    "toți vitejii",
     "cheretiții și peletiții"
    ],
    "a": [
     0,
+    1,
     2
    ]
   },
@@ -289,12 +290,11 @@
    "q": "Cine erau preoți în vremea lui David?",
    "opts": [
     "Țadoc",
-    "Goliat",
-    "Abiatar"
+    "Ioab",
+    "Goliat"
    ],
    "a": [
-    0,
-    2
+    0
    ]
   },
   {
@@ -550,12 +550,11 @@
    "ref": "20:1",
    "q": "Când a ridicat poporul împotriva lui David, ce a strigat Șeba?",
    "opts": [
+    "„Să-l facem împărat pe Mefiboșet!”",
     "„Fiecare la cortul său, Israele!”",
-    "„Noi n-avem nicio parte cu David”",
-    "„Să-l facem împărat pe Mefiboșet!”"
+    "„Să ne întoarcem la Absalom!”"
    ],
    "a": [
-    0,
     1
    ]
   },
@@ -582,14 +581,11 @@
    "ref": "20:11",
    "q": "După moartea lui Amasa, ce striga omul lui Ioab lângă el?",
    "opts": [
-    "„Cine vrea pe Ioab?”",
-    "„Cine este pentru David?”",
-    "„Amasa a fost un trădător!”"
+    "„Amasa a fost un trădător!”",
+    "„Să ne întoarcem acasă!”",
+    "„Să răzbunăm moartea lui Amasa!”"
    ],
-   "a": [
-    0,
-    1
-   ]
+   "a": []
   },
   {
    "id": "2sa.20.greu.301",
@@ -846,11 +842,12 @@
    "opts": [
     "a ridicat mâna împotriva împăratului",
     "un om din muntele lui Efraim",
-    "era fiul lui Ner"
+    "era fiul lui Bicri"
    ],
    "a": [
     0,
-    1
+    1,
+    2
    ]
   },
   {
@@ -873,13 +870,12 @@
    "ref": "20:25",
    "q": "Cine erau preoți în vremea lui David?",
    "opts": [
-    "Țadoc",
     "Abiatar",
-    "Ahitofel"
+    "Ahitofel",
+    "Benaia"
    ],
    "a": [
-    0,
-    1
+    0
    ]
   }
  ]

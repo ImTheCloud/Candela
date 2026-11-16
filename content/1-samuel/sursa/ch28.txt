@@ -26,9 +26,9 @@ match 28:3-20 | Asociază fiecare nume cu ce se spune despre el.
 = Amalec | Saul n-a ascultat ce a spus Domnul despre el | 28:18
 = cei doi oameni | au mers cu Saul la femeie | 28:8
 = pâinea | femeia i-a dat-o lui Saul ca să prindă putere | 28:22
-multi 28:6 | Prin ce nu i-a răspuns Domnul lui Saul? | *prin vise | *prin proroci | prin scrisori
+multi 28:6 | Prin ce nu i-a răspuns Domnul lui Saul? | *prin proroci | prin scrisori | prin îngeri
 multi 28:23 | Cine a stăruit de Saul să mănânce? | *slujitorii lui | *femeia | filistenii
-multi 28:20 | De ce nu mai avea Saul nicio putere? | *cuvintele lui Samuel l-au umplut de groază | *nu mâncase | fusese rănit
+multi 28:20 | De ce nu mai avea Saul nicio putere? | fusese rănit | era bolnav | băuse prea mult vin
 ## mediu
 tf + 28:2 | Achiș a spus că îl va pune pe David păzitorul capului lui.
 tf - 28:3 | Saul îi lăsase pe cei ce chemau morții să rămână în țară.
@@ -56,8 +56,8 @@ match 28:3-25 | Asociază fiecare nume cu ce se spune despre el.
 = Urim | Domnul nu i-a răspuns lui Saul nici prin el | 28:6
 = mantia | îl învelea pe bătrânul văzut de femeie | 28:14
 = slujitorii lui Saul | au stăruit de el să mănânce | 28:23
-multi 28:15 | Ce i-a spus Saul lui Samuel că i se întâmplă? | *filistenii îi fac război | *Dumnezeu S-a depărtat de el | Ionatan s-a răsculat
-multi 28:21-22 | Ce i-a spus femeia lui Saul când l-a văzut înspăimântat? | *și-a pus viața în primejdie pentru el | *să mănânce o bucată de pâine | să plece îndată din casă
+multi 28:15 | Ce i-a spus Saul lui Samuel că i se întâmplă? | *filistenii îi fac război | *Dumnezeu S-a depărtat de el | *Domnul nu-i răspunde prin vise
+multi 28:21-22 | Ce i-a spus femeia lui Saul când l-a văzut înspăimântat? | *să mănânce o bucată de pâine | să plece îndată din casă | să se ascundă de filisteni
 multi 28:17-18 | Ce i-a spus Samuel lui Saul despre pedeapsă? | *Domnul i-a rupt împărăția | *n-a ascultat de glasul Domnului | va fi iertat în ziua aceea
 ## greu
 tf + 28:2 | Când Achiș i-a vorbit de oaste, David a răspuns: „Vei vedea ce va face robul tău.”
@@ -87,5 +87,5 @@ match 28:1-22 | Asociază fiecare persoană cu cuvintele spuse.
 = Saul, către femeie | „Cum e la chip?” | 28:14
 = Samuel, către Saul | „Domnul a rupt împărăția din mâinile tale” | 28:17
 multi 28:4 | Unde a tăbărât Saul cu tot Israelul, dintre aceste locuri? | la Sunem | la En-Dor | la Rama
-multi 28:7-8 | Ce a făcut Saul ca să ajungă la femeie? | *s-a schimbat | *a luat alte haine | a plecat cu toată oastea
-multi 28:6 | Prin ce nu i-a răspuns Domnul lui Saul? | *prin Urim | *prin proroci | prin îngeri
+multi 28:7-8 | Ce a făcut Saul ca să ajungă la femeie? | *s-a schimbat | *a luat alte haine | *a plecat cu doi oameni
+multi 28:6 | Prin ce nu i-a răspuns Domnul lui Saul? | *prin Urim | prin îngeri | prin semne în cer

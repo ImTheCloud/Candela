@@ -256,13 +256,12 @@
    "ref": "9:4",
    "q": "Pe unde au căutat Saul și sluga lui măgărițele?",
    "opts": [
-    "prin Egipt",
-    "prin muntele lui Efraim",
-    "prin țara lui Beniamin"
+    "prin pustia Sinai",
+    "prin țara lui Beniamin",
+    "prin Egipt"
    ],
    "a": [
-    1,
-    2
+    1
    ]
   },
   {
@@ -288,11 +287,12 @@
    "ref": "9:12",
    "q": "Ce le-au spus fetele lui Saul și slugii lui despre cetate?",
    "opts": [
-    "că nu este nimeni acolo",
+    "să se grăbească",
     "că poporul aduce jertfă",
     "că văzătorul a venit acolo"
    ],
    "a": [
+    0,
     1,
     2
    ]
@@ -547,16 +547,17 @@
    "id": "1sa.9.mediu.322",
    "age": "mediu",
    "t": "multi",
-   "ref": "9:19",
+   "ref": "9:19-20",
    "q": "Ce i-a spus Samuel lui Saul la poartă?",
    "opts": [
     "să se suie înaintea lui pe înălțime",
     "că vor mânca împreună",
-    "că îl va face împărat chiar atunci"
+    "că măgărițele s-au găsit"
    ],
    "a": [
     0,
-    1
+    1,
+    2
    ]
   },
   {
@@ -566,12 +567,11 @@
    "ref": "9:26-27",
    "q": "Ce a făcut Samuel în dimineața plecării lui Saul?",
    "opts": [
-    "i-a cerut să trimită sluga înainte",
-    "l-a dus înapoi la Chis",
-    "l-a chemat de pe acoperiș"
+    "l-a dus înapoi la tatăl său Chis",
+    "i-a dat o sabie pentru drum",
+    "i-a cerut să trimită sluga înainte"
    ],
    "a": [
-    0,
     2
    ]
   },
@@ -859,11 +859,12 @@
    "opts": [
     "la marginea cetății, Samuel l-a oprit",
     "în zori, Samuel l-a chemat pe Saul",
-    "Samuel l-a dus înapoi pe înălțime"
+    "sluga a trecut înaintea lor"
    ],
    "a": [
     0,
-    1
+    1,
+    2
    ]
   },
   {
@@ -874,12 +875,11 @@
    "q": "Ce a spus Samuel despre porția adusă de bucătar?",
    "opts": [
     "a fost păstrată pentru Saul",
-    "a fost binecuvântată de preoți",
-    "a fost pusă deoparte de la început"
+    "a fost gătită de Samuel însuși",
+    "a fost binecuvântată de preoți"
    ],
    "a": [
-    0,
-    2
+    0
    ]
   }
  ]

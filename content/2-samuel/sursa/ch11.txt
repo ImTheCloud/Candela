@@ -26,9 +26,9 @@ match 11:2-25 | Asociază fiecare nume cu ce se spune despre el.
 = solul | i-a dus lui David vestea luptei | 11:18
 = sabia | doboară când pe unul, când pe altul | 11:25
 = Ioab | l-a pus pe Urie unde erau ostași viteji | 11:16
-multi 11:11 | Când a refuzat să se coboare acasă, pe cine a pomenit Urie că stă în corturi sau în câmp? | *chivotul | *pe Ioab și slujitorii lui | pe filisteni
+multi 11:11 | Când a refuzat să se coboare acasă, pe cine a pomenit Urie că stă în corturi sau în câmp? | *chivotul | *pe Ioab și slujitorii lui | *pe Israel și Iuda
 multi 11:17 | În lupta de lângă cetatea Raba, cine a murit? | *Urie | *mulți din slujitorii lui David | Ioab
-multi 11:7 | Când Urie a venit la el de la război, despre ce l-a întrebat David? | *despre Ioab | *despre popor | despre turmele lui
+multi 11:7 | Când Urie a venit la el de la război, despre ce l-a întrebat David? | *despre Ioab | despre turmele lui | despre nevasta lui
 ## mediu
 tf + 11:1 | Când David a rămas la Ierusalim, Ioab a fost trimis să împresoare Raba.
 tf - 11:27 | După zilele de jale, Domnul a binecuvântat căsătoria lui David cu Bat-Șeba.
@@ -56,9 +56,9 @@ match 11:1-21 | Asociază fiecare nume cu ce se spune despre el.
 = Urie | hetitul care dormea la poarta împăratului | 11:9
 = Abimelec | ucis de o femeie cu o piatră de moară | 11:21
 = solul | i-a istorisit lui David tot ce poruncise Ioab | 11:22
-multi 11:11 | Când David l-a întrebat de ce nu s-a coborât acasă, ce i-a spus Urie? | *„Chivotul și Israel și Iuda locuiesc în corturi” | *„Domnul meu Ioab este tăbărât în câmp” | „Nevasta mea m-a uitat”
+multi 11:11 | Când David l-a întrebat de ce nu s-a coborât acasă, ce i-a spus Urie? | *„Domnul meu Ioab este tăbărât în câmp” | „Sunt prea obosit de drumul lung” | „Nevasta mea nu știe că am venit”
 multi 11:15 | Ce scria în scrisoarea lui David? | *„Puneți pe Urie în locul cel mai greu al luptei” | *„Trageți-vă înapoi de la el” | „Trimiteți-l acasă la nevasta lui”
-multi 11:25 | După vestea morții lui Urie, ce i-a trimis David vorbă lui Ioab? | *„Nu te munci pentru întâmplarea aceasta” | *„Bate cetatea cu putere” | „Întoarce-te la Ierusalim”
+multi 11:25 | După vestea morții lui Urie, ce i-a trimis David vorbă lui Ioab? | *„Nu te munci pentru întâmplarea aceasta” | *„Bate cetatea cu putere” | *„Sabia doboară când pe unul, când pe altul”
 ## greu
 tf + 11:2 | Când oastea lui era la război, David s-a sculat de pe pat într-o după-amiază spre seară.
 tf - 11:14 | David i-a trimis lui Ioab scrisoarea printr-un sol străin, nu prin Urie.
@@ -86,6 +86,6 @@ match 11:3-21 | Asociază fiecare nume cu ce se spune despre el.
 = piatra de moară | aruncată de o femeie peste Abimelec | 11:21
 = solul | a istorisit lui David tot ce-i poruncise Ioab | 11:22
 = Raba | cetatea fiilor lui Amon împresurată de Ioab | 11:1
-multi 11:20 | Când a trimis solul, ce întrebări credea Ioab că va pune David? | *„Pentru ce v-ați apropiat de cetate?” | *„Nu știați că se aruncă săgeți din vârful zidului?” | „Cine v-a poruncit să vă retrageți?”
+multi 11:20-21 | Când a trimis solul, ce întrebări credea Ioab că va pune David? | *„Pentru ce v-ați apropiat de cetate?” | *„Nu știați că se aruncă săgeți din vârful zidului?” | *„Cine a omorât pe Abimelec, fiul lui Ierubeșet?”
 multi 11:8 | Ce a primit Urie când a ieșit din casa împărătească? | o sabie nouă | haine de sărbătoare | un cal
-multi 11:27 | După ce David a luat-o pe Bat-Șeba în casa lui, ce se spune? | *Bat-Șeba i-a născut lui David un fiu | *fapta lui David n-a plăcut Domnului | Domnul l-a lăudat pe David
+multi 11:27 | După ce David a luat-o pe Bat-Șeba în casa lui, ce se spune? | *fapta lui David n-a plăcut Domnului | Domnul l-a lăudat pe David | Bat-Șeba a fugit la părinții ei

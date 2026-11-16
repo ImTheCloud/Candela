@@ -26,8 +26,8 @@ match 16:5-18 | Asociază fiecare nume cu ce se spune despre el.
 = duhul rău | îl muncea pe Saul | 16:14
 = Eliab | Samuel a crezut că el este unsul Domnului | 16:6
 = slujitorul lui Saul | a spus că fiul lui Isai știe să cânte | 16:18
-multi 16:18 | Ce a spus slujitorul lui Saul despre fiul lui Isai? | *știe să cânte | *este frumos la chip | este foarte bogat
-multi 16:4-5 | Ce a spus Samuel când a ajuns la Betleem? | *„Vin să aduc o jertfă Domnului.” | *„Sfințiți-vă.” | „Fugiți din cetate!”
+multi 16:18 | Ce a spus slujitorul lui Saul despre fiul lui Isai? | *știe să cânte | *este frumos la chip | *Domnul este cu el
+multi 16:4-5 | Ce a spus Samuel când a ajuns la Betleem? | *„Vin să aduc o jertfă Domnului.” | „Fugiți din cetate!” | „Saul vine după mine!”
 multi 16:23 | Ce se întâmpla cu Saul când David cânta pentru el? | *se simțea ușurat | *duhul cel rău pleca de la el | începea să zboare
 ## mediu
 tf + 16:1 | Domnul l-a întrebat pe Samuel până când îl va plânge pe Saul.
@@ -56,9 +56,9 @@ match 16:1-23 | Asociază fiecare nume cu ce se spune despre el.
 = cornul | în el era untdelemnul ungerii | 16:1
 = harpa | David cânta cu mâna la ea | 16:23
 = slujitorul lui Saul | l-a lăudat pe fiul lui Isai | 16:18
-multi 16:18 | Ce a spus slujitorul lui Saul despre fiul lui Isai? | *este un om tare și voinic | *Domnul este cu el | este preot la Betleem
-multi 16:23 | Ce se întâmpla când David cânta cu harpa înaintea lui Saul? | *Saul răsufla mai ușor | *duhul cel rău pleca de la el | Saul îi dădea aur
-multi 16:2-3 | Ce i-a spus Domnul lui Samuel să facă la Betleem? | *să spună că vine să aducă o jertfă | *să-l poftească pe Isai la jertfă | să-l anunțe pe Saul de plecare
+multi 16:18 | Ce a spus slujitorul lui Saul despre fiul lui Isai? | *este un om tare și voinic | *Domnul este cu el | *vorbește bine
+multi 16:23 | Ce se întâmpla când David cânta cu harpa înaintea lui Saul? | *duhul cel rău pleca de la el | Saul îi dădea aur și argint | Saul adormea până dimineața
+multi 16:2-3 | Ce i-a spus Domnul lui Samuel să facă la Betleem? | să-l anunțe pe Saul de plecare | să-l ungă pe Eliab | să ia cu el doi preoți
 ## greu
 tf + 16:2 | Domnul i-a spus lui Samuel să ia un vițel cu el.
 tf - 16:1 | Domnul i-a spus lui Samuel să-și umple sticluța cu untdelemn.
@@ -87,5 +87,5 @@ match 16:1-17 | Asociază fiecare persoană cu cuvintele spuse.
 = Domnul, când a sosit cel mai tânăr | „Scoală-te și unge-l” | 16:12
 = Saul, către slujitori | „Găsiți-mi dar un om care să cânte bine” | 16:17
 multi 16:8-9 | Pe cine dintre aceștia a ales Domnul la jertfa din Betleem? | pe Eliab | pe Abinadab | pe Șama
-multi 16:18 | Ce a spus slujitorul lui Saul despre fiul lui Isai? | *știe să cânte | *este un războinic | este preot
-multi 16:23 | Ce se întâmpla când duhul trimis de Dumnezeu venea peste Saul? | *David lua harpa | *Saul se simțea ușurat | Saul adormea
+multi 16:18 | Ce a spus slujitorul lui Saul despre fiul lui Isai? | *este un războinic | este preot | este cel mai mare dintre frați
+multi 16:23 | Ce se întâmpla când duhul trimis de Dumnezeu venea peste Saul? | *David lua harpa | *Saul se simțea ușurat | *duhul cel rău pleca de la el

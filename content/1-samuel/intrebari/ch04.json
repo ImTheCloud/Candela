@@ -253,14 +253,15 @@
    "id": "1sa.4.usor.322",
    "age": "usor",
    "t": "multi",
-   "ref": "4:7-8",
+   "ref": "4:7-9",
    "q": "Când au aflat că a venit chivotul, ce au spus filistenii?",
    "opts": [
-    "„Să ne închinăm Lui!”",
+    "„Fiți oameni și luptați!”",
     "„N-a fost așa ceva până acum!”",
     "„Vai de noi!”"
    ],
    "a": [
+    0,
     1,
     2
    ]
@@ -272,12 +273,11 @@
    "ref": "4:17",
    "q": "Ce veste i-a adus omul din Beniamin lui Eli?",
    "opts": [
-    "chivotul Domnului a fost luat",
     "filistenii au fost bătuți",
-    "Israel a fugit dinaintea filistenilor"
+    "chivotul a fost ascuns la Silo",
+    "chivotul Domnului a fost luat"
    ],
    "a": [
-    0,
     2
    ]
   },
@@ -550,12 +550,11 @@
    "ref": "4:13",
    "q": "Ce s-a întâmplat când omul venit de la luptă a intrat în Silo?",
    "opts": [
+    "Samuel a sunat din trâmbiță",
     "Eli i-a ieșit înainte",
-    "toată cetatea a strigat",
-    "a dat de veste"
+    "toată cetatea a strigat"
    ],
    "a": [
-    1,
     2
    ]
   },
@@ -583,11 +582,12 @@
    "q": "Ce veste a auzit nevasta lui Fineas înainte să nască?",
    "opts": [
     "luarea chivotului lui Dumnezeu",
-    "moartea tatălui ei",
+    "moartea bărbatului ei",
     "moartea socrului ei"
    ],
    "a": [
     0,
+    1,
     2
    ]
   },
@@ -844,11 +844,14 @@
    "ref": "4:11",
    "q": "Cine dintre aceștia a murit în a doua luptă cu filistenii?",
    "opts": [
+    "Hofni",
     "Eli",
-    "Elcana",
-    "Samuel"
+    "Fineas"
    ],
-   "a": []
+   "a": [
+    0,
+    2
+   ]
   },
   {
    "id": "1sa.4.greu.323",
@@ -857,13 +860,12 @@
    "ref": "4:21",
    "q": "Din pricina cui spunea nevasta lui Fineas că s-a dus slava din Israel?",
    "opts": [
-    "a tatălui ei",
-    "a socrului ei",
-    "a bărbatului ei"
+    "a lui Samuel",
+    "a bărbatului ei",
+    "a tatălui ei"
    ],
    "a": [
-    1,
-    2
+    1
    ]
   },
   {
@@ -875,11 +877,12 @@
    "opts": [
     "tot Israelul a strigat de bucurie",
     "Hofni și Fineas erau împreună cu el",
-    "Samuel îl purta înaintea poporului"
+    "pământul s-a cutremurat de strigăte"
    ],
    "a": [
     0,
-    1
+    1,
+    2
    ]
   }
  ]

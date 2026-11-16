@@ -256,12 +256,11 @@
    "ref": "30:5",
    "q": "Pe cine au luat amaleciții dintre ai lui David?",
    "opts": [
-    "pe Abigail",
     "pe Ionatan",
-    "pe Ahinoam"
+    "pe Mical",
+    "pe Abigail"
    ],
    "a": [
-    0,
     2
    ]
   },
@@ -285,16 +284,17 @@
    "id": "1sa.30.usor.324",
    "age": "usor",
    "t": "multi",
-   "ref": "30:6",
+   "ref": "30:6-7",
    "q": "Ce a făcut David când era în mare strâmtorare?",
    "opts": [
     "s-a sprijinit pe Domnul",
     "s-a îmbărbătat",
-    "a fugit din cetate"
+    "a cerut efodul"
    ],
    "a": [
     0,
-    1
+    1,
+    2
    ]
   },
   {
@@ -552,11 +552,12 @@
    "opts": [
     "pe ținutul lui Iuda",
     "în partea de miazăzi a cheretiților",
-    "în țara Moabului"
+    "la miazăzi de Caleb"
    ],
    "a": [
     0,
-    1
+    1,
+    2
    ]
   },
   {
@@ -566,12 +567,11 @@
    "ref": "30:15",
    "q": "Ce i-a cerut egipteanul lui David să jure?",
    "opts": [
-    "că îl va face slobod în Egipt",
-    "că nu-l va da pe mâna stăpânului lui",
+    "că îi va da din pradă",
+    "că îl va face slobod",
     "că nu-l va omorî"
    ],
    "a": [
-    1,
     2
    ]
   },
@@ -844,24 +844,28 @@
    "ref": "30:27-31",
    "q": "Care dintre aceste cetăți a primit dar din prada lui David?",
    "opts": [
-    "Ecron",
     "Gat",
-    "Țiclag"
+    "Horma",
+    "Hebron"
    ],
-   "a": []
+   "a": [
+    1,
+    2
+   ]
   },
   {
    "id": "1sa.30.greu.323",
    "age": "greu",
    "t": "multi",
-   "ref": "30:12",
+   "ref": "30:11-12",
    "q": "Ce i-au dat egipteanului?",
    "opts": [
-    "un burduf cu vin",
+    "pâine și apă",
     "două legături de stafide",
     "o legătură de smochine"
    ],
    "a": [
+    0,
     1,
     2
    ]
@@ -873,12 +877,11 @@
    "ref": "30:24",
    "q": "Pentru cine trebuie să fie aceeași parte, după David?",
    "opts": [
+    "pentru cel ce a adus efodul",
     "pentru cel ce a rămas la calabalâcuri",
-    "pentru cel ce s-a coborât pe câmpul de bătaie",
-    "pentru cel ce a adus efodul"
+    "pentru cel ce l-a găsit pe egiptean"
    ],
    "a": [
-    0,
     1
    ]
   }

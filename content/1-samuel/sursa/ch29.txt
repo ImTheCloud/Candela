@@ -26,9 +26,9 @@ match 29:1-11 | Asociază fiecare nume cu ce se spune despre el.
 = sutele și miile | așa au înaintat domnii filistenilor | 29:2
 = evreii | domnii filistenilor au întrebat ce caută în tabără | 29:3
 = țara filistenilor | acolo s-a întors David | 29:11
-multi 29:10 | Cum trebuiau să plece David și oamenii lui? | *dis-de-dimineață | *de îndată ce se lumina | la miezul nopții
+multi 29:10 | Cum trebuiau să plece David și oamenii lui? | *dis-de-dimineață | la miezul nopții | după trei zile
 multi 29:3 | Ce a spus Achiș despre David înaintea domnilor filistenilor? | *că este de mult cu el | *că nu l-a găsit vinovat cu nimic | că este fratele lui
-multi 29:6 | Ce i-a spus Achiș lui David? | *că îi place să-l vadă în tabără | *că nu e pe placul domnitorilor | că trebuie să moară
+multi 29:6 | Ce i-a spus Achiș lui David? | *că îi place să-l vadă în tabără | *că nu e pe placul domnitorilor | *că este un om curat la suflet
 ## mediu
 tf + 29:1 | Israel tăbărâse la fântâna lui Izreel.
 tf - 29:1 | Înainte de luptă, filistenii și-au strâns oștile la Micmaș.
@@ -56,9 +56,9 @@ match 29:1-11 | Asociază fiecare nume cu ce se spune despre el.
 = domnitorii filistenilor | s-au mâniat pe Achiș | 29:4
 = David și oamenii lui | s-au sculat din noapte | 29:11
 = țara filistenilor | acolo s-a întors David | 29:11
-multi 29:3 | Ce cuvinte s-au rostit când domnii filistenilor i-au văzut pe oamenii lui David? | *„Ce caută evreii aceștia aici?” | *„Acesta este David, slujitorul lui Saul.” | „Evreii aceștia sunt robii mei.”
+multi 29:3 | Ce cuvinte s-au rostit când domnii filistenilor i-au văzut pe oamenii lui David? | *„Ce caută evreii aceștia aici?” | „Evreii aceștia sunt robii mei.” | „Trimite-i să lupte în frunte!”
 multi 29:4 | De ce se temeau domnitorii filistenilor de David? | *să nu le fie vrăjmaș în luptă | *să nu se facă plăcut stăpânului lui | să nu le ia cetatea Afec
-multi 29:6 | Ce i-a spus Achiș lui David înainte să-l trimită înapoi? | *că este un om curat la suflet | *că nu este pe placul domnitorilor | că l-a înșelat
+multi 29:6 | Ce i-a spus Achiș lui David înainte să-l trimită înapoi? | că l-a înșelat | că trebuie să plece la Saul | că va fi pedepsit
 ## greu
 tf + 29:1 | Filistenii își strânseseră toate oștile la Afec.
 tf - 29:1 | Israel tăbărâse la fântâna lui Harod.
@@ -87,5 +87,5 @@ match 29:3-10 | Asociază fiecare persoană cu cuvintele spuse.
 = David, către Achiș | „Dar ce am făcut?” | 29:8
 = Achiș, la sfârșit | „Plecați de îndată ce se va lumina.” | 29:10
 multi 29:11 | Unde s-a dus David după ce a plecat din tabără, dintre aceste locuri? | la Izreel | la Afec | la Ghilboa
-multi 29:6 | Ce a spus Achiș despre David? | *„Viu este Domnul că ești un om curat la suflet” | *„N-am găsit nimic rău în tine” | „Te voi trimite la Saul”
-multi 29:4 | Ce au spus domnitorii filistenilor despre David? | *„să nu se coboare cu noi pe câmpul de bătaie” | *„să nu ne fie vrăjmaș în timpul luptei” | „să fie dat în mâinile noastre”
+multi 29:6 | Ce a spus Achiș despre David? | *„N-am găsit nimic rău în tine” | „Te voi trimite la Saul” | „Rămâi cu mine la Izreel”
+multi 29:4 | Ce au spus domnitorii filistenilor despre David? | *„să nu se coboare cu noi pe câmpul de bătaie” | *„să nu ne fie vrăjmaș în timpul luptei” | *„trimite înapoi pe omul acesta”

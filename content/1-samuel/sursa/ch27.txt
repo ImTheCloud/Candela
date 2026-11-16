@@ -26,8 +26,8 @@ match 27:2-9 | Asociază fiecare nume cu ce se spune despre el.
 = cămilele | David le lua din țările unde năvălea | 27:9
 = oamenii lui David | își aveau familiile la Gat | 27:3
 = Gat | cetatea împărătească a lui Achiș | 27:5
-multi 27:9 | Ce lua David din țările unde năvălea? | *oi | *boi | corăbii
-multi 27:2 | Cine a trecut la Achiș? | *David | *oamenii lui David | Ionatan
+multi 27:9 | Ce lua David din țările unde năvălea? | *oi | *boi | *cămile
+multi 27:2 | Cine a trecut la Achiș? | *oamenii lui David | Ionatan | Abner
 multi 27:1-4 | Ce s-a întâmplat după ce David a fugit la filisteni? | *a rămas la Gat | *Saul a încetat să-l caute | Saul a venit după el
 ## mediu
 tf + 27:2 | David a trecut la Achiș cu cei șase sute de oameni ai lui.
@@ -56,8 +56,8 @@ match 27:3-11 | Asociază fiecare nume cu ce se spune despre el.
 = Țiclag | i-a fost dat lui David | 27:6
 = ierahmeeliții | David îi pomenea lui Achiș | 27:10
 = cămilele | David le lua din ținuturile unde năvălea | 27:9
-multi 27:9 | Ce lua David din ținuturile unde năvălea? | *măgari | *haine | cai
-multi 27:8 | Asupra cui năvălea David? | *asupra gheșuriților | *asupra amaleciților | asupra filistenilor
+multi 27:9 | Ce lua David din ținuturile unde năvălea? | *haine | cai | corăbii
+multi 27:8 | Asupra cui năvălea David? | *asupra gheșuriților | *asupra amaleciților | *asupra ghirziților
 multi 27:5 | Ce i-a spus David lui Achiș când a cerut un loc? | *„Dacă am căpătat trecere înaintea ta” | *„Pentru ce să locuiască robul tău cu tine în cetatea împărătească?” | „Mă tem de Saul în cetatea ta”
 ## greu
 tf + 27:1 | David și-a zis că nu este nimic mai bine pentru el decât să fugă în țara filistenilor.
@@ -86,6 +86,6 @@ match 27:1-12 | Asociază fiecare persoană cu cuvintele spuse.
 = Achiș, la întoarcerea lui David | „Unde ați năvălit azi?” | 27:10
 = David, despre năvăliri | „Spre miazăzi de Iuda” | 27:10
 = Achiș, despre David | „Va rămâne în slujba mea pe vecie.” | 27:12
-multi 27:8 | Asupra cui năvălea David, dintre aceștia? | asupra filistenilor | asupra moabiților | asupra ierahmeeliților
+multi 27:8 | Asupra cui năvălea David, dintre aceștia? | *asupra ghirziților | asupra filistenilor | asupra moabiților
 multi 27:3 | Pe cine a avut David cu el la Gat? | *pe Ahinoam din Izreel | *pe Abigail din Carmel | pe Mical
-multi 27:9 | Ce lua David din ținuturile unde năvălea? | *cămile | *haine | cai
+multi 27:9 | Ce lua David din ținuturile unde năvălea? | *cămile | *haine | *măgari
