@@ -260,3 +260,6 @@ body.in-quiz main { padding-top: 0; }
 .tile-done { margin-left: 8px; padding: 3px 10px; border-radius: 999px; background: var(--oil-soft); color: var(--oil-ink); font: 600 0.75rem var(--f-body); }
 .bk-brief { margin: 8px 0 4px; }
 .bk-toggle { justify-self: start; margin-top: 4px; }
+.level-offers { width: 100%; display: grid; gap: 10px; }
+.level-offers .btn { display: flex; justify-content: space-between; align-items: center; gap: 12px; white-space: nowrap; }
+.level-offers .btn small { font-weight: 400; opacity: .85; }

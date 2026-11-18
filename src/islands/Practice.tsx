@@ -7,7 +7,8 @@ import { examOrder, shuffle, type Playable, type QType } from '../lib/questions'
 import { bookHome } from '../lib/books';
 import { loadChapters } from '../lib/load';
 import LevelPicker from './LevelPicker';
-import Quiz from './Quiz';
+import Quiz, { type LevelOffer } from './Quiz';
+import { progress } from '../lib/progress';
 import Loader from './Loader';
 
 /** How many questions each chapter has, per age group and type (computed at build). */
@@ -54,12 +55,12 @@ function PracticeInner({ book, bookName, chapters, summary }: Props) {
   const total = chosen.reduce((s, c) => s + available(c), 0);
   const n = count === 0 ? total : Math.min(count, total);
 
-  async function start() {
+  async function start(lv: Level | null = level) {
     setBusy(true);
     setError('');
     try {
       const all = await loadChapters(book, chosen);
-      const pool = all.filter((q) => q.age === level);
+      const pool = all.filter((q) => q.age === lv);
       if (pool.length === 0) {
         setError('Nu există întrebări disponibile pentru acest nivel în capitolul selectat.');
         return;
@@ -79,6 +80,27 @@ function PracticeInner({ book, bookName, chapters, summary }: Props) {
     }
   }, [level, direct, chosen.length]);
 
+  // end of a whole chapter test: the other levels of that chapter, not yet played first, harder before easier
+  const exams = progress(book).value.exams;
+  const offers: LevelOffer[] = [];
+  if (level && chosen.length === 1) {
+    const ch = chosen[0];
+    const at = (id: Level) => LEVELS.findIndex((g) => g.id === id);
+    for (const g of LEVELS) {
+      if (g.id === level || !summary[ch]?.[g.id]) continue;
+      const e = exams[`c${ch}@${g.id}`];
+      offers.push({ id: g.id, label: g.label, harder: at(g.id) > at(level),
+        score: e ? (e.bestRight !== undefined && e.n ? `${e.bestRight}/${e.n}` : `${e.best}%`) : null });
+    }
+    offers.sort((a, b) => Number(a.score !== null) - Number(b.score !== null) || Number(b.harder) - Number(a.harder));
+  }
+
+  async function playLevel(lv: Level) {
+    setLevel(lv);
+    await start(lv);
+    scrollTo({ top: 0 });
+  }
+
   const toggle = (c: number) => setPicked(picked.includes(c) ? picked.filter((x) => x !== c) : [...picked, c]);
 
   // points count only for a whole chapter test, not for a few questions picked or taken again
@@ -88,6 +110,7 @@ function PracticeInner({ book, bookName, chapters, summary }: Props) {
     return <Quiz key={quiz.key} book={book} bookName={bookName} questions={quiz.questions}
       points={wholeTest}
       backHref={bookHome(book)} onAgain={() => start()}
+      otherLevels={wholeTest ? offers : undefined} onLevel={playLevel}
       scoreId={wholeTest ? `c${chosen[0]}@${level}` : undefined} />;
   }
 
@@ -140,7 +163,7 @@ function PracticeInner({ book, bookName, chapters, summary }: Props) {
       {error && <p class="notice notice-bad" role="alert">{error}</p>}
 
       <div class="actions">
-        <button class="btn btn-primary btn-block" disabled={!n || busy} onClick={start}>
+        <button class="btn btn-primary btn-block" disabled={!n || busy} onClick={() => start()}>
           {busy ? 'Se încarcă…' : n ? n === 1 ? 'Începe întrebarea' : `Începe cele ${n} întrebări` : 'Alege capitolele'}
         </button>
       </div>

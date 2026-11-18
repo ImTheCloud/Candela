@@ -6,7 +6,7 @@ import { saveQuizResult } from '../lib/progress';
 import { emptyAnswer, grade, isAnswered, percent, TYPES, typeInfo, type Answer, type Grade, type Playable } from '../lib/questions';
 import QuestionView from './QuestionView';
 import Modal, { CloseButton } from './Modal';
-import { levelLabel } from '../lib/age';
+import { levelLabel, type Level } from '../lib/age';
 import ReportButton from './ReportButton';
 import { getSavedSpeakingSpeed, isSpeechSupported, preloadQuestionAudio, setMediaSession, setSpeakingSpeed, speakQuestion, stopSpeaking, pauseSpeaking, resumeSpeaking } from '../lib/speech';
 import FloatingAudioButton from './FloatingAudioButton';
@@ -24,10 +24,15 @@ export interface QuizProps {
   points?: boolean;
   backHref: string;
   onAgain?: () => void;
+  /** Other levels of the same chapter offered at the end, with the best score already made there. */
+  otherLevels?: LevelOffer[];
+  onLevel?: (lv: Level) => void;
 }
 
+export interface LevelOffer { id: Level; label: string; score: string | null; harder: boolean }
+
 /** Every set of questions is played the same way: a chapter test, the mock exam, a real exam, the mistakes. */
-export default function Quiz({ book, bookName, questions, scoreId, record = true, points = true, backHref, onAgain }: QuizProps) {
+export default function Quiz({ book, bookName, questions, scoreId, record = true, points = true, backHref, onAgain, otherLevels, onLevel }: QuizProps) {
   const [i, setI] = useState(0);
   const [answers, setAnswers] = useState<Answer[]>(() => questions.map(emptyAnswer));
   const [grades, setGrades] = useState<(Grade | null)[]>(() => questions.map(() => null));
@@ -438,7 +443,7 @@ export default function Quiz({ book, bookName, questions, scoreId, record = true
   }
 
   if (done) {
-    return <Results bookName={bookName} questions={questions} answers={answers} grades={grades} saveFailed={saveFailed} backHref={backHref} onAgain={onAgain} />;
+    return <Results bookName={bookName} questions={questions} answers={answers} grades={grades} saveFailed={saveFailed} backHref={backHref} onAgain={onAgain} otherLevels={otherLevels} onLevel={onLevel} />;
   }
 
   const topEl = document.getElementById('quiz-top');
@@ -609,9 +614,11 @@ interface ResultsProps {
   saveFailed: boolean;
   backHref: string;
   onAgain?: () => void;
+  otherLevels?: LevelOffer[];
+  onLevel?: (lv: Level) => void;
 }
 
-function Results({ bookName, questions, answers, grades, saveFailed, backHref, onAgain }: ResultsProps) {
+function Results({ bookName, questions, answers, grades, saveFailed, backHref, onAgain, otherLevels, onLevel }: ResultsProps) {
   const [verseOf, setVerseOf] = useState<Playable | null>(null);
   const gs = grades.map((g, k) => g ?? grade(questions[k], answers[k]));
   const right = gs.filter((g) => g.right).length;
@@ -649,6 +656,18 @@ function Results({ bookName, questions, answers, grades, saveFailed, backHref, o
               </li>
             ))}
           </ul>
+        )}
+
+        {otherLevels && otherLevels.length > 0 && onLevel && (
+          <div class="level-offers">
+            <p class="small muted">Încearcă alt nivel</p>
+            {otherLevels.map((o, k) => (
+              <button type="button" class={`btn btn-block ${k === 0 ? 'btn-primary' : 'btn-ghost'}`} onClick={() => onLevel(o.id)}>
+                <span>{o.harder ? 'Mai greu' : 'Mai ușor'}: {o.label}</span>
+                <small>{o.score ? `Scor ${o.score}` : 'Încă nejucat'}</small>
+              </button>
+            ))}
+          </div>
         )}
 
         <div class="score-actions">
