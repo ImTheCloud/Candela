@@ -703,6 +703,13 @@ a.tile { text-decoration: none; }
 .lv-chip { display: grid; place-content: center; gap: 1px; line-height: 1.15; padding: 4px 6px; }
 /* four chips must fit the leaderboard card on a 320px phone */
 @media (max-width: 340px) { .lv-chip { padding-inline: 4px; } }
+/* difficulty bars: used in the level offers at the end of a test */
+.lvbars { display: flex; align-items: flex-end; justify-content: center; gap: 3px; height: 22px; }
+.lvbars i { width: 6px; border-radius: 2px; background: currentColor; opacity: .22; }
+.lvbars i:nth-child(1) { height: 8px; }
+.lvbars i:nth-child(2) { height: 15px; }
+.lvbars i:nth-child(3) { height: 22px; }
+.lvbars i.on { background: var(--flame); opacity: 1; }
 .lv-who { font-weight: 600; font-size: 0.85rem; }
 .lv-sub { font-weight: 500; font-size: 0.72rem; opacity: .75; }
 .lv-chip:active { transform: scale(0.98); }

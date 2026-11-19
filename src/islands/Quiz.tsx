@@ -8,6 +8,7 @@ import QuestionView from './QuestionView';
 import Modal, { CloseButton } from './Modal';
 import { levelLabel, type Level } from '../lib/age';
 import ReportButton from './ReportButton';
+import LevelBars from './LevelBars';
 import { getSavedSpeakingSpeed, isSpeechSupported, preloadQuestionAudio, setMediaSession, setSpeakingSpeed, speakQuestion, stopSpeaking, pauseSpeaking, resumeSpeaking } from '../lib/speech';
 import FloatingAudioButton from './FloatingAudioButton';
 import { armSfx, playNext, playSelect, playVerdict, prepareSfx, releaseSfx } from '../lib/sfx';
@@ -29,7 +30,7 @@ export interface QuizProps {
   onLevel?: (lv: Level) => void;
 }
 
-export interface LevelOffer { id: Level; label: string; who: string; bars: number; score: string | null; harder: boolean }
+export interface LevelOffer { id: Level; label: string; who: string; score: string | null; harder: boolean }
 
 /** Every set of questions is played the same way: a chapter test, the mock exam, a real exam, the mistakes. */
 export default function Quiz({ book, bookName, questions, scoreId, record = true, points = true, backHref, onAgain, otherLevels, onLevel }: QuizProps) {
@@ -631,7 +632,19 @@ function Results({ bookName, questions, answers, grades, saveFailed, backHref, o
     const idx = questions.map((q, k) => (q.t === t.t ? k : -1)).filter((k) => k >= 0);
     return { ...t, n: idx.length, ok: idx.filter((k) => gs[k].right).length };
   }).filter((x) => x.n > 0);
-  const back = backHref.endsWith('/examene') ? 'Înapoi la examene' : 'Înapoi la capitole';
+  const back = backHref.endsWith('/examene') ? 'Examene' : 'Acasă';
+  const barEl = useRef<HTMLDivElement>(null);
+
+  // the two ways out stay at the foot of the screen; the page leaves room for them
+  useEffect(() => {
+    const el = barEl.current;
+    if (!el) return;
+    const set = () => document.documentElement.style.setProperty('--bar-h', `${el.offsetHeight}px`);
+    set();
+    const ro = new ResizeObserver(set);
+    ro.observe(el);
+    return () => { ro.disconnect(); document.documentElement.style.removeProperty('--bar-h'); };
+  }, []);
 
   return (
     <div class="quiz results">
@@ -663,21 +676,15 @@ function Results({ bookName, questions, answers, grades, saveFailed, backHref, o
             <p class="lo-head">Încearcă alt nivel</p>
             {otherLevels.map((o) => (
               <button type="button" class="lo-row" onClick={() => onLevel(o.id)}>
-                <span class="lo-bars" aria-hidden="true">
-                  {[1, 2, 3].map((n) => <i class={n <= o.bars ? 'on' : ''} />)}
-                </span>
+                <LevelBars level={o.id} />
                 <span class="lo-name"><b>{o.label}</b><small>{o.who}, {o.harder ? 'mai greu' : 'mai ușor'}</small></span>
                 <span class={`lo-score ${o.score ? '' : 'is-new'}`}>{o.score ?? 'Nejucat'}</span>
-                <svg class="lo-chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
+                <span class="lo-go" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6" /></svg></span>
               </button>
             ))}
           </div>
         )}
 
-        <div class="score-actions">
-          {onAgain && <button class="btn btn-primary btn-block" onClick={onAgain}>Reia testul</button>}
-          <a class="btn btn-ghost btn-block" href={backHref}>{back}</a>
-        </div>
       </section>
 
       {missed.length > 0 ? (
@@ -702,6 +709,18 @@ function Results({ bookName, questions, answers, grades, saveFailed, backHref, o
         <p class="card all-right"><span class="verdict-ic" aria-hidden="true"><Tick /></span>Toate răspunsurile au fost corecte.</p>
       )}
       {verseOf && <VerseSheet q={verseOf} bookName={bookName} onClose={() => setVerseOf(null)} />}
+      <div ref={barEl} class="actions results-bar">
+        {onAgain && (
+          <button class="btn btn-ghost" onClick={onAgain}>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7" /><path d="M3 4v5h5" /></svg>
+            Reia testul
+          </button>
+        )}
+        <a class="btn btn-primary" href={backHref}>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-8 9 8" /><path d="M5 10v10h14V10" /></svg>
+          {back}
+        </a>
+      </div>
     </div>
   );
 }
