@@ -81,7 +81,7 @@ function PracticeInner({ book, bookName, chapters, summary }: Props) {
     }
   }, [level, direct, chosen.length]);
 
-  // end of a whole chapter test: the other levels of that chapter, not yet played first, harder before easier
+  // end of a whole chapter test: the two other levels of that chapter, easiest first, with the best score made there
   const exams = progress(book).value.exams;
   const offers: LevelOffer[] = [];
   if (level && chosen.length === 1) {
@@ -90,10 +90,9 @@ function PracticeInner({ book, bookName, chapters, summary }: Props) {
     for (const g of LEVELS) {
       if (g.id === level || !summary[ch]?.[g.id]) continue;
       const e = exams[`c${ch}@${g.id}`];
-      offers.push({ id: g.id, label: g.label, harder: at(g.id) > at(level),
+      offers.push({ id: g.id, label: g.label, who: g.who, bars: at(g.id) + 1, harder: at(g.id) > at(level),
         score: e ? (e.bestRight !== undefined && e.n ? `${e.bestRight}/${e.n}` : `${e.best}%`) : null });
     }
-    offers.sort((a, b) => Number(a.score !== null) - Number(b.score !== null) || Number(b.harder) - Number(a.harder));
   }
 
   async function playLevel(lv: Level) {

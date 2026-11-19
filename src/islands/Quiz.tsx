@@ -29,7 +29,7 @@ export interface QuizProps {
   onLevel?: (lv: Level) => void;
 }
 
-export interface LevelOffer { id: Level; label: string; score: string | null; harder: boolean }
+export interface LevelOffer { id: Level; label: string; who: string; bars: number; score: string | null; harder: boolean }
 
 /** Every set of questions is played the same way: a chapter test, the mock exam, a real exam, the mistakes. */
 export default function Quiz({ book, bookName, questions, scoreId, record = true, points = true, backHref, onAgain, otherLevels, onLevel }: QuizProps) {
@@ -660,11 +660,15 @@ function Results({ bookName, questions, answers, grades, saveFailed, backHref, o
 
         {otherLevels && otherLevels.length > 0 && onLevel && (
           <div class="level-offers">
-            <p class="small muted">Încearcă alt nivel</p>
-            {otherLevels.map((o, k) => (
-              <button type="button" class={`btn btn-block ${k === 0 ? 'btn-primary' : 'btn-ghost'}`} onClick={() => onLevel(o.id)}>
-                <span>{o.harder ? 'Mai greu' : 'Mai ușor'}: {o.label}</span>
-                <small>{o.score ? `Scor ${o.score}` : 'Încă nejucat'}</small>
+            <p class="lo-head">Încearcă alt nivel</p>
+            {otherLevels.map((o) => (
+              <button type="button" class="lo-row" onClick={() => onLevel(o.id)}>
+                <span class="lo-bars" aria-hidden="true">
+                  {[1, 2, 3].map((n) => <i class={n <= o.bars ? 'on' : ''} />)}
+                </span>
+                <span class="lo-name"><b>{o.label}</b><small>{o.who}, {o.harder ? 'mai greu' : 'mai ușor'}</small></span>
+                <span class={`lo-score ${o.score ? '' : 'is-new'}`}>{o.score ?? 'Nejucat'}</span>
+                <svg class="lo-chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6" /></svg>
               </button>
             ))}
           </div>
