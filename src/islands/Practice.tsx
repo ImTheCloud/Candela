@@ -30,7 +30,8 @@ function PracticeInner({ book, bookName, chapters, summary }: Props) {
     return c && summary[c] ? [c] : [];
   });
   // from a chapter's menu: ?capitol=5&start=1[&nivel=mediu] starts the whole chapter test at once
-  const direct = params.get('start') === '1';
+  // read once: at the end of the test the address is replaced and no longer says start=1
+  const [direct] = useState(() => params.get('start') === '1');
   useState(() => {
     // a bare "+" in the address reads as a space ("18+")
     const asked = params.get('nivel');
